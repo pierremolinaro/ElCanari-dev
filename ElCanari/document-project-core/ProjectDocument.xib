@@ -22,6 +22,7 @@
                 <outlet property="mAddNetClassValidationButton" destination="S52-wH-h5H" id="0kI-yP-xf6"/>
                 <outlet property="mAddRestrictRectangleButton" destination="15550" id="sXt-gm-gRk"/>
                 <outlet property="mAddRightLabelSchematicHotKeyTextField" destination="YZi-ol-cus" id="9Af-Xl-yvj"/>
+                <outlet property="mAddTextInBoardButton" destination="M4y-0f-E9J" id="sbG-i1-XZQ"/>
                 <outlet property="mAddTopLabelSchematicHotKeyTextField" destination="cgB-ym-JpH" id="rXe-79-GCR"/>
                 <outlet property="mAddWireButton" destination="15596" id="oZ6-ug-Lc1"/>
                 <outlet property="mAddWirePointSchematicHotKeyTextField" destination="BGk-yW-02a" id="o8V-bL-DCB"/>
@@ -3391,7 +3392,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn editable="NO" width="103" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn editable="NO" width="103.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3405,11 +3406,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv">
-                                                <rect key="frame" x="468.5" y="1" width="103" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="103.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3424,7 +3425,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="224.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="224" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3438,11 +3439,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="574.5" y="1" width="224.5" height="17"/>
+                                                <rect key="frame" x="575" y="1" width="224" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="224.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="224" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -5291,14 +5292,6 @@ Diameter</string>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
-                <button toolTip="Add Text" id="15547" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="149" y="575" width="28" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="text-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="15548">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="miniSystem"/>
-                    </buttonCell>
-                </button>
                 <button toolTip="Add Restrict Rectangle" id="15550" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="95" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -5330,6 +5323,14 @@ Diameter</string>
                     <rect key="frame" x="176" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="passing-point" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="15976">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="miniSystem"/>
+                    </buttonCell>
+                </button>
+                <button toolTip="Add Line in Legend" id="M4y-0f-E9J" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="149" y="575" width="28" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="text-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="SSR-Im-lHO">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
@@ -9378,7 +9379,7 @@ DQ
         <image name="restrict-rect-in-board" width="18" height="18"/>
         <image name="selected-object" width="64" height="64"/>
         <image name="sheet" width="34" height="17"/>
-        <image name="text-in-symbol" width="64" height="64"/>
+        <image name="text-in-symbol" width="63.840000152587891" height="63.840000152587891"/>
         <image name="track-in-board" width="18" height="18"/>
     </resources>
 </document>

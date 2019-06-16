@@ -1898,6 +1898,12 @@ typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassPro
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property BoardFontDescriptor
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_BoardFontDescriptor  = EBReadOnlyValueProperty <BoardFontDescriptor>
+typealias EBTransientProperty_BoardFontDescriptor = EBTransientValueProperty <BoardFontDescriptor>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property BorderCurveDescriptor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

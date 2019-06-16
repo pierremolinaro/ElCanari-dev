@@ -33,12 +33,12 @@ fileprivate struct TemporaryBoardModel {
   var mBackLayoutTextEntities = [SegmentEntity] ()
 
   let mBoardRect_mm : NSRect
-  let mKicadFont : [UInt32 : KicadChar]
+  let mKicadFont : [UInt32 : BoardFontCharacter]
   let mLeftMM  : CGFloat
   let mBottomMM : CGFloat
 
   init (boardRectMM inBoardRect_mm : NSRect,
-        kicadFont inKicadFont : [UInt32 : KicadChar],
+        kicadFont inKicadFont : [UInt32 : BoardFontCharacter],
         leftMM inLeftMM: CGFloat,
         bottomMM inBottomMM : CGFloat) {
     mBoardRect_mm = inBoardRect_mm
@@ -119,7 +119,7 @@ extension MergerDocument {
 //      Swift.print (str)
     //--- Get first level items
       if let contents = possibleContents, contents.key == "kicad_pcb" {
-        let font : [UInt32 : KicadChar] = kicadFont ()
+        let font : [UInt32 : BoardFontCharacter] = kicadFont ()
         let boardModel = BoardModel (self.ebUndoManager)
         boardModel.name = inName
         var errorArray = [(String, Int)] ()
@@ -154,7 +154,7 @@ extension MergerDocument {
 
   fileprivate func extractContents (_ inContentArray : [KicadItem],
                                     _ boardModel : BoardModel,
-                                    _ inKicadFont : [UInt32 : KicadChar],
+                                    _ inKicadFont : [UInt32 : BoardFontCharacter],
                                     _ ioErrorArray : inout [(String, Int)]) {
   //--- Extract board bounding box
     var left   =  Int.max ; var right  = -Int.max

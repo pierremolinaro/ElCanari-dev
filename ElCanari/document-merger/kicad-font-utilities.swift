@@ -21,7 +21,7 @@ fileprivate let KICAD_STROKE_FONT_SCALE : CGFloat = 1.0 / 21.0
 
 func stringMetrics (str inString : String,
                     fontSize inFontSize : CGFloat,
-                    font inKicadFont : [UInt32 : KicadChar]) -> (CGFloat, CGFloat) {
+                    font inKicadFont : [UInt32 : BoardFontCharacter]) -> (CGFloat, CGFloat) {
   var stringWidth = 0
   var descent = 0 // is >= 0
   var ascent = 0  // is < 0
@@ -67,7 +67,7 @@ func drawKicadString (str inString : String,
                       justification inJustification : KicadStringJustification,
                       fontSize inFontSize : CGFloat,
                       thickness inThickness : CGFloat,
-                      font inKicadFont : [UInt32 : KicadChar],
+                      font inKicadFont : [UInt32 : BoardFontCharacter],
                       leftMM inModelLeftMM  : CGFloat,
                       bottomMM inModelBottomMM : CGFloat,
                       boardRect inBoardRect : NSRect,

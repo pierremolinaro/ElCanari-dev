@@ -11,6 +11,7 @@ fileprivate let kDragAndDropWire = NSPasteboard.PasteboardType (rawValue: "name.
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate let kDragAndDropRestrictRectangle = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.restrict.rectangle")
+fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.text")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -132,7 +133,7 @@ fileprivate let kDragAndDropRestrictRectangle = NSPasteboard.PasteboardType (raw
     ]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
-    self.mBoardScrollView?.register (document: self, draggedTypes: [kDragAndDropRestrictRectangle])
+    self.mBoardScrollView?.register (document: self, draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText])
   //--- Set Board inspector segmented control
     let boardInspectors = [
       self.mSelectedObjectsBoardInspectorView,
@@ -205,18 +206,23 @@ fileprivate let kDragAndDropRestrictRectangle = NSPasteboard.PasteboardType (raw
   //--- Drag source buttons and destination scroll view
     self.mAddCommentButton?.register (
       draggedType: kDragAndDropComment,
-      entity: CommentInSchematic.self,
+      factory: { return CommentInSchematic (nil) },
       scaleProvider: self.mSchematicsView
     )
     self.mAddWireButton?.register (
       draggedType: kDragAndDropWire,
-      entity: WireInSchematic.self,
+      factory: { return WireInSchematic (nil) },
       scaleProvider: self.mSchematicsView
     )
   //---
     self.mAddRestrictRectangleButton?.register (
       draggedType: kDragAndDropRestrictRectangle,
-      entity: BoardRestrictRectangle.self,
+      factory: { return BoardRestrictRectangle (nil) },
+      scaleProvider: self.mBoardView
+    )
+    self.mAddTextInBoardButton?.register (
+      draggedType: kDragAndDropBoardText,
+      factory: { [weak self] in return self?.boardTextImageFactory () },
       scaleProvider: self.mBoardView
     )
   //---
@@ -339,9 +345,47 @@ fileprivate let kDragAndDropRestrictRectangle = NSPasteboard.PasteboardType (raw
       }else if let _ = pasteboard.availableType (from: [kDragAndDropRestrictRectangle]) {
         self.performAddRestrictRectangleDragOperation (draggingLocationInDestinationView)
         ok = true
+      }else if let _ = pasteboard.availableType (from: [kDragAndDropBoardText]) {
+        self.performAddBoardTextDragOperation (draggingLocationInDestinationView)
+        ok = true
       }
     }
     return ok
+  }
+
+  //····················································································································
+
+  private func boardTextImageFactory () -> EBGraphicManagedObject? {
+    var result : EBGraphicManagedObject? = nil
+    if let font = self.rootObject.mFonts.first {
+      let boardText = BoardText (nil)
+      boardText.mFont = font
+      result = boardText
+    }else{
+      let alert = NSAlert ()
+      alert.messageText = "Cannot Currently Add a Text: first, you need to add a Font."
+      alert.informativeText = "This project does not embed any font. A font is needed for displaying texts in board."
+      alert.addButton (withTitle: "Add Font")
+      alert.addButton (withTitle: "Cancel")
+      alert.beginSheetModal (for: self.windowForSheet!) { (inReturnCode) in
+        if (inReturnCode == .alertFirstButtonReturn) {
+          self.addFont (postAction: nil)
+        }
+      }
+    }
+    return result
+  }
+
+  //····················································································································
+
+  private func performAddBoardTextDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
+    let boardText = BoardText (self.ebUndoManager)
+    boardText.mX = p.x
+    boardText.mY = p.y
+    boardText.mFont = self.rootObject.mFonts.first!
+    self.rootObject.mBoardObjects.append (boardText)
+    self.boardObjectsController.setSelection ([boardText])
   }
 
   //····················································································································

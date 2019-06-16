@@ -50,20 +50,6 @@ extension ProjectDocument {
 
   internal func duplicate (component inComponent : ComponentInProject) -> ComponentInProject? {
     let optionalNewComponent = self.addComponent (fromPossibleDevice: inComponent.mDevice)
-//    let newComponent = ComponentInProject (self.ebUndoManager)
-//    newComponent.mDevice = inComponent.mDevice
-//    newComponent.mSelectedPackage = inComponent.mSelectedPackage
-//    newComponent.mComponentValue = inComponent.mComponentValue
-//  //--- Fix index for component name
-//    newComponent.mNamePrefix = inComponent.mNamePrefix
-//    var idx = 1
-//    for component in self.rootObject.mComponents {
-//      if newComponent.mNamePrefix == component.mNamePrefix {
-//        idx = max (idx, component.mNameIndex + 1)
-//      }
-//    }
-//    newComponent.mNameIndex = idx
-//    self.rootObject.mComponents.append (newComponent)
     return optionalNewComponent
   }
 

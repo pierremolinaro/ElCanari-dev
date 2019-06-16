@@ -13,7 +13,7 @@ extension ProjectDocument {
 
   internal func addFont (postAction: Optional <() -> Void>) {
      var currentFontNames = Set <String> ()
-     for font in self.rootObject.mFonts_property.propval {
+     for font in self.rootObject.mFonts {
         currentFontNames.insert (font.mFontName)
      }
      gOpenFontInLibrary?.loadDocumentFromLibrary (
@@ -30,14 +30,14 @@ extension ProjectDocument {
     if let (_, metadataDictionary, rootObjectDictionary) = try? loadEasyRootObjectDictionary (from: inData),
        let version = metadataDictionary [PMFontVersion] as? Int,
        let rod = rootObjectDictionary,
+       let nominalSize = rod ["nominalSize"] as? Int,
        let descriptiveString = rod [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
       let addedFont = FontInProject (self.ebUndoManager)
       addedFont.mFontName = inName
       addedFont.mFontVersion = version
+      addedFont.mNominalSize = nominalSize
       addedFont.mDescriptiveString = descriptiveString
-      var fonts = self.rootObject.mFonts_property.propval
-      fonts.append (addedFont)
-      self.rootObject.mFonts_property.setProp (fonts)
+      self.rootObject.mFonts.append (addedFont)
     }
   }
 

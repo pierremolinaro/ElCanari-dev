@@ -5,425 +5,517 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_FontInProject
+//    ReadOnlyObject_BoardText 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProject> {
+class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <FontInProject>, addedSet inAddedSet : Set <FontInProject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardText?) {
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mNominalSize_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mFontName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mFontVersion_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mDescriptiveString_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_sizeString_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
+    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+    inOldValue?.mFontSize_property.removeEBObserversFrom (&self.mObserversOf_mFontSize) // Stored property
+    inOldValue?.mLayer_property.removeEBObserversFrom (&self.mObserversOf_mLayer) // Stored property
+    inOldValue?.mText_property.removeEBObserversFrom (&self.mObserversOf_mText) // Stored property
+    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   //--- Add observers to added objects
-    self.addEBObserversOf_mNominalSize_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mFontName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mFontVersion_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mDescriptiveString_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_sizeString_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
+    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+    self.mInternalValue?.mFontSize_property.addEBObserversFrom (&self.mObserversOf_mFontSize) // Stored property
+    self.mInternalValue?.mLayer_property.addEBObserversFrom (&self.mObserversOf_mLayer) // Stored property
+    self.mInternalValue?.mText_property.addEBObserversFrom (&self.mObserversOf_mText) // Stored property
+    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   }
 
   //····················································································································
-  //   Observers of 'mNominalSize' stored property
+  //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mNominalSize = EBWeakEventSet ()
+  private var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mNominalSize (_ inObserver : EBEvent) {
+  var mX_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mX_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mNominalSize.insert (inObserver)
+    self.mObserversOf_mX.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.mNominalSize_property.addEBObserver (inObserver)
-      }
+       v?.mX_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mNominalSize (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mNominalSize.remove (inObserver)
+    self.mObserversOf_mX.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.mNominalSize_property.removeEBObserver (inObserver)
-      }
+      v?.mX_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mNominalSize_toElementsOfSet (_ inSet : Set<FontInProject>) {
+  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<BoardText>) {
     for managedObject in inSet {
-      self.mObserversOf_mNominalSize.apply { (_ observer : EBEvent) in
-        managedObject.mNominalSize_property.addEBObserver (observer)
+      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
+        managedObject.mX_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mNominalSize_fromElementsOfSet (_ inSet : Set<FontInProject>) {
-    self.mObserversOf_mNominalSize.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<BoardText>) {
+    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mNominalSize_property.removeEBObserver (observer)
+        managedObject.mX_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mFontName' stored property
+  //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mFontName = EBWeakEventSet ()
+  private var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mFontName (_ inObserver : EBEvent) {
+  var mY_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mY_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mFontName.insert (inObserver)
+    self.mObserversOf_mY.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.mFontName_property.addEBObserver (inObserver)
-      }
+       v?.mY_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mFontName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mFontName.remove (inObserver)
+    self.mObserversOf_mY.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.mFontName_property.removeEBObserver (inObserver)
-      }
+      v?.mY_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mFontName_toElementsOfSet (_ inSet : Set<FontInProject>) {
+  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<BoardText>) {
     for managedObject in inSet {
-      self.mObserversOf_mFontName.apply { (_ observer : EBEvent) in
-        managedObject.mFontName_property.addEBObserver (observer)
+      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
+        managedObject.mY_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mFontName_fromElementsOfSet (_ inSet : Set<FontInProject>) {
-    self.mObserversOf_mFontName.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<BoardText>) {
+    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mFontName_property.removeEBObserver (observer)
+        managedObject.mY_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mFontVersion' stored property
+  //   Observers of 'mFontSize' stored property
   //····················································································································
 
-  private var mObserversOf_mFontVersion = EBWeakEventSet ()
+  private var mObserversOf_mFontSize = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
+  var mFontSize_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mFontSize_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mFontSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mFontVersion.insert (inObserver)
+    self.mObserversOf_mFontSize.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.mFontVersion_property.addEBObserver (inObserver)
-      }
+       v?.mFontSize_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFontSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mFontVersion.remove (inObserver)
+    self.mObserversOf_mFontSize.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.mFontVersion_property.removeEBObserver (inObserver)
-      }
+      v?.mFontSize_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mFontVersion_toElementsOfSet (_ inSet : Set<FontInProject>) {
+  final func addEBObserversOf_mFontSize_toElementsOfSet (_ inSet : Set<BoardText>) {
     for managedObject in inSet {
-      self.mObserversOf_mFontVersion.apply { (_ observer : EBEvent) in
-        managedObject.mFontVersion_property.addEBObserver (observer)
+      self.mObserversOf_mFontSize.apply { (_ observer : EBEvent) in
+        managedObject.mFontSize_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mFontVersion_fromElementsOfSet (_ inSet : Set<FontInProject>) {
-    self.mObserversOf_mFontVersion.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mFontSize_fromElementsOfSet (_ inSet : Set<BoardText>) {
+    self.mObserversOf_mFontSize.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mFontVersion_property.removeEBObserver (observer)
+        managedObject.mFontSize_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mDescriptiveString' stored property
+  //   Observers of 'mLayer' stored property
   //····················································································································
 
-  private var mObserversOf_mDescriptiveString = EBWeakEventSet ()
+  private var mObserversOf_mLayer = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
+  var mLayer_property_selection : EBSelection <BoardTextLayer?> {
+    if let model = self.propval {
+      switch (model.mLayer_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mLayer (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mDescriptiveString.insert (inObserver)
+    self.mObserversOf_mLayer.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.mDescriptiveString_property.addEBObserver (inObserver)
-      }
+       v?.mLayer_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mLayer (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mDescriptiveString.remove (inObserver)
+    self.mObserversOf_mLayer.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.mDescriptiveString_property.removeEBObserver (inObserver)
-      }
+      v?.mLayer_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mDescriptiveString_toElementsOfSet (_ inSet : Set<FontInProject>) {
+  final func addEBObserversOf_mLayer_toElementsOfSet (_ inSet : Set<BoardText>) {
     for managedObject in inSet {
-      self.mObserversOf_mDescriptiveString.apply { (_ observer : EBEvent) in
-        managedObject.mDescriptiveString_property.addEBObserver (observer)
+      self.mObserversOf_mLayer.apply { (_ observer : EBEvent) in
+        managedObject.mLayer_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mDescriptiveString_fromElementsOfSet (_ inSet : Set<FontInProject>) {
-    self.mObserversOf_mDescriptiveString.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mLayer_fromElementsOfSet (_ inSet : Set<BoardText>) {
+    self.mObserversOf_mLayer.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mDescriptiveString_property.removeEBObserver (observer)
+        managedObject.mLayer_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'versionString' transient property
+  //   Observers of 'mText' stored property
   //····················································································································
 
-  private var mObserversOf_versionString = EBWeakEventSet ()
+  private var mObserversOf_mText = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
+  var mText_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mText_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mText (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_versionString.insert (inObserver)
+    self.mObserversOf_mText.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.versionString_property.addEBObserver (inObserver)
-      }
+       v?.mText_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mText (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_versionString.remove (inObserver)
+    self.mObserversOf_mText.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.versionString_property.removeEBObserver (inObserver)
-      }
+      v?.mText_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<FontInProject>) {
+  final func addEBObserversOf_mText_toElementsOfSet (_ inSet : Set<BoardText>) {
     for managedObject in inSet {
-      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
-        managedObject.versionString_property.addEBObserver (observer)
+      self.mObserversOf_mText.apply { (_ observer : EBEvent) in
+        managedObject.mText_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<FontInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
-        managedObject.versionString_property.removeEBObserver (observer)
+  final func removeEBObserversOf_mText_fromElementsOfSet (_ inSet : Set<BoardText>) {
+    self.mObserversOf_mText.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mText_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'sizeString' transient property
+  //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_sizeString = EBWeakEventSet ()
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_sizeString.insert (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.sizeString_property.addEBObserver (inObserver)
-      }
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_sizeString (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_sizeString.remove (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.sizeString_property.removeEBObserver (inObserver)
-      }
+      v?.objectDisplay_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : Set<FontInProject>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardText>) {
     for managedObject in inSet {
-      self.mObserversOf_sizeString.apply { (_ observer : EBEvent) in
-        managedObject.sizeString_property.addEBObserver (observer)
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : Set<FontInProject>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardText>) {
     for managedObject in inSet {
-      self.mObserversOf_sizeString.apply { (_ observer : EBEvent) in
-        managedObject.sizeString_property.removeEBObserver (observer)
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'descriptor' transient property
+  //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_descriptor = EBWeakEventSet ()
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_descriptor.insert (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.descriptor_property.addEBObserver (inObserver)
-      }
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_descriptor.remove (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      for managedObject in v {
-        managedObject.descriptor_property.removeEBObserver (inObserver)
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BoardText>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : Set<FontInProject>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BoardText>) {
     for managedObject in inSet {
-      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
-        managedObject.descriptor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : Set<FontInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
-        managedObject.descriptor_property.removeEBObserver (observer)
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -433,96 +525,64 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf FontInProject
+//    TransientObject BoardText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_FontInProject : ReadOnlyArrayOf_FontInProject {
-
-  //····················································································································
-  //   Sort
-  //····················································································································
-
-  private var mIsOrderedBefore : Optional < (_ left : FontInProject, _ right : FontInProject) -> Bool > = nil 
-  private var mSortObserver : EBModelNotifierEvent? = nil
+class TransientObject_BoardText : ReadOnlyObject_BoardText {
 
   //····················································································································
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_FontInProject? = nil
+  private var mDataProvider : ReadOnlyObject_BoardText? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
-  func setDataProvider (_ inProvider : ReadOnlyArrayOf_FontInProject,
-                        sortCallback inSortCallBack : Optional < (_ left : FontInProject, _ right : FontInProject) -> Bool >,
-                        addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
-                        removeSortObserversCallback inRemoveSortObserversCallback : @escaping (EBModelNotifierEvent) -> Void) {
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyObject_BoardText?) {
     if self.mDataProvider !== inProvider {
-      self.mSortObserver?.removeSortObservers ()
-      self.mSortObserver = nil
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider
-      self.mIsOrderedBefore = inSortCallBack
       self.mDataProvider?.attachClient (self)
-      if inSortCallBack != nil {
-        self.mSortObserver = EBModelNotifierEvent (
-          self,
-          addSortObserversCallback: inAddSortObserversCallback,
-          removeSortObserversCallback: inRemoveSortObserversCallback
-        )
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newObject : BoardText? 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newObject = nil
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newObject = v
+        self.mTransientKind = .single
+       case .multiple :
+        newObject = nil
+        self.mTransientKind = .empty
+      }
+    }else{
+      newObject = nil
+      self.mTransientKind = .empty
+    }
+    self.mInternalValue = newObject
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < BoardText? > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      if let internalValue = self.mInternalValue {
+        return .single (internalValue)
       }else{
-        self.mInternalArrayValue = []
+        return .empty
       }
-    }
-  }
-
-  //····················································································································
-
-  func resetDataProvider () {
-    if self.mDataProvider != nil {
-      self.mSortObserver = nil
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = nil
-      self.mIsOrderedBefore = nil
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newArray : [FontInProject] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
-        newArray = []
-        self.mTransientKind = .empty
-      case .single (let v) :
-        if let sortFunction = self.mIsOrderedBefore {
-          newArray = v.sorted { sortFunction ($0, $1) }
-        }else{
-          newArray = v
-        }
-        self.mTransientKind = .single
-       case .multiple :
-        newArray = []
-        self.mTransientKind = .multiple
-      }
-    }else{
-      newArray = []
-      self.mTransientKind = .empty
-    }
-    self.mInternalArrayValue = newArray
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override var prop : EBSelection < [FontInProject] > {
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      return .single (self.mInternalArrayValue)
     case .multiple :
       return .multiple
     }
@@ -530,113 +590,39 @@ class TransientArrayOf_FontInProject : ReadOnlyArrayOf_FontInProject {
 
   //····················································································································
 
-  override var propval : [FontInProject] { return self.mInternalArrayValue }
+  override var propval : BoardText? { return self.mInternalValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOfSuperOf FontInProject
+//    ReadWriteObject_BoardText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_FontInProject <SUPER : EBManagedObject> : ReadOnlyArrayOf_FontInProject {
-
-  //····················································································································
-  //   Data provider
-  //····················································································································
-
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
-  private var mTransientKind : PropertyKind = .empty
-
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
-    if self.mDataProvider !== inProvider {
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = inProvider
-      self.mDataProvider?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
-        newModelArray = []
-        self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
-      }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [FontInProject] ()
-    for superObject in newModelArray {
-      if let object = superObject as? FontInProject {
-        newArray.append (object)
-      }
-    }
-    self.mInternalArrayValue = newArray
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override var prop : EBSelection < [FontInProject] > {
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      return .single (self.mInternalArrayValue)
-    case .multiple :
-      return .multiple
-    }
-  }
-
-  //····················································································································
-
-  override var propval : [FontInProject] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: FontInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteArrayOf_FontInProject : ReadOnlyArrayOf_FontInProject {
+class ReadWriteObject_BoardText : ReadOnlyObject_BoardText {
 
   //····················································································································
  
-  func setProp (_ value :  [FontInProject]) { } // Abstract method
+  func setProp (_ inValue : BoardText?) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyArrayOf_FontInProject
+//    Proxy: ProxyObject_BoardText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
+final class ProxyObject_BoardText : ReadWriteObject_BoardText {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_FontInProject? = nil
+  private var mModel : ReadWriteObject_BoardText? = nil
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_FontInProject?) {
+  func setModel (_ inModel : ReadWriteObject_BoardText?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -647,32 +633,32 @@ final class ProxyArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : [FontInProject]
+    let newModel : BoardText?
     if let model = self.mModel {
       switch model.prop {
       case .empty :
-        newModelArray = []
+        newModel = nil
       case .single (let v) :
-        newModelArray = v
+        newModel = v
        case .multiple :
-        newModelArray = []
+        newModel = nil
       }
     }else{
-      newModelArray = []
+      newModel = nil
     }
-    self.mInternalArrayValue = newModelArray
+    self.mInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : [FontInProject]) {
-    self.mModel?.setProp (inArrayValue)
+  override func setProp (_ inValue : BoardText?) {
+    self.mModel?.setProp (inValue)
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [FontInProject] > {
+  override var prop : EBSelection < BoardText? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -682,16 +668,16 @@ final class ProxyArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
 
   //····················································································································
 
-  override var propval : [FontInProject] {
+  override var propval : BoardText? {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
-        return []
+        return nil
       case .single (let v) :
         return v
       }
     }else{
-      return []
+      return nil
     }
   }
 
@@ -700,10 +686,10 @@ final class ProxyArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: FontInProject
+//    StoredObject_BoardText 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureObserverProtocol {
+final class StoredObject_BoardText : ReadWriteObject_BoardText, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -711,74 +697,61 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
 
   weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : FontInProject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : FontInProject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardText) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardText) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : FontInProject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : FontInProject) -> Void) {
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardText) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : BoardText) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
+        switch self.prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :
-          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
+          updateManagedObjectToOneRelationshipDisplay (object: v, button: unwrappedExplorer)
         }
       }
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [FontInProject] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "FontInProject") as? FontInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  }
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : [FontInProject]) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : BoardText?) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    if let object = inOldValue {
+      object.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (object)
+    }
+  //---
+    if let object = self.mInternalValue {
+      object.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (object)
+    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
  
   //····················································································································
 
-  @objc func performUndo (_ oldValue : [FontInProject]) {
-    self.mInternalArrayValue = oldValue
+  @objc func performUndo (_ oldValue : BoardText?) {
+    self.mInternalValue = oldValue
   }
  
   //····················································································································
@@ -788,78 +761,33 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
   override func notifyModelDidChange () {
   //--- Update explorer
     if let valueExplorer = self.mValueExplorer {
-      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+      updateManagedObjectToOneRelationshipDisplay (object: self.mInternalValue, button: valueExplorer)
     }
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
 
   //····················································································································
-  // Update observers 
-  //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <FontInProject>, addedSet inAddedSet : Set <FontInProject>) {
-    for managedObject in inRemovedSet {
-      managedObject.setSignatureObserver (observer: nil)
-      self.mResetOppositeRelationship? (managedObject)
-    }
-  //---
-    for managedObject in inAddedSet {
-      managedObject.setSignatureObserver (observer: self)
-      self.mSetOppositeRelationship? (managedObject)
-    }
-  //---
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
- }
- 
-  //····················································································································
-
-  override var prop : EBSelection < [FontInProject] > { return .single (self.mInternalArrayValue) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : [FontInProject]) { self.mInternalArrayValue = inValue }
-
-  //····················································································································
-
-  override var propval : [FontInProject] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
+  override var prop : EBSelection < BoardText? > {
+    if let object = self.mInternalValue {
+      return .single (object)
+    }else{
+      return .empty
     }
   }
 
   //····················································································································
 
-  func remove (_ object : FontInProject) {
-    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      self.mInternalArrayValue.remove (at: idx)
-    }
-  }
-  
+  override func setProp (_ inValue : BoardText?) { self.mInternalValue = inValue }
+
   //····················································································································
 
-  func add (_ object : FontInProject) {
-    if !self.internalSetValue.contains (object) {
-      self.mInternalArrayValue.append (object)
-    }
-  }
-  
+  override var propval : BoardText? { return self.mInternalValue }
+
   //····················································································································
   //   signature
   //····················································································································
@@ -874,9 +802,7 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
+    self.mInternalValue?.setSignatureObserver (observer: observer)
   }
 
   //····················································································································
@@ -896,7 +822,7 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mInternalArrayValue {
+    if let object = self.mInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

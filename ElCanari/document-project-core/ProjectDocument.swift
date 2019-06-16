@@ -387,6 +387,7 @@ import Cocoa
   @IBOutlet var mAddNetClassValidationButton : NSButton?
   @IBOutlet var mAddRestrictRectangleButton : CanariDragSourceButton?
   @IBOutlet var mAddRightLabelSchematicHotKeyTextField : NSTextField?
+  @IBOutlet var mAddTextInBoardButton : CanariDragSourceButton?
   @IBOutlet var mAddTopLabelSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mAddWireButton : CanariDragSourceButton?
   @IBOutlet var mAddWirePointSchematicHotKeyTextField : NSTextField?
@@ -729,6 +730,7 @@ import Cocoa
     checkOutletConnection (self.mAddNetClassValidationButton, "mAddNetClassValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mAddRestrictRectangleButton, "mAddRestrictRectangleButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddRightLabelSchematicHotKeyTextField, "mAddRightLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mAddTextInBoardButton, "mAddTextInBoardButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddTopLabelSchematicHotKeyTextField, "mAddTopLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddWireButton, "mAddWireButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddWirePointSchematicHotKeyTextField, "mAddWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
@@ -1993,6 +1995,7 @@ import Cocoa
     self.mAddNetClassValidationButton?.ebCleanUp ()
     self.mAddRestrictRectangleButton?.ebCleanUp ()
     self.mAddRightLabelSchematicHotKeyTextField?.ebCleanUp ()
+    self.mAddTextInBoardButton?.ebCleanUp ()
     self.mAddTopLabelSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddWireButton?.ebCleanUp ()
     self.mAddWirePointSchematicHotKeyTextField?.ebCleanUp ()
@@ -2208,6 +2211,7 @@ import Cocoa
 //    self.mAddNetClassValidationButton = nil
 //    self.mAddRestrictRectangleButton = nil
 //    self.mAddRightLabelSchematicHotKeyTextField = nil
+//    self.mAddTextInBoardButton = nil
 //    self.mAddTopLabelSchematicHotKeyTextField = nil
 //    self.mAddWireButton = nil
 //    self.mAddWirePointSchematicHotKeyTextField = nil

@@ -36,25 +36,23 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
   //····················································································································
 
   private var mDragType : NSPasteboard.PasteboardType? = nil
-  private var mDraggedObjectType : EBGraphicManagedObject.Type? = nil
+  private var mDraggedObjectFactory : Optional < () -> EBGraphicManagedObject? > = nil
   private var mScaleProvider : EBGraphicViewScaleProvider? = nil
 
   //····················································································································
 
   func register (draggedType : NSPasteboard.PasteboardType,
-                 entity inEntityType : EBGraphicManagedObject.Type,
+                 factory inEntityFactory : @escaping () -> EBGraphicManagedObject?,
                  scaleProvider : EBGraphicViewScaleProvider?) {
     self.mDragType = draggedType
-    self.mDraggedObjectType = inEntityType
+    self.mDraggedObjectFactory = inEntityFactory
     self.mScaleProvider = scaleProvider
   }
 
   //····················································································································
 
   func buildButtonImageFromDraggedObjectTypeName () {
-    if let T = self.mDraggedObjectType {
-      let temporaryObject = T.init (nil)
-      let displayShape = temporaryObject.objectDisplay!
+    if let temporaryObject = self.mDraggedObjectFactory? (), let displayShape = temporaryObject.objectDisplay {
       let rect = displayShape.boundingBox
       if !rect.isEmpty {
         self.image = buildPDFimage (frame: rect.insetBy (dx: -3.0, dy: -3.0), shape: displayShape)
@@ -74,11 +72,10 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
   //····················································································································
 
   override func mouseDown (with inEvent : NSEvent) {
-    if let dragType = self.mDragType, self.isEnabled, let T = self.mDraggedObjectType {
+    if let dragType = self.mDragType, self.isEnabled, let temporaryObject = self.mDraggedObjectFactory? () {
       let pasteboardItem = NSPasteboardItem ()
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged image
-      let temporaryObject = T.init (nil)
       let transform = NSAffineTransform ()
       let scale = self.mScaleProvider?.actualScale ?? 1.0
       let horizontalFlip : CGFloat = (self.mScaleProvider?.horizontalFlip ?? false) ? -1.0 : 1.0

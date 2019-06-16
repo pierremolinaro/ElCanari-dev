@@ -33,8 +33,8 @@ typedef struct {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 static void loadNewStrokeFont (FILE * f, const char * const aNewStrokeFont [], const int inIndex) {
-  fprintf (f, "fileprivate func enterCharacter%04x (_ ioDict : inout [UInt32 : KicadChar]) {\n", inIndex + ' ') ;
-  fprintf (f, "//--- Character \\u%04x\n", wchar_t (inIndex + ' ')) ;
+  fprintf (f, "fileprivate func enterCharacter%04x (_ ioDict : inout BoardFontDictionary) {\n", inIndex + ' ') ;
+//  fprintf (f, "//--- Character \\u%04x\n", wchar_t (inIndex + ' ')) ;
 
   const wchar_t s = inIndex + ' ' ;
   printf ("Character #%d: %C\n", inIndex, s) ;
@@ -69,7 +69,7 @@ static void loadNewStrokeFont (FILE * f, const char * const aNewStrokeFont [], c
       //    and the actual size is stroke coordinate * glyph size
       //  * a few shapes have a height slightly bigger than 1.0 ( like '{' '[' )
       newPoint.x = coordinate[0] - 'R' - glyphStartX ;
-      #define FONT_OFFSET -10
+      #define FONT_OFFSET (-10)
       // FONT_OFFSET is here for historical reasons, due to the way the stroke font
       // was built. It allows shapes coordinates like W M ... to be >= 0
       // Only shapes like j y have coordinates < 0
@@ -78,22 +78,21 @@ static void loadNewStrokeFont (FILE * f, const char * const aNewStrokeFont [], c
       if (penDown) {
         if (!hasSegment) {
           hasSegment = true ;
-          fprintf (f, "  var segments = [KicadCharSegment] ()\n") ;
+          fprintf (f, "  var segments = [BoardCharSegment] ()\n") ;
         }
         cout << "  line (" << point.x << ", " << point.y << ") --> (" << newPoint.x << ", " << newPoint.y << ")" << endl ;
-        fprintf (f, "  segments.append (KicadCharSegment (x1: %d, y1:%d, x2:%d, y2: %d))\n", point.x, point.y, newPoint.x, newPoint.y) ;
+        fprintf (f, "  segments.append (BoardCharSegment (x1: %d, y1: %d, x2: %d, y2: %d))\n", point.x, point.y, newPoint.x, newPoint.y) ;
       }else{
         penDown = true ;
       }
       point = newPoint ;
     }
-
     i += 2 ;
   }
   const int advancement = glyphEndX - glyphStartX ;
   if (hasSegment || (advancement > 0)) {
     fprintf (f,
-             "  ioDict [%u] = KicadChar (advancement: %d, segments: %s)\n",
+             "  ioDict [%u] = BoardFontCharacter (advancement: %d, segments: %s)\n",
              inIndex + ' ',
              advancement,
              hasSegment ? "segments" : "[]"
@@ -114,30 +113,8 @@ int main (int argc, const char * argv []) {
   fprintf (f, separator) ;
   fprintf (f, "import Foundation\n\n") ;
   fprintf (f, separator) ;
-  fprintf (f, "struct KicadCharSegment {\n") ;
-  fprintf (f, "  let x1 : Int8\n") ;
-  fprintf (f, "  let y1 : Int8\n") ;
-  fprintf (f, "  let x2 : Int8\n") ;
-  fprintf (f, "  let y2 : Int8\n") ;
-//  fprintf (f, "  init (x1 inX1 : Int, y1 inY1 : Int, x2 inX2 : Int, y2 inY2 : Int) {\n") ;
-//  fprintf (f, "    x1 = inX1\n") ;
-//  fprintf (f, "    y1 = inY1\n") ;
-//  fprintf (f, "    x2 = inX2\n") ;
-//  fprintf (f, "    y2 = inY2\n") ;
-//  fprintf (f, "  }\n\n") ;
-  fprintf (f, "}\n\n") ;
-  fprintf (f, separator) ;
-  fprintf (f, "class KicadChar {\n") ;
-  fprintf (f, "  let advancement : Int\n\n") ;
-  fprintf (f, "  let segments : [KicadCharSegment]\n\n") ;
-  fprintf (f, "  init (advancement inAdvancement : Int, segments inSegments : [KicadCharSegment]) {\n") ;
-  fprintf (f, "    advancement = inAdvancement\n") ;
-  fprintf (f, "    segments = inSegments\n") ;
-  fprintf (f, "  }\n\n") ;
-  fprintf (f, "}\n\n") ;
-  fprintf (f, separator) ;
-  fprintf (f, "func kicadFont () -> [UInt32 : KicadChar] {\n") ;
-  fprintf (f, "  var dict = [UInt32 : KicadChar] ()\n") ;
+  fprintf (f, "func kicadFont () -> BoardFontDictionary {\n") ;
+  fprintf (f, "  var dict = BoardFontDictionary ()\n") ;
   fprintf (f, "  enter0 (&dict)\n") ;
   fprintf (f, "  enter1 (&dict)\n") ;
   fprintf (f, "  enter2 (&dict)\n") ;
@@ -150,49 +127,49 @@ int main (int argc, const char * argv []) {
   fprintf (f, separator) ;
 
   std::vector <int> chars ;
-  fprintf (f, "fileprivate func enter0 (_ ioDict : inout [UInt32 : KicadChar]) {\n") ;
+  fprintf (f, "fileprivate func enter0 (_ ioDict : inout BoardFontDictionary) {\n") ;
   for (int idx = ' ' ; idx <= '~' ; idx++) {
     chars.push_back (idx) ;
     fprintf (f, "  enterCharacter%04x (&ioDict)\n", idx) ;
   }
   fprintf (f, "}\n\n") ;
   fprintf (f, separator) ;
-  fprintf (f, "fileprivate func enter1 (_ ioDict : inout [UInt32 : KicadChar]) {\n") ;
+  fprintf (f, "fileprivate func enter1 (_ ioDict : inout BoardFontDictionary) {\n") ;
   for (int idx = 0xA0 ; idx <= 0x2FF ; idx++) {
     chars.push_back (idx) ;
     fprintf (f, "  enterCharacter%04x (&ioDict)\n", idx) ;
   }
   fprintf (f, "}\n\n") ;
   fprintf (f, separator) ;
-  fprintf (f, "fileprivate func enter2 (_ ioDict : inout [UInt32 : KicadChar]) {\n") ;
+  fprintf (f, "fileprivate func enter2 (_ ioDict : inout BoardFontDictionary) {\n") ;
   for (int idx = 0x370 ; idx <= 0x523 ; idx++) {
     chars.push_back (idx) ;
     fprintf (f, "  enterCharacter%04x (&ioDict)\n", idx) ;
   }
   fprintf (f, "}\n\n") ;
   fprintf (f, separator) ;
-  fprintf (f, "fileprivate func enter3 (_ ioDict : inout [UInt32 : KicadChar]) {\n") ;
+  fprintf (f, "fileprivate func enter3 (_ ioDict : inout BoardFontDictionary) {\n") ;
   for (int idx = 0x1D00 ; idx <= 0x1D7F ; idx++) {
     chars.push_back (idx) ;
     fprintf (f, "  enterCharacter%04x (&ioDict)\n", idx) ;
   }
   fprintf (f, "}\n\n") ;
   fprintf (f, separator) ;
-  fprintf (f, "fileprivate func enter4 (_ ioDict : inout [UInt32 : KicadChar]) {\n") ;
+  fprintf (f, "fileprivate func enter4 (_ ioDict : inout BoardFontDictionary) {\n") ;
   for (int idx = 0x1E00 ; idx <= 0x20B5 ; idx++) {
     chars.push_back (idx) ;
     fprintf (f, "  enterCharacter%04x (&ioDict)\n", idx) ;
   }
   fprintf (f, "}\n\n") ;
   fprintf (f, separator) ;
-  fprintf (f, "fileprivate func enter5 (_ ioDict : inout [UInt32 : KicadChar]) {\n") ;
+  fprintf (f, "fileprivate func enter5 (_ ioDict : inout BoardFontDictionary) {\n") ;
   for (int idx = 0x2190 ; idx <= 0x23E7 ; idx++) {
     chars.push_back (idx) ;
     fprintf (f, "  enterCharacter%04x (&ioDict)\n", idx) ;
   }
   fprintf (f, "}\n\n") ;
   fprintf (f, separator) ;
-  fprintf (f, "fileprivate func enter6 (_ ioDict : inout [UInt32 : KicadChar]) {\n") ;
+  fprintf (f, "fileprivate func enter6 (_ ioDict : inout BoardFontDictionary) {\n") ;
   for (int idx = 0x25A0 ; idx <= 0x25FE ; idx++) {
     chars.push_back (idx) ;
     fprintf (f, "  enterCharacter%04x (&ioDict)\n", idx) ;

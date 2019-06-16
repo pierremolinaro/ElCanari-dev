@@ -1,19 +1,31 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Font
+//   BoardText
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity FontInProject {
-  toMany BoardText mTexts inverse toOne mFont;
+enum BoardTextLayer {
+  legendFront, layoutFront, layoutBack, legendBack
+}
 
-  property Int mNominalSize default 0 ;
-  property String mFontName default "" ;
-  property Int mFontVersion default 0 ;
-  property String mDescriptiveString default "" ;
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  transient String versionString dependsFrom self.mFontVersion ;
-  transient String sizeString dependsFrom self.mDescriptiveString ;
-  
-  transient BoardFontDescriptor descriptor dependsFrom self.mNominalSize, self.mDescriptiveString ;
+graphic entity BoardText : BoardObject {
+  toOne FontInProject mFont inverse toMany mTexts ;
+
+  property Int mX default 0 ;
+  property Int mY default 0 ;
+  property Int mFontSize default 4 ;
+  property BoardTextLayer mLayer default legendFront ;
+  property String mText default "" ;
+
+  override transient EBShape objectDisplay dependsFrom
+    self.mX, self.mY, self.mLayer, self.mText, self.mFontSize,
+    self.mFont.one.descriptor
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mX, self.mY, self.mLayer, self.mText, self.mFontSize,
+    self.mFont.one.descriptor
+  ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

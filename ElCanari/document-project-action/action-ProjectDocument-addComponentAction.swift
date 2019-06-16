@@ -14,7 +14,7 @@ import Cocoa
 extension ProjectDocument {
   @objc func addComponentAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        if self.rootObject.mFonts_property.propval.count == 0 {
+        if self.rootObject.mFonts.count == 0 {
           let alert = NSAlert ()
           alert.messageText = "Cannot Currently Add a Component: first, you need to add a Font."
           alert.informativeText = "This project does not embed any font. A font is needed for displaying component name and value in board."

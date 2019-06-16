@@ -77,48 +77,48 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //--- Drag source buttons and destination scroll view
     self.mAddSegmentButton?.register (
       draggedType: packagePasteboardType,
-      entity: PackageSegment.self,
+      factory: { return PackageSegment (nil) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddBezierButton?.register (
       draggedType: packagePasteboardType,
-      entity: PackageBezier.self,
+      factory: { return PackageBezier (nil) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddOvalButton?.register (
       draggedType: packagePasteboardType,
-      entity: PackageOval.self,
+      factory: { return PackageOval (nil) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddArcButton?.register (
       draggedType: packagePasteboardType,
-      entity: PackageArc.self,
+      factory: { return PackageArc (nil) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddPadButton?.register (
       draggedType: packagePasteboardType,
-      entity: PackagePad.self,
+      factory: { return PackagePad (nil) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddSlavePadButton?.register (
       draggedType: packagePasteboardType,
-      entity: PackageSlavePad.self,
+      factory: { return PackageSlavePad (nil) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddGuideButton?.register (
       draggedType: packagePasteboardType,
-      entity: PackageGuide.self,
+      factory: { return PackageGuide (nil) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddGuideButton?.image = self.imageForAddGuideButton ()
     self.mAddDimensionButton?.register (
       draggedType: packagePasteboardType,
-      entity: PackageDimension.self,
+      factory: { return PackageDimension (nil) },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddZoneButton?.register (
       draggedType: packagePasteboardType,
-      entity: PackageZone.self,
+      factory: { return PackageZone (nil) },
       scaleProvider: self.mComposedPackageView
     )
  //--- Register scroll view

@@ -25,9 +25,11 @@ extension ProjectDocument {
                let (_, metadataDictionary, rootObjectDictionary) = try? loadEasyRootObjectDictionary (from: data),
                let version = metadataDictionary [PMFontVersion] as? Int,
                let rod = rootObjectDictionary,
+               let nominalSize = rod ["nominalSize"] as? Int,
                let descriptiveString = rod [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
               if font.mFontVersion < version {
                 font.mFontVersion = version
+                font.mNominalSize = nominalSize
                 font.mDescriptiveString = descriptiveString
               }
              }else{

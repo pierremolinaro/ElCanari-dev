@@ -220,3 +220,30 @@ struct BorderCurveDescriptor : Hashable {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct BoardCharSegment : Hashable {
+  let x1 : Int8
+  let y1 : Int8
+  let x2 : Int8
+  let y2 : Int8
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct BoardFontCharacter : Hashable {
+  let advancement : Int
+  let segments : [BoardCharSegment]
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias BoardFontDictionary = [UInt32 : BoardFontCharacter]
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct BoardFontDescriptor : Hashable {
+  let nominalSize : Int
+  let dictionary :  BoardFontDictionary
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

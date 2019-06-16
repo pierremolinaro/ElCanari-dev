@@ -6,213 +6,180 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_mNominalSize : class {
-  var mNominalSize : Int { get }
+protocol BoardText_mX : class {
+  var mX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_mFontName : class {
-  var mFontName : String { get }
+protocol BoardText_mY : class {
+  var mY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_mFontVersion : class {
-  var mFontVersion : Int { get }
+protocol BoardText_mFontSize : class {
+  var mFontSize : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_mDescriptiveString : class {
-  var mDescriptiveString : String { get }
+protocol BoardText_mLayer : class {
+  var mLayer : BoardTextLayer { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_versionString : class {
-  var versionString : String? { get }
+protocol BoardText_mText : class {
+  var mText : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_sizeString : class {
-  var sizeString : String? { get }
+protocol BoardText_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_descriptor : class {
-  var descriptor : BoardFontDescriptor? { get }
+protocol BoardText_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: FontInProject
+//    Entity: BoardText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class FontInProject : EBManagedObject,
-         FontInProject_mNominalSize,
-         FontInProject_mFontName,
-         FontInProject_mFontVersion,
-         FontInProject_mDescriptiveString,
-         FontInProject_versionString,
-         FontInProject_sizeString,
-         FontInProject_descriptor {
+class BoardText : BoardObject,
+         BoardText_mX,
+         BoardText_mY,
+         BoardText_mFontSize,
+         BoardText_mLayer,
+         BoardText_mText,
+         BoardText_objectDisplay,
+         BoardText_selectionDisplay {
 
   //····················································································································
-  //   To many property: mTexts
+  //   Atomic property: mX
   //····················································································································
 
-  let mTexts_property = StoredArrayOf_BoardText ()
+  let mX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var mTexts_property_selection : EBSelection < [BoardText] > {
-    return self.mTexts_property.prop
+  var mX : Int {
+    get { return self.mX_property.propval }
+    set { self.mX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mTexts : [BoardText] {
-    get { return self.mTexts_property.propval }
-    set { self.mTexts_property.setProp (newValue) }
-  }
+  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
 
   //····················································································································
-  //   Atomic property: mNominalSize
+  //   Atomic property: mY
   //····················································································································
 
-  let mNominalSize_property = EBStoredProperty_Int (defaultValue: 0)
+  let mY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var mNominalSize : Int {
-    get { return self.mNominalSize_property.propval }
-    set { self.mNominalSize_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mNominalSize_property_selection : EBSelection <Int> { return self.mNominalSize_property.prop }
-
-  //····················································································································
-  //   Atomic property: mFontName
-  //····················································································································
-
-  let mFontName_property = EBStoredProperty_String (defaultValue: "")
-
-  //····················································································································
-
-  var mFontName : String {
-    get { return self.mFontName_property.propval }
-    set { self.mFontName_property.setProp (newValue) }
+  var mY : Int {
+    get { return self.mY_property.propval }
+    set { self.mY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFontName_property_selection : EBSelection <String> { return self.mFontName_property.prop }
+  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
-  //   Atomic property: mFontVersion
+  //   Atomic property: mFontSize
   //····················································································································
 
-  let mFontVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  let mFontSize_property = EBStoredProperty_Int (defaultValue: 4)
 
   //····················································································································
 
-  var mFontVersion : Int {
-    get { return self.mFontVersion_property.propval }
-    set { self.mFontVersion_property.setProp (newValue) }
+  var mFontSize : Int {
+    get { return self.mFontSize_property.propval }
+    set { self.mFontSize_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFontVersion_property_selection : EBSelection <Int> { return self.mFontVersion_property.prop }
+  var mFontSize_property_selection : EBSelection <Int> { return self.mFontSize_property.prop }
 
   //····················································································································
-  //   Atomic property: mDescriptiveString
+  //   Atomic property: mLayer
   //····················································································································
 
-  let mDescriptiveString_property = EBStoredProperty_String (defaultValue: "")
+  let mLayer_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront)
 
   //····················································································································
 
-  var mDescriptiveString : String {
-    get { return self.mDescriptiveString_property.propval }
-    set { self.mDescriptiveString_property.setProp (newValue) }
+  var mLayer : BoardTextLayer {
+    get { return self.mLayer_property.propval }
+    set { self.mLayer_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDescriptiveString_property_selection : EBSelection <String> { return self.mDescriptiveString_property.prop }
+  var mLayer_property_selection : EBSelection <BoardTextLayer> { return self.mLayer_property.prop }
 
   //····················································································································
-  //   Transient property: versionString
+  //   Atomic property: mText
   //····················································································································
 
-  let versionString_property = EBTransientProperty_String ()
+  let mText_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var versionString_property_selection : EBSelection <String> {
-    return self.versionString_property.prop
+  var mText : String {
+    get { return self.mText_property.propval }
+    set { self.mText_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var versionString : String? {
-    switch self.versionString_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
+  var mText_property_selection : EBSelection <String> { return self.mText_property.prop }
+
+  //····················································································································
+  //   To one property: mFont
+  //····················································································································
+
+   let mFont_property = StoredObject_FontInProject ()
+
+  //····················································································································
+
+  var mFont_property_selection : EBSelection <FontInProject?> {
+    return .single (self.mFont_property.propval)
+  }
+
+  //····················································································································
+
+  var mFont : FontInProject? {
+    get {
+      return self.mFont_property.propval
+    }
+    set {
+      if self.mFont_property.propval != nil {
+        self.mFont_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mFont_property.setProp (newValue)
+      }
     }
   }
 
   //····················································································································
-  //   Transient property: sizeString
-  //····················································································································
 
-  let sizeString_property = EBTransientProperty_String ()
+  var mFont_none : StoredObject_FontInProject { return self.mFont_property }
 
   //····················································································································
 
-  var sizeString_property_selection : EBSelection <String> {
-    return self.sizeString_property.prop
-  }
-
-  //····················································································································
-
-  var sizeString : String? {
-    switch self.sizeString_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: descriptor
-  //····················································································································
-
-  let descriptor_property = EBTransientProperty_BoardFontDescriptor ()
-
-  //····················································································································
-
-  var descriptor_property_selection : EBSelection <BoardFontDescriptor> {
-    return self.descriptor_property.prop
-  }
-
-  //····················································································································
-
-  var descriptor : BoardFontDescriptor? {
-    switch self.descriptor_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
+  var mFont_none_selection : EBSelection <Bool> {
+    return .single (self.mFont_property.propval == nil)
   }
 
   //····················································································································
@@ -221,33 +188,40 @@ class FontInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- To many property: mTexts (has opposite relationship)
-    self.mTexts_property.ebUndoManager = self.ebUndoManager
-    self.mTexts_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
-      resetter: { inObject in inObject.mFont_property.setProp (nil) }
+  //--- Atomic property: mX
+    self.mX_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mY
+    self.mY_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mFontSize
+    self.mFontSize_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mLayer
+    self.mLayer_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mText
+    self.mText_property.ebUndoManager = self.ebUndoManager
+  //--- To one property: mFont (has opposite to many relationship: mTexts)
+    self.mFont_property.ebUndoManager = self.ebUndoManager
+    self.mFont_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mTexts_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mTexts_property.remove (me) } }
     )
-  //--- Atomic property: mNominalSize
-    self.mNominalSize_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mFontName
-    self.mFontName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mFontVersion
-    self.mFontVersion_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDescriptiveString
-    self.mDescriptiveString_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: versionString
-    self.versionString_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mFontVersion_property_selection.kind ()
+        var kind = unwSelf.mX_property_selection.kind ()
+        kind &= unwSelf.mY_property_selection.kind ()
+        kind &= unwSelf.mLayer_property_selection.kind ()
+        kind &= unwSelf.mText_property_selection.kind ()
+        kind &= unwSelf.mFontSize_property_selection.kind ()
+        kind &= unwSelf.mFont_property.descriptor_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mFontVersion_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontInProject_versionString (v0))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mLayer_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_BoardText_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -256,20 +230,30 @@ class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mFontVersion_property.addEBObserver (self.versionString_property)
-  //--- Atomic property: sizeString
-    self.sizeString_property.mReadModelFunction = { [weak self] in
+    self.mX_property.addEBObserver (self.objectDisplay_property)
+    self.mY_property.addEBObserver (self.objectDisplay_property)
+    self.mLayer_property.addEBObserver (self.objectDisplay_property)
+    self.mText_property.addEBObserver (self.objectDisplay_property)
+    self.mFontSize_property.addEBObserver (self.objectDisplay_property)
+    self.mFont_property.addEBObserverOf_descriptor (self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mDescriptiveString_property_selection.kind ()
+        var kind = unwSelf.mX_property_selection.kind ()
+        kind &= unwSelf.mY_property_selection.kind ()
+        kind &= unwSelf.mLayer_property_selection.kind ()
+        kind &= unwSelf.mText_property_selection.kind ()
+        kind &= unwSelf.mFontSize_property_selection.kind ()
+        kind &= unwSelf.mFont_property.descriptor_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mDescriptiveString_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontInProject_sizeString (v0))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mLayer_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_BoardText_selectionDisplay (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -278,36 +262,13 @@ class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mDescriptiveString_property.addEBObserver (self.sizeString_property)
-  //--- Atomic property: descriptor
-    self.descriptor_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mNominalSize_property_selection.kind ()
-        kind &= unwSelf.mDescriptiveString_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mNominalSize_property_selection, unwSelf.mDescriptiveString_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_FontInProject_descriptor (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mNominalSize_property.addEBObserver (self.descriptor_property)
-    self.mDescriptiveString_property.addEBObserver (self.descriptor_property)
+    self.mX_property.addEBObserver (self.selectionDisplay_property)
+    self.mY_property.addEBObserver (self.selectionDisplay_property)
+    self.mLayer_property.addEBObserver (self.selectionDisplay_property)
+    self.mText_property.addEBObserver (self.selectionDisplay_property)
+    self.mFontSize_property.addEBObserver (self.selectionDisplay_property)
+    self.mFont_property.addEBObserverOf_descriptor (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
-    self.mTexts_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
-      resetter: { inObject in inObject.mFont_property.setProp (nil) }
-    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -316,10 +277,18 @@ class FontInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mFontVersion_property.removeEBObserver (self.versionString_property)
-    self.mDescriptiveString_property.removeEBObserver (self.sizeString_property)
-    self.mNominalSize_property.removeEBObserver (self.descriptor_property)
-    self.mDescriptiveString_property.removeEBObserver (self.descriptor_property)
+    self.mX_property.removeEBObserver (self.objectDisplay_property)
+    self.mY_property.removeEBObserver (self.objectDisplay_property)
+    self.mLayer_property.removeEBObserver (self.objectDisplay_property)
+    self.mText_property.removeEBObserver (self.objectDisplay_property)
+    self.mFontSize_property.removeEBObserver (self.objectDisplay_property)
+    self.mFont_property.removeEBObserverOf_descriptor (self.objectDisplay_property)
+    self.mX_property.removeEBObserver (self.selectionDisplay_property)
+    self.mY_property.removeEBObserver (self.selectionDisplay_property)
+    self.mLayer_property.removeEBObserver (self.selectionDisplay_property)
+    self.mText_property.removeEBObserver (self.selectionDisplay_property)
+    self.mFontSize_property.removeEBObserver (self.selectionDisplay_property)
+    self.mFont_property.removeEBObserverOf_descriptor (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -335,71 +304,71 @@ class FontInProject : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mNominalSize",
-      idx: self.mNominalSize_property.ebObjectIndex,
+      "mX",
+      idx: self.mX_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mNominalSize_property.mObserverExplorer,
-      valueExplorer: &self.mNominalSize_property.mValueExplorer
+      observerExplorer: &self.mX_property.mObserverExplorer,
+      valueExplorer: &self.mX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mFontName",
-      idx: self.mFontName_property.ebObjectIndex,
+      "mY",
+      idx: self.mY_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mFontName_property.mObserverExplorer,
-      valueExplorer: &self.mFontName_property.mValueExplorer
+      observerExplorer: &self.mY_property.mObserverExplorer,
+      valueExplorer: &self.mY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mFontVersion",
-      idx: self.mFontVersion_property.ebObjectIndex,
+      "mFontSize",
+      idx: self.mFontSize_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mFontVersion_property.mObserverExplorer,
-      valueExplorer: &self.mFontVersion_property.mValueExplorer
+      observerExplorer: &self.mFontSize_property.mObserverExplorer,
+      valueExplorer: &self.mFontSize_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mDescriptiveString",
-      idx: self.mDescriptiveString_property.ebObjectIndex,
+      "mLayer",
+      idx: self.mLayer_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mDescriptiveString_property.mObserverExplorer,
-      valueExplorer: &self.mDescriptiveString_property.mValueExplorer
+      observerExplorer: &self.mLayer_property.mObserverExplorer,
+      valueExplorer: &self.mLayer_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mText",
+      idx: self.mText_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mText_property.mObserverExplorer,
+      valueExplorer: &self.mText_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
-      "versionString",
-      idx: self.versionString_property.ebObjectIndex,
+      "objectDisplay",
+      idx: self.objectDisplay_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.versionString_property.mObserverExplorer,
-      valueExplorer: &self.versionString_property.mValueExplorer
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "sizeString",
-      idx: self.sizeString_property.ebObjectIndex,
+      "selectionDisplay",
+      idx: self.selectionDisplay_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.sizeString_property.mObserverExplorer,
-      valueExplorer: &self.sizeString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "descriptor",
-      idx: self.descriptor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.descriptor_property.mObserverExplorer,
-      valueExplorer: &self.descriptor_property.mValueExplorer
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mTexts",
-      idx:mTexts_property.ebObjectIndex,
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForToOneRelationshipNamed (
+      "mFont",
+      idx:self.mFont_property.ebObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&mTexts_property.mValueExplorer
+      valueExplorer:&self.mFont_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
@@ -408,20 +377,24 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- To many property: mTexts
-    self.mTexts_property.mValueExplorer = nil
-  //--- Atomic property: mNominalSize
-    self.mNominalSize_property.mObserverExplorer = nil
-    self.mNominalSize_property.mValueExplorer = nil
-  //--- Atomic property: mFontName
-    self.mFontName_property.mObserverExplorer = nil
-    self.mFontName_property.mValueExplorer = nil
-  //--- Atomic property: mFontVersion
-    self.mFontVersion_property.mObserverExplorer = nil
-    self.mFontVersion_property.mValueExplorer = nil
-  //--- Atomic property: mDescriptiveString
-    self.mDescriptiveString_property.mObserverExplorer = nil
-    self.mDescriptiveString_property.mValueExplorer = nil
+  //--- Atomic property: mX
+    self.mX_property.mObserverExplorer = nil
+    self.mX_property.mValueExplorer = nil
+  //--- Atomic property: mY
+    self.mY_property.mObserverExplorer = nil
+    self.mY_property.mValueExplorer = nil
+  //--- Atomic property: mFontSize
+    self.mFontSize_property.mObserverExplorer = nil
+    self.mFontSize_property.mValueExplorer = nil
+  //--- Atomic property: mLayer
+    self.mLayer_property.mObserverExplorer = nil
+    self.mLayer_property.mValueExplorer = nil
+  //--- Atomic property: mText
+    self.mText_property.mObserverExplorer = nil
+    self.mText_property.mValueExplorer = nil
+  //--- To one property: mFont
+    self.mFont_property.mObserverExplorer = nil
+    self.mFont_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -431,7 +404,6 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mTexts = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -441,6 +413,7 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mFont = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -451,20 +424,16 @@ class FontInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- To many property: mTexts
-    self.store (
-      managedObjectArray: self.mTexts_property.propval,
-      relationshipName: "mTexts",
-      intoDictionary: ioDictionary
-    )
-  //--- Atomic property: mNominalSize
-    self.mNominalSize_property.storeIn (dictionary: ioDictionary, forKey:"mNominalSize")
-  //--- Atomic property: mFontName
-    self.mFontName_property.storeIn (dictionary: ioDictionary, forKey:"mFontName")
-  //--- Atomic property: mFontVersion
-    self.mFontVersion_property.storeIn (dictionary: ioDictionary, forKey:"mFontVersion")
-  //--- Atomic property: mDescriptiveString
-    self.mDescriptiveString_property.storeIn (dictionary: ioDictionary, forKey:"mDescriptiveString")
+  //--- Atomic property: mX
+    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
+  //--- Atomic property: mY
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
+  //--- Atomic property: mFontSize
+    self.mFontSize_property.storeIn (dictionary: ioDictionary, forKey:"mFontSize")
+  //--- Atomic property: mLayer
+    self.mLayer_property.storeIn (dictionary: ioDictionary, forKey:"mLayer")
+  //--- Atomic property: mText
+    self.mText_property.storeIn (dictionary: ioDictionary, forKey:"mText")
   }
 
   //····················································································································
@@ -474,12 +443,17 @@ class FontInProject : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mTexts
-    self.mTexts_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mTexts",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardText])
+  //--- To one property: mFont
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mFont",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? FontInProject {
+        self.mFont_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -488,14 +462,16 @@ class FontInProject : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mNominalSize
-    self.mNominalSize_property.readFrom (dictionary: inDictionary, forKey:"mNominalSize")
-  //--- Atomic property: mFontName
-    self.mFontName_property.readFrom (dictionary: inDictionary, forKey:"mFontName")
-  //--- Atomic property: mFontVersion
-    self.mFontVersion_property.readFrom (dictionary: inDictionary, forKey:"mFontVersion")
-  //--- Atomic property: mDescriptiveString
-    self.mDescriptiveString_property.readFrom (dictionary: inDictionary, forKey:"mDescriptiveString")
+  //--- Atomic property: mX
+    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
+  //--- Atomic property: mY
+    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
+  //--- Atomic property: mFontSize
+    self.mFontSize_property.readFrom (dictionary: inDictionary, forKey:"mFontSize")
+  //--- Atomic property: mLayer
+    self.mLayer_property.readFrom (dictionary: inDictionary, forKey:"mLayer")
+  //--- Atomic property: mText
+    self.mText_property.readFrom (dictionary: inDictionary, forKey:"mText")
   }
 
   //····················································································································
@@ -504,9 +480,9 @@ class FontInProject : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mTexts
-    for managedObject in self.mTexts {
-      objects.append (managedObject)
+  //--- To one property: mFont
+    if let object = self.mFont {
+      objects.append (object)
     }
   }
 
@@ -516,9 +492,9 @@ class FontInProject : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mTexts
-    for managedObject in self.mTexts {
-      objects.append (managedObject)
+  //--- To one property: mFont
+    if let object = self.mFont {
+      objects.append (object)
     }
   }
 
