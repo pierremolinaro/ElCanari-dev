@@ -36,23 +36,23 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
   //····················································································································
 
   private var mDragType : NSPasteboard.PasteboardType? = nil
-  private var mDraggedObjectFactory : Optional < () -> EBGraphicManagedObject? > = nil
+  private var mDraggedObjectImageShape : Optional < () -> EBShape? > = nil
   private var mScaleProvider : EBGraphicViewScaleProvider? = nil
 
   //····················································································································
 
   func register (draggedType : NSPasteboard.PasteboardType,
-                 factory inEntityFactory : @escaping () -> EBGraphicManagedObject?,
+                 shapeFactory inShapeFactory : @escaping () -> EBShape?,
                  scaleProvider : EBGraphicViewScaleProvider?) {
     self.mDragType = draggedType
-    self.mDraggedObjectFactory = inEntityFactory
+    self.mDraggedObjectImageShape = inShapeFactory
     self.mScaleProvider = scaleProvider
   }
 
   //····················································································································
 
   func buildButtonImageFromDraggedObjectTypeName () {
-    if let temporaryObject = self.mDraggedObjectFactory? (), let displayShape = temporaryObject.objectDisplay {
+    if let displayShape = self.mDraggedObjectImageShape? () {
       let rect = displayShape.boundingBox
       if !rect.isEmpty {
         self.image = buildPDFimage (frame: rect.insetBy (dx: -3.0, dy: -3.0), shape: displayShape)
@@ -72,7 +72,7 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
   //····················································································································
 
   override func mouseDown (with inEvent : NSEvent) {
-    if let dragType = self.mDragType, self.isEnabled, let temporaryObject = self.mDraggedObjectFactory? () {
+    if let dragType = self.mDragType, self.isEnabled, let temporaryObjectShape = self.mDraggedObjectImageShape? () {
       let pasteboardItem = NSPasteboardItem ()
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged image
@@ -81,7 +81,7 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
       let horizontalFlip : CGFloat = (self.mScaleProvider?.horizontalFlip ?? false) ? -1.0 : 1.0
       let verticalFlip   : CGFloat = (self.mScaleProvider?.verticalFlip   ?? false) ? -1.0 : 1.0
       transform.scaleX (by: scale * horizontalFlip, yBy: scale * verticalFlip)
-      let displayShape = temporaryObject.objectDisplay!.transformedBy (transform)
+      let displayShape = temporaryObjectShape.transformedBy (transform)
       let rect = displayShape.boundingBox
       let image = buildPDFimage (frame: rect, shape: displayShape)
     //--- Move image rect origin to mouse click location
@@ -89,11 +89,8 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
       var r = rect
       r.origin.x += mouseDownLocation.x
       r.origin.y += mouseDownLocation.y
-    //--- Associated data
-      let d = NSMutableDictionary ()
-      temporaryObject.saveIntoDictionary (d)
-      let dataDictionary : NSDictionary = ["OBJECTS" : [d], "X" : 0, "Y" : 0]
-      pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
+    //--- Associated data (any value, just for setting drag type)
+      pasteboardItem.setString ("", forType: dragType)
     //--- Set dragged image
       draggingItem.setDraggingFrame (r, contents: image)
     //--- Begin

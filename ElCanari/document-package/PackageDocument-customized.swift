@@ -77,48 +77,48 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //--- Drag source buttons and destination scroll view
     self.mAddSegmentButton?.register (
       draggedType: packagePasteboardType,
-      factory: { return PackageSegment (nil) },
+      shapeFactory: { return PackageSegment (nil).objectDisplay },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddBezierButton?.register (
       draggedType: packagePasteboardType,
-      factory: { return PackageBezier (nil) },
+      shapeFactory: { return PackageBezier (nil).objectDisplay },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddOvalButton?.register (
       draggedType: packagePasteboardType,
-      factory: { return PackageOval (nil) },
+      shapeFactory: { return PackageOval (nil).objectDisplay },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddArcButton?.register (
       draggedType: packagePasteboardType,
-      factory: { return PackageArc (nil) },
+      shapeFactory: { return PackageArc (nil).objectDisplay },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddPadButton?.register (
       draggedType: packagePasteboardType,
-      factory: { return PackagePad (nil) },
+      shapeFactory: { return PackagePad (nil).objectDisplay },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddSlavePadButton?.register (
       draggedType: packagePasteboardType,
-      factory: { return PackageSlavePad (nil) },
+      shapeFactory: { return PackageSlavePad (nil).objectDisplay },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddGuideButton?.register (
       draggedType: packagePasteboardType,
-      factory: { return PackageGuide (nil) },
+      shapeFactory: { return PackageGuide (nil).objectDisplay },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddGuideButton?.image = self.imageForAddGuideButton ()
     self.mAddDimensionButton?.register (
       draggedType: packagePasteboardType,
-      factory: { return PackageDimension (nil) },
+      shapeFactory: { return PackageDimension (nil).objectDisplay },
       scaleProvider: self.mComposedPackageView
     )
     self.mAddZoneButton?.register (
       draggedType: packagePasteboardType,
-      factory: { return PackageZone (nil) },
+      shapeFactory: { return PackageZone (nil).objectDisplay },
       scaleProvider: self.mComposedPackageView
     )
  //--- Register scroll view

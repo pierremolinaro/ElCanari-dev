@@ -151,9 +151,9 @@ func boardText_displayInfos (
 
   switch self_mHorizontalAlignment {
   case .onTheLeft :
-    tr.translate (x: 0.0 - width, y: 0.0)
+    tr.translate (x: -width, y: 0.0)
   case .center :
-    tr.translate (x: 0.0 - width / 2.0, y: 0.0)
+    tr.translate (x: -width / 2.0, y: 0.0)
   case .onTheRight :
     ()
   }

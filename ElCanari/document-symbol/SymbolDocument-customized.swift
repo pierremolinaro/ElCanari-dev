@@ -65,43 +65,43 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
   //--- Drag source buttons and destination scroll view
     self.mAddSegmentButton?.register (
       draggedType: symbolPasteboardType,
-      factory: { return SymbolSegment (nil) },
+      shapeFactory: { return SymbolSegment (nil).objectDisplay },
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddBezierButton?.register (
       draggedType: symbolPasteboardType,
-      factory: { return SymbolBezierCurve (nil) },
+      shapeFactory: { return SymbolBezierCurve (nil).objectDisplay },
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddSolidOvalButton?.register (
       draggedType: symbolPasteboardType,
-      factory: { return SymbolSolidOval (nil) },
+      shapeFactory: { return SymbolSolidOval (nil).objectDisplay },
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddOvalButton?.register (
       draggedType: symbolPasteboardType,
-      factory: { return SymbolOval (nil) },
+      shapeFactory: { return SymbolOval (nil).objectDisplay },
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddSolidRectButton?.register (
       draggedType: symbolPasteboardType,
-      factory: { return SymbolSolidRect (nil) },
+      shapeFactory: { return SymbolSolidRect (nil).objectDisplay },
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddTextButton?.register (
       draggedType: symbolPasteboardType,
-      factory: { return SymbolText (nil) },
+      shapeFactory: { return SymbolText (nil).objectDisplay },
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddPinButton?.register (
       draggedType: symbolPasteboardType,
-      factory: { return SymbolPin (nil) },
+      shapeFactory: { return SymbolPin (nil).objectDisplay },
       scaleProvider: self.mComposedSymbolView
     )
 

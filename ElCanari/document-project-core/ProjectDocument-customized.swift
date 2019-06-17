@@ -207,23 +207,23 @@ fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "
   //--- Drag source buttons and destination scroll view
     self.mAddCommentButton?.register (
       draggedType: kDragAndDropComment,
-      factory: { return CommentInSchematic (nil) },
+      shapeFactory: { return CommentInSchematic (nil).objectDisplay },
       scaleProvider: self.mSchematicsView
     )
     self.mAddWireButton?.register (
       draggedType: kDragAndDropWire,
-      factory: { return WireInSchematic (nil) },
+      shapeFactory: { return WireInSchematic (nil).objectDisplay },
       scaleProvider: self.mSchematicsView
     )
   //---
     self.mAddRestrictRectangleButton?.register (
       draggedType: kDragAndDropRestrictRectangle,
-      factory: { return BoardRestrictRectangle (nil) },
+      shapeFactory: { return BoardRestrictRectangle (nil).objectDisplay },
       scaleProvider: self.mBoardView
     )
     self.mAddTextInBoardButton?.register (
       draggedType: kDragAndDropBoardText,
-      factory: { [weak self] in return self?.boardTextImageFactory () },
+      shapeFactory: { [weak self] in return self?.boardTextImageFactory () },
       scaleProvider: self.mBoardView
     )
   //---
@@ -356,12 +356,17 @@ fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "
 
   //····················································································································
 
-  private func boardTextImageFactory () -> EBGraphicManagedObject? {
-    var result : EBGraphicManagedObject? = nil
+  private func boardTextImageFactory () -> EBShape? {
+    var result : EBShape? = nil
     if let font = self.rootObject.mFonts.first {
-      let boardText = BoardText (nil)
-      boardText.mFont = font
-      result = boardText
+      self.ebUndoManager.disableUndoRegistration ()
+      do{
+        let boardText = BoardText (nil)
+        boardText.mFont = font
+        result = boardText.objectDisplay
+        boardText.mFont = nil
+      }
+      self.ebUndoManager.enableUndoRegistration ()
     }else{
       let alert = NSAlert ()
       alert.messageText = "Cannot Currently Add a Text: first, you need to add a Font."
