@@ -262,18 +262,18 @@ prefs {
 //--- Back Side Restrict Rectangle Color
   property NSColor backSideRestrictRectangleColorForBoard default green;
   outlet EBColorWell mBoardBottomSideRestrictRectangleColorWell $color self.backSideRestrictRectangleColorForBoard {sendContinously:no} ;
-//--- Top Side Legend Color
-  property NSColor topSideLegendColorForBoard default brown;
-  outlet EBColorWell mBoardTopSideLegendColorWell $color self.topSideLegendColorForBoard {sendContinously:no} ;
-//--- Top Side Layout Color
-  property NSColor topSideLayoutColorForBoard default blue;
-  outlet EBColorWell mBoardTopSideLayoutColorWell $color self.topSideLayoutColorForBoard {sendContinously:no} ;
-//--- Bottom Side Layout Color
-  property NSColor bottomSideLayoutColorForBoard default green;
-  outlet EBColorWell mBoardBottomSideLayoutColorWell $color self.bottomSideLayoutColorForBoard {sendContinously:no} ;
-//--- Bottom Side Legend Color
-  property NSColor bottomSideLegendColorForBoard default white;
-  outlet EBColorWell mBoardBottomSideLegendColorWell $color self.bottomSideLegendColorForBoard {sendContinously:no};
+//--- Front Side Legend Color
+  property NSColor frontSideLegendColorForBoard default brown;
+  outlet EBColorWell mBoardTopSideLegendColorWell $color self.frontSideLegendColorForBoard {sendContinously:no} ;
+//--- Front Side Layout Color
+  property NSColor frontSideLayoutColorForBoard default blue;
+  outlet EBColorWell mBoardTopSideLayoutColorWell $color self.frontSideLayoutColorForBoard {sendContinously:no} ;
+//--- Back Side Layout Color
+  property NSColor backSideLayoutColorForBoard default green;
+  outlet EBColorWell mBoardBottomSideLayoutColorWell $color self.backSideLayoutColorForBoard {sendContinously:no} ;
+//--- Back Side Legend Color
+  property NSColor backSideLegendColorForBoard default white;
+  outlet EBColorWell mBoardBottomSideLegendColorWell $color self.backSideLegendColorForBoard {sendContinously:no};
 //--- Top Side Pad Color
   property NSColor topSidePadColorForBoard default blue;
   outlet EBColorWell mBoardTopSidePadColorWell $color self.topSidePadColorForBoard {sendContinously:no};

@@ -19,7 +19,7 @@ protocol BoardText_mY : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardText_mFontSize : class {
-  var mFontSize : Int { get }
+  var mFontSize : Double { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -32,6 +32,24 @@ protocol BoardText_mLayer : class {
 
 protocol BoardText_mText : class {
   var mText : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardText_mHorizontalAlignment : class {
+  var mHorizontalAlignment : HorizontalAlignment { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardText_mVerticalAlignment : class {
+  var mVerticalAlignment : BoardTextVerticalAlignment { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardText_mRotation : class {
+  var mRotation : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -56,6 +74,9 @@ class BoardText : BoardObject,
          BoardText_mFontSize,
          BoardText_mLayer,
          BoardText_mText,
+         BoardText_mHorizontalAlignment,
+         BoardText_mVerticalAlignment,
+         BoardText_mRotation,
          BoardText_objectDisplay,
          BoardText_selectionDisplay {
 
@@ -97,18 +118,18 @@ class BoardText : BoardObject,
   //   Atomic property: mFontSize
   //····················································································································
 
-  let mFontSize_property = EBStoredProperty_Int (defaultValue: 4)
+  let mFontSize_property = EBStoredProperty_Double (defaultValue: 4)
 
   //····················································································································
 
-  var mFontSize : Int {
+  var mFontSize : Double {
     get { return self.mFontSize_property.propval }
     set { self.mFontSize_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFontSize_property_selection : EBSelection <Int> { return self.mFontSize_property.prop }
+  var mFontSize_property_selection : EBSelection <Double> { return self.mFontSize_property.prop }
 
   //····················································································································
   //   Atomic property: mLayer
@@ -143,6 +164,57 @@ class BoardText : BoardObject,
   //····················································································································
 
   var mText_property_selection : EBSelection <String> { return self.mText_property.prop }
+
+  //····················································································································
+  //   Atomic property: mHorizontalAlignment
+  //····················································································································
+
+  let mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+
+  //····················································································································
+
+  var mHorizontalAlignment : HorizontalAlignment {
+    get { return self.mHorizontalAlignment_property.propval }
+    set { self.mHorizontalAlignment_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mHorizontalAlignment_property.prop }
+
+  //····················································································································
+  //   Atomic property: mVerticalAlignment
+  //····················································································································
+
+  let mVerticalAlignment_property = EBStoredProperty_BoardTextVerticalAlignment (defaultValue: BoardTextVerticalAlignment.base)
+
+  //····················································································································
+
+  var mVerticalAlignment : BoardTextVerticalAlignment {
+    get { return self.mVerticalAlignment_property.propval }
+    set { self.mVerticalAlignment_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mVerticalAlignment_property_selection : EBSelection <BoardTextVerticalAlignment> { return self.mVerticalAlignment_property.prop }
+
+  //····················································································································
+  //   Atomic property: mRotation
+  //····················································································································
+
+  let mRotation_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mRotation : Int {
+    get { return self.mRotation_property.propval }
+    set { self.mRotation_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mRotation_property_selection : EBSelection <Int> { return self.mRotation_property.prop }
 
   //····················································································································
   //   To one property: mFont
@@ -198,6 +270,12 @@ class BoardText : BoardObject,
     self.mLayer_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mText
     self.mText_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mHorizontalAlignment
+    self.mHorizontalAlignment_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mVerticalAlignment
+    self.mVerticalAlignment_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mRotation
+    self.mRotation_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mFont (has opposite to many relationship: mTexts)
     self.mFont_property.ebUndoManager = self.ebUndoManager
     self.mFont_property.setOppositeRelationShipFunctions (
@@ -209,19 +287,26 @@ class BoardText : BoardObject,
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
-        kind &= unwSelf.mLayer_property_selection.kind ()
         kind &= unwSelf.mText_property_selection.kind ()
         kind &= unwSelf.mFontSize_property_selection.kind ()
         kind &= unwSelf.mFont_property.descriptor_property_selection.kind ()
+        kind &= unwSelf.mHorizontalAlignment_property_selection.kind ()
+        kind &= unwSelf.mVerticalAlignment_property_selection.kind ()
+        kind &= unwSelf.mLayer_property_selection.kind ()
+        kind &= unwSelf.mRotation_property_selection.kind ()
+        kind &= g_Preferences!.frontSideLegendColorForBoard_property_selection.kind ()
+        kind &= g_Preferences!.frontSideLayoutColorForBoard_property_selection.kind ()
+        kind &= g_Preferences!.backSideLayoutColorForBoard_property_selection.kind ()
+        kind &= g_Preferences!.backSideLegendColorForBoard_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mLayer_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_BoardText_objectDisplay (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mLayer_property_selection, unwSelf.mRotation_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12)) :
+            return .single (transient_BoardText_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12))
           default :
             return .empty
           }
@@ -232,28 +317,42 @@ class BoardText : BoardObject,
     }
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
-    self.mLayer_property.addEBObserver (self.objectDisplay_property)
     self.mText_property.addEBObserver (self.objectDisplay_property)
     self.mFontSize_property.addEBObserver (self.objectDisplay_property)
     self.mFont_property.addEBObserverOf_descriptor (self.objectDisplay_property)
+    self.mHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
+    self.mVerticalAlignment_property.addEBObserver (self.objectDisplay_property)
+    self.mLayer_property.addEBObserver (self.objectDisplay_property)
+    self.mRotation_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
-        kind &= unwSelf.mLayer_property_selection.kind ()
         kind &= unwSelf.mText_property_selection.kind ()
         kind &= unwSelf.mFontSize_property_selection.kind ()
         kind &= unwSelf.mFont_property.descriptor_property_selection.kind ()
+        kind &= unwSelf.mHorizontalAlignment_property_selection.kind ()
+        kind &= unwSelf.mVerticalAlignment_property_selection.kind ()
+        kind &= unwSelf.mLayer_property_selection.kind ()
+        kind &= unwSelf.mRotation_property_selection.kind ()
+        kind &= g_Preferences!.frontSideLegendColorForBoard_property_selection.kind ()
+        kind &= g_Preferences!.frontSideLayoutColorForBoard_property_selection.kind ()
+        kind &= g_Preferences!.backSideLayoutColorForBoard_property_selection.kind ()
+        kind &= g_Preferences!.backSideLegendColorForBoard_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mLayer_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_BoardText_selectionDisplay (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mLayer_property_selection, unwSelf.mRotation_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12)) :
+            return .single (transient_BoardText_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12))
           default :
             return .empty
           }
@@ -264,10 +363,17 @@ class BoardText : BoardObject,
     }
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
-    self.mLayer_property.addEBObserver (self.selectionDisplay_property)
     self.mText_property.addEBObserver (self.selectionDisplay_property)
     self.mFontSize_property.addEBObserver (self.selectionDisplay_property)
     self.mFont_property.addEBObserverOf_descriptor (self.selectionDisplay_property)
+    self.mHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
+    self.mVerticalAlignment_property.addEBObserver (self.selectionDisplay_property)
+    self.mLayer_property.addEBObserver (self.selectionDisplay_property)
+    self.mRotation_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.frontSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.backSideLegendColorForBoard_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -279,16 +385,30 @@ class BoardText : BoardObject,
     super.removeAllObservers ()
     self.mX_property.removeEBObserver (self.objectDisplay_property)
     self.mY_property.removeEBObserver (self.objectDisplay_property)
-    self.mLayer_property.removeEBObserver (self.objectDisplay_property)
     self.mText_property.removeEBObserver (self.objectDisplay_property)
     self.mFontSize_property.removeEBObserver (self.objectDisplay_property)
     self.mFont_property.removeEBObserverOf_descriptor (self.objectDisplay_property)
+    self.mHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
+    self.mVerticalAlignment_property.removeEBObserver (self.objectDisplay_property)
+    self.mLayer_property.removeEBObserver (self.objectDisplay_property)
+    self.mRotation_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
-    self.mLayer_property.removeEBObserver (self.selectionDisplay_property)
     self.mText_property.removeEBObserver (self.selectionDisplay_property)
     self.mFontSize_property.removeEBObserver (self.selectionDisplay_property)
     self.mFont_property.removeEBObserverOf_descriptor (self.selectionDisplay_property)
+    self.mHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
+    self.mVerticalAlignment_property.removeEBObserver (self.selectionDisplay_property)
+    self.mLayer_property.removeEBObserver (self.selectionDisplay_property)
+    self.mRotation_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.frontSideLegendColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.frontSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.backSideLegendColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -343,6 +463,30 @@ class BoardText : BoardObject,
       observerExplorer: &self.mText_property.mObserverExplorer,
       valueExplorer: &self.mText_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mHorizontalAlignment",
+      idx: self.mHorizontalAlignment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mHorizontalAlignment_property.mObserverExplorer,
+      valueExplorer: &self.mHorizontalAlignment_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mVerticalAlignment",
+      idx: self.mVerticalAlignment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mVerticalAlignment_property.mObserverExplorer,
+      valueExplorer: &self.mVerticalAlignment_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mRotation",
+      idx: self.mRotation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mRotation_property.mObserverExplorer,
+      valueExplorer: &self.mRotation_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "objectDisplay",
@@ -392,6 +536,15 @@ class BoardText : BoardObject,
   //--- Atomic property: mText
     self.mText_property.mObserverExplorer = nil
     self.mText_property.mValueExplorer = nil
+  //--- Atomic property: mHorizontalAlignment
+    self.mHorizontalAlignment_property.mObserverExplorer = nil
+    self.mHorizontalAlignment_property.mValueExplorer = nil
+  //--- Atomic property: mVerticalAlignment
+    self.mVerticalAlignment_property.mObserverExplorer = nil
+    self.mVerticalAlignment_property.mValueExplorer = nil
+  //--- Atomic property: mRotation
+    self.mRotation_property.mObserverExplorer = nil
+    self.mRotation_property.mValueExplorer = nil
   //--- To one property: mFont
     self.mFont_property.mObserverExplorer = nil
     self.mFont_property.mValueExplorer = nil
@@ -434,6 +587,12 @@ class BoardText : BoardObject,
     self.mLayer_property.storeIn (dictionary: ioDictionary, forKey:"mLayer")
   //--- Atomic property: mText
     self.mText_property.storeIn (dictionary: ioDictionary, forKey:"mText")
+  //--- Atomic property: mHorizontalAlignment
+    self.mHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mHorizontalAlignment")
+  //--- Atomic property: mVerticalAlignment
+    self.mVerticalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mVerticalAlignment")
+  //--- Atomic property: mRotation
+    self.mRotation_property.storeIn (dictionary: ioDictionary, forKey:"mRotation")
   }
 
   //····················································································································
@@ -472,6 +631,12 @@ class BoardText : BoardObject,
     self.mLayer_property.readFrom (dictionary: inDictionary, forKey:"mLayer")
   //--- Atomic property: mText
     self.mText_property.readFrom (dictionary: inDictionary, forKey:"mText")
+  //--- Atomic property: mHorizontalAlignment
+    self.mHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mHorizontalAlignment")
+  //--- Atomic property: mVerticalAlignment
+    self.mVerticalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mVerticalAlignment")
+  //--- Atomic property: mRotation
+    self.mRotation_property.readFrom (dictionary: inDictionary, forKey:"mRotation")
   }
 
   //····················································································································

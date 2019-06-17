@@ -8,23 +8,42 @@ enum BoardTextLayer {
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum BoardTextVerticalAlignment {
+  above, base, center, below
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 graphic entity BoardText : BoardObject {
   toOne FontInProject mFont inverse toMany mTexts ;
 
   property Int mX default 0 ;
   property Int mY default 0 ;
-  property Int mFontSize default 4 ;
+  property Double mFontSize default 4.0 ;
   property BoardTextLayer mLayer default legendFront ;
   property String mText default "" ;
+  property HorizontalAlignment mHorizontalAlignment default center ;
+  property BoardTextVerticalAlignment mVerticalAlignment default base ;
+  property Int mRotation default 0 ; // 1000 --> 1°
 
   override transient EBShape objectDisplay dependsFrom
-    self.mX, self.mY, self.mLayer, self.mText, self.mFontSize,
-    self.mFont.one.descriptor
+    self.mX, self.mY, self.mText, self.mFontSize,
+    self.mFont.one.descriptor, self.mHorizontalAlignment, self.mVerticalAlignment,
+    self.mLayer, self.mRotation,
+    prefs.frontSideLegendColorForBoard,
+    prefs.frontSideLayoutColorForBoard,
+    prefs.backSideLayoutColorForBoard,
+    prefs.backSideLegendColorForBoard
   ;
 
   override transient EBShape selectionDisplay dependsFrom
-    self.mX, self.mY, self.mLayer, self.mText, self.mFontSize,
-    self.mFont.one.descriptor
+    self.mX, self.mY, self.mText, self.mFontSize,
+    self.mFont.one.descriptor, self.mHorizontalAlignment, self.mVerticalAlignment,
+    self.mLayer, self.mRotation,
+    prefs.frontSideLegendColorForBoard,
+    prefs.frontSideLayoutColorForBoard,
+    prefs.backSideLayoutColorForBoard,
+    prefs.backSideLegendColorForBoard
   ;
 }
 

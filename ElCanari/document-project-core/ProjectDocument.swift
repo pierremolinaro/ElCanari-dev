@@ -93,6 +93,12 @@ import Cocoa
   var restrictRectangleSelectionController = SelectionController_ProjectDocument_restrictRectangleSelectionController ()
 
   //····················································································································
+  //   Selection controller: boardTextSelectionController
+  //····················································································································
+
+  var boardTextSelectionController = SelectionController_ProjectDocument_boardTextSelectionController ()
+
+  //····················································································································
   //   Transient property: componentCount
   //····················································································································
 
@@ -435,6 +441,13 @@ import Cocoa
   @IBOutlet var mBoardObjectsPageView : CanariViewWithKeyView?
   @IBOutlet var mBoardPointsBoundingBoxUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardScrollView : EBScrollView?
+  @IBOutlet var mBoardTextFontSizeField : EBDoubleField?
+  @IBOutlet var mBoardTextHorizontalAlignmentPopUpButton : EBPopUpButton?
+  @IBOutlet var mBoardTextInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mBoardTextLayerPopUpButton : EBPopUpButton?
+  @IBOutlet var mBoardTextRotationTextField : CanariPackageArcAngleTextField?
+  @IBOutlet var mBoardTextTextField : EBTextField?
+  @IBOutlet var mBoardTextVerticalAlignmentPopUpButton : EBPopUpButton?
   @IBOutlet var mBoardVerticalFlipSwitch : EBSwitch?
   @IBOutlet var mBoardView : EBGraphicView?
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
@@ -685,6 +698,8 @@ import Cocoa
     self.boardObjectsController.addExplorer (name: "boardObjectsController", y:&y, view:view)
   //--- Selection controller property: restrictRectangleSelectionController
     self.restrictRectangleSelectionController.addExplorer (name: "restrictRectangleSelectionController", y:&y, view:view)
+  //--- Selection controller property: boardTextSelectionController
+    self.boardTextSelectionController.addExplorer (name: "boardTextSelectionController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -778,6 +793,13 @@ import Cocoa
     checkOutletConnection (self.mBoardObjectsPageView, "mBoardObjectsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardPointsBoundingBoxUnitPopUp, "mBoardPointsBoundingBoxUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardScrollView, "mBoardScrollView", EBScrollView.self, #file, #line)
+    checkOutletConnection (self.mBoardTextFontSizeField, "mBoardTextFontSizeField", EBDoubleField.self, #file, #line)
+    checkOutletConnection (self.mBoardTextHorizontalAlignmentPopUpButton, "mBoardTextHorizontalAlignmentPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardTextInspectorView, "mBoardTextInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mBoardTextLayerPopUpButton, "mBoardTextLayerPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardTextRotationTextField, "mBoardTextRotationTextField", CanariPackageArcAngleTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardTextTextField, "mBoardTextTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardTextVerticalAlignmentPopUpButton, "mBoardTextVerticalAlignmentPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardVerticalFlipSwitch, "mBoardVerticalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardView, "mBoardView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
@@ -970,6 +992,8 @@ import Cocoa
     self.boardObjectsController.bind_model (self.rootObject.mBoardObjects_property, self.ebUndoManager)
   //--- Selection controller property: restrictRectangleSelectionController
     self.restrictRectangleSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: boardTextSelectionController
+    self.boardTextSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1337,6 +1361,12 @@ import Cocoa
     self.mBoardGridTextField?.bind_dimensionAndUnit (self.rootObject.mBoardGridStep_property, self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
     self.mFrontRestrictRectangleSwitch?.bind_value (self.restrictRectangleSelectionController.mIsInFrontLayer_property, file: #file, line: #line)
     self.mBackRestrictRectangleSwitch?.bind_value (self.restrictRectangleSelectionController.mIsInBackLayer_property, file: #file, line: #line)
+    self.mBoardTextTextField?.bind_value (self.boardTextSelectionController.mText_property, file: #file, line: #line, sendContinously:true)
+    self.mBoardTextFontSizeField?.bind_value (self.boardTextSelectionController.mFontSize_property, file: #file, line: #line, sendContinously:true, autoFormatter:true)
+    self.mBoardTextLayerPopUpButton?.bind_selectedIndex (self.boardTextSelectionController.mLayer_property, file: #file, line: #line)
+    self.mBoardTextHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.boardTextSelectionController.mHorizontalAlignment_property, file: #file, line: #line)
+    self.mBoardTextVerticalAlignmentPopUpButton?.bind_selectedIndex (self.boardTextSelectionController.mVerticalAlignment_property, file: #file, line: #line)
+    self.mBoardTextRotationTextField?.bind_angle (self.boardTextSelectionController.mRotation_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1840,6 +1870,12 @@ import Cocoa
     self.mBoardGridTextField?.unbind_dimensionAndUnit ()
     self.mFrontRestrictRectangleSwitch?.unbind_value ()
     self.mBackRestrictRectangleSwitch?.unbind_value ()
+    self.mBoardTextTextField?.unbind_value ()
+    self.mBoardTextFontSizeField?.unbind_value ()
+    self.mBoardTextLayerPopUpButton?.unbind_selectedIndex ()
+    self.mBoardTextHorizontalAlignmentPopUpButton?.unbind_selectedIndex ()
+    self.mBoardTextVerticalAlignmentPopUpButton?.unbind_selectedIndex ()
+    self.mBoardTextRotationTextField?.unbind_angle ()
   //--------------------------- Unbind multiple bindings
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -1945,6 +1981,8 @@ import Cocoa
     self.boardObjectsController.unbind_model ()
   //--- Selection controller property: restrictRectangleSelectionController
     self.restrictRectangleSelectionController.unbind_selection ()
+  //--- Selection controller property: boardTextSelectionController
+    self.boardTextSelectionController.unbind_selection ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
@@ -2043,6 +2081,13 @@ import Cocoa
     self.mBoardObjectsPageView?.ebCleanUp ()
     self.mBoardPointsBoundingBoxUnitPopUp?.ebCleanUp ()
     self.mBoardScrollView?.ebCleanUp ()
+    self.mBoardTextFontSizeField?.ebCleanUp ()
+    self.mBoardTextHorizontalAlignmentPopUpButton?.ebCleanUp ()
+    self.mBoardTextInspectorView?.ebCleanUp ()
+    self.mBoardTextLayerPopUpButton?.ebCleanUp ()
+    self.mBoardTextRotationTextField?.ebCleanUp ()
+    self.mBoardTextTextField?.ebCleanUp ()
+    self.mBoardTextVerticalAlignmentPopUpButton?.ebCleanUp ()
     self.mBoardVerticalFlipSwitch?.ebCleanUp ()
     self.mBoardView?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
@@ -2259,6 +2304,13 @@ import Cocoa
 //    self.mBoardObjectsPageView = nil
 //    self.mBoardPointsBoundingBoxUnitPopUp = nil
 //    self.mBoardScrollView = nil
+//    self.mBoardTextFontSizeField = nil
+//    self.mBoardTextHorizontalAlignmentPopUpButton = nil
+//    self.mBoardTextInspectorView = nil
+//    self.mBoardTextLayerPopUpButton = nil
+//    self.mBoardTextRotationTextField = nil
+//    self.mBoardTextTextField = nil
+//    self.mBoardTextVerticalAlignmentPopUpButton = nil
 //    self.mBoardVerticalFlipSwitch = nil
 //    self.mBoardView = nil
 //    self.mChangeComponentValueComboxBox = nil

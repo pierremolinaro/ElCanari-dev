@@ -587,6 +587,30 @@ document ProjectDocument root ProjectRoot {
     $value #restrictRectangleSelectionController.mIsInBackLayer
     $enabled #restrictRectangleSelectionController.mIsInFrontLayer
   ;
+
+//--- Text inspector
+  outlet CanariViewWithKeyView mBoardTextInspectorView ;
+  selectionController BoardText #boardTextSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  outlet EBTextField mBoardTextTextField $value #boardTextSelectionController.mText {sendContinously : yes} ;
+
+  outlet EBDoubleField mBoardTextFontSizeField
+    $value #boardTextSelectionController.mFontSize {sendContinously : yes, autoFormatter : yes}
+  ;
+
+  outlet EBPopUpButton mBoardTextLayerPopUpButton $selectedIndex #boardTextSelectionController.mLayer ;
+
+  outlet EBPopUpButton mBoardTextHorizontalAlignmentPopUpButton
+    $selectedIndex #boardTextSelectionController.mHorizontalAlignment
+  ;
+
+  outlet EBPopUpButton mBoardTextVerticalAlignmentPopUpButton
+    $selectedIndex #boardTextSelectionController.mVerticalAlignment
+  ;
+  
+  outlet CanariPackageArcAngleTextField mBoardTextRotationTextField $angle #boardTextSelectionController.mRotation ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

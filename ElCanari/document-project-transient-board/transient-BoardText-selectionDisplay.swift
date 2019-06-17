@@ -16,47 +16,62 @@ import Cocoa
 func transient_BoardText_selectionDisplay (
        _ self_mX : Int,                    
        _ self_mY : Int,                    
-       _ self_mLayer : BoardTextLayer,     
        _ self_mText : String,              
-       _ self_mFontSize : Int,             
-       _ self_mFont_descriptor : BoardFontDescriptor?
+       _ self_mFontSize : Double,          
+       _ self_mFont_descriptor : BoardFontDescriptor?,
+       _ self_mHorizontalAlignment : HorizontalAlignment,
+       _ self_mVerticalAlignment : BoardTextVerticalAlignment,
+       _ self_mLayer : BoardTextLayer,     
+       _ self_mRotation : Int,             
+       _ prefs_frontSideLegendColorForBoard : NSColor,
+       _ prefs_frontSideLayoutColorForBoard : NSColor,
+       _ prefs_backSideLayoutColorForBoard : NSColor,
+       _ prefs_backSideLegendColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let s = (self_mText == "") ? "Empty" : self_mText
-        let bp = NSBezierPath ()
-        let startX = canariUnitToCocoa (self_mX)
-        var x = startX
-        let startY = canariUnitToCocoa (self_mY)
-        let fontFactor = CGFloat (self_mFontSize) / CGFloat (self_mFont_descriptor!.nominalSize)
-        for character in s.unicodeScalars {
-          if let characterDescriptor = self_mFont_descriptor?.dictionary [character.value] {
-            for segment in characterDescriptor.segments {
-              let x1 = CGFloat (segment.x1) * fontFactor
-              let y1 = CGFloat (segment.y1) * fontFactor
-              let x2 = CGFloat (segment.x2) * fontFactor
-              let y2 = CGFloat (segment.y2) * fontFactor
-              bp.move (to: NSPoint (x: x + x1, y: startY + y1))
-              bp.line (to: NSPoint (x: x + x2, y: startY + y2))
-            }
-            x += CGFloat (characterDescriptor.advancement) * fontFactor
-          }
+        let (textBP, origin, rotationKnob) = boardText_displayInfos (
+          self_mX,
+          self_mY,
+          self_mText,
+          self_mFontSize,
+          self_mFont_descriptor!,
+          self_mHorizontalAlignment,
+          self_mVerticalAlignment,
+          self_mLayer,
+          self_mRotation
+        )
+        let textColor : NSColor
+        switch self_mLayer {
+        case .legendFront :
+          textColor = prefs_frontSideLegendColorForBoard
+        case .layoutFront :
+          textColor = prefs_frontSideLayoutColorForBoard
+        case .layoutBack :
+          textColor = prefs_backSideLayoutColorForBoard
+        case .legendBack :
+          textColor = prefs_backSideLegendColorForBoard
         }
-        bp.lineWidth = fontFactor * 2.0
-        bp.lineCapStyle = .round
-        bp.lineJoinStyle = .round
-    //    let bounds = bp.bounds
-        let textShape = EBStrokeBezierPathShape ([bp], .black)
+        let textShape = EBStrokeBezierPathShape ([textBP], textColor)
       //--- Background
-        let backgroundBP = NSBezierPath (rect: textShape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
+        let backgroundBP = NSBezierPath (rect: textShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
         let shape = EBShape ()
-        shape.append (EBFilledBezierPathShape ([backgroundBP], .white))
-        backgroundBP.lineWidth = 1.0
+        shape.append (EBFilledBezierPathShape ([backgroundBP], (textColor == .white) ? .lightGray : .white))
+        backgroundBP.lineWidth = 0.5
         backgroundBP.lineCapStyle = .round
         backgroundBP.lineJoinStyle = .round
-        shape.append (EBStrokeBezierPathShape ([backgroundBP], .green))
+        shape.append (EBStrokeBezierPathShape ([backgroundBP], .cyan))
         shape.append (textShape)
+      //--- Rotation knob
+        let knobLine = NSBezierPath ()
+        knobLine.move (to : origin)
+        knobLine.line (to : rotationKnob)
+        knobLine.lineWidth = 0.5
+        knobLine.lineCapStyle = .round
+        knobLine.lineJoinStyle = .round
+        shape.append (EBStrokeBezierPathShape ([knobLine], .cyan))
+        shape.append (EBKnobShape (at: rotationKnob, index: BOARD_TEXT_ROTATION_KNOB, .circ, 2.0))
       //--- Knob
-        shape.append (EBKnobShape (at: CGPoint (x: startX, y: startY), index: BOARD_TEXT_ORIGIN, .rect, 2.0))
+        shape.append (EBKnobShape (at: origin, index: BOARD_TEXT_ORIGIN_KNOB, .rect, 2.0))
       //---
         return shape
 //--- END OF USER ZONE 2

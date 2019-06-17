@@ -160,7 +160,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="xCD-Dw-CrS">
                         <rect key="frame" x="1" y="1" width="388" height="370"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="895" customClass="EBGraphicView">
                                 <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -753,7 +753,7 @@ Cg
                     </textFieldCell>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="630" customClass="EBPopUpButton">
-                    <rect key="frame" x="154" y="361" width="79" height="17"/>
+                    <rect key="frame" x="154" y="364" width="79" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="632" id="1029">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -776,21 +776,6 @@ Cg
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="623" customClass="EBPopUpButton">
-                    <rect key="frame" x="154" y="443" width="79" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="626" id="1027">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="624">
-                            <items>
-                                <menuItem title="Left" state="on" id="626"/>
-                                <menuItem title="Center" id="627"/>
-                                <menuItem title="Right" id="625"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <button id="531" customClass="EBSwitch">
                     <rect key="frame" x="17" y="388" width="215" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -826,6 +811,21 @@ Cg
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <popUpButton imageHugsTitle="YES" id="623" customClass="EBPopUpButton">
+                    <rect key="frame" x="154" y="446" width="79" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="626" id="1027">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="624">
+                            <items>
+                                <menuItem title="Left" state="on" id="626"/>
+                                <menuItem title="Center" id="627"/>
+                                <menuItem title="Right" id="625"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
             </subviews>
             <point key="canvasLocation" x="203" y="95"/>
         </customView>

@@ -16,34 +16,42 @@ import Cocoa
 func transient_BoardText_objectDisplay (
        _ self_mX : Int,                 
        _ self_mY : Int,                 
-       _ self_mLayer : BoardTextLayer,  
        _ self_mText : String,           
-       _ self_mFontSize : Int,          
-       _ self_mFont_descriptor : BoardFontDescriptor?
+       _ self_mFontSize : Double,       
+       _ self_mFont_descriptor : BoardFontDescriptor?,
+       _ self_mHorizontalAlignment : HorizontalAlignment,
+       _ self_mVerticalAlignment : BoardTextVerticalAlignment,
+       _ self_mLayer : BoardTextLayer,  
+       _ self_mRotation : Int,          
+       _ prefs_frontSideLegendColorForBoard : NSColor,
+       _ prefs_frontSideLayoutColorForBoard : NSColor,
+       _ prefs_backSideLayoutColorForBoard : NSColor,
+       _ prefs_backSideLegendColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let s = (self_mText == "") ? "Empty" : self_mText
-        let bp = NSBezierPath ()
-        var x = canariUnitToCocoa (self_mX)
-        let y = canariUnitToCocoa (self_mY)
-        let fontFactor = CGFloat (self_mFontSize) / CGFloat (self_mFont_descriptor!.nominalSize)
-        for character in s.unicodeScalars {
-          if let characterDescriptor = self_mFont_descriptor?.dictionary [character.value] {
-            for segment in characterDescriptor.segments {
-              let x1 = CGFloat (segment.x1) * fontFactor
-              let y1 = CGFloat (segment.y1) * fontFactor
-              let x2 = CGFloat (segment.x2) * fontFactor
-              let y2 = CGFloat (segment.y2) * fontFactor
-              bp.move (to: NSPoint (x: x + x1, y: y + y1))
-              bp.line (to: NSPoint (x: x + x2, y: y + y2))
-            }
-            x += CGFloat (characterDescriptor.advancement) * fontFactor
-          }
+        let (textBP, origin, rotationKnob) = boardText_displayInfos (
+          self_mX,
+          self_mY,
+          self_mText,
+          self_mFontSize,
+          self_mFont_descriptor!,
+          self_mHorizontalAlignment,
+          self_mVerticalAlignment,
+          self_mLayer,
+          self_mRotation
+        )
+        let textColor : NSColor
+        switch self_mLayer {
+        case .legendFront :
+          textColor = prefs_frontSideLegendColorForBoard
+        case .layoutFront :
+          textColor = prefs_frontSideLayoutColorForBoard
+        case .layoutBack :
+          textColor = prefs_backSideLayoutColorForBoard
+        case .legendBack :
+          textColor = prefs_backSideLegendColorForBoard
         }
-        bp.lineWidth = fontFactor * 2.0
-        bp.lineCapStyle = .round
-        bp.lineJoinStyle = .round
-        let textShape = EBStrokeBezierPathShape ([bp], .black)
+        let textShape = EBStrokeBezierPathShape ([textBP], textColor)
       //--- Transparent background
         let backgroundBP = NSBezierPath (rect:textShape.boundingBox)
         let shape = EBShape ()

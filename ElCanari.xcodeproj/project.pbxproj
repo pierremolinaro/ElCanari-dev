@@ -1730,6 +1730,10 @@
 		CFCC4BE720EAB3E6006A9CC5 /* transient-MergerRoot-boardWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC4BE520EAB3E6006A9CC5 /* transient-MergerRoot-boardWidth.swift */; };
 		CFCC4BE920EABEB3006A9CC5 /* transient-MergerBoardInstance-frontPads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC4BE820EABEB3006A9CC5 /* transient-MergerBoardInstance-frontPads.swift */; };
 		CFCC4BF120EAC51A006A9CC5 /* CanariDimensionObserverTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC4BF020EAC51A006A9CC5 /* CanariDimensionObserverTextField.swift */; };
+		CFCCB35122B7995E00301DF2 /* selectionController-ProjectDocument-boardTextSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCCB35022B7995E00301DF2 /* selectionController-ProjectDocument-boardTextSelectionController.swift */; };
+		CFCCB35222B7995E00301DF2 /* selectionController-ProjectDocument-boardTextSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCCB35022B7995E00301DF2 /* selectionController-ProjectDocument-boardTextSelectionController.swift */; };
+		CFCCB35422B7C1D400301DF2 /* enum-BoardTextVerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCCB35322B7C1D400301DF2 /* enum-BoardTextVerticalAlignment.swift */; };
+		CFCCB35522B7C1D400301DF2 /* enum-BoardTextVerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCCB35322B7C1D400301DF2 /* enum-BoardTextVerticalAlignment.swift */; };
 		CFCD1F6221A1CBFF00A8297B /* entity-SymbolRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD1F5F21A1CBFF00A8297B /* entity-SymbolRoot.swift */; };
 		CFCD1F6321A1CBFF00A8297B /* entity-SymbolRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD1F5F21A1CBFF00A8297B /* entity-SymbolRoot.swift */; };
 		CFCD1F6421A1CBFF00A8297B /* SymbolDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD1F6021A1CBFF00A8297B /* SymbolDocument.swift */; };
@@ -2952,6 +2956,8 @@
 		CFCC4BE520EAB3E6006A9CC5 /* transient-MergerRoot-boardWidth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerRoot-boardWidth.swift"; sourceTree = "<group>"; };
 		CFCC4BE820EABEB3006A9CC5 /* transient-MergerBoardInstance-frontPads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerBoardInstance-frontPads.swift"; sourceTree = "<group>"; };
 		CFCC4BF020EAC51A006A9CC5 /* CanariDimensionObserverTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariDimensionObserverTextField.swift; sourceTree = "<group>"; };
+		CFCCB35022B7995E00301DF2 /* selectionController-ProjectDocument-boardTextSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ProjectDocument-boardTextSelectionController.swift"; sourceTree = "<group>"; };
+		CFCCB35322B7C1D400301DF2 /* enum-BoardTextVerticalAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-BoardTextVerticalAlignment.swift"; sourceTree = "<group>"; };
 		CFCD1F5F21A1CBFF00A8297B /* entity-SymbolRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SymbolRoot.swift"; sourceTree = "<group>"; };
 		CFCD1F6021A1CBFF00A8297B /* SymbolDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolDocument.swift; sourceTree = "<group>"; };
 		CFCD1F6121A1CBFF00A8297B /* SymbolDocument.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SymbolDocument.xib; sourceTree = "<group>"; };
@@ -3460,6 +3466,7 @@
 				CF518E0F2282CFAE002BCEE5 /* controller-table-view-ProjectDocument-projectDeviceController.swift */,
 				CF518E0E2282CFAE002BCEE5 /* controller-table-view-ProjectDocument-projectFontController.swift */,
 				CFD7FFF522A7B9120039DB80 /* selectionController-ProjectDocument-boardCurveSelectionController.swift */,
+				CFCCB35022B7995E00301DF2 /* selectionController-ProjectDocument-boardTextSelectionController.swift */,
 				CF518E0A2282CFAE002BCEE5 /* selectionController-ProjectDocument-commentInSchematicSelectionController.swift */,
 				CF518E0B2282CFAE002BCEE5 /* selectionController-ProjectDocument-componentSymbolSelectionController.swift */,
 				CF518E0C2282CFAE002BCEE5 /* selectionController-ProjectDocument-ncInSchematicSelectionController.swift */,
@@ -4184,6 +4191,7 @@
 				CFB1DB072282D31E005F9811 /* entity-SheetInProject.swift */,
 				CFB1DB102282D31F005F9811 /* entity-WireInSchematic.swift */,
 				CF0432BE22B649A70016EDE0 /* enum-BoardTextLayer.swift */,
+				CFCCB35322B7C1D400301DF2 /* enum-BoardTextVerticalAlignment.swift */,
 				CFD7FFF822A7BA840039DB80 /* enum-BorderCurveShape.swift */,
 				CFB1DB082282D31F005F9811 /* enum-SchematicSheetOrientation.swift */,
 				CF470CD522AA4BD800D0EA60 /* tomany-BoardObject.swift */,
@@ -5168,6 +5176,7 @@
 				CFA4300F229AEB69000AA8C8 /* tomany-PackageArc.swift in Sources */,
 				CFB1DB372282D31F005F9811 /* entity-WireInSchematic.swift in Sources */,
 				CF4A6C1021C6C0C700997A19 /* EBGraphicView-binding-mouseGrid.swift in Sources */,
+				CFCCB35122B7995E00301DF2 /* selectionController-ProjectDocument-boardTextSelectionController.swift in Sources */,
 				CFF2651E20E670E400525C0F /* Preferences+showMergerDisplaySettings.swift in Sources */,
 				CF9D4B9C227F79A9006E2035 /* transient-PointInSchematic-connectedPoints.swift in Sources */,
 				CF5B06F9213EC3C9005D6B37 /* enum-QuadrantRotation.swift in Sources */,
@@ -5407,6 +5416,7 @@
 				CF1A10FD2108A1EC00987BFD /* transient-MergerDocument-issues.swift in Sources */,
 				CF71FA3F1B3EA87800FB5049 /* EBAllocationDebug.swift in Sources */,
 				CF92E1F51DDB1C9E0019691C /* GeometricRect.swift in Sources */,
+				CFCCB35422B7C1D400301DF2 /* enum-BoardTextVerticalAlignment.swift in Sources */,
 				CF9D4B9A227F79A9006E2035 /* transient-DeviceInProject-versionString.swift in Sources */,
 				CF1EA41B213F0F3900424C02 /* kicad-font-utilities.swift in Sources */,
 				CFAA741D1B46AE1100327BAE /* CanariViewWithKeyView.swift in Sources */,
@@ -6468,6 +6478,7 @@
 				CF9D4BF5227F79A9006E2035 /* transient-DeviceInProject-packageNames.swift in Sources */,
 				CF001F7421F8AFA10091518E /* controller-CanariLibraryUpdateController.swift in Sources */,
 				CFC8547F21E91817006ADB6C /* transient-DeviceDocument-mStatusImage.swift in Sources */,
+				CFCCB35522B7C1D400301DF2 /* enum-BoardTextVerticalAlignment.swift in Sources */,
 				CFD7338E2258C87E009B2614 /* transient-FontDocument-mMetadataStatus.swift in Sources */,
 				CF9D4BEB227F79A9006E2035 /* transient-DeviceSymbolInstanceInProject-symbolAndTypeName.swift in Sources */,
 				CF9D4BEF227F79A9006E2035 /* transient-ComponentInProject-componentName.swift in Sources */,
@@ -6707,6 +6718,7 @@
 				CF7C09FF21E4BA8C00FFB7A2 /* open-symbol-in-library.swift in Sources */,
 				CF5C4DA4219F04D600EAC52A /* enum-BoardArchiveFormat.swift in Sources */,
 				CF5EB1E022A5BDA400D80550 /* transient-ProjectRoot-boardLimitBorderRight.swift in Sources */,
+				CFCCB35222B7995E00301DF2 /* selectionController-ProjectDocument-boardTextSelectionController.swift in Sources */,
 				CF3EA65B21C291DD0059392B /* EBGraphicView-move-to-superview.swift in Sources */,
 				CFB1DB342282D31F005F9811 /* entity-DevicePadAssignmentInProject.swift in Sources */,
 				CF5C4DA5219F04D600EAC52A /* transient-FontRoot-sampleStringBezierPathDescent.swift in Sources */,

@@ -20,6 +20,9 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
     inOldValue?.mFontSize_property.removeEBObserversFrom (&self.mObserversOf_mFontSize) // Stored property
     inOldValue?.mLayer_property.removeEBObserversFrom (&self.mObserversOf_mLayer) // Stored property
     inOldValue?.mText_property.removeEBObserversFrom (&self.mObserversOf_mText) // Stored property
+    inOldValue?.mHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
+    inOldValue?.mVerticalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
+    inOldValue?.mRotation_property.removeEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   //--- Add observers to added objects
@@ -28,6 +31,9 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
     self.mInternalValue?.mFontSize_property.addEBObserversFrom (&self.mObserversOf_mFontSize) // Stored property
     self.mInternalValue?.mLayer_property.addEBObserversFrom (&self.mObserversOf_mLayer) // Stored property
     self.mInternalValue?.mText_property.addEBObserversFrom (&self.mObserversOf_mText) // Stored property
+    self.mInternalValue?.mHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
+    self.mInternalValue?.mVerticalAlignment_property.addEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
+    self.mInternalValue?.mRotation_property.addEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   }
@@ -180,7 +186,7 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
 
   //····················································································································
 
-  var mFontSize_property_selection : EBSelection <Int?> {
+  var mFontSize_property_selection : EBSelection <Double?> {
     if let model = self.propval {
       switch (model.mFontSize_property_selection) {
       case .empty :
@@ -378,6 +384,216 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mText_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mHorizontalAlignment' stored property
+  //····················································································································
+
+  private var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
+    if let model = self.propval {
+      switch (model.mHorizontalAlignment_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mHorizontalAlignment.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mHorizontalAlignment_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mHorizontalAlignment.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mHorizontalAlignment_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mHorizontalAlignment_toElementsOfSet (_ inSet : Set<BoardText>) {
+    for managedObject in inSet {
+      self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBEvent) in
+        managedObject.mHorizontalAlignment_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (_ inSet : Set<BoardText>) {
+    self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mHorizontalAlignment_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mVerticalAlignment' stored property
+  //····················································································································
+
+  private var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mVerticalAlignment_property_selection : EBSelection <BoardTextVerticalAlignment?> {
+    if let model = self.propval {
+      switch (model.mVerticalAlignment_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mVerticalAlignment.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mVerticalAlignment_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mVerticalAlignment.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mVerticalAlignment_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mVerticalAlignment_toElementsOfSet (_ inSet : Set<BoardText>) {
+    for managedObject in inSet {
+      self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBEvent) in
+        managedObject.mVerticalAlignment_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (_ inSet : Set<BoardText>) {
+    self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mVerticalAlignment_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mRotation' stored property
+  //····················································································································
+
+  private var mObserversOf_mRotation = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mRotation_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mRotation_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mRotation.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mRotation_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mRotation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mRotation.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mRotation_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mRotation_toElementsOfSet (_ inSet : Set<BoardText>) {
+    for managedObject in inSet {
+      self.mObserversOf_mRotation.apply { (_ observer : EBEvent) in
+        managedObject.mRotation_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mRotation_fromElementsOfSet (_ inSet : Set<BoardText>) {
+    self.mObserversOf_mRotation.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mRotation_property.removeEBObserver (observer)
       }
     }
   }

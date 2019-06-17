@@ -147,6 +147,7 @@ fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "
   //--- Register Board inspector views
     self.boardObjectsController.register (inspectorReceivingView: self.mSelectedObjectsBoardInspectorView)
     self.boardObjectsController.register (inspectorView: self.mRestrictRectangleInspectorView, for: BoardRestrictRectangle.self)
+    self.boardObjectsController.register (inspectorView: self.mBoardTextInspectorView, for: BoardText.self)
   //--- Set Board limits inspector segmented control
     let boardLimitsInspectors = [
       self.mSelectedObjectsBoardLimitsInspectorView,
