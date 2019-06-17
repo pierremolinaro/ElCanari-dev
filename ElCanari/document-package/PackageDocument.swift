@@ -174,15 +174,15 @@ import Cocoa
   @IBOutlet var mAddSegmentButton : CanariDragSourceButton?
   @IBOutlet var mAddSlavePadButton : CanariDragSourceButton?
   @IBOutlet var mAddZoneButton : CanariDragSourceButton?
-  @IBOutlet var mArcAngle : CanariPackageArcAngleTextField?
+  @IBOutlet var mArcAngle : CanariAngleTextField?
   @IBOutlet var mArcEndTangentTextField : CanariDimensionTextField?
   @IBOutlet var mArcEndTangentUnitPopUp : EBPopUpButton?
   @IBOutlet var mArcInspectorView : CanariViewWithKeyView?
   @IBOutlet var mArcPathIsClosedSwitch : EBSwitch?
   @IBOutlet var mArcRadiusTextField : CanariDimensionTextField?
   @IBOutlet var mArcRadiusUnitPopUp : EBPopUpButton?
-  @IBOutlet var mArcStartAngleSlider : CanariPackageArcAngleSlider?
-  @IBOutlet var mArcStartAngleTextField : CanariPackageArcAngleTextField?
+  @IBOutlet var mArcStartAngleSlider : CanariAngleSlider?
+  @IBOutlet var mArcStartAngleTextField : CanariAngleTextField?
   @IBOutlet var mArcStartTangentTextField : CanariDimensionTextField?
   @IBOutlet var mArcStartTangentUnitPopUp : EBPopUpButton?
   @IBOutlet var mArcXCenterTextField : CanariDimensionTextField?
@@ -458,15 +458,15 @@ import Cocoa
     checkOutletConnection (self.mAddSegmentButton, "mAddSegmentButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddSlavePadButton, "mAddSlavePadButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddZoneButton, "mAddZoneButton", CanariDragSourceButton.self, #file, #line)
-    checkOutletConnection (self.mArcAngle, "mArcAngle", CanariPackageArcAngleTextField.self, #file, #line)
+    checkOutletConnection (self.mArcAngle, "mArcAngle", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mArcEndTangentTextField, "mArcEndTangentTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mArcEndTangentUnitPopUp, "mArcEndTangentUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mArcInspectorView, "mArcInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mArcPathIsClosedSwitch, "mArcPathIsClosedSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mArcRadiusTextField, "mArcRadiusTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mArcRadiusUnitPopUp, "mArcRadiusUnitPopUp", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mArcStartAngleSlider, "mArcStartAngleSlider", CanariPackageArcAngleSlider.self, #file, #line)
-    checkOutletConnection (self.mArcStartAngleTextField, "mArcStartAngleTextField", CanariPackageArcAngleTextField.self, #file, #line)
+    checkOutletConnection (self.mArcStartAngleSlider, "mArcStartAngleSlider", CanariAngleSlider.self, #file, #line)
+    checkOutletConnection (self.mArcStartAngleTextField, "mArcStartAngleTextField", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mArcStartTangentTextField, "mArcStartTangentTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mArcStartTangentUnitPopUp, "mArcStartTangentUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mArcXCenterTextField, "mArcXCenterTextField", CanariDimensionTextField.self, #file, #line)

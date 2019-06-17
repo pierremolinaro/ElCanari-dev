@@ -34,9 +34,9 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //   Selection observable property: mFontSize
   //····················································································································
 
-  let mFontSize_property = EBPropertyProxy_Int ()
+  let mFontSize_property = EBPropertyProxy_Double ()
 
-  var mFontSize_property_selection : EBSelection <Int> {
+  var mFontSize_property_selection : EBSelection <Double> {
     return self.mFontSize_property.prop
   }
 
@@ -58,6 +58,36 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
 
   var mText_property_selection : EBSelection <String> {
     return self.mText_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mHorizontalAlignment
+  //····················································································································
+
+  let mHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
+
+  var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
+    return self.mHorizontalAlignment_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mVerticalAlignment
+  //····················································································································
+
+  let mVerticalAlignment_property = EBPropertyProxy_BoardTextVerticalAlignment ()
+
+  var mVerticalAlignment_property_selection : EBSelection <BoardTextVerticalAlignment> {
+    return self.mVerticalAlignment_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mRotation
+  //····················································································································
+
+  let mRotation_property = EBPropertyProxy_Int ()
+
+  var mRotation_property_selection : EBSelection <Int> {
+    return self.mRotation_property.prop
   }
 
   //····················································································································
@@ -101,6 +131,9 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.bind_property_mFontSize ()
     self.bind_property_mLayer ()
     self.bind_property_mText ()
+    self.bind_property_mHorizontalAlignment ()
+    self.bind_property_mVerticalAlignment ()
+    self.bind_property_mRotation ()
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
   }
@@ -136,6 +169,21 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.mText_property.mWriteModelFunction = nil 
     self.mText_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mText (self.mText_property)
+  //--- mHorizontalAlignment
+    self.mHorizontalAlignment_property.mReadModelFunction = nil 
+    self.mHorizontalAlignment_property.mWriteModelFunction = nil 
+    self.mHorizontalAlignment_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mHorizontalAlignment (self.mHorizontalAlignment_property)
+  //--- mVerticalAlignment
+    self.mVerticalAlignment_property.mReadModelFunction = nil 
+    self.mVerticalAlignment_property.mWriteModelFunction = nil 
+    self.mVerticalAlignment_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mVerticalAlignment (self.mVerticalAlignment_property)
+  //--- mRotation
+    self.mRotation_property.mReadModelFunction = nil 
+    self.mRotation_property.mWriteModelFunction = nil 
+    self.mRotation_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mRotation (self.mRotation_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
@@ -220,6 +268,30 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       view: view,
       observerExplorer: &self.mText_property.mObserverExplorer,
       valueExplorer: &self.mText_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mHorizontalAlignment",
+      idx: self.mHorizontalAlignment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mHorizontalAlignment_property.mObserverExplorer,
+      valueExplorer: &self.mHorizontalAlignment_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mVerticalAlignment",
+      idx: self.mVerticalAlignment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mVerticalAlignment_property.mObserverExplorer,
+      valueExplorer: &self.mVerticalAlignment_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mRotation",
+      idx: self.mRotation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mRotation_property.mObserverExplorer,
+      valueExplorer: &self.mRotation_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -423,7 +495,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <Double> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mFontSize_property_selection {
@@ -449,7 +521,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
         return .empty
       }
     }
-    self.mFontSize_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mFontSize_property.mWriteModelFunction = { [weak self] (inValue : Double) in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
@@ -461,7 +533,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
         }
       }
     }
-    self.mFontSize_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.mFontSize_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Double, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
@@ -607,6 +679,213 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
         case .single (let v) :
           for object in v {
             let result = object.mText_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mHorizontalAlignment () {
+    self.selectedArray_property.addEBObserverOf_mHorizontalAlignment (self.mHorizontalAlignment_property)
+    self.mHorizontalAlignment_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <HorizontalAlignment> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mHorizontalAlignment_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mHorizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mHorizontalAlignment_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mHorizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mVerticalAlignment () {
+    self.selectedArray_property.addEBObserverOf_mVerticalAlignment (self.mVerticalAlignment_property)
+    self.mVerticalAlignment_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BoardTextVerticalAlignment> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mVerticalAlignment_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mVerticalAlignment_property.mWriteModelFunction = { [weak self] (inValue : BoardTextVerticalAlignment) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mVerticalAlignment_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mVerticalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : BoardTextVerticalAlignment, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mVerticalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mRotation () {
+    self.selectedArray_property.addEBObserverOf_mRotation (self.mRotation_property)
+    self.mRotation_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mRotation_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRotation_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mRotation_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mRotation_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mRotation_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

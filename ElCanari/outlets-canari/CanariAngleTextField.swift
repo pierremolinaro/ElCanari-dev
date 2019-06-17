@@ -1,5 +1,5 @@
 //
-//  CanariPackageArcAngleTextField.swift
+//  CanariAngleTextField.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 15/12/2018.
@@ -9,23 +9,23 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   CanariPackageArcAngleTextField
+//   CanariAngleTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariPackageArcAngleTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+class CanariAngleTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     self.delegate = self
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     self.delegate = self
     noteObjectAllocation (self)
   }
@@ -56,13 +56,13 @@ class CanariPackageArcAngleTextField : NSTextField, EBUserClassNameProtocol, NST
 
   //····················································································································
 
-  private var mController : Controller_CanariPackageArcAngleTextField_angle?
+  private var mController : Controller_CanariAngleTextField_angle? = nil
 
   //····················································································································
 
   func bind_angle (_ object:EBReadWriteProperty_Int,
                    file:String, line:Int) {
-    self.mController = Controller_CanariPackageArcAngleTextField_angle (angle: object, outlet: self)
+    self.mController = Controller_CanariAngleTextField_angle (angle: object, outlet: self)
   }
 
   //····················································································································
@@ -77,26 +77,26 @@ class CanariPackageArcAngleTextField : NSTextField, EBUserClassNameProtocol, NST
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller Controller_CanariPackageArcAngleTextField_angle
+//   Controller Controller_CanariAngleTextField_angle
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariPackageArcAngleTextField_angle : EBSimpleController {
+final class Controller_CanariAngleTextField_angle : EBSimpleController {
 
-  private var mOutlet: CanariPackageArcAngleTextField
+  private var mOutlet: CanariAngleTextField
   private var mAngle : EBReadWriteProperty_Int
   private var mNumberFormatter : NumberFormatter
 
   //····················································································································
 
   init (angle : EBReadWriteProperty_Int,
-        outlet : CanariPackageArcAngleTextField) {
+        outlet : CanariAngleTextField) {
     mAngle = angle
     mOutlet = outlet
     mNumberFormatter = NumberFormatter ()
     super.init (observedObjects: [angle], callBack: { outlet.updateOutlet (angle) } )
   //--- Target
-    mOutlet.target = self
-    mOutlet.action = #selector (Controller_CanariPackageArcAngleTextField_angle.action(_:))
+    self.mOutlet.target = self
+    self.mOutlet.action = #selector (Controller_CanariAngleTextField_angle.action(_:))
   //--- Number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
     self.mNumberFormatter.numberStyle = .decimal
@@ -105,8 +105,6 @@ final class Controller_CanariPackageArcAngleTextField_angle : EBSimpleController
     self.mNumberFormatter.format = "##0.000°"
     self.mNumberFormatter.isLenient = true
     self.mOutlet.formatter = self.mNumberFormatter
-  //--- Call back
-//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -119,7 +117,7 @@ final class Controller_CanariPackageArcAngleTextField_angle : EBSimpleController
 
   //····················································································································
 
-  @objc func action (_ sender : CanariPackageArcAngleTextField) {
+  @objc func action (_ sender : CanariAngleTextField) {
     switch self.mAngle.prop {
     case .empty, .multiple :
       break

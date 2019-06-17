@@ -610,7 +610,8 @@ document ProjectDocument root ProjectRoot {
     $selectedIndex #boardTextSelectionController.mVerticalAlignment
   ;
   
-  outlet CanariPackageArcAngleTextField mBoardTextRotationTextField $angle #boardTextSelectionController.mRotation ;
+  outlet CanariAngleTextField mBoardTextRotationTextField $angle #boardTextSelectionController.mRotation ;
+  outlet CanariAngleSlider mBoardTextRotationSlider $angle #boardTextSelectionController.mRotation ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

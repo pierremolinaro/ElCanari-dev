@@ -1,5 +1,5 @@
 //
-//  CanariPackageArcAngleSlider.swift
+//  CanariAngleSlider.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 15/12/2018.
@@ -9,22 +9,22 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   CanariPackageArcAngleSlider
+//   CanariAngleSlider
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariPackageArcAngleSlider : NSSlider, EBUserClassNameProtocol {
+class CanariAngleSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     noteObjectAllocation (self)
   }
 
@@ -56,14 +56,15 @@ class CanariPackageArcAngleSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mController : Controller_CanariPackageArcAngleSlider_angle?
+  private var mController : Controller_CanariAngleSlider_angle? = nil
 
   //····················································································································
 
   func bind_angle (_ object : EBReadWriteProperty_Int,
                    file : String,
                    line : Int) {
-    self.mController = Controller_CanariPackageArcAngleSlider_angle (angle: object, outlet: self)
+    self.mController = Controller_CanariAngleSlider_angle (angle: object, outlet: self)
+    self.isContinuous = true
   }
 
   //····················································································································
@@ -78,26 +79,24 @@ class CanariPackageArcAngleSlider : NSSlider, EBUserClassNameProtocol {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller Controller_CanariPackageArcAngleSlider_angle
+//   Controller Controller_CanariAngleSlider_angle
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariPackageArcAngleSlider_angle : EBSimpleController {
+final class Controller_CanariAngleSlider_angle : EBSimpleController {
 
-  private var mOutlet : CanariPackageArcAngleSlider
+  private var mOutlet : CanariAngleSlider
   private var mAngle  : EBReadWriteProperty_Int
 
   //····················································································································
 
   init (angle : EBReadWriteProperty_Int,
-        outlet : CanariPackageArcAngleSlider) {
+        outlet : CanariAngleSlider) {
     mAngle = angle
     mOutlet = outlet
     super.init (observedObjects: [angle], callBack: { outlet.update (angle) } )
   //--- Target
-    mOutlet.target = self
-    mOutlet.action = #selector (Controller_CanariPackageArcAngleSlider_angle.action(_:))
-  //--- Call back
- //   self.mEventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mOutlet.target = self
+    self.mOutlet.action = #selector (Controller_CanariAngleSlider_angle.action(_:))
   }
 
   //····················································································································
@@ -110,47 +109,18 @@ final class Controller_CanariPackageArcAngleSlider_angle : EBSimpleController {
 
   //····················································································································
 
-  @objc func action (_ sender : CanariPackageArcAngleSlider) {
-    switch self.mAngle.prop {
-    case .empty, .multiple :
-      break
-    case .single (_) :
-      var v = 90.0 - self.mOutlet.doubleValue
-      if v < 0.0 {
-        v += 360.0
-      }
-      let angle = Int ((v * 1000.0).rounded (.toNearestOrEven))
-      _ = self.mAngle.validateAndSetProp (angle, windowForSheet: sender.window)
+  @objc func action (_ sender : CanariAngleSlider) {
+    var v = 90.0 - self.mOutlet.doubleValue
+    if v < 0.0 {
+      v += 360.0
     }
+    let angle = Int ((v * 1000.0).rounded (.toNearestOrEven))
+    _ = self.mAngle.validateAndSetProp (angle, windowForSheet: sender.window)
+    flushOutletEvents ()
   }
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func combine (_ dimension : EBSelection <Int>, unit : EBSelection <Int>) -> EBSelection <Double> {
-  switch dimension {
-  case .empty :
-    return .empty
-  case .multiple :
-    switch dimension {
-    case .empty :
-      return .empty
-    case .multiple, .single :
-      return .multiple
-    }
-  case .single (let dimensionValue) :
-    switch unit {
-    case .empty :
-      return .empty
-    case .multiple :
-      return .multiple
-    case .single (let unitValue):
-      return .single (Double (dimensionValue) / Double (unitValue))
-    }
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

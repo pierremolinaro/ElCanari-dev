@@ -13,7 +13,7 @@ import Cocoa
 let BOARD_TEXT_ORIGIN_KNOB  = 0
 let BOARD_TEXT_ROTATION_KNOB  = 1
 
-let ROTATION_KNOB_DISTANCE : CGFloat = 30.0
+fileprivate let ROTATION_KNOB_DISTANCE : CGFloat = 30.0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION BoardText
@@ -54,9 +54,21 @@ extension BoardText {
     if inKnobIndex == BOARD_TEXT_ORIGIN_KNOB {
       self.mX += inDx
       self.mY += inDy
-    }else if inKnobIndex == BOARD_TEXT_ROTATION_KNOB {
-      self.mX += inDx
-      self.mY += inDy
+    }else if inKnobIndex == BOARD_TEXT_ROTATION_KNOB, let fontDescriptor = self.mFont?.descriptor {
+      let (_, _, origin, _) = boardText_displayInfos (
+        self.mX,
+        self.mY,
+        self.mText,
+        self.mFontSize,
+        fontDescriptor,
+        self.mHorizontalAlignment,
+        self.mVerticalAlignment,
+        self.mLayer,
+        self.mRotation
+      )
+      let newRotationKnobLocation = CanariPoint (x: inNewX, y: inNewY).cocoaPoint
+      let newAngleInDegrees = angleInDegreesBetweenNSPoints (origin, newRotationKnobLocation)
+      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }
   }
 
@@ -103,67 +115,68 @@ func boardText_displayInfos (
        _ self_mVerticalAlignment : BoardTextVerticalAlignment,
        _ self_mLayer : BoardTextLayer,
        _ self_mRotation : Int
-) -> (NSBezierPath, NSPoint, NSPoint) { // (display, origin, rotation knob)
-//--- START OF USER ZONE 2
-        let s = (self_mText == "") ? "Empty" : self_mText
-        let bp = NSBezierPath ()
-        var width : CGFloat = 0.0
-        let fontFactor = CGFloat (self_mFontSize) / CGFloat (self_mFont_descriptor.nominalSize)
-        for character in s.unicodeScalars {
-          if let characterDescriptor = self_mFont_descriptor.dictionary [character.value] {
-            for segment in characterDescriptor.segments {
-              let x1 = CGFloat (segment.x1) * fontFactor
-              let y1 = CGFloat (segment.y1) * fontFactor
-              let x2 = CGFloat (segment.x2) * fontFactor
-              let y2 = CGFloat (segment.y2) * fontFactor
-              bp.move (to: NSPoint (x: width + x1, y: y1))
-              bp.line (to: NSPoint (x: width + x2, y: y2))
-            }
-            width += CGFloat (characterDescriptor.advancement) * fontFactor
-          }
-        }
-        bp.lineWidth = fontFactor * 2.0
-        bp.lineCapStyle = .round
-        bp.lineJoinStyle = .round
-        let startX = canariUnitToCocoa (self_mX)
-        let startY = canariUnitToCocoa (self_mY)
-        var tr = AffineTransform ()
-        switch self_mHorizontalAlignment {
-        case .onTheLeft :
-          tr.translate (x: startX  - width / 2.0, y: 0.0)
-        case .center :
-          tr.translate (x: startX, y: 0.0)
-        case .onTheRight :
-          tr.translate (x: startX + width / 2.0, y: 0.0)
-        }
-        switch self_mVerticalAlignment {
-        case .above :
-          tr.translate (x: 0.0, y: startY - bp.bounds.minY)
-        case .base :
-          tr.translate (x: 0.0, y: startY)
-        case .center :
-          tr.translate (x: 0.0, y: startY - (bp.bounds.maxY + bp.bounds.minY) / 2.0)
-        case .below :
-          tr.translate (x: 0.0, y: startY - bp.bounds.maxY)
-        }
-        switch self_mLayer {
-        case .legendFront, .layoutFront :
-          ()
-        case .layoutBack, .legendBack :
-          tr.scale (x: -1.0, y: 1.0)
-        }
-        let rotationInDegrees = CGFloat (self_mRotation) / 1000.0
-        tr.rotate (byDegrees: rotationInDegrees)
-        tr.translate (x: -width / 2.0, y: 0.0) // Center horizontally
-        bp.transform (using: tr)
-      //--- Rotation knob
-        var rotationKnobTransform = AffineTransform ()
-        rotationKnobTransform.translate (x: startX, y: startY)
-        rotationKnobTransform.rotate (byDegrees: rotationInDegrees)
-        let rotationKnobLocation = rotationKnobTransform.transform (NSPoint (x: ROTATION_KNOB_DISTANCE, y: 0.0))
-      //---
-        return (bp, NSPoint (x: startX, y: startY), rotationKnobLocation)
-//--- END OF USER ZONE 2
+) -> (NSBezierPath, NSBezierPath, NSPoint, NSPoint) { // (textDisplay, frame, origin, rotation knob)
+  let s = (self_mText == "") ? "Empty" : self_mText
+  let bp = NSBezierPath ()
+  var width : CGFloat = 0.0
+  let fontFactor = CGFloat (self_mFontSize) / CGFloat (self_mFont_descriptor.nominalSize)
+  for character in s.unicodeScalars {
+    if let characterDescriptor = self_mFont_descriptor.dictionary [character.value] {
+      for segment in characterDescriptor.segments {
+        let x1 = CGFloat (segment.x1) * fontFactor
+        let y1 = CGFloat (segment.y1) * fontFactor
+        let x2 = CGFloat (segment.x2) * fontFactor
+        let y2 = CGFloat (segment.y2) * fontFactor
+        bp.move (to: NSPoint (x: width + x1, y: y1))
+        bp.line (to: NSPoint (x: width + x2, y: y2))
+      }
+      width += CGFloat (characterDescriptor.advancement) * fontFactor
+    }
+  }
+  bp.lineWidth = fontFactor * 2.0
+  bp.lineCapStyle = .round
+  bp.lineJoinStyle = .round
+  let frameBP = NSBezierPath (rect: bp.bounds.insetBy (dx: -1.0, dy: -1.0))
+  let startX = canariUnitToCocoa (self_mX)
+  let startY = canariUnitToCocoa (self_mY)
+  var tr = AffineTransform ()
+  tr.translate (x: startX, y: startY)
+
+  let rotationInDegrees = CGFloat (self_mRotation) / 1000.0
+  tr.rotate (byDegrees: rotationInDegrees)
+
+  if (self_mLayer == .layoutBack) || (self_mLayer == .legendBack) {
+    tr.scale (x: -1.0, y: 1.0)
+  }
+
+  switch self_mHorizontalAlignment {
+  case .onTheLeft :
+    tr.translate (x: 0.0 - width, y: 0.0)
+  case .center :
+    tr.translate (x: 0.0 - width / 2.0, y: 0.0)
+  case .onTheRight :
+    ()
+  }
+
+  switch self_mVerticalAlignment {
+  case .above :
+    tr.translate (x: 0.0, y: -bp.bounds.minY)
+  case .base :
+    ()
+  case .center :
+    tr.translate (x: 0.0, y: -(bp.bounds.maxY + bp.bounds.minY) / 2.0)
+  case .below :
+    tr.translate (x: 0.0, y: -bp.bounds.maxY)
+  }
+  bp.transform (using: tr)
+  frameBP.transform (using: tr)
+//--- Rotation knob
+  var rotationKnobTransform = AffineTransform ()
+  rotationKnobTransform.translate (x: startX, y: startY)
+  rotationKnobTransform.rotate (byDegrees: rotationInDegrees)
+  let rotationKnobLocation = rotationKnobTransform.transform (NSPoint (x: ROTATION_KNOB_DISTANCE, y: 0.0))
+//---
+  return (bp, frameBP, NSPoint (x: startX, y: startY), rotationKnobLocation)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

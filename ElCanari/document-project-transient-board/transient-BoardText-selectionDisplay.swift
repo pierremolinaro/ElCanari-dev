@@ -29,7 +29,7 @@ func transient_BoardText_selectionDisplay (
        _ prefs_backSideLegendColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let (textBP, origin, rotationKnob) = boardText_displayInfos (
+        let (textBP, frameBP, origin, rotationKnob) = boardText_displayInfos (
           self_mX,
           self_mY,
           self_mText,
@@ -53,13 +53,12 @@ func transient_BoardText_selectionDisplay (
         }
         let textShape = EBStrokeBezierPathShape ([textBP], textColor)
       //--- Background
-        let backgroundBP = NSBezierPath (rect: textShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
         let shape = EBShape ()
-        shape.append (EBFilledBezierPathShape ([backgroundBP], (textColor == .white) ? .lightGray : .white))
-        backgroundBP.lineWidth = 0.5
-        backgroundBP.lineCapStyle = .round
-        backgroundBP.lineJoinStyle = .round
-        shape.append (EBStrokeBezierPathShape ([backgroundBP], .cyan))
+        shape.append (EBFilledBezierPathShape ([frameBP], (textColor == .white) ? .lightGray : .white))
+        frameBP.lineWidth = 0.5
+        frameBP.lineCapStyle = .round
+        frameBP.lineJoinStyle = .round
+        shape.append (EBStrokeBezierPathShape ([frameBP], .cyan))
         shape.append (textShape)
       //--- Rotation knob
         let knobLine = NSBezierPath ()

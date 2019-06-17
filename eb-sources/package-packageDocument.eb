@@ -156,11 +156,11 @@ document PackageDocument root PackageRoot {
   outlet EBSwitch mArcPathIsClosedSwitch $value #mPackageArcSelectionController.pathIsClosed ;
 
 //--- Start angle
-  outlet CanariPackageArcAngleTextField mArcStartAngleTextField $angle #mPackageArcSelectionController.startAngle ;
-  outlet CanariPackageArcAngleSlider mArcStartAngleSlider $angle #mPackageArcSelectionController.startAngle ;
+  outlet CanariAngleTextField mArcStartAngleTextField $angle #mPackageArcSelectionController.startAngle ;
+  outlet CanariAngleSlider mArcStartAngleSlider $angle #mPackageArcSelectionController.startAngle ;
 
 //--- Arc angle
-  outlet CanariPackageArcAngleTextField mArcAngle $angle #mPackageArcSelectionController.arcAngle ;
+  outlet CanariAngleTextField mArcAngle $angle #mPackageArcSelectionController.arcAngle ;
 
 
 

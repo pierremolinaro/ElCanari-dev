@@ -1048,10 +1048,10 @@
 		CF85859A21C5130900082CE3 /* extension-PackageArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85859821C5130900082CE3 /* extension-PackageArc.swift */; };
 		CF85859D21C53CA900082CE3 /* selectionController-PackageDocument-mPackageArcSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85859C21C53CA900082CE3 /* selectionController-PackageDocument-mPackageArcSelectionController.swift */; };
 		CF85859E21C53CA900082CE3 /* selectionController-PackageDocument-mPackageArcSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85859C21C53CA900082CE3 /* selectionController-PackageDocument-mPackageArcSelectionController.swift */; };
-		CF85868421C5458100082CE3 /* CanariPackageArcAngleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85868321C5458100082CE3 /* CanariPackageArcAngleTextField.swift */; };
-		CF85868521C5458100082CE3 /* CanariPackageArcAngleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85868321C5458100082CE3 /* CanariPackageArcAngleTextField.swift */; };
-		CF85868721C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85868621C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift */; };
-		CF85868821C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85868621C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift */; };
+		CF85868421C5458100082CE3 /* CanariAngleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85868321C5458100082CE3 /* CanariAngleTextField.swift */; };
+		CF85868521C5458100082CE3 /* CanariAngleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85868321C5458100082CE3 /* CanariAngleTextField.swift */; };
+		CF85868721C55D7B00082CE3 /* CanariAngleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85868621C55D7B00082CE3 /* CanariAngleSlider.swift */; };
+		CF85868821C55D7B00082CE3 /* CanariAngleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85868621C55D7B00082CE3 /* CanariAngleSlider.swift */; };
 		CF861AA31B3F04460006BE63 /* library-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF861AA21B3F04460006BE63 /* library-utilities.swift */; };
 		CF861AA51B3F06230006BE63 /* EBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF861AA41B3F06230006BE63 /* EBButton.swift */; };
 		CF861AA91B3F07BC0006BE63 /* action-Preferences-revealUserLibraryInFinderAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF861AA81B3F07BC0006BE63 /* action-Preferences-revealUserLibraryInFinderAction.swift */; };
@@ -2584,8 +2584,8 @@
 		CF85858F21C5124300082CE3 /* transient-PackageArc-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageArc-issues.swift"; sourceTree = "<group>"; };
 		CF85859821C5130900082CE3 /* extension-PackageArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-PackageArc.swift"; sourceTree = "<group>"; };
 		CF85859C21C53CA900082CE3 /* selectionController-PackageDocument-mPackageArcSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-PackageDocument-mPackageArcSelectionController.swift"; sourceTree = "<group>"; };
-		CF85868321C5458100082CE3 /* CanariPackageArcAngleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariPackageArcAngleTextField.swift; sourceTree = "<group>"; };
-		CF85868621C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariPackageArcAngleSlider.swift; sourceTree = "<group>"; };
+		CF85868321C5458100082CE3 /* CanariAngleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariAngleTextField.swift; sourceTree = "<group>"; };
+		CF85868621C55D7B00082CE3 /* CanariAngleSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariAngleSlider.swift; sourceTree = "<group>"; };
 		CF861AA21B3F04460006BE63 /* library-utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "library-utilities.swift"; sourceTree = "<group>"; };
 		CF861AA41B3F06230006BE63 /* EBButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBButton.swift; sourceTree = "<group>"; };
 		CF861AA81B3F07BC0006BE63 /* action-Preferences-revealUserLibraryInFinderAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-revealUserLibraryInFinderAction.swift"; sourceTree = "<group>"; };
@@ -3785,6 +3785,8 @@
 		CF61FA911B3EBF21000E0257 /* Outlets Canari */ = {
 			isa = PBXGroup;
 			children = (
+				CF85868621C55D7B00082CE3 /* CanariAngleSlider.swift */,
+				CF85868321C5458100082CE3 /* CanariAngleTextField.swift */,
 				CF87A96720F11B940011B9EC /* CanariBoardBoardArchivePopUpButton.swift */,
 				CFEF3D2C20FA002700DA6106 /* CanariCancelButtonForSheet.swift */,
 				CF1B6ED2226CEE9800BE4C75 /* CanariComboBox.swift */,
@@ -3798,8 +3800,6 @@
 				CF6BC0501DE1C53A002D935F /* CanariMenu.swift */,
 				CF2A69A5226F4B8900261C47 /* CanariNewComponentFromDevicePullDownButton.swift */,
 				CFEF3D2A20F9FAF900DA6106 /* CanariOkButtonForSheet.swift */,
-				CF85868621C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift */,
-				CF85868321C5458100082CE3 /* CanariPackageArcAngleTextField.swift */,
 				CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */,
 				CF23C0ED2103500F0026E675 /* CanariQuadrantSegmentedControl.swift */,
 				CF6A65F81B468ACF00BA5135 /* CanariSegmentedControl.swift */,
@@ -5210,7 +5210,7 @@
 				CF900CA9222AFE7E0078B4DD /* transient-PackageInDevice-frontSidePadFilledBezierPathArray.swift in Sources */,
 				CF2A01F421DE7AA400F3A379 /* transient-PackageRoot-padNumberDisplay.swift in Sources */,
 				CF69ABCF21A6C08100F5E49A /* transient-SymbolPin-selectionDisplay.swift in Sources */,
-				CF85868421C5458100082CE3 /* CanariPackageArcAngleTextField.swift in Sources */,
+				CF85868421C5458100082CE3 /* CanariAngleTextField.swift in Sources */,
 				CFA42FB0229AEAEC000AA8C8 /* tomany-FontRoot.swift in Sources */,
 				CFDDD4DB21BB1529007D2F14 /* EBGraphicViewControllerProtocol.swift in Sources */,
 				CFF2653B20E689ED00525C0F /* transient-BoardModel-backLayoutTextsSegments.swift in Sources */,
@@ -5678,7 +5678,7 @@
 				CF0DC230222587A000DD2076 /* action-DeviceDocument-removeImageAction.swift in Sources */,
 				CF33955A1B4AC885009C561B /* CanariSignatureField.swift in Sources */,
 				CFE85A9F21A5C91300991A66 /* transient-SymbolSolidRect-selectionDisplay.swift in Sources */,
-				CF85868721C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift in Sources */,
+				CF85868721C55D7B00082CE3 /* CanariAngleSlider.swift in Sources */,
 				CFA430BF229AEC41000AA8C8 /* toone-SymbolSolidRect.swift in Sources */,
 				CF2A01F121DE789000F3A379 /* transient-PackagePad-padNumberDisplay.swift in Sources */,
 				CFA42FC0229AEB0A000AA8C8 /* toone-BoardModelPad.swift in Sources */,
@@ -6181,7 +6181,7 @@
 				CF69ABD021A6C08100F5E49A /* transient-SymbolPin-selectionDisplay.swift in Sources */,
 				CF2A01F521DE7AA400F3A379 /* transient-PackageRoot-padNumberDisplay.swift in Sources */,
 				CF5C4D1A219F04D600EAC52A /* transient-BoardModel-backLayoutTextsSegments.swift in Sources */,
-				CF85868521C5458100082CE3 /* CanariPackageArcAngleTextField.swift in Sources */,
+				CF85868521C5458100082CE3 /* CanariAngleTextField.swift in Sources */,
 				CFDDD4DC21BB1529007D2F14 /* EBGraphicViewControllerProtocol.swift in Sources */,
 				CF6F6F192247BFDD00F89C77 /* action-FontDocument-deleteCurrentCharacterAction.swift in Sources */,
 				CF5C4D1B219F04D600EAC52A /* transient-BoardModel-frontPadArray.swift in Sources */,
@@ -6636,7 +6636,7 @@
 				CF5C4D8D219F04D600EAC52A /* CanariSignatureField.swift in Sources */,
 				CFE85AA021A5C91300991A66 /* transient-SymbolSolidRect-selectionDisplay.swift in Sources */,
 				CF04AF2122761B7E00C70E99 /* extension-ProjectDocument-print.swift in Sources */,
-				CF85868821C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift in Sources */,
+				CF85868821C55D7B00082CE3 /* CanariAngleSlider.swift in Sources */,
 				CF2A01F221DE789000F3A379 /* transient-PackagePad-padNumberDisplay.swift in Sources */,
 				CF9D4BBF227F79A9006E2035 /* transient-ProjectDocument-unplacedSymbolsCountString.swift in Sources */,
 				CF78DE89222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPathArray.swift in Sources */,
