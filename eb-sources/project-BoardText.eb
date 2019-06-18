@@ -45,6 +45,8 @@ graphic entity BoardText : BoardObject {
     prefs.backSideLayoutColorForBoard,
     prefs.backSideLegendColorForBoard
   ;
+  
+  transient String fontName dependsFrom self.mFont.one.mFontName ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

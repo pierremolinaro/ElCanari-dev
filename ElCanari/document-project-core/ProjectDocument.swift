@@ -441,6 +441,7 @@ import Cocoa
   @IBOutlet var mBoardObjectsPageView : CanariViewWithKeyView?
   @IBOutlet var mBoardPointsBoundingBoxUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardScrollView : EBScrollView?
+  @IBOutlet var mBoardTextFontPopUpButton : CanariBoardTextFontPopUpButton?
   @IBOutlet var mBoardTextFontSizeField : EBDoubleField?
   @IBOutlet var mBoardTextHorizontalAlignmentPopUpButton : EBPopUpButton?
   @IBOutlet var mBoardTextInspectorView : CanariViewWithKeyView?
@@ -794,6 +795,7 @@ import Cocoa
     checkOutletConnection (self.mBoardObjectsPageView, "mBoardObjectsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardPointsBoundingBoxUnitPopUp, "mBoardPointsBoundingBoxUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardScrollView, "mBoardScrollView", EBScrollView.self, #file, #line)
+    checkOutletConnection (self.mBoardTextFontPopUpButton, "mBoardTextFontPopUpButton", CanariBoardTextFontPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardTextFontSizeField, "mBoardTextFontSizeField", EBDoubleField.self, #file, #line)
     checkOutletConnection (self.mBoardTextHorizontalAlignmentPopUpButton, "mBoardTextHorizontalAlignmentPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardTextInspectorView, "mBoardTextInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -2085,6 +2087,7 @@ import Cocoa
     self.mBoardObjectsPageView?.ebCleanUp ()
     self.mBoardPointsBoundingBoxUnitPopUp?.ebCleanUp ()
     self.mBoardScrollView?.ebCleanUp ()
+    self.mBoardTextFontPopUpButton?.ebCleanUp ()
     self.mBoardTextFontSizeField?.ebCleanUp ()
     self.mBoardTextHorizontalAlignmentPopUpButton?.ebCleanUp ()
     self.mBoardTextInspectorView?.ebCleanUp ()
@@ -2309,6 +2312,7 @@ import Cocoa
 //    self.mBoardObjectsPageView = nil
 //    self.mBoardPointsBoundingBoxUnitPopUp = nil
 //    self.mBoardScrollView = nil
+//    self.mBoardTextFontPopUpButton = nil
 //    self.mBoardTextFontSizeField = nil
 //    self.mBoardTextHorizontalAlignmentPopUpButton = nil
 //    self.mBoardTextInspectorView = nil

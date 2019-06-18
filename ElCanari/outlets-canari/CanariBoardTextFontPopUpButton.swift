@@ -1,18 +1,18 @@
 //
-//  CanariSlavePadAssignmentPopUpButton.swift
+//  CanariBoardTextFontPopUpButton.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 16/12/2018.
+//  Created by Pierre Molinaro on 18/06/2019.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   CanariSlavePadAssignmentPopUpButton
+//   CanariBoardTextFontPopUpButton
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+class CanariBoardTextFontPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -38,89 +38,77 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
   // MARK: -
   //····················································································································
 
-  private weak var mDocument : CustomizedPackageDocument? = nil
+  private var mFontsModel : StoredArrayOf_FontInProject? = nil
+  private var mSelectionController : SelectionController_ProjectDocument_boardTextSelectionController? = nil
+  private var mObserver : EBOutletEvent? = nil
 
   //····················································································································
 
-  func register (document inDocument : CustomizedPackageDocument?) {
-    self.mDocument = inDocument
-  }
-
-  //····················································································································
-  // MARK: -
-  //····················································································································
-
-  private var mCurrentZoneController : EBSimpleController? = nil
-  private var mCurrentSlavePad : PackageSlavePad? = nil
-
-  //····················································································································
-
-  func bind_masterPadName (_ model : EBReadOnlyProperty_String, file : String, line : Int) {
-    self.mCurrentZoneController = EBSimpleController (
-      observedObjects: [model],
-      callBack: { [weak self] in self?.update (fromMasterPadName: model) }
-    )
+  func register (fontsModel inFontsModel : StoredArrayOf_FontInProject,
+                 selectionController inController : SelectionController_ProjectDocument_boardTextSelectionController) {
+    self.mFontsModel = inFontsModel
+    self.mSelectionController = inController
+    let observer = EBOutletEvent ()
+    self.mObserver = observer
+    observer.mEventCallBack = { [weak self] in self?.buildPopUpButton () }
+    inFontsModel.addEBObserverOf_mFontName (observer)
+    inController.selectedArray_property.addEBObserverOf_fontName (observer)
   }
 
   //····················································································································
 
-  func unbind_masterPadName () {
-    self.mCurrentZoneController?.unregister ()
-    self.mCurrentZoneController = nil
-    self.mCurrentSlavePad = nil
+  func unregister () {
+    if let observer = self.mObserver {
+      self.mFontsModel?.removeEBObserverOf_mFontName (observer)
+      self.mSelectionController?.selectedArray_property.removeEBObserverOf_fontName (observer)
+      self.mObserver = nil
+    }
+    self.mFontsModel = nil
+    self.mSelectionController = nil
   }
 
   //····················································································································
 
-  private func update (fromMasterPadName model : EBReadOnlyProperty_String) {
-    if let document = self.mDocument {
-      switch model.prop {
-      case .empty, .multiple :
-        self.mCurrentSlavePad = nil
-      case .single (let v) :
-        let allSlavePads = document.rootObject.packageSlavePads_property.propval
-        for slavePad in allSlavePads {
-          if slavePad.padName == v {
-            self.mCurrentSlavePad = slavePad
-          }
+  private func buildPopUpButton () {
+  //---
+    var fontNameSet = Set <String> ()
+    if let selectedTexts = self.mSelectionController?.selectedArray {
+      for text in selectedTexts {
+        if let font = text.mFont {
+          fontNameSet.insert (font.mFontName)
         }
-        self.buildMenu ()
+      }
+      Swift.print ("fontNameSet \(fontNameSet), selectedTexts \(selectedTexts.count)")
+    }
+  //---
+    self.removeAllItems ()
+    if let fontsModel = self.mFontsModel?.propval {
+      for font in fontsModel {
+        self.addItem (withTitle: font.mFontName)
+        self.lastItem?.representedObject = font
+        self.lastItem?.target = self
+        self.lastItem?.action = #selector (CanariBoardTextFontPopUpButton.changeFontAction (_:))
+        self.lastItem?.isEnabled = true
+        if fontNameSet.contains (font.mFontName) {
+          self.select (self.lastItem)
+          let attributes : [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+          ]
+          let attributedString = NSAttributedString (string: font.mFontName, attributes: attributes)
+          self.lastItem?.attributedTitle = attributedString
+        }
       }
     }
   }
 
   //····················································································································
 
-  private func buildMenu () {
-    self.enableFromValueBinding (self.mDocument != nil)
-    if let document = self.mDocument {
-      let allPads = document.rootObject.packagePads_property.propval.sorted (by: { $0.padName! < $1.padName! } )
-      self.removeAllItems ()
-      self.autoenablesItems = false
-      var idx = 0
-      for pad in allPads {
-        self.addItem (withTitle: "\(pad.padName!)")
-        if self.mCurrentSlavePad?.master_property.propval === pad {
-          self.selectItem (at: idx)
-        }
-        let menuItem = self.lastItem!
-        menuItem.isEnabled = true
-        menuItem.target = self
-        menuItem.action = #selector (CanariSlavePadAssignmentPopUpButton.performAssignment (_:))
-        menuItem.tag = idx
-        idx += 1
+  @objc private func changeFontAction (_ inSender : NSMenuItem) {
+    if let selectedTexts = self.mSelectionController?.selectedArray, let font = inSender.representedObject as? FontInProject {
+      for text in selectedTexts {
+        text.mFont = nil
+        text.mFont = font
       }
-    }
-  }
-
-  //····················································································································
-
-  @objc func performAssignment (_ inSender : NSMenuItem) {
-   // Swift.print ("Exchange \(self.mCurrentPadNumber) <-> \(inSender.tag)")
-    if let document = self.mDocument {
-      let allPads = document.rootObject.packagePads_property.propval.sorted (by: { $0.padName! < $1.padName! } )
-      let idx = inSender.tag
-      self.mCurrentSlavePad?.master_property.setProp (allPads [idx])
     }
   }
 

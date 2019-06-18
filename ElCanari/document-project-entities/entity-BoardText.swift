@@ -65,6 +65,12 @@ protocol BoardText_selectionDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardText_fontName : class {
+  var fontName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -78,7 +84,8 @@ class BoardText : BoardObject,
          BoardText_mVerticalAlignment,
          BoardText_mRotation,
          BoardText_objectDisplay,
-         BoardText_selectionDisplay {
+         BoardText_selectionDisplay,
+         BoardText_fontName {
 
   //····················································································································
   //   Atomic property: mX
@@ -255,6 +262,29 @@ class BoardText : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: fontName
+  //····················································································································
+
+  let fontName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var fontName_property_selection : EBSelection <String> {
+    return self.fontName_property.prop
+  }
+
+  //····················································································································
+
+  var fontName : String? {
+    switch self.fontName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -374,6 +404,28 @@ class BoardText : BoardObject,
     g_Preferences?.frontSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.backSideLegendColorForBoard_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: fontName
+    self.fontName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mFont_property.mFontName_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mFont_property.mFontName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardText_fontName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mFont_property.addEBObserverOf_mFontName (self.fontName_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -409,6 +461,7 @@ class BoardText : BoardObject,
     g_Preferences?.frontSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.backSideLegendColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
+    self.mFont_property.removeEBObserverOf_mFontName (self.fontName_property)
   //--- Unregister properties for handling signature
   }
 
@@ -503,6 +556,14 @@ class BoardText : BoardObject,
       view: view,
       observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
       valueExplorer: &self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "fontName",
+      idx: self.fontName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.fontName_property.mObserverExplorer,
+      valueExplorer: &self.fontName_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)

@@ -137,6 +137,7 @@ document ProjectDocument root ProjectRoot {
      column "name" EBTextObserverField $valueObserver self.mFontName
      column "version" EBTextObserverField $valueObserver self.versionString
      column "size" EBTextObserverField $valueObserver self.sizeString
+     column "texts" EBIntObserverField $valueObserver self.mTexts.count {autoFormatter : yes}
   }
   outlet EBTableView mFontLibraryTableView $tableValue #projectFontController ;
 
@@ -612,6 +613,8 @@ document ProjectDocument root ProjectRoot {
   
   outlet CanariAngleTextField mBoardTextRotationTextField $angle #boardTextSelectionController.mRotation ;
   outlet CanariAngleSlider mBoardTextRotationSlider $angle #boardTextSelectionController.mRotation ;
+  
+  outlet CanariBoardTextFontPopUpButton mBoardTextFontPopUpButton ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

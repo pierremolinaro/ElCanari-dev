@@ -26,6 +26,8 @@ extern outlet class CanariComboBox ;
 extern outlet class CanariNewComponentFromDevicePullDownButton ;
 binding CanariNewComponentFromDevicePullDownButton $deviceNames : transient StringArray ;
 
+extern outlet class CanariBoardTextFontPopUpButton ;
+
 extern outlet class NSPanel ;
 
 extern outlet class NSImageView $hidden ;

@@ -25,6 +25,7 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
     inOldValue?.mRotation_property.removeEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    inOldValue?.fontName_property.removeEBObserversFrom (&self.mObserversOf_fontName) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
     self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
@@ -36,6 +37,7 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
     self.mInternalValue?.mRotation_property.addEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    self.mInternalValue?.fontName_property.addEBObserversFrom (&self.mObserversOf_fontName) // Transient property
   }
 
   //····················································································································
@@ -732,6 +734,75 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'fontName' transient property
+  //····················································································································
+
+  private var mObserversOf_fontName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var fontName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.fontName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_fontName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_fontName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.fontName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_fontName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_fontName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.fontName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_fontName_toElementsOfSet (_ inSet : Set<BoardText>) {
+    for managedObject in inSet {
+      self.mObserversOf_fontName.apply { (_ observer : EBEvent) in
+        managedObject.fontName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_fontName_fromElementsOfSet (_ inSet : Set<BoardText>) {
+    for managedObject in inSet {
+      self.mObserversOf_fontName.apply { (_ observer : EBEvent) in
+        managedObject.fontName_property.removeEBObserver (observer)
       }
     }
   }

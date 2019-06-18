@@ -232,6 +232,11 @@ fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "
     self.mSchematicsView?.setMouseExitCallback { [weak self] in self?.mouseExitInSchematic () }
     self.mouseExitInSchematic ()
     self.mSchematicsView?.setKeyDownCallback { [weak self] (mouseLocation, key) in self?.keyDownInSchematic (mouseLocation, key) }
+  //---
+    self.mBoardTextFontPopUpButton?.register (
+      fontsModel: self.rootObject.mFonts_property,
+      selectionController: self.boardTextSelectionController
+    )
   }
 
   //····················································································································
@@ -251,6 +256,7 @@ fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "
     self.mSelectedWireNetClassPopUpController.attachPopUpButton (nil)
     self.mSelectedLabelNetClassPopUpController.unbind_model ()
     self.mSelectedLabelNetClassPopUpController.attachPopUpButton (nil)
+    self.mBoardTextFontPopUpButton?.unregister ()
   }
 
   //····················································································································

@@ -202,6 +202,12 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
       }else{
         presentErrorWindow (file, line, "\"size\" column view unknown")
       }
+    //--- Check 'texts' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "texts")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"texts\" column view unknown")
+      }
     //--- Set table view sort descriptors
       for sortDescriptor in self.mSortDescriptorArray {
         if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
@@ -331,6 +337,13 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.sizeString_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "texts", let cell = result as? EBIntObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.mTexts_property.count_property, file: #file, line: #line, autoFormatter:true)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
