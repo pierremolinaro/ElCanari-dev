@@ -615,6 +615,9 @@ document ProjectDocument root ProjectRoot {
   outlet CanariAngleSlider mBoardTextRotationSlider $angle #boardTextSelectionController.mRotation ;
   
   outlet CanariBoardTextFontPopUpButton mBoardTextFontPopUpButton ;
+  
+//  outlet EBTextObserverField mBoardTextFointNameTextField $valueObserver #boardTextSelectionController.fontName ;
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------
