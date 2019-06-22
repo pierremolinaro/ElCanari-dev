@@ -91,6 +91,26 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   }
 
   //····················································································································
+  //   Selection observable property: mWeight
+  //····················································································································
+
+  let mWeight_property = EBPropertyProxy_Double ()
+
+  var mWeight_property_selection : EBSelection <Double> {
+    return self.mWeight_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mOblique
+  //····················································································································
+
+  let mOblique_property = EBPropertyProxy_Bool ()
+
+  var mOblique_property_selection : EBSelection <Bool> {
+    return self.mOblique_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
@@ -144,6 +164,8 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.bind_property_mHorizontalAlignment ()
     self.bind_property_mVerticalAlignment ()
     self.bind_property_mRotation ()
+    self.bind_property_mWeight ()
+    self.bind_property_mOblique ()
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
     self.bind_property_fontName ()
@@ -195,6 +217,16 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
     self.mRotation_property.mWriteModelFunction = nil 
     self.mRotation_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mRotation (self.mRotation_property)
+  //--- mWeight
+    self.mWeight_property.mReadModelFunction = nil 
+    self.mWeight_property.mWriteModelFunction = nil 
+    self.mWeight_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mWeight (self.mWeight_property)
+  //--- mOblique
+    self.mOblique_property.mReadModelFunction = nil 
+    self.mOblique_property.mWriteModelFunction = nil 
+    self.mOblique_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mOblique (self.mOblique_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
@@ -306,6 +338,22 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
       view: view,
       observerExplorer: &self.mRotation_property.mObserverExplorer,
       valueExplorer: &self.mRotation_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mWeight",
+      idx: self.mWeight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mWeight_property.mObserverExplorer,
+      valueExplorer: &self.mWeight_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mOblique",
+      idx: self.mOblique_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mOblique_property.mObserverExplorer,
+      valueExplorer: &self.mOblique_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -900,6 +948,144 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
         case .single (let v) :
           for object in v {
             let result = object.mRotation_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mWeight () {
+    self.selectedArray_property.addEBObserverOf_mWeight (self.mWeight_property)
+    self.mWeight_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Double> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mWeight_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mWeight_property.mWriteModelFunction = { [weak self] (inValue : Double) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mWeight_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mWeight_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Double, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mWeight_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mOblique () {
+    self.selectedArray_property.addEBObserverOf_mOblique (self.mOblique_property)
+    self.mOblique_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mOblique_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mOblique_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mOblique_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mOblique_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mOblique_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

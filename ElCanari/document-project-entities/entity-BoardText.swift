@@ -54,6 +54,18 @@ protocol BoardText_mRotation : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardText_mWeight : class {
+  var mWeight : Double { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardText_mOblique : class {
+  var mOblique : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardText_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -83,6 +95,8 @@ class BoardText : BoardObject,
          BoardText_mHorizontalAlignment,
          BoardText_mVerticalAlignment,
          BoardText_mRotation,
+         BoardText_mWeight,
+         BoardText_mOblique,
          BoardText_objectDisplay,
          BoardText_selectionDisplay,
          BoardText_fontName {
@@ -224,6 +238,40 @@ class BoardText : BoardObject,
   var mRotation_property_selection : EBSelection <Int> { return self.mRotation_property.prop }
 
   //····················································································································
+  //   Atomic property: mWeight
+  //····················································································································
+
+  let mWeight_property = EBStoredProperty_Double (defaultValue: 1)
+
+  //····················································································································
+
+  var mWeight : Double {
+    get { return self.mWeight_property.propval }
+    set { self.mWeight_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mWeight_property_selection : EBSelection <Double> { return self.mWeight_property.prop }
+
+  //····················································································································
+  //   Atomic property: mOblique
+  //····················································································································
+
+  let mOblique_property = EBStoredProperty_Bool (defaultValue: false)
+
+  //····················································································································
+
+  var mOblique : Bool {
+    get { return self.mOblique_property.propval }
+    set { self.mOblique_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mOblique_property_selection : EBSelection <Bool> { return self.mOblique_property.prop }
+
+  //····················································································································
   //   To one property: mFont
   //····················································································································
 
@@ -306,6 +354,10 @@ class BoardText : BoardObject,
     self.mVerticalAlignment_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mRotation
     self.mRotation_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mWeight
+    self.mWeight_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mOblique
+    self.mOblique_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mFont (has opposite to many relationship: mTexts)
     self.mFont_property.ebUndoManager = self.ebUndoManager
     self.mFont_property.setOppositeRelationShipFunctions (
@@ -324,6 +376,8 @@ class BoardText : BoardObject,
         kind &= unwSelf.mVerticalAlignment_property_selection.kind ()
         kind &= unwSelf.mLayer_property_selection.kind ()
         kind &= unwSelf.mRotation_property_selection.kind ()
+        kind &= unwSelf.mWeight_property_selection.kind ()
+        kind &= unwSelf.mOblique_property_selection.kind ()
         kind &= g_Preferences!.frontSideLegendColorForBoard_property_selection.kind ()
         kind &= g_Preferences!.frontSideLayoutColorForBoard_property_selection.kind ()
         kind &= g_Preferences!.backSideLayoutColorForBoard_property_selection.kind ()
@@ -334,9 +388,9 @@ class BoardText : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mLayer_property_selection, unwSelf.mRotation_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12)) :
-            return .single (transient_BoardText_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mLayer_property_selection, unwSelf.mRotation_property_selection, unwSelf.mWeight_property_selection, unwSelf.mOblique_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14)) :
+            return .single (transient_BoardText_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14))
           default :
             return .empty
           }
@@ -354,6 +408,8 @@ class BoardText : BoardObject,
     self.mVerticalAlignment_property.addEBObserver (self.objectDisplay_property)
     self.mLayer_property.addEBObserver (self.objectDisplay_property)
     self.mRotation_property.addEBObserver (self.objectDisplay_property)
+    self.mWeight_property.addEBObserver (self.objectDisplay_property)
+    self.mOblique_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
@@ -370,6 +426,8 @@ class BoardText : BoardObject,
         kind &= unwSelf.mVerticalAlignment_property_selection.kind ()
         kind &= unwSelf.mLayer_property_selection.kind ()
         kind &= unwSelf.mRotation_property_selection.kind ()
+        kind &= unwSelf.mWeight_property_selection.kind ()
+        kind &= unwSelf.mOblique_property_selection.kind ()
         kind &= g_Preferences!.frontSideLegendColorForBoard_property_selection.kind ()
         kind &= g_Preferences!.frontSideLayoutColorForBoard_property_selection.kind ()
         kind &= g_Preferences!.backSideLayoutColorForBoard_property_selection.kind ()
@@ -380,9 +438,9 @@ class BoardText : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mLayer_property_selection, unwSelf.mRotation_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12)) :
-            return .single (transient_BoardText_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mLayer_property_selection, unwSelf.mRotation_property_selection, unwSelf.mWeight_property_selection, unwSelf.mOblique_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14)) :
+            return .single (transient_BoardText_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14))
           default :
             return .empty
           }
@@ -400,6 +458,8 @@ class BoardText : BoardObject,
     self.mVerticalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.mLayer_property.addEBObserver (self.selectionDisplay_property)
     self.mRotation_property.addEBObserver (self.selectionDisplay_property)
+    self.mWeight_property.addEBObserver (self.selectionDisplay_property)
+    self.mOblique_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.frontSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
@@ -444,6 +504,8 @@ class BoardText : BoardObject,
     self.mVerticalAlignment_property.removeEBObserver (self.objectDisplay_property)
     self.mLayer_property.removeEBObserver (self.objectDisplay_property)
     self.mRotation_property.removeEBObserver (self.objectDisplay_property)
+    self.mWeight_property.removeEBObserver (self.objectDisplay_property)
+    self.mOblique_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.backSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
@@ -457,6 +519,8 @@ class BoardText : BoardObject,
     self.mVerticalAlignment_property.removeEBObserver (self.selectionDisplay_property)
     self.mLayer_property.removeEBObserver (self.selectionDisplay_property)
     self.mRotation_property.removeEBObserver (self.selectionDisplay_property)
+    self.mWeight_property.removeEBObserver (self.selectionDisplay_property)
+    self.mOblique_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.frontSideLegendColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.frontSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
@@ -540,6 +604,22 @@ class BoardText : BoardObject,
       observerExplorer: &self.mRotation_property.mObserverExplorer,
       valueExplorer: &self.mRotation_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mWeight",
+      idx: self.mWeight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mWeight_property.mObserverExplorer,
+      valueExplorer: &self.mWeight_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mOblique",
+      idx: self.mOblique_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mOblique_property.mObserverExplorer,
+      valueExplorer: &self.mOblique_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "objectDisplay",
@@ -606,6 +686,12 @@ class BoardText : BoardObject,
   //--- Atomic property: mRotation
     self.mRotation_property.mObserverExplorer = nil
     self.mRotation_property.mValueExplorer = nil
+  //--- Atomic property: mWeight
+    self.mWeight_property.mObserverExplorer = nil
+    self.mWeight_property.mValueExplorer = nil
+  //--- Atomic property: mOblique
+    self.mOblique_property.mObserverExplorer = nil
+    self.mOblique_property.mValueExplorer = nil
   //--- To one property: mFont
     self.mFont_property.mObserverExplorer = nil
     self.mFont_property.mValueExplorer = nil
@@ -654,6 +740,10 @@ class BoardText : BoardObject,
     self.mVerticalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mVerticalAlignment")
   //--- Atomic property: mRotation
     self.mRotation_property.storeIn (dictionary: ioDictionary, forKey:"mRotation")
+  //--- Atomic property: mWeight
+    self.mWeight_property.storeIn (dictionary: ioDictionary, forKey:"mWeight")
+  //--- Atomic property: mOblique
+    self.mOblique_property.storeIn (dictionary: ioDictionary, forKey:"mOblique")
   }
 
   //····················································································································
@@ -698,6 +788,10 @@ class BoardText : BoardObject,
     self.mVerticalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mVerticalAlignment")
   //--- Atomic property: mRotation
     self.mRotation_property.readFrom (dictionary: inDictionary, forKey:"mRotation")
+  //--- Atomic property: mWeight
+    self.mWeight_property.readFrom (dictionary: inDictionary, forKey:"mWeight")
+  //--- Atomic property: mOblique
+    self.mOblique_property.readFrom (dictionary: inDictionary, forKey:"mOblique")
   }
 
   //····················································································································

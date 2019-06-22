@@ -23,6 +23,8 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
     self.removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mRotation_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mWeight_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mOblique_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_fontName_fromElementsOfSet (inRemovedSet) // Transient property
@@ -35,6 +37,8 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
     self.addEBObserversOf_mHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mVerticalAlignment_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mRotation_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mWeight_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mOblique_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_fontName_toElementsOfSet (inAddedSet) // Transient property
@@ -492,6 +496,120 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mRotation_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mWeight' stored property
+  //····················································································································
+
+  private var mObserversOf_mWeight = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mWeight (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mWeight.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mWeight_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mWeight (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mWeight.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mWeight_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mWeight_toElementsOfSet (_ inSet : Set<BoardText>) {
+    for managedObject in inSet {
+      self.mObserversOf_mWeight.apply { (_ observer : EBEvent) in
+        managedObject.mWeight_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mWeight_fromElementsOfSet (_ inSet : Set<BoardText>) {
+    self.mObserversOf_mWeight.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mWeight_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mOblique' stored property
+  //····················································································································
+
+  private var mObserversOf_mOblique = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mOblique (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mOblique.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mOblique_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mOblique (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mOblique.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mOblique_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mOblique_toElementsOfSet (_ inSet : Set<BoardText>) {
+    for managedObject in inSet {
+      self.mObserversOf_mOblique.apply { (_ observer : EBEvent) in
+        managedObject.mOblique_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mOblique_fromElementsOfSet (_ inSet : Set<BoardText>) {
+    self.mObserversOf_mOblique.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mOblique_property.removeEBObserver (observer)
       }
     }
   }

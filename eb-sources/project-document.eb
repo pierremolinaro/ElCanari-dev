@@ -598,7 +598,7 @@ document ProjectDocument root ProjectRoot {
   outlet EBTextField mBoardTextTextField $value #boardTextSelectionController.mText {sendContinously : yes} ;
 
   outlet EBDoubleField mBoardTextFontSizeField
-    $value #boardTextSelectionController.mFontSize {sendContinously : yes, autoFormatter : yes}
+    $value #boardTextSelectionController.mFontSize {sendContinously : no, autoFormatter : no}
   ;
 
   outlet EBPopUpButton mBoardTextLayerPopUpButton $selectedIndex #boardTextSelectionController.mLayer ;
@@ -616,8 +616,11 @@ document ProjectDocument root ProjectRoot {
   
   outlet CanariBoardTextFontPopUpButton mBoardTextFontPopUpButton ;
   
-//  outlet EBTextObserverField mBoardTextFointNameTextField $valueObserver #boardTextSelectionController.fontName ;
-
+  outlet EBDoubleField mBoardTextWeightTextField
+    $value #boardTextSelectionController.mWeight { sendContinously : no, autoFormatter: no}
+  ;
+  
+  outlet EBSwitch mBoardTextObliqueSwitch $value #boardTextSelectionController.mOblique ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

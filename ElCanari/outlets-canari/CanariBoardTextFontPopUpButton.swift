@@ -38,21 +38,21 @@ class CanariBoardTextFontPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   // MARK: -
   //····················································································································
 
-  private var mFontsModel : StoredArrayOf_FontInProject? = nil
-  private var mSelectionController : SelectionController_ProjectDocument_boardTextSelectionController? = nil
+  private var mFontsModel : ReadOnlyArrayOf_FontInProject? = nil
+  private var mSelectedObjects : ReadOnlyArrayOf_BoardText? = nil
   private var mObserver : EBOutletEvent? = nil
 
   //····················································································································
 
-  func register (fontsModel inFontsModel : StoredArrayOf_FontInProject,
-                 selectionController inSelectionController : SelectionController_ProjectDocument_boardTextSelectionController) {
+  func register (fontsModel inFontsModel : ReadOnlyArrayOf_FontInProject,
+                 selectionController inSelectedObjects : ReadOnlyArrayOf_BoardText) {
     self.mFontsModel = inFontsModel
-    self.mSelectionController = inSelectionController
+    self.mSelectedObjects = inSelectedObjects
     let observer = EBOutletEvent ()
     self.mObserver = observer
     observer.mEventCallBack = { self.buildPopUpButton () }
     inFontsModel.addEBObserverOf_mFontName (observer)
-    inSelectionController.selectedArray_property.addEBObserverOf_fontName (observer)
+    inSelectedObjects.addEBObserverOf_fontName (observer)
   }
 
   //····················································································································
@@ -61,11 +61,11 @@ class CanariBoardTextFontPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
     if let observer = self.mObserver {
       observer.mEventCallBack = nil
       self.mFontsModel?.removeEBObserverOf_mFontName (observer)
-      self.mSelectionController?.selectedArray_property.removeEBObserverOf_fontName (observer)
+      self.mSelectedObjects?.removeEBObserverOf_fontName (observer)
       self.mObserver = nil
     }
     self.mFontsModel = nil
-    self.mSelectionController = nil
+    self.mSelectedObjects = nil
   }
 
   //····················································································································
@@ -73,7 +73,7 @@ class CanariBoardTextFontPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   private func buildPopUpButton () {
     //Swift.print ("buildPopUpButton")
     var fontNameSet = Set <String> ()
-    if let selectedTexts = self.mSelectionController?.selectedArray {
+    if let selectedTexts = self.mSelectedObjects?.propval {
       for text in selectedTexts {
         if let fontName = text.fontName {
           fontNameSet.insert (fontName)
@@ -105,7 +105,7 @@ class CanariBoardTextFontPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   //····················································································································
 
   @objc private func changeFontAction (_ inSender : NSMenuItem) {
-    if let selectedTexts = self.mSelectionController?.selectedArray, let font = inSender.representedObject as? FontInProject {
+    if let selectedTexts = self.mSelectedObjects?.propval, let font = inSender.representedObject as? FontInProject {
       for text in selectedTexts {
         text.mFont = font
       }

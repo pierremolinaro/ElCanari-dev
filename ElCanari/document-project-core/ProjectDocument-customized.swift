@@ -235,7 +235,7 @@ fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "
   //---
     self.mBoardTextFontPopUpButton?.register (
       fontsModel: self.rootObject.mFonts_property,
-      selectionController: self.boardTextSelectionController
+      selectionController: self.boardTextSelectionController.selectedArray_property
     )
   }
 

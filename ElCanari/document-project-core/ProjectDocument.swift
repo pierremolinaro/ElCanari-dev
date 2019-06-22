@@ -446,10 +446,12 @@ import Cocoa
   @IBOutlet var mBoardTextHorizontalAlignmentPopUpButton : EBPopUpButton?
   @IBOutlet var mBoardTextInspectorView : CanariViewWithKeyView?
   @IBOutlet var mBoardTextLayerPopUpButton : EBPopUpButton?
+  @IBOutlet var mBoardTextObliqueSwitch : EBSwitch?
   @IBOutlet var mBoardTextRotationSlider : CanariAngleSlider?
   @IBOutlet var mBoardTextRotationTextField : CanariAngleTextField?
   @IBOutlet var mBoardTextTextField : EBTextField?
   @IBOutlet var mBoardTextVerticalAlignmentPopUpButton : EBPopUpButton?
+  @IBOutlet var mBoardTextWeightTextField : EBDoubleField?
   @IBOutlet var mBoardVerticalFlipSwitch : EBSwitch?
   @IBOutlet var mBoardView : EBGraphicView?
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
@@ -800,10 +802,12 @@ import Cocoa
     checkOutletConnection (self.mBoardTextHorizontalAlignmentPopUpButton, "mBoardTextHorizontalAlignmentPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardTextInspectorView, "mBoardTextInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardTextLayerPopUpButton, "mBoardTextLayerPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardTextObliqueSwitch, "mBoardTextObliqueSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardTextRotationSlider, "mBoardTextRotationSlider", CanariAngleSlider.self, #file, #line)
     checkOutletConnection (self.mBoardTextRotationTextField, "mBoardTextRotationTextField", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mBoardTextTextField, "mBoardTextTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mBoardTextVerticalAlignmentPopUpButton, "mBoardTextVerticalAlignmentPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardTextWeightTextField, "mBoardTextWeightTextField", EBDoubleField.self, #file, #line)
     checkOutletConnection (self.mBoardVerticalFlipSwitch, "mBoardVerticalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardView, "mBoardView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
@@ -1366,12 +1370,14 @@ import Cocoa
     self.mFrontRestrictRectangleSwitch?.bind_value (self.restrictRectangleSelectionController.mIsInFrontLayer_property, file: #file, line: #line)
     self.mBackRestrictRectangleSwitch?.bind_value (self.restrictRectangleSelectionController.mIsInBackLayer_property, file: #file, line: #line)
     self.mBoardTextTextField?.bind_value (self.boardTextSelectionController.mText_property, file: #file, line: #line, sendContinously:true)
-    self.mBoardTextFontSizeField?.bind_value (self.boardTextSelectionController.mFontSize_property, file: #file, line: #line, sendContinously:true, autoFormatter:true)
+    self.mBoardTextFontSizeField?.bind_value (self.boardTextSelectionController.mFontSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.mBoardTextLayerPopUpButton?.bind_selectedIndex (self.boardTextSelectionController.mLayer_property, file: #file, line: #line)
     self.mBoardTextHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.boardTextSelectionController.mHorizontalAlignment_property, file: #file, line: #line)
     self.mBoardTextVerticalAlignmentPopUpButton?.bind_selectedIndex (self.boardTextSelectionController.mVerticalAlignment_property, file: #file, line: #line)
     self.mBoardTextRotationTextField?.bind_angle (self.boardTextSelectionController.mRotation_property, file: #file, line: #line)
     self.mBoardTextRotationSlider?.bind_angle (self.boardTextSelectionController.mRotation_property, file: #file, line: #line)
+    self.mBoardTextWeightTextField?.bind_value (self.boardTextSelectionController.mWeight_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
+    self.mBoardTextObliqueSwitch?.bind_value (self.boardTextSelectionController.mOblique_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1882,6 +1888,8 @@ import Cocoa
     self.mBoardTextVerticalAlignmentPopUpButton?.unbind_selectedIndex ()
     self.mBoardTextRotationTextField?.unbind_angle ()
     self.mBoardTextRotationSlider?.unbind_angle ()
+    self.mBoardTextWeightTextField?.unbind_value ()
+    self.mBoardTextObliqueSwitch?.unbind_value ()
   //--------------------------- Unbind multiple bindings
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -2092,10 +2100,12 @@ import Cocoa
     self.mBoardTextHorizontalAlignmentPopUpButton?.ebCleanUp ()
     self.mBoardTextInspectorView?.ebCleanUp ()
     self.mBoardTextLayerPopUpButton?.ebCleanUp ()
+    self.mBoardTextObliqueSwitch?.ebCleanUp ()
     self.mBoardTextRotationSlider?.ebCleanUp ()
     self.mBoardTextRotationTextField?.ebCleanUp ()
     self.mBoardTextTextField?.ebCleanUp ()
     self.mBoardTextVerticalAlignmentPopUpButton?.ebCleanUp ()
+    self.mBoardTextWeightTextField?.ebCleanUp ()
     self.mBoardVerticalFlipSwitch?.ebCleanUp ()
     self.mBoardView?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
@@ -2317,10 +2327,12 @@ import Cocoa
 //    self.mBoardTextHorizontalAlignmentPopUpButton = nil
 //    self.mBoardTextInspectorView = nil
 //    self.mBoardTextLayerPopUpButton = nil
+//    self.mBoardTextObliqueSwitch = nil
 //    self.mBoardTextRotationSlider = nil
 //    self.mBoardTextRotationTextField = nil
 //    self.mBoardTextTextField = nil
 //    self.mBoardTextVerticalAlignmentPopUpButton = nil
+//    self.mBoardTextWeightTextField = nil
 //    self.mBoardVerticalFlipSwitch = nil
 //    self.mBoardView = nil
 //    self.mChangeComponentValueComboxBox = nil

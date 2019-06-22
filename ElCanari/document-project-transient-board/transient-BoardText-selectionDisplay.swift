@@ -23,6 +23,8 @@ func transient_BoardText_selectionDisplay (
        _ self_mVerticalAlignment : BoardTextVerticalAlignment,
        _ self_mLayer : BoardTextLayer,     
        _ self_mRotation : Int,             
+       _ self_mWeight : Double,            
+       _ self_mOblique : Bool,             
        _ prefs_frontSideLegendColorForBoard : NSColor,
        _ prefs_frontSideLayoutColorForBoard : NSColor,
        _ prefs_backSideLayoutColorForBoard : NSColor,
@@ -38,7 +40,9 @@ func transient_BoardText_selectionDisplay (
           self_mHorizontalAlignment,
           self_mVerticalAlignment,
           self_mLayer,
-          self_mRotation
+          self_mRotation,
+          self_mWeight,
+          self_mOblique
         )
         let textColor : NSColor
         switch self_mLayer {
