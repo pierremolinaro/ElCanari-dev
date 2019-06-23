@@ -43,62 +43,62 @@ extension String {
   //····················································································································
   // https://books.google.fr/books?id=uMfFHpNpWQsC&pg=SA10-PA61&lpg=SA10-PA61&dq=SpeedometerView+cocoa&source=bl&ots=gMHeJzL9x4&sig=YYjlnoQdCFmBfQmavu8iky5OaJ8&hl=fr&sa=X&ved=2ahUKEwiLju73lObeAhVLzIUKHes2DPsQ6AEwBnoECAQQAQ#v=onepage&q=SpeedometerView%20cocoa&f=false
 
-//  func bezier (withFont inFont : NSFont, origin inOrigin : NSPoint) -> NSBezierPath {
-//    let textStorage = NSTextStorage (string: self)
-//    let textContainer = NSTextContainer ()
-//    let layout = NSLayoutManager ()
-//    layout.addTextContainer (textContainer)
-//    textStorage.addLayoutManager (layout)
-//    textStorage.font = inFont
-//    let bp = NSBezierPath ()
-//    bp.move (to: inOrigin)
-//    let range = layout.glyphRange (for: textContainer)
-//    let cgGlyphBuffer = UnsafeMutablePointer<CGGlyph>.allocate (capacity: range.length)
-//    let glyphLength = layout.getGlyphs (
-//      in: range,
-//      glyphs: cgGlyphBuffer,
-//      properties: nil,
-//      characterIndexes: nil,
-//      bidiLevels: nil
-//    )
-//    let nsGlyphBuffer = UnsafeMutablePointer<NSGlyph>.allocate (capacity: range.length)
-//    (0..<range.length).forEach { nsGlyphBuffer [$0] = NSGlyph (cgGlyphBuffer [$0]) }
-//    bp.appendGlyphs (nsGlyphBuffer, count: glyphLength, in: inFont)
-//    return bp
-//  }
+  func bezier (withFont inFont : NSFont, origin inOrigin : NSPoint) -> NSBezierPath {
+    let textStorage = NSTextStorage (string: self)
+    let textContainer = NSTextContainer ()
+    let layout = NSLayoutManager ()
+    layout.addTextContainer (textContainer)
+    textStorage.addLayoutManager (layout)
+    textStorage.font = inFont
+    let bp = NSBezierPath ()
+    bp.move (to: inOrigin)
+    let range = layout.glyphRange (for: textContainer)
+    let cgGlyphBuffer = UnsafeMutablePointer<CGGlyph>.allocate (capacity: range.length)
+    let glyphLength = layout.getGlyphs (
+      in: range,
+      glyphs: cgGlyphBuffer,
+      properties: nil,
+      characterIndexes: nil,
+      bidiLevels: nil
+    )
+    let nsGlyphBuffer = UnsafeMutablePointer<NSGlyph>.allocate (capacity: range.length)
+    (0..<range.length).forEach { nsGlyphBuffer [$0] = NSGlyph (cgGlyphBuffer [$0]) }
+    bp.appendGlyphs (nsGlyphBuffer, count: glyphLength, in: inFont)
+    return bp
+  }
 
   //····················································································································
 
-//  func bezierPath (at inOrigin : NSPoint,
-//                   withAttributes inTextAttributes : [NSAttributedString.Key : Any]) -> NSBezierPath {
-//  //--- Font
-//    let font : NSFont
-//    if let f = inTextAttributes [NSAttributedString.Key.font] as? NSFont {
-//      font = f
-//    }else{
-//      font = NSFont ()
-//    }
-//  //--- Build text infrastructure
-//    let textStore = NSTextStorage (string: self, attributes: inTextAttributes)
-//    let textContainer = NSTextContainer ()
-//    let myLayout = NSLayoutManager ()
-//    myLayout.addTextContainer (textContainer)
-//    textStore.addLayoutManager (myLayout)
-//  //--- Get CCGlyph array
-//    let glyphRange : NSRange = myLayout.glyphRange (for: textContainer)
-//    var cgGlyphArray = [CGGlyph] (repeating: CGGlyph (), count:glyphRange.length)
-//    _ = myLayout.getGlyphs (in: glyphRange, glyphs: &cgGlyphArray, properties: nil, characterIndexes: nil, bidiLevels: nil)
-//  //--- Transform in NSGlyph array
-//    var nsGlyphArray = [NSGlyph] ()
-//    for cgGlyph in cgGlyphArray {
-//      nsGlyphArray.append (NSGlyph (cgGlyph))
-//    }
-//  //--- Enter in Bezier path
-//    let bezier = NSBezierPath ()
-//    bezier.move (to: NSPoint (x: inOrigin.x, y: inOrigin.y - 2.0 * font.descender))
-//    bezier.appendGlyphs (&nsGlyphArray, count: glyphRange.length, in: font)
-//    return bezier
-//  }
+  func bezierPath (at inOrigin : NSPoint,
+                   withAttributes inTextAttributes : [NSAttributedString.Key : Any]) -> NSBezierPath {
+  //--- Font
+    let font : NSFont
+    if let f = inTextAttributes [NSAttributedString.Key.font] as? NSFont {
+      font = f
+    }else{
+      font = NSFont ()
+    }
+  //--- Build text infrastructure
+    let textStore = NSTextStorage (string: self, attributes: inTextAttributes)
+    let textContainer = NSTextContainer ()
+    let myLayout = NSLayoutManager ()
+    myLayout.addTextContainer (textContainer)
+    textStore.addLayoutManager (myLayout)
+  //--- Get CCGlyph array
+    let glyphRange : NSRange = myLayout.glyphRange (for: textContainer)
+    var cgGlyphArray = [CGGlyph] (repeating: CGGlyph (), count:glyphRange.length)
+    _ = myLayout.getGlyphs (in: glyphRange, glyphs: &cgGlyphArray, properties: nil, characterIndexes: nil, bidiLevels: nil)
+  //--- Transform in NSGlyph array
+    var nsGlyphArray = [NSGlyph] ()
+    for cgGlyph in cgGlyphArray {
+      nsGlyphArray.append (NSGlyph (cgGlyph))
+    }
+  //--- Enter in Bezier path
+    let bezier = NSBezierPath ()
+    bezier.move (to: NSPoint (x: inOrigin.x, y: inOrigin.y - 2.0 * font.descender))
+    bezier.appendGlyphs (&nsGlyphArray, count: glyphRange.length, in: font)
+    return bezier
+  }
 
   //····················································································································
 

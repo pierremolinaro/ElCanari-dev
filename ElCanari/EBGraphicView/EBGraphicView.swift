@@ -372,16 +372,11 @@ import Cocoa
     var newBounds = NSRect () // For including point (0, 0)
     newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
     newBounds = newBounds.union (self.mMinimumRectangle)
-//    if let clipView = self.superview as? NSClipView {
-////      let r = self.convert (clipView.documentVisibleRect, from: clipView)
-//      let r = clipView.documentVisibleRect
-//      newBounds = newBounds.union (r)
-//    }
     let currentBounds = self.bounds
     if currentBounds != newBounds {
-      // Swift.print ("updateViewFrameAndBounds change")
       self.frame.size = newBounds.size
       self.bounds = newBounds
+      self.setNeedsDisplay (self.frame)
       self.applyZoom (Int (s * 100.0))
     }
   }

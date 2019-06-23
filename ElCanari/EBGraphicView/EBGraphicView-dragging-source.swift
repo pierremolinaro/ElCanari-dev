@@ -72,10 +72,7 @@ extension EBGraphicView : NSDraggingSource {
     let hasVerticalFlip   : CGFloat = self.verticalFlip   ? -1.0 : 1.0
     var transform = AffineTransform ()
     transform.scale (x: self.actualScale * hasHorizontalFlip, y: self.actualScale * hasVerticalFlip)
-    transform.translate (
-      x: -displayShape.boundingBox.minX,
-      y: -displayShape.boundingBox.minY
-    )
+    transform.translate (x: -displayShape.boundingBox.minX, y: -displayShape.boundingBox.minY)
     let finalShape = displayShape.transformed (by: transform)
   //--- Build image
     let rect = finalShape.boundingBox
