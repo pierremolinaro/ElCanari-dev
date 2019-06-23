@@ -499,9 +499,6 @@ fileprivate class OCBezierPath : NSBezierPath, EBUserClassNameProtocol {
   required init? (coder : NSCoder) {
     super.init (coder: coder)
     noteObjectAllocation (self)
-//    self.lineWidth = 10.0
-//    self.lineCapStyle = .round
-//    self.lineJoinStyle = .round
   }
 
   //····················································································································
@@ -509,9 +506,6 @@ fileprivate class OCBezierPath : NSBezierPath, EBUserClassNameProtocol {
   override init () {
     super.init ()
     noteObjectAllocation (self)
-//    self.lineWidth = 10.0
-//    self.lineCapStyle = .round
-//    self.lineJoinStyle = .round
   }
 
   //····················································································································
@@ -521,13 +515,37 @@ fileprivate class OCBezierPath : NSBezierPath, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  // https://stackoverflow.com/questions/1815568/how-can-i-convert-nsbezierpath-to-cgpath
+
+  public var cgPath : CGPath {
+    let path = CGMutablePath ()
+    var points = [CGPoint] (repeating: .zero, count: 3)
+    for idx in 0 ..< self.elementCount {
+      let type = self.element (at: idx, associatedPoints: &points)
+      switch type {
+      case .moveTo:
+        path.move (to: points[0])
+      case .lineTo:
+        path.addLine (to: points[0])
+      case .curveTo:
+        path.addCurve (to: points[2], control1: points[0], control2: points[1])
+      case .closePath:
+        path.closeSubpath ()
+      @unknown default:
+         ()
+      }
+    }
+    return path
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func CGPathCallback (_ info: UnsafeMutableRawPointer?, _ element : UnsafePointer<CGPathElement>) {
-  if let bezierPath : NSBezierPath = info?.load (as: NSBezierPath.self) {// (__bridge NSBezierPath *)info;
- // CGPoint *points = element->points;
+private func CGPathCallback (_ info : UnsafeMutableRawPointer?, _ element : UnsafePointer<CGPathElement>) {
+  if let bezierPath : NSBezierPath = info?.load (as: NSBezierPath.self) {
     let points = element.pointee.points
     switch element.pointee.type {
     case .moveToPoint:

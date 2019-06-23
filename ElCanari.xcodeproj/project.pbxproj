@@ -984,8 +984,6 @@
 		CF78DE98222D65CA00E89DCA /* transient-SlavePadInDevice-padNumberDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE90222D65CA00E89DCA /* transient-SlavePadInDevice-padNumberDisplay.swift */; };
 		CF7A9E3B21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */; };
 		CF7A9E3C21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */; };
-		CF7A9F2221BDA09900AC0FC7 /* extension-CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2121BDA09900AC0FC7 /* extension-CGPath.swift */; };
-		CF7A9F2321BDA09900AC0FC7 /* extension-CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2121BDA09900AC0FC7 /* extension-CGPath.swift */; };
 		CF7A9F2521BDB0A400AC0FC7 /* extension-Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */; };
 		CF7A9F2621BDB0A400AC0FC7 /* extension-Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */; };
 		CF7A9F2B21BDB2B000AC0FC7 /* extension-NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2A21BDB2B000AC0FC7 /* extension-NSObject.swift */; };
@@ -2554,7 +2552,6 @@
 		CF78DE8F222D65CA00E89DCA /* transient-SlavePadInDevice-frontSideFilledBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SlavePadInDevice-frontSideFilledBezierPath.swift"; sourceTree = "<group>"; };
 		CF78DE90222D65CA00E89DCA /* transient-SlavePadInDevice-padNumberDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SlavePadInDevice-padNumberDisplay.swift"; sourceTree = "<group>"; };
 		CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifyingGlass.png; sourceTree = "<group>"; };
-		CF7A9F2121BDA09900AC0FC7 /* extension-CGPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGPath.swift"; sourceTree = "<group>"; };
 		CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-Data.swift"; sourceTree = "<group>"; };
 		CF7A9F2A21BDB2B000AC0FC7 /* extension-NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-NSObject.swift"; sourceTree = "<group>"; };
 		CF7A9F2D21BDB35D00AC0FC7 /* extension-NSControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-NSControl.swift"; sourceTree = "<group>"; };
@@ -3392,7 +3389,6 @@
 		CF35A54121A8257D00A0E500 /* Swift Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CF7A9F2121BDA09900AC0FC7 /* extension-CGPath.swift */,
 				CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */,
 				CF35A54421A825BC00A0E500 /* extension-CGRect-NSRect.swift */,
 				CFA0F3712284870500237022 /* extension-CGSize-NSSize.swift */,
@@ -5596,7 +5592,6 @@
 				CFA1AA17223265E30023928C /* entity-SymbolPinTypeInDevice.swift in Sources */,
 				CF1D9C8421BBF4EE00FFF459 /* EBGraphicView-placards.swift in Sources */,
 				CFA43081229AEB96000AA8C8 /* toone-DeviceMasterPadInProject.swift in Sources */,
-				CF7A9F2221BDA09900AC0FC7 /* extension-CGPath.swift in Sources */,
 				CF6B330021C93A2400E3B985 /* selectionController-PackageDocument-mPackageDimensionSelectionController.swift in Sources */,
 				CFEAAD5822317C0300F69A12 /* transient-SymbolOval-strokeBezierPath.swift in Sources */,
 				CFCC4AF31BF2732D00EFB30A /* action-CanariLibraryEntry-revealLibraryInFinderAction.swift in Sources */,
@@ -6546,7 +6541,6 @@
 				CF1D9C8521BBF4EE00FFF459 /* EBGraphicView-placards.swift in Sources */,
 				CFA430CD229AED07000AA8C8 /* tomany-CanariLibraryEntry.swift in Sources */,
 				CFA42FC1229AEB0A000AA8C8 /* toone-BoardModelPad.swift in Sources */,
-				CF7A9F2321BDA09900AC0FC7 /* extension-CGPath.swift in Sources */,
 				CFEAAD5922317C0300F69A12 /* transient-SymbolOval-strokeBezierPath.swift in Sources */,
 				CF7E69F8228219F80024233A /* extension-LabelInSchematic.swift in Sources */,
 				CF9D4BB3227F79A9006E2035 /* transient-SheetInProject-connexionErrors.swift in Sources */,
