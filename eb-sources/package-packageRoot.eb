@@ -190,7 +190,7 @@ graphic entity PackageArc : PackageObject {
   property @signature Int startTangentUnit default 2_286 ;
   property @signature Int endTangentUnit default 2_286 ;
 
-  transient NSBezierPath strokeBezierPath dependsFrom
+  transient EBBezierPath strokeBezierPath dependsFrom
      self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle,
      self.pathIsClosed, self.startTangent, self.endTangent
   ;

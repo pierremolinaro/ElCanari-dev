@@ -1173,7 +1173,7 @@ struct BezierPathArray : Hashable, Comparable, ValuePropertyProtocol {
     let archiver = NSKeyedArchiver (forWritingWith: data)
     var array = [NSBezierPath] ()
     for p in self.mPathes {
-      array.append (p.bezierPath)
+      array.append (p.nsBezierPath)
     }
     archiver.encode (array, forKey: NSKeyedArchiveRootObjectKey)
     archiver.finishEncoding ()
@@ -1902,6 +1902,12 @@ typealias EBReadOnlyPropertyArray_CanariMenuItemListClass  = EBReadOnlyClassProp
 typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassProperty <[CanariMenuItemListClass]>
 
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property EBBezierPath
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_EBBezierPath  = EBReadOnlyValueProperty <EBBezierPath>
+typealias EBTransientProperty_EBBezierPath = EBTransientValueProperty <EBBezierPath>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property BoardFontDescriptor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

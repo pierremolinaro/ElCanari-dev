@@ -970,7 +970,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  var strokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  var strokeBezierPath_property_selection : EBSelection <EBBezierPath?> {
     if let model = self.propval {
       switch (model.strokeBezierPath_property_selection) {
       case .empty :

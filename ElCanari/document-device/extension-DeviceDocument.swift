@@ -129,11 +129,11 @@ extension DeviceDocument {
     if let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: inData),
        let version = metadataDictionary [PMPackageVersion] as? Int,
        let packageRoot = rootObject as? PackageRoot {
-      let strokeBezierPathes = NSBezierPath ()
+      var strokeBezierPathes = EBBezierPath ()
       var masterPads = [MasterPadInDevice] ()
       packageRoot.accumulate (
         withUndoManager: self.ebUndoManager,
-        strokeBezierPathes: strokeBezierPathes,
+        strokeBezierPathes: &strokeBezierPathes,
         masterPads: &masterPads
       )
       packageRoot.removeRecursivelyAllRelationsShips ()
@@ -142,7 +142,7 @@ extension DeviceDocument {
       package.mVersion = version
       package.mName = inName
       package.mFileData = inData
-      package.mStrokeBezierPath = strokeBezierPathes
+      package.mStrokeBezierPath = strokeBezierPathes.nsBezierPath
       package.mMasterPads_property.setProp (masterPads)
       self.rootObject.mPackages_property.add (package)
       self.updatePadProxies ()
@@ -168,18 +168,18 @@ extension DeviceDocument {
           if version <= package.mVersion {
             ioOkMessages.append ("Package \(package.mName) is up-to-date.")
           }else{
-            let strokeBezierPathes = NSBezierPath ()
+            var strokeBezierPathes = EBBezierPath ()
             var masterPads = [MasterPadInDevice] ()
             packageRoot.accumulate (
               withUndoManager: self.ebUndoManager,
-              strokeBezierPathes: strokeBezierPathes,
+              strokeBezierPathes: &strokeBezierPathes,
               masterPads: &masterPads
             )
         //    packageRoot.removeRecursivelyAllRelationsShips ()
           //-- Set properties
             package.mVersion = version
             package.mFileData = data
-            package.mStrokeBezierPath = strokeBezierPathes
+            package.mStrokeBezierPath = strokeBezierPathes.nsBezierPath
           //--- Set relationship
             let oldMasterPads = package.mMasterPads_property.propval
             package.mMasterPads_property.setProp (masterPads)

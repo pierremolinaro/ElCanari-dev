@@ -37,7 +37,7 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
-  var bezierPath : NSBezierPath { // § TEMP
+  var nsBezierPath : NSBezierPath { // § TEMP
     return self.mPath.copy () as! OCBezierPath
   }
 
@@ -332,6 +332,15 @@ struct EBBezierPath : Hashable {
       self.mPath = self.mPath.copy () as! OCBezierPath
     }
     self.mPath.append (inBezierPath)
+  }
+
+  //····················································································································
+
+  mutating func append (_ inBezierPath : EBBezierPath) {
+    if !isKnownUniquelyReferenced (&self.mPath) {
+      self.mPath = self.mPath.copy () as! OCBezierPath
+    }
+    self.mPath.append (inBezierPath.nsBezierPath)
   }
 
   //····················································································································

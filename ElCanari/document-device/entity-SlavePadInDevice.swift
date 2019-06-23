@@ -49,13 +49,13 @@ protocol SlavePadInDevice_mStyle : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SlavePadInDevice_frontSideFilledBezierPath : class {
-  var frontSideFilledBezierPath : NSBezierPath? { get }
+  var frontSideFilledBezierPath : EBBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SlavePadInDevice_backSideFilledBezierPath : class {
-  var backSideFilledBezierPath : NSBezierPath? { get }
+  var backSideFilledBezierPath : EBBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -241,17 +241,17 @@ class SlavePadInDevice : EBManagedObject,
   //   Transient property: frontSideFilledBezierPath
   //····················································································································
 
-  let frontSideFilledBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let frontSideFilledBezierPath_property = EBTransientProperty_EBBezierPath ()
 
   //····················································································································
 
-  var frontSideFilledBezierPath_property_selection : EBSelection <NSBezierPath> {
+  var frontSideFilledBezierPath_property_selection : EBSelection <EBBezierPath> {
     return self.frontSideFilledBezierPath_property.prop
   }
 
   //····················································································································
 
-  var frontSideFilledBezierPath : NSBezierPath? {
+  var frontSideFilledBezierPath : EBBezierPath? {
     switch self.frontSideFilledBezierPath_property_selection {
     case .empty, .multiple :
       return nil
@@ -264,17 +264,17 @@ class SlavePadInDevice : EBManagedObject,
   //   Transient property: backSideFilledBezierPath
   //····················································································································
 
-  let backSideFilledBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let backSideFilledBezierPath_property = EBTransientProperty_EBBezierPath ()
 
   //····················································································································
 
-  var backSideFilledBezierPath_property_selection : EBSelection <NSBezierPath> {
+  var backSideFilledBezierPath_property_selection : EBSelection <EBBezierPath> {
     return self.backSideFilledBezierPath_property.prop
   }
 
   //····················································································································
 
-  var backSideFilledBezierPath : NSBezierPath? {
+  var backSideFilledBezierPath : EBBezierPath? {
     switch self.backSideFilledBezierPath_property_selection {
     case .empty, .multiple :
       return nil

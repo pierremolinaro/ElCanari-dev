@@ -22,7 +22,7 @@ func transient_PackageArc_strokeBezierPath (
        _ self_pathIsClosed : Bool,          
        _ self_startTangent : Int,           
        _ self_endTangent : Int
-) -> NSBezierPath {
+) -> EBBezierPath {
 //--- START OF USER ZONE 2
   let center = CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint
   let radius = canariUnitToCocoa (self_radius)
@@ -39,7 +39,7 @@ func transient_PackageArc_strokeBezierPath (
     endTangentLength: endTangentLength,
     pathIsClosed: self_pathIsClosed
   )
-  return bp.bezierPath
+  return bp
 //--- END OF USER ZONE 2
 }
 

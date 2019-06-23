@@ -57,7 +57,7 @@ func transient_MasterPadInDevice_frontSideFilledBezierPathArray (
     array.append (bp)
     for slavePad in self_mSlavePads_frontSideFilledBezierPath {
       if let bp = slavePad.frontSideFilledBezierPath {
-        array.append (EBBezierPath (bp))
+        array.append (bp)
       }
     }
     return array

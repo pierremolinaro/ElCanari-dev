@@ -536,7 +536,7 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
 
   //····················································································································
 
-  var frontSideFilledBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  var frontSideFilledBezierPath_property_selection : EBSelection <EBBezierPath?> {
     if let model = self.propval {
       switch (model.frontSideFilledBezierPath_property_selection) {
       case .empty :
@@ -605,7 +605,7 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
 
   //····················································································································
 
-  var backSideFilledBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  var backSideFilledBezierPath_property_selection : EBSelection <EBBezierPath?> {
     if let model = self.propval {
       switch (model.backSideFilledBezierPath_property_selection) {
       case .empty :

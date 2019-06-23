@@ -85,7 +85,7 @@ protocol PackageArc_xCenter : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol PackageArc_strokeBezierPath : class {
-  var strokeBezierPath : NSBezierPath? { get }
+  var strokeBezierPath : EBBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -354,17 +354,17 @@ class PackageArc : PackageObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let strokeBezierPath_property = EBTransientProperty_EBBezierPath ()
 
   //····················································································································
 
-  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
+  var strokeBezierPath_property_selection : EBSelection <EBBezierPath> {
     return self.strokeBezierPath_property.prop
   }
 
   //····················································································································
 
-  var strokeBezierPath : NSBezierPath? {
+  var strokeBezierPath : EBBezierPath? {
     switch self.strokeBezierPath_property_selection {
     case .empty, .multiple :
       return nil

@@ -21,7 +21,7 @@ func transient_SlavePadInDevice_frontSideFilledBezierPath (
        _ self_mHoleDiameter : Int,                         
        _ self_mShape : PadShape,                           
        _ self_mStyle : SlavePadStyle
-) -> NSBezierPath {
+) -> EBBezierPath {
 //--- START OF USER ZONE 2
     let xCenter = canariUnitToCocoa (self_mCenterX)
     let yCenter = canariUnitToCocoa (self_mCenterY)
@@ -54,7 +54,7 @@ func transient_SlavePadInDevice_frontSideFilledBezierPath (
     case .bottomSide :
       bp = EBBezierPath ()
     }
-    return bp.bezierPath
+    return bp
 
 //--- END OF USER ZONE 2
 }

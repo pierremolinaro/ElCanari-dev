@@ -180,12 +180,12 @@ entity SlavePadInDevice {
   property @signature PadShape mShape default octo ;
   property @signature SlavePadStyle mStyle default traversing ;
 
-  transient NSBezierPath frontSideFilledBezierPath dependsFrom
+  transient EBBezierPath frontSideFilledBezierPath dependsFrom
      self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleDiameter,
      self.mShape, self.mStyle
   ;
 
-  transient NSBezierPath backSideFilledBezierPath dependsFrom
+  transient EBBezierPath backSideFilledBezierPath dependsFrom
      self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleDiameter,
      self.mShape, self.mStyle
   ;
