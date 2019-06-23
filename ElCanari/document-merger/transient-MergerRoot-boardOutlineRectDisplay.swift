@@ -24,7 +24,7 @@ func transient_MergerRoot_boardOutlineRectDisplay (
     if prefs_mergerBoardViewDisplayBoardLimits && !self_boardRect.isEmpty {
       let limitWidth = canariUnitToCocoa (self_boardLimitWidth)
       let r = self_boardRect.cocoaRect
-      let bp = NSBezierPath (rect: r.insetBy (dx: limitWidth / 2.0, dy: limitWidth / 2.0))
+      var bp = EBBezierPath (rect: r.insetBy (dx: limitWidth / 2.0, dy: limitWidth / 2.0))
       bp.lineWidth = limitWidth
       bp.lineJoinStyle = .round
       let boardLimits = EBStrokeBezierPathShape ([bp], prefs_mergerColorBoardLimits)

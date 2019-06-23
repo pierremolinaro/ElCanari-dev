@@ -1079,15 +1079,15 @@ struct BezierPathArray : Hashable, Comparable, ValuePropertyProtocol {
 
   //····················································································································
 
-  private var mPathes = [NSBezierPath] ()
+  private var mPathes = [EBBezierPath] ()
 
   //····················································································································
 
-  var array : [NSBezierPath] { return self.mPathes }
+  var array : [EBBezierPath] { return self.mPathes }
 
   //····················································································································
 
-  mutating func append (_ inBP : NSBezierPath) {
+  mutating func append (_ inBP : EBBezierPath) {
     if !inBP.isEmpty {
       self.mPathes.append (inBP)
     }
@@ -1095,7 +1095,7 @@ struct BezierPathArray : Hashable, Comparable, ValuePropertyProtocol {
 
   //····················································································································
 
-  mutating func append (_ inBezierPathArray : [NSBezierPath]) {
+  mutating func append (_ inBezierPathArray : [EBBezierPath]) {
     for bp in inBezierPathArray {
       if !bp.isEmpty {
         self.mPathes.append (bp)
@@ -1164,8 +1164,6 @@ struct BezierPathArray : Hashable, Comparable, ValuePropertyProtocol {
     archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
     archiver.finishEncoding ()
     return (data as Data).ebHashValue ()
-    // let data = NSKeyedArchiver.archivedData (withRootObject: self.mPathes)
-    // return data.ebHashValue ()
   }
 
   //····················································································································
@@ -1173,9 +1171,12 @@ struct BezierPathArray : Hashable, Comparable, ValuePropertyProtocol {
   func convertToNSObject () -> NSObject {
     let data = NSMutableData ()
     let archiver = NSKeyedArchiver (forWritingWith: data)
-    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+    var array = [NSBezierPath] ()
+    for p in self.mPathes {
+      array.append (p.bezierPath)
+    }
+    archiver.encode (array, forKey: NSKeyedArchiveRootObjectKey)
     archiver.finishEncoding ()
-    // let data = NSKeyedArchiver.archivedData (withRootObject: self.mPathes)
     return data
   }
   
@@ -1183,7 +1184,11 @@ struct BezierPathArray : Hashable, Comparable, ValuePropertyProtocol {
 
   static func convertFromNSObject (object : NSObject) -> BezierPathArray {
     let array = NSKeyedUnarchiver.unarchiveObject (with: object as! Data) as! [NSBezierPath]
-    return BezierPathArray (mPathes: array)
+    var result = BezierPathArray ()
+    for bp in array {
+      result.append (EBBezierPath (bp))
+    }
+    return result
   }
 
   //····················································································································

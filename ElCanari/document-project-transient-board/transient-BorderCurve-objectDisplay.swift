@@ -33,7 +33,7 @@ func transient_BorderCurve_objectDisplay (
            let width = self_mRoot_mBoardLimitsWidth {
           let p1 = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
           let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
-          var bp = NSBezierPath ()
+          var bp = EBBezierPath ()
           bp.move (to: p1)
           switch self_mShape {
           case .line :
@@ -50,7 +50,7 @@ func transient_BorderCurve_objectDisplay (
         //---
           let s = BOARD_LIMITS_KNOB_SIZE / 2.0
           let r1 = NSRect (x: p1.x - s / 2.0, y: p1.y - s / 2.0, width: s, height: s)
-          bp = NSBezierPath (ovalIn: r1)
+          bp = EBBezierPath (ovalIn: r1)
           let r2 = NSRect (x: p2.x - s / 2.0, y: p2.y - s / 2.0, width: s, height: s)
           bp.appendOval (in: r2)
           result.append (EBFilledBezierPathShape ([bp], .orange))
@@ -58,7 +58,7 @@ func transient_BorderCurve_objectDisplay (
 //          let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1).cocoaPoint
 //          let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2).cocoaPoint
 //          let rp1 = NSRect (x: cp1.x - s / 2.0, y: cp1.y - s / 2.0, width: s, height: s)
-//          bp = NSBezierPath (ovalIn: rp1)
+//          bp = EBBezierPath (ovalIn: rp1)
 //          let rp2 = NSRect (x: cp2.x - s / 2.0, y: cp2.y - s / 2.0, width: s, height: s)
 //          bp.appendOval (in: rp2)
 //          result.append (EBFilledBezierPathShape ([bp], .red))

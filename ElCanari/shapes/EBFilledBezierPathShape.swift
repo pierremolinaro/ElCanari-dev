@@ -9,14 +9,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBFilledBezierPathShape : EBShape {
-  private var mFilledPaths : [NSBezierPath]
+  private var mFilledPaths : [EBBezierPath]
   private let mColor : NSColor?
 
   //····················································································································
   //  Init
   //····················································································································
 
-  init (_ inPaths : [NSBezierPath], _ inColor : NSColor?) {
+  init (_ inPaths : [EBBezierPath], _ inColor : NSColor?) {
     mColor = inColor
     mFilledPaths = []
     for path in inPaths {
@@ -32,12 +32,9 @@ class EBFilledBezierPathShape : EBShape {
   //····················································································································
 
   override func transformed (by inAffineTransform : AffineTransform) -> EBFilledBezierPathShape {
-    var paths = [NSBezierPath] ()
+    var paths = [EBBezierPath] ()
     for path in self.mFilledPaths {
-      let bp = path.copy () as! NSBezierPath
-      bp.transform (using: inAffineTransform)
-//      let bp = inAffineTransform.transform (path)
-      paths.append (bp)
+      paths.append (path.transformed(by: inAffineTransform))
     }
     let result = EBFilledBezierPathShape (paths, self.mColor)
     self.internalTransform (result, by: inAffineTransform)
@@ -48,9 +45,10 @@ class EBFilledBezierPathShape : EBShape {
   //  Draw Rect
   //····················································································································
 
-  override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
+  override func draw (_ inView : NSView, _ inDirtyRect : NSRect) {
     if let color = self.mColor {
       color.setFill ()
+      // Swift.print ("self.mFilledPaths \(self.mFilledPaths.count)")
       for bp in self.mFilledPaths {
         if !bp.isEmpty && inView.needsToDraw (bp.bounds) {
           bp.fill ()
@@ -99,7 +97,7 @@ class EBFilledBezierPathShape : EBShape {
     var idx = 0
     while (idx < self.mFilledPaths.count) && !result {
       if !self.mFilledPaths [idx].isEmpty && self.mFilledPaths [idx].bounds.intersects (inRect) {
-        result = inRect.intersectsFilledBezierPath (self.mFilledPaths [idx])
+        result = self.mFilledPaths [idx].intersects (rect: inRect)
       }
       idx += 1
     }

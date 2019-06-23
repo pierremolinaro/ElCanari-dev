@@ -20,7 +20,7 @@ func transient_PackageGuide_objectDisplay (
        _ self_y2 : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let bp = NSBezierPath ()
+  var bp = EBBezierPath ()
   bp.move (to: CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
   bp.line (to: CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
   bp.lineWidth = 0.5

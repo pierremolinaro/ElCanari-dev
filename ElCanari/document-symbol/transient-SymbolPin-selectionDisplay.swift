@@ -28,7 +28,7 @@ func transient_SymbolPin_selectionDisplay (
     let pinPoint = NSPoint (x: canariUnitToCocoa (self_xPin), y: canariUnitToCocoa (self_yPin))
     let namePoint = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
     let numberPoint = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))
-    let bp = NSBezierPath ()
+    var bp = EBBezierPath ()
     bp.move (to: numberPoint)
     bp.line (to: pinPoint)
     bp.line (to: namePoint)

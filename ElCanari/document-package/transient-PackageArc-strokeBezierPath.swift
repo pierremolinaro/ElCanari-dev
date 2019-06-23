@@ -30,7 +30,7 @@ func transient_PackageArc_strokeBezierPath (
   let endTangentLength = canariUnitToCocoa (self_endTangent)
   let startAngle = CGFloat (self_startAngle) / 1000.0
   let arcAngle = CGFloat (self_arcAngle) / 1000.0
-  let bp = NSBezierPath (
+  let bp = EBBezierPath (
     arcWithTangentFromCenter: center,
     radius: radius,
     startAngleInDegrees: startAngle,
@@ -39,7 +39,7 @@ func transient_PackageArc_strokeBezierPath (
     endTangentLength: endTangentLength,
     pathIsClosed: self_pathIsClosed
   )
-  return bp
+  return bp.bezierPath
 //--- END OF USER ZONE 2
 }
 

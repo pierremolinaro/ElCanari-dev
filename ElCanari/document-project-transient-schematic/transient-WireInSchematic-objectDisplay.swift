@@ -35,7 +35,7 @@ func transient_WireInSchematic_objectDisplay (
 //        }
       //---
         do{
-          let bp = NSBezierPath ()
+          var bp = EBBezierPath ()
           bp.move (to: p1.cocoaPoint)
           bp.line (to: p2.cocoaPoint)
           bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0

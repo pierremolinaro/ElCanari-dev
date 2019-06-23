@@ -30,7 +30,7 @@ func transient_PackageArc_selectionDisplay (
     let endTangentLength = canariUnitToCocoa (self_endTangent)
     let startAngle = CGFloat (self_startAngle) / 1000.0
     let arcAngle = CGFloat (self_arcAngle) / 1000.0
-    let bp = NSBezierPath (
+    var bp = EBBezierPath (
       arcWithTangentFromCenter: center,
       radius: radius,
       startAngleInDegrees: startAngle,

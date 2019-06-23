@@ -17,7 +17,7 @@ func transient_SheetInProject_connectedPoints (
        _ self_mPoints_connectedPoints : [PointInSchematic_connectedPoints]
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let bp = NSBezierPath ()
+        var bp = EBBezierPath ()
         for object in self_mPoints_connectedPoints {
           if let a = object.connectedPoints {
             for point in a {

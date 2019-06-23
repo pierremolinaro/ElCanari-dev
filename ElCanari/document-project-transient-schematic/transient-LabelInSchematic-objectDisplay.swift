@@ -23,7 +23,7 @@ func transient_LabelInSchematic_objectDisplay (
 //--- START OF USER ZONE 2
         let shape = EBShape ()
         if let p = self_mPoint_location?.cocoaPoint {
-          let bp = NSBezierPath ()
+          var bp = EBBezierPath ()
           bp.move (to: NSPoint (x: 0.0, y: 0.0))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: 0.0))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 3.0, y: SCHEMATIC_LABEL_SIZE))
@@ -35,13 +35,13 @@ func transient_LabelInSchematic_objectDisplay (
           bp.lineJoinStyle = .round
           bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
         //---
-          let af = NSAffineTransform ()
-          af.translateX (by: p.x, yBy: p.y)
+          var af = AffineTransform ()
+          af.translate (x: p.x, y: p.y)
           af.rotate (byDegrees: CGFloat (self_mOrientation.rawValue) * 90.0)
-          let transformedBP = [af.transform (bp)]
+          let transformedBP = bp.transformed (by: af)
         //---
-          shape.append (EBFilledBezierPathShape (transformedBP, nil))
-          shape.append (EBStrokeBezierPathShape (transformedBP, prefs_symbolColorForSchematic))
+          shape.append (EBFilledBezierPathShape ([transformedBP], nil))
+          shape.append (EBStrokeBezierPathShape ([transformedBP], prefs_symbolColorForSchematic))
         //--- Net name
           let labelOrigin = af.transform (NSPoint (x: SCHEMATIC_LABEL_SIZE * 8.0, y: 0.0))
           let textAttributes : [NSAttributedString.Key : Any] = [

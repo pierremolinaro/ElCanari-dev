@@ -47,8 +47,8 @@ func transient_NCInSchematic_selectionDisplay (
         ]
         let textShape = EBTextShape (NC_TITLE, point, textAttributes, horizontalAlignment, verticalAlignment)
       //--- Add line
-        let frameBP = NSBezierPath (rect: textShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
-        let line = NSBezierPath ()
+        var frameBP = EBBezierPath (rect: textShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
+        var line = EBBezierPath ()
         line.move (to: self_mPoint_location!.cocoaPoint)
         line.line (to: textShape.boundingBox.center)
         line.lineWidth = 0.5

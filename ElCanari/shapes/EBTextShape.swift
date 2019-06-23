@@ -14,7 +14,7 @@ class EBTextShape : EBShape {
 
   private let mFilledBezierPath : EBBezierPath
   private let mForeColor : NSColor
-  private let mBackColor : NSColor?
+  private let mOptionalBackColor : NSColor?
 
   //····················································································································
   //  Init
@@ -33,9 +33,9 @@ class EBTextShape : EBShape {
     }
   //--- Back Color
     if let c = inTextAttributes [NSAttributedString.Key.backgroundColor] as? NSColor {
-      mBackColor = c
+      mOptionalBackColor = c
     }else{
-      mBackColor = nil
+      mOptionalBackColor = nil
     }
   //--- Transform text into filled bezier path
     mFilledBezierPath = EBBezierPath (
@@ -53,7 +53,7 @@ class EBTextShape : EBShape {
   private init (_ inBezierPath : EBBezierPath, _ inForeColor : NSColor, _ inBackColor : NSColor?) {
     mFilledBezierPath = inBezierPath
     mForeColor = inForeColor
-    mBackColor = inBackColor
+    mOptionalBackColor = inBackColor
     super.init ()
   }
 
@@ -62,18 +62,18 @@ class EBTextShape : EBShape {
   //····················································································································
 
   override func transformed (by inAffineTransform : AffineTransform) -> EBTextShape {
-    let result = EBTextShape (self.mFilledBezierPath.transformed (by: inAffineTransform), self.mForeColor, self.mBackColor)
+    let result = EBTextShape (self.mFilledBezierPath.transformed (by: inAffineTransform), self.mForeColor, self.mOptionalBackColor)
     self.internalTransform (result, by: inAffineTransform)
     return result
   }
 
   //····················································································································
-  //  Draw Rect
+  //  Draw
   //····················································································································
 
-  override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
+  override func draw (_ inView : NSView, _ inDirtyRect : NSRect) {
     if inView.needsToDraw (self.mFilledBezierPath.bounds) {
-      if let backColor = self.mBackColor {
+      if let backColor = self.mOptionalBackColor {
         backColor.setFill ()
         NSBezierPath.fill (self.mFilledBezierPath.bounds)
       }
@@ -88,7 +88,8 @@ class EBTextShape : EBShape {
   //····················································································································
 
   override internal func internalBoundingBox () -> NSRect {
-    return self.mFilledBezierPath.isEmpty ? .null : self.mFilledBezierPath.bounds
+    return self.mFilledBezierPath.bounds
+//    return self.mFilledBezierPath.isEmpty ? .null : self.mFilledBezierPath.bounds
   }
 
   //····················································································································
@@ -126,7 +127,7 @@ class EBTextShape : EBShape {
     super.hash (into: &hasher)
     self.mFilledBezierPath.hash (into: &hasher)
     self.mForeColor.hash (into: &hasher)
-    self.mBackColor.hash (into: &hasher)
+    self.mOptionalBackColor.hash (into: &hasher)
   }
 
   //····················································································································
@@ -141,7 +142,7 @@ class EBTextShape : EBShape {
         equal = self.mForeColor == operand.mForeColor
       }
       if equal {
-        equal = self.mBackColor == operand.mBackColor
+        equal = self.mOptionalBackColor == operand.mOptionalBackColor
       }
       if equal {
         equal = super.isEqualToShape (operand)

@@ -53,7 +53,7 @@ func transient_PackageInDevice_objectDisplay (
       if e < 0.0 {
         r = r.insetBy (dx: e, dy: 0.0)
       }
-      var bp = NSBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
+      var bp = EBBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
       shape.append (EBFilledBezierPathShape ([bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!))
       bp.move (to: NSPoint (x: r.minX, y: nameOrigin.y))
       bp.line (to: NSPoint (x: r.maxX, y: nameOrigin.y))
@@ -85,7 +85,7 @@ func transient_PackageInDevice_objectDisplay (
       }
     //--- Package shape
       if self_mRoot_mShowPackages ?? false {
-        bp = NSBezierPath ()
+        bp = EBBezierPath ()
         bp.append (self_mStrokeBezierPath)
         bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
         bp.lineCapStyle = .round

@@ -51,14 +51,14 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
            vMarks = 8
         }
       //---
-        let filledBP = NSBezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT, height: A4Height))
+        var filledBP = EBBezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT, height: A4Height))
         filledBP.appendRect (NSRect (x: OFFSET, y: A4Height - SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: A4Width, height: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT))
         filledBP.appendRect (NSRect (x: A4Width - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: OFFSET, width: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT, height: A4Height))
         filledBP.appendRect (NSRect (x: OFFSET, y: OFFSET, width: A4Width, height: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT))
         filledBP.appendRect (NSRect (x: A4Width - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT - LEFT_COLUMN - RIGHT_COLUMN + OFFSET, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: LEFT_COLUMN + RIGHT_COLUMN, height: LINE_HEIGHT * 3.0))
         shape.append (EBFilledBezierPathShape ([filledBP], .white))
       //---
-        let bp = NSBezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: A4Width, height: A4Height))
+        var bp = EBBezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: A4Width, height: A4Height))
         bp.appendRect (NSRect (x: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: A4Width - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT * 2.0, height: A4Height - SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT * 2.0))
         bp.move (to: NSPoint (x: A4Width - LEFT_COLUMN - RIGHT_COLUMN - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
         bp.relativeLine (to: NSPoint (x: 0.0, y: LINE_HEIGHT * 3.0))

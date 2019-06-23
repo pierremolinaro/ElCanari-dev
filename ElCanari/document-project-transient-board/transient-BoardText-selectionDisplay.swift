@@ -59,13 +59,10 @@ func transient_BoardText_selectionDisplay (
       //--- Background
         let shape = EBShape ()
         shape.append (EBFilledBezierPathShape ([frameBP], (textColor == .white) ? .lightGray : .white))
-        frameBP.lineWidth = 0.5
-        frameBP.lineCapStyle = .round
-        frameBP.lineJoinStyle = .round
         shape.append (EBStrokeBezierPathShape ([frameBP], .cyan))
         shape.append (textShape)
       //--- Rotation knob
-        let knobLine = NSBezierPath ()
+        var knobLine = EBBezierPath ()
         knobLine.move (to : origin)
         knobLine.line (to : rotationKnob)
         knobLine.lineWidth = 0.5

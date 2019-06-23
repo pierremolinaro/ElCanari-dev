@@ -238,13 +238,13 @@ extension MergerDocument {
         let horizontalMirror = product.horizontalMirror
         let filePath = inFilePath + "." + product.fileExtension + ".pdf"
         self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
-        var strokeBezierPaths = [NSBezierPath] ()
-        var filledBezierPaths = [NSBezierPath] ()
+        var strokeBezierPaths = [EBBezierPath] ()
+        var filledBezierPaths = [EBBezierPath] ()
         if product.drawInternalBoardLimits {
           for board in self.rootObject.boardInstances_property.propval {
             let lineWidth : CGFloat = canariUnitToCocoa (board.myModel_property.propval!.modelLimitWidth)
             let r : NSRect = board.instanceRect!.cocoaRect.insetBy (dx: lineWidth / 2.0, dy: lineWidth / 2.0)
-            let bp = NSBezierPath (rect:r)
+            var bp = EBBezierPath (rect:r)
             bp.lineWidth = lineWidth
             strokeBezierPaths.append (bp)
           }
@@ -252,7 +252,7 @@ extension MergerDocument {
         if product.drawBoardLimits {
           let boardLineWidth = canariUnitToCocoa (self.rootObject.boardLimitWidth)
           let r = cocoaBoardRect.insetBy (dx: boardLineWidth / 2.0, dy: boardLineWidth / 2.0)
-          let bp = NSBezierPath (rect:r)
+          var bp = EBBezierPath (rect:r)
           bp.lineWidth = boardLineWidth
           strokeBezierPaths.append (bp)
         }
@@ -427,7 +427,7 @@ extension MergerDocument {
               modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
-        var drillBezierPaths = [NSBezierPath] ()
+        var drillBezierPaths = [EBBezierPath] ()
         if product.drawPadHolesInPDF {
           let pdfHoleDiameter : CGFloat = canariUnitToCocoa (product.padHoleDiameterInPDF)
           for board in self.rootObject.boardInstances_property.propval {

@@ -5,11 +5,6 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate let SHOW_OBJECT_BOUNDING_BOXES = false
-fileprivate let SHOW_KNOB_BOUNDING_BOXES = false
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EBGraphicView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -19,49 +14,33 @@ extension EBGraphicView {
   // MARK: -
   //····················································································································
 
-  override func draw (_ inDirtyRect: NSRect) {
+  override func draw (_ inDirtyRect : NSRect) {
+    let dirtyRect = inDirtyRect // .insetBy (dx: -1.0, dy: -1.0)
     self.mBackColor.setFill ()
-    NSBezierPath.fill (inDirtyRect)
-    self.drawGrid (inDirtyRect)
-    self.mUnderObjectsDisplay.draw (self, inDirtyRect)
+    NSBezierPath.fill (dirtyRect)
+    self.drawGrid (dirtyRect)
+    self.mUnderObjectsDisplay.draw (self, dirtyRect)
     for object in self.objectDisplayArray {
-      object.draw (self, inDirtyRect)
+      object.draw (self, dirtyRect)
     }
-    self.mOverObjectsDisplay.draw (self, inDirtyRect)
+    self.mOverObjectsDisplay.draw (self, dirtyRect)
     for shape in self.selectionShapes {
-      shape.draw (self, inDirtyRect)
+      shape.draw (self, dirtyRect)
     }
-    self.drawIssue (inDirtyRect)
-    self.drawGuideBezierPath (inDirtyRect)
-    self.drawSelectionRectangle (inDirtyRect)
-  //--- DEBUG
-    if SHOW_OBJECT_BOUNDING_BOXES {
-      NSColor.black.setStroke ()
-      NSBezierPath.defaultLineWidth = 1.0
-      for shape in self.objectDisplayArray {
-        let r = shape.boundingBox.insetBy(dx: 0.5, dy: 0.5)
-        NSBezierPath.stroke (r)
-      }
-    }
-    if SHOW_KNOB_BOUNDING_BOXES {
-      NSColor.black.setStroke ()
-      NSBezierPath.defaultLineWidth = 1.0
-      for shape in self.selectionShapes {
-        let r = shape.boundingBox.insetBy(dx: 0.5, dy: 0.5)
-        NSBezierPath.stroke (r)
-      }
-    }
+    self.drawIssue (dirtyRect)
+    self.drawGuideBezierPath (dirtyRect)
+    self.drawSelectionRectangle (dirtyRect)
   }
 
   //····················································································································
 
-  fileprivate func drawGrid (_ inDirtyRect: NSRect) {
+  fileprivate func drawGrid (_ inDirtyRect : NSRect) {
     let r = inDirtyRect
     let gridDisplayStep = canariUnitToCocoa (self.mGridStepInCanariUnit) * CGFloat (self.mGridDisplayFactor)
     let startX = (r.origin.x / gridDisplayStep).rounded (.down) * gridDisplayStep
-    let endX = r.maxX
+    let endX = (r.maxX / gridDisplayStep + 1.0).rounded (.up) * gridDisplayStep
     let startY = (r.origin.y / gridDisplayStep).rounded (.down) * gridDisplayStep
-    let endY = r.maxY
+    let endY = (r.maxY / gridDisplayStep + 1.0).rounded (.up) * gridDisplayStep
     switch self.mGridStyle {
     case .noGrid :
       ()
@@ -155,8 +134,8 @@ extension EBGraphicView {
 
   internal func noteInvalidRectangles (old inOldShape : EBShape, new inNewShape : EBShape) {
     if inOldShape != inNewShape {
-      self.setNeedsDisplay (inNewShape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
-      self.setNeedsDisplay (inOldShape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
+      self.setNeedsDisplay (inNewShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
+      self.setNeedsDisplay (inOldShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
     }
   }
 
@@ -169,19 +148,19 @@ extension EBGraphicView {
     while idx < minCount {
       if !inNewShapes [idx].isEqualToShape (inOldShapes [idx]) {
         // Swift.print ("not equal")
-        self.setNeedsDisplay (inNewShapes [idx].boundingBox.insetBy(dx: -1.0, dy: -1.0))
-        self.setNeedsDisplay (inOldShapes [idx].boundingBox.insetBy(dx: -1.0, dy: -1.0))
+        self.setNeedsDisplay (inNewShapes [idx].boundingBox.insetBy (dx: -1.0, dy: -1.0))
+        self.setNeedsDisplay (inOldShapes [idx].boundingBox.insetBy (dx: -1.0, dy: -1.0))
       }
       idx += 1
     }
     while idx < inOldShapes.count {
       // Swift.print ("  old object \(idx)")
-      self.setNeedsDisplay (inOldShapes [idx].boundingBox.insetBy(dx: -1.0, dy: -1.0))
+      self.setNeedsDisplay (inOldShapes [idx].boundingBox.insetBy (dx: -1.0, dy: -1.0))
       idx += 1
     }
     while idx < inNewShapes.count {
       // Swift.print ("  new object \(idx)")
-      self.setNeedsDisplay (inNewShapes [idx].boundingBox.insetBy(dx: -1.0, dy: -1.0))
+      self.setNeedsDisplay (inNewShapes [idx].boundingBox.insetBy (dx: -1.0, dy: -1.0))
       idx += 1
     }
   }

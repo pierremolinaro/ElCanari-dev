@@ -22,7 +22,7 @@ func transient_PackageGuide_selectionDisplay (
 //--- START OF USER ZONE 2
   let p1 = CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
   let p2 = CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2))
-  let bp = NSBezierPath ()
+  var bp = EBBezierPath ()
   bp.move (to: p1)
   bp.line (to: p2)
   bp.lineWidth = 0.25

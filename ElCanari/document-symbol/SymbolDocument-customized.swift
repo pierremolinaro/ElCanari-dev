@@ -198,7 +198,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
       height: circleDiameter
     )
     let shape = EBShape ()
-    shape.append (EBFilledBezierPathShape ([NSBezierPath (ovalIn: circle)], g_Preferences?.symbolColor ?? NSColor.black))
+    shape.append (EBFilledBezierPathShape ([EBBezierPath (ovalIn: circle)], g_Preferences?.symbolColor ?? NSColor.black))
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: 12.0),
       NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black

@@ -57,7 +57,7 @@ func transient_BoardText_objectDisplay (
         }
         let textShape = EBStrokeBezierPathShape ([textBP], textColor)
       //--- Transparent background
-        let backgroundBP = NSBezierPath (rect:textShape.boundingBox)
+        let backgroundBP = EBBezierPath (rect: textShape.boundingBox)
         let shape = EBShape ()
         shape.append (EBFilledBezierPathShape ([backgroundBP], nil))
         shape.append (textShape)

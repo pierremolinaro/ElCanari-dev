@@ -320,8 +320,8 @@ fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "
         var af = AffineTransform ()
         af.scale (x: horizontalFlip, y: verticalFlip)
         let symbolShape = EBShape ()
-        symbolShape.append (EBFilledBezierPathShape ([filledBP], g_Preferences!.symbolColorForSchematic))
-        symbolShape.append (EBStrokeBezierPathShape ([strokeBP], g_Preferences!.symbolColorForSchematic))
+        symbolShape.append (EBFilledBezierPathShape ([EBBezierPath (filledBP)], g_Preferences!.symbolColorForSchematic))
+        symbolShape.append (EBStrokeBezierPathShape ([EBBezierPath (strokeBP)], g_Preferences!.symbolColorForSchematic))
         let scaledSymbolShape = symbolShape.transformed (by: af)
         result = buildPDFimage (frame: scaledSymbolShape.boundingBox, shape: scaledSymbolShape)
       }

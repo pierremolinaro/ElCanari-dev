@@ -22,7 +22,7 @@ func transient_SymbolSegment_objectDisplay (
        _ prefs_symbolDrawingWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let bp = NSBezierPath ()
+    var bp = EBBezierPath ()
     bp.move (to: CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
     bp.line (to: CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
     bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0

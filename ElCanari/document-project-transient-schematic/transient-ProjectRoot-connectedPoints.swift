@@ -20,8 +20,8 @@ func transient_ProjectRoot_connectedPoints (
 //--- START OF USER ZONE 2
         let shape = EBShape ()
       //--- Issues
-        let warningPath = NSBezierPath ()
-        let errorPath = NSBezierPath ()
+        var warningPath = EBBezierPath ()
+        var errorPath = EBBezierPath ()
         for issue in self_selectedSheetIssues {
           switch issue.kind {
           case .warning :
@@ -30,12 +30,12 @@ func transient_ProjectRoot_connectedPoints (
             errorPath.append (issue.path)
           }
         }
-        if warningPath.elementCount > 0 {
+        if !warningPath.isEmpty {
           // Color is F6C050
           let myOrange = NSColor (red: 0.961, green: 0.750, blue: 0.3125, alpha: 1.0)
           shape.append (EBFilledBezierPathShape ([warningPath], myOrange))
         }
-        if errorPath.elementCount > 0 {
+        if !errorPath.isEmpty {
           shape.append (EBFilledBezierPathShape ([errorPath], .red))
         }
       //--- Connected points

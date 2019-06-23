@@ -36,7 +36,7 @@ func transient_SymbolPin_objectDisplay (
       width: SYMBOL_GRID_IN_COCOA_UNIT * 2.0,
       height: SYMBOL_GRID_IN_COCOA_UNIT * 2.0
     )
-    let filledBP = NSBezierPath (ovalIn: pinRect)
+    let filledBP = EBBezierPath (ovalIn: pinRect)
     shape.append (EBFilledBezierPathShape ([filledBP], prefs_symbolColor))
   //--- Name
     let nameTextAttributes : [NSAttributedString.Key : Any] = [

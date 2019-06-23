@@ -25,7 +25,7 @@ func transient_SymbolOval_selectionDisplay (
   let y = canariUnitToCocoa (self_y)
   let width = canariUnitToCocoa (self_width)
   let height = canariUnitToCocoa (self_height)
-  let bp = NSBezierPath (ovalIn: NSRect (x: x, y:y, width: width, height: height))
+  var bp = EBBezierPath (ovalIn: NSRect (x: x, y:y, width: width, height: height))
   bp.lineWidth = 0.25
   shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
   shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_OVAL_BOTTOM, .circ, 2.0))

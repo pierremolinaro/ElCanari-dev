@@ -30,22 +30,22 @@ func transient_PackageZone_selectionDisplay (
     let y = canariUnitToCocoa (self_y)
     let width = canariUnitToCocoa (self_width)
     let height = canariUnitToCocoa (self_height)
-    let bp : NSBezierPath
+    var bp : EBBezierPath
     if (self_width <= 0) && (self_height <= 0) { // Oval is a point
-      bp = NSBezierPath ()
+      bp = EBBezierPath ()
       bp.move (to: NSPoint (x: x, y: y))
       bp.line (to: NSPoint (x: x, y: y))
     }else if self_width <= 0 { // Vertical line
-      bp = NSBezierPath ()
+      bp = EBBezierPath ()
       bp.move (to: NSPoint (x: x, y: y))
       bp.line (to: NSPoint (x: x, y: y + height))
     }else if self_height <= 0 { // Horizontal line
-      bp = NSBezierPath ()
+      bp = EBBezierPath ()
       bp.move (to: NSPoint (x: x, y: y))
       bp.line (to: NSPoint (x: x + width, y: y))
     }else{
       let r = CGRect (x: x, y: y, width: width, height: height)
-      bp = NSBezierPath (rect: r)
+      bp = EBBezierPath (rect: r)
     }
     bp.lineWidth = 0.25
     shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))

@@ -45,7 +45,7 @@ import Cocoa
 
   //····················································································································
 
-  override var isOpaque: Bool { return true }
+  override var isOpaque : Bool { return true }
 
   //····················································································································
   // MARK: -
@@ -241,7 +241,14 @@ import Cocoa
   // MARK: -
   //····················································································································
 
-  private var mObjectDisplayArray = [EBShape] ()
+  private var mObjectDisplayArray = [EBShape] () {
+    didSet {
+      if self.mObjectDisplayArray != oldValue {
+        self.noteInvalidRectangles (old: oldValue, new: self.mObjectDisplayArray)
+        self.updateViewFrameAndBounds ()
+      }
+    }
+  }
 
   //····················································································································
 
@@ -250,10 +257,7 @@ import Cocoa
   //····················································································································
 
   func updateObjectDisplay (_ inObjectDisplayArray : [EBShape]) {
-   //  Swift.print ("updateObjectDisplay")
-    self.noteInvalidRectangles (old: self.mObjectDisplayArray, new: inObjectDisplayArray)
     self.mObjectDisplayArray = inObjectDisplayArray
-    self.updateViewFrameAndBounds ()
   }
 
   //····················································································································

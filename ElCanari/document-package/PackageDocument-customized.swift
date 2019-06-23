@@ -211,13 +211,13 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   fileprivate func imageForAddGuideButton () ->  NSImage? {
     let shape = EBShape ()
     let r = NSRect (x: 0.0, y: 0.0, width: 40.0, height: 40.0)
-    let bp1 = NSBezierPath ()
+    var bp1 = EBBezierPath ()
     bp1.move (to: NSPoint (x: 5.0, y: 5.0))
     bp1.line (to: NSPoint (x: 35.0, y: 35.0))
     bp1.lineWidth = 3.0
     bp1.lineCapStyle = .round
     shape.append (EBStrokeBezierPathShape ([bp1], NSColor.lightGray))
-    let bp2 = NSBezierPath ()
+    var bp2 = EBBezierPath ()
     bp2.move (to: NSPoint (x: 5.0, y: 5.0))
     bp2.line (to: NSPoint (x: 55.0, y: 55.0))
     bp2.lineWidth = 1.5
@@ -249,10 +249,10 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   fileprivate func imageForAddMasterPadButton () ->  NSImage? {
     let r = NSRect (x: 0.0, y: 0.0, width: 40.0, height: 40.0)
-    let bp1 = NSBezierPath (rect: r.insetBy (dx: 12.0, dy: 8.0))
-    bp1.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
-    bp1.windingRule = .evenOdd
-    let shape = EBFilledBezierPathShape ([bp1], g_Preferences!.frontSidePadColor)
+    var bp = EBBezierPath (rect: r.insetBy (dx: 12.0, dy: 8.0))
+    bp.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
+    bp.windingRule = .evenOdd
+    let shape = EBFilledBezierPathShape ([bp], g_Preferences!.frontSidePadColor)
     let imagePDFData = buildPDFimageData (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }
@@ -263,10 +263,10 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     let shape = EBShape ()
   //---
     let r = NSRect (x: 0.0, y: 0.0, width: 40.0, height: 40.0)
-    let bp1 = NSBezierPath (rect: r.insetBy (dx: 12.0, dy: 8.0))
-    bp1.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
-    bp1.windingRule = .evenOdd
-    shape.append (EBFilledBezierPathShape ([bp1], g_Preferences!.frontSidePadColor))
+    var bp = EBBezierPath (rect: r.insetBy (dx: 12.0, dy: 8.0))
+    bp.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
+    bp.windingRule = .evenOdd
+    shape.append (EBFilledBezierPathShape ([bp], g_Preferences!.frontSidePadColor))
  //---
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: 28.0),

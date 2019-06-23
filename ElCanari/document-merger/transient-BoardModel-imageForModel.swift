@@ -82,7 +82,7 @@ func transient_BoardModel_imageForModel (
   var shapes = [EBShape] ()
 //--- Background
   let backRect = NSRect (x:0.0, y:0.0, width: canariUnitToCocoa(self_modelWidth), height: canariUnitToCocoa(self_modelHeight))
-  shapes.append (EBFilledBezierPathShape ([NSBezierPath (rect:backRect)], prefs_mergerColorBackground))
+  shapes.append (EBFilledBezierPathShape ([EBBezierPath (rect:backRect)], prefs_mergerColorBackground))
 //--- Back Legend Lines
   if (prefs_mergerModelViewDisplayBackLegendLines) {
     shapes.append (EBStrokeBezierPathShape (self_backLegendLinesBezierPaths.array, prefs_mergerColorBackLegendLines))

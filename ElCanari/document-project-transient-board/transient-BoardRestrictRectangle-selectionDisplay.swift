@@ -27,7 +27,7 @@ func transient_BoardRestrictRectangle_selectionDisplay (
         let width = canariUnitToCocoa (self_mWidth)
         let height = canariUnitToCocoa (self_mHeight)
         let r = NSRect (x: x, y: y, width: width, height: height)
-        let bp = NSBezierPath (rect: r)
+        var bp = EBBezierPath (rect: r)
         bp.lineWidth = BOARD_HILITE_WIDTH
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round

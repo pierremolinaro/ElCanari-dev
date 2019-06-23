@@ -43,7 +43,7 @@ final class MergerViaShapeArray : EBObject {
       let y = canariUnitToCocoa (via.y)
       let diameter = canariUnitToCocoa (via.padDiameter)
       let r = CGRect (x: x - diameter / 2.0 , y: y - diameter / 2.0, width: diameter, height: diameter)
-      let bp = NSBezierPath (ovalIn: r)
+      let bp = EBBezierPath (ovalIn: r)
       result.append (bp)
     }
     return result
@@ -51,7 +51,7 @@ final class MergerViaShapeArray : EBObject {
 
   //····················································································································
 
-  func addPad (toFilledBezierPaths ioBezierPaths : inout [NSBezierPath],
+  func addPad (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
                dx inDx : Int,
                dy inDy: Int,
                horizontalMirror inHorizontalMirror : Bool,
@@ -80,14 +80,14 @@ final class MergerViaShapeArray : EBObject {
       let yf = canariUnitToCocoa (y)
       let d = canariUnitToCocoa (via.padDiameter)
       let r = NSRect (x: xf - d / 2.0, y: yf - d / 2.0, width: d, height : d)
-      let bp = NSBezierPath (ovalIn: r)
+      let bp = EBBezierPath (ovalIn: r)
       ioBezierPaths.append (bp)
     }
   }
 
   //····················································································································
 
-  func addHole (toFilledBezierPaths ioBezierPaths : inout [NSBezierPath],
+  func addHole (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
                 dx inDx : Int,
                 dy inDy: Int,
                 pdfHoleDiameter inHoleDiameter : CGFloat,
@@ -116,7 +116,7 @@ final class MergerViaShapeArray : EBObject {
       let xf = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x) : x)
       let yf = canariUnitToCocoa (y)
       let r = NSRect (x: xf - inHoleDiameter / 2.0, y: yf - inHoleDiameter / 2.0, width: inHoleDiameter, height : inHoleDiameter)
-      let bp = NSBezierPath (ovalIn: r)
+      let bp = EBBezierPath (ovalIn: r)
       ioBezierPaths.append (bp)
     }
   }

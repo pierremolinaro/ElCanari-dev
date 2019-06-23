@@ -125,9 +125,8 @@ class EBShape : Hashable, EBUserClassNameProtocol {
     var result = false
     var idx = 0
     while (idx < self.mShapes.count) && !result {
-      let shape = self.mShapes [idx]
+      result = self.mShapes [idx].intersects (rect: inRect)
       idx += 1
-      result = shape.intersects (rect: inRect)
     }
     return result
   }
@@ -169,14 +168,8 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   ///   - rhs: Another value to compare.
   //····················································································································
 
-  public static func == (lhs: EBShape, rhs: EBShape) -> Bool {
+  public static func == (lhs : EBShape, rhs : EBShape) -> Bool {
     return (lhs === rhs) || lhs.isEqualToShape (rhs)
-  }
-
-  //····················································································································
-
-  public static func != (lhs: EBShape, rhs: EBShape) -> Bool {
-    return !(lhs == rhs)
   }
 
   //····················································································································

@@ -31,7 +31,7 @@ func transient_BorderCurve_selectionDisplay (
           let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
           let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1).cocoaPoint
           let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2).cocoaPoint
-          let bp = NSBezierPath ()
+          var bp = EBBezierPath ()
           bp.move (to: p1)
           switch self_mShape {
           case .line :

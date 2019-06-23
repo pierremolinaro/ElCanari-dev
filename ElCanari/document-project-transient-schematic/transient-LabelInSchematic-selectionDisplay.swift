@@ -22,7 +22,7 @@ func transient_LabelInSchematic_selectionDisplay (
 //--- START OF USER ZONE 2
         let shape = EBShape ()
         if let p = self_mPoint_location?.cocoaPoint {
-          let bp = NSBezierPath ()
+          var bp = EBBezierPath ()
           bp.move (to: NSPoint (x: 0.0, y: 0.0))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: 0.0))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 3.0, y: SCHEMATIC_LABEL_SIZE))
@@ -34,11 +34,11 @@ func transient_LabelInSchematic_selectionDisplay (
           bp.lineJoinStyle = .round
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
         //---
-          let af = NSAffineTransform ()
-          af.translateX (by: p.x, yBy: p.y)
+          var af = AffineTransform ()
+          af.translate (x: p.x, y: p.y)
           af.rotate (byDegrees: CGFloat (self_mOrientation.rawValue) * 90.0)
         //---
-          shape.append (EBStrokeBezierPathShape ([af.transform (bp)], .cyan))
+          shape.append (EBStrokeBezierPathShape ([bp.transformed (by: af)], .cyan))
           shape.append (EBKnobShape (at: p, index: 0, .rect, SCHEMATIC_KNOB_SIZE))
         }
         return shape

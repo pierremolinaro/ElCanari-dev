@@ -25,7 +25,7 @@ func transient_ProjectRoot_borderClearanceBackground (
           let descriptor = curve.descriptor!
           curveDictionary [descriptor.p1] = descriptor
         }
-        let clearanceBP = NSBezierPath ()
+        var clearanceBP = EBBezierPath ()
         var descriptor = self_mBorderCurves_descriptor [0].descriptor!
         let p = descriptor.p1
         clearanceBP.move (to: p.cocoaPoint)

@@ -52,7 +52,7 @@ func transient_SymbolInstanceInDevice_objectDisplay (
           if e < 0.0 {
             r = r.insetBy (dx: e, dy: 0.0)
           }
-          let bp = NSBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
+          var bp = EBBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
           shape.append (EBFilledBezierPathShape ([bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!))
           bp.move (to: NSPoint (x: r.minX, y: nameOrigin.y))
           bp.line (to: NSPoint (x: r.maxX, y: nameOrigin.y))
@@ -62,11 +62,11 @@ func transient_SymbolInstanceInDevice_objectDisplay (
           let nameShape = EBTextShape (self_symbolQualifiedName, nameOrigin, nameTextAttributes, .center, .above)
           shape.append (nameShape)
         //--- Stroke Bezier path
-           strokeBezierPath.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
-           strokeBezierPath.lineCapStyle = .round
-           shape.append (EBStrokeBezierPathShape ([strokeBezierPath], prefs_symbolColor))
+          strokeBezierPath.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
+          strokeBezierPath.lineCapStyle = .round
+          shape.append (EBStrokeBezierPathShape ([EBBezierPath (strokeBezierPath)], prefs_symbolColor))
         //--- Filled Bezier path
-           shape.append (EBFilledBezierPathShape ([filledBezierPath], prefs_symbolColor))
+           shape.append (EBFilledBezierPathShape ([EBBezierPath (filledBezierPath)], prefs_symbolColor))
         //--- Pin names
            shape.append (pinNameShape)
         //--- Pin numbers

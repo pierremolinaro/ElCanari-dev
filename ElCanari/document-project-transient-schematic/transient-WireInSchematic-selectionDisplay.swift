@@ -23,7 +23,7 @@ func transient_WireInSchematic_selectionDisplay (
         let p1 = (self_mP1_location ?? CanariPoint ()).cocoaPoint
         let p2 = (self_mP2_location ?? CanariPoint (x: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)).cocoaPoint
       //--- Hilite wire
-        let bp = NSBezierPath ()
+        var bp = EBBezierPath ()
         bp.move (to: p1)
         bp.line (to: p2)
         bp.lineWidth = SCHEMATIC_HILITE_WIDTH

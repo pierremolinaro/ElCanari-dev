@@ -35,7 +35,7 @@ func transient_PackageDimension_objectDisplay (
  //--- Compute angle
   let angle = CGPoint.angleInRadian (p1, p2)
  //--- Draw line
-  let bp = NSBezierPath ()
+  var bp = EBBezierPath ()
   if length <= (4.0 * arrowSize) {
     bp.move (to: p1)
     bp.line (to: p2)
@@ -59,7 +59,7 @@ func transient_PackageDimension_objectDisplay (
   var tr = AffineTransform ()
   tr.translate (x: p1.x, y: p1.y)
   tr.rotate (byRadians: angle + rotationIfSmall)
-  let path1 = NSBezierPath ()
+  var path1 = EBBezierPath ()
   path1.move (to: CGPoint (x: 0.0, y: 0.0))
   path1.line (to:CGPoint (x: 2.0 * arrowSize, y:  arrowSize))
   path1.curve (to:CGPoint (x: 2.0 * arrowSize, y: -arrowSize),
@@ -71,7 +71,7 @@ func transient_PackageDimension_objectDisplay (
   tr = AffineTransform ()
   tr.translate (x: p2.x, y: p2.y)
   tr.rotate (byRadians: angle + .pi + rotationIfSmall)
-  let path2 = NSBezierPath ()
+  var path2 = EBBezierPath ()
   path2.move (to: CGPoint (x: 0.0, y: 0.0))
   path2.line (to:CGPoint (x: 2.0 * arrowSize, y:  arrowSize))
   path2.curve (to:CGPoint (x: 2.0 * arrowSize, y: -arrowSize),

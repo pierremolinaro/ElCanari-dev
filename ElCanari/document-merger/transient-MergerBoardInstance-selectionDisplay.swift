@@ -18,7 +18,7 @@ func transient_MergerBoardInstance_selectionDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
   let r : NSRect = self_instanceRect.cocoaRect
-  let bp = NSBezierPath (rect: r)
+  var bp = EBBezierPath (rect: r)
   bp.lineWidth = 0.0
   bp.lineJoinStyle = .round
   let shapes = EBShape ()

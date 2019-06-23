@@ -47,7 +47,7 @@ func transient_SymbolInstanceInDevice_selectionDisplay (
         if e < 0.0 {
           r = r.insetBy (dx: e, dy: 0.0)
         }
-        let bp = NSBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
+        var bp = EBBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
         bp.move (to: NSPoint (x: r.minX, y: nameOrigin.y))
         bp.line (to: NSPoint (x: r.maxX, y: nameOrigin.y))
         bp.lineWidth = 0.5

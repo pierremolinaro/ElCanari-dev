@@ -27,7 +27,7 @@ func transient_SymbolText_selectionDisplay (
       NSAttributedString.Key.font : prefs_pinNameFont
     ]
     let textShape = EBTextShape (self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment(), .center)
-    let bp = NSBezierPath (rect: textShape.boundingBox)
+    var bp = EBBezierPath (rect: textShape.boundingBox)
     bp.lineWidth = 0.25
     shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
     shape.append (EBKnobShape (at: origin, index: 0, .rect, 2.0))

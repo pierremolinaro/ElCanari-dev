@@ -24,7 +24,7 @@ func transient_ComponentSymbolInProject_selectionDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let shape = EBShape ()
-        let strokeBezierPath = NSBezierPath ()
+        var strokeBezierPath = EBBezierPath ()
         strokeBezierPath.append (self_symbolInfo.strokeBezierPath)
         // strokeBezierPath.append (self_symbolInfo.filledBezierPath)
         strokeBezierPath.lineWidth = SCHEMATIC_HILITE_WIDTH
@@ -35,7 +35,7 @@ func transient_ComponentSymbolInProject_selectionDisplay (
       //--- Component name knob
         do{
           let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
-          let bp = NSBezierPath ()
+          var bp = EBBezierPath ()
           bp.move (to: symbolCenter)
           bp.line (to: componentNameCenter.cocoaPoint)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
@@ -57,7 +57,7 @@ func transient_ComponentSymbolInProject_selectionDisplay (
             x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX,
             y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY
           )
-          let bp = NSBezierPath ()
+          var bp = EBBezierPath ()
           bp.move (to: symbolCenter)
           bp.line (to: componentValueCenter.cocoaPoint)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH

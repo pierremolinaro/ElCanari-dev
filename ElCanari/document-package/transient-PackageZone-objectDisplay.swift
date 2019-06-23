@@ -29,7 +29,7 @@ func transient_PackageZone_objectDisplay (
     let y = canariUnitToCocoa (self_y)
     let width = canariUnitToCocoa (self_width)
     let height = canariUnitToCocoa (self_height)
-    let bp = NSBezierPath ()
+    var bp = EBBezierPath ()
     if (self_width <= 0) && (self_height <= 0) { // Oval is a point
       bp.move (to: NSPoint (x: x, y: y))
       bp.line (to: NSPoint (x: x, y: y))

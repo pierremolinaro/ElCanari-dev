@@ -89,20 +89,20 @@ final class MergerPadArray : EBObject {
       let width = canariUnitToCocoa (pad.width)
       let height = canariUnitToCocoa (pad.height)
       let r = CGRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
-      let bp : NSBezierPath
+      var bp : EBBezierPath
       switch pad.shape {
       case .rect :
-        bp = NSBezierPath (rect:r)
+        bp = EBBezierPath (rect:r)
       case .round :
         if pad.width < pad.height {
-          bp = NSBezierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
+          bp = EBBezierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
         }else if pad.width > pad.height {
-          bp = NSBezierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
+          bp = EBBezierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
         }else{
-          bp = NSBezierPath (ovalIn:r)
+          bp = EBBezierPath (ovalIn:r)
         }
       case .octo :
-        bp = NSBezierPath (octogonInRect: r)
+        bp = EBBezierPath (octogonInRect: r)
       }
       var transform = AffineTransform (translationByX: canariUnitToCocoa (pad.x), byY: canariUnitToCocoa (pad.y))
       transform.rotate (byRadians: canariRotationToRadians (pad.rotation))
@@ -114,7 +114,7 @@ final class MergerPadArray : EBObject {
 
   //····················································································································
 
-  func addPads (toFilledBezierPaths ioBezierPaths : inout [NSBezierPath],
+  func addPads (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
                 dx inDx : Int,
                 dy inDy: Int,
                 horizontalMirror inHorizontalMirror : Bool,
@@ -144,34 +144,34 @@ final class MergerPadArray : EBObject {
       let width = canariUnitToCocoa (pad.width)
       let height = canariUnitToCocoa (pad.height)
       let r = NSRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
-      let transform = NSAffineTransform ()
-      transform.translateX (by:xf, yBy:yf)
+      var transform = AffineTransform ()
+      transform.translate (x: xf, y:yf)
       if inHorizontalMirror {
-        transform.scaleX (by:-1.0, yBy: 1.0)
+        transform.scale (x: -1.0, y: 1.0)
       }
       transform.rotate (byRadians:canariRotationToRadians (pad.rotation + inInstanceRotation.rawValue * 90_000))
-      let bp : NSBezierPath
+      var bp : EBBezierPath
       switch pad.shape {
       case .rect :
-        bp = NSBezierPath (rect:r)
+        bp = EBBezierPath (rect:r)
       case .round :
         if pad.width < pad.height {
-          bp = NSBezierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
+          bp = EBBezierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
         }else if pad.width > pad.height {
-          bp = NSBezierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
+          bp = EBBezierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
         }else{
-          bp = NSBezierPath (ovalIn:r)
+          bp = EBBezierPath (ovalIn:r)
         }
       case .octo :
-        bp = NSBezierPath (octogonInRect: r)
+        bp = EBBezierPath (octogonInRect: r)
       }
-      ioBezierPaths.append (transform.transform (bp))
+      ioBezierPaths.append (bp.transformed (by: transform))
     }
   }
 
   //····················································································································
 
-  func addHoles (toFilledBezierPaths ioBezierPaths : inout [NSBezierPath],
+  func addHoles (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
                  dx inDx : Int,
                  dy inDy: Int,
                  pdfHoleDiameter inHoleDiameter : CGFloat,
@@ -200,7 +200,7 @@ final class MergerPadArray : EBObject {
       let xf = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x) : x)
       let yf = canariUnitToCocoa (y)
       let r = NSRect (x: xf - inHoleDiameter / 2.0, y: yf - inHoleDiameter / 2.0, width:inHoleDiameter, height:inHoleDiameter)
-      let bp = NSBezierPath (ovalIn:r)
+      let bp = EBBezierPath (ovalIn: r)
       ioBezierPaths.append (bp)
     }
   }

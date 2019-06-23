@@ -119,9 +119,9 @@ func boardText_displayInfos (
        _ self_mRotation : Int,
        _ self_mWeight : Double,
        _ self_mOblique : Bool
-) -> (NSBezierPath, NSBezierPath, NSPoint, NSPoint) { // (textDisplay, frame, origin, rotation knob)
+) -> (EBBezierPath, EBBezierPath, NSPoint, NSPoint) { // (textDisplay, frame, origin, rotation knob)
   let s = (self_mText == "") ? "Empty" : self_mText
-  let bp = NSBezierPath ()
+  var bp = EBBezierPath ()
   var width : CGFloat = 0.0
   let oblique = self_mOblique ? CGFloat (0.25) : CGFloat (0.0)
   let fontFactor = CGFloat (self_mFontSize) / CGFloat (self_mFont_descriptor.nominalSize)
@@ -141,7 +141,7 @@ func boardText_displayInfos (
   bp.lineWidth = fontFactor * 2.0 * CGFloat (self_mWeight)
   bp.lineCapStyle = .round
   bp.lineJoinStyle = .round
-  let frameBP = NSBezierPath (rect: bp.bounds.insetBy (dx: -1.0, dy: -1.0))
+  var frameBP = EBBezierPath (rect: bp.bounds.insetBy (dx: -1.0, dy: -1.0))
   let startX = canariUnitToCocoa (self_mX)
   let startY = canariUnitToCocoa (self_mY)
   var tr = AffineTransform ()
@@ -175,6 +175,9 @@ func boardText_displayInfos (
   }
   bp.transform (using: tr)
   frameBP.transform (using: tr)
+  frameBP.lineWidth = 0.5
+  frameBP.lineCapStyle = .round
+  frameBP.lineJoinStyle = .round
 //--- Rotation knob
   var rotationKnobTransform = AffineTransform ()
   rotationKnobTransform.translate (x: startX, y: startY)

@@ -140,7 +140,7 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
         dragImageOffset.pointee = NSPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
       //--- Build image
         let r = CGRect (x: 0.0, y: 0.0, width: width, height: height)
-        let bp = NSBezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
+        var bp = EBBezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
         bp.lineWidth = 1.0
         let shape = EBStrokeBezierPathShape ([bp], NSColor.gray)
         let image = buildPDFimage (frame: r, shape: shape, backgroundColor:NSColor.gray.withAlphaComponent (0.25))

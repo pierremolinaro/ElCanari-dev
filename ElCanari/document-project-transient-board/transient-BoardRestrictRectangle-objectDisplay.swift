@@ -26,13 +26,13 @@ func transient_BoardRestrictRectangle_objectDisplay (
 //--- START OF USER ZONE 2
         let r = CanariRect (left: self_mX, bottom: self_mY, width: self_mWidth, height: self_mHeight)
         let cocoaRect = r.cocoaRect
-        let rectBP = NSBezierPath (rect: cocoaRect)
+        let rectBP = EBBezierPath (rect: cocoaRect)
         let lg = max (cocoaRect.size.width, cocoaRect.size.height)
       //--- Transparent background (for selection)
         let shape = EBFilledBezierPathShape ([rectBP], nil)
       //--- Back layer
         if self_mIsInBackLayer {
-          let bp = NSBezierPath ()
+          var bp = EBBezierPath ()
           bp.lineWidth = 0.5
           bp.lineJoinStyle = .round
           bp.lineCapStyle = .round
@@ -52,7 +52,7 @@ func transient_BoardRestrictRectangle_objectDisplay (
         }
       //--- Front layer
         if self_mIsInFrontLayer {
-          let bp = NSBezierPath ()
+          var bp = EBBezierPath ()
           bp.lineWidth = 0.5
           bp.lineJoinStyle = .round
           bp.lineCapStyle = .round
@@ -72,7 +72,7 @@ func transient_BoardRestrictRectangle_objectDisplay (
         }
       //--- Append rect frame
         do{
-          let bp = NSBezierPath (rect: cocoaRect.insetBy (dx: 0.25, dy: 0.25))
+          var bp = EBBezierPath (rect: cocoaRect.insetBy (dx: 0.25, dy: 0.25))
           bp.lineWidth = 0.5
           bp.lineJoinStyle = .round
           bp.lineCapStyle = .round

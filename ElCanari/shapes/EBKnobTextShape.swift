@@ -23,39 +23,10 @@ class EBTextKnobShape : EBShape {
         _ inVerticalAlignment : EBTextVerticalAlignment,
         _ inIndex : Int) {
     mIndex = inIndex
-//    if inString == "" {
-//      mFilledBezierPath = EBBezierPath ()
-//    }else{
-      let textAttributes : [NSAttributedString.Key : Any] = [
-        NSAttributedString.Key.font : inFont
-      ]
-      mFilledBezierPath = EBBezierPath (with: inString, at: inOrigin, inHorizontalAlignment, inVerticalAlignment, withAttributes: textAttributes)
-//      let filledBezierPath = inString.bezierPath (at: inOrigin, withAttributes: textAttributes)
-//      let width = filledBezierPath.bounds.width
-//      let height = filledBezierPath.bounds.height
-//      var deltaX : CGFloat = inOrigin.x - filledBezierPath.bounds.origin.x
-//      switch inHorizontalAlignment {
-//      case .onTheRight :
-//        ()
-//      case .center :
-//        deltaX -= width / 2.0
-//      case .onTheLeft :
-//        deltaX -= width
-//      }
-//      var deltaY : CGFloat = inOrigin.y - filledBezierPath.bounds.origin.y
-//      switch inVerticalAlignment {
-//      case .above :
-//        ()
-//      case .center :
-//        deltaY -= height / 2.0
-//      case .below :
-//        deltaY -= height
-//      }
-//      let af = NSAffineTransform ()
-//      af.translateX (by: deltaX, yBy: deltaY)
-//      mFilledBezierPath = af.transform (filledBezierPath)
-//    }
-  //---
+    let textAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : inFont
+    ]
+    mFilledBezierPath = EBBezierPath (with: inString, at: inOrigin, inHorizontalAlignment, inVerticalAlignment, withAttributes: textAttributes)
     super.init ()
   }
 
@@ -103,9 +74,9 @@ class EBTextKnobShape : EBShape {
     if inView.needsToDraw (self.knobRect) {
       NSColor.white.setFill ()
       NSBezierPath.fill (self.knobRect)
-      NSBezierPath.defaultLineWidth = 0.0
-      NSColor.black.setStroke ()
-      NSBezierPath.stroke (self.knobRect)
+//      NSBezierPath.defaultLineWidth = 0.0
+//      NSColor.black.setStroke ()
+//      NSBezierPath.stroke (self.knobRect)
       NSColor.black.setFill ()
       self.mFilledBezierPath.fill ()
     }

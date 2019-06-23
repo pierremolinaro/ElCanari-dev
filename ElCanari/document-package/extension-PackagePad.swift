@@ -139,31 +139,31 @@ extension PackagePad {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension NSBezierPath {
-
-  //····················································································································
-
-  convenience init (octogonInRect inRect : NSRect) {
-    self.init ()
-    let s2 : CGFloat = sqrt (2.0)
-    let w = inRect.size.width
-    let h = inRect.size.height
-    let x = inRect.origin.x // center x
-    let y = inRect.origin.y // center y
-    let lg = min (w, h) / (1.0 + s2)
-    self.move (to: NSPoint (x: x + lg / s2,     y: y + h))
-    self.line (to: NSPoint (x: x + w - lg / s2, y: y + h))
-    self.line (to: NSPoint (x: x + w,           y: y + h - lg / s2))
-    self.line (to: NSPoint (x: x + w,           y: y + lg / s2))
-    self.line (to: NSPoint (x: x + w - lg / s2, y: y))
-    self.line (to: NSPoint (x: x + lg / s2,     y: y))
-    self.line (to: NSPoint (x: x,               y: y + lg / s2))
-    self.line (to: NSPoint (x: x,               y: y + h - lg / s2))
-    self.close ()
-  }
-
-  //····················································································································
-
-}
+//extension NSBezierPath {
+//
+//  //····················································································································
+//
+//  convenience init (octogonInRect inRect : NSRect) {
+//    self.init ()
+//    let s2 : CGFloat = sqrt (2.0)
+//    let w = inRect.size.width
+//    let h = inRect.size.height
+//    let x = inRect.origin.x // center x
+//    let y = inRect.origin.y // center y
+//    let lg = min (w, h) / (1.0 + s2)
+//    self.move (to: NSPoint (x: x + lg / s2,     y: y + h))
+//    self.line (to: NSPoint (x: x + w - lg / s2, y: y + h))
+//    self.line (to: NSPoint (x: x + w,           y: y + h - lg / s2))
+//    self.line (to: NSPoint (x: x + w,           y: y + lg / s2))
+//    self.line (to: NSPoint (x: x + w - lg / s2, y: y))
+//    self.line (to: NSPoint (x: x + lg / s2,     y: y))
+//    self.line (to: NSPoint (x: x,               y: y + lg / s2))
+//    self.line (to: NSPoint (x: x,               y: y + h - lg / s2))
+//    self.close ()
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

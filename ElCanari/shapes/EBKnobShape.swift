@@ -62,15 +62,15 @@ class EBKnobShape : EBShape {
   //····················································································································
 
   override internal func internalBoundingBox () -> NSRect {
-    return self.rect
+    return self.rect.insetBy (dx: -1.0, dy: -1.0)
   }
 
   //····················································································································
   //  Draw Rect
   //····················································································································
 
-  override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
-    if inView.needsToDraw (self.rect) {
+  override func draw (_ inView : NSView, _ inDirtyRect : NSRect) {
+    if inView.needsToDraw (self.rect.insetBy (dx: -1.0, dy: -1.0)) {
       let bp : NSBezierPath
       switch mKind {
       case .rect :

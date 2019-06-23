@@ -26,7 +26,7 @@ func transient_BoardModel_boardLimitsBezierPaths (
   let right = modelWidth - limitWidth / 2.0
   let bottom  = limitWidth / 2.0
   let top     = modelHeight - limitWidth / 2.0
-  let bp = NSBezierPath ()
+  var bp = EBBezierPath ()
   bp.move (to : CGPoint (x:left, y:bottom))
   bp.line (to : CGPoint (x:left, y:top))
   bp.line (to : CGPoint (x:right, y:top))

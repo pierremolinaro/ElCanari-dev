@@ -28,7 +28,7 @@ func transient_SymbolSolidRect_objectDisplay (
     width: canariUnitToCocoa (self_width),
     height: canariUnitToCocoa (self_height)
   )
-  let bp = NSBezierPath (rect: r)
+  var bp = EBBezierPath (rect: r)
   bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round
   let shape = EBShape ()
