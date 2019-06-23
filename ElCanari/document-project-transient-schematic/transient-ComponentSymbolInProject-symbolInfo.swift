@@ -39,17 +39,17 @@ func transient_ComponentSymbolInProject_symbolInfo (
             let pinTextShape = EBShape ()
           //--- Pin name
             if pin.pinNameIsDisplayedInSchematics {
-              let trText = NSAffineTransform ()
-              trText.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
-              trText.scaleX (by: self_mMirror ? -1.0 : 1.0, yBy: 1.0)
+              var trText = AffineTransform ()
+              trText.translate (x: canariUnitToCocoa (self_mCenterX), y: canariUnitToCocoa (self_mCenterY))
+              trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
               trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
-              trText.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
-              trText.translateX (by: canariUnitToCocoa (pin.nameXY.x), yBy: canariUnitToCocoa (pin.nameXY.y))
+              trText.translate (x: -canariUnitToCocoa (deviceInfo.center.x), y: -canariUnitToCocoa (deviceInfo.center.y))
+              trText.translate (x: canariUnitToCocoa (pin.nameXY.x), y: canariUnitToCocoa (pin.nameXY.y))
               trText.rotate (byDegrees: -CGFloat (self_mRotation.rawValue & 2) * 90.0)
               if self_mMirror && ((self_mRotation.rawValue & 1) != 0) {
                 trText.rotate (byDegrees: 180.0)
               }
-              trText.scaleX (by: self_mMirror ? -1.0 : 1.0, yBy: 1.0)
+              trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
               let pinNameTextShape = EBTextShape (
                 pin.pinName,
                 NSPoint (),
@@ -57,20 +57,20 @@ func transient_ComponentSymbolInProject_symbolInfo (
                 self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror),
                 self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror)
               )
-              pinTextShape.append (pinNameTextShape.transformedBy (trText))
+              pinTextShape.append (pinNameTextShape.transformed (by: trText))
             }
           //--- Pin number
-            let trText = NSAffineTransform ()
-            trText.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
-            trText.scaleX (by: self_mMirror ? -1.0 : 1.0, yBy: 1.0)
+            var trText = AffineTransform ()
+            trText.translate (x: canariUnitToCocoa (self_mCenterX), y: canariUnitToCocoa (self_mCenterY))
+            trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
             trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
-            trText.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
-            trText.translateX (by: canariUnitToCocoa (pin.numberXY.x), yBy: canariUnitToCocoa (pin.numberXY.y))
+            trText.translate (x: -canariUnitToCocoa (deviceInfo.center.x), y: -canariUnitToCocoa (deviceInfo.center.y))
+            trText.translate (x: canariUnitToCocoa (pin.numberXY.x), y: canariUnitToCocoa (pin.numberXY.y))
             trText.rotate (byDegrees: -CGFloat (self_mRotation.rawValue & 2) * 90.0)
             if self_mMirror && ((self_mRotation.rawValue & 1) != 0) {
               trText.rotate (byDegrees: 180.0)
             }
-            trText.scaleX (by: self_mMirror ? -1.0 : 1.0, yBy: 1.0)
+            trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
             let pinNumberTextShape = EBTextShape (
               pinPadAssignment.padName,
               NSPoint (),
@@ -78,7 +78,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
               self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.numberHorizontalAlignment, mirror: self_mMirror),
               self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror)
             )
-            pinTextShape.append (pinNumberTextShape.transformedBy (trText))
+            pinTextShape.append (pinNumberTextShape.transformed (by: trText))
           //--- Pin location
             let pinLocationTransform = NSAffineTransform ()
             pinLocationTransform.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))

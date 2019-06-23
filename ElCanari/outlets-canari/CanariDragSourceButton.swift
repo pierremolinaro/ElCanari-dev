@@ -76,12 +76,12 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
       let pasteboardItem = NSPasteboardItem ()
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged image
-      let transform = NSAffineTransform ()
+      var transform = AffineTransform ()
       let scale = self.mScaleProvider?.actualScale ?? 1.0
       let horizontalFlip : CGFloat = (self.mScaleProvider?.horizontalFlip ?? false) ? -1.0 : 1.0
       let verticalFlip   : CGFloat = (self.mScaleProvider?.verticalFlip   ?? false) ? -1.0 : 1.0
-      transform.scaleX (by: scale * horizontalFlip, yBy: scale * verticalFlip)
-      let displayShape = temporaryObjectShape.transformedBy (transform)
+      transform.scale (x: scale * horizontalFlip, y: scale * verticalFlip)
+      let displayShape = temporaryObjectShape.transformed (by: transform)
       let rect = displayShape.boundingBox
       let image = buildPDFimage (frame: rect, shape: displayShape)
     //--- Move image rect origin to mouse click location

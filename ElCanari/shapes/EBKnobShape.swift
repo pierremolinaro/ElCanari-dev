@@ -37,7 +37,7 @@ class EBKnobShape : EBShape {
   //  transformedBy
   //····················································································································
 
-  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBKnobShape {
+  override func transformed (by inAffineTransform : AffineTransform) -> EBKnobShape {
     let p = inAffineTransform.transform (self.mPoint)
     let result = EBKnobShape (at: p, index: self.mIndex, self.mKind, self.mKnobSize)
     self.internalTransform (result, by: inAffineTransform)

@@ -70,13 +70,13 @@ extension EBGraphicView : NSDraggingSource {
   //--- Transform image by scaling and translating
     let hasHorizontalFlip : CGFloat = self.horizontalFlip ? -1.0 : 1.0
     let hasVerticalFlip   : CGFloat = self.verticalFlip   ? -1.0 : 1.0
-    let transform = NSAffineTransform ()
-    transform.scaleX (by: self.actualScale * hasHorizontalFlip, yBy: self.actualScale * hasVerticalFlip)
-    transform.translateX (
-      by:  -displayShape.boundingBox.minX,
-      yBy: -displayShape.boundingBox.minY
+    var transform = AffineTransform ()
+    transform.scale (x: self.actualScale * hasHorizontalFlip, y: self.actualScale * hasVerticalFlip)
+    transform.translate (
+      x: -displayShape.boundingBox.minX,
+      y: -displayShape.boundingBox.minY
     )
-    let finalShape = displayShape.transformedBy (transform)
+    let finalShape = displayShape.transformed (by: transform)
   //--- Build image
     let rect = finalShape.boundingBox
     let image = buildPDFimage (frame: rect, shape: finalShape)

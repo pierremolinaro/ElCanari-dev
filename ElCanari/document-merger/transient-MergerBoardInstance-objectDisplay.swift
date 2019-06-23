@@ -24,25 +24,25 @@ func transient_MergerBoardInstance_objectDisplay (
 //--- START OF USER ZONE 2
   let width  = canariUnitToCocoa (self_myModel_modelWidth!)
   let height = canariUnitToCocoa (self_myModel_modelHeight!)
-  let transform = NSAffineTransform ()
-  transform.translateX (by: canariUnitToCocoa (self_x), yBy: canariUnitToCocoa (self_y))
+  var transform = AffineTransform ()
+  transform.translate (x: canariUnitToCocoa (self_x), y: canariUnitToCocoa (self_y))
   switch self_instanceRotation {
   case .rotation0 :
     break
   case .rotation90 :
-    transform.translateX (by: height / 2.0, yBy: width / 2.0)
+    transform.translate (x: height / 2.0, y: width / 2.0)
     transform.rotate (byDegrees: 90.0)
-    transform.translateX (by: -width / 2.0, yBy: -height / 2.0)
+    transform.translate (x: -width / 2.0, y: -height / 2.0)
   case .rotation180 :
-    transform.translateX (by: width / 2.0, yBy: height / 2.0)
+    transform.translate (x: width / 2.0, y: height / 2.0)
     transform.rotate (byDegrees: 180.0)
-    transform.translateX (by: -width / 2.0, yBy: -height / 2.0)
+    transform.translate (x: -width / 2.0, y: -height / 2.0)
   case .rotation270 :
-    transform.translateX (by: height / 2.0, yBy: width / 2.0)
+    transform.translate (x: height / 2.0, y: width / 2.0)
     transform.rotate (byDegrees: 270.0)
-    transform.translateX (by: -width / 2.0, yBy: -height / 2.0)
+    transform.translate (x: -width / 2.0, y: -height / 2.0)
   }
-  return self_myModel_imageForInstances!.transformedBy (transform)
+  return self_myModel_imageForInstances!.transformed (by: transform)
 //--- END OF USER ZONE 2
 }
 

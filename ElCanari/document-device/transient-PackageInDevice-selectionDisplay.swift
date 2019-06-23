@@ -48,9 +48,9 @@ func transient_PackageInDevice_selectionDisplay (
       bp.lineWidth = 0.5
       shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
     //---
-      let transform = NSAffineTransform ()
-      transform.translateX (by: canariUnitToCocoa (self_mX), yBy: canariUnitToCocoa (self_mY))
-      return shape.transformedBy (transform)
+      var transform = AffineTransform ()
+      transform.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
+      return shape.transformed (by: transform)
 //--- END OF USER ZONE 2
 }
 

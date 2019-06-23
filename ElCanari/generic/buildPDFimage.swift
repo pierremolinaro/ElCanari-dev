@@ -12,11 +12,11 @@ func buildPDFimageData (frame inFrame : CGRect,
                         shape inShape : EBShape,
                         backgroundColor inBackColor : NSColor? = nil) -> Data {
   let origin = inFrame.origin
-  let tr = NSAffineTransform ()
-  tr.translateX (by: -origin.x, yBy: -origin.y)
+  var tr = AffineTransform ()
+  tr.translate (x: -origin.x, y: -origin.y)
   let view = EBOffscreenView (frame: NSRect (origin: NSPoint (), size: inFrame.size))
   view.setBackColor (inBackColor)
-  view.setShape (inShape.transformedBy (tr))
+  view.setShape (inShape.transformed (by: tr))
   let data = view.dataWithPDF (inside: view.bounds)
   return data
 }

@@ -54,9 +54,9 @@ func transient_SymbolInstanceInDevice_selectionDisplay (
         shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
        }
      //---
-       let at = NSAffineTransform ()
-       at.translateX (by: canariUnitToCocoa (self_mX), yBy: canariUnitToCocoa (self_mY))
-       return shape.transformedBy (at)
+       var at = AffineTransform ()
+       at.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
+       return shape.transformed (by: at)
 //--- END OF USER ZONE 2
 }
 

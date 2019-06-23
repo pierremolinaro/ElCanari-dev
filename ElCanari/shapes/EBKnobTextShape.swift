@@ -9,7 +9,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBTextKnobShape : EBShape {
-  private let mFilledBezierPath : NSBezierPath
+  private let mFilledBezierPath : EBBezierPath
   private var mIndex : Int
 
   //····················································································································
@@ -23,44 +23,45 @@ class EBTextKnobShape : EBShape {
         _ inVerticalAlignment : EBTextVerticalAlignment,
         _ inIndex : Int) {
     mIndex = inIndex
-    if inString == "" {
-      mFilledBezierPath = NSBezierPath ()
-    }else{
+//    if inString == "" {
+//      mFilledBezierPath = EBBezierPath ()
+//    }else{
       let textAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : inFont
       ]
-      let filledBezierPath = inString.bezierPath (at: inOrigin, withAttributes: textAttributes)
-      let width = filledBezierPath.bounds.width
-      let height = filledBezierPath.bounds.height
-      var deltaX : CGFloat = inOrigin.x - filledBezierPath.bounds.origin.x
-      switch inHorizontalAlignment {
-      case .onTheRight :
-        ()
-      case .center :
-        deltaX -= width / 2.0
-      case .onTheLeft :
-        deltaX -= width
-      }
-      var deltaY : CGFloat = inOrigin.y - filledBezierPath.bounds.origin.y
-      switch inVerticalAlignment {
-      case .above :
-        ()
-      case .center :
-        deltaY -= height / 2.0
-      case .below :
-        deltaY -= height
-      }
-      let af = NSAffineTransform ()
-      af.translateX (by: deltaX, yBy: deltaY)
-      mFilledBezierPath = af.transform (filledBezierPath)
-    }
+      mFilledBezierPath = EBBezierPath (with: inString, at: inOrigin, inHorizontalAlignment, inVerticalAlignment, withAttributes: textAttributes)
+//      let filledBezierPath = inString.bezierPath (at: inOrigin, withAttributes: textAttributes)
+//      let width = filledBezierPath.bounds.width
+//      let height = filledBezierPath.bounds.height
+//      var deltaX : CGFloat = inOrigin.x - filledBezierPath.bounds.origin.x
+//      switch inHorizontalAlignment {
+//      case .onTheRight :
+//        ()
+//      case .center :
+//        deltaX -= width / 2.0
+//      case .onTheLeft :
+//        deltaX -= width
+//      }
+//      var deltaY : CGFloat = inOrigin.y - filledBezierPath.bounds.origin.y
+//      switch inVerticalAlignment {
+//      case .above :
+//        ()
+//      case .center :
+//        deltaY -= height / 2.0
+//      case .below :
+//        deltaY -= height
+//      }
+//      let af = NSAffineTransform ()
+//      af.translateX (by: deltaX, yBy: deltaY)
+//      mFilledBezierPath = af.transform (filledBezierPath)
+//    }
   //---
     super.init ()
   }
 
   //····················································································································
 
-  private init (_ inBezierPath : NSBezierPath, _ inIndex : Int) {
+  private init (_ inBezierPath : EBBezierPath, _ inIndex : Int) {
     mFilledBezierPath = inBezierPath
     mIndex = inIndex
     super.init ()
@@ -70,8 +71,8 @@ class EBTextKnobShape : EBShape {
   //  transformedBy
   //····················································································································
 
-  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBTextKnobShape {
-    let result = EBTextKnobShape (inAffineTransform.transform (self.mFilledBezierPath), self.mIndex)
+  override func transformed (by inAffineTransform : AffineTransform) -> EBTextKnobShape {
+    let result = EBTextKnobShape (self.mFilledBezierPath.transformed (by: inAffineTransform), self.mIndex)
     self.internalTransform (result, by: inAffineTransform)
     return result
   }

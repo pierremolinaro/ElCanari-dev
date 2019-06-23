@@ -5,29 +5,14 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBTextShape alignments
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum EBTextHorizontalAlignment {
-  case onTheRight
-  case center
-  case onTheLeft
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum EBTextVerticalAlignment {
-  case above
-  case center
-  case below
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBTextShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBTextShape : EBShape {
-  private let mFilledBezierPath : NSBezierPath
+
+  //····················································································································
+
+  private let mFilledBezierPath : EBBezierPath
   private let mForeColor : NSColor
   private let mBackColor : NSColor?
 
@@ -53,40 +38,19 @@ class EBTextShape : EBShape {
       mBackColor = nil
     }
   //--- Transform text into filled bezier path
-    if inString == "" {
-      mFilledBezierPath = NSBezierPath ()
-    }else{
-      let filledBezierPath = inString.bezierPath (at: inOrigin, withAttributes: inTextAttributes)
-      let width = filledBezierPath.bounds.width
-      let height = filledBezierPath.bounds.height
-      var deltaX : CGFloat = inOrigin.x - filledBezierPath.bounds.origin.x
-      switch inHorizontalAlignment {
-      case .onTheRight :
-        ()
-      case .center :
-        deltaX -= width / 2.0
-      case .onTheLeft :
-        deltaX -= width
-      }
-      var deltaY : CGFloat = inOrigin.y - filledBezierPath.bounds.origin.y
-      switch inVerticalAlignment {
-      case .above :
-        ()
-      case .center :
-        deltaY -= height / 2.0
-      case .below :
-        deltaY -= height
-      }
-      let af = NSAffineTransform ()
-      af.translateX (by: deltaX, yBy: deltaY)
-      mFilledBezierPath = af.transform (filledBezierPath)
-    }
+    mFilledBezierPath = EBBezierPath (
+      with: inString,
+      at: inOrigin,
+      inHorizontalAlignment,
+      inVerticalAlignment,
+      withAttributes: inTextAttributes
+    )
     super.init ()
   }
 
   //····················································································································
 
-  private init (_ inBezierPath : NSBezierPath, _ inForeColor : NSColor, _ inBackColor : NSColor?) {
+  private init (_ inBezierPath : EBBezierPath, _ inForeColor : NSColor, _ inBackColor : NSColor?) {
     mFilledBezierPath = inBezierPath
     mForeColor = inForeColor
     mBackColor = inBackColor
@@ -97,8 +61,8 @@ class EBTextShape : EBShape {
   //  transformedBy
   //····················································································································
 
-  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBTextShape {
-    let result = EBTextShape (inAffineTransform.transform (self.mFilledBezierPath), self.mForeColor, self.mBackColor)
+  override func transformed (by inAffineTransform : AffineTransform) -> EBTextShape {
+    let result = EBTextShape (self.mFilledBezierPath.transformed (by: inAffineTransform), self.mForeColor, self.mBackColor)
     self.internalTransform (result, by: inAffineTransform)
     return result
   }

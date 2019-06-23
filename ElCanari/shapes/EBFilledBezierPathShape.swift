@@ -31,10 +31,12 @@ class EBFilledBezierPathShape : EBShape {
   //  transformedBy
   //····················································································································
 
-  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBFilledBezierPathShape {
+  override func transformed (by inAffineTransform : AffineTransform) -> EBFilledBezierPathShape {
     var paths = [NSBezierPath] ()
     for path in self.mFilledPaths {
-      let bp = inAffineTransform.transform (path)
+      let bp = path.copy () as! NSBezierPath
+      bp.transform (using: inAffineTransform)
+//      let bp = inAffineTransform.transform (path)
       paths.append (bp)
     }
     let result = EBFilledBezierPathShape (paths, self.mColor)
@@ -50,7 +52,7 @@ class EBFilledBezierPathShape : EBShape {
     if let color = self.mColor {
       color.setFill ()
       for bp in self.mFilledPaths {
-        if inView.needsToDraw (bp.bounds) {
+        if !bp.isEmpty && inView.needsToDraw (bp.bounds) {
           bp.fill ()
         }
       }

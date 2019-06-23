@@ -44,15 +44,18 @@ class EBStrokeBezierPathShape : EBShape {
   //  transformedBy
   //····················································································································
 
-  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBStrokeBezierPathShape {
+  override func transformed (by inAffineTransform : AffineTransform) -> EBStrokeBezierPathShape {
     var filledPaths = [NSBezierPath] ()
     for path in self.mFilledPaths {
-      let bp = inAffineTransform.transform (path)
+      let bp = path.copy () as! NSBezierPath
+      bp.transform (using: inAffineTransform)
       filledPaths.append (bp)
     }
     let clipPath : NSBezierPath?
     if let path = self.mClipBezierPath {
-      clipPath = inAffineTransform.transform (path)
+      let bp = path.copy () as! NSBezierPath
+      bp.transform (using: inAffineTransform)
+      clipPath = bp
     }else{
       clipPath = nil
     }
