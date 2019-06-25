@@ -760,11 +760,6 @@ class FontRoot : EBManagedObject,
     self.currentCharacterCodePoint_property.storeIn (dictionary: ioDictionary, forKey:"currentCharacterCodePoint")
   //--- To many property: characters (Custom store)
     customStore_FontCharacter_characters (self.characters_property.propval, intoDictionary: ioDictionary)
-    /* self.store (
-      managedObjectArray: self.characters_property.propval,
-      relationshipName: "characters",
-      intoDictionary: ioDictionary
-    ) */
   }
 
   //····················································································································

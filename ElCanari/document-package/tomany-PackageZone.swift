@@ -1351,7 +1351,7 @@ final class ProxyArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
 //    To many relationship: PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObserverProtocol {
+class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -1376,10 +1376,6 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -1390,25 +1386,6 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [PackageZone] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageZone") as? PackageZone {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -1441,8 +1418,6 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1476,21 +1451,6 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
   //····················································································································
 
   override var propval : [PackageZone] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -1557,6 +1517,66 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: PackageZone
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_PackageZone : StoredArrayOf_PackageZone {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [PackageZone] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageZone") as? PackageZone {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_x (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_y (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_width (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_height (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_xUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_yUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_widthUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_heightUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_zoneName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_xName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_yName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_xNameUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_yNameUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_zoneNumbering (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

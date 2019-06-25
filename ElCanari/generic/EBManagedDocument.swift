@@ -509,7 +509,8 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
   //····················································································································
 
-  func dragImageForRows (with dragRows: IndexSet,
+  func dragImageForRows (source inSourceTableView : CanariDragSourceTableView,
+                         with dragRows: IndexSet,
                          tableColumns: [NSTableColumn],
                          event dragEvent: NSEvent,
                          offset dragImageOffset: NSPointPointer) -> NSImage {

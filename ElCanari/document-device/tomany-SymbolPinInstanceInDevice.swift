@@ -583,7 +583,7 @@ final class ProxyArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinI
 //    To many relationship: SymbolPinInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstanceInDevice, EBSignatureObserverProtocol {
+class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstanceInDevice, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -608,10 +608,6 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -622,25 +618,6 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SymbolPinInstanceInDevice] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolPinInstanceInDevice") as? SymbolPinInstanceInDevice {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -673,8 +650,6 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -708,21 +683,6 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
   //····················································································································
 
   override var propval : [SymbolPinInstanceInDevice] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -789,6 +749,52 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: SymbolPinInstanceInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_SymbolPinInstanceInDevice : StoredArrayOf_SymbolPinInstanceInDevice {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [SymbolPinInstanceInDevice] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolPinInstanceInDevice") as? SymbolPinInstanceInDevice {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

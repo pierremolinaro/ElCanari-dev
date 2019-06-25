@@ -1108,7 +1108,7 @@ final class ProxyArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic {
 //    To many relationship: PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSignatureObserverProtocol {
+class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -1133,10 +1133,6 @@ final class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, 
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -1147,25 +1143,6 @@ final class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, 
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [PointInSchematic] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PointInSchematic") as? PointInSchematic {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -1198,8 +1175,6 @@ final class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, 
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1233,21 +1208,6 @@ final class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, 
   //····················································································································
 
   override var propval : [PointInSchematic] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -1314,6 +1274,55 @@ final class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, 
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: PointInSchematic
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_PointInSchematic : StoredArrayOf_PointInSchematic {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [PointInSchematic] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PointInSchematic") as? PointInSchematic {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_mSymbolPinName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

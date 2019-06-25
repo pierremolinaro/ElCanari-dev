@@ -11,11 +11,18 @@ protocol DevicePackageInProject_mPackageName : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DevicePackageInProject_mStrokeBezierPath : class {
+  var mStrokeBezierPath : NSBezierPath { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class DevicePackageInProject : EBManagedObject,
-         DevicePackageInProject_mPackageName {
+         DevicePackageInProject_mPackageName,
+         DevicePackageInProject_mStrokeBezierPath {
 
   //····················································································································
   //   To many property: mMasterPads
@@ -54,6 +61,23 @@ class DevicePackageInProject : EBManagedObject,
   var mPackageName_property_selection : EBSelection <String> { return self.mPackageName_property.prop }
 
   //····················································································································
+  //   Atomic property: mStrokeBezierPath
+  //····················································································································
+
+  let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+
+  //····················································································································
+
+  var mStrokeBezierPath : NSBezierPath {
+    get { return self.mStrokeBezierPath_property.propval }
+    set { self.mStrokeBezierPath_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -63,6 +87,8 @@ class DevicePackageInProject : EBManagedObject,
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPackageName
     self.mPackageName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mStrokeBezierPath
+    self.mStrokeBezierPath_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -94,6 +120,14 @@ class DevicePackageInProject : EBManagedObject,
       observerExplorer: &self.mPackageName_property.mObserverExplorer,
       valueExplorer: &self.mPackageName_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mStrokeBezierPath",
+      idx: self.mStrokeBezierPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
+      valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
@@ -117,6 +151,9 @@ class DevicePackageInProject : EBManagedObject,
   //--- Atomic property: mPackageName
     self.mPackageName_property.mObserverExplorer = nil
     self.mPackageName_property.mValueExplorer = nil
+  //--- Atomic property: mStrokeBezierPath
+    self.mStrokeBezierPath_property.mObserverExplorer = nil
+    self.mStrokeBezierPath_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -154,6 +191,8 @@ class DevicePackageInProject : EBManagedObject,
     )
   //--- Atomic property: mPackageName
     self.mPackageName_property.storeIn (dictionary: ioDictionary, forKey:"mPackageName")
+  //--- Atomic property: mStrokeBezierPath
+    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mStrokeBezierPath")
   }
 
   //····················································································································
@@ -179,6 +218,8 @@ class DevicePackageInProject : EBManagedObject,
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mPackageName
     self.mPackageName_property.readFrom (dictionary: inDictionary, forKey:"mPackageName")
+  //--- Atomic property: mStrokeBezierPath
+    self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey:"mStrokeBezierPath")
   }
 
   //····················································································································

@@ -368,16 +368,16 @@ import Cocoa
   //····················································································································
 
   internal func updateViewFrameAndBounds () {
-    let s = self.actualScale
     var newBounds = NSRect () // For including point (0, 0)
     newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
     newBounds = newBounds.union (self.mMinimumRectangle)
     let currentBounds = self.bounds
     if currentBounds != newBounds {
+      let scale = self.actualScale
       self.frame.size = newBounds.size
       self.bounds = newBounds
       self.setNeedsDisplay (self.frame)
-      self.applyZoom (Int (s * 100.0))
+      self.applyZoom (Int (scale * 100.0))
     }
   }
 

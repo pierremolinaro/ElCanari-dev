@@ -25,6 +25,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_placementInSchematic_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_mNamePrefix_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mNameIndex_toElementsOfSet (inAddedSet) // Stored property
@@ -36,6 +37,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.addEBObserversOf_unplacedSymbols_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_placementInSchematic_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_strokeBezierPath_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -602,6 +604,62 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   }
 
   //····················································································································
+  //   Observers of 'strokeBezierPath' transient property
+  //····················································································································
+
+  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_strokeBezierPath.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.strokeBezierPath_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_strokeBezierPath.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.strokeBezierPath_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
+        managedObject.strokeBezierPath_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
+        managedObject.strokeBezierPath_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -876,7 +934,7 @@ final class ProxyArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProjec
 //    To many relationship: ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EBSignatureObserverProtocol {
+class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -901,10 +959,6 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -915,25 +969,6 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [ComponentInProject] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ComponentInProject") as? ComponentInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -966,8 +1001,6 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1001,21 +1034,6 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
   //····················································································································
 
   override var propval : [ComponentInProject] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -1082,6 +1100,55 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: ComponentInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_ComponentInProject : StoredArrayOf_ComponentInProject {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [ComponentInProject] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ComponentInProject") as? ComponentInProject {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_mNamePrefix (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mNameIndex (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mComponentValue (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

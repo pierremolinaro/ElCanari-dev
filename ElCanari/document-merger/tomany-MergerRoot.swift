@@ -1821,7 +1821,7 @@ final class ProxyArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
 //    To many relationship: MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserverProtocol {
+class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -1846,10 +1846,6 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -1860,25 +1856,6 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [MergerRoot] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "MergerRoot") as? MergerRoot {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -1911,8 +1888,6 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1946,21 +1921,6 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   //····················································································································
 
   override var propval : [MergerRoot] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -2027,6 +1987,72 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: MergerRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_MergerRoot : StoredArrayOf_MergerRoot {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [MergerRoot] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "MergerRoot") as? MergerRoot {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_selectedPageIndex (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_zoom (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_automaticBoardSize (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_boardManualWidth (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_boardManualHeight (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_boardWidthUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_boardHeightUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_overlapingArrangment (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_selectedBoardXUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_selectedBoardYUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_boardLimitWidth (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_boardLimitWidthUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_arrowMagnitude (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_arrowMagnitudeUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_shiftArrowMagnitude (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_shiftArrowMagnitudeUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_artworkName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_generateGerberProductFile (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_generatePDFProductFile (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_generatedBoardArchiveFormat (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

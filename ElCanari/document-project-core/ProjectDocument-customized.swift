@@ -12,6 +12,7 @@ fileprivate let kDragAndDropWire = NSPasteboard.PasteboardType (rawValue: "name.
 
 fileprivate let kDragAndDropRestrictRectangle = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.restrict.rectangle")
 fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.text")
+fileprivate let kDragAndDropPackage = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.package")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -80,6 +81,12 @@ fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "
   internal var mPrintOperation : NSPrintOperation? = nil
 
   //····················································································································
+  //  Property needed for handling "package count" to insert in segmented control title
+  //····················································································································
+
+  fileprivate var mPackageCountToInsertController : EBSimpleController? = nil
+
+  //····················································································································
   //  Properties needed for renaming a component
   //····················································································································
 
@@ -94,6 +101,12 @@ fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "
   //····················································································································
 
   internal var mPossibleDraggedSymbol : ComponentSymbolInProject? = nil
+
+  //····················································································································
+  //  Property for dragging package in board
+  //····················································································································
+
+  internal var mPossibleDraggedComponent : ComponentInProject? = nil
 
   //····················································································································
 
@@ -144,6 +157,21 @@ fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "
       self.mERCBoardInspectorView
     ]
     self.mBoardInspectorSegmentedControl?.register (masterView: self.mBaseBoardInspectorView, boardInspectors)
+  //---
+    self.mUnplacedPackageTableView?.register (document: self, draggedType: kDragAndDropPackage)
+    self.mPackageCountToInsertController = EBSimpleController (
+      observedObjects: [self.unplacedSymbolsCount_property],
+      callBack: {
+        let title : String
+        switch self.unplacedPackageCount_property_selection {
+        case .empty, .multiple :
+          title = "—"
+        case .single (let v) :
+          title = "+ \(v)"
+        }
+        self.mBoardInspectorSegmentedControl?.setLabel (title, forSegment: 1)
+      }
+    )
   //--- Register Board inspector views
     self.boardObjectsController.register (inspectorReceivingView: self.mSelectedObjectsBoardInspectorView)
     self.boardObjectsController.register (inspectorView: self.mRestrictRectangleInspectorView, for: BoardRestrictRectangle.self)
@@ -295,14 +323,18 @@ fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "
   // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
   //····················································································································
 
-  override func dragImageForRows (with dragRows: IndexSet,
+  override func dragImageForRows (source inSourceTableView : CanariDragSourceTableView,
+                                  with dragRows: IndexSet,
                                   tableColumns: [NSTableColumn],
                                   event dragEvent: NSEvent,
                                   offset dragImageOffset: NSPointPointer) -> NSImage {
     var result = NSImage (named: NSImage.Name ("exclamation"))!
-    if let schematicsView = self.mSchematicsView, dragRows.count == 1, let idx = dragRows.first {
+    if inSourceTableView == self.mUnplacedSymbolsTableView,
+      let schematicsView = self.mSchematicsView,
+      dragRows.count == 1,
+      let idx = dragRows.first {
     //--- Find symbol to insert in schematics
-      let symbolTag = self.mUnplacedSymbolsTableView?.tag (atIndex: idx) ?? 0
+      let symbolTag = inSourceTableView.tag (atIndex: idx)
       self.mPossibleDraggedSymbol = nil
       for component in self.rootObject.mComponents {
         for s in component.mSymbols {
@@ -324,6 +356,28 @@ fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "
         symbolShape.append (EBStrokeBezierPathShape ([EBBezierPath (strokeBP)], g_Preferences!.symbolColorForSchematic))
         let scaledSymbolShape = symbolShape.transformed (by: af)
         result = buildPDFimage (frame: scaledSymbolShape.boundingBox, shape: scaledSymbolShape)
+      }
+    }else if inSourceTableView == self.mUnplacedPackageTableView,
+           let boardView = self.mBoardView,
+           dragRows.count == 1,
+           let idx = dragRows.first {
+      let componentTag = inSourceTableView.tag (atIndex: idx)
+      self.mPossibleDraggedComponent = nil
+      for component in self.rootObject.mComponents {
+        if component.ebObjectIndex == componentTag {
+          self.mPossibleDraggedComponent = component
+        }
+      }
+      if let component = self.mPossibleDraggedComponent, let strokeBezierPath = component.strokeBezierPath {
+        let scale : CGFloat = boardView.actualScale
+        let horizontalFlip : CGFloat = boardView.horizontalFlip ? -scale : scale
+        let verticalFlip   : CGFloat = boardView.verticalFlip   ? -scale : scale
+        var af = AffineTransform ()
+        af.scale (x: horizontalFlip, y: verticalFlip)
+        let packageShape = EBShape ()
+        packageShape.append (EBStrokeBezierPathShape ([EBBezierPath (strokeBezierPath)], g_Preferences!.symbolColorForSchematic))
+        let scaledPackageShape = packageShape.transformed (by: af)
+        result = buildPDFimage (frame: scaledPackageShape.boundingBox, shape: scaledPackageShape)
       }
     }
     return result

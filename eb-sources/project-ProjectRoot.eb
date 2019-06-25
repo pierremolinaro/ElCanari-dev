@@ -100,6 +100,12 @@ entity ProjectRoot {
 
   transient StringTagArray unplacedSymbols dependsFrom self.mComponents.all.unplacedSymbols ;
 
+  transient StringTagArray unplacedPackages dependsFrom
+    self.mComponents,
+    self.mComponents.all.componentName,
+    self.mComponents.all.mComponentValue
+  ;
+
   transient EBShape schematicBackgroundDisplay dependsFrom
     self.mSchematicTitle,
     self.mSchematicVersion,

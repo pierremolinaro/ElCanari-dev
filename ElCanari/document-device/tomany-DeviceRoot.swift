@@ -1758,7 +1758,7 @@ final class ProxyArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
 //    To many relationship: DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserverProtocol {
+class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -1783,10 +1783,6 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -1797,25 +1793,6 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [DeviceRoot] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DeviceRoot") as? DeviceRoot {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -1848,8 +1825,6 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1883,21 +1858,6 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
   //····················································································································
 
   override var propval : [DeviceRoot] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -1964,6 +1924,67 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: DeviceRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_DeviceRoot : StoredArrayOf_DeviceRoot {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [DeviceRoot] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DeviceRoot") as? DeviceRoot {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_mSelectedPageIndex (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mTitle (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mPrefix (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mComments (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mPackageDisplayZoom (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mPackageDisplayHorizontalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mPackageDisplayVerticalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mShowPackages (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mShowPackagePadNumbers (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mShowPackageFrontPads (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mShowPackageBackPads (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSymbolDisplayZoom (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSymbolDisplayHorizontalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSymbolDisplayVerticalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mImageData (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

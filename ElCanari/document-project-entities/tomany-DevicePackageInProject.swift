@@ -16,8 +16,10 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mPackageName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
   //--- Add observers to added objects
     self.addEBObserversOf_mPackageName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (inAddedSet) // Stored property
   }
 
   //····················································································································
@@ -73,6 +75,63 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPackageName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mStrokeBezierPath' stored property
+  //····················································································································
+
+  private var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mStrokeBezierPath.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mStrokeBezierPath_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mStrokeBezierPath.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mStrokeBezierPath_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
+        managedObject.mStrokeBezierPath_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
+    self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
       }
     }
   }
@@ -352,7 +411,7 @@ final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackage
 //    To many relationship: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject, EBSignatureObserverProtocol {
+class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -377,10 +436,6 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -391,25 +446,6 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [DevicePackageInProject] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DevicePackageInProject") as? DevicePackageInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -442,8 +478,6 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -477,21 +511,6 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
   //····················································································································
 
   override var propval : [DevicePackageInProject] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -558,6 +577,54 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: DevicePackageInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_DevicePackageInProject : StoredArrayOf_DevicePackageInProject {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [DevicePackageInProject] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DevicePackageInProject") as? DevicePackageInProject {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_mPackageName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mStrokeBezierPath (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

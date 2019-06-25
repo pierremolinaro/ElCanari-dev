@@ -538,6 +538,11 @@ document ProjectDocument root ProjectRoot {
   outlet CanariDragSourceButton mAddRestrictRectangleButton ;
   outlet CanariDragSourceButton mAddTextInBoardButton ;
 
+  outlet CanariDragSourceTableView mUnplacedPackageTableView $models root.unplacedPackages ;
+  transient Int unplacedPackageCount dependsFrom root.unplacedPackages ;
+  transient String unplacedPackagesCountString dependsFrom self.unplacedPackageCount ;
+  outlet EBTextObserverField mUnplacedPackagesCountTextField $valueObserver self.unplacedPackagesCountString ;
+
   arrayController #boardObjectsController : root.mBoardObjects ;
 
   outlet EBScrollView mBoardScrollView ;

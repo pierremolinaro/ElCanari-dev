@@ -999,7 +999,7 @@ final class ProxyArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot {
 //    To many relationship: SymbolRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserverProtocol {
+class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -1024,10 +1024,6 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -1038,25 +1034,6 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SymbolRoot] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolRoot") as? SymbolRoot {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -1089,8 +1066,6 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1124,21 +1099,6 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
   //····················································································································
 
   override var propval : [SymbolRoot] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -1205,6 +1165,62 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: SymbolRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_SymbolRoot : StoredArrayOf_SymbolRoot {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [SymbolRoot] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolRoot") as? SymbolRoot {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_selectedInspector (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_comments (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_horizontalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_verticalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_gridStyle (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_gridDisplay (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_zoom (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_xPlacardUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_yPlacardUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_selectedPageIndex (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

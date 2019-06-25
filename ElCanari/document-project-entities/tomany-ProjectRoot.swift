@@ -58,6 +58,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_sheetIndexes_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netsDescription_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_unplacedPackages_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_borderClearanceBackground_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardBoundBox_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardLimitPointsTop_fromElementsOfSet (inRemovedSet) // Transient property
@@ -120,6 +121,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_sheetIndexes_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_unplacedSymbols_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netsDescription_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_unplacedPackages_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_borderClearanceBackground_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardBoundBox_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardLimitPointsTop_toElementsOfSet (inAddedSet) // Transient property
@@ -2640,6 +2642,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'unplacedPackages' transient property
+  //····················································································································
+
+  private var mObserversOf_unplacedPackages = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_unplacedPackages (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_unplacedPackages.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unplacedPackages_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_unplacedPackages (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_unplacedPackages.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unplacedPackages_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_unplacedPackages_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
+        managedObject.unplacedPackages_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_unplacedPackages_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
+        managedObject.unplacedPackages_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'borderClearanceBackground' transient property
   //····················································································································
 
@@ -3922,7 +3980,7 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
 //    To many relationship: ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatureObserverProtocol {
+class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -3947,10 +4005,6 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -3961,25 +4015,6 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [ProjectRoot] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectRoot") as? ProjectRoot {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -4012,8 +4047,6 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -4047,21 +4080,6 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
   //····················································································································
 
   override var propval : [ProjectRoot] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -4128,6 +4146,86 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: ProjectRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [ProjectRoot] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectRoot") as? ProjectRoot {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_mBoardSelectedInspector (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardHorizontalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardVerticalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardGridStyle (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardGridDisplayFactor (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardZoom (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardGridStep (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardGridStepUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLimitsWidth (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLimitsWidthUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLimitsSelectedInspector (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLimitsHorizontalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLimitsVerticalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLimitsGridStyle (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLimitsGridDisplayFactor (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLimitsZoom (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLimitsGridStep (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLimitsGridStepUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardLimitsBoundingBoxUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardPointsBoundingBoxUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardClearance (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mBoardClearanceUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSelectedPageIndex (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSelectedSchematicInspector (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicTitle (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicVersion (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicDate (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicHorizontalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicVerticalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicZoom (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicGridStyle (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicGridDisplayFactor (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicSheetOrientation (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

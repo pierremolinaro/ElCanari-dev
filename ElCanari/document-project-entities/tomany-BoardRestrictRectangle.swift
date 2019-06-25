@@ -763,7 +763,7 @@ final class ProxyArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrict
 //    To many relationship: BoardRestrictRectangle
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrictRectangle, EBSignatureObserverProtocol {
+class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrictRectangle, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -788,10 +788,6 @@ final class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestric
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -802,25 +798,6 @@ final class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestric
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [BoardRestrictRectangle] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "BoardRestrictRectangle") as? BoardRestrictRectangle {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -853,8 +830,6 @@ final class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestric
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -888,21 +863,6 @@ final class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestric
   //····················································································································
 
   override var propval : [BoardRestrictRectangle] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -969,6 +929,58 @@ final class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestric
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: BoardRestrictRectangle
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_BoardRestrictRectangle : StoredArrayOf_BoardRestrictRectangle {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [BoardRestrictRectangle] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "BoardRestrictRectangle") as? BoardRestrictRectangle {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mWidth (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mHeight (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mIsInFrontLayer (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mIsInBackLayer (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

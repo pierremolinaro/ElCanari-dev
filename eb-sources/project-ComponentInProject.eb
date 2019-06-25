@@ -25,6 +25,8 @@ graphic entity ComponentInProject : BoardObject {
   transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ;
 
   transient String placementInSchematic dependsFrom self.mSymbols.all.symbolInSchematic ;
+  
+  transient NSBezierPath strokeBezierPath dependsFrom self.mSelectedPackage.one.mStrokeBezierPath ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -65,6 +65,12 @@ protocol ComponentInProject_placementInSchematic : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_strokeBezierPath : class {
+  var strokeBezierPath : NSBezierPath? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -78,7 +84,8 @@ class ComponentInProject : BoardObject,
          ComponentInProject_availablePackages,
          ComponentInProject_unplacedSymbols,
          ComponentInProject_deviceSymbolDictionary,
-         ComponentInProject_placementInSchematic {
+         ComponentInProject_placementInSchematic,
+         ComponentInProject_strokeBezierPath {
 
   //····················································································································
   //   Atomic property: mNamePrefix
@@ -388,6 +395,29 @@ class ComponentInProject : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: strokeBezierPath
+  //····················································································································
+
+  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+
+  //····················································································································
+
+  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
+    return self.strokeBezierPath_property.prop
+  }
+
+  //····················································································································
+
+  var strokeBezierPath : NSBezierPath? {
+    switch self.strokeBezierPath_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -577,6 +607,28 @@ class ComponentInProject : BoardObject,
       }
     }
     self.mSymbols_property.addEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
+  //--- Atomic property: strokeBezierPath
+    self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSelectedPackage_property.mStrokeBezierPath_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mSelectedPackage_property.mStrokeBezierPath_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_strokeBezierPath (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedPackage_property.addEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
   //--- Install undoers and opposite setter for relationships
     self.mSymbols_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
@@ -602,6 +654,7 @@ class ComponentInProject : BoardObject,
     self.mSymbols_property.removeEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
     self.mDevice_property.removeEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
+    self.mSelectedPackage_property.removeEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
   //--- Unregister properties for handling signature
   }
 
@@ -696,6 +749,14 @@ class ComponentInProject : BoardObject,
       view: view,
       observerExplorer: &self.placementInSchematic_property.mObserverExplorer,
       valueExplorer: &self.placementInSchematic_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "strokeBezierPath",
+      idx: self.strokeBezierPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
+      valueExplorer: &self.strokeBezierPath_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

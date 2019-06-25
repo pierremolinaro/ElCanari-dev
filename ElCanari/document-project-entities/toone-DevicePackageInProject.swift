@@ -16,8 +16,10 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     inOldValue?.mPackageName_property.removeEBObserversFrom (&self.mObserversOf_mPackageName) // Stored property
+    inOldValue?.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
   //--- Add observers to added objects
     self.mInternalValue?.mPackageName_property.addEBObserversFrom (&self.mObserversOf_mPackageName) // Stored property
+    self.mInternalValue?.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
   }
 
   //····················································································································
@@ -86,6 +88,76 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPackageName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mStrokeBezierPath' stored property
+  //····················································································································
+
+  private var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
+    if let model = self.propval {
+      switch (model.mStrokeBezierPath_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mStrokeBezierPath.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mStrokeBezierPath_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mStrokeBezierPath.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mStrokeBezierPath_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
+        managedObject.mStrokeBezierPath_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
+    self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
       }
     }
   }

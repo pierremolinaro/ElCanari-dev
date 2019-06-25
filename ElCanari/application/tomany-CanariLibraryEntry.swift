@@ -587,7 +587,7 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
 //    To many relationship: CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EBSignatureObserverProtocol {
+class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -612,10 +612,6 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -626,25 +622,6 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [CanariLibraryEntry] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "CanariLibraryEntry") as? CanariLibraryEntry {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -677,8 +654,6 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -712,21 +687,6 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
   //····················································································································
 
   override var propval : [CanariLibraryEntry] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -793,6 +753,56 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: CanariLibraryEntry
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryEntry {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [CanariLibraryEntry] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "CanariLibraryEntry") as? CanariLibraryEntry {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_mPath (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mUses (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mLibraryRepositoryURL (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mUserAndPasswordTag (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

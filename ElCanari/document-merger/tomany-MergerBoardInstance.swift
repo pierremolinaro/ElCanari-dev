@@ -760,7 +760,7 @@ final class ProxyArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInsta
 //    To many relationship: MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, EBSignatureObserverProtocol {
+class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -785,10 +785,6 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -799,25 +795,6 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [MergerBoardInstance] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "MergerBoardInstance") as? MergerBoardInstance {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -850,8 +827,6 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -885,21 +860,6 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
   //····················································································································
 
   override var propval : [MergerBoardInstance] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -966,6 +926,55 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: MergerBoardInstance
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_MergerBoardInstance : StoredArrayOf_MergerBoardInstance {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [MergerBoardInstance] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "MergerBoardInstance") as? MergerBoardInstance {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_x (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_y (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_instanceRotation (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

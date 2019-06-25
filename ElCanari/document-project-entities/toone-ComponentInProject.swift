@@ -25,6 +25,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     inOldValue?.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
     inOldValue?.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
     inOldValue?.placementInSchematic_property.removeEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
+    inOldValue?.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mNamePrefix_property.addEBObserversFrom (&self.mObserversOf_mNamePrefix) // Stored property
     self.mInternalValue?.mNameIndex_property.addEBObserversFrom (&self.mObserversOf_mNameIndex) // Stored property
@@ -36,6 +37,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     self.mInternalValue?.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
     self.mInternalValue?.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
     self.mInternalValue?.placementInSchematic_property.addEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
+    self.mInternalValue?.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
   }
 
   //····················································································································
@@ -727,6 +729,75 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     for managedObject in inSet {
       self.mObserversOf_placementInSchematic.apply { (_ observer : EBEvent) in
         managedObject.placementInSchematic_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'strokeBezierPath' transient property
+  //····················································································································
+
+  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+
+  //····················································································································
+
+  var strokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
+    if let model = self.propval {
+      switch (model.strokeBezierPath_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_strokeBezierPath.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.strokeBezierPath_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_strokeBezierPath.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.strokeBezierPath_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
+        managedObject.strokeBezierPath_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
+        managedObject.strokeBezierPath_property.removeEBObserver (observer)
       }
     }
   }

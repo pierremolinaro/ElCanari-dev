@@ -468,7 +468,7 @@ final class ProxyArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DeviceP
 //    To many relationship: DevicePadAssignmentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAssignmentInProject, EBSignatureObserverProtocol {
+class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAssignmentInProject, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -493,10 +493,6 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -507,25 +503,6 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [DevicePadAssignmentInProject] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DevicePadAssignmentInProject") as? DevicePadAssignmentInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -558,8 +535,6 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -593,21 +568,6 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
   //····················································································································
 
   override var propval : [DevicePadAssignmentInProject] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -674,6 +634,53 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: DevicePadAssignmentInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_DevicePadAssignmentInProject : StoredArrayOf_DevicePadAssignmentInProject {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [DevicePadAssignmentInProject] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DevicePadAssignmentInProject") as? DevicePadAssignmentInProject {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_mPadName (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

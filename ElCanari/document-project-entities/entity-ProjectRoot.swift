@@ -270,6 +270,12 @@ protocol ProjectRoot_netsDescription : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_unplacedPackages : class {
+  var unplacedPackages : StringTagArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_borderClearanceBackground : class {
   var borderClearanceBackground : EBShape? { get }
 }
@@ -425,6 +431,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_sheetIndexes,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_netsDescription,
+         ProjectRoot_unplacedPackages,
          ProjectRoot_borderClearanceBackground,
          ProjectRoot_boardBoundBox,
          ProjectRoot_boardLimitPointsTop,
@@ -1459,6 +1466,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: unplacedPackages
+  //····················································································································
+
+  let unplacedPackages_property = EBTransientProperty_StringTagArray ()
+
+  //····················································································································
+
+  var unplacedPackages_property_selection : EBSelection <StringTagArray> {
+    return self.unplacedPackages_property.prop
+  }
+
+  //····················································································································
+
+  var unplacedPackages : StringTagArray? {
+    switch self.unplacedPackages_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: borderClearanceBackground
   //····················································································································
 
@@ -2202,6 +2232,32 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mNetClasses_property.addEBObserverOf_netsDescription (self.netsDescription_property)
+  //--- Atomic property: unplacedPackages
+    self.unplacedPackages_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mComponents_property_selection.kind ()
+        kind &= unwSelf.mComponents_property_selection.kind ()
+        kind &= unwSelf.mComponents_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ProjectRoot_unplacedPackages (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponents_property.addEBObserver (self.unplacedPackages_property)
+    self.mComponents_property.addEBObserverOf_componentName (self.unplacedPackages_property)
+    self.mComponents_property.addEBObserverOf_mComponentValue (self.unplacedPackages_property)
   //--- Atomic property: borderClearanceBackground
     self.borderClearanceBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2696,6 +2752,9 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.removeEBObserver (self.sheetIndexes_property)
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netsDescription_property)
+    self.mComponents_property.removeEBObserver (self.unplacedPackages_property)
+    self.mComponents_property.removeEBObserverOf_componentName (self.unplacedPackages_property)
+    self.mComponents_property.removeEBObserverOf_mComponentValue (self.unplacedPackages_property)
     self.mBorderCurves_property.removeEBObserverOf_descriptor (self.borderClearanceBackground_property)
     self.mBoardLimitsWidth_property.removeEBObserver (self.borderClearanceBackground_property)
     self.mBoardClearance_property.removeEBObserver (self.borderClearanceBackground_property)
@@ -3102,6 +3161,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.netsDescription_property.mObserverExplorer,
       valueExplorer: &self.netsDescription_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "unplacedPackages",
+      idx: self.unplacedPackages_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.unplacedPackages_property.mObserverExplorer,
+      valueExplorer: &self.unplacedPackages_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "borderClearanceBackground",

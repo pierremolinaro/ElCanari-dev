@@ -1757,7 +1757,7 @@ final class ProxyArrayOf_PackagePad : ReadWriteArrayOf_PackagePad {
 //    To many relationship: PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserverProtocol {
+class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -1782,10 +1782,6 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -1796,25 +1792,6 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [PackagePad] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackagePad") as? PackagePad {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -1847,8 +1824,6 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1882,21 +1857,6 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
   //····················································································································
 
   override var propval : [PackagePad] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -1963,6 +1923,66 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: PackagePad
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_PackagePad : StoredArrayOf_PackagePad {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [PackagePad] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackagePad") as? PackagePad {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_xCenter (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_yCenter (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_width (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_height (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_holeDiameter (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_padShape (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_padStyle (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_padNumber (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_xCenterUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_yCenterUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_widthUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_heightUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_holeDiameterUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_annularRingUnit (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

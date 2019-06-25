@@ -762,7 +762,7 @@ final class ProxyArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevic
 //    To many relationship: SymbolTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EBSignatureObserverProtocol {
+class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -787,10 +787,6 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -801,25 +797,6 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SymbolTypeInDevice] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolTypeInDevice") as? SymbolTypeInDevice {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -852,8 +829,6 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -887,21 +862,6 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
   //····················································································································
 
   override var propval : [SymbolTypeInDevice] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -968,6 +928,57 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: SymbolTypeInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_SymbolTypeInDevice : StoredArrayOf_SymbolTypeInDevice {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [SymbolTypeInDevice] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolTypeInDevice") as? SymbolTypeInDevice {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_mTypeName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mVersion (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mFileData (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mStrokeBezierPath (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mFilledBezierPath (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

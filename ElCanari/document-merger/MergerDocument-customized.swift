@@ -102,7 +102,8 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
   // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
   //····················································································································
 
-  override func dragImageForRows (with dragRows: IndexSet,
+  override func dragImageForRows (source inSourceTableView : CanariDragSourceTableView,
+                                  with dragRows: IndexSet,
                                   tableColumns: [NSTableColumn],
                                   event dragEvent: NSEvent,
                                   offset dragImageOffset: NSPointPointer) -> NSImage {

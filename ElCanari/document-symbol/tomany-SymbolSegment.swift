@@ -761,7 +761,7 @@ final class ProxyArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment {
 //    To many relationship: SymbolSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureObserverProtocol {
+class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -786,10 +786,6 @@ final class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSign
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -800,25 +796,6 @@ final class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSign
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SymbolSegment] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolSegment") as? SymbolSegment {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -851,8 +828,6 @@ final class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSign
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -886,21 +861,6 @@ final class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSign
   //····················································································································
 
   override var propval : [SymbolSegment] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -967,6 +927,56 @@ final class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSign
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: SymbolSegment
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_SymbolSegment : StoredArrayOf_SymbolSegment {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [SymbolSegment] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolSegment") as? SymbolSegment {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_y1 (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_x2 (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_y2 (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_x1 (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

@@ -1171,7 +1171,7 @@ final class ProxyArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject 
 //    To many relationship: NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSignatureObserverProtocol {
+class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -1196,10 +1196,6 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -1210,25 +1206,6 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [NetClassInProject] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "NetClassInProject") as? NetClassInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -1261,8 +1238,6 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1296,21 +1271,6 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
   //····················································································································
 
   override var propval : [NetClassInProject] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -1377,6 +1337,60 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: NetClassInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_NetClassInProject : StoredArrayOf_NetClassInProject {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [NetClassInProject] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "NetClassInProject") as? NetClassInProject {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_mNetClassName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mNetClassColor (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mNetWidth (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mNetWidthUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mViaHoleDiameter (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mViaHoleDiameterUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mViaPadDiameter (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mViaPadDiameterUnit (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

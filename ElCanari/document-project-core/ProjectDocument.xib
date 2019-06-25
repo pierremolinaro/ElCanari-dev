@@ -226,7 +226,9 @@
                 <outlet property="mSheetUpButton" destination="15836" id="N7V-Uz-FY8"/>
                 <outlet property="mSymbolMirrorSwitch" destination="psf-Qy-hmK" id="J0X-nC-8Vi"/>
                 <outlet property="mSymbolRotationSegmentedControl" destination="XO8-iJ-UW4" id="R4E-hc-WDC"/>
+                <outlet property="mUnplacedPackageTableView" destination="15584" id="syX-9E-abg"/>
                 <outlet property="mUnplacedPackagesBoardInspectorView" destination="15559" id="aDG-Hp-UdS"/>
+                <outlet property="mUnplacedPackagesCountTextField" destination="15560" id="S8i-yW-Gv1"/>
                 <outlet property="mUnplacedSymbolsSchematicsInspectorView" destination="15599" id="Duz-PX-nA9"/>
                 <outlet property="mUnplacedSymbolsTableView" destination="15604" id="A8d-TO-jxG"/>
                 <outlet property="mUnplacedSymbolsTextField" destination="15601" id="eUO-n5-Svc"/>
@@ -1517,6 +1519,7 @@ Gw
                     </popUpButtonCell>
                 </popUpButton>
             </subviews>
+            <point key="canvasLocation" x="598" y="250"/>
         </customView>
         <customView id="15512" userLabel="Board Inspector : Selected Restrict Rectangle" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="185"/>
@@ -3480,7 +3483,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn editable="NO" width="108" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn editable="NO" width="108.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3494,11 +3497,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv">
-                                                <rect key="frame" x="468.5" y="1" width="108" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="108.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="108" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="108.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3513,7 +3516,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="219.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="219" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3527,11 +3530,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="579.5" y="1" width="219.5" height="17"/>
+                                                <rect key="frame" x="580" y="1" width="219" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="219.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="219" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -4565,7 +4568,7 @@ Diameter</string>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="TJO-lq-ns5">
                         <rect key="frame" x="1" y="1" width="573" height="596"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="3013" customClass="EBGraphicView">
                                 <rect key="frame" x="0.0" y="0.0" width="347" height="262"/>
@@ -5333,7 +5336,7 @@ Diameter</string>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="vjz-46-hdV">
                         <rect key="frame" x="1" y="1" width="580" height="597"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView id="3082" customClass="EBGraphicView">
                                 <rect key="frame" x="0.0" y="0.0" width="579" height="593"/>
@@ -7042,8 +7045,8 @@ DQ
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15560">
-                    <rect key="frame" x="59" y="481" width="126" height="14"/>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15560" customClass="EBTextObserverField">
+                    <rect key="frame" x="18" y="481" width="214" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="# Packages to Insert" id="15580">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -7056,9 +7059,9 @@ DQ
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="MAC-7F-Rnp">
                         <rect key="frame" x="1" y="0.0" width="208" height="454"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="15585" id="15584">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="15585" viewBased="YES" id="15584" customClass="CanariDragSourceTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="208" height="431"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -7066,7 +7069,7 @@ DQ
                                 <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="name" editable="NO" width="205" minWidth="40" maxWidth="1000" id="15586">
+                                    <tableColumn editable="NO" width="205" minWidth="40" maxWidth="1000" id="15586">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Package to Insert">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -7077,8 +7080,27 @@ DQ
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <sortDescriptor key="sortDescriptorPrototype" selector="compareNumeric:" sortKey="componentName"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <prototypeCellViews>
+                                            <tableCellView id="eEE-HI-aM1">
+                                                <rect key="frame" x="1" y="1" width="205" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Vs2-ml-uun">
+                                                        <rect key="frame" x="0.0" y="0.0" width="205" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="g2W-8C-twF">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <connections>
+                                                    <outlet property="textField" destination="Vs2-ml-uun" id="5ad-8Q-K8D"/>
+                                                </connections>
+                                            </tableCellView>
+                                        </prototypeCellViews>
                                     </tableColumn>
                                 </tableColumns>
                             </tableView>
@@ -7098,6 +7120,7 @@ DQ
                     </tableHeaderView>
                 </scrollView>
             </subviews>
+            <point key="canvasLocation" x="210" y="136"/>
         </customView>
         <customView id="15599" userLabel="Schematics Inspector : Unplaced Symbols" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
@@ -7117,7 +7140,7 @@ DQ
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="3aO-4z-c55">
                         <rect key="frame" x="1" y="0.0" width="208" height="454"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="15603" viewBased="YES" id="15604" customClass="CanariDragSourceTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="208" height="431"/>
@@ -7178,7 +7201,7 @@ DQ
                     </tableHeaderView>
                 </scrollView>
             </subviews>
-            <point key="canvasLocation" x="-282" y="-747"/>
+            <point key="canvasLocation" x="-211" y="-1111"/>
         </customView>
         <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="15626" userLabel="devicesAndFontsCandidateForUpdate" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>

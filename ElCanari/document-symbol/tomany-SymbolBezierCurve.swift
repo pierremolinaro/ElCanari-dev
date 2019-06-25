@@ -997,7 +997,7 @@ final class ProxyArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve 
 //    To many relationship: SymbolBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSignatureObserverProtocol {
+class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -1022,10 +1022,6 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -1036,25 +1032,6 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SymbolBezierCurve] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolBezierCurve") as? SymbolBezierCurve {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -1087,8 +1064,6 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1122,21 +1097,6 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
   //····················································································································
 
   override var propval : [SymbolBezierCurve] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -1203,6 +1163,60 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: SymbolBezierCurve
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_SymbolBezierCurve : StoredArrayOf_SymbolBezierCurve {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [SymbolBezierCurve] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolBezierCurve") as? SymbolBezierCurve {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_y1 (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_x2 (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_y2 (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_cpx1 (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_cpy1 (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_cpx2 (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_cpy2 (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_x1 (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

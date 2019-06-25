@@ -586,7 +586,7 @@ final class ProxyArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchemati
 //    To many relationship: CommentInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EBSignatureObserverProtocol {
+class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -611,10 +611,6 @@ final class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchemat
   
   //····················································································································
 
-  private var mPrefKey : String? = nil
-
-  //····················································································································
-
   var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
@@ -625,25 +621,6 @@ final class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchemat
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [CommentInSchematic] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "CommentInSchematic") as? CommentInSchematic {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
     }
   }
 
@@ -676,8 +653,6 @@ final class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchemat
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
-  //--- Write in preferences ?
-    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
@@ -711,21 +686,6 @@ final class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchemat
   //····················································································································
 
   override var propval : [CommentInSchematic] { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    if let prefKey = self.mPrefKey {
-      var dictionaryArray = [NSDictionary] ()
-      for object in self.mInternalArrayValue {
-        let d = NSMutableDictionary ()
-        object.saveIntoDictionary (d)
-        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-        dictionaryArray.append (d)
-      }
-      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-    }
-  }
 
   //····················································································································
 
@@ -792,6 +752,55 @@ final class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchemat
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
     }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Preferences array: CommentInSchematic
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class PreferencesArrayOf_CommentInSchematic : StoredArrayOf_CommentInSchematic {
+
+  //····················································································································
+
+  private let mPrefKey : String
+  private let mObserverForWritingPreferences = EBOutletEvent ()
+  
+  //····················································································································
+
+  init (prefKey : String) {
+    self.mPrefKey = prefKey
+    super.init ()
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [CommentInSchematic] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "CommentInSchematic") as? CommentInSchematic {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+    self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mComment (self.mObserverForWritingPreferences)
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+ }
+
+  //····················································································································
+ 
+  private func writeInPreferences () {
+    var dictionaryArray = [NSDictionary] ()
+    for object in self.mInternalArrayValue {
+      let d = NSMutableDictionary ()
+      object.saveIntoDictionary (d)
+      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+      dictionaryArray.append (d)
+    }
+    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
   //····················································································································

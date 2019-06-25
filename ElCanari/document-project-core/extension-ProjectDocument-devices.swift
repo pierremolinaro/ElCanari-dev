@@ -114,6 +114,7 @@ extension ProjectDocument {
       let packageInProject = DevicePackageInProject (self.ebUndoManager)
       inDeviceInProject.mPackages.append (packageInProject)
       packageInProject.mPackageName = packageInDevice.mName
+      packageInProject.mStrokeBezierPath = packageInDevice.mStrokeBezierPath
       packageDictionary [packageInProject.mPackageName] = packageInProject
       for masterPadInDevice in packageInDevice.mMasterPads {
         let masterPadInProject = DeviceMasterPadInProject (self.ebUndoManager)

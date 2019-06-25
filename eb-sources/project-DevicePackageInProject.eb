@@ -4,6 +4,7 @@ entity DevicePackageInProject {
   toMany DeviceMasterPadInProject mMasterPads ;
 
   property String mPackageName default "" ;
+  property NSBezierPath mStrokeBezierPath default empty ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

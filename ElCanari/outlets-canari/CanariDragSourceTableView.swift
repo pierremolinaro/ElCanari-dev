@@ -9,7 +9,6 @@
 
 import Cocoa
 
-
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   StringTag
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -92,6 +91,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //····················································································································
 
   func numberOfRows (in _ : NSTableView) -> Int {
+    // Swift.print ("numberOfRows \(self.mModelArray.count)")
     return self.mModelArray.count
   }
 
@@ -218,6 +218,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
                                   offset dragImageOffset: NSPointPointer) -> NSImage {
     if let document = self.mDocument {
       return document.dragImageForRows (
+        source: self,
         with: dragRows,
         tableColumns: tableColumns,
         event: dragEvent,

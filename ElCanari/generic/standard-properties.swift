@@ -1883,16 +1883,6 @@ typealias EBTransientPropertyArray_EBShape = EBTransientClassProperty <[EBShape]
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class CanariRect
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_CanariRect  = EBReadOnlyClassProperty <CanariRect>
-typealias EBTransientProperty_CanariRect = EBTransientClassProperty <CanariRect>
-typealias EBReadOnlyPropertyArray_CanariRect  = EBReadOnlyClassProperty <[CanariRect]>
-typealias EBTransientPropertyArray_CanariRect = EBTransientClassProperty <[CanariRect]>
-
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CanariMenuItemListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1902,6 +1892,12 @@ typealias EBReadOnlyPropertyArray_CanariMenuItemListClass  = EBReadOnlyClassProp
 typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassProperty <[CanariMenuItemListClass]>
 
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property CanariRect
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CanariRect  = EBReadOnlyValueProperty <CanariRect>
+typealias EBTransientProperty_CanariRect = EBTransientValueProperty <CanariRect>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property EBBezierPath
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1927,15 +1923,11 @@ typealias EBTransientProperty_BorderCurveDescriptor = EBTransientValueProperty <
 typealias EBReadOnlyProperty_NetInfoPoint  = EBReadOnlyValueProperty <NetInfoPoint>
 typealias EBTransientProperty_NetInfoPoint = EBTransientValueProperty <NetInfoPoint>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class NetInfoPointArray
+//   Scalar property NetInfoPointArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_NetInfoPointArray  = EBReadOnlyClassProperty <NetInfoPointArray>
-typealias EBTransientProperty_NetInfoPointArray = EBTransientClassProperty <NetInfoPointArray>
-typealias EBReadOnlyPropertyArray_NetInfoPointArray  = EBReadOnlyClassProperty <[NetInfoPointArray]>
-typealias EBTransientPropertyArray_NetInfoPointArray = EBTransientClassProperty <[NetInfoPointArray]>
-
-
+typealias EBReadOnlyProperty_NetInfoPointArray  = EBReadOnlyValueProperty <NetInfoPointArray>
+typealias EBTransientProperty_NetInfoPointArray = EBTransientValueProperty <NetInfoPointArray>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property StatusStringArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1966,12 +1958,6 @@ typealias EBTransientProperty_SchematicPointStatus = EBTransientValueProperty <S
 
 typealias EBReadOnlyProperty_NetInfoArray  = EBReadOnlyValueProperty <NetInfoArray>
 typealias EBTransientProperty_NetInfoArray = EBTransientValueProperty <NetInfoArray>
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Scalar property NSPoint
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_NSPoint  = EBReadOnlyValueProperty <NSPoint>
-typealias EBTransientProperty_NSPoint = EBTransientValueProperty <NSPoint>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property CanariPoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

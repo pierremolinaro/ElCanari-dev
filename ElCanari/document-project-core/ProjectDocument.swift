@@ -329,6 +329,52 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: unplacedPackageCount
+  //····················································································································
+
+  let unplacedPackageCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var unplacedPackageCount_property_selection : EBSelection <Int> {
+    return self.unplacedPackageCount_property.prop
+  }
+
+  //····················································································································
+
+  var unplacedPackageCount : Int? {
+    switch self.unplacedPackageCount_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: unplacedPackagesCountString
+  //····················································································································
+
+  let unplacedPackagesCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var unplacedPackagesCountString_property_selection : EBSelection <String> {
+    return self.unplacedPackagesCountString_property.prop
+  }
+
+  //····················································································································
+
+  var unplacedPackagesCountString : String? {
+    switch self.unplacedPackagesCountString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: canChangePackage
   //····················································································································
 
@@ -597,7 +643,9 @@ import Cocoa
   @IBOutlet var mSheetUpButton : EBButton?
   @IBOutlet var mSymbolMirrorSwitch : EBSwitch?
   @IBOutlet var mSymbolRotationSegmentedControl : CanariQuadrantSegmentedControl?
+  @IBOutlet var mUnplacedPackageTableView : CanariDragSourceTableView?
   @IBOutlet var mUnplacedPackagesBoardInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mUnplacedPackagesCountTextField : EBTextObserverField?
   @IBOutlet var mUnplacedSymbolsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mUnplacedSymbolsTableView : CanariDragSourceTableView?
   @IBOutlet var mUnplacedSymbolsTextField : EBTextObserverField?
@@ -953,7 +1001,9 @@ import Cocoa
     checkOutletConnection (self.mSheetUpButton, "mSheetUpButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSymbolMirrorSwitch, "mSymbolMirrorSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolRotationSegmentedControl, "mSymbolRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mUnplacedPackageTableView, "mUnplacedPackageTableView", CanariDragSourceTableView.self, #file, #line)
     checkOutletConnection (self.mUnplacedPackagesBoardInspectorView, "mUnplacedPackagesBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mUnplacedPackagesCountTextField, "mUnplacedPackagesCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsSchematicsInspectorView, "mUnplacedSymbolsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsTableView, "mUnplacedSymbolsTableView", CanariDragSourceTableView.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsTextField, "mUnplacedSymbolsTextField", EBTextObserverField.self, #file, #line)
@@ -1202,6 +1252,50 @@ import Cocoa
       }
     }
     self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property)
+  //--- Atomic property: unplacedPackageCount
+    self.unplacedPackageCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.unplacedPackages_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.rootObject.unplacedPackages_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_unplacedPackageCount (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.unplacedPackages_property.addEBObserver (self.unplacedPackageCount_property)
+  //--- Atomic property: unplacedPackagesCountString
+    self.unplacedPackagesCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.unplacedPackageCount_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.unplacedPackageCount_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_unplacedPackagesCountString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.unplacedPackageCount_property.addEBObserver (self.unplacedPackagesCountString_property)
   //--- Atomic property: canChangePackage
     self.canChangePackage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1346,6 +1440,8 @@ import Cocoa
     self.mBoardClearanceUnitPopUp?.bind_selectedTag (self.rootObject.mBoardClearanceUnit_property, file: #file, line: #line)
     self.mBoardClearanceTextField?.bind_dimensionAndUnit (self.rootObject.mBoardClearance_property, self.rootObject.mBoardClearanceUnit_property, file: #file, line: #line)
     self.mBoardInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mBoardSelectedInspector_property, file: #file, line: #line)
+    self.mUnplacedPackageTableView?.bind_models (self.rootObject.unplacedPackages_property, file: #file, line: #line)
+    self.mUnplacedPackagesCountTextField?.bind_valueObserver (self.unplacedPackagesCountString_property, file: #file, line: #line)
     self.mBoardView?.bind_underObjectsDisplay (self.rootObject.boardBackground_property, file: #file, line: #line)
     self.mBoardView?.bind_horizontalFlip (self.rootObject.mBoardHorizontalFlip_property, file: #file, line: #line)
     self.mBoardView?.bind_verticalFlip (self.rootObject.mBoardVerticalFlip_property, file: #file, line: #line)
@@ -1858,6 +1954,8 @@ import Cocoa
     self.mBoardClearanceUnitPopUp?.unbind_selectedTag ()
     self.mBoardClearanceTextField?.unbind_dimensionAndUnit ()
     self.mBoardInspectorSegmentedControl?.unbind_selectedPage ()
+    self.mUnplacedPackageTableView?.unbind_models ()
+    self.mUnplacedPackagesCountTextField?.unbind_valueObserver ()
     self.mBoardView?.unbind_underObjectsDisplay ()
     self.mBoardView?.unbind_horizontalFlip ()
     self.mBoardView?.unbind_verticalFlip ()
@@ -2007,6 +2105,8 @@ import Cocoa
     self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
     self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
+    self.rootObject.unplacedPackages_property.removeEBObserver (self.unplacedPackageCount_property)
+    self.unplacedPackageCount_property.removeEBObserver (self.unplacedPackagesCountString_property)
     self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
   //--------------------------- Remove targets / actions
@@ -2251,7 +2351,9 @@ import Cocoa
     self.mSheetUpButton?.ebCleanUp ()
     self.mSymbolMirrorSwitch?.ebCleanUp ()
     self.mSymbolRotationSegmentedControl?.ebCleanUp ()
+    self.mUnplacedPackageTableView?.ebCleanUp ()
     self.mUnplacedPackagesBoardInspectorView?.ebCleanUp ()
+    self.mUnplacedPackagesCountTextField?.ebCleanUp ()
     self.mUnplacedSymbolsSchematicsInspectorView?.ebCleanUp ()
     self.mUnplacedSymbolsTableView?.ebCleanUp ()
     self.mUnplacedSymbolsTextField?.ebCleanUp ()
@@ -2478,7 +2580,9 @@ import Cocoa
 //    self.mSheetUpButton = nil
 //    self.mSymbolMirrorSwitch = nil
 //    self.mSymbolRotationSegmentedControl = nil
+//    self.mUnplacedPackageTableView = nil
 //    self.mUnplacedPackagesBoardInspectorView = nil
+//    self.mUnplacedPackagesCountTextField = nil
 //    self.mUnplacedSymbolsSchematicsInspectorView = nil
 //    self.mUnplacedSymbolsTableView = nil
 //    self.mUnplacedSymbolsTextField = nil
