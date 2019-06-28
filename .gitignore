@@ -11,6 +11,11 @@
 build/**
 *.o
 *.dep
+other-projects/bezier-path-points-archiving/build/**
+other-projects/bezier-path-points-archiving/bezier-path-points-archiving.xcodeproj/project.xcworkspace/*
+other-projects/bezier-path-points-archiving/bezier-path-points-archiving.xcodeproj/xcuserdata/*
+other-projects/bezier-path-points-archiving/bezier-path-points-archiving.xcodeproj/xcshareddata/*
+
 other-projects/extract-kicad-font/build/**
 other-projects/extract-kicad-font/extract-kicad-font.xcodeproj/project.xcworkspace/*
 other-projects/extract-kicad-font/extract-kicad-font.xcodeproj/xcuserdata/*
