@@ -16,8 +16,8 @@ extension DeviceDocument {
 //--- START OF USER ZONE 2
     var okMessages = [String] ()
     var errorMessages = [String] ()
-    self.performSymbolsUpdate (self.rootObject.mSymbolTypes_property.propval, &okMessages, &errorMessages)
-    self.performPackagesUpdate (self.rootObject.mPackages_property.propval, &okMessages, &errorMessages)
+    self.performSymbolsUpdate (&okMessages, &errorMessages)
+    self.performPackagesUpdate (self.rootObject.mPackages, &okMessages, &errorMessages)
     let alert = NSAlert ()
     alert.messageText = (errorMessages.count == 0) ? "Success." : "Error."
     alert.informativeText = (okMessages + errorMessages).joined (separator: "\n")

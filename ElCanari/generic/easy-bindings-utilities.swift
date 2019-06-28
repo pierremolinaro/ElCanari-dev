@@ -1204,7 +1204,7 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
       if self.mValue != oldValue {
         self.mSetterDelegate? (mValue)
         self.mValueExplorer?.stringValue = "\(mValue)"
-        self.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
+        self.ebUndoManager?.registerUndo (withTarget: self, selector: #selector(performUndo(_:)), object: oldValue.convertToNSObject ())
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\\n")
         }
@@ -1697,13 +1697,13 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  func storeIn (dictionary:NSMutableDictionary, forKey inKey:String) {
+  func storeIn (dictionary : NSMutableDictionary, forKey inKey : String) {
     dictionary.setValue (mValue.convertToNSObject (), forKey:inKey)
   }
 
   //····················································································································
 
-  func readFrom (dictionary: NSDictionary, forKey inKey:String) {
+  func readFrom (dictionary : NSDictionary, forKey inKey : String) {
     let possibleValue = dictionary.object (forKey:inKey)
     if let value = possibleValue as? NSObject {
       self.setProp (T.convertFromNSObject (object: value))
@@ -2267,7 +2267,7 @@ extension NSBezierPath : ClassPropertyProtocol {
         bp.miterLimit = CGFloat (miterLimit)
       }
     }
-    print ("ok: \(ok)")
+    // print ("ok: \(ok)")
     return bp
   }
 
@@ -2587,7 +2587,7 @@ class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProper
   var validationFunction : (T, T) -> EBValidationResult <T> = defaultValidationFunction
 
   override func validateAndSetProp (_ candidateValue : T,
-                                    windowForSheet inWindow:NSWindow?) -> Bool {
+                                    windowForSheet inWindow : NSWindow?) -> Bool {
     var result = true
     let validationResult = validationFunction (propval, candidateValue)
     switch validationResult {
@@ -2627,6 +2627,8 @@ class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProper
   func readFrom (dictionary : NSDictionary, forKey inKey : String) {
     let possibleValue = dictionary.object (forKey: inKey)
     if let value = possibleValue as? Data, let unarchivedValue = T.unarchiveFromData (data: value) as? T {
+      self.setProp (unarchivedValue)
+    }else if let value = possibleValue as? String, let unarchivedValue = T.unarchiveFromString (string: value) as? T {
       self.setProp (unarchivedValue)
     }
   }

@@ -29,11 +29,10 @@ let keyedArchive2 = keyedArchiver.encodedData
 print ("keyed archive 2: \(keyedArchive2.count) bytes")
 
 let keyedArchive3 = try? NSKeyedArchiver.archivedData (withRootObject: color, requiringSecureCoding: false)
-print ("keyed archive3: \(keyedArchive3!.count) bytes")
+print ("keyed archive 3: \(keyedArchive3!.count) bytes")
 
 let keyedArchive4 = try? NSKeyedArchiver.archivedData (withRootObject: color, requiringSecureCoding: true)
-print ("keyed archive4: \(keyedArchive4!.count) bytes, identical to 3: \(keyedArchive3! == keyedArchive4!)")
+print ("keyed archive 4: \(keyedArchive4!.count) bytes, identical to 3: \(keyedArchive3! == keyedArchive4!)")
 
 let home = NSHomeDirectory ()
-try? keyedArchive2.write(to: URL (fileURLWithPath: home + "/Desktop/keyedArchive2.plist"))
-// try? archive.write(to: URL (fileURLWithPath: home + "/Desktop/archive.plist"))
+try? keyedArchive2.write(to: URL (fileURLWithPath: home + "/Desktop/keyedArchive.plist"))

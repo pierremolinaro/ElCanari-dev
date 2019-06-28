@@ -161,10 +161,12 @@ extension ApplicationDelegate {
                       display: true // animating,
                     ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
                       if let deviceDocument = document as? CustomizedDeviceDocument {
+//                        deviceDocument.resetSymbolsVersion ()
+//                        deviceDocument.resetPackagesVersion ()
                         var okMessages = [String] ()
                         var errorMessages = [String] ()
-                        deviceDocument.performSymbolsUpdate (deviceDocument.rootObject.mSymbolTypes_property.propval, &okMessages, &errorMessages)
-                        deviceDocument.performPackagesUpdate (deviceDocument.rootObject.mPackages_property.propval, &okMessages, &errorMessages)
+                        deviceDocument.performSymbolsUpdate (&okMessages, &errorMessages)
+                        deviceDocument.performPackagesUpdate (deviceDocument.rootObject.mPackages, &okMessages, &errorMessages)
                         deviceDocument.save (nil)
                         deviceDocument.close ()
                         if errorMessages.count == 0 {

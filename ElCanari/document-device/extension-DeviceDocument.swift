@@ -50,11 +50,18 @@ extension DeviceDocument {
 
   //····················································································································
 
-  internal func performSymbolsUpdate (_ inSymbol : [SymbolTypeInDevice],
-                                      _ ioOkMessages : inout [String],
+  internal func resetSymbolsVersion () {
+    for symbolType in self.rootObject.mSymbolTypes {
+      symbolType.mVersion = 0
+    }
+  }
+
+  //····················································································································
+
+  internal func performSymbolsUpdate (_ ioOkMessages : inout [String],
                                       _ ioErrorMessages : inout [String]) {
     let fm = FileManager ()
-    for symbolType in inSymbol {
+    for symbolType in self.rootObject.mSymbolTypes {
       let pathes = symbolFilePathInLibraries (symbolType.mTypeName)
       if pathes.count == 0 {
         ioErrorMessages.append ("No file in Library for \(symbolType.mTypeName) symbol")
@@ -90,6 +97,7 @@ extension DeviceDocument {
             //-- Set properties
               symbolType.mVersion = version
               symbolType.mFileData = data
+              // Swift.print ("BP \(strokeBezierPathes.elementCount) \(filledBezierPathes.elementCount)")
               symbolType.mStrokeBezierPath = strokeBezierPathes
               symbolType.mFilledBezierPath = filledBezierPathes
             //--- Update pin types
@@ -146,6 +154,14 @@ extension DeviceDocument {
       package.mMasterPads_property.setProp (masterPads)
       self.rootObject.mPackages_property.add (package)
       self.updatePadProxies ()
+    }
+  }
+
+  //····················································································································
+
+  internal func resetPackagesVersion () {
+    for package in self.rootObject.mPackages {
+      package.mVersion = 0
     }
   }
 
