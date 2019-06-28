@@ -272,10 +272,11 @@ fileprivate let kDragAndDropPackage = NSPasteboard.PasteboardType (rawValue: "na
   //····················································································································
 
   override func removeUserInterface () {
-    super.removeUserInterface ()
     self.mSymbolCountToInsertController?.unregister ()
     self.mSymbolCountToInsertController = nil
     self.mSheetController.unregister ()
+    self.mPackageCountToInsertController?.unregister ()
+    self.mPackageCountToInsertController = nil
     self.mSchematicsView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
     self.mBoardLimitsView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
     self.schematicObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
@@ -285,6 +286,9 @@ fileprivate let kDragAndDropPackage = NSPasteboard.PasteboardType (rawValue: "na
     self.mSelectedLabelNetClassPopUpController.unbind_model ()
     self.mSelectedLabelNetClassPopUpController.attachPopUpButton (nil)
     self.mBoardTextFontPopUpButton?.unregister ()
+    self.mBoardTextFontPopUpButton = nil
+  //---
+    super.removeUserInterface ()
   }
 
   //····················································································································
