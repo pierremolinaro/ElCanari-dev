@@ -5,11 +5,19 @@ import Cocoa
 class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   //····················································································································
+  //  properties
+  //····················································································································
+
+  private var mMasterView : NSView? = nil
+  private var mAttachedView : CanariViewWithKeyView? = nil
+  private var mPageViews = [CanariViewWithKeyView?] ()
+
+  //····················································································································
   //  init
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     noteObjectAllocation (self)
   }
 
@@ -25,7 +33,6 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
   override func ebCleanUp () {
     super.ebCleanUp ()
     self.mPageViews.removeAll ()
-    // self.mAttachedView?.removeFromSuperview ()
     self.mAttachedView = nil
     self.mMasterView = nil
   }
@@ -35,14 +42,6 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
   deinit {
     noteObjectDeallocation (self)
   }
-
-  //····················································································································
-  //  properties
-  //····················································································································
-
-  private var mMasterView : NSView? = nil
-  private var mAttachedView : CanariViewWithKeyView? = nil
-  private var mPageViews = [CanariViewWithKeyView?] ()
 
   //····················································································································
 

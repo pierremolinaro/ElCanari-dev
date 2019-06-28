@@ -163,48 +163,48 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet var advancementSlider : EBSlider?
-  @IBOutlet var advancementTextField : EBIntField?
-  @IBOutlet var commentTextView : EBTextView?
-  @IBOutlet var currentCharacterStepper : EBStepper?
-  @IBOutlet var currentCharacterView : CanariCharacterView?
-  @IBOutlet var gerberCodeInstructionCountMessageTextField : EBTextObserverField?
-  @IBOutlet var mAddCharacterButton : EBButton?
-  @IBOutlet var mAddSegmentButton : EBButton?
-  @IBOutlet var mCharacterIssuesInspectorView : CanariViewWithKeyView?
-  @IBOutlet var mCurrentCharacterTextField : EBTextObserverField?
-  @IBOutlet var mDeleteCurrentCharacterButton : EBButton?
-  @IBOutlet var mFontCharacterSelectButton : FontCharacterSelectButton?
-  @IBOutlet var mFontNominalSizeTextField : EBIntField?
-  @IBOutlet var mFontPageView : CanariViewWithKeyView?
-  @IBOutlet var mFontSampleStringView : CanariFontSampleStringView?
-  @IBOutlet var mGerberCodeTableView : CanariCharacterGerberCodeTableView?
-  @IBOutlet var mInfosPageView : CanariViewWithKeyView?
-  @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
-  @IBOutlet var mIssueTableView : CanariIssueTableView?
-  @IBOutlet var mIssueTextField : EBTextObserverField?
-  @IBOutlet var mMasterFontPageView : NSView?
-  @IBOutlet var mMasterView : NSView?
-  @IBOutlet var mNewCharacterPanel : NSPanel?
-  @IBOutlet var mNewCharacterView : NewCharacterView?
-  @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
-  @IBOutlet var mSampleStringAscentTextField : EBTextObserverField?
-  @IBOutlet var mSampleStringDescentTextField : EBTextObserverField?
-  @IBOutlet var mSampleStringField : EBTextField?
-  @IBOutlet var mSampleStringInspectorView : CanariViewWithKeyView?
-  @IBOutlet var mSampleStringSizeField : EBDoubleField?
-  @IBOutlet var mSampleStringWidthTextField : EBTextObserverField?
-  @IBOutlet var mSelectedCharacterInspectorView : CanariViewWithKeyView?
-  @IBOutlet var mShowGerberDrawingFlowCheckbox : EBSwitch?
-  @IBOutlet var mShowGerberDrawingIndexesCheckbox : EBSwitch?
-  @IBOutlet var mSignatureTextField : CanariSignatureField?
-  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
-  @IBOutlet var mVersionField : CanariVersionField?
-  @IBOutlet var mWarnsWhenAdvanceIsZeroCheckbox : EBSwitch?
-  @IBOutlet var mWarnsWhenNoSegmentCheckbox : EBSwitch?
-  @IBOutlet var resetVersionAndSignatureButton : EBButton?
-  @IBOutlet var transparencySlider : EBSlider?
-  @IBOutlet var transparencyTextField : EBDoubleField?
+  @IBOutlet weak var advancementSlider : EBSlider? = nil // An outlet should be declared weak
+  @IBOutlet weak var advancementTextField : EBIntField? = nil // An outlet should be declared weak
+  @IBOutlet weak var commentTextView : EBTextView? = nil // An outlet should be declared weak
+  @IBOutlet weak var currentCharacterStepper : EBStepper? = nil // An outlet should be declared weak
+  @IBOutlet weak var currentCharacterView : CanariCharacterView? = nil // An outlet should be declared weak
+  @IBOutlet weak var gerberCodeInstructionCountMessageTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mAddCharacterButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mAddSegmentButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mCharacterIssuesInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mCurrentCharacterTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDeleteCurrentCharacterButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mFontCharacterSelectButton : FontCharacterSelectButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mFontNominalSizeTextField : EBIntField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mFontPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mFontSampleStringView : CanariFontSampleStringView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mGerberCodeTableView : CanariCharacterGerberCodeTableView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mInfosPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mInspectorSegmentedControl : CanariSegmentedControl? = nil // An outlet should be declared weak
+  @IBOutlet weak var mIssueTableView : CanariIssueTableView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mIssueTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMasterFontPageView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMasterView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mNewCharacterPanel : NSPanel? = nil // An outlet should be declared weak
+  @IBOutlet weak var mNewCharacterView : NewCharacterView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mPageSegmentedControl : CanariSegmentedControl? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSampleStringAscentTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSampleStringDescentTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSampleStringField : EBTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSampleStringInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSampleStringSizeField : EBDoubleField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSampleStringWidthTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSelectedCharacterInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mShowGerberDrawingFlowCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mShowGerberDrawingIndexesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSignatureTextField : CanariSignatureField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mStatusImageViewInToolbar : EBImageObserverView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mVersionField : CanariVersionField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mWarnsWhenAdvanceIsZeroCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mWarnsWhenNoSegmentCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var resetVersionAndSignatureButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var transparencySlider : EBSlider? = nil // An outlet should be declared weak
+  @IBOutlet weak var transparencyTextField : EBDoubleField? = nil // An outlet should be declared weak
 
   //····················································································································
   //    Multiple bindings controllers

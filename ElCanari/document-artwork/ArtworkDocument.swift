@@ -117,55 +117,55 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet var mAddGenerationFileButton : EBButton?
-  @IBOutlet var mCommentTextView : EBTextView?
-  @IBOutlet var mDataPageView : CanariViewWithKeyView?
-  @IBOutlet var mDataTableView : EBTableView?
-  @IBOutlet var mDimensionForPadHoleInPDFTextField : CanariDimensionTextField?
-  @IBOutlet var mDrawBoardInternalLimitsSwitch : EBSwitch?
-  @IBOutlet var mDrawBoardLimitsSwitch : EBSwitch?
-  @IBOutlet var mDrawComponentNamesBottomSideSwitch : EBSwitch?
-  @IBOutlet var mDrawComponentNamesTopSideSwitch : EBSwitch?
-  @IBOutlet var mDrawComponentValuesBottomSideSwitch : EBSwitch?
-  @IBOutlet var mDrawComponentValuesTopSideSwitch : EBSwitch?
-  @IBOutlet var mDrawPackageLegendBottomSideSwitch : EBSwitch?
-  @IBOutlet var mDrawPackageLegendTopSideSwitch : EBSwitch?
-  @IBOutlet var mDrawPadHolesInPDFSwitch : EBSwitch?
-  @IBOutlet var mDrawPadsBottomSideSwitch : EBSwitch?
-  @IBOutlet var mDrawPadsTopSideSwitch : EBSwitch?
-  @IBOutlet var mDrawTextsLayoutBottomSideSwitch : EBSwitch?
-  @IBOutlet var mDrawTextsLayoutTopSideSwitch : EBSwitch?
-  @IBOutlet var mDrawTextsLegendBottomSideSwitch : EBSwitch?
-  @IBOutlet var mDrawTextsLegendTopSideSwitch : EBSwitch?
-  @IBOutlet var mDrawTracksBottomSidSwitche : EBSwitch?
-  @IBOutlet var mDrawTracksTopSideSwitch : EBSwitch?
-  @IBOutlet var mDrawViasSwitch : EBSwitch?
-  @IBOutlet var mDrillDataFileExtensionTextField : EBTextField?
-  @IBOutlet var mDrillPageView : CanariViewWithKeyView?
-  @IBOutlet var mExtensionTextField : EBTextField?
-  @IBOutlet var mGeneratedFileCountTextField : EBTextObserverField?
-  @IBOutlet var mHorizontalMirrorSwitch : EBSwitch?
-  @IBOutlet var mInfosPageView : CanariViewWithKeyView?
-  @IBOutlet var mMasterView : NSView?
-  @IBOutlet var mMeasurementUnitForPadHoleInPDFPopUp : EBPopUpButton?
-  @IBOutlet var mMinPPTPTTTWdisplayUnitTextField : CanariDimensionTextField?
-  @IBOutlet var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton?
-  @IBOutlet var mMinimaPageView : CanariViewWithKeyView?
-  @IBOutlet var mOARUnitPopUp : EBPopUpButton?
-  @IBOutlet var mOARValueTextField : CanariDimensionTextField?
-  @IBOutlet var mOtherSignatureTextField : CanariSignatureField?
-  @IBOutlet var mPHDUnitPopUp : EBPopUpButton?
-  @IBOutlet var mPHDValueTextField : CanariDimensionTextField?
-  @IBOutlet var mPadHoleDefinitionView : NSView?
-  @IBOutlet var mRemoveGenerationFileButton : EBButton?
-  @IBOutlet var mSegmentedControl : CanariSegmentedControl?
-  @IBOutlet var mSignatureTextField : CanariSignatureField?
-  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
-  @IBOutlet var mVersionField : CanariVersionField?
-  @IBOutlet var mVersionFieldInToolbar : CanariVersionField?
-  @IBOutlet var minValueForBoardLimitTextField : CanariDimensionTextField?
-  @IBOutlet var minValueForBoardLimitUnitPopUp : EBPopUpButton?
-  @IBOutlet var resetVersionAndSignatureButton : EBButton?
+  @IBOutlet weak var mAddGenerationFileButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mCommentTextView : EBTextView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDataPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDataTableView : EBTableView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDimensionForPadHoleInPDFTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawBoardInternalLimitsSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawBoardLimitsSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawComponentNamesBottomSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawComponentNamesTopSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawComponentValuesBottomSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawComponentValuesTopSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawPackageLegendBottomSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawPackageLegendTopSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawPadHolesInPDFSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawPadsBottomSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawPadsTopSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawTextsLayoutBottomSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawTextsLayoutTopSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawTextsLegendBottomSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawTextsLegendTopSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawTracksBottomSidSwitche : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawTracksTopSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawViasSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrillDataFileExtensionTextField : EBTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrillPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mExtensionTextField : EBTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mGeneratedFileCountTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mHorizontalMirrorSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mInfosPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMasterView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMeasurementUnitForPadHoleInPDFPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMinPPTPTTTWdisplayUnitTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMinimaPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mOARUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mOARValueTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mOtherSignatureTextField : CanariSignatureField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mPHDUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mPHDValueTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mPadHoleDefinitionView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mRemoveGenerationFileButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSegmentedControl : CanariSegmentedControl? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSignatureTextField : CanariSignatureField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mStatusImageViewInToolbar : EBImageObserverView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mVersionField : CanariVersionField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mVersionFieldInToolbar : CanariVersionField? = nil // An outlet should be declared weak
+  @IBOutlet weak var minValueForBoardLimitTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var minValueForBoardLimitUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var resetVersionAndSignatureButton : EBButton? = nil // An outlet should be declared weak
 
   //····················································································································
   //    Multiple bindings controllers

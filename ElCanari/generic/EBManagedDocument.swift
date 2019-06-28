@@ -410,14 +410,14 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //---
     super.removeWindowController (inWindowController)
   //--- Horrible hack: run a method 5s in future on main thread, for preventing the document to deallocated in background thread
-    let deadline = DispatchTime (uptimeNanoseconds: DispatchTime.now ().uptimeNanoseconds + 5 * 1_000_000_000)
-    DispatchQueue.main.asyncAfter (deadline: deadline) { self.nop () }
+//    let deadline = DispatchTime (uptimeNanoseconds: DispatchTime.now ().uptimeNanoseconds + 5 * 1_000_000_000)
+//    DispatchQueue.main.asyncAfter (deadline: deadline) { self.nop () }
   }
 
   //····················································································································
 
-  @objc func nop () {
-  }
+//  @objc func nop () {
+//  }
 
   //····················································································································
   //    Signature observer

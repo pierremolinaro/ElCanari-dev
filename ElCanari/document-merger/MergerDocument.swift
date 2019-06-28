@@ -221,153 +221,153 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet var addBoardModelButton : EBButton?
-  @IBOutlet var boardHelpPanel : NSPanel?
-  @IBOutlet var dismissPrefsForSettingMergerDisplayButton : EBButton?
-  @IBOutlet var mArrowMagnitudeTextField : CanariDimensionTextField?
-  @IBOutlet var mArrowMagnitudeUnitPopUp : EBPopUpButton?
-  @IBOutlet var mArtworNameTextField : EBTextObserverField?
-  @IBOutlet var mArtworkNameTextField : EBTextObserverField?
-  @IBOutlet var mAutomaticBoardSizeSwitch : EBSwitch?
-  @IBOutlet var mAutomaticBoardSizeView : NSView?
-  @IBOutlet var mBoardArchiveFormatPopUpButton : CanariBoardBoardArchivePopUpButton?
-  @IBOutlet var mBoardBoardLimitTextField : CanariDimensionTextField?
-  @IBOutlet var mBoardClipView : NSClipView?
-  @IBOutlet var mBoardHeightTextField : CanariDimensionObserverTextField?
-  @IBOutlet var mBoardHeightUnitPopUp : EBPopUpButton?
-  @IBOutlet var mBoardInsertMenu : CanariBoardInsertMenu?
-  @IBOutlet var mBoardInspectorMasterView : NSView?
-  @IBOutlet var mBoardInspectorSegmentedControl : CanariSegmentedControl?
-  @IBOutlet var mBoardIssueInspectorView : CanariViewWithKeyView?
-  @IBOutlet var mBoardLimitWidthUnitPopUp : EBPopUpButton?
-  @IBOutlet var mBoardModelTableView : EBTableView?
-  @IBOutlet var mBoardModelView : EBGraphicView?
-  @IBOutlet var mBoardOperationInspectorView : CanariViewWithKeyView?
-  @IBOutlet var mBoardPageView : CanariViewWithKeyView?
-  @IBOutlet var mBoardViewDisplayBackComponenValuesCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayBackComponentNamesCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayBackLayoutTextsCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayBackLegendLinesCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayBackLegendTextsCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayBackPackagesCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayBackPadsCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayBackTracksCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayBoardLimitsCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayFrontComponenValuesCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayFrontComponentNamesCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayFrontLayoutTextsCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayFrontLegendLinesCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayFrontLegendTextsCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayFrontPackagesCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayFrontPadsCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayFrontTracksCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayHolesCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayInternalBoardsLimitsCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayViasCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewHorizontalFlipCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewVerticalFlipCheckbox : EBSwitch?
-  @IBOutlet var mBoardWidthTextField : CanariDimensionObserverTextField?
-  @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
-  @IBOutlet var mComposedBoardScrollView : EBScrollView?
-  @IBOutlet var mComposedBoardView : EBGraphicView?
-  @IBOutlet var mDangerView : NSView?
-  @IBOutlet var mDeselectIssueButton : EBButton?
-  @IBOutlet var mDisplaySettingView : NSView?
-  @IBOutlet var mEmptyBoardMessage : EBTextField?
-  @IBOutlet var mGenerateGerber : EBSwitch?
-  @IBOutlet var mGeneratePDF : EBSwitch?
-  @IBOutlet var mGenerateProductFilesActionButton : EBButton?
-  @IBOutlet var mImportArtworkButton : EBButton?
-  @IBOutlet var mIncorrectDocumentNameTextField : EBTextObserverField?
-  @IBOutlet var mInsertArrayOfBoardsOrientation : NSSegmentedControl?
-  @IBOutlet var mInsertArrayOfBoardsPanel : NSPanel?
-  @IBOutlet var mInsertArrayOfBoardsPopUpButton : NSPopUpButton?
-  @IBOutlet var mInsertArrayOfBoardsXCountField : NSTextField?
-  @IBOutlet var mInsertArrayOfBoardsYCountField : NSTextField?
-  @IBOutlet var mInsertedInstanceDefaultOrientation : NSPopUpButton?
-  @IBOutlet var mInstanceCountTextField : EBIntObserverField?
-  @IBOutlet var mInstanceModelNameTextField : EBTextObserverField?
-  @IBOutlet var mInstanceRotation : CanariQuadrantSegmentedControl?
-  @IBOutlet var mIssueTableView : CanariIssueTableView?
-  @IBOutlet var mIssueTextField : EBTextObserverField?
-  @IBOutlet var mLogTextView : NSTextView?
-  @IBOutlet var mManualBoardHeightTextField : CanariDimensionTextField?
-  @IBOutlet var mManualBoardHeightUnitPopUp : EBPopUpButton?
-  @IBOutlet var mManualBoardSizeView : NSView?
-  @IBOutlet var mManualBoardWidthTextField : CanariDimensionTextField?
-  @IBOutlet var mManualBoardWidthUnitPopUp : EBPopUpButton?
-  @IBOutlet var mMasterView : NSView?
-  @IBOutlet var mModelBoardLimitTextField : CanariDimensionObserverTextField?
-  @IBOutlet var mModelDragSourceTableView : CanariDragSourceTableView?
-  @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField?
-  @IBOutlet var mModelHeightUnitPopUp : EBPopUpButton?
-  @IBOutlet var mModelLimitWidthUnitPopUp : EBPopUpButton?
-  @IBOutlet var mModelPageView : CanariViewWithKeyView?
-  @IBOutlet var mModelViewDisplayBackComponenValuesCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayBackComponentNamesCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayBackLayoutTextsCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayBackLegendLinesCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayBackLegendTextsCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayBackPackagesCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayBackPadsCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayBackTracksCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayBoardLimitsCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayFrontComponenValuesCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayFrontComponentNamesCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayFrontLayoutTextsCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayFrontLegendLinesCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayFrontLegendTextsCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayFrontPackagesCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayFrontPadsCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayFrontTracksCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayHolesCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayInternalBoardsLimitsCheckbox : EBSwitch?
-  @IBOutlet var mModelViewDisplayViasCheckbox : EBSwitch?
-  @IBOutlet var mModelViewHorizontalFlipCheckbox : EBSwitch?
-  @IBOutlet var mModelViewVerticalFlipCheckbox : EBSwitch?
-  @IBOutlet var mModelWidthTextField : CanariDimensionObserverTextField?
-  @IBOutlet var mModelWidthUnitPopUp : EBPopUpButton?
-  @IBOutlet var mMoveDownButton : EBButton?
-  @IBOutlet var mMoveLeftButton : EBButton?
-  @IBOutlet var mMoveRightButton : EBButton?
-  @IBOutlet var mMoveUpButton : EBButton?
-  @IBOutlet var mNoArtworkMessage : EBTextField?
-  @IBOutlet var mNoModelMessage : EBTextField?
-  @IBOutlet var mOverlapSwitch : EBSwitch?
-  @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
-  @IBOutlet var mProductPageView : CanariViewWithKeyView?
-  @IBOutlet var mSelectedBoardXTextField : CanariDimensionTextField?
-  @IBOutlet var mSelectedBoardXUnitPopUp : EBPopUpButton?
-  @IBOutlet var mSelectedBoardYTextField : CanariDimensionTextField?
-  @IBOutlet var mSelectedBoardYUnitPopUp : EBPopUpButton?
-  @IBOutlet var mShiftArrowMagnitudeTextField : CanariDimensionTextField?
-  @IBOutlet var mShiftArrowMagnitudeUnitPopUp : EBPopUpButton?
-  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
-  @IBOutlet var mergerViewBackLegendLinesColorWell : EBColorWell?
-  @IBOutlet var mergerViewBackgroundColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayBackComponentNamesColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayBackComponentValuesColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayBackLayoutTextsColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayBackLegendTextsColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayBackPackagesColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayBackPadsColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayBackTracksColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayBoardLimitsColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayFrontComponentNamesColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayFrontComponentValuesColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayFrontLayoutTextsColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayFrontLegendTextsColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayFrontPackagesColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayFrontPadsColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayFrontTracksColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayHolesColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayInternalBoardsLimitsColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayViasColorWell : EBColorWell?
-  @IBOutlet var mergerViewFrontLegendLinesColorWell : EBColorWell?
-  @IBOutlet var removeBoardModelButton : EBButton?
-  @IBOutlet var showBoardHelpButton : EBButton?
-  @IBOutlet var showPrefsForSettingMergerDisplayButton : EBButton?
-  @IBOutlet var updateBoardModelButton : EBButton?
+  @IBOutlet weak var addBoardModelButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var boardHelpPanel : NSPanel? = nil // An outlet should be declared weak
+  @IBOutlet weak var dismissPrefsForSettingMergerDisplayButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mArrowMagnitudeTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mArrowMagnitudeUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mArtworNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mArtworkNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mAutomaticBoardSizeSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mAutomaticBoardSizeView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardArchiveFormatPopUpButton : CanariBoardBoardArchivePopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardBoardLimitTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardClipView : NSClipView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardHeightTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardHeightUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardInsertMenu : CanariBoardInsertMenu? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardInspectorMasterView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardInspectorSegmentedControl : CanariSegmentedControl? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardIssueInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardLimitWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardModelTableView : EBTableView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardModelView : EBGraphicView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardOperationInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayBackComponenValuesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayBackComponentNamesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayBackLayoutTextsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayBackLegendLinesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayBackLegendTextsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayBackPackagesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayBackPadsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayBackTracksCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayBoardLimitsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayFrontComponenValuesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayFrontComponentNamesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayFrontLayoutTextsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayFrontLegendLinesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayFrontLegendTextsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayFrontPackagesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayFrontPadsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayFrontTracksCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayHolesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayInternalBoardsLimitsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewDisplayViasCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewHorizontalFlipCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardViewVerticalFlipCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardWidthTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComposedBoardScrollView : EBScrollView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComposedBoardView : EBGraphicView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDangerView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDeselectIssueButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplaySettingView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mEmptyBoardMessage : EBTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mGenerateGerber : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mGeneratePDF : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mGenerateProductFilesActionButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mImportArtworkButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mIncorrectDocumentNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mInsertArrayOfBoardsOrientation : NSSegmentedControl? = nil // An outlet should be declared weak
+  @IBOutlet weak var mInsertArrayOfBoardsPanel : NSPanel? = nil // An outlet should be declared weak
+  @IBOutlet weak var mInsertArrayOfBoardsPopUpButton : NSPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mInsertArrayOfBoardsXCountField : NSTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mInsertArrayOfBoardsYCountField : NSTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mInsertedInstanceDefaultOrientation : NSPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mInstanceCountTextField : EBIntObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mInstanceModelNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mInstanceRotation : CanariQuadrantSegmentedControl? = nil // An outlet should be declared weak
+  @IBOutlet weak var mIssueTableView : CanariIssueTableView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mIssueTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mLogTextView : NSTextView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mManualBoardHeightTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mManualBoardHeightUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mManualBoardSizeView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mManualBoardWidthTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mManualBoardWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMasterView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelBoardLimitTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelDragSourceTableView : CanariDragSourceTableView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelHeightTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelHeightUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelLimitWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayBackComponenValuesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayBackComponentNamesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayBackLayoutTextsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayBackLegendLinesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayBackLegendTextsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayBackPackagesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayBackPadsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayBackTracksCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayBoardLimitsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayFrontComponenValuesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayFrontComponentNamesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayFrontLayoutTextsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayFrontLegendLinesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayFrontLegendTextsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayFrontPackagesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayFrontPadsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayFrontTracksCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayHolesCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayInternalBoardsLimitsCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewDisplayViasCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewHorizontalFlipCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelViewVerticalFlipCheckbox : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelWidthTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mModelWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMoveDownButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMoveLeftButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMoveRightButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMoveUpButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mNoArtworkMessage : EBTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mNoModelMessage : EBTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mOverlapSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mPageSegmentedControl : CanariSegmentedControl? = nil // An outlet should be declared weak
+  @IBOutlet weak var mProductPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSelectedBoardXTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSelectedBoardXUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSelectedBoardYTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSelectedBoardYUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mShiftArrowMagnitudeTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mShiftArrowMagnitudeUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mStatusImageViewInToolbar : EBImageObserverView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewBackLegendLinesColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewBackgroundColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayBackComponentNamesColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayBackComponentValuesColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayBackLayoutTextsColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayBackLegendTextsColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayBackPackagesColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayBackPadsColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayBackTracksColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayBoardLimitsColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayFrontComponentNamesColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayFrontComponentValuesColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayFrontLayoutTextsColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayFrontLegendTextsColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayFrontPackagesColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayFrontPadsColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayFrontTracksColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayHolesColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayInternalBoardsLimitsColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewDisplayViasColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mergerViewFrontLegendLinesColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var removeBoardModelButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var showBoardHelpButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var showPrefsForSettingMergerDisplayButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var updateBoardModelButton : EBButton? = nil // An outlet should be declared weak
 
   //····················································································································
   //    Multiple bindings controllers

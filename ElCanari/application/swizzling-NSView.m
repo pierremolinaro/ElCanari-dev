@@ -23,7 +23,7 @@
 
   - (void) setNeedsDisplay_swizzling: (BOOL) needsDisplay {
     if (![[NSThread currentThread] isMainThread]) {
-      NSLog (@"setNeedsDisplay NOT in main thread for %@", self) ;
+      NSLog (@"setNeedsDisplay NOT in main thread for %@, class %@", self, self.className) ;
     }
     [self setNeedsDisplay_swizzling: needsDisplay] ;
   }
@@ -32,7 +32,7 @@
 
   - (void) setNeedsDisplayInRect_swizzling: (NSRect) rect {
     if (![[NSThread currentThread] isMainThread]) {
-      NSLog (@"setNeedsDisplayInRect NOT in main thread for %@", self) ;
+      NSLog (@"setNeedsDisplayInRect NOT in main thread for %@, class %@", self, self.className) ;
     }
     [self setNeedsDisplayInRect_swizzling: rect] ;
   }

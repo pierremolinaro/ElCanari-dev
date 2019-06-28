@@ -19,7 +19,7 @@ class EBOutletEvent : EBEvent {
   //····················································································································
 
   var mEventCallBack : Optional < () -> Void > = nil
-  var mEventIsPosted = false
+  fileprivate var mEventIsPosted = false
 
   //····················································································································
   //   postEvent
