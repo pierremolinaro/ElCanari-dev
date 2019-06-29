@@ -235,18 +235,18 @@ fileprivate let kDragAndDropPackage = NSPasteboard.PasteboardType (rawValue: "na
   //--- Drag source buttons and destination scroll view
     self.mAddCommentButton?.register (
       draggedType: kDragAndDropComment,
-      shapeFactory: { return CommentInSchematic (nil).objectDisplay },
+      draggedObjectFactory: { return CommentInSchematic (nil) },
       scaleProvider: self.mSchematicsView
     )
     self.mAddWireButton?.register (
       draggedType: kDragAndDropWire,
-      shapeFactory: { return WireInSchematic (nil).objectDisplay },
+      draggedObjectFactory: { return WireInSchematic (nil) },
       scaleProvider: self.mSchematicsView
     )
   //---
     self.mAddRestrictRectangleButton?.register (
       draggedType: kDragAndDropRestrictRectangle,
-      shapeFactory: { return BoardRestrictRectangle (nil).objectDisplay },
+      draggedObjectFactory: { return BoardRestrictRectangle (nil) },
       scaleProvider: self.mBoardView
     )
     self.mAddTextInBoardButton?.register (

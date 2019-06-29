@@ -122,10 +122,12 @@ extension PackagePad {
     s += " style "
     s += self.padStyle.descriptionForExplorer ()
     s += " hole "
-    s += stringFrom (valueInCanariUnit: self.holeDiameter, displayUnit : self.holeDiameterUnit)
+    s += stringFrom (valueInCanariUnit: self.holeWidth, displayUnit : self.holeWidthUnit)
+    s += " : "
+    s += stringFrom (valueInCanariUnit: self.holeHeight, displayUnit : self.holeHeightUnit)
     s += " number "
     s += "\(self.padNumber)"
-    if self.slaves_property.propval.count > 0 {
+    if self.slaves.count > 0 {
       s += " id "
       s += "\(self.ebObjectIndex)"
     }

@@ -30,8 +30,14 @@ protocol PackageSlavePad_height : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_holeDiameter : class {
-  var holeDiameter : Int { get }
+protocol PackageSlavePad_holeWidth : class {
+  var holeWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageSlavePad_holeHeight : class {
+  var holeHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -72,8 +78,14 @@ protocol PackageSlavePad_heightUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_holeDiameterUnit : class {
-  var holeDiameterUnit : Int { get }
+protocol PackageSlavePad_holeWidthUnit : class {
+  var holeWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageSlavePad_holeHeightUnit : class {
+  var holeHeightUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -133,14 +145,16 @@ class PackageSlavePad : PackageObject,
          PackageSlavePad_yCenter,
          PackageSlavePad_width,
          PackageSlavePad_height,
-         PackageSlavePad_holeDiameter,
+         PackageSlavePad_holeWidth,
+         PackageSlavePad_holeHeight,
          PackageSlavePad_padShape,
          PackageSlavePad_padStyle,
          PackageSlavePad_xCenterUnit,
          PackageSlavePad_yCenterUnit,
          PackageSlavePad_widthUnit,
          PackageSlavePad_heightUnit,
-         PackageSlavePad_holeDiameterUnit,
+         PackageSlavePad_holeWidthUnit,
+         PackageSlavePad_holeHeightUnit,
          PackageSlavePad_annularRingUnit,
          PackageSlavePad_selectionDisplay,
          PackageSlavePad_issues,
@@ -219,21 +233,38 @@ class PackageSlavePad : PackageObject,
   var height_property_selection : EBSelection <Int> { return self.height_property.prop }
 
   //····················································································································
-  //   Atomic property: holeDiameter
+  //   Atomic property: holeWidth
   //····················································································································
 
-  let holeDiameter_property = EBStoredProperty_Int (defaultValue: 57150)
+  let holeWidth_property = EBStoredProperty_Int (defaultValue: 57150)
 
   //····················································································································
 
-  var holeDiameter : Int {
-    get { return self.holeDiameter_property.propval }
-    set { self.holeDiameter_property.setProp (newValue) }
+  var holeWidth : Int {
+    get { return self.holeWidth_property.propval }
+    set { self.holeWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var holeDiameter_property_selection : EBSelection <Int> { return self.holeDiameter_property.prop }
+  var holeWidth_property_selection : EBSelection <Int> { return self.holeWidth_property.prop }
+
+  //····················································································································
+  //   Atomic property: holeHeight
+  //····················································································································
+
+  let holeHeight_property = EBStoredProperty_Int (defaultValue: 57150)
+
+  //····················································································································
+
+  var holeHeight : Int {
+    get { return self.holeHeight_property.propval }
+    set { self.holeHeight_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var holeHeight_property_selection : EBSelection <Int> { return self.holeHeight_property.prop }
 
   //····················································································································
   //   Atomic property: padShape
@@ -338,21 +369,38 @@ class PackageSlavePad : PackageObject,
   var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.prop }
 
   //····················································································································
-  //   Atomic property: holeDiameterUnit
+  //   Atomic property: holeWidthUnit
   //····················································································································
 
-  let holeDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let holeWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
-  var holeDiameterUnit : Int {
-    get { return self.holeDiameterUnit_property.propval }
-    set { self.holeDiameterUnit_property.setProp (newValue) }
+  var holeWidthUnit : Int {
+    get { return self.holeWidthUnit_property.propval }
+    set { self.holeWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var holeDiameterUnit_property_selection : EBSelection <Int> { return self.holeDiameterUnit_property.prop }
+  var holeWidthUnit_property_selection : EBSelection <Int> { return self.holeWidthUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: holeHeightUnit
+  //····················································································································
+
+  let holeHeightUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var holeHeightUnit : Int {
+    get { return self.holeHeightUnit_property.propval }
+    set { self.holeHeightUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var holeHeightUnit_property_selection : EBSelection <Int> { return self.holeHeightUnit_property.prop }
 
   //····················································································································
   //   Atomic property: annularRingUnit
@@ -515,8 +563,10 @@ class PackageSlavePad : PackageObject,
     self.width_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: height
     self.height_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: holeDiameter
-    self.holeDiameter_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: holeWidth
+    self.holeWidth_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: holeHeight
+    self.holeHeight_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padShape
     self.padShape_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padStyle
@@ -529,8 +579,10 @@ class PackageSlavePad : PackageObject,
     self.widthUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: heightUnit
     self.heightUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: holeDiameterUnit
-    self.holeDiameterUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: holeWidthUnit
+    self.holeWidthUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: holeHeightUnit
+    self.holeHeightUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.ebUndoManager = self.ebUndoManager
   //--- To one property: master (has opposite to many relationship: slaves)
@@ -576,16 +628,17 @@ class PackageSlavePad : PackageObject,
         kind &= unwSelf.yCenter_property_selection.kind ()
         kind &= unwSelf.width_property_selection.kind ()
         kind &= unwSelf.height_property_selection.kind ()
-        kind &= unwSelf.holeDiameter_property_selection.kind ()
+        kind &= unwSelf.holeWidth_property_selection.kind ()
+        kind &= unwSelf.holeHeight_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_PackageSlavePad_issues (v0, v1, v2, v3, v4))
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeWidth_property_selection, unwSelf.holeHeight_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_PackageSlavePad_issues (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -598,7 +651,8 @@ class PackageSlavePad : PackageObject,
     self.yCenter_property.addEBObserver (self.issues_property)
     self.width_property.addEBObserver (self.issues_property)
     self.height_property.addEBObserver (self.issues_property)
-    self.holeDiameter_property.addEBObserver (self.issues_property)
+    self.holeWidth_property.addEBObserver (self.issues_property)
+    self.holeHeight_property.addEBObserver (self.issues_property)
   //--- Atomic property: padIsTraversing
     self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -626,16 +680,17 @@ class PackageSlavePad : PackageObject,
       if let unwSelf = self {
         var kind = unwSelf.width_property_selection.kind ()
         kind &= unwSelf.height_property_selection.kind ()
-        kind &= unwSelf.holeDiameter_property_selection.kind ()
+        kind &= unwSelf.holeWidth_property_selection.kind ()
+        kind &= unwSelf.holeHeight_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_PackageSlavePad_annularRing (v0, v1, v2))
+          switch (unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeWidth_property_selection, unwSelf.holeHeight_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_PackageSlavePad_annularRing (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -646,7 +701,8 @@ class PackageSlavePad : PackageObject,
     }
     self.width_property.addEBObserver (self.annularRing_property)
     self.height_property.addEBObserver (self.annularRing_property)
-    self.holeDiameter_property.addEBObserver (self.annularRing_property)
+    self.holeWidth_property.addEBObserver (self.annularRing_property)
+    self.holeHeight_property.addEBObserver (self.annularRing_property)
   //--- Atomic property: padName
     self.padName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -706,7 +762,8 @@ class PackageSlavePad : PackageObject,
         kind &= unwSelf.yCenter_property_selection.kind ()
         kind &= unwSelf.width_property_selection.kind ()
         kind &= unwSelf.height_property_selection.kind ()
-        kind &= unwSelf.holeDiameter_property_selection.kind ()
+        kind &= unwSelf.holeWidth_property_selection.kind ()
+        kind &= unwSelf.holeHeight_property_selection.kind ()
         kind &= unwSelf.padShape_property_selection.kind ()
         kind &= unwSelf.padStyle_property_selection.kind ()
         kind &= g_Preferences!.frontSidePadColor_property_selection.kind ()
@@ -719,9 +776,9 @@ class PackageSlavePad : PackageObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, g_Preferences!.frontSidePadColor_property_selection, g_Preferences!.displayPackageFrontSidePads_property_selection, g_Preferences!.backSidePadColor_property_selection, g_Preferences!.displayPackageBackSidePads_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
-            return .single (transient_PackageSlavePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeWidth_property_selection, unwSelf.holeHeight_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, g_Preferences!.frontSidePadColor_property_selection, g_Preferences!.displayPackageFrontSidePads_property_selection, g_Preferences!.backSidePadColor_property_selection, g_Preferences!.displayPackageBackSidePads_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+            return .single (transient_PackageSlavePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
           default :
             return .empty
           }
@@ -734,7 +791,8 @@ class PackageSlavePad : PackageObject,
     self.yCenter_property.addEBObserver (self.objectDisplay_property)
     self.width_property.addEBObserver (self.objectDisplay_property)
     self.height_property.addEBObserver (self.objectDisplay_property)
-    self.holeDiameter_property.addEBObserver (self.objectDisplay_property)
+    self.holeWidth_property.addEBObserver (self.objectDisplay_property)
+    self.holeHeight_property.addEBObserver (self.objectDisplay_property)
     self.padShape_property.addEBObserver (self.objectDisplay_property)
     self.padStyle_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSidePadColor_property.addEBObserver (self.objectDisplay_property)
@@ -746,8 +804,10 @@ class PackageSlavePad : PackageObject,
     self.annularRingUnit_property.setSignatureObserver (observer: self)
     self.height_property.setSignatureObserver (observer: self)
     self.heightUnit_property.setSignatureObserver (observer: self)
-    self.holeDiameter_property.setSignatureObserver (observer: self)
-    self.holeDiameterUnit_property.setSignatureObserver (observer: self)
+    self.holeHeight_property.setSignatureObserver (observer: self)
+    self.holeHeightUnit_property.setSignatureObserver (observer: self)
+    self.holeWidth_property.setSignatureObserver (observer: self)
+    self.holeWidthUnit_property.setSignatureObserver (observer: self)
     self.padShape_property.setSignatureObserver (observer: self)
     self.padStyle_property.setSignatureObserver (observer: self)
     self.width_property.setSignatureObserver (observer: self)
@@ -772,11 +832,13 @@ class PackageSlavePad : PackageObject,
     self.yCenter_property.removeEBObserver (self.issues_property)
     self.width_property.removeEBObserver (self.issues_property)
     self.height_property.removeEBObserver (self.issues_property)
-    self.holeDiameter_property.removeEBObserver (self.issues_property)
+    self.holeWidth_property.removeEBObserver (self.issues_property)
+    self.holeHeight_property.removeEBObserver (self.issues_property)
     self.padStyle_property.removeEBObserver (self.padIsTraversing_property)
     self.width_property.removeEBObserver (self.annularRing_property)
     self.height_property.removeEBObserver (self.annularRing_property)
-    self.holeDiameter_property.removeEBObserver (self.annularRing_property)
+    self.holeWidth_property.removeEBObserver (self.annularRing_property)
+    self.holeHeight_property.removeEBObserver (self.annularRing_property)
     self.master_property.removeEBObserverOf_padName (self.padName_property)
     self.xCenter_property.removeEBObserver (self.padNumberDisplay_property)
     self.yCenter_property.removeEBObserver (self.padNumberDisplay_property)
@@ -787,7 +849,8 @@ class PackageSlavePad : PackageObject,
     self.yCenter_property.removeEBObserver (self.objectDisplay_property)
     self.width_property.removeEBObserver (self.objectDisplay_property)
     self.height_property.removeEBObserver (self.objectDisplay_property)
-    self.holeDiameter_property.removeEBObserver (self.objectDisplay_property)
+    self.holeWidth_property.removeEBObserver (self.objectDisplay_property)
+    self.holeHeight_property.removeEBObserver (self.objectDisplay_property)
     self.padShape_property.removeEBObserver (self.objectDisplay_property)
     self.padStyle_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSidePadColor_property.removeEBObserver (self.objectDisplay_property)
@@ -798,8 +861,10 @@ class PackageSlavePad : PackageObject,
     self.annularRingUnit_property.setSignatureObserver (observer: nil)
     self.height_property.setSignatureObserver (observer: nil)
     self.heightUnit_property.setSignatureObserver (observer: nil)
-    self.holeDiameter_property.setSignatureObserver (observer: nil)
-    self.holeDiameterUnit_property.setSignatureObserver (observer: nil)
+    self.holeHeight_property.setSignatureObserver (observer: nil)
+    self.holeHeightUnit_property.setSignatureObserver (observer: nil)
+    self.holeWidth_property.setSignatureObserver (observer: nil)
+    self.holeWidthUnit_property.setSignatureObserver (observer: nil)
     self.padShape_property.setSignatureObserver (observer: nil)
     self.padStyle_property.setSignatureObserver (observer: nil)
     self.width_property.setSignatureObserver (observer: nil)
@@ -854,12 +919,20 @@ class PackageSlavePad : PackageObject,
       valueExplorer: &self.height_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "holeDiameter",
-      idx: self.holeDiameter_property.ebObjectIndex,
+      "holeWidth",
+      idx: self.holeWidth_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.holeDiameter_property.mObserverExplorer,
-      valueExplorer: &self.holeDiameter_property.mValueExplorer
+      observerExplorer: &self.holeWidth_property.mObserverExplorer,
+      valueExplorer: &self.holeWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "holeHeight",
+      idx: self.holeHeight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.holeHeight_property.mObserverExplorer,
+      valueExplorer: &self.holeHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padShape",
@@ -910,12 +983,20 @@ class PackageSlavePad : PackageObject,
       valueExplorer: &self.heightUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "holeDiameterUnit",
-      idx: self.holeDiameterUnit_property.ebObjectIndex,
+      "holeWidthUnit",
+      idx: self.holeWidthUnit_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.holeDiameterUnit_property.mObserverExplorer,
-      valueExplorer: &self.holeDiameterUnit_property.mValueExplorer
+      observerExplorer: &self.holeWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.holeWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "holeHeightUnit",
+      idx: self.holeHeightUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.holeHeightUnit_property.mObserverExplorer,
+      valueExplorer: &self.holeHeightUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "annularRingUnit",
@@ -1011,9 +1092,12 @@ class PackageSlavePad : PackageObject,
   //--- Atomic property: height
     self.height_property.mObserverExplorer = nil
     self.height_property.mValueExplorer = nil
-  //--- Atomic property: holeDiameter
-    self.holeDiameter_property.mObserverExplorer = nil
-    self.holeDiameter_property.mValueExplorer = nil
+  //--- Atomic property: holeWidth
+    self.holeWidth_property.mObserverExplorer = nil
+    self.holeWidth_property.mValueExplorer = nil
+  //--- Atomic property: holeHeight
+    self.holeHeight_property.mObserverExplorer = nil
+    self.holeHeight_property.mValueExplorer = nil
   //--- Atomic property: padShape
     self.padShape_property.mObserverExplorer = nil
     self.padShape_property.mValueExplorer = nil
@@ -1032,9 +1116,12 @@ class PackageSlavePad : PackageObject,
   //--- Atomic property: heightUnit
     self.heightUnit_property.mObserverExplorer = nil
     self.heightUnit_property.mValueExplorer = nil
-  //--- Atomic property: holeDiameterUnit
-    self.holeDiameterUnit_property.mObserverExplorer = nil
-    self.holeDiameterUnit_property.mValueExplorer = nil
+  //--- Atomic property: holeWidthUnit
+    self.holeWidthUnit_property.mObserverExplorer = nil
+    self.holeWidthUnit_property.mValueExplorer = nil
+  //--- Atomic property: holeHeightUnit
+    self.holeHeightUnit_property.mObserverExplorer = nil
+    self.holeHeightUnit_property.mValueExplorer = nil
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.mObserverExplorer = nil
     self.annularRingUnit_property.mValueExplorer = nil
@@ -1078,8 +1165,10 @@ class PackageSlavePad : PackageObject,
     self.width_property.storeIn (dictionary: ioDictionary, forKey:"width")
   //--- Atomic property: height
     self.height_property.storeIn (dictionary: ioDictionary, forKey:"height")
-  //--- Atomic property: holeDiameter
-    self.holeDiameter_property.storeIn (dictionary: ioDictionary, forKey:"holeDiameter")
+  //--- Atomic property: holeWidth
+    self.holeWidth_property.storeIn (dictionary: ioDictionary, forKey:"holeWidth")
+  //--- Atomic property: holeHeight
+    self.holeHeight_property.storeIn (dictionary: ioDictionary, forKey:"holeHeight")
   //--- Atomic property: padShape
     self.padShape_property.storeIn (dictionary: ioDictionary, forKey:"padShape")
   //--- Atomic property: padStyle
@@ -1092,8 +1181,10 @@ class PackageSlavePad : PackageObject,
     self.widthUnit_property.storeIn (dictionary: ioDictionary, forKey:"widthUnit")
   //--- Atomic property: heightUnit
     self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey:"heightUnit")
-  //--- Atomic property: holeDiameterUnit
-    self.holeDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"holeDiameterUnit")
+  //--- Atomic property: holeWidthUnit
+    self.holeWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"holeWidthUnit")
+  //--- Atomic property: holeHeightUnit
+    self.holeHeightUnit_property.storeIn (dictionary: ioDictionary, forKey:"holeHeightUnit")
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.storeIn (dictionary: ioDictionary, forKey:"annularRingUnit")
   }
@@ -1132,8 +1223,10 @@ class PackageSlavePad : PackageObject,
     self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
   //--- Atomic property: height
     self.height_property.readFrom (dictionary: inDictionary, forKey:"height")
-  //--- Atomic property: holeDiameter
-    self.holeDiameter_property.readFrom (dictionary: inDictionary, forKey:"holeDiameter")
+  //--- Atomic property: holeWidth
+    self.holeWidth_property.readFrom (dictionary: inDictionary, forKey:"holeWidth")
+  //--- Atomic property: holeHeight
+    self.holeHeight_property.readFrom (dictionary: inDictionary, forKey:"holeHeight")
   //--- Atomic property: padShape
     self.padShape_property.readFrom (dictionary: inDictionary, forKey:"padShape")
   //--- Atomic property: padStyle
@@ -1146,8 +1239,10 @@ class PackageSlavePad : PackageObject,
     self.widthUnit_property.readFrom (dictionary: inDictionary, forKey:"widthUnit")
   //--- Atomic property: heightUnit
     self.heightUnit_property.readFrom (dictionary: inDictionary, forKey:"heightUnit")
-  //--- Atomic property: holeDiameterUnit
-    self.holeDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"holeDiameterUnit")
+  //--- Atomic property: holeWidthUnit
+    self.holeWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"holeWidthUnit")
+  //--- Atomic property: holeHeightUnit
+    self.holeHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"holeHeightUnit")
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.readFrom (dictionary: inDictionary, forKey:"annularRingUnit")
   }
@@ -1185,8 +1280,10 @@ class PackageSlavePad : PackageObject,
     crc.accumulateUInt32 (self.annularRingUnit_property.signature ())
     crc.accumulateUInt32 (self.height_property.signature ())
     crc.accumulateUInt32 (self.heightUnit_property.signature ())
-    crc.accumulateUInt32 (self.holeDiameter_property.signature ())
-    crc.accumulateUInt32 (self.holeDiameterUnit_property.signature ())
+    crc.accumulateUInt32 (self.holeHeight_property.signature ())
+    crc.accumulateUInt32 (self.holeHeightUnit_property.signature ())
+    crc.accumulateUInt32 (self.holeWidth_property.signature ())
+    crc.accumulateUInt32 (self.holeWidthUnit_property.signature ())
     crc.accumulateUInt32 (self.padShape_property.signature ())
     crc.accumulateUInt32 (self.padStyle_property.signature ())
     crc.accumulateUInt32 (self.width_property.signature ())

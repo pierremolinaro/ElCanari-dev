@@ -122,7 +122,8 @@ extension ProjectDocument {
         masterPadInProject.mCenterX = masterPadInDevice.mCenterX
         masterPadInProject.mCenterY = masterPadInDevice.mCenterY
         masterPadInProject.mHeight = masterPadInDevice.mHeight
-        masterPadInProject.mHoleDiameter = masterPadInDevice.mHoleDiameter
+        masterPadInProject.mHoleWidth = masterPadInDevice.mHoleWidth
+        masterPadInProject.mHoleHeight = masterPadInDevice.mHoleHeight
         masterPadInProject.mName = masterPadInDevice.mName
         masterPadInProject.mShape = masterPadInDevice.mShape
         masterPadInProject.mStyle = masterPadInDevice.mStyle
@@ -133,7 +134,8 @@ extension ProjectDocument {
           slavePadInProject.mCenterX = slavePadInDevice.mCenterX
           slavePadInProject.mCenterY = slavePadInDevice.mCenterY
           slavePadInProject.mHeight = slavePadInDevice.mHeight
-          slavePadInProject.mHoleDiameter = slavePadInDevice.mHoleDiameter
+          slavePadInProject.mHoleWidth = slavePadInDevice.mHoleWidth
+          slavePadInProject.mHoleHeight = slavePadInDevice.mHoleHeight
           slavePadInProject.mShape = slavePadInDevice.mShape
           slavePadInProject.mStyle = slavePadInDevice.mStyle
           slavePadInProject.mWidth = slavePadInDevice.mWidth

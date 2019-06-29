@@ -33,7 +33,8 @@ extension PackageRoot {
         masterPad.mCenterY = packageMasterPad.yCenter
         masterPad.mWidth = packageMasterPad.width
         masterPad.mHeight = packageMasterPad.height
-        masterPad.mHoleDiameter = packageMasterPad.holeDiameter
+        masterPad.mHoleWidth = packageMasterPad.holeWidth
+        masterPad.mHoleHeight = packageMasterPad.holeHeight
         masterPad.mShape = packageMasterPad.padShape
         masterPad.mStyle = packageMasterPad.padStyle
         masterPad.mName = packageMasterPad.padName!
@@ -42,14 +43,15 @@ extension PackageRoot {
       }
     }
   //--- Handle slave pads
-    for object in self.packageObjects_property.propval {
+    for object in self.packageObjects {
       if let packageSlavePad = object as? PackageSlavePad {
         let slavePad = SlavePadInDevice (inUndoManager)
         slavePad.mCenterX = packageSlavePad.xCenter
         slavePad.mCenterY = packageSlavePad.yCenter
         slavePad.mWidth = packageSlavePad.width
         slavePad.mHeight = packageSlavePad.height
-        slavePad.mHoleDiameter = packageSlavePad.holeDiameter
+        slavePad.mHoleWidth = packageSlavePad.holeWidth
+        slavePad.mHoleHeight = packageSlavePad.holeHeight
         slavePad.mShape = packageSlavePad.padShape
         slavePad.mStyle = packageSlavePad.padStyle
         let masterPad = masterPadDictionary [packageSlavePad.master_property.propval!]!

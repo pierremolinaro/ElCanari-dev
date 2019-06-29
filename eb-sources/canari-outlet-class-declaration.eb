@@ -50,6 +50,7 @@ extern outlet class AssignedPadProxysInDeviceTableView : EBTableView ;
 binding AssignedPadProxysInDeviceTableView $assignedPadProxies : transient AssignedPadProxiesInDevice ;
 
 extern outlet class CanariDragSourceButton : NSControl ;
+extern outlet class CanariDragSourceImageButton : NSControl ;
 
 extern outlet class AddSymbolInstancePullDownButton : EBPopUpButton ;
 binding AddSymbolInstancePullDownButton $symbolTypeNames : transient StringArray ;

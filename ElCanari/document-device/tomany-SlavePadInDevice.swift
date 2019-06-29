@@ -19,7 +19,8 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
     self.removeEBObserversOf_mCenterY_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mWidth_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mHeight_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mHoleDiameter_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mHoleWidth_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mHoleHeight_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mShape_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mStyle_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
@@ -30,7 +31,8 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
     self.addEBObserversOf_mCenterY_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mWidth_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mHeight_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mHoleDiameter_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mHoleWidth_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mHoleHeight_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mShape_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mStyle_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (inAddedSet) // Transient property
@@ -267,58 +269,115 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   }
 
   //····················································································································
-  //   Observers of 'mHoleDiameter' stored property
+  //   Observers of 'mHoleWidth' stored property
   //····················································································································
 
-  private var mObserversOf_mHoleDiameter = EBWeakEventSet ()
+  private var mObserversOf_mHoleWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mHoleDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mHoleWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mHoleDiameter.insert (inObserver)
+    self.mObserversOf_mHoleWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mHoleDiameter_property.addEBObserver (inObserver)
+        managedObject.mHoleWidth_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mHoleDiameter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mHoleWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mHoleDiameter.remove (inObserver)
+    self.mObserversOf_mHoleWidth.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mHoleDiameter_property.removeEBObserver (inObserver)
+        managedObject.mHoleWidth_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mHoleDiameter_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
+  final func addEBObserversOf_mHoleWidth_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mHoleDiameter.apply { (_ observer : EBEvent) in
-        managedObject.mHoleDiameter_property.addEBObserver (observer)
+      self.mObserversOf_mHoleWidth.apply { (_ observer : EBEvent) in
+        managedObject.mHoleWidth_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mHoleDiameter_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    self.mObserversOf_mHoleDiameter.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mHoleWidth_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
+    self.mObserversOf_mHoleWidth.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mHoleDiameter_property.removeEBObserver (observer)
+        managedObject.mHoleWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mHoleHeight' stored property
+  //····················································································································
+
+  private var mObserversOf_mHoleHeight = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mHoleHeight (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mHoleHeight.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mHoleHeight_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mHoleHeight (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mHoleHeight.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mHoleHeight_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mHoleHeight_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_mHoleHeight.apply { (_ observer : EBEvent) in
+        managedObject.mHoleHeight_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mHoleHeight_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
+    self.mObserversOf_mHoleHeight.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mHoleHeight_property.removeEBObserver (observer)
       }
     }
   }
@@ -1082,7 +1141,8 @@ final class PreferencesArrayOf_SlavePadInDevice : StoredArrayOf_SlavePadInDevice
     self.addEBObserverOf_mCenterY (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mHeight (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mHoleDiameter (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mHoleWidth (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mHoleHeight (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mShape (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mStyle (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }

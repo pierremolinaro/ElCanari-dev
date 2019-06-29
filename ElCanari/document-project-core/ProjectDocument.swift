@@ -439,7 +439,7 @@ import Cocoa
   @IBOutlet weak var mAddNetClassValidationButton : NSButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAddRestrictRectangleButton : CanariDragSourceButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAddRightLabelSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
-  @IBOutlet weak var mAddTextInBoardButton : CanariDragSourceButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mAddTextInBoardButton : CanariDragSourceImageButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAddTopLabelSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mAddWireButton : CanariDragSourceButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAddWirePointSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
@@ -797,7 +797,7 @@ import Cocoa
     checkOutletConnection (self.mAddNetClassValidationButton, "mAddNetClassValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mAddRestrictRectangleButton, "mAddRestrictRectangleButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddRightLabelSchematicHotKeyTextField, "mAddRightLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.mAddTextInBoardButton, "mAddTextInBoardButton", CanariDragSourceButton.self, #file, #line)
+    checkOutletConnection (self.mAddTextInBoardButton, "mAddTextInBoardButton", CanariDragSourceImageButton.self, #file, #line)
     checkOutletConnection (self.mAddTopLabelSchematicHotKeyTextField, "mAddTopLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddWireButton, "mAddWireButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddWirePointSchematicHotKeyTextField, "mAddWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)

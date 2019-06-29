@@ -101,7 +101,9 @@ extension PackageSlavePad {
     s += " style "
     s += self.padStyle.descriptionForExplorer ()
     s += " hole "
-    s += stringFrom (valueInCanariUnit: self.holeDiameter, displayUnit : self.holeDiameterUnit)
+    s += stringFrom (valueInCanariUnit: self.holeWidth, displayUnit : self.holeWidthUnit)
+    s += " : "
+    s += stringFrom (valueInCanariUnit: self.holeHeight, displayUnit : self.holeHeightUnit)
     s += " id "
     s += "\(self.master_property.propval!.ebObjectIndex)"
     s += ";\n"

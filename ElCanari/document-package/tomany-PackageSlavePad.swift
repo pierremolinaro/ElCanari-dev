@@ -19,14 +19,16 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
     self.removeEBObserversOf_yCenter_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_width_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_height_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_holeDiameter_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_holeWidth_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_holeHeight_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_padShape_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_padStyle_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_xCenterUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_yCenterUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_widthUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_heightUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_holeDiameterUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_holeWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_holeHeightUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_annularRingUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
@@ -40,14 +42,16 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
     self.addEBObserversOf_yCenter_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_width_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_height_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_holeDiameter_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_holeWidth_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_holeHeight_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_padShape_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_padStyle_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_xCenterUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_yCenterUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_widthUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_heightUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_holeDiameterUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_holeWidthUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_holeHeightUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_annularRingUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
@@ -287,58 +291,115 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   }
 
   //····················································································································
-  //   Observers of 'holeDiameter' stored property
+  //   Observers of 'holeWidth' stored property
   //····················································································································
 
-  private var mObserversOf_holeDiameter = EBWeakEventSet ()
+  private var mObserversOf_holeWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_holeWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_holeDiameter.insert (inObserver)
+    self.mObserversOf_holeWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.holeDiameter_property.addEBObserver (inObserver)
+        managedObject.holeWidth_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_holeWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_holeDiameter.remove (inObserver)
+    self.mObserversOf_holeWidth.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.holeDiameter_property.removeEBObserver (inObserver)
+        managedObject.holeWidth_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_holeDiameter_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+  final func addEBObserversOf_holeWidth_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      self.mObserversOf_holeDiameter.apply { (_ observer : EBEvent) in
-        managedObject.holeDiameter_property.addEBObserver (observer)
+      self.mObserversOf_holeWidth.apply { (_ observer : EBEvent) in
+        managedObject.holeWidth_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_holeDiameter_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_holeDiameter.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_holeWidth_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_holeWidth.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.holeDiameter_property.removeEBObserver (observer)
+        managedObject.holeWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'holeHeight' stored property
+  //····················································································································
+
+  private var mObserversOf_holeHeight = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_holeHeight (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_holeHeight.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.holeHeight_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_holeHeight (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_holeHeight.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.holeHeight_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_holeHeight_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_holeHeight.apply { (_ observer : EBEvent) in
+        managedObject.holeHeight_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_holeHeight_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_holeHeight.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.holeHeight_property.removeEBObserver (observer)
       }
     }
   }
@@ -686,58 +747,115 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   }
 
   //····················································································································
-  //   Observers of 'holeDiameterUnit' stored property
+  //   Observers of 'holeWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_holeDiameterUnit = EBWeakEventSet ()
+  private var mObserversOf_holeWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_holeDiameterUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_holeWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_holeDiameterUnit.insert (inObserver)
+    self.mObserversOf_holeWidthUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.holeDiameterUnit_property.addEBObserver (inObserver)
+        managedObject.holeWidthUnit_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_holeDiameterUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_holeWidthUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_holeDiameterUnit.remove (inObserver)
+    self.mObserversOf_holeWidthUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.holeDiameterUnit_property.removeEBObserver (inObserver)
+        managedObject.holeWidthUnit_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_holeDiameterUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+  final func addEBObserversOf_holeWidthUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      self.mObserversOf_holeDiameterUnit.apply { (_ observer : EBEvent) in
-        managedObject.holeDiameterUnit_property.addEBObserver (observer)
+      self.mObserversOf_holeWidthUnit.apply { (_ observer : EBEvent) in
+        managedObject.holeWidthUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_holeDiameterUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_holeDiameterUnit.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_holeWidthUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_holeWidthUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.holeDiameterUnit_property.removeEBObserver (observer)
+        managedObject.holeWidthUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'holeHeightUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_holeHeightUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_holeHeightUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_holeHeightUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.holeHeightUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_holeHeightUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_holeHeightUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.holeHeightUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_holeHeightUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_holeHeightUnit.apply { (_ observer : EBEvent) in
+        managedObject.holeHeightUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_holeHeightUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_holeHeightUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.holeHeightUnit_property.removeEBObserver (observer)
       }
     }
   }
@@ -1668,14 +1786,16 @@ final class PreferencesArrayOf_PackageSlavePad : StoredArrayOf_PackageSlavePad {
     self.addEBObserverOf_yCenter (self.mObserverForWritingPreferences)
     self.addEBObserverOf_width (self.mObserverForWritingPreferences)
     self.addEBObserverOf_height (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_holeDiameter (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_holeWidth (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_holeHeight (self.mObserverForWritingPreferences)
     self.addEBObserverOf_padShape (self.mObserverForWritingPreferences)
     self.addEBObserverOf_padStyle (self.mObserverForWritingPreferences)
     self.addEBObserverOf_xCenterUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_yCenterUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_widthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_heightUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_holeDiameterUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_holeWidthUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_holeHeightUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_annularRingUnit (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }

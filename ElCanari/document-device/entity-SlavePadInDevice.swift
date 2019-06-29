@@ -30,8 +30,14 @@ protocol SlavePadInDevice_mHeight : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SlavePadInDevice_mHoleDiameter : class {
-  var mHoleDiameter : Int { get }
+protocol SlavePadInDevice_mHoleWidth : class {
+  var mHoleWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SlavePadInDevice_mHoleHeight : class {
+  var mHoleHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -73,7 +79,8 @@ class SlavePadInDevice : EBManagedObject,
          SlavePadInDevice_mCenterY,
          SlavePadInDevice_mWidth,
          SlavePadInDevice_mHeight,
-         SlavePadInDevice_mHoleDiameter,
+         SlavePadInDevice_mHoleWidth,
+         SlavePadInDevice_mHoleHeight,
          SlavePadInDevice_mShape,
          SlavePadInDevice_mStyle,
          SlavePadInDevice_frontSideFilledBezierPath,
@@ -149,21 +156,38 @@ class SlavePadInDevice : EBManagedObject,
   var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.prop }
 
   //····················································································································
-  //   Atomic property: mHoleDiameter
+  //   Atomic property: mHoleWidth
   //····················································································································
 
-  let mHoleDiameter_property = EBStoredProperty_Int (defaultValue: 57150)
+  let mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150)
 
   //····················································································································
 
-  var mHoleDiameter : Int {
-    get { return self.mHoleDiameter_property.propval }
-    set { self.mHoleDiameter_property.setProp (newValue) }
+  var mHoleWidth : Int {
+    get { return self.mHoleWidth_property.propval }
+    set { self.mHoleWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mHoleDiameter_property_selection : EBSelection <Int> { return self.mHoleDiameter_property.prop }
+  var mHoleWidth_property_selection : EBSelection <Int> { return self.mHoleWidth_property.prop }
+
+  //····················································································································
+  //   Atomic property: mHoleHeight
+  //····················································································································
+
+  let mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150)
+
+  //····················································································································
+
+  var mHoleHeight : Int {
+    get { return self.mHoleHeight_property.propval }
+    set { self.mHoleHeight_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mHoleHeight_property_selection : EBSelection <Int> { return self.mHoleHeight_property.prop }
 
   //····················································································································
   //   Atomic property: mShape
@@ -320,8 +344,10 @@ class SlavePadInDevice : EBManagedObject,
     self.mWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mHeight
     self.mHeight_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mHoleDiameter
-    self.mHoleDiameter_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mHoleWidth
+    self.mHoleWidth_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mHoleHeight
+    self.mHoleHeight_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mShape
     self.mShape_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mStyle
@@ -339,7 +365,8 @@ class SlavePadInDevice : EBManagedObject,
         kind &= unwSelf.mCenterY_property_selection.kind ()
         kind &= unwSelf.mWidth_property_selection.kind ()
         kind &= unwSelf.mHeight_property_selection.kind ()
-        kind &= unwSelf.mHoleDiameter_property_selection.kind ()
+        kind &= unwSelf.mHoleWidth_property_selection.kind ()
+        kind &= unwSelf.mHoleHeight_property_selection.kind ()
         kind &= unwSelf.mShape_property_selection.kind ()
         kind &= unwSelf.mStyle_property_selection.kind ()
         switch kind {
@@ -348,9 +375,9 @@ class SlavePadInDevice : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mHoleDiameter_property_selection, unwSelf.mShape_property_selection, unwSelf.mStyle_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-            return .single (transient_SlavePadInDevice_frontSideFilledBezierPath (v0, v1, v2, v3, v4, v5, v6))
+          switch (unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mHoleWidth_property_selection, unwSelf.mHoleHeight_property_selection, unwSelf.mShape_property_selection, unwSelf.mStyle_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+            return .single (transient_SlavePadInDevice_frontSideFilledBezierPath (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -363,7 +390,8 @@ class SlavePadInDevice : EBManagedObject,
     self.mCenterY_property.addEBObserver (self.frontSideFilledBezierPath_property)
     self.mWidth_property.addEBObserver (self.frontSideFilledBezierPath_property)
     self.mHeight_property.addEBObserver (self.frontSideFilledBezierPath_property)
-    self.mHoleDiameter_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.mHoleWidth_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.mHoleHeight_property.addEBObserver (self.frontSideFilledBezierPath_property)
     self.mShape_property.addEBObserver (self.frontSideFilledBezierPath_property)
     self.mStyle_property.addEBObserver (self.frontSideFilledBezierPath_property)
   //--- Atomic property: backSideFilledBezierPath
@@ -373,7 +401,8 @@ class SlavePadInDevice : EBManagedObject,
         kind &= unwSelf.mCenterY_property_selection.kind ()
         kind &= unwSelf.mWidth_property_selection.kind ()
         kind &= unwSelf.mHeight_property_selection.kind ()
-        kind &= unwSelf.mHoleDiameter_property_selection.kind ()
+        kind &= unwSelf.mHoleWidth_property_selection.kind ()
+        kind &= unwSelf.mHoleHeight_property_selection.kind ()
         kind &= unwSelf.mShape_property_selection.kind ()
         kind &= unwSelf.mStyle_property_selection.kind ()
         switch kind {
@@ -382,9 +411,9 @@ class SlavePadInDevice : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mHoleDiameter_property_selection, unwSelf.mShape_property_selection, unwSelf.mStyle_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-            return .single (transient_SlavePadInDevice_backSideFilledBezierPath (v0, v1, v2, v3, v4, v5, v6))
+          switch (unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mHoleWidth_property_selection, unwSelf.mHoleHeight_property_selection, unwSelf.mShape_property_selection, unwSelf.mStyle_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+            return .single (transient_SlavePadInDevice_backSideFilledBezierPath (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -397,7 +426,8 @@ class SlavePadInDevice : EBManagedObject,
     self.mCenterY_property.addEBObserver (self.backSideFilledBezierPath_property)
     self.mWidth_property.addEBObserver (self.backSideFilledBezierPath_property)
     self.mHeight_property.addEBObserver (self.backSideFilledBezierPath_property)
-    self.mHoleDiameter_property.addEBObserver (self.backSideFilledBezierPath_property)
+    self.mHoleWidth_property.addEBObserver (self.backSideFilledBezierPath_property)
+    self.mHoleHeight_property.addEBObserver (self.backSideFilledBezierPath_property)
     self.mShape_property.addEBObserver (self.backSideFilledBezierPath_property)
     self.mStyle_property.addEBObserver (self.backSideFilledBezierPath_property)
   //--- Atomic property: padNumberDisplay
@@ -435,7 +465,8 @@ class SlavePadInDevice : EBManagedObject,
     self.mCenterX_property.setSignatureObserver (observer: self)
     self.mCenterY_property.setSignatureObserver (observer: self)
     self.mHeight_property.setSignatureObserver (observer: self)
-    self.mHoleDiameter_property.setSignatureObserver (observer: self)
+    self.mHoleHeight_property.setSignatureObserver (observer: self)
+    self.mHoleWidth_property.setSignatureObserver (observer: self)
     self.mShape_property.setSignatureObserver (observer: self)
     self.mStyle_property.setSignatureObserver (observer: self)
     self.mWidth_property.setSignatureObserver (observer: self)
@@ -450,14 +481,16 @@ class SlavePadInDevice : EBManagedObject,
     self.mCenterY_property.removeEBObserver (self.frontSideFilledBezierPath_property)
     self.mWidth_property.removeEBObserver (self.frontSideFilledBezierPath_property)
     self.mHeight_property.removeEBObserver (self.frontSideFilledBezierPath_property)
-    self.mHoleDiameter_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    self.mHoleWidth_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    self.mHoleHeight_property.removeEBObserver (self.frontSideFilledBezierPath_property)
     self.mShape_property.removeEBObserver (self.frontSideFilledBezierPath_property)
     self.mStyle_property.removeEBObserver (self.frontSideFilledBezierPath_property)
     self.mCenterX_property.removeEBObserver (self.backSideFilledBezierPath_property)
     self.mCenterY_property.removeEBObserver (self.backSideFilledBezierPath_property)
     self.mWidth_property.removeEBObserver (self.backSideFilledBezierPath_property)
     self.mHeight_property.removeEBObserver (self.backSideFilledBezierPath_property)
-    self.mHoleDiameter_property.removeEBObserver (self.backSideFilledBezierPath_property)
+    self.mHoleWidth_property.removeEBObserver (self.backSideFilledBezierPath_property)
+    self.mHoleHeight_property.removeEBObserver (self.backSideFilledBezierPath_property)
     self.mShape_property.removeEBObserver (self.backSideFilledBezierPath_property)
     self.mStyle_property.removeEBObserver (self.backSideFilledBezierPath_property)
     self.mCenterX_property.removeEBObserver (self.padNumberDisplay_property)
@@ -469,7 +502,8 @@ class SlavePadInDevice : EBManagedObject,
     self.mCenterX_property.setSignatureObserver (observer: nil)
     self.mCenterY_property.setSignatureObserver (observer: nil)
     self.mHeight_property.setSignatureObserver (observer: nil)
-    self.mHoleDiameter_property.setSignatureObserver (observer: nil)
+    self.mHoleHeight_property.setSignatureObserver (observer: nil)
+    self.mHoleWidth_property.setSignatureObserver (observer: nil)
     self.mShape_property.setSignatureObserver (observer: nil)
     self.mStyle_property.setSignatureObserver (observer: nil)
     self.mWidth_property.setSignatureObserver (observer: nil)
@@ -519,12 +553,20 @@ class SlavePadInDevice : EBManagedObject,
       valueExplorer: &self.mHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mHoleDiameter",
-      idx: self.mHoleDiameter_property.ebObjectIndex,
+      "mHoleWidth",
+      idx: self.mHoleWidth_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mHoleDiameter_property.mObserverExplorer,
-      valueExplorer: &self.mHoleDiameter_property.mValueExplorer
+      observerExplorer: &self.mHoleWidth_property.mObserverExplorer,
+      valueExplorer: &self.mHoleWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mHoleHeight",
+      idx: self.mHoleHeight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mHoleHeight_property.mObserverExplorer,
+      valueExplorer: &self.mHoleHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mShape",
@@ -596,9 +638,12 @@ class SlavePadInDevice : EBManagedObject,
   //--- Atomic property: mHeight
     self.mHeight_property.mObserverExplorer = nil
     self.mHeight_property.mValueExplorer = nil
-  //--- Atomic property: mHoleDiameter
-    self.mHoleDiameter_property.mObserverExplorer = nil
-    self.mHoleDiameter_property.mValueExplorer = nil
+  //--- Atomic property: mHoleWidth
+    self.mHoleWidth_property.mObserverExplorer = nil
+    self.mHoleWidth_property.mValueExplorer = nil
+  //--- Atomic property: mHoleHeight
+    self.mHoleHeight_property.mObserverExplorer = nil
+    self.mHoleHeight_property.mValueExplorer = nil
   //--- Atomic property: mShape
     self.mShape_property.mObserverExplorer = nil
     self.mShape_property.mValueExplorer = nil
@@ -645,8 +690,10 @@ class SlavePadInDevice : EBManagedObject,
     self.mWidth_property.storeIn (dictionary: ioDictionary, forKey:"mWidth")
   //--- Atomic property: mHeight
     self.mHeight_property.storeIn (dictionary: ioDictionary, forKey:"mHeight")
-  //--- Atomic property: mHoleDiameter
-    self.mHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mHoleDiameter")
+  //--- Atomic property: mHoleWidth
+    self.mHoleWidth_property.storeIn (dictionary: ioDictionary, forKey:"mHoleWidth")
+  //--- Atomic property: mHoleHeight
+    self.mHoleHeight_property.storeIn (dictionary: ioDictionary, forKey:"mHoleHeight")
   //--- Atomic property: mShape
     self.mShape_property.storeIn (dictionary: ioDictionary, forKey:"mShape")
   //--- Atomic property: mStyle
@@ -687,8 +734,10 @@ class SlavePadInDevice : EBManagedObject,
     self.mWidth_property.readFrom (dictionary: inDictionary, forKey:"mWidth")
   //--- Atomic property: mHeight
     self.mHeight_property.readFrom (dictionary: inDictionary, forKey:"mHeight")
-  //--- Atomic property: mHoleDiameter
-    self.mHoleDiameter_property.readFrom (dictionary: inDictionary, forKey:"mHoleDiameter")
+  //--- Atomic property: mHoleWidth
+    self.mHoleWidth_property.readFrom (dictionary: inDictionary, forKey:"mHoleWidth")
+  //--- Atomic property: mHoleHeight
+    self.mHoleHeight_property.readFrom (dictionary: inDictionary, forKey:"mHoleHeight")
   //--- Atomic property: mShape
     self.mShape_property.readFrom (dictionary: inDictionary, forKey:"mShape")
   //--- Atomic property: mStyle
@@ -728,7 +777,8 @@ class SlavePadInDevice : EBManagedObject,
     crc.accumulateUInt32 (self.mCenterX_property.signature ())
     crc.accumulateUInt32 (self.mCenterY_property.signature ())
     crc.accumulateUInt32 (self.mHeight_property.signature ())
-    crc.accumulateUInt32 (self.mHoleDiameter_property.signature ())
+    crc.accumulateUInt32 (self.mHoleHeight_property.signature ())
+    crc.accumulateUInt32 (self.mHoleWidth_property.signature ())
     crc.accumulateUInt32 (self.mShape_property.signature ())
     crc.accumulateUInt32 (self.mStyle_property.signature ())
     crc.accumulateUInt32 (self.mWidth_property.signature ())

@@ -495,6 +495,38 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
+  init (oblongInRect inRect : NSRect) {
+    self.init ()
+    let width = inRect.size.width
+    let height = inRect.size.height
+    if width < height {
+      self.mPath.appendRoundedRect (inRect, xRadius: width / 2.0, yRadius: width / 2.0)
+    }else if width > height {
+      self.mPath.appendRoundedRect (inRect, xRadius: height / 2.0, yRadius: height / 2.0)
+    }else{
+      self.mPath.appendOval (in: inRect)
+    }
+  }
+
+  //····················································································································
+
+  mutating func appendOblong (in inRect : NSRect) {
+    if !isKnownUniquelyReferenced (&self.mPath) {
+      self.mPath = self.mPath.copy () as! OCBezierPath
+    }
+    let width = inRect.size.width
+    let height = inRect.size.height
+    if width < height {
+      self.mPath.appendRoundedRect (inRect, xRadius: width / 2.0, yRadius: width / 2.0)
+    }else if width > height {
+      self.mPath.appendRoundedRect (inRect, xRadius: height / 2.0, yRadius: height / 2.0)
+    }else{
+      self.mPath.appendOval (in: inRect)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

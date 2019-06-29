@@ -51,13 +51,23 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   }
 
   //····················································································································
-  //   Selection observable property: holeDiameter
+  //   Selection observable property: holeWidth
   //····················································································································
 
-  let holeDiameter_property = EBPropertyProxy_Int ()
+  let holeWidth_property = EBPropertyProxy_Int ()
 
-  var holeDiameter_property_selection : EBSelection <Int> {
-    return self.holeDiameter_property.prop
+  var holeWidth_property_selection : EBSelection <Int> {
+    return self.holeWidth_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: holeHeight
+  //····················································································································
+
+  let holeHeight_property = EBPropertyProxy_Int ()
+
+  var holeHeight_property_selection : EBSelection <Int> {
+    return self.holeHeight_property.prop
   }
 
   //····················································································································
@@ -131,13 +141,23 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   }
 
   //····················································································································
-  //   Selection observable property: holeDiameterUnit
+  //   Selection observable property: holeWidthUnit
   //····················································································································
 
-  let holeDiameterUnit_property = EBPropertyProxy_Int ()
+  let holeWidthUnit_property = EBPropertyProxy_Int ()
 
-  var holeDiameterUnit_property_selection : EBSelection <Int> {
-    return self.holeDiameterUnit_property.prop
+  var holeWidthUnit_property_selection : EBSelection <Int> {
+    return self.holeWidthUnit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: holeHeightUnit
+  //····················································································································
+
+  let holeHeightUnit_property = EBPropertyProxy_Int ()
+
+  var holeHeightUnit_property_selection : EBSelection <Int> {
+    return self.holeHeightUnit_property.prop
   }
 
   //····················································································································
@@ -280,7 +300,8 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.bind_property_yCenter ()
     self.bind_property_width ()
     self.bind_property_height ()
-    self.bind_property_holeDiameter ()
+    self.bind_property_holeWidth ()
+    self.bind_property_holeHeight ()
     self.bind_property_padShape ()
     self.bind_property_padStyle ()
     self.bind_property_padNumber ()
@@ -288,7 +309,8 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.bind_property_yCenterUnit ()
     self.bind_property_widthUnit ()
     self.bind_property_heightUnit ()
-    self.bind_property_holeDiameterUnit ()
+    self.bind_property_holeWidthUnit ()
+    self.bind_property_holeHeightUnit ()
     self.bind_property_annularRingUnit ()
     self.bind_property_selectionDisplay ()
     self.bind_property_padName ()
@@ -329,11 +351,16 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.height_property.mWriteModelFunction = nil 
     self.height_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_height (self.height_property)
-  //--- holeDiameter
-    self.holeDiameter_property.mReadModelFunction = nil 
-    self.holeDiameter_property.mWriteModelFunction = nil 
-    self.holeDiameter_property.mValidateAndWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_holeDiameter (self.holeDiameter_property)
+  //--- holeWidth
+    self.holeWidth_property.mReadModelFunction = nil 
+    self.holeWidth_property.mWriteModelFunction = nil 
+    self.holeWidth_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_holeWidth (self.holeWidth_property)
+  //--- holeHeight
+    self.holeHeight_property.mReadModelFunction = nil 
+    self.holeHeight_property.mWriteModelFunction = nil 
+    self.holeHeight_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_holeHeight (self.holeHeight_property)
   //--- padShape
     self.padShape_property.mReadModelFunction = nil 
     self.padShape_property.mWriteModelFunction = nil 
@@ -369,11 +396,16 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.heightUnit_property.mWriteModelFunction = nil 
     self.heightUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_heightUnit (self.heightUnit_property)
-  //--- holeDiameterUnit
-    self.holeDiameterUnit_property.mReadModelFunction = nil 
-    self.holeDiameterUnit_property.mWriteModelFunction = nil 
-    self.holeDiameterUnit_property.mValidateAndWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_holeDiameterUnit (self.holeDiameterUnit_property)
+  //--- holeWidthUnit
+    self.holeWidthUnit_property.mReadModelFunction = nil 
+    self.holeWidthUnit_property.mWriteModelFunction = nil 
+    self.holeWidthUnit_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_holeWidthUnit (self.holeWidthUnit_property)
+  //--- holeHeightUnit
+    self.holeHeightUnit_property.mReadModelFunction = nil 
+    self.holeHeightUnit_property.mWriteModelFunction = nil 
+    self.holeHeightUnit_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_holeHeightUnit (self.holeHeightUnit_property)
   //--- annularRingUnit
     self.annularRingUnit_property.mReadModelFunction = nil 
     self.annularRingUnit_property.mWriteModelFunction = nil 
@@ -484,12 +516,20 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
       valueExplorer: &self.height_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "holeDiameter",
-      idx: self.holeDiameter_property.ebObjectIndex,
+      "holeWidth",
+      idx: self.holeWidth_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.holeDiameter_property.mObserverExplorer,
-      valueExplorer: &self.holeDiameter_property.mValueExplorer
+      observerExplorer: &self.holeWidth_property.mObserverExplorer,
+      valueExplorer: &self.holeWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "holeHeight",
+      idx: self.holeHeight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.holeHeight_property.mObserverExplorer,
+      valueExplorer: &self.holeHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padShape",
@@ -548,12 +588,20 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
       valueExplorer: &self.heightUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "holeDiameterUnit",
-      idx: self.holeDiameterUnit_property.ebObjectIndex,
+      "holeWidthUnit",
+      idx: self.holeWidthUnit_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.holeDiameterUnit_property.mObserverExplorer,
-      valueExplorer: &self.holeDiameterUnit_property.mValueExplorer
+      observerExplorer: &self.holeWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.holeWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "holeHeightUnit",
+      idx: self.holeHeightUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.holeHeightUnit_property.mObserverExplorer,
+      valueExplorer: &self.holeHeightUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "annularRingUnit",
@@ -893,9 +941,9 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_holeDiameter () {
-    self.selectedArray_property.addEBObserverOf_holeDiameter (self.holeDiameter_property)
-    self.holeDiameter_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_holeWidth () {
+    self.selectedArray_property.addEBObserverOf_holeWidth (self.holeWidth_property)
+    self.holeWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
@@ -906,7 +954,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.holeDiameter_property_selection {
+            switch object.holeWidth_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -929,26 +977,95 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
         return .empty
       }
     }
-    self.holeDiameter_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.holeWidth_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.holeDiameter_property.setProp (inValue)
+            object.holeWidth_property.setProp (inValue)
           }
         }
       }
     }
-    self.holeDiameter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.holeWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.holeDiameter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.holeWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_holeHeight () {
+    self.selectedArray_property.addEBObserverOf_holeHeight (self.holeHeight_property)
+    self.holeHeight_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.holeHeight_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.holeHeight_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.holeHeight_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.holeHeight_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.holeHeight_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1445,9 +1562,9 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_holeDiameterUnit () {
-    self.selectedArray_property.addEBObserverOf_holeDiameterUnit (self.holeDiameterUnit_property)
-    self.holeDiameterUnit_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_holeWidthUnit () {
+    self.selectedArray_property.addEBObserverOf_holeWidthUnit (self.holeWidthUnit_property)
+    self.holeWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
@@ -1458,7 +1575,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.holeDiameterUnit_property_selection {
+            switch object.holeWidthUnit_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1481,26 +1598,95 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
         return .empty
       }
     }
-    self.holeDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.holeWidthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.holeDiameterUnit_property.setProp (inValue)
+            object.holeWidthUnit_property.setProp (inValue)
           }
         }
       }
     }
-    self.holeDiameterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.holeWidthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.holeDiameterUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.holeWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_holeHeightUnit () {
+    self.selectedArray_property.addEBObserverOf_holeHeightUnit (self.holeHeightUnit_property)
+    self.holeHeightUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.holeHeightUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.holeHeightUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.holeHeightUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.holeHeightUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.holeHeightUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

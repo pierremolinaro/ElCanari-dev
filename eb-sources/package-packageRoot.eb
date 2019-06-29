@@ -217,7 +217,8 @@ graphic entity PackagePad : PackageObject {
   property @signature Int yCenter default 0 ;
   property @signature Int width default 114_300 ;
   property @signature Int height default 228_600 ;
-  property @signature Int holeDiameter default 57_150 ;
+  property @signature Int holeWidth default 57_150 ;
+  property @signature Int holeHeight default 57_150 ;
   property @signature PadShape padShape default octo ;
   property @signature PadStyle padStyle default traversing ;
   property @signature Int padNumber default 0 ;
@@ -226,14 +227,15 @@ graphic entity PackagePad : PackageObject {
   property @signature Int yCenterUnit default 2_286 ;
   property @signature Int widthUnit  default 2_286 ;
   property @signature Int heightUnit  default 2_286 ;
-  property @signature Int holeDiameterUnit default 2_286 ;
+  property @signature Int holeWidthUnit default 2_286 ;
+  property @signature Int holeHeightUnit default 2_286 ;
   property @signature Int annularRingUnit default 2_286 ;
 
   toOne PackageZone zone ;
   toMany PackageSlavePad slaves inverse toOne master ;
 
   override transient EBShape objectDisplay dependsFrom
-     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
+     self.xCenter, self.yCenter, self.width, self.height, self.holeWidth, self.holeHeight,
      self.padShape, self.padStyle,
      prefs.frontSidePadColor, prefs.displayPackageFrontSidePads,
      prefs.backSidePadColor, prefs.displayPackageBackSidePads
@@ -249,12 +251,11 @@ graphic entity PackagePad : PackageObject {
   ;
 
   override transient CanariIssueArray issues dependsFrom
-    self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter
-  ;
+    self.xCenter, self.yCenter, self.width, self.height, self.holeWidth, self.holeHeight ;
 
   transient Bool padIsTraversing dependsFrom self.padStyle ;
 
-  transient Int annularRing dependsFrom self.width, self.height, self.holeDiameter ;
+  transient Int annularRing dependsFrom self.width, self.height, self.holeWidth, self.holeHeight ;
 
   transient String padName dependsFrom self.padNumber, self.zone.one.zoneName ;
 
@@ -274,7 +275,8 @@ graphic entity PackageSlavePad : PackageObject {
   property @signature Int yCenter default 0 ;
   property @signature Int width default 114_300 ;
   property @signature Int height default 228_600 ;
-  property @signature Int holeDiameter default 57_150 ;
+  property @signature Int holeWidth default 57_150 ;
+  property @signature Int holeHeight default 57_150 ;
   property @signature PadShape padShape default octo ;
   property @signature SlavePadStyle padStyle default traversing ;
 
@@ -282,13 +284,14 @@ graphic entity PackageSlavePad : PackageObject {
   property @signature Int yCenterUnit default 2_286 ;
   property @signature Int widthUnit  default 2_286 ;
   property @signature Int heightUnit  default 2_286 ;
-  property @signature Int holeDiameterUnit default 2_286 ;
+  property @signature Int holeWidthUnit default 2_286 ;
+  property @signature Int holeHeightUnit default 2_286 ;
   property @signature Int annularRingUnit default 2_286 ;
 
   toOne PackagePad master inverse toMany slaves ;
 
   override transient EBShape objectDisplay dependsFrom
-     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
+     self.xCenter, self.yCenter, self.width, self.height, self.holeWidth, self.holeHeight,
      self.padShape, self.padStyle,
      prefs.frontSidePadColor, prefs.displayPackageFrontSidePads,
      prefs.backSidePadColor, prefs.displayPackageBackSidePads
@@ -298,12 +301,12 @@ graphic entity PackageSlavePad : PackageObject {
   ;
 
   override transient CanariIssueArray issues dependsFrom
-    self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter
+    self.xCenter, self.yCenter, self.width, self.height, self.holeWidth, self.holeHeight
   ;
 
   transient Bool padIsTraversing dependsFrom self.padStyle ;
 
-  transient Int annularRing dependsFrom self.width, self.height, self.holeDiameter ;
+  transient Int annularRing dependsFrom self.width, self.height, self.holeWidth, self.holeHeight ;
 
   transient String padName dependsFrom self.master.one.padName ;
 

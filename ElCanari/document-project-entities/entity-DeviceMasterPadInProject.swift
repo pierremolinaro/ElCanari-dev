@@ -30,8 +30,14 @@ protocol DeviceMasterPadInProject_mHeight : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceMasterPadInProject_mHoleDiameter : class {
-  var mHoleDiameter : Int { get }
+protocol DeviceMasterPadInProject_mHoleWidth : class {
+  var mHoleWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceMasterPadInProject_mHoleHeight : class {
+  var mHoleHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -61,7 +67,8 @@ class DeviceMasterPadInProject : EBManagedObject,
          DeviceMasterPadInProject_mCenterY,
          DeviceMasterPadInProject_mWidth,
          DeviceMasterPadInProject_mHeight,
-         DeviceMasterPadInProject_mHoleDiameter,
+         DeviceMasterPadInProject_mHoleWidth,
+         DeviceMasterPadInProject_mHoleHeight,
          DeviceMasterPadInProject_mShape,
          DeviceMasterPadInProject_mStyle,
          DeviceMasterPadInProject_mName {
@@ -135,21 +142,38 @@ class DeviceMasterPadInProject : EBManagedObject,
   var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.prop }
 
   //····················································································································
-  //   Atomic property: mHoleDiameter
+  //   Atomic property: mHoleWidth
   //····················································································································
 
-  let mHoleDiameter_property = EBStoredProperty_Int (defaultValue: 57150)
+  let mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150)
 
   //····················································································································
 
-  var mHoleDiameter : Int {
-    get { return self.mHoleDiameter_property.propval }
-    set { self.mHoleDiameter_property.setProp (newValue) }
+  var mHoleWidth : Int {
+    get { return self.mHoleWidth_property.propval }
+    set { self.mHoleWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mHoleDiameter_property_selection : EBSelection <Int> { return self.mHoleDiameter_property.prop }
+  var mHoleWidth_property_selection : EBSelection <Int> { return self.mHoleWidth_property.prop }
+
+  //····················································································································
+  //   Atomic property: mHoleHeight
+  //····················································································································
+
+  let mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150)
+
+  //····················································································································
+
+  var mHoleHeight : Int {
+    get { return self.mHoleHeight_property.propval }
+    set { self.mHoleHeight_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mHoleHeight_property_selection : EBSelection <Int> { return self.mHoleHeight_property.prop }
 
   //····················································································································
   //   Atomic property: mShape
@@ -235,8 +259,10 @@ class DeviceMasterPadInProject : EBManagedObject,
     self.mWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mHeight
     self.mHeight_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mHoleDiameter
-    self.mHoleDiameter_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mHoleWidth
+    self.mHoleWidth_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mHoleHeight
+    self.mHoleHeight_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mShape
     self.mShape_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mStyle
@@ -301,12 +327,20 @@ class DeviceMasterPadInProject : EBManagedObject,
       valueExplorer: &self.mHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mHoleDiameter",
-      idx: self.mHoleDiameter_property.ebObjectIndex,
+      "mHoleWidth",
+      idx: self.mHoleWidth_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mHoleDiameter_property.mObserverExplorer,
-      valueExplorer: &self.mHoleDiameter_property.mValueExplorer
+      observerExplorer: &self.mHoleWidth_property.mObserverExplorer,
+      valueExplorer: &self.mHoleWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mHoleHeight",
+      idx: self.mHoleHeight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mHoleHeight_property.mObserverExplorer,
+      valueExplorer: &self.mHoleHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mShape",
@@ -362,9 +396,12 @@ class DeviceMasterPadInProject : EBManagedObject,
   //--- Atomic property: mHeight
     self.mHeight_property.mObserverExplorer = nil
     self.mHeight_property.mValueExplorer = nil
-  //--- Atomic property: mHoleDiameter
-    self.mHoleDiameter_property.mObserverExplorer = nil
-    self.mHoleDiameter_property.mValueExplorer = nil
+  //--- Atomic property: mHoleWidth
+    self.mHoleWidth_property.mObserverExplorer = nil
+    self.mHoleWidth_property.mValueExplorer = nil
+  //--- Atomic property: mHoleHeight
+    self.mHoleHeight_property.mObserverExplorer = nil
+    self.mHoleHeight_property.mValueExplorer = nil
   //--- Atomic property: mShape
     self.mShape_property.mObserverExplorer = nil
     self.mShape_property.mValueExplorer = nil
@@ -413,8 +450,10 @@ class DeviceMasterPadInProject : EBManagedObject,
     self.mWidth_property.storeIn (dictionary: ioDictionary, forKey:"mWidth")
   //--- Atomic property: mHeight
     self.mHeight_property.storeIn (dictionary: ioDictionary, forKey:"mHeight")
-  //--- Atomic property: mHoleDiameter
-    self.mHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mHoleDiameter")
+  //--- Atomic property: mHoleWidth
+    self.mHoleWidth_property.storeIn (dictionary: ioDictionary, forKey:"mHoleWidth")
+  //--- Atomic property: mHoleHeight
+    self.mHoleHeight_property.storeIn (dictionary: ioDictionary, forKey:"mHoleHeight")
   //--- Atomic property: mShape
     self.mShape_property.storeIn (dictionary: ioDictionary, forKey:"mShape")
   //--- Atomic property: mStyle
@@ -458,8 +497,10 @@ class DeviceMasterPadInProject : EBManagedObject,
     self.mWidth_property.readFrom (dictionary: inDictionary, forKey:"mWidth")
   //--- Atomic property: mHeight
     self.mHeight_property.readFrom (dictionary: inDictionary, forKey:"mHeight")
-  //--- Atomic property: mHoleDiameter
-    self.mHoleDiameter_property.readFrom (dictionary: inDictionary, forKey:"mHoleDiameter")
+  //--- Atomic property: mHoleWidth
+    self.mHoleWidth_property.readFrom (dictionary: inDictionary, forKey:"mHoleWidth")
+  //--- Atomic property: mHoleHeight
+    self.mHoleHeight_property.readFrom (dictionary: inDictionary, forKey:"mHoleHeight")
   //--- Atomic property: mShape
     self.mShape_property.readFrom (dictionary: inDictionary, forKey:"mShape")
   //--- Atomic property: mStyle

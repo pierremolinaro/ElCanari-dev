@@ -18,7 +18,8 @@ func transient_PackageSlavePad_issues (
        _ self_yCenter : Int,           
        _ self_width : Int,             
        _ self_height : Int,            
-       _ self_holeDiameter : Int
+       _ self_holeWidth : Int,         
+       _ self_holeHeight : Int
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
          return CanariIssueArray ()

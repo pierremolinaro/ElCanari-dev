@@ -279,8 +279,10 @@ import Cocoa
   @IBOutlet weak var mPadAnnularRingUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mPadHeightTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mPadHeightUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mPadHoleDiameterTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
-  @IBOutlet weak var mPadHoleDiameterUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mPadHoleHeightTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mPadHoleHeightUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mPadHoleWidthTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mPadHoleWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mPadInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mPadNumberColorWell : EBColorWell? = nil // An outlet should be declared weak
   @IBOutlet weak var mPadNumberFontButton : EBFontButton? = nil // An outlet should be declared weak
@@ -325,8 +327,10 @@ import Cocoa
   @IBOutlet weak var mSlavePadAssignmentPopUpButton : CanariSlavePadAssignmentPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mSlavePadHeightTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mSlavePadHeightUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadHoleDiameterTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadHoleDiameterUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSlavePadHoleHeightTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSlavePadHoleHeightUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSlavePadHoleWidthTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mSlavePadHoleWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mSlavePadInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mSlavePadStyleView : NSView? = nil // An outlet should be declared weak
   @IBOutlet weak var mSlavePadWidthTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
@@ -563,8 +567,10 @@ import Cocoa
     checkOutletConnection (self.mPadAnnularRingUnitPopUp, "mPadAnnularRingUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mPadHeightTextField, "mPadHeightTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mPadHeightUnitPopUp, "mPadHeightUnitPopUp", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mPadHoleDiameterTextField, "mPadHoleDiameterTextField", CanariDimensionTextField.self, #file, #line)
-    checkOutletConnection (self.mPadHoleDiameterUnitPopUp, "mPadHoleDiameterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPadHoleHeightTextField, "mPadHoleHeightTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mPadHoleHeightUnitPopUp, "mPadHoleHeightUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPadHoleWidthTextField, "mPadHoleWidthTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mPadHoleWidthUnitPopUp, "mPadHoleWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mPadInspectorView, "mPadInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mPadNumberColorWell, "mPadNumberColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mPadNumberFontButton, "mPadNumberFontButton", EBFontButton.self, #file, #line)
@@ -609,8 +615,10 @@ import Cocoa
     checkOutletConnection (self.mSlavePadAssignmentPopUpButton, "mSlavePadAssignmentPopUpButton", CanariSlavePadAssignmentPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSlavePadHeightTextField, "mSlavePadHeightTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mSlavePadHeightUnitPopUp, "mSlavePadHeightUnitPopUp", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mSlavePadHoleDiameterTextField, "mSlavePadHoleDiameterTextField", CanariDimensionTextField.self, #file, #line)
-    checkOutletConnection (self.mSlavePadHoleDiameterUnitPopUp, "mSlavePadHoleDiameterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSlavePadHoleHeightTextField, "mSlavePadHoleHeightTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mSlavePadHoleHeightUnitPopUp, "mSlavePadHoleHeightUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSlavePadHoleWidthTextField, "mSlavePadHoleWidthTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mSlavePadHoleWidthUnitPopUp, "mSlavePadHoleWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSlavePadInspectorView, "mSlavePadInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSlavePadStyleView, "mSlavePadStyleView", NSView.self, #file, #line)
     checkOutletConnection (self.mSlavePadWidthTextField, "mSlavePadWidthTextField", CanariDimensionTextField.self, #file, #line)
@@ -801,8 +809,10 @@ import Cocoa
     self.mPadWidthTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.width_property, self.mPackagePadSelectionController.widthUnit_property, file: #file, line: #line)
     self.mPadHeightUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.heightUnit_property, file: #file, line: #line)
     self.mPadHeightTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.height_property, self.mPackagePadSelectionController.heightUnit_property, file: #file, line: #line)
-    self.mPadHoleDiameterUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.holeDiameterUnit_property, file: #file, line: #line)
-    self.mPadHoleDiameterTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.holeDiameter_property, self.mPackagePadSelectionController.holeDiameterUnit_property, file: #file, line: #line)
+    self.mPadHoleWidthUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.holeWidthUnit_property, file: #file, line: #line)
+    self.mPadHoleWidthTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.holeWidth_property, self.mPackagePadSelectionController.holeWidthUnit_property, file: #file, line: #line)
+    self.mPadHoleHeightUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.holeHeightUnit_property, file: #file, line: #line)
+    self.mPadHoleHeightTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.holeHeight_property, self.mPackagePadSelectionController.holeHeightUnit_property, file: #file, line: #line)
     self.mPadAnnularRingUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.annularRingUnit_property, file: #file, line: #line)
     self.mPadAnnularRingTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.annularRing_property, self.mPackagePadSelectionController.annularRingUnit_property, file: #file, line: #line)
     self.mPadZoneNameTextField?.bind_valueObserver (self.mPackagePadSelectionController.zoneName_property, file: #file, line: #line)
@@ -820,8 +830,10 @@ import Cocoa
     self.mSlavePadWidthTextField?.bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.width_property, self.mPackageSlavePadSelectionController.widthUnit_property, file: #file, line: #line)
     self.mSlavePadHeightUnitPopUp?.bind_selectedTag (self.mPackageSlavePadSelectionController.heightUnit_property, file: #file, line: #line)
     self.mSlavePadHeightTextField?.bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.height_property, self.mPackageSlavePadSelectionController.heightUnit_property, file: #file, line: #line)
-    self.mSlavePadHoleDiameterUnitPopUp?.bind_selectedTag (self.mPackageSlavePadSelectionController.holeDiameterUnit_property, file: #file, line: #line)
-    self.mSlavePadHoleDiameterTextField?.bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeDiameter_property, self.mPackageSlavePadSelectionController.holeDiameterUnit_property, file: #file, line: #line)
+    self.mSlavePadHoleWidthUnitPopUp?.bind_selectedTag (self.mPackageSlavePadSelectionController.holeWidthUnit_property, file: #file, line: #line)
+    self.mSlavePadHoleWidthTextField?.bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeWidth_property, self.mPackageSlavePadSelectionController.holeWidthUnit_property, file: #file, line: #line)
+    self.mSlavePadHoleHeightUnitPopUp?.bind_selectedTag (self.mPackageSlavePadSelectionController.holeHeightUnit_property, file: #file, line: #line)
+    self.mSlavePadHoleHeightTextField?.bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeHeight_property, self.mPackageSlavePadSelectionController.holeHeightUnit_property, file: #file, line: #line)
     self.mSlavePadAnnularRingUnitPopUp?.bind_selectedTag (self.mPackageSlavePadSelectionController.annularRingUnit_property, file: #file, line: #line)
     self.mSlavePadAnnularRingTextField?.bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.annularRing_property, self.mPackageSlavePadSelectionController.annularRingUnit_property, file: #file, line: #line)
     self.mSlavePadAssignmentPopUpButton?.bind_masterPadName (self.mPackageSlavePadSelectionController.padName_property, file: #file, line: #line)
@@ -1062,8 +1074,10 @@ import Cocoa
     self.mPadWidthTextField?.unbind_dimensionAndUnit ()
     self.mPadHeightUnitPopUp?.unbind_selectedTag ()
     self.mPadHeightTextField?.unbind_dimensionAndUnit ()
-    self.mPadHoleDiameterUnitPopUp?.unbind_selectedTag ()
-    self.mPadHoleDiameterTextField?.unbind_dimensionAndUnit ()
+    self.mPadHoleWidthUnitPopUp?.unbind_selectedTag ()
+    self.mPadHoleWidthTextField?.unbind_dimensionAndUnit ()
+    self.mPadHoleHeightUnitPopUp?.unbind_selectedTag ()
+    self.mPadHoleHeightTextField?.unbind_dimensionAndUnit ()
     self.mPadAnnularRingUnitPopUp?.unbind_selectedTag ()
     self.mPadAnnularRingTextField?.unbind_dimensionAndUnit ()
     self.mPadZoneNameTextField?.unbind_valueObserver ()
@@ -1081,8 +1095,10 @@ import Cocoa
     self.mSlavePadWidthTextField?.unbind_dimensionAndUnit ()
     self.mSlavePadHeightUnitPopUp?.unbind_selectedTag ()
     self.mSlavePadHeightTextField?.unbind_dimensionAndUnit ()
-    self.mSlavePadHoleDiameterUnitPopUp?.unbind_selectedTag ()
-    self.mSlavePadHoleDiameterTextField?.unbind_dimensionAndUnit ()
+    self.mSlavePadHoleWidthUnitPopUp?.unbind_selectedTag ()
+    self.mSlavePadHoleWidthTextField?.unbind_dimensionAndUnit ()
+    self.mSlavePadHoleHeightUnitPopUp?.unbind_selectedTag ()
+    self.mSlavePadHoleHeightTextField?.unbind_dimensionAndUnit ()
     self.mSlavePadAnnularRingUnitPopUp?.unbind_selectedTag ()
     self.mSlavePadAnnularRingTextField?.unbind_dimensionAndUnit ()
     self.mSlavePadAssignmentPopUpButton?.unbind_masterPadName ()
@@ -1327,8 +1343,10 @@ import Cocoa
     self.mPadAnnularRingUnitPopUp?.ebCleanUp ()
     self.mPadHeightTextField?.ebCleanUp ()
     self.mPadHeightUnitPopUp?.ebCleanUp ()
-    self.mPadHoleDiameterTextField?.ebCleanUp ()
-    self.mPadHoleDiameterUnitPopUp?.ebCleanUp ()
+    self.mPadHoleHeightTextField?.ebCleanUp ()
+    self.mPadHoleHeightUnitPopUp?.ebCleanUp ()
+    self.mPadHoleWidthTextField?.ebCleanUp ()
+    self.mPadHoleWidthUnitPopUp?.ebCleanUp ()
     self.mPadInspectorView?.ebCleanUp ()
     self.mPadNumberColorWell?.ebCleanUp ()
     self.mPadNumberFontButton?.ebCleanUp ()
@@ -1373,8 +1391,10 @@ import Cocoa
     self.mSlavePadAssignmentPopUpButton?.ebCleanUp ()
     self.mSlavePadHeightTextField?.ebCleanUp ()
     self.mSlavePadHeightUnitPopUp?.ebCleanUp ()
-    self.mSlavePadHoleDiameterTextField?.ebCleanUp ()
-    self.mSlavePadHoleDiameterUnitPopUp?.ebCleanUp ()
+    self.mSlavePadHoleHeightTextField?.ebCleanUp ()
+    self.mSlavePadHoleHeightUnitPopUp?.ebCleanUp ()
+    self.mSlavePadHoleWidthTextField?.ebCleanUp ()
+    self.mSlavePadHoleWidthUnitPopUp?.ebCleanUp ()
     self.mSlavePadInspectorView?.ebCleanUp ()
     self.mSlavePadStyleView?.ebCleanUp ()
     self.mSlavePadWidthTextField?.ebCleanUp ()
@@ -1518,8 +1538,10 @@ import Cocoa
 //    self.mPadAnnularRingUnitPopUp = nil
 //    self.mPadHeightTextField = nil
 //    self.mPadHeightUnitPopUp = nil
-//    self.mPadHoleDiameterTextField = nil
-//    self.mPadHoleDiameterUnitPopUp = nil
+//    self.mPadHoleHeightTextField = nil
+//    self.mPadHoleHeightUnitPopUp = nil
+//    self.mPadHoleWidthTextField = nil
+//    self.mPadHoleWidthUnitPopUp = nil
 //    self.mPadInspectorView = nil
 //    self.mPadNumberColorWell = nil
 //    self.mPadNumberFontButton = nil
@@ -1564,8 +1586,10 @@ import Cocoa
 //    self.mSlavePadAssignmentPopUpButton = nil
 //    self.mSlavePadHeightTextField = nil
 //    self.mSlavePadHeightUnitPopUp = nil
-//    self.mSlavePadHoleDiameterTextField = nil
-//    self.mSlavePadHoleDiameterUnitPopUp = nil
+//    self.mSlavePadHoleHeightTextField = nil
+//    self.mSlavePadHoleHeightUnitPopUp = nil
+//    self.mSlavePadHoleWidthTextField = nil
+//    self.mSlavePadHoleWidthUnitPopUp = nil
 //    self.mSlavePadInspectorView = nil
 //    self.mSlavePadStyleView = nil
 //    self.mSlavePadWidthTextField = nil

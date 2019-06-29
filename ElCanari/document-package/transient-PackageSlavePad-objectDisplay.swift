@@ -18,7 +18,8 @@ func transient_PackageSlavePad_objectDisplay (
        _ self_yCenter : Int,                  
        _ self_width : Int,                    
        _ self_height : Int,                   
-       _ self_holeDiameter : Int,             
+       _ self_holeWidth : Int,                
+       _ self_holeHeight : Int,               
        _ self_padShape : PadShape,            
        _ self_padStyle : SlavePadStyle,       
        _ prefs_frontSidePadColor : NSColor,   
@@ -31,27 +32,29 @@ func transient_PackageSlavePad_objectDisplay (
     let yCenter = canariUnitToCocoa (self_yCenter)
     let width = canariUnitToCocoa (self_width)
     let height = canariUnitToCocoa (self_height)
-    let holeDiameter = canariUnitToCocoa (self_holeDiameter)
     let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
     var bp : EBBezierPath
     switch self_padShape {
     case .rect :
       bp = EBBezierPath (rect: rPad)
     case .round :
-      if width < height {
-        bp = EBBezierPath (roundedRect: rPad, xRadius: width / 2.0, yRadius: width / 2.0)
-      }else if width > height {
-        bp = EBBezierPath (roundedRect: rPad, xRadius: height / 2.0, yRadius: height / 2.0)
-      }else{
-        bp = EBBezierPath (ovalIn: rPad)
-      }
+      bp = EBBezierPath (oblongInRect: rPad)
+//      if width < height {
+//        bp = EBBezierPath (roundedRect: rPad, xRadius: width / 2.0, yRadius: width / 2.0)
+//      }else if width > height {
+//        bp = EBBezierPath (roundedRect: rPad, xRadius: height / 2.0, yRadius: height / 2.0)
+//      }else{
+//        bp = EBBezierPath (ovalIn: rPad)
+//      }
     case .octo :
       bp = EBBezierPath (octogonInRect: rPad)
     }
     switch self_padStyle {
     case .traversing :
-      let rHole = NSRect (x: xCenter - holeDiameter / 2.0, y: yCenter - holeDiameter / 2.0, width: holeDiameter, height: holeDiameter)
-      bp.appendOval (in: rHole)
+      let holeWidth = canariUnitToCocoa (self_holeWidth)
+      let holeHeight = canariUnitToCocoa (self_holeHeight)
+      let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
+      bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if prefs_displayPackageFrontSidePads {
         return EBFilledBezierPathShape ([bp], prefs_frontSidePadColor)

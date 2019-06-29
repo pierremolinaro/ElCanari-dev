@@ -536,7 +536,7 @@ document ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mERCBoardInspectorView ;
 
   outlet CanariDragSourceButton mAddRestrictRectangleButton ;
-  outlet CanariDragSourceButton mAddTextInBoardButton ;
+  outlet CanariDragSourceImageButton mAddTextInBoardButton ;
 
   outlet CanariDragSourceTableView mUnplacedPackageTableView $models root.unplacedPackages ;
   transient Int unplacedPackageCount dependsFrom root.unplacedPackages ;

@@ -146,19 +146,20 @@ entity MasterPadInDevice {
   property @signature Int mCenterY default 0 ;
   property @signature Int mWidth default 114_300 ;
   property @signature Int mHeight default 228_600 ;
-  property @signature Int mHoleDiameter default 57_150 ;
+  property @signature Int mHoleWidth default 57_150 ;
+  property @signature Int mHoleHeight default 57_150 ;
   property @signature PadShape mShape default octo ;
   property @signature PadStyle mStyle default traversing ;
   property @signature String mName default "" ;
 
   transient BezierPathArray frontSideFilledBezierPathArray dependsFrom
-     self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleDiameter,
+     self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleWidth, self.mHoleHeight,
      self.mShape, self.mStyle,
      self.mSlavePads.all.frontSideFilledBezierPath
   ;
 
   transient BezierPathArray backSideFilledBezierPathArray dependsFrom
-     self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleDiameter,
+     self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleWidth, self.mHoleHeight,
      self.mShape, self.mStyle,
      self.mSlavePads.all.backSideFilledBezierPath
   ;
@@ -176,17 +177,18 @@ entity SlavePadInDevice {
   property @signature Int mCenterY default 0 ;
   property @signature Int mWidth default 114_300 ;
   property @signature Int mHeight default 228_600 ;
-  property @signature Int mHoleDiameter default 57_150 ;
+  property @signature Int mHoleWidth default 57_150 ;
+  property @signature Int mHoleHeight default 57_150 ;
   property @signature PadShape mShape default octo ;
   property @signature SlavePadStyle mStyle default traversing ;
 
   transient EBBezierPath frontSideFilledBezierPath dependsFrom
-     self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleDiameter,
+     self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleWidth, self.mHoleHeight,
      self.mShape, self.mStyle
   ;
 
   transient EBBezierPath backSideFilledBezierPath dependsFrom
-     self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleDiameter,
+     self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleWidth, self.mHoleHeight,
      self.mShape, self.mStyle
   ;
 

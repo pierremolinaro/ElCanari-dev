@@ -18,7 +18,8 @@ func transient_SlavePadInDevice_frontSideFilledBezierPath (
        _ self_mCenterY : Int,                              
        _ self_mWidth : Int,                                
        _ self_mHeight : Int,                               
-       _ self_mHoleDiameter : Int,                         
+       _ self_mHoleWidth : Int,                            
+       _ self_mHoleHeight : Int,                           
        _ self_mShape : PadShape,                           
        _ self_mStyle : SlavePadStyle
 ) -> EBBezierPath {
@@ -27,27 +28,22 @@ func transient_SlavePadInDevice_frontSideFilledBezierPath (
     let yCenter = canariUnitToCocoa (self_mCenterY)
     let width = canariUnitToCocoa (self_mWidth)
     let height = canariUnitToCocoa (self_mHeight)
-    let holeDiameter = canariUnitToCocoa (self_mHoleDiameter)
     let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
     var bp : EBBezierPath
     switch self_mShape {
     case .rect :
       bp = EBBezierPath (rect: rPad)
     case .round :
-      if width < height {
-        bp = EBBezierPath (roundedRect: rPad, xRadius: width / 2.0, yRadius: width / 2.0)
-      }else if width > height {
-        bp = EBBezierPath (roundedRect: rPad, xRadius: height / 2.0, yRadius: height / 2.0)
-      }else{
-        bp = EBBezierPath (ovalIn: rPad)
-      }
+      bp = EBBezierPath (oblongInRect: rPad)
     case .octo :
       bp = EBBezierPath (octogonInRect: rPad)
     }
     switch self_mStyle {
     case .traversing :
-      let rHole = NSRect (x: xCenter - holeDiameter / 2.0, y: yCenter - holeDiameter / 2.0, width: holeDiameter, height: holeDiameter)
-      bp.appendOval (in: rHole)
+      let holeWidth = canariUnitToCocoa (self_mHoleWidth)
+      let holeHeight = canariUnitToCocoa (self_mHoleHeight)
+      let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
+      bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
     case .topSide :
       ()

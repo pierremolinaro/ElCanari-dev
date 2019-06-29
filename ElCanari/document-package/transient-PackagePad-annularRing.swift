@@ -16,10 +16,13 @@ import Cocoa
 func transient_PackagePad_annularRing (
        _ self_width : Int,             
        _ self_height : Int,            
-       _ self_holeDiameter : Int
+       _ self_holeWidth : Int,         
+       _ self_holeHeight : Int
 ) -> Int {
 //--- START OF USER ZONE 2
-    return (min (self_width, self_height) - self_holeDiameter) / 2
+    let h = self_height - self_holeHeight
+    let w = self_width - self_holeWidth
+    return min (w, h) / 2
 //--- END OF USER ZONE 2
 }
 

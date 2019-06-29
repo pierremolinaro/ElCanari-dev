@@ -192,10 +192,15 @@ document PackageDocument root PackageRoot {
   outlet CanariDimensionTextField mPadHeightTextField
      $dimensionAndUnit #mPackagePadSelectionController.height, #mPackagePadSelectionController.heightUnit
   ;
-//--- Hole Diameter
-  outlet EBPopUpButton mPadHoleDiameterUnitPopUp $selectedTag #mPackagePadSelectionController.holeDiameterUnit ;
-  outlet CanariDimensionTextField mPadHoleDiameterTextField
-     $dimensionAndUnit #mPackagePadSelectionController.holeDiameter, #mPackagePadSelectionController.holeDiameterUnit
+//--- Hole Width
+  outlet EBPopUpButton mPadHoleWidthUnitPopUp $selectedTag #mPackagePadSelectionController.holeWidthUnit ;
+  outlet CanariDimensionTextField mPadHoleWidthTextField
+     $dimensionAndUnit #mPackagePadSelectionController.holeWidth, #mPackagePadSelectionController.holeWidthUnit
+  ;
+//--- Hole Height
+  outlet EBPopUpButton mPadHoleHeightUnitPopUp $selectedTag #mPackagePadSelectionController.holeHeightUnit ;
+  outlet CanariDimensionTextField mPadHoleHeightTextField
+     $dimensionAndUnit #mPackagePadSelectionController.holeHeight, #mPackagePadSelectionController.holeHeightUnit
   ;
 //--- Annular Ring
   outlet EBPopUpButton mPadAnnularRingUnitPopUp $selectedTag #mPackagePadSelectionController.annularRingUnit ;
@@ -244,10 +249,15 @@ document PackageDocument root PackageRoot {
   outlet CanariDimensionTextField mSlavePadHeightTextField
      $dimensionAndUnit #mPackageSlavePadSelectionController.height, #mPackageSlavePadSelectionController.heightUnit
   ;
-//--- Hole Diameter
-  outlet EBPopUpButton mSlavePadHoleDiameterUnitPopUp $selectedTag #mPackageSlavePadSelectionController.holeDiameterUnit ;
-  outlet CanariDimensionTextField mSlavePadHoleDiameterTextField
-     $dimensionAndUnit #mPackageSlavePadSelectionController.holeDiameter, #mPackageSlavePadSelectionController.holeDiameterUnit
+//--- Hole Width
+  outlet EBPopUpButton mSlavePadHoleWidthUnitPopUp $selectedTag #mPackageSlavePadSelectionController.holeWidthUnit ;
+  outlet CanariDimensionTextField mSlavePadHoleWidthTextField
+     $dimensionAndUnit #mPackageSlavePadSelectionController.holeWidth, #mPackageSlavePadSelectionController.holeWidthUnit
+  ;
+//--- Hole Height
+  outlet EBPopUpButton mSlavePadHoleHeightUnitPopUp $selectedTag #mPackageSlavePadSelectionController.holeHeightUnit ;
+  outlet CanariDimensionTextField mSlavePadHoleHeightTextField
+     $dimensionAndUnit #mPackageSlavePadSelectionController.holeHeight, #mPackageSlavePadSelectionController.holeHeightUnit
   ;
 //--- Annular Ring
   outlet EBPopUpButton mSlavePadAnnularRingUnitPopUp $selectedTag #mPackageSlavePadSelectionController.annularRingUnit ;

@@ -8,8 +8,8 @@ digraph G {
   SymbolInstanceInDevice[label="<SymbolInstanceInDevice>SymbolInstanceInDevice|String mInstanceName|<mPinInstances>[SymbolPinInstanceInDevice] mPinInstances|<mType>SymbolTypeInDevice? mType|Int mX|Int mY"] ;
   PadProxyInDevice[label="<PadProxyInDevice>PadProxyInDevice|Bool mIsNC|String mPadName|<mPinInstance>SymbolPinInstanceInDevice? mPinInstance"] ;
   PackageInDevice[label="<PackageInDevice>PackageInDevice|Data mFileData|<mMasterPads>[MasterPadInDevice] mMasterPads|String mName|<mRoot>DeviceRoot? mRoot|NSBezierPath mStrokeBezierPath|Int mVersion|Int mX|Int mY"] ;
-  MasterPadInDevice[label="<MasterPadInDevice>MasterPadInDevice|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|String mName|PadShape mShape|<mSlavePads>[SlavePadInDevice] mSlavePads|PadStyle mStyle|Int mWidth"] ;
-  SlavePadInDevice[label="<SlavePadInDevice>SlavePadInDevice|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|<mMasterPad>MasterPadInDevice? mMasterPad|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
+  MasterPadInDevice[label="<MasterPadInDevice>MasterPadInDevice|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleHeight|Int mHoleWidth|String mName|PadShape mShape|<mSlavePads>[SlavePadInDevice] mSlavePads|PadStyle mStyle|Int mWidth"] ;
+  SlavePadInDevice[label="<SlavePadInDevice>SlavePadInDevice|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleHeight|Int mHoleWidth|<mMasterPad>MasterPadInDevice? mMasterPad|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
   DeviceDocumentation[label="<DeviceDocumentation>DeviceDocumentation|Data mFileData|String mFileName"] ;
   DeviceRoot:mDocs -> DeviceDocumentation:DeviceDocumentation [dir=both arrowtail=none arrowhead=vee] ;
   DeviceRoot:mPackages -> PackageInDevice:mRoot [dir=both arrowtail=onormal arrowhead=vee] ;

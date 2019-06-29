@@ -357,8 +357,11 @@ extension PackageDocument {
       padStyle = .bottomSide
     }
     self.checkName ("hole", inString, &ioIndex, &ioOk)
-    let holeDiameter = self.scanNumber (inString, &ioIndex, &ioOk)
-    let holeDiameterUnit = self.scanUnit (inString, &ioIndex, &ioOk)
+    let ((holeWidth, holeWidthUnit), (holeHeight, holeHeightUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
+//    let holeWidth = self.scanNumber (inString, &ioIndex, &ioOk)
+//    let holeWidthUnit = self.scanUnit (inString, &ioIndex, &ioOk)
+//    let holeHeight = self.scanNumber (inString, &ioIndex, &ioOk)
+//    let holeHeightUnit = self.scanUnit (inString, &ioIndex, &ioOk)
     self.checkName ("id", inString, &ioIndex, &ioOk)
     let slavePadErrorLocation = ioIndex
     let masterPadID = self.scanNumber (inString, &ioIndex, &ioOk)
@@ -374,8 +377,10 @@ extension PackageDocument {
     object.heightUnit = heightUnit
     object.padShape = padShape
     object.padStyle = padStyle
-    object.holeDiameter = holeDiameter
-    object.holeDiameterUnit = holeDiameterUnit
+    object.holeWidth = holeWidth
+    object.holeWidthUnit = holeWidthUnit
+    object.holeHeight = holeHeight
+    object.holeHeightUnit = holeHeightUnit
     ioObjects.append (object)
     ioSlavePadArray.append ((object, masterPadID, slavePadErrorLocation))
  }
@@ -409,7 +414,9 @@ extension PackageDocument {
       padStyle = .surface
     }
     self.checkName ("hole", inString, &ioIndex, &ioOk)
-    let (holeDiameter, holeDiameterUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
+    let ((holeWidth, holeWidthUnit), (holeHeight, holeHeightUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
+//    let (holeWidth, holeWidthUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
+//    let (holeHeight, holeHeightUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
     self.checkName ("number", inString, &ioIndex, &ioOk)
     let padNumber = self.scanNumber (inString, &ioIndex, &ioOk)
     let object = PackagePad (self.ebUndoManager)
@@ -428,8 +435,10 @@ extension PackageDocument {
     object.heightUnit = heightUnit
     object.padShape = padShape
     object.padStyle = padStyle
-    object.holeDiameter = holeDiameter
-    object.holeDiameterUnit = holeDiameterUnit
+    object.holeWidth = holeWidth
+    object.holeWidthUnit = holeWidthUnit
+    object.holeHeight = holeHeight
+    object.holeHeightUnit = holeHeightUnit
     object.padNumber = padNumber
     ioObjects.append (object)
  }
