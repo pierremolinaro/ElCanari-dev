@@ -19,7 +19,16 @@ func transient_ComponentInProject_selectionDisplay (
        _ self_strokeBezierPath : NSBezierPath
 ) -> EBShape {
 //--- START OF USER ZONE 2
-
+       let shape = EBShape ()
+       var strokeBezierPath = EBBezierPath (self_strokeBezierPath)
+       strokeBezierPath.lineWidth = 1.0
+       strokeBezierPath.lineCapStyle = .round
+       strokeBezierPath.lineJoinStyle = .round
+       var af = AffineTransform ()
+       af.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
+       strokeBezierPath.transform (using: af)
+       shape.append (EBStrokeBezierPathShape ([strokeBezierPath], .cyan))
+       return shape
 //--- END OF USER ZONE 2
 }
 

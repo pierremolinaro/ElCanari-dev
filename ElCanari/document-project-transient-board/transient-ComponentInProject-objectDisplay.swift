@@ -16,10 +16,21 @@ import Cocoa
 func transient_ComponentInProject_objectDisplay (
        _ self_mX : Int,                          
        _ self_mY : Int,                          
-       _ self_strokeBezierPath : NSBezierPath
+       _ self_strokeBezierPath : NSBezierPath,   
+       _ prefs_frontSideLegendColorForBoard : NSColor,
+       _ prefs_packageDrawingWidthMultpliedByTenForBoard : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-
+       let shape = EBShape ()
+       var strokeBezierPath = EBBezierPath (self_strokeBezierPath)
+       var af = AffineTransform ()
+       strokeBezierPath.lineWidth = CGFloat (prefs_packageDrawingWidthMultpliedByTenForBoard) / 10.0
+       strokeBezierPath.lineCapStyle = .round
+       strokeBezierPath.lineJoinStyle = .round
+       af.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
+       strokeBezierPath.transform (using: af)
+       shape.append (EBStrokeBezierPathShape ([strokeBezierPath], prefs_frontSideLegendColorForBoard))
+       return shape
 //--- END OF USER ZONE 2
 }
 
