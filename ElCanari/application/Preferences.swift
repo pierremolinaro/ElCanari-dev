@@ -73,8 +73,8 @@ let Preferences_frontSideLegendColorForBoard = "Preferences:frontSideLegendColor
 let Preferences_frontSideLayoutColorForBoard = "Preferences:frontSideLayoutColorForBoard"
 let Preferences_backSideLayoutColorForBoard = "Preferences:backSideLayoutColorForBoard"
 let Preferences_backSideLegendColorForBoard = "Preferences:backSideLegendColorForBoard"
-let Preferences_topSidePadColorForBoard = "Preferences:topSidePadColorForBoard"
-let Preferences_bottomSidePadColorForBoard = "Preferences:bottomSidePadColorForBoard"
+let Preferences_frontSidePadColorForBoard = "Preferences:frontSidePadColorForBoard"
+let Preferences_backSidePadColorForBoard = "Preferences:backSidePadColorForBoard"
 let Preferences_padNumberFontForBoard = "Preferences:padNumberFontForBoard"
 let Preferences_padNumberColorForBoard = "Preferences:padNumberColorForBoard"
 let Preferences_packageDrawingWidthMultpliedByTenForBoard = "Preferences:packageDrawingWidthMultpliedByTenForBoard"
@@ -1234,38 +1234,38 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var backSideLegendColorForBoard_property_selection : EBSelection <NSColor> { return self.backSideLegendColorForBoard_property.prop }
 
   //····················································································································
-  //   Atomic property: topSidePadColorForBoard
+  //   Atomic property: frontSidePadColorForBoard
   //····················································································································
 
-  let topSidePadColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_topSidePadColorForBoard)
+  let frontSidePadColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSidePadColorForBoard)
 
   //····················································································································
 
-  var topSidePadColorForBoard : NSColor {
-    get { return self.topSidePadColorForBoard_property.propval }
-    set { self.topSidePadColorForBoard_property.setProp (newValue) }
+  var frontSidePadColorForBoard : NSColor {
+    get { return self.frontSidePadColorForBoard_property.propval }
+    set { self.frontSidePadColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var topSidePadColorForBoard_property_selection : EBSelection <NSColor> { return self.topSidePadColorForBoard_property.prop }
+  var frontSidePadColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSidePadColorForBoard_property.prop }
 
   //····················································································································
-  //   Atomic property: bottomSidePadColorForBoard
+  //   Atomic property: backSidePadColorForBoard
   //····················································································································
 
-  let bottomSidePadColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_bottomSidePadColorForBoard)
+  let backSidePadColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSidePadColorForBoard)
 
   //····················································································································
 
-  var bottomSidePadColorForBoard : NSColor {
-    get { return self.bottomSidePadColorForBoard_property.propval }
-    set { self.bottomSidePadColorForBoard_property.setProp (newValue) }
+  var backSidePadColorForBoard : NSColor {
+    get { return self.backSidePadColorForBoard_property.propval }
+    set { self.backSidePadColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var bottomSidePadColorForBoard_property_selection : EBSelection <NSColor> { return self.bottomSidePadColorForBoard_property.prop }
+  var backSidePadColorForBoard_property_selection : EBSelection <NSColor> { return self.backSidePadColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: padNumberFontForBoard
@@ -3065,10 +3065,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.backSideLayoutColorForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: backSideLegendColorForBoard
     self.backSideLegendColorForBoard_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: topSidePadColorForBoard
-    self.topSidePadColorForBoard_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: bottomSidePadColorForBoard
-    self.bottomSidePadColorForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: frontSidePadColorForBoard
+    self.frontSidePadColorForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: backSidePadColorForBoard
+    self.backSidePadColorForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumberFontForBoard
     self.padNumberFontForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumberColorForBoard
@@ -3564,8 +3564,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mBoardTopSideLayoutColorWell?.bind_color (self.frontSideLayoutColorForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardBottomSideLayoutColorWell?.bind_color (self.backSideLayoutColorForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardBottomSideLegendColorWell?.bind_color (self.backSideLegendColorForBoard_property, file: #file, line: #line, sendContinously:false)
-    mBoardTopSidePadColorWell?.bind_color (self.topSidePadColorForBoard_property, file: #file, line: #line, sendContinously:false)
-    mBoardBottomSidePadColorWell?.bind_color (self.bottomSidePadColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardTopSidePadColorWell?.bind_color (self.frontSidePadColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardBottomSidePadColorWell?.bind_color (self.backSidePadColorForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardPadFontButton?.bind_fontValue (self.padNumberFontForBoard_property, file: #file, line: #line)
     mBoardPadNumberColorWell?.bind_color (self.padNumberColorForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (self.packageDrawingWidthMultpliedByTenForBoard_property, file: #file, line: #line)

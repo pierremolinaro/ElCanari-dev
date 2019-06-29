@@ -6,6 +6,10 @@ abstract graphic entity BoardObject {
   toOne ProjectRoot mRoot inverse toMany mBoardObjects ;
 
   transient Bool isPlacedInBoard dependsFrom self.mRoot.none ;
+  
+  transient Bool displayFrontPads dependsFrom self.mRoot.one.mDisplayFrontPads ;
+
+  transient Bool displayBackPads dependsFrom self.mRoot.one.mDisplayBackPads ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

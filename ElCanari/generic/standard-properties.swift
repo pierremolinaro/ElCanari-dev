@@ -488,6 +488,27 @@ typealias EBReadOnlyProperty_PinPadAssignmentInProject    = EBReadOnlyValuePrope
 typealias EBTransientProperty_PinPadAssignmentInProject   = EBTransientValueProperty <PinPadAssignmentInProject>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property SlavePadDescriptor
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_SlavePadDescriptor    = EBReadOnlyValueProperty <SlavePadDescriptor>
+typealias EBTransientProperty_SlavePadDescriptor   = EBTransientValueProperty <SlavePadDescriptor>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property MasterPadDescriptor
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_MasterPadDescriptor    = EBReadOnlyValueProperty <MasterPadDescriptor>
+typealias EBTransientProperty_MasterPadDescriptor   = EBTransientValueProperty <MasterPadDescriptor>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property PackagePadDictionary
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_PackagePadDictionary    = EBReadOnlyValueProperty <PackagePadDictionary>
+typealias EBTransientProperty_PackagePadDictionary   = EBTransientValueProperty <PackagePadDictionary>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property DeviceSymbolDictionary
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

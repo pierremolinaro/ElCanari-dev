@@ -109,6 +109,8 @@ struct CanariRect : Equatable, Hashable {
   var height  : Int { return self.size.height }
   var width   : Int { return self.size.width }
 
+  var center  : CanariPoint { return CanariPoint (x: self.left + self.width / 2, y: self.bottom + self.height / 2) }
+
   var isEmpty : Bool { return (self.size.width <= 0) || (self.size.height <= 0) }
 
   //····················································································································

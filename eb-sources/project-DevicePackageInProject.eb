@@ -5,6 +5,8 @@ entity DevicePackageInProject {
 
   property String mPackageName default "" ;
   property NSBezierPath mStrokeBezierPath default empty ;
+  
+  transient PackagePadDictionary padDictionary dependsFrom self.mMasterPads.all.descriptor ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

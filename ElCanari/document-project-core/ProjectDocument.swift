@@ -529,7 +529,9 @@ import Cocoa
   @IBOutlet weak var mDeviceSymbolTableView : TwoStringArrayTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisconnectAllSymbolPinsSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisconnectSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayBackPadsSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayFrontPadsSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mDuplicateSelectedComponentsActionButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mERCBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mEditDeviceButton : EBButton? = nil // An outlet should be declared weak
@@ -887,7 +889,9 @@ import Cocoa
     checkOutletConnection (self.mDeviceSymbolTableView, "mDeviceSymbolTableView", TwoStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mDisconnectAllSymbolPinsSchematicHotKeyTextField, "mDisconnectAllSymbolPinsSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDisconnectSchematicHotKeyTextField, "mDisconnectSchematicHotKeyTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mDisplayBackPadsSwitch, "mDisplayBackPadsSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayBoardInspectorView, "mDisplayBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mDisplayFrontPadsSwitch, "mDisplayFrontPadsSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDuplicateSelectedComponentsActionButton, "mDuplicateSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mERCBoardInspectorView, "mERCBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
@@ -1474,6 +1478,8 @@ import Cocoa
     self.mBoardTextRotationSlider?.bind_angle (self.boardTextSelectionController.mRotation_property, file: #file, line: #line)
     self.mBoardTextWeightTextField?.bind_value (self.boardTextSelectionController.mWeight_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.mBoardTextObliqueSwitch?.bind_value (self.boardTextSelectionController.mOblique_property, file: #file, line: #line)
+    self.mDisplayFrontPadsSwitch?.bind_value (self.rootObject.mDisplayFrontPads_property, file: #file, line: #line)
+    self.mDisplayBackPadsSwitch?.bind_value (self.rootObject.mDisplayBackPads_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1988,6 +1994,8 @@ import Cocoa
     self.mBoardTextRotationSlider?.unbind_angle ()
     self.mBoardTextWeightTextField?.unbind_value ()
     self.mBoardTextObliqueSwitch?.unbind_value ()
+    self.mDisplayFrontPadsSwitch?.unbind_value ()
+    self.mDisplayBackPadsSwitch?.unbind_value ()
   //--------------------------- Unbind multiple bindings
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -2237,7 +2245,9 @@ import Cocoa
     self.mDeviceSymbolTableView?.ebCleanUp ()
     self.mDisconnectAllSymbolPinsSchematicHotKeyTextField?.ebCleanUp ()
     self.mDisconnectSchematicHotKeyTextField?.ebCleanUp ()
+    self.mDisplayBackPadsSwitch?.ebCleanUp ()
     self.mDisplayBoardInspectorView?.ebCleanUp ()
+    self.mDisplayFrontPadsSwitch?.ebCleanUp ()
     self.mDuplicateSelectedComponentsActionButton?.ebCleanUp ()
     self.mERCBoardInspectorView?.ebCleanUp ()
     self.mEditDeviceButton?.ebCleanUp ()
@@ -2466,7 +2476,9 @@ import Cocoa
 //    self.mDeviceSymbolTableView = nil
 //    self.mDisconnectAllSymbolPinsSchematicHotKeyTextField = nil
 //    self.mDisconnectSchematicHotKeyTextField = nil
+//    self.mDisplayBackPadsSwitch = nil
 //    self.mDisplayBoardInspectorView = nil
+//    self.mDisplayFrontPadsSwitch = nil
 //    self.mDuplicateSelectedComponentsActionButton = nil
 //    self.mERCBoardInspectorView = nil
 //    self.mEditDeviceButton = nil

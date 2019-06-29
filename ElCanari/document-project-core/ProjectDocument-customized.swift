@@ -456,9 +456,8 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
       let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
       component.mX = p.x
       component.mY = p.y
-      if let strokeBezierPath = component.strokeBezierPath, !strokeBezierPath.isEmpty {
-        let bounds = strokeBezierPath.bounds
-        let center = NSPoint (x: bounds.midX, y: bounds.midY).canariPoint
+      if let padRect = component.padDictionary?.masterPadsRect {
+        let center = padRect.center
         component.mX -= center.x
         component.mY -= center.y
       }

@@ -247,3 +247,154 @@ struct BoardFontDescriptor : Hashable {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias PackagePadDictionary = [String : MasterPadDescriptor]
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension Dictionary where Key == String, Value == MasterPadDescriptor {
+
+  var masterPadsRect : CanariRect {
+    var minX = Int.max
+    var maxX = Int.min
+    var minY = Int.max
+    var maxY = Int.min
+    for (_, descriptor) in self {
+      let x = descriptor.centerX
+      let y = descriptor.centerY
+      if minX > x {
+        minX = x
+      }
+      if maxX < x {
+        maxX = x
+      }
+      if minY > y {
+        minY = y
+      }
+      if maxY < y {
+        maxY = y
+      }
+    }
+    return CanariRect (left: minX, bottom: minY, width: maxX - minX, height: maxY - minY)
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct MasterPadDescriptor : Hashable {
+  let name : String
+  let centerX : Int
+  let centerY : Int
+  let width : Int
+  let height : Int
+  let holeWidth : Int
+  let holeHeight : Int
+  let shape : PadShape
+  let style : PadStyle
+  let slavePads : [SlavePadDescriptor]
+
+  func accumulatePadBezierPathes (into ioShape : EBShape,
+                                  frontPadColor : NSColor,
+                                  displayFrontPads : Bool,
+                                  backPadColor : NSColor,
+                                  displayBackPads : Bool) {
+    let xCenter = canariUnitToCocoa (self.centerX)
+    let yCenter = canariUnitToCocoa (self.centerY)
+    let width = canariUnitToCocoa (self.width)
+    let height = canariUnitToCocoa (self.height)
+    let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
+    var bp : EBBezierPath
+    switch self.shape {
+    case .rect :
+      bp = EBBezierPath (rect: rPad)
+    case .round :
+      bp = EBBezierPath (oblongInRect: rPad)
+    case .octo :
+      bp = EBBezierPath (octogonInRect: rPad)
+    }
+    switch self.style {
+    case .traversing :
+      let holeWidth = canariUnitToCocoa (self.holeWidth)
+      let holeHeight = canariUnitToCocoa (self.holeHeight)
+      let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
+      bp.appendOblong (in: rHole)
+      bp.windingRule = .evenOdd
+      if displayFrontPads {
+        ioShape.append (EBFilledBezierPathShape ([bp], frontPadColor))
+      }else if displayBackPads {
+        ioShape.append (EBFilledBezierPathShape ([bp], backPadColor))
+      }
+    case .surface :
+      if displayFrontPads {
+        ioShape.append (EBFilledBezierPathShape ([bp], frontPadColor))
+      }
+    }
+  //--- Slave pads
+    for pad in slavePads {
+      pad.accumulatePadBezierPathes (
+        into: ioShape,
+        frontPadColor: frontPadColor,
+        displayFrontPads: displayFrontPads,
+        backPadColor: backPadColor,
+        displayBackPads: displayBackPads
+      )
+    }
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct SlavePadDescriptor : Hashable {
+  let centerX : Int
+  let centerY : Int
+  let width : Int
+  let height : Int
+  let holeWidth : Int
+  let holeHeight : Int
+  let shape : PadShape
+  let style : SlavePadStyle
+
+  func accumulatePadBezierPathes (into ioShape : EBShape,
+                                  frontPadColor : NSColor,
+                                  displayFrontPads : Bool,
+                                  backPadColor : NSColor,
+                                  displayBackPads : Bool) {
+    let xCenter = canariUnitToCocoa (self.centerX)
+    let yCenter = canariUnitToCocoa (self.centerY)
+    let width = canariUnitToCocoa (self.width)
+    let height = canariUnitToCocoa (self.height)
+    let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
+    var bp : EBBezierPath
+    switch self.shape {
+    case .rect :
+      bp = EBBezierPath (rect: rPad)
+    case .round :
+      bp = EBBezierPath (oblongInRect: rPad)
+    case .octo :
+      bp = EBBezierPath (octogonInRect: rPad)
+    }
+    switch self.style {
+    case .traversing :
+      let holeWidth = canariUnitToCocoa (self.holeWidth)
+      let holeHeight = canariUnitToCocoa (self.holeHeight)
+      let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
+      bp.appendOblong (in: rHole)
+      bp.windingRule = .evenOdd
+      if displayFrontPads {
+        ioShape.append (EBFilledBezierPathShape ([bp], frontPadColor))
+      }else if displayBackPads {
+        ioShape.append (EBFilledBezierPathShape ([bp], backPadColor))
+      }
+    case .topSide :
+      if displayFrontPads {
+        ioShape.append (EBFilledBezierPathShape ([bp], frontPadColor))
+      }
+    case .bottomSide :
+      if displayBackPads {
+        ioShape.append (EBFilledBezierPathShape ([bp], backPadColor))
+      }
+    }
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

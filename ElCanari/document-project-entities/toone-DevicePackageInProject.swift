@@ -17,9 +17,11 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //--- Remove observers from removed objects
     inOldValue?.mPackageName_property.removeEBObserversFrom (&self.mObserversOf_mPackageName) // Stored property
     inOldValue?.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+    inOldValue?.padDictionary_property.removeEBObserversFrom (&self.mObserversOf_padDictionary) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mPackageName_property.addEBObserversFrom (&self.mObserversOf_mPackageName) // Stored property
     self.mInternalValue?.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+    self.mInternalValue?.padDictionary_property.addEBObserversFrom (&self.mObserversOf_padDictionary) // Transient property
   }
 
   //····················································································································
@@ -158,6 +160,75 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'padDictionary' transient property
+  //····················································································································
+
+  private var mObserversOf_padDictionary = EBWeakEventSet ()
+
+  //····················································································································
+
+  var padDictionary_property_selection : EBSelection <PackagePadDictionary?> {
+    if let model = self.propval {
+      switch (model.padDictionary_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_padDictionary (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padDictionary.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.padDictionary_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padDictionary (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padDictionary.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.padDictionary_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padDictionary_toElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_padDictionary.apply { (_ observer : EBEvent) in
+        managedObject.padDictionary_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padDictionary_fromElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_padDictionary.apply { (_ observer : EBEvent) in
+        managedObject.padDictionary_property.removeEBObserver (observer)
       }
     }
   }

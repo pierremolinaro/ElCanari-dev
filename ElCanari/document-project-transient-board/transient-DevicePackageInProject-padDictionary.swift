@@ -13,26 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_selectionDisplay (
-       _ self_mX : Int,                             
-       _ self_mY : Int,                             
-       _ self_strokeBezierPath : NSBezierPath,      
-       _ self_padDictionary : PackagePadDictionary
-) -> EBShape {
+func transient_DevicePackageInProject_padDictionary (
+       _ self_mMasterPads_descriptor : [DeviceMasterPadInProject_descriptor]
+) -> PackagePadDictionary {
 //--- START OF USER ZONE 2
-      let shape = EBShape ()
-      var strokeBezierPath = EBBezierPath (self_strokeBezierPath)
-      strokeBezierPath.lineWidth = 1.0
-      strokeBezierPath.lineCapStyle = .round
-      strokeBezierPath.lineJoinStyle = .round
-      shape.append (EBStrokeBezierPathShape ([strokeBezierPath], .cyan))
-    //--- Knobs
-      let rPadsCenter = self_padDictionary.masterPadsRect.center.cocoaPoint
-      shape.append (EBKnobShape (at: rPadsCenter, index: COMPONENT_PACKAGE_CENTER_KNOB, .rect, 2.0))
-    //---
-      var af = AffineTransform ()
-      af.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
-      return shape.transformed (by: af)
+
 //--- END OF USER ZONE 2
 }
 

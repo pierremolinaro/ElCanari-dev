@@ -54,6 +54,18 @@ protocol ProjectRoot_mBoardGridStepUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mDisplayFrontPads : class {
+  var mDisplayFrontPads : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mDisplayBackPads : class {
+  var mDisplayBackPads : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mBoardLimitsWidth : class {
   var mBoardLimitsWidth : Int { get }
 }
@@ -395,6 +407,8 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardZoom,
          ProjectRoot_mBoardGridStep,
          ProjectRoot_mBoardGridStepUnit,
+         ProjectRoot_mDisplayFrontPads,
+         ProjectRoot_mDisplayBackPads,
          ProjectRoot_mBoardLimitsWidth,
          ProjectRoot_mBoardLimitsWidthUnit,
          ProjectRoot_mBoardLimitsSelectedInspector,
@@ -586,6 +600,40 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mBoardGridStepUnit_property_selection : EBSelection <Int> { return self.mBoardGridStepUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayFrontPads
+  //····················································································································
+
+  let mDisplayFrontPads_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mDisplayFrontPads : Bool {
+    get { return self.mDisplayFrontPads_property.propval }
+    set { self.mDisplayFrontPads_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayFrontPads_property_selection : EBSelection <Bool> { return self.mDisplayFrontPads_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayBackPads
+  //····················································································································
+
+  let mDisplayBackPads_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mDisplayBackPads : Bool {
+    get { return self.mDisplayBackPads_property.propval }
+    set { self.mDisplayBackPads_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayBackPads_property_selection : EBSelection <Bool> { return self.mDisplayBackPads_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsWidth
@@ -1924,6 +1972,10 @@ class ProjectRoot : EBManagedObject,
     self.mBoardGridStep_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardGridStepUnit
     self.mBoardGridStepUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayFrontPads
+    self.mDisplayFrontPads_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayBackPads
+    self.mDisplayBackPads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -2893,6 +2945,22 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mBoardGridStepUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mDisplayFrontPads",
+      idx: self.mDisplayFrontPads_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayFrontPads_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayFrontPads_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayBackPads",
+      idx: self.mDisplayBackPads_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayBackPads_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayBackPads_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mBoardLimitsWidth",
       idx: self.mBoardLimitsWidth_property.ebObjectIndex,
       y: &y,
@@ -3415,6 +3483,12 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mBoardGridStepUnit
     self.mBoardGridStepUnit_property.mObserverExplorer = nil
     self.mBoardGridStepUnit_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayFrontPads
+    self.mDisplayFrontPads_property.mObserverExplorer = nil
+    self.mDisplayFrontPads_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayBackPads
+    self.mDisplayBackPads_property.mObserverExplorer = nil
+    self.mDisplayBackPads_property.mValueExplorer = nil
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.mObserverExplorer = nil
     self.mBoardLimitsWidth_property.mValueExplorer = nil
@@ -3567,6 +3641,10 @@ class ProjectRoot : EBManagedObject,
     self.mBoardGridStep_property.storeIn (dictionary: ioDictionary, forKey:"mBoardGridStep")
   //--- Atomic property: mBoardGridStepUnit
     self.mBoardGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardGridStepUnit")
+  //--- Atomic property: mDisplayFrontPads
+    self.mDisplayFrontPads_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayFrontPads")
+  //--- Atomic property: mDisplayBackPads
+    self.mDisplayBackPads_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayBackPads")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -3751,6 +3829,10 @@ class ProjectRoot : EBManagedObject,
     self.mBoardGridStep_property.readFrom (dictionary: inDictionary, forKey:"mBoardGridStep")
   //--- Atomic property: mBoardGridStepUnit
     self.mBoardGridStepUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardGridStepUnit")
+  //--- Atomic property: mDisplayFrontPads
+    self.mDisplayFrontPads_property.readFrom (dictionary: inDictionary, forKey:"mDisplayFrontPads")
+  //--- Atomic property: mDisplayBackPads
+    self.mDisplayBackPads_property.readFrom (dictionary: inDictionary, forKey:"mDisplayBackPads")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit

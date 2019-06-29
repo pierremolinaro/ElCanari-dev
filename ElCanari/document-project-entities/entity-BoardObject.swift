@@ -23,13 +23,27 @@ protocol BoardObject_isPlacedInBoard : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayFrontPads : class {
+  var displayFrontPads : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayBackPads : class {
+  var displayBackPads : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class BoardObject : EBGraphicManagedObject,
          BoardObject_selectionDisplay,
          BoardObject_objectDisplay,
-         BoardObject_isPlacedInBoard {
+         BoardObject_isPlacedInBoard,
+         BoardObject_displayFrontPads,
+         BoardObject_displayBackPads {
 
   //····················································································································
   //   To one property: mRoot
@@ -93,6 +107,52 @@ class BoardObject : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: displayFrontPads
+  //····················································································································
+
+  let displayFrontPads_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var displayFrontPads_property_selection : EBSelection <Bool> {
+    return self.displayFrontPads_property.prop
+  }
+
+  //····················································································································
+
+  var displayFrontPads : Bool? {
+    switch self.displayFrontPads_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: displayBackPads
+  //····················································································································
+
+  let displayBackPads_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var displayBackPads_property_selection : EBSelection <Bool> {
+    return self.displayBackPads_property.prop
+  }
+
+  //····················································································································
+
+  var displayBackPads : Bool? {
+    switch self.displayBackPads_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -126,6 +186,50 @@ class BoardObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.isPlacedInBoard_property)
+  //--- Atomic property: displayFrontPads
+    self.displayFrontPads_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mRoot_property.mDisplayFrontPads_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mRoot_property.mDisplayFrontPads_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardObject_displayFrontPads (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.addEBObserverOf_mDisplayFrontPads (self.displayFrontPads_property)
+  //--- Atomic property: displayBackPads
+    self.displayBackPads_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mRoot_property.mDisplayBackPads_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mRoot_property.mDisplayBackPads_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardObject_displayBackPads (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.addEBObserverOf_mDisplayBackPads (self.displayBackPads_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -136,6 +240,8 @@ class BoardObject : EBGraphicManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.mRoot_property.removeEBObserver (self.isPlacedInBoard_property)
+    self.mRoot_property.removeEBObserverOf_mDisplayFrontPads (self.displayFrontPads_property)
+    self.mRoot_property.removeEBObserverOf_mDisplayBackPads (self.displayBackPads_property)
   //--- Unregister properties for handling signature
   }
 
@@ -174,6 +280,22 @@ class BoardObject : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.isPlacedInBoard_property.mObserverExplorer,
       valueExplorer: &self.isPlacedInBoard_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "displayFrontPads",
+      idx: self.displayFrontPads_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.displayFrontPads_property.mObserverExplorer,
+      valueExplorer: &self.displayFrontPads_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "displayBackPads",
+      idx: self.displayBackPads_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.displayBackPads_property.mObserverExplorer,
+      valueExplorer: &self.displayBackPads_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)

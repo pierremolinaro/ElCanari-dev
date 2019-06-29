@@ -23,6 +23,8 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.mBoardZoom_property.removeEBObserversFrom (&self.mObserversOf_mBoardZoom) // Stored property
     inOldValue?.mBoardGridStep_property.removeEBObserversFrom (&self.mObserversOf_mBoardGridStep) // Stored property
     inOldValue?.mBoardGridStepUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardGridStepUnit) // Stored property
+    inOldValue?.mDisplayFrontPads_property.removeEBObserversFrom (&self.mObserversOf_mDisplayFrontPads) // Stored property
+    inOldValue?.mDisplayBackPads_property.removeEBObserversFrom (&self.mObserversOf_mDisplayBackPads) // Stored property
     inOldValue?.mBoardLimitsWidth_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsWidth) // Stored property
     inOldValue?.mBoardLimitsWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsWidthUnit) // Stored property
     inOldValue?.mBoardLimitsSelectedInspector_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsSelectedInspector) // Stored property
@@ -86,6 +88,8 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.mBoardZoom_property.addEBObserversFrom (&self.mObserversOf_mBoardZoom) // Stored property
     self.mInternalValue?.mBoardGridStep_property.addEBObserversFrom (&self.mObserversOf_mBoardGridStep) // Stored property
     self.mInternalValue?.mBoardGridStepUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardGridStepUnit) // Stored property
+    self.mInternalValue?.mDisplayFrontPads_property.addEBObserversFrom (&self.mObserversOf_mDisplayFrontPads) // Stored property
+    self.mInternalValue?.mDisplayBackPads_property.addEBObserversFrom (&self.mObserversOf_mDisplayBackPads) // Stored property
     self.mInternalValue?.mBoardLimitsWidth_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsWidth) // Stored property
     self.mInternalValue?.mBoardLimitsWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsWidthUnit) // Stored property
     self.mInternalValue?.mBoardLimitsSelectedInspector_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsSelectedInspector) // Stored property
@@ -698,6 +702,146 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mBoardGridStepUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayFrontPads' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayFrontPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDisplayFrontPads_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mDisplayFrontPads_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayFrontPads (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayFrontPads.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDisplayFrontPads_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayFrontPads (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayFrontPads.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDisplayFrontPads_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayFrontPads_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayFrontPads.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayFrontPads_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayFrontPads_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mDisplayFrontPads.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayFrontPads_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayBackPads' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayBackPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDisplayBackPads_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mDisplayBackPads_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayBackPads (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayBackPads.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDisplayBackPads_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayBackPads (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayBackPads.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDisplayBackPads_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayBackPads_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayBackPads.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayBackPads_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayBackPads_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mDisplayBackPads.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayBackPads_property.removeEBObserver (observer)
       }
     }
   }

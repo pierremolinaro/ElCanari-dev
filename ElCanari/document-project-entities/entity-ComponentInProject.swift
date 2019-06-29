@@ -90,6 +90,12 @@ protocol ComponentInProject_strokeBezierPath : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentInProject_padDictionary : class {
+  var padDictionary : PackagePadDictionary? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentInProject_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -119,6 +125,7 @@ class ComponentInProject : BoardObject,
          ComponentInProject_deviceSymbolDictionary,
          ComponentInProject_placementInSchematic,
          ComponentInProject_strokeBezierPath,
+         ComponentInProject_padDictionary,
          ComponentInProject_objectDisplay,
          ComponentInProject_selectionDisplay {
 
@@ -510,6 +517,29 @@ class ComponentInProject : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: padDictionary
+  //····················································································································
+
+  let padDictionary_property = EBTransientProperty_PackagePadDictionary ()
+
+  //····················································································································
+
+  var padDictionary_property_selection : EBSelection <PackagePadDictionary> {
+    return self.padDictionary_property.prop
+  }
+
+  //····················································································································
+
+  var padDictionary : PackagePadDictionary? {
+    switch self.padDictionary_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -747,23 +777,50 @@ class ComponentInProject : BoardObject,
       }
     }
     self.mSelectedPackage_property.addEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
-  //--- Atomic property: objectDisplay
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: padDictionary
+    self.padDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mX_property_selection.kind ()
-        kind &= unwSelf.mY_property_selection.kind ()
-        kind &= unwSelf.strokeBezierPath_property_selection.kind ()
-        kind &= g_Preferences!.frontSideLegendColorForBoard_property_selection.kind ()
-        kind &= g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection.kind ()
+        let kind = unwSelf.mSelectedPackage_property.padDictionary_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.strokeBezierPath_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4))
+          switch (unwSelf.mSelectedPackage_property.padDictionary_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_padDictionary (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedPackage_property.addEBObserverOf_padDictionary (self.padDictionary_property)
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mX_property_selection.kind ()
+        kind &= unwSelf.mY_property_selection.kind ()
+        kind &= unwSelf.strokeBezierPath_property_selection.kind ()
+        kind &= unwSelf.padDictionary_property_selection.kind ()
+        kind &= g_Preferences!.frontSideLegendColorForBoard_property_selection.kind ()
+        kind &= g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection.kind ()
+        kind &= g_Preferences!.frontSidePadColorForBoard_property_selection.kind ()
+        kind &= unwSelf.displayFrontPads_property_selection.kind ()
+        kind &= g_Preferences!.backSidePadColorForBoard_property_selection.kind ()
+        kind &= unwSelf.displayBackPads_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.strokeBezierPath_property_selection, unwSelf.padDictionary_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection, g_Preferences!.frontSidePadColorForBoard_property_selection, unwSelf.displayFrontPads_property_selection, g_Preferences!.backSidePadColorForBoard_property_selection, unwSelf.displayBackPads_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+            return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
           default :
             return .empty
           }
@@ -775,23 +832,29 @@ class ComponentInProject : BoardObject,
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
     self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
+    self.padDictionary_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultpliedByTenForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    self.displayFrontPads_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    self.displayBackPads_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
         kind &= unwSelf.strokeBezierPath_property_selection.kind ()
+        kind &= unwSelf.padDictionary_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.strokeBezierPath_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.strokeBezierPath_property_selection, unwSelf.padDictionary_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -803,6 +866,7 @@ class ComponentInProject : BoardObject,
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
     self.strokeBezierPath_property.addEBObserver (self.selectionDisplay_property)
+    self.padDictionary_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
     self.mSymbols_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
@@ -830,14 +894,21 @@ class ComponentInProject : BoardObject,
     self.mDevice_property.removeEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
     self.mSelectedPackage_property.removeEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
+    self.mSelectedPackage_property.removeEBObserverOf_padDictionary (self.padDictionary_property)
     self.mX_property.removeEBObserver (self.objectDisplay_property)
     self.mY_property.removeEBObserver (self.objectDisplay_property)
     self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
+    self.padDictionary_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultpliedByTenForBoard_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSidePadColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    self.displayFrontPads_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSidePadColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    self.displayBackPads_property.removeEBObserver (self.objectDisplay_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
     self.strokeBezierPath_property.removeEBObserver (self.selectionDisplay_property)
+    self.padDictionary_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -964,6 +1035,14 @@ class ComponentInProject : BoardObject,
       view: view,
       observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
       valueExplorer: &self.strokeBezierPath_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "padDictionary",
+      idx: self.padDictionary_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padDictionary_property.mObserverExplorer,
+      valueExplorer: &self.padDictionary_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",

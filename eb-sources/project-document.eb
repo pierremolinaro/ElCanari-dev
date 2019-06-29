@@ -626,6 +626,12 @@ document ProjectDocument root ProjectRoot {
   ;
   
   outlet EBSwitch mBoardTextObliqueSwitch $value #boardTextSelectionController.mOblique ;
+  
+//--- Display inspector
+
+  outlet EBSwitch mDisplayFrontPadsSwitch $value root.mDisplayFrontPads ;
+  outlet EBSwitch mDisplayBackPadsSwitch $value root.mDisplayBackPads ;
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------

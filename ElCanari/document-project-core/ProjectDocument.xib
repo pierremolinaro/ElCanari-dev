@@ -112,7 +112,9 @@
                 <outlet property="mDeviceSymbolTableView" destination="2949" id="bC7-Qn-ZHb"/>
                 <outlet property="mDisconnectAllSymbolPinsSchematicHotKeyTextField" destination="pcL-KQ-GCh" id="Q3b-W2-pRd"/>
                 <outlet property="mDisconnectSchematicHotKeyTextField" destination="8Un-Lz-CN6" id="QRF-lj-wL9"/>
+                <outlet property="mDisplayBackPadsSwitch" destination="2042" id="zxR-GQ-bJF"/>
                 <outlet property="mDisplayBoardInspectorView" destination="1775" id="zE6-Kt-8zU"/>
+                <outlet property="mDisplayFrontPadsSwitch" destination="1804" id="vQA-B6-wbh"/>
                 <outlet property="mDuplicateSelectedComponentsActionButton" destination="5196" id="euo-vE-NM3"/>
                 <outlet property="mERCBoardInspectorView" destination="16696" id="Iq6-xf-cdK"/>
                 <outlet property="mEditDeviceButton" destination="2954" id="h7x-qf-f8n"/>
@@ -2031,7 +2033,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button id="2187">
+                <button id="2187" customClass="EBSwitch">
                     <rect key="frame" x="44" y="327" width="187" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Warning background" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14621">
@@ -2044,7 +2046,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button id="2186">
+                <button id="2186" customClass="EBSwitch">
                     <rect key="frame" x="44" y="352" width="187" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Error Background" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14620">
@@ -2062,7 +2064,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button id="1808">
+                <button id="1808" customClass="EBSwitch">
                     <rect key="frame" x="44" y="377" width="187" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Board Clearance" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14611">
@@ -2070,7 +2072,7 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="1817">
+                <button id="1817" customClass="EBSwitch">
                     <rect key="frame" x="44" y="402" width="186" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Board Limits" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14613">
@@ -2088,7 +2090,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button id="2042">
+                <button id="2042" customClass="EBSwitch">
                     <rect key="frame" x="44" y="602" width="186" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Back Side Pads" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14618">
@@ -2116,7 +2118,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button id="1989">
+                <button id="1989" customClass="EBSwitch">
                     <rect key="frame" x="44" y="479" width="186" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Back Side Layout" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14617">
@@ -2124,7 +2126,7 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="1988">
+                <button id="1988" customClass="EBSwitch">
                     <rect key="frame" x="44" y="504" width="186" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Front Side Layout" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14616">
@@ -2132,7 +2134,7 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="1987">
+                <button id="1987" customClass="EBSwitch">
                     <rect key="frame" x="44" y="528" width="186" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Back Side Legend" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14615">
@@ -2140,7 +2142,7 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="1986">
+                <button id="1986" customClass="EBSwitch">
                     <rect key="frame" x="44" y="552" width="186" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Front Side Legend" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14614">
@@ -2168,7 +2170,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button id="1804">
+                <button id="1804" customClass="EBSwitch">
                     <rect key="frame" x="44" y="627" width="186" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Front Side Pads" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14610">
@@ -2176,7 +2178,7 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="1811">
+                <button id="1811" customClass="EBSwitch">
                     <rect key="frame" x="44" y="452" width="186" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Front Side Restrict Rectangles" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14612">
@@ -2184,7 +2186,7 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="1786">
+                <button id="1786" customClass="EBSwitch">
                     <rect key="frame" x="44" y="577" width="186" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Pad Numbers" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14609">
@@ -2192,7 +2194,7 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="1784">
+                <button id="1784" customClass="EBSwitch">
                     <rect key="frame" x="44" y="427" width="186" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Back Side Restrict Rectangles" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14608">
@@ -2307,6 +2309,7 @@ Gw
                     </buttonCell>
                 </button>
             </subviews>
+            <point key="canvasLocation" x="477" y="917"/>
         </customView>
         <customView id="2048" userLabel="componentInspector">
             <rect key="frame" x="0.0" y="0.0" width="250" height="626"/>
@@ -3483,7 +3486,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn editable="NO" width="109" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn editable="NO" width="109.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3497,11 +3500,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv">
-                                                <rect key="frame" x="468.5" y="1" width="109" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="109.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="109" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="109.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3516,7 +3519,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="218.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="218" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3530,11 +3533,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="580.5" y="1" width="218.5" height="17"/>
+                                                <rect key="frame" x="581" y="1" width="218" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="218.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="218" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>

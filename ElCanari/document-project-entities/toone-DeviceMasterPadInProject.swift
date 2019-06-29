@@ -24,6 +24,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
     inOldValue?.mShape_property.removeEBObserversFrom (&self.mObserversOf_mShape) // Stored property
     inOldValue?.mStyle_property.removeEBObserversFrom (&self.mObserversOf_mStyle) // Stored property
     inOldValue?.mName_property.removeEBObserversFrom (&self.mObserversOf_mName) // Stored property
+    inOldValue?.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mCenterX_property.addEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
     self.mInternalValue?.mCenterY_property.addEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
@@ -34,6 +35,7 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
     self.mInternalValue?.mShape_property.addEBObserversFrom (&self.mObserversOf_mShape) // Stored property
     self.mInternalValue?.mStyle_property.addEBObserversFrom (&self.mObserversOf_mStyle) // Stored property
     self.mInternalValue?.mName_property.addEBObserversFrom (&self.mObserversOf_mName) // Stored property
+    self.mInternalValue?.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
   }
 
   //····················································································································
@@ -662,6 +664,75 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'descriptor' transient property
+  //····················································································································
+
+  private var mObserversOf_descriptor = EBWeakEventSet ()
+
+  //····················································································································
+
+  var descriptor_property_selection : EBSelection <MasterPadDescriptor?> {
+    if let model = self.propval {
+      switch (model.descriptor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_descriptor.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.descriptor_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_descriptor.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.descriptor_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : Set<DeviceMasterPadInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
+        managedObject.descriptor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : Set<DeviceMasterPadInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
+        managedObject.descriptor_property.removeEBObserver (observer)
       }
     }
   }

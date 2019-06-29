@@ -17,12 +17,19 @@ protocol DevicePackageInProject_mStrokeBezierPath : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DevicePackageInProject_padDictionary : class {
+  var padDictionary : PackagePadDictionary? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class DevicePackageInProject : EBManagedObject,
          DevicePackageInProject_mPackageName,
-         DevicePackageInProject_mStrokeBezierPath {
+         DevicePackageInProject_mStrokeBezierPath,
+         DevicePackageInProject_padDictionary {
 
   //····················································································································
   //   To many property: mMasterPads
@@ -78,6 +85,29 @@ class DevicePackageInProject : EBManagedObject,
   var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
 
   //····················································································································
+  //   Transient property: padDictionary
+  //····················································································································
+
+  let padDictionary_property = EBTransientProperty_PackagePadDictionary ()
+
+  //····················································································································
+
+  var padDictionary_property_selection : EBSelection <PackagePadDictionary> {
+    return self.padDictionary_property.prop
+  }
+
+  //····················································································································
+
+  var padDictionary : PackagePadDictionary? {
+    switch self.padDictionary_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -89,6 +119,28 @@ class DevicePackageInProject : EBManagedObject,
     self.mPackageName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mStrokeBezierPath
     self.mStrokeBezierPath_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: padDictionary
+    self.padDictionary_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mMasterPads_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mMasterPads_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DevicePackageInProject_padDictionary (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mMasterPads_property.addEBObserverOf_descriptor (self.padDictionary_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -98,6 +150,7 @@ class DevicePackageInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mMasterPads_property.removeEBObserverOf_descriptor (self.padDictionary_property)
   //--- Unregister properties for handling signature
   }
 
@@ -129,6 +182,14 @@ class DevicePackageInProject : EBManagedObject,
       valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "padDictionary",
+      idx: self.padDictionary_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padDictionary_property.mObserverExplorer,
+      valueExplorer: &self.padDictionary_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mMasterPads",

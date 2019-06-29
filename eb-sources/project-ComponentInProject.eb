@@ -34,14 +34,22 @@ graphic entity ComponentInProject : BoardObject {
   
   transient NSBezierPath strokeBezierPath dependsFrom self.mSelectedPackage.one.mStrokeBezierPath ;
 
+  transient PackagePadDictionary padDictionary dependsFrom self.mSelectedPackage.one.padDictionary ;
+  
   override transient EBShape objectDisplay dependsFrom
     self.mX, self.mY, self.strokeBezierPath,
+    self.padDictionary,
     prefs.frontSideLegendColorForBoard,
-    prefs.packageDrawingWidthMultpliedByTenForBoard
+    prefs.packageDrawingWidthMultpliedByTenForBoard,
+    prefs.frontSidePadColorForBoard,
+    super.BoardObject.displayFrontPads,
+    prefs.backSidePadColorForBoard,
+    super.BoardObject.displayBackPads
   ;
 
   override transient EBShape selectionDisplay dependsFrom
-    self.mX, self.mY, self.strokeBezierPath
+    self.mX, self.mY, self.strokeBezierPath,
+    self.padDictionary
   ;
 }
 

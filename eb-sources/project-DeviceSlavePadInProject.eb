@@ -9,6 +9,16 @@ entity DeviceSlavePadInProject {
   property Int mHoleHeight default 57_150 ;
   property PadShape mShape default octo ;
   property SlavePadStyle mStyle default traversing ;
+  
+  transient SlavePadDescriptor descriptor dependsFrom
+    self.mCenterX,
+    self.mCenterY,
+    self.mWidth,
+    self.mHeight,
+    self.mHoleWidth,
+    self.mHoleHeight,
+    self.mShape,
+    self.mStyle ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

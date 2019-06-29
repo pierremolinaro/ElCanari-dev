@@ -59,6 +59,12 @@ protocol DeviceMasterPadInProject_mName : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceMasterPadInProject_descriptor : class {
+  var descriptor : MasterPadDescriptor? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DeviceMasterPadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -71,7 +77,8 @@ class DeviceMasterPadInProject : EBManagedObject,
          DeviceMasterPadInProject_mHoleHeight,
          DeviceMasterPadInProject_mShape,
          DeviceMasterPadInProject_mStyle,
-         DeviceMasterPadInProject_mName {
+         DeviceMasterPadInProject_mName,
+         DeviceMasterPadInProject_descriptor {
 
   //····················································································································
   //   Atomic property: mCenterX
@@ -246,6 +253,29 @@ class DeviceMasterPadInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: descriptor
+  //····················································································································
+
+  let descriptor_property = EBTransientProperty_MasterPadDescriptor ()
+
+  //····················································································································
+
+  var descriptor_property_selection : EBSelection <MasterPadDescriptor> {
+    return self.descriptor_property.prop
+  }
+
+  //····················································································································
+
+  var descriptor : MasterPadDescriptor? {
+    switch self.descriptor_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -271,6 +301,46 @@ class DeviceMasterPadInProject : EBManagedObject,
     self.mName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSlavePads (no option)
     self.mSlavePads_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: descriptor
+    self.descriptor_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mName_property_selection.kind ()
+        kind &= unwSelf.mCenterX_property_selection.kind ()
+        kind &= unwSelf.mCenterY_property_selection.kind ()
+        kind &= unwSelf.mWidth_property_selection.kind ()
+        kind &= unwSelf.mHeight_property_selection.kind ()
+        kind &= unwSelf.mHoleWidth_property_selection.kind ()
+        kind &= unwSelf.mHoleHeight_property_selection.kind ()
+        kind &= unwSelf.mShape_property_selection.kind ()
+        kind &= unwSelf.mStyle_property_selection.kind ()
+        kind &= unwSelf.mSlavePads_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mHoleWidth_property_selection, unwSelf.mHoleHeight_property_selection, unwSelf.mShape_property_selection, unwSelf.mStyle_property_selection, unwSelf.mSlavePads_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+            return .single (transient_DeviceMasterPadInProject_descriptor (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mName_property.addEBObserver (self.descriptor_property)
+    self.mCenterX_property.addEBObserver (self.descriptor_property)
+    self.mCenterY_property.addEBObserver (self.descriptor_property)
+    self.mWidth_property.addEBObserver (self.descriptor_property)
+    self.mHeight_property.addEBObserver (self.descriptor_property)
+    self.mHoleWidth_property.addEBObserver (self.descriptor_property)
+    self.mHoleHeight_property.addEBObserver (self.descriptor_property)
+    self.mShape_property.addEBObserver (self.descriptor_property)
+    self.mStyle_property.addEBObserver (self.descriptor_property)
+    self.mSlavePads_property.addEBObserverOf_descriptor (self.descriptor_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -280,6 +350,16 @@ class DeviceMasterPadInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mName_property.removeEBObserver (self.descriptor_property)
+    self.mCenterX_property.removeEBObserver (self.descriptor_property)
+    self.mCenterY_property.removeEBObserver (self.descriptor_property)
+    self.mWidth_property.removeEBObserver (self.descriptor_property)
+    self.mHeight_property.removeEBObserver (self.descriptor_property)
+    self.mHoleWidth_property.removeEBObserver (self.descriptor_property)
+    self.mHoleHeight_property.removeEBObserver (self.descriptor_property)
+    self.mShape_property.removeEBObserver (self.descriptor_property)
+    self.mStyle_property.removeEBObserver (self.descriptor_property)
+    self.mSlavePads_property.removeEBObserverOf_descriptor (self.descriptor_property)
   //--- Unregister properties for handling signature
   }
 
@@ -367,6 +447,14 @@ class DeviceMasterPadInProject : EBManagedObject,
       valueExplorer: &self.mName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "descriptor",
+      idx: self.descriptor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.descriptor_property.mObserverExplorer,
+      valueExplorer: &self.descriptor_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mSlavePads",
