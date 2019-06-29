@@ -340,7 +340,7 @@ extension MergerDocument {
       segment.width = ints [4]
       drillEntities.append (segment)
     }
-    boardModel.drills_property.setProp (drillEntities)
+    boardModel.drills = drillEntities
   //--- Front pads
     var backPadEntities = [BoardModelPad] ()
     let backPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-BACK", &errorArray)

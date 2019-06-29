@@ -8,12 +8,16 @@ graphic entity ComponentInProject : BoardObject {
   property String mNamePrefix default "" ;
   property Int mNameIndex default 0 ;
   property String mComponentValue default "" ;
+  
+  property Int mX default 0 ;
+  property Int mY default 0 ;
 
   transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
   transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
   transient String selectedPackageName dependsFrom self.mSelectedPackage.one.mPackageName ;
 
   transient StringArray availablePackages dependsFrom self.mDevice.one.packageNames ;
+
   transient StringTagArray unplacedSymbols dependsFrom
     self.componentName,
     self.mSymbols,
@@ -22,11 +26,23 @@ graphic entity ComponentInProject : BoardObject {
     self.mSymbols.all.mSymbolTypeName
   ;
 
+  transient Bool componentIsPlacedInBoard dependsFrom super.BoardObject.isPlacedInBoard ;
+
   transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ;
 
   transient String placementInSchematic dependsFrom self.mSymbols.all.symbolInSchematic ;
   
   transient NSBezierPath strokeBezierPath dependsFrom self.mSelectedPackage.one.mStrokeBezierPath ;
+
+  override transient EBShape objectDisplay dependsFrom
+    self.mX, self.mY, self.strokeBezierPath,
+    prefs.frontSideLegendColorForBoard,
+    prefs.packageDrawingWidthMultpliedByTenForBoard
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mX, self.mY, self.strokeBezierPath
+  ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

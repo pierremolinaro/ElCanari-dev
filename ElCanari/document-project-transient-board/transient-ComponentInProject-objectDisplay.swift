@@ -13,29 +13,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_unplacedPackages (
-       _ self_mComponents : [EBManagedObject_alloc_index_protocol],
-       _ self_mComponents_componentName : [ComponentInProject_componentName],
-       _ self_mComponents_mComponentValue : [ComponentInProject_mComponentValue],
-       _ self_mComponents_componentIsPlacedInBoard : [ComponentInProject_componentIsPlacedInBoard]
-) -> StringTagArray {
+func transient_ComponentInProject_objectDisplay (
+       _ self_mX : Int,                          
+       _ self_mY : Int,                          
+       _ self_strokeBezierPath : NSBezierPath
+) -> EBShape {
 //--- START OF USER ZONE 2
-        var result = StringTagArray ()
-        var idx = 0
-        while idx < self_mComponents.count {
-          if !self_mComponents_componentIsPlacedInBoard [idx].componentIsPlacedInBoard! {
-            var title = self_mComponents_componentName [idx].componentName!
-            let value = self_mComponents_mComponentValue [idx].mComponentValue
-            if value != "" {
-              title += " (" + value + ")"
-            }
-            let tag = self_mComponents [idx].ebObjectIndex
-            let st = StringTag (string: title, tag: tag)
-            result.append (st)
-          }
-          idx += 1
-        }
-        return result
+
 //--- END OF USER ZONE 2
 }
 

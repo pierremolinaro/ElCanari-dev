@@ -1994,8 +1994,12 @@ class ProjectRoot : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
-  //--- To many property: mBoardObjects (no option)
+  //--- To many property: mBoardObjects (has opposite relationship)
     self.mBoardObjects_property.ebUndoManager = self.ebUndoManager
+    self.mBoardObjects_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
+    )
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.ebUndoManager = self.ebUndoManager
   //--- Atomic proxy property: selectedSheetTitle
@@ -2238,15 +2242,16 @@ class ProjectRoot : EBManagedObject,
         var kind = unwSelf.mComponents_property_selection.kind ()
         kind &= unwSelf.mComponents_property_selection.kind ()
         kind &= unwSelf.mComponents_property_selection.kind ()
+        kind &= unwSelf.mComponents_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_ProjectRoot_unplacedPackages (v0, v1, v2))
+          switch (unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_ProjectRoot_unplacedPackages (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -2258,6 +2263,7 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.addEBObserver (self.unplacedPackages_property)
     self.mComponents_property.addEBObserverOf_componentName (self.unplacedPackages_property)
     self.mComponents_property.addEBObserverOf_mComponentValue (self.unplacedPackages_property)
+    self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
   //--- Atomic property: borderClearanceBackground
     self.borderClearanceBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2723,6 +2729,10 @@ class ProjectRoot : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
+    self.mBoardObjects_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -2755,6 +2765,7 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.removeEBObserver (self.unplacedPackages_property)
     self.mComponents_property.removeEBObserverOf_componentName (self.unplacedPackages_property)
     self.mComponents_property.removeEBObserverOf_mComponentValue (self.unplacedPackages_property)
+    self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
     self.mBorderCurves_property.removeEBObserverOf_descriptor (self.borderClearanceBackground_property)
     self.mBoardLimitsWidth_property.removeEBObserver (self.borderClearanceBackground_property)
     self.mBoardClearance_property.removeEBObserver (self.borderClearanceBackground_property)

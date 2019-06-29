@@ -24,6 +24,18 @@ protocol ComponentInProject_mComponentValue : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentInProject_mX : class {
+  var mX : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_mY : class {
+  var mY : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentInProject_componentName : class {
   var componentName : String? { get }
 }
@@ -54,6 +66,12 @@ protocol ComponentInProject_unplacedSymbols : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentInProject_componentIsPlacedInBoard : class {
+  var componentIsPlacedInBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentInProject_deviceSymbolDictionary : class {
   var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
 }
@@ -71,6 +89,18 @@ protocol ComponentInProject_strokeBezierPath : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -78,14 +108,19 @@ class ComponentInProject : BoardObject,
          ComponentInProject_mNamePrefix,
          ComponentInProject_mNameIndex,
          ComponentInProject_mComponentValue,
+         ComponentInProject_mX,
+         ComponentInProject_mY,
          ComponentInProject_componentName,
          ComponentInProject_deviceName,
          ComponentInProject_selectedPackageName,
          ComponentInProject_availablePackages,
          ComponentInProject_unplacedSymbols,
+         ComponentInProject_componentIsPlacedInBoard,
          ComponentInProject_deviceSymbolDictionary,
          ComponentInProject_placementInSchematic,
-         ComponentInProject_strokeBezierPath {
+         ComponentInProject_strokeBezierPath,
+         ComponentInProject_objectDisplay,
+         ComponentInProject_selectionDisplay {
 
   //····················································································································
   //   Atomic property: mNamePrefix
@@ -137,6 +172,40 @@ class ComponentInProject : BoardObject,
   //····················································································································
 
   var mComponentValue_property_selection : EBSelection <String> { return self.mComponentValue_property.prop }
+
+  //····················································································································
+  //   Atomic property: mX
+  //····················································································································
+
+  let mX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mX : Int {
+    get { return self.mX_property.propval }
+    set { self.mX_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+
+  //····················································································································
+  //   Atomic property: mY
+  //····················································································································
+
+  let mY_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mY : Int {
+    get { return self.mY_property.propval }
+    set { self.mY_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
   //   To many property: mSymbols
@@ -349,6 +418,29 @@ class ComponentInProject : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: componentIsPlacedInBoard
+  //····················································································································
+
+  let componentIsPlacedInBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var componentIsPlacedInBoard_property_selection : EBSelection <Bool> {
+    return self.componentIsPlacedInBoard_property.prop
+  }
+
+  //····················································································································
+
+  var componentIsPlacedInBoard : Bool? {
+    switch self.componentIsPlacedInBoard_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: deviceSymbolDictionary
   //····················································································································
 
@@ -429,6 +521,10 @@ class ComponentInProject : BoardObject,
     self.mNameIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mComponentValue
     self.mComponentValue_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mX
+    self.mX_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mY
+    self.mY_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbols (has opposite relationship)
     self.mSymbols_property.ebUndoManager = self.ebUndoManager
     self.mSymbols_property.setOppositeRelationShipFunctions (
@@ -563,6 +659,28 @@ class ComponentInProject : BoardObject,
     self.mSymbols_property.addEBObserverOf_symbolInSchematic (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
+  //--- Atomic property: componentIsPlacedInBoard
+    self.componentIsPlacedInBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.isPlacedInBoard_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.isPlacedInBoard_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_componentIsPlacedInBoard (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.isPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoard_property)
   //--- Atomic property: deviceSymbolDictionary
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -629,6 +747,62 @@ class ComponentInProject : BoardObject,
       }
     }
     self.mSelectedPackage_property.addEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mX_property_selection.kind ()
+        kind &= unwSelf.mY_property_selection.kind ()
+        kind &= unwSelf.strokeBezierPath_property_selection.kind ()
+        kind &= g_Preferences!.frontSideLegendColorForBoard_property_selection.kind ()
+        kind &= g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.strokeBezierPath_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mX_property.addEBObserver (self.objectDisplay_property)
+    self.mY_property.addEBObserver (self.objectDisplay_property)
+    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.packageDrawingWidthMultpliedByTenForBoard_property.addEBObserver (self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mX_property_selection.kind ()
+        kind &= unwSelf.mY_property_selection.kind ()
+        kind &= unwSelf.strokeBezierPath_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.strokeBezierPath_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mX_property.addEBObserver (self.selectionDisplay_property)
+    self.mY_property.addEBObserver (self.selectionDisplay_property)
+    self.strokeBezierPath_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
     self.mSymbols_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
@@ -652,9 +826,18 @@ class ComponentInProject : BoardObject,
     self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
+    self.isPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoard_property)
     self.mDevice_property.removeEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
     self.mSelectedPackage_property.removeEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
+    self.mX_property.removeEBObserver (self.objectDisplay_property)
+    self.mY_property.removeEBObserver (self.objectDisplay_property)
+    self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.packageDrawingWidthMultpliedByTenForBoard_property.removeEBObserver (self.objectDisplay_property)
+    self.mX_property.removeEBObserver (self.selectionDisplay_property)
+    self.mY_property.removeEBObserver (self.selectionDisplay_property)
+    self.strokeBezierPath_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -692,6 +875,22 @@ class ComponentInProject : BoardObject,
       view: view,
       observerExplorer: &self.mComponentValue_property.mObserverExplorer,
       valueExplorer: &self.mComponentValue_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mX",
+      idx: self.mX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mX_property.mObserverExplorer,
+      valueExplorer: &self.mX_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mY",
+      idx: self.mY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mY_property.mObserverExplorer,
+      valueExplorer: &self.mY_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
@@ -735,6 +934,14 @@ class ComponentInProject : BoardObject,
       valueExplorer: &self.unplacedSymbols_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "componentIsPlacedInBoard",
+      idx: self.componentIsPlacedInBoard_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.componentIsPlacedInBoard_property.mObserverExplorer,
+      valueExplorer: &self.componentIsPlacedInBoard_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "deviceSymbolDictionary",
       idx: self.deviceSymbolDictionary_property.ebObjectIndex,
       y: &y,
@@ -757,6 +964,22 @@ class ComponentInProject : BoardObject,
       view: view,
       observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
       valueExplorer: &self.strokeBezierPath_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "objectDisplay",
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
@@ -798,6 +1021,12 @@ class ComponentInProject : BoardObject,
   //--- Atomic property: mComponentValue
     self.mComponentValue_property.mObserverExplorer = nil
     self.mComponentValue_property.mValueExplorer = nil
+  //--- Atomic property: mX
+    self.mX_property.mObserverExplorer = nil
+    self.mX_property.mValueExplorer = nil
+  //--- Atomic property: mY
+    self.mY_property.mObserverExplorer = nil
+    self.mY_property.mValueExplorer = nil
   //--- To many property: mSymbols
     self.mSymbols_property.mValueExplorer = nil
   //--- To one property: mDevice
@@ -843,6 +1072,10 @@ class ComponentInProject : BoardObject,
     self.mNameIndex_property.storeIn (dictionary: ioDictionary, forKey:"mNameIndex")
   //--- Atomic property: mComponentValue
     self.mComponentValue_property.storeIn (dictionary: ioDictionary, forKey:"mComponentValue")
+  //--- Atomic property: mX
+    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
+  //--- Atomic property: mY
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
   //--- To many property: mSymbols
     self.store (
       managedObjectArray: self.mSymbols_property.propval,
@@ -904,6 +1137,10 @@ class ComponentInProject : BoardObject,
     self.mNameIndex_property.readFrom (dictionary: inDictionary, forKey:"mNameIndex")
   //--- Atomic property: mComponentValue
     self.mComponentValue_property.readFrom (dictionary: inDictionary, forKey:"mComponentValue")
+  //--- Atomic property: mX
+    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
+  //--- Atomic property: mY
+    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
   }
 
   //····················································································································

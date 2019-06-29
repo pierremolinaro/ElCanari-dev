@@ -4,7 +4,7 @@
 
 entity ProjectRoot {
 //--- Board
-  toMany BoardObject mBoardObjects ;
+  toMany BoardObject mBoardObjects inverse toOne mRoot ;
 
   property Int mBoardSelectedInspector default 1 ;
   property Bool mBoardHorizontalFlip default no ;
@@ -103,7 +103,8 @@ entity ProjectRoot {
   transient StringTagArray unplacedPackages dependsFrom
     self.mComponents,
     self.mComponents.all.componentName,
-    self.mComponents.all.mComponentValue
+    self.mComponents.all.mComponentValue,
+    self.mComponents.all.componentIsPlacedInBoard
   ;
 
   transient EBShape schematicBackgroundDisplay dependsFrom

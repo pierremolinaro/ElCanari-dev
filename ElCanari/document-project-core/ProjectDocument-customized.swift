@@ -12,7 +12,7 @@ fileprivate let kDragAndDropWire = NSPasteboard.PasteboardType (rawValue: "name.
 
 fileprivate let kDragAndDropRestrictRectangle = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.restrict.rectangle")
 fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.text")
-fileprivate let kDragAndDropPackage = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.package")
+fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.package")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -146,7 +146,7 @@ fileprivate let kDragAndDropPackage = NSPasteboard.PasteboardType (rawValue: "na
     ]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
-    self.mBoardScrollView?.register (document: self, draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText])
+    self.mBoardScrollView?.register (document: self, draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText, kDragAndDropBoardPackage])
   //--- Set Board inspector segmented control
     let boardInspectors = [
       self.mSelectedObjectsBoardInspectorView,
@@ -158,7 +158,7 @@ fileprivate let kDragAndDropPackage = NSPasteboard.PasteboardType (rawValue: "na
     ]
     self.mBoardInspectorSegmentedControl?.register (masterView: self.mBaseBoardInspectorView, boardInspectors)
   //---
-    self.mUnplacedPackageTableView?.register (document: self, draggedType: kDragAndDropPackage)
+    self.mUnplacedPackageTableView?.register (document: self, draggedType: kDragAndDropBoardPackage)
     self.mPackageCountToInsertController = EBSimpleController (
       observedObjects: [self.unplacedSymbolsCount_property],
       callBack: {
@@ -413,6 +413,9 @@ fileprivate let kDragAndDropPackage = NSPasteboard.PasteboardType (rawValue: "na
       }else if let _ = pasteboard.availableType (from: [kDragAndDropBoardText]) {
         self.performAddBoardTextDragOperation (draggingLocationInDestinationView)
         ok = true
+      }else if let _ = pasteboard.availableType (from: [kDragAndDropBoardPackage]) {
+        self.performAddBoardPackageDragOperation (draggingLocationInDestinationView)
+        ok = true
       }
     }
     return ok
@@ -444,6 +447,25 @@ fileprivate let kDragAndDropPackage = NSPasteboard.PasteboardType (rawValue: "na
       }
     }
     return result
+  }
+
+  //····················································································································
+
+  private func performAddBoardPackageDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
+    if let component = self.mPossibleDraggedComponent {
+      let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
+      component.mX = p.x
+      component.mY = p.y
+      if let strokeBezierPath = component.strokeBezierPath, !strokeBezierPath.isEmpty {
+        let bounds = strokeBezierPath.bounds
+        let center = NSPoint (x: bounds.midX, y: bounds.midY).canariPoint
+        component.mX -= center.x
+        component.mY -= center.y
+      }
+      self.rootObject.mBoardObjects.append (component)
+      self.boardObjectsController.setSelection ([component])
+      self.mPossibleDraggedComponent = nil
+    }
   }
 
   //····················································································································

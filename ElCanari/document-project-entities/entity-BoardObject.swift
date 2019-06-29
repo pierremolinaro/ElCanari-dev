@@ -17,12 +17,80 @@ protocol BoardObject_objectDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_isPlacedInBoard : class {
+  var isPlacedInBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class BoardObject : EBGraphicManagedObject,
          BoardObject_selectionDisplay,
-         BoardObject_objectDisplay {
+         BoardObject_objectDisplay,
+         BoardObject_isPlacedInBoard {
+
+  //····················································································································
+  //   To one property: mRoot
+  //····················································································································
+
+   let mRoot_property = StoredObject_ProjectRoot ()
+
+  //····················································································································
+
+  var mRoot_property_selection : EBSelection <ProjectRoot?> {
+    return .single (self.mRoot_property.propval)
+  }
+
+  //····················································································································
+
+  var mRoot : ProjectRoot? {
+    get {
+      return self.mRoot_property.propval
+    }
+    set {
+      if self.mRoot_property.propval != nil {
+        self.mRoot_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mRoot_property.setProp (newValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mRoot_none : StoredObject_ProjectRoot { return self.mRoot_property }
+
+  //····················································································································
+
+  var mRoot_none_selection : EBSelection <Bool> {
+    return .single (self.mRoot_property.propval == nil)
+  }
+
+  //····················································································································
+  //   Transient property: isPlacedInBoard
+  //····················································································································
+
+  let isPlacedInBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var isPlacedInBoard_property_selection : EBSelection <Bool> {
+    return self.isPlacedInBoard_property.prop
+  }
+
+  //····················································································································
+
+  var isPlacedInBoard : Bool? {
+    switch self.isPlacedInBoard_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
 
   //····················································································································
   //    init
@@ -30,6 +98,34 @@ class BoardObject : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- To one property: mRoot (has opposite to many relationship: mBoardObjects)
+    self.mRoot_property.ebUndoManager = self.ebUndoManager
+    self.mRoot_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mBoardObjects_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mBoardObjects_property.remove (me) } }
+    )
+  //--- Atomic property: isPlacedInBoard
+    self.isPlacedInBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mRoot_none_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mRoot_none_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardObject_isPlacedInBoard (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.addEBObserver (self.isPlacedInBoard_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -39,6 +135,7 @@ class BoardObject : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mRoot_property.removeEBObserver (self.isPlacedInBoard_property)
   //--- Unregister properties for handling signature
   }
 
@@ -70,8 +167,23 @@ class BoardObject : EBGraphicManagedObject,
       observerExplorer: &self.objectDisplay_property.mObserverExplorer,
       valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "isPlacedInBoard",
+      idx: self.isPlacedInBoard_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.isPlacedInBoard_property.mObserverExplorer,
+      valueExplorer: &self.isPlacedInBoard_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForToOneRelationshipNamed (
+      "mRoot",
+      idx:self.mRoot_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mRoot_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
@@ -80,6 +192,9 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- To one property: mRoot
+    self.mRoot_property.mObserverExplorer = nil
+    self.mRoot_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -98,6 +213,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mRoot = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -117,6 +233,17 @@ class BoardObject : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To one property: mRoot
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mRoot",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? ProjectRoot {
+        self.mRoot_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -133,6 +260,10 @@ class BoardObject : EBGraphicManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To one property: mRoot
+    if let object = self.mRoot {
+      objects.append (object)
+    }
   }
 
   //····················································································································
@@ -141,6 +272,10 @@ class BoardObject : EBGraphicManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To one property: mRoot
+    if let object = self.mRoot {
+      objects.append (object)
+    }
   }
 
   //····················································································································
