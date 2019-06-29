@@ -17,7 +17,7 @@ func transient_ComponentInProject_padDictionary (
        _ self_mSelectedPackage_padDictionary : PackagePadDictionary?
 ) -> PackagePadDictionary {
 //--- START OF USER ZONE 2
-
+        return self_mSelectedPackage_padDictionary!
 //--- END OF USER ZONE 2
 }
 

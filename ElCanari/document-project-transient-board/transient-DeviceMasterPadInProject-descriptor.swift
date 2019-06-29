@@ -22,10 +22,26 @@ func transient_DeviceMasterPadInProject_descriptor (
        _ self_mHoleWidth : Int,                     
        _ self_mHoleHeight : Int,                    
        _ self_mShape : PadShape,                    
-       _ self_mStyle : PadStyle
+       _ self_mStyle : PadStyle,                    
+       _ self_mSlavePads_descriptor : [DeviceSlavePadInProject_descriptor]
 ) -> MasterPadDescriptor {
 //--- START OF USER ZONE 2
-
+        var slavePads = [SlavePadDescriptor] ()
+        for sp in self_mSlavePads_descriptor {
+          slavePads.append (sp.descriptor!)
+        }
+        return MasterPadDescriptor (
+          name: self_mName,
+          centerX: self_mCenterX,
+          centerY: self_mCenterY,
+          width: self_mWidth,
+          height: self_mHeight,
+          holeWidth: self_mHoleWidth,
+          holeHeight: self_mHoleHeight,
+          shape: self_mShape,
+          style: self_mStyle,
+          slavePads: slavePads
+        )
 //--- END OF USER ZONE 2
 }
 

@@ -24,7 +24,16 @@ func transient_DeviceSlavePadInProject_descriptor (
        _ self_mStyle : SlavePadStyle
 ) -> SlavePadDescriptor {
 //--- START OF USER ZONE 2
-
+        return SlavePadDescriptor (
+          centerX: self_mCenterX,
+          centerY: self_mCenterY,
+          width: self_mWidth,
+          height: self_mHeight,
+          holeWidth: self_mHoleWidth,
+          holeHeight: self_mHoleHeight,
+          shape: self_mShape,
+          style: self_mStyle
+        )
 //--- END OF USER ZONE 2
 }
 

@@ -17,7 +17,12 @@ func transient_DevicePackageInProject_padDictionary (
        _ self_mMasterPads_descriptor : [DeviceMasterPadInProject_descriptor]
 ) -> PackagePadDictionary {
 //--- START OF USER ZONE 2
-
+        var result = PackagePadDictionary ()
+        for pad in self_mMasterPads_descriptor {
+           let descriptor = pad.descriptor!
+           result [descriptor.name] = descriptor
+        }
+        return result
 //--- END OF USER ZONE 2
 }
 
