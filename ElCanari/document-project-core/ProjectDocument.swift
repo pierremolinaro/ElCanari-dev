@@ -447,6 +447,7 @@ import Cocoa
   @IBOutlet weak var mBaseBoardInspectorView : NSView? = nil // An outlet should be declared weak
   @IBOutlet weak var mBaseBoardLimitsInspectorView : NSView? = nil // An outlet should be declared weak
   @IBOutlet weak var mBaseSchematicsInspectorView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardBackgroundColorWell : EBColorWell? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardBorderPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardClearanceTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardClearanceUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
@@ -529,9 +530,27 @@ import Cocoa
   @IBOutlet weak var mDeviceSymbolTableView : TwoStringArrayTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisconnectAllSymbolPinsSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisconnectSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayBackLayoutColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayBackLayoutSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayBackLegendColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayBackLegendSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayBackPadsColorWell : EBColorWell? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayBackPadsSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayBackRestrictRectanglesColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayBackRestrictRectanglesSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayBoardClearanceColorWell : EBColorWell? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayBoardLimitsColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayFrontLayoutColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayFrontLayoutSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayFrontLegendColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayFrontLegendSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayFrontPadsColorWell : EBColorWell? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayFrontPadsSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayFrontRestrictRectanglesColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayFrontRestrictRectanglesSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayPadNumbersColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayPadNumbersSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mDuplicateSelectedComponentsActionButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mERCBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mEditDeviceButton : EBButton? = nil // An outlet should be declared weak
@@ -807,6 +826,7 @@ import Cocoa
     checkOutletConnection (self.mBaseBoardInspectorView, "mBaseBoardInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBaseBoardLimitsInspectorView, "mBaseBoardLimitsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
+    checkOutletConnection (self.mBoardBackgroundColorWell, "mBoardBackgroundColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mBoardBorderPageView, "mBoardBorderPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardClearanceTextField, "mBoardClearanceTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mBoardClearanceUnitPopUp, "mBoardClearanceUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -889,9 +909,27 @@ import Cocoa
     checkOutletConnection (self.mDeviceSymbolTableView, "mDeviceSymbolTableView", TwoStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mDisconnectAllSymbolPinsSchematicHotKeyTextField, "mDisconnectAllSymbolPinsSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDisconnectSchematicHotKeyTextField, "mDisconnectSchematicHotKeyTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mDisplayBackLayoutColorWell, "mDisplayBackLayoutColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDisplayBackLayoutSwitch, "mDisplayBackLayoutSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayBackLegendColorWell, "mDisplayBackLegendColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDisplayBackLegendSwitch, "mDisplayBackLegendSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayBackPadsColorWell, "mDisplayBackPadsColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDisplayBackPadsSwitch, "mDisplayBackPadsSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayBackRestrictRectanglesColorWell, "mDisplayBackRestrictRectanglesColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDisplayBackRestrictRectanglesSwitch, "mDisplayBackRestrictRectanglesSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayBoardClearanceColorWell, "mDisplayBoardClearanceColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDisplayBoardInspectorView, "mDisplayBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mDisplayBoardLimitsColorWell, "mDisplayBoardLimitsColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDisplayFrontLayoutColorWell, "mDisplayFrontLayoutColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDisplayFrontLayoutSwitch, "mDisplayFrontLayoutSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayFrontLegendColorWell, "mDisplayFrontLegendColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDisplayFrontLegendSwitch, "mDisplayFrontLegendSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayFrontPadsColorWell, "mDisplayFrontPadsColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDisplayFrontPadsSwitch, "mDisplayFrontPadsSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayFrontRestrictRectanglesColorWell, "mDisplayFrontRestrictRectanglesColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDisplayFrontRestrictRectanglesSwitch, "mDisplayFrontRestrictRectanglesSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayPadNumbersColorWell, "mDisplayPadNumbersColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDisplayPadNumbersSwitch, "mDisplayPadNumbersSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDuplicateSelectedComponentsActionButton, "mDuplicateSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mERCBoardInspectorView, "mERCBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
@@ -1479,7 +1517,26 @@ import Cocoa
     self.mBoardTextWeightTextField?.bind_value (self.boardTextSelectionController.mWeight_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.mBoardTextObliqueSwitch?.bind_value (self.boardTextSelectionController.mOblique_property, file: #file, line: #line)
     self.mDisplayFrontPadsSwitch?.bind_value (self.rootObject.mDisplayFrontPads_property, file: #file, line: #line)
+    self.mDisplayFrontPadsColorWell?.bind_color (g_Preferences!.frontSidePadColorForBoard_property, file: #file, line: #line, sendContinously:true)
     self.mDisplayBackPadsSwitch?.bind_value (self.rootObject.mDisplayBackPads_property, file: #file, line: #line)
+    self.mDisplayBackPadsColorWell?.bind_color (g_Preferences!.backSidePadColorForBoard_property, file: #file, line: #line, sendContinously:true)
+    self.mDisplayPadNumbersSwitch?.bind_value (self.rootObject.mDisplayPadNumbers_property, file: #file, line: #line)
+    self.mDisplayPadNumbersColorWell?.bind_color (g_Preferences!.padNumberColorForBoard_property, file: #file, line: #line, sendContinously:true)
+    self.mDisplayFrontLegendSwitch?.bind_value (self.rootObject.mDisplayFrontLegend_property, file: #file, line: #line)
+    self.mDisplayFrontLegendColorWell?.bind_color (g_Preferences!.frontSideLegendColorForBoard_property, file: #file, line: #line, sendContinously:true)
+    self.mDisplayBackLegendSwitch?.bind_value (self.rootObject.mDisplayBackLegend_property, file: #file, line: #line)
+    self.mDisplayBackLegendColorWell?.bind_color (g_Preferences!.backSideLegendColorForBoard_property, file: #file, line: #line, sendContinously:true)
+    self.mDisplayFrontLayoutSwitch?.bind_value (self.rootObject.mDisplayFrontLayout_property, file: #file, line: #line)
+    self.mDisplayFrontLayoutColorWell?.bind_color (g_Preferences!.frontSideLayoutColorForBoard_property, file: #file, line: #line, sendContinously:true)
+    self.mDisplayBackLayoutSwitch?.bind_value (self.rootObject.mDisplayBackLayout_property, file: #file, line: #line)
+    self.mDisplayBackLayoutColorWell?.bind_color (g_Preferences!.backSideLayoutColorForBoard_property, file: #file, line: #line, sendContinously:true)
+    self.mDisplayFrontRestrictRectanglesSwitch?.bind_value (self.rootObject.mDisplayFrontRestrictRectangles_property, file: #file, line: #line)
+    self.mDisplayFrontRestrictRectanglesColorWell?.bind_color (g_Preferences!.frontSideRestrictRectangleColorForBoard_property, file: #file, line: #line, sendContinously:true)
+    self.mDisplayBackRestrictRectanglesSwitch?.bind_value (self.rootObject.mDisplayBackRestrictRectangles_property, file: #file, line: #line)
+    self.mDisplayBackRestrictRectanglesColorWell?.bind_color (g_Preferences!.backSideRestrictRectangleColorForBoard_property, file: #file, line: #line, sendContinously:true)
+    self.mDisplayBoardLimitsColorWell?.bind_color (g_Preferences!.boardLimitsColorForBoard_property, file: #file, line: #line, sendContinously:true)
+    self.mDisplayBoardClearanceColorWell?.bind_color (g_Preferences!.boardClearanceColorForBoard_property, file: #file, line: #line, sendContinously:true)
+    self.mBoardBackgroundColorWell?.bind_color (g_Preferences!.boardBackgroundColorForBoard_property, file: #file, line: #line, sendContinously:true)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1995,7 +2052,26 @@ import Cocoa
     self.mBoardTextWeightTextField?.unbind_value ()
     self.mBoardTextObliqueSwitch?.unbind_value ()
     self.mDisplayFrontPadsSwitch?.unbind_value ()
+    self.mDisplayFrontPadsColorWell?.unbind_color ()
     self.mDisplayBackPadsSwitch?.unbind_value ()
+    self.mDisplayBackPadsColorWell?.unbind_color ()
+    self.mDisplayPadNumbersSwitch?.unbind_value ()
+    self.mDisplayPadNumbersColorWell?.unbind_color ()
+    self.mDisplayFrontLegendSwitch?.unbind_value ()
+    self.mDisplayFrontLegendColorWell?.unbind_color ()
+    self.mDisplayBackLegendSwitch?.unbind_value ()
+    self.mDisplayBackLegendColorWell?.unbind_color ()
+    self.mDisplayFrontLayoutSwitch?.unbind_value ()
+    self.mDisplayFrontLayoutColorWell?.unbind_color ()
+    self.mDisplayBackLayoutSwitch?.unbind_value ()
+    self.mDisplayBackLayoutColorWell?.unbind_color ()
+    self.mDisplayFrontRestrictRectanglesSwitch?.unbind_value ()
+    self.mDisplayFrontRestrictRectanglesColorWell?.unbind_color ()
+    self.mDisplayBackRestrictRectanglesSwitch?.unbind_value ()
+    self.mDisplayBackRestrictRectanglesColorWell?.unbind_color ()
+    self.mDisplayBoardLimitsColorWell?.unbind_color ()
+    self.mDisplayBoardClearanceColorWell?.unbind_color ()
+    self.mBoardBackgroundColorWell?.unbind_color ()
   //--------------------------- Unbind multiple bindings
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -2163,6 +2239,7 @@ import Cocoa
     self.mBaseBoardInspectorView?.ebCleanUp ()
     self.mBaseBoardLimitsInspectorView?.ebCleanUp ()
     self.mBaseSchematicsInspectorView?.ebCleanUp ()
+    self.mBoardBackgroundColorWell?.ebCleanUp ()
     self.mBoardBorderPageView?.ebCleanUp ()
     self.mBoardClearanceTextField?.ebCleanUp ()
     self.mBoardClearanceUnitPopUp?.ebCleanUp ()
@@ -2245,9 +2322,27 @@ import Cocoa
     self.mDeviceSymbolTableView?.ebCleanUp ()
     self.mDisconnectAllSymbolPinsSchematicHotKeyTextField?.ebCleanUp ()
     self.mDisconnectSchematicHotKeyTextField?.ebCleanUp ()
+    self.mDisplayBackLayoutColorWell?.ebCleanUp ()
+    self.mDisplayBackLayoutSwitch?.ebCleanUp ()
+    self.mDisplayBackLegendColorWell?.ebCleanUp ()
+    self.mDisplayBackLegendSwitch?.ebCleanUp ()
+    self.mDisplayBackPadsColorWell?.ebCleanUp ()
     self.mDisplayBackPadsSwitch?.ebCleanUp ()
+    self.mDisplayBackRestrictRectanglesColorWell?.ebCleanUp ()
+    self.mDisplayBackRestrictRectanglesSwitch?.ebCleanUp ()
+    self.mDisplayBoardClearanceColorWell?.ebCleanUp ()
     self.mDisplayBoardInspectorView?.ebCleanUp ()
+    self.mDisplayBoardLimitsColorWell?.ebCleanUp ()
+    self.mDisplayFrontLayoutColorWell?.ebCleanUp ()
+    self.mDisplayFrontLayoutSwitch?.ebCleanUp ()
+    self.mDisplayFrontLegendColorWell?.ebCleanUp ()
+    self.mDisplayFrontLegendSwitch?.ebCleanUp ()
+    self.mDisplayFrontPadsColorWell?.ebCleanUp ()
     self.mDisplayFrontPadsSwitch?.ebCleanUp ()
+    self.mDisplayFrontRestrictRectanglesColorWell?.ebCleanUp ()
+    self.mDisplayFrontRestrictRectanglesSwitch?.ebCleanUp ()
+    self.mDisplayPadNumbersColorWell?.ebCleanUp ()
+    self.mDisplayPadNumbersSwitch?.ebCleanUp ()
     self.mDuplicateSelectedComponentsActionButton?.ebCleanUp ()
     self.mERCBoardInspectorView?.ebCleanUp ()
     self.mEditDeviceButton?.ebCleanUp ()
@@ -2394,6 +2489,7 @@ import Cocoa
 //    self.mBaseBoardInspectorView = nil
 //    self.mBaseBoardLimitsInspectorView = nil
 //    self.mBaseSchematicsInspectorView = nil
+//    self.mBoardBackgroundColorWell = nil
 //    self.mBoardBorderPageView = nil
 //    self.mBoardClearanceTextField = nil
 //    self.mBoardClearanceUnitPopUp = nil
@@ -2476,9 +2572,27 @@ import Cocoa
 //    self.mDeviceSymbolTableView = nil
 //    self.mDisconnectAllSymbolPinsSchematicHotKeyTextField = nil
 //    self.mDisconnectSchematicHotKeyTextField = nil
+//    self.mDisplayBackLayoutColorWell = nil
+//    self.mDisplayBackLayoutSwitch = nil
+//    self.mDisplayBackLegendColorWell = nil
+//    self.mDisplayBackLegendSwitch = nil
+//    self.mDisplayBackPadsColorWell = nil
 //    self.mDisplayBackPadsSwitch = nil
+//    self.mDisplayBackRestrictRectanglesColorWell = nil
+//    self.mDisplayBackRestrictRectanglesSwitch = nil
+//    self.mDisplayBoardClearanceColorWell = nil
 //    self.mDisplayBoardInspectorView = nil
+//    self.mDisplayBoardLimitsColorWell = nil
+//    self.mDisplayFrontLayoutColorWell = nil
+//    self.mDisplayFrontLayoutSwitch = nil
+//    self.mDisplayFrontLegendColorWell = nil
+//    self.mDisplayFrontLegendSwitch = nil
+//    self.mDisplayFrontPadsColorWell = nil
 //    self.mDisplayFrontPadsSwitch = nil
+//    self.mDisplayFrontRestrictRectanglesColorWell = nil
+//    self.mDisplayFrontRestrictRectanglesSwitch = nil
+//    self.mDisplayPadNumbersColorWell = nil
+//    self.mDisplayPadNumbersSwitch = nil
 //    self.mDuplicateSelectedComponentsActionButton = nil
 //    self.mERCBoardInspectorView = nil
 //    self.mEditDeviceButton = nil

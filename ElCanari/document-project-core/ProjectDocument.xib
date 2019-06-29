@@ -30,6 +30,7 @@
                 <outlet property="mBaseBoardInspectorView" destination="15368" id="o7m-YG-KUL"/>
                 <outlet property="mBaseBoardLimitsInspectorView" destination="tLm-rs-Pgv" id="S5m-nI-AVa"/>
                 <outlet property="mBaseSchematicsInspectorView" destination="15192" id="URz-7L-u9S"/>
+                <outlet property="mBoardBackgroundColorWell" destination="2169" id="q0K-TG-2BF"/>
                 <outlet property="mBoardBorderPageView" destination="jyP-KX-6Ox" id="dW1-Qg-xrr"/>
                 <outlet property="mBoardClearanceTextField" destination="IVD-tM-Vib" id="3n5-S4-cyd"/>
                 <outlet property="mBoardClearanceUnitPopUp" destination="0mw-bN-gaV" id="oIZ-5Q-R8v"/>
@@ -112,9 +113,27 @@
                 <outlet property="mDeviceSymbolTableView" destination="2949" id="bC7-Qn-ZHb"/>
                 <outlet property="mDisconnectAllSymbolPinsSchematicHotKeyTextField" destination="pcL-KQ-GCh" id="Q3b-W2-pRd"/>
                 <outlet property="mDisconnectSchematicHotKeyTextField" destination="8Un-Lz-CN6" id="QRF-lj-wL9"/>
+                <outlet property="mDisplayBackLayoutColorWell" destination="1992" id="3Zt-iS-cyJ"/>
+                <outlet property="mDisplayBackLayoutSwitch" destination="1989" id="ajp-zY-MYg"/>
+                <outlet property="mDisplayBackLegendColorWell" destination="1993" id="dQN-WR-5Am"/>
+                <outlet property="mDisplayBackLegendSwitch" destination="1987" id="Zlf-sG-zYT"/>
+                <outlet property="mDisplayBackPadsColorWell" destination="2043" id="D5O-KF-VAa"/>
                 <outlet property="mDisplayBackPadsSwitch" destination="2042" id="zxR-GQ-bJF"/>
+                <outlet property="mDisplayBackRestrictRectanglesColorWell" destination="1805" id="85s-G3-eQI"/>
+                <outlet property="mDisplayBackRestrictRectanglesSwitch" destination="1784" id="M0B-4g-Lcq"/>
+                <outlet property="mDisplayBoardClearanceColorWell" destination="1779" id="LY0-mH-rba"/>
                 <outlet property="mDisplayBoardInspectorView" destination="1775" id="zE6-Kt-8zU"/>
+                <outlet property="mDisplayBoardLimitsColorWell" destination="1777" id="7BZ-Jm-knV"/>
+                <outlet property="mDisplayFrontLayoutColorWell" destination="1991" id="k5s-ro-pJ2"/>
+                <outlet property="mDisplayFrontLayoutSwitch" destination="1988" id="yOh-Ll-4Qw"/>
+                <outlet property="mDisplayFrontLegendColorWell" destination="1990" id="ljO-cU-Yfo"/>
+                <outlet property="mDisplayFrontLegendSwitch" destination="1986" id="ovd-ai-Bq5"/>
+                <outlet property="mDisplayFrontPadsColorWell" destination="1785" id="dD3-Pz-X23"/>
                 <outlet property="mDisplayFrontPadsSwitch" destination="1804" id="vQA-B6-wbh"/>
+                <outlet property="mDisplayFrontRestrictRectanglesColorWell" destination="1809" id="je8-1k-JwR"/>
+                <outlet property="mDisplayFrontRestrictRectanglesSwitch" destination="1811" id="sfp-wP-8eS"/>
+                <outlet property="mDisplayPadNumbersColorWell" destination="1802" id="cIt-nI-1Pp"/>
+                <outlet property="mDisplayPadNumbersSwitch" destination="1786" id="Rj4-zf-Yft"/>
                 <outlet property="mDuplicateSelectedComponentsActionButton" destination="5196" id="euo-vE-NM3"/>
                 <outlet property="mERCBoardInspectorView" destination="16696" id="Iq6-xf-cdK"/>
                 <outlet property="mEditDeviceButton" destination="2954" id="h7x-qf-f8n"/>
@@ -2028,7 +2047,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <colorWell id="2169">
+                <colorWell id="2169" customClass="EBColorWell">
                     <rect key="frame" x="20" y="304" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2041,8 +2060,8 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell id="2167">
-                    <rect key="frame" x="20" y="329" width="20" height="20"/>
+                <colorWell id="2167" customClass="EBColorWell">
+                    <rect key="frame" x="10" y="329" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
@@ -2054,38 +2073,22 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell id="1783">
-                    <rect key="frame" x="20" y="354" width="20" height="20"/>
+                <colorWell id="1783" customClass="EBColorWell">
+                    <rect key="frame" x="10" y="354" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <colorWell id="1779">
+                <colorWell id="1779" customClass="EBColorWell">
                     <rect key="frame" x="20" y="379" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button id="1808" customClass="EBSwitch">
-                    <rect key="frame" x="44" y="377" width="187" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Board Clearance" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14611">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
-                <button id="1817" customClass="EBSwitch">
-                    <rect key="frame" x="44" y="402" width="186" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Board Limits" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="14613">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
-                <colorWell id="1777">
+                <colorWell id="1777" customClass="EBColorWell">
                     <rect key="frame" x="20" y="404" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <colorWell id="2043">
+                <colorWell id="2043" customClass="EBColorWell">
                     <rect key="frame" x="20" y="604" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2098,22 +2101,22 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell id="1993">
+                <colorWell id="1993" customClass="EBColorWell">
                     <rect key="frame" x="20" y="530" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <colorWell id="1992">
+                <colorWell id="1992" customClass="EBColorWell">
                     <rect key="frame" x="20" y="481" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <colorWell id="1991">
+                <colorWell id="1991" customClass="EBColorWell">
                     <rect key="frame" x="20" y="506" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <colorWell id="1990">
+                <colorWell id="1990" customClass="EBColorWell">
                     <rect key="frame" x="20" y="554" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2150,22 +2153,22 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell id="1809">
+                <colorWell id="1809" customClass="EBColorWell">
                     <rect key="frame" x="20" y="454" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <colorWell id="1805">
+                <colorWell id="1805" customClass="EBColorWell">
                     <rect key="frame" x="20" y="429" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <colorWell id="1802">
+                <colorWell id="1802" customClass="EBColorWell">
                     <rect key="frame" x="20" y="579" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <colorWell id="1785">
+                <colorWell id="1785" customClass="EBColorWell">
                     <rect key="frame" x="20" y="629" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2308,6 +2311,24 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="dTW-mS-hW1">
+                    <rect key="frame" x="44" y="404" width="186" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Board Limits" id="vWc-Rt-Au1">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="4Tw-lz-TEz">
+                    <rect key="frame" x="44" y="380" width="186" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Board Clearance" id="UxW-Ia-J5x">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="477" y="917"/>
         </customView>
@@ -3486,7 +3507,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn editable="NO" width="109.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn editable="NO" width="110" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3500,11 +3521,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv">
-                                                <rect key="frame" x="468.5" y="1" width="109.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="110" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="109.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="110" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3519,7 +3540,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="218" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="217.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3533,11 +3554,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="581" y="1" width="218" height="17"/>
+                                                <rect key="frame" x="581.5" y="1" width="217.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="218" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="217.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>

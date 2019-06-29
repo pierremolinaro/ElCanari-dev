@@ -24,6 +24,13 @@ entity ProjectRoot {
 
   property Bool mDisplayFrontPads default yes ;
   property Bool mDisplayBackPads default yes ;
+  property Bool mDisplayPadNumbers default yes ;
+  property Bool mDisplayFrontLegend default yes ;
+  property Bool mDisplayBackLegend default yes ;
+  property Bool mDisplayFrontLayout default yes ;
+  property Bool mDisplayBackLayout default yes ;
+  property Bool mDisplayFrontRestrictRectangles default yes ;
+  property Bool mDisplayBackRestrictRectangles default yes ;
   
 //--- Board border
   toMany BorderCurve mBorderCurves inverse toOne mRoot ;

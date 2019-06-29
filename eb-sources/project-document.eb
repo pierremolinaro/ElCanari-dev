@@ -628,10 +628,38 @@ document ProjectDocument root ProjectRoot {
   outlet EBSwitch mBoardTextObliqueSwitch $value #boardTextSelectionController.mOblique ;
   
 //--- Display inspector
-
   outlet EBSwitch mDisplayFrontPadsSwitch $value root.mDisplayFrontPads ;
-  outlet EBSwitch mDisplayBackPadsSwitch $value root.mDisplayBackPads ;
+  outlet EBColorWell mDisplayFrontPadsColorWell $color prefs.frontSidePadColorForBoard {sendContinously:yes} ;
 
+  outlet EBSwitch mDisplayBackPadsSwitch $value root.mDisplayBackPads ;
+  outlet EBColorWell mDisplayBackPadsColorWell $color prefs.backSidePadColorForBoard {sendContinously:yes} ;
+
+  outlet EBSwitch mDisplayPadNumbersSwitch $value root.mDisplayPadNumbers ;
+  outlet EBColorWell mDisplayPadNumbersColorWell $color prefs.padNumberColorForBoard {sendContinously:yes} ;
+
+  outlet EBSwitch mDisplayFrontLegendSwitch $value root.mDisplayFrontLegend ;
+  outlet EBColorWell mDisplayFrontLegendColorWell $color prefs.frontSideLegendColorForBoard {sendContinously:yes} ;
+
+  outlet EBSwitch mDisplayBackLegendSwitch $value root.mDisplayBackLegend ;
+  outlet EBColorWell mDisplayBackLegendColorWell $color prefs.backSideLegendColorForBoard {sendContinously:yes} ;
+
+  outlet EBSwitch mDisplayFrontLayoutSwitch $value root.mDisplayFrontLayout ;
+  outlet EBColorWell mDisplayFrontLayoutColorWell $color prefs.frontSideLayoutColorForBoard {sendContinously:yes} ;
+
+  outlet EBSwitch mDisplayBackLayoutSwitch $value root.mDisplayBackLayout ;
+  outlet EBColorWell mDisplayBackLayoutColorWell $color prefs.backSideLayoutColorForBoard {sendContinously:yes} ;
+
+  outlet EBSwitch mDisplayFrontRestrictRectanglesSwitch $value root.mDisplayFrontRestrictRectangles ;
+  outlet EBColorWell mDisplayFrontRestrictRectanglesColorWell $color prefs.frontSideRestrictRectangleColorForBoard {sendContinously:yes} ;
+
+  outlet EBSwitch mDisplayBackRestrictRectanglesSwitch $value root.mDisplayBackRestrictRectangles ;
+  outlet EBColorWell mDisplayBackRestrictRectanglesColorWell $color prefs.backSideRestrictRectangleColorForBoard {sendContinously:yes} ;
+
+  outlet EBColorWell mDisplayBoardLimitsColorWell $color prefs.boardLimitsColorForBoard {sendContinously:yes} ;
+
+  outlet EBColorWell mDisplayBoardClearanceColorWell $color prefs.boardClearanceColorForBoard {sendContinously:yes} ;
+
+  outlet EBColorWell mBoardBackgroundColorWell $color prefs.boardBackgroundColorForBoard {sendContinously:yes} ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

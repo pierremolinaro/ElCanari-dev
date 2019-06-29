@@ -25,6 +25,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.mBoardGridStepUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardGridStepUnit) // Stored property
     inOldValue?.mDisplayFrontPads_property.removeEBObserversFrom (&self.mObserversOf_mDisplayFrontPads) // Stored property
     inOldValue?.mDisplayBackPads_property.removeEBObserversFrom (&self.mObserversOf_mDisplayBackPads) // Stored property
+    inOldValue?.mDisplayPadNumbers_property.removeEBObserversFrom (&self.mObserversOf_mDisplayPadNumbers) // Stored property
+    inOldValue?.mDisplayFrontLegend_property.removeEBObserversFrom (&self.mObserversOf_mDisplayFrontLegend) // Stored property
+    inOldValue?.mDisplayBackLegend_property.removeEBObserversFrom (&self.mObserversOf_mDisplayBackLegend) // Stored property
+    inOldValue?.mDisplayFrontLayout_property.removeEBObserversFrom (&self.mObserversOf_mDisplayFrontLayout) // Stored property
+    inOldValue?.mDisplayBackLayout_property.removeEBObserversFrom (&self.mObserversOf_mDisplayBackLayout) // Stored property
+    inOldValue?.mDisplayFrontRestrictRectangles_property.removeEBObserversFrom (&self.mObserversOf_mDisplayFrontRestrictRectangles) // Stored property
+    inOldValue?.mDisplayBackRestrictRectangles_property.removeEBObserversFrom (&self.mObserversOf_mDisplayBackRestrictRectangles) // Stored property
     inOldValue?.mBoardLimitsWidth_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsWidth) // Stored property
     inOldValue?.mBoardLimitsWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsWidthUnit) // Stored property
     inOldValue?.mBoardLimitsSelectedInspector_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsSelectedInspector) // Stored property
@@ -90,6 +97,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.mBoardGridStepUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardGridStepUnit) // Stored property
     self.mInternalValue?.mDisplayFrontPads_property.addEBObserversFrom (&self.mObserversOf_mDisplayFrontPads) // Stored property
     self.mInternalValue?.mDisplayBackPads_property.addEBObserversFrom (&self.mObserversOf_mDisplayBackPads) // Stored property
+    self.mInternalValue?.mDisplayPadNumbers_property.addEBObserversFrom (&self.mObserversOf_mDisplayPadNumbers) // Stored property
+    self.mInternalValue?.mDisplayFrontLegend_property.addEBObserversFrom (&self.mObserversOf_mDisplayFrontLegend) // Stored property
+    self.mInternalValue?.mDisplayBackLegend_property.addEBObserversFrom (&self.mObserversOf_mDisplayBackLegend) // Stored property
+    self.mInternalValue?.mDisplayFrontLayout_property.addEBObserversFrom (&self.mObserversOf_mDisplayFrontLayout) // Stored property
+    self.mInternalValue?.mDisplayBackLayout_property.addEBObserversFrom (&self.mObserversOf_mDisplayBackLayout) // Stored property
+    self.mInternalValue?.mDisplayFrontRestrictRectangles_property.addEBObserversFrom (&self.mObserversOf_mDisplayFrontRestrictRectangles) // Stored property
+    self.mInternalValue?.mDisplayBackRestrictRectangles_property.addEBObserversFrom (&self.mObserversOf_mDisplayBackRestrictRectangles) // Stored property
     self.mInternalValue?.mBoardLimitsWidth_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsWidth) // Stored property
     self.mInternalValue?.mBoardLimitsWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsWidthUnit) // Stored property
     self.mInternalValue?.mBoardLimitsSelectedInspector_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsSelectedInspector) // Stored property
@@ -842,6 +856,496 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mDisplayBackPads_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayPadNumbers' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayPadNumbers = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDisplayPadNumbers_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mDisplayPadNumbers_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayPadNumbers (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayPadNumbers.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDisplayPadNumbers_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayPadNumbers (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayPadNumbers.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDisplayPadNumbers_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayPadNumbers_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayPadNumbers.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayPadNumbers_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayPadNumbers_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mDisplayPadNumbers.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayPadNumbers_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayFrontLegend' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayFrontLegend = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDisplayFrontLegend_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mDisplayFrontLegend_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayFrontLegend (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayFrontLegend.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDisplayFrontLegend_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayFrontLegend (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayFrontLegend.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDisplayFrontLegend_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayFrontLegend_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayFrontLegend.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayFrontLegend_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayFrontLegend_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mDisplayFrontLegend.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayFrontLegend_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayBackLegend' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayBackLegend = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDisplayBackLegend_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mDisplayBackLegend_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayBackLegend (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayBackLegend.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDisplayBackLegend_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayBackLegend (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayBackLegend.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDisplayBackLegend_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayBackLegend_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayBackLegend.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayBackLegend_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayBackLegend_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mDisplayBackLegend.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayBackLegend_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayFrontLayout' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayFrontLayout = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDisplayFrontLayout_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mDisplayFrontLayout_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayFrontLayout (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayFrontLayout.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDisplayFrontLayout_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayFrontLayout (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayFrontLayout.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDisplayFrontLayout_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayFrontLayout_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayFrontLayout.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayFrontLayout_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayFrontLayout_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mDisplayFrontLayout.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayFrontLayout_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayBackLayout' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayBackLayout = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDisplayBackLayout_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mDisplayBackLayout_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayBackLayout (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayBackLayout.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDisplayBackLayout_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayBackLayout (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayBackLayout.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDisplayBackLayout_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayBackLayout_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayBackLayout.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayBackLayout_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayBackLayout_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mDisplayBackLayout.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayBackLayout_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayFrontRestrictRectangles' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayFrontRestrictRectangles = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDisplayFrontRestrictRectangles_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mDisplayFrontRestrictRectangles_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayFrontRestrictRectangles (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayFrontRestrictRectangles.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDisplayFrontRestrictRectangles_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayFrontRestrictRectangles (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayFrontRestrictRectangles.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDisplayFrontRestrictRectangles_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayFrontRestrictRectangles_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayFrontRestrictRectangles.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayFrontRestrictRectangles_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayFrontRestrictRectangles_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mDisplayFrontRestrictRectangles.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayFrontRestrictRectangles_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayBackRestrictRectangles' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayBackRestrictRectangles = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDisplayBackRestrictRectangles_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mDisplayBackRestrictRectangles_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayBackRestrictRectangles (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayBackRestrictRectangles.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDisplayBackRestrictRectangles_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayBackRestrictRectangles (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayBackRestrictRectangles.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDisplayBackRestrictRectangles_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayBackRestrictRectangles_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayBackRestrictRectangles.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayBackRestrictRectangles_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayBackRestrictRectangles_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mDisplayBackRestrictRectangles.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayBackRestrictRectangles_property.removeEBObserver (observer)
       }
     }
   }

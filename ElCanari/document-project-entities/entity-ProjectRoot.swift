@@ -66,6 +66,48 @@ protocol ProjectRoot_mDisplayBackPads : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mDisplayPadNumbers : class {
+  var mDisplayPadNumbers : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mDisplayFrontLegend : class {
+  var mDisplayFrontLegend : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mDisplayBackLegend : class {
+  var mDisplayBackLegend : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mDisplayFrontLayout : class {
+  var mDisplayFrontLayout : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mDisplayBackLayout : class {
+  var mDisplayBackLayout : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mDisplayFrontRestrictRectangles : class {
+  var mDisplayFrontRestrictRectangles : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mDisplayBackRestrictRectangles : class {
+  var mDisplayBackRestrictRectangles : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mBoardLimitsWidth : class {
   var mBoardLimitsWidth : Int { get }
 }
@@ -409,6 +451,13 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardGridStepUnit,
          ProjectRoot_mDisplayFrontPads,
          ProjectRoot_mDisplayBackPads,
+         ProjectRoot_mDisplayPadNumbers,
+         ProjectRoot_mDisplayFrontLegend,
+         ProjectRoot_mDisplayBackLegend,
+         ProjectRoot_mDisplayFrontLayout,
+         ProjectRoot_mDisplayBackLayout,
+         ProjectRoot_mDisplayFrontRestrictRectangles,
+         ProjectRoot_mDisplayBackRestrictRectangles,
          ProjectRoot_mBoardLimitsWidth,
          ProjectRoot_mBoardLimitsWidthUnit,
          ProjectRoot_mBoardLimitsSelectedInspector,
@@ -634,6 +683,125 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mDisplayBackPads_property_selection : EBSelection <Bool> { return self.mDisplayBackPads_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayPadNumbers
+  //····················································································································
+
+  let mDisplayPadNumbers_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mDisplayPadNumbers : Bool {
+    get { return self.mDisplayPadNumbers_property.propval }
+    set { self.mDisplayPadNumbers_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayPadNumbers_property_selection : EBSelection <Bool> { return self.mDisplayPadNumbers_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayFrontLegend
+  //····················································································································
+
+  let mDisplayFrontLegend_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mDisplayFrontLegend : Bool {
+    get { return self.mDisplayFrontLegend_property.propval }
+    set { self.mDisplayFrontLegend_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayFrontLegend_property_selection : EBSelection <Bool> { return self.mDisplayFrontLegend_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayBackLegend
+  //····················································································································
+
+  let mDisplayBackLegend_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mDisplayBackLegend : Bool {
+    get { return self.mDisplayBackLegend_property.propval }
+    set { self.mDisplayBackLegend_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayBackLegend_property_selection : EBSelection <Bool> { return self.mDisplayBackLegend_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayFrontLayout
+  //····················································································································
+
+  let mDisplayFrontLayout_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mDisplayFrontLayout : Bool {
+    get { return self.mDisplayFrontLayout_property.propval }
+    set { self.mDisplayFrontLayout_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayFrontLayout_property_selection : EBSelection <Bool> { return self.mDisplayFrontLayout_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayBackLayout
+  //····················································································································
+
+  let mDisplayBackLayout_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mDisplayBackLayout : Bool {
+    get { return self.mDisplayBackLayout_property.propval }
+    set { self.mDisplayBackLayout_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayBackLayout_property_selection : EBSelection <Bool> { return self.mDisplayBackLayout_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayFrontRestrictRectangles
+  //····················································································································
+
+  let mDisplayFrontRestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mDisplayFrontRestrictRectangles : Bool {
+    get { return self.mDisplayFrontRestrictRectangles_property.propval }
+    set { self.mDisplayFrontRestrictRectangles_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayFrontRestrictRectangles_property_selection : EBSelection <Bool> { return self.mDisplayFrontRestrictRectangles_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayBackRestrictRectangles
+  //····················································································································
+
+  let mDisplayBackRestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mDisplayBackRestrictRectangles : Bool {
+    get { return self.mDisplayBackRestrictRectangles_property.propval }
+    set { self.mDisplayBackRestrictRectangles_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayBackRestrictRectangles_property_selection : EBSelection <Bool> { return self.mDisplayBackRestrictRectangles_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsWidth
@@ -1976,6 +2144,20 @@ class ProjectRoot : EBManagedObject,
     self.mDisplayFrontPads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDisplayBackPads
     self.mDisplayBackPads_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayPadNumbers
+    self.mDisplayPadNumbers_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayFrontLegend
+    self.mDisplayFrontLegend_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayBackLegend
+    self.mDisplayBackLegend_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayFrontLayout
+    self.mDisplayFrontLayout_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayBackLayout
+    self.mDisplayBackLayout_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayFrontRestrictRectangles
+    self.mDisplayFrontRestrictRectangles_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayBackRestrictRectangles
+    self.mDisplayBackRestrictRectangles_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -2961,6 +3143,62 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mDisplayBackPads_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mDisplayPadNumbers",
+      idx: self.mDisplayPadNumbers_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayPadNumbers_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayPadNumbers_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayFrontLegend",
+      idx: self.mDisplayFrontLegend_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayFrontLegend_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayFrontLegend_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayBackLegend",
+      idx: self.mDisplayBackLegend_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayBackLegend_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayBackLegend_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayFrontLayout",
+      idx: self.mDisplayFrontLayout_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayFrontLayout_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayFrontLayout_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayBackLayout",
+      idx: self.mDisplayBackLayout_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayBackLayout_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayBackLayout_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayFrontRestrictRectangles",
+      idx: self.mDisplayFrontRestrictRectangles_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayFrontRestrictRectangles_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayFrontRestrictRectangles_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayBackRestrictRectangles",
+      idx: self.mDisplayBackRestrictRectangles_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayBackRestrictRectangles_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayBackRestrictRectangles_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mBoardLimitsWidth",
       idx: self.mBoardLimitsWidth_property.ebObjectIndex,
       y: &y,
@@ -3489,6 +3727,27 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mDisplayBackPads
     self.mDisplayBackPads_property.mObserverExplorer = nil
     self.mDisplayBackPads_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayPadNumbers
+    self.mDisplayPadNumbers_property.mObserverExplorer = nil
+    self.mDisplayPadNumbers_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayFrontLegend
+    self.mDisplayFrontLegend_property.mObserverExplorer = nil
+    self.mDisplayFrontLegend_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayBackLegend
+    self.mDisplayBackLegend_property.mObserverExplorer = nil
+    self.mDisplayBackLegend_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayFrontLayout
+    self.mDisplayFrontLayout_property.mObserverExplorer = nil
+    self.mDisplayFrontLayout_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayBackLayout
+    self.mDisplayBackLayout_property.mObserverExplorer = nil
+    self.mDisplayBackLayout_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayFrontRestrictRectangles
+    self.mDisplayFrontRestrictRectangles_property.mObserverExplorer = nil
+    self.mDisplayFrontRestrictRectangles_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayBackRestrictRectangles
+    self.mDisplayBackRestrictRectangles_property.mObserverExplorer = nil
+    self.mDisplayBackRestrictRectangles_property.mValueExplorer = nil
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.mObserverExplorer = nil
     self.mBoardLimitsWidth_property.mValueExplorer = nil
@@ -3645,6 +3904,20 @@ class ProjectRoot : EBManagedObject,
     self.mDisplayFrontPads_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayFrontPads")
   //--- Atomic property: mDisplayBackPads
     self.mDisplayBackPads_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayBackPads")
+  //--- Atomic property: mDisplayPadNumbers
+    self.mDisplayPadNumbers_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayPadNumbers")
+  //--- Atomic property: mDisplayFrontLegend
+    self.mDisplayFrontLegend_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayFrontLegend")
+  //--- Atomic property: mDisplayBackLegend
+    self.mDisplayBackLegend_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayBackLegend")
+  //--- Atomic property: mDisplayFrontLayout
+    self.mDisplayFrontLayout_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayFrontLayout")
+  //--- Atomic property: mDisplayBackLayout
+    self.mDisplayBackLayout_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayBackLayout")
+  //--- Atomic property: mDisplayFrontRestrictRectangles
+    self.mDisplayFrontRestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayFrontRestrictRectangles")
+  //--- Atomic property: mDisplayBackRestrictRectangles
+    self.mDisplayBackRestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayBackRestrictRectangles")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -3833,6 +4106,20 @@ class ProjectRoot : EBManagedObject,
     self.mDisplayFrontPads_property.readFrom (dictionary: inDictionary, forKey:"mDisplayFrontPads")
   //--- Atomic property: mDisplayBackPads
     self.mDisplayBackPads_property.readFrom (dictionary: inDictionary, forKey:"mDisplayBackPads")
+  //--- Atomic property: mDisplayPadNumbers
+    self.mDisplayPadNumbers_property.readFrom (dictionary: inDictionary, forKey:"mDisplayPadNumbers")
+  //--- Atomic property: mDisplayFrontLegend
+    self.mDisplayFrontLegend_property.readFrom (dictionary: inDictionary, forKey:"mDisplayFrontLegend")
+  //--- Atomic property: mDisplayBackLegend
+    self.mDisplayBackLegend_property.readFrom (dictionary: inDictionary, forKey:"mDisplayBackLegend")
+  //--- Atomic property: mDisplayFrontLayout
+    self.mDisplayFrontLayout_property.readFrom (dictionary: inDictionary, forKey:"mDisplayFrontLayout")
+  //--- Atomic property: mDisplayBackLayout
+    self.mDisplayBackLayout_property.readFrom (dictionary: inDictionary, forKey:"mDisplayBackLayout")
+  //--- Atomic property: mDisplayFrontRestrictRectangles
+    self.mDisplayFrontRestrictRectangles_property.readFrom (dictionary: inDictionary, forKey:"mDisplayFrontRestrictRectangles")
+  //--- Atomic property: mDisplayBackRestrictRectangles
+    self.mDisplayBackRestrictRectangles_property.readFrom (dictionary: inDictionary, forKey:"mDisplayBackRestrictRectangles")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit
