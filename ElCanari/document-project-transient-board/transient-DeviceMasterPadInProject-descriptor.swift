@@ -32,8 +32,7 @@ func transient_DeviceMasterPadInProject_descriptor (
         }
         return MasterPadDescriptor (
           name: self_mName,
-          centerX: self_mCenterX,
-          centerY: self_mCenterY,
+          center: CanariPoint (x: self_mCenterX, y: self_mCenterY),
           width: self_mWidth,
           height: self_mHeight,
           holeWidth: self_mHoleWidth,

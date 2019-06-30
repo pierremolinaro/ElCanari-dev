@@ -255,27 +255,14 @@ typealias PackagePadDictionary = [String : MasterPadDescriptor]
 extension Dictionary where Key == String, Value == MasterPadDescriptor {
 
   var masterPadsRect : CanariRect {
-    var minX = Int.max
-    var maxX = Int.min
-    var minY = Int.max
-    var maxY = Int.min
-    for (_, descriptor) in self {
-      let x = descriptor.centerX
-      let y = descriptor.centerY
-      if minX > x {
-        minX = x
-      }
-      if maxX < x {
-        maxX = x
-      }
-      if minY > y {
-        minY = y
-      }
-      if maxY < y {
-        maxY = y
+    var points = [CanariPoint] ()
+    for (_, masterPadDescriptor) in self {
+      points.append (masterPadDescriptor.center)
+      for slavePadDescriptor in masterPadDescriptor.slavePads {
+        points.append (slavePadDescriptor.center)
       }
     }
-    return CanariRect (left: minX, bottom: minY, width: maxX - minX, height: maxY - minY)
+    return CanariRect (points: points)
   }
 }
 
@@ -283,8 +270,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
 
 struct MasterPadDescriptor : Hashable {
   let name : String
-  let centerX : Int
-  let centerY : Int
+  let center : CanariPoint
   let width : Int
   let height : Int
   let holeWidth : Int
@@ -299,11 +285,10 @@ struct MasterPadDescriptor : Hashable {
                                   padNumberAF : AffineTransform,
                                   frontPadColor : NSColor?,
                                   backPadColor : NSColor?) {
-    let xCenter = canariUnitToCocoa (self.centerX)
-    let yCenter = canariUnitToCocoa (self.centerY)
+    let center = self.center.cocoaPoint
     let width = canariUnitToCocoa (self.width)
     let height = canariUnitToCocoa (self.height)
-    let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
+    let rPad = NSRect (x: center.x - width / 2.0, y: center.y - height / 2.0, width: width, height: height)
     var bp : EBBezierPath
     switch self.shape {
     case .rect :
@@ -317,7 +302,7 @@ struct MasterPadDescriptor : Hashable {
     case .traversing :
       let holeWidth = canariUnitToCocoa (self.holeWidth)
       let holeHeight = canariUnitToCocoa (self.holeHeight)
-      let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
+      let rHole = NSRect (x: center.x - holeWidth / 2.0, y: center.y - holeHeight / 2.0, width: holeWidth, height: holeHeight)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if let color = frontPadColor {
@@ -340,7 +325,7 @@ struct MasterPadDescriptor : Hashable {
   //--- Pad names
     if let textAttributes = padDisplayAttributes {
       var af = AffineTransform ()
-      af.translate (x: xCenter, y: yCenter)
+      af.translate (x: center.x, y: center.y)
       af.prepend (padNumberAF)
       ioShape.append (EBTextShape (self.name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
     }
@@ -349,6 +334,9 @@ struct MasterPadDescriptor : Hashable {
       pad.accumulatePadBezierPathes (
         into: ioShape,
         side: side,
+        name: "(" + self.name + ")",
+        padDisplayAttributes: padDisplayAttributes,
+        padNumberAF: padNumberAF,
         frontPadColor: frontPadColor,
         backPadColor: backPadColor
       )
@@ -359,8 +347,7 @@ struct MasterPadDescriptor : Hashable {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct SlavePadDescriptor : Hashable {
-  let centerX : Int
-  let centerY : Int
+  let center : CanariPoint
   let width : Int
   let height : Int
   let holeWidth : Int
@@ -370,13 +357,15 @@ struct SlavePadDescriptor : Hashable {
 
   func accumulatePadBezierPathes (into ioShape : EBShape,
                                   side : ComponentSide,
+                                  name : String,
+                                  padDisplayAttributes : [NSAttributedString.Key : Any]?,
+                                  padNumberAF : AffineTransform,
                                   frontPadColor : NSColor?,
                                   backPadColor : NSColor?) {
-    let xCenter = canariUnitToCocoa (self.centerX)
-    let yCenter = canariUnitToCocoa (self.centerY)
+    let center = self.center.cocoaPoint
     let width = canariUnitToCocoa (self.width)
     let height = canariUnitToCocoa (self.height)
-    let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
+    let rPad = NSRect (x: center.x - width / 2.0, y: center.y - height / 2.0, width: width, height: height)
     var bp : EBBezierPath
     switch self.shape {
     case .rect :
@@ -390,7 +379,7 @@ struct SlavePadDescriptor : Hashable {
     case .traversing :
       let holeWidth = canariUnitToCocoa (self.holeWidth)
       let holeHeight = canariUnitToCocoa (self.holeHeight)
-      let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
+      let rHole = NSRect (x: center.x - holeWidth / 2.0, y: center.y - holeHeight / 2.0, width: holeWidth, height: holeHeight)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if let color = frontPadColor {
@@ -420,6 +409,13 @@ struct SlavePadDescriptor : Hashable {
           ioShape.append (EBFilledBezierPathShape ([bp], color))
         }
       }
+    }
+  //--- Pad name
+    if let textAttributes = padDisplayAttributes {
+      var af = AffineTransform ()
+      af.translate (x: center.x, y: center.y)
+      af.prepend (padNumberAF)
+      ioShape.append (EBTextShape (name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
     }
   }
 }
