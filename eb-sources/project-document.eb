@@ -626,7 +626,26 @@ document ProjectDocument root ProjectRoot {
   ;
   
   outlet EBSwitch mBoardTextObliqueSwitch $value #boardTextSelectionController.mOblique ;
-  
+
+//--- Component inspector
+  outlet CanariViewWithKeyView mComponentInBoardInspectorView ;
+  selectionController ComponentInProject #ComponentInBoardSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  outlet EBPopUpButton mComponentInBoardCenterXPopUp $selectedTag #ComponentInBoardSelectionController.mXUnit ;
+  outlet CanariDimensionTextField mComponentInBoardCenterXTextField
+     $dimensionAndUnit #ComponentInBoardSelectionController.mX, #ComponentInBoardSelectionController.mXUnit
+  ;
+
+  outlet EBPopUpButton mComponentInBoardCenterYPopUp $selectedTag #ComponentInBoardSelectionController.mYUnit ;
+  outlet CanariDimensionTextField mComponentInBoardCenterYTextField
+     $dimensionAndUnit #ComponentInBoardSelectionController.mY, #ComponentInBoardSelectionController.mYUnit
+  ;
+
+  outlet CanariAngleTextField mBoardComponentRotationTextField $angle #ComponentInBoardSelectionController.mRotation ;
+  outlet CanariAngleSlider mBoardComponentRotationSlider $angle #ComponentInBoardSelectionController.mRotation ;
+
 //--- Display inspector
   outlet EBSwitch mDisplayFrontPadsSwitch $value root.mDisplayFrontPads ;
   outlet EBColorWell mDisplayFrontPadsColorWell $color prefs.frontSidePadColorForBoard {sendContinously:yes} ;

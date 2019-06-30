@@ -13,7 +13,7 @@ import Cocoa
 let COMPONENT_PACKAGE_CENTER_KNOB  = 0
 let COMPONENT_PACKAGE_ROTATION_KNOB  = 1
 
-fileprivate let ROTATION_KNOB_DISTANCE : CGFloat = 30.0
+let COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : CGFloat = 30.0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION ComponentInProject
@@ -54,23 +54,11 @@ extension ComponentInProject {
     if inKnobIndex == COMPONENT_PACKAGE_CENTER_KNOB {
       self.mX += inDx
       self.mY += inDy
-//    }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB, let fontDescriptor = self.mFont?.descriptor {
-//      let (_, _, origin, _) = boardText_displayInfos (
-//        self.mX,
-//        self.mY,
-//        self.mText,
-//        self.mFontSize,
-//        fontDescriptor,
-//        self.mHorizontalAlignment,
-//        self.mVerticalAlignment,
-//        self.mLayer,
-//        self.mRotation,
-//        self.mWeight,
-//        self.mOblique
-//      )
-//      let newRotationKnobLocation = CanariPoint (x: inNewX, y: inNewY).cocoaPoint
-//      let newAngleInDegrees = angleInDegreesBetweenNSPoints (origin, newRotationKnobLocation)
-//      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
+    }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB {
+      let absoluteCenter = CanariPoint (x: self.mX, y: self.mY).cocoaPoint
+      let newRotationKnobLocation = CanariPoint (x: inNewX, y: inNewY).cocoaPoint
+      let newAngleInDegrees = angleInDegreesBetweenNSPoints (absoluteCenter, newRotationKnobLocation)
+      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }
   }
 

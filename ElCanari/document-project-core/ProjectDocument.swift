@@ -99,6 +99,12 @@ import Cocoa
   var boardTextSelectionController = SelectionController_ProjectDocument_boardTextSelectionController ()
 
   //····················································································································
+  //   Selection controller: ComponentInBoardSelectionController
+  //····················································································································
+
+  var ComponentInBoardSelectionController = SelectionController_ProjectDocument_ComponentInBoardSelectionController ()
+
+  //····················································································································
   //   Transient property: componentCount
   //····················································································································
 
@@ -451,6 +457,8 @@ import Cocoa
   @IBOutlet weak var mBoardBorderPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardClearanceTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardClearanceUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardComponentRotationSlider : CanariAngleSlider? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardComponentRotationTextField : CanariAngleTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPX1TextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPX2TextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPY1TextField : EBTextObserverField? = nil // An outlet should be declared weak
@@ -513,6 +521,11 @@ import Cocoa
   @IBOutlet weak var mCommentInSchematicsInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mCommentInSchematicsTextField : EBTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentCountTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComponentInBoardCenterXPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComponentInBoardCenterXTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComponentInBoardCenterYPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComponentInBoardCenterYTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComponentInBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentSymbolComponentNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentSymbolDeviceNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentSymbolInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
@@ -773,6 +786,8 @@ import Cocoa
     self.restrictRectangleSelectionController.addExplorer (name: "restrictRectangleSelectionController", y:&y, view:view)
   //--- Selection controller property: boardTextSelectionController
     self.boardTextSelectionController.addExplorer (name: "boardTextSelectionController", y:&y, view:view)
+  //--- Selection controller property: ComponentInBoardSelectionController
+    self.ComponentInBoardSelectionController.addExplorer (name: "ComponentInBoardSelectionController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -830,6 +845,8 @@ import Cocoa
     checkOutletConnection (self.mBoardBorderPageView, "mBoardBorderPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardClearanceTextField, "mBoardClearanceTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mBoardClearanceUnitPopUp, "mBoardClearanceUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardComponentRotationSlider, "mBoardComponentRotationSlider", CanariAngleSlider.self, #file, #line)
+    checkOutletConnection (self.mBoardComponentRotationTextField, "mBoardComponentRotationTextField", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPX1TextField, "mBoardCurveCPX1TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPX2TextField, "mBoardCurveCPX2TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPY1TextField, "mBoardCurveCPY1TextField", EBTextObserverField.self, #file, #line)
@@ -892,6 +909,11 @@ import Cocoa
     checkOutletConnection (self.mCommentInSchematicsInspectorView, "mCommentInSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mCommentInSchematicsTextField, "mCommentInSchematicsTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mComponentCountTextField, "mComponentCountTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mComponentInBoardCenterXPopUp, "mComponentInBoardCenterXPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mComponentInBoardCenterXTextField, "mComponentInBoardCenterXTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mComponentInBoardCenterYPopUp, "mComponentInBoardCenterYPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mComponentInBoardCenterYTextField, "mComponentInBoardCenterYTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mComponentInBoardInspectorView, "mComponentInBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolComponentNameTextField, "mComponentSymbolComponentNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolDeviceNameTextField, "mComponentSymbolDeviceNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolInspectorView, "mComponentSymbolInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -1094,6 +1116,8 @@ import Cocoa
     self.restrictRectangleSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: boardTextSelectionController
     self.boardTextSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: ComponentInBoardSelectionController
+    self.ComponentInBoardSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1516,6 +1540,12 @@ import Cocoa
     self.mBoardTextRotationSlider?.bind_angle (self.boardTextSelectionController.mRotation_property, file: #file, line: #line)
     self.mBoardTextWeightTextField?.bind_value (self.boardTextSelectionController.mWeight_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.mBoardTextObliqueSwitch?.bind_value (self.boardTextSelectionController.mOblique_property, file: #file, line: #line)
+    self.mComponentInBoardCenterXPopUp?.bind_selectedTag (self.ComponentInBoardSelectionController.mXUnit_property, file: #file, line: #line)
+    self.mComponentInBoardCenterXTextField?.bind_dimensionAndUnit (self.ComponentInBoardSelectionController.mX_property, self.ComponentInBoardSelectionController.mXUnit_property, file: #file, line: #line)
+    self.mComponentInBoardCenterYPopUp?.bind_selectedTag (self.ComponentInBoardSelectionController.mYUnit_property, file: #file, line: #line)
+    self.mComponentInBoardCenterYTextField?.bind_dimensionAndUnit (self.ComponentInBoardSelectionController.mY_property, self.ComponentInBoardSelectionController.mYUnit_property, file: #file, line: #line)
+    self.mBoardComponentRotationTextField?.bind_angle (self.ComponentInBoardSelectionController.mRotation_property, file: #file, line: #line)
+    self.mBoardComponentRotationSlider?.bind_angle (self.ComponentInBoardSelectionController.mRotation_property, file: #file, line: #line)
     self.mDisplayFrontPadsSwitch?.bind_value (self.rootObject.mDisplayFrontPads_property, file: #file, line: #line)
     self.mDisplayFrontPadsColorWell?.bind_color (g_Preferences!.frontSidePadColorForBoard_property, file: #file, line: #line, sendContinously:true)
     self.mDisplayBackPadsSwitch?.bind_value (self.rootObject.mDisplayBackPads_property, file: #file, line: #line)
@@ -2051,6 +2081,12 @@ import Cocoa
     self.mBoardTextRotationSlider?.unbind_angle ()
     self.mBoardTextWeightTextField?.unbind_value ()
     self.mBoardTextObliqueSwitch?.unbind_value ()
+    self.mComponentInBoardCenterXPopUp?.unbind_selectedTag ()
+    self.mComponentInBoardCenterXTextField?.unbind_dimensionAndUnit ()
+    self.mComponentInBoardCenterYPopUp?.unbind_selectedTag ()
+    self.mComponentInBoardCenterYTextField?.unbind_dimensionAndUnit ()
+    self.mBoardComponentRotationTextField?.unbind_angle ()
+    self.mBoardComponentRotationSlider?.unbind_angle ()
     self.mDisplayFrontPadsSwitch?.unbind_value ()
     self.mDisplayFrontPadsColorWell?.unbind_color ()
     self.mDisplayBackPadsSwitch?.unbind_value ()
@@ -2179,6 +2215,8 @@ import Cocoa
     self.restrictRectangleSelectionController.unbind_selection ()
   //--- Selection controller property: boardTextSelectionController
     self.boardTextSelectionController.unbind_selection ()
+  //--- Selection controller property: ComponentInBoardSelectionController
+    self.ComponentInBoardSelectionController.unbind_selection ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
@@ -2243,6 +2281,8 @@ import Cocoa
     self.mBoardBorderPageView?.ebCleanUp ()
     self.mBoardClearanceTextField?.ebCleanUp ()
     self.mBoardClearanceUnitPopUp?.ebCleanUp ()
+    self.mBoardComponentRotationSlider?.ebCleanUp ()
+    self.mBoardComponentRotationTextField?.ebCleanUp ()
     self.mBoardCurveCPX1TextField?.ebCleanUp ()
     self.mBoardCurveCPX2TextField?.ebCleanUp ()
     self.mBoardCurveCPY1TextField?.ebCleanUp ()
@@ -2305,6 +2345,11 @@ import Cocoa
     self.mCommentInSchematicsInspectorView?.ebCleanUp ()
     self.mCommentInSchematicsTextField?.ebCleanUp ()
     self.mComponentCountTextField?.ebCleanUp ()
+    self.mComponentInBoardCenterXPopUp?.ebCleanUp ()
+    self.mComponentInBoardCenterXTextField?.ebCleanUp ()
+    self.mComponentInBoardCenterYPopUp?.ebCleanUp ()
+    self.mComponentInBoardCenterYTextField?.ebCleanUp ()
+    self.mComponentInBoardInspectorView?.ebCleanUp ()
     self.mComponentSymbolComponentNameTextField?.ebCleanUp ()
     self.mComponentSymbolDeviceNameTextField?.ebCleanUp ()
     self.mComponentSymbolInspectorView?.ebCleanUp ()
@@ -2493,6 +2538,8 @@ import Cocoa
 //    self.mBoardBorderPageView = nil
 //    self.mBoardClearanceTextField = nil
 //    self.mBoardClearanceUnitPopUp = nil
+//    self.mBoardComponentRotationSlider = nil
+//    self.mBoardComponentRotationTextField = nil
 //    self.mBoardCurveCPX1TextField = nil
 //    self.mBoardCurveCPX2TextField = nil
 //    self.mBoardCurveCPY1TextField = nil
@@ -2555,6 +2602,11 @@ import Cocoa
 //    self.mCommentInSchematicsInspectorView = nil
 //    self.mCommentInSchematicsTextField = nil
 //    self.mComponentCountTextField = nil
+//    self.mComponentInBoardCenterXPopUp = nil
+//    self.mComponentInBoardCenterXTextField = nil
+//    self.mComponentInBoardCenterYPopUp = nil
+//    self.mComponentInBoardCenterYTextField = nil
+//    self.mComponentInBoardInspectorView = nil
 //    self.mComponentSymbolComponentNameTextField = nil
 //    self.mComponentSymbolDeviceNameTextField = nil
 //    self.mComponentSymbolInspectorView = nil

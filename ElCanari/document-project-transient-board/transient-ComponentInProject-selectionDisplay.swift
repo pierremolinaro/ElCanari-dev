@@ -16,22 +16,29 @@ import Cocoa
 func transient_ComponentInProject_selectionDisplay (
        _ self_mX : Int,                             
        _ self_mY : Int,                             
+       _ self_mRotation : Int,                      
        _ self_strokeBezierPath : NSBezierPath,      
        _ self_padDictionary : PackagePadDictionary
 ) -> EBShape {
 //--- START OF USER ZONE 2
+      let rPadsCenter = self_padDictionary.masterPadsRect.center.cocoaPoint
+      let rotationKnobLocation = NSPoint (x: rPadsCenter.x + COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE, y: rPadsCenter.y)
       let shape = EBShape ()
       var strokeBezierPath = EBBezierPath (self_strokeBezierPath)
+      strokeBezierPath.move (to: rPadsCenter)
+      strokeBezierPath.line (to: rotationKnobLocation)
       strokeBezierPath.lineWidth = 1.0
       strokeBezierPath.lineCapStyle = .round
       strokeBezierPath.lineJoinStyle = .round
       shape.append (EBStrokeBezierPathShape ([strokeBezierPath], .cyan))
     //--- Knobs
-      let rPadsCenter = self_padDictionary.masterPadsRect.center.cocoaPoint
       shape.append (EBKnobShape (at: rPadsCenter, index: COMPONENT_PACKAGE_CENTER_KNOB, .rect, 2.0))
+      shape.append (EBKnobShape (at: rotationKnobLocation, index: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, 2.0))
     //---
       var af = AffineTransform ()
       af.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
+      af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
+      af.translate (x: -rPadsCenter.x, y: -rPadsCenter.y)
       return shape.transformed (by: af)
 //--- END OF USER ZONE 2
 }

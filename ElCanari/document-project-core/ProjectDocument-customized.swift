@@ -160,7 +160,7 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
   //---
     self.mUnplacedPackageTableView?.register (document: self, draggedType: kDragAndDropBoardPackage)
     self.mPackageCountToInsertController = EBSimpleController (
-      observedObjects: [self.unplacedSymbolsCount_property],
+      observedObjects: [self.unplacedPackageCount_property],
       callBack: {
         let title : String
         switch self.unplacedPackageCount_property_selection {
@@ -176,6 +176,7 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
     self.boardObjectsController.register (inspectorReceivingView: self.mSelectedObjectsBoardInspectorView)
     self.boardObjectsController.register (inspectorView: self.mRestrictRectangleInspectorView, for: BoardRestrictRectangle.self)
     self.boardObjectsController.register (inspectorView: self.mBoardTextInspectorView, for: BoardText.self)
+    self.boardObjectsController.register (inspectorView: self.mComponentInBoardInspectorView, for: ComponentInProject.self)
   //--- Set Board limits inspector segmented control
     let boardLimitsInspectors = [
       self.mSelectedObjectsBoardLimitsInspectorView,
@@ -372,14 +373,12 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
           self.mPossibleDraggedComponent = component
         }
       }
-      if let component = self.mPossibleDraggedComponent, let strokeBezierPath = component.strokeBezierPath {
+      if let component = self.mPossibleDraggedComponent, let packageShape = component.objectDisplay {
         let scale : CGFloat = boardView.actualScale
         let horizontalFlip : CGFloat = boardView.horizontalFlip ? -scale : scale
         let verticalFlip   : CGFloat = boardView.verticalFlip   ? -scale : scale
         var af = AffineTransform ()
         af.scale (x: horizontalFlip, y: verticalFlip)
-        let packageShape = EBShape ()
-        packageShape.append (EBStrokeBezierPathShape ([EBBezierPath (strokeBezierPath)], g_Preferences!.symbolColorForSchematic))
         let scaledPackageShape = packageShape.transformed (by: af)
         result = buildPDFimage (frame: scaledPackageShape.boundingBox, shape: scaledPackageShape)
       }
@@ -456,11 +455,11 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
       let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
       component.mX = p.x
       component.mY = p.y
-      if let padRect = component.padDictionary?.masterPadsRect {
-        let center = padRect.center
-        component.mX -= center.x
-        component.mY -= center.y
-      }
+//      if let padRect = component.padDictionary?.masterPadsRect {
+//        let center = padRect.center
+//        component.mX -= center.x
+//        component.mY -= center.y
+//      }
       self.rootObject.mBoardObjects.append (component)
       self.boardObjectsController.setSelection ([component])
       self.mPossibleDraggedComponent = nil

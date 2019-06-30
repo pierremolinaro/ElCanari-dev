@@ -68,7 +68,7 @@ struct ComponentSymbolInfo : Equatable, Hashable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct DeviceSymbolInfo : Equatable {
+struct DeviceSymbolInfo : Hashable {
   let filledBezierPath : NSBezierPath
   let strokeBezierPath : NSBezierPath
   let center : CanariPoint

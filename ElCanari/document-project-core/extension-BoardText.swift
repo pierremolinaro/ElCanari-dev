@@ -13,7 +13,7 @@ import Cocoa
 let BOARD_TEXT_ORIGIN_KNOB  = 0
 let BOARD_TEXT_ROTATION_KNOB  = 1
 
-fileprivate let ROTATION_KNOB_DISTANCE : CGFloat = 30.0
+fileprivate let BOARD_TEXT_ROTATION_KNOB_DISTANCE : CGFloat = 30.0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION BoardText
@@ -182,7 +182,7 @@ func boardText_displayInfos (
   var rotationKnobTransform = AffineTransform ()
   rotationKnobTransform.translate (x: startX, y: startY)
   rotationKnobTransform.rotate (byDegrees: rotationInDegrees)
-  let rotationKnobLocation = rotationKnobTransform.transform (NSPoint (x: ROTATION_KNOB_DISTANCE, y: 0.0))
+  let rotationKnobLocation = rotationKnobTransform.transform (NSPoint (x: BOARD_TEXT_ROTATION_KNOB_DISTANCE, y: 0.0))
 //---
   return (bp, frameBP, NSPoint (x: startX, y: startY), rotationKnobLocation)
 }

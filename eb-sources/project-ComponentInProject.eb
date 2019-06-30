@@ -10,7 +10,10 @@ graphic entity ComponentInProject : BoardObject {
   property String mComponentValue default "" ;
   
   property Int mX default 0 ;
+  property Int mXUnit default 2_286 ; // mils
   property Int mY default 0 ;
+  property Int mYUnit default 2_286 ; // mils
+  property Int mRotation default 0 ; // 1000 -> 1°
 
   transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
   transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
@@ -37,7 +40,7 @@ graphic entity ComponentInProject : BoardObject {
   transient PackagePadDictionary padDictionary dependsFrom self.mSelectedPackage.one.padDictionary ;
   
   override transient EBShape objectDisplay dependsFrom
-    self.mX, self.mY, self.strokeBezierPath,
+    self.mX, self.mY, self.mRotation, self.strokeBezierPath,
     self.padDictionary,
     prefs.frontSideLegendColorForBoard,
     prefs.packageDrawingWidthMultpliedByTenForBoard,
@@ -48,7 +51,7 @@ graphic entity ComponentInProject : BoardObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
-    self.mX, self.mY, self.strokeBezierPath,
+    self.mX, self.mY, self.mRotation, self.strokeBezierPath,
     self.padDictionary
   ;
 }
