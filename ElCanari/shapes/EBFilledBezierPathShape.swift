@@ -11,14 +11,16 @@ import Cocoa
 class EBFilledBezierPathShape : EBShape {
   private var mFilledPaths : [EBBezierPath]
   private let mColor : NSColor?
+  private let mKnobIndex : Int?
 
   //····················································································································
   //  Init
   //····················································································································
 
-  init (_ inPaths : [EBBezierPath], _ inColor : NSColor?) {
+  init (_ inPaths : [EBBezierPath], _ inColor : NSColor?, _ inKnobIndex : Int? = nil) {
     mColor = inColor
     mFilledPaths = []
+    mKnobIndex = inKnobIndex
     for path in inPaths {
       if !path.isEmpty {
         self.mFilledPaths.append (path)
@@ -36,7 +38,7 @@ class EBFilledBezierPathShape : EBShape {
     for path in self.mFilledPaths {
       paths.append (path.transformed(by: inAffineTransform))
     }
-    let result = EBFilledBezierPathShape (paths, self.mColor)
+    let result = EBFilledBezierPathShape (paths, self.mColor, self.mKnobIndex)
     self.internalTransform (result, by: inAffineTransform)
     return result
   }
@@ -87,10 +89,22 @@ class EBFilledBezierPathShape : EBShape {
   }
 
   //····················································································································
+  //   Knob Index
+  //····················································································································
+
+  override func knobIndex (at inPoint : NSPoint) -> Int? {
+    if self.contains (point: inPoint) {
+      return self.mKnobIndex
+    }else{
+      return super.knobIndex (at: inPoint)
+    }
+  }
+
+  //····················································································································
   //   intersects
   //····················································································································
-// https://stackoverflow.com/questions/15578017/how-to-determine-if-nsbezierpaths-intersect-in-cocoa
-// http://robnapier.net/clipping-cgrect-cgpath
+  // https://stackoverflow.com/questions/15578017/how-to-determine-if-nsbezierpaths-intersect-in-cocoa
+  // http://robnapier.net/clipping-cgrect-cgpath
 
   override func intersects (rect inRect : NSRect) -> Bool {
     var result = super.intersects (rect: inRect)

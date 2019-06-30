@@ -56,17 +56,17 @@ extension BoardText {
       self.mY += inDy
     }else if inKnobIndex == BOARD_TEXT_ROTATION_KNOB, let fontDescriptor = self.mFont?.descriptor {
       let (_, _, origin, _) = boardText_displayInfos (
-        self.mX,
-        self.mY,
-        self.mText,
-        self.mFontSize,
+        x: self.mX,
+        y: self.mY,
+        string: self.mText,
+        fontSize: self.mFontSize,
         fontDescriptor,
-        self.mHorizontalAlignment,
-        self.mVerticalAlignment,
-        self.mLayer,
-        self.mRotation,
-        self.mWeight,
-        self.mOblique
+        horizontalAlignment: self.mHorizontalAlignment,
+        verticalAlignment: self.mVerticalAlignment,
+        frontSide: (self.mLayer == .layoutFront) || (self.mLayer == .legendFront),
+        rotation: self.mRotation,
+        weight: self.mWeight,
+        oblique: self.mOblique
       )
       let newRotationKnobLocation = CanariPoint (x: inNewX, y: inNewY).cocoaPoint
       let newAngleInDegrees = angleInDegreesBetweenNSPoints (origin, newRotationKnobLocation)
@@ -108,17 +108,17 @@ extension BoardText {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func boardText_displayInfos (
-       _ self_mX : Int,
-       _ self_mY : Int,
-       _ self_mText : String,
-       _ self_mFontSize : Double,
+       x self_mX : Int,
+       y self_mY : Int,
+       string self_mText : String,
+       fontSize self_mFontSize : Double,
        _ self_mFont_descriptor : BoardFontDescriptor,
-       _ self_mHorizontalAlignment : HorizontalAlignment,
-       _ self_mVerticalAlignment : BoardTextVerticalAlignment,
-       _ self_mLayer : BoardTextLayer,
-       _ self_mRotation : Int,
-       _ self_mWeight : Double,
-       _ self_mOblique : Bool
+       horizontalAlignment self_mHorizontalAlignment : HorizontalAlignment,
+       verticalAlignment self_mVerticalAlignment : BoardTextVerticalAlignment,
+       frontSide inFrontSide : Bool,
+       rotation self_mRotation : Int,
+       weight self_mWeight : Double,
+       oblique self_mOblique : Bool
 ) -> (EBBezierPath, EBBezierPath, NSPoint, NSPoint) { // (textDisplay, frame, origin, rotation knob)
   let s = (self_mText == "") ? "Empty" : self_mText
   var bp = EBBezierPath ()
@@ -150,7 +150,7 @@ func boardText_displayInfos (
   let rotationInDegrees = CGFloat (self_mRotation) / 1000.0
   tr.rotate (byDegrees: rotationInDegrees)
 
-  if (self_mLayer == .layoutBack) || (self_mLayer == .legendBack) {
+  if !inFrontSide {
     tr.scale (x: -1.0, y: 1.0)
   }
 

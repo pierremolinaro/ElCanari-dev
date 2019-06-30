@@ -138,6 +138,8 @@ document ProjectDocument root ProjectRoot {
      column "version" EBTextObserverField $valueObserver self.versionString
      column "size" EBTextObserverField $valueObserver self.sizeString
      column "texts" EBIntObserverField $valueObserver self.mTexts.count {autoFormatter : yes}
+     column "names" EBIntObserverField $valueObserver self.mComponentNames.count {autoFormatter : yes}
+     column "values" EBIntObserverField $valueObserver self.mComponentValues.count {autoFormatter : yes}
   }
   outlet EBTableView mFontLibraryTableView $tableValue #projectFontController ;
 
@@ -647,6 +649,16 @@ document ProjectDocument root ProjectRoot {
   outlet CanariAngleSlider mBoardComponentRotationSlider $angle #ComponentInBoardSelectionController.mRotation ;
 
   outlet EBPopUpButton mBoardComponentSidePopUpButton $selectedIndex #ComponentInBoardSelectionController.mSide ;
+
+  outlet EBSwitch mDisplayComponentNameSwitch $value #ComponentInBoardSelectionController.mNameIsVisibleInBoard ;
+  outlet EBDoubleField mComponentNameFontSizeField
+    $value #ComponentInBoardSelectionController.mNameFontSize {sendContinously : no, autoFormatter : no}
+  ;
+
+  outlet CanariAngleTextField mComponentNameRotationTextField $angle #ComponentInBoardSelectionController.mNameRotation ;
+  outlet CanariAngleSlider mComponentNameRotationSlider $angle #ComponentInBoardSelectionController.mNameRotation ;
+
+  outlet EBTextObserverField mBoardComponentNameTextField $valueObserver #ComponentInBoardSelectionController.componentName ;
 
 //--- Display inspector
   outlet EBSwitch mDisplayFrontPadsSwitch $value root.mDisplayFrontPads ;

@@ -10,7 +10,7 @@ digraph G {
   LabelInSchematic[label="<LabelInSchematic>LabelInSchematic|QuadrantRotation mOrientation|<mPoint>PointInSchematic? mPoint|<mSheet>SheetInProject? mSheet"] ;
   NetClassInProject[label="<NetClassInProject>NetClassInProject|NSColor mNetClassColor|String mNetClassName|Int mNetWidth|Int mNetWidthUnit|<mNets>[NetInProject] mNets|Int mViaHoleDiameter|Int mViaHoleDiameterUnit|Int mViaPadDiameter|Int mViaPadDiameterUnit"] ;
   NetInProject[label="<NetInProject>NetInProject|<mNetClass>NetClassInProject? mNetClass|String mNetName|<mPoints>[PointInSchematic] mPoints"] ;
-  FontInProject[label="<FontInProject>FontInProject|String mDescriptiveString|String mFontName|Int mFontVersion|Int mNominalSize|<mTexts>[BoardText] mTexts"] ;
+  FontInProject[label="<FontInProject>FontInProject|<mComponentNames>[ComponentInProject] mComponentNames|<mComponentValues>[ComponentInProject] mComponentValues|String mDescriptiveString|String mFontName|Int mFontVersion|Int mNominalSize|<mTexts>[BoardText] mTexts"] ;
   BoardText[label="<BoardText>BoardText|<mFont>FontInProject? mFont|Double mFontSize|HorizontalAlignment mHorizontalAlignment|BoardTextLayer mLayer|Bool mOblique|<mRoot>ProjectRoot? mRoot|Int mRotation|String mText|BoardTextVerticalAlignment mVerticalAlignment|Double mWeight|Int mX|Int mY"] ;
   DeviceInProject[label="<DeviceInProject>DeviceInProject|<mComponents>[ComponentInProject] mComponents|Data mDeviceFileData|String mDeviceName|Int mDeviceVersion|<mPackages>[DevicePackageInProject] mPackages|<mPadAssignments>[DevicePadAssignmentInProject] mPadAssignments|String mPrefix|<mSymbols>[DeviceSymbolInstanceInProject] mSymbols"] ;
   DeviceSymbolInstanceInProject[label="<DeviceSymbolInstanceInProject>DeviceSymbolInstanceInProject|String mSymbolInstanceName|<mSymbolType>DeviceSymbolTypeInProject? mSymbolType"] ;
@@ -20,7 +20,7 @@ digraph G {
   DevicePackageInProject[label="<DevicePackageInProject>DevicePackageInProject|<mMasterPads>[DeviceMasterPadInProject] mMasterPads|String mPackageName|NSBezierPath mStrokeBezierPath"] ;
   DeviceMasterPadInProject[label="<DeviceMasterPadInProject>DeviceMasterPadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleHeight|Int mHoleWidth|String mName|PadShape mShape|<mSlavePads>[DeviceSlavePadInProject] mSlavePads|PadStyle mStyle|Int mWidth"] ;
   DeviceSlavePadInProject[label="<DeviceSlavePadInProject>DeviceSlavePadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleHeight|Int mHoleWidth|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
-  ComponentInProject[label="<ComponentInProject>ComponentInProject|String mComponentValue|<mDevice>DeviceInProject? mDevice|Int mNameIndex|String mNamePrefix|<mRoot>ProjectRoot? mRoot|Int mRotation|<mSelectedPackage>DevicePackageInProject? mSelectedPackage|ComponentSide mSide|<mSymbols>[ComponentSymbolInProject] mSymbols|Int mX|Int mXUnit|Int mY|Int mYUnit"] ;
+  ComponentInProject[label="<ComponentInProject>ComponentInProject|String mComponentValue|<mDevice>DeviceInProject? mDevice|<mNameFont>FontInProject? mNameFont|Double mNameFontSize|Int mNameIndex|Bool mNameIsVisibleInBoard|String mNamePrefix|Int mNameRotation|<mRoot>ProjectRoot? mRoot|Int mRotation|<mSelectedPackage>DevicePackageInProject? mSelectedPackage|ComponentSide mSide|<mSymbols>[ComponentSymbolInProject] mSymbols|<mValueFont>FontInProject? mValueFont|Int mX|Int mXName|Int mXUnit|Int mY|Int mYName|Int mYUnit"] ;
   ComponentSymbolInProject[label="<ComponentSymbolInProject>ComponentSymbolInProject|String componentValueProxy|Int mCenterX|Int mCenterY|<mComponent>ComponentInProject? mComponent|Int mDisplayComponentNameOffsetX|Int mDisplayComponentNameOffsetY|Bool mDisplayComponentValue|Int mDisplayComponentValueOffsetX|Int mDisplayComponentValueOffsetY|Bool mMirror|<mPoints>[PointInSchematic] mPoints|QuadrantRotation mRotation|<mSheet>SheetInProject? mSheet|String mSymbolInstanceName|String mSymbolTypeName"] ;
   BorderCurve[label="<BorderCurve>BorderCurve|Int mCPX1|Int mCPX2|Int mCPY1|Int mCPY2|<mNext>BorderCurve? mNext|<mPrevious>BorderCurve? mPrevious|<mRoot>ProjectRoot? mRoot|BorderCurveShape mShape|Int mX|Int mY"] ;
   BoardObject[label="<BoardObject>BoardObject|<mRoot>ProjectRoot? mRoot"] ;
@@ -44,6 +44,8 @@ digraph G {
   LabelInSchematic -> SchematicObject [arrowhead=dot] ;
   NetClassInProject:mNets -> NetInProject:mNetClass [dir=both arrowtail=onormal arrowhead=vee] ;
   NetInProject:mPoints -> PointInSchematic:mNet [dir=both arrowtail=onormal arrowhead=vee] ;
+  FontInProject:mComponentNames -> ComponentInProject:mNameFont [dir=both arrowtail=onormal arrowhead=vee] ;
+  FontInProject:mComponentValues -> ComponentInProject:mValueFont [dir=both arrowtail=onormal arrowhead=vee] ;
   FontInProject:mTexts -> BoardText:mFont [dir=both arrowtail=onormal arrowhead=vee] ;
   BoardText -> BoardObject [arrowhead=dot] ;
   DeviceInProject:mComponents -> ComponentInProject:mDevice [dir=both arrowtail=onormal arrowhead=vee] ;

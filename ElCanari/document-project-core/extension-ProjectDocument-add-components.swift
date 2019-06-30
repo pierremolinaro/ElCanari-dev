@@ -64,6 +64,9 @@ extension ProjectDocument {
       newComponent.mDevice = deviceInProject
     //--- Set package
       newComponent.mSelectedPackage = deviceInProject.mPackages [0]
+    //--- Set font for name and value in board
+      newComponent.mNameFont = self.rootObject.mFonts [0]
+      newComponent.mValueFont = self.rootObject.mFonts [0]
     //--- Set symbols
       var componentSymbols = [ComponentSymbolInProject] ()
       for symbolInDevice in deviceInProject.mSymbols {

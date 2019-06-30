@@ -32,17 +32,17 @@ func transient_BoardText_objectDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let (textBP, _, _, _) = boardText_displayInfos (
-          self_mX,
-          self_mY,
-          self_mText,
-          self_mFontSize,
+          x: self_mX,
+          y: self_mY,
+          string: self_mText,
+          fontSize: self_mFontSize,
           self_mFont_descriptor!,
-          self_mHorizontalAlignment,
-          self_mVerticalAlignment,
-          self_mLayer,
-          self_mRotation,
-          self_mWeight,
-          self_mOblique
+          horizontalAlignment: self_mHorizontalAlignment,
+          verticalAlignment: self_mVerticalAlignment,
+          frontSide: (self_mLayer == .layoutFront) || (self_mLayer == .legendFront),
+          rotation: self_mRotation,
+          weight: self_mWeight,
+          oblique: self_mOblique
         )
         let textColor : NSColor
         switch self_mLayer {

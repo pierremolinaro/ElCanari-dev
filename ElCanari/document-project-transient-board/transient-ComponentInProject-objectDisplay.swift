@@ -29,7 +29,14 @@ func transient_ComponentInProject_objectDisplay (
        _ self_BoardObject_displayBackPads : Bool,
        _ prefs_padNumberFontForBoard : NSFont,   
        _ prefs_padNumberColorForBoard : NSColor, 
-       _ self_BoardObject_displayPadNumbers : Bool
+       _ self_BoardObject_displayPadNumbers : Bool,
+       _ self_mNameIsVisibleInBoard : Bool,      
+       _ self_mXName : Int,                      
+       _ self_mYName : Int,                      
+       _ self_mNameFont_descriptor : BoardFontDescriptor?,
+       _ self_mNameFontSize : Double,            
+       _ self_mNameRotation : Int,               
+       _ self_componentName : String
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let padDisplayAttributes : [NSAttributedString.Key : Any]?
@@ -51,8 +58,8 @@ func transient_ComponentInProject_objectDisplay (
         case .front : color = prefs_frontSideLegendColorForBoard
         case .back  : color = prefs_backSideLegendColorForBoard
         }
-        let shape = EBShape ()
-        shape.append (EBStrokeBezierPathShape ([strokeBezierPath], color))
+        let rotatedShape = EBShape ()
+        rotatedShape.append (EBStrokeBezierPathShape ([strokeBezierPath], color))
       //---
         let padRect = self_padDictionary.masterPadsRect
         let center = padRect.center.cocoaPoint
@@ -63,13 +70,32 @@ func transient_ComponentInProject_objectDisplay (
         padNumberAffineTransform.rotate (byDegrees: -CGFloat (self_mRotation) / 1000.0)
         for (_, descriptor) in self_padDictionary {
           descriptor.accumulatePadBezierPathes (
-            into: shape,
+            into: rotatedShape,
             side: self_mSide,
             padDisplayAttributes: padDisplayAttributes,
             padNumberAF: padNumberAffineTransform,
             frontPadColor: self_BoardObject_displayFrontPads ? prefs_frontSidePadColorForBoard : nil,
             backPadColor: self_BoardObject_displayBackPads ? prefs_backSidePadColorForBoard : nil
           )
+        }
+      //--- Name
+        let nonRotatedShape = EBShape ()
+        if self_mNameIsVisibleInBoard, let fontDescriptor = self_mNameFont_descriptor {
+          let (textBP, _, _, _) = boardText_displayInfos (
+            x: self_mXName + self_mX,
+            y: self_mYName + self_mY,
+            string: self_componentName,
+            fontSize: self_mNameFontSize,
+            fontDescriptor,
+            horizontalAlignment: .center,
+            verticalAlignment: .center,
+            frontSide: self_mSide == .front,
+            rotation: self_mNameRotation,
+            weight: 1.0,
+            oblique: false
+          )
+          let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
+          nonRotatedShape.append (EBStrokeBezierPathShape ([textBP], color))
         }
       //---
         var af = AffineTransform ()
@@ -79,7 +105,10 @@ func transient_ComponentInProject_objectDisplay (
           af.scale (x: -1.0, y: 1.0)
         }
         af.translate (x: -center.x, y: -center.y)
-        return shape.transformed (by: af)
+      //---
+        let shape = rotatedShape.transformed (by: af)
+        shape.append (nonRotatedShape)
+        return shape
 //--- END OF USER ZONE 2
 }
 

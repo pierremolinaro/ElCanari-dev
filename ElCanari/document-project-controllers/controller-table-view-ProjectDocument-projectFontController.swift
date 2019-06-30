@@ -208,6 +208,18 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
       }else{
         presentErrorWindow (file, line, "\"texts\" column view unknown")
       }
+    //--- Check 'names' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "names")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"names\" column view unknown")
+      }
+    //--- Check 'values' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "values")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"values\" column view unknown")
+      }
     //--- Set table view sort descriptors
       for sortDescriptor in self.mSortDescriptorArray {
         if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
@@ -344,6 +356,20 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.mTexts_property.count_property, file: #file, line: #line, autoFormatter:true)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "names", let cell = result as? EBIntObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.mComponentNames_property.count_property, file: #file, line: #line, autoFormatter:true)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "values", let cell = result as? EBIntObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.mComponentValues_property.count_property, file: #file, line: #line, autoFormatter:true)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")

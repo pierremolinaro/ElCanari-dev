@@ -101,6 +101,56 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: mNameFontSize
+  //····················································································································
+
+  let mNameFontSize_property = EBPropertyProxy_Double ()
+
+  var mNameFontSize_property_selection : EBSelection <Double> {
+    return self.mNameFontSize_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mXName
+  //····················································································································
+
+  let mXName_property = EBPropertyProxy_Int ()
+
+  var mXName_property_selection : EBSelection <Int> {
+    return self.mXName_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mYName
+  //····················································································································
+
+  let mYName_property = EBPropertyProxy_Int ()
+
+  var mYName_property_selection : EBSelection <Int> {
+    return self.mYName_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mNameIsVisibleInBoard
+  //····················································································································
+
+  let mNameIsVisibleInBoard_property = EBPropertyProxy_Bool ()
+
+  var mNameIsVisibleInBoard_property_selection : EBSelection <Bool> {
+    return self.mNameIsVisibleInBoard_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mNameRotation
+  //····················································································································
+
+  let mNameRotation_property = EBPropertyProxy_Int ()
+
+  var mNameRotation_property_selection : EBSelection <Int> {
+    return self.mNameRotation_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: componentName
   //····················································································································
 
@@ -245,6 +295,11 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
     self.bind_property_mYUnit ()
     self.bind_property_mRotation ()
     self.bind_property_mSide ()
+    self.bind_property_mNameFontSize ()
+    self.bind_property_mXName ()
+    self.bind_property_mYName ()
+    self.bind_property_mNameIsVisibleInBoard ()
+    self.bind_property_mNameRotation ()
     self.bind_property_componentName ()
     self.bind_property_deviceName ()
     self.bind_property_selectedPackageName ()
@@ -310,6 +365,31 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
     self.mSide_property.mWriteModelFunction = nil 
     self.mSide_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mSide (self.mSide_property)
+  //--- mNameFontSize
+    self.mNameFontSize_property.mReadModelFunction = nil 
+    self.mNameFontSize_property.mWriteModelFunction = nil 
+    self.mNameFontSize_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mNameFontSize (self.mNameFontSize_property)
+  //--- mXName
+    self.mXName_property.mReadModelFunction = nil 
+    self.mXName_property.mWriteModelFunction = nil 
+    self.mXName_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mXName (self.mXName_property)
+  //--- mYName
+    self.mYName_property.mReadModelFunction = nil 
+    self.mYName_property.mWriteModelFunction = nil 
+    self.mYName_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mYName (self.mYName_property)
+  //--- mNameIsVisibleInBoard
+    self.mNameIsVisibleInBoard_property.mReadModelFunction = nil 
+    self.mNameIsVisibleInBoard_property.mWriteModelFunction = nil 
+    self.mNameIsVisibleInBoard_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mNameIsVisibleInBoard (self.mNameIsVisibleInBoard_property)
+  //--- mNameRotation
+    self.mNameRotation_property.mReadModelFunction = nil 
+    self.mNameRotation_property.mWriteModelFunction = nil 
+    self.mNameRotation_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mNameRotation (self.mNameRotation_property)
   //--- componentName
     self.componentName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_componentName (self.componentName_property)
@@ -456,6 +536,46 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
       view: view,
       observerExplorer: &self.mSide_property.mObserverExplorer,
       valueExplorer: &self.mSide_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mNameFontSize",
+      idx: self.mNameFontSize_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNameFontSize_property.mObserverExplorer,
+      valueExplorer: &self.mNameFontSize_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mXName",
+      idx: self.mXName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mXName_property.mObserverExplorer,
+      valueExplorer: &self.mXName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mYName",
+      idx: self.mYName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mYName_property.mObserverExplorer,
+      valueExplorer: &self.mYName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mNameIsVisibleInBoard",
+      idx: self.mNameIsVisibleInBoard_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNameIsVisibleInBoard_property.mObserverExplorer,
+      valueExplorer: &self.mNameIsVisibleInBoard_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mNameRotation",
+      idx: self.mNameRotation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNameRotation_property.mObserverExplorer,
+      valueExplorer: &self.mNameRotation_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -1119,6 +1239,351 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
         case .single (let v) :
           for object in v {
             let result = object.mSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mNameFontSize () {
+    self.selectedArray_property.addEBObserverOf_mNameFontSize (self.mNameFontSize_property)
+    self.mNameFontSize_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Double> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mNameFontSize_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNameFontSize_property.mWriteModelFunction = { [weak self] (inValue : Double) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mNameFontSize_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mNameFontSize_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Double, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mNameFontSize_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mXName () {
+    self.selectedArray_property.addEBObserverOf_mXName (self.mXName_property)
+    self.mXName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mXName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mXName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mXName_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mXName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mXName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mYName () {
+    self.selectedArray_property.addEBObserverOf_mYName (self.mYName_property)
+    self.mYName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mYName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mYName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mYName_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mYName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mYName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mNameIsVisibleInBoard () {
+    self.selectedArray_property.addEBObserverOf_mNameIsVisibleInBoard (self.mNameIsVisibleInBoard_property)
+    self.mNameIsVisibleInBoard_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mNameIsVisibleInBoard_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNameIsVisibleInBoard_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mNameIsVisibleInBoard_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mNameIsVisibleInBoard_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mNameIsVisibleInBoard_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mNameRotation () {
+    self.selectedArray_property.addEBObserverOf_mNameRotation (self.mNameRotation_property)
+    self.mNameRotation_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mNameRotation_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNameRotation_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mNameRotation_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mNameRotation_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mNameRotation_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

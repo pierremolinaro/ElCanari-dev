@@ -79,6 +79,44 @@ class FontInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   To many property: mComponentNames
+  //····················································································································
+
+  let mComponentNames_property = StoredArrayOf_ComponentInProject ()
+
+  //····················································································································
+
+  var mComponentNames_property_selection : EBSelection < [ComponentInProject] > {
+    return self.mComponentNames_property.prop
+  }
+
+  //····················································································································
+
+  var mComponentNames : [ComponentInProject] {
+    get { return self.mComponentNames_property.propval }
+    set { self.mComponentNames_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   To many property: mComponentValues
+  //····················································································································
+
+  let mComponentValues_property = StoredArrayOf_ComponentInProject ()
+
+  //····················································································································
+
+  var mComponentValues_property_selection : EBSelection < [ComponentInProject] > {
+    return self.mComponentValues_property.prop
+  }
+
+  //····················································································································
+
+  var mComponentValues : [ComponentInProject] {
+    get { return self.mComponentValues_property.propval }
+    set { self.mComponentValues_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: mNominalSize
   //····················································································································
 
@@ -227,6 +265,18 @@ class FontInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
       resetter: { inObject in inObject.mFont_property.setProp (nil) }
     )
+  //--- To many property: mComponentNames (has opposite relationship)
+    self.mComponentNames_property.ebUndoManager = self.ebUndoManager
+    self.mComponentNames_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mNameFont_property.setProp (me) } },
+      resetter: { inObject in inObject.mNameFont_property.setProp (nil) }
+    )
+  //--- To many property: mComponentValues (has opposite relationship)
+    self.mComponentValues_property.ebUndoManager = self.ebUndoManager
+    self.mComponentValues_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mValueFont_property.setProp (me) } },
+      resetter: { inObject in inObject.mValueFont_property.setProp (nil) }
+    )
   //--- Atomic property: mNominalSize
     self.mNominalSize_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mFontName
@@ -307,6 +357,14 @@ class FontInProject : EBManagedObject,
     self.mTexts_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
       resetter: { inObject in inObject.mFont_property.setProp (nil) }
+    )
+    self.mComponentNames_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mNameFont_property.setProp (me) } },
+      resetter: { inObject in inObject.mNameFont_property.setProp (nil) }
+    )
+    self.mComponentValues_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mValueFont_property.setProp (me) } },
+      resetter: { inObject in inObject.mValueFont_property.setProp (nil) }
     )
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -399,6 +457,20 @@ class FontInProject : EBManagedObject,
       view: view,
       valueExplorer:&mTexts_property.mValueExplorer
     )
+    createEntryForToManyRelationshipNamed (
+      "mComponentNames",
+      idx:mComponentNames_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mComponentNames_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "mComponentValues",
+      idx:mComponentValues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mComponentValues_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
@@ -410,6 +482,10 @@ class FontInProject : EBManagedObject,
   override func clearObjectExplorer () {
   //--- To many property: mTexts
     self.mTexts_property.mValueExplorer = nil
+  //--- To many property: mComponentNames
+    self.mComponentNames_property.mValueExplorer = nil
+  //--- To many property: mComponentValues
+    self.mComponentValues_property.mValueExplorer = nil
   //--- Atomic property: mNominalSize
     self.mNominalSize_property.mObserverExplorer = nil
     self.mNominalSize_property.mValueExplorer = nil
@@ -432,6 +508,8 @@ class FontInProject : EBManagedObject,
 
   override internal func cleanUpToManyRelationships () {
     self.mTexts = []
+    self.mComponentNames = []
+    self.mComponentValues = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -457,6 +535,18 @@ class FontInProject : EBManagedObject,
       relationshipName: "mTexts",
       intoDictionary: ioDictionary
     )
+  //--- To many property: mComponentNames
+    self.store (
+      managedObjectArray: self.mComponentNames_property.propval,
+      relationshipName: "mComponentNames",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: mComponentValues
+    self.store (
+      managedObjectArray: self.mComponentValues_property.propval,
+      relationshipName: "mComponentValues",
+      intoDictionary: ioDictionary
+    )
   //--- Atomic property: mNominalSize
     self.mNominalSize_property.storeIn (dictionary: ioDictionary, forKey:"mNominalSize")
   //--- Atomic property: mFontName
@@ -480,6 +570,18 @@ class FontInProject : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [BoardText])
+  //--- To many property: mComponentNames
+    self.mComponentNames_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mComponentNames",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ComponentInProject])
+  //--- To many property: mComponentValues
+    self.mComponentValues_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mComponentValues",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ComponentInProject])
   }
 
   //····················································································································
@@ -508,6 +610,14 @@ class FontInProject : EBManagedObject,
     for managedObject in self.mTexts {
       objects.append (managedObject)
     }
+  //--- To many property: mComponentNames
+    for managedObject in self.mComponentNames {
+      objects.append (managedObject)
+    }
+  //--- To many property: mComponentValues
+    for managedObject in self.mComponentValues {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -518,6 +628,14 @@ class FontInProject : EBManagedObject,
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mTexts
     for managedObject in self.mTexts {
+      objects.append (managedObject)
+    }
+  //--- To many property: mComponentNames
+    for managedObject in self.mComponentNames {
+      objects.append (managedObject)
+    }
+  //--- To many property: mComponentValues
+    for managedObject in self.mComponentValues {
       objects.append (managedObject)
     }
   }

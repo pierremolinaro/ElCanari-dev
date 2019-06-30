@@ -457,6 +457,7 @@ import Cocoa
   @IBOutlet weak var mBoardBorderPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardClearanceTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardClearanceUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardComponentNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentRotationSlider : CanariAngleSlider? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentRotationTextField : CanariAngleTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentSidePopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
@@ -527,6 +528,9 @@ import Cocoa
   @IBOutlet weak var mComponentInBoardCenterYPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentInBoardCenterYTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentInBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComponentNameFontSizeField : EBDoubleField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComponentNameRotationSlider : CanariAngleSlider? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComponentNameRotationTextField : CanariAngleTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentSymbolComponentNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentSymbolDeviceNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentSymbolInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
@@ -555,6 +559,7 @@ import Cocoa
   @IBOutlet weak var mDisplayBoardClearanceColorWell : EBColorWell? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayBoardLimitsColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayComponentNameSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayFrontLayoutColorWell : EBColorWell? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayFrontLayoutSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayFrontLegendColorWell : EBColorWell? = nil // An outlet should be declared weak
@@ -846,6 +851,7 @@ import Cocoa
     checkOutletConnection (self.mBoardBorderPageView, "mBoardBorderPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardClearanceTextField, "mBoardClearanceTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mBoardClearanceUnitPopUp, "mBoardClearanceUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardComponentNameTextField, "mBoardComponentNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardComponentRotationSlider, "mBoardComponentRotationSlider", CanariAngleSlider.self, #file, #line)
     checkOutletConnection (self.mBoardComponentRotationTextField, "mBoardComponentRotationTextField", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mBoardComponentSidePopUpButton, "mBoardComponentSidePopUpButton", EBPopUpButton.self, #file, #line)
@@ -916,6 +922,9 @@ import Cocoa
     checkOutletConnection (self.mComponentInBoardCenterYPopUp, "mComponentInBoardCenterYPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mComponentInBoardCenterYTextField, "mComponentInBoardCenterYTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mComponentInBoardInspectorView, "mComponentInBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mComponentNameFontSizeField, "mComponentNameFontSizeField", EBDoubleField.self, #file, #line)
+    checkOutletConnection (self.mComponentNameRotationSlider, "mComponentNameRotationSlider", CanariAngleSlider.self, #file, #line)
+    checkOutletConnection (self.mComponentNameRotationTextField, "mComponentNameRotationTextField", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolComponentNameTextField, "mComponentSymbolComponentNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolDeviceNameTextField, "mComponentSymbolDeviceNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolInspectorView, "mComponentSymbolInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -944,6 +953,7 @@ import Cocoa
     checkOutletConnection (self.mDisplayBoardClearanceColorWell, "mDisplayBoardClearanceColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDisplayBoardInspectorView, "mDisplayBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mDisplayBoardLimitsColorWell, "mDisplayBoardLimitsColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDisplayComponentNameSwitch, "mDisplayComponentNameSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayFrontLayoutColorWell, "mDisplayFrontLayoutColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDisplayFrontLayoutSwitch, "mDisplayFrontLayoutSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayFrontLegendColorWell, "mDisplayFrontLegendColorWell", EBColorWell.self, #file, #line)
@@ -1549,6 +1559,11 @@ import Cocoa
     self.mBoardComponentRotationTextField?.bind_angle (self.ComponentInBoardSelectionController.mRotation_property, file: #file, line: #line)
     self.mBoardComponentRotationSlider?.bind_angle (self.ComponentInBoardSelectionController.mRotation_property, file: #file, line: #line)
     self.mBoardComponentSidePopUpButton?.bind_selectedIndex (self.ComponentInBoardSelectionController.mSide_property, file: #file, line: #line)
+    self.mDisplayComponentNameSwitch?.bind_value (self.ComponentInBoardSelectionController.mNameIsVisibleInBoard_property, file: #file, line: #line)
+    self.mComponentNameFontSizeField?.bind_value (self.ComponentInBoardSelectionController.mNameFontSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
+    self.mComponentNameRotationTextField?.bind_angle (self.ComponentInBoardSelectionController.mNameRotation_property, file: #file, line: #line)
+    self.mComponentNameRotationSlider?.bind_angle (self.ComponentInBoardSelectionController.mNameRotation_property, file: #file, line: #line)
+    self.mBoardComponentNameTextField?.bind_valueObserver (self.ComponentInBoardSelectionController.componentName_property, file: #file, line: #line)
     self.mDisplayFrontPadsSwitch?.bind_value (self.rootObject.mDisplayFrontPads_property, file: #file, line: #line)
     self.mDisplayFrontPadsColorWell?.bind_color (g_Preferences!.frontSidePadColorForBoard_property, file: #file, line: #line, sendContinously:true)
     self.mDisplayBackPadsSwitch?.bind_value (self.rootObject.mDisplayBackPads_property, file: #file, line: #line)
@@ -2091,6 +2106,11 @@ import Cocoa
     self.mBoardComponentRotationTextField?.unbind_angle ()
     self.mBoardComponentRotationSlider?.unbind_angle ()
     self.mBoardComponentSidePopUpButton?.unbind_selectedIndex ()
+    self.mDisplayComponentNameSwitch?.unbind_value ()
+    self.mComponentNameFontSizeField?.unbind_value ()
+    self.mComponentNameRotationTextField?.unbind_angle ()
+    self.mComponentNameRotationSlider?.unbind_angle ()
+    self.mBoardComponentNameTextField?.unbind_valueObserver ()
     self.mDisplayFrontPadsSwitch?.unbind_value ()
     self.mDisplayFrontPadsColorWell?.unbind_color ()
     self.mDisplayBackPadsSwitch?.unbind_value ()
@@ -2285,6 +2305,7 @@ import Cocoa
     self.mBoardBorderPageView?.ebCleanUp ()
     self.mBoardClearanceTextField?.ebCleanUp ()
     self.mBoardClearanceUnitPopUp?.ebCleanUp ()
+    self.mBoardComponentNameTextField?.ebCleanUp ()
     self.mBoardComponentRotationSlider?.ebCleanUp ()
     self.mBoardComponentRotationTextField?.ebCleanUp ()
     self.mBoardComponentSidePopUpButton?.ebCleanUp ()
@@ -2355,6 +2376,9 @@ import Cocoa
     self.mComponentInBoardCenterYPopUp?.ebCleanUp ()
     self.mComponentInBoardCenterYTextField?.ebCleanUp ()
     self.mComponentInBoardInspectorView?.ebCleanUp ()
+    self.mComponentNameFontSizeField?.ebCleanUp ()
+    self.mComponentNameRotationSlider?.ebCleanUp ()
+    self.mComponentNameRotationTextField?.ebCleanUp ()
     self.mComponentSymbolComponentNameTextField?.ebCleanUp ()
     self.mComponentSymbolDeviceNameTextField?.ebCleanUp ()
     self.mComponentSymbolInspectorView?.ebCleanUp ()
@@ -2383,6 +2407,7 @@ import Cocoa
     self.mDisplayBoardClearanceColorWell?.ebCleanUp ()
     self.mDisplayBoardInspectorView?.ebCleanUp ()
     self.mDisplayBoardLimitsColorWell?.ebCleanUp ()
+    self.mDisplayComponentNameSwitch?.ebCleanUp ()
     self.mDisplayFrontLayoutColorWell?.ebCleanUp ()
     self.mDisplayFrontLayoutSwitch?.ebCleanUp ()
     self.mDisplayFrontLegendColorWell?.ebCleanUp ()
@@ -2543,6 +2568,7 @@ import Cocoa
 //    self.mBoardBorderPageView = nil
 //    self.mBoardClearanceTextField = nil
 //    self.mBoardClearanceUnitPopUp = nil
+//    self.mBoardComponentNameTextField = nil
 //    self.mBoardComponentRotationSlider = nil
 //    self.mBoardComponentRotationTextField = nil
 //    self.mBoardComponentSidePopUpButton = nil
@@ -2613,6 +2639,9 @@ import Cocoa
 //    self.mComponentInBoardCenterYPopUp = nil
 //    self.mComponentInBoardCenterYTextField = nil
 //    self.mComponentInBoardInspectorView = nil
+//    self.mComponentNameFontSizeField = nil
+//    self.mComponentNameRotationSlider = nil
+//    self.mComponentNameRotationTextField = nil
 //    self.mComponentSymbolComponentNameTextField = nil
 //    self.mComponentSymbolDeviceNameTextField = nil
 //    self.mComponentSymbolInspectorView = nil
@@ -2641,6 +2670,7 @@ import Cocoa
 //    self.mDisplayBoardClearanceColorWell = nil
 //    self.mDisplayBoardInspectorView = nil
 //    self.mDisplayBoardLimitsColorWell = nil
+//    self.mDisplayComponentNameSwitch = nil
 //    self.mDisplayFrontLayoutColorWell = nil
 //    self.mDisplayFrontLayoutSwitch = nil
 //    self.mDisplayFrontLegendColorWell = nil

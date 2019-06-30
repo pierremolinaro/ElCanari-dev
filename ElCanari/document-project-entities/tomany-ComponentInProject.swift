@@ -24,6 +24,11 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.removeEBObserversOf_mYUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mRotation_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSide_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mNameFontSize_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mXName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mYName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mNameIsVisibleInBoard_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mNameRotation_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_componentName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (inRemovedSet) // Transient property
@@ -46,6 +51,11 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.addEBObserversOf_mYUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mRotation_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSide_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mNameFontSize_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mXName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mYName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mNameIsVisibleInBoard_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mNameRotation_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_componentName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectedPackageName_toElementsOfSet (inAddedSet) // Transient property
@@ -569,6 +579,291 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mNameFontSize' stored property
+  //····················································································································
+
+  private var mObserversOf_mNameFontSize = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mNameFontSize (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mNameFontSize.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNameFontSize_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNameFontSize (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mNameFontSize.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNameFontSize_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mNameFontSize_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mNameFontSize.apply { (_ observer : EBEvent) in
+        managedObject.mNameFontSize_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mNameFontSize_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mNameFontSize.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mNameFontSize_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mXName' stored property
+  //····················································································································
+
+  private var mObserversOf_mXName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mXName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mXName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mXName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mXName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mXName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mXName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mXName_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mXName.apply { (_ observer : EBEvent) in
+        managedObject.mXName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mXName_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mXName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mXName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mYName' stored property
+  //····················································································································
+
+  private var mObserversOf_mYName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mYName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mYName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mYName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mYName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mYName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mYName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mYName_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mYName.apply { (_ observer : EBEvent) in
+        managedObject.mYName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mYName_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mYName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mYName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mNameIsVisibleInBoard' stored property
+  //····················································································································
+
+  private var mObserversOf_mNameIsVisibleInBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mNameIsVisibleInBoard (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mNameIsVisibleInBoard.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNameIsVisibleInBoard_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNameIsVisibleInBoard (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mNameIsVisibleInBoard.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNameIsVisibleInBoard_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mNameIsVisibleInBoard_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mNameIsVisibleInBoard.apply { (_ observer : EBEvent) in
+        managedObject.mNameIsVisibleInBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mNameIsVisibleInBoard_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mNameIsVisibleInBoard.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mNameIsVisibleInBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mNameRotation' stored property
+  //····················································································································
+
+  private var mObserversOf_mNameRotation = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mNameRotation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mNameRotation.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNameRotation_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNameRotation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mNameRotation.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNameRotation_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mNameRotation_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mNameRotation.apply { (_ observer : EBEvent) in
+        managedObject.mNameRotation_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mNameRotation_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mNameRotation.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mNameRotation_property.removeEBObserver (observer)
       }
     }
   }
@@ -1727,6 +2022,11 @@ final class PreferencesArrayOf_ComponentInProject : StoredArrayOf_ComponentInPro
     self.addEBObserverOf_mYUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mRotation (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSide (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mNameFontSize (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mXName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mYName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mNameIsVisibleInBoard (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mNameRotation (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 

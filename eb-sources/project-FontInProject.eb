@@ -4,6 +4,8 @@
 
 entity FontInProject {
   toMany BoardText mTexts inverse toOne mFont;
+  toMany ComponentInProject mComponentNames inverse toOne mNameFont ;
+  toMany ComponentInProject mComponentValues inverse toOne mValueFont ;
 
   property Int mNominalSize default 0 ;
   property String mFontName default "" ;

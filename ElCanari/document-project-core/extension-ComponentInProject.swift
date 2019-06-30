@@ -12,6 +12,7 @@ import Cocoa
 
 let COMPONENT_PACKAGE_CENTER_KNOB  = 0
 let COMPONENT_PACKAGE_ROTATION_KNOB  = 1
+let COMPONENT_PACKAGE_NAME_KNOB  = 2
 
 let COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : CGFloat = 30.0
 
@@ -43,6 +44,8 @@ extension ComponentInProject {
       return OCCanariPoint (x: inDx, y: inDy)
     }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB {
       return OCCanariPoint (x: inDx, y: inDy)
+    }else if inKnobIndex == COMPONENT_PACKAGE_NAME_KNOB {
+      return OCCanariPoint (x: inDx, y: inDy)
     }else{
       return OCCanariPoint (x: 0, y: 0)
     }
@@ -59,6 +62,9 @@ extension ComponentInProject {
       let newRotationKnobLocation = CanariPoint (x: inNewX, y: inNewY).cocoaPoint
       let newAngleInDegrees = angleInDegreesBetweenNSPoints (absoluteCenter, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
+    }else if inKnobIndex == COMPONENT_PACKAGE_NAME_KNOB {
+      self.mXName += inDx
+      self.mYName += inDy
     }
   }
 

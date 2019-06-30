@@ -28,85 +28,95 @@ func transient_ComponentSymbolInProject_symbolInfo (
 //--- START OF USER ZONE 2
       //--- Device info
         let key = SymbolInProjectIdentifier (symbolInstanceName: self_mSymbolInstanceName, symbolTypeName: self_mSymbolTypeName)
-        let deviceInfo = self_mComponent_deviceSymbolDictionary! [key]!
-      //--- Pin names and pad names
-        let pinNameAttributes : [NSAttributedString.Key : Any] = [
-          NSAttributedString.Key.font : prefs_pinNameFont
-        ]
-        var pins = [PinDescriptor] ()
-        for pinPadAssignment in deviceInfo.assignments {
-          if let pin = pinPadAssignment.pin, pin.symbol.symbolInstanceName == self_mSymbolInstanceName {
-            let pinTextShape = EBShape ()
-          //--- Pin name
-            if pin.pinNameIsDisplayedInSchematics {
+        if let deviceInfo = self_mComponent_deviceSymbolDictionary? [key], let componentValue = self_mComponent_mComponentValue {
+        //--- Pin names and pad names
+          let pinNameAttributes : [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.font : prefs_pinNameFont
+          ]
+          var pins = [PinDescriptor] ()
+          for pinPadAssignment in deviceInfo.assignments {
+            if let pin = pinPadAssignment.pin, pin.symbol.symbolInstanceName == self_mSymbolInstanceName {
+              let pinTextShape = EBShape ()
+            //--- Pin name
+              if pin.pinNameIsDisplayedInSchematics {
+                var trText = AffineTransform ()
+                trText.translate (x: canariUnitToCocoa (self_mCenterX), y: canariUnitToCocoa (self_mCenterY))
+                trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
+                trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
+                trText.translate (x: -canariUnitToCocoa (deviceInfo.center.x), y: -canariUnitToCocoa (deviceInfo.center.y))
+                trText.translate (x: canariUnitToCocoa (pin.nameXY.x), y: canariUnitToCocoa (pin.nameXY.y))
+                trText.rotate (byDegrees: -CGFloat (self_mRotation.rawValue & 2) * 90.0)
+                if self_mMirror && ((self_mRotation.rawValue & 1) != 0) {
+                  trText.rotate (byDegrees: 180.0)
+                }
+                trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
+                let pinNameTextShape = EBTextShape (
+                  pin.pinName,
+                  NSPoint (),
+                  pinNameAttributes,
+                  self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror),
+                  self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror)
+                )
+                pinTextShape.append (pinNameTextShape.transformed (by: trText))
+              }
+            //--- Pin number
               var trText = AffineTransform ()
               trText.translate (x: canariUnitToCocoa (self_mCenterX), y: canariUnitToCocoa (self_mCenterY))
               trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
               trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
               trText.translate (x: -canariUnitToCocoa (deviceInfo.center.x), y: -canariUnitToCocoa (deviceInfo.center.y))
-              trText.translate (x: canariUnitToCocoa (pin.nameXY.x), y: canariUnitToCocoa (pin.nameXY.y))
+              trText.translate (x: canariUnitToCocoa (pin.numberXY.x), y: canariUnitToCocoa (pin.numberXY.y))
               trText.rotate (byDegrees: -CGFloat (self_mRotation.rawValue & 2) * 90.0)
               if self_mMirror && ((self_mRotation.rawValue & 1) != 0) {
                 trText.rotate (byDegrees: 180.0)
               }
               trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
-              let pinNameTextShape = EBTextShape (
-                pin.pinName,
+              let pinNumberTextShape = EBTextShape (
+                pinPadAssignment.padName,
                 NSPoint (),
                 pinNameAttributes,
-                self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror),
+                self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.numberHorizontalAlignment, mirror: self_mMirror),
                 self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror)
               )
-              pinTextShape.append (pinNameTextShape.transformed (by: trText))
+              pinTextShape.append (pinNumberTextShape.transformed (by: trText))
+            //--- Pin location
+              let pinLocationTransform = NSAffineTransform ()
+              pinLocationTransform.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
+              pinLocationTransform.scaleX (by: self_mMirror ? -1.0 : 1.0, yBy: 1.0)
+              pinLocationTransform.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
+              pinLocationTransform.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
+              let pinLocation = pinLocationTransform.transform (pin.pinXY.cocoaPoint).canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+           //---
+              pins.append (PinDescriptor (symbolIdentifier: pin.symbol, pinName: pin.pinName, pinLocation: pinLocation, shape: pinTextShape))
             }
-          //--- Pin number
-            var trText = AffineTransform ()
-            trText.translate (x: canariUnitToCocoa (self_mCenterX), y: canariUnitToCocoa (self_mCenterY))
-            trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
-            trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
-            trText.translate (x: -canariUnitToCocoa (deviceInfo.center.x), y: -canariUnitToCocoa (deviceInfo.center.y))
-            trText.translate (x: canariUnitToCocoa (pin.numberXY.x), y: canariUnitToCocoa (pin.numberXY.y))
-            trText.rotate (byDegrees: -CGFloat (self_mRotation.rawValue & 2) * 90.0)
-            if self_mMirror && ((self_mRotation.rawValue & 1) != 0) {
-              trText.rotate (byDegrees: 180.0)
-            }
-            trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
-            let pinNumberTextShape = EBTextShape (
-              pinPadAssignment.padName,
-              NSPoint (),
-              pinNameAttributes,
-              self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.numberHorizontalAlignment, mirror: self_mMirror),
-              self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror)
-            )
-            pinTextShape.append (pinNumberTextShape.transformed (by: trText))
-          //--- Pin location
-            let pinLocationTransform = NSAffineTransform ()
-            pinLocationTransform.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
-            pinLocationTransform.scaleX (by: self_mMirror ? -1.0 : 1.0, yBy: 1.0)
-            pinLocationTransform.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
-            pinLocationTransform.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
-            let pinLocation = pinLocationTransform.transform (pin.pinXY.cocoaPoint).canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
-         //---
-            pins.append (PinDescriptor (symbolIdentifier: pin.symbol, pinName: pin.pinName, pinLocation: pinLocation, shape: pinTextShape))
           }
+        //--- Affine transformation for drawings
+          let tr = NSAffineTransform ()
+          tr.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
+          tr.scaleX (by: self_mMirror ? -1.0 : 1.0, yBy: 1.0)
+          tr.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
+          tr.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
+          let transformedStrokeBezierPath = tr.transform (deviceInfo.strokeBezierPath)
+          let transformedFilledBezierPath = tr.transform (deviceInfo.filledBezierPath)
+          let componentSymbolCenter = CanariPoint (x: self_mCenterX, y: self_mCenterY)
+          return ComponentSymbolInfo (
+            filledBezierPath: transformedFilledBezierPath,
+            strokeBezierPath: transformedStrokeBezierPath,
+            center: componentSymbolCenter,
+            pins: pins,
+            componentName: self_componentName,
+            componentValue: componentValue
+          )
+        }else{
+          return ComponentSymbolInfo (
+            filledBezierPath: NSBezierPath (),
+            strokeBezierPath: NSBezierPath (),
+            center: CanariPoint (),
+            pins: [],
+            componentName: self_componentName,
+            componentValue: ""
+          )
         }
-      //--- Affine transformation for drawings
-        let tr = NSAffineTransform ()
-        tr.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
-        tr.scaleX (by: self_mMirror ? -1.0 : 1.0, yBy: 1.0)
-        tr.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
-        tr.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
-        let transformedStrokeBezierPath = tr.transform (deviceInfo.strokeBezierPath)
-        let transformedFilledBezierPath = tr.transform (deviceInfo.filledBezierPath)
-        let componentSymbolCenter = CanariPoint (x: self_mCenterX, y: self_mCenterY)
-        return ComponentSymbolInfo (
-          filledBezierPath: transformedFilledBezierPath,
-          strokeBezierPath: transformedStrokeBezierPath,
-          center: componentSymbolCenter,
-          pins: pins,
-          componentName: self_componentName,
-          componentValue: self_mComponent_mComponentValue!
-        )
 //--- END OF USER ZONE 2
 }
 

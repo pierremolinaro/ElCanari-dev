@@ -561,6 +561,88 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   }
 
   //····················································································································
+  //   Observable toMany property: mComponentNames
+  //····················································································································
+
+  private var mObserversOf_mComponentNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mComponentNames_property_selection : EBSelection <[ComponentInProject]> {
+    if let model = self.propval {
+      switch (model.mComponentNames_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mComponentNames (_ inObserver : EBEvent) {
+    self.mObserversOf_mComponentNames.insert (inObserver)
+    if let object = self.propval {
+      object.mComponentNames_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mComponentNames (_ inObserver : EBEvent) {
+    self.mObserversOf_mComponentNames.remove (inObserver)
+    if let object = self.propval {
+      object.mComponentNames_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mComponentValues
+  //····················································································································
+
+  private var mObserversOf_mComponentValues = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mComponentValues_property_selection : EBSelection <[ComponentInProject]> {
+    if let model = self.propval {
+      switch (model.mComponentValues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mComponentValues (_ inObserver : EBEvent) {
+    self.mObserversOf_mComponentValues.insert (inObserver)
+    if let object = self.propval {
+      object.mComponentValues_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mComponentValues (_ inObserver : EBEvent) {
+    self.mObserversOf_mComponentValues.remove (inObserver)
+    if let object = self.propval {
+      object.mComponentValues_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
 
 }
 

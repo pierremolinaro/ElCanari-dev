@@ -455,11 +455,6 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
       let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
       component.mX = p.x
       component.mY = p.y
-//      if let padRect = component.padDictionary?.masterPadsRect {
-//        let center = padRect.center
-//        component.mX -= center.x
-//        component.mY -= center.y
-//      }
       self.rootObject.mBoardObjects.append (component)
       self.boardObjectsController.setSelection ([component])
       self.mPossibleDraggedComponent = nil
