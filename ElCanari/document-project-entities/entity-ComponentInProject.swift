@@ -919,15 +919,18 @@ class ComponentInProject : BoardObject,
         kind &= unwSelf.displayFrontPads_property_selection.kind ()
         kind &= g_Preferences!.backSidePadColorForBoard_property_selection.kind ()
         kind &= unwSelf.displayBackPads_property_selection.kind ()
+        kind &= g_Preferences!.padNumberFontForBoard_property_selection.kind ()
+        kind &= g_Preferences!.padNumberColorForBoard_property_selection.kind ()
+        kind &= unwSelf.displayPadNumbers_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.padDictionary_property_selection, unwSelf.strokeBezierPath_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection, g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection, g_Preferences!.frontSidePadColorForBoard_property_selection, unwSelf.displayFrontPads_property_selection, g_Preferences!.backSidePadColorForBoard_property_selection, unwSelf.displayBackPads_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12)) :
-            return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.padDictionary_property_selection, unwSelf.strokeBezierPath_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection, g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection, g_Preferences!.frontSidePadColorForBoard_property_selection, unwSelf.displayFrontPads_property_selection, g_Preferences!.backSidePadColorForBoard_property_selection, unwSelf.displayBackPads_property_selection, g_Preferences!.padNumberFontForBoard_property_selection, g_Preferences!.padNumberColorForBoard_property_selection, unwSelf.displayPadNumbers_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15)) :
+            return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15))
           default :
             return .empty
           }
@@ -949,6 +952,9 @@ class ComponentInProject : BoardObject,
     self.displayFrontPads_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.backSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property)
     self.displayBackPads_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.padNumberFontForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.padNumberColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    self.displayPadNumbers_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1022,6 +1028,9 @@ class ComponentInProject : BoardObject,
     self.displayFrontPads_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.backSidePadColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     self.displayBackPads_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.padNumberFontForBoard_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.padNumberColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    self.displayPadNumbers_property.removeEBObserver (self.objectDisplay_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
     self.mRotation_property.removeEBObserver (self.selectionDisplay_property)

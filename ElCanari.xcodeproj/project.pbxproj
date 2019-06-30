@@ -1034,6 +1034,8 @@
 		CF7E69FB2282228C0024233A /* transient-PointInSchematic-netName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E69F92282228B0024233A /* transient-PointInSchematic-netName.swift */; };
 		CF7E69FD2282230A0024233A /* transient-LabelInSchematic-netName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E69FC2282230A0024233A /* transient-LabelInSchematic-netName.swift */; };
 		CF7E69FE2282230A0024233A /* transient-LabelInSchematic-netName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E69FC2282230A0024233A /* transient-LabelInSchematic-netName.swift */; };
+		CF7F00ED22C8DBAA00325768 /* transient-BoardObject-displayPadNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F00EC22C8DBAA00325768 /* transient-BoardObject-displayPadNumbers.swift */; };
+		CF7F00EE22C8DBAA00325768 /* transient-BoardObject-displayPadNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F00EC22C8DBAA00325768 /* transient-BoardObject-displayPadNumbers.swift */; };
 		CF7F41F321CAF45400C4C529 /* transient-PackageSegment-lengthInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F41F221CAF45300C4C529 /* transient-PackageSegment-lengthInCanariUnit.swift */; };
 		CF7F41F421CAF45400C4C529 /* transient-PackageSegment-lengthInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F41F221CAF45300C4C529 /* transient-PackageSegment-lengthInCanariUnit.swift */; };
 		CF7FFAE920E5449300DE60BC /* transient-BoardModel-frontComponentValueSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FFAE820E5449300DE60BC /* transient-BoardModel-frontComponentValueSegments.swift */; };
@@ -2614,6 +2616,7 @@
 		CF7E69F6228219F80024233A /* extension-LabelInSchematic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-LabelInSchematic.swift"; sourceTree = "<group>"; };
 		CF7E69F92282228B0024233A /* transient-PointInSchematic-netName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PointInSchematic-netName.swift"; sourceTree = "<group>"; };
 		CF7E69FC2282230A0024233A /* transient-LabelInSchematic-netName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-LabelInSchematic-netName.swift"; sourceTree = "<group>"; };
+		CF7F00EC22C8DBAA00325768 /* transient-BoardObject-displayPadNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardObject-displayPadNumbers.swift"; sourceTree = "<group>"; };
 		CF7F41F221CAF45300C4C529 /* transient-PackageSegment-lengthInCanariUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageSegment-lengthInCanariUnit.swift"; sourceTree = "<group>"; };
 		CF7FFAE820E5449300DE60BC /* transient-BoardModel-frontComponentValueSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-frontComponentValueSegments.swift"; sourceTree = "<group>"; };
 		CF7FFAF420E5494500DE60BC /* transient-BoardModel-backComponentValueSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-backComponentValueSegments.swift"; sourceTree = "<group>"; };
@@ -4531,6 +4534,7 @@
 		CFEF117C22A449F70095C829 /* document — project — transients — board */ = {
 			isa = PBXGroup;
 			children = (
+				CF7F00EC22C8DBAA00325768 /* transient-BoardObject-displayPadNumbers.swift */,
 				CF989FD422C7F01F00AC5110 /* transient-BoardObject-displayBackPads.swift */,
 				CF989FD122C7EF9800AC5110 /* transient-BoardObject-displayFrontPads.swift */,
 				CF41A82B22C7C26200A5E14F /* transient-BoardObject-isPlacedInBoard.swift */,
@@ -5748,6 +5752,7 @@
 				CFFA7B4F2274821A00E2D69A /* view-StringArrayTableView.swift in Sources */,
 				CFA43071229AEB96000AA8C8 /* tomany-PointInSchematic.swift in Sources */,
 				CF9D4C02227F79A9006E2035 /* transient-ProjectDocument-pinPadAssignments.swift in Sources */,
+				CF7F00ED22C8DBAA00325768 /* transient-BoardObject-displayPadNumbers.swift in Sources */,
 				CF1A11012108AC8600987BFD /* transient-MergerDocument-mStatusMessage.swift in Sources */,
 				CFA42F9D229AEACF000AA8C8 /* toone-DeviceRoot.swift in Sources */,
 				CF2E6CFA22A12648008D6960 /* transient-NetInProject-netClassName.swift in Sources */,
@@ -6471,6 +6476,7 @@
 				CF7AA01721BDB72900AC0FC7 /* extension-UInt32.swift in Sources */,
 				CFA430BE229AEC41000AA8C8 /* toone-SymbolPin.swift in Sources */,
 				CF3D745121A8026D004F6C43 /* enum-HorizontalAlignment.swift in Sources */,
+				CF7F00EE22C8DBAA00325768 /* transient-BoardObject-displayPadNumbers.swift in Sources */,
 				CF00845221C42A91003627E9 /* transient-PackageOval-issues.swift in Sources */,
 				CF8A0A912231A94300A17B92 /* view-AddSymbolInstancePullDownButton.swift in Sources */,
 				CF5C4D45219F04D600EAC52A /* transient-SegmentForFontCharacter-selectionDisplay.swift in Sources */,

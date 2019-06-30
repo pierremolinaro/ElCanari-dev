@@ -20,12 +20,14 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
     self.removeEBObserversOf_isPlacedInBoard_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_displayFrontPads_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_displayBackPads_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_displayPadNumbers_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_isPlacedInBoard_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_displayFrontPads_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_displayBackPads_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_displayPadNumbers_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -304,6 +306,62 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
     for managedObject in inSet {
       self.mObserversOf_displayBackPads.apply { (_ observer : EBEvent) in
         managedObject.displayBackPads_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayPadNumbers' transient property
+  //····················································································································
+
+  private var mObserversOf_displayPadNumbers = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayPadNumbers (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayPadNumbers.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayPadNumbers_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayPadNumbers (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayPadNumbers.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayPadNumbers_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayPadNumbers_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_displayPadNumbers.apply { (_ observer : EBEvent) in
+        managedObject.displayPadNumbers_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayPadNumbers_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_displayPadNumbers.apply { (_ observer : EBEvent) in
+        managedObject.displayPadNumbers_property.removeEBObserver (observer)
       }
     }
   }

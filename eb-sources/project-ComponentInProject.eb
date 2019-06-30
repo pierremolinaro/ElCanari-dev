@@ -55,7 +55,8 @@ graphic entity ComponentInProject : BoardObject {
     prefs.frontSidePadColorForBoard,
     super.BoardObject.displayFrontPads,
     prefs.backSidePadColorForBoard,
-    super.BoardObject.displayBackPads
+    super.BoardObject.displayBackPads,
+    prefs.padNumberFontForBoard, prefs.padNumberColorForBoard, super.BoardObject.displayPadNumbers
   ;
 
   override transient EBShape selectionDisplay dependsFrom

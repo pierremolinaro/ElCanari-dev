@@ -295,10 +295,10 @@ struct MasterPadDescriptor : Hashable {
 
   func accumulatePadBezierPathes (into ioShape : EBShape,
                                   side : ComponentSide,
-                                  frontPadColor : NSColor,
-                                  displayFrontPads : Bool,
-                                  backPadColor : NSColor,
-                                  displayBackPads : Bool) {
+                                  padDisplayAttributes : [NSAttributedString.Key : Any]?,
+                                  padNumberAF : AffineTransform,
+                                  frontPadColor : NSColor?,
+                                  backPadColor : NSColor?) {
     let xCenter = canariUnitToCocoa (self.centerX)
     let yCenter = canariUnitToCocoa (self.centerY)
     let width = canariUnitToCocoa (self.width)
@@ -320,22 +320,29 @@ struct MasterPadDescriptor : Hashable {
       let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
-      if displayFrontPads {
-        ioShape.append (EBFilledBezierPathShape ([bp], frontPadColor))
-      }else if displayBackPads {
-        ioShape.append (EBFilledBezierPathShape ([bp], backPadColor))
+      if let color = frontPadColor {
+        ioShape.append (EBFilledBezierPathShape ([bp], color))
+      }else if let color = backPadColor {
+        ioShape.append (EBFilledBezierPathShape ([bp], color))
       }
     case .surface :
       switch side {
       case .front :
-        if displayFrontPads {
-          ioShape.append (EBFilledBezierPathShape ([bp], frontPadColor))
+        if let color = frontPadColor {
+          ioShape.append (EBFilledBezierPathShape ([bp], color))
         }
       case .back :
-        if displayBackPads {
-          ioShape.append (EBFilledBezierPathShape ([bp], backPadColor))
+        if let color = backPadColor {
+          ioShape.append (EBFilledBezierPathShape ([bp], color))
         }
       }
+    }
+  //--- Pad names
+    if let textAttributes = padDisplayAttributes {
+      var af = AffineTransform ()
+      af.translate (x: xCenter, y: yCenter)
+      af.prepend (padNumberAF)
+      ioShape.append (EBTextShape (self.name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
     }
   //--- Slave pads
     for pad in slavePads {
@@ -343,9 +350,7 @@ struct MasterPadDescriptor : Hashable {
         into: ioShape,
         side: side,
         frontPadColor: frontPadColor,
-        displayFrontPads: displayFrontPads,
-        backPadColor: backPadColor,
-        displayBackPads: displayBackPads
+        backPadColor: backPadColor
       )
     }
   }
@@ -365,10 +370,8 @@ struct SlavePadDescriptor : Hashable {
 
   func accumulatePadBezierPathes (into ioShape : EBShape,
                                   side : ComponentSide,
-                                  frontPadColor : NSColor,
-                                  displayFrontPads : Bool,
-                                  backPadColor : NSColor,
-                                  displayBackPads : Bool) {
+                                  frontPadColor : NSColor?,
+                                  backPadColor : NSColor?) {
     let xCenter = canariUnitToCocoa (self.centerX)
     let yCenter = canariUnitToCocoa (self.centerY)
     let width = canariUnitToCocoa (self.width)
@@ -390,31 +393,31 @@ struct SlavePadDescriptor : Hashable {
       let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
-      if displayFrontPads {
-        ioShape.append (EBFilledBezierPathShape ([bp], frontPadColor))
-      }else if displayBackPads {
-        ioShape.append (EBFilledBezierPathShape ([bp], backPadColor))
+      if let color = frontPadColor {
+        ioShape.append (EBFilledBezierPathShape ([bp], color))
+      }else if let color = backPadColor {
+        ioShape.append (EBFilledBezierPathShape ([bp], color))
       }
     case .topSide :
       switch side {
       case .front :
-        if displayFrontPads {
-          ioShape.append (EBFilledBezierPathShape ([bp], frontPadColor))
+        if let color = frontPadColor {
+          ioShape.append (EBFilledBezierPathShape ([bp], color))
         }
       case .back :
-        if displayBackPads {
-          ioShape.append (EBFilledBezierPathShape ([bp], backPadColor))
+        if let color = backPadColor {
+          ioShape.append (EBFilledBezierPathShape ([bp], color))
         }
       }
     case .bottomSide :
       switch side {
       case .front :
-        if displayBackPads {
-          ioShape.append (EBFilledBezierPathShape ([bp], backPadColor))
+        if let color = backPadColor {
+          ioShape.append (EBFilledBezierPathShape ([bp], color))
         }
       case .back :
-        if displayFrontPads {
-          ioShape.append (EBFilledBezierPathShape ([bp], frontPadColor))
+        if let color = frontPadColor {
+          ioShape.append (EBFilledBezierPathShape ([bp], color))
         }
       }
     }

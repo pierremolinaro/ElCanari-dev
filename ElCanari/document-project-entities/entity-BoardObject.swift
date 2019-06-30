@@ -35,6 +35,12 @@ protocol BoardObject_displayBackPads : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_displayPadNumbers : class {
+  var displayPadNumbers : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -43,7 +49,8 @@ class BoardObject : EBGraphicManagedObject,
          BoardObject_objectDisplay,
          BoardObject_isPlacedInBoard,
          BoardObject_displayFrontPads,
-         BoardObject_displayBackPads {
+         BoardObject_displayBackPads,
+         BoardObject_displayPadNumbers {
 
   //····················································································································
   //   To one property: mRoot
@@ -153,6 +160,29 @@ class BoardObject : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: displayPadNumbers
+  //····················································································································
+
+  let displayPadNumbers_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var displayPadNumbers_property_selection : EBSelection <Bool> {
+    return self.displayPadNumbers_property.prop
+  }
+
+  //····················································································································
+
+  var displayPadNumbers : Bool? {
+    switch self.displayPadNumbers_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -230,6 +260,28 @@ class BoardObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserverOf_mDisplayBackPads (self.displayBackPads_property)
+  //--- Atomic property: displayPadNumbers
+    self.displayPadNumbers_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mRoot_property.mDisplayPadNumbers_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mRoot_property.mDisplayPadNumbers_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardObject_displayPadNumbers (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.addEBObserverOf_mDisplayPadNumbers (self.displayPadNumbers_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -242,6 +294,7 @@ class BoardObject : EBGraphicManagedObject,
     self.mRoot_property.removeEBObserver (self.isPlacedInBoard_property)
     self.mRoot_property.removeEBObserverOf_mDisplayFrontPads (self.displayFrontPads_property)
     self.mRoot_property.removeEBObserverOf_mDisplayBackPads (self.displayBackPads_property)
+    self.mRoot_property.removeEBObserverOf_mDisplayPadNumbers (self.displayPadNumbers_property)
   //--- Unregister properties for handling signature
   }
 
@@ -296,6 +349,14 @@ class BoardObject : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.displayBackPads_property.mObserverExplorer,
       valueExplorer: &self.displayBackPads_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "displayPadNumbers",
+      idx: self.displayPadNumbers_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.displayPadNumbers_property.mObserverExplorer,
+      valueExplorer: &self.displayPadNumbers_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)

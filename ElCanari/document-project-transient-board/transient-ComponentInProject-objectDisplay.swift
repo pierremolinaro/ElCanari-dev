@@ -26,10 +26,21 @@ func transient_ComponentInProject_objectDisplay (
        _ prefs_frontSidePadColorForBoard : NSColor,
        _ self_BoardObject_displayFrontPads : Bool,
        _ prefs_backSidePadColorForBoard : NSColor,
-       _ self_BoardObject_displayBackPads : Bool
+       _ self_BoardObject_displayBackPads : Bool,
+       _ prefs_padNumberFontForBoard : NSFont,   
+       _ prefs_padNumberColorForBoard : NSColor, 
+       _ self_BoardObject_displayPadNumbers : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let shape = EBShape ()
+        let padDisplayAttributes : [NSAttributedString.Key : Any]?
+        if self_BoardObject_displayPadNumbers {
+          padDisplayAttributes = [
+            NSAttributedString.Key.font : prefs_padNumberFontForBoard,
+            NSAttributedString.Key.foregroundColor : prefs_padNumberColorForBoard
+          ]
+        }else{
+          padDisplayAttributes = nil
+        }
       //--- Legend
         var strokeBezierPath = EBBezierPath (self_strokeBezierPath)
         strokeBezierPath.lineWidth = CGFloat (prefs_packageDrawingWidthMultpliedByTenForBoard) / 10.0
@@ -40,22 +51,28 @@ func transient_ComponentInProject_objectDisplay (
         case .front : color = prefs_frontSideLegendColorForBoard
         case .back  : color = prefs_backSideLegendColorForBoard
         }
+        let shape = EBShape ()
         shape.append (EBStrokeBezierPathShape ([strokeBezierPath], color))
       //---
+        let padRect = self_padDictionary.masterPadsRect
+        let center = padRect.center.cocoaPoint
+        var padNumberAffineTransform = AffineTransform ()
+        if self_mSide == .back {
+          padNumberAffineTransform.scale (x: -1.0, y: 1.0)
+        }
+        padNumberAffineTransform.rotate (byDegrees: -CGFloat (self_mRotation) / 1000.0)
         for (_, descriptor) in self_padDictionary {
           descriptor.accumulatePadBezierPathes (
             into: shape,
             side: self_mSide,
-            frontPadColor: prefs_frontSidePadColorForBoard,
-            displayFrontPads: self_BoardObject_displayFrontPads,
-            backPadColor: prefs_backSidePadColorForBoard,
-            displayBackPads: self_BoardObject_displayBackPads
+            padDisplayAttributes: padDisplayAttributes,
+            padNumberAF: padNumberAffineTransform,
+            frontPadColor: self_BoardObject_displayFrontPads ? prefs_frontSidePadColorForBoard : nil,
+            backPadColor: self_BoardObject_displayBackPads ? prefs_backSidePadColorForBoard : nil
           )
         }
       //---
         var af = AffineTransform ()
-        let padRect = self_padDictionary.masterPadsRect
-        let center = padRect.center.cocoaPoint
         af.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
         af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
         if self_mSide == .back {
