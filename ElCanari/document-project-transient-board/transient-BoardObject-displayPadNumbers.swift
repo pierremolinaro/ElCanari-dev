@@ -17,7 +17,7 @@ func transient_BoardObject_displayPadNumbers (
        _ self_mRoot_mDisplayPadNumbers : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2
-
+        return self_mRoot_mDisplayPadNumbers ?? true
 //--- END OF USER ZONE 2
 }
 
