@@ -26,10 +26,8 @@ func transient_DeviceSlavePadInProject_descriptor (
 //--- START OF USER ZONE 2
         return SlavePadDescriptor (
           center: CanariPoint (x: self_mCenterX, y: self_mCenterY),
-          width: self_mWidth,
-          height: self_mHeight,
-          holeWidth: self_mHoleWidth,
-          holeHeight: self_mHoleHeight,
+          padSize: CanariSize (width: self_mWidth, height: self_mHeight),
+          holeSize: CanariSize (width: self_mHoleWidth, height: self_mHoleHeight),
           shape: self_mShape,
           style: self_mStyle
         )

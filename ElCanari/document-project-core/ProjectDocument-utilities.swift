@@ -271,10 +271,8 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
 struct MasterPadDescriptor : Hashable {
   let name : String
   let center : CanariPoint
-  let width : Int
-  let height : Int
-  let holeWidth : Int
-  let holeHeight : Int
+  let padSize : CanariSize
+  let holeSize : CanariSize
   let shape : PadShape
   let style : PadStyle
   let slavePads : [SlavePadDescriptor]
@@ -286,9 +284,8 @@ struct MasterPadDescriptor : Hashable {
                                   frontPadColor : NSColor?,
                                   backPadColor : NSColor?) {
     let center = self.center.cocoaPoint
-    let width = canariUnitToCocoa (self.width)
-    let height = canariUnitToCocoa (self.height)
-    let rPad = NSRect (x: center.x - width / 2.0, y: center.y - height / 2.0, width: width, height: height)
+    let padSize = self.padSize.cocoaSize
+    let rPad = NSRect (x: center.x - padSize.width / 2.0, y: center.y - padSize.height / 2.0, width: padSize.width, height: padSize.height)
     var bp : EBBezierPath
     switch self.shape {
     case .rect :
@@ -300,9 +297,8 @@ struct MasterPadDescriptor : Hashable {
     }
     switch self.style {
     case .traversing :
-      let holeWidth = canariUnitToCocoa (self.holeWidth)
-      let holeHeight = canariUnitToCocoa (self.holeHeight)
-      let rHole = NSRect (x: center.x - holeWidth / 2.0, y: center.y - holeHeight / 2.0, width: holeWidth, height: holeHeight)
+      let holeSize = self.holeSize.cocoaSize
+      let rHole = NSRect (x: center.x - holeSize.width / 2.0, y: center.y - holeSize.height / 2.0, width: holeSize.width, height: holeSize.height)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if let color = frontPadColor {
@@ -348,10 +344,8 @@ struct MasterPadDescriptor : Hashable {
 
 struct SlavePadDescriptor : Hashable {
   let center : CanariPoint
-  let width : Int
-  let height : Int
-  let holeWidth : Int
-  let holeHeight : Int
+  let padSize : CanariSize
+  let holeSize : CanariSize
   let shape : PadShape
   let style : SlavePadStyle
 
@@ -363,9 +357,8 @@ struct SlavePadDescriptor : Hashable {
                                   frontPadColor : NSColor?,
                                   backPadColor : NSColor?) {
     let center = self.center.cocoaPoint
-    let width = canariUnitToCocoa (self.width)
-    let height = canariUnitToCocoa (self.height)
-    let rPad = NSRect (x: center.x - width / 2.0, y: center.y - height / 2.0, width: width, height: height)
+    let padSize = self.padSize.cocoaSize
+    let rPad = NSRect (x: center.x - padSize.width / 2.0, y: center.y - padSize.height / 2.0, width: padSize.width, height: padSize.height)
     var bp : EBBezierPath
     switch self.shape {
     case .rect :
@@ -377,9 +370,8 @@ struct SlavePadDescriptor : Hashable {
     }
     switch self.style {
     case .traversing :
-      let holeWidth = canariUnitToCocoa (self.holeWidth)
-      let holeHeight = canariUnitToCocoa (self.holeHeight)
-      let rHole = NSRect (x: center.x - holeWidth / 2.0, y: center.y - holeHeight / 2.0, width: holeWidth, height: holeHeight)
+      let holeSize = self.holeSize.cocoaSize
+      let rHole = NSRect (x: center.x - holeSize.width / 2.0, y: center.y - holeSize.height / 2.0, width: holeSize.width, height: holeSize.height)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if let color = frontPadColor {
