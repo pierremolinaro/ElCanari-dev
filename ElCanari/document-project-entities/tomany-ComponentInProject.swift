@@ -23,6 +23,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mYUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mRotation_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSide_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_componentName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (inRemovedSet) // Transient property
@@ -44,6 +45,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mYUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mRotation_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSide_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_componentName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectedPackageName_toElementsOfSet (inAddedSet) // Transient property
@@ -510,6 +512,63 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mRotation_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSide' stored property
+  //····················································································································
+
+  private var mObserversOf_mSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSide_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSide_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSide_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSide.apply { (_ observer : EBEvent) in
+        managedObject.mSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSide_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSide_property.removeEBObserver (observer)
       }
     }
   }
@@ -1667,6 +1726,7 @@ final class PreferencesArrayOf_ComponentInProject : StoredArrayOf_ComponentInPro
     self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mYUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mRotation (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSide (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 

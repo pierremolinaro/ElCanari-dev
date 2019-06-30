@@ -459,6 +459,7 @@ import Cocoa
   @IBOutlet weak var mBoardClearanceUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentRotationSlider : CanariAngleSlider? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentRotationTextField : CanariAngleTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardComponentSidePopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPX1TextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPX2TextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPY1TextField : EBTextObserverField? = nil // An outlet should be declared weak
@@ -847,6 +848,7 @@ import Cocoa
     checkOutletConnection (self.mBoardClearanceUnitPopUp, "mBoardClearanceUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardComponentRotationSlider, "mBoardComponentRotationSlider", CanariAngleSlider.self, #file, #line)
     checkOutletConnection (self.mBoardComponentRotationTextField, "mBoardComponentRotationTextField", CanariAngleTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardComponentSidePopUpButton, "mBoardComponentSidePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPX1TextField, "mBoardCurveCPX1TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPX2TextField, "mBoardCurveCPX2TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPY1TextField, "mBoardCurveCPY1TextField", EBTextObserverField.self, #file, #line)
@@ -1546,6 +1548,7 @@ import Cocoa
     self.mComponentInBoardCenterYTextField?.bind_dimensionAndUnit (self.ComponentInBoardSelectionController.mY_property, self.ComponentInBoardSelectionController.mYUnit_property, file: #file, line: #line)
     self.mBoardComponentRotationTextField?.bind_angle (self.ComponentInBoardSelectionController.mRotation_property, file: #file, line: #line)
     self.mBoardComponentRotationSlider?.bind_angle (self.ComponentInBoardSelectionController.mRotation_property, file: #file, line: #line)
+    self.mBoardComponentSidePopUpButton?.bind_selectedIndex (self.ComponentInBoardSelectionController.mSide_property, file: #file, line: #line)
     self.mDisplayFrontPadsSwitch?.bind_value (self.rootObject.mDisplayFrontPads_property, file: #file, line: #line)
     self.mDisplayFrontPadsColorWell?.bind_color (g_Preferences!.frontSidePadColorForBoard_property, file: #file, line: #line, sendContinously:true)
     self.mDisplayBackPadsSwitch?.bind_value (self.rootObject.mDisplayBackPads_property, file: #file, line: #line)
@@ -2087,6 +2090,7 @@ import Cocoa
     self.mComponentInBoardCenterYTextField?.unbind_dimensionAndUnit ()
     self.mBoardComponentRotationTextField?.unbind_angle ()
     self.mBoardComponentRotationSlider?.unbind_angle ()
+    self.mBoardComponentSidePopUpButton?.unbind_selectedIndex ()
     self.mDisplayFrontPadsSwitch?.unbind_value ()
     self.mDisplayFrontPadsColorWell?.unbind_color ()
     self.mDisplayBackPadsSwitch?.unbind_value ()
@@ -2283,6 +2287,7 @@ import Cocoa
     self.mBoardClearanceUnitPopUp?.ebCleanUp ()
     self.mBoardComponentRotationSlider?.ebCleanUp ()
     self.mBoardComponentRotationTextField?.ebCleanUp ()
+    self.mBoardComponentSidePopUpButton?.ebCleanUp ()
     self.mBoardCurveCPX1TextField?.ebCleanUp ()
     self.mBoardCurveCPX2TextField?.ebCleanUp ()
     self.mBoardCurveCPY1TextField?.ebCleanUp ()
@@ -2540,6 +2545,7 @@ import Cocoa
 //    self.mBoardClearanceUnitPopUp = nil
 //    self.mBoardComponentRotationSlider = nil
 //    self.mBoardComponentRotationTextField = nil
+//    self.mBoardComponentSidePopUpButton = nil
 //    self.mBoardCurveCPX1TextField = nil
 //    self.mBoardCurveCPX2TextField = nil
 //    self.mBoardCurveCPY1TextField = nil

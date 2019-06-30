@@ -1,5 +1,11 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum ComponentSide {
+  front, back
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 graphic entity ComponentInProject : BoardObject {
   toOne DeviceInProject mDevice inverse toMany mComponents ;
   toOne DevicePackageInProject mSelectedPackage ;
@@ -14,6 +20,7 @@ graphic entity ComponentInProject : BoardObject {
   property Int mY default 0 ;
   property Int mYUnit default 2_286 ; // mils
   property Int mRotation default 0 ; // 1000 -> 1°
+  property ComponentSide mSide default front ;
 
   transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
   transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
@@ -40,9 +47,10 @@ graphic entity ComponentInProject : BoardObject {
   transient PackagePadDictionary padDictionary dependsFrom self.mSelectedPackage.one.padDictionary ;
   
   override transient EBShape objectDisplay dependsFrom
-    self.mX, self.mY, self.mRotation, self.strokeBezierPath,
-    self.padDictionary,
+    self.mX, self.mY, self.mRotation, self.mSide,
+    self.padDictionary, self.strokeBezierPath,
     prefs.frontSideLegendColorForBoard,
+    prefs.backSideLegendColorForBoard,
     prefs.packageDrawingWidthMultpliedByTenForBoard,
     prefs.frontSidePadColorForBoard,
     super.BoardObject.displayFrontPads,
@@ -51,7 +59,7 @@ graphic entity ComponentInProject : BoardObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
-    self.mX, self.mY, self.mRotation, self.strokeBezierPath,
+    self.mX, self.mY, self.mRotation, self.mSide, self.strokeBezierPath,
     self.padDictionary
   ;
 }

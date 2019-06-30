@@ -17,9 +17,11 @@ func transient_ComponentInProject_objectDisplay (
        _ self_mX : Int,                          
        _ self_mY : Int,                          
        _ self_mRotation : Int,                   
-       _ self_strokeBezierPath : NSBezierPath,   
+       _ self_mSide : ComponentSide,             
        _ self_padDictionary : PackagePadDictionary,
+       _ self_strokeBezierPath : NSBezierPath,   
        _ prefs_frontSideLegendColorForBoard : NSColor,
+       _ prefs_backSideLegendColorForBoard : NSColor,
        _ prefs_packageDrawingWidthMultpliedByTenForBoard : Int,
        _ prefs_frontSidePadColorForBoard : NSColor,
        _ self_BoardObject_displayFrontPads : Bool,
@@ -33,11 +35,17 @@ func transient_ComponentInProject_objectDisplay (
         strokeBezierPath.lineWidth = CGFloat (prefs_packageDrawingWidthMultpliedByTenForBoard) / 10.0
         strokeBezierPath.lineCapStyle = .round
         strokeBezierPath.lineJoinStyle = .round
-        shape.append (EBStrokeBezierPathShape ([strokeBezierPath], prefs_frontSideLegendColorForBoard))
+        let color : NSColor
+        switch self_mSide {
+        case .front : color = prefs_frontSideLegendColorForBoard
+        case .back  : color = prefs_backSideLegendColorForBoard
+        }
+        shape.append (EBStrokeBezierPathShape ([strokeBezierPath], color))
       //---
         for (_, descriptor) in self_padDictionary {
           descriptor.accumulatePadBezierPathes (
             into: shape,
+            side: self_mSide,
             frontPadColor: prefs_frontSidePadColorForBoard,
             displayFrontPads: self_BoardObject_displayFrontPads,
             backPadColor: prefs_backSidePadColorForBoard,
@@ -50,6 +58,9 @@ func transient_ComponentInProject_objectDisplay (
         let center = padRect.center.cocoaPoint
         af.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
         af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
+        if self_mSide == .back {
+          af.scale (x: -1.0, y: 1.0)
+        }
         af.translate (x: -center.x, y: -center.y)
         return shape.transformed (by: af)
 //--- END OF USER ZONE 2

@@ -17,12 +17,14 @@ func transient_ComponentInProject_selectionDisplay (
        _ self_mX : Int,                             
        _ self_mY : Int,                             
        _ self_mRotation : Int,                      
+       _ self_mSide : ComponentSide,                
        _ self_strokeBezierPath : NSBezierPath,      
        _ self_padDictionary : PackagePadDictionary
 ) -> EBShape {
 //--- START OF USER ZONE 2
       let rPadsCenter = self_padDictionary.masterPadsRect.center.cocoaPoint
-      let rotationKnobLocation = NSPoint (x: rPadsCenter.x + COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE, y: rPadsCenter.y)
+      let knobDx = (self_mSide == .back) ? -COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE ;
+      let rotationKnobLocation = NSPoint (x: rPadsCenter.x + knobDx, y: rPadsCenter.y)
       let shape = EBShape ()
       var strokeBezierPath = EBBezierPath (self_strokeBezierPath)
       strokeBezierPath.move (to: rPadsCenter)
@@ -38,6 +40,9 @@ func transient_ComponentInProject_selectionDisplay (
       var af = AffineTransform ()
       af.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
       af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
+      if self_mSide == .back {
+        af.scale (x: -1.0, y: 1.0)
+      }
       af.translate (x: -rPadsCenter.x, y: -rPadsCenter.y)
       return shape.transformed (by: af)
 //--- END OF USER ZONE 2

@@ -54,6 +54,12 @@ protocol ComponentInProject_mRotation : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentInProject_mSide : class {
+  var mSide : ComponentSide { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentInProject_componentName : class {
   var componentName : String? { get }
 }
@@ -137,6 +143,7 @@ class ComponentInProject : BoardObject,
          ComponentInProject_mY,
          ComponentInProject_mYUnit,
          ComponentInProject_mRotation,
+         ComponentInProject_mSide,
          ComponentInProject_componentName,
          ComponentInProject_deviceName,
          ComponentInProject_selectedPackageName,
@@ -285,6 +292,23 @@ class ComponentInProject : BoardObject,
   //····················································································································
 
   var mRotation_property_selection : EBSelection <Int> { return self.mRotation_property.prop }
+
+  //····················································································································
+  //   Atomic property: mSide
+  //····················································································································
+
+  let mSide_property = EBStoredProperty_ComponentSide (defaultValue: ComponentSide.front)
+
+  //····················································································································
+
+  var mSide : ComponentSide {
+    get { return self.mSide_property.propval }
+    set { self.mSide_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSide_property_selection : EBSelection <ComponentSide> { return self.mSide_property.prop }
 
   //····················································································································
   //   To many property: mSymbols
@@ -633,6 +657,8 @@ class ComponentInProject : BoardObject,
     self.mYUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mRotation
     self.mRotation_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSide
+    self.mSide_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbols (has opposite relationship)
     self.mSymbols_property.ebUndoManager = self.ebUndoManager
     self.mSymbols_property.setOppositeRelationShipFunctions (
@@ -883,9 +909,11 @@ class ComponentInProject : BoardObject,
         var kind = unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
         kind &= unwSelf.mRotation_property_selection.kind ()
-        kind &= unwSelf.strokeBezierPath_property_selection.kind ()
+        kind &= unwSelf.mSide_property_selection.kind ()
         kind &= unwSelf.padDictionary_property_selection.kind ()
+        kind &= unwSelf.strokeBezierPath_property_selection.kind ()
         kind &= g_Preferences!.frontSideLegendColorForBoard_property_selection.kind ()
+        kind &= g_Preferences!.backSideLegendColorForBoard_property_selection.kind ()
         kind &= g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection.kind ()
         kind &= g_Preferences!.frontSidePadColorForBoard_property_selection.kind ()
         kind &= unwSelf.displayFrontPads_property_selection.kind ()
@@ -897,9 +925,9 @@ class ComponentInProject : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.strokeBezierPath_property_selection, unwSelf.padDictionary_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection, g_Preferences!.frontSidePadColorForBoard_property_selection, unwSelf.displayFrontPads_property_selection, g_Preferences!.backSidePadColorForBoard_property_selection, unwSelf.displayBackPads_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
-            return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.padDictionary_property_selection, unwSelf.strokeBezierPath_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection, g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection, g_Preferences!.frontSidePadColorForBoard_property_selection, unwSelf.displayFrontPads_property_selection, g_Preferences!.backSidePadColorForBoard_property_selection, unwSelf.displayBackPads_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12)) :
+            return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12))
           default :
             return .empty
           }
@@ -911,9 +939,11 @@ class ComponentInProject : BoardObject,
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
     self.mRotation_property.addEBObserver (self.objectDisplay_property)
-    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
+    self.mSide_property.addEBObserver (self.objectDisplay_property)
     self.padDictionary_property.addEBObserver (self.objectDisplay_property)
+    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultpliedByTenForBoard_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property)
     self.displayFrontPads_property.addEBObserver (self.objectDisplay_property)
@@ -925,6 +955,7 @@ class ComponentInProject : BoardObject,
         var kind = unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
         kind &= unwSelf.mRotation_property_selection.kind ()
+        kind &= unwSelf.mSide_property_selection.kind ()
         kind &= unwSelf.strokeBezierPath_property_selection.kind ()
         kind &= unwSelf.padDictionary_property_selection.kind ()
         switch kind {
@@ -933,9 +964,9 @@ class ComponentInProject : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.strokeBezierPath_property_selection, unwSelf.padDictionary_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2, v3, v4))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.strokeBezierPath_property_selection, unwSelf.padDictionary_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -947,6 +978,7 @@ class ComponentInProject : BoardObject,
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
     self.mRotation_property.addEBObserver (self.selectionDisplay_property)
+    self.mSide_property.addEBObserver (self.selectionDisplay_property)
     self.strokeBezierPath_property.addEBObserver (self.selectionDisplay_property)
     self.padDictionary_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
@@ -980,9 +1012,11 @@ class ComponentInProject : BoardObject,
     self.mX_property.removeEBObserver (self.objectDisplay_property)
     self.mY_property.removeEBObserver (self.objectDisplay_property)
     self.mRotation_property.removeEBObserver (self.objectDisplay_property)
-    self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
+    self.mSide_property.removeEBObserver (self.objectDisplay_property)
     self.padDictionary_property.removeEBObserver (self.objectDisplay_property)
+    self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultpliedByTenForBoard_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSidePadColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     self.displayFrontPads_property.removeEBObserver (self.objectDisplay_property)
@@ -991,6 +1025,7 @@ class ComponentInProject : BoardObject,
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
     self.mRotation_property.removeEBObserver (self.selectionDisplay_property)
+    self.mSide_property.removeEBObserver (self.selectionDisplay_property)
     self.strokeBezierPath_property.removeEBObserver (self.selectionDisplay_property)
     self.padDictionary_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
@@ -1070,6 +1105,14 @@ class ComponentInProject : BoardObject,
       view: view,
       observerExplorer: &self.mRotation_property.mObserverExplorer,
       valueExplorer: &self.mRotation_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSide",
+      idx: self.mSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSide_property.mObserverExplorer,
+      valueExplorer: &self.mSide_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
@@ -1223,6 +1266,9 @@ class ComponentInProject : BoardObject,
   //--- Atomic property: mRotation
     self.mRotation_property.mObserverExplorer = nil
     self.mRotation_property.mValueExplorer = nil
+  //--- Atomic property: mSide
+    self.mSide_property.mObserverExplorer = nil
+    self.mSide_property.mValueExplorer = nil
   //--- To many property: mSymbols
     self.mSymbols_property.mValueExplorer = nil
   //--- To one property: mDevice
@@ -1278,6 +1324,8 @@ class ComponentInProject : BoardObject,
     self.mYUnit_property.storeIn (dictionary: ioDictionary, forKey:"mYUnit")
   //--- Atomic property: mRotation
     self.mRotation_property.storeIn (dictionary: ioDictionary, forKey:"mRotation")
+  //--- Atomic property: mSide
+    self.mSide_property.storeIn (dictionary: ioDictionary, forKey:"mSide")
   //--- To many property: mSymbols
     self.store (
       managedObjectArray: self.mSymbols_property.propval,
@@ -1349,6 +1397,8 @@ class ComponentInProject : BoardObject,
     self.mYUnit_property.readFrom (dictionary: inDictionary, forKey:"mYUnit")
   //--- Atomic property: mRotation
     self.mRotation_property.readFrom (dictionary: inDictionary, forKey:"mRotation")
+  //--- Atomic property: mSide
+    self.mSide_property.readFrom (dictionary: inDictionary, forKey:"mSide")
   }
 
   //····················································································································

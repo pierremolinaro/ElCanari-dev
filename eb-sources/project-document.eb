@@ -646,6 +646,8 @@ document ProjectDocument root ProjectRoot {
   outlet CanariAngleTextField mBoardComponentRotationTextField $angle #ComponentInBoardSelectionController.mRotation ;
   outlet CanariAngleSlider mBoardComponentRotationSlider $angle #ComponentInBoardSelectionController.mRotation ;
 
+  outlet EBPopUpButton mBoardComponentSidePopUpButton $selectedIndex #ComponentInBoardSelectionController.mSide ;
+
 //--- Display inspector
   outlet EBSwitch mDisplayFrontPadsSwitch $value root.mDisplayFrontPads ;
   outlet EBColorWell mDisplayFrontPadsColorWell $color prefs.frontSidePadColorForBoard {sendContinously:yes} ;
