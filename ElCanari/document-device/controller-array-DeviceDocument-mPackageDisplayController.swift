@@ -150,13 +150,12 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
   //····················································································································
 
   var objectCount : Int {
-    let objects = self.mModel?.propval ?? []
-    return objects.count
+    return self.mModel?.propval.count ?? 0
   }
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_PackageInDevice, _ inUndoManager : EBUndoManager) {
+  func bind_model (_ inModel : ReadWriteArrayOf_PackageInDevice, _ inUndoManager : EBUndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     inModel.attachClient (self)

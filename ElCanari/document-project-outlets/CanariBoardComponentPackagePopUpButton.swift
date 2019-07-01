@@ -1,18 +1,18 @@
 //
-//  CanariBoardTextFontPopUpButton.swift
+//  CanariBoardComponentPackagePopUpButton.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 18/06/2019.
+//  Created by Pierre Molinaro on 1/07/2019.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   CanariBoardTextFontPopUpButton
+//   CanariBoardComponentPackagePopUpButton
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariBoardTextFontPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+class CanariBoardComponentPackagePopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -38,21 +38,19 @@ class CanariBoardTextFontPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   // MARK: -
   //····················································································································
 
-  private var mFontsModel : ReadOnlyArrayOf_FontInProject? = nil
-  private var mSelectedObjects : ReadOnlyArrayOf_BoardText? = nil
+  private var mSelectedObjects : ReadOnlyArrayOf_ComponentInProject? = nil
   private var mObserver : EBOutletEvent? = nil
 
   //····················································································································
 
-  func register (fontsModel inFontsModel : ReadOnlyArrayOf_FontInProject,
-                 selectionController inSelectedObjects : ReadOnlyArrayOf_BoardText) {
-    self.mFontsModel = inFontsModel
+  func register (selectionController inSelectedObjects : ReadOnlyArrayOf_ComponentInProject) {
     self.mSelectedObjects = inSelectedObjects
     let observer = EBOutletEvent ()
     self.mObserver = observer
     observer.mEventCallBack = { self.buildPopUpButton () }
-    inFontsModel.addEBObserverOf_mFontName (observer)
-    inSelectedObjects.addEBObserverOf_fontName (observer)
+    inSelectedObjects.addEBObserver (observer)
+    inSelectedObjects.addEBObserverOf_selectedPackageName (observer)
+    inSelectedObjects.addEBObserverOf_mPackages (observer)
   }
 
   //····················································································································
@@ -60,44 +58,39 @@ class CanariBoardTextFontPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   func unregister () {
     if let observer = self.mObserver {
       observer.mEventCallBack = nil
-      self.mFontsModel?.removeEBObserverOf_mFontName (observer)
-      self.mSelectedObjects?.removeEBObserverOf_fontName (observer)
+      self.mSelectedObjects?.removeEBObserver (observer)
+      self.mSelectedObjects?.removeEBObserverOf_selectedPackageName (observer)
+      self.mSelectedObjects?.removeEBObserverOf_mPackages (observer)
       self.mObserver = nil
     }
-    self.mFontsModel = nil
     self.mSelectedObjects = nil
   }
 
   //····················································································································
 
   private func buildPopUpButton () {
-    //Swift.print ("buildPopUpButton")
-    var fontNameSet = Set <String> ()
-    if let selectedTexts = self.mSelectedObjects?.propval {
-      for text in selectedTexts {
-        if let fontName = text.fontName {
-          fontNameSet.insert (fontName)
-        }
-      }
-      //Swift.print ("fontNameSet \(fontNameSet), selectedTexts \(selectedTexts.count)")
-    }
-  //---
     self.removeAllItems ()
-    if let fontsModel = self.mFontsModel?.propval {
-      for font in fontsModel {
-        self.addItem (withTitle: font.mFontName)
-        self.lastItem?.representedObject = font
+    var packageNameNameSet = Set <String> ()
+    if let selectedComponents = self.mSelectedObjects?.propval, selectedComponents.count == 1 {
+      let component = selectedComponents [0]
+      if let packageNameName = component.selectedPackageName {
+        packageNameNameSet.insert (packageNameName)
+      }
+    //---
+      for package in component.mPackages {
+        self.addItem (withTitle: package.mPackageName)
+        self.lastItem?.representedObject = package
         self.lastItem?.target = self
-        self.lastItem?.action = #selector (CanariBoardTextFontPopUpButton.changeFontAction (_:))
+        self.lastItem?.action = #selector (CanariBoardComponentPackagePopUpButton.changePackageAction (_:))
         self.lastItem?.isEnabled = true
-        if fontNameSet.contains (font.mFontName) {
+        if packageNameNameSet.contains (package.mPackageName) {
           self.select (self.lastItem)
         }else{
           let attributes : [NSAttributedString.Key : Any] = [
             NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize),
             NSAttributedString.Key.obliqueness : 0.2
           ]
-          let attributedString = NSAttributedString (string: font.mFontName, attributes: attributes)
+          let attributedString = NSAttributedString (string: package.mPackageName, attributes: attributes)
           self.lastItem?.attributedTitle = attributedString
         }
       }
@@ -106,10 +99,10 @@ class CanariBoardTextFontPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  @objc private func changeFontAction (_ inSender : NSMenuItem) {
-    if let selectedTexts = self.mSelectedObjects?.propval, let font = inSender.representedObject as? FontInProject {
-      for text in selectedTexts {
-        text.mFont = font
+  @objc private func changePackageAction (_ inSender : NSMenuItem) {
+    if let selectedComponents = self.mSelectedObjects?.propval, let package = inSender.representedObject as? DevicePackageInProject {
+      for component in selectedComponents {
+        component.mSelectedPackage = package
       }
     }
   }

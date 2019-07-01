@@ -92,8 +92,10 @@ class CanariBoardComponentValueFontPopUpButton : NSPopUpButton, EBUserClassNameP
         self.lastItem?.isEnabled = true
         if fontNameSet.contains (font.mFontName) {
           self.select (self.lastItem)
+        }else{
           let attributes : [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+            NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize),
+            NSAttributedString.Key.obliqueness : 0.2
           ]
           let attributedString = NSAttributedString (string: font.mFontName, attributes: attributes)
           self.lastItem?.attributedTitle = attributedString

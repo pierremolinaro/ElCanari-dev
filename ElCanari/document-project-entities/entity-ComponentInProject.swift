@@ -572,6 +572,12 @@ class ComponentInProject : BoardObject,
   var mValueRotation_property_selection : EBSelection <Int> { return self.mValueRotation_property.prop }
 
   //····················································································································
+  //   Array controller: componentAvailablePackagesController
+  //····················································································································
+
+  var componentAvailablePackagesController = Controller_ComponentInProject_componentAvailablePackagesController ()
+
+  //····················································································································
   //   To many property: mSymbols
   //····················································································································
 
@@ -588,6 +594,36 @@ class ComponentInProject : BoardObject,
   var mSymbols : [ComponentSymbolInProject] {
     get { return self.mSymbols_property.propval }
     set { self.mSymbols_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   ToMany proxy: mPackages
+  //····················································································································
+
+  var mPackages_modelDidChangeController : EBSimpleController? = nil
+  // var mPackages_boundObjectDidChangeController : EBSimpleController? = nil
+  let mPackages_property = ProxyArrayOf_DevicePackageInProject ()
+
+  //····················································································································
+
+  var mPackages : [DevicePackageInProject] {
+    get {
+      switch self.mPackages_property.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      self.mPackages_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mPackages_property_selection : EBSelection <[DevicePackageInProject]> {
+    return self.mPackages_property.prop
   }
 
   //····················································································································
@@ -1085,12 +1121,27 @@ class ComponentInProject : BoardObject,
     self.mValueIsVisibleInBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mValueRotation
     self.mValueRotation_property.ebUndoManager = self.ebUndoManager
+  //--- Array controller property: componentAvailablePackagesController
+    self.componentAvailablePackagesController.bind_model (self.mPackages_property, self.ebUndoManager)
   //--- To many property: mSymbols (has opposite relationship)
     self.mSymbols_property.ebUndoManager = self.ebUndoManager
     self.mSymbols_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
       resetter: { inObject in inObject.mComponent_property.setProp (nil) }
     )
+  //--- ToMany proxy: mPackages
+    do{
+      let controller = EBSimpleController (
+        observedObjects: [self.mDevice_property],
+        callBack: { [weak self] in
+          if let me = self, let model = me.mDevice {
+            me.mPackages_property.setModel (model.mPackages_property)
+          }
+        }
+      )
+      self.mDevice_property.addEBObserverOf_mPackages (controller)
+      self.mPackages_modelDidChangeController = controller
+    }
   //--- To one property: mNameFont (has opposite to many relationship: mComponentNames)
     self.mNameFont_property.ebUndoManager = self.ebUndoManager
     self.mNameFont_property.setOppositeRelationShipFunctions (
@@ -1560,6 +1611,12 @@ class ComponentInProject : BoardObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+  //--- Array controller property: componentAvailablePackagesController
+    self.componentAvailablePackagesController.unbind_model ()
+  //--- ToMany proxy: mPackages
+    self.mPackages_property.setModel (nil)
+    self.mPackages_modelDidChangeController?.unregister ()
+    self.mPackages_modelDidChangeController = nil
     self.mNameFont_property.removeEBObserverOf_mFontName (self.componentNameFontName_property)
     self.mValueFont_property.removeEBObserverOf_mFontName (self.componentValueFontName_property)
     self.mNamePrefix_property.removeEBObserver (self.componentName_property)
@@ -2019,6 +2076,8 @@ class ComponentInProject : BoardObject,
     self.mValueRotation_property.mValueExplorer = nil
   //--- To many property: mSymbols
     self.mSymbols_property.mValueExplorer = nil
+  //--- ToMany proxy: mPackages
+    self.mPackages_property.mObserverExplorer = nil
   //--- To one property: mNameFont
     self.mNameFont_property.mObserverExplorer = nil
     self.mNameFont_property.mValueExplorer = nil

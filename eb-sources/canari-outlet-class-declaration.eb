@@ -29,6 +29,7 @@ binding CanariNewComponentFromDevicePullDownButton $deviceNames : transient Stri
 extern outlet class CanariBoardTextFontPopUpButton ;
 extern outlet class CanariBoardComponentNameFontPopUpButton ;
 extern outlet class CanariBoardComponentValueFontPopUpButton ;
+extern outlet class CanariBoardComponentPackagePopUpButton ;
 
 extern outlet class NSPanel ;
 

@@ -9,6 +9,9 @@ enum ComponentSide {
 graphic entity ComponentInProject : BoardObject {
   toOne DeviceInProject mDevice inverse toMany mComponents ;
   toOne DevicePackageInProject mSelectedPackage ;
+  arrayController #componentAvailablePackagesController : self.mPackages ;
+  toMany proxy DevicePackageInProject mPackages : mDevice.mPackages ;
+
   toMany ComponentSymbolInProject mSymbols inverse toOne mComponent ;
 
   property String mNamePrefix default "" ;

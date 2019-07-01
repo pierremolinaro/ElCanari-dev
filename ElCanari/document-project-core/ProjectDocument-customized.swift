@@ -274,6 +274,9 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
       fontsModel: self.rootObject.mFonts_property,
       selectionController: self.componentInBoardSelectionController.selectedArray_property
     )
+    self.mComponentPackagePopUpButton?.register (
+      selectionController: self.componentInBoardSelectionController.selectedArray_property
+    )
   }
 
   //····················································································································
@@ -300,6 +303,8 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
     self.mBoardComponentNameFontPopUpButton = nil
     self.mBoardComponentValueFontPopUpButton?.unregister ()
     self.mBoardComponentValueFontPopUpButton = nil
+    self.mComponentPackagePopUpButton?.unregister ()
+    self.mComponentPackagePopUpButton = nil
   //---
     super.removeUserInterface ()
   }

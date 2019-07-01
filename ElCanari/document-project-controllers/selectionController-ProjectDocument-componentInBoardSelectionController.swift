@@ -201,6 +201,16 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   }
 
   //····················································································································
+  //   ToMany proxy: mPackages
+  //····················································································································
+
+  let mPackages_property = ProxyArrayOf_DevicePackageInProject ()
+
+  var mPackages_property_selection : EBSelection <[DevicePackageInProject]> {
+    return .single (self.mPackages_property.propval)
+  }
+
+  //····················································································································
   //   Selection observable property: componentNameFontName
   //····················································································································
 

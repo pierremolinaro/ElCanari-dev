@@ -646,6 +646,8 @@ document ProjectDocument root ProjectRoot {
      $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
   ;
 
+  outlet CanariBoardComponentPackagePopUpButton mComponentPackagePopUpButton ;
+
   outlet CanariAngleTextField mBoardComponentRotationTextField $angle #componentInBoardSelectionController.mRotation ;
   outlet CanariAngleSlider mBoardComponentRotationSlider $angle #componentInBoardSelectionController.mRotation ;
 

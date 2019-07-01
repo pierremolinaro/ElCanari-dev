@@ -534,6 +534,7 @@ import Cocoa
   @IBOutlet weak var mComponentNameFontSizeField : EBDoubleField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentNameRotationSlider : CanariAngleSlider? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentNameRotationTextField : CanariAngleTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComponentPackagePopUpButton : CanariBoardComponentPackagePopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentSymbolComponentNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentSymbolDeviceNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentSymbolInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
@@ -935,6 +936,7 @@ import Cocoa
     checkOutletConnection (self.mComponentNameFontSizeField, "mComponentNameFontSizeField", EBDoubleField.self, #file, #line)
     checkOutletConnection (self.mComponentNameRotationSlider, "mComponentNameRotationSlider", CanariAngleSlider.self, #file, #line)
     checkOutletConnection (self.mComponentNameRotationTextField, "mComponentNameRotationTextField", CanariAngleTextField.self, #file, #line)
+    checkOutletConnection (self.mComponentPackagePopUpButton, "mComponentPackagePopUpButton", CanariBoardComponentPackagePopUpButton.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolComponentNameTextField, "mComponentSymbolComponentNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolDeviceNameTextField, "mComponentSymbolDeviceNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolInspectorView, "mComponentSymbolInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -2406,6 +2408,7 @@ import Cocoa
     self.mComponentNameFontSizeField?.ebCleanUp ()
     self.mComponentNameRotationSlider?.ebCleanUp ()
     self.mComponentNameRotationTextField?.ebCleanUp ()
+    self.mComponentPackagePopUpButton?.ebCleanUp ()
     self.mComponentSymbolComponentNameTextField?.ebCleanUp ()
     self.mComponentSymbolDeviceNameTextField?.ebCleanUp ()
     self.mComponentSymbolInspectorView?.ebCleanUp ()
@@ -2676,6 +2679,7 @@ import Cocoa
 //    self.mComponentNameFontSizeField = nil
 //    self.mComponentNameRotationSlider = nil
 //    self.mComponentNameRotationTextField = nil
+//    self.mComponentPackagePopUpButton = nil
 //    self.mComponentSymbolComponentNameTextField = nil
 //    self.mComponentSymbolDeviceNameTextField = nil
 //    self.mComponentSymbolInspectorView = nil

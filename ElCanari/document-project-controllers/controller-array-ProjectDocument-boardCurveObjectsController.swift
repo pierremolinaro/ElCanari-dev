@@ -150,13 +150,12 @@ final class Controller_ProjectDocument_boardCurveObjectsController : ReadOnlyAbs
   //····················································································································
 
   var objectCount : Int {
-    let objects = self.mModel?.propval ?? []
-    return objects.count
+    return self.mModel?.propval.count ?? 0
   }
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_BorderCurve, _ inUndoManager : EBUndoManager) {
+  func bind_model (_ inModel : ReadWriteArrayOf_BorderCurve, _ inUndoManager : EBUndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     inModel.attachClient (self)
