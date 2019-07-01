@@ -70,28 +70,43 @@ class CanariBoardComponentPackagePopUpButton : NSPopUpButton, EBUserClassNamePro
 
   private func buildPopUpButton () {
     self.removeAllItems ()
-    var packageNameNameSet = Set <String> ()
-    if let selectedComponents = self.mSelectedObjects?.propval, selectedComponents.count == 1 {
-      let component = selectedComponents [0]
-      if let packageNameName = component.selectedPackageName {
-        packageNameNameSet.insert (packageNameName)
+    var selectedPackageNameSet = Set <String> ()
+    if let selectedComponents = self.mSelectedObjects?.propval, selectedComponents.count > 0 {
+    //--- Check all selected components have the same available package set
+      var referencePackageSet : Set <String>? = nil
+      var ok = true
+      for component in selectedComponents {
+        var packageSet = Set <String> ()
+        for package in component.mPackages {
+          packageSet.insert (package.mPackageName)
+        }
+        if let ps = referencePackageSet, ok {
+          ok = ps == packageSet
+        }else{
+          referencePackageSet = packageSet
+        }
+        if let packageNameName = component.selectedPackageName {
+          selectedPackageNameSet.insert (packageNameName)
+        }
       }
     //---
-      for package in component.mPackages {
-        self.addItem (withTitle: package.mPackageName)
-        self.lastItem?.representedObject = package
-        self.lastItem?.target = self
-        self.lastItem?.action = #selector (CanariBoardComponentPackagePopUpButton.changePackageAction (_:))
-        self.lastItem?.isEnabled = true
-        if packageNameNameSet.contains (package.mPackageName) {
-          self.select (self.lastItem)
-        }else{
-          let attributes : [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize),
-            NSAttributedString.Key.obliqueness : 0.2
-          ]
-          let attributedString = NSAttributedString (string: package.mPackageName, attributes: attributes)
-          self.lastItem?.attributedTitle = attributedString
+      if ok {
+        let attributes : [NSAttributedString.Key : Any] = [
+          NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize),
+          NSAttributedString.Key.obliqueness : 0.2
+        ]
+        for package in selectedComponents [0].mPackages {
+          self.addItem (withTitle: package.mPackageName)
+          self.lastItem?.representedObject = package
+          self.lastItem?.target = self
+          self.lastItem?.action = #selector (CanariBoardComponentPackagePopUpButton.changePackageAction (_:))
+          self.lastItem?.isEnabled = true
+          if selectedPackageNameSet.contains (package.mPackageName) {
+            self.select (self.lastItem)
+         }else{
+            let attributedString = NSAttributedString (string: package.mPackageName, attributes: attributes)
+            self.lastItem?.attributedTitle = attributedString
+          }
         }
       }
     }
