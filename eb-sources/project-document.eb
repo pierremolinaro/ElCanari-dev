@@ -76,6 +76,7 @@ document ProjectDocument root ProjectRoot {
      column "package" sort selectedPackageName EBTextObserverField $valueObserver self.selectedPackageName
      column "value" sort mComponentValue EBTextField $value self.mComponentValue { sendContinously : no }
      column "inSchematics" sort placementInSchematic EBTextObserverField $valueObserver self.placementInSchematic
+     column "inBoard" sort componentIsPlacedInBoardString EBTextObserverField $valueObserver self.componentIsPlacedInBoardString
   }
   outlet EBTableView mComponentTableView $tableValue #componentController ;
 

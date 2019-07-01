@@ -54,6 +54,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
     self.mSortDescriptorArray.append (NSSortDescriptor (key: "package", ascending: true))
     self.mSortDescriptorArray.append (NSSortDescriptor (key: "value", ascending: true))
     self.mSortDescriptorArray.append (NSSortDescriptor (key: "inSchematics", ascending: true))
+    self.mSortDescriptorArray.append (NSSortDescriptor (key: "inBoard", ascending: true))
     for tableView in self.mTableViewArray {
       for sortDescriptor in self.mSortDescriptorArray {
         if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
@@ -69,6 +70,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
       inModel,
       sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
       addSortObserversCallback: {(observer) in
+        inModel.addEBObserverOf_componentIsPlacedInBoardString (observer)
         inModel.addEBObserverOf_componentName (observer)
         inModel.addEBObserverOf_deviceName (observer)
         inModel.addEBObserverOf_mComponentValue (observer)
@@ -76,6 +78,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
         inModel.addEBObserverOf_selectedPackageName (observer)
       },
       removeSortObserversCallback: {(observer) in
+        inModel.removeEBObserverOf_componentIsPlacedInBoardString (observer)
         inModel.removeEBObserverOf_componentName (observer)
         inModel.removeEBObserverOf_deviceName (observer)
         inModel.removeEBObserverOf_mComponentValue (observer)
@@ -183,6 +186,8 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
         order = compare_String_properties (left.mComponentValue_property, right.mComponentValue_property)
       }else if sortDescriptor.key == "inSchematics" {
         order = compare_String_properties (left.placementInSchematic_property, right.placementInSchematic_property)
+      }else if sortDescriptor.key == "inBoard" {
+        order = compare_String_properties (left.componentIsPlacedInBoardString_property, right.componentIsPlacedInBoardString_property)
       }
       // Swift.print ("key \(sortDescriptor.key), ascending \(sortDescriptor.ascending), order \(order.rawValue)")
       if !sortDescriptor.ascending {
@@ -259,6 +264,12 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
         column.sortDescriptorPrototype = nil
       }else{
         presentErrorWindow (file, line, "\"inSchematics\" column view unknown")
+      }
+    //--- Check 'inBoard' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "inBoard")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"inBoard\" column view unknown")
       }
     //--- Set table view sort descriptors
       for sortDescriptor in self.mSortDescriptorArray {
@@ -403,6 +414,13 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.placementInSchematic_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "inBoard", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.componentIsPlacedInBoardString_property, file: #file, line: #line)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")

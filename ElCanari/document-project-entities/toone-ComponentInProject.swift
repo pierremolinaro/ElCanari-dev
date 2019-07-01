@@ -40,6 +40,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     inOldValue?.availablePackages_property.removeEBObserversFrom (&self.mObserversOf_availablePackages) // Transient property
     inOldValue?.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
     inOldValue?.componentIsPlacedInBoard_property.removeEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoard) // Transient property
+    inOldValue?.componentIsPlacedInBoardString_property.removeEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoardString) // Transient property
     inOldValue?.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
     inOldValue?.placementInSchematic_property.removeEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
     inOldValue?.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
@@ -72,6 +73,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     self.mInternalValue?.availablePackages_property.addEBObserversFrom (&self.mObserversOf_availablePackages) // Transient property
     self.mInternalValue?.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
     self.mInternalValue?.componentIsPlacedInBoard_property.addEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoard) // Transient property
+    self.mInternalValue?.componentIsPlacedInBoardString_property.addEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoardString) // Transient property
     self.mInternalValue?.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
     self.mInternalValue?.placementInSchematic_property.addEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
     self.mInternalValue?.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
@@ -1820,6 +1822,75 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     for managedObject in inSet {
       self.mObserversOf_componentIsPlacedInBoard.apply { (_ observer : EBEvent) in
         managedObject.componentIsPlacedInBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'componentIsPlacedInBoardString' transient property
+  //····················································································································
+
+  private var mObserversOf_componentIsPlacedInBoardString = EBWeakEventSet ()
+
+  //····················································································································
+
+  var componentIsPlacedInBoardString_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.componentIsPlacedInBoardString_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_componentIsPlacedInBoardString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_componentIsPlacedInBoardString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.componentIsPlacedInBoardString_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_componentIsPlacedInBoardString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_componentIsPlacedInBoardString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.componentIsPlacedInBoardString_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_componentIsPlacedInBoardString_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentIsPlacedInBoardString.apply { (_ observer : EBEvent) in
+        managedObject.componentIsPlacedInBoardString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_componentIsPlacedInBoardString_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentIsPlacedInBoardString.apply { (_ observer : EBEvent) in
+        managedObject.componentIsPlacedInBoardString_property.removeEBObserver (observer)
       }
     }
   }

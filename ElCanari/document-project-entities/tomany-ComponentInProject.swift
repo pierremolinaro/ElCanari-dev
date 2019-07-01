@@ -40,6 +40,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.removeEBObserversOf_availablePackages_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_componentIsPlacedInBoard_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_componentIsPlacedInBoardString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_placementInSchematic_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (inRemovedSet) // Transient property
@@ -72,6 +73,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.addEBObserversOf_availablePackages_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_unplacedSymbols_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_componentIsPlacedInBoard_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_componentIsPlacedInBoardString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_placementInSchematic_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_strokeBezierPath_toElementsOfSet (inAddedSet) // Transient property
@@ -1495,6 +1497,62 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     for managedObject in inSet {
       self.mObserversOf_componentIsPlacedInBoard.apply { (_ observer : EBEvent) in
         managedObject.componentIsPlacedInBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'componentIsPlacedInBoardString' transient property
+  //····················································································································
+
+  private var mObserversOf_componentIsPlacedInBoardString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_componentIsPlacedInBoardString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_componentIsPlacedInBoardString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.componentIsPlacedInBoardString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_componentIsPlacedInBoardString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_componentIsPlacedInBoardString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.componentIsPlacedInBoardString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_componentIsPlacedInBoardString_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentIsPlacedInBoardString.apply { (_ observer : EBEvent) in
+        managedObject.componentIsPlacedInBoardString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_componentIsPlacedInBoardString_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentIsPlacedInBoardString.apply { (_ observer : EBEvent) in
+        managedObject.componentIsPlacedInBoardString_property.removeEBObserver (observer)
       }
     }
   }

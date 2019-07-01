@@ -52,6 +52,8 @@ graphic entity ComponentInProject : BoardObject {
 
   transient Bool componentIsPlacedInBoard dependsFrom super.BoardObject.isPlacedInBoard ;
 
+  transient String componentIsPlacedInBoardString dependsFrom self.componentIsPlacedInBoard ;
+
   transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ;
 
   transient String placementInSchematic dependsFrom self.mSymbols.all.symbolInSchematic ;

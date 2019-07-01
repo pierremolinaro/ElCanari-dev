@@ -156,6 +156,12 @@ protocol ComponentInProject_componentIsPlacedInBoard : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentInProject_componentIsPlacedInBoardString : class {
+  var componentIsPlacedInBoardString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentInProject_deviceSymbolDictionary : class {
   var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
 }
@@ -220,6 +226,7 @@ class ComponentInProject : BoardObject,
          ComponentInProject_availablePackages,
          ComponentInProject_unplacedSymbols,
          ComponentInProject_componentIsPlacedInBoard,
+         ComponentInProject_componentIsPlacedInBoardString,
          ComponentInProject_deviceSymbolDictionary,
          ComponentInProject_placementInSchematic,
          ComponentInProject_strokeBezierPath,
@@ -860,6 +867,29 @@ class ComponentInProject : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: componentIsPlacedInBoardString
+  //····················································································································
+
+  let componentIsPlacedInBoardString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var componentIsPlacedInBoardString_property_selection : EBSelection <String> {
+    return self.componentIsPlacedInBoardString_property.prop
+  }
+
+  //····················································································································
+
+  var componentIsPlacedInBoardString : String? {
+    switch self.componentIsPlacedInBoardString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: deviceSymbolDictionary
   //····················································································································
 
@@ -1163,6 +1193,28 @@ class ComponentInProject : BoardObject,
       }
     }
     self.isPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoard_property)
+  //--- Atomic property: componentIsPlacedInBoardString
+    self.componentIsPlacedInBoardString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.componentIsPlacedInBoard_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.componentIsPlacedInBoard_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_componentIsPlacedInBoardString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.componentIsPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoardString_property)
   //--- Atomic property: deviceSymbolDictionary
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1415,6 +1467,7 @@ class ComponentInProject : BoardObject,
     self.mSymbols_property.removeEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
     self.isPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoard_property)
+    self.componentIsPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoardString_property)
     self.mDevice_property.removeEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
     self.mSelectedPackage_property.removeEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
@@ -1683,6 +1736,14 @@ class ComponentInProject : BoardObject,
       view: view,
       observerExplorer: &self.componentIsPlacedInBoard_property.mObserverExplorer,
       valueExplorer: &self.componentIsPlacedInBoard_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "componentIsPlacedInBoardString",
+      idx: self.componentIsPlacedInBoardString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.componentIsPlacedInBoardString_property.mObserverExplorer,
+      valueExplorer: &self.componentIsPlacedInBoardString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "deviceSymbolDictionary",

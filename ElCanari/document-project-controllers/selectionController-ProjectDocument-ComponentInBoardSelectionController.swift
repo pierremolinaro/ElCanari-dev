@@ -261,6 +261,16 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: componentIsPlacedInBoardString
+  //····················································································································
+
+  let componentIsPlacedInBoardString_property = EBTransientProperty_String ()
+
+  var componentIsPlacedInBoardString_property_selection : EBSelection <String> {
+    return self.componentIsPlacedInBoardString_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: deviceSymbolDictionary
   //····················································································································
 
@@ -361,6 +371,7 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
     self.bind_property_availablePackages ()
     self.bind_property_unplacedSymbols ()
     self.bind_property_componentIsPlacedInBoard ()
+    self.bind_property_componentIsPlacedInBoardString ()
     self.bind_property_deviceSymbolDictionary ()
     self.bind_property_placementInSchematic ()
     self.bind_property_strokeBezierPath ()
@@ -488,6 +499,9 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
   //--- componentIsPlacedInBoard
     self.componentIsPlacedInBoard_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_componentIsPlacedInBoard (self.componentIsPlacedInBoard_property)
+  //--- componentIsPlacedInBoardString
+    self.componentIsPlacedInBoardString_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_componentIsPlacedInBoardString (self.componentIsPlacedInBoardString_property)
   //--- deviceSymbolDictionary
     self.deviceSymbolDictionary_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
@@ -2271,6 +2285,45 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
           var isMultipleSelection = false
           for object in v {
             switch object.componentIsPlacedInBoard_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_componentIsPlacedInBoardString () {
+    self.selectedArray_property.addEBObserverOf_componentIsPlacedInBoardString (self.componentIsPlacedInBoardString_property)
+    self.componentIsPlacedInBoardString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.componentIsPlacedInBoardString_property_selection {
             case .empty :
               return .empty
             case .multiple :
