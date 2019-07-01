@@ -17,7 +17,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //--- Remove observers from removed objects
     inOldValue?.mNamePrefix_property.removeEBObserversFrom (&self.mObserversOf_mNamePrefix) // Stored property
     inOldValue?.mNameIndex_property.removeEBObserversFrom (&self.mObserversOf_mNameIndex) // Stored property
-    inOldValue?.mComponentValue_property.removeEBObserversFrom (&self.mObserversOf_mComponentValue) // Stored property
     inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
     inOldValue?.mXUnit_property.removeEBObserversFrom (&self.mObserversOf_mXUnit) // Stored property
     inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
@@ -29,6 +28,12 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     inOldValue?.mYName_property.removeEBObserversFrom (&self.mObserversOf_mYName) // Stored property
     inOldValue?.mNameIsVisibleInBoard_property.removeEBObserversFrom (&self.mObserversOf_mNameIsVisibleInBoard) // Stored property
     inOldValue?.mNameRotation_property.removeEBObserversFrom (&self.mObserversOf_mNameRotation) // Stored property
+    inOldValue?.mComponentValue_property.removeEBObserversFrom (&self.mObserversOf_mComponentValue) // Stored property
+    inOldValue?.mValueFontSize_property.removeEBObserversFrom (&self.mObserversOf_mValueFontSize) // Stored property
+    inOldValue?.mXValue_property.removeEBObserversFrom (&self.mObserversOf_mXValue) // Stored property
+    inOldValue?.mYValue_property.removeEBObserversFrom (&self.mObserversOf_mYValue) // Stored property
+    inOldValue?.mValueIsVisibleInBoard_property.removeEBObserversFrom (&self.mObserversOf_mValueIsVisibleInBoard) // Stored property
+    inOldValue?.mValueRotation_property.removeEBObserversFrom (&self.mObserversOf_mValueRotation) // Stored property
     inOldValue?.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName) // Transient property
     inOldValue?.deviceName_property.removeEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
     inOldValue?.selectedPackageName_property.removeEBObserversFrom (&self.mObserversOf_selectedPackageName) // Transient property
@@ -44,7 +49,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //--- Add observers to added objects
     self.mInternalValue?.mNamePrefix_property.addEBObserversFrom (&self.mObserversOf_mNamePrefix) // Stored property
     self.mInternalValue?.mNameIndex_property.addEBObserversFrom (&self.mObserversOf_mNameIndex) // Stored property
-    self.mInternalValue?.mComponentValue_property.addEBObserversFrom (&self.mObserversOf_mComponentValue) // Stored property
     self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
     self.mInternalValue?.mXUnit_property.addEBObserversFrom (&self.mObserversOf_mXUnit) // Stored property
     self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
@@ -56,6 +60,12 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     self.mInternalValue?.mYName_property.addEBObserversFrom (&self.mObserversOf_mYName) // Stored property
     self.mInternalValue?.mNameIsVisibleInBoard_property.addEBObserversFrom (&self.mObserversOf_mNameIsVisibleInBoard) // Stored property
     self.mInternalValue?.mNameRotation_property.addEBObserversFrom (&self.mObserversOf_mNameRotation) // Stored property
+    self.mInternalValue?.mComponentValue_property.addEBObserversFrom (&self.mObserversOf_mComponentValue) // Stored property
+    self.mInternalValue?.mValueFontSize_property.addEBObserversFrom (&self.mObserversOf_mValueFontSize) // Stored property
+    self.mInternalValue?.mXValue_property.addEBObserversFrom (&self.mObserversOf_mXValue) // Stored property
+    self.mInternalValue?.mYValue_property.addEBObserversFrom (&self.mObserversOf_mYValue) // Stored property
+    self.mInternalValue?.mValueIsVisibleInBoard_property.addEBObserversFrom (&self.mObserversOf_mValueIsVisibleInBoard) // Stored property
+    self.mInternalValue?.mValueRotation_property.addEBObserversFrom (&self.mObserversOf_mValueRotation) // Stored property
     self.mInternalValue?.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName) // Transient property
     self.mInternalValue?.deviceName_property.addEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
     self.mInternalValue?.selectedPackageName_property.addEBObserversFrom (&self.mObserversOf_selectedPackageName) // Transient property
@@ -206,76 +216,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mNameIndex_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mComponentValue' stored property
-  //····················································································································
-
-  private var mObserversOf_mComponentValue = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mComponentValue_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.mComponentValue_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mComponentValue (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mComponentValue.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mComponentValue_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mComponentValue (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mComponentValue.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mComponentValue_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mComponentValue_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mComponentValue.apply { (_ observer : EBEvent) in
-        managedObject.mComponentValue_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mComponentValue_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
-    self.mObserversOf_mComponentValue.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mComponentValue_property.removeEBObserver (observer)
       }
     }
   }
@@ -1046,6 +986,426 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mNameRotation_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mComponentValue' stored property
+  //····················································································································
+
+  private var mObserversOf_mComponentValue = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mComponentValue_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mComponentValue_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mComponentValue (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mComponentValue.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mComponentValue_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mComponentValue (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mComponentValue.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mComponentValue_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mComponentValue_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mComponentValue.apply { (_ observer : EBEvent) in
+        managedObject.mComponentValue_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mComponentValue_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mComponentValue.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mComponentValue_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mValueFontSize' stored property
+  //····················································································································
+
+  private var mObserversOf_mValueFontSize = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mValueFontSize_property_selection : EBSelection <Double?> {
+    if let model = self.propval {
+      switch (model.mValueFontSize_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mValueFontSize (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mValueFontSize.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mValueFontSize_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mValueFontSize (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mValueFontSize.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mValueFontSize_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mValueFontSize_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mValueFontSize.apply { (_ observer : EBEvent) in
+        managedObject.mValueFontSize_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mValueFontSize_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mValueFontSize.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mValueFontSize_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mXValue' stored property
+  //····················································································································
+
+  private var mObserversOf_mXValue = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mXValue_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mXValue_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mXValue (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mXValue.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mXValue_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mXValue (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mXValue.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mXValue_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mXValue_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mXValue.apply { (_ observer : EBEvent) in
+        managedObject.mXValue_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mXValue_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mXValue.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mXValue_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mYValue' stored property
+  //····················································································································
+
+  private var mObserversOf_mYValue = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mYValue_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mYValue_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mYValue (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mYValue.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mYValue_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mYValue (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mYValue.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mYValue_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mYValue_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mYValue.apply { (_ observer : EBEvent) in
+        managedObject.mYValue_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mYValue_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mYValue.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mYValue_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mValueIsVisibleInBoard' stored property
+  //····················································································································
+
+  private var mObserversOf_mValueIsVisibleInBoard = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mValueIsVisibleInBoard_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mValueIsVisibleInBoard_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mValueIsVisibleInBoard (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mValueIsVisibleInBoard.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mValueIsVisibleInBoard_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mValueIsVisibleInBoard (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mValueIsVisibleInBoard.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mValueIsVisibleInBoard_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mValueIsVisibleInBoard_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mValueIsVisibleInBoard.apply { (_ observer : EBEvent) in
+        managedObject.mValueIsVisibleInBoard_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mValueIsVisibleInBoard_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mValueIsVisibleInBoard.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mValueIsVisibleInBoard_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mValueRotation' stored property
+  //····················································································································
+
+  private var mObserversOf_mValueRotation = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mValueRotation_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mValueRotation_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mValueRotation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mValueRotation.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mValueRotation_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mValueRotation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mValueRotation.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mValueRotation_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mValueRotation_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mValueRotation.apply { (_ observer : EBEvent) in
+        managedObject.mValueRotation_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mValueRotation_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mValueRotation.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mValueRotation_property.removeEBObserver (observer)
       }
     }
   }

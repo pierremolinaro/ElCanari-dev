@@ -36,7 +36,14 @@ func transient_ComponentInProject_objectDisplay (
        _ self_mNameFont_descriptor : BoardFontDescriptor?,
        _ self_mNameFontSize : Double,            
        _ self_mNameRotation : Int,               
-       _ self_componentName : String
+       _ self_componentName : String,            
+       _ self_mValueIsVisibleInBoard : Bool,     
+       _ self_mXValue : Int,                     
+       _ self_mYValue : Int,                     
+       _ self_mValueFont_descriptor : BoardFontDescriptor?,
+       _ self_mValueFontSize : Double,           
+       _ self_mValueRotation : Int,              
+       _ self_mComponentValue : String
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let padDisplayAttributes : [NSAttributedString.Key : Any]?
@@ -91,6 +98,24 @@ func transient_ComponentInProject_objectDisplay (
             verticalAlignment: .center,
             frontSide: self_mSide == .front,
             rotation: self_mNameRotation,
+            weight: 1.0,
+            oblique: false
+          )
+          let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
+          nonRotatedShape.append (EBStrokeBezierPathShape ([textBP], color))
+        }
+      //--- Value
+        if self_mValueIsVisibleInBoard, let fontDescriptor = self_mValueFont_descriptor {
+          let (textBP, _, _, _) = boardText_displayInfos (
+            x: self_mXValue + self_mX,
+            y: self_mYValue + self_mY,
+            string: self_mComponentValue,
+            fontSize: self_mValueFontSize,
+            fontDescriptor,
+            horizontalAlignment: .center,
+            verticalAlignment: .center,
+            frontSide: self_mSide == .front,
+            rotation: self_mValueRotation,
             weight: 1.0,
             oblique: false
           )

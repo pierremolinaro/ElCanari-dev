@@ -26,10 +26,18 @@ func transient_ComponentInProject_selectionDisplay (
        _ self_mNameFontSize : Double,               
        _ self_mNameRotation : Int,                  
        _ self_componentName : String,               
-       _ self_padDictionary : PackagePadDictionary
+       _ self_padDictionary : PackagePadDictionary, 
+       _ self_mValueIsVisibleInBoard : Bool,        
+       _ self_mXValue : Int,                        
+       _ self_mYValue : Int,                        
+       _ self_mValueFont_descriptor : BoardFontDescriptor?,
+       _ self_mValueFontSize : Double,              
+       _ self_mValueRotation : Int,                 
+       _ self_mComponentValue : String
 ) -> EBShape {
 //--- START OF USER ZONE 2
       let rPadsCenter = self_padDictionary.masterPadsRect.center.cocoaPoint
+      let absoluteCenter = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
       let knobDx = (self_mSide == .back) ? -COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE ;
       let rotationKnobLocation = NSPoint (x: rPadsCenter.x + knobDx, y: rPadsCenter.y)
       let rotatedShape = EBShape ()
@@ -46,7 +54,7 @@ func transient_ComponentInProject_selectionDisplay (
     //--- Name
       let nonRotatedShape = EBShape ()
       if self_mNameIsVisibleInBoard, let fontDescriptor = self_mNameFont_descriptor {
-        let (textBP, frameBP, _, _) = boardText_displayInfos (
+        let (textBP, frameBP, origin, _) = boardText_displayInfos (
           x: self_mXName + self_mX,
           y: self_mYName + self_mY,
           string: self_componentName,
@@ -59,7 +67,14 @@ func transient_ComponentInProject_selectionDisplay (
           weight: 1.0,
           oblique: false
         )
-        var bp = frameBP
+        var bp = EBBezierPath ()
+        bp.move (to: absoluteCenter)
+        bp.line (to: origin)
+        bp.lineWidth = 0.5
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
+        nonRotatedShape.append (EBStrokeBezierPathShape ([bp], .cyan))
+        bp = frameBP
         bp.lineWidth = 0.5
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
@@ -67,9 +82,39 @@ func transient_ComponentInProject_selectionDisplay (
         nonRotatedShape.append (EBStrokeBezierPathShape ([bp], .black))
         nonRotatedShape.append (EBStrokeBezierPathShape ([textBP], .black))
       }
+    //--- Value
+      if self_mValueIsVisibleInBoard, let fontDescriptor = self_mValueFont_descriptor {
+        let (textBP, frameBP, origin, _) = boardText_displayInfos (
+          x: self_mXValue + self_mX,
+          y: self_mYValue + self_mY,
+          string: self_mComponentValue,
+          fontSize: self_mValueFontSize,
+          fontDescriptor,
+          horizontalAlignment: .center,
+          verticalAlignment: .center,
+          frontSide: self_mSide == .front,
+          rotation: self_mValueRotation,
+          weight: 1.0,
+          oblique: false
+        )
+        var bp = EBBezierPath ()
+        bp.move (to: absoluteCenter)
+        bp.line (to: origin)
+        bp.lineWidth = 0.5
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
+        nonRotatedShape.append (EBStrokeBezierPathShape ([bp], .cyan))
+        bp = frameBP
+        bp.lineWidth = 0.5
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
+        nonRotatedShape.append (EBFilledBezierPathShape ([bp], .white, COMPONENT_PACKAGE_VALUE_KNOB))
+        nonRotatedShape.append (EBStrokeBezierPathShape ([bp], .black))
+        nonRotatedShape.append (EBStrokeBezierPathShape ([textBP], .black))
+      }
     //---
       var af = AffineTransform ()
-      af.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
+      af.translate (x: absoluteCenter.x, y: absoluteCenter.y)
       af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
       if self_mSide == .back {
         af.scale (x: -1.0, y: 1.0)

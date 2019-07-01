@@ -660,6 +660,18 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBTextObserverField mBoardComponentNameTextField $valueObserver #ComponentInBoardSelectionController.componentName ;
 
+
+  outlet EBSwitch mDisplayComponentValueSwitch $value #ComponentInBoardSelectionController.mValueIsVisibleInBoard ;
+  outlet EBDoubleField mComponentValueFontSizeField
+    $value #ComponentInBoardSelectionController.mValueFontSize {sendContinously : no, autoFormatter : no}
+  ;
+
+  outlet CanariAngleTextField mComponentValueRotationTextField $angle #ComponentInBoardSelectionController.mValueRotation ;
+  outlet CanariAngleSlider mComponentValueRotationSlider $angle #ComponentInBoardSelectionController.mValueRotation ;
+
+  outlet EBTextField mBoardComponentValueTextField
+     $value #ComponentInBoardSelectionController.mComponentValue {sendContinously : yes};
+
 //--- Display inspector
   outlet EBSwitch mDisplayFrontPadsSwitch $value root.mDisplayFrontPads ;
   outlet EBColorWell mDisplayFrontPadsColorWell $color prefs.frontSidePadColorForBoard {sendContinously:yes} ;

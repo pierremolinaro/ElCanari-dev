@@ -461,6 +461,7 @@ import Cocoa
   @IBOutlet weak var mBoardComponentRotationSlider : CanariAngleSlider? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentRotationTextField : CanariAngleTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentSidePopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardComponentValueTextField : EBTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPX1TextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPX2TextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPY1TextField : EBTextObserverField? = nil // An outlet should be declared weak
@@ -539,6 +540,9 @@ import Cocoa
   @IBOutlet weak var mComponentSymbolTypeNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentSymbolValueTextField : EBTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentTableView : EBTableView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComponentValueFontSizeField : EBDoubleField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComponentValueRotationSlider : CanariAngleSlider? = nil // An outlet should be declared weak
+  @IBOutlet weak var mComponentValueRotationTextField : CanariAngleTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentsPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mConnectAllSymbolPinsSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mConnectSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
@@ -560,6 +564,7 @@ import Cocoa
   @IBOutlet weak var mDisplayBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayBoardLimitsColorWell : EBColorWell? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayComponentNameSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDisplayComponentValueSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayFrontLayoutColorWell : EBColorWell? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayFrontLayoutSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayFrontLegendColorWell : EBColorWell? = nil // An outlet should be declared weak
@@ -855,6 +860,7 @@ import Cocoa
     checkOutletConnection (self.mBoardComponentRotationSlider, "mBoardComponentRotationSlider", CanariAngleSlider.self, #file, #line)
     checkOutletConnection (self.mBoardComponentRotationTextField, "mBoardComponentRotationTextField", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mBoardComponentSidePopUpButton, "mBoardComponentSidePopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardComponentValueTextField, "mBoardComponentValueTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPX1TextField, "mBoardCurveCPX1TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPX2TextField, "mBoardCurveCPX2TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPY1TextField, "mBoardCurveCPY1TextField", EBTextObserverField.self, #file, #line)
@@ -933,6 +939,9 @@ import Cocoa
     checkOutletConnection (self.mComponentSymbolTypeNameTextField, "mComponentSymbolTypeNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolValueTextField, "mComponentSymbolValueTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
+    checkOutletConnection (self.mComponentValueFontSizeField, "mComponentValueFontSizeField", EBDoubleField.self, #file, #line)
+    checkOutletConnection (self.mComponentValueRotationSlider, "mComponentValueRotationSlider", CanariAngleSlider.self, #file, #line)
+    checkOutletConnection (self.mComponentValueRotationTextField, "mComponentValueRotationTextField", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mConnectAllSymbolPinsSchematicHotKeyTextField, "mConnectAllSymbolPinsSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mConnectSchematicHotKeyTextField, "mConnectSchematicHotKeyTextField", NSTextField.self, #file, #line)
@@ -954,6 +963,7 @@ import Cocoa
     checkOutletConnection (self.mDisplayBoardInspectorView, "mDisplayBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mDisplayBoardLimitsColorWell, "mDisplayBoardLimitsColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDisplayComponentNameSwitch, "mDisplayComponentNameSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayComponentValueSwitch, "mDisplayComponentValueSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayFrontLayoutColorWell, "mDisplayFrontLayoutColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDisplayFrontLayoutSwitch, "mDisplayFrontLayoutSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayFrontLegendColorWell, "mDisplayFrontLegendColorWell", EBColorWell.self, #file, #line)
@@ -1564,6 +1574,11 @@ import Cocoa
     self.mComponentNameRotationTextField?.bind_angle (self.ComponentInBoardSelectionController.mNameRotation_property, file: #file, line: #line)
     self.mComponentNameRotationSlider?.bind_angle (self.ComponentInBoardSelectionController.mNameRotation_property, file: #file, line: #line)
     self.mBoardComponentNameTextField?.bind_valueObserver (self.ComponentInBoardSelectionController.componentName_property, file: #file, line: #line)
+    self.mDisplayComponentValueSwitch?.bind_value (self.ComponentInBoardSelectionController.mValueIsVisibleInBoard_property, file: #file, line: #line)
+    self.mComponentValueFontSizeField?.bind_value (self.ComponentInBoardSelectionController.mValueFontSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
+    self.mComponentValueRotationTextField?.bind_angle (self.ComponentInBoardSelectionController.mValueRotation_property, file: #file, line: #line)
+    self.mComponentValueRotationSlider?.bind_angle (self.ComponentInBoardSelectionController.mValueRotation_property, file: #file, line: #line)
+    self.mBoardComponentValueTextField?.bind_value (self.ComponentInBoardSelectionController.mComponentValue_property, file: #file, line: #line, sendContinously:true)
     self.mDisplayFrontPadsSwitch?.bind_value (self.rootObject.mDisplayFrontPads_property, file: #file, line: #line)
     self.mDisplayFrontPadsColorWell?.bind_color (g_Preferences!.frontSidePadColorForBoard_property, file: #file, line: #line, sendContinously:true)
     self.mDisplayBackPadsSwitch?.bind_value (self.rootObject.mDisplayBackPads_property, file: #file, line: #line)
@@ -2111,6 +2126,11 @@ import Cocoa
     self.mComponentNameRotationTextField?.unbind_angle ()
     self.mComponentNameRotationSlider?.unbind_angle ()
     self.mBoardComponentNameTextField?.unbind_valueObserver ()
+    self.mDisplayComponentValueSwitch?.unbind_value ()
+    self.mComponentValueFontSizeField?.unbind_value ()
+    self.mComponentValueRotationTextField?.unbind_angle ()
+    self.mComponentValueRotationSlider?.unbind_angle ()
+    self.mBoardComponentValueTextField?.unbind_value ()
     self.mDisplayFrontPadsSwitch?.unbind_value ()
     self.mDisplayFrontPadsColorWell?.unbind_color ()
     self.mDisplayBackPadsSwitch?.unbind_value ()
@@ -2309,6 +2329,7 @@ import Cocoa
     self.mBoardComponentRotationSlider?.ebCleanUp ()
     self.mBoardComponentRotationTextField?.ebCleanUp ()
     self.mBoardComponentSidePopUpButton?.ebCleanUp ()
+    self.mBoardComponentValueTextField?.ebCleanUp ()
     self.mBoardCurveCPX1TextField?.ebCleanUp ()
     self.mBoardCurveCPX2TextField?.ebCleanUp ()
     self.mBoardCurveCPY1TextField?.ebCleanUp ()
@@ -2387,6 +2408,9 @@ import Cocoa
     self.mComponentSymbolTypeNameTextField?.ebCleanUp ()
     self.mComponentSymbolValueTextField?.ebCleanUp ()
     self.mComponentTableView?.ebCleanUp ()
+    self.mComponentValueFontSizeField?.ebCleanUp ()
+    self.mComponentValueRotationSlider?.ebCleanUp ()
+    self.mComponentValueRotationTextField?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
     self.mConnectAllSymbolPinsSchematicHotKeyTextField?.ebCleanUp ()
     self.mConnectSchematicHotKeyTextField?.ebCleanUp ()
@@ -2408,6 +2432,7 @@ import Cocoa
     self.mDisplayBoardInspectorView?.ebCleanUp ()
     self.mDisplayBoardLimitsColorWell?.ebCleanUp ()
     self.mDisplayComponentNameSwitch?.ebCleanUp ()
+    self.mDisplayComponentValueSwitch?.ebCleanUp ()
     self.mDisplayFrontLayoutColorWell?.ebCleanUp ()
     self.mDisplayFrontLayoutSwitch?.ebCleanUp ()
     self.mDisplayFrontLegendColorWell?.ebCleanUp ()
@@ -2572,6 +2597,7 @@ import Cocoa
 //    self.mBoardComponentRotationSlider = nil
 //    self.mBoardComponentRotationTextField = nil
 //    self.mBoardComponentSidePopUpButton = nil
+//    self.mBoardComponentValueTextField = nil
 //    self.mBoardCurveCPX1TextField = nil
 //    self.mBoardCurveCPX2TextField = nil
 //    self.mBoardCurveCPY1TextField = nil
@@ -2650,6 +2676,9 @@ import Cocoa
 //    self.mComponentSymbolTypeNameTextField = nil
 //    self.mComponentSymbolValueTextField = nil
 //    self.mComponentTableView = nil
+//    self.mComponentValueFontSizeField = nil
+//    self.mComponentValueRotationSlider = nil
+//    self.mComponentValueRotationTextField = nil
 //    self.mComponentsPageView = nil
 //    self.mConnectAllSymbolPinsSchematicHotKeyTextField = nil
 //    self.mConnectSchematicHotKeyTextField = nil
@@ -2671,6 +2700,7 @@ import Cocoa
 //    self.mDisplayBoardInspectorView = nil
 //    self.mDisplayBoardLimitsColorWell = nil
 //    self.mDisplayComponentNameSwitch = nil
+//    self.mDisplayComponentValueSwitch = nil
 //    self.mDisplayFrontLayoutColorWell = nil
 //    self.mDisplayFrontLayoutSwitch = nil
 //    self.mDisplayFrontLegendColorWell = nil

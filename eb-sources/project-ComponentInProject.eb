@@ -13,7 +13,6 @@ graphic entity ComponentInProject : BoardObject {
 
   property String mNamePrefix default "" ;
   property Int mNameIndex default 0 ;
-  property String mComponentValue default "" ;
   
   property Int mX default 0 ;
   property Int mXUnit default 2_286 ; // mils
@@ -29,7 +28,13 @@ graphic entity ComponentInProject : BoardObject {
   property Bool mNameIsVisibleInBoard default yes ;
   property Int mNameRotation default 0 ; // 1000 -> 1°
 
+  property String mComponentValue default "" ;
   toOne FontInProject mValueFont inverse toMany mComponentValues ;
+  property Double mValueFontSize default 4.0 ;
+  property Int mXValue default 0 ;
+  property Int mYValue default -685_800 ; // 300 mils
+  property Bool mValueIsVisibleInBoard default yes ;
+  property Int mValueRotation default 0 ; // 1000 -> 1°
   
   transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
   transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
@@ -68,13 +73,17 @@ graphic entity ComponentInProject : BoardObject {
     prefs.padNumberFontForBoard, prefs.padNumberColorForBoard, super.BoardObject.displayPadNumbers,
     self.mNameIsVisibleInBoard, self.mXName, self.mYName, self.mNameFont.one.descriptor, self.mNameFontSize,
     self.mNameRotation,
-    self.componentName
+    self.componentName,
+    self.mValueIsVisibleInBoard, self.mXValue, self.mYValue, self.mValueFont.one.descriptor, self.mValueFontSize,
+    self.mValueRotation, self.mComponentValue
   ;
 
   override transient EBShape selectionDisplay dependsFrom
     self.mX, self.mY, self.mRotation, self.mSide, self.strokeBezierPath,
     self.mNameIsVisibleInBoard, self.mXName, self.mYName, self.mNameFont.one.descriptor, self.mNameFontSize,
-    self.mNameRotation, self.componentName, self.padDictionary
+    self.mNameRotation, self.componentName, self.padDictionary,
+    self.mValueIsVisibleInBoard, self.mXValue, self.mYValue, self.mValueFont.one.descriptor, self.mValueFontSize,
+    self.mValueRotation, self.mComponentValue
   ;
 }
 

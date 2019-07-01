@@ -18,12 +18,6 @@ protocol ComponentInProject_mNameIndex : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mComponentValue : class {
-  var mComponentValue : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ComponentInProject_mX : class {
   var mX : Int { get }
 }
@@ -86,6 +80,42 @@ protocol ComponentInProject_mNameIsVisibleInBoard : class {
 
 protocol ComponentInProject_mNameRotation : class {
   var mNameRotation : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_mComponentValue : class {
+  var mComponentValue : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_mValueFontSize : class {
+  var mValueFontSize : Double { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_mXValue : class {
+  var mXValue : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_mYValue : class {
+  var mYValue : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_mValueIsVisibleInBoard : class {
+  var mValueIsVisibleInBoard : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_mValueRotation : class {
+  var mValueRotation : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -167,7 +197,6 @@ protocol ComponentInProject_selectionDisplay : class {
 class ComponentInProject : BoardObject,
          ComponentInProject_mNamePrefix,
          ComponentInProject_mNameIndex,
-         ComponentInProject_mComponentValue,
          ComponentInProject_mX,
          ComponentInProject_mXUnit,
          ComponentInProject_mY,
@@ -179,6 +208,12 @@ class ComponentInProject : BoardObject,
          ComponentInProject_mYName,
          ComponentInProject_mNameIsVisibleInBoard,
          ComponentInProject_mNameRotation,
+         ComponentInProject_mComponentValue,
+         ComponentInProject_mValueFontSize,
+         ComponentInProject_mXValue,
+         ComponentInProject_mYValue,
+         ComponentInProject_mValueIsVisibleInBoard,
+         ComponentInProject_mValueRotation,
          ComponentInProject_componentName,
          ComponentInProject_deviceName,
          ComponentInProject_selectedPackageName,
@@ -225,23 +260,6 @@ class ComponentInProject : BoardObject,
   //····················································································································
 
   var mNameIndex_property_selection : EBSelection <Int> { return self.mNameIndex_property.prop }
-
-  //····················································································································
-  //   Atomic property: mComponentValue
-  //····················································································································
-
-  let mComponentValue_property = EBStoredProperty_String (defaultValue: "")
-
-  //····················································································································
-
-  var mComponentValue : String {
-    get { return self.mComponentValue_property.propval }
-    set { self.mComponentValue_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mComponentValue_property_selection : EBSelection <String> { return self.mComponentValue_property.prop }
 
   //····················································································································
   //   Atomic property: mX
@@ -429,6 +447,108 @@ class ComponentInProject : BoardObject,
   //····················································································································
 
   var mNameRotation_property_selection : EBSelection <Int> { return self.mNameRotation_property.prop }
+
+  //····················································································································
+  //   Atomic property: mComponentValue
+  //····················································································································
+
+  let mComponentValue_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mComponentValue : String {
+    get { return self.mComponentValue_property.propval }
+    set { self.mComponentValue_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mComponentValue_property_selection : EBSelection <String> { return self.mComponentValue_property.prop }
+
+  //····················································································································
+  //   Atomic property: mValueFontSize
+  //····················································································································
+
+  let mValueFontSize_property = EBStoredProperty_Double (defaultValue: 4)
+
+  //····················································································································
+
+  var mValueFontSize : Double {
+    get { return self.mValueFontSize_property.propval }
+    set { self.mValueFontSize_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mValueFontSize_property_selection : EBSelection <Double> { return self.mValueFontSize_property.prop }
+
+  //····················································································································
+  //   Atomic property: mXValue
+  //····················································································································
+
+  let mXValue_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mXValue : Int {
+    get { return self.mXValue_property.propval }
+    set { self.mXValue_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mXValue_property_selection : EBSelection <Int> { return self.mXValue_property.prop }
+
+  //····················································································································
+  //   Atomic property: mYValue
+  //····················································································································
+
+  let mYValue_property = EBStoredProperty_Int (defaultValue: -685800)
+
+  //····················································································································
+
+  var mYValue : Int {
+    get { return self.mYValue_property.propval }
+    set { self.mYValue_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mYValue_property_selection : EBSelection <Int> { return self.mYValue_property.prop }
+
+  //····················································································································
+  //   Atomic property: mValueIsVisibleInBoard
+  //····················································································································
+
+  let mValueIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mValueIsVisibleInBoard : Bool {
+    get { return self.mValueIsVisibleInBoard_property.propval }
+    set { self.mValueIsVisibleInBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mValueIsVisibleInBoard_property_selection : EBSelection <Bool> { return self.mValueIsVisibleInBoard_property.prop }
+
+  //····················································································································
+  //   Atomic property: mValueRotation
+  //····················································································································
+
+  let mValueRotation_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mValueRotation : Int {
+    get { return self.mValueRotation_property.propval }
+    set { self.mValueRotation_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mValueRotation_property_selection : EBSelection <Int> { return self.mValueRotation_property.prop }
 
   //····················································································································
   //   To many property: mSymbols
@@ -841,8 +961,6 @@ class ComponentInProject : BoardObject,
     self.mNamePrefix_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mNameIndex
     self.mNameIndex_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mComponentValue
-    self.mComponentValue_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mX
     self.mX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mXUnit
@@ -865,6 +983,18 @@ class ComponentInProject : BoardObject,
     self.mNameIsVisibleInBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mNameRotation
     self.mNameRotation_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mComponentValue
+    self.mComponentValue_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mValueFontSize
+    self.mValueFontSize_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mXValue
+    self.mXValue_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mYValue
+    self.mYValue_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mValueIsVisibleInBoard
+    self.mValueIsVisibleInBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mValueRotation
+    self.mValueRotation_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbols (has opposite relationship)
     self.mSymbols_property.ebUndoManager = self.ebUndoManager
     self.mSymbols_property.setOppositeRelationShipFunctions (
@@ -1147,15 +1277,22 @@ class ComponentInProject : BoardObject,
         kind &= unwSelf.mNameFontSize_property_selection.kind ()
         kind &= unwSelf.mNameRotation_property_selection.kind ()
         kind &= unwSelf.componentName_property_selection.kind ()
+        kind &= unwSelf.mValueIsVisibleInBoard_property_selection.kind ()
+        kind &= unwSelf.mXValue_property_selection.kind ()
+        kind &= unwSelf.mYValue_property_selection.kind ()
+        kind &= unwSelf.mValueFont_property.descriptor_property_selection.kind ()
+        kind &= unwSelf.mValueFontSize_property_selection.kind ()
+        kind &= unwSelf.mValueRotation_property_selection.kind ()
+        kind &= unwSelf.mComponentValue_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.padDictionary_property_selection, unwSelf.strokeBezierPath_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection, g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection, g_Preferences!.frontSidePadColorForBoard_property_selection, unwSelf.displayFrontPads_property_selection, g_Preferences!.backSidePadColorForBoard_property_selection, unwSelf.displayBackPads_property_selection, g_Preferences!.padNumberFontForBoard_property_selection, g_Preferences!.padNumberColorForBoard_property_selection, unwSelf.displayPadNumbers_property_selection, unwSelf.mNameIsVisibleInBoard_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameFont_property.descriptor_property_selection, unwSelf.mNameFontSize_property_selection, unwSelf.mNameRotation_property_selection, unwSelf.componentName_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22)) :
-            return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.padDictionary_property_selection, unwSelf.strokeBezierPath_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection, g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection, g_Preferences!.frontSidePadColorForBoard_property_selection, unwSelf.displayFrontPads_property_selection, g_Preferences!.backSidePadColorForBoard_property_selection, unwSelf.displayBackPads_property_selection, g_Preferences!.padNumberFontForBoard_property_selection, g_Preferences!.padNumberColorForBoard_property_selection, unwSelf.displayPadNumbers_property_selection, unwSelf.mNameIsVisibleInBoard_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameFont_property.descriptor_property_selection, unwSelf.mNameFontSize_property_selection, unwSelf.mNameRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.mValueIsVisibleInBoard_property_selection, unwSelf.mXValue_property_selection, unwSelf.mYValue_property_selection, unwSelf.mValueFont_property.descriptor_property_selection, unwSelf.mValueFontSize_property_selection, unwSelf.mValueRotation_property_selection, unwSelf.mComponentValue_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29)) :
+            return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29))
           default :
             return .empty
           }
@@ -1187,6 +1324,13 @@ class ComponentInProject : BoardObject,
     self.mNameFontSize_property.addEBObserver (self.objectDisplay_property)
     self.mNameRotation_property.addEBObserver (self.objectDisplay_property)
     self.componentName_property.addEBObserver (self.objectDisplay_property)
+    self.mValueIsVisibleInBoard_property.addEBObserver (self.objectDisplay_property)
+    self.mXValue_property.addEBObserver (self.objectDisplay_property)
+    self.mYValue_property.addEBObserver (self.objectDisplay_property)
+    self.mValueFont_property.addEBObserverOf_descriptor (self.objectDisplay_property)
+    self.mValueFontSize_property.addEBObserver (self.objectDisplay_property)
+    self.mValueRotation_property.addEBObserver (self.objectDisplay_property)
+    self.mComponentValue_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1203,15 +1347,22 @@ class ComponentInProject : BoardObject,
         kind &= unwSelf.mNameRotation_property_selection.kind ()
         kind &= unwSelf.componentName_property_selection.kind ()
         kind &= unwSelf.padDictionary_property_selection.kind ()
+        kind &= unwSelf.mValueIsVisibleInBoard_property_selection.kind ()
+        kind &= unwSelf.mXValue_property_selection.kind ()
+        kind &= unwSelf.mYValue_property_selection.kind ()
+        kind &= unwSelf.mValueFont_property.descriptor_property_selection.kind ()
+        kind &= unwSelf.mValueFontSize_property_selection.kind ()
+        kind &= unwSelf.mValueRotation_property_selection.kind ()
+        kind &= unwSelf.mComponentValue_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.strokeBezierPath_property_selection, unwSelf.mNameIsVisibleInBoard_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameFont_property.descriptor_property_selection, unwSelf.mNameFontSize_property_selection, unwSelf.mNameRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.padDictionary_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12)) :
-            return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.strokeBezierPath_property_selection, unwSelf.mNameIsVisibleInBoard_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameFont_property.descriptor_property_selection, unwSelf.mNameFontSize_property_selection, unwSelf.mNameRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.padDictionary_property_selection, unwSelf.mValueIsVisibleInBoard_property_selection, unwSelf.mXValue_property_selection, unwSelf.mYValue_property_selection, unwSelf.mValueFont_property.descriptor_property_selection, unwSelf.mValueFontSize_property_selection, unwSelf.mValueRotation_property_selection, unwSelf.mComponentValue_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19)) :
+            return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19))
           default :
             return .empty
           }
@@ -1233,6 +1384,13 @@ class ComponentInProject : BoardObject,
     self.mNameRotation_property.addEBObserver (self.selectionDisplay_property)
     self.componentName_property.addEBObserver (self.selectionDisplay_property)
     self.padDictionary_property.addEBObserver (self.selectionDisplay_property)
+    self.mValueIsVisibleInBoard_property.addEBObserver (self.selectionDisplay_property)
+    self.mXValue_property.addEBObserver (self.selectionDisplay_property)
+    self.mYValue_property.addEBObserver (self.selectionDisplay_property)
+    self.mValueFont_property.addEBObserverOf_descriptor (self.selectionDisplay_property)
+    self.mValueFontSize_property.addEBObserver (self.selectionDisplay_property)
+    self.mValueRotation_property.addEBObserver (self.selectionDisplay_property)
+    self.mComponentValue_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
     self.mSymbols_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
@@ -1284,6 +1442,13 @@ class ComponentInProject : BoardObject,
     self.mNameFontSize_property.removeEBObserver (self.objectDisplay_property)
     self.mNameRotation_property.removeEBObserver (self.objectDisplay_property)
     self.componentName_property.removeEBObserver (self.objectDisplay_property)
+    self.mValueIsVisibleInBoard_property.removeEBObserver (self.objectDisplay_property)
+    self.mXValue_property.removeEBObserver (self.objectDisplay_property)
+    self.mYValue_property.removeEBObserver (self.objectDisplay_property)
+    self.mValueFont_property.removeEBObserverOf_descriptor (self.objectDisplay_property)
+    self.mValueFontSize_property.removeEBObserver (self.objectDisplay_property)
+    self.mValueRotation_property.removeEBObserver (self.objectDisplay_property)
+    self.mComponentValue_property.removeEBObserver (self.objectDisplay_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
     self.mRotation_property.removeEBObserver (self.selectionDisplay_property)
@@ -1297,6 +1462,13 @@ class ComponentInProject : BoardObject,
     self.mNameRotation_property.removeEBObserver (self.selectionDisplay_property)
     self.componentName_property.removeEBObserver (self.selectionDisplay_property)
     self.padDictionary_property.removeEBObserver (self.selectionDisplay_property)
+    self.mValueIsVisibleInBoard_property.removeEBObserver (self.selectionDisplay_property)
+    self.mXValue_property.removeEBObserver (self.selectionDisplay_property)
+    self.mYValue_property.removeEBObserver (self.selectionDisplay_property)
+    self.mValueFont_property.removeEBObserverOf_descriptor (self.selectionDisplay_property)
+    self.mValueFontSize_property.removeEBObserver (self.selectionDisplay_property)
+    self.mValueRotation_property.removeEBObserver (self.selectionDisplay_property)
+    self.mComponentValue_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -1326,14 +1498,6 @@ class ComponentInProject : BoardObject,
       view: view,
       observerExplorer: &self.mNameIndex_property.mObserverExplorer,
       valueExplorer: &self.mNameIndex_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mComponentValue",
-      idx: self.mComponentValue_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mComponentValue_property.mObserverExplorer,
-      valueExplorer: &self.mComponentValue_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mX",
@@ -1422,6 +1586,54 @@ class ComponentInProject : BoardObject,
       view: view,
       observerExplorer: &self.mNameRotation_property.mObserverExplorer,
       valueExplorer: &self.mNameRotation_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mComponentValue",
+      idx: self.mComponentValue_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mComponentValue_property.mObserverExplorer,
+      valueExplorer: &self.mComponentValue_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mValueFontSize",
+      idx: self.mValueFontSize_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mValueFontSize_property.mObserverExplorer,
+      valueExplorer: &self.mValueFontSize_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mXValue",
+      idx: self.mXValue_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mXValue_property.mObserverExplorer,
+      valueExplorer: &self.mXValue_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mYValue",
+      idx: self.mYValue_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mYValue_property.mObserverExplorer,
+      valueExplorer: &self.mYValue_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mValueIsVisibleInBoard",
+      idx: self.mValueIsVisibleInBoard_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mValueIsVisibleInBoard_property.mObserverExplorer,
+      valueExplorer: &self.mValueIsVisibleInBoard_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mValueRotation",
+      idx: self.mValueRotation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mValueRotation_property.mObserverExplorer,
+      valueExplorer: &self.mValueRotation_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
@@ -1571,9 +1783,6 @@ class ComponentInProject : BoardObject,
   //--- Atomic property: mNameIndex
     self.mNameIndex_property.mObserverExplorer = nil
     self.mNameIndex_property.mValueExplorer = nil
-  //--- Atomic property: mComponentValue
-    self.mComponentValue_property.mObserverExplorer = nil
-    self.mComponentValue_property.mValueExplorer = nil
   //--- Atomic property: mX
     self.mX_property.mObserverExplorer = nil
     self.mX_property.mValueExplorer = nil
@@ -1607,6 +1816,24 @@ class ComponentInProject : BoardObject,
   //--- Atomic property: mNameRotation
     self.mNameRotation_property.mObserverExplorer = nil
     self.mNameRotation_property.mValueExplorer = nil
+  //--- Atomic property: mComponentValue
+    self.mComponentValue_property.mObserverExplorer = nil
+    self.mComponentValue_property.mValueExplorer = nil
+  //--- Atomic property: mValueFontSize
+    self.mValueFontSize_property.mObserverExplorer = nil
+    self.mValueFontSize_property.mValueExplorer = nil
+  //--- Atomic property: mXValue
+    self.mXValue_property.mObserverExplorer = nil
+    self.mXValue_property.mValueExplorer = nil
+  //--- Atomic property: mYValue
+    self.mYValue_property.mObserverExplorer = nil
+    self.mYValue_property.mValueExplorer = nil
+  //--- Atomic property: mValueIsVisibleInBoard
+    self.mValueIsVisibleInBoard_property.mObserverExplorer = nil
+    self.mValueIsVisibleInBoard_property.mValueExplorer = nil
+  //--- Atomic property: mValueRotation
+    self.mValueRotation_property.mObserverExplorer = nil
+    self.mValueRotation_property.mValueExplorer = nil
   //--- To many property: mSymbols
     self.mSymbols_property.mValueExplorer = nil
   //--- To one property: mNameFont
@@ -1658,8 +1885,6 @@ class ComponentInProject : BoardObject,
     self.mNamePrefix_property.storeIn (dictionary: ioDictionary, forKey:"mNamePrefix")
   //--- Atomic property: mNameIndex
     self.mNameIndex_property.storeIn (dictionary: ioDictionary, forKey:"mNameIndex")
-  //--- Atomic property: mComponentValue
-    self.mComponentValue_property.storeIn (dictionary: ioDictionary, forKey:"mComponentValue")
   //--- Atomic property: mX
     self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
   //--- Atomic property: mXUnit
@@ -1682,6 +1907,18 @@ class ComponentInProject : BoardObject,
     self.mNameIsVisibleInBoard_property.storeIn (dictionary: ioDictionary, forKey:"mNameIsVisibleInBoard")
   //--- Atomic property: mNameRotation
     self.mNameRotation_property.storeIn (dictionary: ioDictionary, forKey:"mNameRotation")
+  //--- Atomic property: mComponentValue
+    self.mComponentValue_property.storeIn (dictionary: ioDictionary, forKey:"mComponentValue")
+  //--- Atomic property: mValueFontSize
+    self.mValueFontSize_property.storeIn (dictionary: ioDictionary, forKey:"mValueFontSize")
+  //--- Atomic property: mXValue
+    self.mXValue_property.storeIn (dictionary: ioDictionary, forKey:"mXValue")
+  //--- Atomic property: mYValue
+    self.mYValue_property.storeIn (dictionary: ioDictionary, forKey:"mYValue")
+  //--- Atomic property: mValueIsVisibleInBoard
+    self.mValueIsVisibleInBoard_property.storeIn (dictionary: ioDictionary, forKey:"mValueIsVisibleInBoard")
+  //--- Atomic property: mValueRotation
+    self.mValueRotation_property.storeIn (dictionary: ioDictionary, forKey:"mValueRotation")
   //--- To many property: mSymbols
     self.store (
       managedObjectArray: self.mSymbols_property.propval,
@@ -1763,8 +2000,6 @@ class ComponentInProject : BoardObject,
     self.mNamePrefix_property.readFrom (dictionary: inDictionary, forKey:"mNamePrefix")
   //--- Atomic property: mNameIndex
     self.mNameIndex_property.readFrom (dictionary: inDictionary, forKey:"mNameIndex")
-  //--- Atomic property: mComponentValue
-    self.mComponentValue_property.readFrom (dictionary: inDictionary, forKey:"mComponentValue")
   //--- Atomic property: mX
     self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
   //--- Atomic property: mXUnit
@@ -1787,6 +2022,18 @@ class ComponentInProject : BoardObject,
     self.mNameIsVisibleInBoard_property.readFrom (dictionary: inDictionary, forKey:"mNameIsVisibleInBoard")
   //--- Atomic property: mNameRotation
     self.mNameRotation_property.readFrom (dictionary: inDictionary, forKey:"mNameRotation")
+  //--- Atomic property: mComponentValue
+    self.mComponentValue_property.readFrom (dictionary: inDictionary, forKey:"mComponentValue")
+  //--- Atomic property: mValueFontSize
+    self.mValueFontSize_property.readFrom (dictionary: inDictionary, forKey:"mValueFontSize")
+  //--- Atomic property: mXValue
+    self.mXValue_property.readFrom (dictionary: inDictionary, forKey:"mXValue")
+  //--- Atomic property: mYValue
+    self.mYValue_property.readFrom (dictionary: inDictionary, forKey:"mYValue")
+  //--- Atomic property: mValueIsVisibleInBoard
+    self.mValueIsVisibleInBoard_property.readFrom (dictionary: inDictionary, forKey:"mValueIsVisibleInBoard")
+  //--- Atomic property: mValueRotation
+    self.mValueRotation_property.readFrom (dictionary: inDictionary, forKey:"mValueRotation")
   }
 
   //····················································································································

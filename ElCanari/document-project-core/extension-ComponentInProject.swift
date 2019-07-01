@@ -13,6 +13,7 @@ import Cocoa
 let COMPONENT_PACKAGE_CENTER_KNOB  = 0
 let COMPONENT_PACKAGE_ROTATION_KNOB  = 1
 let COMPONENT_PACKAGE_NAME_KNOB  = 2
+let COMPONENT_PACKAGE_VALUE_KNOB = 3
 
 let COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : CGFloat = 30.0
 
@@ -46,6 +47,8 @@ extension ComponentInProject {
       return OCCanariPoint (x: inDx, y: inDy)
     }else if inKnobIndex == COMPONENT_PACKAGE_NAME_KNOB {
       return OCCanariPoint (x: inDx, y: inDy)
+    }else if inKnobIndex == COMPONENT_PACKAGE_VALUE_KNOB {
+      return OCCanariPoint (x: inDx, y: inDy)
     }else{
       return OCCanariPoint (x: 0, y: 0)
     }
@@ -65,6 +68,9 @@ extension ComponentInProject {
     }else if inKnobIndex == COMPONENT_PACKAGE_NAME_KNOB {
       self.mXName += inDx
       self.mYName += inDy
+    }else if inKnobIndex == COMPONENT_PACKAGE_VALUE_KNOB {
+      self.mXValue += inDx
+      self.mYValue += inDy
     }
   }
 
