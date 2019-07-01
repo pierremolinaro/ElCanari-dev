@@ -35,6 +35,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.removeEBObserversOf_mValueIsVisibleInBoard_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mValueRotation_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_componentNameFontName_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_componentValueFontName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_componentName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (inRemovedSet) // Transient property
@@ -69,6 +70,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.addEBObserversOf_mValueIsVisibleInBoard_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mValueRotation_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_componentNameFontName_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_componentValueFontName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_componentName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectedPackageName_toElementsOfSet (inAddedSet) // Transient property
@@ -1219,6 +1221,62 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     for managedObject in inSet {
       self.mObserversOf_componentNameFontName.apply { (_ observer : EBEvent) in
         managedObject.componentNameFontName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'componentValueFontName' transient property
+  //····················································································································
+
+  private var mObserversOf_componentValueFontName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_componentValueFontName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_componentValueFontName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.componentValueFontName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_componentValueFontName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_componentValueFontName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.componentValueFontName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_componentValueFontName_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentValueFontName.apply { (_ observer : EBEvent) in
+        managedObject.componentValueFontName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_componentValueFontName_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentValueFontName.apply { (_ observer : EBEvent) in
+        managedObject.componentValueFontName_property.removeEBObserver (observer)
       }
     }
   }

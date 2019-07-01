@@ -211,6 +211,16 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: componentValueFontName
+  //····················································································································
+
+  let componentValueFontName_property = EBTransientProperty_String ()
+
+  var componentValueFontName_property_selection : EBSelection <String> {
+    return self.componentValueFontName_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: componentName
   //····················································································································
 
@@ -376,6 +386,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
     self.bind_property_mValueIsVisibleInBoard ()
     self.bind_property_mValueRotation ()
     self.bind_property_componentNameFontName ()
+    self.bind_property_componentValueFontName ()
     self.bind_property_componentName ()
     self.bind_property_deviceName ()
     self.bind_property_selectedPackageName ()
@@ -495,6 +506,9 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //--- componentNameFontName
     self.componentNameFontName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_componentNameFontName (self.componentNameFontName_property)
+  //--- componentValueFontName
+    self.componentValueFontName_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_componentValueFontName (self.componentValueFontName_property)
   //--- componentName
     self.componentName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_componentName (self.componentName_property)
@@ -2104,6 +2118,45 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var isMultipleSelection = false
           for object in v {
             switch object.componentNameFontName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_componentValueFontName () {
+    self.selectedArray_property.addEBObserverOf_componentValueFontName (self.componentValueFontName_property)
+    self.componentValueFontName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.componentValueFontName_property_selection {
             case .empty :
               return .empty
             case .multiple :

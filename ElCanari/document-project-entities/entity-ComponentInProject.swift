@@ -126,6 +126,12 @@ protocol ComponentInProject_componentNameFontName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentInProject_componentValueFontName : class {
+  var componentValueFontName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentInProject_componentName : class {
   var componentName : String? { get }
 }
@@ -227,6 +233,7 @@ class ComponentInProject : BoardObject,
          ComponentInProject_mValueIsVisibleInBoard,
          ComponentInProject_mValueRotation,
          ComponentInProject_componentNameFontName,
+         ComponentInProject_componentValueFontName,
          ComponentInProject_componentName,
          ComponentInProject_deviceName,
          ComponentInProject_selectedPackageName,
@@ -683,6 +690,29 @@ class ComponentInProject : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: componentValueFontName
+  //····················································································································
+
+  let componentValueFontName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var componentValueFontName_property_selection : EBSelection <String> {
+    return self.componentValueFontName_property.prop
+  }
+
+  //····················································································································
+
+  var componentValueFontName : String? {
+    switch self.componentValueFontName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: componentName
   //····················································································································
 
@@ -1095,6 +1125,28 @@ class ComponentInProject : BoardObject,
       setter: { [weak self] inObject in if let me = self { inObject.mComponentValues_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mComponentValues_property.remove (me) } }
     )
+  //--- Atomic property: componentValueFontName
+    self.componentValueFontName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mValueFont_property.mFontName_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mValueFont_property.mFontName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_componentValueFontName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mValueFont_property.addEBObserverOf_mFontName (self.componentValueFontName_property)
   //--- Atomic property: componentName
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1509,6 +1561,7 @@ class ComponentInProject : BoardObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.mNameFont_property.removeEBObserverOf_mFontName (self.componentNameFontName_property)
+    self.mValueFont_property.removeEBObserverOf_mFontName (self.componentValueFontName_property)
     self.mNamePrefix_property.removeEBObserver (self.componentName_property)
     self.mNameIndex_property.removeEBObserver (self.componentName_property)
     self.mDevice_property.removeEBObserverOf_mDeviceName (self.deviceName_property)
@@ -1749,6 +1802,14 @@ class ComponentInProject : BoardObject,
       view: view,
       observerExplorer: &self.componentNameFontName_property.mObserverExplorer,
       valueExplorer: &self.componentNameFontName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "componentValueFontName",
+      idx: self.componentValueFontName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.componentValueFontName_property.mObserverExplorer,
+      valueExplorer: &self.componentValueFontName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "componentName",

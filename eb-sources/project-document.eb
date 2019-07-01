@@ -675,6 +675,8 @@ document ProjectDocument root ProjectRoot {
   outlet EBTextField mBoardComponentValueTextField
      $value #componentInBoardSelectionController.mComponentValue {sendContinously : yes};
 
+  outlet CanariBoardComponentValueFontPopUpButton mBoardComponentValueFontPopUpButton ;
+  
 //--- Display inspector
   outlet EBSwitch mDisplayFrontPadsSwitch $value root.mDisplayFrontPads ;
   outlet EBColorWell mDisplayFrontPadsColorWell $color prefs.frontSidePadColorForBoard {sendContinously:yes} ;

@@ -39,6 +39,8 @@ graphic entity ComponentInProject : BoardObject {
   property Int mYValue default -685_800 ; // 300 mils
   property Bool mValueIsVisibleInBoard default yes ;
   property Int mValueRotation default 0 ; // 1000 -> 1°
+
+  transient String componentValueFontName dependsFrom self.mValueFont.one.mFontName ;
   
   transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
   transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;

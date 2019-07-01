@@ -462,6 +462,7 @@ import Cocoa
   @IBOutlet weak var mBoardComponentRotationSlider : CanariAngleSlider? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentRotationTextField : CanariAngleTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentSidePopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardComponentValueFontPopUpButton : CanariBoardComponentValueFontPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentValueTextField : EBTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPX1TextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPX2TextField : EBTextObserverField? = nil // An outlet should be declared weak
@@ -862,6 +863,7 @@ import Cocoa
     checkOutletConnection (self.mBoardComponentRotationSlider, "mBoardComponentRotationSlider", CanariAngleSlider.self, #file, #line)
     checkOutletConnection (self.mBoardComponentRotationTextField, "mBoardComponentRotationTextField", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mBoardComponentSidePopUpButton, "mBoardComponentSidePopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardComponentValueFontPopUpButton, "mBoardComponentValueFontPopUpButton", CanariBoardComponentValueFontPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardComponentValueTextField, "mBoardComponentValueTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPX1TextField, "mBoardCurveCPX1TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPX2TextField, "mBoardCurveCPX2TextField", EBTextObserverField.self, #file, #line)
@@ -2332,6 +2334,7 @@ import Cocoa
     self.mBoardComponentRotationSlider?.ebCleanUp ()
     self.mBoardComponentRotationTextField?.ebCleanUp ()
     self.mBoardComponentSidePopUpButton?.ebCleanUp ()
+    self.mBoardComponentValueFontPopUpButton?.ebCleanUp ()
     self.mBoardComponentValueTextField?.ebCleanUp ()
     self.mBoardCurveCPX1TextField?.ebCleanUp ()
     self.mBoardCurveCPX2TextField?.ebCleanUp ()
@@ -2601,6 +2604,7 @@ import Cocoa
 //    self.mBoardComponentRotationSlider = nil
 //    self.mBoardComponentRotationTextField = nil
 //    self.mBoardComponentSidePopUpButton = nil
+//    self.mBoardComponentValueFontPopUpButton = nil
 //    self.mBoardComponentValueTextField = nil
 //    self.mBoardCurveCPX1TextField = nil
 //    self.mBoardCurveCPX2TextField = nil

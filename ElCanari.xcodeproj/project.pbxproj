@@ -966,6 +966,10 @@
 		CF6F6F172247BFDD00F89C77 /* transient-FontDocument-canDeleteCurrentCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F6F142247BFDD00F89C77 /* transient-FontDocument-canDeleteCurrentCharacter.swift */; };
 		CF6F6F182247BFDD00F89C77 /* action-FontDocument-deleteCurrentCharacterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F6F152247BFDD00F89C77 /* action-FontDocument-deleteCurrentCharacterAction.swift */; };
 		CF6F6F192247BFDD00F89C77 /* action-FontDocument-deleteCurrentCharacterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F6F152247BFDD00F89C77 /* action-FontDocument-deleteCurrentCharacterAction.swift */; };
+		CF70640122CA0AF1000E452E /* CanariBoardComponentValueFontPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70640022CA0AF1000E452E /* CanariBoardComponentValueFontPopUpButton.swift */; };
+		CF70640222CA0AF1000E452E /* CanariBoardComponentValueFontPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70640022CA0AF1000E452E /* CanariBoardComponentValueFontPopUpButton.swift */; };
+		CF70640422CA0BF9000E452E /* transient-ComponentInProject-componentValueFontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70640322CA0BF9000E452E /* transient-ComponentInProject-componentValueFontName.swift */; };
+		CF70640522CA0BF9000E452E /* transient-ComponentInProject-componentValueFontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70640322CA0BF9000E452E /* transient-ComponentInProject-componentValueFontName.swift */; };
 		CF71F9241B3EA3DF00FB5049 /* EBColorWell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF71F91D1B3EA3DF00FB5049 /* EBColorWell.swift */; };
 		CF71F9251B3EA3DF00FB5049 /* EBDoubleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF71F91E1B3EA3DF00FB5049 /* EBDoubleField.swift */; };
 		CF71F9261B3EA3DF00FB5049 /* EBFontButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF71F91F1B3EA3DF00FB5049 /* EBFontButton.swift */; };
@@ -2581,6 +2585,8 @@
 		CF6F6F1122479DC600F89C77 /* transient-FontRoot-definedCharacters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontRoot-definedCharacters.swift"; sourceTree = "<group>"; };
 		CF6F6F142247BFDD00F89C77 /* transient-FontDocument-canDeleteCurrentCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontDocument-canDeleteCurrentCharacter.swift"; sourceTree = "<group>"; };
 		CF6F6F152247BFDD00F89C77 /* action-FontDocument-deleteCurrentCharacterAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-FontDocument-deleteCurrentCharacterAction.swift"; sourceTree = "<group>"; };
+		CF70640022CA0AF1000E452E /* CanariBoardComponentValueFontPopUpButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariBoardComponentValueFontPopUpButton.swift; sourceTree = "<group>"; };
+		CF70640322CA0BF9000E452E /* transient-ComponentInProject-componentValueFontName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ComponentInProject-componentValueFontName.swift"; sourceTree = "<group>"; };
 		CF71F91D1B3EA3DF00FB5049 /* EBColorWell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBColorWell.swift; sourceTree = "<group>"; };
 		CF71F91E1B3EA3DF00FB5049 /* EBDoubleField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBDoubleField.swift; sourceTree = "<group>"; };
 		CF71F91F1B3EA3DF00FB5049 /* EBFontButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBFontButton.swift; sourceTree = "<group>"; };
@@ -4113,6 +4119,7 @@
 		CF9793E522CA057D00F0E1AB /* document — project — outlets */ = {
 			isa = PBXGroup;
 			children = (
+				CF70640022CA0AF1000E452E /* CanariBoardComponentValueFontPopUpButton.swift */,
 				CF9793E922CA063200F0E1AB /* CanariBoardComponentNameFontPopUpButton.swift */,
 				CF9793E622CA05AE00F0E1AB /* CanariBoardTextFontPopUpButton.swift */,
 			);
@@ -4577,6 +4584,7 @@
 				CF41A82A22C7C26200A5E14F /* transient-ComponentInProject-componentIsPlacedInBoard.swift */,
 				CF95BA7B22C9EFFE0044C6FA /* transient-ComponentInProject-componentIsPlacedInBoardString.swift */,
 				CF9793EC22CA084E00F0E1AB /* transient-ComponentInProject-componentNameFontName.swift */,
+				CF70640322CA0BF9000E452E /* transient-ComponentInProject-componentValueFontName.swift */,
 				CF41A82522C7BD3C00A5E14F /* transient-ComponentInProject-objectDisplay.swift */,
 				CF989FCB22C7D10100AC5110 /* transient-ComponentInProject-padDictionary.swift */,
 				CF41A82422C7BD3C00A5E14F /* transient-ComponentInProject-selectionDisplay.swift */,
@@ -5248,6 +5256,7 @@
 				CF0432C822B64D4A0016EDE0 /* transient-FontInProject-descriptor.swift in Sources */,
 				CFB1DB232282D31F005F9811 /* entity-DeviceMasterPadInProject.swift in Sources */,
 				CF85625021E7CB570032F52D /* DeviceDocument-customized.swift in Sources */,
+				CF70640422CA0BF9000E452E /* transient-ComponentInProject-componentValueFontName.swift in Sources */,
 				CF5788D922C274A900A10949 /* transient-ProjectDocument-unplacedPackageCount.swift in Sources */,
 				CFDDD4E121BB1529007D2F14 /* EBGraphicView-magnify-and-zoom.swift in Sources */,
 				CF00845621C42B64003627E9 /* selectionController-PackageDocument-mPackageOvalSelectionController.swift in Sources */,
@@ -5768,6 +5777,7 @@
 				CF85859421C5124300082CE3 /* transient-PackageArc-objectDisplay.swift in Sources */,
 				CF323C2920E2DD9E00F8FD8D /* transient-BoardModel-backTrackSegments.swift in Sources */,
 				CFEDE5BA1B4677C500036ACF /* EBUndoManager.swift in Sources */,
+				CF70640122CA0AF1000E452E /* CanariBoardComponentValueFontPopUpButton.swift in Sources */,
 				CFA42FAE229AEAEC000AA8C8 /* toone-FontRoot.swift in Sources */,
 				CF00846221C4363E003627E9 /* transient-PackageDocument-mStatusMessage.swift in Sources */,
 				CFBB58E0229B0082003EB504 /* transient-SchematicObject-sheetDescriptor.swift in Sources */,
@@ -6398,6 +6408,7 @@
 				CFA430AE229AEC41000AA8C8 /* toone-SymbolBezierCurve.swift in Sources */,
 				CF1D9C8B21BBFD7900FFF459 /* EBGraphicView-mouse.swift in Sources */,
 				CF3E658B21BECB7A0041FA2A /* EBGraphicView-issue.swift in Sources */,
+				CF70640522CA0BF9000E452E /* transient-ComponentInProject-componentValueFontName.swift in Sources */,
 				CFA42FC5229AEB0A000AA8C8 /* tomany-MergerRoot.swift in Sources */,
 				CFD3B2BD21B04977007D3361 /* transient-SymbolPin-nameRect.swift in Sources */,
 				CF69ABC821A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift in Sources */,
@@ -6734,6 +6745,7 @@
 				CF3817A6225CAD9200E75A96 /* struct-PinQualifiedNameStruct.swift in Sources */,
 				CF39BF42229D6C5600E5A984 /* transient-PointInSchematic-netInfoForPoint.swift in Sources */,
 				CF2A01FB21DE827D00F3A379 /* action-PackageDocument-setDimensionTextOriginAtMidYAction.swift in Sources */,
+				CF70640222CA0AF1000E452E /* CanariBoardComponentValueFontPopUpButton.swift in Sources */,
 				CF9D4B95227F79A9006E2035 /* transient-ComponentInProject-unplacedSymbols.swift in Sources */,
 				CF989FC722C7CDD800AC5110 /* transient-DeviceMasterPadInProject-descriptor.swift in Sources */,
 				CF4D083F21C2F18000380ACA /* transient-PackageSegment-issues.swift in Sources */,
