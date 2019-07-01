@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Derived selection controller ProjectDocument ComponentInBoardSelectionController
+//    Derived selection controller ProjectDocument componentInBoardSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_ComponentInBoardSelectionController : EBObject {
+final class SelectionController_ProjectDocument_componentInBoardSelectionController : EBObject {
 
   //····················································································································
   //   Selection observable property: mNamePrefix
@@ -201,6 +201,16 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: componentNameFontName
+  //····················································································································
+
+  let componentNameFontName_property = EBTransientProperty_String ()
+
+  var componentNameFontName_property_selection : EBSelection <String> {
+    return self.componentNameFontName_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: componentName
   //····················································································································
 
@@ -365,6 +375,7 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
     self.bind_property_mYValue ()
     self.bind_property_mValueIsVisibleInBoard ()
     self.bind_property_mValueRotation ()
+    self.bind_property_componentNameFontName ()
     self.bind_property_componentName ()
     self.bind_property_deviceName ()
     self.bind_property_selectedPackageName ()
@@ -481,6 +492,9 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
     self.mValueRotation_property.mWriteModelFunction = nil 
     self.mValueRotation_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mValueRotation (self.mValueRotation_property)
+  //--- componentNameFontName
+    self.componentNameFontName_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_componentNameFontName (self.componentNameFontName_property)
   //--- componentName
     self.componentName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_componentName (self.componentName_property)
@@ -544,7 +558,7 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
     valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_ProjectDocument_ComponentInBoardSelectionController.showObjectWindowFromExplorerButton(_:))
+    valueExplorer.action = #selector(SelectionController_ProjectDocument_componentInBoardSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
     self.mValueExplorer = valueExplorer
     y += EXPLORER_ROW_HEIGHT
@@ -720,7 +734,7 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_ProjectDocument_ComponentInBoardSelectionController.deleteSelectionControllerWindowAction(_:))
+    closeButton?.action = #selector(SelectionController_ProjectDocument_componentInBoardSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
     self.mExplorerWindow!.title = windowTitle
@@ -2071,6 +2085,45 @@ final class SelectionController_ProjectDocument_ComponentInBoardSelectionControl
         }
       }else{
         return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_componentNameFontName () {
+    self.selectedArray_property.addEBObserverOf_componentNameFontName (self.componentNameFontName_property)
+    self.componentNameFontName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.componentNameFontName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
       }
     }
   }

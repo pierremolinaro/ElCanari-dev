@@ -28,6 +28,10 @@ graphic entity ComponentInProject : BoardObject {
   property Bool mNameIsVisibleInBoard default yes ;
   property Int mNameRotation default 0 ; // 1000 -> 1°
 
+  transient String componentNameFontName dependsFrom self.mNameFont.one.mFontName ;
+
+
+
   property String mComponentValue default "" ;
   toOne FontInProject mValueFont inverse toMany mComponentValues ;
   property Double mValueFontSize default 4.0 ;

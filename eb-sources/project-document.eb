@@ -632,46 +632,48 @@ document ProjectDocument root ProjectRoot {
 
 //--- Component inspector
   outlet CanariViewWithKeyView mComponentInBoardInspectorView ;
-  selectionController ComponentInProject #ComponentInBoardSelectionController :
+  selectionController ComponentInProject #componentInBoardSelectionController :
     #boardObjectsController.selectedArray
   ;
 
-  outlet EBPopUpButton mComponentInBoardCenterXPopUp $selectedTag #ComponentInBoardSelectionController.mXUnit ;
+  outlet EBPopUpButton mComponentInBoardCenterXPopUp $selectedTag #componentInBoardSelectionController.mXUnit ;
   outlet CanariDimensionTextField mComponentInBoardCenterXTextField
-     $dimensionAndUnit #ComponentInBoardSelectionController.mX, #ComponentInBoardSelectionController.mXUnit
+     $dimensionAndUnit #componentInBoardSelectionController.mX, #componentInBoardSelectionController.mXUnit
   ;
 
-  outlet EBPopUpButton mComponentInBoardCenterYPopUp $selectedTag #ComponentInBoardSelectionController.mYUnit ;
+  outlet EBPopUpButton mComponentInBoardCenterYPopUp $selectedTag #componentInBoardSelectionController.mYUnit ;
   outlet CanariDimensionTextField mComponentInBoardCenterYTextField
-     $dimensionAndUnit #ComponentInBoardSelectionController.mY, #ComponentInBoardSelectionController.mYUnit
+     $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
   ;
 
-  outlet CanariAngleTextField mBoardComponentRotationTextField $angle #ComponentInBoardSelectionController.mRotation ;
-  outlet CanariAngleSlider mBoardComponentRotationSlider $angle #ComponentInBoardSelectionController.mRotation ;
+  outlet CanariAngleTextField mBoardComponentRotationTextField $angle #componentInBoardSelectionController.mRotation ;
+  outlet CanariAngleSlider mBoardComponentRotationSlider $angle #componentInBoardSelectionController.mRotation ;
 
-  outlet EBPopUpButton mBoardComponentSidePopUpButton $selectedIndex #ComponentInBoardSelectionController.mSide ;
+  outlet EBPopUpButton mBoardComponentSidePopUpButton $selectedIndex #componentInBoardSelectionController.mSide ;
 
-  outlet EBSwitch mDisplayComponentNameSwitch $value #ComponentInBoardSelectionController.mNameIsVisibleInBoard ;
+  outlet EBSwitch mDisplayComponentNameSwitch $value #componentInBoardSelectionController.mNameIsVisibleInBoard ;
   outlet EBDoubleField mComponentNameFontSizeField
-    $value #ComponentInBoardSelectionController.mNameFontSize {sendContinously : no, autoFormatter : no}
+    $value #componentInBoardSelectionController.mNameFontSize {sendContinously : no, autoFormatter : no}
   ;
 
-  outlet CanariAngleTextField mComponentNameRotationTextField $angle #ComponentInBoardSelectionController.mNameRotation ;
-  outlet CanariAngleSlider mComponentNameRotationSlider $angle #ComponentInBoardSelectionController.mNameRotation ;
+  outlet CanariAngleTextField mComponentNameRotationTextField $angle #componentInBoardSelectionController.mNameRotation ;
+  outlet CanariAngleSlider mComponentNameRotationSlider $angle #componentInBoardSelectionController.mNameRotation ;
 
-  outlet EBTextObserverField mBoardComponentNameTextField $valueObserver #ComponentInBoardSelectionController.componentName ;
+  outlet EBTextObserverField mBoardComponentNameTextField $valueObserver #componentInBoardSelectionController.componentName ;
+
+  outlet CanariBoardComponentNameFontPopUpButton mBoardComponentNameFontPopUpButton ;
 
 
-  outlet EBSwitch mDisplayComponentValueSwitch $value #ComponentInBoardSelectionController.mValueIsVisibleInBoard ;
+  outlet EBSwitch mDisplayComponentValueSwitch $value #componentInBoardSelectionController.mValueIsVisibleInBoard ;
   outlet EBDoubleField mComponentValueFontSizeField
-    $value #ComponentInBoardSelectionController.mValueFontSize {sendContinously : no, autoFormatter : no}
+    $value #componentInBoardSelectionController.mValueFontSize {sendContinously : no, autoFormatter : no}
   ;
 
-  outlet CanariAngleTextField mComponentValueRotationTextField $angle #ComponentInBoardSelectionController.mValueRotation ;
-  outlet CanariAngleSlider mComponentValueRotationSlider $angle #ComponentInBoardSelectionController.mValueRotation ;
+  outlet CanariAngleTextField mComponentValueRotationTextField $angle #componentInBoardSelectionController.mValueRotation ;
+  outlet CanariAngleSlider mComponentValueRotationSlider $angle #componentInBoardSelectionController.mValueRotation ;
 
   outlet EBTextField mBoardComponentValueTextField
-     $value #ComponentInBoardSelectionController.mComponentValue {sendContinously : yes};
+     $value #componentInBoardSelectionController.mComponentValue {sendContinously : yes};
 
 //--- Display inspector
   outlet EBSwitch mDisplayFrontPadsSwitch $value root.mDisplayFrontPads ;

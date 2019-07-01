@@ -99,10 +99,10 @@ import Cocoa
   var boardTextSelectionController = SelectionController_ProjectDocument_boardTextSelectionController ()
 
   //····················································································································
-  //   Selection controller: ComponentInBoardSelectionController
+  //   Selection controller: componentInBoardSelectionController
   //····················································································································
 
-  var ComponentInBoardSelectionController = SelectionController_ProjectDocument_ComponentInBoardSelectionController ()
+  var componentInBoardSelectionController = SelectionController_ProjectDocument_componentInBoardSelectionController ()
 
   //····················································································································
   //   Transient property: componentCount
@@ -457,6 +457,7 @@ import Cocoa
   @IBOutlet weak var mBoardBorderPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardClearanceTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardClearanceUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardComponentNameFontPopUpButton : CanariBoardComponentNameFontPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentRotationSlider : CanariAngleSlider? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentRotationTextField : CanariAngleTextField? = nil // An outlet should be declared weak
@@ -797,8 +798,8 @@ import Cocoa
     self.restrictRectangleSelectionController.addExplorer (name: "restrictRectangleSelectionController", y:&y, view:view)
   //--- Selection controller property: boardTextSelectionController
     self.boardTextSelectionController.addExplorer (name: "boardTextSelectionController", y:&y, view:view)
-  //--- Selection controller property: ComponentInBoardSelectionController
-    self.ComponentInBoardSelectionController.addExplorer (name: "ComponentInBoardSelectionController", y:&y, view:view)
+  //--- Selection controller property: componentInBoardSelectionController
+    self.componentInBoardSelectionController.addExplorer (name: "componentInBoardSelectionController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -856,6 +857,7 @@ import Cocoa
     checkOutletConnection (self.mBoardBorderPageView, "mBoardBorderPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardClearanceTextField, "mBoardClearanceTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mBoardClearanceUnitPopUp, "mBoardClearanceUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardComponentNameFontPopUpButton, "mBoardComponentNameFontPopUpButton", CanariBoardComponentNameFontPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardComponentNameTextField, "mBoardComponentNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardComponentRotationSlider, "mBoardComponentRotationSlider", CanariAngleSlider.self, #file, #line)
     checkOutletConnection (self.mBoardComponentRotationTextField, "mBoardComponentRotationTextField", CanariAngleTextField.self, #file, #line)
@@ -1138,8 +1140,8 @@ import Cocoa
     self.restrictRectangleSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: boardTextSelectionController
     self.boardTextSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
-  //--- Selection controller property: ComponentInBoardSelectionController
-    self.ComponentInBoardSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: componentInBoardSelectionController
+    self.componentInBoardSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1562,23 +1564,23 @@ import Cocoa
     self.mBoardTextRotationSlider?.bind_angle (self.boardTextSelectionController.mRotation_property, file: #file, line: #line)
     self.mBoardTextWeightTextField?.bind_value (self.boardTextSelectionController.mWeight_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.mBoardTextObliqueSwitch?.bind_value (self.boardTextSelectionController.mOblique_property, file: #file, line: #line)
-    self.mComponentInBoardCenterXPopUp?.bind_selectedTag (self.ComponentInBoardSelectionController.mXUnit_property, file: #file, line: #line)
-    self.mComponentInBoardCenterXTextField?.bind_dimensionAndUnit (self.ComponentInBoardSelectionController.mX_property, self.ComponentInBoardSelectionController.mXUnit_property, file: #file, line: #line)
-    self.mComponentInBoardCenterYPopUp?.bind_selectedTag (self.ComponentInBoardSelectionController.mYUnit_property, file: #file, line: #line)
-    self.mComponentInBoardCenterYTextField?.bind_dimensionAndUnit (self.ComponentInBoardSelectionController.mY_property, self.ComponentInBoardSelectionController.mYUnit_property, file: #file, line: #line)
-    self.mBoardComponentRotationTextField?.bind_angle (self.ComponentInBoardSelectionController.mRotation_property, file: #file, line: #line)
-    self.mBoardComponentRotationSlider?.bind_angle (self.ComponentInBoardSelectionController.mRotation_property, file: #file, line: #line)
-    self.mBoardComponentSidePopUpButton?.bind_selectedIndex (self.ComponentInBoardSelectionController.mSide_property, file: #file, line: #line)
-    self.mDisplayComponentNameSwitch?.bind_value (self.ComponentInBoardSelectionController.mNameIsVisibleInBoard_property, file: #file, line: #line)
-    self.mComponentNameFontSizeField?.bind_value (self.ComponentInBoardSelectionController.mNameFontSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
-    self.mComponentNameRotationTextField?.bind_angle (self.ComponentInBoardSelectionController.mNameRotation_property, file: #file, line: #line)
-    self.mComponentNameRotationSlider?.bind_angle (self.ComponentInBoardSelectionController.mNameRotation_property, file: #file, line: #line)
-    self.mBoardComponentNameTextField?.bind_valueObserver (self.ComponentInBoardSelectionController.componentName_property, file: #file, line: #line)
-    self.mDisplayComponentValueSwitch?.bind_value (self.ComponentInBoardSelectionController.mValueIsVisibleInBoard_property, file: #file, line: #line)
-    self.mComponentValueFontSizeField?.bind_value (self.ComponentInBoardSelectionController.mValueFontSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
-    self.mComponentValueRotationTextField?.bind_angle (self.ComponentInBoardSelectionController.mValueRotation_property, file: #file, line: #line)
-    self.mComponentValueRotationSlider?.bind_angle (self.ComponentInBoardSelectionController.mValueRotation_property, file: #file, line: #line)
-    self.mBoardComponentValueTextField?.bind_value (self.ComponentInBoardSelectionController.mComponentValue_property, file: #file, line: #line, sendContinously:true)
+    self.mComponentInBoardCenterXPopUp?.bind_selectedTag (self.componentInBoardSelectionController.mXUnit_property, file: #file, line: #line)
+    self.mComponentInBoardCenterXTextField?.bind_dimensionAndUnit (self.componentInBoardSelectionController.mX_property, self.componentInBoardSelectionController.mXUnit_property, file: #file, line: #line)
+    self.mComponentInBoardCenterYPopUp?.bind_selectedTag (self.componentInBoardSelectionController.mYUnit_property, file: #file, line: #line)
+    self.mComponentInBoardCenterYTextField?.bind_dimensionAndUnit (self.componentInBoardSelectionController.mY_property, self.componentInBoardSelectionController.mYUnit_property, file: #file, line: #line)
+    self.mBoardComponentRotationTextField?.bind_angle (self.componentInBoardSelectionController.mRotation_property, file: #file, line: #line)
+    self.mBoardComponentRotationSlider?.bind_angle (self.componentInBoardSelectionController.mRotation_property, file: #file, line: #line)
+    self.mBoardComponentSidePopUpButton?.bind_selectedIndex (self.componentInBoardSelectionController.mSide_property, file: #file, line: #line)
+    self.mDisplayComponentNameSwitch?.bind_value (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property, file: #file, line: #line)
+    self.mComponentNameFontSizeField?.bind_value (self.componentInBoardSelectionController.mNameFontSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
+    self.mComponentNameRotationTextField?.bind_angle (self.componentInBoardSelectionController.mNameRotation_property, file: #file, line: #line)
+    self.mComponentNameRotationSlider?.bind_angle (self.componentInBoardSelectionController.mNameRotation_property, file: #file, line: #line)
+    self.mBoardComponentNameTextField?.bind_valueObserver (self.componentInBoardSelectionController.componentName_property, file: #file, line: #line)
+    self.mDisplayComponentValueSwitch?.bind_value (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property, file: #file, line: #line)
+    self.mComponentValueFontSizeField?.bind_value (self.componentInBoardSelectionController.mValueFontSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
+    self.mComponentValueRotationTextField?.bind_angle (self.componentInBoardSelectionController.mValueRotation_property, file: #file, line: #line)
+    self.mComponentValueRotationSlider?.bind_angle (self.componentInBoardSelectionController.mValueRotation_property, file: #file, line: #line)
+    self.mBoardComponentValueTextField?.bind_value (self.componentInBoardSelectionController.mComponentValue_property, file: #file, line: #line, sendContinously:true)
     self.mDisplayFrontPadsSwitch?.bind_value (self.rootObject.mDisplayFrontPads_property, file: #file, line: #line)
     self.mDisplayFrontPadsColorWell?.bind_color (g_Preferences!.frontSidePadColorForBoard_property, file: #file, line: #line, sendContinously:true)
     self.mDisplayBackPadsSwitch?.bind_value (self.rootObject.mDisplayBackPads_property, file: #file, line: #line)
@@ -2259,8 +2261,8 @@ import Cocoa
     self.restrictRectangleSelectionController.unbind_selection ()
   //--- Selection controller property: boardTextSelectionController
     self.boardTextSelectionController.unbind_selection ()
-  //--- Selection controller property: ComponentInBoardSelectionController
-    self.ComponentInBoardSelectionController.unbind_selection ()
+  //--- Selection controller property: componentInBoardSelectionController
+    self.componentInBoardSelectionController.unbind_selection ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
@@ -2325,6 +2327,7 @@ import Cocoa
     self.mBoardBorderPageView?.ebCleanUp ()
     self.mBoardClearanceTextField?.ebCleanUp ()
     self.mBoardClearanceUnitPopUp?.ebCleanUp ()
+    self.mBoardComponentNameFontPopUpButton?.ebCleanUp ()
     self.mBoardComponentNameTextField?.ebCleanUp ()
     self.mBoardComponentRotationSlider?.ebCleanUp ()
     self.mBoardComponentRotationTextField?.ebCleanUp ()
@@ -2593,6 +2596,7 @@ import Cocoa
 //    self.mBoardBorderPageView = nil
 //    self.mBoardClearanceTextField = nil
 //    self.mBoardClearanceUnitPopUp = nil
+//    self.mBoardComponentNameFontPopUpButton = nil
 //    self.mBoardComponentNameTextField = nil
 //    self.mBoardComponentRotationSlider = nil
 //    self.mBoardComponentRotationTextField = nil

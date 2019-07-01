@@ -34,6 +34,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.removeEBObserversOf_mYValue_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mValueIsVisibleInBoard_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mValueRotation_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_componentNameFontName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_componentName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (inRemovedSet) // Transient property
@@ -67,6 +68,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.addEBObserversOf_mYValue_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mValueIsVisibleInBoard_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mValueRotation_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_componentNameFontName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_componentName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectedPackageName_toElementsOfSet (inAddedSet) // Transient property
@@ -1161,6 +1163,62 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mValueRotation_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'componentNameFontName' transient property
+  //····················································································································
+
+  private var mObserversOf_componentNameFontName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_componentNameFontName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_componentNameFontName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.componentNameFontName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_componentNameFontName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_componentNameFontName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.componentNameFontName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_componentNameFontName_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentNameFontName.apply { (_ observer : EBEvent) in
+        managedObject.componentNameFontName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_componentNameFontName_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentNameFontName.apply { (_ observer : EBEvent) in
+        managedObject.componentNameFontName_property.removeEBObserver (observer)
       }
     }
   }
