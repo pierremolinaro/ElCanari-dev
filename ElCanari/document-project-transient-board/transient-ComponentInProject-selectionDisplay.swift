@@ -26,7 +26,7 @@ func transient_ComponentInProject_selectionDisplay (
        _ self_mNameFontSize : Double,               
        _ self_mNameRotation : Int,                  
        _ self_componentName : String,               
-       _ self_padDictionary : PackagePadDictionary, 
+       _ self_packagePadDictionary : PackageMasterPadDictionary,
        _ self_mValueIsVisibleInBoard : Bool,        
        _ self_mXValue : Int,                        
        _ self_mYValue : Int,                        
@@ -36,7 +36,7 @@ func transient_ComponentInProject_selectionDisplay (
        _ self_mComponentValue : String
 ) -> EBShape {
 //--- START OF USER ZONE 2
-      let rPadsCenter = self_padDictionary.masterPadsRect.center.cocoaPoint
+      let rPadsCenter = self_packagePadDictionary.masterPadsRect.center.cocoaPoint
       let absoluteCenter = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
       let knobDx = (self_mSide == .back) ? -COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE ;
       let rotationKnobLocation = NSPoint (x: rPadsCenter.x + knobDx, y: rPadsCenter.y)

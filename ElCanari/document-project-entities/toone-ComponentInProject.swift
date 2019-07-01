@@ -37,6 +37,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     inOldValue?.componentNameFontName_property.removeEBObserversFrom (&self.mObserversOf_componentNameFontName) // Transient property
     inOldValue?.componentValueFontName_property.removeEBObserversFrom (&self.mObserversOf_componentValueFontName) // Transient property
     inOldValue?.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName) // Transient property
+    inOldValue?.packagePadDictionary_property.removeEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
     inOldValue?.deviceName_property.removeEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
     inOldValue?.selectedPackageName_property.removeEBObserversFrom (&self.mObserversOf_selectedPackageName) // Transient property
     inOldValue?.availablePackages_property.removeEBObserversFrom (&self.mObserversOf_availablePackages) // Transient property
@@ -46,9 +47,9 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     inOldValue?.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
     inOldValue?.placementInSchematic_property.removeEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
     inOldValue?.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
-    inOldValue?.padDictionary_property.removeEBObserversFrom (&self.mObserversOf_padDictionary) // Transient property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    inOldValue?.componentPadDictionary_property.removeEBObserversFrom (&self.mObserversOf_componentPadDictionary) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mNamePrefix_property.addEBObserversFrom (&self.mObserversOf_mNamePrefix) // Stored property
     self.mInternalValue?.mNameIndex_property.addEBObserversFrom (&self.mObserversOf_mNameIndex) // Stored property
@@ -72,6 +73,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     self.mInternalValue?.componentNameFontName_property.addEBObserversFrom (&self.mObserversOf_componentNameFontName) // Transient property
     self.mInternalValue?.componentValueFontName_property.addEBObserversFrom (&self.mObserversOf_componentValueFontName) // Transient property
     self.mInternalValue?.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName) // Transient property
+    self.mInternalValue?.packagePadDictionary_property.addEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
     self.mInternalValue?.deviceName_property.addEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
     self.mInternalValue?.selectedPackageName_property.addEBObserversFrom (&self.mObserversOf_selectedPackageName) // Transient property
     self.mInternalValue?.availablePackages_property.addEBObserversFrom (&self.mObserversOf_availablePackages) // Transient property
@@ -81,9 +83,9 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     self.mInternalValue?.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
     self.mInternalValue?.placementInSchematic_property.addEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
     self.mInternalValue?.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
-    self.mInternalValue?.padDictionary_property.addEBObserversFrom (&self.mObserversOf_padDictionary) // Transient property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    self.mInternalValue?.componentPadDictionary_property.addEBObserversFrom (&self.mObserversOf_componentPadDictionary) // Transient property
   }
 
   //····················································································································
@@ -1624,6 +1626,75 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   }
 
   //····················································································································
+  //   Observers of 'packagePadDictionary' transient property
+  //····················································································································
+
+  private var mObserversOf_packagePadDictionary = EBWeakEventSet ()
+
+  //····················································································································
+
+  var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary?> {
+    if let model = self.propval {
+      switch (model.packagePadDictionary_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_packagePadDictionary.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.packagePadDictionary_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_packagePadDictionary.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.packagePadDictionary_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_packagePadDictionary_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_packagePadDictionary.apply { (_ observer : EBEvent) in
+        managedObject.packagePadDictionary_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_packagePadDictionary_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_packagePadDictionary.apply { (_ observer : EBEvent) in
+        managedObject.packagePadDictionary_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'deviceName' transient property
   //····················································································································
 
@@ -2245,75 +2316,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   }
 
   //····················································································································
-  //   Observers of 'padDictionary' transient property
-  //····················································································································
-
-  private var mObserversOf_padDictionary = EBWeakEventSet ()
-
-  //····················································································································
-
-  var padDictionary_property_selection : EBSelection <PackagePadDictionary?> {
-    if let model = self.propval {
-      switch (model.padDictionary_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_padDictionary (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_padDictionary.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.padDictionary_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_padDictionary (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_padDictionary.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.padDictionary_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_padDictionary_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_padDictionary.apply { (_ observer : EBEvent) in
-        managedObject.padDictionary_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padDictionary_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_padDictionary.apply { (_ observer : EBEvent) in
-        managedObject.padDictionary_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
@@ -2452,6 +2454,75 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   }
 
   //····················································································································
+  //   Observers of 'componentPadDictionary' transient property
+  //····················································································································
+
+  private var mObserversOf_componentPadDictionary = EBWeakEventSet ()
+
+  //····················································································································
+
+  var componentPadDictionary_property_selection : EBSelection <ComponentPadDescriptorDictionary?> {
+    if let model = self.propval {
+      switch (model.componentPadDictionary_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_componentPadDictionary (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_componentPadDictionary.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.componentPadDictionary_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_componentPadDictionary (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_componentPadDictionary.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.componentPadDictionary_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_componentPadDictionary_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentPadDictionary.apply { (_ observer : EBEvent) in
+        managedObject.componentPadDictionary_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_componentPadDictionary_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentPadDictionary.apply { (_ observer : EBEvent) in
+        managedObject.componentPadDictionary_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observable toMany property: mSymbols
   //····················································································································
 
@@ -2489,6 +2560,47 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     self.mObserversOf_mSymbols.remove (inObserver)
     if let object = self.propval {
       object.mSymbols_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mConnectors
+  //····················································································································
+
+  private var mObserversOf_mConnectors = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mConnectors_property_selection : EBSelection <[ConnectorInBoard]> {
+    if let model = self.propval {
+      switch (model.mConnectors_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mConnectors (_ inObserver : EBEvent) {
+    self.mObserversOf_mConnectors.insert (inObserver)
+    if let object = self.propval {
+      object.mConnectors_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mConnectors (_ inObserver : EBEvent) {
+    self.mObserversOf_mConnectors.remove (inObserver)
+    if let object = self.propval {
+      object.mConnectors_property.removeEBObserver (inObserver)
     }
   }
 

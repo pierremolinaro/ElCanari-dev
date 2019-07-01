@@ -13,11 +13,21 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_padDictionary (
-       _ self_mSelectedPackage_padDictionary : PackagePadDictionary?
-) -> PackagePadDictionary {
+func transient_ConnectorInBoard_objectDisplay (
+       _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
+       _ self_mComponentPadName : String
+) -> EBShape {
 //--- START OF USER ZONE 2
-        return self_mSelectedPackage_padDictionary ?? PackagePadDictionary ()
+        if let descriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName]  {
+          let center = descriptor.padLocation
+          let SIZE_IN_MILS = 50
+          let SIZE_IN_COCOA_UNIT = milsToCocoaUnit (CGFloat (SIZE_IN_MILS))
+          let r = NSRect (x: center.x - SIZE_IN_COCOA_UNIT / 2.0, y: center.y - SIZE_IN_COCOA_UNIT / 2.0, width: SIZE_IN_COCOA_UNIT, height: SIZE_IN_COCOA_UNIT)
+          let rectBP = EBBezierPath (ovalIn: r)
+          return EBFilledBezierPathShape ([rectBP], .orange)
+        }else{
+          return EBShape ()
+        }
 //--- END OF USER ZONE 2
 }
 

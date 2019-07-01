@@ -277,6 +277,7 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
     self.mComponentPackagePopUpButton?.register (
       selectionController: self.componentInBoardSelectionController.selectedArray_property
     )
+    self.boardObjectsController.mAfterObjectRemovingCallback = self.updateBoardConnectors
   }
 
   //····················································································································
@@ -292,6 +293,7 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
     self.mSchematicsView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
     self.mBoardLimitsView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
     self.schematicObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
+    self.boardObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
   //--- Pop up button controllers
     self.mSelectedWireNetClassPopUpController.unbind_model ()
     self.mSelectedWireNetClassPopUpController.attachPopUpButton (nil)
@@ -324,6 +326,20 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
       let message = errorList.joined (separator: "\n")
       self.mInconsistentSchematicErrorTextView?.string = message
       window.beginSheet (dialog) { (inModalResponse) in }
+    }
+  }
+
+  //····················································································································
+  //    Update board connectors after object removing in board
+  //····················································································································
+
+  internal func updateBoardConnectors () {
+    for object in self.rootObject.mBoardObjects {
+      if let connector = object as? ConnectorInBoard {
+        if connector.mComponent == nil {
+          connector.mRoot = nil // Remove from board objects
+        }
+      }
     }
   }
 
@@ -475,6 +491,14 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
       self.rootObject.mBoardObjects.append (component)
       self.boardObjectsController.setSelection ([component])
       self.mPossibleDraggedComponent = nil
+      if let padNameArray = component.componentPadDictionary?.keys {
+        for padName in padNameArray {
+          let newConnector = ConnectorInBoard (self.ebUndoManager)
+          newConnector.mComponent = component
+          newConnector.mComponentPadName = padName
+          self.rootObject.mBoardObjects.append (newConnector)
+        }
+      }
     }
   }
 

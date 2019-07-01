@@ -248,7 +248,7 @@ struct BoardFontDescriptor : Hashable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias PackagePadDictionary = [String : MasterPadDescriptor]
+typealias PackageMasterPadDictionary = [String : MasterPadDescriptor]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -411,5 +411,16 @@ struct SlavePadDescriptor : Hashable {
     }
   }
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct ComponentPadDescriptor : Hashable {
+   let padName : String
+   let padLocation : NSPoint
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias ComponentPadDescriptorDictionary = [String : ComponentPadDescriptor]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

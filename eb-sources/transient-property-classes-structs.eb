@@ -24,7 +24,8 @@ transient property struct PinInProjectDescriptor ;
 transient property struct PinPadAssignmentInProject ;
 transient property struct SlavePadDescriptor ;
 transient property struct MasterPadDescriptor ;
-transient property struct PackagePadDictionary ;
+transient property struct PackageMasterPadDictionary ;
+transient property struct ComponentPadDescriptorDictionary ;
 
 transient property struct DeviceSymbolDictionary ;
 transient property struct IntArray ;

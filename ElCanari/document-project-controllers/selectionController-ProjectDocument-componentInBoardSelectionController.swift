@@ -241,6 +241,16 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: packagePadDictionary
+  //····················································································································
+
+  let packagePadDictionary_property = EBTransientProperty_PackageMasterPadDictionary ()
+
+  var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary> {
+    return self.packagePadDictionary_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: deviceName
   //····················································································································
 
@@ -331,16 +341,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   }
 
   //····················································································································
-  //   Selection observable property: padDictionary
-  //····················································································································
-
-  let padDictionary_property = EBTransientProperty_PackagePadDictionary ()
-
-  var padDictionary_property_selection : EBSelection <PackagePadDictionary> {
-    return self.padDictionary_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
@@ -358,6 +358,16 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
     return self.selectionDisplay_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: componentPadDictionary
+  //····················································································································
+
+  let componentPadDictionary_property = EBTransientProperty_ComponentPadDescriptorDictionary ()
+
+  var componentPadDictionary_property_selection : EBSelection <ComponentPadDescriptorDictionary> {
+    return self.componentPadDictionary_property.prop
   }
 
   //····················································································································
@@ -398,6 +408,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
     self.bind_property_componentNameFontName ()
     self.bind_property_componentValueFontName ()
     self.bind_property_componentName ()
+    self.bind_property_packagePadDictionary ()
     self.bind_property_deviceName ()
     self.bind_property_selectedPackageName ()
     self.bind_property_availablePackages ()
@@ -407,9 +418,9 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
     self.bind_property_deviceSymbolDictionary ()
     self.bind_property_placementInSchematic ()
     self.bind_property_strokeBezierPath ()
-    self.bind_property_padDictionary ()
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
+    self.bind_property_componentPadDictionary ()
   }
 
   //····················································································································
@@ -522,6 +533,9 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //--- componentName
     self.componentName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_componentName (self.componentName_property)
+  //--- packagePadDictionary
+    self.packagePadDictionary_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_packagePadDictionary (self.packagePadDictionary_property)
   //--- deviceName
     self.deviceName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_deviceName (self.deviceName_property)
@@ -549,15 +563,15 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //--- strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
-  //--- padDictionary
-    self.padDictionary_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_padDictionary (self.padDictionary_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  //--- componentPadDictionary
+    self.componentPadDictionary_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_componentPadDictionary (self.componentPadDictionary_property)
   //---
   }
 
@@ -2231,6 +2245,45 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   }
   //····················································································································
 
+  private final func bind_property_packagePadDictionary () {
+    self.selectedArray_property.addEBObserverOf_packagePadDictionary (self.packagePadDictionary_property)
+    self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <PackageMasterPadDictionary> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.packagePadDictionary_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
   private final func bind_property_deviceName () {
     self.selectedArray_property.addEBObserverOf_deviceName (self.deviceName_property)
     self.deviceName_property.mReadModelFunction = { [weak self] in
@@ -2582,45 +2635,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_padDictionary () {
-    self.selectedArray_property.addEBObserverOf_padDictionary (self.padDictionary_property)
-    self.padDictionary_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <PackagePadDictionary> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.padDictionary_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-  //····················································································································
-
   private final func bind_property_objectDisplay () {
     self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
@@ -2674,6 +2688,45 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var isMultipleSelection = false
           for object in v {
             switch object.selectionDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_componentPadDictionary () {
+    self.selectedArray_property.addEBObserverOf_componentPadDictionary (self.componentPadDictionary_property)
+    self.componentPadDictionary_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <ComponentPadDescriptorDictionary> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.componentPadDictionary_property_selection {
             case .empty :
               return .empty
             case .multiple :

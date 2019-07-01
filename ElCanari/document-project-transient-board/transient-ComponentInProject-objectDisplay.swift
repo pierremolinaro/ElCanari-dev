@@ -18,7 +18,7 @@ func transient_ComponentInProject_objectDisplay (
        _ self_mY : Int,                          
        _ self_mRotation : Int,                   
        _ self_mSide : ComponentSide,             
-       _ self_padDictionary : PackagePadDictionary,
+       _ self_packagePadDictionary : PackageMasterPadDictionary,
        _ self_strokeBezierPath : NSBezierPath,   
        _ prefs_frontSideLegendColorForBoard : NSColor,
        _ prefs_backSideLegendColorForBoard : NSColor,
@@ -68,14 +68,14 @@ func transient_ComponentInProject_objectDisplay (
         let rotatedShape = EBShape ()
         rotatedShape.append (EBStrokeBezierPathShape ([strokeBezierPath], color))
       //---
-        let padRect = self_padDictionary.masterPadsRect
+        let padRect = self_packagePadDictionary.masterPadsRect
         let center = padRect.center.cocoaPoint
         var padNumberAffineTransform = AffineTransform ()
         if self_mSide == .back {
           padNumberAffineTransform.scale (x: -1.0, y: 1.0)
         }
         padNumberAffineTransform.rotate (byDegrees: -CGFloat (self_mRotation) / 1000.0)
-        for (_, descriptor) in self_padDictionary {
+        for (_, descriptor) in self_packagePadDictionary {
           descriptor.accumulatePadBezierPathes (
             into: rotatedShape,
             side: self_mSide,

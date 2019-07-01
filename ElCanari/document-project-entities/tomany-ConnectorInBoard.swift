@@ -5,191 +5,190 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_DevicePackageInProject
+//    ReadOnlyArrayOf_ConnectorInBoard
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <DevicePackageInProject> {
+class ReadOnlyArrayOf_ConnectorInBoard : ReadOnlyAbstractArrayProperty <ConnectorInBoard> {
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <DevicePackageInProject>, addedSet inAddedSet : Set <DevicePackageInProject>) {
+  internal override func updateObservers (removedSet inRemovedSet : Set <ConnectorInBoard>, addedSet inAddedSet : Set <ConnectorInBoard>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mPackageName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_packagePadDictionary_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_mComponentPadName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
-    self.addEBObserversOf_mPackageName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_packagePadDictionary_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_mComponentPadName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
-  //   Observers of 'mPackageName' stored property
+  //   Observers of 'mComponentPadName' stored property
   //····················································································································
 
-  private var mObserversOf_mPackageName = EBWeakEventSet ()
+  private var mObserversOf_mComponentPadName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mPackageName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mComponentPadName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mPackageName.insert (inObserver)
+    self.mObserversOf_mComponentPadName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPackageName_property.addEBObserver (inObserver)
+        managedObject.mComponentPadName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mPackageName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mComponentPadName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mPackageName.remove (inObserver)
+    self.mObserversOf_mComponentPadName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPackageName_property.removeEBObserver (inObserver)
+        managedObject.mComponentPadName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mPackageName_toElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
+  final func addEBObserversOf_mComponentPadName_toElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
     for managedObject in inSet {
-      self.mObserversOf_mPackageName.apply { (_ observer : EBEvent) in
-        managedObject.mPackageName_property.addEBObserver (observer)
+      self.mObserversOf_mComponentPadName.apply { (_ observer : EBEvent) in
+        managedObject.mComponentPadName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mPackageName_fromElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
-    self.mObserversOf_mPackageName.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mComponentPadName_fromElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
+    self.mObserversOf_mComponentPadName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mPackageName_property.removeEBObserver (observer)
+        managedObject.mComponentPadName_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mStrokeBezierPath' stored property
+  //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mStrokeBezierPath.insert (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mStrokeBezierPath_property.addEBObserver (inObserver)
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mStrokeBezierPath.remove (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mStrokeBezierPath_property.removeEBObserver (inObserver)
+        managedObject.objectDisplay_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
     for managedObject in inSet {
-      self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.mStrokeBezierPath_property.addEBObserver (observer)
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
-    self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'packagePadDictionary' transient property
+  //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_packagePadDictionary = EBWeakEventSet ()
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_packagePadDictionary.insert (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.packagePadDictionary_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_packagePadDictionary.remove (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.packagePadDictionary_property.removeEBObserver (inObserver)
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_packagePadDictionary_toElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
     for managedObject in inSet {
-      self.mObserversOf_packagePadDictionary.apply { (_ observer : EBEvent) in
-        managedObject.packagePadDictionary_property.addEBObserver (observer)
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_packagePadDictionary_fromElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
     for managedObject in inSet {
-      self.mObserversOf_packagePadDictionary.apply { (_ observer : EBEvent) in
-        managedObject.packagePadDictionary_property.removeEBObserver (observer)
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -199,28 +198,28 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf DevicePackageInProject
+//    TransientArrayOf ConnectorInBoard
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInProject {
+class TransientArrayOf_ConnectorInBoard : ReadOnlyArrayOf_ConnectorInBoard {
 
   //····················································································································
   //   Sort
   //····················································································································
 
-  private var mIsOrderedBefore : Optional < (_ left : DevicePackageInProject, _ right : DevicePackageInProject) -> Bool > = nil 
+  private var mIsOrderedBefore : Optional < (_ left : ConnectorInBoard, _ right : ConnectorInBoard) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
 
   //····················································································································
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_DevicePackageInProject? = nil
+  private var mDataProvider : ReadOnlyArrayOf_ConnectorInBoard? = nil
   private var mTransientKind : PropertyKind = .empty
 
  
-  func setDataProvider (_ inProvider : ReadOnlyArrayOf_DevicePackageInProject,
-                        sortCallback inSortCallBack : Optional < (_ left : DevicePackageInProject, _ right : DevicePackageInProject) -> Bool >,
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_ConnectorInBoard,
+                        sortCallback inSortCallBack : Optional < (_ left : ConnectorInBoard, _ right : ConnectorInBoard) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
                         removeSortObserversCallback inRemoveSortObserversCallback : @escaping (EBModelNotifierEvent) -> Void) {
     if self.mDataProvider !== inProvider {
@@ -256,7 +255,7 @@ class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInP
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newArray : [DevicePackageInProject] 
+    let newArray : [ConnectorInBoard] 
     if let dataProvider = self.mDataProvider {
       switch dataProvider.prop {
       case .empty :
@@ -283,7 +282,7 @@ class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInP
 
   //····················································································································
 
-  override var prop : EBSelection < [DevicePackageInProject] > {
+  override var prop : EBSelection < [ConnectorInBoard] > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -296,17 +295,17 @@ class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInP
 
   //····················································································································
 
-  override var propval : [DevicePackageInProject] { return self.mInternalArrayValue }
+  override var propval : [ConnectorInBoard] { return self.mInternalArrayValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOfSuperOf DevicePackageInProject
+//    TransientArrayOfSuperOf ConnectorInBoard
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_DevicePackageInProject <SUPER : EBManagedObject> : ReadOnlyArrayOf_DevicePackageInProject {
+class TransientArrayOfSuperOf_ConnectorInBoard <SUPER : EBManagedObject> : ReadOnlyArrayOf_ConnectorInBoard {
 
   //····················································································································
   //   Data provider
@@ -345,9 +344,9 @@ class TransientArrayOfSuperOf_DevicePackageInProject <SUPER : EBManagedObject> :
       newModelArray = []
       self.mTransientKind = .empty
     }
-    var newArray = [DevicePackageInProject] ()
+    var newArray = [ConnectorInBoard] ()
     for superObject in newModelArray {
-      if let object = superObject as? DevicePackageInProject {
+      if let object = superObject as? ConnectorInBoard {
         newArray.append (object)
       }
     }
@@ -357,7 +356,7 @@ class TransientArrayOfSuperOf_DevicePackageInProject <SUPER : EBManagedObject> :
 
   //····················································································································
 
-  override var prop : EBSelection < [DevicePackageInProject] > {
+  override var prop : EBSelection < [ConnectorInBoard] > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -370,39 +369,39 @@ class TransientArrayOfSuperOf_DevicePackageInProject <SUPER : EBManagedObject> :
 
   //····················································································································
 
-  override var propval : [DevicePackageInProject] { return self.mInternalArrayValue }
+  override var propval : [ConnectorInBoard] { return self.mInternalArrayValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: DevicePackageInProject
+//    To many relationship read write: ConnectorInBoard
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInProject {
+class ReadWriteArrayOf_ConnectorInBoard : ReadOnlyArrayOf_ConnectorInBoard {
 
   //····················································································································
  
-  func setProp (_ value :  [DevicePackageInProject]) { } // Abstract method
+  func setProp (_ value :  [ConnectorInBoard]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyArrayOf_DevicePackageInProject
+//    Proxy: ProxyArrayOf_ConnectorInBoard
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject {
+final class ProxyArrayOf_ConnectorInBoard : ReadWriteArrayOf_ConnectorInBoard {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_DevicePackageInProject? = nil
+  private var mModel : ReadWriteArrayOf_ConnectorInBoard? = nil
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_DevicePackageInProject?) {
+  func setModel (_ inModel : ReadWriteArrayOf_ConnectorInBoard?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -413,7 +412,7 @@ final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackage
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : [DevicePackageInProject]
+    let newModelArray : [ConnectorInBoard]
     if let model = self.mModel {
       switch model.prop {
       case .empty :
@@ -432,13 +431,13 @@ final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackage
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : [DevicePackageInProject]) {
+  override func setProp (_ inArrayValue : [ConnectorInBoard]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [DevicePackageInProject] > {
+  override var prop : EBSelection < [ConnectorInBoard] > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -448,7 +447,7 @@ final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackage
 
   //····················································································································
 
-  override var propval : [DevicePackageInProject] {
+  override var propval : [ConnectorInBoard] {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -466,10 +465,10 @@ final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackage
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: DevicePackageInProject
+//    To many relationship: ConnectorInBoard
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject, EBSignatureObserverProtocol {
+class StoredArrayOf_ConnectorInBoard : ReadWriteArrayOf_ConnectorInBoard, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -481,13 +480,13 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : DevicePackageInProject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : DevicePackageInProject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : ConnectorInBoard) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : ConnectorInBoard) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DevicePackageInProject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : DevicePackageInProject) -> Void) {
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ConnectorInBoard) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : ConnectorInBoard) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
@@ -511,7 +510,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
   // Model will change 
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : [DevicePackageInProject]) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [ConnectorInBoard]) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
   //---
@@ -520,7 +519,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
  
   //····················································································································
 
-  @objc func performUndo (_ oldValue : [DevicePackageInProject]) {
+  @objc func performUndo (_ oldValue : [ConnectorInBoard]) {
     self.mInternalArrayValue = oldValue
   }
  
@@ -544,7 +543,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <DevicePackageInProject>, addedSet inAddedSet : Set <DevicePackageInProject>) {
+  internal override func updateObservers (removedSet inRemovedSet : Set <ConnectorInBoard>, addedSet inAddedSet : Set <ConnectorInBoard>) {
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -560,19 +559,19 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
  
   //····················································································································
 
-  override var prop : EBSelection < [DevicePackageInProject] > { return .single (self.mInternalArrayValue) }
+  override var prop : EBSelection < [ConnectorInBoard] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [DevicePackageInProject]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : [ConnectorInBoard]) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : [DevicePackageInProject] { return self.mInternalArrayValue }
+  override var propval : [ConnectorInBoard] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : DevicePackageInProject) {
+  func remove (_ object : ConnectorInBoard) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -580,7 +579,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
   
   //····················································································································
 
-  func add (_ object : DevicePackageInProject) {
+  func add (_ object : ConnectorInBoard) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -642,10 +641,10 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Preferences array: DevicePackageInProject
+//    Preferences array: ConnectorInBoard
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_DevicePackageInProject : StoredArrayOf_DevicePackageInProject {
+final class PreferencesArrayOf_ConnectorInBoard : StoredArrayOf_ConnectorInBoard {
 
   //····················································································································
 
@@ -658,17 +657,16 @@ final class PreferencesArrayOf_DevicePackageInProject : StoredArrayOf_DevicePack
     self.mPrefKey = prefKey
     super.init ()
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [DevicePackageInProject] ()
+      var objectArray = [ConnectorInBoard] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DevicePackageInProject") as? DevicePackageInProject {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ConnectorInBoard") as? ConnectorInBoard {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mPackageName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mStrokeBezierPath (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mComponentPadName (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 

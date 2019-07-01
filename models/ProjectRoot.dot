@@ -20,8 +20,9 @@ digraph G {
   DevicePackageInProject[label="<DevicePackageInProject>DevicePackageInProject|<mMasterPads>[DeviceMasterPadInProject] mMasterPads|String mPackageName|NSBezierPath mStrokeBezierPath"] ;
   DeviceMasterPadInProject[label="<DeviceMasterPadInProject>DeviceMasterPadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleHeight|Int mHoleWidth|String mName|PadShape mShape|<mSlavePads>[DeviceSlavePadInProject] mSlavePads|PadStyle mStyle|Int mWidth"] ;
   DeviceSlavePadInProject[label="<DeviceSlavePadInProject>DeviceSlavePadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleHeight|Int mHoleWidth|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
-  ComponentInProject[label="<ComponentInProject>ComponentInProject|String mComponentValue|<mDevice>DeviceInProject? mDevice|<mNameFont>FontInProject? mNameFont|Double mNameFontSize|Int mNameIndex|Bool mNameIsVisibleInBoard|String mNamePrefix|Int mNameRotation|<mPackages>[DevicePackageInProject] mPackages|<mRoot>ProjectRoot? mRoot|Int mRotation|<mSelectedPackage>DevicePackageInProject? mSelectedPackage|ComponentSide mSide|<mSymbols>[ComponentSymbolInProject] mSymbols|<mValueFont>FontInProject? mValueFont|Double mValueFontSize|Bool mValueIsVisibleInBoard|Int mValueRotation|Int mX|Int mXName|Int mXUnit|Int mXValue|Int mY|Int mYName|Int mYUnit|Int mYValue"] ;
+  ComponentInProject[label="<ComponentInProject>ComponentInProject|String mComponentValue|<mConnectors>[ConnectorInBoard] mConnectors|<mDevice>DeviceInProject? mDevice|<mNameFont>FontInProject? mNameFont|Double mNameFontSize|Int mNameIndex|Bool mNameIsVisibleInBoard|String mNamePrefix|Int mNameRotation|<mPackages>[DevicePackageInProject] mPackages|<mRoot>ProjectRoot? mRoot|Int mRotation|<mSelectedPackage>DevicePackageInProject? mSelectedPackage|ComponentSide mSide|<mSymbols>[ComponentSymbolInProject] mSymbols|<mValueFont>FontInProject? mValueFont|Double mValueFontSize|Bool mValueIsVisibleInBoard|Int mValueRotation|Int mX|Int mXName|Int mXUnit|Int mXValue|Int mY|Int mYName|Int mYUnit|Int mYValue"] ;
   ComponentSymbolInProject[label="<ComponentSymbolInProject>ComponentSymbolInProject|String componentValueProxy|Int mCenterX|Int mCenterY|<mComponent>ComponentInProject? mComponent|Int mDisplayComponentNameOffsetX|Int mDisplayComponentNameOffsetY|Bool mDisplayComponentValue|Int mDisplayComponentValueOffsetX|Int mDisplayComponentValueOffsetY|Bool mMirror|<mPoints>[PointInSchematic] mPoints|QuadrantRotation mRotation|<mSheet>SheetInProject? mSheet|String mSymbolInstanceName|String mSymbolTypeName"] ;
+  ConnectorInBoard[label="<ConnectorInBoard>ConnectorInBoard|<mComponent>ComponentInProject? mComponent|String mComponentPadName|<mRoot>ProjectRoot? mRoot"] ;
   BorderCurve[label="<BorderCurve>BorderCurve|Int mCPX1|Int mCPX2|Int mCPY1|Int mCPY2|<mNext>BorderCurve? mNext|<mPrevious>BorderCurve? mPrevious|<mRoot>ProjectRoot? mRoot|BorderCurveShape mShape|Int mX|Int mY"] ;
   BoardObject[label="<BoardObject>BoardObject|<mRoot>ProjectRoot? mRoot"] ;
   ProjectRoot:mBoardObjects -> BoardObject:mRoot [dir=both arrowtail=onormal arrowhead=vee] ;
@@ -57,10 +58,12 @@ digraph G {
   DevicePackageInProject:mMasterPads -> DeviceMasterPadInProject:DeviceMasterPadInProject [dir=both arrowtail=none arrowhead=vee] ;
   DeviceMasterPadInProject:mSlavePads -> DeviceSlavePadInProject:DeviceSlavePadInProject [dir=both arrowtail=none arrowhead=vee] ;
   ComponentInProject -> BoardObject [arrowhead=dot] ;
+  ComponentInProject:mConnectors -> ConnectorInBoard:mComponent [dir=both arrowtail=onormal arrowhead=vee] ;
   ComponentInProject:mPackages -> DevicePackageInProject:DevicePackageInProject [dir=both arrowtail=none arrowhead=vee] ;
   ComponentInProject:mSelectedPackage -> DevicePackageInProject:DevicePackageInProject [dir=both arrowtail=none arrowhead=onormal] ;
   ComponentInProject:mSymbols -> ComponentSymbolInProject:mComponent [dir=both arrowtail=onormal arrowhead=vee] ;
   ComponentSymbolInProject -> SchematicObject [arrowhead=dot] ;
   ComponentSymbolInProject:mPoints -> PointInSchematic:mSymbol [dir=both arrowtail=onormal arrowhead=vee] ;
+  ConnectorInBoard -> BoardObject [arrowhead=dot] ;
   BorderCurve:mPrevious -> BorderCurve:mNext [dir=both arrowtail=onormal arrowhead=onormal] ;
 }

@@ -502,11 +502,18 @@ typealias EBReadOnlyProperty_MasterPadDescriptor    = EBReadOnlyValueProperty <M
 typealias EBTransientProperty_MasterPadDescriptor   = EBTransientValueProperty <MasterPadDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Scalar property PackagePadDictionary
+//   Scalar property PackageMasterPadDictionary
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_PackagePadDictionary    = EBReadOnlyValueProperty <PackagePadDictionary>
-typealias EBTransientProperty_PackagePadDictionary   = EBTransientValueProperty <PackagePadDictionary>
+typealias EBReadOnlyProperty_PackageMasterPadDictionary    = EBReadOnlyValueProperty <PackageMasterPadDictionary>
+typealias EBTransientProperty_PackageMasterPadDictionary   = EBTransientValueProperty <PackageMasterPadDictionary>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property ComponentPadDescriptorDictionary
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_ComponentPadDescriptorDictionary    = EBReadOnlyValueProperty <ComponentPadDescriptorDictionary>
+typealias EBTransientProperty_ComponentPadDescriptorDictionary   = EBTransientValueProperty <ComponentPadDescriptorDictionary>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property DeviceSymbolDictionary

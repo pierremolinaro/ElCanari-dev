@@ -13,14 +13,27 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DevicePackageInProject_padDictionary (
-       _ self_mMasterPads_descriptor : [DeviceMasterPadInProject_descriptor]
-) -> PackagePadDictionary {
+func transient_ComponentInProject_componentPadDictionary (
+       _ self_mX : Int,                                   
+       _ self_mY : Int,                                   
+       _ self_mRotation : Int,                            
+       _ self_mSide : ComponentSide,                      
+       _ self_packagePadDictionary : PackageMasterPadDictionary
+) -> ComponentPadDescriptorDictionary {
 //--- START OF USER ZONE 2
-        var result = PackagePadDictionary ()
-        for pad in self_mMasterPads_descriptor {
-           let descriptor = pad.descriptor!
-           result [descriptor.name] = descriptor
+        var af = AffineTransform ()
+        af.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
+        af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
+        if self_mSide == .back {
+          af.scale (x: -1.0, y: 1.0)
+        }
+        let center = self_packagePadDictionary.masterPadsRect.center.cocoaPoint
+        af.translate(x: -center.x, y: -center.y)
+        var result = ComponentPadDescriptorDictionary ()
+        for (padName, descriptor) in self_packagePadDictionary {
+          let padLocation = descriptor.center.cocoaPoint
+          let d = ComponentPadDescriptor (padName: padName, padLocation: af.transform (padLocation))
+          result [padName] = d
         }
         return result
 //--- END OF USER ZONE 2

@@ -1,0 +1,18 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   BoardObject
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity ConnectorInBoard : BoardObject {
+  toOne ComponentInProject mComponent inverse toMany mConnectors ; // nil if not connected to a component pad
+  property String mComponentPadName default "" ; // "" if not connected to a component pad
+
+ override transient EBShape objectDisplay dependsFrom
+    self.mComponent.one.componentPadDictionary, self.mComponentPadName
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mComponentPadName// TEMP
+  ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

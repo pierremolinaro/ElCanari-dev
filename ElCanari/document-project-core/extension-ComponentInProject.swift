@@ -98,7 +98,10 @@ extension ComponentInProject {
   //····················································································································
 
   override func operationBeforeRemoving () {
-//    self.mFont = nil
+    for connector in self.mConnectors {
+      connector.mComponentPadName = ""
+      connector.mComponent = nil
+    }
   }
 
   //····················································································································

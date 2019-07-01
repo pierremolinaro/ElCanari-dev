@@ -6,105 +6,84 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePackageInProject_mPackageName : class {
-  var mPackageName : String { get }
+protocol ConnectorInBoard_mComponentPadName : class {
+  var mComponentPadName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePackageInProject_mStrokeBezierPath : class {
-  var mStrokeBezierPath : NSBezierPath { get }
+protocol ConnectorInBoard_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePackageInProject_packagePadDictionary : class {
-  var packagePadDictionary : PackageMasterPadDictionary? { get }
+protocol ConnectorInBoard_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: DevicePackageInProject
+//    Entity: ConnectorInBoard
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class DevicePackageInProject : EBManagedObject,
-         DevicePackageInProject_mPackageName,
-         DevicePackageInProject_mStrokeBezierPath,
-         DevicePackageInProject_packagePadDictionary {
+class ConnectorInBoard : BoardObject,
+         ConnectorInBoard_mComponentPadName,
+         ConnectorInBoard_objectDisplay,
+         ConnectorInBoard_selectionDisplay {
 
   //····················································································································
-  //   To many property: mMasterPads
+  //   Atomic property: mComponentPadName
   //····················································································································
 
-  let mMasterPads_property = StoredArrayOf_DeviceMasterPadInProject ()
+  let mComponentPadName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var mMasterPads_property_selection : EBSelection < [DeviceMasterPadInProject] > {
-    return self.mMasterPads_property.prop
+  var mComponentPadName : String {
+    get { return self.mComponentPadName_property.propval }
+    set { self.mComponentPadName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mMasterPads : [DeviceMasterPadInProject] {
-    get { return self.mMasterPads_property.propval }
-    set { self.mMasterPads_property.setProp (newValue) }
-  }
+  var mComponentPadName_property_selection : EBSelection <String> { return self.mComponentPadName_property.prop }
 
   //····················································································································
-  //   Atomic property: mPackageName
+  //   To one property: mComponent
   //····················································································································
 
-  let mPackageName_property = EBStoredProperty_String (defaultValue: "")
+   let mComponent_property = StoredObject_ComponentInProject ()
 
   //····················································································································
 
-  var mPackageName : String {
-    get { return self.mPackageName_property.propval }
-    set { self.mPackageName_property.setProp (newValue) }
+  var mComponent_property_selection : EBSelection <ComponentInProject?> {
+    return .single (self.mComponent_property.propval)
   }
 
   //····················································································································
 
-  var mPackageName_property_selection : EBSelection <String> { return self.mPackageName_property.prop }
-
-  //····················································································································
-  //   Atomic property: mStrokeBezierPath
-  //····················································································································
-
-  let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
-
-  //····················································································································
-
-  var mStrokeBezierPath : NSBezierPath {
-    get { return self.mStrokeBezierPath_property.propval }
-    set { self.mStrokeBezierPath_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
-
-  //····················································································································
-  //   Transient property: packagePadDictionary
-  //····················································································································
-
-  let packagePadDictionary_property = EBTransientProperty_PackageMasterPadDictionary ()
-
-  //····················································································································
-
-  var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary> {
-    return self.packagePadDictionary_property.prop
-  }
-
-  //····················································································································
-
-  var packagePadDictionary : PackageMasterPadDictionary? {
-    switch self.packagePadDictionary_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
+  var mComponent : ComponentInProject? {
+    get {
+      return self.mComponent_property.propval
     }
+    set {
+      if self.mComponent_property.propval != nil {
+        self.mComponent_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mComponent_property.setProp (newValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mComponent_none : StoredObject_ComponentInProject { return self.mComponent_property }
+
+  //····················································································································
+
+  var mComponent_none_selection : EBSelection <Bool> {
+    return .single (self.mComponent_property.propval == nil)
   }
 
   //····················································································································
@@ -113,25 +92,28 @@ class DevicePackageInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- To many property: mMasterPads (no option)
-    self.mMasterPads_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mPackageName
-    self.mPackageName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: packagePadDictionary
-    self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: mComponentPadName
+    self.mComponentPadName_property.ebUndoManager = self.ebUndoManager
+  //--- To one property: mComponent (has opposite to many relationship: mConnectors)
+    self.mComponent_property.ebUndoManager = self.ebUndoManager
+    self.mComponent_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mConnectors_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mConnectors_property.remove (me) } }
+    )
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mMasterPads_property_selection.kind ()
+        var kind = unwSelf.mComponent_property.componentPadDictionary_property_selection.kind ()
+        kind &= unwSelf.mComponentPadName_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mMasterPads_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DevicePackageInProject_packagePadDictionary (v0))
+          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ConnectorInBoard_objectDisplay (v0, v1))
           default :
             return .empty
           }
@@ -140,7 +122,30 @@ class DevicePackageInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.addEBObserverOf_descriptor (self.packagePadDictionary_property)
+    self.mComponent_property.addEBObserverOf_componentPadDictionary (self.objectDisplay_property)
+    self.mComponentPadName_property.addEBObserver (self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mComponentPadName_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponentPadName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ConnectorInBoard_selectionDisplay (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponentPadName_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -150,7 +155,9 @@ class DevicePackageInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mMasterPads_property.removeEBObserverOf_descriptor (self.packagePadDictionary_property)
+    self.mComponent_property.removeEBObserverOf_componentPadDictionary (self.objectDisplay_property)
+    self.mComponentPadName_property.removeEBObserver (self.objectDisplay_property)
+    self.mComponentPadName_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -166,39 +173,39 @@ class DevicePackageInProject : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mPackageName",
-      idx: self.mPackageName_property.ebObjectIndex,
+      "mComponentPadName",
+      idx: self.mComponentPadName_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mPackageName_property.mObserverExplorer,
-      valueExplorer: &self.mPackageName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mStrokeBezierPath",
-      idx: self.mStrokeBezierPath_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
-      valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
+      observerExplorer: &self.mComponentPadName_property.mObserverExplorer,
+      valueExplorer: &self.mComponentPadName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
-      "packagePadDictionary",
-      idx: self.packagePadDictionary_property.ebObjectIndex,
+      "objectDisplay",
+      idx: self.objectDisplay_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.packagePadDictionary_property.mObserverExplorer,
-      valueExplorer: &self.packagePadDictionary_property.mValueExplorer
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
-    createEntryForToManyRelationshipNamed (
-      "mMasterPads",
-      idx:mMasterPads_property.ebObjectIndex,
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForToOneRelationshipNamed (
+      "mComponent",
+      idx:self.mComponent_property.ebObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&mMasterPads_property.mValueExplorer
+      valueExplorer:&self.mComponent_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
@@ -207,14 +214,12 @@ class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- To many property: mMasterPads
-    self.mMasterPads_property.mValueExplorer = nil
-  //--- Atomic property: mPackageName
-    self.mPackageName_property.mObserverExplorer = nil
-    self.mPackageName_property.mValueExplorer = nil
-  //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.mObserverExplorer = nil
-    self.mStrokeBezierPath_property.mValueExplorer = nil
+  //--- Atomic property: mComponentPadName
+    self.mComponentPadName_property.mObserverExplorer = nil
+    self.mComponentPadName_property.mValueExplorer = nil
+  //--- To one property: mComponent
+    self.mComponent_property.mObserverExplorer = nil
+    self.mComponent_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -224,7 +229,6 @@ class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mMasterPads = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -234,6 +238,7 @@ class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mComponent = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -244,16 +249,8 @@ class DevicePackageInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- To many property: mMasterPads
-    self.store (
-      managedObjectArray: self.mMasterPads_property.propval,
-      relationshipName: "mMasterPads",
-      intoDictionary: ioDictionary
-    )
-  //--- Atomic property: mPackageName
-    self.mPackageName_property.storeIn (dictionary: ioDictionary, forKey:"mPackageName")
-  //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mStrokeBezierPath")
+  //--- Atomic property: mComponentPadName
+    self.mComponentPadName_property.storeIn (dictionary: ioDictionary, forKey:"mComponentPadName")
   }
 
   //····················································································································
@@ -263,12 +260,17 @@ class DevicePackageInProject : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mMasterPads
-    self.mMasterPads_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mMasterPads",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [DeviceMasterPadInProject])
+  //--- To one property: mComponent
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mComponent",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? ComponentInProject {
+        self.mComponent_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -277,10 +279,8 @@ class DevicePackageInProject : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mPackageName
-    self.mPackageName_property.readFrom (dictionary: inDictionary, forKey:"mPackageName")
-  //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey:"mStrokeBezierPath")
+  //--- Atomic property: mComponentPadName
+    self.mComponentPadName_property.readFrom (dictionary: inDictionary, forKey:"mComponentPadName")
   }
 
   //····················································································································
@@ -289,9 +289,9 @@ class DevicePackageInProject : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mMasterPads
-    for managedObject in self.mMasterPads {
-      objects.append (managedObject)
+  //--- To one property: mComponent
+    if let object = self.mComponent {
+      objects.append (object)
     }
   }
 
@@ -301,9 +301,9 @@ class DevicePackageInProject : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mMasterPads
-    for managedObject in self.mMasterPads {
-      objects.append (managedObject)
+  //--- To one property: mComponent
+    if let object = self.mComponent {
+      objects.append (object)
     }
   }
 

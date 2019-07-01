@@ -36,6 +36,7 @@ include "eb-sources/project-BorderCurve.eb" ;
 include "eb-sources/project-CommentInSchematic.eb" ;
 include "eb-sources/project-ComponentInProject.eb" ;
 include "eb-sources/project-ComponentSymbolInProject.eb" ;
+include "eb-sources/project-ConnectorInBoard.eb" ;
 include "eb-sources/project-DeviceInProject.eb" ;
 include "eb-sources/project-DeviceMasterPadInProject.eb" ;
 include "eb-sources/project-DevicePackageInProject.eb" ;

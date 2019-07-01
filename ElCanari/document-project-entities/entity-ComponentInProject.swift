@@ -138,6 +138,12 @@ protocol ComponentInProject_componentName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentInProject_packagePadDictionary : class {
+  var packagePadDictionary : PackageMasterPadDictionary? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentInProject_deviceName : class {
   var deviceName : String? { get }
 }
@@ -192,12 +198,6 @@ protocol ComponentInProject_strokeBezierPath : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_padDictionary : class {
-  var padDictionary : PackagePadDictionary? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ComponentInProject_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -206,6 +206,12 @@ protocol ComponentInProject_objectDisplay : class {
 
 protocol ComponentInProject_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_componentPadDictionary : class {
+  var componentPadDictionary : ComponentPadDescriptorDictionary? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -235,6 +241,7 @@ class ComponentInProject : BoardObject,
          ComponentInProject_componentNameFontName,
          ComponentInProject_componentValueFontName,
          ComponentInProject_componentName,
+         ComponentInProject_packagePadDictionary,
          ComponentInProject_deviceName,
          ComponentInProject_selectedPackageName,
          ComponentInProject_availablePackages,
@@ -244,9 +251,9 @@ class ComponentInProject : BoardObject,
          ComponentInProject_deviceSymbolDictionary,
          ComponentInProject_placementInSchematic,
          ComponentInProject_strokeBezierPath,
-         ComponentInProject_padDictionary,
          ComponentInProject_objectDisplay,
-         ComponentInProject_selectionDisplay {
+         ComponentInProject_selectionDisplay,
+         ComponentInProject_componentPadDictionary {
 
   //····················································································································
   //   Atomic property: mNamePrefix
@@ -597,6 +604,25 @@ class ComponentInProject : BoardObject,
   }
 
   //····················································································································
+  //   To many property: mConnectors
+  //····················································································································
+
+  let mConnectors_property = StoredArrayOf_ConnectorInBoard ()
+
+  //····················································································································
+
+  var mConnectors_property_selection : EBSelection < [ConnectorInBoard] > {
+    return self.mConnectors_property.prop
+  }
+
+  //····················································································································
+
+  var mConnectors : [ConnectorInBoard] {
+    get { return self.mConnectors_property.propval }
+    set { self.mConnectors_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   ToMany proxy: mPackages
   //····················································································································
 
@@ -848,6 +874,29 @@ class ComponentInProject : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: packagePadDictionary
+  //····················································································································
+
+  let packagePadDictionary_property = EBTransientProperty_PackageMasterPadDictionary ()
+
+  //····················································································································
+
+  var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary> {
+    return self.packagePadDictionary_property.prop
+  }
+
+  //····················································································································
+
+  var packagePadDictionary : PackageMasterPadDictionary? {
+    switch self.packagePadDictionary_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: deviceName
   //····················································································································
 
@@ -1055,21 +1104,21 @@ class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-  //   Transient property: padDictionary
+  //   Transient property: componentPadDictionary
   //····················································································································
 
-  let padDictionary_property = EBTransientProperty_PackagePadDictionary ()
+  let componentPadDictionary_property = EBTransientProperty_ComponentPadDescriptorDictionary ()
 
   //····················································································································
 
-  var padDictionary_property_selection : EBSelection <PackagePadDictionary> {
-    return self.padDictionary_property.prop
+  var componentPadDictionary_property_selection : EBSelection <ComponentPadDescriptorDictionary> {
+    return self.componentPadDictionary_property.prop
   }
 
   //····················································································································
 
-  var padDictionary : PackagePadDictionary? {
-    switch self.padDictionary_property_selection {
+  var componentPadDictionary : ComponentPadDescriptorDictionary? {
+    switch self.componentPadDictionary_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1126,6 +1175,12 @@ class ComponentInProject : BoardObject,
   //--- To many property: mSymbols (has opposite relationship)
     self.mSymbols_property.ebUndoManager = self.ebUndoManager
     self.mSymbols_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
+      resetter: { inObject in inObject.mComponent_property.setProp (nil) }
+    )
+  //--- To many property: mConnectors (has opposite relationship)
+    self.mConnectors_property.ebUndoManager = self.ebUndoManager
+    self.mConnectors_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
       resetter: { inObject in inObject.mComponent_property.setProp (nil) }
     )
@@ -1230,6 +1285,28 @@ class ComponentInProject : BoardObject,
     )
   //--- To one property: mSelectedPackage
     self.mSelectedPackage_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: packagePadDictionary
+    self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSelectedPackage_property.packagePadDictionary_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mSelectedPackage_property.packagePadDictionary_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_packagePadDictionary (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedPackage_property.addEBObserverOf_packagePadDictionary (self.packagePadDictionary_property)
   //--- Atomic property: deviceName
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1436,28 +1513,6 @@ class ComponentInProject : BoardObject,
       }
     }
     self.mSelectedPackage_property.addEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
-  //--- Atomic property: padDictionary
-    self.padDictionary_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mSelectedPackage_property.padDictionary_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mSelectedPackage_property.padDictionary_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ComponentInProject_padDictionary (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mSelectedPackage_property.addEBObserverOf_padDictionary (self.padDictionary_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1465,7 +1520,7 @@ class ComponentInProject : BoardObject,
         kind &= unwSelf.mY_property_selection.kind ()
         kind &= unwSelf.mRotation_property_selection.kind ()
         kind &= unwSelf.mSide_property_selection.kind ()
-        kind &= unwSelf.padDictionary_property_selection.kind ()
+        kind &= unwSelf.packagePadDictionary_property_selection.kind ()
         kind &= unwSelf.strokeBezierPath_property_selection.kind ()
         kind &= g_Preferences!.frontSideLegendColorForBoard_property_selection.kind ()
         kind &= g_Preferences!.backSideLegendColorForBoard_property_selection.kind ()
@@ -1497,7 +1552,7 @@ class ComponentInProject : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.padDictionary_property_selection, unwSelf.strokeBezierPath_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection, g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection, g_Preferences!.frontSidePadColorForBoard_property_selection, unwSelf.displayFrontPads_property_selection, g_Preferences!.backSidePadColorForBoard_property_selection, unwSelf.displayBackPads_property_selection, g_Preferences!.padNumberFontForBoard_property_selection, g_Preferences!.padNumberColorForBoard_property_selection, unwSelf.displayPadNumbers_property_selection, unwSelf.mNameIsVisibleInBoard_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameFont_property.descriptor_property_selection, unwSelf.mNameFontSize_property_selection, unwSelf.mNameRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.mValueIsVisibleInBoard_property_selection, unwSelf.mXValue_property_selection, unwSelf.mYValue_property_selection, unwSelf.mValueFont_property.descriptor_property_selection, unwSelf.mValueFontSize_property_selection, unwSelf.mValueRotation_property_selection, unwSelf.mComponentValue_property_selection) {
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.packagePadDictionary_property_selection, unwSelf.strokeBezierPath_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection, g_Preferences!.packageDrawingWidthMultpliedByTenForBoard_property_selection, g_Preferences!.frontSidePadColorForBoard_property_selection, unwSelf.displayFrontPads_property_selection, g_Preferences!.backSidePadColorForBoard_property_selection, unwSelf.displayBackPads_property_selection, g_Preferences!.padNumberFontForBoard_property_selection, g_Preferences!.padNumberColorForBoard_property_selection, unwSelf.displayPadNumbers_property_selection, unwSelf.mNameIsVisibleInBoard_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameFont_property.descriptor_property_selection, unwSelf.mNameFontSize_property_selection, unwSelf.mNameRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.mValueIsVisibleInBoard_property_selection, unwSelf.mXValue_property_selection, unwSelf.mYValue_property_selection, unwSelf.mValueFont_property.descriptor_property_selection, unwSelf.mValueFontSize_property_selection, unwSelf.mValueRotation_property_selection, unwSelf.mComponentValue_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29)) :
             return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29))
           default :
@@ -1512,7 +1567,7 @@ class ComponentInProject : BoardObject,
     self.mY_property.addEBObserver (self.objectDisplay_property)
     self.mRotation_property.addEBObserver (self.objectDisplay_property)
     self.mSide_property.addEBObserver (self.objectDisplay_property)
-    self.padDictionary_property.addEBObserver (self.objectDisplay_property)
+    self.packagePadDictionary_property.addEBObserver (self.objectDisplay_property)
     self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
@@ -1553,7 +1608,7 @@ class ComponentInProject : BoardObject,
         kind &= unwSelf.mNameFontSize_property_selection.kind ()
         kind &= unwSelf.mNameRotation_property_selection.kind ()
         kind &= unwSelf.componentName_property_selection.kind ()
-        kind &= unwSelf.padDictionary_property_selection.kind ()
+        kind &= unwSelf.packagePadDictionary_property_selection.kind ()
         kind &= unwSelf.mValueIsVisibleInBoard_property_selection.kind ()
         kind &= unwSelf.mXValue_property_selection.kind ()
         kind &= unwSelf.mYValue_property_selection.kind ()
@@ -1567,7 +1622,7 @@ class ComponentInProject : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.strokeBezierPath_property_selection, unwSelf.mNameIsVisibleInBoard_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameFont_property.descriptor_property_selection, unwSelf.mNameFontSize_property_selection, unwSelf.mNameRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.padDictionary_property_selection, unwSelf.mValueIsVisibleInBoard_property_selection, unwSelf.mXValue_property_selection, unwSelf.mYValue_property_selection, unwSelf.mValueFont_property.descriptor_property_selection, unwSelf.mValueFontSize_property_selection, unwSelf.mValueRotation_property_selection, unwSelf.mComponentValue_property_selection) {
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.strokeBezierPath_property_selection, unwSelf.mNameIsVisibleInBoard_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameFont_property.descriptor_property_selection, unwSelf.mNameFontSize_property_selection, unwSelf.mNameRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.packagePadDictionary_property_selection, unwSelf.mValueIsVisibleInBoard_property_selection, unwSelf.mXValue_property_selection, unwSelf.mYValue_property_selection, unwSelf.mValueFont_property.descriptor_property_selection, unwSelf.mValueFontSize_property_selection, unwSelf.mValueRotation_property_selection, unwSelf.mComponentValue_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19)) :
             return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19))
           default :
@@ -1590,7 +1645,7 @@ class ComponentInProject : BoardObject,
     self.mNameFontSize_property.addEBObserver (self.selectionDisplay_property)
     self.mNameRotation_property.addEBObserver (self.selectionDisplay_property)
     self.componentName_property.addEBObserver (self.selectionDisplay_property)
-    self.padDictionary_property.addEBObserver (self.selectionDisplay_property)
+    self.packagePadDictionary_property.addEBObserver (self.selectionDisplay_property)
     self.mValueIsVisibleInBoard_property.addEBObserver (self.selectionDisplay_property)
     self.mXValue_property.addEBObserver (self.selectionDisplay_property)
     self.mYValue_property.addEBObserver (self.selectionDisplay_property)
@@ -1598,8 +1653,42 @@ class ComponentInProject : BoardObject,
     self.mValueFontSize_property.addEBObserver (self.selectionDisplay_property)
     self.mValueRotation_property.addEBObserver (self.selectionDisplay_property)
     self.mComponentValue_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: componentPadDictionary
+    self.componentPadDictionary_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mX_property_selection.kind ()
+        kind &= unwSelf.mY_property_selection.kind ()
+        kind &= unwSelf.mRotation_property_selection.kind ()
+        kind &= unwSelf.mSide_property_selection.kind ()
+        kind &= unwSelf.packagePadDictionary_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mRotation_property_selection, unwSelf.mSide_property_selection, unwSelf.packagePadDictionary_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_ComponentInProject_componentPadDictionary (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mX_property.addEBObserver (self.componentPadDictionary_property)
+    self.mY_property.addEBObserver (self.componentPadDictionary_property)
+    self.mRotation_property.addEBObserver (self.componentPadDictionary_property)
+    self.mSide_property.addEBObserver (self.componentPadDictionary_property)
+    self.packagePadDictionary_property.addEBObserver (self.componentPadDictionary_property)
   //--- Install undoers and opposite setter for relationships
     self.mSymbols_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
+      resetter: { inObject in inObject.mComponent_property.setProp (nil) }
+    )
+    self.mConnectors_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
       resetter: { inObject in inObject.mComponent_property.setProp (nil) }
     )
@@ -1621,6 +1710,7 @@ class ComponentInProject : BoardObject,
     self.mValueFont_property.removeEBObserverOf_mFontName (self.componentValueFontName_property)
     self.mNamePrefix_property.removeEBObserver (self.componentName_property)
     self.mNameIndex_property.removeEBObserver (self.componentName_property)
+    self.mSelectedPackage_property.removeEBObserverOf_packagePadDictionary (self.packagePadDictionary_property)
     self.mDevice_property.removeEBObserverOf_mDeviceName (self.deviceName_property)
     self.mSelectedPackage_property.removeEBObserverOf_mPackageName (self.selectedPackageName_property)
     self.mDevice_property.removeEBObserverOf_packageNames (self.availablePackages_property)
@@ -1634,12 +1724,11 @@ class ComponentInProject : BoardObject,
     self.mDevice_property.removeEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
     self.mSelectedPackage_property.removeEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
-    self.mSelectedPackage_property.removeEBObserverOf_padDictionary (self.padDictionary_property)
     self.mX_property.removeEBObserver (self.objectDisplay_property)
     self.mY_property.removeEBObserver (self.objectDisplay_property)
     self.mRotation_property.removeEBObserver (self.objectDisplay_property)
     self.mSide_property.removeEBObserver (self.objectDisplay_property)
-    self.padDictionary_property.removeEBObserver (self.objectDisplay_property)
+    self.packagePadDictionary_property.removeEBObserver (self.objectDisplay_property)
     self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.backSideLegendColorForBoard_property.removeEBObserver (self.objectDisplay_property)
@@ -1677,7 +1766,7 @@ class ComponentInProject : BoardObject,
     self.mNameFontSize_property.removeEBObserver (self.selectionDisplay_property)
     self.mNameRotation_property.removeEBObserver (self.selectionDisplay_property)
     self.componentName_property.removeEBObserver (self.selectionDisplay_property)
-    self.padDictionary_property.removeEBObserver (self.selectionDisplay_property)
+    self.packagePadDictionary_property.removeEBObserver (self.selectionDisplay_property)
     self.mValueIsVisibleInBoard_property.removeEBObserver (self.selectionDisplay_property)
     self.mXValue_property.removeEBObserver (self.selectionDisplay_property)
     self.mYValue_property.removeEBObserver (self.selectionDisplay_property)
@@ -1685,6 +1774,11 @@ class ComponentInProject : BoardObject,
     self.mValueFontSize_property.removeEBObserver (self.selectionDisplay_property)
     self.mValueRotation_property.removeEBObserver (self.selectionDisplay_property)
     self.mComponentValue_property.removeEBObserver (self.selectionDisplay_property)
+    self.mX_property.removeEBObserver (self.componentPadDictionary_property)
+    self.mY_property.removeEBObserver (self.componentPadDictionary_property)
+    self.mRotation_property.removeEBObserver (self.componentPadDictionary_property)
+    self.mSide_property.removeEBObserver (self.componentPadDictionary_property)
+    self.packagePadDictionary_property.removeEBObserver (self.componentPadDictionary_property)
   //--- Unregister properties for handling signature
   }
 
@@ -1877,6 +1971,14 @@ class ComponentInProject : BoardObject,
       valueExplorer: &self.componentName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "packagePadDictionary",
+      idx: self.packagePadDictionary_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.packagePadDictionary_property.mObserverExplorer,
+      valueExplorer: &self.packagePadDictionary_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "deviceName",
       idx: self.deviceName_property.ebObjectIndex,
       y: &y,
@@ -1949,14 +2051,6 @@ class ComponentInProject : BoardObject,
       valueExplorer: &self.strokeBezierPath_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "padDictionary",
-      idx: self.padDictionary_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.padDictionary_property.mObserverExplorer,
-      valueExplorer: &self.padDictionary_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "objectDisplay",
       idx: self.objectDisplay_property.ebObjectIndex,
       y: &y,
@@ -1972,6 +2066,14 @@ class ComponentInProject : BoardObject,
       observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
       valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "componentPadDictionary",
+      idx: self.componentPadDictionary_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.componentPadDictionary_property.mObserverExplorer,
+      valueExplorer: &self.componentPadDictionary_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mSymbols",
@@ -1979,6 +2081,13 @@ class ComponentInProject : BoardObject,
       y: &y,
       view: view,
       valueExplorer:&mSymbols_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "mConnectors",
+      idx:mConnectors_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mConnectors_property.mValueExplorer
     )
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
@@ -2076,6 +2185,8 @@ class ComponentInProject : BoardObject,
     self.mValueRotation_property.mValueExplorer = nil
   //--- To many property: mSymbols
     self.mSymbols_property.mValueExplorer = nil
+  //--- To many property: mConnectors
+    self.mConnectors_property.mValueExplorer = nil
   //--- ToMany proxy: mPackages
     self.mPackages_property.mObserverExplorer = nil
   //--- To one property: mNameFont
@@ -2100,6 +2211,7 @@ class ComponentInProject : BoardObject,
 
   override internal func cleanUpToManyRelationships () {
     self.mSymbols = []
+    self.mConnectors = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -2167,6 +2279,12 @@ class ComponentInProject : BoardObject,
       relationshipName: "mSymbols",
       intoDictionary: ioDictionary
     )
+  //--- To many property: mConnectors
+    self.store (
+      managedObjectArray: self.mConnectors_property.propval,
+      relationshipName: "mConnectors",
+      intoDictionary: ioDictionary
+    )
   //--- To one property: mSelectedPackage
     self.store (managedObject:self.mSelectedPackage_property.propval,
       relationshipName: "mSelectedPackage",
@@ -2186,6 +2304,12 @@ class ComponentInProject : BoardObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [ComponentSymbolInProject])
+  //--- To many property: mConnectors
+    self.mConnectors_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mConnectors",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ConnectorInBoard])
   //--- To one property: mNameFont
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -2288,6 +2412,10 @@ class ComponentInProject : BoardObject,
     for managedObject in self.mSymbols {
       objects.append (managedObject)
     }
+  //--- To many property: mConnectors
+    for managedObject in self.mConnectors {
+      objects.append (managedObject)
+    }
   //--- To one property: mNameFont
     if let object = self.mNameFont {
       objects.append (object)
@@ -2314,6 +2442,10 @@ class ComponentInProject : BoardObject,
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mSymbols
     for managedObject in self.mSymbols {
+      objects.append (managedObject)
+    }
+  //--- To many property: mConnectors
+    for managedObject in self.mConnectors {
       objects.append (managedObject)
     }
   //--- To one property: mNameFont

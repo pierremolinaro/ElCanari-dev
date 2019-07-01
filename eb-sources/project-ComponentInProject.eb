@@ -34,6 +34,10 @@ graphic entity ComponentInProject : BoardObject {
   transient String componentNameFontName dependsFrom self.mNameFont.one.mFontName ;
 
 
+  transient ComponentPadDescriptorDictionary componentPadDictionary dependsFrom 
+    self.mX, self.mY, self.mRotation, self.mSide,
+    self.packagePadDictionary
+  ;
 
   property String mComponentValue default "" ;
   toOne FontInProject mValueFont inverse toMany mComponentValues ;
@@ -59,6 +63,9 @@ graphic entity ComponentInProject : BoardObject {
     self.mSymbols.all.mSymbolTypeName
   ;
 
+
+  toMany ConnectorInBoard mConnectors inverse toOne mComponent ;
+
   transient Bool componentIsPlacedInBoard dependsFrom super.BoardObject.isPlacedInBoard ;
 
   transient String componentIsPlacedInBoardString dependsFrom self.componentIsPlacedInBoard ;
@@ -69,11 +76,13 @@ graphic entity ComponentInProject : BoardObject {
   
   transient NSBezierPath strokeBezierPath dependsFrom self.mSelectedPackage.one.mStrokeBezierPath ;
 
-  transient PackagePadDictionary padDictionary dependsFrom self.mSelectedPackage.one.padDictionary ;
+  transient PackageMasterPadDictionary packagePadDictionary dependsFrom
+     self.mSelectedPackage.one.packagePadDictionary
+   ;
   
   override transient EBShape objectDisplay dependsFrom
     self.mX, self.mY, self.mRotation, self.mSide,
-    self.padDictionary, self.strokeBezierPath,
+    self.packagePadDictionary, self.strokeBezierPath,
     prefs.frontSideLegendColorForBoard,
     prefs.backSideLegendColorForBoard,
     prefs.packageDrawingWidthMultpliedByTenForBoard,
@@ -92,7 +101,7 @@ graphic entity ComponentInProject : BoardObject {
   override transient EBShape selectionDisplay dependsFrom
     self.mX, self.mY, self.mRotation, self.mSide, self.strokeBezierPath,
     self.mNameIsVisibleInBoard, self.mXName, self.mYName, self.mNameFont.one.descriptor, self.mNameFontSize,
-    self.mNameRotation, self.componentName, self.padDictionary,
+    self.mNameRotation, self.componentName, self.packagePadDictionary,
     self.mValueIsVisibleInBoard, self.mXValue, self.mYValue, self.mValueFont.one.descriptor, self.mValueFontSize,
     self.mValueRotation, self.mComponentValue
   ;
