@@ -13,11 +13,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematic_netName (
-       _ self_mNet_mNetName : String?
-) -> String {
+func transient_PointInSchematic_symbolNameNetName (
+       _ self_mSymbolPinName : String,             
+       _ self_netName : String
+) -> TwoStrings {
 //--- START OF USER ZONE 2
-        return self_mNet_mNetName ?? ""
+        return TwoStrings (self_mSymbolPinName, self_netName)
 //--- END OF USER ZONE 2
 }
 

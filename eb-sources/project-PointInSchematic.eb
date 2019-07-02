@@ -24,6 +24,8 @@ entity PointInSchematic {
     self.mSymbol.one.symbolInfo,
     self.mSymbol.one.mSymbolInstanceName ;
 
+  transient TwoStrings symbolNameNetName dependsFrom self.mSymbolPinName, self.netName ;
+
   transient String netName dependsFrom self.mNet.one.mNetName ;
 
   transient String netClassName dependsFrom self.mNet.one.netClassName ;

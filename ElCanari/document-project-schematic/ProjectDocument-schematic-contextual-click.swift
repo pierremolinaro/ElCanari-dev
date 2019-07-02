@@ -501,8 +501,10 @@ extension CustomizedProjectDocument {
 
   @objc private func addNCToPinAction (_ inSender : NSMenuItem) {
     if let point = inSender.representedObject as? PointInSchematic, let selectedSheet = self.rootObject.mSelectedSheet {
-      let nc = selectedSheet.addNCToPin (toPoint: point)
-      self.schematicObjectsController.setSelection ([nc])
+      let possibleNC = selectedSheet.addNCToPin (toPoint: point)
+      if let nc = possibleNC {
+        self.schematicObjectsController.setSelection ([nc])
+      }
     }
   }
 

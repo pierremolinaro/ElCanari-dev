@@ -162,7 +162,7 @@
                         <rect key="frame" x="1" y="1" width="388" height="370"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView id="895" customClass="EBGraphicView">
+                            <customView id="895" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </customView>

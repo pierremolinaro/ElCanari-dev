@@ -612,15 +612,16 @@ class ComponentSymbolInProject : SchematicObject,
         kind &= unwSelf.mCenterX_property_selection.kind ()
         kind &= unwSelf.mCenterY_property_selection.kind ()
         kind &= g_Preferences!.pinNameFont_property_selection.kind ()
+        kind &= unwSelf.mPoints_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mRotation_property_selection, unwSelf.mMirror_property_selection, unwSelf.componentName_property_selection, unwSelf.mComponent_property.mComponentValue_property_selection, unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, g_Preferences!.pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
-            return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+          switch (unwSelf.mRotation_property_selection, unwSelf.mMirror_property_selection, unwSelf.componentName_property_selection, unwSelf.mComponent_property.mComponentValue_property_selection, unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, g_Preferences!.pinNameFont_property_selection, unwSelf.mPoints_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
+            return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
           default :
             return .empty
           }
@@ -639,6 +640,7 @@ class ComponentSymbolInProject : SchematicObject,
     self.mCenterX_property.addEBObserver (self.symbolInfo_property)
     self.mCenterY_property.addEBObserver (self.symbolInfo_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.symbolInfo_property)
+    self.mPoints_property.addEBObserverOf_symbolNameNetName (self.symbolInfo_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -765,6 +767,7 @@ class ComponentSymbolInProject : SchematicObject,
     self.mCenterX_property.removeEBObserver (self.symbolInfo_property)
     self.mCenterY_property.removeEBObserver (self.symbolInfo_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.symbolInfo_property)
+    self.mPoints_property.removeEBObserverOf_symbolNameNetName (self.symbolInfo_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
     self.mDisplayComponentNameOffsetX_property.removeEBObserver (self.objectDisplay_property)
     self.mDisplayComponentNameOffsetY_property.removeEBObserver (self.objectDisplay_property)

@@ -36,9 +36,11 @@ graphic entity ComponentSymbolInProject : SchematicObject {
     self.mSymbolTypeName,
     self.mCenterX,
     self.mCenterY,
-    prefs.pinNameFont
+    prefs.pinNameFont,
+    self.mPoints.all.symbolNameNetName
   ;
 
+ // transient TwoStringArray 
   transient Bool symbolInSchematic dependsFrom super.SchematicObject.isPlacedInSchematic ;
 
   override transient EBShape objectDisplay dependsFrom

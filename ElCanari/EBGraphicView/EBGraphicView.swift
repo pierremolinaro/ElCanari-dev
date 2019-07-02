@@ -8,22 +8,36 @@ import Cocoa
 //   EBGraphicView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBGraphicView) class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvider {
+class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvider {
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     noteObjectAllocation (self)
+    self.postsFrameChangedNotifications = true
+    NotificationCenter.default.addObserver (
+      self,
+      selector: #selector (EBGraphicView.ebFrameChanged (_:)),
+      name: NSView.frameDidChangeNotification,
+      object: self
+    )
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     noteObjectAllocation (self)
+    self.postsFrameChangedNotifications = true
+    NotificationCenter.default.addObserver (
+      self,
+      selector: #selector (EBGraphicView.ebFrameChanged (_:)),
+      name: NSView.frameDidChangeNotification,
+      object: self
+    )
   }
   
   //····················································································································
@@ -31,6 +45,11 @@ import Cocoa
   override func ebCleanUp () {
     super.ebCleanUp ()
     self.mViewController = nil
+    NotificationCenter.default.removeObserver (
+      self,
+      name: NSView.frameDidChangeNotification,
+      object: self
+    )
   }
 
   //····················································································································
@@ -46,6 +65,14 @@ import Cocoa
   //····················································································································
 
   override var isOpaque : Bool { return true }
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
+  @objc private func ebFrameChanged (_ inNotification : Notification) {
+    self.defineToolTips ()
+  }
 
   //····················································································································
   // MARK: -
@@ -246,6 +273,7 @@ import Cocoa
       if self.mObjectDisplayArray != oldValue {
         self.noteInvalidRectangles (old: oldValue, new: self.mObjectDisplayArray)
         self.updateViewFrameAndBounds ()
+        self.defineToolTips ()
       }
     }
   }

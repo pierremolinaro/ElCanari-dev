@@ -7,79 +7,36 @@ enum ComponentSide {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity ComponentInProject : BoardObject {
+//--- Device
   toOne DeviceInProject mDevice inverse toMany mComponents ;
+
+  transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
+
+//--- Package
   toOne DevicePackageInProject mSelectedPackage ;
   arrayController #componentAvailablePackagesController : self.mPackages ;
   toMany proxy DevicePackageInProject mPackages : mDevice.mPackages ;
-
-  toMany ComponentSymbolInProject mSymbols inverse toOne mComponent ;
-
-  property String mNamePrefix default "" ;
-  property Int mNameIndex default 0 ;
-  
-  property Int mX default 0 ;
-  property Int mXUnit default 2_286 ; // mils
-  property Int mY default 0 ;
-  property Int mYUnit default 2_286 ; // mils
-  property Int mRotation default 0 ; // 1000 -> 1°
-  property ComponentSide mSide default front ;
-
-  toOne FontInProject mNameFont inverse toMany mComponentNames ;
-  property Double mNameFontSize default 4.0 ;
-  property Int mXName default 0 ;
-  property Int mYName default 685_800 ; // 300 mils
-  property Bool mNameIsVisibleInBoard default yes ;
-  property Int mNameRotation default 0 ; // 1000 -> 1°
-
-  transient String componentNameFontName dependsFrom self.mNameFont.one.mFontName ;
-
 
   transient ComponentPadDescriptorDictionary componentPadDictionary dependsFrom 
     self.mX, self.mY, self.mRotation, self.mSide,
     self.packagePadDictionary
   ;
 
-  property String mComponentValue default "" ;
-  toOne FontInProject mValueFont inverse toMany mComponentValues ;
-  property Double mValueFontSize default 4.0 ;
-  property Int mXValue default 0 ;
-  property Int mYValue default -685_800 ; // 300 mils
-  property Bool mValueIsVisibleInBoard default yes ;
-  property Int mValueRotation default 0 ; // 1000 -> 1°
+  transient PackageMasterPadDictionary packagePadDictionary dependsFrom
+     self.mSelectedPackage.one.packagePadDictionary
+   ;
 
-  transient String componentValueFontName dependsFrom self.mValueFont.one.mFontName ;
-  
-  transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
-  transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
   transient String selectedPackageName dependsFrom self.mSelectedPackage.one.mPackageName ;
 
   transient StringArray availablePackages dependsFrom self.mDevice.one.packageNames ;
 
-  transient StringTagArray unplacedSymbols dependsFrom
-    self.componentName,
-    self.mSymbols,
-    self.mSymbols.all.symbolInSchematic,
-    self.mSymbols.all.mSymbolInstanceName,
-    self.mSymbols.all.mSymbolTypeName
-  ;
-
-
-  toMany ConnectorInBoard mConnectors inverse toOne mComponent ;
-
+//--- Display in board
   transient Bool componentIsPlacedInBoard dependsFrom super.BoardObject.isPlacedInBoard ;
 
   transient String componentIsPlacedInBoardString dependsFrom self.componentIsPlacedInBoard ;
 
-  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ;
-
-  transient String placementInSchematic dependsFrom self.mSymbols.all.symbolInSchematic ;
-  
   transient NSBezierPath strokeBezierPath dependsFrom self.mSelectedPackage.one.mStrokeBezierPath ;
 
-  transient PackageMasterPadDictionary packagePadDictionary dependsFrom
-     self.mSelectedPackage.one.packagePadDictionary
-   ;
-  
   override transient EBShape objectDisplay dependsFrom
     self.mX, self.mY, self.mRotation, self.mSide,
     self.packagePadDictionary, self.strokeBezierPath,
@@ -105,6 +62,58 @@ graphic entity ComponentInProject : BoardObject {
     self.mValueIsVisibleInBoard, self.mXValue, self.mYValue, self.mValueFont.one.descriptor, self.mValueFontSize,
     self.mValueRotation, self.mComponentValue
   ;
+
+//--- Symbols
+  toMany ComponentSymbolInProject mSymbols inverse toOne mComponent ;
+
+  transient StringTagArray unplacedSymbols dependsFrom
+    self.componentName,
+    self.mSymbols,
+    self.mSymbols.all.symbolInSchematic,
+    self.mSymbols.all.mSymbolInstanceName,
+    self.mSymbols.all.mSymbolTypeName
+  ;
+
+  transient String placementInSchematic dependsFrom self.mSymbols.all.symbolInSchematic ;
+
+  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ;  
+
+//--- Component Name
+  property String mNamePrefix default "" ;
+  property Int mNameIndex default 0 ;
+  transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
+
+//--- Component location in board  
+  property Int mX default 0 ;
+  property Int mXUnit default 2_286 ; // mils
+  property Int mY default 0 ;
+  property Int mYUnit default 2_286 ; // mils
+  property Int mRotation default 0 ; // 1000 -> 1°
+  property ComponentSide mSide default front ;
+
+//--- Component name display
+  toOne FontInProject mNameFont inverse toMany mComponentNames ;
+  property Double mNameFontSize default 4.0 ;
+  property Int mXName default 0 ;
+  property Int mYName default 685_800 ; // 300 mils
+  property Bool mNameIsVisibleInBoard default yes ;
+  property Int mNameRotation default 0 ; // 1000 -> 1°
+
+  transient String componentNameFontName dependsFrom self.mNameFont.one.mFontName ;
+
+//--- Component value display
+  property String mComponentValue default "" ;
+  toOne FontInProject mValueFont inverse toMany mComponentValues ;
+  property Double mValueFontSize default 4.0 ;
+  property Int mXValue default 0 ;
+  property Int mYValue default -685_800 ; // 300 mils
+  property Bool mValueIsVisibleInBoard default yes ;
+  property Int mValueRotation default 0 ; // 1000 -> 1°
+
+  transient String componentValueFontName dependsFrom self.mValueFont.one.mFontName ;
+  
+//--- Connectors  
+  toMany ConnectorInBoard mConnectors inverse toOne mComponent ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

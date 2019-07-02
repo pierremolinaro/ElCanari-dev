@@ -23,9 +23,17 @@ func transient_ComponentSymbolInProject_symbolInfo (
        _ self_mSymbolTypeName : String,             
        _ self_mCenterX : Int,                       
        _ self_mCenterY : Int,                       
-       _ prefs_pinNameFont : NSFont
+       _ prefs_pinNameFont : NSFont,                
+       _ self_mPoints_symbolNameNetName : [PointInSchematic_symbolNameNetName]
 ) -> ComponentSymbolInfo {
 //--- START OF USER ZONE 2
+      //--- Symbol pin name - net dictionary
+        var pinNetNameDictionary = [String : String] ()
+        for entry in self_mPoints_symbolNameNetName {
+          if let x = entry.symbolNameNetName {
+            pinNetNameDictionary [x.mLeft] = x.mRight
+          }
+        }
       //--- Device info
         let key = SymbolInProjectIdentifier (symbolInstanceName: self_mSymbolInstanceName, symbolTypeName: self_mSymbolTypeName)
         if let deviceInfo = self_mComponent_deviceSymbolDictionary? [key], let componentValue = self_mComponent_mComponentValue {
@@ -85,7 +93,16 @@ func transient_ComponentSymbolInProject_symbolInfo (
               pinLocationTransform.scaleX (by: self_mMirror ? -1.0 : 1.0, yBy: 1.0)
               pinLocationTransform.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
               pinLocationTransform.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
-              let pinLocation = pinLocationTransform.transform (pin.pinXY.cocoaPoint).canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+              let cocoaPinLocation = pinLocationTransform.transform (pin.pinXY.cocoaPoint)
+              let pinLocation = cocoaPinLocation.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+           //--- Tooltip
+              let toolTipRect = NSRect (
+                x: cocoaPinLocation.x - SCHEMATIC_GRID_IN_COCOA_UNIT / 2.0,
+                y: cocoaPinLocation.y - SCHEMATIC_GRID_IN_COCOA_UNIT / 2.0,
+                width: SCHEMATIC_GRID_IN_COCOA_UNIT,
+                height: SCHEMATIC_GRID_IN_COCOA_UNIT
+              )
+              pinTextShape.addToolTip (toolTipRect, pinNetNameDictionary [pin.pinName] ?? "—")
            //---
               pins.append (PinDescriptor (symbolIdentifier: pin.symbol, pinName: pin.pinName, pinLocation: pinLocation, shape: pinTextShape))
             }

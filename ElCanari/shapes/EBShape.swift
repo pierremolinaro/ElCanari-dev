@@ -77,6 +77,7 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   //····················································································································
 
   final func internalTransform (_ result : EBShape, by inAffineTransform : AffineTransform) {
+    self.internalToolTipTransform (result, by: inAffineTransform)
     for shape in self.mShapes {
       result.append (shape.transformed (by: inAffineTransform))
     }
@@ -197,6 +198,40 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   func hash (into hasher: inout Hasher) {
     for shape in self.mShapes {
       shape.hash (into: &hasher)
+    }
+  }
+
+  //····················································································································
+  //   Tool Tips
+  //····················································································································
+
+  private var mToolTips = [(NSBezierPath, String)] ()
+
+  //····················································································································
+
+  final func addToolTip (_ inRect : NSRect, _ inText : String) {
+    self.mToolTips.append ((NSBezierPath (rect: inRect), inText))
+  }
+
+  //····················································································································
+
+  final func installToolTips (toView inView : EBGraphicView) {
+    for (bp, string) in self.mToolTips {
+      inView.addToolTip (bp.bounds, owner: string, userData: nil)
+    }
+    for shape in self.mShapes {
+      shape.installToolTips (toView: inView)
+    }
+  }
+
+  //····················································································································
+
+  final private func internalToolTipTransform (_ result : EBShape, by inAffineTransform : AffineTransform) {
+    result.mToolTips = []
+    for (bp, string) in self.mToolTips {
+      let newBP = bp.copy () as! NSBezierPath
+      newBP.transform (using: inAffineTransform)
+      result.mToolTips.append ((newBP, string))
     }
   }
 

@@ -25,6 +25,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
     self.removeEBObserversOf_canMove_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_wireColor_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_symbolRotation_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_symbolNameNetName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_isConnected_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_status_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_connectedPoints_fromElementsOfSet (inRemovedSet) // Transient property
@@ -40,6 +41,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
     self.addEBObserversOf_canMove_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_wireColor_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_symbolRotation_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_symbolNameNetName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_isConnected_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_status_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_connectedPoints_toElementsOfSet (inAddedSet) // Transient property
@@ -605,6 +607,62 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
     for managedObject in inSet {
       self.mObserversOf_symbolRotation.apply { (_ observer : EBEvent) in
         managedObject.symbolRotation_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'symbolNameNetName' transient property
+  //····················································································································
+
+  private var mObserversOf_symbolNameNetName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolNameNetName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_symbolNameNetName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolNameNetName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolNameNetName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_symbolNameNetName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolNameNetName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_symbolNameNetName_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolNameNetName.apply { (_ observer : EBEvent) in
+        managedObject.symbolNameNetName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_symbolNameNetName_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolNameNetName.apply { (_ observer : EBEvent) in
+        managedObject.symbolNameNetName_property.removeEBObserver (observer)
       }
     }
   }

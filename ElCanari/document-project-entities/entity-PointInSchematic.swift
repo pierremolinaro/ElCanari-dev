@@ -66,6 +66,12 @@ protocol PointInSchematic_symbolRotation : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PointInSchematic_symbolNameNetName : class {
+  var symbolNameNetName : TwoStrings? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PointInSchematic_isConnected : class {
   var isConnected : Bool? { get }
 }
@@ -103,6 +109,7 @@ class PointInSchematic : EBManagedObject,
          PointInSchematic_canMove,
          PointInSchematic_wireColor,
          PointInSchematic_symbolRotation,
+         PointInSchematic_symbolNameNetName,
          PointInSchematic_isConnected,
          PointInSchematic_status,
          PointInSchematic_connectedPoints,
@@ -530,6 +537,29 @@ class PointInSchematic : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: symbolNameNetName
+  //····················································································································
+
+  let symbolNameNetName_property = EBTransientProperty_TwoStrings ()
+
+  //····················································································································
+
+  var symbolNameNetName_property_selection : EBSelection <TwoStrings> {
+    return self.symbolNameNetName_property.prop
+  }
+
+  //····················································································································
+
+  var symbolNameNetName : TwoStrings? {
+    switch self.symbolNameNetName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: isConnected
   //····················································································································
 
@@ -839,6 +869,30 @@ class PointInSchematic : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
     )
+  //--- Atomic property: symbolNameNetName
+    self.symbolNameNetName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mSymbolPinName_property_selection.kind ()
+        kind &= unwSelf.netName_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mSymbolPinName_property_selection, unwSelf.netName_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_PointInSchematic_symbolNameNetName (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbolPinName_property.addEBObserver (self.symbolNameNetName_property)
+    self.netName_property.addEBObserver (self.symbolNameNetName_property)
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -982,6 +1036,8 @@ class PointInSchematic : EBManagedObject,
     self.mNet_property.removeEBObserverOf_wireColor (self.wireColor_property)
     self.mSymbol_property.removeEBObserverOf_mRotation (self.symbolRotation_property)
     self.mSymbol_property.removeEBObserverOf_mMirror (self.symbolRotation_property)
+    self.mSymbolPinName_property.removeEBObserver (self.symbolNameNetName_property)
+    self.netName_property.removeEBObserver (self.symbolNameNetName_property)
     self.mNC_property.removeEBObserver (self.isConnected_property)
     self.mSymbol_property.removeEBObserver (self.isConnected_property)
     self.mWiresP1s_property.removeEBObserver (self.isConnected_property)
@@ -1091,6 +1147,14 @@ class PointInSchematic : EBManagedObject,
       view: view,
       observerExplorer: &self.symbolRotation_property.mObserverExplorer,
       valueExplorer: &self.symbolRotation_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "symbolNameNetName",
+      idx: self.symbolNameNetName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.symbolNameNetName_property.mObserverExplorer,
+      valueExplorer: &self.symbolNameNetName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "isConnected",
