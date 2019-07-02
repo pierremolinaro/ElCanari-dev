@@ -23,7 +23,7 @@ func transient_PointInSchematic_location (
 //--- START OF USER ZONE 2
         if let symbolPins = self_mSymbol_symbolInfo?.pins, let symbolInstanceName = self_mSymbol_mSymbolInstanceName {
           for pin in symbolPins {
-            if (pin.symbolIdentifier.symbolInstanceName == symbolInstanceName) && (pin.pinName == self_mSymbolPinName) {
+            if (pin.pinIdentifier.symbol.symbolInstanceName == symbolInstanceName) && (pin.pinIdentifier.pinName == self_mSymbolPinName) {
               return pin.pinLocation
             }
           }

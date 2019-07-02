@@ -48,20 +48,28 @@ struct SymbolInProjectIdentifier : Hashable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct PinDescriptor : Hashable {
-  let symbolIdentifier : SymbolInProjectIdentifier
+struct PinSymbolInProjectIdentifier : Hashable {
+  let symbol : SymbolInProjectIdentifier
   let pinName : String
-  let pinLocation : CanariPoint
-  let shape : EBShape
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct ComponentSymbolInfo : Equatable, Hashable {
+struct ComponentPinDescriptor : Hashable {
+  let pinIdentifier : PinSymbolInProjectIdentifier
+  let pinLocation : CanariPoint
+  let shape : EBShape
+  let netName : String // Empty string if no net
+  let padName : String
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct ComponentSymbolInfo : Hashable {
   let filledBezierPath : NSBezierPath
   let strokeBezierPath : NSBezierPath
   let center : CanariPoint
-  let pins : [PinDescriptor]
+  let pins : [ComponentPinDescriptor]
   let componentName : String
   let componentValue : String
 }
@@ -282,7 +290,8 @@ struct MasterPadDescriptor : Hashable {
                                   padDisplayAttributes : [NSAttributedString.Key : Any]?,
                                   padNumberAF : AffineTransform,
                                   frontPadColor : NSColor?,
-                                  backPadColor : NSColor?) {
+                                  backPadColor : NSColor?,
+                                  padNetDictionary inPadNetDictionary : [String : String]) {
     let center = self.center.cocoaPoint
     let padSize = self.padSize.cocoaSize
     let rPad = NSRect (x: center.x - padSize.width / 2.0, y: center.y - padSize.height / 2.0, width: padSize.width, height: padSize.height)
@@ -325,6 +334,8 @@ struct MasterPadDescriptor : Hashable {
       af.prepend (padNumberAF)
       ioShape.append (EBTextShape (self.name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
     }
+  //--- Tool tip
+    ioShape.addToolTip (rPad, inPadNetDictionary [self.name] ?? "No net")
   //--- Slave pads
     for pad in slavePads {
       pad.accumulatePadBezierPathes (

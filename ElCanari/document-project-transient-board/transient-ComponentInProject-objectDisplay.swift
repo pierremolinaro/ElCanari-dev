@@ -43,9 +43,19 @@ func transient_ComponentInProject_objectDisplay (
        _ self_mValueFont_descriptor : BoardFontDescriptor?,
        _ self_mValueFontSize : Double,           
        _ self_mValueRotation : Int,              
-       _ self_mComponentValue : String
+       _ self_mComponentValue : String,          
+       _ self_mDevice_pinPadAssignments : ThreeStringArray?,
+       _ self_mSymbols_symbolInfo : [ComponentSymbolInProject_symbolInfo]
 ) -> EBShape {
 //--- START OF USER ZONE 2
+        var padNetDictionary = [String : String] () // Pad name, net net name
+        for symbol in self_mSymbols_symbolInfo {
+          if let symbolInfo = symbol.symbolInfo {
+            for pin in symbolInfo.pins {
+              padNetDictionary [pin.padName] = pin.netName
+            }
+          }
+        }
         let padDisplayAttributes : [NSAttributedString.Key : Any]?
         if self_BoardObject_displayPadNumbers {
           padDisplayAttributes = [
@@ -82,7 +92,8 @@ func transient_ComponentInProject_objectDisplay (
             padDisplayAttributes: padDisplayAttributes,
             padNumberAF: padNumberAffineTransform,
             frontPadColor: self_BoardObject_displayFrontPads ? prefs_frontSidePadColorForBoard : nil,
-            backPadColor: self_BoardObject_displayBackPads ? prefs_backSidePadColorForBoard : nil
+            backPadColor: self_BoardObject_displayBackPads ? prefs_backSidePadColorForBoard : nil,
+            padNetDictionary: padNetDictionary
           )
         }
       //--- Name

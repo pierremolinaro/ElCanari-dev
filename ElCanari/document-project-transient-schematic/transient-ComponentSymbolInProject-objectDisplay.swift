@@ -35,7 +35,7 @@ func transient_ComponentSymbolInProject_objectDisplay (
         shape.append (filledPath)
      
         for pinShape in self_symbolInfo.pins {
-          if (pinShape.symbolIdentifier.symbolInstanceName == self_mSymbolInstanceName) && (pinShape.symbolIdentifier.symbolTypeName == self_mSymbolTypeName) {
+          if (pinShape.pinIdentifier.symbol.symbolInstanceName == self_mSymbolInstanceName) && (pinShape.pinIdentifier.symbol.symbolTypeName == self_mSymbolTypeName) {
             shape.append (pinShape.shape)
           }
         }

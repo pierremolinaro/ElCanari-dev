@@ -545,12 +545,12 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
     inSymbol.mCenterY = p.y
   //--- Create points in schematics
     let symbolInfo : ComponentSymbolInfo = inSymbol.symbolInfo!
-    let symbolPins : [PinDescriptor] = symbolInfo.pins
+    let symbolPins : [ComponentPinDescriptor] = symbolInfo.pins
     for pin in symbolPins {
-      if pin.symbolIdentifier.symbolInstanceName == inSymbol.mSymbolInstanceName {
+      if pin.pinIdentifier.symbol.symbolInstanceName == inSymbol.mSymbolInstanceName {
         let point = PointInSchematic (self.ebUndoManager)
         point.mSymbol = inSymbol
-        point.mSymbolPinName = pin.pinName
+        point.mSymbolPinName = pin.pinIdentifier.pinName
         self.rootObject.mSelectedSheet?.mPoints.append (point)
       }
     }

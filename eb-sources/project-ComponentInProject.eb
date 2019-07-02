@@ -52,7 +52,10 @@ graphic entity ComponentInProject : BoardObject {
     self.mNameRotation,
     self.componentName,
     self.mValueIsVisibleInBoard, self.mXValue, self.mYValue, self.mValueFont.one.descriptor, self.mValueFontSize,
-    self.mValueRotation, self.mComponentValue
+    self.mValueRotation, self.mComponentValue,
+//    self.mSymbols.all.pinNamesNetNames,
+    self.mDevice.one.pinPadAssignments,
+    self.mSymbols.all.symbolInfo
   ;
 
   override transient EBShape selectionDisplay dependsFrom

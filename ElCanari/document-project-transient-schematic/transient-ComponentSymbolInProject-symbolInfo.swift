@@ -41,7 +41,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
           let pinNameAttributes : [NSAttributedString.Key : Any] = [
             NSAttributedString.Key.font : prefs_pinNameFont
           ]
-          var pins = [PinDescriptor] ()
+          var pins = [ComponentPinDescriptor] ()
           for pinPadAssignment in deviceInfo.assignments {
             if let pin = pinPadAssignment.pin, pin.symbol.symbolInstanceName == self_mSymbolInstanceName {
               let pinTextShape = EBShape ()
@@ -104,7 +104,14 @@ func transient_ComponentSymbolInProject_symbolInfo (
               )
               pinTextShape.addToolTip (toolTipRect, pinNetNameDictionary [pin.pinName] ?? "—")
            //---
-              pins.append (PinDescriptor (symbolIdentifier: pin.symbol, pinName: pin.pinName, pinLocation: pinLocation, shape: pinTextShape))
+              let d = ComponentPinDescriptor (
+                pinIdentifier: PinSymbolInProjectIdentifier (symbol: pin.symbol, pinName: pin.pinName),
+                pinLocation: pinLocation,
+                shape: pinTextShape,
+                netName: pinNetNameDictionary [pin.pinName] ?? "",
+                padName: pinPadAssignment.padName
+              )
+              pins.append (d)
             }
           }
         //--- Affine transformation for drawings
