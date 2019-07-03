@@ -181,7 +181,8 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: 18.0),
       NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
     ]
-    let shape = EBTextShape ("T", CGPoint (x: r.midX, y: r.midY - 3.0), textAttributes, .center, .center)
+    var shape = EBShape ()
+    shape.addText ("T", CGPoint (x: r.midX, y: r.midY - 3.0), textAttributes, .center, .center)
     let imagePDFData = buildPDFimageData (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }
@@ -197,13 +198,13 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
       width: circleDiameter,
       height: circleDiameter
     )
-    let shape = EBShape ()
-    shape.append (EBFilledBezierPathShape ([EBBezierPath (ovalIn: circle)], g_Preferences?.symbolColor ?? NSColor.black))
+    var shape = EBShape ()
+    shape.addFilledBezierPathes ([EBBezierPath (ovalIn: circle)], g_Preferences?.symbolColor ?? NSColor.black)
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: 12.0),
       NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
     ]
-    shape.append (EBTextShape ("#", CGPoint (x: r.minX + 2.0, y: r.midY - 1.0), textAttributes, .onTheRight, .center))
+    shape.addText ("#", CGPoint (x: r.minX + 2.0, y: r.midY - 1.0), textAttributes, .onTheRight, .center)
     let imagePDFData = buildPDFimageData (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }

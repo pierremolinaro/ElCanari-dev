@@ -25,13 +25,15 @@ func transient_SlavePadInDevice_padNumberDisplay (
         NSAttributedString.Key.font : prefs_padNumberFont,
         NSAttributedString.Key.foregroundColor : prefs_padNumberColor
       ]
-      return EBTextShape (
+      var shape = EBShape ()
+      shape.addText (
         "(\(self_mMasterPad_mName ?? ""))",
         CanariPoint (x: self_mCenterX, y: self_mCenterY).cocoaPoint,
         textAttributes,
         .center,
         .center
       )
+      return shape
 //--- END OF USER ZONE 2
 }
 

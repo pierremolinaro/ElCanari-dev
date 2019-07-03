@@ -27,7 +27,8 @@ func transient_SymbolText_objectDisplay (
       NSAttributedString.Key.foregroundColor : prefs_symbolColor
     ]
     let origin = NSPoint (x: canariUnitToCocoa (self_x), y: canariUnitToCocoa (self_y))
-    let shape = EBTextShape (self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment(), .center)
+    var shape = EBShape ()
+    shape.addText (self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment(), .center)
     return shape
 //--- END OF USER ZONE 2
 }

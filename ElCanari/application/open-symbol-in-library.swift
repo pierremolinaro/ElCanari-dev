@@ -40,11 +40,11 @@ class OpenSymbolInLibrary : OpenInLibrary {
 
   override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
     self.buildOutlineViewDataSource (extension: "ElCanariSymbol", alreadyLoadedDocuments: inNames) { (_ inRootObject : EBManagedObject?) -> NSImage? in
-      let partShape = EBShape ()
+      var partShape = EBShape ()
       if let symbolRoot = inRootObject as? SymbolRoot {
         for object in symbolRoot.symbolObjects_property.propval {
           if let shape = object.objectDisplay {
-            partShape.append (shape)
+            partShape.add (shape)
           }
         }
       }

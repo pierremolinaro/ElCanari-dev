@@ -31,7 +31,7 @@ func transient_PackageInDevice_objectDisplay (
        _ self_mY : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-      let shape = EBShape ()
+      var shape = EBShape ()
     //--- Compute display rect
       var r = NSRect.null
       if !self_mStrokeBezierPath.isEmpty {
@@ -54,34 +54,29 @@ func transient_PackageInDevice_objectDisplay (
         r = r.insetBy (dx: e, dy: 0.0)
       }
       var bp = EBBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
-      shape.append (EBFilledBezierPathShape ([bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!))
+      shape.addFilledBezierPathes ([bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!)
       bp.move (to: NSPoint (x: r.minX, y: nameOrigin.y))
       bp.line (to: NSPoint (x: r.maxX, y: nameOrigin.y))
       bp.lineWidth = 0.5
-      shape.append (EBStrokeBezierPathShape ([bp], NSColor.lightGray))
+      shape.addStrokeBezierPathes ([bp], NSColor.lightGray)
     //--- Name
-      let nameShape = EBTextShape (self_mName, nameOrigin, nameTextAttributes, .center, .above)
-      shape.append (nameShape)
+      let nameShape = EBShape (text: self_mName, nameOrigin, nameTextAttributes, .center, .above)
+      shape.add (nameShape)
     //--- Back side pad
       if self_mRoot_mShowPackageBackPads ?? false {
-        shape.append (EBFilledBezierPathShape (self_backSidePadFilledBezierPathArray.array, prefs_backSidePadColor))
+        shape.addFilledBezierPathes (self_backSidePadFilledBezierPathArray.array, prefs_backSidePadColor)
       }
     //--- Top side pad
       if self_mRoot_mShowPackageFrontPads ?? false {
-        shape.append (EBFilledBezierPathShape (self_frontSidePadFilledBezierPathArray.array, prefs_frontSidePadColor))
+        shape.addFilledBezierPathes (self_frontSidePadFilledBezierPathArray.array, prefs_frontSidePadColor)
       }
     //--- Pad number
       if self_mRoot_mShowPackagePadNumbers ?? false {
         for pad in self_mMasterPads_padNumberDisplay {
           if let textShape = pad.padNumberDisplay {
-            shape.append (textShape)
+            shape.add (textShape)
           }
         }
-//        for slavePad in self_mSlavePads_padNumberDisplay {
-//          if let textShape = slavePad.padNumberDisplay {
-//            shape.append (textShape)
-//          }
-//        }
       }
     //--- Package shape
       if self_mRoot_mShowPackages ?? false {
@@ -89,7 +84,7 @@ func transient_PackageInDevice_objectDisplay (
         bp.append (self_mStrokeBezierPath)
         bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
         bp.lineCapStyle = .round
-        shape.append (EBStrokeBezierPathShape ([bp], prefs_packageColor))
+        shape.addStrokeBezierPathes ([bp], prefs_packageColor)
       }
     //---
       var transform = AffineTransform ()

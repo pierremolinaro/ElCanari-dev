@@ -27,7 +27,7 @@ func transient_SheetInProject_connectedPoints (
             }
           }
         }
-        return EBFilledBezierPathShape ([bp], .black)
+        return EBShape (filled: [bp], .black)
 //--- END OF USER ZONE 2
 }
 

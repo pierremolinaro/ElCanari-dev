@@ -48,11 +48,11 @@ extension EBGraphicView : NSDraggingSource {
     let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
   //--- Buils image and data
     let objectArray = self.viewController?.objectArray ?? []
-    let displayShape = EBShape ()
+    var displayShape = EBShape ()
     var objectDictionaryArray = [NSDictionary] ()
     for object in objectArray {
       if draggedObjectSet.contains (object), let objectShape = object.objectDisplay {
-        displayShape.append (objectShape)
+        displayShape.add (objectShape)
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
         objectDictionaryArray.append (d)

@@ -31,13 +31,13 @@ func transient_BoardRestrictRectangle_selectionDisplay (
         bp.lineWidth = BOARD_HILITE_WIDTH
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        let shape = EBShape ()
-        shape.append (EBStrokeBezierPathShape ([bp], .cyan))
+        var shape = EBShape ()
+        shape.addStrokeBezierPathes ([bp], .cyan)
       //--- Knobs
-        shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: BOARD_RESTRICT_RECT_BOTTOM, .circ, 2.0))
-        shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: BOARD_RESTRICT_RECT_TOP, .circ, 2.0))
-        shape.append (EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: BOARD_RESTRICT_RECT_RIGHT, .circ, 2.0))
-        shape.append (EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: BOARD_RESTRICT_RECT_LEFT, .circ, 2.0))
+        shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y), index: BOARD_RESTRICT_RECT_BOTTOM, .circ, 2.0)
+        shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y + height), index: BOARD_RESTRICT_RECT_TOP, .circ, 2.0)
+        shape.addKnob (at: CGPoint (x: x + width, y: y + height / 2.0), index: BOARD_RESTRICT_RECT_RIGHT, .circ, 2.0)
+        shape.addKnob (at: CGPoint (x: x, y: y + height / 2.0), index: BOARD_RESTRICT_RECT_LEFT, .circ, 2.0)
       //---
         return shape
 //--- END OF USER ZONE 2

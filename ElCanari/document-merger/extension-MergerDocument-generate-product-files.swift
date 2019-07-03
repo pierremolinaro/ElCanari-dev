@@ -448,11 +448,11 @@ extension MergerDocument {
             }
           }
         }
-        let shapes = EBShape ()
-        shapes.append (EBStrokeBezierPathShape (strokeBezierPaths, .black))
-        shapes.append (EBFilledBezierPathShape (filledBezierPaths, .black))
-        shapes.append (EBStrokeBezierPathShape (drillBezierPaths, .white))
-        let pdfData = buildPDFimageData (frame:cocoaBoardRect, shape: shapes, backgroundColor:NSColor.white)
+        var shape = EBShape ()
+        shape.addStrokeBezierPathes (strokeBezierPaths, .black)
+        shape.addFilledBezierPathes (filledBezierPaths, .black)
+        shape.addStrokeBezierPathes (drillBezierPaths, .white)
+        let pdfData = buildPDFimageData (frame:cocoaBoardRect, shape: shape, backgroundColor:NSColor.white)
         try pdfData.write (to: URL (fileURLWithPath: filePath), options: .atomic)
         self.mLogTextView?.appendSuccessString (" Ok\n")
       }

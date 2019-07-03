@@ -39,8 +39,6 @@ graphic entity ComponentSymbolInProject : SchematicObject {
     prefs.pinNameFont,
     self.mPoints.all.symbolNameNetName
   ;
-
-//  transient TwoStringArray pinNamesNetNames dependsFrom self.mSymbolInstanceName, self.mPoints.all.symbolNameNetName ;
   
   transient Bool symbolInSchematic dependsFrom super.SchematicObject.isPlacedInSchematic ;
 

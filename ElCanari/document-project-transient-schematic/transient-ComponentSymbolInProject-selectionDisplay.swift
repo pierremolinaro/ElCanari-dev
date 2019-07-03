@@ -23,15 +23,15 @@ func transient_ComponentSymbolInProject_selectionDisplay (
        _ self_symbolInfo : ComponentSymbolInfo
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let shape = EBShape ()
+        var shape = EBShape ()
         var strokeBezierPath = EBBezierPath ()
         strokeBezierPath.append (self_symbolInfo.strokeBezierPath)
         // strokeBezierPath.append (self_symbolInfo.filledBezierPath)
         strokeBezierPath.lineWidth = SCHEMATIC_HILITE_WIDTH
-        shape.append (EBStrokeBezierPathShape ([strokeBezierPath], .cyan))
-      //  shape.append (EBFilledBezierPathShape ([self_symbolInfo.filledBezierPath], .cyan))
+        shape.addStrokeBezierPathes ([strokeBezierPath], .cyan)
+      //  shape.addFilledBezierPathes ([self_symbolInfo.filledBezierPath], .cyan))
         let symbolCenter = self_symbolInfo.center.cocoaPoint
-        shape.append (EBKnobShape (at: symbolCenter, index: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE))
+        shape.addKnob (at: symbolCenter, index: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
       //--- Component name knob
         do{
           let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
@@ -39,16 +39,16 @@ func transient_ComponentSymbolInProject_selectionDisplay (
           bp.move (to: symbolCenter)
           bp.line (to: componentNameCenter.cocoaPoint)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
-          shape.append (EBStrokeBezierPathShape ([bp], .black))
-          let componentNameShape = EBTextKnobShape (
-            self_symbolInfo.componentName,
+          shape.addStrokeBezierPathes ([bp], .black)
+          let componentNameShape = EBShape (
+            textKnob: self_symbolInfo.componentName,
             componentNameCenter.cocoaPoint,
             prefs_pinNameFont,
             .center,
             .center,
             SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB
           )
-          shape.append (componentNameShape)
+          shape.add (componentNameShape)
         }
       //--- Component value knob
         if self_mDisplayComponentValue {
@@ -61,16 +61,16 @@ func transient_ComponentSymbolInProject_selectionDisplay (
           bp.move (to: symbolCenter)
           bp.line (to: componentValueCenter.cocoaPoint)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
-          shape.append (EBStrokeBezierPathShape ([bp], .black))
-          let componentValueShape = EBTextKnobShape (
-            value,
+          shape.addStrokeBezierPathes ([bp], .black)
+          let componentValueShape = EBShape (
+            textKnob: value,
             componentValueCenter.cocoaPoint,
             prefs_pinNameFont,
             .center,
             .center,
             SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB
           )
-          shape.append (componentValueShape)
+          shape.add (componentValueShape)
         }
       //---
         return shape

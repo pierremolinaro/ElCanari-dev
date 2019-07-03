@@ -8,89 +8,229 @@ import Cocoa
 //    EBShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBShape : Hashable, EBUserClassNameProtocol {
+struct EBShape : Hashable {
 
   //····················································································································
   //  Properties
   //····················································································································
 
-  private var mShapes : [EBShape]
+  private var mElements = [EBShapeElement] ()
   private var mCachedBoundingBox : NSRect? = nil
+  private var mToolTips = [EBToolTip] ()
 
   //····················································································································
   //  init
   //····················································································································
 
   init () {
-    mShapes = []
-    noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  init (shape inShape : EBShape) {
-    mShapes = [inShape]
-    noteObjectAllocation (self)
+  init (filled inFilledPaths : [EBBezierPath],
+        _ inColor : NSColor?,
+        _ inKnobIndex : Int? = nil,
+        clip inClipBezierPath : EBBezierPath? = nil) {
+    self.addFilledBezierPathes (inFilledPaths, inColor, inKnobIndex, clip: inClipBezierPath)
   }
 
   //····················································································································
 
-  init (shapes inShapes : [EBShape]) {
-    mShapes = inShapes
-    noteObjectAllocation (self)
+  init (stroke inStrokePaths : [EBBezierPath],
+        _ inColor : NSColor?,
+        _ inKnobIndex : Int? = nil,
+        clip inClipBezierPath : EBBezierPath? = nil) {
+    self.addStrokeBezierPathes (inStrokePaths, inColor, inKnobIndex, clip: inClipBezierPath)
   }
 
   //····················································································································
-  //  deinit
+
+  init (text inString: String,
+        _ inOrigin : CGPoint,
+        _ inTextAttributes : [NSAttributedString.Key : Any],
+        _ inHorizontalAlignment : EBTextHorizontalAlignment,
+        _ inVerticalAlignment : EBTextVerticalAlignment) {
+    self.addText (inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment)
+  }
+
+
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
+  init (textKnob inString : String,
+        _ inOrigin : CGPoint,
+        _ inFont : NSFont,
+        _ inHorizontalAlignment : EBTextHorizontalAlignment,
+        _ inVerticalAlignment : EBTextVerticalAlignment,
+        _ inKnobIndex : Int) {
+    self.addTextKnob (inString, inOrigin, inFont, inHorizontalAlignment, inVerticalAlignment, inKnobIndex)
   }
 
   //····················································································································
-  //  append
+  //  add
   //····················································································································
 
-  final func append (_ inShape : EBShape) {
-    self.mShapes.append (inShape)
+  mutating func add (_ inShape : EBShape) {
+    self.mElements += inShape.mElements
     self.mCachedBoundingBox = nil
   }
 
   //····················································································································
-
-  final func append (_ inShapes : [EBShape]) {
-    self.mShapes += inShapes
-    self.mCachedBoundingBox = nil
-  }
-
-  //····················································································································
-  //  Transformed shape using NSAffineTransform object
+  //  addFilledBezierPathes
   //····················································································································
 
-  func transformed (by inAffineTransform : AffineTransform) -> EBShape {
-    let result = EBShape ()
-    self.internalTransform (result, by: inAffineTransform)
-    return result
-  }
-
-  //····················································································································
-
-  final func internalTransform (_ result : EBShape, by inAffineTransform : AffineTransform) {
-    self.internalToolTipTransform (result, by: inAffineTransform)
-    for shape in self.mShapes {
-      result.append (shape.transformed (by: inAffineTransform))
+  mutating func addFilledBezierPathes (_ inFilledPaths : [EBBezierPath],
+                                       _ inColor : NSColor?,
+                                       _ inKnobIndex : Int? = nil,
+                                       clip inClipBezierPath : EBBezierPath? = nil) {
+    let nonEmptyPathes = filterOutEmptyPathes (inFilledPaths)
+    if nonEmptyPathes.count > 0 {
+      let e = EBShapeElement (inFilledPaths, inColor, inKnobIndex, inClipBezierPath)
+      self.mElements.append (e)
+      self.mCachedBoundingBox = nil
     }
   }
 
   //····················································································································
-  //  Draw Rect
+  //  addStrokeBezierPathes
+  //····················································································································
+
+  mutating func addStrokeBezierPathes (_ inStrokePathes : [EBBezierPath],
+                                       _ inColor : NSColor?,
+                                       _ inKnobIndex : Int? = nil,
+                                       clip inClipBezierPath : EBBezierPath? = nil) {
+    var filledBezierPathes = [EBBezierPath] ()
+    for path in inStrokePathes {
+      if !path.isEmpty, path.lineWidth > 0.0 {
+        filledBezierPathes.append (path.pathByStroking)
+      }
+    }
+    if filledBezierPathes.count > 0 {
+      let e = EBShapeElement (filledBezierPathes, inColor, inKnobIndex, inClipBezierPath)
+      self.mElements.append (e)
+      self.mCachedBoundingBox = nil
+    }
+  }
+
+  //····················································································································
+  //  Add Knob
+  //····················································································································
+
+  mutating func addKnob (at inPoint: NSPoint, index inKobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CGFloat) {
+    let r = NSRect (x: inPoint.x - inKnobSize / 2.0, y: inPoint.y - inKnobSize / 2.0, width: inKnobSize, height: inKnobSize)
+    var bp : EBBezierPath
+    switch inKind {
+    case .rect :
+      bp = EBBezierPath (rect: r)
+    case .circ :
+      bp = EBBezierPath (ovalIn: r)
+    }
+  //--- Background
+    let e = EBShapeElement ([bp], .white, inKobIndex, nil)
+    self.mElements.append (e)
+    self.mCachedBoundingBox = nil
+  //--- Line
+    bp.lineWidth = 0.1
+    bp.lineCapStyle = .round
+    bp.lineJoinStyle = .round
+    self.addStrokeBezierPathes ([bp], .black)
+  }
+
+  //····················································································································
+  //  Add Text
+  //····················································································································
+
+  mutating func addText (_ inString: String,
+                         _ inOrigin : CGPoint,
+                         _ inTextAttributes : [NSAttributedString.Key : Any],
+                         _ inHorizontalAlignment : EBTextHorizontalAlignment,
+                         _ inVerticalAlignment : EBTextVerticalAlignment) {
+    if inString != "" {
+    //--- Forecolor
+      let textColor : NSColor
+      if let c = inTextAttributes [NSAttributedString.Key.foregroundColor] as? NSColor {
+        textColor = c
+      }else{
+        textColor = .black
+      }
+    //--- Transform text into filled bezier path
+      let filledBezierPath = EBBezierPath (
+        with: inString,
+        at: inOrigin,
+        inHorizontalAlignment,
+        inVerticalAlignment,
+        withAttributes: inTextAttributes
+      )
+    //--- Append background ?
+      if let backColor = inTextAttributes [NSAttributedString.Key.backgroundColor] as? NSColor {
+        let bp = EBBezierPath (rect: filledBezierPath.bounds)
+        let e = EBShapeElement ([bp], backColor, nil, nil)
+        self.mElements.append (e)
+      }
+    //--- Append text
+      let e = EBShapeElement ([filledBezierPath], textColor, nil, nil)
+      self.mElements.append (e)
+      self.mCachedBoundingBox = nil
+    }
+  }
+
+  //····················································································································
+  //  Text knob
+  //····················································································································
+
+  mutating func addTextKnob (_ inString : String,
+                             _ inOrigin : CGPoint,
+                             _ inFont : NSFont,
+                             _ inHorizontalAlignment : EBTextHorizontalAlignment,
+                             _ inVerticalAlignment : EBTextVerticalAlignment,
+                             _ inKnobIndex : Int) {
+    let string = (inString == "") ? " " : inString
+    let textAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : inFont
+    ]
+  //--- Transform text into filled bezier path
+    let filledBezierPath = EBBezierPath (
+      with: string,
+      at: inOrigin,
+      inHorizontalAlignment,
+      inVerticalAlignment,
+      withAttributes: textAttributes
+    )
+  //--- Append background
+    do{
+      let bp = EBBezierPath (rect: filledBezierPath.bounds)
+      let e = EBShapeElement ([bp], .white, inKnobIndex, nil)
+      self.mElements.append (e)
+    }
+  //--- Append text
+    let e = EBShapeElement ([filledBezierPath], .black, nil, nil)
+    self.mElements.append (e)
+    self.mCachedBoundingBox = nil
+  }
+
+  //····················································································································
+  //  Tool tips
+  //····················································································································
+
+  mutating func addToolTip (_ inRect : NSRect, _ inText : String) {
+    self.mToolTips.append (EBToolTip (path: EBBezierPath (rect: inRect), string: inText))
+  }
+
+  //····················································································································
+
+  func installToolTips (toView inView : EBGraphicView) {
+    for tooltip in self.mToolTips {
+      inView.addToolTip (tooltip.path.bounds, owner: tooltip.string, userData: nil)
+    }
+  }
+
+  //····················································································································
+  //  Draw
   //····················································································································
 
   func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
-    for shape in self.mShapes {
-      if inView.needsToDraw (shape.boundingBox) {
-        shape.draw (inView, inDirtyRect)
+    for element in self.mElements {
+      if inView.needsToDraw (element.boundingBox) {
+        element.draw (inView, inDirtyRect)
       }
     }
   }
@@ -99,23 +239,39 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   // boundingBox
   //····················································································································
 
-  final var boundingBox : NSRect {
-    if let cachedBoundingBox = self.mCachedBoundingBox {
-      return cachedBoundingBox
-    }else{
-      var r = self.internalBoundingBox ()
-      for shape in self.mShapes {
-        r = r.union (shape.boundingBox)
-      }
-      self.mCachedBoundingBox = r
-      return r
+//  mutating func boundingBox () -> NSRect {
+//    if let cachedBoundingBox = self.mCachedBoundingBox {
+//      return cachedBoundingBox
+//    }else{
+//      var r = NSRect.null
+//      for shape in self.mElements {
+//        r = r.union (shape.boundingBox)
+//      }
+//      self.mCachedBoundingBox = r
+//      return r
+//    }
+//  }
+
+  var boundingBox : NSRect {
+    var r = NSRect.null
+    for shape in self.mElements {
+      r = r.union (shape.boundingBox)
     }
+    return r
   }
 
   //····················································································································
+  //   Contains point
+  //····················································································································
 
-  internal func internalBoundingBox () -> NSRect {
-    return .null
+  func contains (point inPoint : NSPoint) -> Bool {
+    var result = false
+    var idx = 0
+    while (idx < self.mElements.count) && !result {
+      result = self.mElements [idx].contains (point: inPoint)
+      idx += 1
+    }
+    return result
   }
 
   //····················································································································
@@ -125,24 +281,11 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   func intersects (rect inRect : NSRect) -> Bool {
     var result = false
     var idx = 0
-    while (idx < self.mShapes.count) && !result {
-      result = self.mShapes [idx].intersects (rect: inRect)
+    while (idx < self.mElements.count) && !result {
+      result = self.mElements [idx].intersects (rect: inRect)
       idx += 1
     }
     return result
-  }
-
-  //····················································································································
-  //   Contains point
-  //····················································································································
-
-  func contains (point inPoint : NSPoint) -> Bool {
-    for shape in self.mShapes {
-      if shape.contains (point: inPoint) {
-        return true
-      }
-    }
-    return false
   }
 
   //····················································································································
@@ -150,8 +293,8 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   //····················································································································
 
   func knobIndex (at inPoint : NSPoint) -> Int? {
-    for shape in self.mShapes.reversed () {
-      if let idx = shape.knobIndex (at: inPoint) {
+    for element in self.mElements.reversed () {
+      if let idx = element.knobIndex (at: inPoint) {
         return idx
       }
     }
@@ -159,80 +302,167 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  /// Returns a Boolean value indicating whether two values are equal.
-  ///
-  /// Equality is the inverse of inequality. For any values `a` and `b`,
-  /// `a == b` implies that `a != b` is `false`.
-  ///
-  /// - Parameters:
-  ///   - lhs: A value to compare.
-  ///   - rhs: Another value to compare.
+  //  Transformed shape using NSAffineTransform object
   //····················································································································
 
-  public static func == (lhs : EBShape, rhs : EBShape) -> Bool {
-    return (lhs === rhs) || lhs.isEqualToShape (rhs)
+  func transformed (by inAffineTransform : AffineTransform) -> EBShape {
+    var result = EBShape ()
+    for element in self.mElements {
+      result.mElements.append (element.transformed (by: inAffineTransform))
+    }
+    for tooltip in self.mToolTips {
+      result.mToolTips.append (EBToolTip (path: tooltip.path.transformed (by: inAffineTransform), string: tooltip.string))
+    }
+    return result
   }
 
   //····················································································································
 
-  func isEqualToShape (_ inOperand : EBShape) -> Bool {
-    var equal = type (of: self) == type (of: inOperand)
-    if equal {
-      equal = self.mShapes.count == inOperand.mShapes.count
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    EBKnobKind
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum EBKnobKind {
+  case rect
+  case circ
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// OCBezierPath
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate final class EBShapeElement : EBObject {
+
+  //····················································································································
+  // Properties
+  //····················································································································
+
+  private let mFilledPathes : [EBBezierPath]
+  private let mColor : NSColor?
+  private let mKnobIndex : Int?
+  private let mClipBezierPath : EBBezierPath?
+
+  //····················································································································
+  //  init
+  //····················································································································
+
+  init (_ inFilledPathes : [EBBezierPath],
+         _ inColor : NSColor?,
+         _ inKnobIndex : Int? = nil,
+         _ inClipBezierPath : EBBezierPath?) {
+    mFilledPathes = inFilledPathes
+    mColor = inColor
+    mKnobIndex = inKnobIndex
+    if let clipBezierPath = inClipBezierPath, !clipBezierPath.isEmpty {
+      mClipBezierPath = inClipBezierPath
+    }else{
+      mClipBezierPath = nil
     }
-    var idx = 0
-    while (idx < self.mShapes.count) && equal {
-      equal = self.mShapes [idx] == inOperand.mShapes [idx]
-      idx += 1
-    }
-    return equal
+    super.init ()
   }
 
   //····················································································································
-  /// The hash value.
-  ///
-  /// Hash values are not guaranteed to be equal across different executions of
-  /// your program. Do not save hash values to use during a future execution.
+  //  Draw Rect
   //····················································································································
 
-  func hash (into hasher: inout Hasher) {
-    for shape in self.mShapes {
-      shape.hash (into: &hasher)
+  func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
+    if let color = self.mColor {
+      color.setFill ()
+      if let clipBezierPath = self.mClipBezierPath {
+        NSGraphicsContext.saveGraphicsState ()
+        clipBezierPath.addClip ()
+      }
+      for bp in self.mFilledPathes {
+        if !bp.isEmpty && inView.needsToDraw (bp.bounds) {
+          bp.fill ()
+        }
+      }
+      if self.mClipBezierPath != nil {
+        NSGraphicsContext.restoreGraphicsState ()
+      }
     }
   }
 
   //····················································································································
-  //   Tool Tips
+  // boundingBox
   //····················································································································
 
-  private var mToolTips = [(NSBezierPath, String)] ()
-
-  //····················································································································
-
-  final func addToolTip (_ inRect : NSRect, _ inText : String) {
-    self.mToolTips.append ((NSBezierPath (rect: inRect), inText))
+  var boundingBox : NSRect {
+    var r = NSRect.null
+    for bp in self.mFilledPathes {
+      if !bp.isEmpty {
+        r = r.union (bp.bounds)
+      }
+    }
+    if let path = self.mClipBezierPath {
+      r = r.intersection (path.bounds)
+    }
+    return r
   }
 
   //····················································································································
+  //   Contains point
+  //····················································································································
 
-  final func installToolTips (toView inView : EBGraphicView) {
-    for (bp, string) in self.mToolTips {
-      inView.addToolTip (bp.bounds, owner: string, userData: nil)
+  func contains (point inPoint : NSPoint) -> Bool {
+    var result = false
+    if self.mClipBezierPath?.contains (inPoint) ?? true {
+      var idx = 0
+      while (idx < self.mFilledPathes.count) && !result {
+        result = self.mFilledPathes [idx].contains (inPoint)
+        idx += 1
+      }
     }
-    for shape in self.mShapes {
-      shape.installToolTips (toView: inView)
-    }
+    return result
   }
 
   //····················································································································
+  //   intersects
+  //····················································································································
 
-  final private func internalToolTipTransform (_ result : EBShape, by inAffineTransform : AffineTransform) {
-    result.mToolTips = []
-    for (bp, string) in self.mToolTips {
-      let newBP = bp.copy () as! NSBezierPath
-      newBP.transform (using: inAffineTransform)
-      result.mToolTips.append ((newBP, string))
+  func intersects (rect inRect : NSRect) -> Bool {
+    var result = false
+    if self.mClipBezierPath?.intersects (rect: inRect) ?? true {
+      var idx = 0
+      while (idx < self.mFilledPathes.count) && !result {
+        result = self.mFilledPathes [idx].intersects (rect: inRect)
+        idx += 1
+      }
     }
+    return result
+  }
+
+  //····················································································································
+  //   Knob Index
+  //····················································································································
+
+  func knobIndex (at inPoint : NSPoint) -> Int? {
+    for path in self.mFilledPathes.reversed () {
+      if let idx = self.mKnobIndex, path.contains (inPoint) {
+        return idx
+      }
+    }
+    return nil
+  }
+
+  //····················································································································
+  //  transformedBy
+  //····················································································································
+
+  func transformed (by inAffineTransform : AffineTransform) -> EBShapeElement {
+    var paths = [EBBezierPath] ()
+    for path in self.mFilledPathes {
+      paths.append (path.transformed(by: inAffineTransform))
+    }
+    let clipBezierPath : EBBezierPath?
+    if let path = self.mClipBezierPath {
+      clipBezierPath = path.transformed (by: inAffineTransform)
+    }else{
+      clipBezierPath = nil
+    }
+    return EBShapeElement (paths, self.mColor, self.mKnobIndex, clipBezierPath)
   }
 
   //····················································································································
@@ -241,20 +471,21 @@ class EBShape : Hashable, EBUserClassNameProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension Array where Element == EBShape {
+fileprivate struct EBToolTip : Hashable {
+  let path : EBBezierPath
+  let string : String
+}
 
-  //····················································································································
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  var boundingBox : NSRect {
-    var r = NSRect.null
-    for shape in self {
-      r = r.union (shape.boundingBox)
+fileprivate func filterOutEmptyPathes (_ inPathes : [EBBezierPath]) -> [EBBezierPath] {
+  var nonEmptyBezierPathes = [EBBezierPath] ()
+  for path in inPathes {
+    if !path.isEmpty {
+      nonEmptyBezierPathes.append (path)
     }
-    return r
   }
-
-  //····················································································································
-
+  return nonEmptyBezierPathes
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

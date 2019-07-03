@@ -20,7 +20,7 @@ func transient_LabelInSchematic_selectionDisplay (
        _ self_mOrientation : QuadrantRotation
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let shape = EBShape ()
+        var shape = EBShape ()
         if let p = self_mPoint_location?.cocoaPoint {
           var bp = EBBezierPath ()
           bp.move (to: NSPoint (x: 0.0, y: 0.0))
@@ -38,8 +38,8 @@ func transient_LabelInSchematic_selectionDisplay (
           af.translate (x: p.x, y: p.y)
           af.rotate (byDegrees: CGFloat (self_mOrientation.rawValue) * 90.0)
         //---
-          shape.append (EBStrokeBezierPathShape ([bp.transformed (by: af)], .cyan))
-          shape.append (EBKnobShape (at: p, index: 0, .rect, SCHEMATIC_KNOB_SIZE))
+          shape.addStrokeBezierPathes ([bp.transformed (by: af)], .cyan)
+          shape.addKnob (at: p, index: 0, .rect, SCHEMATIC_KNOB_SIZE)
         }
         return shape
 //--- END OF USER ZONE 2

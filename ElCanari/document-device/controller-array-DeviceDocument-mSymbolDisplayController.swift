@@ -533,11 +533,11 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
     //--- Build PDF representation
       let indexArray = self.sortedIndexArrayOfSelectedObjects ()
       let objects = mModel?.propval ?? []
-      let shape = EBShape ()
+      var shape = EBShape ()
       for idx in indexArray {
         let object = objects [idx]
         if let s = object.objectDisplay {
-          shape.append (s)
+          shape.add (s)
         }
       }
       let pdfData = buildPDFimageData (frame: shape.boundingBox, shape: shape)

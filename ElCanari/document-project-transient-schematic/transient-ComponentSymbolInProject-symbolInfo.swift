@@ -44,7 +44,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
           var pins = [ComponentPinDescriptor] ()
           for pinPadAssignment in deviceInfo.assignments {
             if let pin = pinPadAssignment.pin, pin.symbol.symbolInstanceName == self_mSymbolInstanceName {
-              let pinTextShape = EBShape ()
+              var pinTextShape = EBShape ()
             //--- Pin name
               if pin.pinNameIsDisplayedInSchematics {
                 var trText = AffineTransform ()
@@ -58,14 +58,14 @@ func transient_ComponentSymbolInProject_symbolInfo (
                   trText.rotate (byDegrees: 180.0)
                 }
                 trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
-                let pinNameTextShape = EBTextShape (
-                  pin.pinName,
+                let pinNameTextShape = EBShape (
+                  text: pin.pinName,
                   NSPoint (),
                   pinNameAttributes,
                   self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror),
                   self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror)
                 )
-                pinTextShape.append (pinNameTextShape.transformed (by: trText))
+                pinTextShape.add (pinNameTextShape.transformed (by: trText))
               }
             //--- Pin number
               var trText = AffineTransform ()
@@ -79,14 +79,14 @@ func transient_ComponentSymbolInProject_symbolInfo (
                 trText.rotate (byDegrees: 180.0)
               }
               trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
-              let pinNumberTextShape = EBTextShape (
-                pinPadAssignment.padName,
+              let pinNumberTextShape = EBShape (
+                text: pinPadAssignment.padName,
                 NSPoint (),
                 pinNameAttributes,
                 self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.numberHorizontalAlignment, mirror: self_mMirror),
                 self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror)
               )
-              pinTextShape.append (pinNumberTextShape.transformed (by: trText))
+              pinTextShape.add (pinNumberTextShape.transformed (by: trText))
             //--- Pin location
               let pinLocationTransform = NSAffineTransform ()
               pinLocationTransform.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))

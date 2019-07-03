@@ -26,7 +26,7 @@ func transient_PackageInDevice_selectionDisplay (
       let nameTextAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : NSFont.systemFont (ofSize: 4.0)
       ]
-      let shape = EBShape ()
+      var shape = EBShape ()
     //--- Compute display rect
       var r = NSRect.null
       if !self_mStrokeBezierPath.isEmpty {
@@ -46,7 +46,7 @@ func transient_PackageInDevice_selectionDisplay (
       }
       var bp = EBBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
       bp.lineWidth = 0.5
-      shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
+      shape.addStrokeBezierPathes ([bp], NSColor.cyan)
     //---
       var transform = AffineTransform ()
       transform.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))

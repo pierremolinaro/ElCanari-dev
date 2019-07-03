@@ -55,12 +55,12 @@ func transient_BoardText_objectDisplay (
         case .legendBack :
           textColor = prefs_backSideLegendColorForBoard
         }
-        let textShape = EBStrokeBezierPathShape ([textBP], textColor)
+        let textShape = EBShape (stroke: [textBP], textColor)
       //--- Transparent background
         let backgroundBP = EBBezierPath (rect: textShape.boundingBox)
-        let shape = EBShape ()
-        shape.append (EBFilledBezierPathShape ([backgroundBP], nil))
-        shape.append (textShape)
+        var shape = EBShape ()
+        shape.addFilledBezierPathes ([backgroundBP], nil)
+        shape.add (textShape)
       //---
         return shape
 //--- END OF USER ZONE 2

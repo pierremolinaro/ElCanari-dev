@@ -39,11 +39,11 @@ class OpenPackageInLibrary : OpenInLibrary {
 
   override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
     super.buildOutlineViewDataSource (extension: "ElCanariPackage", alreadyLoadedDocuments: inNames) { (_ inRootObject : EBManagedObject?) -> NSImage? in
-      let partShape = EBShape ()
+      var partShape = EBShape ()
       if let packageRoot = inRootObject as? PackageRoot {
         for object in packageRoot.packageObjects_property.propval {
           if !(object is PackageGuide), !(object is PackageDimension), let shape = object.objectDisplay {
-            partShape.append (shape)
+            partShape.add (shape)
           }
         }
       }

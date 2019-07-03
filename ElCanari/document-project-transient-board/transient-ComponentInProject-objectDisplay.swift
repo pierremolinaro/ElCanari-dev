@@ -75,8 +75,8 @@ func transient_ComponentInProject_objectDisplay (
         case .front : color = prefs_frontSideLegendColorForBoard
         case .back  : color = prefs_backSideLegendColorForBoard
         }
-        let rotatedShape = EBShape ()
-        rotatedShape.append (EBStrokeBezierPathShape ([strokeBezierPath], color))
+        var rotatedShape = EBShape ()
+        rotatedShape.addStrokeBezierPathes ([strokeBezierPath], color)
       //---
         let padRect = self_packagePadDictionary.masterPadsRect
         let center = padRect.center.cocoaPoint
@@ -87,7 +87,7 @@ func transient_ComponentInProject_objectDisplay (
         padNumberAffineTransform.rotate (byDegrees: -CGFloat (self_mRotation) / 1000.0)
         for (_, descriptor) in self_packagePadDictionary {
           descriptor.accumulatePadBezierPathes (
-            into: rotatedShape,
+            into: &rotatedShape,
             side: self_mSide,
             padDisplayAttributes: padDisplayAttributes,
             padNumberAF: padNumberAffineTransform,
@@ -97,7 +97,7 @@ func transient_ComponentInProject_objectDisplay (
           )
         }
       //--- Name
-        let nonRotatedShape = EBShape ()
+        var nonRotatedShape = EBShape ()
         if self_mNameIsVisibleInBoard, let fontDescriptor = self_mNameFont_descriptor {
           let (textBP, _, _, _) = boardText_displayInfos (
             x: self_mXName + self_mX,
@@ -113,7 +113,7 @@ func transient_ComponentInProject_objectDisplay (
             oblique: false
           )
           let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
-          nonRotatedShape.append (EBStrokeBezierPathShape ([textBP], color))
+          nonRotatedShape.addStrokeBezierPathes ([textBP], color)
         }
       //--- Value
         if self_mValueIsVisibleInBoard, let fontDescriptor = self_mValueFont_descriptor {
@@ -131,7 +131,7 @@ func transient_ComponentInProject_objectDisplay (
             oblique: false
           )
           let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
-          nonRotatedShape.append (EBStrokeBezierPathShape ([textBP], color))
+          nonRotatedShape.addStrokeBezierPathes ([textBP], color)
         }
       //---
         var af = AffineTransform ()
@@ -142,8 +142,8 @@ func transient_ComponentInProject_objectDisplay (
         }
         af.translate (x: -center.x, y: -center.y)
       //---
-        let shape = rotatedShape.transformed (by: af)
-        shape.append (nonRotatedShape)
+        var shape = rotatedShape.transformed (by: af)
+        shape.add (nonRotatedShape)
         return shape
 //--- END OF USER ZONE 2
 }

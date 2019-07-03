@@ -18,7 +18,7 @@ func transient_ProjectRoot_connectedPoints (
        _ self_selectedSheetIssues : CanariIssueArray
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let shape = EBShape ()
+        var shape = EBShape ()
       //--- Issues
         var warningPath = EBBezierPath ()
         var errorPath = EBBezierPath ()
@@ -33,14 +33,14 @@ func transient_ProjectRoot_connectedPoints (
         if !warningPath.isEmpty {
           // Color is F6C050
           let myOrange = NSColor (red: 0.961, green: 0.750, blue: 0.3125, alpha: 1.0)
-          shape.append (EBFilledBezierPathShape ([warningPath], myOrange))
+          shape.addFilledBezierPathes ([warningPath], myOrange)
         }
         if !errorPath.isEmpty {
-          shape.append (EBFilledBezierPathShape ([errorPath], .red))
+          shape.addFilledBezierPathes ([errorPath], .red)
         }
       //--- Connected points
         if let connectedPointShape = self_mSelectedSheet_connectedPoints {
-          shape.append (connectedPointShape)
+          shape.add (connectedPointShape)
         }
         return shape
 //--- END OF USER ZONE 2

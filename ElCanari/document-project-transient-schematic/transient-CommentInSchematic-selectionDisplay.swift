@@ -20,7 +20,8 @@ func transient_CommentInSchematic_selectionDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let p = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
-        return EBTextKnobShape (
+        var shape = EBShape ()
+        shape.addTextKnob (
           (self_mComment == "") ? "Empty comment" : self_mComment,
           p,
           NSFont.systemFont (ofSize: NSFont.smallSystemFontSize),
@@ -28,6 +29,7 @@ func transient_CommentInSchematic_selectionDisplay (
           .center,
           0
         )
+        return shape
 //--- END OF USER ZONE 2
 }
 

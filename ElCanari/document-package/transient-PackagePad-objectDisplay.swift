@@ -50,15 +50,15 @@ func transient_PackagePad_objectDisplay (
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if prefs_displayPackageFrontSidePads {
-        return EBFilledBezierPathShape ([bp], prefs_frontSidePadColor)
+        return EBShape (filled: [bp], prefs_frontSidePadColor)
       }else if prefs_displayPackageBackSidePads {
-        return EBFilledBezierPathShape ([bp], prefs_backSidePadColor)
+        return EBShape (filled: [bp], prefs_backSidePadColor)
       }else{
         return EBShape ()
       }
     case .surface :
       if prefs_displayPackageFrontSidePads {
-        return EBFilledBezierPathShape ([bp], prefs_frontSidePadColor)
+        return EBShape (filled: [bp], prefs_frontSidePadColor)
       }else{
         return EBShape ()
       }

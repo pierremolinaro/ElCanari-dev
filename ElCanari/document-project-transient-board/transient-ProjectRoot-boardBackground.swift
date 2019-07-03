@@ -18,11 +18,11 @@ func transient_ProjectRoot_boardBackground (
        _ self_mBorderCurves_objectDisplay : [BorderCurve_objectDisplay]
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let shape = EBShape ()
-        shape.append (self_borderClearanceBackground)
+        var shape = EBShape ()
+        shape.add (self_borderClearanceBackground)
         for border in self_mBorderCurves_objectDisplay {
           if let borderShape = border.objectDisplay {
-            shape.append (borderShape)
+            shape.add (borderShape)
           }
         }
         return shape

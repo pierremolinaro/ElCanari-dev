@@ -22,13 +22,13 @@ func transient_SymbolPinTypeInDevice_nameShape (
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let shape = EBShape ()
+    var shape = EBShape ()
     let nameTextAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont,
       NSAttributedString.Key.foregroundColor : self_mPinNameIsDisplayedInSchematics ? NSColor.black : .lightGray
     ]
     let labelOrigin = NSPoint (x: canariUnitToCocoa (self_mXName), y: canariUnitToCocoa (self_mYName))
-    shape.append (EBTextShape (self_mName, labelOrigin, nameTextAttributes, self_mNameHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
+    shape.addText (self_mName, labelOrigin, nameTextAttributes, self_mNameHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center)
     return shape
 //--- END OF USER ZONE 2
 }

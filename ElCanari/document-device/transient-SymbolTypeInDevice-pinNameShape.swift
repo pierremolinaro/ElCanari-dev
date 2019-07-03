@@ -17,10 +17,10 @@ func transient_SymbolTypeInDevice_pinNameShape (
        _ self_mPinTypes_nameShape : [SymbolPinTypeInDevice_nameShape]
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let shape = EBShape ()
+        var shape = EBShape ()
         for p in self_mPinTypes_nameShape {
           if let s = p.nameShape {
-            shape.append (s)
+            shape.add (s)
           }
         }
         return shape

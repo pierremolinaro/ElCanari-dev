@@ -23,7 +23,7 @@ func transient_PackageBezier_objectDisplay (
   bp.append (self_strokeBezierPath)
   bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round
-  return EBStrokeBezierPathShape ([bp], prefs_packageColor)
+  return EBShape (stroke: [bp], prefs_packageColor)
 //--- END OF USER ZONE 2
 }
 

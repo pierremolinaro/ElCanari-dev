@@ -20,7 +20,7 @@ func transient_PackageOval_selectionDisplay (
        _ self_height : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let shape = EBShape ()
+  var shape = EBShape ()
   let x = canariUnitToCocoa (self_x)
   let y = canariUnitToCocoa (self_y)
   let width = canariUnitToCocoa (self_width)
@@ -43,11 +43,11 @@ func transient_PackageOval_selectionDisplay (
     bp = EBBezierPath (ovalIn: r)
   }
   bp.lineWidth = 0.25
-  shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: PACKAGE_OVAL_BOTTOM, .circ, 2.0))
-  shape.append (EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: PACKAGE_OVAL_LEFT, .circ, 2.0))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: PACKAGE_OVAL_TOP, .circ, 2.0))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: PACKAGE_OVAL_RIGHT, .circ, 2.0))
+  shape.addStrokeBezierPathes ([bp], NSColor.cyan)
+  shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y), index: PACKAGE_OVAL_BOTTOM, .circ, 2.0)
+  shape.addKnob (at: CGPoint (x: x, y: y + height / 2.0), index: PACKAGE_OVAL_LEFT, .circ, 2.0)
+  shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y + height), index: PACKAGE_OVAL_TOP, .circ, 2.0)
+  shape.addKnob (at: CGPoint (x: x + width, y: y + height / 2.0), index: PACKAGE_OVAL_RIGHT, .circ, 2.0)
   return shape
 //--- END OF USER ZONE 2
 }

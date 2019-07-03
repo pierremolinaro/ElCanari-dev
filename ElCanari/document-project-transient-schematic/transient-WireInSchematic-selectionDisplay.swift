@@ -29,15 +29,15 @@ func transient_WireInSchematic_selectionDisplay (
         bp.lineWidth = SCHEMATIC_HILITE_WIDTH
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        let shape = EBShape ()
-        shape.append (EBStrokeBezierPathShape ([bp], .cyan))
+        var shape = EBShape ()
+        shape.addStrokeBezierPathes ([bp], .cyan)
       //--- Knob at P1 ?
         if self_mP1_canMove ?? false {
-          shape.append (EBKnobShape (at: p1, index: WIRE_P1_KNOB, .rect, SCHEMATIC_KNOB_SIZE))
+          shape.addKnob (at: p1, index: WIRE_P1_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
         }
       //--- Knob at P2 ?
         if self_mP2_canMove ?? false {
-          shape.append (EBKnobShape (at: p2, index: WIRE_P2_KNOB, .rect, SCHEMATIC_KNOB_SIZE))
+          shape.addKnob (at: p2, index: WIRE_P2_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
         }
       //---
         return shape

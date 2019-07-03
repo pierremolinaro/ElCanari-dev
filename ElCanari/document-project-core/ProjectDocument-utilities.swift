@@ -285,7 +285,7 @@ struct MasterPadDescriptor : Hashable {
   let style : PadStyle
   let slavePads : [SlavePadDescriptor]
 
-  func accumulatePadBezierPathes (into ioShape : EBShape,
+  func accumulatePadBezierPathes (into ioShape : inout EBShape,
                                   side : ComponentSide,
                                   padDisplayAttributes : [NSAttributedString.Key : Any]?,
                                   padNumberAF : AffineTransform,
@@ -311,19 +311,19 @@ struct MasterPadDescriptor : Hashable {
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if let color = frontPadColor {
-        ioShape.append (EBFilledBezierPathShape ([bp], color))
+        ioShape.addFilledBezierPathes ([bp], color)
       }else if let color = backPadColor {
-        ioShape.append (EBFilledBezierPathShape ([bp], color))
+        ioShape.addFilledBezierPathes ([bp], color)
       }
     case .surface :
       switch side {
       case .front :
         if let color = frontPadColor {
-          ioShape.append (EBFilledBezierPathShape ([bp], color))
+          ioShape.addFilledBezierPathes ([bp], color)
         }
       case .back :
         if let color = backPadColor {
-          ioShape.append (EBFilledBezierPathShape ([bp], color))
+          ioShape.addFilledBezierPathes ([bp], color)
         }
       }
     }
@@ -332,14 +332,14 @@ struct MasterPadDescriptor : Hashable {
       var af = AffineTransform ()
       af.translate (x: center.x, y: center.y)
       af.prepend (padNumberAF)
-      ioShape.append (EBTextShape (self.name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
+      ioShape.add (EBShape (text: self.name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
     }
   //--- Tool tip
     ioShape.addToolTip (rPad, inPadNetDictionary [self.name] ?? "No net")
   //--- Slave pads
     for pad in slavePads {
       pad.accumulatePadBezierPathes (
-        into: ioShape,
+        into: &ioShape,
         side: side,
         name: "(" + self.name + ")",
         padDisplayAttributes: padDisplayAttributes,
@@ -360,7 +360,7 @@ struct SlavePadDescriptor : Hashable {
   let shape : PadShape
   let style : SlavePadStyle
 
-  func accumulatePadBezierPathes (into ioShape : EBShape,
+  func accumulatePadBezierPathes (into ioShape : inout EBShape,
                                   side : ComponentSide,
                                   name : String,
                                   padDisplayAttributes : [NSAttributedString.Key : Any]?,
@@ -386,30 +386,30 @@ struct SlavePadDescriptor : Hashable {
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if let color = frontPadColor {
-        ioShape.append (EBFilledBezierPathShape ([bp], color))
+        ioShape.addFilledBezierPathes ([bp], color)
       }else if let color = backPadColor {
-        ioShape.append (EBFilledBezierPathShape ([bp], color))
+        ioShape.addFilledBezierPathes ([bp], color)
       }
     case .topSide :
       switch side {
       case .front :
         if let color = frontPadColor {
-          ioShape.append (EBFilledBezierPathShape ([bp], color))
+          ioShape.addFilledBezierPathes ([bp], color)
         }
       case .back :
         if let color = backPadColor {
-          ioShape.append (EBFilledBezierPathShape ([bp], color))
+          ioShape.addFilledBezierPathes ([bp], color)
         }
       }
     case .bottomSide :
       switch side {
       case .front :
         if let color = backPadColor {
-          ioShape.append (EBFilledBezierPathShape ([bp], color))
+          ioShape.addFilledBezierPathes ([bp], color)
         }
       case .back :
         if let color = frontPadColor {
-          ioShape.append (EBFilledBezierPathShape ([bp], color))
+          ioShape.addFilledBezierPathes ([bp], color)
         }
       }
     }
@@ -418,7 +418,7 @@ struct SlavePadDescriptor : Hashable {
       var af = AffineTransform ()
       af.translate (x: center.x, y: center.y)
       af.prepend (padNumberAF)
-      ioShape.append (EBTextShape (name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
+      ioShape.add (EBShape (text: name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
     }
   }
 }

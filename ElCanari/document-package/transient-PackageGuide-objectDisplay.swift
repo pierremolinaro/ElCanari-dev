@@ -25,7 +25,7 @@ func transient_PackageGuide_objectDisplay (
   bp.line (to: CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
   bp.lineWidth = 0.5
   bp.lineCapStyle = .round
-  return EBStrokeBezierPathShape ([bp], NSColor.yellow)
+  return EBShape (stroke: [bp], NSColor.yellow)
 //--- END OF USER ZONE 2
 }
 

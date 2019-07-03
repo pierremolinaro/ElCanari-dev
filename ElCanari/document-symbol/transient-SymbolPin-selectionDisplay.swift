@@ -24,7 +24,7 @@ func transient_SymbolPin_selectionDisplay (
        _ self_numberHorizontalAlignment : HorizontalAlignment
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let shape = EBShape ()
+    var shape = EBShape ()
     let pinPoint = NSPoint (x: canariUnitToCocoa (self_xPin), y: canariUnitToCocoa (self_yPin))
     let namePoint = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
     let numberPoint = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))
@@ -34,13 +34,13 @@ func transient_SymbolPin_selectionDisplay (
     bp.line (to: namePoint)
     bp.lineWidth = 0.25
     bp.lineCapStyle = .round
-    shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
+    shape.addStrokeBezierPathes ([bp], NSColor.cyan)
   //--- Pin
-    shape.append (EBKnobShape (at: pinPoint, index: SYMBOL_PIN_ENDPOINT, .rect, 2.0))
+    shape.addKnob (at: pinPoint, index: SYMBOL_PIN_ENDPOINT, .rect, 2.0)
   //--- Name
-    shape.append (EBKnobShape (at: namePoint, index: SYMBOL_PIN_LABEL, .circ, 2.0))
+    shape.addKnob (at: namePoint, index: SYMBOL_PIN_LABEL, .circ, 2.0)
   //--- Number
-    shape.append (EBKnobShape (at: numberPoint, index: SYMBOL_PIN_NUMBER, .circ, 2.0))
+    shape.addKnob (at: numberPoint, index: SYMBOL_PIN_NUMBER, .circ, 2.0)
   //---
     return shape
 //--- END OF USER ZONE 2

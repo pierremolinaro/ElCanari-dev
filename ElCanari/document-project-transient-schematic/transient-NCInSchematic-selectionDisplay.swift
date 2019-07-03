@@ -45,7 +45,7 @@ func transient_NCInSchematic_selectionDisplay (
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : prefs_pinNameFont,
         ]
-        let textShape = EBTextShape (NC_TITLE, point, textAttributes, horizontalAlignment, verticalAlignment)
+        let textShape = EBShape (text: NC_TITLE, point, textAttributes, horizontalAlignment, verticalAlignment)
       //--- Add line
         var frameBP = EBBezierPath (rect: textShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
         var line = EBBezierPath ()
@@ -53,15 +53,15 @@ func transient_NCInSchematic_selectionDisplay (
         line.line (to: textShape.boundingBox.center)
         line.lineWidth = 0.5
         line.lineCapStyle = .round
-        let shape = EBShape ()
-        shape.append (EBStrokeBezierPathShape ([line], .cyan))
+        var shape = EBShape ()
+        shape.addStrokeBezierPathes ([line], .cyan)
       //--- Add background
         frameBP.lineWidth = 0.5
-        shape.append (EBFilledBezierPathShape ([frameBP], .white))
+        shape.addFilledBezierPathes ([frameBP], .white)
       //--- Add frame
-        shape.append (EBStrokeBezierPathShape ([frameBP], .cyan))
+        shape.addStrokeBezierPathes ([frameBP], .cyan)
       //--- Add Text
-        shape.append (textShape)
+        shape.add (textShape)
       //---
         return shape
 //--- END OF USER ZONE 2

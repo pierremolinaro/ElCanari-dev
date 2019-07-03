@@ -27,8 +27,8 @@ func transient_SymbolSegment_objectDisplay (
     bp.line (to: CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
     bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
     bp.lineCapStyle = .round
-    let shape = EBShape ()
-    shape.append (EBStrokeBezierPathShape ([bp], prefs_symbolColor))
+    var shape = EBShape ()
+    shape.addStrokeBezierPathes ([bp], prefs_symbolColor)
     return shape
 //--- END OF USER ZONE 2
 }

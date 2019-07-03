@@ -21,7 +21,7 @@ func transient_SymbolPinInstanceInDevice_numberShape (
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let shape = EBShape ()
+    var shape = EBShape ()
     if let x = self_mType_mXNumber, let y = self_mType_mYNumber, let alignment = self_mType_mNumberHorizontalAlignment {
       let numberTextAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : prefs_pinNameFont,
@@ -29,7 +29,7 @@ func transient_SymbolPinInstanceInDevice_numberShape (
       ]
       let numberOrigin = NSPoint (x: canariUnitToCocoa (x), y: canariUnitToCocoa (y))
       let padName = self_mPadProxy_mPadName ?? "##"
-      shape.append (EBTextShape (padName, numberOrigin, numberTextAttributes, alignment.ebTextShapeHorizontalAlignment (), .center))
+      shape.addText (padName, numberOrigin, numberTextAttributes, alignment.ebTextShapeHorizontalAlignment (), .center)
     }
     return shape
 //--- END OF USER ZONE 2

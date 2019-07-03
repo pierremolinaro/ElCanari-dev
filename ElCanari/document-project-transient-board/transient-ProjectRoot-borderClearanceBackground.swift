@@ -45,7 +45,7 @@ func transient_ProjectRoot_borderClearanceBackground (
         clearanceBP.lineCapStyle = .round
         clearanceBP.lineJoinStyle = .round
         clearanceBP.lineWidth = canariUnitToCocoa (self_mBoardLimitsWidth + self_mBoardClearance)
-        return EBStrokeBezierPathShape ([clearanceBP], prefs_boardClearanceColorForBoard, clip: clearanceBP)
+        return EBShape (stroke: [clearanceBP], prefs_boardClearanceColorForBoard, clip: clearanceBP)
 //--- END OF USER ZONE 2
 }
 

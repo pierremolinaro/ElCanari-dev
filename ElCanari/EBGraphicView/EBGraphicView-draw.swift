@@ -167,7 +167,7 @@ extension EBGraphicView {
     let minCount = min (inOldShapes.count, inNewShapes.count)
     var idx = 0
     while idx < minCount {
-      if !inNewShapes [idx].isEqualToShape (inOldShapes [idx]) {
+      if inNewShapes [idx] != inOldShapes [idx] {
         // Swift.print ("not equal")
         self.setNeedsDisplay (inNewShapes [idx].boundingBox.insetBy(dx: -1.0, dy: -1.0))
         self.setNeedsDisplay (inOldShapes [idx].boundingBox.insetBy(dx: -1.0, dy: -1.0))

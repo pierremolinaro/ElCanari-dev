@@ -21,7 +21,7 @@ func transient_LabelInSchematic_objectDisplay (
        _ self_mOrientation : QuadrantRotation
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let shape = EBShape ()
+        var shape = EBShape ()
         if let p = self_mPoint_location?.cocoaPoint {
           var bp = EBBezierPath ()
           bp.move (to: NSPoint (x: 0.0, y: 0.0))
@@ -40,8 +40,8 @@ func transient_LabelInSchematic_objectDisplay (
           af.rotate (byDegrees: CGFloat (self_mOrientation.rawValue) * 90.0)
           let transformedBP = bp.transformed (by: af)
         //---
-          shape.append (EBFilledBezierPathShape ([transformedBP], nil))
-          shape.append (EBStrokeBezierPathShape ([transformedBP], prefs_symbolColorForSchematic))
+          shape.addFilledBezierPathes ([transformedBP], nil)
+          shape.addStrokeBezierPathes ([transformedBP], prefs_symbolColorForSchematic)
         //--- Net name
           let labelOrigin = af.transform (NSPoint (x: SCHEMATIC_LABEL_SIZE * 8.0, y: 0.0))
           let textAttributes : [NSAttributedString.Key : Any] = [
@@ -63,7 +63,7 @@ func transient_LabelInSchematic_objectDisplay (
             horizontalAlignment = .center
             verticalAlignment = .below
           }
-          shape.append (EBTextShape (self_netName, labelOrigin, textAttributes, horizontalAlignment, verticalAlignment))
+          shape.addText (self_netName, labelOrigin, textAttributes, horizontalAlignment, verticalAlignment)
         }
         return shape
 //--- END OF USER ZONE 2

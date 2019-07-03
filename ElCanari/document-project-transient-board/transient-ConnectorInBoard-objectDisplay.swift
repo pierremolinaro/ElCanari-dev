@@ -24,7 +24,7 @@ func transient_ConnectorInBoard_objectDisplay (
           let SIZE_IN_COCOA_UNIT = milsToCocoaUnit (CGFloat (SIZE_IN_MILS))
           let r = NSRect (x: center.x - SIZE_IN_COCOA_UNIT / 2.0, y: center.y - SIZE_IN_COCOA_UNIT / 2.0, width: SIZE_IN_COCOA_UNIT, height: SIZE_IN_COCOA_UNIT)
           let rectBP = EBBezierPath (ovalIn: r)
-          return EBFilledBezierPathShape ([rectBP], .orange)
+          return EBShape (filled: [rectBP], .orange)
         }else{
           return EBShape ()
         }

@@ -40,19 +40,19 @@ func transient_ComponentInProject_selectionDisplay (
       let absoluteCenter = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
       let knobDx = (self_mSide == .back) ? -COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE ;
       let rotationKnobLocation = NSPoint (x: rPadsCenter.x + knobDx, y: rPadsCenter.y)
-      let rotatedShape = EBShape ()
+      var rotatedShape = EBShape ()
       var strokeBezierPath = EBBezierPath (self_strokeBezierPath)
       strokeBezierPath.move (to: rPadsCenter)
       strokeBezierPath.line (to: rotationKnobLocation)
       strokeBezierPath.lineWidth = 0.5
       strokeBezierPath.lineCapStyle = .round
       strokeBezierPath.lineJoinStyle = .round
-      rotatedShape.append (EBStrokeBezierPathShape ([strokeBezierPath], .cyan))
+      rotatedShape.addStrokeBezierPathes ([strokeBezierPath], .cyan)
     //--- Knobs
-      rotatedShape.append (EBKnobShape (at: rPadsCenter, index: COMPONENT_PACKAGE_CENTER_KNOB, .rect, 2.0))
-      rotatedShape.append (EBKnobShape (at: rotationKnobLocation, index: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, 2.0))
+      rotatedShape.addKnob (at: rPadsCenter, index: COMPONENT_PACKAGE_CENTER_KNOB, .rect, 2.0)
+      rotatedShape.addKnob (at: rotationKnobLocation, index: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, 2.0)
     //--- Name
-      let nonRotatedShape = EBShape ()
+      var nonRotatedShape = EBShape ()
       if self_mNameIsVisibleInBoard, let fontDescriptor = self_mNameFont_descriptor {
         let (textBP, frameBP, origin, _) = boardText_displayInfos (
           x: self_mXName + self_mX,
@@ -73,14 +73,14 @@ func transient_ComponentInProject_selectionDisplay (
         bp.lineWidth = 0.5
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        nonRotatedShape.append (EBStrokeBezierPathShape ([bp], .cyan))
+        nonRotatedShape.addStrokeBezierPathes ([bp], .cyan)
         bp = frameBP
         bp.lineWidth = 0.5
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        nonRotatedShape.append (EBFilledBezierPathShape ([bp], .white, COMPONENT_PACKAGE_NAME_KNOB))
-        nonRotatedShape.append (EBStrokeBezierPathShape ([bp], .black))
-        nonRotatedShape.append (EBStrokeBezierPathShape ([textBP], .black))
+        nonRotatedShape.addFilledBezierPathes ([bp], .white, COMPONENT_PACKAGE_NAME_KNOB)
+        nonRotatedShape.addStrokeBezierPathes ([bp], .black)
+        nonRotatedShape.addStrokeBezierPathes ([textBP], .black)
       }
     //--- Value
       if self_mValueIsVisibleInBoard, let fontDescriptor = self_mValueFont_descriptor {
@@ -103,14 +103,14 @@ func transient_ComponentInProject_selectionDisplay (
         bp.lineWidth = 0.5
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        nonRotatedShape.append (EBStrokeBezierPathShape ([bp], .cyan))
+        nonRotatedShape.addStrokeBezierPathes ([bp], .cyan)
         bp = frameBP
         bp.lineWidth = 0.5
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        nonRotatedShape.append (EBFilledBezierPathShape ([bp], .white, COMPONENT_PACKAGE_VALUE_KNOB))
-        nonRotatedShape.append (EBStrokeBezierPathShape ([bp], .black))
-        nonRotatedShape.append (EBStrokeBezierPathShape ([textBP], .black))
+        nonRotatedShape.addFilledBezierPathes ([bp], .white, COMPONENT_PACKAGE_VALUE_KNOB)
+        nonRotatedShape.addStrokeBezierPathes ([bp], .black)
+        nonRotatedShape.addStrokeBezierPathes ([textBP], .black)
       }
     //---
       var af = AffineTransform ()
@@ -120,8 +120,8 @@ func transient_ComponentInProject_selectionDisplay (
         af.scale (x: -1.0, y: 1.0)
       }
       af.translate (x: -rPadsCenter.x, y: -rPadsCenter.y)
-      let shape = rotatedShape.transformed (by: af)
-      shape.append (nonRotatedShape)
+      var shape = rotatedShape.transformed (by: af)
+      shape.add (nonRotatedShape)
       return shape
 //--- END OF USER ZONE 2
 }

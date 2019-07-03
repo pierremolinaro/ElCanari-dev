@@ -25,7 +25,7 @@ func transient_SymbolInstanceInDevice_objectDisplay (
        _ prefs_symbolColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-       let shape = EBShape ()
+       var shape = EBShape ()
        if let strokeBezierPath = self_mType_mStrokeBezierPath,
           let filledBezierPath = self_mType_mFilledBezierPath,
           let pinNameShape = self_mType_pinNameShape {
@@ -53,26 +53,25 @@ func transient_SymbolInstanceInDevice_objectDisplay (
             r = r.insetBy (dx: e, dy: 0.0)
           }
           var bp = EBBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
-          shape.append (EBFilledBezierPathShape ([bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!))
+          shape.addFilledBezierPathes ([bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!)
           bp.move (to: NSPoint (x: r.minX, y: nameOrigin.y))
           bp.line (to: NSPoint (x: r.maxX, y: nameOrigin.y))
           bp.lineWidth = 0.5
-          shape.append (EBStrokeBezierPathShape ([bp], .lightGray))
+          shape.addStrokeBezierPathes ([bp], .lightGray)
         //--- Name
-          let nameShape = EBTextShape (self_symbolQualifiedName, nameOrigin, nameTextAttributes, .center, .above)
-          shape.append (nameShape)
+          shape.addText (self_symbolQualifiedName, nameOrigin, nameTextAttributes, .center, .above)
         //--- Stroke Bezier path
           strokeBezierPath.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
           strokeBezierPath.lineCapStyle = .round
-          shape.append (EBStrokeBezierPathShape ([EBBezierPath (strokeBezierPath)], prefs_symbolColor))
+          shape.addStrokeBezierPathes ([EBBezierPath (strokeBezierPath)], prefs_symbolColor)
         //--- Filled Bezier path
-           shape.append (EBFilledBezierPathShape ([EBBezierPath (filledBezierPath)], prefs_symbolColor))
+           shape.addFilledBezierPathes ([EBBezierPath (filledBezierPath)], prefs_symbolColor)
         //--- Pin names
-           shape.append (pinNameShape)
+           shape.add (pinNameShape)
         //--- Pin numbers
            for p in self_mPinInstances_numberShape {
              if let s = p.numberShape {
-               shape.append (s)
+               shape.add (s)
              }
            }
          }

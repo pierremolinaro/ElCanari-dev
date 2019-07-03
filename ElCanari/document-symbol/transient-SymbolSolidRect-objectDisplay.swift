@@ -31,8 +31,8 @@ func transient_SymbolSolidRect_objectDisplay (
   var bp = EBBezierPath (rect: r)
   bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round
-  let shape = EBShape ()
-  shape.append (EBFilledBezierPathShape ([bp], prefs_symbolColor))
+  var shape = EBShape ()
+  shape.addFilledBezierPathes ([bp], prefs_symbolColor)
   return shape
 //--- END OF USER ZONE 2
 }

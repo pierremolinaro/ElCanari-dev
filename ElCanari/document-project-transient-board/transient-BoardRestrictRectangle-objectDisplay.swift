@@ -29,7 +29,7 @@ func transient_BoardRestrictRectangle_objectDisplay (
         let rectBP = EBBezierPath (rect: cocoaRect)
         let lg = max (cocoaRect.size.width, cocoaRect.size.height)
       //--- Transparent background (for selection)
-        let shape = EBFilledBezierPathShape ([rectBP], nil)
+        var shape = EBShape (filled: [rectBP], nil)
       //--- Back layer
         if self_mIsInBackLayer {
           var bp = EBBezierPath ()
@@ -48,7 +48,7 @@ func transient_BoardRestrictRectangle_objectDisplay (
             bp.relativeLine (to: NSPoint (x: lg, y: -lg))
             y -= 10.0
           }
-          shape.append (EBStrokeBezierPathShape ([bp], prefs_backSideRestrictRectangleColorForBoard, clip: rectBP))
+          shape.addStrokeBezierPathes ([bp], prefs_backSideRestrictRectangleColorForBoard, clip: rectBP)
         }
       //--- Front layer
         if self_mIsInFrontLayer {
@@ -68,7 +68,7 @@ func transient_BoardRestrictRectangle_objectDisplay (
             bp.relativeLine (to: NSPoint (x: lg, y: lg))
             y += 10.0
           }
-          shape.append (EBStrokeBezierPathShape ([bp], prefs_frontSideRestrictRectangleColorForBoard, clip: rectBP))
+          shape.addStrokeBezierPathes ([bp], prefs_frontSideRestrictRectangleColorForBoard, clip: rectBP)
         }
       //--- Append rect frame
         do{
@@ -82,7 +82,7 @@ func transient_BoardRestrictRectangle_objectDisplay (
           }else{
             frameColor = prefs_backSideRestrictRectangleColorForBoard
           }
-          shape.append (EBStrokeBezierPathShape ([bp], frameColor))
+          shape.addStrokeBezierPathes ([bp], frameColor)
         }
       //---
         return shape

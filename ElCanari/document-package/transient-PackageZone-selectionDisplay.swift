@@ -25,7 +25,7 @@ func transient_PackageZone_selectionDisplay (
        _ prefs_padZoneColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let shape = EBShape ()
+    var shape = EBShape ()
     let x = canariUnitToCocoa (self_x)
     let y = canariUnitToCocoa (self_y)
     let width = canariUnitToCocoa (self_width)
@@ -48,15 +48,15 @@ func transient_PackageZone_selectionDisplay (
       bp = EBBezierPath (rect: r)
     }
     bp.lineWidth = 0.25
-    shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-    shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: PACKAGE_ZONE_BOTTOM, .circ, 2.0))
-    shape.append (EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: PACKAGE_ZONE_LEFT, .circ, 2.0))
-    shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: PACKAGE_ZONE_TOP, .circ, 2.0))
-    shape.append (EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: PACKAGE_ZONE_RIGHT, .circ, 2.0))
+    shape.addStrokeBezierPathes ([bp], NSColor.cyan)
+    shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y), index: PACKAGE_ZONE_BOTTOM, .circ, 2.0)
+    shape.addKnob (at: CGPoint (x: x, y: y + height / 2.0), index: PACKAGE_ZONE_LEFT, .circ, 2.0)
+    shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y + height), index: PACKAGE_ZONE_TOP, .circ, 2.0)
+    shape.addKnob (at: CGPoint (x: x + width, y: y + height / 2.0), index: PACKAGE_ZONE_RIGHT, .circ, 2.0)
   //--- Zone
     let text = (self_zoneName == "") ? "?" : self_zoneName
     let pText = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
-    shape.append (EBTextKnobShape (text, pText, prefs_padZoneFont, .center, .center, PACKAGE_ZONE_NAME))
+    shape.addTextKnob (text, pText, prefs_padZoneFont, .center, .center, PACKAGE_ZONE_NAME)
   //---
     return shape
 //--- END OF USER ZONE 2

@@ -389,9 +389,9 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
         let verticalFlip   : CGFloat = schematicsView.verticalFlip   ? -scale : scale
         var af = AffineTransform ()
         af.scale (x: horizontalFlip, y: verticalFlip)
-        let symbolShape = EBShape ()
-        symbolShape.append (EBFilledBezierPathShape ([EBBezierPath (filledBP)], g_Preferences!.symbolColorForSchematic))
-        symbolShape.append (EBStrokeBezierPathShape ([EBBezierPath (strokeBP)], g_Preferences!.symbolColorForSchematic))
+        var symbolShape = EBShape ()
+        symbolShape.addFilledBezierPathes ([EBBezierPath (filledBP)], g_Preferences!.symbolColorForSchematic)
+        symbolShape.addStrokeBezierPathes ([EBBezierPath (strokeBP)], g_Preferences!.symbolColorForSchematic)
         let scaledSymbolShape = symbolShape.transformed (by: af)
         result = buildPDFimage (frame: scaledSymbolShape.boundingBox, shape: scaledSymbolShape)
       }

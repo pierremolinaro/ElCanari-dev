@@ -27,8 +27,8 @@ func transient_PackagePad_padNumberDisplay (
         NSAttributedString.Key.font : prefs_padNumberFont,
         NSAttributedString.Key.foregroundColor : prefs_padNumberColor
       ]
-      return EBTextShape (
-        self_padName, // padString,
+      return EBShape (
+        text: self_padName, // padString,
         CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint,
         textAttributes,
         .center,

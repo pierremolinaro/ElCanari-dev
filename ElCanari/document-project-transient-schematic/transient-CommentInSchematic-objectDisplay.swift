@@ -23,8 +23,8 @@ func transient_CommentInSchematic_objectDisplay (
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
         ]
-        return EBTextShape (
-          (self_mComment == "") ? "Empty comment" : self_mComment,
+        return EBShape (
+          text: (self_mComment == "") ? "Empty comment" : self_mComment,
           p,
           textAttributes,
           .center,

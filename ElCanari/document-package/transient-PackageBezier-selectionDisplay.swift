@@ -37,12 +37,12 @@ func transient_PackageBezier_selectionDisplay (
   bp.line (to: cp2)
   bp.lineWidth = 0.25
   bp.lineCapStyle = .round
-  let shape = EBShape ()
-  shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-  shape.append (EBKnobShape (at: p1, index: PACKAGE_BEZIER_CURVE_ENDPOINT_1, .circ, 2.0))
-  shape.append (EBKnobShape (at: p2, index: PACKAGE_BEZIER_CURVE_ENDPOINT_2, .circ, 2.0))
-  shape.append (EBKnobShape (at: cp1, index: PACKAGE_BEZIER_CURVE_CONTROL_1, .circ, 2.0))
-  shape.append (EBKnobShape (at: cp2, index: PACKAGE_BEZIER_CURVE_CONTROL_2, .circ, 2.0))
+  var shape = EBShape ()
+  shape.addStrokeBezierPathes ([bp], NSColor.cyan)
+  shape.addKnob (at: p1, index: PACKAGE_BEZIER_CURVE_ENDPOINT_1, .circ, 2.0)
+  shape.addKnob (at: p2, index: PACKAGE_BEZIER_CURVE_ENDPOINT_2, .circ, 2.0)
+  shape.addKnob (at: cp1, index: PACKAGE_BEZIER_CURVE_CONTROL_1, .circ, 2.0)
+  shape.addKnob (at: cp2, index: PACKAGE_BEZIER_CURVE_CONTROL_2, .circ, 2.0)
   return shape
 //--- END OF USER ZONE 2
 }

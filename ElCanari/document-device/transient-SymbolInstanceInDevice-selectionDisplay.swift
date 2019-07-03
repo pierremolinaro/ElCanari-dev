@@ -22,7 +22,7 @@ func transient_SymbolInstanceInDevice_selectionDisplay (
        _ self_mY : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-       let shape = EBShape ()
+       var shape = EBShape ()
        if let strokeBezierPath = self_mType_mStrokeBezierPath,
           let filledBezierPath = self_mType_mFilledBezierPath {
       //--- Compute display rect
@@ -51,7 +51,7 @@ func transient_SymbolInstanceInDevice_selectionDisplay (
         bp.move (to: NSPoint (x: r.minX, y: nameOrigin.y))
         bp.line (to: NSPoint (x: r.maxX, y: nameOrigin.y))
         bp.lineWidth = 0.5
-        shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
+        shape.addStrokeBezierPathes ([bp], NSColor.cyan)
        }
      //---
        var at = AffineTransform ()

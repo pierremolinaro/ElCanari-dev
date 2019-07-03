@@ -143,7 +143,8 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
         let r = CGRect (x: 0.0, y: 0.0, width: width, height: height)
         var bp = EBBezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
         bp.lineWidth = 1.0
-        let shape = EBStrokeBezierPathShape ([bp], NSColor.gray)
+        var shape = EBShape ()
+        shape.addStrokeBezierPathes ([bp], NSColor.gray)
         let image = buildPDFimage (frame: r, shape: shape, backgroundColor:NSColor.gray.withAlphaComponent (0.25))
         return image
       }else{

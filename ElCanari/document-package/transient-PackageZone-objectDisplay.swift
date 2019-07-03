@@ -45,8 +45,8 @@ func transient_PackageZone_objectDisplay (
     }
     bp.lineWidth = 0.5
     bp.lineCapStyle = .round
-    let shape = EBShape ()
-    shape.append (EBStrokeBezierPathShape ([bp], prefs_padZoneColor))
+    var shape = EBShape ()
+    shape.addStrokeBezierPathes ([bp], prefs_padZoneColor)
   //--- Name
     let text = (self_zoneName == "") ? "?" : self_zoneName
     let p = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
@@ -54,7 +54,7 @@ func transient_PackageZone_objectDisplay (
       NSAttributedString.Key.font : prefs_padZoneFont,
       NSAttributedString.Key.foregroundColor : prefs_padZoneColor
     ]
-    shape.append (EBTextShape (text, p, textAttributes, .center, .center))
+    shape.addText (text, p, textAttributes, .center, .center)
   //---
     return shape
 //--- END OF USER ZONE 2

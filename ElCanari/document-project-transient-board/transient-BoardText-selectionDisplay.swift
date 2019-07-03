@@ -55,12 +55,12 @@ func transient_BoardText_selectionDisplay (
         case .legendBack :
           textColor = prefs_backSideLegendColorForBoard
         }
-        let textShape = EBStrokeBezierPathShape ([textBP], textColor)
+   //     let textShape = EBStrokeBezierPathShape ([textBP], textColor)
       //--- Background
-        let shape = EBShape ()
-        shape.append (EBFilledBezierPathShape ([frameBP], (textColor == .white) ? .lightGray : .white))
-        shape.append (EBStrokeBezierPathShape ([frameBP], .cyan))
-        shape.append (textShape)
+        var shape = EBShape ()
+        shape.addFilledBezierPathes ([frameBP], (textColor == .white) ? .lightGray : .white)
+        shape.addStrokeBezierPathes ([frameBP], .cyan)
+        shape.addStrokeBezierPathes ([textBP], textColor)
       //--- Rotation knob
         var knobLine = EBBezierPath ()
         knobLine.move (to : origin)
@@ -68,10 +68,10 @@ func transient_BoardText_selectionDisplay (
         knobLine.lineWidth = 0.5
         knobLine.lineCapStyle = .round
         knobLine.lineJoinStyle = .round
-        shape.append (EBStrokeBezierPathShape ([knobLine], .cyan))
-        shape.append (EBKnobShape (at: rotationKnob, index: BOARD_TEXT_ROTATION_KNOB, .circ, 2.0))
+        shape.addStrokeBezierPathes ([knobLine], .cyan)
+        shape.addKnob (at: rotationKnob, index: BOARD_TEXT_ROTATION_KNOB, .circ, 2.0)
       //--- Knob
-        shape.append (EBKnobShape (at: origin, index: BOARD_TEXT_ORIGIN_KNOB, .rect, 2.0))
+        shape.addKnob (at: origin, index: BOARD_TEXT_ORIGIN_KNOB, .rect, 2.0)
       //---
         return shape
 //--- END OF USER ZONE 2

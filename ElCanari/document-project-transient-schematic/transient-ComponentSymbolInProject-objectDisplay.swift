@@ -26,17 +26,17 @@ func transient_ComponentSymbolInProject_objectDisplay (
        _ self_mSymbolTypeName : String
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let shape = EBShape ()
-        let strokeShape = EBStrokeBezierPathShape ([EBBezierPath (self_symbolInfo.strokeBezierPath)], prefs_symbolColorForSchematic)
-        let filledPath = EBFilledBezierPathShape ([EBBezierPath (self_symbolInfo.filledBezierPath)], prefs_symbolColorForSchematic)
+        var shape = EBShape ()
+        let strokeShape = EBShape (stroke: [EBBezierPath (self_symbolInfo.strokeBezierPath)], prefs_symbolColorForSchematic)
+        let filledPath = EBShape (filled: [EBBezierPath (self_symbolInfo.filledBezierPath)], prefs_symbolColorForSchematic)
         let box = filledPath.boundingBox.union (strokeShape.boundingBox)
-        shape.append (EBFilledBezierPathShape ([EBBezierPath (rect: box)], nil))
-        shape.append (strokeShape)
-        shape.append (filledPath)
+        shape.addFilledBezierPathes ([EBBezierPath (rect: box)], nil)
+        shape.add (strokeShape)
+        shape.add (filledPath)
      
         for pinShape in self_symbolInfo.pins {
           if (pinShape.pinIdentifier.symbol.symbolInstanceName == self_mSymbolInstanceName) && (pinShape.pinIdentifier.symbol.symbolTypeName == self_mSymbolTypeName) {
-            shape.append (pinShape.shape)
+            shape.add (pinShape.shape)
           }
         }
       //--- Component name
@@ -45,14 +45,14 @@ func transient_ComponentSymbolInProject_objectDisplay (
             NSAttributedString.Key.font : prefs_pinNameFont
           ]
           let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
-          let componentNameShape = EBTextShape (
-            self_symbolInfo.componentName,
+          let componentNameShape = EBShape (
+            text: self_symbolInfo.componentName,
             componentNameCenter.cocoaPoint,
             componentNameTextAttributes,
             .center,
             .center
           )
-          shape.append (componentNameShape)
+          shape.add (componentNameShape)
         }
       //--- Component value
         if self_mDisplayComponentValue {
@@ -61,14 +61,14 @@ func transient_ComponentSymbolInProject_objectDisplay (
           ]
           let value = (self_symbolInfo.componentValue != "") ? self_symbolInfo.componentValue : "No value"
           let componentValueCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY)
-          let componentValueShape = EBTextShape (
-            value,
+          let componentValueShape = EBShape (
+            text: value,
             componentValueCenter.cocoaPoint,
             componentValueTextAttributes,
             .center,
             .center
           )
-          shape.append (componentValueShape)
+          shape.add (componentValueShape)
         }
       //--
         return shape

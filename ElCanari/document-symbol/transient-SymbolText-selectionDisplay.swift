@@ -21,16 +21,16 @@ func transient_SymbolText_selectionDisplay (
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let shape = EBShape ()
+    var shape = EBShape ()
     let origin = NSPoint (x: canariUnitToCocoa (self_x), y: canariUnitToCocoa (self_y))
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont
     ]
-    let textShape = EBTextShape (self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment(), .center)
+    let textShape = EBShape (text: self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment(), .center)
     var bp = EBBezierPath (rect: textShape.boundingBox)
     bp.lineWidth = 0.25
-    shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-    shape.append (EBKnobShape (at: origin, index: 0, .rect, 2.0))
+    shape.addStrokeBezierPathes ([bp], NSColor.cyan)
+    shape.addKnob (at: origin, index: 0, .rect, 2.0)
     return shape
 //--- END OF USER ZONE 2
 }

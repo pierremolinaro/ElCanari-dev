@@ -20,18 +20,17 @@ func transient_MergerRoot_boardOutlineRectDisplay (
        _ prefs_mergerColorBoardLimits : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    var array = [EBShape] ()
+    var shape = EBShape ()
     if prefs_mergerBoardViewDisplayBoardLimits && !self_boardRect.isEmpty {
       let limitWidth = canariUnitToCocoa (self_boardLimitWidth)
       let r = self_boardRect.cocoaRect
       var bp = EBBezierPath (rect: r.insetBy (dx: limitWidth / 2.0, dy: limitWidth / 2.0))
       bp.lineWidth = limitWidth
       bp.lineJoinStyle = .round
-      let boardLimits = EBStrokeBezierPathShape ([bp], prefs_mergerColorBoardLimits)
-      array.append (boardLimits)
+      shape.addStrokeBezierPathes ([bp], prefs_mergerColorBoardLimits)
     }
   //---
-    return EBShape (shapes: array)
+    return shape
 //--- END OF USER ZONE 2
 }
 

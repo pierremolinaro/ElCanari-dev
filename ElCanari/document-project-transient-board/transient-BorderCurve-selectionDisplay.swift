@@ -25,7 +25,7 @@ func transient_BorderCurve_selectionDisplay (
        _ self_mShape : BorderCurveShape
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let shape = EBShape ()
+        var shape = EBShape ()
         if let x2 = self_mNext_mX, let y2 = self_mNext_mY {
           let p1 = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
           let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
@@ -50,12 +50,12 @@ func transient_BorderCurve_selectionDisplay (
             bp.move (to: p2)
             bp.line (to: cp2)
           }
-          shape.append (EBStrokeBezierPathShape ([bp], .cyan))
-          shape.append (EBKnobShape (at: p1, index: BOARD_LIMIT_P1_KNOB, .circ, BOARD_LIMITS_KNOB_SIZE))
-          shape.append (EBKnobShape (at: p2, index: BOARD_LIMIT_P2_KNOB, .circ, BOARD_LIMITS_KNOB_SIZE))
+          shape.addStrokeBezierPathes ([bp], .cyan)
+          shape.addKnob (at: p1, index: BOARD_LIMIT_P1_KNOB, .circ, BOARD_LIMITS_KNOB_SIZE)
+          shape.addKnob (at: p2, index: BOARD_LIMIT_P2_KNOB, .circ, BOARD_LIMITS_KNOB_SIZE)
           if self_mShape == .bezier {
-            shape.append (EBKnobShape (at: cp1, index: BOARD_LIMIT_CP1_KNOB, .circ, BOARD_LIMITS_KNOB_SIZE))
-            shape.append (EBKnobShape (at: cp2, index: BOARD_LIMIT_CP2_KNOB, .circ, BOARD_LIMITS_KNOB_SIZE))
+            shape.addKnob (at: cp1, index: BOARD_LIMIT_CP1_KNOB, .circ, BOARD_LIMITS_KNOB_SIZE)
+            shape.addKnob (at: cp2, index: BOARD_LIMIT_CP2_KNOB, .circ, BOARD_LIMITS_KNOB_SIZE)
           }
         }
         return shape

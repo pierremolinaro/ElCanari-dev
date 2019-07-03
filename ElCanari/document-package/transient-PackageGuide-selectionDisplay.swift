@@ -27,10 +27,10 @@ func transient_PackageGuide_selectionDisplay (
   bp.line (to: p2)
   bp.lineWidth = 0.25
   bp.lineCapStyle = .round
-  let shape = EBShape ()
-  shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-  shape.append (EBKnobShape (at: p1, index: PACKAGE_GUIDE_ENDPOINT_1, .circ, 2.0))
-  shape.append (EBKnobShape (at: p2, index: PACKAGE_GUIDE_ENDPOINT_2, .circ, 2.0))
+  var shape = EBShape ()
+  shape.addStrokeBezierPathes ([bp], NSColor.cyan)
+  shape.addKnob (at: p1, index: PACKAGE_GUIDE_ENDPOINT_1, .circ, 2.0)
+  shape.addKnob (at: p2, index: PACKAGE_GUIDE_ENDPOINT_2, .circ, 2.0)
   return shape
 //--- END OF USER ZONE 2
 }

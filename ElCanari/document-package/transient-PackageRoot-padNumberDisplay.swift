@@ -19,16 +19,16 @@ func transient_PackageRoot_padNumberDisplay (
        _ self_packageSlavePads_padNumberDisplay : [PackageSlavePad_padNumberDisplay]
 ) -> EBShape {
 //--- START OF USER ZONE 2
-   let shape = EBShape ()
+   var shape = EBShape ()
    if prefs_showPadNumber {
      for masterPad in self_packagePads_padNumberDisplay {
        if let s = masterPad.padNumberDisplay {
-         shape.append (s)
+         shape.add (s)
        }
      }
      for slavePad in self_packageSlavePads_padNumberDisplay {
        if let s = slavePad.padNumberDisplay {
-         shape.append (s)
+         shape.add (s)
        }
      }
    }
