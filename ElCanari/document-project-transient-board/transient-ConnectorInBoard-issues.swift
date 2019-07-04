@@ -20,7 +20,7 @@ func transient_ConnectorInBoard_issues (
        _ self_side : ConnectorSide
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-
+        return CanariIssueArray ()
 //--- END OF USER ZONE 2
 }
 
