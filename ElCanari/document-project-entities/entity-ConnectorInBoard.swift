@@ -246,15 +246,17 @@ class ConnectorInBoard : BoardObject,
         kind &= unwSelf.mComponentPadName_property_selection.kind ()
         kind &= unwSelf.mPadIndex_property_selection.kind ()
         kind &= unwSelf.side_property_selection.kind ()
+        kind &= unwSelf.errorOrWarningIssueSize_property_selection.kind ()
+        kind &= unwSelf.mComponent_property.padNetDictionary_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.side_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_ConnectorInBoard_issues (v0, v1, v2, v3))
+          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.side_property_selection, unwSelf.errorOrWarningIssueSize_property_selection, unwSelf.mComponent_property.padNetDictionary_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_ConnectorInBoard_issues (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -267,6 +269,8 @@ class ConnectorInBoard : BoardObject,
     self.mComponentPadName_property.addEBObserver (self.issues_property)
     self.mPadIndex_property.addEBObserver (self.issues_property)
     self.side_property.addEBObserver (self.issues_property)
+    self.errorOrWarningIssueSize_property.addEBObserver (self.issues_property)
+    self.mComponent_property.addEBObserverOf_padNetDictionary (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -288,6 +292,8 @@ class ConnectorInBoard : BoardObject,
     self.mComponentPadName_property.removeEBObserver (self.issues_property)
     self.mPadIndex_property.removeEBObserver (self.issues_property)
     self.side_property.removeEBObserver (self.issues_property)
+    self.errorOrWarningIssueSize_property.removeEBObserver (self.issues_property)
+    self.mComponent_property.removeEBObserverOf_padNetDictionary (self.issues_property)
   //--- Unregister properties for handling signature
   }
 

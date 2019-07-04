@@ -583,6 +583,7 @@ import Cocoa
   @IBOutlet weak var mEditDeviceButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mEditFontButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mEditNetClassButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mErrorOrWarningIssueSlider : EBSlider? = nil // An outlet should be declared weak
   @IBOutlet weak var mExchangeSymbolPanel : NSPanel? = nil // An outlet should be declared weak
   @IBOutlet weak var mExchangeSymbolPopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mExchangeSymbolSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
@@ -985,6 +986,7 @@ import Cocoa
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditFontButton, "mEditFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditNetClassButton, "mEditNetClassButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mErrorOrWarningIssueSlider, "mErrorOrWarningIssueSlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mExchangeSymbolPanel, "mExchangeSymbolPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mExchangeSymbolPopUpButton, "mExchangeSymbolPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mExchangeSymbolSchematicHotKeyTextField, "mExchangeSymbolSchematicHotKeyTextField", NSTextField.self, #file, #line)
@@ -1537,6 +1539,7 @@ import Cocoa
     self.mUnplacedPackageTableView?.bind_models (self.rootObject.unplacedPackages_property, file: #file, line: #line)
     self.mUnplacedPackagesCountTextField?.bind_valueObserver (self.unplacedPackagesCountString_property, file: #file, line: #line)
     self.mBoardView?.bind_underObjectsDisplay (self.rootObject.boardBackground_property, file: #file, line: #line)
+    self.mBoardView?.bind_overObjectsDisplay (self.rootObject.issuesDisplay_property, file: #file, line: #line)
     self.mBoardView?.bind_horizontalFlip (self.rootObject.mBoardHorizontalFlip_property, file: #file, line: #line)
     self.mBoardView?.bind_verticalFlip (self.rootObject.mBoardVerticalFlip_property, file: #file, line: #line)
     self.mBoardView?.bind_gridStyle (self.rootObject.mBoardGridStyle_property, file: #file, line: #line)
@@ -1606,6 +1609,7 @@ import Cocoa
     self.mDisplayBoardLimitsColorWell?.bind_color (g_Preferences!.boardLimitsColorForBoard_property, file: #file, line: #line, sendContinously:true)
     self.mDisplayBoardClearanceColorWell?.bind_color (g_Preferences!.boardClearanceColorForBoard_property, file: #file, line: #line, sendContinously:true)
     self.mBoardBackgroundColorWell?.bind_color (g_Preferences!.boardBackgroundColorForBoard_property, file: #file, line: #line, sendContinously:true)
+    self.mErrorOrWarningIssueSlider?.bind_doubleValue (self.rootObject.mErrorOrWarningIssueSize_property, file: #file, line: #line, sendContinously:true)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -2089,6 +2093,7 @@ import Cocoa
     self.mUnplacedPackageTableView?.unbind_models ()
     self.mUnplacedPackagesCountTextField?.unbind_valueObserver ()
     self.mBoardView?.unbind_underObjectsDisplay ()
+    self.mBoardView?.unbind_overObjectsDisplay ()
     self.mBoardView?.unbind_horizontalFlip ()
     self.mBoardView?.unbind_verticalFlip ()
     self.mBoardView?.unbind_gridStyle ()
@@ -2158,6 +2163,7 @@ import Cocoa
     self.mDisplayBoardLimitsColorWell?.unbind_color ()
     self.mDisplayBoardClearanceColorWell?.unbind_color ()
     self.mBoardBackgroundColorWell?.unbind_color ()
+    self.mErrorOrWarningIssueSlider?.unbind_doubleValue ()
   //--------------------------- Unbind multiple bindings
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -2457,6 +2463,7 @@ import Cocoa
     self.mEditDeviceButton?.ebCleanUp ()
     self.mEditFontButton?.ebCleanUp ()
     self.mEditNetClassButton?.ebCleanUp ()
+    self.mErrorOrWarningIssueSlider?.ebCleanUp ()
     self.mExchangeSymbolPanel?.ebCleanUp ()
     self.mExchangeSymbolPopUpButton?.ebCleanUp ()
     self.mExchangeSymbolSchematicHotKeyTextField?.ebCleanUp ()
@@ -2728,6 +2735,7 @@ import Cocoa
 //    self.mEditDeviceButton = nil
 //    self.mEditFontButton = nil
 //    self.mEditNetClassButton = nil
+//    self.mErrorOrWarningIssueSlider = nil
 //    self.mExchangeSymbolPanel = nil
 //    self.mExchangeSymbolPopUpButton = nil
 //    self.mExchangeSymbolSchematicHotKeyTextField = nil

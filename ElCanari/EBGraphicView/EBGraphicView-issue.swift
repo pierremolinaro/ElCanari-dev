@@ -10,17 +10,17 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func setIssue (_ inBezierPath : NSBezierPath?, _ issueKind : CanariIssueKind) {
+  func setIssue (_ inBezierPath : EBBezierPath?, _ issueKind : CanariIssueKind) {
     if self.mIssueBezierPath != inBezierPath {
-      if let bp = self.mIssueBezierPath, bp.elementCount > 0 {
-        self.setNeedsDisplay (self.issueBoundingBox.insetBy(dx: -1.0, dy: -1.0))
+      if let bp = self.mIssueBezierPath, !bp.isEmpty {
+        self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
       }
       self.mIssueBezierPath = inBezierPath
       self.mIssueKind = issueKind
       self.updateViewFrameAndBounds ()
-      if let bp = self.mIssueBezierPath, bp.elementCount > 0 {
+      if let bp = self.mIssueBezierPath, !bp.isEmpty {
         self.scrollToVisible (bp.bounds)
-        self.setNeedsDisplay (self.issueBoundingBox.insetBy(dx: -1.0, dy: -1.0))
+        self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
       }
     }
   }
@@ -28,7 +28,7 @@ extension EBGraphicView {
   //····················································································································
 
   internal var issueBoundingBox : NSRect {
-    if let bp = self.mIssueBezierPath, bp.elementCount > 0 {
+    if let bp = self.mIssueBezierPath, !bp.isEmpty {
       let e = -bp.lineWidth
       return bp.bounds.insetBy (dx: e, dy: e)
     }else{

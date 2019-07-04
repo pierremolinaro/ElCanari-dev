@@ -49,6 +49,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.removeEBObserversOf_placementInSchematic_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_componentPadDictionary_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_padNetDictionary_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_mPackages_fromElementsOfSet (inAddedSet) // ToMany proxy
   //--- Add observers to added objects
@@ -86,6 +87,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.addEBObserversOf_placementInSchematic_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_componentPadDictionary_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_padNetDictionary_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_mPackages_toElementsOfSet (inAddedSet) // ToMany proxy
   }
@@ -2066,6 +2068,62 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     for managedObject in inSet {
       self.mObserversOf_componentPadDictionary.apply { (_ observer : EBEvent) in
         managedObject.componentPadDictionary_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'padNetDictionary' transient property
+  //····················································································································
+
+  private var mObserversOf_padNetDictionary = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_padNetDictionary (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padNetDictionary.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.padNetDictionary_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padNetDictionary (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padNetDictionary.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.padNetDictionary_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padNetDictionary_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_padNetDictionary.apply { (_ observer : EBEvent) in
+        managedObject.padNetDictionary_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padNetDictionary_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_padNetDictionary.apply { (_ observer : EBEvent) in
+        managedObject.padNetDictionary_property.removeEBObserver (observer)
       }
     }
   }

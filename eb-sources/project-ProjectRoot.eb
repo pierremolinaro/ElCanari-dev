@@ -5,7 +5,6 @@
 entity ProjectRoot {
 //--- Board
   toMany BoardObject mBoardObjects inverse toOne mRoot ;
-//  toMany proxy ConnectorInBoard mConnectors : mBoardObjects ;
 
   property Int mBoardSelectedInspector default 1 ;
   property Bool mBoardHorizontalFlip default no ;
@@ -21,6 +20,7 @@ entity ProjectRoot {
   ;
 
   transient CanariIssueArray boardIssues dependsFrom self.mBoardObjects.all.issues ;
+  transient EBShape issuesDisplay dependsFrom self.boardIssues ;
 
   transient EBShape boardBackground dependsFrom
      self.borderClearanceBackground, self.mBorderCurves.all.objectDisplay ;
@@ -34,6 +34,8 @@ entity ProjectRoot {
   property Bool mDisplayBackLayout default yes ;
   property Bool mDisplayFrontRestrictRectangles default yes ;
   property Bool mDisplayBackRestrictRectangles default yes ;
+  
+  property Double mErrorOrWarningIssueSize default 200.0 ;
   
 //--- Board border
   toMany BorderCurve mBorderCurves inverse toOne mRoot ;

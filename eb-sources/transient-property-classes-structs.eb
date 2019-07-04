@@ -49,5 +49,6 @@ transient property struct NSRect ;
 transient property struct UnconnectedSymbolPinsInDevice ;
 transient property struct AssignedPadProxiesInDevice ;
 transient property struct DefinedCharactersInDevice ;
+transient property struct PadNetDictionary ;
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

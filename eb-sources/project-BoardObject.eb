@@ -13,6 +13,8 @@ abstract graphic entity BoardObject {
 
   transient Bool displayPadNumbers dependsFrom self.mRoot.one.mDisplayPadNumbers ;
   
+  transient Double errorOrWarningIssueSize dependsFrom self.mRoot.one.mErrorOrWarningIssueSize ;
+  
   abstract transient CanariIssueArray issues ;
 }
 

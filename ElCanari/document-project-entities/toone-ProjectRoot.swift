@@ -32,6 +32,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.mDisplayBackLayout_property.removeEBObserversFrom (&self.mObserversOf_mDisplayBackLayout) // Stored property
     inOldValue?.mDisplayFrontRestrictRectangles_property.removeEBObserversFrom (&self.mObserversOf_mDisplayFrontRestrictRectangles) // Stored property
     inOldValue?.mDisplayBackRestrictRectangles_property.removeEBObserversFrom (&self.mObserversOf_mDisplayBackRestrictRectangles) // Stored property
+    inOldValue?.mErrorOrWarningIssueSize_property.removeEBObserversFrom (&self.mObserversOf_mErrorOrWarningIssueSize) // Stored property
     inOldValue?.mBoardLimitsWidth_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsWidth) // Stored property
     inOldValue?.mBoardLimitsWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsWidthUnit) // Stored property
     inOldValue?.mBoardLimitsSelectedInspector_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsSelectedInspector) // Stored property
@@ -69,6 +70,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.netsDescription_property.removeEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
     inOldValue?.unplacedPackages_property.removeEBObserversFrom (&self.mObserversOf_unplacedPackages) // Transient property
     inOldValue?.boardIssues_property.removeEBObserversFrom (&self.mObserversOf_boardIssues) // Transient property
+    inOldValue?.issuesDisplay_property.removeEBObserversFrom (&self.mObserversOf_issuesDisplay) // Transient property
     inOldValue?.borderClearanceBackground_property.removeEBObserversFrom (&self.mObserversOf_borderClearanceBackground) // Transient property
     inOldValue?.boardBoundBox_property.removeEBObserversFrom (&self.mObserversOf_boardBoundBox) // Transient property
     inOldValue?.boardLimitPointsTop_property.removeEBObserversFrom (&self.mObserversOf_boardLimitPointsTop) // Transient property
@@ -105,6 +107,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.mDisplayBackLayout_property.addEBObserversFrom (&self.mObserversOf_mDisplayBackLayout) // Stored property
     self.mInternalValue?.mDisplayFrontRestrictRectangles_property.addEBObserversFrom (&self.mObserversOf_mDisplayFrontRestrictRectangles) // Stored property
     self.mInternalValue?.mDisplayBackRestrictRectangles_property.addEBObserversFrom (&self.mObserversOf_mDisplayBackRestrictRectangles) // Stored property
+    self.mInternalValue?.mErrorOrWarningIssueSize_property.addEBObserversFrom (&self.mObserversOf_mErrorOrWarningIssueSize) // Stored property
     self.mInternalValue?.mBoardLimitsWidth_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsWidth) // Stored property
     self.mInternalValue?.mBoardLimitsWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsWidthUnit) // Stored property
     self.mInternalValue?.mBoardLimitsSelectedInspector_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsSelectedInspector) // Stored property
@@ -142,6 +145,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.netsDescription_property.addEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
     self.mInternalValue?.unplacedPackages_property.addEBObserversFrom (&self.mObserversOf_unplacedPackages) // Transient property
     self.mInternalValue?.boardIssues_property.addEBObserversFrom (&self.mObserversOf_boardIssues) // Transient property
+    self.mInternalValue?.issuesDisplay_property.addEBObserversFrom (&self.mObserversOf_issuesDisplay) // Transient property
     self.mInternalValue?.borderClearanceBackground_property.addEBObserversFrom (&self.mObserversOf_borderClearanceBackground) // Transient property
     self.mInternalValue?.boardBoundBox_property.addEBObserversFrom (&self.mObserversOf_boardBoundBox) // Transient property
     self.mInternalValue?.boardLimitPointsTop_property.addEBObserversFrom (&self.mObserversOf_boardLimitPointsTop) // Transient property
@@ -1348,6 +1352,76 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mDisplayBackRestrictRectangles_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mErrorOrWarningIssueSize' stored property
+  //····················································································································
+
+  private var mObserversOf_mErrorOrWarningIssueSize = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mErrorOrWarningIssueSize_property_selection : EBSelection <Double?> {
+    if let model = self.propval {
+      switch (model.mErrorOrWarningIssueSize_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mErrorOrWarningIssueSize (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mErrorOrWarningIssueSize.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mErrorOrWarningIssueSize_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mErrorOrWarningIssueSize (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mErrorOrWarningIssueSize.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mErrorOrWarningIssueSize_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mErrorOrWarningIssueSize_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mErrorOrWarningIssueSize.apply { (_ observer : EBEvent) in
+        managedObject.mErrorOrWarningIssueSize_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mErrorOrWarningIssueSize_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mErrorOrWarningIssueSize.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mErrorOrWarningIssueSize_property.removeEBObserver (observer)
       }
     }
   }
@@ -3997,6 +4071,75 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_boardIssues.apply { (_ observer : EBEvent) in
         managedObject.boardIssues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'issuesDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_issuesDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var issuesDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.issuesDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_issuesDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issuesDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.issuesDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issuesDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issuesDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.issuesDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issuesDisplay_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_issuesDisplay.apply { (_ observer : EBEvent) in
+        managedObject.issuesDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issuesDisplay_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_issuesDisplay.apply { (_ observer : EBEvent) in
+        managedObject.issuesDisplay_property.removeEBObserver (observer)
       }
     }
   }

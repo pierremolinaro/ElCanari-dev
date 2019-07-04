@@ -37,6 +37,8 @@ graphic entity ComponentInProject : BoardObject {
 
   transient NSBezierPath strokeBezierPath dependsFrom self.mSelectedPackage.one.mStrokeBezierPath ;
 
+  transient PadNetDictionary padNetDictionary dependsFrom self.mSymbols.all.symbolInfo ;
+ 
   override transient EBShape objectDisplay dependsFrom
     self.mX, self.mY, self.mRotation, self.mSide,
     self.packagePadDictionary, self.strokeBezierPath,
@@ -54,7 +56,7 @@ graphic entity ComponentInProject : BoardObject {
     self.mValueIsVisibleInBoard, self.mXValue, self.mYValue, self.mValueFont.one.descriptor, self.mValueFontSize,
     self.mValueRotation, self.mComponentValue,
     self.mDevice.one.pinPadAssignments,
-    self.mSymbols.all.symbolInfo
+    self.padNetDictionary
   ;
 
   override transient EBShape selectionDisplay dependsFrom

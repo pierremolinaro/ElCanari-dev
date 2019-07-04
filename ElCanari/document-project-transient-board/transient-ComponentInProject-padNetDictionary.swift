@@ -13,28 +13,21 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ConnectorInBoard_issues (
-       _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
-       _ self_mComponentPadName : String,
-       _ self_mPadIndex : Int,          
-       _ self_side : ConnectorSide,     
-       _ self_BoardObject_errorOrWarningIssueSize : Double,
-       _ self_mComponent_padNetDictionary : PadNetDictionary?
-) -> CanariIssueArray {
+func transient_ComponentInProject_padNetDictionary (
+       _ self_mSymbols_symbolInfo : [ComponentSymbolInProject_symbolInfo]
+) -> PadNetDictionary {
 //--- START OF USER ZONE 2
-        var issues = CanariIssueArray ()
-        //Swift.print ("\(self_mComponent_padNetDictionary? [self_mComponentPadName])")
-        if let padNetDictionary = self_mComponent_padNetDictionary,
-           padNetDictionary [self_mComponentPadName] != nil,
-           let descriptor : ComponentPadDescriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName]  {
-          let pad = descriptor.pads [self_mPadIndex]
-          let issueSize = CGFloat (self_BoardObject_errorOrWarningIssueSize)
-          let r = NSRect (x: pad.location.x - issueSize / 2.0, y: pad.location.y - issueSize / 2.0, width: issueSize, height: issueSize)
-          let bp = EBBezierPath (ovalIn: r)
-          let issue = CanariIssue (kind: .warning, message: "Hello", path: bp)
-          issues.append (issue)
+        var padNetDictionary = PadNetDictionary () // Pad name, net net name
+        for symbol in self_mSymbols_symbolInfo {
+          if let symbolInfo = symbol.symbolInfo {
+            for pin in symbolInfo.pins {
+              if pin.netName != "" {
+                padNetDictionary [pin.padName] = pin.netName
+              }
+            }
+          }
         }
-        return issues
+        return padNetDictionary
 //--- END OF USER ZONE 2
 }
 

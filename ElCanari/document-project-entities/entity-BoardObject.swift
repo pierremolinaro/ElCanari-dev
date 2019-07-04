@@ -47,6 +47,12 @@ protocol BoardObject_displayPadNumbers : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_errorOrWarningIssueSize : class {
+  var errorOrWarningIssueSize : Double? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -57,7 +63,8 @@ class BoardObject : EBGraphicManagedObject,
          BoardObject_isPlacedInBoard,
          BoardObject_displayFrontPads,
          BoardObject_displayBackPads,
-         BoardObject_displayPadNumbers {
+         BoardObject_displayPadNumbers,
+         BoardObject_errorOrWarningIssueSize {
 
   //····················································································································
   //   Transient property: issues
@@ -213,6 +220,29 @@ class BoardObject : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: errorOrWarningIssueSize
+  //····················································································································
+
+  let errorOrWarningIssueSize_property = EBTransientProperty_Double ()
+
+  //····················································································································
+
+  var errorOrWarningIssueSize_property_selection : EBSelection <Double> {
+    return self.errorOrWarningIssueSize_property.prop
+  }
+
+  //····················································································································
+
+  var errorOrWarningIssueSize : Double? {
+    switch self.errorOrWarningIssueSize_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -312,6 +342,28 @@ class BoardObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserverOf_mDisplayPadNumbers (self.displayPadNumbers_property)
+  //--- Atomic property: errorOrWarningIssueSize
+    self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mRoot_property.mErrorOrWarningIssueSize_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mRoot_property.mErrorOrWarningIssueSize_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardObject_errorOrWarningIssueSize (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.addEBObserverOf_mErrorOrWarningIssueSize (self.errorOrWarningIssueSize_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -325,6 +377,7 @@ class BoardObject : EBGraphicManagedObject,
     self.mRoot_property.removeEBObserverOf_mDisplayFrontPads (self.displayFrontPads_property)
     self.mRoot_property.removeEBObserverOf_mDisplayBackPads (self.displayBackPads_property)
     self.mRoot_property.removeEBObserverOf_mDisplayPadNumbers (self.displayPadNumbers_property)
+    self.mRoot_property.removeEBObserverOf_mErrorOrWarningIssueSize (self.errorOrWarningIssueSize_property)
   //--- Unregister properties for handling signature
   }
 
@@ -395,6 +448,14 @@ class BoardObject : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.displayPadNumbers_property.mObserverExplorer,
       valueExplorer: &self.displayPadNumbers_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "errorOrWarningIssueSize",
+      idx: self.errorOrWarningIssueSize_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.errorOrWarningIssueSize_property.mObserverExplorer,
+      valueExplorer: &self.errorOrWarningIssueSize_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)

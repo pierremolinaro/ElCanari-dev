@@ -39,7 +39,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
       object: self
     )
   }
-  
+
   //····················································································································
 
   override func ebCleanUp () {
@@ -494,7 +494,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  internal var mIssueBezierPath : NSBezierPath? = nil
+  internal var mIssueBezierPath : EBBezierPath? = nil
   internal var mIssueKind : CanariIssueKind = .error // Any value, not used if mIssueBezierPath is nil
 
   //····················································································································

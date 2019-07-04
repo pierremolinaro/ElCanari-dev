@@ -657,6 +657,13 @@ typealias EBReadOnlyProperty_DefinedCharactersInDevice    = EBReadOnlyValuePrope
 typealias EBTransientProperty_DefinedCharactersInDevice   = EBTransientValueProperty <DefinedCharactersInDevice>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property PadNetDictionary
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_PadNetDictionary    = EBReadOnlyValueProperty <PadNetDictionary>
+typealias EBTransientProperty_PadNetDictionary   = EBTransientValueProperty <PadNetDictionary>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CharacterSegmentListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

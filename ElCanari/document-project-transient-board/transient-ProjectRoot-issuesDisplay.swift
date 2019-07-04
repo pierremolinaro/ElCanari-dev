@@ -13,28 +13,20 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ConnectorInBoard_issues (
-       _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
-       _ self_mComponentPadName : String,
-       _ self_mPadIndex : Int,          
-       _ self_side : ConnectorSide,     
-       _ self_BoardObject_errorOrWarningIssueSize : Double,
-       _ self_mComponent_padNetDictionary : PadNetDictionary?
-) -> CanariIssueArray {
+func transient_ProjectRoot_issuesDisplay (
+       _ self_boardIssues : CanariIssueArray
+) -> EBShape {
 //--- START OF USER ZONE 2
-        var issues = CanariIssueArray ()
-        //Swift.print ("\(self_mComponent_padNetDictionary? [self_mComponentPadName])")
-        if let padNetDictionary = self_mComponent_padNetDictionary,
-           padNetDictionary [self_mComponentPadName] != nil,
-           let descriptor : ComponentPadDescriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName]  {
-          let pad = descriptor.pads [self_mPadIndex]
-          let issueSize = CGFloat (self_BoardObject_errorOrWarningIssueSize)
-          let r = NSRect (x: pad.location.x - issueSize / 2.0, y: pad.location.y - issueSize / 2.0, width: issueSize, height: issueSize)
-          let bp = EBBezierPath (ovalIn: r)
-          let issue = CanariIssue (kind: .warning, message: "Hello", path: bp)
-          issues.append (issue)
+        var shape = EBShape ()
+        for issue in self_boardIssues {
+          let color : NSColor
+          switch issue.kind {
+          case .warning : color = .orange
+          case .error   : color = .red
+          }
+          shape.add (filled: [issue.path], color)
         }
-        return issues
+        return shape
 //--- END OF USER ZONE 2
 }
 

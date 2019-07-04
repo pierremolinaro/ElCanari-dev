@@ -22,6 +22,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
     self.removeEBObserversOf_displayFrontPads_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_displayBackPads_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_displayPadNumbers_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_errorOrWarningIssueSize_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
@@ -30,6 +31,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
     self.addEBObserversOf_displayFrontPads_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_displayBackPads_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_displayPadNumbers_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_errorOrWarningIssueSize_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -420,6 +422,62 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
     for managedObject in inSet {
       self.mObserversOf_displayPadNumbers.apply { (_ observer : EBEvent) in
         managedObject.displayPadNumbers_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'errorOrWarningIssueSize' transient property
+  //····················································································································
+
+  private var mObserversOf_errorOrWarningIssueSize = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_errorOrWarningIssueSize (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_errorOrWarningIssueSize.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.errorOrWarningIssueSize_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_errorOrWarningIssueSize (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_errorOrWarningIssueSize.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.errorOrWarningIssueSize_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_errorOrWarningIssueSize_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_errorOrWarningIssueSize.apply { (_ observer : EBEvent) in
+        managedObject.errorOrWarningIssueSize_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_errorOrWarningIssueSize_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_errorOrWarningIssueSize.apply { (_ observer : EBEvent) in
+        managedObject.errorOrWarningIssueSize_property.removeEBObserver (observer)
       }
     }
   }

@@ -552,7 +552,7 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBGraphicView mBoardView
     $underObjectsDisplay root.boardBackground
-//    $overObjectsDisplay root.connectedPoints
+    $overObjectsDisplay root.issuesDisplay
     $horizontalFlip root.mBoardHorizontalFlip
     $verticalFlip root.mBoardVerticalFlip
     $graphicController #boardObjectsController
@@ -712,6 +712,8 @@ document ProjectDocument root ProjectRoot {
   outlet EBColorWell mDisplayBoardClearanceColorWell $color prefs.boardClearanceColorForBoard {sendContinously:yes} ;
 
   outlet EBColorWell mBoardBackgroundColorWell $color prefs.boardBackgroundColorForBoard {sendContinously:yes} ;
+  
+  outlet EBSlider mErrorOrWarningIssueSlider $doubleValue root.mErrorOrWarningIssueSize {sendContinously : yes} ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

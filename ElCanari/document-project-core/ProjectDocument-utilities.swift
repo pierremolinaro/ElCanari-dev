@@ -446,7 +446,7 @@ struct SlavePadDescriptor : Hashable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct PadLocationAndSize : Hashable {
+struct PadLocationAndSide : Hashable {
   let location : NSPoint
   let side : ConnectorSide
 }
@@ -455,11 +455,15 @@ struct PadLocationAndSize : Hashable {
 
 struct ComponentPadDescriptor : Hashable {
    let padName : String
-   let pads : [PadLocationAndSize] // Master pad, then slave pads (if any)
+   let pads : [PadLocationAndSide] // Master pad, then slave pads (if any)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias ComponentPadDescriptorDictionary = [String : ComponentPadDescriptor]
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias PadNetDictionary = [String : String] // Pad name, associated net
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

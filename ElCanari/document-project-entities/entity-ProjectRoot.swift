@@ -108,6 +108,12 @@ protocol ProjectRoot_mDisplayBackRestrictRectangles : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mErrorOrWarningIssueSize : class {
+  var mErrorOrWarningIssueSize : Double { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mBoardLimitsWidth : class {
   var mBoardLimitsWidth : Int { get }
 }
@@ -336,6 +342,12 @@ protocol ProjectRoot_boardIssues : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_issuesDisplay : class {
+  var issuesDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_borderClearanceBackground : class {
   var borderClearanceBackground : EBShape? { get }
 }
@@ -464,6 +476,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mDisplayBackLayout,
          ProjectRoot_mDisplayFrontRestrictRectangles,
          ProjectRoot_mDisplayBackRestrictRectangles,
+         ProjectRoot_mErrorOrWarningIssueSize,
          ProjectRoot_mBoardLimitsWidth,
          ProjectRoot_mBoardLimitsWidthUnit,
          ProjectRoot_mBoardLimitsSelectedInspector,
@@ -502,6 +515,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_netsDescription,
          ProjectRoot_unplacedPackages,
          ProjectRoot_boardIssues,
+         ProjectRoot_issuesDisplay,
          ProjectRoot_borderClearanceBackground,
          ProjectRoot_boardBoundBox,
          ProjectRoot_boardLimitPointsTop,
@@ -809,6 +823,23 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mDisplayBackRestrictRectangles_property_selection : EBSelection <Bool> { return self.mDisplayBackRestrictRectangles_property.prop }
+
+  //····················································································································
+  //   Atomic property: mErrorOrWarningIssueSize
+  //····················································································································
+
+  let mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 200)
+
+  //····················································································································
+
+  var mErrorOrWarningIssueSize : Double {
+    get { return self.mErrorOrWarningIssueSize_property.propval }
+    set { self.mErrorOrWarningIssueSize_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mErrorOrWarningIssueSize_property_selection : EBSelection <Double> { return self.mErrorOrWarningIssueSize_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsWidth
@@ -1735,6 +1766,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: issuesDisplay
+  //····················································································································
+
+  let issuesDisplay_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var issuesDisplay_property_selection : EBSelection <EBShape> {
+    return self.issuesDisplay_property.prop
+  }
+
+  //····················································································································
+
+  var issuesDisplay : EBShape? {
+    switch self.issuesDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: borderClearanceBackground
   //····················································································································
 
@@ -2188,6 +2242,8 @@ class ProjectRoot : EBManagedObject,
     self.mDisplayFrontRestrictRectangles_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDisplayBackRestrictRectangles
     self.mDisplayBackRestrictRectangles_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mErrorOrWarningIssueSize
+    self.mErrorOrWarningIssueSize_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -2550,6 +2606,28 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mBoardObjects_property.addEBObserverOf_issues (self.boardIssues_property)
+  //--- Atomic property: issuesDisplay
+    self.issuesDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.boardIssues_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.boardIssues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_issuesDisplay (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardIssues_property.addEBObserver (self.issuesDisplay_property)
   //--- Atomic property: borderClearanceBackground
     self.borderClearanceBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3053,6 +3131,7 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.removeEBObserverOf_mComponentValue (self.unplacedPackages_property)
     self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
     self.mBoardObjects_property.removeEBObserverOf_issues (self.boardIssues_property)
+    self.boardIssues_property.removeEBObserver (self.issuesDisplay_property)
     self.mBorderCurves_property.removeEBObserverOf_descriptor (self.borderClearanceBackground_property)
     self.mBoardLimitsWidth_property.removeEBObserver (self.borderClearanceBackground_property)
     self.mBoardClearance_property.removeEBObserver (self.borderClearanceBackground_property)
@@ -3250,6 +3329,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.mDisplayBackRestrictRectangles_property.mObserverExplorer,
       valueExplorer: &self.mDisplayBackRestrictRectangles_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mErrorOrWarningIssueSize",
+      idx: self.mErrorOrWarningIssueSize_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mErrorOrWarningIssueSize_property.mObserverExplorer,
+      valueExplorer: &self.mErrorOrWarningIssueSize_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mBoardLimitsWidth",
@@ -3549,6 +3636,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.boardIssues_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "issuesDisplay",
+      idx: self.issuesDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.issuesDisplay_property.mObserverExplorer,
+      valueExplorer: &self.issuesDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "borderClearanceBackground",
       idx: self.borderClearanceBackground_property.ebObjectIndex,
       y: &y,
@@ -3809,6 +3904,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mDisplayBackRestrictRectangles
     self.mDisplayBackRestrictRectangles_property.mObserverExplorer = nil
     self.mDisplayBackRestrictRectangles_property.mValueExplorer = nil
+  //--- Atomic property: mErrorOrWarningIssueSize
+    self.mErrorOrWarningIssueSize_property.mObserverExplorer = nil
+    self.mErrorOrWarningIssueSize_property.mValueExplorer = nil
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.mObserverExplorer = nil
     self.mBoardLimitsWidth_property.mValueExplorer = nil
@@ -3979,6 +4077,8 @@ class ProjectRoot : EBManagedObject,
     self.mDisplayFrontRestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayFrontRestrictRectangles")
   //--- Atomic property: mDisplayBackRestrictRectangles
     self.mDisplayBackRestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayBackRestrictRectangles")
+  //--- Atomic property: mErrorOrWarningIssueSize
+    self.mErrorOrWarningIssueSize_property.storeIn (dictionary: ioDictionary, forKey:"mErrorOrWarningIssueSize")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -4181,6 +4281,8 @@ class ProjectRoot : EBManagedObject,
     self.mDisplayFrontRestrictRectangles_property.readFrom (dictionary: inDictionary, forKey:"mDisplayFrontRestrictRectangles")
   //--- Atomic property: mDisplayBackRestrictRectangles
     self.mDisplayBackRestrictRectangles_property.readFrom (dictionary: inDictionary, forKey:"mDisplayBackRestrictRectangles")
+  //--- Atomic property: mErrorOrWarningIssueSize
+    self.mErrorOrWarningIssueSize_property.readFrom (dictionary: inDictionary, forKey:"mErrorOrWarningIssueSize")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit

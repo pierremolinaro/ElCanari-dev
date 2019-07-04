@@ -28,10 +28,10 @@ func transient_DeviceRoot_issues (
 //--- START OF USER ZONE 2
        var issues = [CanariIssue] ()
        if self_mTitle == "" {
-         issues.append (CanariIssue (kind: .warning, message: "Title is Empty", path: NSBezierPath (), representativeValue: 0))
+         issues.append (CanariIssue (kind: .warning, message: "Title is Empty"))
        }
        if self_mPrefix == "" {
-         issues.append (CanariIssue (kind: .warning, message: "Prefix is Empty", path: NSBezierPath (), representativeValue: 0))
+         issues.append (CanariIssue (kind: .warning, message: "Prefix is Empty"))
        }else{
          var ok = true
          for unicodeChar in self_mPrefix.unicodeArray {
@@ -44,31 +44,31 @@ func transient_DeviceRoot_issues (
            }
          }
          if !ok {
-           issues.append (CanariIssue (kind: .error, message: "Prefix should contains only lowercase or uppercase ASCII letters", path: NSBezierPath ()))
+           issues.append (CanariIssue (kind: .error, message: "Prefix should contains only lowercase or uppercase ASCII letters"))
          }
        }
        if self_inconsistentPackagePadNameSetsMessage != "" {
-         issues.append (CanariIssue (kind: .error, message: "There are several packages, their pad names are inconsistent", path: NSBezierPath ()))
+         issues.append (CanariIssue (kind: .error, message: "There are several packages, their pad names are inconsistent"))
        }
        if self_inconsistentSymbolNameSetMessage != "" {
-         issues.append (CanariIssue (kind: .error, message: "There are several symbols with the same name", path: NSBezierPath ()))
+         issues.append (CanariIssue (kind: .error, message: "There are several symbols with the same name"))
        }
        if self_unconnectedPins.count == 1 {
-         issues.append (CanariIssue (kind: .warning, message: "1 unconnected pin", path: NSBezierPath ()))
+         issues.append (CanariIssue (kind: .warning, message: "1 unconnected pin"))
        }else if self_unconnectedPins.count > 1 {
-         issues.append (CanariIssue (kind: .warning, message: "\(self_unconnectedPins.count) unconnected pins", path: NSBezierPath ()))
+         issues.append (CanariIssue (kind: .warning, message: "\(self_unconnectedPins.count) unconnected pins"))
        }
        if self_unconnectedPads.count == 1 {
-         issues.append (CanariIssue (kind: .warning, message: "1 unassigned pad", path: NSBezierPath ()))
+         issues.append (CanariIssue (kind: .warning, message: "1 unassigned pad"))
        }else if self_unconnectedPads.count > 1 {
-         issues.append (CanariIssue (kind: .warning, message: "\(self_unconnectedPads.count) unassigned pads", path: NSBezierPath ()))
+         issues.append (CanariIssue (kind: .warning, message: "\(self_unconnectedPads.count) unassigned pads"))
        }
     //--- Check package version
        var idx = 0
        while idx < self_mPackages_mVersion.count {
          if self_mPackages_mVersion [idx].mVersion == 0 {
            let typeName = self_mPackages_mName [idx].mName
-           issues.append (CanariIssue (kind: .warning, message: "Package \(typeName) requires update.", path: NSBezierPath ()))
+           issues.append (CanariIssue (kind: .warning, message: "Package \(typeName) requires update."))
          }
          idx += 1
        }
@@ -77,7 +77,7 @@ func transient_DeviceRoot_issues (
        while idx < self_mSymbolTypes_mVersion.count {
          if self_mSymbolTypes_mVersion [idx].mVersion == 0 {
            let typeName = self_mSymbolTypes_mTypeName [idx].mTypeName
-           issues.append (CanariIssue (kind: .warning, message: "Symbol \(typeName) requires update.", path: NSBezierPath ()))
+           issues.append (CanariIssue (kind: .warning, message: "Symbol \(typeName) requires update."))
          }
          idx += 1
        }

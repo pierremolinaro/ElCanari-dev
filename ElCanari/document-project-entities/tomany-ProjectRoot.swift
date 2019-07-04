@@ -32,6 +32,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mDisplayBackLayout_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mDisplayFrontRestrictRectangles_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mDisplayBackRestrictRectangles_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mErrorOrWarningIssueSize_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsWidth_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsSelectedInspector_fromElementsOfSet (inRemovedSet) // Stored property
@@ -69,6 +70,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_netsDescription_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_unplacedPackages_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardIssues_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_issuesDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_borderClearanceBackground_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardBoundBox_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardLimitPointsTop_fromElementsOfSet (inRemovedSet) // Transient property
@@ -106,6 +108,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mDisplayBackLayout_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mDisplayFrontRestrictRectangles_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mDisplayBackRestrictRectangles_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mErrorOrWarningIssueSize_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsWidth_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsWidthUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsSelectedInspector_toElementsOfSet (inAddedSet) // Stored property
@@ -143,6 +146,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_netsDescription_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_unplacedPackages_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardIssues_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_issuesDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_borderClearanceBackground_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardBoundBox_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardLimitPointsTop_toElementsOfSet (inAddedSet) // Transient property
@@ -1129,6 +1133,63 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mDisplayBackRestrictRectangles_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mErrorOrWarningIssueSize' stored property
+  //····················································································································
+
+  private var mObserversOf_mErrorOrWarningIssueSize = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mErrorOrWarningIssueSize (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mErrorOrWarningIssueSize.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mErrorOrWarningIssueSize_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mErrorOrWarningIssueSize (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mErrorOrWarningIssueSize.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mErrorOrWarningIssueSize_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mErrorOrWarningIssueSize_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mErrorOrWarningIssueSize.apply { (_ observer : EBEvent) in
+        managedObject.mErrorOrWarningIssueSize_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mErrorOrWarningIssueSize_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mErrorOrWarningIssueSize.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mErrorOrWarningIssueSize_property.removeEBObserver (observer)
       }
     }
   }
@@ -3346,6 +3407,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'issuesDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_issuesDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issuesDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issuesDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issuesDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issuesDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issuesDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issuesDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issuesDisplay_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_issuesDisplay.apply { (_ observer : EBEvent) in
+        managedObject.issuesDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issuesDisplay_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_issuesDisplay.apply { (_ observer : EBEvent) in
+        managedObject.issuesDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'borderClearanceBackground' transient property
   //····················································································································
 
@@ -4843,6 +4960,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mDisplayBackLayout (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mDisplayFrontRestrictRectangles (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mDisplayBackRestrictRectangles (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mErrorOrWarningIssueSize (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsWidthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsSelectedInspector (self.mObserverForWritingPreferences)

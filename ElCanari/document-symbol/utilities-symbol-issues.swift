@@ -25,7 +25,7 @@ extension Array where Element == CanariIssue {
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    let bp = NSBezierPath (ovalIn: r)
+    var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .warning, message: "Empty Pin Name", path: bp))
   }
@@ -39,7 +39,7 @@ extension Array where Element == CanariIssue {
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    let bp = NSBezierPath (ovalIn: r)
+    var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .warning, message: "Empty Text", path: bp))
   }
@@ -53,7 +53,7 @@ extension Array where Element == CanariIssue {
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    let bp = NSBezierPath (ovalIn: r)
+    var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Several pin at the same location", path: bp))
   }
@@ -61,7 +61,7 @@ extension Array where Element == CanariIssue {
   //····················································································································
 
   mutating func appendSymbolDuplicatedPinNameIssueAt (rect: NSRect) {
-    let bp = NSBezierPath (rect: rect)
+    var bp = EBBezierPath (rect: rect)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Duplicated Pin Name", path: bp))
   }
@@ -69,7 +69,7 @@ extension Array where Element == CanariIssue {
   //····················································································································
 
   mutating func appendSymbolNoPinNameIssue () {
-    self.append (CanariIssue (kind: .warning, message: "No Pin", path: NSBezierPath ()))
+    self.append (CanariIssue (kind: .warning, message: "No Pin"))
   }
 
   //····················································································································
@@ -81,7 +81,7 @@ extension Array where Element == CanariIssue {
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    let bp = NSBezierPath (ovalIn: r)
+    var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Pin Horizontal Alignment", path: bp))
   }
@@ -95,7 +95,7 @@ extension Array where Element == CanariIssue {
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    let bp = NSBezierPath (ovalIn: r)
+    var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Pin Vertical Alignment", path: bp))
   }
@@ -109,7 +109,7 @@ extension Array where Element == CanariIssue {
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    let bp = NSBezierPath (ovalIn: r)
+    var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Horizontal Alignment", path: bp))
   }
@@ -123,7 +123,7 @@ extension Array where Element == CanariIssue {
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    let bp = NSBezierPath (ovalIn: r)
+    var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Vertical Alignment", path: bp))
   }
@@ -137,7 +137,7 @@ extension Array where Element == CanariIssue {
       width: canariUnitToCocoa (width) + CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    let bp = NSBezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
+    var bp = EBBezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Width Alignment", path: bp))
   }
@@ -151,7 +151,7 @@ extension Array where Element == CanariIssue {
       width: CANARI_ISSUE_HILITE_SIZE,
       height: canariUnitToCocoa (height) + CANARI_ISSUE_HILITE_SIZE
     )
-    let bp = NSBezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
+    var bp = EBBezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Height Alignment", path: bp))
   }

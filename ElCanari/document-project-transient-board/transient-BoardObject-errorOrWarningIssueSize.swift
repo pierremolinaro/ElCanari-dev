@@ -13,28 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ConnectorInBoard_issues (
-       _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
-       _ self_mComponentPadName : String,
-       _ self_mPadIndex : Int,          
-       _ self_side : ConnectorSide,     
-       _ self_BoardObject_errorOrWarningIssueSize : Double,
-       _ self_mComponent_padNetDictionary : PadNetDictionary?
-) -> CanariIssueArray {
+func transient_BoardObject_errorOrWarningIssueSize (
+       _ self_mRoot_mErrorOrWarningIssueSize : Double?
+) -> Double {
 //--- START OF USER ZONE 2
-        var issues = CanariIssueArray ()
-        //Swift.print ("\(self_mComponent_padNetDictionary? [self_mComponentPadName])")
-        if let padNetDictionary = self_mComponent_padNetDictionary,
-           padNetDictionary [self_mComponentPadName] != nil,
-           let descriptor : ComponentPadDescriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName]  {
-          let pad = descriptor.pads [self_mPadIndex]
-          let issueSize = CGFloat (self_BoardObject_errorOrWarningIssueSize)
-          let r = NSRect (x: pad.location.x - issueSize / 2.0, y: pad.location.y - issueSize / 2.0, width: issueSize, height: issueSize)
-          let bp = EBBezierPath (ovalIn: r)
-          let issue = CanariIssue (kind: .warning, message: "Hello", path: bp)
-          issues.append (issue)
-        }
-        return issues
+        return self_mRoot_mErrorOrWarningIssueSize ?? 250.0
 //--- END OF USER ZONE 2
 }
 
