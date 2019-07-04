@@ -46,7 +46,7 @@ func transient_PackageInDevice_selectionDisplay (
       }
       var bp = EBBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
       bp.lineWidth = 0.5
-      shape.addStrokeBezierPathes ([bp], NSColor.cyan)
+      shape.add (stroke: [bp], NSColor.cyan)
     //---
       var transform = AffineTransform ()
       transform.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))

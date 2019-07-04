@@ -51,7 +51,7 @@ func transient_SymbolInstanceInDevice_selectionDisplay (
         bp.move (to: NSPoint (x: r.minX, y: nameOrigin.y))
         bp.line (to: NSPoint (x: r.maxX, y: nameOrigin.y))
         bp.lineWidth = 0.5
-        shape.addStrokeBezierPathes ([bp], NSColor.cyan)
+        shape.add (stroke: [bp], NSColor.cyan)
        }
      //---
        var at = AffineTransform ()

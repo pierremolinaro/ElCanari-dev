@@ -53,7 +53,7 @@ func transient_PackageDimension_objectDisplay (
     bp.lineCapStyle = .butt
   }
   bp.lineWidth = 0.5
-  shape.addStrokeBezierPathes ([bp], NSColor.orange)
+  shape.add (stroke: [bp], NSColor.orange)
   let rotationIfSmall : CGFloat = (length <= (4.0 * arrowSize)) ? .pi : 0.0 ;
 //------- Arrow at first point
   var tr = AffineTransform ()
@@ -79,7 +79,7 @@ func transient_PackageDimension_objectDisplay (
                controlPoint2: CGPoint (x: arrowSize, y: 0.0))
   path2.close ()
   path2.transform (using: tr)
-  shape.addFilledBezierPathes ([path1, path2], prefs_packageDimensionColor)
+  shape.add (filled: [path1, path2], prefs_packageDimensionColor)
 //------- Add dimension text
   let dimensionText = stringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
   let p = CanariPoint (x: self_xDimension + (self_x1 + self_x2) / 2, y: self_yDimension + (self_y1 + self_y2) / 2).cocoaPoint
@@ -88,7 +88,7 @@ func transient_PackageDimension_objectDisplay (
     NSAttributedString.Key.foregroundColor : prefs_packageDimensionColor,
     NSAttributedString.Key.backgroundColor : prefs_packageBackgroundColor
   ]
-  shape.addText (dimensionText, p, textAttributes, .center, .center)
+  shape.add (text: dimensionText, p, textAttributes, .center, .center)
 //---
   return shape
 //--- END OF USER ZONE 2

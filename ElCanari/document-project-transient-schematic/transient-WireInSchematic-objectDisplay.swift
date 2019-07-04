@@ -31,7 +31,7 @@ func transient_WireInSchematic_objectDisplay (
 //          bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0 + 1.0
 //          bp.lineCapStyle = .round
 //          bp.lineJoinStyle = .round
-//          shape.addStrokeBezierPathes ([bp], .white))
+//          shape.add (stroke: [bp], .white))
 //        }
       //---
         do{
@@ -41,7 +41,7 @@ func transient_WireInSchematic_objectDisplay (
           bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTenForSchematic) / 10.0
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          shape.addStrokeBezierPathes ([bp], self_mP1_wireColor ?? .black)
+          shape.add (stroke: [bp], self_mP1_wireColor ?? .black)
         }
         return shape
 //--- END OF USER ZONE 2

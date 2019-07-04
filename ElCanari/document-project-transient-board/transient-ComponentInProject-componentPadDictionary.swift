@@ -31,8 +31,13 @@ func transient_ComponentInProject_componentPadDictionary (
         af.translate (x: -center.x, y: -center.y)
         var result = ComponentPadDescriptorDictionary ()
         for (padName, descriptor) in self_packagePadDictionary {
-          let padLocation = descriptor.center.cocoaPoint
-          let d = ComponentPadDescriptor (padName: padName, padLocation: af.transform (padLocation))
+          var padsLocation = [af.transform (descriptor.center.cocoaPoint)]
+          for slavePad in descriptor.slavePads {
+            padsLocation.append (af.transform (slavePad.center.cocoaPoint))
+//            let p = af.transform (slavePad.center.cocoaPoint)
+//            Swift.print ("Slave \(slavePad.center.cocoaPoint.x) \(slavePad.center.cocoaPoint.y), \(p.x) \(p.y)")
+          }
+          let d = ComponentPadDescriptor (padName: padName, padsLocation: padsLocation)
           result [padName] = d
         }
         return result

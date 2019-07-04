@@ -36,7 +36,7 @@ func transient_SymbolBezierCurve_objectDisplay (
   bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round
   var shape = EBShape ()
-  shape.addStrokeBezierPathes ([bp], prefs_symbolColor)
+  shape.add (stroke: [bp], prefs_symbolColor)
   return shape
 //--- END OF USER ZONE 2
 }

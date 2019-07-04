@@ -34,13 +34,13 @@ func transient_SymbolPin_selectionDisplay (
     bp.line (to: namePoint)
     bp.lineWidth = 0.25
     bp.lineCapStyle = .round
-    shape.addStrokeBezierPathes ([bp], NSColor.cyan)
+    shape.add (stroke: [bp], NSColor.cyan)
   //--- Pin
-    shape.addKnob (at: pinPoint, knobIndex: SYMBOL_PIN_ENDPOINT, .rect, 2.0)
+    shape.add (knobAt:  pinPoint, knobIndex: SYMBOL_PIN_ENDPOINT, .rect, 2.0)
   //--- Name
-    shape.addKnob (at: namePoint, knobIndex: SYMBOL_PIN_LABEL, .circ, 2.0)
+    shape.add (knobAt:  namePoint, knobIndex: SYMBOL_PIN_LABEL, .circ, 2.0)
   //--- Number
-    shape.addKnob (at: numberPoint, knobIndex: SYMBOL_PIN_NUMBER, .circ, 2.0)
+    shape.add (knobAt:  numberPoint, knobIndex: SYMBOL_PIN_NUMBER, .circ, 2.0)
   //---
     return shape
 //--- END OF USER ZONE 2

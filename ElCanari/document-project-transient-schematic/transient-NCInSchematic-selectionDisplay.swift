@@ -54,12 +54,12 @@ func transient_NCInSchematic_selectionDisplay (
         line.lineWidth = 0.5
         line.lineCapStyle = .round
         var shape = EBShape ()
-        shape.addStrokeBezierPathes ([line], .cyan)
+        shape.add (stroke: [line], .cyan)
       //--- Add background
         frameBP.lineWidth = 0.5
-        shape.addFilledBezierPathes ([frameBP], .white)
+        shape.add (filled: [frameBP], .white)
       //--- Add frame
-        shape.addStrokeBezierPathes ([frameBP], .cyan)
+        shape.add (stroke: [frameBP], .cyan)
       //--- Add Text
         shape.add (textShape)
       //---

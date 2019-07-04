@@ -22,8 +22,8 @@ func transient_MergerBoardInstance_selectionDisplay (
   bp.lineWidth = 0.0
   bp.lineJoinStyle = .round
   var shapes = EBShape ()
-  shapes.addFilledBezierPathes ([bp], NSColor.cyan.withAlphaComponent (0.15))
-  shapes.addStrokeBezierPathes ([bp], NSColor.cyan)
+  shapes.add (filled: [bp], NSColor.cyan.withAlphaComponent (0.15))
+  shapes.add (stroke: [bp], NSColor.cyan)
   return shapes
 //--- END OF USER ZONE 2
 }

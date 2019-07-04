@@ -15,11 +15,12 @@ import Cocoa
 
 func transient_ConnectorInBoard_objectDisplay (
        _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
-       _ self_mComponentPadName : String
+       _ self_mComponentPadName : String,      
+       _ self_mPadIndex : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
         if let descriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName]  {
-          let center = descriptor.padLocation
+          let center = descriptor.padsLocation [self_mPadIndex]
           let SIZE_IN_MILS = 50
           let SIZE_IN_COCOA_UNIT = milsToCocoaUnit (CGFloat (SIZE_IN_MILS))
           let r = NSRect (x: center.x - SIZE_IN_COCOA_UNIT / 2.0, y: center.y - SIZE_IN_COCOA_UNIT / 2.0, width: SIZE_IN_COCOA_UNIT, height: SIZE_IN_COCOA_UNIT)

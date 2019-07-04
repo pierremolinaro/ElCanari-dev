@@ -58,9 +58,9 @@ func transient_BoardText_selectionDisplay (
    //     let textShape = EBStrokeBezierPathShape ([textBP], textColor)
       //--- Background
         var shape = EBShape ()
-        shape.addFilledBezierPathes ([frameBP], (textColor == .white) ? .lightGray : .white)
-        shape.addStrokeBezierPathes ([frameBP], .cyan)
-        shape.addStrokeBezierPathes ([textBP], textColor)
+        shape.add (filled: [frameBP], (textColor == .white) ? .lightGray : .white)
+        shape.add (stroke: [frameBP], .cyan)
+        shape.add (stroke: [textBP], textColor)
       //--- Rotation knob
         var knobLine = EBBezierPath ()
         knobLine.move (to : origin)
@@ -68,10 +68,10 @@ func transient_BoardText_selectionDisplay (
         knobLine.lineWidth = 0.5
         knobLine.lineCapStyle = .round
         knobLine.lineJoinStyle = .round
-        shape.addStrokeBezierPathes ([knobLine], .cyan)
-        shape.addKnob (at: rotationKnob, knobIndex: BOARD_TEXT_ROTATION_KNOB, .circ, 2.0)
+        shape.add (stroke: [knobLine], .cyan)
+        shape.add (knobAt:  rotationKnob, knobIndex: BOARD_TEXT_ROTATION_KNOB, .circ, 2.0)
       //--- Knob
-        shape.addKnob (at: origin, knobIndex: BOARD_TEXT_ORIGIN_KNOB, .rect, 2.0)
+        shape.add (knobAt:  origin, knobIndex: BOARD_TEXT_ORIGIN_KNOB, .rect, 2.0)
       //---
         return shape
 //--- END OF USER ZONE 2

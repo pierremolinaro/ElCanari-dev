@@ -16,10 +16,12 @@ class ReadOnlyObject_ConnectorInBoard : ReadOnlyAbstractObjectProperty <Connecto
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     inOldValue?.mComponentPadName_property.removeEBObserversFrom (&self.mObserversOf_mComponentPadName) // Stored property
+    inOldValue?.mPadIndex_property.removeEBObserversFrom (&self.mObserversOf_mPadIndex) // Stored property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mComponentPadName_property.addEBObserversFrom (&self.mObserversOf_mComponentPadName) // Stored property
+    self.mInternalValue?.mPadIndex_property.addEBObserversFrom (&self.mObserversOf_mPadIndex) // Stored property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   }
@@ -90,6 +92,76 @@ class ReadOnlyObject_ConnectorInBoard : ReadOnlyAbstractObjectProperty <Connecto
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mComponentPadName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mPadIndex' stored property
+  //····················································································································
+
+  private var mObserversOf_mPadIndex = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPadIndex_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mPadIndex_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPadIndex (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mPadIndex.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mPadIndex_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPadIndex (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mPadIndex.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mPadIndex_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mPadIndex_toElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
+    for managedObject in inSet {
+      self.mObserversOf_mPadIndex.apply { (_ observer : EBEvent) in
+        managedObject.mPadIndex_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mPadIndex_fromElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
+    self.mObserversOf_mPadIndex.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mPadIndex_property.removeEBObserver (observer)
       }
     }
   }

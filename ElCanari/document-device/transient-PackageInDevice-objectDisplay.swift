@@ -54,21 +54,21 @@ func transient_PackageInDevice_objectDisplay (
         r = r.insetBy (dx: e, dy: 0.0)
       }
       var bp = EBBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
-      shape.addFilledBezierPathes ([bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!)
+      shape.add (filled: [bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!)
       bp.move (to: NSPoint (x: r.minX, y: nameOrigin.y))
       bp.line (to: NSPoint (x: r.maxX, y: nameOrigin.y))
       bp.lineWidth = 0.5
-      shape.addStrokeBezierPathes ([bp], NSColor.lightGray)
+      shape.add (stroke: [bp], NSColor.lightGray)
     //--- Name
       let nameShape = EBShape (text: self_mName, nameOrigin, nameTextAttributes, .center, .above)
       shape.add (nameShape)
     //--- Back side pad
       if self_mRoot_mShowPackageBackPads ?? false {
-        shape.addFilledBezierPathes (self_backSidePadFilledBezierPathArray.array, prefs_backSidePadColor)
+        shape.add (filled: self_backSidePadFilledBezierPathArray.array, prefs_backSidePadColor)
       }
     //--- Top side pad
       if self_mRoot_mShowPackageFrontPads ?? false {
-        shape.addFilledBezierPathes (self_frontSidePadFilledBezierPathArray.array, prefs_frontSidePadColor)
+        shape.add (filled: self_frontSidePadFilledBezierPathArray.array, prefs_frontSidePadColor)
       }
     //--- Pad number
       if self_mRoot_mShowPackagePadNumbers ?? false {
@@ -84,7 +84,7 @@ func transient_PackageInDevice_objectDisplay (
         bp.append (self_mStrokeBezierPath)
         bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
         bp.lineCapStyle = .round
-        shape.addStrokeBezierPathes ([bp], prefs_packageColor)
+        shape.add (stroke: [bp], prefs_packageColor)
       }
     //---
       var transform = AffineTransform ()

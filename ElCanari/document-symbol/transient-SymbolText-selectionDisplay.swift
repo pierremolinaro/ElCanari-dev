@@ -29,8 +29,8 @@ func transient_SymbolText_selectionDisplay (
     let textShape = EBShape (text: self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment(), .center)
     var bp = EBBezierPath (rect: textShape.boundingBox)
     bp.lineWidth = 0.25
-    shape.addStrokeBezierPathes ([bp], NSColor.cyan)
-    shape.addKnob (at: origin, knobIndex: 0, .rect, 2.0)
+    shape.add (stroke: [bp], NSColor.cyan)
+    shape.add (knobAt:  origin, knobIndex: 0, .rect, 2.0)
     return shape
 //--- END OF USER ZONE 2
 }

@@ -46,14 +46,14 @@ func transient_BorderCurve_objectDisplay (
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
           bp.lineWidth = canariUnitToCocoa (width)
-          result.addStrokeBezierPathes ([bp], prefs_boardLimitsColorForBoard)
+          result.add (stroke: [bp], prefs_boardLimitsColorForBoard)
         //---
           let s = BOARD_LIMITS_KNOB_SIZE / 2.0
           let r1 = NSRect (x: p1.x - s / 2.0, y: p1.y - s / 2.0, width: s, height: s)
           bp = EBBezierPath (ovalIn: r1)
           let r2 = NSRect (x: p2.x - s / 2.0, y: p2.y - s / 2.0, width: s, height: s)
           bp.appendOval (in: r2)
-          result.addFilledBezierPathes ([bp], .orange)
+          result.add (filled: [bp], .orange)
         //---
 //          let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1).cocoaPoint
 //          let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2).cocoaPoint
@@ -61,7 +61,7 @@ func transient_BorderCurve_objectDisplay (
 //          bp = EBBezierPath (ovalIn: rp1)
 //          let rp2 = NSRect (x: cp2.x - s / 2.0, y: cp2.y - s / 2.0, width: s, height: s)
 //          bp.appendOval (in: rp2)
-//          result.addFilledBezierPathes ([bp], .red))
+//          result.add (filled: [bp], .red))
         }
         return result
 //--- END OF USER ZONE 2

@@ -48,7 +48,7 @@ func transient_BoardRestrictRectangle_objectDisplay (
             bp.relativeLine (to: NSPoint (x: lg, y: -lg))
             y -= 10.0
           }
-          shape.addStrokeBezierPathes ([bp], prefs_backSideRestrictRectangleColorForBoard, clip: rectBP)
+          shape.add (stroke: [bp], prefs_backSideRestrictRectangleColorForBoard, clip: rectBP)
         }
       //--- Front layer
         if self_mIsInFrontLayer {
@@ -68,7 +68,7 @@ func transient_BoardRestrictRectangle_objectDisplay (
             bp.relativeLine (to: NSPoint (x: lg, y: lg))
             y += 10.0
           }
-          shape.addStrokeBezierPathes ([bp], prefs_frontSideRestrictRectangleColorForBoard, clip: rectBP)
+          shape.add (stroke: [bp], prefs_frontSideRestrictRectangleColorForBoard, clip: rectBP)
         }
       //--- Append rect frame
         do{
@@ -82,7 +82,7 @@ func transient_BoardRestrictRectangle_objectDisplay (
           }else{
             frameColor = prefs_backSideRestrictRectangleColorForBoard
           }
-          shape.addStrokeBezierPathes ([bp], frameColor)
+          shape.add (stroke: [bp], frameColor)
         }
       //---
         return shape

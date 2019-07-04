@@ -31,7 +31,7 @@ struct EBShape : Hashable {
         _ inColor : NSColor?,
         knobIndex inKnobIndex : Int? = nil,
         clip inClipBezierPath : EBBezierPath? = nil) {
-    self.addFilledBezierPathes (inFilledPaths, inColor, knobIndex: inKnobIndex, clip: inClipBezierPath)
+    self.add (filled: inFilledPaths, inColor, knobIndex: inKnobIndex, clip: inClipBezierPath)
   }
 
   //····················································································································
@@ -40,7 +40,7 @@ struct EBShape : Hashable {
         _ inColor : NSColor,
         knobIndex inKnobIndex : Int? = nil,
         clip inClipBezierPath : EBBezierPath? = nil) {
-    self.addStrokeBezierPathes (inStrokePaths, inColor, knobIndex: inKnobIndex, clip: inClipBezierPath)
+    self.add (stroke: inStrokePaths, inColor, knobIndex: inKnobIndex, clip: inClipBezierPath)
   }
 
   //····················································································································
@@ -50,7 +50,7 @@ struct EBShape : Hashable {
         _ inTextAttributes : [NSAttributedString.Key : Any],
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment) {
-    self.addText (inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment)
+    self.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment)
   }
 
   //····················································································································
@@ -61,7 +61,7 @@ struct EBShape : Hashable {
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment,
         knobIndex inKnobIndex : Int) {
-    self.addTextKnob (inString, inOrigin, inFont, inHorizontalAlignment, inVerticalAlignment, inKnobIndex)
+    self.add (textKnob: inString, inOrigin, inFont, inHorizontalAlignment, inVerticalAlignment, knobIndex: inKnobIndex)
   }
 
   //····················································································································
@@ -74,13 +74,11 @@ struct EBShape : Hashable {
   }
 
   //····················································································································
-  //  addFilledBezierPathes
-  //····················································································································
 
-  mutating func addFilledBezierPathes (_ inFilledPaths : [EBBezierPath],
-                                       _ inColor : NSColor?,
-                                       knobIndex inKnobIndex : Int? = nil,
-                                       clip inClipBezierPath : EBBezierPath? = nil) {
+  mutating func add (filled inFilledPaths : [EBBezierPath],
+                     _ inColor : NSColor?,
+                     knobIndex inKnobIndex : Int? = nil,
+                     clip inClipBezierPath : EBBezierPath? = nil) {
     var nonEmptyBezierPathes = [EBBezierPath] ()
     for path in inFilledPaths {
       if !path.isEmpty {
@@ -95,13 +93,11 @@ struct EBShape : Hashable {
   }
 
   //····················································································································
-  //  addStrokeBezierPathes
-  //····················································································································
 
-  mutating func addStrokeBezierPathes (_ inStrokePathes : [EBBezierPath],
-                                       _ inColor : NSColor,
-                                       knobIndex inKnobIndex : Int? = nil,
-                                       clip inClipBezierPath : EBBezierPath? = nil) {
+  mutating func add (stroke inStrokePathes : [EBBezierPath],
+                     _ inColor : NSColor,
+                     knobIndex inKnobIndex : Int? = nil,
+                     clip inClipBezierPath : EBBezierPath? = nil) {
     var filledBezierPathes = [EBBezierPath] ()
     for path in inStrokePathes {
       if !path.isEmpty, path.lineWidth > 0.0 {
@@ -116,10 +112,8 @@ struct EBShape : Hashable {
   }
 
   //····················································································································
-  //  Add Knob
-  //····················································································································
 
-  mutating func addKnob (at inPoint: NSPoint, knobIndex inKobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CGFloat) {
+  mutating func add (knobAt inPoint: NSPoint, knobIndex inKobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CGFloat) {
     let r = NSRect (x: inPoint.x - inKnobSize / 2.0, y: inPoint.y - inKnobSize / 2.0, width: inKnobSize, height: inKnobSize)
     var bp : EBBezierPath
     switch inKind {
@@ -136,18 +130,16 @@ struct EBShape : Hashable {
     bp.lineWidth = 0.1
     bp.lineCapStyle = .round
     bp.lineJoinStyle = .round
-    self.addStrokeBezierPathes ([bp], .black)
+    self.add (stroke: [bp], .black)
   }
 
   //····················································································································
-  //  Add Text
-  //····················································································································
 
-  mutating func addText (_ inString: String,
-                         _ inOrigin : CGPoint,
-                         _ inTextAttributes : [NSAttributedString.Key : Any],
-                         _ inHorizontalAlignment : EBTextHorizontalAlignment,
-                         _ inVerticalAlignment : EBTextVerticalAlignment) {
+  mutating func add (text inString: String,
+                     _ inOrigin : CGPoint,
+                     _ inTextAttributes : [NSAttributedString.Key : Any],
+                     _ inHorizontalAlignment : EBTextHorizontalAlignment,
+                     _ inVerticalAlignment : EBTextVerticalAlignment) {
     if inString != "" {
     //--- Forecolor
       let textColor : NSColor
@@ -170,7 +162,12 @@ struct EBShape : Hashable {
         let e = EBShapeElement ([bp], backColor, nil, nil)
         self.mElements.append (e)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
-      }
+      }else{
+        let bp = EBBezierPath (rect: filledBezierPath.bounds)
+        let e = EBShapeElement ([bp], nil, nil, nil)
+        self.mElements.append (e)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+     }
     //--- Append text
       let e = EBShapeElement ([filledBezierPath], textColor, nil, nil)
       self.mElements.append (e)
@@ -182,12 +179,12 @@ struct EBShape : Hashable {
   //  Text knob
   //····················································································································
 
-  mutating func addTextKnob (_ inString : String,
-                             _ inOrigin : CGPoint,
-                             _ inFont : NSFont,
-                             _ inHorizontalAlignment : EBTextHorizontalAlignment,
-                             _ inVerticalAlignment : EBTextVerticalAlignment,
-                             _ inKnobIndex : Int) {
+  mutating func add (textKnob inString : String,
+                     _ inOrigin : CGPoint,
+                     _ inFont : NSFont,
+                     _ inHorizontalAlignment : EBTextHorizontalAlignment,
+                     _ inVerticalAlignment : EBTextVerticalAlignment,
+                     knobIndex inKnobIndex : Int) {
     let string = (inString == "") ? " " : inString
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : inFont

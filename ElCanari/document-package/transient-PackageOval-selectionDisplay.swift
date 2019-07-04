@@ -43,11 +43,11 @@ func transient_PackageOval_selectionDisplay (
     bp = EBBezierPath (ovalIn: r)
   }
   bp.lineWidth = 0.25
-  shape.addStrokeBezierPathes ([bp], NSColor.cyan)
-  shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y), knobIndex: PACKAGE_OVAL_BOTTOM, .circ, 2.0)
-  shape.addKnob (at: CGPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_LEFT, .circ, 2.0)
-  shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y + height), knobIndex: PACKAGE_OVAL_TOP, .circ, 2.0)
-  shape.addKnob (at: CGPoint (x: x + width, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_RIGHT, .circ, 2.0)
+  shape.add (stroke: [bp], NSColor.cyan)
+  shape.add (knobAt:  CGPoint (x: x + width / 2.0, y: y), knobIndex: PACKAGE_OVAL_BOTTOM, .circ, 2.0)
+  shape.add (knobAt:  CGPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_LEFT, .circ, 2.0)
+  shape.add (knobAt:  CGPoint (x: x + width / 2.0, y: y + height), knobIndex: PACKAGE_OVAL_TOP, .circ, 2.0)
+  shape.add (knobAt:  CGPoint (x: x + width, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_RIGHT, .circ, 2.0)
   return shape
 //--- END OF USER ZONE 2
 }

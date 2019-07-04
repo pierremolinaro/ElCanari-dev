@@ -321,19 +321,19 @@ struct MasterPadDescriptor : Hashable {
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if let color = frontPadColor {
-        ioShape.addFilledBezierPathes ([bp], color)
+        ioShape.add (filled: [bp], color)
       }else if let color = backPadColor {
-        ioShape.addFilledBezierPathes ([bp], color)
+        ioShape.add (filled: [bp], color)
       }
     case .surface :
       switch side {
       case .front :
         if let color = frontPadColor {
-          ioShape.addFilledBezierPathes ([bp], color)
+          ioShape.add (filled: [bp], color)
         }
       case .back :
         if let color = backPadColor {
-          ioShape.addFilledBezierPathes ([bp], color)
+          ioShape.add (filled: [bp], color)
         }
       }
     }
@@ -404,30 +404,30 @@ struct SlavePadDescriptor : Hashable {
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if let color = frontPadColor {
-        ioShape.addFilledBezierPathes ([bp], color)
+        ioShape.add (filled: [bp], color)
       }else if let color = backPadColor {
-        ioShape.addFilledBezierPathes ([bp], color)
+        ioShape.add (filled: [bp], color)
       }
     case .topSide :
       switch side {
       case .front :
         if let color = frontPadColor {
-          ioShape.addFilledBezierPathes ([bp], color)
+          ioShape.add (filled: [bp], color)
         }
       case .back :
         if let color = backPadColor {
-          ioShape.addFilledBezierPathes ([bp], color)
+          ioShape.add (filled: [bp], color)
         }
       }
     case .bottomSide :
       switch side {
       case .front :
         if let color = backPadColor {
-          ioShape.addFilledBezierPathes ([bp], color)
+          ioShape.add (filled: [bp], color)
         }
       case .back :
         if let color = frontPadColor {
-          ioShape.addFilledBezierPathes ([bp], color)
+          ioShape.add (filled: [bp], color)
         }
       }
     }
@@ -448,7 +448,8 @@ struct SlavePadDescriptor : Hashable {
 
 struct ComponentPadDescriptor : Hashable {
    let padName : String
-   let padLocation : NSPoint
+//   let masterPadLocation : NSPoint
+   let padsLocation : [NSPoint]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -26,7 +26,7 @@ func transient_SlavePadInDevice_padNumberDisplay (
         NSAttributedString.Key.foregroundColor : prefs_padNumberColor
       ]
       var shape = EBShape ()
-      shape.addText (
+      shape.add (text: 
         "(\(self_mMasterPad_mName ?? ""))",
         CanariPoint (x: self_mCenterX, y: self_mCenterY).cocoaPoint,
         textAttributes,

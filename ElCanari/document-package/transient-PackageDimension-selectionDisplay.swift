@@ -38,10 +38,10 @@ func transient_PackageDimension_selectionDisplay (
 //--- Text
   let dimensionText = stringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
   var shape = EBShape ()
-  shape.addStrokeBezierPathes ([bp], NSColor.cyan)
-  shape.addKnob (at: p1, knobIndex: PACKAGE_DIMENSION_ENDPOINT_1, .circ, 2.0)
-  shape.addKnob (at: p2, knobIndex: PACKAGE_DIMENSION_ENDPOINT_2, .circ, 2.0)
-  shape.addTextKnob (dimensionText, pText, prefs_dimensionFont, .center, .center, PACKAGE_DIMENSION_TEXT)
+  shape.add (stroke: [bp], NSColor.cyan)
+  shape.add (knobAt:  p1, knobIndex: PACKAGE_DIMENSION_ENDPOINT_1, .circ, 2.0)
+  shape.add (knobAt:  p2, knobIndex: PACKAGE_DIMENSION_ENDPOINT_2, .circ, 2.0)
+  shape.add (textKnob: dimensionText, pText, prefs_dimensionFont, .center, .center, knobIndex: PACKAGE_DIMENSION_TEXT)
 //---
   return shape
 //--- END OF USER ZONE 2

@@ -28,9 +28,9 @@ func transient_SymbolSegment_selectionDisplay (
   bp.lineWidth = 0.25
   bp.lineCapStyle = .round
   var shape = EBShape ()
-  shape.addStrokeBezierPathes ([bp], NSColor.cyan)
-  shape.addKnob (at: p1, knobIndex: SYMBOL_SEGMENT_ENDPOINT_1, .circ, 2.0)
-  shape.addKnob (at: p2, knobIndex: SYMBOL_SEGMENT_ENDPOINT_2, .circ, 2.0)
+  shape.add (stroke: [bp], NSColor.cyan)
+  shape.add (knobAt:  p1, knobIndex: SYMBOL_SEGMENT_ENDPOINT_1, .circ, 2.0)
+  shape.add (knobAt:  p2, knobIndex: SYMBOL_SEGMENT_ENDPOINT_2, .circ, 2.0)
   return shape
 //--- END OF USER ZONE 2
 }

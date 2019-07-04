@@ -5,9 +5,10 @@
 graphic entity ConnectorInBoard : BoardObject {
   toOne ComponentInProject mComponent inverse toMany mConnectors ; // nil if not connected to a component pad
   property String mComponentPadName default "" ; // "" if not connected to a component pad
+  property Int mPadIndex default 0 ; // 0 -> master pad, > 0 : slave pad
 
  override transient EBShape objectDisplay dependsFrom
-    self.mComponent.one.componentPadDictionary, self.mComponentPadName
+    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex
   ;
 
   override transient EBShape selectionDisplay dependsFrom

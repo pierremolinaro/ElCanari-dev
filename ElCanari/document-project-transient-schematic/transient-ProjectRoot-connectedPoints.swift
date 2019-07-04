@@ -33,10 +33,10 @@ func transient_ProjectRoot_connectedPoints (
         if !warningPath.isEmpty {
           // Color is F6C050
           let myOrange = NSColor (red: 0.961, green: 0.750, blue: 0.3125, alpha: 1.0)
-          shape.addFilledBezierPathes ([warningPath], myOrange)
+          shape.add (filled: [warningPath], myOrange)
         }
         if !errorPath.isEmpty {
-          shape.addFilledBezierPathes ([errorPath], .red)
+          shape.add (filled: [errorPath], .red)
         }
       //--- Connected points
         if let connectedPointShape = self_mSelectedSheet_connectedPoints {

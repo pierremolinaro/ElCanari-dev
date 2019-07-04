@@ -390,8 +390,8 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
         var af = AffineTransform ()
         af.scale (x: horizontalFlip, y: verticalFlip)
         var symbolShape = EBShape ()
-        symbolShape.addFilledBezierPathes ([EBBezierPath (filledBP)], g_Preferences!.symbolColorForSchematic)
-        symbolShape.addStrokeBezierPathes ([EBBezierPath (strokeBP)], g_Preferences!.symbolColorForSchematic)
+        symbolShape.add (filled: [EBBezierPath (filledBP)], g_Preferences!.symbolColorForSchematic)
+        symbolShape.add (stroke: [EBBezierPath (strokeBP)], g_Preferences!.symbolColorForSchematic)
         let scaledSymbolShape = symbolShape.transformed (by: af)
         result = buildPDFimage (frame: scaledSymbolShape.boundingBox, shape: scaledSymbolShape)
       }
@@ -493,13 +493,13 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
       self.boardObjectsController.setSelection ([component])
       if let padDictionary = component.componentPadDictionary {
         for (padName, descriptor) in padDictionary {
-          let newConnector = ConnectorInBoard (self.ebUndoManager)
-          newConnector.mComponent = component
-          newConnector.mComponentPadName = padName
-          self.rootObject.mBoardObjects.append (newConnector)
-//          for slavePad in descriptor.mSlavePads {
-//
-//          }
+          for idx in 0 ..< descriptor.padsLocation.count {
+            let newConnector = ConnectorInBoard (self.ebUndoManager)
+            newConnector.mComponent = component
+            newConnector.mComponentPadName = padName
+            newConnector.mPadIndex = idx
+            self.rootObject.mBoardObjects.append (newConnector)
+          }
         }
       }
     }

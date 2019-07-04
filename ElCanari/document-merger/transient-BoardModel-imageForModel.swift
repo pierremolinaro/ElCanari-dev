@@ -82,86 +82,86 @@ func transient_BoardModel_imageForModel (
   var shapes = EBShape ()
 //--- Background
   let backRect = NSRect (x:0.0, y:0.0, width: canariUnitToCocoa(self_modelWidth), height: canariUnitToCocoa(self_modelHeight))
-  shapes.addFilledBezierPathes ([EBBezierPath (rect:backRect)], prefs_mergerColorBackground)
+  shapes.add (filled: [EBBezierPath (rect:backRect)], prefs_mergerColorBackground)
 //--- Back Legend Lines
   if (prefs_mergerModelViewDisplayBackLegendLines) {
-    shapes.addStrokeBezierPathes (self_backLegendLinesBezierPaths.array, prefs_mergerColorBackLegendLines)
+    shapes.add (stroke: self_backLegendLinesBezierPaths.array, prefs_mergerColorBackLegendLines)
   }
 //--- Back Component Values
   if (prefs_mergerModelViewDisplayBackComponentValues) {
-    shapes.addStrokeBezierPathes (self_backComponentValuesBezierPaths.array, prefs_mergerColorBackComponentValues)
+    shapes.add (stroke: self_backComponentValuesBezierPaths.array, prefs_mergerColorBackComponentValues)
   }
 //--- Back Component Names
   if (prefs_mergerModelViewDisplayBackComponentNames) {
-    shapes.addStrokeBezierPathes (self_backComponentNamesBezierPaths.array, prefs_mergerColorBackComponentNames)
+    shapes.add (stroke: self_backComponentNamesBezierPaths.array, prefs_mergerColorBackComponentNames)
   }
 //--- Back Legend Texts
   if (prefs_mergerModelViewDisplayBackLegendTexts) {
-    shapes.addStrokeBezierPathes (self_backLegendTextsBezierPaths.array, prefs_mergerColorBackLegendTexts)
+    shapes.add (stroke: self_backLegendTextsBezierPaths.array, prefs_mergerColorBackLegendTexts)
   }
 //--- Back Packages
   if (prefs_mergerModelViewDisplayBackPackages) {
-    shapes.addStrokeBezierPathes (self_backPackagesBezierPaths.array, prefs_mergerColorBackPackages)
+    shapes.add (stroke: self_backPackagesBezierPaths.array, prefs_mergerColorBackPackages)
   }
 //--- Back Layout Texts
   if (prefs_mergerModelViewDisplayBackLayoutTexts) {
-    shapes.addStrokeBezierPathes (self_backLayoutTextsBezierPaths.array, prefs_mergerColorBackLayoutTexts)
+    shapes.add (stroke: self_backLayoutTextsBezierPaths.array, prefs_mergerColorBackLayoutTexts)
   }
 //--- Back tracks
   if prefs_mergerModelViewDisplayBackTracks {
-    shapes.addStrokeBezierPathes (self_backTracksBezierPaths.array, prefs_mergerColorBackTracks)
+    shapes.add (stroke: self_backTracksBezierPaths.array, prefs_mergerColorBackTracks)
   }
 //--- Back pads
   if (prefs_mergerModelViewDisplayBackPads) {
-    shapes.addFilledBezierPathes (self_backPadsBezierPaths.array, prefs_mergerColorBackPads)
+    shapes.add (filled: self_backPadsBezierPaths.array, prefs_mergerColorBackPads)
   }
 //--- Front tracks
   if prefs_mergerModelViewDisplayFrontTracks {
-    shapes.addStrokeBezierPathes (self_frontTracksBezierPaths.array, prefs_mergerColorFrontTracks)
+    shapes.add (stroke: self_frontTracksBezierPaths.array, prefs_mergerColorFrontTracks)
   }
 //--- Front layout texts
   if (prefs_mergerModelViewDisplayFrontLayoutTexts) {
-    shapes.addStrokeBezierPathes (self_frontLayoutTextsBezierPaths.array, prefs_mergerColorFrontLayoutTexts)
+    shapes.add (stroke: self_frontLayoutTextsBezierPaths.array, prefs_mergerColorFrontLayoutTexts)
   }
 //--- Front Legend Lines
   if (prefs_mergerModelViewDisplayFrontLegendLines) {
-    shapes.addStrokeBezierPathes (self_frontLegendLinesBezierPaths.array, prefs_mergerColorFrontLegendLines)
+    shapes.add (stroke: self_frontLegendLinesBezierPaths.array, prefs_mergerColorFrontLegendLines)
   }
 //--- Front Legend texts
   if (prefs_mergerModelViewDisplayFrontLegendTexts) {
-    shapes.addStrokeBezierPathes (self_frontLegendTextsBezierPaths.array, prefs_mergerColorFrontLegendTexts)
+    shapes.add (stroke: self_frontLegendTextsBezierPaths.array, prefs_mergerColorFrontLegendTexts)
   }
 //--- Front Packages
   if (prefs_mergerModelViewDisplayFrontPackages) {
-    shapes.addStrokeBezierPathes (self_frontPackagesBezierPaths.array, prefs_mergerColorFrontPackages)
+    shapes.add (stroke: self_frontPackagesBezierPaths.array, prefs_mergerColorFrontPackages)
   }
 //--- Front Component Names
   if (prefs_mergerModelViewDisplayFrontComponentNames) {
-    shapes.addStrokeBezierPathes (self_frontComponentNamesBezierPaths.array, prefs_mergerColorFrontComponentNames)
+    shapes.add (stroke: self_frontComponentNamesBezierPaths.array, prefs_mergerColorFrontComponentNames)
   }
 //--- Front Component Values
   if (prefs_mergerModelViewDisplayFrontComponentValues) {
-    shapes.addStrokeBezierPathes (self_frontComponentValuesBezierPaths.array, prefs_mergerColorFrontComponentValues)
+    shapes.add (stroke: self_frontComponentValuesBezierPaths.array, prefs_mergerColorFrontComponentValues)
   }
 //--- Front pads
   if (prefs_mergerModelViewDisplayFrontPads) {
-    shapes.addFilledBezierPathes (self_frontPadsBezierPaths.array, prefs_mergerColorFrontPads)
+    shapes.add (filled: self_frontPadsBezierPaths.array, prefs_mergerColorFrontPads)
   }
 //--- Internal Board limits
   if prefs_mergerModelViewDisplayInternalBoardsLimits {
-    shapes.addStrokeBezierPathes (self_internalBoardsLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits)
+    shapes.add (stroke: self_internalBoardsLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits)
   }
 //--- Board limits
   if prefs_mergerModelViewDisplayBoardLimits {
-    shapes.addStrokeBezierPathes (self_boardLimitsBezierPaths.array, prefs_mergerColorBoardLimits)
+    shapes.add (stroke: self_boardLimitsBezierPaths.array, prefs_mergerColorBoardLimits)
   }
 //--- Vias
   if (prefs_mergerModelViewDisplayVias) {
-    shapes.addFilledBezierPathes (self_viasBezierPaths.array, prefs_mergerColorVias)
+    shapes.add (filled: self_viasBezierPaths.array, prefs_mergerColorVias)
   }
 //--- Holes
   if (prefs_mergerModelViewDisplayHoles) {
-    shapes.addStrokeBezierPathes (self_holesBezierPaths.array, prefs_mergerColorHoles)
+    shapes.add (stroke: self_holesBezierPaths.array, prefs_mergerColorHoles)
   }
 //---
   return shapes

@@ -44,7 +44,7 @@ func transient_PackagePad_selectionDisplay (
     bp.lineWidth = 0.25
     bp.lineCapStyle = .round
     var shape = EBShape ()
-    shape.addStrokeBezierPathes ([bp], NSColor.cyan)
+    shape.add (stroke: [bp], NSColor.cyan)
     return shape
 //--- END OF USER ZONE 2
 }

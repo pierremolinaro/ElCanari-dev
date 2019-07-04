@@ -38,8 +38,8 @@ func transient_LabelInSchematic_selectionDisplay (
           af.translate (x: p.x, y: p.y)
           af.rotate (byDegrees: CGFloat (self_mOrientation.rawValue) * 90.0)
         //---
-          shape.addStrokeBezierPathes ([bp.transformed (by: af)], .cyan)
-          shape.addKnob (at: p, knobIndex: 0, .rect, SCHEMATIC_KNOB_SIZE)
+          shape.add (stroke: [bp.transformed (by: af)], .cyan)
+          shape.add (knobAt:  p, knobIndex: 0, .rect, SCHEMATIC_KNOB_SIZE)
         }
         return shape
 //--- END OF USER ZONE 2

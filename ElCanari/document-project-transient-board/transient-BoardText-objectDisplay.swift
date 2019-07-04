@@ -59,7 +59,7 @@ func transient_BoardText_objectDisplay (
       //--- Transparent background
         let backgroundBP = EBBezierPath (rect: textShape.boundingBox)
         var shape = EBShape ()
-        shape.addFilledBezierPathes ([backgroundBP], nil)
+        shape.add (filled: [backgroundBP], nil)
         shape.add (textShape)
       //---
         return shape

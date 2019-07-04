@@ -33,9 +33,11 @@ func transient_ComponentInProject_selectionDisplay (
        _ self_mValueFont_descriptor : BoardFontDescriptor?,
        _ self_mValueFontSize : Double,              
        _ self_mValueRotation : Int,                 
-       _ self_mComponentValue : String
+       _ self_mComponentValue : String,             
+       _ prefs_packageDrawingWidthMultpliedByTenForBoard : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
+      let lineWidth = CGFloat (prefs_packageDrawingWidthMultpliedByTenForBoard) / 20.0
       let rPadsCenter = self_packagePadDictionary.padsRect.center.cocoaPoint
       let absoluteCenter = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
       let knobDx = (self_mSide == .back) ? -COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE ;
@@ -44,14 +46,14 @@ func transient_ComponentInProject_selectionDisplay (
       var strokeBezierPath = EBBezierPath (self_strokeBezierPath)
       strokeBezierPath.move (to: rPadsCenter)
       strokeBezierPath.line (to: rotationKnobLocation)
-      strokeBezierPath.lineWidth = 0.5
+      strokeBezierPath.lineWidth = lineWidth
       strokeBezierPath.lineCapStyle = .round
       strokeBezierPath.lineJoinStyle = .round
-      rotatedShape.addStrokeBezierPathes ([strokeBezierPath], .cyan)
+      rotatedShape.add (stroke: [strokeBezierPath], .cyan)
     //--- Knobs
       var rotatedKnobs = EBShape ()
-      rotatedKnobs.addKnob (at: rPadsCenter, knobIndex: COMPONENT_PACKAGE_CENTER_KNOB, .rect, 2.0)
-      rotatedKnobs.addKnob (at: rotationKnobLocation, knobIndex: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, 2.0)
+      rotatedKnobs.add (knobAt:  rPadsCenter, knobIndex: COMPONENT_PACKAGE_CENTER_KNOB, .rect, 2.0)
+      rotatedKnobs.add (knobAt:  rotationKnobLocation, knobIndex: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, 2.0)
     //--- Name
       var nonRotatedShape = EBShape ()
       if self_mNameIsVisibleInBoard, let fontDescriptor = self_mNameFont_descriptor {
@@ -71,17 +73,17 @@ func transient_ComponentInProject_selectionDisplay (
         var bp = EBBezierPath ()
         bp.move (to: absoluteCenter)
         bp.line (to: origin)
-        bp.lineWidth = 0.5
+        bp.lineWidth = lineWidth
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        nonRotatedShape.addStrokeBezierPathes ([bp], .cyan)
+        nonRotatedShape.add (stroke: [bp], .cyan)
         bp = frameBP
         bp.lineWidth = 0.5
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        nonRotatedShape.addFilledBezierPathes ([bp], .white, knobIndex: COMPONENT_PACKAGE_NAME_KNOB)
-        nonRotatedShape.addStrokeBezierPathes ([bp], .black)
-        nonRotatedShape.addStrokeBezierPathes ([textBP], .black)
+        nonRotatedShape.add (filled: [bp], .white, knobIndex: COMPONENT_PACKAGE_NAME_KNOB)
+        nonRotatedShape.add (stroke: [bp], .black)
+        nonRotatedShape.add (stroke: [textBP], .black)
       }
     //--- Value
       if self_mValueIsVisibleInBoard, let fontDescriptor = self_mValueFont_descriptor {
@@ -101,17 +103,17 @@ func transient_ComponentInProject_selectionDisplay (
         var bp = EBBezierPath ()
         bp.move (to: absoluteCenter)
         bp.line (to: origin)
-        bp.lineWidth = 0.5
+        bp.lineWidth = lineWidth
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        nonRotatedShape.addStrokeBezierPathes ([bp], .cyan)
+        nonRotatedShape.add (stroke: [bp], .cyan)
         bp = frameBP
         bp.lineWidth = 0.5
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        nonRotatedShape.addFilledBezierPathes ([bp], .white, knobIndex: COMPONENT_PACKAGE_VALUE_KNOB)
-        nonRotatedShape.addStrokeBezierPathes ([bp], .black)
-        nonRotatedShape.addStrokeBezierPathes ([textBP], .black)
+        nonRotatedShape.add (filled: [bp], .white, knobIndex: COMPONENT_PACKAGE_VALUE_KNOB)
+        nonRotatedShape.add (stroke: [bp], .black)
+        nonRotatedShape.add (stroke: [textBP], .black)
       }
     //---
       var af = AffineTransform ()

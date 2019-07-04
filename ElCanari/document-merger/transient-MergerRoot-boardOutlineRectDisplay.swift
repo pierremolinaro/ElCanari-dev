@@ -27,7 +27,7 @@ func transient_MergerRoot_boardOutlineRectDisplay (
       var bp = EBBezierPath (rect: r.insetBy (dx: limitWidth / 2.0, dy: limitWidth / 2.0))
       bp.lineWidth = limitWidth
       bp.lineJoinStyle = .round
-      shape.addStrokeBezierPathes ([bp], prefs_mergerColorBoardLimits)
+      shape.add (stroke: [bp], prefs_mergerColorBoardLimits)
     }
   //---
     return shape

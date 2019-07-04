@@ -53,7 +53,7 @@ func transient_PackageRoot_issues (
             NSAttributedString.Key.font : prefs_padZoneFont
          ]
          var shape = EBShape ()
-         shape.addText (zoneName, p, textAttributes, .center, .center)
+         shape.add (text: zoneName, p, textAttributes, .center, .center)
          issues.appendDuplicatedZoneNameIssueIn (rect: shape.boundingBox)
        }
        idx += 1

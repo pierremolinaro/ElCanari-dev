@@ -40,8 +40,8 @@ func transient_LabelInSchematic_objectDisplay (
           af.rotate (byDegrees: CGFloat (self_mOrientation.rawValue) * 90.0)
           let transformedBP = bp.transformed (by: af)
         //---
-          shape.addFilledBezierPathes ([transformedBP], nil)
-          shape.addStrokeBezierPathes ([transformedBP], prefs_symbolColorForSchematic)
+          shape.add (filled: [transformedBP], nil)
+          shape.add (stroke: [transformedBP], prefs_symbolColorForSchematic)
         //--- Net name
           let labelOrigin = af.transform (NSPoint (x: SCHEMATIC_LABEL_SIZE * 8.0, y: 0.0))
           let textAttributes : [NSAttributedString.Key : Any] = [
@@ -63,7 +63,7 @@ func transient_LabelInSchematic_objectDisplay (
             horizontalAlignment = .center
             verticalAlignment = .below
           }
-          shape.addText (self_netName, labelOrigin, textAttributes, horizontalAlignment, verticalAlignment)
+          shape.add (text: self_netName, labelOrigin, textAttributes, horizontalAlignment, verticalAlignment)
         }
         return shape
 //--- END OF USER ZONE 2

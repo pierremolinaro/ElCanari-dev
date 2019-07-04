@@ -12,6 +12,12 @@ protocol ConnectorInBoard_mComponentPadName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ConnectorInBoard_mPadIndex : class {
+  var mPadIndex : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ConnectorInBoard_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -28,6 +34,7 @@ protocol ConnectorInBoard_selectionDisplay : class {
 
 class ConnectorInBoard : BoardObject,
          ConnectorInBoard_mComponentPadName,
+         ConnectorInBoard_mPadIndex,
          ConnectorInBoard_objectDisplay,
          ConnectorInBoard_selectionDisplay {
 
@@ -47,6 +54,23 @@ class ConnectorInBoard : BoardObject,
   //····················································································································
 
   var mComponentPadName_property_selection : EBSelection <String> { return self.mComponentPadName_property.prop }
+
+  //····················································································································
+  //   Atomic property: mPadIndex
+  //····················································································································
+
+  let mPadIndex_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mPadIndex : Int {
+    get { return self.mPadIndex_property.propval }
+    set { self.mPadIndex_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mPadIndex_property_selection : EBSelection <Int> { return self.mPadIndex_property.prop }
 
   //····················································································································
   //   To one property: mComponent
@@ -94,6 +118,8 @@ class ConnectorInBoard : BoardObject,
     super.init (ebUndoManager)
   //--- Atomic property: mComponentPadName
     self.mComponentPadName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mPadIndex
+    self.mPadIndex_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mComponent (has opposite to many relationship: mConnectors)
     self.mComponent_property.ebUndoManager = self.ebUndoManager
     self.mComponent_property.setOppositeRelationShipFunctions (
@@ -105,15 +131,16 @@ class ConnectorInBoard : BoardObject,
       if let unwSelf = self {
         var kind = unwSelf.mComponent_property.componentPadDictionary_property_selection.kind ()
         kind &= unwSelf.mComponentPadName_property_selection.kind ()
+        kind &= unwSelf.mPadIndex_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_ConnectorInBoard_objectDisplay (v0, v1))
+          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ConnectorInBoard_objectDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -124,6 +151,7 @@ class ConnectorInBoard : BoardObject,
     }
     self.mComponent_property.addEBObserverOf_componentPadDictionary (self.objectDisplay_property)
     self.mComponentPadName_property.addEBObserver (self.objectDisplay_property)
+    self.mPadIndex_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -157,6 +185,7 @@ class ConnectorInBoard : BoardObject,
     super.removeAllObservers ()
     self.mComponent_property.removeEBObserverOf_componentPadDictionary (self.objectDisplay_property)
     self.mComponentPadName_property.removeEBObserver (self.objectDisplay_property)
+    self.mPadIndex_property.removeEBObserver (self.objectDisplay_property)
     self.mComponentPadName_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
@@ -179,6 +208,14 @@ class ConnectorInBoard : BoardObject,
       view: view,
       observerExplorer: &self.mComponentPadName_property.mObserverExplorer,
       valueExplorer: &self.mComponentPadName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mPadIndex",
+      idx: self.mPadIndex_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mPadIndex_property.mObserverExplorer,
+      valueExplorer: &self.mPadIndex_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
@@ -217,6 +254,9 @@ class ConnectorInBoard : BoardObject,
   //--- Atomic property: mComponentPadName
     self.mComponentPadName_property.mObserverExplorer = nil
     self.mComponentPadName_property.mValueExplorer = nil
+  //--- Atomic property: mPadIndex
+    self.mPadIndex_property.mObserverExplorer = nil
+    self.mPadIndex_property.mValueExplorer = nil
   //--- To one property: mComponent
     self.mComponent_property.mObserverExplorer = nil
     self.mComponent_property.mValueExplorer = nil
@@ -251,6 +291,8 @@ class ConnectorInBoard : BoardObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mComponentPadName
     self.mComponentPadName_property.storeIn (dictionary: ioDictionary, forKey:"mComponentPadName")
+  //--- Atomic property: mPadIndex
+    self.mPadIndex_property.storeIn (dictionary: ioDictionary, forKey:"mPadIndex")
   }
 
   //····················································································································
@@ -281,6 +323,8 @@ class ConnectorInBoard : BoardObject,
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mComponentPadName
     self.mComponentPadName_property.readFrom (dictionary: inDictionary, forKey:"mComponentPadName")
+  //--- Atomic property: mPadIndex
+    self.mPadIndex_property.readFrom (dictionary: inDictionary, forKey:"mPadIndex")
   }
 
   //····················································································································

@@ -32,12 +32,12 @@ func transient_BoardRestrictRectangle_selectionDisplay (
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         var shape = EBShape ()
-        shape.addStrokeBezierPathes ([bp], .cyan)
+        shape.add (stroke: [bp], .cyan)
       //--- Knobs
-        shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y), knobIndex: BOARD_RESTRICT_RECT_BOTTOM, .circ, 2.0)
-        shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y + height), knobIndex: BOARD_RESTRICT_RECT_TOP, .circ, 2.0)
-        shape.addKnob (at: CGPoint (x: x + width, y: y + height / 2.0), knobIndex: BOARD_RESTRICT_RECT_RIGHT, .circ, 2.0)
-        shape.addKnob (at: CGPoint (x: x, y: y + height / 2.0), knobIndex: BOARD_RESTRICT_RECT_LEFT, .circ, 2.0)
+        shape.add (knobAt:  CGPoint (x: x + width / 2.0, y: y), knobIndex: BOARD_RESTRICT_RECT_BOTTOM, .circ, 2.0)
+        shape.add (knobAt:  CGPoint (x: x + width / 2.0, y: y + height), knobIndex: BOARD_RESTRICT_RECT_TOP, .circ, 2.0)
+        shape.add (knobAt:  CGPoint (x: x + width, y: y + height / 2.0), knobIndex: BOARD_RESTRICT_RECT_RIGHT, .circ, 2.0)
+        shape.add (knobAt:  CGPoint (x: x, y: y + height / 2.0), knobIndex: BOARD_RESTRICT_RECT_LEFT, .circ, 2.0)
       //---
         return shape
 //--- END OF USER ZONE 2

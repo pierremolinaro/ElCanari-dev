@@ -216,13 +216,13 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     bp1.line (to: NSPoint (x: 35.0, y: 35.0))
     bp1.lineWidth = 3.0
     bp1.lineCapStyle = .round
-    shape.addStrokeBezierPathes ([bp1], NSColor.lightGray)
+    shape.add (stroke: [bp1], NSColor.lightGray)
     var bp2 = EBBezierPath ()
     bp2.move (to: NSPoint (x: 5.0, y: 5.0))
     bp2.line (to: NSPoint (x: 55.0, y: 55.0))
     bp2.lineWidth = 1.5
     bp2.lineCapStyle = .round
-    shape.addStrokeBezierPathes ([bp2], NSColor.yellow)
+    shape.add (stroke: [bp2], NSColor.yellow)
     let imagePDFData = buildPDFimageData (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }
@@ -266,14 +266,14 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     var bp = EBBezierPath (rect: r.insetBy (dx: 12.0, dy: 8.0))
     bp.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
     bp.windingRule = .evenOdd
-    shape.addFilledBezierPathes ([bp], g_Preferences!.frontSidePadColor)
+    shape.add (filled: [bp], g_Preferences!.frontSidePadColor)
  //---
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: 28.0),
       NSAttributedString.Key.foregroundColor : g_Preferences!.frontSidePadColor
     ]
-    shape.addText ("(", NSPoint (x : 2.0, y: 17.0), textAttributes, .onTheRight, .center)
-    shape.addText (")", NSPoint (x :38.0, y: 17.0), textAttributes, .onTheLeft, .center)
+    shape.add (text: "(", NSPoint (x : 2.0, y: 17.0), textAttributes, .onTheRight, .center)
+    shape.add (text: ")", NSPoint (x :38.0, y: 17.0), textAttributes, .onTheLeft, .center)
  //---
     let imagePDFData = buildPDFimageData (frame: r, shape: shape)
     return NSImage (data: imagePDFData)

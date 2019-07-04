@@ -30,7 +30,7 @@ func transient_ComponentSymbolInProject_objectDisplay (
         let strokeShape = EBShape (stroke: [EBBezierPath (self_symbolInfo.strokeBezierPath)], prefs_symbolColorForSchematic)
         let filledPath = EBShape (filled: [EBBezierPath (self_symbolInfo.filledBezierPath)], prefs_symbolColorForSchematic)
         let box = filledPath.boundingBox.union (strokeShape.boundingBox)
-        shape.addFilledBezierPathes ([EBBezierPath (rect: box)], nil)
+        shape.add (filled: [EBBezierPath (rect: box)], nil)
         shape.add (strokeShape)
         shape.add (filledPath)
      

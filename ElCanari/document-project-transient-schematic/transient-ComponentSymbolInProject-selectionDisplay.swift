@@ -27,9 +27,9 @@ func transient_ComponentSymbolInProject_selectionDisplay (
         var strokeBezierPath = EBBezierPath ()
         strokeBezierPath.append (self_symbolInfo.strokeBezierPath)
         strokeBezierPath.lineWidth = SCHEMATIC_HILITE_WIDTH
-        shape.addStrokeBezierPathes ([strokeBezierPath], .cyan)
+        shape.add (stroke: [strokeBezierPath], .cyan)
         let symbolCenter = self_symbolInfo.center.cocoaPoint
-        shape.addKnob (at: symbolCenter, knobIndex: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
+        shape.add (knobAt:  symbolCenter, knobIndex: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
       //--- Component name knob
         do{
           let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
@@ -37,16 +37,15 @@ func transient_ComponentSymbolInProject_selectionDisplay (
           bp.move (to: symbolCenter)
           bp.line (to: componentNameCenter.cocoaPoint)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
-          shape.addStrokeBezierPathes ([bp], .black)
-          let componentNameShape = EBShape (
-            textKnob: self_symbolInfo.componentName,
+          shape.add (stroke: [bp], .black)
+          shape.add (textKnob: 
+            self_symbolInfo.componentName,
             componentNameCenter.cocoaPoint,
             prefs_pinNameFont,
             .center,
             .center,
             knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB
           )
-          shape.add (componentNameShape)
         }
       //--- Component value knob
         if self_mDisplayComponentValue {
@@ -59,7 +58,7 @@ func transient_ComponentSymbolInProject_selectionDisplay (
           bp.move (to: symbolCenter)
           bp.line (to: componentValueCenter.cocoaPoint)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
-          shape.addStrokeBezierPathes ([bp], .black)
+          shape.add (stroke: [bp], .black)
           let componentValueShape = EBShape (
             textKnob: value,
             componentValueCenter.cocoaPoint,

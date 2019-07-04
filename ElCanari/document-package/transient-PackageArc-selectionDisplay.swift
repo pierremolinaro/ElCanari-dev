@@ -42,27 +42,27 @@ func transient_PackageArc_selectionDisplay (
     bp.lineWidth = 0.25
     bp.lineCapStyle = .round
     var shape = EBShape ()
-    shape.addStrokeBezierPathes ([bp], NSColor.cyan)
+    shape.add (stroke: [bp], NSColor.cyan)
   //--- Add center knob
-    shape.addKnob (at: center, knobIndex: PACKAGE_ARC_CENTER, .rect, 2.0)
+    shape.add (knobAt:  center, knobIndex: PACKAGE_ARC_CENTER, .rect, 2.0)
   //--- Add radius knob
     var t = NSAffineTransform ()
     t.translateX (by: center.x, yBy: center.y)
     t.rotate (byDegrees: startAngle + arcAngle / 2.0)
     let radiusKnob = t.transform (NSPoint (x: radius, y: 0.0))
-    shape.addKnob (at: radiusKnob, knobIndex: PACKAGE_ARC_RADIUS, .circ, 2.0)
+    shape.add (knobAt:  radiusKnob, knobIndex: PACKAGE_ARC_RADIUS, .circ, 2.0)
   //--- Add start point knob
     t = NSAffineTransform ()
     t.translateX (by: center.x, yBy: center.y)
     t.rotate (byDegrees: startAngle)
     let startPointKnob = t.transform (NSPoint (x: radius, y: 0.0))
-    shape.addKnob (at: startPointKnob, knobIndex: PACKAGE_ARC_START_ANGLE, .circ, 2.0)
+    shape.add (knobAt:  startPointKnob, knobIndex: PACKAGE_ARC_START_ANGLE, .circ, 2.0)
   //--- Add end point knob
     t = NSAffineTransform ()
     t.translateX (by: center.x, yBy: center.y)
     t.rotate (byDegrees: startAngle + arcAngle)
     let endPointKnob = t.transform (NSPoint (x: radius, y: 0.0))
-    shape.addKnob (at: endPointKnob, knobIndex: PACKAGE_ARC_END_ANGLE, .circ, 2.0)
+    shape.add (knobAt:  endPointKnob, knobIndex: PACKAGE_ARC_END_ANGLE, .circ, 2.0)
   //---
     return shape
 //--- END OF USER ZONE 2
