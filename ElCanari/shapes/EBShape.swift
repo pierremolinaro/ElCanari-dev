@@ -15,8 +15,8 @@ struct EBShape : Hashable {
   //····················································································································
 
   private var mElements = [EBShapeElement] ()
-  private var mCachedBoundingBox : NSRect? = nil
   private var mToolTips = [EBToolTip] ()
+  private var mCachedBoundingBox = NSRect.null
 
   //····················································································································
   //  init
@@ -29,18 +29,18 @@ struct EBShape : Hashable {
 
   init (filled inFilledPaths : [EBBezierPath],
         _ inColor : NSColor?,
-        _ inKnobIndex : Int? = nil,
+        knobIndex inKnobIndex : Int? = nil,
         clip inClipBezierPath : EBBezierPath? = nil) {
-    self.addFilledBezierPathes (inFilledPaths, inColor, inKnobIndex, clip: inClipBezierPath)
+    self.addFilledBezierPathes (inFilledPaths, inColor, knobIndex: inKnobIndex, clip: inClipBezierPath)
   }
 
   //····················································································································
 
   init (stroke inStrokePaths : [EBBezierPath],
-        _ inColor : NSColor?,
-        _ inKnobIndex : Int? = nil,
+        _ inColor : NSColor,
+        knobIndex inKnobIndex : Int? = nil,
         clip inClipBezierPath : EBBezierPath? = nil) {
-    self.addStrokeBezierPathes (inStrokePaths, inColor, inKnobIndex, clip: inClipBezierPath)
+    self.addStrokeBezierPathes (inStrokePaths, inColor, knobIndex: inKnobIndex, clip: inClipBezierPath)
   }
 
   //····················································································································
@@ -53,7 +53,6 @@ struct EBShape : Hashable {
     self.addText (inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment)
   }
 
-
   //····················································································································
 
   init (textKnob inString : String,
@@ -61,7 +60,7 @@ struct EBShape : Hashable {
         _ inFont : NSFont,
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment,
-        _ inKnobIndex : Int) {
+        knobIndex inKnobIndex : Int) {
     self.addTextKnob (inString, inOrigin, inFont, inHorizontalAlignment, inVerticalAlignment, inKnobIndex)
   }
 
@@ -71,7 +70,7 @@ struct EBShape : Hashable {
 
   mutating func add (_ inShape : EBShape) {
     self.mElements += inShape.mElements
-    self.mCachedBoundingBox = nil
+    self.mCachedBoundingBox = self.mCachedBoundingBox.union (inShape.mCachedBoundingBox)
   }
 
   //····················································································································
@@ -80,13 +79,18 @@ struct EBShape : Hashable {
 
   mutating func addFilledBezierPathes (_ inFilledPaths : [EBBezierPath],
                                        _ inColor : NSColor?,
-                                       _ inKnobIndex : Int? = nil,
+                                       knobIndex inKnobIndex : Int? = nil,
                                        clip inClipBezierPath : EBBezierPath? = nil) {
-    let nonEmptyPathes = filterOutEmptyPathes (inFilledPaths)
-    if nonEmptyPathes.count > 0 {
-      let e = EBShapeElement (inFilledPaths, inColor, inKnobIndex, inClipBezierPath)
+    var nonEmptyBezierPathes = [EBBezierPath] ()
+    for path in inFilledPaths {
+      if !path.isEmpty {
+        nonEmptyBezierPathes.append (path)
+      }
+    }
+    if nonEmptyBezierPathes.count > 0 {
+      let e = EBShapeElement (nonEmptyBezierPathes, inColor, inKnobIndex, inClipBezierPath)
       self.mElements.append (e)
-      self.mCachedBoundingBox = nil
+      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
     }
   }
 
@@ -95,8 +99,8 @@ struct EBShape : Hashable {
   //····················································································································
 
   mutating func addStrokeBezierPathes (_ inStrokePathes : [EBBezierPath],
-                                       _ inColor : NSColor?,
-                                       _ inKnobIndex : Int? = nil,
+                                       _ inColor : NSColor,
+                                       knobIndex inKnobIndex : Int? = nil,
                                        clip inClipBezierPath : EBBezierPath? = nil) {
     var filledBezierPathes = [EBBezierPath] ()
     for path in inStrokePathes {
@@ -107,7 +111,7 @@ struct EBShape : Hashable {
     if filledBezierPathes.count > 0 {
       let e = EBShapeElement (filledBezierPathes, inColor, inKnobIndex, inClipBezierPath)
       self.mElements.append (e)
-      self.mCachedBoundingBox = nil
+      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
     }
   }
 
@@ -115,7 +119,7 @@ struct EBShape : Hashable {
   //  Add Knob
   //····················································································································
 
-  mutating func addKnob (at inPoint: NSPoint, index inKobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CGFloat) {
+  mutating func addKnob (at inPoint: NSPoint, knobIndex inKobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CGFloat) {
     let r = NSRect (x: inPoint.x - inKnobSize / 2.0, y: inPoint.y - inKnobSize / 2.0, width: inKnobSize, height: inKnobSize)
     var bp : EBBezierPath
     switch inKind {
@@ -127,7 +131,7 @@ struct EBShape : Hashable {
   //--- Background
     let e = EBShapeElement ([bp], .white, inKobIndex, nil)
     self.mElements.append (e)
-    self.mCachedBoundingBox = nil
+    self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
   //--- Line
     bp.lineWidth = 0.1
     bp.lineCapStyle = .round
@@ -165,11 +169,12 @@ struct EBShape : Hashable {
         let bp = EBBezierPath (rect: filledBezierPath.bounds)
         let e = EBShapeElement ([bp], backColor, nil, nil)
         self.mElements.append (e)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
       }
     //--- Append text
       let e = EBShapeElement ([filledBezierPath], textColor, nil, nil)
       self.mElements.append (e)
-      self.mCachedBoundingBox = nil
+      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
     }
   }
 
@@ -200,11 +205,12 @@ struct EBShape : Hashable {
       let bp = EBBezierPath (rect: filledBezierPath.bounds)
       let e = EBShapeElement ([bp], .white, inKnobIndex, nil)
       self.mElements.append (e)
+      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
     }
   //--- Append text
     let e = EBShapeElement ([filledBezierPath], .black, nil, nil)
     self.mElements.append (e)
-    self.mCachedBoundingBox = nil
+    self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
   }
 
   //····················································································································
@@ -227,10 +233,12 @@ struct EBShape : Hashable {
   //  Draw
   //····················································································································
 
-  func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
-    for element in self.mElements {
-      if inView.needsToDraw (element.boundingBox) {
-        element.draw (inView, inDirtyRect)
+  func draw (_ inView : NSView, _ inDirtyRect : NSRect) {
+    if self.mCachedBoundingBox.intersects (inDirtyRect) {
+      for element in self.mElements {
+        if inView.needsToDraw (element.boundingBox) {
+          element.draw (inView, inDirtyRect)
+        }
       }
     }
   }
@@ -239,25 +247,14 @@ struct EBShape : Hashable {
   // boundingBox
   //····················································································································
 
-//  mutating func boundingBox () -> NSRect {
-//    if let cachedBoundingBox = self.mCachedBoundingBox {
-//      return cachedBoundingBox
-//    }else{
-//      var r = NSRect.null
-//      for shape in self.mElements {
-//        r = r.union (shape.boundingBox)
-//      }
-//      self.mCachedBoundingBox = r
-//      return r
-//    }
-//  }
-
   var boundingBox : NSRect {
-    var r = NSRect.null
-    for shape in self.mElements {
-      r = r.union (shape.boundingBox)
-    }
-    return r
+    return self.mCachedBoundingBox
+//
+//    var r = NSRect.null
+//    for element in self.mElements {
+//      r = r.union (element.boundingBox)
+//    }
+//    return r
   }
 
   //····················································································································
@@ -266,10 +263,12 @@ struct EBShape : Hashable {
 
   func contains (point inPoint : NSPoint) -> Bool {
     var result = false
-    var idx = 0
-    while (idx < self.mElements.count) && !result {
-      result = self.mElements [idx].contains (point: inPoint)
-      idx += 1
+    if self.mCachedBoundingBox.contains (inPoint) {
+      var idx = 0
+      while (idx < self.mElements.count) && !result {
+        result = self.mElements [idx].contains (point: inPoint)
+        idx += 1
+      }
     }
     return result
   }
@@ -280,10 +279,12 @@ struct EBShape : Hashable {
 
   func intersects (rect inRect : NSRect) -> Bool {
     var result = false
-    var idx = 0
-    while (idx < self.mElements.count) && !result {
-      result = self.mElements [idx].intersects (rect: inRect)
-      idx += 1
+    if self.mCachedBoundingBox.intersects (inRect) {
+      var idx = 0
+      while (idx < self.mElements.count) && !result {
+        result = self.mElements [idx].intersects (rect: inRect)
+        idx += 1
+      }
     }
     return result
   }
@@ -293,9 +294,11 @@ struct EBShape : Hashable {
   //····················································································································
 
   func knobIndex (at inPoint : NSPoint) -> Int? {
-    for element in self.mElements.reversed () {
-      if let idx = element.knobIndex (at: inPoint) {
-        return idx
+    if self.mCachedBoundingBox.contains (inPoint) {
+      for element in self.mElements.reversed () {
+        if let idx = element.knobIndex (at: inPoint) {
+          return idx
+        }
       }
     }
     return nil
@@ -308,7 +311,9 @@ struct EBShape : Hashable {
   func transformed (by inAffineTransform : AffineTransform) -> EBShape {
     var result = EBShape ()
     for element in self.mElements {
-      result.mElements.append (element.transformed (by: inAffineTransform))
+      let newElement = element.transformed (by: inAffineTransform)
+      result.mElements.append (newElement)
+      result.mCachedBoundingBox = result.mCachedBoundingBox.union (newElement.boundingBox)
     }
     for tooltip in self.mToolTips {
       result.mToolTips.append (EBToolTip (path: tooltip.path.transformed (by: inAffineTransform), string: tooltip.string))
@@ -474,18 +479,6 @@ fileprivate final class EBShapeElement : EBObject {
 fileprivate struct EBToolTip : Hashable {
   let path : EBBezierPath
   let string : String
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func filterOutEmptyPathes (_ inPathes : [EBBezierPath]) -> [EBBezierPath] {
-  var nonEmptyBezierPathes = [EBBezierPath] ()
-  for path in inPathes {
-    if !path.isEmpty {
-      nonEmptyBezierPathes.append (path)
-    }
-  }
-  return nonEmptyBezierPathes
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

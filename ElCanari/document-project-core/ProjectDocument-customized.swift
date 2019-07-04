@@ -450,6 +450,7 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
         ok = true
       }
     }
+    self.mPossibleDraggedComponent = nil
     return ok
   }
 
@@ -490,13 +491,15 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
       component.mY = p.y
       self.rootObject.mBoardObjects.append (component)
       self.boardObjectsController.setSelection ([component])
-      self.mPossibleDraggedComponent = nil
-      if let padNameArray = component.componentPadDictionary?.keys {
-        for padName in padNameArray {
+      if let padDictionary = component.componentPadDictionary {
+        for (padName, descriptor) in padDictionary {
           let newConnector = ConnectorInBoard (self.ebUndoManager)
           newConnector.mComponent = component
           newConnector.mComponentPadName = padName
           self.rootObject.mBoardObjects.append (newConnector)
+//          for slavePad in descriptor.mSlavePads {
+//
+//          }
         }
       }
     }

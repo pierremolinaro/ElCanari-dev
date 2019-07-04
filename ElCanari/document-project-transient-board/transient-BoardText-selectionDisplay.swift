@@ -69,9 +69,9 @@ func transient_BoardText_selectionDisplay (
         knobLine.lineCapStyle = .round
         knobLine.lineJoinStyle = .round
         shape.addStrokeBezierPathes ([knobLine], .cyan)
-        shape.addKnob (at: rotationKnob, index: BOARD_TEXT_ROTATION_KNOB, .circ, 2.0)
+        shape.addKnob (at: rotationKnob, knobIndex: BOARD_TEXT_ROTATION_KNOB, .circ, 2.0)
       //--- Knob
-        shape.addKnob (at: origin, index: BOARD_TEXT_ORIGIN_KNOB, .rect, 2.0)
+        shape.addKnob (at: origin, knobIndex: BOARD_TEXT_ORIGIN_KNOB, .rect, 2.0)
       //---
         return shape
 //--- END OF USER ZONE 2

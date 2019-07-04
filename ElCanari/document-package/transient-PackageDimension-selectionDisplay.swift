@@ -39,8 +39,8 @@ func transient_PackageDimension_selectionDisplay (
   let dimensionText = stringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
   var shape = EBShape ()
   shape.addStrokeBezierPathes ([bp], NSColor.cyan)
-  shape.addKnob (at: p1, index: PACKAGE_DIMENSION_ENDPOINT_1, .circ, 2.0)
-  shape.addKnob (at: p2, index: PACKAGE_DIMENSION_ENDPOINT_2, .circ, 2.0)
+  shape.addKnob (at: p1, knobIndex: PACKAGE_DIMENSION_ENDPOINT_1, .circ, 2.0)
+  shape.addKnob (at: p2, knobIndex: PACKAGE_DIMENSION_ENDPOINT_2, .circ, 2.0)
   shape.addTextKnob (dimensionText, pText, prefs_dimensionFont, .center, .center, PACKAGE_DIMENSION_TEXT)
 //---
   return shape

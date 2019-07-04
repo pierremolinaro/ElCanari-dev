@@ -33,11 +33,11 @@ func transient_WireInSchematic_selectionDisplay (
         shape.addStrokeBezierPathes ([bp], .cyan)
       //--- Knob at P1 ?
         if self_mP1_canMove ?? false {
-          shape.addKnob (at: p1, index: WIRE_P1_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
+          shape.addKnob (at: p1, knobIndex: WIRE_P1_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
         }
       //--- Knob at P2 ?
         if self_mP2_canMove ?? false {
-          shape.addKnob (at: p2, index: WIRE_P2_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
+          shape.addKnob (at: p2, knobIndex: WIRE_P2_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
         }
       //---
         return shape

@@ -28,10 +28,10 @@ func transient_SymbolSolidRect_selectionDisplay (
   var bp = EBBezierPath (rect: NSRect (x: x, y:y, width: width, height: height))
   bp.lineWidth = 0.25
   shape.addStrokeBezierPathes ([bp], NSColor.cyan)
-  shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_SOLID_RECT_BOTTOM, .circ, 2.0)
-  shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_SOLID_RECT_TOP, .circ, 2.0)
-  shape.addKnob (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_SOLID_RECT_RIGHT, .circ, 2.0)
-  shape.addKnob (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_SOLID_RECT_LEFT, .circ, 2.0)
+  shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y), knobIndex: SYMBOL_SOLID_RECT_BOTTOM, .circ, 2.0)
+  shape.addKnob (at: CGPoint (x: x + width / 2.0, y: y + height), knobIndex: SYMBOL_SOLID_RECT_TOP, .circ, 2.0)
+  shape.addKnob (at: CGPoint (x: x + width, y: y + height / 2.0), knobIndex: SYMBOL_SOLID_RECT_RIGHT, .circ, 2.0)
+  shape.addKnob (at: CGPoint (x: x, y: y + height / 2.0), knobIndex: SYMBOL_SOLID_RECT_LEFT, .circ, 2.0)
   return shape
 //--- END OF USER ZONE 2
 }

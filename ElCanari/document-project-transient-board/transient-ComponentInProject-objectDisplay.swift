@@ -78,7 +78,7 @@ func transient_ComponentInProject_objectDisplay (
         var rotatedShape = EBShape ()
         rotatedShape.addStrokeBezierPathes ([strokeBezierPath], color)
       //---
-        let padRect = self_packagePadDictionary.masterPadsRect
+        let padRect = self_packagePadDictionary.padsRect
         let center = padRect.center.cocoaPoint
         var padNumberAffineTransform = AffineTransform ()
         if self_mSide == .back {

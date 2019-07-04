@@ -9,7 +9,7 @@ graphic entity WireInSchematic : SchematicObject {
 
   override transient EBShape objectDisplay dependsFrom
     self.mP1.one.wireColor,
-    prefs.symbolDrawingWidthMultipliedByTen,
+    prefs.symbolDrawingWidthMultipliedByTenForSchematic,
     self.mP1.one.location,
     self.mP2.one.location
   ;

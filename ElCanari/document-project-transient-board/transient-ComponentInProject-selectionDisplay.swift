@@ -36,7 +36,7 @@ func transient_ComponentInProject_selectionDisplay (
        _ self_mComponentValue : String
 ) -> EBShape {
 //--- START OF USER ZONE 2
-      let rPadsCenter = self_packagePadDictionary.masterPadsRect.center.cocoaPoint
+      let rPadsCenter = self_packagePadDictionary.padsRect.center.cocoaPoint
       let absoluteCenter = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
       let knobDx = (self_mSide == .back) ? -COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE ;
       let rotationKnobLocation = NSPoint (x: rPadsCenter.x + knobDx, y: rPadsCenter.y)
@@ -49,8 +49,9 @@ func transient_ComponentInProject_selectionDisplay (
       strokeBezierPath.lineJoinStyle = .round
       rotatedShape.addStrokeBezierPathes ([strokeBezierPath], .cyan)
     //--- Knobs
-      rotatedShape.addKnob (at: rPadsCenter, index: COMPONENT_PACKAGE_CENTER_KNOB, .rect, 2.0)
-      rotatedShape.addKnob (at: rotationKnobLocation, index: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, 2.0)
+      var rotatedKnobs = EBShape ()
+      rotatedKnobs.addKnob (at: rPadsCenter, knobIndex: COMPONENT_PACKAGE_CENTER_KNOB, .rect, 2.0)
+      rotatedKnobs.addKnob (at: rotationKnobLocation, knobIndex: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, 2.0)
     //--- Name
       var nonRotatedShape = EBShape ()
       if self_mNameIsVisibleInBoard, let fontDescriptor = self_mNameFont_descriptor {
@@ -78,7 +79,7 @@ func transient_ComponentInProject_selectionDisplay (
         bp.lineWidth = 0.5
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        nonRotatedShape.addFilledBezierPathes ([bp], .white, COMPONENT_PACKAGE_NAME_KNOB)
+        nonRotatedShape.addFilledBezierPathes ([bp], .white, knobIndex: COMPONENT_PACKAGE_NAME_KNOB)
         nonRotatedShape.addStrokeBezierPathes ([bp], .black)
         nonRotatedShape.addStrokeBezierPathes ([textBP], .black)
       }
@@ -108,7 +109,7 @@ func transient_ComponentInProject_selectionDisplay (
         bp.lineWidth = 0.5
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        nonRotatedShape.addFilledBezierPathes ([bp], .white, COMPONENT_PACKAGE_VALUE_KNOB)
+        nonRotatedShape.addFilledBezierPathes ([bp], .white, knobIndex: COMPONENT_PACKAGE_VALUE_KNOB)
         nonRotatedShape.addStrokeBezierPathes ([bp], .black)
         nonRotatedShape.addStrokeBezierPathes ([textBP], .black)
       }
@@ -122,6 +123,7 @@ func transient_ComponentInProject_selectionDisplay (
       af.translate (x: -rPadsCenter.x, y: -rPadsCenter.y)
       var shape = rotatedShape.transformed (by: af)
       shape.add (nonRotatedShape)
+      shape.add (rotatedKnobs.transformed (by: af))
       return shape
 //--- END OF USER ZONE 2
 }

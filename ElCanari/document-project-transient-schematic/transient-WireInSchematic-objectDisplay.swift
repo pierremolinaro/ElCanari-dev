@@ -15,7 +15,7 @@ import Cocoa
 
 func transient_WireInSchematic_objectDisplay (
        _ self_mP1_wireColor : NSColor?,       
-       _ prefs_symbolDrawingWidthMultipliedByTen : Int,
+       _ prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int,
        _ self_mP1_location : CanariPoint?,    
        _ self_mP2_location : CanariPoint?
 ) -> EBShape {
@@ -38,7 +38,7 @@ func transient_WireInSchematic_objectDisplay (
           var bp = EBBezierPath ()
           bp.move (to: p1.cocoaPoint)
           bp.line (to: p2.cocoaPoint)
-          bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
+          bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTenForSchematic) / 10.0
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
           shape.addStrokeBezierPathes ([bp], self_mP1_wireColor ?? .black)

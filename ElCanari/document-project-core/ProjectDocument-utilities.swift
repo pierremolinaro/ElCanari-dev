@@ -262,7 +262,9 @@ typealias PackageMasterPadDictionary = [String : MasterPadDescriptor]
 
 extension Dictionary where Key == String, Value == MasterPadDescriptor {
 
-  var masterPadsRect : CanariRect {
+  //····················································································································
+
+  var padsRect : CanariRect {
     var points = [CanariPoint] ()
     for (_, masterPadDescriptor) in self {
       points.append (masterPadDescriptor.center)
@@ -272,11 +274,17 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     }
     return CanariRect (points: points)
   }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct MasterPadDescriptor : Hashable {
+
+  //····················································································································
+
   let name : String
   let center : CanariPoint
   let padSize : CanariSize
@@ -284,6 +292,8 @@ struct MasterPadDescriptor : Hashable {
   let shape : PadShape
   let style : PadStyle
   let slavePads : [SlavePadDescriptor]
+
+  //····················································································································
 
   func accumulatePadBezierPathes (into ioShape : inout EBShape,
                                   side : ComponentSide,
@@ -349,16 +359,24 @@ struct MasterPadDescriptor : Hashable {
       )
     }
   }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct SlavePadDescriptor : Hashable {
+
+  //····················································································································
+
   let center : CanariPoint
   let padSize : CanariSize
   let holeSize : CanariSize
   let shape : PadShape
   let style : SlavePadStyle
+
+  //····················································································································
 
   func accumulatePadBezierPathes (into ioShape : inout EBShape,
                                   side : ComponentSide,
@@ -421,6 +439,9 @@ struct SlavePadDescriptor : Hashable {
       ioShape.add (EBShape (text: name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
     }
   }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -26,12 +26,10 @@ func transient_ComponentSymbolInProject_selectionDisplay (
         var shape = EBShape ()
         var strokeBezierPath = EBBezierPath ()
         strokeBezierPath.append (self_symbolInfo.strokeBezierPath)
-        // strokeBezierPath.append (self_symbolInfo.filledBezierPath)
         strokeBezierPath.lineWidth = SCHEMATIC_HILITE_WIDTH
         shape.addStrokeBezierPathes ([strokeBezierPath], .cyan)
-      //  shape.addFilledBezierPathes ([self_symbolInfo.filledBezierPath], .cyan))
         let symbolCenter = self_symbolInfo.center.cocoaPoint
-        shape.addKnob (at: symbolCenter, index: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
+        shape.addKnob (at: symbolCenter, knobIndex: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
       //--- Component name knob
         do{
           let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
@@ -46,7 +44,7 @@ func transient_ComponentSymbolInProject_selectionDisplay (
             prefs_pinNameFont,
             .center,
             .center,
-            SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB
+            knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB
           )
           shape.add (componentNameShape)
         }
@@ -68,7 +66,7 @@ func transient_ComponentSymbolInProject_selectionDisplay (
             prefs_pinNameFont,
             .center,
             .center,
-            SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB
+            knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB
           )
           shape.add (componentValueShape)
         }

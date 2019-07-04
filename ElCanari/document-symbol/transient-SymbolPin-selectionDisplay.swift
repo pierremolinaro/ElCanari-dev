@@ -36,11 +36,11 @@ func transient_SymbolPin_selectionDisplay (
     bp.lineCapStyle = .round
     shape.addStrokeBezierPathes ([bp], NSColor.cyan)
   //--- Pin
-    shape.addKnob (at: pinPoint, index: SYMBOL_PIN_ENDPOINT, .rect, 2.0)
+    shape.addKnob (at: pinPoint, knobIndex: SYMBOL_PIN_ENDPOINT, .rect, 2.0)
   //--- Name
-    shape.addKnob (at: namePoint, index: SYMBOL_PIN_LABEL, .circ, 2.0)
+    shape.addKnob (at: namePoint, knobIndex: SYMBOL_PIN_LABEL, .circ, 2.0)
   //--- Number
-    shape.addKnob (at: numberPoint, index: SYMBOL_PIN_NUMBER, .circ, 2.0)
+    shape.addKnob (at: numberPoint, knobIndex: SYMBOL_PIN_NUMBER, .circ, 2.0)
   //---
     return shape
 //--- END OF USER ZONE 2

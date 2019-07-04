@@ -27,7 +27,7 @@ func transient_ComponentInProject_componentPadDictionary (
         if self_mSide == .back {
           af.scale (x: -1.0, y: 1.0)
         }
-        let center = self_packagePadDictionary.masterPadsRect.center.cocoaPoint
+        let center = self_packagePadDictionary.padsRect.center.cocoaPoint
         af.translate (x: -center.x, y: -center.y)
         var result = ComponentPadDescriptorDictionary ()
         for (padName, descriptor) in self_packagePadDictionary {
