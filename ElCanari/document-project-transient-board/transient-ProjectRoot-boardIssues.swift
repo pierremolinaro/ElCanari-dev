@@ -13,49 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BorderCurve_objectDisplay (
-       _ self_mX : Int,                   
-       _ self_mY : Int,                   
-       _ self_mNext_mX : Int?,            
-       _ self_mNext_mY : Int?,            
-       _ self_mCPX1 : Int,                
-       _ self_mCPY1 : Int,                
-       _ self_mCPX2 : Int,                
-       _ self_mCPY2 : Int,                
-       _ self_mShape : BorderCurveShape,  
-       _ self_mRoot_mBoardLimitsWidth : Int?,
-       _ prefs_boardLimitsColorForBoard : NSColor
-) -> EBShape {
+func transient_ProjectRoot_boardIssues (
+       _ self_mBoardObjects_issues : [BoardObject_issues]
+) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-        var result = EBShape ()
-        if let x2 = self_mNext_mX,
-           let y2 = self_mNext_mY,
-           let width = self_mRoot_mBoardLimitsWidth {
-          let p1 = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
-          let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
-          var bp = EBBezierPath ()
-          bp.move (to: p1)
-          switch self_mShape {
-          case .line :
-            bp.line (to: p2)
-          case .bezier :
-            let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1).cocoaPoint
-            let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2).cocoaPoint
-            bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
-          }
-          bp.lineCapStyle = .round
-          bp.lineJoinStyle = .round
-          bp.lineWidth = canariUnitToCocoa (width)
-          result.add (stroke: [bp], prefs_boardLimitsColorForBoard)
-//        //---
-//          let s = BOARD_LIMITS_KNOB_SIZE / 2.0
-//          let r1 = NSRect (x: p1.x - s / 2.0, y: p1.y - s / 2.0, width: s, height: s)
-//          bp = EBBezierPath (ovalIn: r1)
-//          let r2 = NSRect (x: p2.x - s / 2.0, y: p2.y - s / 2.0, width: s, height: s)
-//          bp.appendOval (in: r2)
-//          result.add (filled: [bp], .orange)
-        }
-        return result
+
 //--- END OF USER ZONE 2
 }
 

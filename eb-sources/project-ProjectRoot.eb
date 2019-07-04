@@ -5,6 +5,7 @@
 entity ProjectRoot {
 //--- Board
   toMany BoardObject mBoardObjects inverse toOne mRoot ;
+//  toMany proxy ConnectorInBoard mConnectors : mBoardObjects ;
 
   property Int mBoardSelectedInspector default 1 ;
   property Bool mBoardHorizontalFlip default no ;
@@ -18,6 +19,8 @@ entity ProjectRoot {
   transient Int boardGridStepMultipliedByDisplayFactor dependsFrom
     self.mBoardGridStep, self.mBoardGridDisplayFactor
   ;
+
+  transient CanariIssueArray boardIssues dependsFrom self.mBoardObjects.all.issues ;
 
   transient EBShape boardBackground dependsFrom
      self.borderClearanceBackground, self.mBorderCurves.all.objectDisplay ;

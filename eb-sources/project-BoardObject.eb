@@ -12,6 +12,8 @@ abstract graphic entity BoardObject {
   transient Bool displayBackPads dependsFrom self.mRoot.one.mDisplayBackPads ;
 
   transient Bool displayPadNumbers dependsFrom self.mRoot.one.mDisplayPadNumbers ;
+  
+  abstract transient CanariIssueArray issues ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

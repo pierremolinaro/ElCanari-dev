@@ -330,6 +330,12 @@ protocol ProjectRoot_unplacedPackages : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_boardIssues : class {
+  var boardIssues : CanariIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_borderClearanceBackground : class {
   var borderClearanceBackground : EBShape? { get }
 }
@@ -495,6 +501,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_netsDescription,
          ProjectRoot_unplacedPackages,
+         ProjectRoot_boardIssues,
          ProjectRoot_borderClearanceBackground,
          ProjectRoot_boardBoundBox,
          ProjectRoot_boardLimitPointsTop,
@@ -1705,6 +1712,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: boardIssues
+  //····················································································································
+
+  let boardIssues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  var boardIssues_property_selection : EBSelection <CanariIssueArray> {
+    return self.boardIssues_property.prop
+  }
+
+  //····················································································································
+
+  var boardIssues : CanariIssueArray? {
+    switch self.boardIssues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: borderClearanceBackground
   //····················································································································
 
@@ -2498,6 +2528,28 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.addEBObserverOf_componentName (self.unplacedPackages_property)
     self.mComponents_property.addEBObserverOf_mComponentValue (self.unplacedPackages_property)
     self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
+  //--- Atomic property: boardIssues
+    self.boardIssues_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mBoardObjects_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBoardObjects_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_boardIssues (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardObjects_property.addEBObserverOf_issues (self.boardIssues_property)
   //--- Atomic property: borderClearanceBackground
     self.borderClearanceBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3000,6 +3052,7 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.removeEBObserverOf_componentName (self.unplacedPackages_property)
     self.mComponents_property.removeEBObserverOf_mComponentValue (self.unplacedPackages_property)
     self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
+    self.mBoardObjects_property.removeEBObserverOf_issues (self.boardIssues_property)
     self.mBorderCurves_property.removeEBObserverOf_descriptor (self.borderClearanceBackground_property)
     self.mBoardLimitsWidth_property.removeEBObserver (self.borderClearanceBackground_property)
     self.mBoardClearance_property.removeEBObserver (self.borderClearanceBackground_property)
@@ -3486,6 +3539,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.unplacedPackages_property.mObserverExplorer,
       valueExplorer: &self.unplacedPackages_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardIssues",
+      idx: self.boardIssues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardIssues_property.mObserverExplorer,
+      valueExplorer: &self.boardIssues_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "borderClearanceBackground",

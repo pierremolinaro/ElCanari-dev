@@ -35,6 +35,12 @@ protocol ConnectorInBoard_selectionDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ConnectorInBoard_issues : class {
+  var issues : CanariIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ConnectorInBoard
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -43,7 +49,8 @@ class ConnectorInBoard : BoardObject,
          ConnectorInBoard_mPadIndex,
          ConnectorInBoard_side,
          ConnectorInBoard_objectDisplay,
-         ConnectorInBoard_selectionDisplay {
+         ConnectorInBoard_selectionDisplay,
+         ConnectorInBoard_issues {
 
   //····················································································································
   //   Atomic property: mComponentPadName
@@ -232,6 +239,34 @@ class ConnectorInBoard : BoardObject,
       }
     }
     self.mComponentPadName_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: issues
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mComponent_property.componentPadDictionary_property_selection.kind ()
+        kind &= unwSelf.mComponentPadName_property_selection.kind ()
+        kind &= unwSelf.mPadIndex_property_selection.kind ()
+        kind &= unwSelf.side_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.side_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_ConnectorInBoard_issues (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponent_property.addEBObserverOf_componentPadDictionary (self.issues_property)
+    self.mComponentPadName_property.addEBObserver (self.issues_property)
+    self.mPadIndex_property.addEBObserver (self.issues_property)
+    self.side_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -249,6 +284,10 @@ class ConnectorInBoard : BoardObject,
     self.mPadIndex_property.removeEBObserver (self.objectDisplay_property)
     self.side_property.removeEBObserver (self.objectDisplay_property)
     self.mComponentPadName_property.removeEBObserver (self.selectionDisplay_property)
+    self.mComponent_property.removeEBObserverOf_componentPadDictionary (self.issues_property)
+    self.mComponentPadName_property.removeEBObserver (self.issues_property)
+    self.mPadIndex_property.removeEBObserver (self.issues_property)
+    self.side_property.removeEBObserver (self.issues_property)
   //--- Unregister properties for handling signature
   }
 
@@ -303,6 +342,14 @@ class ConnectorInBoard : BoardObject,
       view: view,
       observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
       valueExplorer: &self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "issues",
+      idx: self.issues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.issues_property.mObserverExplorer,
+      valueExplorer: &self.issues_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)

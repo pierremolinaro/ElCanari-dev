@@ -6,6 +6,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardObject_issues : class {
+  var issues : CanariIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardObject_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
 }
@@ -45,12 +51,36 @@ protocol BoardObject_displayPadNumbers : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class BoardObject : EBGraphicManagedObject,
+         BoardObject_issues,
          BoardObject_selectionDisplay,
          BoardObject_objectDisplay,
          BoardObject_isPlacedInBoard,
          BoardObject_displayFrontPads,
          BoardObject_displayBackPads,
          BoardObject_displayPadNumbers {
+
+  //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  let issues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+
+  var issues : CanariIssueArray? {
+    switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
 
   //····················································································································
   //   To one property: mRoot
@@ -310,6 +340,14 @@ class BoardObject : EBGraphicManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "issues",
+      idx: self.issues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.issues_property.mObserverExplorer,
+      valueExplorer: &self.issues_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "selectionDisplay",
       idx: self.selectionDisplay_property.ebObjectIndex,

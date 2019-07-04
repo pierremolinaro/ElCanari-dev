@@ -24,6 +24,11 @@ graphic entity ConnectorInBoard : BoardObject {
   override transient EBShape selectionDisplay dependsFrom
     self.mComponentPadName// TEMP
   ;
+  
+  override transient CanariIssueArray issues dependsFrom
+    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex, self.side
+  ;
+
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

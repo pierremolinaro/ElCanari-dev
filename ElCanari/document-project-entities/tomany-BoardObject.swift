@@ -15,6 +15,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   internal override func updateObservers (removedSet inRemovedSet : Set <BoardObject>, addedSet inAddedSet : Set <BoardObject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
+    self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_isPlacedInBoard_fromElementsOfSet (inRemovedSet) // Transient property
@@ -22,12 +23,69 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
     self.removeEBObserversOf_displayBackPads_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_displayPadNumbers_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
+    self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_isPlacedInBoard_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_displayFrontPads_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_displayBackPads_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_displayPadNumbers_toElementsOfSet (inAddedSet) // Transient property
+  }
+
+  //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
   }
 
   //····················································································································
