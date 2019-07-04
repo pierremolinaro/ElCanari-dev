@@ -31,13 +31,44 @@ func transient_ComponentInProject_componentPadDictionary (
         af.translate (x: -center.x, y: -center.y)
         var result = ComponentPadDescriptorDictionary ()
         for (padName, descriptor) in self_packagePadDictionary {
-          var padsLocation = [af.transform (descriptor.center.cocoaPoint)]
-          for slavePad in descriptor.slavePads {
-            padsLocation.append (af.transform (slavePad.center.cocoaPoint))
-//            let p = af.transform (slavePad.center.cocoaPoint)
-//            Swift.print ("Slave \(slavePad.center.cocoaPoint.x) \(slavePad.center.cocoaPoint.y), \(p.x) \(p.y)")
+          let padSide : ConnectorSide
+          switch descriptor.style {
+          case .traversing :
+            padSide = .both
+          case .surface :
+            switch self_mSide {
+            case .back :
+              padSide = .back
+            case .front :
+              padSide = .front
+            }
           }
-          let d = ComponentPadDescriptor (padName: padName, padsLocation: padsLocation)
+          let p = PadLocationAndSize (location: af.transform (descriptor.center.cocoaPoint), side: padSide)
+          var pads = [p]
+          for slavePad in descriptor.slavePads {
+            let padSide : ConnectorSide
+            switch slavePad.style {
+            case .traversing :
+              padSide = .both
+            case .bottomSide :
+              switch self_mSide {
+              case .back :
+                padSide = .front
+              case .front :
+                padSide = .back
+              }
+            case .topSide :
+              switch self_mSide {
+              case .back :
+                padSide = .back
+              case .front :
+                padSide = .front
+              }
+            }
+            let p = PadLocationAndSize (location: af.transform (slavePad.center.cocoaPoint), side: padSide)
+            pads.append (p)
+          }
+          let d = ComponentPadDescriptor (padName: padName, pads: pads)
           result [padName] = d
         }
         return result

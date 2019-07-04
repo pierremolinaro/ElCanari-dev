@@ -278,6 +278,7 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
       selectionController: self.componentInBoardSelectionController.selectedArray_property
     )
     self.boardObjectsController.mAfterObjectRemovingCallback = self.updateBoardConnectors
+    // self.updateBoardConnectors ()
   }
 
   //····················································································································
@@ -334,7 +335,8 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
   //····················································································································
 
   internal func updateBoardConnectors () {
-    for object in self.rootObject.mBoardObjects {
+    let boardObjects = self.rootObject.mBoardObjects
+    for object in boardObjects {
       if let connector = object as? ConnectorInBoard {
         if connector.mComponent == nil {
           connector.mRoot = nil // Remove from board objects
@@ -493,7 +495,7 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
       self.boardObjectsController.setSelection ([component])
       if let padDictionary = component.componentPadDictionary {
         for (padName, descriptor) in padDictionary {
-          for idx in 0 ..< descriptor.padsLocation.count {
+          for idx in 0 ..< descriptor.pads.count {
             let newConnector = ConnectorInBoard (self.ebUndoManager)
             newConnector.mComponent = component
             newConnector.mComponentPadName = padName

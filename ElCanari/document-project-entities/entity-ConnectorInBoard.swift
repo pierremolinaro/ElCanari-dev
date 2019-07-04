@@ -18,6 +18,12 @@ protocol ConnectorInBoard_mPadIndex : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ConnectorInBoard_side : class {
+  var side : ConnectorSide? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ConnectorInBoard_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -35,6 +41,7 @@ protocol ConnectorInBoard_selectionDisplay : class {
 class ConnectorInBoard : BoardObject,
          ConnectorInBoard_mComponentPadName,
          ConnectorInBoard_mPadIndex,
+         ConnectorInBoard_side,
          ConnectorInBoard_objectDisplay,
          ConnectorInBoard_selectionDisplay {
 
@@ -111,6 +118,29 @@ class ConnectorInBoard : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: side
+  //····················································································································
+
+  let side_property = EBTransientProperty_ConnectorSide ()
+
+  //····················································································································
+
+  var side_property_selection : EBSelection <ConnectorSide> {
+    return self.side_property.prop
+  }
+
+  //····················································································································
+
+  var side : ConnectorSide? {
+    switch self.side_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -126,8 +156,8 @@ class ConnectorInBoard : BoardObject,
       setter: { [weak self] inObject in if let me = self { inObject.mConnectors_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mConnectors_property.remove (me) } }
     )
-  //--- Atomic property: objectDisplay
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: side
+    self.side_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComponent_property.componentPadDictionary_property_selection.kind ()
         kind &= unwSelf.mComponentPadName_property_selection.kind ()
@@ -140,7 +170,34 @@ class ConnectorInBoard : BoardObject,
         case .single :
           switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_ConnectorInBoard_objectDisplay (v0, v1, v2))
+            return .single (transient_ConnectorInBoard_side (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponent_property.addEBObserverOf_componentPadDictionary (self.side_property)
+    self.mComponentPadName_property.addEBObserver (self.side_property)
+    self.mPadIndex_property.addEBObserver (self.side_property)
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mComponent_property.componentPadDictionary_property_selection.kind ()
+        kind &= unwSelf.mComponentPadName_property_selection.kind ()
+        kind &= unwSelf.mPadIndex_property_selection.kind ()
+        kind &= unwSelf.side_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.side_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_ConnectorInBoard_objectDisplay (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -152,6 +209,7 @@ class ConnectorInBoard : BoardObject,
     self.mComponent_property.addEBObserverOf_componentPadDictionary (self.objectDisplay_property)
     self.mComponentPadName_property.addEBObserver (self.objectDisplay_property)
     self.mPadIndex_property.addEBObserver (self.objectDisplay_property)
+    self.side_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -183,9 +241,13 @@ class ConnectorInBoard : BoardObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mComponent_property.removeEBObserverOf_componentPadDictionary (self.side_property)
+    self.mComponentPadName_property.removeEBObserver (self.side_property)
+    self.mPadIndex_property.removeEBObserver (self.side_property)
     self.mComponent_property.removeEBObserverOf_componentPadDictionary (self.objectDisplay_property)
     self.mComponentPadName_property.removeEBObserver (self.objectDisplay_property)
     self.mPadIndex_property.removeEBObserver (self.objectDisplay_property)
+    self.side_property.removeEBObserver (self.objectDisplay_property)
     self.mComponentPadName_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
@@ -218,6 +280,14 @@ class ConnectorInBoard : BoardObject,
       valueExplorer: &self.mPadIndex_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "side",
+      idx: self.side_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.side_property.mObserverExplorer,
+      valueExplorer: &self.side_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "objectDisplay",
       idx: self.objectDisplay_property.ebObjectIndex,

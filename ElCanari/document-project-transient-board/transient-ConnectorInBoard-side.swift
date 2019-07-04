@@ -13,16 +13,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DevicePackageInProject_packagePadDictionary (
-       _ self_mMasterPads_descriptor : [DeviceMasterPadInProject_descriptor]
-) -> PackageMasterPadDictionary {
+func transient_ConnectorInBoard_side (
+       _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
+       _ self_mComponentPadName : String,
+       _ self_mPadIndex : Int
+) -> ConnectorSide {
 //--- START OF USER ZONE 2
-        var result = PackageMasterPadDictionary ()
-        for masterPad in self_mMasterPads_descriptor {
-          let descriptor = masterPad.descriptor!
-          result [descriptor.name] = descriptor
-        }
-        return result
+
 //--- END OF USER ZONE 2
 }
 

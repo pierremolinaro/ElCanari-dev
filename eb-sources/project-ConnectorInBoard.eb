@@ -1,5 +1,11 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   BoardObject
+//   ConnectorInBoard
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum ConnectorSide {
+  front, back, both
+}
+
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity ConnectorInBoard : BoardObject {
@@ -7,8 +13,12 @@ graphic entity ConnectorInBoard : BoardObject {
   property String mComponentPadName default "" ; // "" if not connected to a component pad
   property Int mPadIndex default 0 ; // 0 -> master pad, > 0 : slave pad
 
- override transient EBShape objectDisplay dependsFrom
+  transient ConnectorSide side dependsFrom
     self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex
+  ;
+
+ override transient EBShape objectDisplay dependsFrom
+    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex, self.side
   ;
 
   override transient EBShape selectionDisplay dependsFrom

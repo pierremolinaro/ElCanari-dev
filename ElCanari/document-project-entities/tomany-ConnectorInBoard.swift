@@ -17,11 +17,13 @@ class ReadOnlyArrayOf_ConnectorInBoard : ReadOnlyAbstractArrayProperty <Connecto
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mComponentPadName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mPadIndex_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_side_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_mComponentPadName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mPadIndex_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_side_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
   }
@@ -136,6 +138,62 @@ class ReadOnlyArrayOf_ConnectorInBoard : ReadOnlyAbstractArrayProperty <Connecto
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPadIndex_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'side' transient property
+  //····················································································································
+
+  private var mObserversOf_side = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_side (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_side.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.side_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_side (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_side.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.side_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_side_toElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
+    for managedObject in inSet {
+      self.mObserversOf_side.apply { (_ observer : EBEvent) in
+        managedObject.side_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_side_fromElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
+    for managedObject in inSet {
+      self.mObserversOf_side.apply { (_ observer : EBEvent) in
+        managedObject.side_property.removeEBObserver (observer)
       }
     }
   }
