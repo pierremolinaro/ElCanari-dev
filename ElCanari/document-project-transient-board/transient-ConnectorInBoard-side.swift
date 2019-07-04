@@ -19,7 +19,12 @@ func transient_ConnectorInBoard_side (
        _ self_mPadIndex : Int
 ) -> ConnectorSide {
 //--- START OF USER ZONE 2
-
+        if let descriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName]  {
+          let pad = descriptor.pads [self_mPadIndex]
+          return pad.side
+        }else{
+          return .both
+        }
 //--- END OF USER ZONE 2
 }
 

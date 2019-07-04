@@ -9,7 +9,7 @@ import Cocoa
 enum ConnectorSide : Int, EnumPropertyProtocol {
   case front = 0
   case back = 1
-  case frontAndBack = 2
+  case both = 2
 
 
   //····················································································································
@@ -18,7 +18,7 @@ enum ConnectorSide : Int, EnumPropertyProtocol {
     switch string {
       case "front" : self = .front // 0
       case "back" : self = .back // 1
-      case "frontAndBack" : self = .frontAndBack // 2
+      case "both" : self = .both // 2
       case _ : return nil
     }
   }
@@ -29,7 +29,7 @@ enum ConnectorSide : Int, EnumPropertyProtocol {
     switch self {
       case .front : return "front" // 0
       case .back : return "back" // 1
-      case .frontAndBack : return "frontAndBack" // 2
+      case .both : return "both" // 2
     }
   }
 
