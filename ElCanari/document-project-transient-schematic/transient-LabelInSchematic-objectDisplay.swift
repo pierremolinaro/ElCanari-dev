@@ -14,7 +14,7 @@ import Cocoa
 
 func transient_LabelInSchematic_objectDisplay (
        _ prefs_symbolColorForSchematic : NSColor,
-       _ prefs_symbolDrawingWidthMultipliedByTen : Int,
+       _ prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int,
        _ self_mPoint_location : CanariPoint?,  
        _ self_netName : String,                
        _ prefs_pinNameFont : NSFont,           
@@ -33,7 +33,7 @@ func transient_LabelInSchematic_objectDisplay (
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: 0.0))
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
+          bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTenForSchematic) / 10.0
         //---
           var af = AffineTransform ()
           af.translate (x: p.x, y: p.y)

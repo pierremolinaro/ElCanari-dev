@@ -288,7 +288,7 @@ class LabelInSchematic : SchematicObject,
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.symbolColorForSchematic_property_selection.kind ()
-        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
+        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTenForSchematic_property_selection.kind ()
         kind &= unwSelf.mPoint_property.location_property_selection.kind ()
         kind &= unwSelf.netName_property_selection.kind ()
         kind &= g_Preferences!.pinNameFont_property_selection.kind ()
@@ -299,7 +299,7 @@ class LabelInSchematic : SchematicObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (g_Preferences!.symbolColorForSchematic_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, g_Preferences!.pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
+          switch (g_Preferences!.symbolColorForSchematic_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTenForSchematic_property_selection, unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, g_Preferences!.pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_LabelInSchematic_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
@@ -311,7 +311,7 @@ class LabelInSchematic : SchematicObject,
       }
     }
     g_Preferences?.symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property)
     self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property)
     self.netName_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
@@ -333,7 +333,7 @@ class LabelInSchematic : SchematicObject,
     self.mOrientation_property.removeEBObserver (self.selectionDisplay_property)
     self.mPoint_property.removeEBObserverOf_netClassName (self.netClassName_property)
     g_Preferences?.symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.removeEBObserver (self.objectDisplay_property)
     self.mPoint_property.removeEBObserverOf_location (self.objectDisplay_property)
     self.netName_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
