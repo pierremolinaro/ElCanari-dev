@@ -116,6 +116,82 @@ extension ApplicationDelegate {
 
   //····················································································································
 
+  @IBAction func updateAllProjectsInDirectory (_ inSender : Any?) {
+    if let button = inSender as? NSButton, let window = button.window {
+      self.mMaintenanceLogTextView?.string = ""
+      self.mMaintenanceLogTextField?.stringValue = ""
+      self.mCount = 0
+      let fileExtension = "ElCanariProject"
+      let op = NSOpenPanel ()
+      op.allowsMultipleSelection = false
+      op.canChooseDirectories = true
+      op.canChooseFiles = false
+      op.beginSheetModal (for: window) { (_ response : NSApplication.ModalResponse) in
+        op.orderOut (nil)
+        if response == .OK {
+          let baseDirectory : String = op.urls [0].path
+          let fm = FileManager ()
+          let dc = NSDocumentController ()
+          let subPathes = (try? fm.subpathsOfDirectory (atPath: baseDirectory)) ?? []
+          let filesInCurrentDirectory = fm.subpaths (atPath: baseDirectory) ?? []
+          var fileCount = 0
+          for f in filesInCurrentDirectory + subPathes {
+            let fullpath = baseDirectory + "/" + f
+            if fullpath.pathExtension == fileExtension {
+              fileCount += 1
+            }
+          }
+          if fileCount == 0 {
+            let alert = NSAlert ()
+            alert.messageText = "No project to Open"
+            _ = alert.beginSheetModal (for: window)
+          }else{
+            let alert = NSAlert ()
+            alert.messageText = "Update \(fileCount) projects\((fileCount > 1) ? "s" : "")? This may take a while, and you cannot cancel this operation."
+            alert.addButton (withTitle: "Ok")
+            alert.addButton (withTitle: "Cancel")
+            alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
+              if response == .alertFirstButtonReturn {
+                self.mMaintenanceLogTextField?.stringValue = "No updated project"
+                self.mMaintenanceLogTextView?.appendMessageString ("Updating \(fileCount) project\((fileCount > 1) ? "s" : "")\n")
+                for f in filesInCurrentDirectory + subPathes {
+                  let fullpath = baseDirectory + "/" + f
+                  if fullpath.pathExtension == fileExtension {
+                    dc.openDocument (
+                      withContentsOf: URL (fileURLWithPath: fullpath),
+                      display: true // animating,
+                    ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
+                      if let projectDocument = document as? CustomizedProjectDocument {
+//                        projectDocument.resetDevicesAndFontsVersionAction (nil)
+                        var errorMessages = [String] ()
+                        projectDocument.updateDevices (projectDocument.rootObject.mDevices, &errorMessages)
+                        projectDocument.updateFonts (projectDocument.rootObject.mFonts, &errorMessages)
+                        projectDocument.save (nil)
+                        projectDocument.close ()
+                        if errorMessages.count == 0 {
+                          self.mCount += 1
+                          let message = (self.mCount > 1)
+                            ? "\(self.mCount) projects have been updated."
+                            : "1 project has been updated."
+                          self.mMaintenanceLogTextField?.stringValue = message
+                        }else{
+                          self.mMaintenanceLogTextView?.appendErrorString ("Cannot update \(f)\n")
+                          self.mMaintenanceLogTextView?.appendMessageString (errorMessages.joined (separator: "\n"))
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
   @IBAction func updateAllDevicesInDirectory (_ inSender : Any?) {
     if let button = inSender as? NSButton, let window = button.window {
       self.mMaintenanceLogTextView?.string = ""
@@ -132,9 +208,10 @@ extension ApplicationDelegate {
           let baseDirectory : String = op.urls [0].path
           let fm = FileManager ()
           let dc = NSDocumentController ()
-          let files = try? fm.subpathsOfDirectory (atPath: baseDirectory)
+          let subPathes = (try? fm.subpathsOfDirectory (atPath: baseDirectory)) ?? []
+          let filesInCurrentDirectory = fm.subpaths (atPath: baseDirectory) ?? []
           var fileCount = 0
-          for f in files ?? [] {
+          for f in filesInCurrentDirectory + subPathes {
             let fullpath = baseDirectory + "/" + f
             if fullpath.pathExtension == fileExtension {
               fileCount += 1
@@ -153,7 +230,7 @@ extension ApplicationDelegate {
               if response == .alertFirstButtonReturn {
                 self.mMaintenanceLogTextField?.stringValue = "No updated device"
                 self.mMaintenanceLogTextView?.appendMessageString ("Updating \(fileCount) device\((fileCount > 1) ? "s" : "")\n")
-                for f in files ?? [] {
+                for f in filesInCurrentDirectory + subPathes {
                   let fullpath = baseDirectory + "/" + f
                   if fullpath.pathExtension == fileExtension {
                     dc.openDocument (

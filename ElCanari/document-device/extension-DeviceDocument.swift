@@ -191,7 +191,6 @@ extension DeviceDocument {
               strokeBezierPathes: &strokeBezierPathes,
               masterPads: &masterPads
             )
-        //    packageRoot.removeRecursivelyAllRelationsShips ()
           //-- Set properties
             package.mVersion = version
             package.mFileData = data

@@ -31,13 +31,11 @@ extension ProjectDocument {
 
   //····················································································································
 
-  internal func updateDeviceAction () {
-    let selectedDevices = self.projectDeviceController.selectedArray_property.propval
-    var messages = [String] ()
-    for deviceInProject in selectedDevices {
+  internal func updateDevices (_ inDevices : [DeviceInProject], _ ioMessages : inout [String]) {
+    for deviceInProject in inDevices {
       let pathes = deviceFilePathInLibraries (deviceInProject.mDeviceName)
       if pathes.count == 0 {
-        messages.append ("No file for \(deviceInProject.mDeviceName) device in Library")
+        ioMessages.append ("No file for \(deviceInProject.mDeviceName) device in Library")
       }else if pathes.count == 1 {
         if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])),
            let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: data),
@@ -46,20 +44,28 @@ extension ProjectDocument {
           if deviceInProject.mDeviceVersion < version {
             let ok = self.testAndUpdateDevice (deviceInProject, from: deviceRoot, version, data)
             if !ok {
-              messages.append ("Cannot update '\(deviceInProject.mDeviceName)': new device is incompatible.")
+              ioMessages.append ("Cannot update '\(deviceInProject.mDeviceName)': new device is incompatible.")
             }
           }
           deviceRoot.removeRecursivelyAllRelationsShips ()
          }else{
-          messages.append ("Cannot read \(pathes [0]) file.")
+          ioMessages.append ("Cannot read \(pathes [0]) file.")
         }
       }else{ // pathes.count > 1
-        messages.append ("Several files for \(deviceInProject.mDeviceName) font in Library:")
+        ioMessages.append ("Several files for \(deviceInProject.mDeviceName) font in Library:")
         for path in pathes {
-          messages.append ("  - \(path)")
+          ioMessages.append ("  - \(path)")
         }
       }
     }
+  }
+
+  //····················································································································
+
+  internal func updateDeviceAction () {
+    var messages = [String] ()
+    let selectedDevices = self.projectDeviceController.selectedArray
+    self.updateDevices (selectedDevices, &messages)
     if messages.count > 0 {
       let alert = NSAlert ()
       alert.messageText = "Error updating device"

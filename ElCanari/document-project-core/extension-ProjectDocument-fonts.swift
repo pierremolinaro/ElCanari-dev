@@ -43,6 +43,37 @@ extension ProjectDocument {
 
   //····················································································································
 
+  internal func updateFonts (_ inFonts : [FontInProject], _ ioMessages : inout [String]) {
+    for font in inFonts {
+      let pathes = fontFilePathInLibraries (font.mFontName)
+      if pathes.count == 0 {
+        ioMessages.append ("No file for \(font.mFontName) font in Library")
+      }else if pathes.count == 1 {
+        if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])),
+           let (_, metadataDictionary, rootObjectDictionary) = try? loadEasyRootObjectDictionary (from: data),
+           let version = metadataDictionary [PMFontVersion] as? Int,
+           let rod = rootObjectDictionary,
+           let nominalSize = rod ["nominalSize"] as? Int,
+           let descriptiveString = rod [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
+          if font.mFontVersion < version {
+            font.mFontVersion = version
+            font.mNominalSize = nominalSize
+            font.mDescriptiveString = descriptiveString
+          }
+         }else{
+          ioMessages.append ("Cannot read \(pathes [0]) file.")
+        }
+      }else{ // pathes.count > 1
+        ioMessages.append ("Several files for \(font.mFontName) font in Library:")
+        for path in pathes {
+          ioMessages.append ("  - \(path)")
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

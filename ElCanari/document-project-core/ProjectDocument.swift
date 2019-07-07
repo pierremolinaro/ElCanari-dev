@@ -629,6 +629,7 @@ import Cocoa
   @IBOutlet weak var mPinPadAssignmentTableView : ThreeStringArrayTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mProductPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mRemoveDeviceButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mRemoveEmbeddedDevicesButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mRemoveFontButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mRemoveNetClassButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mRemoveSelectedComponentsActionButton : EBButton? = nil // An outlet should be declared weak
@@ -647,6 +648,7 @@ import Cocoa
   @IBOutlet weak var mRenameNetPanel : NSPanel? = nil // An outlet should be declared weak
   @IBOutlet weak var mRenameNetTextField : EBTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mResetDeviceVersionButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mResetDevicesAndFontsVersionButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mResetFontVersionButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mRestrictRectangleInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mRouterBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
@@ -699,6 +701,7 @@ import Cocoa
   @IBOutlet weak var mUnplacedSymbolsTableView : CanariDragSourceTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mUnplacedSymbolsTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mUpdateDeviceButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mUpdateDevicesAndFontsButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mUpdateFontButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mWireNetNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mWireRenameNetButton : EBButton? = nil // An outlet should be declared weak
@@ -715,6 +718,9 @@ import Cocoa
   var mController_mRenameComponentButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveNetClassButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditNetClassButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mRemoveEmbeddedDevicesButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mResetDevicesAndFontsVersionButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mUpdateDevicesAndFontsButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveFontButton_enabled : MultipleBindingController_enabled? = nil
@@ -1032,6 +1038,7 @@ import Cocoa
     checkOutletConnection (self.mPinPadAssignmentTableView, "mPinPadAssignmentTableView", ThreeStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mRemoveDeviceButton, "mRemoveDeviceButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRemoveEmbeddedDevicesButton, "mRemoveEmbeddedDevicesButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveFontButton, "mRemoveFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveNetClassButton, "mRemoveNetClassButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveSelectedComponentsActionButton, "mRemoveSelectedComponentsActionButton", EBButton.self, #file, #line)
@@ -1050,6 +1057,7 @@ import Cocoa
     checkOutletConnection (self.mRenameNetPanel, "mRenameNetPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mRenameNetTextField, "mRenameNetTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mResetDeviceVersionButton, "mResetDeviceVersionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mResetDevicesAndFontsVersionButton, "mResetDevicesAndFontsVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRestrictRectangleInspectorView, "mRestrictRectangleInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mRouterBoardInspectorView, "mRouterBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -1102,6 +1110,7 @@ import Cocoa
     checkOutletConnection (self.mUnplacedSymbolsTableView, "mUnplacedSymbolsTableView", CanariDragSourceTableView.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsTextField, "mUnplacedSymbolsTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mUpdateDeviceButton, "mUpdateDeviceButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mUpdateDevicesAndFontsButton, "mUpdateDevicesAndFontsButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpdateFontButton, "mUpdateFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mWireNetNameTextField, "mWireNetNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mWireRenameNetButton, "mWireRenameNetButton", EBButton.self, #file, #line)
@@ -1684,6 +1693,38 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
+          return (self.rootObject.mDevices_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mRemoveEmbeddedDevicesButton
+      )
+      self.rootObject.mDevices_property.count_property.addEBObserver (controller)
+      self.mController_mRemoveEmbeddedDevicesButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return ((self.rootObject.mDevices_property.count_property_selection > EBSelection.single (0)) || (self.rootObject.mFonts_property.count_property_selection > EBSelection.single (0)))
+        },
+        outlet: self.mResetDevicesAndFontsVersionButton
+      )
+      self.rootObject.mDevices_property.count_property.addEBObserver (controller)
+      self.rootObject.mFonts_property.count_property.addEBObserver (controller)
+      self.mController_mResetDevicesAndFontsVersionButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return ((self.rootObject.mDevices_property.count_property_selection > EBSelection.single (0)) || (self.rootObject.mFonts_property.count_property_selection > EBSelection.single (0)))
+        },
+        outlet: self.mUpdateDevicesAndFontsButton
+      )
+      self.rootObject.mDevices_property.count_property.addEBObserver (controller)
+      self.rootObject.mFonts_property.count_property.addEBObserver (controller)
+      self.mController_mUpdateDevicesAndFontsButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
           return (self.projectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mEditFontButton
@@ -1952,6 +1993,12 @@ import Cocoa
     self.mRemoveNetClassButton?.action = #selector (ProjectDocument.removeNetClassAction (_:))
     self.mEditNetClassButton?.target = self
     self.mEditNetClassButton?.action = #selector (ProjectDocument.editNetClassAction (_:))
+    self.mRemoveEmbeddedDevicesButton?.target = self
+    self.mRemoveEmbeddedDevicesButton?.action = #selector (ProjectDocument.removeEmbeddedDevicesAction (_:))
+    self.mResetDevicesAndFontsVersionButton?.target = self
+    self.mResetDevicesAndFontsVersionButton?.action = #selector (ProjectDocument.resetDevicesAndFontsVersionAction (_:))
+    self.mUpdateDevicesAndFontsButton?.target = self
+    self.mUpdateDevicesAndFontsButton?.action = #selector (ProjectDocument.updateDevicesAndFontsAction (_:))
     self.mAddFontButton?.target = self
     self.mAddFontButton?.action = #selector (ProjectDocument.addFontAction (_:))
     self.mEditFontButton?.target = self
@@ -2179,6 +2226,14 @@ import Cocoa
     self.mController_mRemoveNetClassButton_enabled = nil
     self.netClassController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditNetClassButton_enabled!)
     self.mController_mEditNetClassButton_enabled = nil
+    self.rootObject.mDevices_property.count_property.removeEBObserver (self.mController_mRemoveEmbeddedDevicesButton_enabled!)
+    self.mController_mRemoveEmbeddedDevicesButton_enabled = nil
+    self.rootObject.mDevices_property.count_property.removeEBObserver (self.mController_mResetDevicesAndFontsVersionButton_enabled!)
+    self.rootObject.mFonts_property.count_property.removeEBObserver (self.mController_mResetDevicesAndFontsVersionButton_enabled!)
+    self.mController_mResetDevicesAndFontsVersionButton_enabled = nil
+    self.rootObject.mDevices_property.count_property.removeEBObserver (self.mController_mUpdateDevicesAndFontsButton_enabled!)
+    self.rootObject.mFonts_property.count_property.removeEBObserver (self.mController_mUpdateDevicesAndFontsButton_enabled!)
+    self.mController_mUpdateDevicesAndFontsButton_enabled = nil
     self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditFontButton_enabled!)
     self.mController_mEditFontButton_enabled = nil
     self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateFontButton_enabled!)
@@ -2296,6 +2351,9 @@ import Cocoa
     self.mAddNetClassButton?.target = nil
     self.mRemoveNetClassButton?.target = nil
     self.mEditNetClassButton?.target = nil
+    self.mRemoveEmbeddedDevicesButton?.target = nil
+    self.mResetDevicesAndFontsVersionButton?.target = nil
+    self.mUpdateDevicesAndFontsButton?.target = nil
     self.mAddFontButton?.target = nil
     self.mEditFontButton?.target = nil
     self.mUpdateFontButton?.target = nil
@@ -2509,6 +2567,7 @@ import Cocoa
     self.mPinPadAssignmentTableView?.ebCleanUp ()
     self.mProductPageView?.ebCleanUp ()
     self.mRemoveDeviceButton?.ebCleanUp ()
+    self.mRemoveEmbeddedDevicesButton?.ebCleanUp ()
     self.mRemoveFontButton?.ebCleanUp ()
     self.mRemoveNetClassButton?.ebCleanUp ()
     self.mRemoveSelectedComponentsActionButton?.ebCleanUp ()
@@ -2527,6 +2586,7 @@ import Cocoa
     self.mRenameNetPanel?.ebCleanUp ()
     self.mRenameNetTextField?.ebCleanUp ()
     self.mResetDeviceVersionButton?.ebCleanUp ()
+    self.mResetDevicesAndFontsVersionButton?.ebCleanUp ()
     self.mResetFontVersionButton?.ebCleanUp ()
     self.mRestrictRectangleInspectorView?.ebCleanUp ()
     self.mRouterBoardInspectorView?.ebCleanUp ()
@@ -2579,6 +2639,7 @@ import Cocoa
     self.mUnplacedSymbolsTableView?.ebCleanUp ()
     self.mUnplacedSymbolsTextField?.ebCleanUp ()
     self.mUpdateDeviceButton?.ebCleanUp ()
+    self.mUpdateDevicesAndFontsButton?.ebCleanUp ()
     self.mUpdateFontButton?.ebCleanUp ()
     self.mWireNetNameTextField?.ebCleanUp ()
     self.mWireRenameNetButton?.ebCleanUp ()
@@ -2781,6 +2842,7 @@ import Cocoa
 //    self.mPinPadAssignmentTableView = nil
 //    self.mProductPageView = nil
 //    self.mRemoveDeviceButton = nil
+//    self.mRemoveEmbeddedDevicesButton = nil
 //    self.mRemoveFontButton = nil
 //    self.mRemoveNetClassButton = nil
 //    self.mRemoveSelectedComponentsActionButton = nil
@@ -2799,6 +2861,7 @@ import Cocoa
 //    self.mRenameNetPanel = nil
 //    self.mRenameNetTextField = nil
 //    self.mResetDeviceVersionButton = nil
+//    self.mResetDevicesAndFontsVersionButton = nil
 //    self.mResetFontVersionButton = nil
 //    self.mRestrictRectangleInspectorView = nil
 //    self.mRouterBoardInspectorView = nil
@@ -2851,6 +2914,7 @@ import Cocoa
 //    self.mUnplacedSymbolsTableView = nil
 //    self.mUnplacedSymbolsTextField = nil
 //    self.mUpdateDeviceButton = nil
+//    self.mUpdateDevicesAndFontsButton = nil
 //    self.mUpdateFontButton = nil
 //    self.mWireNetNameTextField = nil
 //    self.mWireRenameNetButton = nil

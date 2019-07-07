@@ -119,6 +119,20 @@ document ProjectDocument root ProjectRoot {
   outlet EBButton mEditNetClassButton $run editNetClassAction $enabled #netClassController.selectedArray.count == 1 ;
 
 //---------------------- Library Tab
+  action removeEmbeddedDevicesAction ;
+  outlet EBButton mRemoveEmbeddedDevicesButton $run removeEmbeddedDevicesAction $enabled root.mDevices.count > 0 ;
+
+  action resetDevicesAndFontsVersionAction ;
+  outlet EBButton mResetDevicesAndFontsVersionButton
+    $run resetDevicesAndFontsVersionAction
+    $enabled (root.mDevices.count > 0) | (root.mFonts.count > 0) ;
+
+  action updateDevicesAndFontsAction ;
+  outlet EBButton mUpdateDevicesAndFontsButton
+    $run updateDevicesAndFontsAction
+    $enabled (root.mDevices.count > 0) | (root.mFonts.count > 0) ;
+
+//--- Fonts
   action addFontAction ;
   outlet EBButton mAddFontButton $run addFontAction ;
 

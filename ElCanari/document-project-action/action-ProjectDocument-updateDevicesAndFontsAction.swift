@@ -12,14 +12,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension ProjectDocument {
-  @objc func updateFontAction (_ sender : NSObject?) {
+  @objc func updateDevicesAndFontsAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        let selectedFonts = self.projectFontController.selectedArray
         var messages = [String] ()
-        self.updateFonts (selectedFonts, &messages)
+        self.updateDevices (self.rootObject.mDevices, &messages)
+        self.updateFonts (self.rootObject.mFonts, &messages)
         if messages.count > 0 {
           let alert = NSAlert ()
-          alert.messageText = "Error opening Font"
+          alert.messageText = "Error updating project"
           alert.informativeText = messages.joined (separator: "\n")
           alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
         }
