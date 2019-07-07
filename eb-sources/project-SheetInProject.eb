@@ -1,6 +1,6 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum SchematicSheetOrientation { horizontal, vertical }
+enum SchematicSheetOrientation { vertical, horizontal }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Sheet
@@ -20,10 +20,6 @@ entity SheetInProject {
   transient Int connexionWarnings dependsFrom self.issues ;
   
   transient Int connexionErrors dependsFrom self.issues ;
-  
-//  transient Int sheetIndex dependsFrom self.mRoot.all.mSheets ;
-   
-//  transient IntArray sheetIndexes dependsFrom self.mSheets ;
   
   transient SchematicSheetDescriptor sheetDescriptor dependsFrom
      self.mRoot.one.mSchematicSheetOrientation,

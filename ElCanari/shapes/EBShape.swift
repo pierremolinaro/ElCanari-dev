@@ -199,10 +199,15 @@ struct EBShape : Hashable {
     )
   //--- Append background
     do{
-      let bp = EBBezierPath (rect: filledBezierPath.bounds)
-      let e = EBShapeElement ([bp], .white, inKnobIndex, nil)
-      self.mElements.append (e)
-      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+      var bp = EBBezierPath (rect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
+      bp.lineWidth = 0.5
+      bp.lineJoinStyle = .round
+      bp.lineCapStyle = .round
+      let e1 = EBShapeElement ([bp], .white, inKnobIndex, nil)
+      self.mElements.append (e1)
+      let e2 = EBShapeElement ([bp.pathByStroking], .cyan, inKnobIndex, nil)
+      self.mElements.append (e2)
+      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
     }
   //--- Append text
     let e = EBShapeElement ([filledBezierPath], .black, nil, nil)

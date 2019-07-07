@@ -24,41 +24,42 @@ func transient_ComponentSymbolInProject_selectionDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var shape = EBShape ()
+      //--- Frame symbol
         var strokeBezierPath = EBBezierPath ()
         strokeBezierPath.append (self_symbolInfo.strokeBezierPath)
         strokeBezierPath.lineWidth = SCHEMATIC_HILITE_WIDTH
         shape.add (stroke: [strokeBezierPath], .cyan)
+      //--- Line from center to component value
         let symbolCenter = self_symbolInfo.center.cocoaPoint
-        shape.add (knobAt:  symbolCenter, knobIndex: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
-      //--- Component name knob
-        do{
-          let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
-          var bp = EBBezierPath ()
-          bp.move (to: symbolCenter)
-          bp.line (to: componentNameCenter.cocoaPoint)
-          bp.lineWidth = SCHEMATIC_HILITE_WIDTH
-          shape.add (stroke: [bp], .black)
-          shape.add (textKnob: 
-            self_symbolInfo.componentName,
-            componentNameCenter.cocoaPoint,
-            prefs_pinNameFont,
-            .center,
-            .center,
-            knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB
-          )
-        }
-      //--- Component value knob
+        let componentValueCenter = CanariPoint (
+          x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX,
+          y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY
+        )
         if self_mDisplayComponentValue {
-          let value = (self_symbolInfo.componentValue != "") ? self_symbolInfo.componentValue : "No value"
-          let componentValueCenter = CanariPoint (
-            x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX,
-            y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY
-          )
           var bp = EBBezierPath ()
           bp.move (to: symbolCenter)
           bp.line (to: componentValueCenter.cocoaPoint)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
-          shape.add (stroke: [bp], .black)
+          bp.lineCapStyle = .round
+          bp.lineJoinStyle = .round
+          shape.add (stroke: [bp], .cyan)
+        }
+      //--- line from center to name
+        let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
+        do{
+          var bp = EBBezierPath ()
+          bp.move (to: symbolCenter)
+          bp.line (to: componentNameCenter.cocoaPoint)
+          bp.lineWidth = SCHEMATIC_HILITE_WIDTH
+          bp.lineCapStyle = .round
+          bp.lineJoinStyle = .round
+          shape.add (stroke: [bp], .cyan)
+        }
+      //--- Center knob
+        shape.add (knobAt:  symbolCenter, knobIndex: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
+      //--- Component value knob
+        if self_mDisplayComponentValue {
+          let value = (self_symbolInfo.componentValue != "") ? self_symbolInfo.componentValue : "No value"
           let componentValueShape = EBShape (
             textKnob: value,
             componentValueCenter.cocoaPoint,
@@ -68,6 +69,17 @@ func transient_ComponentSymbolInProject_selectionDisplay (
             knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB
           )
           shape.add (componentValueShape)
+        }
+      //--- Component name knob
+        do{
+          shape.add (textKnob: 
+            self_symbolInfo.componentName,
+            componentNameCenter.cocoaPoint,
+            prefs_pinNameFont,
+            .center,
+            .center,
+            knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB
+          )
         }
       //---
         return shape
