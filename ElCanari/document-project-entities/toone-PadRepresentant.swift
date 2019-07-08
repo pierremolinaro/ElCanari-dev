@@ -5,34 +5,38 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyObject_ConnectorInBoard 
+//    ReadOnlyObject_PadRepresentant 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_ConnectorInBoard : ReadOnlyAbstractObjectProperty <ConnectorInBoard> {
+class ReadOnlyObject_PadRepresentant : ReadOnlyAbstractObjectProperty <PadRepresentant> {
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : ConnectorInBoard?) {
+  internal override func notifyModelDidChangeFrom (oldValue inOldValue : PadRepresentant?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+    inOldValue?.mComponentPadName_property.removeEBObserversFrom (&self.mObserversOf_mComponentPadName) // Stored property
+    inOldValue?.mPadIndex_property.removeEBObserversFrom (&self.mObserversOf_mPadIndex) // Stored property
+    inOldValue?.side_property.removeEBObserversFrom (&self.mObserversOf_side) // Transient property
+    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+    self.mInternalValue?.mComponentPadName_property.addEBObserversFrom (&self.mObserversOf_mComponentPadName) // Stored property
+    self.mInternalValue?.mPadIndex_property.addEBObserversFrom (&self.mObserversOf_mPadIndex) // Stored property
+    self.mInternalValue?.side_property.addEBObserversFrom (&self.mObserversOf_side) // Transient property
+    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
   }
 
   //····················································································································
-  //   Observers of 'mX' stored property
+  //   Observers of 'mComponentPadName' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private var mObserversOf_mComponentPadName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int?> {
+  var mComponentPadName_property_selection : EBSelection <String?> {
     if let model = self.propval {
-      switch (model.mX_property_selection) {
+      switch (model.mComponentPadName_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -47,62 +51,62 @@ class ReadOnlyObject_ConnectorInBoard : ReadOnlyAbstractObjectProperty <Connecto
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mComponentPadName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mX.insert (inObserver)
+    self.mObserversOf_mComponentPadName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mX_property.addEBObserver (inObserver)
+       v?.mComponentPadName_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mComponentPadName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mX.remove (inObserver)
+    self.mObserversOf_mComponentPadName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mX_property.removeEBObserver (inObserver)
+      v?.mComponentPadName_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
+  final func addEBObserversOf_mComponentPadName_toElementsOfSet (_ inSet : Set<PadRepresentant>) {
     for managedObject in inSet {
-      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-        managedObject.mX_property.addEBObserver (observer)
+      self.mObserversOf_mComponentPadName.apply { (_ observer : EBEvent) in
+        managedObject.mComponentPadName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
-    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mComponentPadName_fromElementsOfSet (_ inSet : Set<PadRepresentant>) {
+    self.mObserversOf_mComponentPadName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mX_property.removeEBObserver (observer)
+        managedObject.mComponentPadName_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mY' stored property
+  //   Observers of 'mPadIndex' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private var mObserversOf_mPadIndex = EBWeakEventSet ()
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int?> {
+  var mPadIndex_property_selection : EBSelection <Int?> {
     if let model = self.propval {
-      switch (model.mY_property_selection) {
+      switch (model.mPadIndex_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -117,62 +121,62 @@ class ReadOnlyObject_ConnectorInBoard : ReadOnlyAbstractObjectProperty <Connecto
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPadIndex (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mY.insert (inObserver)
+    self.mObserversOf_mPadIndex.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mY_property.addEBObserver (inObserver)
+       v?.mPadIndex_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPadIndex (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mY.remove (inObserver)
+    self.mObserversOf_mPadIndex.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mY_property.removeEBObserver (inObserver)
+      v?.mPadIndex_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
+  final func addEBObserversOf_mPadIndex_toElementsOfSet (_ inSet : Set<PadRepresentant>) {
     for managedObject in inSet {
-      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-        managedObject.mY_property.addEBObserver (observer)
+      self.mObserversOf_mPadIndex.apply { (_ observer : EBEvent) in
+        managedObject.mPadIndex_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<ConnectorInBoard>) {
-    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mPadIndex_fromElementsOfSet (_ inSet : Set<PadRepresentant>) {
+    self.mObserversOf_mPadIndex.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mY_property.removeEBObserver (observer)
+        managedObject.mPadIndex_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observable toMany property: mTracksP1
+  //   Observers of 'side' transient property
   //····················································································································
 
-  private var mObserversOf_mTracksP1 = EBWeakEventSet ()
+  private var mObserversOf_side = EBWeakEventSet ()
 
   //····················································································································
 
-  var mTracksP1_property_selection : EBSelection <[BoardTrack]> {
+  var side_property_selection : EBSelection <ConnectorSide?> {
     if let model = self.propval {
-      switch (model.mTracksP1_property_selection) {
+      switch (model.side_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -181,39 +185,67 @@ class ReadOnlyObject_ConnectorInBoard : ReadOnlyAbstractObjectProperty <Connecto
         return .single (v)
       }
     }else{
-      return .empty
+      return .single (nil)
     }
   }
 
   //····················································································································
 
-  final func addEBObserverOf_mTracksP1 (_ inObserver : EBEvent) {
-    self.mObserversOf_mTracksP1.insert (inObserver)
-    if let object = self.propval {
-      object.mTracksP1_property.addEBObserver (inObserver)
+  final func addEBObserverOf_side (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_side.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.side_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mTracksP1 (_ inObserver : EBEvent) {
-    self.mObserversOf_mTracksP1.remove (inObserver)
-    if let object = self.propval {
-      object.mTracksP1_property.removeEBObserver (inObserver)
+  final func removeEBObserverOf_side (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_side.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.side_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observable toMany property: mTracksP2
+
+  final func addEBObserversOf_side_toElementsOfSet (_ inSet : Set<PadRepresentant>) {
+    for managedObject in inSet {
+      self.mObserversOf_side.apply { (_ observer : EBEvent) in
+        managedObject.side_property.addEBObserver (observer)
+      }
+    }
+  }
+
   //····················································································································
 
-  private var mObserversOf_mTracksP2 = EBWeakEventSet ()
+  final func removeEBObserversOf_side_fromElementsOfSet (_ inSet : Set<PadRepresentant>) {
+    for managedObject in inSet {
+      self.mObserversOf_side.apply { (_ observer : EBEvent) in
+        managedObject.side_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var mTracksP2_property_selection : EBSelection <[BoardTrack]> {
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
-      switch (model.mTracksP2_property_selection) {
+      switch (model.issues_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -222,25 +254,53 @@ class ReadOnlyObject_ConnectorInBoard : ReadOnlyAbstractObjectProperty <Connecto
         return .single (v)
       }
     }else{
-      return .empty
+      return .single (nil)
     }
   }
 
   //····················································································································
 
-  final func addEBObserverOf_mTracksP2 (_ inObserver : EBEvent) {
-    self.mObserversOf_mTracksP2.insert (inObserver)
-    if let object = self.propval {
-      object.mTracksP2_property.addEBObserver (inObserver)
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mTracksP2 (_ inObserver : EBEvent) {
-    self.mObserversOf_mTracksP2.remove (inObserver)
-    if let object = self.propval {
-      object.mTracksP2_property.removeEBObserver (inObserver)
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.issues_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PadRepresentant>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PadRepresentant>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.removeEBObserver (observer)
+      }
     }
   }
 
@@ -249,21 +309,21 @@ class ReadOnlyObject_ConnectorInBoard : ReadOnlyAbstractObjectProperty <Connecto
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientObject ConnectorInBoard
+//    TransientObject PadRepresentant
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientObject_ConnectorInBoard : ReadOnlyObject_ConnectorInBoard {
+class TransientObject_PadRepresentant : ReadOnlyObject_PadRepresentant {
 
   //····················································································································
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_ConnectorInBoard? = nil
+  private var mDataProvider : ReadOnlyObject_PadRepresentant? = nil
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  func setDataProvider (_ inProvider : ReadOnlyObject_ConnectorInBoard?) {
+  func setDataProvider (_ inProvider : ReadOnlyObject_PadRepresentant?) {
     if self.mDataProvider !== inProvider {
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider
@@ -274,7 +334,7 @@ class TransientObject_ConnectorInBoard : ReadOnlyObject_ConnectorInBoard {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newObject : ConnectorInBoard? 
+    let newObject : PadRepresentant? 
     if let dataProvider = self.mDataProvider {
       switch dataProvider.prop {
       case .empty :
@@ -297,7 +357,7 @@ class TransientObject_ConnectorInBoard : ReadOnlyObject_ConnectorInBoard {
 
   //····················································································································
 
-  override var prop : EBSelection < ConnectorInBoard? > {
+  override var prop : EBSelection < PadRepresentant? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -314,39 +374,39 @@ class TransientObject_ConnectorInBoard : ReadOnlyObject_ConnectorInBoard {
 
   //····················································································································
 
-  override var propval : ConnectorInBoard? { return self.mInternalValue }
+  override var propval : PadRepresentant? { return self.mInternalValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_ConnectorInBoard
+//    ReadWriteObject_PadRepresentant
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteObject_ConnectorInBoard : ReadOnlyObject_ConnectorInBoard {
+class ReadWriteObject_PadRepresentant : ReadOnlyObject_PadRepresentant {
 
   //····················································································································
  
-  func setProp (_ inValue : ConnectorInBoard?) { } // Abstract method
+  func setProp (_ inValue : PadRepresentant?) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyObject_ConnectorInBoard
+//    Proxy: ProxyObject_PadRepresentant
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_ConnectorInBoard : ReadWriteObject_ConnectorInBoard {
+final class ProxyObject_PadRepresentant : ReadWriteObject_PadRepresentant {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_ConnectorInBoard? = nil
+  private var mModel : ReadWriteObject_PadRepresentant? = nil
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteObject_ConnectorInBoard?) {
+  func setModel (_ inModel : ReadWriteObject_PadRepresentant?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -357,7 +417,7 @@ final class ProxyObject_ConnectorInBoard : ReadWriteObject_ConnectorInBoard {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModel : ConnectorInBoard?
+    let newModel : PadRepresentant?
     if let model = self.mModel {
       switch model.prop {
       case .empty :
@@ -376,13 +436,13 @@ final class ProxyObject_ConnectorInBoard : ReadWriteObject_ConnectorInBoard {
 
   //····················································································································
 
-  override func setProp (_ inValue : ConnectorInBoard?) {
+  override func setProp (_ inValue : PadRepresentant?) {
     self.mModel?.setProp (inValue)
   }
 
   //····················································································································
 
-  override var prop : EBSelection < ConnectorInBoard? > {
+  override var prop : EBSelection < PadRepresentant? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -392,7 +452,7 @@ final class ProxyObject_ConnectorInBoard : ReadWriteObject_ConnectorInBoard {
 
   //····················································································································
 
-  override var propval : ConnectorInBoard? {
+  override var propval : PadRepresentant? {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -410,10 +470,10 @@ final class ProxyObject_ConnectorInBoard : ReadWriteObject_ConnectorInBoard {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    StoredObject_ConnectorInBoard 
+//    StoredObject_PadRepresentant 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_ConnectorInBoard : ReadWriteObject_ConnectorInBoard, EBSignatureObserverProtocol {
+final class StoredObject_PadRepresentant : ReadWriteObject_PadRepresentant, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -425,13 +485,13 @@ final class StoredObject_ConnectorInBoard : ReadWriteObject_ConnectorInBoard, EB
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : ConnectorInBoard) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : ConnectorInBoard) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PadRepresentant) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PadRepresentant) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ConnectorInBoard) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : ConnectorInBoard) -> Void) {
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PadRepresentant) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PadRepresentant) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
@@ -455,7 +515,7 @@ final class StoredObject_ConnectorInBoard : ReadWriteObject_ConnectorInBoard, EB
   // Model will change 
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : ConnectorInBoard?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : PadRepresentant?) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
   //---
@@ -474,7 +534,7 @@ final class StoredObject_ConnectorInBoard : ReadWriteObject_ConnectorInBoard, EB
  
   //····················································································································
 
-  @objc func performUndo (_ oldValue : ConnectorInBoard?) {
+  @objc func performUndo (_ oldValue : PadRepresentant?) {
     self.mInternalValue = oldValue
   }
  
@@ -496,7 +556,7 @@ final class StoredObject_ConnectorInBoard : ReadWriteObject_ConnectorInBoard, EB
 
   //····················································································································
 
-  override var prop : EBSelection < ConnectorInBoard? > {
+  override var prop : EBSelection < PadRepresentant? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -506,11 +566,11 @@ final class StoredObject_ConnectorInBoard : ReadWriteObject_ConnectorInBoard, EB
 
   //····················································································································
 
-  override func setProp (_ inValue : ConnectorInBoard?) { self.mInternalValue = inValue }
+  override func setProp (_ inValue : PadRepresentant?) { self.mInternalValue = inValue }
 
   //····················································································································
 
-  override var propval : ConnectorInBoard? { return self.mInternalValue }
+  override var propval : PadRepresentant? { return self.mInternalValue }
 
   //····················································································································
   //   signature

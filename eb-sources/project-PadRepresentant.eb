@@ -1,28 +1,25 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   ConnectorInBoard
+//   PadRepresentant
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum ConnectorSide {
-  front, back, both
-}
+entity PadRepresentant {
+  toOne ComponentInProject mComponent inverse toMany mPadRepresentants ;
+  property String mComponentPadName default "" ;
+  property Int mPadIndex default 0 ; // 0 -> master pad, > 0 : slave pad
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  toMany BoardTrack mTracksP1 inverse toOne mPadRepresentantP1 ;
+  toMany BoardTrack mTracksP2 inverse toOne mPadRepresentantP2 ;
 
-graphic entity ConnectorInBoard : BoardObject {
-  toMany BoardTrack mTracksP1 inverse toOne mConnectorP1 ;
-  toMany BoardTrack mTracksP2 inverse toOne mConnectorP2 ;
-
-  property Int mX default 0 ;
-  property Int mY default 0 ;
+  transient ConnectorSide side dependsFrom
+    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex
+  ;
   
-// override transient EBShape objectDisplay dependsFrom
-//    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex, self.side
-//  ;
+  transient CanariIssueArray issues dependsFrom
+    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex, self.side,
+    self.mComponent.one.errorOrWarningIssueSizeForComponent,
+    self.mComponent.one.padNetDictionary
+  ;
 
-//  override transient EBShape selectionDisplay dependsFrom
-//    self.mComponentPadName// TEMP
-//  ;
-  
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

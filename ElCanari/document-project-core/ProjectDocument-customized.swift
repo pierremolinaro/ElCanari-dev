@@ -13,6 +13,7 @@ fileprivate let kDragAndDropWire = NSPasteboard.PasteboardType (rawValue: "name.
 fileprivate let kDragAndDropRestrictRectangle = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.restrict.rectangle")
 fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.text")
 fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.package")
+fileprivate let kDragAndDropBoardLine = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.line")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -146,7 +147,10 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
     ]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
-    self.mBoardScrollView?.register (document: self, draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText, kDragAndDropBoardPackage])
+    self.mBoardScrollView?.register (
+      document: self,
+      draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText, kDragAndDropBoardPackage, kDragAndDropBoardLine]
+    )
   //--- Set Board inspector segmented control
     let boardInspectors = [
       self.mSelectedObjectsBoardInspectorView,
@@ -177,6 +181,7 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
     self.boardObjectsController.register (inspectorView: self.mRestrictRectangleInspectorView, for: BoardRestrictRectangle.self)
     self.boardObjectsController.register (inspectorView: self.mBoardTextInspectorView, for: BoardText.self)
     self.boardObjectsController.register (inspectorView: self.mComponentInBoardInspectorView, for: ComponentInProject.self)
+    self.boardObjectsController.register (inspectorView: self.mBoardLineInspectorView, for: BoardLine.self)
   //--- Set Board limits inspector segmented control
     let boardLimitsInspectors = [
       self.mSelectedObjectsBoardLimitsInspectorView,
@@ -253,6 +258,11 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
     self.mAddTextInBoardButton?.register (
       draggedType: kDragAndDropBoardText,
       shapeFactory: { [weak self] in return self?.boardTextImageFactory () },
+      scaleProvider: self.mBoardView
+    )
+    self.mAddLineInBoardButton?.register (
+      draggedType: kDragAndDropBoardLine,
+      draggedObjectFactory: { return BoardLine (nil) },
       scaleProvider: self.mBoardView
     )
   //---
@@ -337,11 +347,11 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
   internal func updateBoardConnectors () {
     let boardObjects = self.rootObject.mBoardObjects
     for object in boardObjects {
-      if let connector = object as? ConnectorInBoard {
-        if connector.mComponent == nil {
-          connector.mRoot = nil // Remove from board objects
-        }
-      }
+//      if let connector = object as? ConnectorInBoard {
+//        if connector.mComponent == nil {
+//          connector.mRoot = nil // Remove from board objects
+//        }
+//      }
     }
   }
 
@@ -450,6 +460,9 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
       }else if let _ = pasteboard.availableType (from: [kDragAndDropBoardPackage]) {
         self.performAddBoardPackageDragOperation (draggingLocationInDestinationView)
         ok = true
+      }else if let _ = pasteboard.availableType (from: [kDragAndDropBoardLine]) {
+        self.performAddBoardLineDragOperation (draggingLocationInDestinationView)
+        ok = true
       }
     }
     self.mPossibleDraggedComponent = nil
@@ -496,15 +509,28 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
       if let padDictionary = component.componentPadDictionary {
         for (padName, descriptor) in padDictionary {
           for idx in 0 ..< descriptor.pads.count {
-            let newConnector = ConnectorInBoard (self.ebUndoManager)
-            newConnector.mComponent = component
-            newConnector.mComponentPadName = padName
-            newConnector.mPadIndex = idx
-            self.rootObject.mBoardObjects.append (newConnector)
+            let newPadRepresentant = PadRepresentant (self.ebUndoManager)
+            newPadRepresentant.mComponent = component
+            newPadRepresentant.mComponentPadName = padName
+            newPadRepresentant.mPadIndex = idx
+//            self.rootObject.mBoardObjects.append (newConnector)
           }
         }
       }
     }
+  }
+
+  //····················································································································
+
+  private func performAddBoardLineDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
+    let newLine = BoardLine (self.ebUndoManager)
+    newLine.mX1 += p.x
+    newLine.mY1 += p.y
+    newLine.mX2 += p.x
+    newLine.mY2 += p.y
+    self.rootObject.mBoardObjects.append (newLine)
+    self.boardObjectsController.setSelection ([newLine])
   }
 
   //····················································································································

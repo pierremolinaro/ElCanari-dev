@@ -31,6 +31,12 @@ graphic entity ComponentInProject : BoardObject {
   transient StringArray availablePackages dependsFrom self.mDevice.one.packageNames ;
 
 //--- Display in board
+  toMany PadRepresentant mPadRepresentants inverse toOne mComponent ;
+
+  transient Double errorOrWarningIssueSizeForComponent dependsFrom super.BoardObject.errorOrWarningIssueSize ;
+  
+  override transient CanariIssueArray issues dependsFrom self.mPadRepresentants.all.issues ;
+
   transient Bool componentIsPlacedInBoard dependsFrom super.BoardObject.isPlacedInBoard ;
 
   transient String componentIsPlacedInBoardString dependsFrom self.componentIsPlacedInBoard ;
@@ -118,7 +124,7 @@ graphic entity ComponentInProject : BoardObject {
   transient String componentValueFontName dependsFrom self.mValueFont.one.mFontName ;
   
 //--- Connectors  
-  toMany ConnectorInBoard mConnectors inverse toOne mComponent ;
+//  toMany ConnectorInBoard mConnectors inverse toOne mComponent ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

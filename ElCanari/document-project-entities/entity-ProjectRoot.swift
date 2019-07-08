@@ -828,7 +828,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mErrorOrWarningIssueSize
   //····················································································································
 
-  let mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 200)
+  let mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 6)
 
   //····················································································································
 

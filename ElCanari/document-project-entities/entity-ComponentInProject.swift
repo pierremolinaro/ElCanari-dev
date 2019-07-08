@@ -120,6 +120,30 @@ protocol ComponentInProject_mYUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentInProject_errorOrWarningIssueSizeForComponent : class {
+  var errorOrWarningIssueSizeForComponent : Double? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_issues : class {
+  var issues : CanariIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_componentIsPlacedInBoard : class {
+  var componentIsPlacedInBoard : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_componentIsPlacedInBoardString : class {
+  var componentIsPlacedInBoardString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentInProject_componentNameFontName : class {
   var componentNameFontName : String? { get }
 }
@@ -152,18 +176,6 @@ protocol ComponentInProject_selectedPackageName : class {
 
 protocol ComponentInProject_availablePackages : class {
   var availablePackages : StringArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ComponentInProject_componentIsPlacedInBoard : class {
-  var componentIsPlacedInBoard : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ComponentInProject_componentIsPlacedInBoardString : class {
-  var componentIsPlacedInBoardString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -244,14 +256,16 @@ class ComponentInProject : BoardObject,
          ComponentInProject_mNameIndex,
          ComponentInProject_mXUnit,
          ComponentInProject_mYUnit,
+         ComponentInProject_errorOrWarningIssueSizeForComponent,
+         ComponentInProject_issues,
+         ComponentInProject_componentIsPlacedInBoard,
+         ComponentInProject_componentIsPlacedInBoardString,
          ComponentInProject_componentNameFontName,
          ComponentInProject_componentValueFontName,
          ComponentInProject_deviceName,
          ComponentInProject_packagePadDictionary,
          ComponentInProject_selectedPackageName,
          ComponentInProject_availablePackages,
-         ComponentInProject_componentIsPlacedInBoard,
-         ComponentInProject_componentIsPlacedInBoardString,
          ComponentInProject_strokeBezierPath,
          ComponentInProject_componentName,
          ComponentInProject_selectionDisplay,
@@ -329,6 +343,25 @@ class ComponentInProject : BoardObject,
   //····················································································································
 
   var mSide_property_selection : EBSelection <ComponentSide> { return self.mSide_property.prop }
+
+  //····················································································································
+  //   To many property: mPadRepresentants
+  //····················································································································
+
+  let mPadRepresentants_property = StoredArrayOf_PadRepresentant ()
+
+  //····················································································································
+
+  var mPadRepresentants_property_selection : EBSelection < [PadRepresentant] > {
+    return self.mPadRepresentants_property.prop
+  }
+
+  //····················································································································
+
+  var mPadRepresentants : [PadRepresentant] {
+    get { return self.mPadRepresentants_property.propval }
+    set { self.mPadRepresentants_property.setProp (newValue) }
+  }
 
   //····················································································································
   //   Atomic property: mNameIsVisibleInBoard
@@ -611,25 +644,6 @@ class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-  //   To many property: mConnectors
-  //····················································································································
-
-  let mConnectors_property = StoredArrayOf_ConnectorInBoard ()
-
-  //····················································································································
-
-  var mConnectors_property_selection : EBSelection < [ConnectorInBoard] > {
-    return self.mConnectors_property.prop
-  }
-
-  //····················································································································
-
-  var mConnectors : [ConnectorInBoard] {
-    get { return self.mConnectors_property.propval }
-    set { self.mConnectors_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   ToMany proxy: mPackages
   //····················································································································
 
@@ -657,6 +671,75 @@ class ComponentInProject : BoardObject,
 
   var mPackages_property_selection : EBSelection <[DevicePackageInProject]> {
     return self.mPackages_property.prop
+  }
+
+  //····················································································································
+  //   Transient property: errorOrWarningIssueSizeForComponent
+  //····················································································································
+
+  let errorOrWarningIssueSizeForComponent_property = EBTransientProperty_Double ()
+
+  //····················································································································
+
+  var errorOrWarningIssueSizeForComponent_property_selection : EBSelection <Double> {
+    return self.errorOrWarningIssueSizeForComponent_property.prop
+  }
+
+  //····················································································································
+
+  var errorOrWarningIssueSizeForComponent : Double? {
+    switch self.errorOrWarningIssueSizeForComponent_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: componentIsPlacedInBoard
+  //····················································································································
+
+  let componentIsPlacedInBoard_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var componentIsPlacedInBoard_property_selection : EBSelection <Bool> {
+    return self.componentIsPlacedInBoard_property.prop
+  }
+
+  //····················································································································
+
+  var componentIsPlacedInBoard : Bool? {
+    switch self.componentIsPlacedInBoard_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: componentIsPlacedInBoardString
+  //····················································································································
+
+  let componentIsPlacedInBoardString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var componentIsPlacedInBoardString_property_selection : EBSelection <String> {
+    return self.componentIsPlacedInBoardString_property.prop
+  }
+
+  //····················································································································
+
+  var componentIsPlacedInBoardString : String? {
+    switch self.componentIsPlacedInBoardString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
   }
 
   //····················································································································
@@ -950,52 +1033,6 @@ class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-  //   Transient property: componentIsPlacedInBoard
-  //····················································································································
-
-  let componentIsPlacedInBoard_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  var componentIsPlacedInBoard_property_selection : EBSelection <Bool> {
-    return self.componentIsPlacedInBoard_property.prop
-  }
-
-  //····················································································································
-
-  var componentIsPlacedInBoard : Bool? {
-    switch self.componentIsPlacedInBoard_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: componentIsPlacedInBoardString
-  //····················································································································
-
-  let componentIsPlacedInBoardString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var componentIsPlacedInBoardString_property_selection : EBSelection <String> {
-    return self.componentIsPlacedInBoardString_property.prop
-  }
-
-  //····················································································································
-
-  var componentIsPlacedInBoardString : String? {
-    switch self.componentIsPlacedInBoardString_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: strokeBezierPath
   //····················································································································
 
@@ -1170,6 +1207,12 @@ class ComponentInProject : BoardObject,
     self.mRotation_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSide
     self.mSide_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mPadRepresentants (has opposite relationship)
+    self.mPadRepresentants_property.ebUndoManager = self.ebUndoManager
+    self.mPadRepresentants_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
+      resetter: { inObject in inObject.mComponent_property.setProp (nil) }
+    )
   //--- Atomic property: mNameIsVisibleInBoard
     self.mNameIsVisibleInBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mXName
@@ -1208,12 +1251,6 @@ class ComponentInProject : BoardObject,
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
       resetter: { inObject in inObject.mComponent_property.setProp (nil) }
     )
-  //--- To many property: mConnectors (has opposite relationship)
-    self.mConnectors_property.ebUndoManager = self.ebUndoManager
-    self.mConnectors_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
-      resetter: { inObject in inObject.mComponent_property.setProp (nil) }
-    )
   //--- ToMany proxy: mPackages
     do{
       let controller = EBSimpleController (
@@ -1227,6 +1264,94 @@ class ComponentInProject : BoardObject,
       self.mDevice_property.addEBObserverOf_mPackages (controller)
       self.mPackages_modelDidChangeController = controller
     }
+  //--- Atomic property: errorOrWarningIssueSizeForComponent
+    self.errorOrWarningIssueSizeForComponent_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.errorOrWarningIssueSize_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.errorOrWarningIssueSize_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_errorOrWarningIssueSizeForComponent (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.errorOrWarningIssueSize_property.addEBObserver (self.errorOrWarningIssueSizeForComponent_property)
+  //--- Atomic property: issues
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPadRepresentants_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mPadRepresentants_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_issues (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPadRepresentants_property.addEBObserverOf_issues (self.issues_property)
+  //--- Atomic property: componentIsPlacedInBoard
+    self.componentIsPlacedInBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.isPlacedInBoard_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.isPlacedInBoard_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_componentIsPlacedInBoard (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.isPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoard_property)
+  //--- Atomic property: componentIsPlacedInBoardString
+    self.componentIsPlacedInBoardString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.componentIsPlacedInBoard_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.componentIsPlacedInBoard_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_componentIsPlacedInBoardString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.componentIsPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoardString_property)
   //--- To one property: mNameFont (has opposite to many relationship: mComponentNames)
     self.mNameFont_property.ebUndoManager = self.ebUndoManager
     self.mNameFont_property.setOppositeRelationShipFunctions (
@@ -1379,50 +1504,6 @@ class ComponentInProject : BoardObject,
       }
     }
     self.mDevice_property.addEBObserverOf_packageNames (self.availablePackages_property)
-  //--- Atomic property: componentIsPlacedInBoard
-    self.componentIsPlacedInBoard_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.isPlacedInBoard_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.isPlacedInBoard_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ComponentInProject_componentIsPlacedInBoard (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.isPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoard_property)
-  //--- Atomic property: componentIsPlacedInBoardString
-    self.componentIsPlacedInBoardString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.componentIsPlacedInBoard_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.componentIsPlacedInBoard_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ComponentInProject_componentIsPlacedInBoardString (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.componentIsPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoardString_property)
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1742,11 +1823,11 @@ class ComponentInProject : BoardObject,
     self.mDevice_property.addEBObserverOf_pinPadAssignments (self.objectDisplay_property)
     self.padNetDictionary_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
-    self.mSymbols_property.setOppositeRelationShipFunctions (
+    self.mPadRepresentants_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
       resetter: { inObject in inObject.mComponent_property.setProp (nil) }
     )
-    self.mConnectors_property.setOppositeRelationShipFunctions (
+    self.mSymbols_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
       resetter: { inObject in inObject.mComponent_property.setProp (nil) }
     )
@@ -1764,14 +1845,16 @@ class ComponentInProject : BoardObject,
     self.mPackages_property.setModel (nil)
     self.mPackages_modelDidChangeController?.unregister ()
     self.mPackages_modelDidChangeController = nil
+    self.errorOrWarningIssueSize_property.removeEBObserver (self.errorOrWarningIssueSizeForComponent_property)
+    self.mPadRepresentants_property.removeEBObserverOf_issues (self.issues_property)
+    self.isPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoard_property)
+    self.componentIsPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoardString_property)
     self.mNameFont_property.removeEBObserverOf_mFontName (self.componentNameFontName_property)
     self.mValueFont_property.removeEBObserverOf_mFontName (self.componentValueFontName_property)
     self.mDevice_property.removeEBObserverOf_mDeviceName (self.deviceName_property)
     self.mSelectedPackage_property.removeEBObserverOf_packagePadDictionary (self.packagePadDictionary_property)
     self.mSelectedPackage_property.removeEBObserverOf_mPackageName (self.selectedPackageName_property)
     self.mDevice_property.removeEBObserverOf_packageNames (self.availablePackages_property)
-    self.isPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoard_property)
-    self.componentIsPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoardString_property)
     self.mSelectedPackage_property.removeEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
     self.mNamePrefix_property.removeEBObserver (self.componentName_property)
     self.mNameIndex_property.removeEBObserver (self.componentName_property)
@@ -2009,6 +2092,38 @@ class ComponentInProject : BoardObject,
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
+      "errorOrWarningIssueSizeForComponent",
+      idx: self.errorOrWarningIssueSizeForComponent_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.errorOrWarningIssueSizeForComponent_property.mObserverExplorer,
+      valueExplorer: &self.errorOrWarningIssueSizeForComponent_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "issues",
+      idx: self.issues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.issues_property.mObserverExplorer,
+      valueExplorer: &self.issues_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "componentIsPlacedInBoard",
+      idx: self.componentIsPlacedInBoard_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.componentIsPlacedInBoard_property.mObserverExplorer,
+      valueExplorer: &self.componentIsPlacedInBoard_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "componentIsPlacedInBoardString",
+      idx: self.componentIsPlacedInBoardString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.componentIsPlacedInBoardString_property.mObserverExplorer,
+      valueExplorer: &self.componentIsPlacedInBoardString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "componentNameFontName",
       idx: self.componentNameFontName_property.ebObjectIndex,
       y: &y,
@@ -2055,22 +2170,6 @@ class ComponentInProject : BoardObject,
       view: view,
       observerExplorer: &self.availablePackages_property.mObserverExplorer,
       valueExplorer: &self.availablePackages_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "componentIsPlacedInBoard",
-      idx: self.componentIsPlacedInBoard_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.componentIsPlacedInBoard_property.mObserverExplorer,
-      valueExplorer: &self.componentIsPlacedInBoard_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "componentIsPlacedInBoardString",
-      idx: self.componentIsPlacedInBoardString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.componentIsPlacedInBoardString_property.mObserverExplorer,
-      valueExplorer: &self.componentIsPlacedInBoardString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "strokeBezierPath",
@@ -2146,18 +2245,18 @@ class ComponentInProject : BoardObject,
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
+      "mPadRepresentants",
+      idx:mPadRepresentants_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mPadRepresentants_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
       "mSymbols",
       idx:mSymbols_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&mSymbols_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mConnectors",
-      idx:mConnectors_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mConnectors_property.mValueExplorer
     )
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
@@ -2208,6 +2307,8 @@ class ComponentInProject : BoardObject,
   //--- Atomic property: mSide
     self.mSide_property.mObserverExplorer = nil
     self.mSide_property.mValueExplorer = nil
+  //--- To many property: mPadRepresentants
+    self.mPadRepresentants_property.mValueExplorer = nil
   //--- Atomic property: mNameIsVisibleInBoard
     self.mNameIsVisibleInBoard_property.mObserverExplorer = nil
     self.mNameIsVisibleInBoard_property.mValueExplorer = nil
@@ -2255,8 +2356,6 @@ class ComponentInProject : BoardObject,
     self.mYUnit_property.mValueExplorer = nil
   //--- To many property: mSymbols
     self.mSymbols_property.mValueExplorer = nil
-  //--- To many property: mConnectors
-    self.mConnectors_property.mValueExplorer = nil
   //--- ToMany proxy: mPackages
     self.mPackages_property.mObserverExplorer = nil
   //--- To one property: mNameFont
@@ -2280,8 +2379,8 @@ class ComponentInProject : BoardObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
+    self.mPadRepresentants = []
     self.mSymbols = []
-    self.mConnectors = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -2313,6 +2412,12 @@ class ComponentInProject : BoardObject,
     self.mRotation_property.storeIn (dictionary: ioDictionary, forKey:"mRotation")
   //--- Atomic property: mSide
     self.mSide_property.storeIn (dictionary: ioDictionary, forKey:"mSide")
+  //--- To many property: mPadRepresentants
+    self.store (
+      managedObjectArray: self.mPadRepresentants_property.propval,
+      relationshipName: "mPadRepresentants",
+      intoDictionary: ioDictionary
+    )
   //--- Atomic property: mNameIsVisibleInBoard
     self.mNameIsVisibleInBoard_property.storeIn (dictionary: ioDictionary, forKey:"mNameIsVisibleInBoard")
   //--- Atomic property: mXName
@@ -2349,12 +2454,6 @@ class ComponentInProject : BoardObject,
       relationshipName: "mSymbols",
       intoDictionary: ioDictionary
     )
-  //--- To many property: mConnectors
-    self.store (
-      managedObjectArray: self.mConnectors_property.propval,
-      relationshipName: "mConnectors",
-      intoDictionary: ioDictionary
-    )
   //--- To one property: mSelectedPackage
     self.store (managedObject:self.mSelectedPackage_property.propval,
       relationshipName: "mSelectedPackage",
@@ -2368,18 +2467,18 @@ class ComponentInProject : BoardObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: mPadRepresentants
+    self.mPadRepresentants_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mPadRepresentants",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [PadRepresentant])
   //--- To many property: mSymbols
     self.mSymbols_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mSymbols",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [ComponentSymbolInProject])
-  //--- To many property: mConnectors
-    self.mConnectors_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mConnectors",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ConnectorInBoard])
   //--- To one property: mNameFont
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -2478,12 +2577,12 @@ class ComponentInProject : BoardObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mSymbols
-    for managedObject in self.mSymbols {
+  //--- To many property: mPadRepresentants
+    for managedObject in self.mPadRepresentants {
       objects.append (managedObject)
     }
-  //--- To many property: mConnectors
-    for managedObject in self.mConnectors {
+  //--- To many property: mSymbols
+    for managedObject in self.mSymbols {
       objects.append (managedObject)
     }
   //--- To one property: mNameFont
@@ -2510,12 +2609,12 @@ class ComponentInProject : BoardObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mSymbols
-    for managedObject in self.mSymbols {
+  //--- To many property: mPadRepresentants
+    for managedObject in self.mPadRepresentants {
       objects.append (managedObject)
     }
-  //--- To many property: mConnectors
-    for managedObject in self.mConnectors {
+  //--- To many property: mSymbols
+    for managedObject in self.mSymbols {
       objects.append (managedObject)
     }
   //--- To one property: mNameFont

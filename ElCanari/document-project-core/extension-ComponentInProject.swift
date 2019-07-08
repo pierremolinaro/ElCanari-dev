@@ -98,9 +98,8 @@ extension ComponentInProject {
   //····················································································································
 
   override func operationBeforeRemoving () {
-    for connector in self.mConnectors {
-      connector.mComponentPadName = ""
-      connector.mComponent = nil
+    for pad in self.mPadRepresentants {
+      pad.mComponent = nil
     }
   }
 

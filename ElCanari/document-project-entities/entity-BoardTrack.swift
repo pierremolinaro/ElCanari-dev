@@ -6,240 +6,184 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_isPlacedInBoard : class {
-  var isPlacedInBoard : Bool? { get }
+protocol BoardTrack_mSide : class {
+  var mSide : TrackSide { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardObject_displayFrontPads : class {
-  var displayFrontPads : Bool? { get }
-}
-
+//    Entity: BoardTrack
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayBackPads : class {
-  var displayBackPads : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardObject_displayPadNumbers : class {
-  var displayPadNumbers : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardObject_errorOrWarningIssueSize : class {
-  var errorOrWarningIssueSize : Double? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardObject_issues : class {
-  var issues : CanariIssueArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardObject_selectionDisplay : class {
-  var selectionDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardObject_objectDisplay : class {
-  var objectDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: BoardObject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class BoardObject : EBGraphicManagedObject,
-         BoardObject_isPlacedInBoard,
-         BoardObject_displayFrontPads,
-         BoardObject_displayBackPads,
-         BoardObject_displayPadNumbers,
-         BoardObject_errorOrWarningIssueSize,
-         BoardObject_issues,
-         BoardObject_selectionDisplay,
-         BoardObject_objectDisplay {
+class BoardTrack : BoardObject,
+         BoardTrack_mSide {
 
   //····················································································································
-  //   To one property: mRoot
+  //   Atomic property: mSide
   //····················································································································
 
-   let mRoot_property = StoredObject_ProjectRoot ()
+  let mSide_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front)
 
   //····················································································································
 
-  var mRoot_property_selection : EBSelection <ProjectRoot?> {
-    return .single (self.mRoot_property.propval)
+  var mSide : TrackSide {
+    get { return self.mSide_property.propval }
+    set { self.mSide_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRoot : ProjectRoot? {
+  var mSide_property_selection : EBSelection <TrackSide> { return self.mSide_property.prop }
+
+  //····················································································································
+  //   To one property: mConnectorP1
+  //····················································································································
+
+   let mConnectorP1_property = StoredObject_ConnectorInBoard ()
+
+  //····················································································································
+
+  var mConnectorP1_property_selection : EBSelection <ConnectorInBoard?> {
+    return .single (self.mConnectorP1_property.propval)
+  }
+
+  //····················································································································
+
+  var mConnectorP1 : ConnectorInBoard? {
     get {
-      return self.mRoot_property.propval
+      return self.mConnectorP1_property.propval
     }
     set {
-      if self.mRoot_property.propval != nil {
-        self.mRoot_property.setProp (nil)
+      if self.mConnectorP1_property.propval != nil {
+        self.mConnectorP1_property.setProp (nil)
       }
       if newValue != nil {
-        self.mRoot_property.setProp (newValue)
+        self.mConnectorP1_property.setProp (newValue)
       }
     }
   }
 
   //····················································································································
 
-  var mRoot_none : StoredObject_ProjectRoot { return self.mRoot_property }
+  var mConnectorP1_none : StoredObject_ConnectorInBoard { return self.mConnectorP1_property }
 
   //····················································································································
 
-  var mRoot_none_selection : EBSelection <Bool> {
-    return .single (self.mRoot_property.propval == nil)
+  var mConnectorP1_none_selection : EBSelection <Bool> {
+    return .single (self.mConnectorP1_property.propval == nil)
   }
 
   //····················································································································
-  //   Transient property: isPlacedInBoard
+  //   To one property: mConnectorP2
   //····················································································································
 
-  let isPlacedInBoard_property = EBTransientProperty_Bool ()
+   let mConnectorP2_property = StoredObject_ConnectorInBoard ()
 
   //····················································································································
 
-  var isPlacedInBoard_property_selection : EBSelection <Bool> {
-    return self.isPlacedInBoard_property.prop
+  var mConnectorP2_property_selection : EBSelection <ConnectorInBoard?> {
+    return .single (self.mConnectorP2_property.propval)
   }
 
   //····················································································································
 
-  var isPlacedInBoard : Bool? {
-    switch self.isPlacedInBoard_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
+  var mConnectorP2 : ConnectorInBoard? {
+    get {
+      return self.mConnectorP2_property.propval
+    }
+    set {
+      if self.mConnectorP2_property.propval != nil {
+        self.mConnectorP2_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mConnectorP2_property.setProp (newValue)
+      }
     }
   }
 
   //····················································································································
-  //   Transient property: displayFrontPads
-  //····················································································································
 
-  let displayFrontPads_property = EBTransientProperty_Bool ()
+  var mConnectorP2_none : StoredObject_ConnectorInBoard { return self.mConnectorP2_property }
 
   //····················································································································
 
-  var displayFrontPads_property_selection : EBSelection <Bool> {
-    return self.displayFrontPads_property.prop
+  var mConnectorP2_none_selection : EBSelection <Bool> {
+    return .single (self.mConnectorP2_property.propval == nil)
+  }
+
+  //····················································································································
+  //   To one property: mPadRepresentantP1
+  //····················································································································
+
+   let mPadRepresentantP1_property = StoredObject_PadRepresentant ()
+
+  //····················································································································
+
+  var mPadRepresentantP1_property_selection : EBSelection <PadRepresentant?> {
+    return .single (self.mPadRepresentantP1_property.propval)
   }
 
   //····················································································································
 
-  var displayFrontPads : Bool? {
-    switch self.displayFrontPads_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
+  var mPadRepresentantP1 : PadRepresentant? {
+    get {
+      return self.mPadRepresentantP1_property.propval
+    }
+    set {
+      if self.mPadRepresentantP1_property.propval != nil {
+        self.mPadRepresentantP1_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mPadRepresentantP1_property.setProp (newValue)
+      }
     }
   }
 
   //····················································································································
-  //   Transient property: displayBackPads
-  //····················································································································
 
-  let displayBackPads_property = EBTransientProperty_Bool ()
+  var mPadRepresentantP1_none : StoredObject_PadRepresentant { return self.mPadRepresentantP1_property }
 
   //····················································································································
 
-  var displayBackPads_property_selection : EBSelection <Bool> {
-    return self.displayBackPads_property.prop
+  var mPadRepresentantP1_none_selection : EBSelection <Bool> {
+    return .single (self.mPadRepresentantP1_property.propval == nil)
+  }
+
+  //····················································································································
+  //   To one property: mPadRepresentantP2
+  //····················································································································
+
+   let mPadRepresentantP2_property = StoredObject_PadRepresentant ()
+
+  //····················································································································
+
+  var mPadRepresentantP2_property_selection : EBSelection <PadRepresentant?> {
+    return .single (self.mPadRepresentantP2_property.propval)
   }
 
   //····················································································································
 
-  var displayBackPads : Bool? {
-    switch self.displayBackPads_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
+  var mPadRepresentantP2 : PadRepresentant? {
+    get {
+      return self.mPadRepresentantP2_property.propval
+    }
+    set {
+      if self.mPadRepresentantP2_property.propval != nil {
+        self.mPadRepresentantP2_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mPadRepresentantP2_property.setProp (newValue)
+      }
     }
   }
 
   //····················································································································
-  //   Transient property: displayPadNumbers
-  //····················································································································
 
-  let displayPadNumbers_property = EBTransientProperty_Bool ()
+  var mPadRepresentantP2_none : StoredObject_PadRepresentant { return self.mPadRepresentantP2_property }
 
   //····················································································································
 
-  var displayPadNumbers_property_selection : EBSelection <Bool> {
-    return self.displayPadNumbers_property.prop
-  }
-
-  //····················································································································
-
-  var displayPadNumbers : Bool? {
-    switch self.displayPadNumbers_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: errorOrWarningIssueSize
-  //····················································································································
-
-  let errorOrWarningIssueSize_property = EBTransientProperty_Double ()
-
-  //····················································································································
-
-  var errorOrWarningIssueSize_property_selection : EBSelection <Double> {
-    return self.errorOrWarningIssueSize_property.prop
-  }
-
-  //····················································································································
-
-  var errorOrWarningIssueSize : Double? {
-    switch self.errorOrWarningIssueSize_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: issues
-  //····················································································································
-
-  let issues_property = EBTransientProperty_CanariIssueArray ()
-
-  //····················································································································
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
-  }
-
-  //····················································································································
-
-  var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
+  var mPadRepresentantP2_none_selection : EBSelection <Bool> {
+    return .single (self.mPadRepresentantP2_property.propval == nil)
   }
 
   //····················································································································
@@ -248,122 +192,32 @@ class BoardObject : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- To one property: mRoot (has opposite to many relationship: mBoardObjects)
-    self.mRoot_property.ebUndoManager = self.ebUndoManager
-    self.mRoot_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mBoardObjects_property.add (me) } },
-      resetter: { [weak self] inObject in if let me = self { inObject.mBoardObjects_property.remove (me) } }
+  //--- Atomic property: mSide
+    self.mSide_property.ebUndoManager = self.ebUndoManager
+  //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
+    self.mConnectorP1_property.ebUndoManager = self.ebUndoManager
+    self.mConnectorP1_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mTracksP1_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mTracksP1_property.remove (me) } }
     )
-  //--- Atomic property: isPlacedInBoard
-    self.isPlacedInBoard_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mRoot_none_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mRoot_none_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardObject_isPlacedInBoard (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mRoot_property.addEBObserver (self.isPlacedInBoard_property)
-  //--- Atomic property: displayFrontPads
-    self.displayFrontPads_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mRoot_property.mDisplayFrontPads_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mRoot_property.mDisplayFrontPads_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardObject_displayFrontPads (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mRoot_property.addEBObserverOf_mDisplayFrontPads (self.displayFrontPads_property)
-  //--- Atomic property: displayBackPads
-    self.displayBackPads_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mRoot_property.mDisplayBackPads_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mRoot_property.mDisplayBackPads_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardObject_displayBackPads (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mRoot_property.addEBObserverOf_mDisplayBackPads (self.displayBackPads_property)
-  //--- Atomic property: displayPadNumbers
-    self.displayPadNumbers_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mRoot_property.mDisplayPadNumbers_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mRoot_property.mDisplayPadNumbers_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardObject_displayPadNumbers (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mRoot_property.addEBObserverOf_mDisplayPadNumbers (self.displayPadNumbers_property)
-  //--- Atomic property: errorOrWarningIssueSize
-    self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mRoot_property.mErrorOrWarningIssueSize_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mRoot_property.mErrorOrWarningIssueSize_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardObject_errorOrWarningIssueSize (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mRoot_property.addEBObserverOf_mErrorOrWarningIssueSize (self.errorOrWarningIssueSize_property)
+  //--- To one property: mConnectorP2 (has opposite to many relationship: mTracksP2)
+    self.mConnectorP2_property.ebUndoManager = self.ebUndoManager
+    self.mConnectorP2_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mTracksP2_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mTracksP2_property.remove (me) } }
+    )
+  //--- To one property: mPadRepresentantP1 (has opposite to many relationship: mTracksP1)
+    self.mPadRepresentantP1_property.ebUndoManager = self.ebUndoManager
+    self.mPadRepresentantP1_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mTracksP1_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mTracksP1_property.remove (me) } }
+    )
+  //--- To one property: mPadRepresentantP2 (has opposite to many relationship: mTracksP2)
+    self.mPadRepresentantP2_property.ebUndoManager = self.ebUndoManager
+    self.mPadRepresentantP2_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mTracksP2_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mTracksP2_property.remove (me) } }
+    )
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -373,11 +227,6 @@ class BoardObject : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mRoot_property.removeEBObserver (self.isPlacedInBoard_property)
-    self.mRoot_property.removeEBObserverOf_mDisplayFrontPads (self.displayFrontPads_property)
-    self.mRoot_property.removeEBObserverOf_mDisplayBackPads (self.displayBackPads_property)
-    self.mRoot_property.removeEBObserverOf_mDisplayPadNumbers (self.displayPadNumbers_property)
-    self.mRoot_property.removeEBObserverOf_mErrorOrWarningIssueSize (self.errorOrWarningIssueSize_property)
   //--- Unregister properties for handling signature
   }
 
@@ -392,79 +241,44 @@ class BoardObject : EBGraphicManagedObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "mSide",
+      idx: self.mSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSide_property.mObserverExplorer,
+      valueExplorer: &self.mSide_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
-    createEntryForPropertyNamed (
-      "isPlacedInBoard",
-      idx: self.isPlacedInBoard_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.isPlacedInBoard_property.mObserverExplorer,
-      valueExplorer: &self.isPlacedInBoard_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "displayFrontPads",
-      idx: self.displayFrontPads_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.displayFrontPads_property.mObserverExplorer,
-      valueExplorer: &self.displayFrontPads_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "displayBackPads",
-      idx: self.displayBackPads_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.displayBackPads_property.mObserverExplorer,
-      valueExplorer: &self.displayBackPads_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "displayPadNumbers",
-      idx: self.displayPadNumbers_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.displayPadNumbers_property.mObserverExplorer,
-      valueExplorer: &self.displayPadNumbers_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "errorOrWarningIssueSize",
-      idx: self.errorOrWarningIssueSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.errorOrWarningIssueSize_property.mObserverExplorer,
-      valueExplorer: &self.errorOrWarningIssueSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
-      "mRoot",
-      idx:self.mRoot_property.ebObjectIndex,
+      "mConnectorP1",
+      idx:self.mConnectorP1_property.ebObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&self.mRoot_property.mValueExplorer
+      valueExplorer:&self.mConnectorP1_property.mValueExplorer
+    )
+    createEntryForToOneRelationshipNamed (
+      "mConnectorP2",
+      idx:self.mConnectorP2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mConnectorP2_property.mValueExplorer
+    )
+    createEntryForToOneRelationshipNamed (
+      "mPadRepresentantP1",
+      idx:self.mPadRepresentantP1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mPadRepresentantP1_property.mValueExplorer
+    )
+    createEntryForToOneRelationshipNamed (
+      "mPadRepresentantP2",
+      idx:self.mPadRepresentantP2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mPadRepresentantP2_property.mValueExplorer
     )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
@@ -474,9 +288,21 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- To one property: mRoot
-    self.mRoot_property.mObserverExplorer = nil
-    self.mRoot_property.mValueExplorer = nil
+  //--- Atomic property: mSide
+    self.mSide_property.mObserverExplorer = nil
+    self.mSide_property.mValueExplorer = nil
+  //--- To one property: mConnectorP1
+    self.mConnectorP1_property.mObserverExplorer = nil
+    self.mConnectorP1_property.mValueExplorer = nil
+  //--- To one property: mConnectorP2
+    self.mConnectorP2_property.mObserverExplorer = nil
+    self.mConnectorP2_property.mValueExplorer = nil
+  //--- To one property: mPadRepresentantP1
+    self.mPadRepresentantP1_property.mObserverExplorer = nil
+    self.mPadRepresentantP1_property.mValueExplorer = nil
+  //--- To one property: mPadRepresentantP2
+    self.mPadRepresentantP2_property.mObserverExplorer = nil
+    self.mPadRepresentantP2_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -495,7 +321,10 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mRoot = nil
+    self.mConnectorP1 = nil
+    self.mConnectorP2 = nil
+    self.mPadRepresentantP1 = nil
+    self.mPadRepresentantP2 = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -506,6 +335,8 @@ class BoardObject : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mSide
+    self.mSide_property.storeIn (dictionary: ioDictionary, forKey:"mSide")
   }
 
   //····················································································································
@@ -515,15 +346,48 @@ class BoardObject : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To one property: mRoot
+  //--- To one property: mConnectorP1
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mRoot",
+        inRelationshipName: "mConnectorP1",
         inDictionary: inDictionary,
         managedObjectArray: &managedObjectArray
       )
-      if let entity = possibleEntity as? ProjectRoot {
-        self.mRoot_property.setProp (entity)
+      if let entity = possibleEntity as? ConnectorInBoard {
+        self.mConnectorP1_property.setProp (entity)
+      }
+    }
+  //--- To one property: mConnectorP2
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mConnectorP2",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? ConnectorInBoard {
+        self.mConnectorP2_property.setProp (entity)
+      }
+    }
+  //--- To one property: mPadRepresentantP1
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mPadRepresentantP1",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? PadRepresentant {
+        self.mPadRepresentantP1_property.setProp (entity)
+      }
+    }
+  //--- To one property: mPadRepresentantP2
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mPadRepresentantP2",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? PadRepresentant {
+        self.mPadRepresentantP2_property.setProp (entity)
       }
     }
   }
@@ -534,6 +398,8 @@ class BoardObject : EBGraphicManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mSide
+    self.mSide_property.readFrom (dictionary: inDictionary, forKey:"mSide")
   }
 
   //····················································································································
@@ -542,8 +408,20 @@ class BoardObject : EBGraphicManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To one property: mRoot
-    if let object = self.mRoot {
+  //--- To one property: mConnectorP1
+    if let object = self.mConnectorP1 {
+      objects.append (object)
+    }
+  //--- To one property: mConnectorP2
+    if let object = self.mConnectorP2 {
+      objects.append (object)
+    }
+  //--- To one property: mPadRepresentantP1
+    if let object = self.mPadRepresentantP1 {
+      objects.append (object)
+    }
+  //--- To one property: mPadRepresentantP2
+    if let object = self.mPadRepresentantP2 {
       objects.append (object)
     }
   }
@@ -554,8 +432,20 @@ class BoardObject : EBGraphicManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To one property: mRoot
-    if let object = self.mRoot {
+  //--- To one property: mConnectorP1
+    if let object = self.mConnectorP1 {
+      objects.append (object)
+    }
+  //--- To one property: mConnectorP2
+    if let object = self.mConnectorP2 {
+      objects.append (object)
+    }
+  //--- To one property: mPadRepresentantP1
+    if let object = self.mPadRepresentantP1 {
+      objects.append (object)
+    }
+  //--- To one property: mPadRepresentantP2
+    if let object = self.mPadRepresentantP2 {
       objects.append (object)
     }
   }

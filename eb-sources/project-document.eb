@@ -554,6 +554,7 @@ document ProjectDocument root ProjectRoot {
 
   outlet CanariDragSourceButton mAddRestrictRectangleButton ;
   outlet CanariDragSourceImageButton mAddTextInBoardButton ;
+  outlet CanariDragSourceButton mAddLineInBoardButton ;
 
   outlet CanariDragSourceTableView mUnplacedPackageTableView $models root.unplacedPackages ;
   transient Int unplacedPackageCount dependsFrom root.unplacedPackages ;
@@ -594,6 +595,42 @@ document ProjectDocument root ProjectRoot {
   outlet CanariDimensionTextField mBoardGridTextField
      $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit
   ;
+
+//--- Board line inspector
+  outlet CanariViewWithKeyView mBoardLineInspectorView ;
+  selectionController BoardLine #boardLineSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  outlet EBPopUpButton mBoardLineWidthUnitPopUp $selectedTag #boardLineSelectionController.mWidthUnit ;
+  outlet CanariDimensionTextField mBoardLineWidthTextField
+     $dimensionAndUnit #boardLineSelectionController.mWidth, #boardLineSelectionController.mWidthUnit
+  ;
+
+  outlet EBPopUpButton mBoardLineLayerPopUpButton $selectedIndex #boardLineSelectionController.mLayer ;
+
+  outlet EBPopUpButton mBoardLineX1UnitPopUp $selectedTag #boardLineSelectionController.mX1Unit ;
+  outlet CanariDimensionTextField mBoardLineX1TextField
+     $dimensionAndUnit #boardLineSelectionController.mX1, #boardLineSelectionController.mX1Unit
+  ;
+
+  outlet EBPopUpButton mBoardLineY1UnitPopUp $selectedTag #boardLineSelectionController.mY1Unit ;
+  outlet CanariDimensionTextField mBoardLineY1TextField
+     $dimensionAndUnit #boardLineSelectionController.mY1, #boardLineSelectionController.mY1Unit
+  ;
+
+  outlet EBPopUpButton mBoardLineX2UnitPopUp $selectedTag #boardLineSelectionController.mX2Unit ;
+  outlet CanariDimensionTextField mBoardLineX2TextField
+     $dimensionAndUnit #boardLineSelectionController.mX2, #boardLineSelectionController.mX2Unit
+  ;
+
+  outlet EBPopUpButton mBoardLineY2UnitPopUp $selectedTag #boardLineSelectionController.mY2Unit ;
+  outlet CanariDimensionTextField mBoardLineY2TextField
+     $dimensionAndUnit #boardLineSelectionController.mY2, #boardLineSelectionController.mY2Unit
+  ;
+
+
+
 
 //--- Restrict rectangle inspector
   outlet CanariViewWithKeyView mRestrictRectangleInspectorView ;

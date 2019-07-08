@@ -211,6 +211,46 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: errorOrWarningIssueSizeForComponent
+  //····················································································································
+
+  let errorOrWarningIssueSizeForComponent_property = EBTransientProperty_Double ()
+
+  var errorOrWarningIssueSizeForComponent_property_selection : EBSelection <Double> {
+    return self.errorOrWarningIssueSizeForComponent_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: issues
+  //····················································································································
+
+  let issues_property = EBTransientProperty_CanariIssueArray ()
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: componentIsPlacedInBoard
+  //····················································································································
+
+  let componentIsPlacedInBoard_property = EBTransientProperty_Bool ()
+
+  var componentIsPlacedInBoard_property_selection : EBSelection <Bool> {
+    return self.componentIsPlacedInBoard_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: componentIsPlacedInBoardString
+  //····················································································································
+
+  let componentIsPlacedInBoardString_property = EBTransientProperty_String ()
+
+  var componentIsPlacedInBoardString_property_selection : EBSelection <String> {
+    return self.componentIsPlacedInBoardString_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: componentNameFontName
   //····················································································································
 
@@ -268,26 +308,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
 
   var availablePackages_property_selection : EBSelection <StringArray> {
     return self.availablePackages_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: componentIsPlacedInBoard
-  //····················································································································
-
-  let componentIsPlacedInBoard_property = EBTransientProperty_Bool ()
-
-  var componentIsPlacedInBoard_property_selection : EBSelection <Bool> {
-    return self.componentIsPlacedInBoard_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: componentIsPlacedInBoardString
-  //····················································································································
-
-  let componentIsPlacedInBoardString_property = EBTransientProperty_String ()
-
-  var componentIsPlacedInBoardString_property_selection : EBSelection <String> {
-    return self.componentIsPlacedInBoardString_property.prop
   }
 
   //····················································································································
@@ -415,14 +435,16 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
     self.bind_property_mNameIndex ()
     self.bind_property_mXUnit ()
     self.bind_property_mYUnit ()
+    self.bind_property_errorOrWarningIssueSizeForComponent ()
+    self.bind_property_issues ()
+    self.bind_property_componentIsPlacedInBoard ()
+    self.bind_property_componentIsPlacedInBoardString ()
     self.bind_property_componentNameFontName ()
     self.bind_property_componentValueFontName ()
     self.bind_property_deviceName ()
     self.bind_property_packagePadDictionary ()
     self.bind_property_selectedPackageName ()
     self.bind_property_availablePackages ()
-    self.bind_property_componentIsPlacedInBoard ()
-    self.bind_property_componentIsPlacedInBoardString ()
     self.bind_property_strokeBezierPath ()
     self.bind_property_componentName ()
     self.bind_property_selectionDisplay ()
@@ -535,6 +557,18 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
     self.mYUnit_property.mWriteModelFunction = nil 
     self.mYUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mYUnit (self.mYUnit_property)
+  //--- errorOrWarningIssueSizeForComponent
+    self.errorOrWarningIssueSizeForComponent_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_errorOrWarningIssueSizeForComponent (self.errorOrWarningIssueSizeForComponent_property)
+  //--- issues
+    self.issues_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
+  //--- componentIsPlacedInBoard
+    self.componentIsPlacedInBoard_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_componentIsPlacedInBoard (self.componentIsPlacedInBoard_property)
+  //--- componentIsPlacedInBoardString
+    self.componentIsPlacedInBoardString_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_componentIsPlacedInBoardString (self.componentIsPlacedInBoardString_property)
   //--- componentNameFontName
     self.componentNameFontName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_componentNameFontName (self.componentNameFontName_property)
@@ -553,12 +587,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //--- availablePackages
     self.availablePackages_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_availablePackages (self.availablePackages_property)
-  //--- componentIsPlacedInBoard
-    self.componentIsPlacedInBoard_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_componentIsPlacedInBoard (self.componentIsPlacedInBoard_property)
-  //--- componentIsPlacedInBoardString
-    self.componentIsPlacedInBoardString_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_componentIsPlacedInBoardString (self.componentIsPlacedInBoardString_property)
   //--- strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
@@ -2142,6 +2170,162 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   }
   //····················································································································
 
+  private final func bind_property_errorOrWarningIssueSizeForComponent () {
+    self.selectedArray_property.addEBObserverOf_errorOrWarningIssueSizeForComponent (self.errorOrWarningIssueSizeForComponent_property)
+    self.errorOrWarningIssueSizeForComponent_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Double> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.errorOrWarningIssueSizeForComponent_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_issues () {
+    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <CanariIssueArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.issues_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_componentIsPlacedInBoard () {
+    self.selectedArray_property.addEBObserverOf_componentIsPlacedInBoard (self.componentIsPlacedInBoard_property)
+    self.componentIsPlacedInBoard_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.componentIsPlacedInBoard_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_componentIsPlacedInBoardString () {
+    self.selectedArray_property.addEBObserverOf_componentIsPlacedInBoardString (self.componentIsPlacedInBoardString_property)
+    self.componentIsPlacedInBoardString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.componentIsPlacedInBoardString_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
   private final func bind_property_componentNameFontName () {
     self.selectedArray_property.addEBObserverOf_componentNameFontName (self.componentNameFontName_property)
     self.componentNameFontName_property.mReadModelFunction = { [weak self] in
@@ -2351,84 +2535,6 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var isMultipleSelection = false
           for object in v {
             switch object.availablePackages_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-  //····················································································································
-
-  private final func bind_property_componentIsPlacedInBoard () {
-    self.selectedArray_property.addEBObserverOf_componentIsPlacedInBoard (self.componentIsPlacedInBoard_property)
-    self.componentIsPlacedInBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Bool> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.componentIsPlacedInBoard_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-  //····················································································································
-
-  private final func bind_property_componentIsPlacedInBoardString () {
-    self.selectedArray_property.addEBObserverOf_componentIsPlacedInBoardString (self.componentIsPlacedInBoardString_property)
-    self.componentIsPlacedInBoardString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.componentIsPlacedInBoardString_property_selection {
             case .empty :
               return .empty
             case .multiple :

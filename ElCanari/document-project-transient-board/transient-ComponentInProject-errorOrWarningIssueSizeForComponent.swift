@@ -13,11 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ConnectorInBoard_selectionDisplay (
-       _ self_mComponentPadName : String
-) -> EBShape {
+func transient_ComponentInProject_errorOrWarningIssueSizeForComponent (
+       _ self_BoardObject_errorOrWarningIssueSize : Double
+) -> Double {
 //--- START OF USER ZONE 2
-        return EBShape ()
+
 //--- END OF USER ZONE 2
 }
 

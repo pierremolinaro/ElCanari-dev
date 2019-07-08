@@ -35,7 +35,7 @@ entity ProjectRoot {
   property Bool mDisplayFrontRestrictRectangles default yes ;
   property Bool mDisplayBackRestrictRectangles default yes ;
   
-  property Double mErrorOrWarningIssueSize default 200.0 ;
+  property Double mErrorOrWarningIssueSize default 6.0 ;
   
 //--- Board border
   toMany BorderCurve mBorderCurves inverse toOne mRoot ;

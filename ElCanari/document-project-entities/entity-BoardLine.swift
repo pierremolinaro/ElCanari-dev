@@ -6,241 +6,287 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_isPlacedInBoard : class {
-  var isPlacedInBoard : Bool? { get }
+protocol BoardLine_mWidthUnit : class {
+  var mWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayFrontPads : class {
-  var displayFrontPads : Bool? { get }
+protocol BoardLine_mX1 : class {
+  var mX1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayBackPads : class {
-  var displayBackPads : Bool? { get }
+protocol BoardLine_mX1Unit : class {
+  var mX1Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayPadNumbers : class {
-  var displayPadNumbers : Bool? { get }
+protocol BoardLine_mY1 : class {
+  var mY1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_errorOrWarningIssueSize : class {
-  var errorOrWarningIssueSize : Double? { get }
+protocol BoardLine_mY1Unit : class {
+  var mY1Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_issues : class {
-  var issues : CanariIssueArray? { get }
+protocol BoardLine_mX2 : class {
+  var mX2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_selectionDisplay : class {
-  var selectionDisplay : EBShape? { get }
+protocol BoardLine_mX2Unit : class {
+  var mX2Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_objectDisplay : class {
+protocol BoardLine_mY2 : class {
+  var mY2 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLine_mY2Unit : class {
+  var mY2Unit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLine_mLayer : class {
+  var mLayer : BoardLineLayer { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLine_mWidth : class {
+  var mWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLine_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: BoardObject
+
+protocol BoardLine_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Entity: BoardLine
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardObject : EBGraphicManagedObject,
-         BoardObject_isPlacedInBoard,
-         BoardObject_displayFrontPads,
-         BoardObject_displayBackPads,
-         BoardObject_displayPadNumbers,
-         BoardObject_errorOrWarningIssueSize,
-         BoardObject_issues,
-         BoardObject_selectionDisplay,
-         BoardObject_objectDisplay {
+class BoardLine : BoardObject,
+         BoardLine_mWidthUnit,
+         BoardLine_mX1,
+         BoardLine_mX1Unit,
+         BoardLine_mY1,
+         BoardLine_mY1Unit,
+         BoardLine_mX2,
+         BoardLine_mX2Unit,
+         BoardLine_mY2,
+         BoardLine_mY2Unit,
+         BoardLine_mLayer,
+         BoardLine_mWidth,
+         BoardLine_objectDisplay,
+         BoardLine_selectionDisplay {
 
   //····················································································································
-  //   To one property: mRoot
+  //   Atomic property: mWidthUnit
   //····················································································································
 
-   let mRoot_property = StoredObject_ProjectRoot ()
+  let mWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
-  var mRoot_property_selection : EBSelection <ProjectRoot?> {
-    return .single (self.mRoot_property.propval)
+  var mWidthUnit : Int {
+    get { return self.mWidthUnit_property.propval }
+    set { self.mWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRoot : ProjectRoot? {
-    get {
-      return self.mRoot_property.propval
-    }
-    set {
-      if self.mRoot_property.propval != nil {
-        self.mRoot_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mRoot_property.setProp (newValue)
-      }
-    }
+  var mWidthUnit_property_selection : EBSelection <Int> { return self.mWidthUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mX1
+  //····················································································································
+
+  let mX1_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mX1 : Int {
+    get { return self.mX1_property.propval }
+    set { self.mX1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRoot_none : StoredObject_ProjectRoot { return self.mRoot_property }
+  var mX1_property_selection : EBSelection <Int> { return self.mX1_property.prop }
+
+  //····················································································································
+  //   Atomic property: mX1Unit
+  //····················································································································
+
+  let mX1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
-  var mRoot_none_selection : EBSelection <Bool> {
-    return .single (self.mRoot_property.propval == nil)
-  }
-
-  //····················································································································
-  //   Transient property: isPlacedInBoard
-  //····················································································································
-
-  let isPlacedInBoard_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  var isPlacedInBoard_property_selection : EBSelection <Bool> {
-    return self.isPlacedInBoard_property.prop
+  var mX1Unit : Int {
+    get { return self.mX1Unit_property.propval }
+    set { self.mX1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var isPlacedInBoard : Bool? {
-    switch self.isPlacedInBoard_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
+  var mX1Unit_property_selection : EBSelection <Int> { return self.mX1Unit_property.prop }
 
   //····················································································································
-  //   Transient property: displayFrontPads
+  //   Atomic property: mY1
   //····················································································································
 
-  let displayFrontPads_property = EBTransientProperty_Bool ()
+  let mY1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var displayFrontPads_property_selection : EBSelection <Bool> {
-    return self.displayFrontPads_property.prop
+  var mY1 : Int {
+    get { return self.mY1_property.propval }
+    set { self.mY1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayFrontPads : Bool? {
-    switch self.displayFrontPads_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
+  var mY1_property_selection : EBSelection <Int> { return self.mY1_property.prop }
 
   //····················································································································
-  //   Transient property: displayBackPads
+  //   Atomic property: mY1Unit
   //····················································································································
 
-  let displayBackPads_property = EBTransientProperty_Bool ()
+  let mY1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
-  var displayBackPads_property_selection : EBSelection <Bool> {
-    return self.displayBackPads_property.prop
+  var mY1Unit : Int {
+    get { return self.mY1Unit_property.propval }
+    set { self.mY1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayBackPads : Bool? {
-    switch self.displayBackPads_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
+  var mY1Unit_property_selection : EBSelection <Int> { return self.mY1Unit_property.prop }
 
   //····················································································································
-  //   Transient property: displayPadNumbers
+  //   Atomic property: mX2
   //····················································································································
 
-  let displayPadNumbers_property = EBTransientProperty_Bool ()
+  let mX2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var displayPadNumbers_property_selection : EBSelection <Bool> {
-    return self.displayPadNumbers_property.prop
+  var mX2 : Int {
+    get { return self.mX2_property.propval }
+    set { self.mX2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var displayPadNumbers : Bool? {
-    switch self.displayPadNumbers_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
+  var mX2_property_selection : EBSelection <Int> { return self.mX2_property.prop }
 
   //····················································································································
-  //   Transient property: errorOrWarningIssueSize
+  //   Atomic property: mX2Unit
   //····················································································································
 
-  let errorOrWarningIssueSize_property = EBTransientProperty_Double ()
+  let mX2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
-  var errorOrWarningIssueSize_property_selection : EBSelection <Double> {
-    return self.errorOrWarningIssueSize_property.prop
+  var mX2Unit : Int {
+    get { return self.mX2Unit_property.propval }
+    set { self.mX2Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var errorOrWarningIssueSize : Double? {
-    switch self.errorOrWarningIssueSize_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
+  var mX2Unit_property_selection : EBSelection <Int> { return self.mX2Unit_property.prop }
 
   //····················································································································
-  //   Transient property: issues
+  //   Atomic property: mY2
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  let mY2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+  var mY2 : Int {
+    get { return self.mY2_property.propval }
+    set { self.mY2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
+  var mY2_property_selection : EBSelection <Int> { return self.mY2_property.prop }
+
+  //····················································································································
+  //   Atomic property: mY2Unit
+  //····················································································································
+
+  let mY2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mY2Unit : Int {
+    get { return self.mY2Unit_property.propval }
+    set { self.mY2Unit_property.setProp (newValue) }
   }
+
+  //····················································································································
+
+  var mY2Unit_property_selection : EBSelection <Int> { return self.mY2Unit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mLayer
+  //····················································································································
+
+  let mLayer_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront)
+
+  //····················································································································
+
+  var mLayer : BoardLineLayer {
+    get { return self.mLayer_property.propval }
+    set { self.mLayer_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mLayer_property_selection : EBSelection <BoardLineLayer> { return self.mLayer_property.prop }
+
+  //····················································································································
+  //   Atomic property: mWidth
+  //····················································································································
+
+  let mWidth_property = EBStoredProperty_Int (defaultValue: 57150)
+
+  //····················································································································
+
+  var mWidth : Int {
+    get { return self.mWidth_property.propval }
+    set { self.mWidth_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.prop }
 
   //····················································································································
   //    init
@@ -248,25 +294,46 @@ class BoardObject : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- To one property: mRoot (has opposite to many relationship: mBoardObjects)
-    self.mRoot_property.ebUndoManager = self.ebUndoManager
-    self.mRoot_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mBoardObjects_property.add (me) } },
-      resetter: { [weak self] inObject in if let me = self { inObject.mBoardObjects_property.remove (me) } }
-    )
-  //--- Atomic property: isPlacedInBoard
-    self.isPlacedInBoard_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: mWidthUnit
+    self.mWidthUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mX1
+    self.mX1_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mX1Unit
+    self.mX1Unit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mY1
+    self.mY1_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mY1Unit
+    self.mY1Unit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mX2
+    self.mX2_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mX2Unit
+    self.mX2Unit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mY2
+    self.mY2_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mY2Unit
+    self.mY2Unit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mLayer
+    self.mLayer_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mWidth
+    self.mWidth_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mRoot_none_selection.kind ()
+        var kind = unwSelf.mX1_property_selection.kind ()
+        kind &= unwSelf.mY1_property_selection.kind ()
+        kind &= unwSelf.mX2_property_selection.kind ()
+        kind &= unwSelf.mY2_property_selection.kind ()
+        kind &= unwSelf.mWidth_property_selection.kind ()
+        kind &= unwSelf.mLayer_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mRoot_none_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardObject_isPlacedInBoard (v0))
+          switch (unwSelf.mX1_property_selection, unwSelf.mY1_property_selection, unwSelf.mX2_property_selection, unwSelf.mY2_property_selection, unwSelf.mWidth_property_selection, unwSelf.mLayer_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_BoardLine_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -275,20 +342,30 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.addEBObserver (self.isPlacedInBoard_property)
-  //--- Atomic property: displayFrontPads
-    self.displayFrontPads_property.mReadModelFunction = { [weak self] in
+    self.mX1_property.addEBObserver (self.objectDisplay_property)
+    self.mY1_property.addEBObserver (self.objectDisplay_property)
+    self.mX2_property.addEBObserver (self.objectDisplay_property)
+    self.mY2_property.addEBObserver (self.objectDisplay_property)
+    self.mWidth_property.addEBObserver (self.objectDisplay_property)
+    self.mLayer_property.addEBObserver (self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mRoot_property.mDisplayFrontPads_property_selection.kind ()
+        var kind = unwSelf.mX1_property_selection.kind ()
+        kind &= unwSelf.mY1_property_selection.kind ()
+        kind &= unwSelf.mX2_property_selection.kind ()
+        kind &= unwSelf.mY2_property_selection.kind ()
+        kind &= unwSelf.mWidth_property_selection.kind ()
+        kind &= unwSelf.mLayer_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mRoot_property.mDisplayFrontPads_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardObject_displayFrontPads (v0))
+          switch (unwSelf.mX1_property_selection, unwSelf.mY1_property_selection, unwSelf.mX2_property_selection, unwSelf.mY2_property_selection, unwSelf.mWidth_property_selection, unwSelf.mLayer_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_BoardLine_selectionDisplay (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -297,73 +374,12 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.addEBObserverOf_mDisplayFrontPads (self.displayFrontPads_property)
-  //--- Atomic property: displayBackPads
-    self.displayBackPads_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mRoot_property.mDisplayBackPads_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mRoot_property.mDisplayBackPads_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardObject_displayBackPads (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mRoot_property.addEBObserverOf_mDisplayBackPads (self.displayBackPads_property)
-  //--- Atomic property: displayPadNumbers
-    self.displayPadNumbers_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mRoot_property.mDisplayPadNumbers_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mRoot_property.mDisplayPadNumbers_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardObject_displayPadNumbers (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mRoot_property.addEBObserverOf_mDisplayPadNumbers (self.displayPadNumbers_property)
-  //--- Atomic property: errorOrWarningIssueSize
-    self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mRoot_property.mErrorOrWarningIssueSize_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mRoot_property.mErrorOrWarningIssueSize_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardObject_errorOrWarningIssueSize (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mRoot_property.addEBObserverOf_mErrorOrWarningIssueSize (self.errorOrWarningIssueSize_property)
+    self.mX1_property.addEBObserver (self.selectionDisplay_property)
+    self.mY1_property.addEBObserver (self.selectionDisplay_property)
+    self.mX2_property.addEBObserver (self.selectionDisplay_property)
+    self.mY2_property.addEBObserver (self.selectionDisplay_property)
+    self.mWidth_property.addEBObserver (self.selectionDisplay_property)
+    self.mLayer_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -373,11 +389,18 @@ class BoardObject : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mRoot_property.removeEBObserver (self.isPlacedInBoard_property)
-    self.mRoot_property.removeEBObserverOf_mDisplayFrontPads (self.displayFrontPads_property)
-    self.mRoot_property.removeEBObserverOf_mDisplayBackPads (self.displayBackPads_property)
-    self.mRoot_property.removeEBObserverOf_mDisplayPadNumbers (self.displayPadNumbers_property)
-    self.mRoot_property.removeEBObserverOf_mErrorOrWarningIssueSize (self.errorOrWarningIssueSize_property)
+    self.mX1_property.removeEBObserver (self.objectDisplay_property)
+    self.mY1_property.removeEBObserver (self.objectDisplay_property)
+    self.mX2_property.removeEBObserver (self.objectDisplay_property)
+    self.mY2_property.removeEBObserver (self.objectDisplay_property)
+    self.mWidth_property.removeEBObserver (self.objectDisplay_property)
+    self.mLayer_property.removeEBObserver (self.objectDisplay_property)
+    self.mX1_property.removeEBObserver (self.selectionDisplay_property)
+    self.mY1_property.removeEBObserver (self.selectionDisplay_property)
+    self.mX2_property.removeEBObserver (self.selectionDisplay_property)
+    self.mY2_property.removeEBObserver (self.selectionDisplay_property)
+    self.mWidth_property.removeEBObserver (self.selectionDisplay_property)
+    self.mLayer_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -392,54 +415,102 @@ class BoardObject : EBGraphicManagedObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "mWidthUnit",
+      idx: self.mWidthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.mWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mX1",
+      idx: self.mX1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mX1_property.mObserverExplorer,
+      valueExplorer: &self.mX1_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mX1Unit",
+      idx: self.mX1Unit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mX1Unit_property.mObserverExplorer,
+      valueExplorer: &self.mX1Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mY1",
+      idx: self.mY1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mY1_property.mObserverExplorer,
+      valueExplorer: &self.mY1_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mY1Unit",
+      idx: self.mY1Unit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mY1Unit_property.mObserverExplorer,
+      valueExplorer: &self.mY1Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mX2",
+      idx: self.mX2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mX2_property.mObserverExplorer,
+      valueExplorer: &self.mX2_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mX2Unit",
+      idx: self.mX2Unit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mX2Unit_property.mObserverExplorer,
+      valueExplorer: &self.mX2Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mY2",
+      idx: self.mY2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mY2_property.mObserverExplorer,
+      valueExplorer: &self.mY2_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mY2Unit",
+      idx: self.mY2Unit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mY2Unit_property.mObserverExplorer,
+      valueExplorer: &self.mY2Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mLayer",
+      idx: self.mLayer_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mLayer_property.mObserverExplorer,
+      valueExplorer: &self.mLayer_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mWidth",
+      idx: self.mWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mWidth_property.mObserverExplorer,
+      valueExplorer: &self.mWidth_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
-      "isPlacedInBoard",
-      idx: self.isPlacedInBoard_property.ebObjectIndex,
+      "objectDisplay",
+      idx: self.objectDisplay_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.isPlacedInBoard_property.mObserverExplorer,
-      valueExplorer: &self.isPlacedInBoard_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "displayFrontPads",
-      idx: self.displayFrontPads_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.displayFrontPads_property.mObserverExplorer,
-      valueExplorer: &self.displayFrontPads_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "displayBackPads",
-      idx: self.displayBackPads_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.displayBackPads_property.mObserverExplorer,
-      valueExplorer: &self.displayBackPads_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "displayPadNumbers",
-      idx: self.displayPadNumbers_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.displayPadNumbers_property.mObserverExplorer,
-      valueExplorer: &self.displayPadNumbers_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "errorOrWarningIssueSize",
-      idx: self.errorOrWarningIssueSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.errorOrWarningIssueSize_property.mObserverExplorer,
-      valueExplorer: &self.errorOrWarningIssueSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx: self.issues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issues_property.mObserverExplorer,
-      valueExplorer: &self.issues_property.mValueExplorer
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
@@ -449,23 +520,8 @@ class BoardObject : EBGraphicManagedObject,
       observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
       valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-    createEntryForToOneRelationshipNamed (
-      "mRoot",
-      idx:self.mRoot_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mRoot_property.mValueExplorer
-    )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
@@ -474,9 +530,39 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- To one property: mRoot
-    self.mRoot_property.mObserverExplorer = nil
-    self.mRoot_property.mValueExplorer = nil
+  //--- Atomic property: mWidthUnit
+    self.mWidthUnit_property.mObserverExplorer = nil
+    self.mWidthUnit_property.mValueExplorer = nil
+  //--- Atomic property: mX1
+    self.mX1_property.mObserverExplorer = nil
+    self.mX1_property.mValueExplorer = nil
+  //--- Atomic property: mX1Unit
+    self.mX1Unit_property.mObserverExplorer = nil
+    self.mX1Unit_property.mValueExplorer = nil
+  //--- Atomic property: mY1
+    self.mY1_property.mObserverExplorer = nil
+    self.mY1_property.mValueExplorer = nil
+  //--- Atomic property: mY1Unit
+    self.mY1Unit_property.mObserverExplorer = nil
+    self.mY1Unit_property.mValueExplorer = nil
+  //--- Atomic property: mX2
+    self.mX2_property.mObserverExplorer = nil
+    self.mX2_property.mValueExplorer = nil
+  //--- Atomic property: mX2Unit
+    self.mX2Unit_property.mObserverExplorer = nil
+    self.mX2Unit_property.mValueExplorer = nil
+  //--- Atomic property: mY2
+    self.mY2_property.mObserverExplorer = nil
+    self.mY2_property.mValueExplorer = nil
+  //--- Atomic property: mY2Unit
+    self.mY2Unit_property.mObserverExplorer = nil
+    self.mY2Unit_property.mValueExplorer = nil
+  //--- Atomic property: mLayer
+    self.mLayer_property.mObserverExplorer = nil
+    self.mLayer_property.mValueExplorer = nil
+  //--- Atomic property: mWidth
+    self.mWidth_property.mObserverExplorer = nil
+    self.mWidth_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -495,7 +581,6 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mRoot = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -506,6 +591,28 @@ class BoardObject : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mWidthUnit
+    self.mWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mWidthUnit")
+  //--- Atomic property: mX1
+    self.mX1_property.storeIn (dictionary: ioDictionary, forKey:"mX1")
+  //--- Atomic property: mX1Unit
+    self.mX1Unit_property.storeIn (dictionary: ioDictionary, forKey:"mX1Unit")
+  //--- Atomic property: mY1
+    self.mY1_property.storeIn (dictionary: ioDictionary, forKey:"mY1")
+  //--- Atomic property: mY1Unit
+    self.mY1Unit_property.storeIn (dictionary: ioDictionary, forKey:"mY1Unit")
+  //--- Atomic property: mX2
+    self.mX2_property.storeIn (dictionary: ioDictionary, forKey:"mX2")
+  //--- Atomic property: mX2Unit
+    self.mX2Unit_property.storeIn (dictionary: ioDictionary, forKey:"mX2Unit")
+  //--- Atomic property: mY2
+    self.mY2_property.storeIn (dictionary: ioDictionary, forKey:"mY2")
+  //--- Atomic property: mY2Unit
+    self.mY2Unit_property.storeIn (dictionary: ioDictionary, forKey:"mY2Unit")
+  //--- Atomic property: mLayer
+    self.mLayer_property.storeIn (dictionary: ioDictionary, forKey:"mLayer")
+  //--- Atomic property: mWidth
+    self.mWidth_property.storeIn (dictionary: ioDictionary, forKey:"mWidth")
   }
 
   //····················································································································
@@ -515,17 +622,6 @@ class BoardObject : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To one property: mRoot
-    do{
-      let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mRoot",
-        inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
-      )
-      if let entity = possibleEntity as? ProjectRoot {
-        self.mRoot_property.setProp (entity)
-      }
-    }
   }
 
   //····················································································································
@@ -534,6 +630,28 @@ class BoardObject : EBGraphicManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mWidthUnit
+    self.mWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mWidthUnit")
+  //--- Atomic property: mX1
+    self.mX1_property.readFrom (dictionary: inDictionary, forKey:"mX1")
+  //--- Atomic property: mX1Unit
+    self.mX1Unit_property.readFrom (dictionary: inDictionary, forKey:"mX1Unit")
+  //--- Atomic property: mY1
+    self.mY1_property.readFrom (dictionary: inDictionary, forKey:"mY1")
+  //--- Atomic property: mY1Unit
+    self.mY1Unit_property.readFrom (dictionary: inDictionary, forKey:"mY1Unit")
+  //--- Atomic property: mX2
+    self.mX2_property.readFrom (dictionary: inDictionary, forKey:"mX2")
+  //--- Atomic property: mX2Unit
+    self.mX2Unit_property.readFrom (dictionary: inDictionary, forKey:"mX2Unit")
+  //--- Atomic property: mY2
+    self.mY2_property.readFrom (dictionary: inDictionary, forKey:"mY2")
+  //--- Atomic property: mY2Unit
+    self.mY2Unit_property.readFrom (dictionary: inDictionary, forKey:"mY2Unit")
+  //--- Atomic property: mLayer
+    self.mLayer_property.readFrom (dictionary: inDictionary, forKey:"mLayer")
+  //--- Atomic property: mWidth
+    self.mWidth_property.readFrom (dictionary: inDictionary, forKey:"mWidth")
   }
 
   //····················································································································
@@ -542,10 +660,6 @@ class BoardObject : EBGraphicManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To one property: mRoot
-    if let object = self.mRoot {
-      objects.append (object)
-    }
   }
 
   //····················································································································
@@ -554,10 +668,6 @@ class BoardObject : EBGraphicManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To one property: mRoot
-    if let object = self.mRoot {
-      objects.append (object)
-    }
   }
 
   //····················································································································
