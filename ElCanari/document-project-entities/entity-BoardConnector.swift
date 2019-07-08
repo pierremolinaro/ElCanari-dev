@@ -6,37 +6,51 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PadRepresentant_mComponentPadName : class {
+protocol BoardConnector_mComponentPadName : class {
   var mComponentPadName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PadRepresentant_mPadIndex : class {
+protocol BoardConnector_mPadIndex : class {
   var mPadIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PadRepresentant_side : class {
+protocol BoardConnector_mX : class {
+  var mX : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_mY : class {
+  var mY : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_side : class {
   var side : ConnectorSide? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PadRepresentant_issues : class {
+protocol BoardConnector_issues : class {
   var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: PadRepresentant
+//    Entity: BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class PadRepresentant : EBManagedObject,
-         PadRepresentant_mComponentPadName,
-         PadRepresentant_mPadIndex,
-         PadRepresentant_side,
-         PadRepresentant_issues {
+class BoardConnector : BoardObject,
+         BoardConnector_mComponentPadName,
+         BoardConnector_mPadIndex,
+         BoardConnector_mX,
+         BoardConnector_mY,
+         BoardConnector_side,
+         BoardConnector_issues {
 
   //····················································································································
   //   Atomic property: mComponentPadName
@@ -71,6 +85,78 @@ class PadRepresentant : EBManagedObject,
   //····················································································································
 
   var mPadIndex_property_selection : EBSelection <Int> { return self.mPadIndex_property.prop }
+
+  //····················································································································
+  //   Atomic property: mX
+  //····················································································································
+
+  let mX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mX : Int {
+    get { return self.mX_property.propval }
+    set { self.mX_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+
+  //····················································································································
+  //   Atomic property: mY
+  //····················································································································
+
+  let mY_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mY : Int {
+    get { return self.mY_property.propval }
+    set { self.mY_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
+
+  //····················································································································
+  //   To many property: mTracksP2
+  //····················································································································
+
+  let mTracksP2_property = StoredArrayOf_BoardTrack ()
+
+  //····················································································································
+
+  var mTracksP2_property_selection : EBSelection < [BoardTrack] > {
+    return self.mTracksP2_property.prop
+  }
+
+  //····················································································································
+
+  var mTracksP2 : [BoardTrack] {
+    get { return self.mTracksP2_property.propval }
+    set { self.mTracksP2_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   To many property: mTracksP1
+  //····················································································································
+
+  let mTracksP1_property = StoredArrayOf_BoardTrack ()
+
+  //····················································································································
+
+  var mTracksP1_property_selection : EBSelection < [BoardTrack] > {
+    return self.mTracksP1_property.prop
+  }
+
+  //····················································································································
+
+  var mTracksP1 : [BoardTrack] {
+    get { return self.mTracksP1_property.propval }
+    set { self.mTracksP1_property.setProp (newValue) }
+  }
 
   //····················································································································
   //   To one property: mComponent
@@ -134,29 +220,6 @@ class PadRepresentant : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: issues
-  //····················································································································
-
-  let issues_property = EBTransientProperty_CanariIssueArray ()
-
-  //····················································································································
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
-  }
-
-  //····················································································································
-
-  var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //    init
   //····················································································································
 
@@ -166,11 +229,27 @@ class PadRepresentant : EBManagedObject,
     self.mComponentPadName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPadIndex
     self.mPadIndex_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: mComponent (has opposite to many relationship: mPadRepresentants)
+  //--- Atomic property: mX
+    self.mX_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mY
+    self.mY_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mTracksP2 (has opposite relationship)
+    self.mTracksP2_property.ebUndoManager = self.ebUndoManager
+    self.mTracksP2_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPadRepresentantP2_property.setProp (me) } },
+      resetter: { inObject in inObject.mPadRepresentantP2_property.setProp (nil) }
+    )
+  //--- To many property: mTracksP1 (has opposite relationship)
+    self.mTracksP1_property.ebUndoManager = self.ebUndoManager
+    self.mTracksP1_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPadRepresentantP1_property.setProp (me) } },
+      resetter: { inObject in inObject.mPadRepresentantP1_property.setProp (nil) }
+    )
+  //--- To one property: mComponent (has opposite to many relationship: mConnectors)
     self.mComponent_property.ebUndoManager = self.ebUndoManager
     self.mComponent_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mPadRepresentants_property.add (me) } },
-      resetter: { [weak self] inObject in if let me = self { inObject.mPadRepresentants_property.remove (me) } }
+      setter: { [weak self] inObject in if let me = self { inObject.mConnectors_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mConnectors_property.remove (me) } }
     )
   //--- Atomic property: side
     self.side_property.mReadModelFunction = { [weak self] in
@@ -186,7 +265,7 @@ class PadRepresentant : EBManagedObject,
         case .single :
           switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_PadRepresentant_side (v0, v1, v2))
+            return .single (transient_BoardConnector_side (v0, v1, v2))
           default :
             return .empty
           }
@@ -205,7 +284,7 @@ class PadRepresentant : EBManagedObject,
         kind &= unwSelf.mComponentPadName_property_selection.kind ()
         kind &= unwSelf.mPadIndex_property_selection.kind ()
         kind &= unwSelf.side_property_selection.kind ()
-        kind &= unwSelf.mComponent_property.errorOrWarningIssueSize_property_selection.kind ()
+        kind &= unwSelf.errorOrWarningIssueSize_property_selection.kind ()
         kind &= unwSelf.mComponent_property.padNetDictionary_property_selection.kind ()
         switch kind {
         case .empty :
@@ -213,9 +292,9 @@ class PadRepresentant : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.side_property_selection, unwSelf.mComponent_property.errorOrWarningIssueSize_property_selection, unwSelf.mComponent_property.padNetDictionary_property_selection) {
+          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.side_property_selection, unwSelf.errorOrWarningIssueSize_property_selection, unwSelf.mComponent_property.padNetDictionary_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_PadRepresentant_issues (v0, v1, v2, v3, v4, v5))
+            return .single (transient_BoardConnector_issues (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -228,9 +307,17 @@ class PadRepresentant : EBManagedObject,
     self.mComponentPadName_property.addEBObserver (self.issues_property)
     self.mPadIndex_property.addEBObserver (self.issues_property)
     self.side_property.addEBObserver (self.issues_property)
-    self.mComponent_property.addEBObserverOf_errorOrWarningIssueSize (self.issues_property)
+    self.errorOrWarningIssueSize_property.addEBObserver (self.issues_property)
     self.mComponent_property.addEBObserverOf_padNetDictionary (self.issues_property)
   //--- Install undoers and opposite setter for relationships
+    self.mTracksP2_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPadRepresentantP2_property.setProp (me) } },
+      resetter: { inObject in inObject.mPadRepresentantP2_property.setProp (nil) }
+    )
+    self.mTracksP1_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPadRepresentantP1_property.setProp (me) } },
+      resetter: { inObject in inObject.mPadRepresentantP1_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -246,7 +333,7 @@ class PadRepresentant : EBManagedObject,
     self.mComponentPadName_property.removeEBObserver (self.issues_property)
     self.mPadIndex_property.removeEBObserver (self.issues_property)
     self.side_property.removeEBObserver (self.issues_property)
-    self.mComponent_property.removeEBObserverOf_errorOrWarningIssueSize (self.issues_property)
+    self.errorOrWarningIssueSize_property.removeEBObserver (self.issues_property)
     self.mComponent_property.removeEBObserverOf_padNetDictionary (self.issues_property)
   //--- Unregister properties for handling signature
   }
@@ -278,6 +365,22 @@ class PadRepresentant : EBManagedObject,
       observerExplorer: &self.mPadIndex_property.mObserverExplorer,
       valueExplorer: &self.mPadIndex_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mX",
+      idx: self.mX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mX_property.mObserverExplorer,
+      valueExplorer: &self.mX_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mY",
+      idx: self.mY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mY_property.mObserverExplorer,
+      valueExplorer: &self.mY_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "side",
@@ -296,6 +399,20 @@ class PadRepresentant : EBManagedObject,
       valueExplorer: &self.issues_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForToManyRelationshipNamed (
+      "mTracksP2",
+      idx:mTracksP2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mTracksP2_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "mTracksP1",
+      idx:mTracksP1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mTracksP1_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mComponent",
@@ -318,6 +435,16 @@ class PadRepresentant : EBManagedObject,
   //--- Atomic property: mPadIndex
     self.mPadIndex_property.mObserverExplorer = nil
     self.mPadIndex_property.mValueExplorer = nil
+  //--- Atomic property: mX
+    self.mX_property.mObserverExplorer = nil
+    self.mX_property.mValueExplorer = nil
+  //--- Atomic property: mY
+    self.mY_property.mObserverExplorer = nil
+    self.mY_property.mValueExplorer = nil
+  //--- To many property: mTracksP2
+    self.mTracksP2_property.mValueExplorer = nil
+  //--- To many property: mTracksP1
+    self.mTracksP1_property.mValueExplorer = nil
   //--- To one property: mComponent
     self.mComponent_property.mObserverExplorer = nil
     self.mComponent_property.mValueExplorer = nil
@@ -330,6 +457,8 @@ class PadRepresentant : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
+    self.mTracksP2 = []
+    self.mTracksP1 = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -354,6 +483,22 @@ class PadRepresentant : EBManagedObject,
     self.mComponentPadName_property.storeIn (dictionary: ioDictionary, forKey:"mComponentPadName")
   //--- Atomic property: mPadIndex
     self.mPadIndex_property.storeIn (dictionary: ioDictionary, forKey:"mPadIndex")
+  //--- Atomic property: mX
+    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
+  //--- Atomic property: mY
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
+  //--- To many property: mTracksP2
+    self.store (
+      managedObjectArray: self.mTracksP2_property.propval,
+      relationshipName: "mTracksP2",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: mTracksP1
+    self.store (
+      managedObjectArray: self.mTracksP1_property.propval,
+      relationshipName: "mTracksP1",
+      intoDictionary: ioDictionary
+    )
   }
 
   //····················································································································
@@ -363,6 +508,18 @@ class PadRepresentant : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: mTracksP2
+    self.mTracksP2_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mTracksP2",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [BoardTrack])
+  //--- To many property: mTracksP1
+    self.mTracksP1_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mTracksP1",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [BoardTrack])
   //--- To one property: mComponent
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -386,6 +543,10 @@ class PadRepresentant : EBManagedObject,
     self.mComponentPadName_property.readFrom (dictionary: inDictionary, forKey:"mComponentPadName")
   //--- Atomic property: mPadIndex
     self.mPadIndex_property.readFrom (dictionary: inDictionary, forKey:"mPadIndex")
+  //--- Atomic property: mX
+    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
+  //--- Atomic property: mY
+    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
   }
 
   //····················································································································
@@ -394,6 +555,14 @@ class PadRepresentant : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: mTracksP2
+    for managedObject in self.mTracksP2 {
+      objects.append (managedObject)
+    }
+  //--- To many property: mTracksP1
+    for managedObject in self.mTracksP1 {
+      objects.append (managedObject)
+    }
   //--- To one property: mComponent
     if let object = self.mComponent {
       objects.append (object)
@@ -406,6 +575,14 @@ class PadRepresentant : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: mTracksP2
+    for managedObject in self.mTracksP2 {
+      objects.append (managedObject)
+    }
+  //--- To many property: mTracksP1
+    for managedObject in self.mTracksP1 {
+      objects.append (managedObject)
+    }
   //--- To one property: mComponent
     if let object = self.mComponent {
       objects.append (object)

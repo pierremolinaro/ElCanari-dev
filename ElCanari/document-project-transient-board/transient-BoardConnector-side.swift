@@ -13,15 +13,18 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PadRepresentant_issues (
+func transient_BoardConnector_side (
        _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
        _ self_mComponentPadName : String,
-       _ self_mPadIndex : Int,         
-       _ self_side : ConnectorSide,    
-       _ self_mComponent_errorOrWarningIssueSize : Double?,
-       _ self_mComponent_padNetDictionary : PadNetDictionary?
-) -> CanariIssueArray {
+       _ self_mPadIndex : Int
+) -> ConnectorSide {
 //--- START OF USER ZONE 2
+        if let descriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName]  {
+          let pad = descriptor.pads [self_mPadIndex]
+          return pad.side
+        }else{
+          return .both
+        }
 
 //--- END OF USER ZONE 2
 }

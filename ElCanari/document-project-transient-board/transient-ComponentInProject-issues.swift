@@ -14,10 +14,16 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ComponentInProject_issues (
-       _ self_mPadRepresentants_issues : [PadRepresentant_issues]
+       _ self_mConnectors_issues : [BoardConnector_issues]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-
+         var issues = CanariIssueArray ()
+         for connector in self_mConnectors_issues {
+           if let s = connector.issues {
+             issues += s
+           }
+         }
+         return issues
 //--- END OF USER ZONE 2
 }
 

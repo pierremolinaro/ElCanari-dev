@@ -1,5 +1,5 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   ConnectorInBoard
+//   BoardConnector
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum ConnectorSide {
@@ -8,21 +8,27 @@ enum ConnectorSide {
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-graphic entity ConnectorInBoard : BoardObject {
-  toMany BoardTrack mTracksP1 inverse toOne mConnectorP1 ;
-  toMany BoardTrack mTracksP2 inverse toOne mConnectorP2 ;
+graphic entity BoardConnector : BoardObject {
+  toOne ComponentInProject mComponent inverse toMany mConnectors ; // nil if not connected to a pad
+  property String mComponentPadName default "" ; // Empty string if not connected to a pad
+  property Int mPadIndex default 0 ; // 0 -> master pad, > 0 : slave pad
 
-  property Int mX default 0 ;
-  property Int mY default 0 ;
-  
-// override transient EBShape objectDisplay dependsFrom
-//    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex, self.side
-//  ;
+  property Int mX default 0 ; // Used if not connected to a Pad
+  property Int mY default 0 ; // Used if not connected to a Pad
 
-//  override transient EBShape selectionDisplay dependsFrom
-//    self.mComponentPadName// TEMP
-//  ;
+  toMany BoardTrack mTracksP1 inverse toOne mPadRepresentantP1 ;
+  toMany BoardTrack mTracksP2 inverse toOne mPadRepresentantP2 ;
+
+  transient ConnectorSide side dependsFrom
+    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex
+  ;
   
+  override transient CanariIssueArray issues dependsFrom
+    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex, self.side,
+    super.BoardObject.errorOrWarningIssueSize,
+    self.mComponent.one.padNetDictionary
+  ;
+
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

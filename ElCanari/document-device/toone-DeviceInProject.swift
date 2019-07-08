@@ -22,8 +22,8 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
     inOldValue?.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
     inOldValue?.sizeString_property.removeEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
     inOldValue?.canExport_property.removeEBObserversFrom (&self.mObserversOf_canExport) // Transient property
-    inOldValue?.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
     inOldValue?.packageNames_property.removeEBObserversFrom (&self.mObserversOf_packageNames) // Transient property
+    inOldValue?.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
     inOldValue?.symbolAndTypesNames_property.removeEBObserversFrom (&self.mObserversOf_symbolAndTypesNames) // Transient property
     inOldValue?.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
     inOldValue?.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
@@ -35,8 +35,8 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
     self.mInternalValue?.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
     self.mInternalValue?.sizeString_property.addEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
     self.mInternalValue?.canExport_property.addEBObserversFrom (&self.mObserversOf_canExport) // Transient property
-    self.mInternalValue?.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
     self.mInternalValue?.packageNames_property.addEBObserversFrom (&self.mObserversOf_packageNames) // Transient property
+    self.mInternalValue?.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
     self.mInternalValue?.symbolAndTypesNames_property.addEBObserversFrom (&self.mObserversOf_symbolAndTypesNames) // Transient property
     self.mInternalValue?.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
     self.mInternalValue?.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
@@ -530,75 +530,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   }
 
   //····················································································································
-  //   Observers of 'canRemove' transient property
-  //····················································································································
-
-  private var mObserversOf_canRemove = EBWeakEventSet ()
-
-  //····················································································································
-
-  var canRemove_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
-      switch (model.canRemove_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_canRemove.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.canRemove_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_canRemove (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_canRemove.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.canRemove_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
-        managedObject.canRemove_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
-        managedObject.canRemove_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'packageNames' transient property
   //····················································································································
 
@@ -663,6 +594,75 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
     for managedObject in inSet {
       self.mObserversOf_packageNames.apply { (_ observer : EBEvent) in
         managedObject.packageNames_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'canRemove' transient property
+  //····················································································································
+
+  private var mObserversOf_canRemove = EBWeakEventSet ()
+
+  //····················································································································
+
+  var canRemove_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.canRemove_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_canRemove.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.canRemove_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_canRemove (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_canRemove.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.canRemove_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
+        managedObject.canRemove_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
+        managedObject.canRemove_property.removeEBObserver (observer)
       }
     }
   }
@@ -916,47 +916,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   }
 
   //····················································································································
-  //   Observable toMany property: mComponents
-  //····················································································································
-
-  private var mObserversOf_mComponents = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mComponents_property_selection : EBSelection <[ComponentInProject]> {
-    if let model = self.propval {
-      switch (model.mComponents_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mComponents (_ inObserver : EBEvent) {
-    self.mObserversOf_mComponents.insert (inObserver)
-    if let object = self.propval {
-      object.mComponents_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mComponents (_ inObserver : EBEvent) {
-    self.mObserversOf_mComponents.remove (inObserver)
-    if let object = self.propval {
-      object.mComponents_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
   //   Observable toMany property: mSymbols
   //····················································································································
 
@@ -994,6 +953,47 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
     self.mObserversOf_mSymbols.remove (inObserver)
     if let object = self.propval {
       object.mSymbols_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mComponents
+  //····················································································································
+
+  private var mObserversOf_mComponents = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mComponents_property_selection : EBSelection <[ComponentInProject]> {
+    if let model = self.propval {
+      switch (model.mComponents_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mComponents (_ inObserver : EBEvent) {
+    self.mObserversOf_mComponents.insert (inObserver)
+    if let object = self.propval {
+      object.mComponents_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mComponents (_ inObserver : EBEvent) {
+    self.mObserversOf_mComponents.remove (inObserver)
+    if let object = self.propval {
+      object.mComponents_property.removeEBObserver (inObserver)
     }
   }
 

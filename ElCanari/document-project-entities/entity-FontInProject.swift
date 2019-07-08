@@ -79,44 +79,6 @@ class FontInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   To many property: mComponentNames
-  //····················································································································
-
-  let mComponentNames_property = StoredArrayOf_ComponentInProject ()
-
-  //····················································································································
-
-  var mComponentNames_property_selection : EBSelection < [ComponentInProject] > {
-    return self.mComponentNames_property.prop
-  }
-
-  //····················································································································
-
-  var mComponentNames : [ComponentInProject] {
-    get { return self.mComponentNames_property.propval }
-    set { self.mComponentNames_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   To many property: mComponentValues
-  //····················································································································
-
-  let mComponentValues_property = StoredArrayOf_ComponentInProject ()
-
-  //····················································································································
-
-  var mComponentValues_property_selection : EBSelection < [ComponentInProject] > {
-    return self.mComponentValues_property.prop
-  }
-
-  //····················································································································
-
-  var mComponentValues : [ComponentInProject] {
-    get { return self.mComponentValues_property.propval }
-    set { self.mComponentValues_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mNominalSize
   //····················································································································
 
@@ -183,6 +145,44 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   var mDescriptiveString_property_selection : EBSelection <String> { return self.mDescriptiveString_property.prop }
+
+  //····················································································································
+  //   To many property: mComponentNames
+  //····················································································································
+
+  let mComponentNames_property = StoredArrayOf_ComponentInProject ()
+
+  //····················································································································
+
+  var mComponentNames_property_selection : EBSelection < [ComponentInProject] > {
+    return self.mComponentNames_property.prop
+  }
+
+  //····················································································································
+
+  var mComponentNames : [ComponentInProject] {
+    get { return self.mComponentNames_property.propval }
+    set { self.mComponentNames_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   To many property: mComponentValues
+  //····················································································································
+
+  let mComponentValues_property = StoredArrayOf_ComponentInProject ()
+
+  //····················································································································
+
+  var mComponentValues_property_selection : EBSelection < [ComponentInProject] > {
+    return self.mComponentValues_property.prop
+  }
+
+  //····················································································································
+
+  var mComponentValues : [ComponentInProject] {
+    get { return self.mComponentValues_property.propval }
+    set { self.mComponentValues_property.setProp (newValue) }
+  }
 
   //····················································································································
   //   Transient property: versionString
@@ -265,6 +265,14 @@ class FontInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
       resetter: { inObject in inObject.mFont_property.setProp (nil) }
     )
+  //--- Atomic property: mNominalSize
+    self.mNominalSize_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mFontName
+    self.mFontName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mFontVersion
+    self.mFontVersion_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDescriptiveString
+    self.mDescriptiveString_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mComponentNames (has opposite relationship)
     self.mComponentNames_property.ebUndoManager = self.ebUndoManager
     self.mComponentNames_property.setOppositeRelationShipFunctions (
@@ -277,14 +285,6 @@ class FontInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mValueFont_property.setProp (me) } },
       resetter: { inObject in inObject.mValueFont_property.setProp (nil) }
     )
-  //--- Atomic property: mNominalSize
-    self.mNominalSize_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mFontName
-    self.mFontName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mFontVersion
-    self.mFontVersion_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDescriptiveString
-    self.mDescriptiveString_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -482,10 +482,6 @@ class FontInProject : EBManagedObject,
   override func clearObjectExplorer () {
   //--- To many property: mTexts
     self.mTexts_property.mValueExplorer = nil
-  //--- To many property: mComponentNames
-    self.mComponentNames_property.mValueExplorer = nil
-  //--- To many property: mComponentValues
-    self.mComponentValues_property.mValueExplorer = nil
   //--- Atomic property: mNominalSize
     self.mNominalSize_property.mObserverExplorer = nil
     self.mNominalSize_property.mValueExplorer = nil
@@ -498,6 +494,10 @@ class FontInProject : EBManagedObject,
   //--- Atomic property: mDescriptiveString
     self.mDescriptiveString_property.mObserverExplorer = nil
     self.mDescriptiveString_property.mValueExplorer = nil
+  //--- To many property: mComponentNames
+    self.mComponentNames_property.mValueExplorer = nil
+  //--- To many property: mComponentValues
+    self.mComponentValues_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -535,6 +535,14 @@ class FontInProject : EBManagedObject,
       relationshipName: "mTexts",
       intoDictionary: ioDictionary
     )
+  //--- Atomic property: mNominalSize
+    self.mNominalSize_property.storeIn (dictionary: ioDictionary, forKey:"mNominalSize")
+  //--- Atomic property: mFontName
+    self.mFontName_property.storeIn (dictionary: ioDictionary, forKey:"mFontName")
+  //--- Atomic property: mFontVersion
+    self.mFontVersion_property.storeIn (dictionary: ioDictionary, forKey:"mFontVersion")
+  //--- Atomic property: mDescriptiveString
+    self.mDescriptiveString_property.storeIn (dictionary: ioDictionary, forKey:"mDescriptiveString")
   //--- To many property: mComponentNames
     self.store (
       managedObjectArray: self.mComponentNames_property.propval,
@@ -547,14 +555,6 @@ class FontInProject : EBManagedObject,
       relationshipName: "mComponentValues",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mNominalSize
-    self.mNominalSize_property.storeIn (dictionary: ioDictionary, forKey:"mNominalSize")
-  //--- Atomic property: mFontName
-    self.mFontName_property.storeIn (dictionary: ioDictionary, forKey:"mFontName")
-  //--- Atomic property: mFontVersion
-    self.mFontVersion_property.storeIn (dictionary: ioDictionary, forKey:"mFontVersion")
-  //--- Atomic property: mDescriptiveString
-    self.mDescriptiveString_property.storeIn (dictionary: ioDictionary, forKey:"mDescriptiveString")
   }
 
   //····················································································································

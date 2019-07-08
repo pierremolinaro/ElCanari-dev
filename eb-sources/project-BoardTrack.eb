@@ -9,11 +9,8 @@ enum TrackSide {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardTrack : BoardObject {
-  toOne ConnectorInBoard mConnectorP1 inverse toMany mTracksP1 ;
-  toOne ConnectorInBoard mConnectorP2 inverse toMany mTracksP2 ;
-
-  toOne PadRepresentant mPadRepresentantP1 inverse toMany mTracksP1 ;
-  toOne PadRepresentant mPadRepresentantP2 inverse toMany mTracksP2 ;
+  toOne BoardConnector mPadRepresentantP1 inverse toMany mTracksP1 ;
+  toOne BoardConnector mPadRepresentantP2 inverse toMany mTracksP2 ;
 
   property TrackSide mSide default front ;
 

@@ -347,11 +347,12 @@ fileprivate let kDragAndDropBoardLine = NSPasteboard.PasteboardType (rawValue: "
   internal func updateBoardConnectors () {
     let boardObjects = self.rootObject.mBoardObjects
     for object in boardObjects {
-//      if let connector = object as? ConnectorInBoard {
-//        if connector.mComponent == nil {
-//          connector.mRoot = nil // Remove from board objects
-//        }
-//      }
+      if let connector = object as? BoardConnector {
+        let connectedTrackCount = connector.mTracksP1.count + connector.mTracksP2.count
+        if (connector.mComponent == nil) && (connectedTrackCount == 0) {
+          connector.mRoot = nil // Remove from board objects
+        }
+      }
     }
   }
 
@@ -509,11 +510,11 @@ fileprivate let kDragAndDropBoardLine = NSPasteboard.PasteboardType (rawValue: "
       if let padDictionary = component.componentPadDictionary {
         for (padName, descriptor) in padDictionary {
           for idx in 0 ..< descriptor.pads.count {
-            let newPadRepresentant = PadRepresentant (self.ebUndoManager)
-            newPadRepresentant.mComponent = component
-            newPadRepresentant.mComponentPadName = padName
-            newPadRepresentant.mPadIndex = idx
-//            self.rootObject.mBoardObjects.append (newConnector)
+            let newConnector = BoardConnector (self.ebUndoManager)
+            newConnector.mComponent = component
+            newConnector.mComponentPadName = padName
+            newConnector.mPadIndex = idx
+            self.rootObject.mBoardObjects.append (newConnector)
           }
         }
       }

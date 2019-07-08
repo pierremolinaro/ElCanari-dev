@@ -3088,7 +3088,7 @@ Gw
             </view>
             <point key="canvasLocation" x="-4109" y="-688"/>
         </window>
-        <window title="Maintenance" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="NwM-Dn-TT2" userLabel="Window : Maintenance">
+        <window title="Maintenance" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="MAINTENANCE" animationBehavior="default" id="NwM-Dn-TT2" userLabel="Window : Maintenance">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="131" y="158" width="434" height="290"/>
@@ -3243,7 +3243,7 @@ Gw
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-1032" y="-2037"/>
+            <point key="canvasLocation" x="-1158" y="-2034"/>
         </window>
         <customObject id="kOJ-WV-yuh" customClass="OpenFontInLibrary" customModule="ElCanari" customModuleProvider="target">
             <connections>

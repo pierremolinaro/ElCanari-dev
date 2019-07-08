@@ -30,12 +30,6 @@ protocol BoardObject_displayPadNumbers : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_errorOrWarningIssueSize : class {
-  var errorOrWarningIssueSize : Double? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BoardObject_issues : class {
   var issues : CanariIssueArray? { get }
 }
@@ -53,6 +47,12 @@ protocol BoardObject_objectDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_errorOrWarningIssueSize : class {
+  var errorOrWarningIssueSize : Double? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -61,10 +61,10 @@ class BoardObject : EBGraphicManagedObject,
          BoardObject_displayFrontPads,
          BoardObject_displayBackPads,
          BoardObject_displayPadNumbers,
-         BoardObject_errorOrWarningIssueSize,
          BoardObject_issues,
          BoardObject_selectionDisplay,
-         BoardObject_objectDisplay {
+         BoardObject_objectDisplay,
+         BoardObject_errorOrWarningIssueSize {
 
   //····················································································································
   //   To one property: mRoot
@@ -197,29 +197,6 @@ class BoardObject : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Transient property: errorOrWarningIssueSize
-  //····················································································································
-
-  let errorOrWarningIssueSize_property = EBTransientProperty_Double ()
-
-  //····················································································································
-
-  var errorOrWarningIssueSize_property_selection : EBSelection <Double> {
-    return self.errorOrWarningIssueSize_property.prop
-  }
-
-  //····················································································································
-
-  var errorOrWarningIssueSize : Double? {
-    switch self.errorOrWarningIssueSize_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: issues
   //····················································································································
 
@@ -235,6 +212,29 @@ class BoardObject : EBGraphicManagedObject,
 
   var issues : CanariIssueArray? {
     switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: errorOrWarningIssueSize
+  //····················································································································
+
+  let errorOrWarningIssueSize_property = EBTransientProperty_Double ()
+
+  //····················································································································
+
+  var errorOrWarningIssueSize_property_selection : EBSelection <Double> {
+    return self.errorOrWarningIssueSize_property.prop
+  }
+
+  //····················································································································
+
+  var errorOrWarningIssueSize : Double? {
+    switch self.errorOrWarningIssueSize_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -426,14 +426,6 @@ class BoardObject : EBGraphicManagedObject,
       valueExplorer: &self.displayPadNumbers_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "errorOrWarningIssueSize",
-      idx: self.errorOrWarningIssueSize_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.errorOrWarningIssueSize_property.mObserverExplorer,
-      valueExplorer: &self.errorOrWarningIssueSize_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "issues",
       idx: self.issues_property.ebObjectIndex,
       y: &y,
@@ -456,6 +448,14 @@ class BoardObject : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.objectDisplay_property.mObserverExplorer,
       valueExplorer: &self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "errorOrWarningIssueSize",
+      idx: self.errorOrWarningIssueSize_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.errorOrWarningIssueSize_property.mObserverExplorer,
+      valueExplorer: &self.errorOrWarningIssueSize_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)

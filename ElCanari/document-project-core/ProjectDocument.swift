@@ -9,12 +9,6 @@ import Cocoa
 @objc(ProjectDocument) class ProjectDocument : EBManagedDocument {
 
   //····················································································································
-  //   Array controller: componentController
-  //····················································································································
-
-  var componentController = Controller_ProjectDocument_componentController ()
-
-  //····················································································································
   //   Array controller: netClassController
   //····················································································································
 
@@ -111,27 +105,10 @@ import Cocoa
   var componentInBoardSelectionController = SelectionController_ProjectDocument_componentInBoardSelectionController ()
 
   //····················································································································
-  //   Transient property: componentCount
+  //   Array controller: componentController
   //····················································································································
 
-  let componentCount_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var componentCount_property_selection : EBSelection <String> {
-    return self.componentCount_property.prop
-  }
-
-  //····················································································································
-
-  var componentCount : String? {
-    switch self.componentCount_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
+  var componentController = Controller_ProjectDocument_componentController ()
 
   //····················································································································
   //   Transient property: netCount
@@ -172,6 +149,29 @@ import Cocoa
 
   var documentFilePath : String? {
     switch self.documentFilePath_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: componentCount
+  //····················································································································
+
+  let componentCount_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var componentCount_property_selection : EBSelection <String> {
+    return self.componentCount_property.prop
+  }
+
+  //····················································································································
+
+  var componentCount : String? {
+    switch self.componentCount_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -272,6 +272,52 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: netCountString
+  //····················································································································
+
+  let netCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netCountString_property_selection : EBSelection <String> {
+    return self.netCountString_property.prop
+  }
+
+  //····················································································································
+
+  var netCountString : String? {
+    switch self.netCountString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: canRemoveSelectedDevices
+  //····················································································································
+
+  let canRemoveSelectedDevices_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var canRemoveSelectedDevices_property_selection : EBSelection <Bool> {
+    return self.canRemoveSelectedDevices_property.prop
+  }
+
+  //····················································································································
+
+  var canRemoveSelectedDevices : Bool? {
+    switch self.canRemoveSelectedDevices_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: unplacedSymbolsCount
   //····················································································································
 
@@ -310,29 +356,6 @@ import Cocoa
 
   var unplacedSymbolsCountString : String? {
     switch self.unplacedSymbolsCountString_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: netCountString
-  //····················································································································
-
-  let netCountString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var netCountString_property_selection : EBSelection <String> {
-    return self.netCountString_property.prop
-  }
-
-  //····················································································································
-
-  var netCountString : String? {
-    switch self.netCountString_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -402,29 +425,6 @@ import Cocoa
 
   var canChangePackage : Bool? {
     switch self.canChangePackage_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: canRemoveSelectedDevices
-  //····················································································································
-
-  let canRemoveSelectedDevices_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  var canRemoveSelectedDevices_property_selection : EBSelection <Bool> {
-    return self.canRemoveSelectedDevices_property.prop
-  }
-
-  //····················································································································
-
-  var canRemoveSelectedDevices : Bool? {
-    switch self.canRemoveSelectedDevices_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -796,8 +796,6 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-  //--- Array controller property: componentController
-    self.componentController.addExplorer (name: "componentController", y:&y, view:view)
   //--- Array controller property: netClassController
     self.netClassController.addExplorer (name: "netClassController", y:&y, view:view)
   //--- Array controller property: projectFontController
@@ -830,6 +828,8 @@ import Cocoa
     self.boardTextSelectionController.addExplorer (name: "boardTextSelectionController", y:&y, view:view)
   //--- Selection controller property: componentInBoardSelectionController
     self.componentInBoardSelectionController.addExplorer (name: "componentInBoardSelectionController", y:&y, view:view)
+  //--- Array controller property: componentController
+    self.componentController.addExplorer (name: "componentController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -1159,8 +1159,6 @@ import Cocoa
     super.windowControllerDidLoadNib (aController)
   //--------------------------- Outlet checking
     self.checkOutletConnections ()
-  //--- Array controller property: componentController
-    self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
   //--- Array controller property: netClassController
     self.netClassController.bind_model (self.rootObject.mNetClasses_property, self.ebUndoManager)
   //--- Array controller property: projectFontController
@@ -1193,28 +1191,8 @@ import Cocoa
     self.boardTextSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: componentInBoardSelectionController
     self.componentInBoardSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
-  //--- Atomic property: componentCount
-    self.componentCount_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.rootObject.mComponents_property.count_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.rootObject.mComponents_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_componentCount (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property)
+  //--- Array controller property: componentController
+    self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
   //--- Atomic property: netCount
     self.netCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1237,6 +1215,28 @@ import Cocoa
       }
     }
     self.rootObject.netsDescription_property.addEBObserver (self.netCount_property)
+  //--- Atomic property: componentCount
+    self.componentCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.mComponents_property.count_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.rootObject.mComponents_property.count_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_componentCount (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property)
   //--- Atomic property: canRemoveNetClasses
     self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1327,6 +1327,50 @@ import Cocoa
       }
     }
     self.projectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+  //--- Atomic property: netCountString
+    self.netCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.netsDescription_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.rootObject.netsDescription_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_netCountString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property)
+  //--- Atomic property: canRemoveSelectedDevices
+    self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_canRemoveSelectedDevices (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
   //--- Atomic property: unplacedSymbolsCount
     self.unplacedSymbolsCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1371,28 +1415,6 @@ import Cocoa
       }
     }
     self.unplacedSymbolsCount_property.addEBObserver (self.unplacedSymbolsCountString_property)
-  //--- Atomic property: netCountString
-    self.netCountString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.rootObject.netsDescription_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.rootObject.netsDescription_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_netCountString (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property)
   //--- Atomic property: unplacedPackageCount
     self.unplacedPackageCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1459,28 +1481,6 @@ import Cocoa
       }
     }
     self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
-  //--- Atomic property: canRemoveSelectedDevices
-    self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_canRemoveSelectedDevices (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     self.componentController.bind_tableView (self.mComponentTableView, file: #file, line: #line)
     self.netClassController.bind_tableView (self.mNetClassTableView, file: #file, line: #line)
     self.projectFontController.bind_tableView (self.mFontLibraryTableView, file: #file, line: #line)
@@ -2354,8 +2354,6 @@ import Cocoa
     self.schematicObjectsController.unbind_ebView (self.mSchematicsView)
     self.boardCurveObjectsController.unbind_ebView (self.mBoardLimitsView)
     self.boardObjectsController.unbind_ebView (self.mBoardView)
-  //--- Array controller property: componentController
-    self.componentController.unbind_model ()
   //--- Array controller property: netClassController
     self.netClassController.unbind_model ()
   //--- Array controller property: projectFontController
@@ -2388,20 +2386,22 @@ import Cocoa
     self.boardTextSelectionController.unbind_selection ()
   //--- Selection controller property: componentInBoardSelectionController
     self.componentInBoardSelectionController.unbind_selection ()
-    self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
+  //--- Array controller property: componentController
+    self.componentController.unbind_model ()
     self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
+    self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
     self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
+    self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
     self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
-    self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
     self.rootObject.unplacedPackages_property.removeEBObserver (self.unplacedPackageCount_property)
     self.unplacedPackageCount_property.removeEBObserver (self.unplacedPackagesCountString_property)
     self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
-    self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
   //--------------------------- Remove targets / actions
     self.mAddComponentButton?.target = nil
     self.mDuplicateSelectedComponentsActionButton?.target = nil

@@ -66,9 +66,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_sheetIndexes_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netsDescription_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_unplacedPackages_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardIssues_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_issuesDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_borderClearanceBackground_fromElementsOfSet (inRemovedSet) // Transient property
@@ -86,9 +84,11 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_deviceNames_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_schematicBackgroundDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netWarningCount_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_schematicStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_unplacedPackages_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardBackground_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_schematicStatusMessage_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_schematicStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectedSheetObjects_fromElementsOfSet (inAddedSet) // ToMany proxy
   //--- Add observers to added objects
     self.addEBObserversOf_mBoardSelectedInspector_toElementsOfSet (inAddedSet) // Stored property
@@ -142,9 +142,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_connexionWarningString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_connexionErrorString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_sheetIndexes_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_unplacedSymbols_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netsDescription_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_unplacedPackages_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardIssues_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_issuesDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_borderClearanceBackground_toElementsOfSet (inAddedSet) // Transient property
@@ -162,9 +160,11 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_deviceNames_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_schematicBackgroundDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netWarningCount_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_schematicStatusImage_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_unplacedSymbols_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_unplacedPackages_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardBackground_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_schematicStatusMessage_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_schematicStatusImage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectedSheetObjects_toElementsOfSet (inAddedSet) // ToMany proxy
   }
 
@@ -3183,62 +3183,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'unplacedSymbols' transient property
-  //····················································································································
-
-  private var mObserversOf_unplacedSymbols = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_unplacedSymbols.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.unplacedSymbols_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_unplacedSymbols.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.unplacedSymbols_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_unplacedSymbols_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
-        managedObject.unplacedSymbols_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_unplacedSymbols_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
-        managedObject.unplacedSymbols_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'netsDescription' transient property
   //····················································································································
 
@@ -3290,62 +3234,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
         managedObject.netsDescription_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'unplacedPackages' transient property
-  //····················································································································
-
-  private var mObserversOf_unplacedPackages = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_unplacedPackages (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_unplacedPackages.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.unplacedPackages_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_unplacedPackages (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_unplacedPackages.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.unplacedPackages_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_unplacedPackages_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
-        managedObject.unplacedPackages_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_unplacedPackages_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
-        managedObject.unplacedPackages_property.removeEBObserver (observer)
       }
     }
   }
@@ -4303,57 +4191,113 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'schematicStatusImage' transient property
+  //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
-  private var mObserversOf_schematicStatusImage = EBWeakEventSet ()
+  private var mObserversOf_unplacedSymbols = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_schematicStatusImage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_schematicStatusImage.insert (inObserver)
+    self.mObserversOf_unplacedSymbols.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.schematicStatusImage_property.addEBObserver (inObserver)
+        managedObject.unplacedSymbols_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_schematicStatusImage (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_schematicStatusImage.remove (inObserver)
+    self.mObserversOf_unplacedSymbols.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.schematicStatusImage_property.removeEBObserver (inObserver)
+        managedObject.unplacedSymbols_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_schematicStatusImage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_unplacedSymbols_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.schematicStatusImage_property.addEBObserver (observer)
+      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
+        managedObject.unplacedSymbols_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_schematicStatusImage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func removeEBObserversOf_unplacedSymbols_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.schematicStatusImage_property.removeEBObserver (observer)
+      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
+        managedObject.unplacedSymbols_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'unplacedPackages' transient property
+  //····················································································································
+
+  private var mObserversOf_unplacedPackages = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_unplacedPackages (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_unplacedPackages.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unplacedPackages_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_unplacedPackages (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_unplacedPackages.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unplacedPackages_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_unplacedPackages_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
+        managedObject.unplacedPackages_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_unplacedPackages_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
+        managedObject.unplacedPackages_property.removeEBObserver (observer)
       }
     }
   }
@@ -4466,6 +4410,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_schematicStatusMessage.apply { (_ observer : EBEvent) in
         managedObject.schematicStatusMessage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'schematicStatusImage' transient property
+  //····················································································································
+
+  private var mObserversOf_schematicStatusImage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_schematicStatusImage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_schematicStatusImage.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.schematicStatusImage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_schematicStatusImage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_schematicStatusImage.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.schematicStatusImage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_schematicStatusImage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.schematicStatusImage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_schematicStatusImage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.schematicStatusImage_property.removeEBObserver (observer)
       }
     }
   }

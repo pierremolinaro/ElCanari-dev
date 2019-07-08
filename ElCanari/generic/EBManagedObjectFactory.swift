@@ -55,15 +55,12 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
   "SymbolPinInstanceInDevice" : SymbolPinInstanceInDevice.self,
   "ProjectRoot" : ProjectRoot.self,
   "BoardObject" : BoardObject.self,
+  "BoardLine" : BoardLine.self,
   "BoardRestrictRectangle" : BoardRestrictRectangle.self,
   "BoardText" : BoardText.self,
   "FontInProject" : FontInProject.self,
-  "BoardTrack" : BoardTrack.self,
-  "ConnectorInBoard" : ConnectorInBoard.self,
-  "PadRepresentant" : PadRepresentant.self,
   "BorderCurve" : BorderCurve.self,
   "SchematicObject" : SchematicObject.self,
-  "ComponentInProject" : ComponentInProject.self,
   "DeviceInProject" : DeviceInProject.self,
   "DevicePackageInProject" : DevicePackageInProject.self,
   "ComponentSymbolInProject" : ComponentSymbolInProject.self,
@@ -80,7 +77,9 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
   "NetInProject" : NetInProject.self,
   "SheetInProject" : SheetInProject.self,
   "WireInSchematic" : WireInSchematic.self,
-  "BoardLine" : BoardLine.self,
+  "BoardConnector" : BoardConnector.self,
+  "ComponentInProject" : ComponentInProject.self,
+  "BoardTrack" : BoardTrack.self,
   "CommentInSchematic" : CommentInSchematic.self
 ]
 

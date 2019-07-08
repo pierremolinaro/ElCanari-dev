@@ -22,8 +22,8 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
     self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_sizeString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_canExport_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_canRemove_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_packageNames_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_canRemove_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (inRemovedSet) // Transient property
@@ -35,8 +35,8 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
     self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_sizeString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_canExport_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_canRemove_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_packageNames_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_canRemove_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_pinPadAssignments_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (inAddedSet) // Transient property
@@ -439,62 +439,6 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   }
 
   //····················································································································
-  //   Observers of 'canRemove' transient property
-  //····················································································································
-
-  private var mObserversOf_canRemove = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_canRemove.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.canRemove_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_canRemove (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_canRemove.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.canRemove_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
-        managedObject.canRemove_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
-        managedObject.canRemove_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'packageNames' transient property
   //····················································································································
 
@@ -546,6 +490,62 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
     for managedObject in inSet {
       self.mObserversOf_packageNames.apply { (_ observer : EBEvent) in
         managedObject.packageNames_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'canRemove' transient property
+  //····················································································································
+
+  private var mObserversOf_canRemove = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_canRemove.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.canRemove_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_canRemove (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_canRemove.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.canRemove_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
+        managedObject.canRemove_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
+        managedObject.canRemove_property.removeEBObserver (observer)
       }
     }
   }

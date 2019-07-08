@@ -17,7 +17,7 @@ func transient_ComponentInProject_errorOrWarningIssueSizeForComponent (
        _ self_BoardObject_errorOrWarningIssueSize : Double
 ) -> Double {
 //--- START OF USER ZONE 2
-
+        return self_BoardObject_errorOrWarningIssueSize
 //--- END OF USER ZONE 2
 }
 

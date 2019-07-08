@@ -318,20 +318,8 @@ protocol ProjectRoot_sheetIndexes : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_unplacedSymbols : class {
-  var unplacedSymbols : StringTagArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ProjectRoot_netsDescription : class {
   var netsDescription : NetInfoArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_unplacedPackages : class {
-  var unplacedPackages : StringTagArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -438,8 +426,14 @@ protocol ProjectRoot_netWarningCount : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_schematicStatusImage : class {
-  var schematicStatusImage : NSImage? { get }
+protocol ProjectRoot_unplacedSymbols : class {
+  var unplacedSymbols : StringTagArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_unplacedPackages : class {
+  var unplacedPackages : StringTagArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -452,6 +446,12 @@ protocol ProjectRoot_boardBackground : class {
 
 protocol ProjectRoot_schematicStatusMessage : class {
   var schematicStatusMessage : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_schematicStatusImage : class {
+  var schematicStatusImage : NSImage? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -511,9 +511,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_connexionWarningString,
          ProjectRoot_connexionErrorString,
          ProjectRoot_sheetIndexes,
-         ProjectRoot_unplacedSymbols,
          ProjectRoot_netsDescription,
-         ProjectRoot_unplacedPackages,
          ProjectRoot_boardIssues,
          ProjectRoot_issuesDisplay,
          ProjectRoot_borderClearanceBackground,
@@ -531,9 +529,11 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_deviceNames,
          ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_netWarningCount,
-         ProjectRoot_schematicStatusImage,
+         ProjectRoot_unplacedSymbols,
+         ProjectRoot_unplacedPackages,
          ProjectRoot_boardBackground,
-         ProjectRoot_schematicStatusMessage {
+         ProjectRoot_schematicStatusMessage,
+         ProjectRoot_schematicStatusImage {
 
   //····················································································································
   //   Atomic property: mBoardSelectedInspector
@@ -1286,25 +1286,6 @@ class ProjectRoot : EBManagedObject,
   var mSchematicGridDisplayFactor_property_selection : EBSelection <Int> { return self.mSchematicGridDisplayFactor_property.prop }
 
   //····················································································································
-  //   To many property: mComponents
-  //····················································································································
-
-  let mComponents_property = StoredArrayOf_ComponentInProject ()
-
-  //····················································································································
-
-  var mComponents_property_selection : EBSelection < [ComponentInProject] > {
-    return self.mComponents_property.prop
-  }
-
-  //····················································································································
-
-  var mComponents : [ComponentInProject] {
-    get { return self.mComponents_property.propval }
-    set { self.mComponents_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   To many property: mNetClasses
   //····················································································································
 
@@ -1415,6 +1396,25 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mSchematicSheetOrientation_property_selection : EBSelection <SchematicSheetOrientation> { return self.mSchematicSheetOrientation_property.prop }
+
+  //····················································································································
+  //   To many property: mComponents
+  //····················································································································
+
+  let mComponents_property = StoredArrayOf_ComponentInProject ()
+
+  //····················································································································
+
+  var mComponents_property_selection : EBSelection < [ComponentInProject] > {
+    return self.mComponents_property.prop
+  }
+
+  //····················································································································
+
+  var mComponents : [ComponentInProject] {
+    get { return self.mComponents_property.propval }
+    set { self.mComponents_property.setProp (newValue) }
+  }
 
   //····················································································································
   //   Atomic proxy property: selectedSheetTitle
@@ -1674,29 +1674,6 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: unplacedSymbols
-  //····················································································································
-
-  let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
-
-  //····················································································································
-
-  var unplacedSymbols_property_selection : EBSelection <StringTagArray> {
-    return self.unplacedSymbols_property.prop
-  }
-
-  //····················································································································
-
-  var unplacedSymbols : StringTagArray? {
-    switch self.unplacedSymbols_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: netsDescription
   //····················································································································
 
@@ -1712,29 +1689,6 @@ class ProjectRoot : EBManagedObject,
 
   var netsDescription : NetInfoArray? {
     switch self.netsDescription_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: unplacedPackages
-  //····················································································································
-
-  let unplacedPackages_property = EBTransientProperty_StringTagArray ()
-
-  //····················································································································
-
-  var unplacedPackages_property_selection : EBSelection <StringTagArray> {
-    return self.unplacedPackages_property.prop
-  }
-
-  //····················································································································
-
-  var unplacedPackages : StringTagArray? {
-    switch self.unplacedPackages_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2134,21 +2088,44 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: schematicStatusImage
+  //   Transient property: unplacedSymbols
   //····················································································································
 
-  let schematicStatusImage_property = EBTransientProperty_NSImage ()
+  let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
 
   //····················································································································
 
-  var schematicStatusImage_property_selection : EBSelection <NSImage> {
-    return self.schematicStatusImage_property.prop
+  var unplacedSymbols_property_selection : EBSelection <StringTagArray> {
+    return self.unplacedSymbols_property.prop
   }
 
   //····················································································································
 
-  var schematicStatusImage : NSImage? {
-    switch self.schematicStatusImage_property_selection {
+  var unplacedSymbols : StringTagArray? {
+    switch self.unplacedSymbols_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: unplacedPackages
+  //····················································································································
+
+  let unplacedPackages_property = EBTransientProperty_StringTagArray ()
+
+  //····················································································································
+
+  var unplacedPackages_property_selection : EBSelection <StringTagArray> {
+    return self.unplacedPackages_property.prop
+  }
+
+  //····················································································································
+
+  var unplacedPackages : StringTagArray? {
+    switch self.unplacedPackages_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2195,6 +2172,29 @@ class ProjectRoot : EBManagedObject,
 
   var schematicStatusMessage : String? {
     switch self.schematicStatusMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: schematicStatusImage
+  //····················································································································
+
+  let schematicStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  var schematicStatusImage_property_selection : EBSelection <NSImage> {
+    return self.schematicStatusImage_property.prop
+  }
+
+  //····················································································································
+
+  var schematicStatusImage : NSImage? {
+    switch self.schematicStatusImage_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2300,8 +2300,6 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicGridStyle_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSchematicGridDisplayFactor
     self.mSchematicGridDisplayFactor_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mComponents (no option)
-    self.mComponents_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mNetClasses (no option)
     self.mNetClasses_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mFonts (no option)
@@ -2322,6 +2320,8 @@ class ProjectRoot : EBManagedObject,
     )
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mComponents (no option)
+    self.mComponents_property.ebUndoManager = self.ebUndoManager
   //--- Atomic proxy property: selectedSheetTitle
     self.selectedSheetTitle_property.mReadModelFunction = { [weak self] in
       if let object = self?.mSelectedSheet {
@@ -2512,28 +2512,6 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mSheets_property.addEBObserver (self.sheetIndexes_property)
-  //--- Atomic property: unplacedSymbols
-    self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mComponents_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mComponents_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectRoot_unplacedSymbols (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mComponents_property.addEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
   //--- Atomic property: netsDescription
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2556,34 +2534,6 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mNetClasses_property.addEBObserverOf_netsDescription (self.netsDescription_property)
-  //--- Atomic property: unplacedPackages
-    self.unplacedPackages_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mComponents_property_selection.kind ()
-        kind &= unwSelf.mComponents_property_selection.kind ()
-        kind &= unwSelf.mComponents_property_selection.kind ()
-        kind &= unwSelf.mComponents_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_ProjectRoot_unplacedPackages (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mComponents_property.addEBObserver (self.unplacedPackages_property)
-    self.mComponents_property.addEBObserverOf_componentName (self.unplacedPackages_property)
-    self.mComponents_property.addEBObserverOf_mComponentValue (self.unplacedPackages_property)
-    self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
   //--- Atomic property: boardIssues
     self.boardIssues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3004,22 +2954,19 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mNetClasses_property.addEBObserverOf_netWarningCount (self.netWarningCount_property)
-  //--- Atomic property: schematicStatusImage
-    self.schematicStatusImage_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: unplacedSymbols
+    self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.unplacedSymbols_property_selection.kind ()
-        kind &= unwSelf.netWarningCount_property_selection.kind ()
-        kind &= unwSelf.mSheets_property_selection.kind ()
-        kind &= unwSelf.mSheets_property_selection.kind ()
+        let kind = unwSelf.mComponents_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.unplacedSymbols_property_selection, unwSelf.netWarningCount_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSheets_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_ProjectRoot_schematicStatusImage (v0, v1, v2, v3))
+          switch (unwSelf.mComponents_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_unplacedSymbols (v0))
           default :
             return .empty
           }
@@ -3028,10 +2975,35 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.unplacedSymbols_property.addEBObserver (self.schematicStatusImage_property)
-    self.netWarningCount_property.addEBObserver (self.schematicStatusImage_property)
-    self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusImage_property)
-    self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusImage_property)
+    self.mComponents_property.addEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
+  //--- Atomic property: unplacedPackages
+    self.unplacedPackages_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mComponents_property_selection.kind ()
+        kind &= unwSelf.mComponents_property_selection.kind ()
+        kind &= unwSelf.mComponents_property_selection.kind ()
+        kind &= unwSelf.mComponents_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_ProjectRoot_unplacedPackages (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponents_property.addEBObserver (self.unplacedPackages_property)
+    self.mComponents_property.addEBObserverOf_componentName (self.unplacedPackages_property)
+    self.mComponents_property.addEBObserverOf_mComponentValue (self.unplacedPackages_property)
+    self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
   //--- Atomic property: boardBackground
     self.boardBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3084,6 +3056,34 @@ class ProjectRoot : EBManagedObject,
     self.netWarningCount_property.addEBObserver (self.schematicStatusMessage_property)
     self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusMessage_property)
     self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusMessage_property)
+  //--- Atomic property: schematicStatusImage
+    self.schematicStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.unplacedSymbols_property_selection.kind ()
+        kind &= unwSelf.netWarningCount_property_selection.kind ()
+        kind &= unwSelf.mSheets_property_selection.kind ()
+        kind &= unwSelf.mSheets_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.unplacedSymbols_property_selection, unwSelf.netWarningCount_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSheets_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_ProjectRoot_schematicStatusImage (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.unplacedSymbols_property.addEBObserver (self.schematicStatusImage_property)
+    self.netWarningCount_property.addEBObserver (self.schematicStatusImage_property)
+    self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusImage_property)
+    self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusImage_property)
   //--- Install undoers and opposite setter for relationships
     self.mSheets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -3124,12 +3124,7 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.removeEBObserverOf_connexionWarnings (self.connexionWarningString_property)
     self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
     self.mSheets_property.removeEBObserver (self.sheetIndexes_property)
-    self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netsDescription_property)
-    self.mComponents_property.removeEBObserver (self.unplacedPackages_property)
-    self.mComponents_property.removeEBObserverOf_componentName (self.unplacedPackages_property)
-    self.mComponents_property.removeEBObserverOf_mComponentValue (self.unplacedPackages_property)
-    self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
     self.mBoardObjects_property.removeEBObserverOf_issues (self.boardIssues_property)
     self.boardIssues_property.removeEBObserver (self.issuesDisplay_property)
     self.mBorderCurves_property.removeEBObserverOf_descriptor (self.borderClearanceBackground_property)
@@ -3170,16 +3165,21 @@ class ProjectRoot : EBManagedObject,
     self.mSelectedSheet_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicDate_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mNetClasses_property.removeEBObserverOf_netWarningCount (self.netWarningCount_property)
-    self.unplacedSymbols_property.removeEBObserver (self.schematicStatusImage_property)
-    self.netWarningCount_property.removeEBObserver (self.schematicStatusImage_property)
-    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.schematicStatusImage_property)
-    self.mSheets_property.removeEBObserverOf_connexionErrors (self.schematicStatusImage_property)
+    self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
+    self.mComponents_property.removeEBObserver (self.unplacedPackages_property)
+    self.mComponents_property.removeEBObserverOf_componentName (self.unplacedPackages_property)
+    self.mComponents_property.removeEBObserverOf_mComponentValue (self.unplacedPackages_property)
+    self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
     self.borderClearanceBackground_property.removeEBObserver (self.boardBackground_property)
     self.mBorderCurves_property.removeEBObserverOf_objectDisplay (self.boardBackground_property)
     self.unplacedSymbols_property.removeEBObserver (self.schematicStatusMessage_property)
     self.netWarningCount_property.removeEBObserver (self.schematicStatusMessage_property)
     self.mSheets_property.removeEBObserverOf_connexionWarnings (self.schematicStatusMessage_property)
     self.mSheets_property.removeEBObserverOf_connexionErrors (self.schematicStatusMessage_property)
+    self.unplacedSymbols_property.removeEBObserver (self.schematicStatusImage_property)
+    self.netWarningCount_property.removeEBObserver (self.schematicStatusImage_property)
+    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.schematicStatusImage_property)
+    self.mSheets_property.removeEBObserverOf_connexionErrors (self.schematicStatusImage_property)
   //--- Unregister properties for handling signature
   }
 
@@ -3604,28 +3604,12 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.sheetIndexes_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "unplacedSymbols",
-      idx: self.unplacedSymbols_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.unplacedSymbols_property.mObserverExplorer,
-      valueExplorer: &self.unplacedSymbols_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "netsDescription",
       idx: self.netsDescription_property.ebObjectIndex,
       y: &y,
       view: view,
       observerExplorer: &self.netsDescription_property.mObserverExplorer,
       valueExplorer: &self.netsDescription_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "unplacedPackages",
-      idx: self.unplacedPackages_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.unplacedPackages_property.mObserverExplorer,
-      valueExplorer: &self.unplacedPackages_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardIssues",
@@ -3764,12 +3748,20 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.netWarningCount_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "schematicStatusImage",
-      idx: self.schematicStatusImage_property.ebObjectIndex,
+      "unplacedSymbols",
+      idx: self.unplacedSymbols_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.schematicStatusImage_property.mObserverExplorer,
-      valueExplorer: &self.schematicStatusImage_property.mValueExplorer
+      observerExplorer: &self.unplacedSymbols_property.mObserverExplorer,
+      valueExplorer: &self.unplacedSymbols_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "unplacedPackages",
+      idx: self.unplacedPackages_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.unplacedPackages_property.mObserverExplorer,
+      valueExplorer: &self.unplacedPackages_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardBackground",
@@ -3787,6 +3779,14 @@ class ProjectRoot : EBManagedObject,
       observerExplorer: &self.schematicStatusMessage_property.mObserverExplorer,
       valueExplorer: &self.schematicStatusMessage_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "schematicStatusImage",
+      idx: self.schematicStatusImage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.schematicStatusImage_property.mObserverExplorer,
+      valueExplorer: &self.schematicStatusImage_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mSheets",
@@ -3794,13 +3794,6 @@ class ProjectRoot : EBManagedObject,
       y: &y,
       view: view,
       valueExplorer:&mSheets_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mComponents",
-      idx:mComponents_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mComponents_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "mNetClasses",
@@ -3836,6 +3829,13 @@ class ProjectRoot : EBManagedObject,
       y: &y,
       view: view,
       valueExplorer:&mBoardObjects_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "mComponents",
+      idx:mComponents_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mComponents_property.mValueExplorer
     )
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
@@ -3984,8 +3984,6 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mSchematicGridDisplayFactor
     self.mSchematicGridDisplayFactor_property.mObserverExplorer = nil
     self.mSchematicGridDisplayFactor_property.mValueExplorer = nil
-  //--- To many property: mComponents
-    self.mComponents_property.mValueExplorer = nil
   //--- To many property: mNetClasses
     self.mNetClasses_property.mValueExplorer = nil
   //--- To many property: mFonts
@@ -3999,6 +3997,8 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.mObserverExplorer = nil
     self.mSchematicSheetOrientation_property.mValueExplorer = nil
+  //--- To many property: mComponents
+    self.mComponents_property.mValueExplorer = nil
   //--- Atomic proxy property: selectedSheetTitle
     self.selectedSheetTitle_property.mObserverExplorer = nil
     self.selectedSheetTitle_property.mValueExplorer = nil
@@ -4017,12 +4017,12 @@ class ProjectRoot : EBManagedObject,
 
   override internal func cleanUpToManyRelationships () {
     self.mSheets = []
-    self.mComponents = []
     self.mNetClasses = []
     self.mFonts = []
     self.mDevices = []
     self.mBorderCurves = []
     self.mBoardObjects = []
+    self.mComponents = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -4135,12 +4135,6 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicGridStyle_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicGridStyle")
   //--- Atomic property: mSchematicGridDisplayFactor
     self.mSchematicGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicGridDisplayFactor")
-  //--- To many property: mComponents
-    self.store (
-      managedObjectArray: self.mComponents_property.propval,
-      relationshipName: "mComponents",
-      intoDictionary: ioDictionary
-    )
   //--- To many property: mNetClasses
     self.store (
       managedObjectArray: self.mNetClasses_property.propval,
@@ -4173,6 +4167,12 @@ class ProjectRoot : EBManagedObject,
     )
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicSheetOrientation")
+  //--- To many property: mComponents
+    self.store (
+      managedObjectArray: self.mComponents_property.propval,
+      relationshipName: "mComponents",
+      intoDictionary: ioDictionary
+    )
   //--- To one property: mSelectedSheet
     self.store (managedObject:self.mSelectedSheet_property.propval,
       relationshipName: "mSelectedSheet",
@@ -4192,12 +4192,6 @@ class ProjectRoot : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SheetInProject])
-  //--- To many property: mComponents
-    self.mComponents_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mComponents",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ComponentInProject])
   //--- To many property: mNetClasses
     self.mNetClasses_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mNetClasses",
@@ -4228,6 +4222,12 @@ class ProjectRoot : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [BoardObject])
+  //--- To many property: mComponents
+    self.mComponents_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mComponents",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ComponentInProject])
   //--- To one property: mSelectedSheet
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -4347,10 +4347,6 @@ class ProjectRoot : EBManagedObject,
     for managedObject in self.mSheets {
       objects.append (managedObject)
     }
-  //--- To many property: mComponents
-    for managedObject in self.mComponents {
-      objects.append (managedObject)
-    }
   //--- To many property: mNetClasses
     for managedObject in self.mNetClasses {
       objects.append (managedObject)
@@ -4369,6 +4365,10 @@ class ProjectRoot : EBManagedObject,
     }
   //--- To many property: mBoardObjects
     for managedObject in self.mBoardObjects {
+      objects.append (managedObject)
+    }
+  //--- To many property: mComponents
+    for managedObject in self.mComponents {
       objects.append (managedObject)
     }
   //--- To one property: mSelectedSheet
@@ -4387,10 +4387,6 @@ class ProjectRoot : EBManagedObject,
     for managedObject in self.mSheets {
       objects.append (managedObject)
     }
-  //--- To many property: mComponents
-    for managedObject in self.mComponents {
-      objects.append (managedObject)
-    }
   //--- To many property: mNetClasses
     for managedObject in self.mNetClasses {
       objects.append (managedObject)
@@ -4409,6 +4405,10 @@ class ProjectRoot : EBManagedObject,
     }
   //--- To many property: mBoardObjects
     for managedObject in self.mBoardObjects {
+      objects.append (managedObject)
+    }
+  //--- To many property: mComponents
+    for managedObject in self.mComponents {
       objects.append (managedObject)
     }
   //--- To one property: mSelectedSheet

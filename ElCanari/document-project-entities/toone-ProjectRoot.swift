@@ -66,9 +66,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.connexionWarningString_property.removeEBObserversFrom (&self.mObserversOf_connexionWarningString) // Transient property
     inOldValue?.connexionErrorString_property.removeEBObserversFrom (&self.mObserversOf_connexionErrorString) // Transient property
     inOldValue?.sheetIndexes_property.removeEBObserversFrom (&self.mObserversOf_sheetIndexes) // Transient property
-    inOldValue?.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
     inOldValue?.netsDescription_property.removeEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
-    inOldValue?.unplacedPackages_property.removeEBObserversFrom (&self.mObserversOf_unplacedPackages) // Transient property
     inOldValue?.boardIssues_property.removeEBObserversFrom (&self.mObserversOf_boardIssues) // Transient property
     inOldValue?.issuesDisplay_property.removeEBObserversFrom (&self.mObserversOf_issuesDisplay) // Transient property
     inOldValue?.borderClearanceBackground_property.removeEBObserversFrom (&self.mObserversOf_borderClearanceBackground) // Transient property
@@ -86,9 +84,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.deviceNames_property.removeEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
     inOldValue?.schematicBackgroundDisplay_property.removeEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
     inOldValue?.netWarningCount_property.removeEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
-    inOldValue?.schematicStatusImage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
+    inOldValue?.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
+    inOldValue?.unplacedPackages_property.removeEBObserversFrom (&self.mObserversOf_unplacedPackages) // Transient property
     inOldValue?.boardBackground_property.removeEBObserversFrom (&self.mObserversOf_boardBackground) // Transient property
     inOldValue?.schematicStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
+    inOldValue?.schematicStatusImage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mBoardSelectedInspector_property.addEBObserversFrom (&self.mObserversOf_mBoardSelectedInspector) // Stored property
     self.mInternalValue?.mBoardHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mBoardHorizontalFlip) // Stored property
@@ -141,9 +141,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.connexionWarningString_property.addEBObserversFrom (&self.mObserversOf_connexionWarningString) // Transient property
     self.mInternalValue?.connexionErrorString_property.addEBObserversFrom (&self.mObserversOf_connexionErrorString) // Transient property
     self.mInternalValue?.sheetIndexes_property.addEBObserversFrom (&self.mObserversOf_sheetIndexes) // Transient property
-    self.mInternalValue?.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
     self.mInternalValue?.netsDescription_property.addEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
-    self.mInternalValue?.unplacedPackages_property.addEBObserversFrom (&self.mObserversOf_unplacedPackages) // Transient property
     self.mInternalValue?.boardIssues_property.addEBObserversFrom (&self.mObserversOf_boardIssues) // Transient property
     self.mInternalValue?.issuesDisplay_property.addEBObserversFrom (&self.mObserversOf_issuesDisplay) // Transient property
     self.mInternalValue?.borderClearanceBackground_property.addEBObserversFrom (&self.mObserversOf_borderClearanceBackground) // Transient property
@@ -161,9 +159,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.deviceNames_property.addEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
     self.mInternalValue?.schematicBackgroundDisplay_property.addEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
     self.mInternalValue?.netWarningCount_property.addEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
-    self.mInternalValue?.schematicStatusImage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
+    self.mInternalValue?.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
+    self.mInternalValue?.unplacedPackages_property.addEBObserversFrom (&self.mObserversOf_unplacedPackages) // Transient property
     self.mInternalValue?.boardBackground_property.addEBObserversFrom (&self.mObserversOf_boardBackground) // Transient property
     self.mInternalValue?.schematicStatusMessage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
+    self.mInternalValue?.schematicStatusImage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
   }
 
   //····················································································································
@@ -3800,75 +3800,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'unplacedSymbols' transient property
-  //····················································································································
-
-  private var mObserversOf_unplacedSymbols = EBWeakEventSet ()
-
-  //····················································································································
-
-  var unplacedSymbols_property_selection : EBSelection <StringTagArray?> {
-    if let model = self.propval {
-      switch (model.unplacedSymbols_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_unplacedSymbols.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.unplacedSymbols_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_unplacedSymbols.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.unplacedSymbols_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_unplacedSymbols_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
-        managedObject.unplacedSymbols_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_unplacedSymbols_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
-        managedObject.unplacedSymbols_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'netsDescription' transient property
   //····················································································································
 
@@ -3933,75 +3864,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
         managedObject.netsDescription_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'unplacedPackages' transient property
-  //····················································································································
-
-  private var mObserversOf_unplacedPackages = EBWeakEventSet ()
-
-  //····················································································································
-
-  var unplacedPackages_property_selection : EBSelection <StringTagArray?> {
-    if let model = self.propval {
-      switch (model.unplacedPackages_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_unplacedPackages (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_unplacedPackages.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.unplacedPackages_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_unplacedPackages (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_unplacedPackages.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.unplacedPackages_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_unplacedPackages_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
-        managedObject.unplacedPackages_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_unplacedPackages_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
-        managedObject.unplacedPackages_property.removeEBObserver (observer)
       }
     }
   }
@@ -5180,16 +5042,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'schematicStatusImage' transient property
+  //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
-  private var mObserversOf_schematicStatusImage = EBWeakEventSet ()
+  private var mObserversOf_unplacedSymbols = EBWeakEventSet ()
 
   //····················································································································
 
-  var schematicStatusImage_property_selection : EBSelection <NSImage?> {
+  var unplacedSymbols_property_selection : EBSelection <StringTagArray?> {
     if let model = self.propval {
-      switch (model.schematicStatusImage_property_selection) {
+      switch (model.unplacedSymbols_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -5204,46 +5066,115 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_schematicStatusImage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_schematicStatusImage.insert (inObserver)
+    self.mObserversOf_unplacedSymbols.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.schematicStatusImage_property.addEBObserver (inObserver)
+      v?.unplacedSymbols_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_schematicStatusImage (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_schematicStatusImage.remove (inObserver)
+    self.mObserversOf_unplacedSymbols.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.schematicStatusImage_property.removeEBObserver (inObserver)
+      v?.unplacedSymbols_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_schematicStatusImage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_unplacedSymbols_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.schematicStatusImage_property.addEBObserver (observer)
+      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
+        managedObject.unplacedSymbols_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_schematicStatusImage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func removeEBObserversOf_unplacedSymbols_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.schematicStatusImage_property.removeEBObserver (observer)
+      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
+        managedObject.unplacedSymbols_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'unplacedPackages' transient property
+  //····················································································································
+
+  private var mObserversOf_unplacedPackages = EBWeakEventSet ()
+
+  //····················································································································
+
+  var unplacedPackages_property_selection : EBSelection <StringTagArray?> {
+    if let model = self.propval {
+      switch (model.unplacedPackages_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_unplacedPackages (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_unplacedPackages.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.unplacedPackages_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_unplacedPackages (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_unplacedPackages.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.unplacedPackages_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_unplacedPackages_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
+        managedObject.unplacedPackages_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_unplacedPackages_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
+        managedObject.unplacedPackages_property.removeEBObserver (observer)
       }
     }
   }
@@ -5387,6 +5318,75 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'schematicStatusImage' transient property
+  //····················································································································
+
+  private var mObserversOf_schematicStatusImage = EBWeakEventSet ()
+
+  //····················································································································
+
+  var schematicStatusImage_property_selection : EBSelection <NSImage?> {
+    if let model = self.propval {
+      switch (model.schematicStatusImage_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_schematicStatusImage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_schematicStatusImage.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.schematicStatusImage_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_schematicStatusImage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_schematicStatusImage.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.schematicStatusImage_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_schematicStatusImage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.schematicStatusImage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_schematicStatusImage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.schematicStatusImage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observable toMany property: mSheets
   //····················································································································
 
@@ -5424,47 +5424,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mObserversOf_mSheets.remove (inObserver)
     if let object = self.propval {
       object.mSheets_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable toMany property: mComponents
-  //····················································································································
-
-  private var mObserversOf_mComponents = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mComponents_property_selection : EBSelection <[ComponentInProject]> {
-    if let model = self.propval {
-      switch (model.mComponents_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mComponents (_ inObserver : EBEvent) {
-    self.mObserversOf_mComponents.insert (inObserver)
-    if let object = self.propval {
-      object.mComponents_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mComponents (_ inObserver : EBEvent) {
-    self.mObserversOf_mComponents.remove (inObserver)
-    if let object = self.propval {
-      object.mComponents_property.removeEBObserver (inObserver)
     }
   }
 
@@ -5670,6 +5629,47 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mObserversOf_mBoardObjects.remove (inObserver)
     if let object = self.propval {
       object.mBoardObjects_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mComponents
+  //····················································································································
+
+  private var mObserversOf_mComponents = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mComponents_property_selection : EBSelection <[ComponentInProject]> {
+    if let model = self.propval {
+      switch (model.mComponents_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mComponents (_ inObserver : EBEvent) {
+    self.mObserversOf_mComponents.insert (inObserver)
+    if let object = self.propval {
+      object.mComponents_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mComponents (_ inObserver : EBEvent) {
+    self.mObserversOf_mComponents.remove (inObserver)
+    if let object = self.propval {
+      object.mComponents_property.removeEBObserver (inObserver)
     }
   }
 

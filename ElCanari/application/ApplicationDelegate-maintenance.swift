@@ -147,7 +147,7 @@ extension ApplicationDelegate {
             _ = alert.beginSheetModal (for: window)
           }else{
             let alert = NSAlert ()
-            alert.messageText = "Update \(fileCount) projects\((fileCount > 1) ? "s" : "")? This may take a while, and you cannot cancel this operation."
+            alert.messageText = "Update \(fileCount) project\((fileCount > 1) ? "s" : "")? This may take a while, and you cannot cancel this operation."
             alert.addButton (withTitle: "Ok")
             alert.addButton (withTitle: "Cancel")
             alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in

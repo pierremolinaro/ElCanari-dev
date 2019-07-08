@@ -31,11 +31,9 @@ graphic entity ComponentInProject : BoardObject {
   transient StringArray availablePackages dependsFrom self.mDevice.one.packageNames ;
 
 //--- Display in board
-  toMany PadRepresentant mPadRepresentants inverse toOne mComponent ;
-
-  transient Double errorOrWarningIssueSizeForComponent dependsFrom super.BoardObject.errorOrWarningIssueSize ;
+  toMany BoardConnector mConnectors inverse toOne mComponent ;
   
-  override transient CanariIssueArray issues dependsFrom self.mPadRepresentants.all.issues ;
+  override transient CanariIssueArray issues dependsFrom self.mConnectors.all.issues ;
 
   transient Bool componentIsPlacedInBoard dependsFrom super.BoardObject.isPlacedInBoard ;
 

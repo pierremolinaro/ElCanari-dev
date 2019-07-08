@@ -48,14 +48,14 @@ protocol DeviceInProject_canExport : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_canRemove : class {
-  var canRemove : Bool? { get }
+protocol DeviceInProject_packageNames : class {
+  var packageNames : StringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_packageNames : class {
-  var packageNames : StringArray? { get }
+protocol DeviceInProject_canRemove : class {
+  var canRemove : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -88,8 +88,8 @@ class DeviceInProject : EBManagedObject,
          DeviceInProject_versionString,
          DeviceInProject_sizeString,
          DeviceInProject_canExport,
-         DeviceInProject_canRemove,
          DeviceInProject_packageNames,
+         DeviceInProject_canRemove,
          DeviceInProject_symbolAndTypesNames,
          DeviceInProject_pinPadAssignments,
          DeviceInProject_deviceSymbolDictionary {
@@ -182,25 +182,6 @@ class DeviceInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   To many property: mComponents
-  //····················································································································
-
-  let mComponents_property = StoredArrayOf_ComponentInProject ()
-
-  //····················································································································
-
-  var mComponents_property_selection : EBSelection < [ComponentInProject] > {
-    return self.mComponents_property.prop
-  }
-
-  //····················································································································
-
-  var mComponents : [ComponentInProject] {
-    get { return self.mComponents_property.propval }
-    set { self.mComponents_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   To many property: mSymbols
   //····················································································································
 
@@ -217,6 +198,25 @@ class DeviceInProject : EBManagedObject,
   var mSymbols : [DeviceSymbolInstanceInProject] {
     get { return self.mSymbols_property.propval }
     set { self.mSymbols_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   To many property: mComponents
+  //····················································································································
+
+  let mComponents_property = StoredArrayOf_ComponentInProject ()
+
+  //····················································································································
+
+  var mComponents_property_selection : EBSelection < [ComponentInProject] > {
+    return self.mComponents_property.prop
+  }
+
+  //····················································································································
+
+  var mComponents : [ComponentInProject] {
+    get { return self.mComponents_property.propval }
+    set { self.mComponents_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -308,29 +308,6 @@ class DeviceInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: canRemove
-  //····················································································································
-
-  let canRemove_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  var canRemove_property_selection : EBSelection <Bool> {
-    return self.canRemove_property.prop
-  }
-
-  //····················································································································
-
-  var canRemove : Bool? {
-    switch self.canRemove_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: packageNames
   //····················································································································
 
@@ -346,6 +323,29 @@ class DeviceInProject : EBManagedObject,
 
   var packageNames : StringArray? {
     switch self.packageNames_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: canRemove
+  //····················································································································
+
+  let canRemove_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var canRemove_property_selection : EBSelection <Bool> {
+    return self.canRemove_property.prop
+  }
+
+  //····················································································································
+
+  var canRemove : Bool? {
+    switch self.canRemove_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -438,14 +438,14 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceFileData_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPackages (no option)
     self.mPackages_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mSymbols (no option)
+    self.mSymbols_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mComponents (has opposite relationship)
     self.mComponents_property.ebUndoManager = self.ebUndoManager
     self.mComponents_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mDevice_property.setProp (me) } },
       resetter: { inObject in inObject.mDevice_property.setProp (nil) }
     )
-  //--- To many property: mSymbols (no option)
-    self.mSymbols_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPadAssignments (no option)
     self.mPadAssignments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: versionString
@@ -514,28 +514,6 @@ class DeviceInProject : EBManagedObject,
       }
     }
     self.mDeviceFileData_property.addEBObserver (self.canExport_property)
-  //--- Atomic property: canRemove
-    self.canRemove_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mComponents_property.count_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mComponents_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceInProject_canRemove (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mComponents_property.addEBObserver (self.canRemove_property)
   //--- Atomic property: packageNames
     self.packageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -558,6 +536,28 @@ class DeviceInProject : EBManagedObject,
       }
     }
     self.mPackages_property.addEBObserverOf_mPackageName (self.packageNames_property)
+  //--- Atomic property: canRemove
+    self.canRemove_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mComponents_property.count_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponents_property.count_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceInProject_canRemove (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponents_property.addEBObserver (self.canRemove_property)
   //--- Atomic property: symbolAndTypesNames
     self.symbolAndTypesNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -646,8 +646,8 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceVersion_property.removeEBObserver (self.versionString_property)
     self.mDeviceFileData_property.removeEBObserver (self.sizeString_property)
     self.mDeviceFileData_property.removeEBObserver (self.canExport_property)
-    self.mComponents_property.removeEBObserver (self.canRemove_property)
     self.mPackages_property.removeEBObserverOf_mPackageName (self.packageNames_property)
+    self.mComponents_property.removeEBObserver (self.canRemove_property)
     self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property)
     self.mPadAssignments_property.removeEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
     self.mPadAssignments_property.removeEBObserverOf_descriptor (self.deviceSymbolDictionary_property)
@@ -726,20 +726,20 @@ class DeviceInProject : EBManagedObject,
       valueExplorer: &self.canExport_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "canRemove",
-      idx: self.canRemove_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.canRemove_property.mObserverExplorer,
-      valueExplorer: &self.canRemove_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "packageNames",
       idx: self.packageNames_property.ebObjectIndex,
       y: &y,
       view: view,
       observerExplorer: &self.packageNames_property.mObserverExplorer,
       valueExplorer: &self.packageNames_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "canRemove",
+      idx: self.canRemove_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.canRemove_property.mObserverExplorer,
+      valueExplorer: &self.canRemove_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "symbolAndTypesNames",
@@ -774,18 +774,18 @@ class DeviceInProject : EBManagedObject,
       valueExplorer:&mPackages_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
-      "mComponents",
-      idx:mComponents_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mComponents_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
       "mSymbols",
       idx:mSymbols_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&mSymbols_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "mComponents",
+      idx:mComponents_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mComponents_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "mPadAssignments",
@@ -817,10 +817,10 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceFileData_property.mValueExplorer = nil
   //--- To many property: mPackages
     self.mPackages_property.mValueExplorer = nil
-  //--- To many property: mComponents
-    self.mComponents_property.mValueExplorer = nil
   //--- To many property: mSymbols
     self.mSymbols_property.mValueExplorer = nil
+  //--- To many property: mComponents
+    self.mComponents_property.mValueExplorer = nil
   //--- To many property: mPadAssignments
     self.mPadAssignments_property.mValueExplorer = nil
   //---
@@ -833,8 +833,8 @@ class DeviceInProject : EBManagedObject,
 
   override internal func cleanUpToManyRelationships () {
     self.mPackages = []
-    self.mComponents = []
     self.mSymbols = []
+    self.mComponents = []
     self.mPadAssignments = []
   //---
     super.cleanUpToManyRelationships ()
@@ -869,16 +869,16 @@ class DeviceInProject : EBManagedObject,
       relationshipName: "mPackages",
       intoDictionary: ioDictionary
     )
-  //--- To many property: mComponents
-    self.store (
-      managedObjectArray: self.mComponents_property.propval,
-      relationshipName: "mComponents",
-      intoDictionary: ioDictionary
-    )
   //--- To many property: mSymbols
     self.store (
       managedObjectArray: self.mSymbols_property.propval,
       relationshipName: "mSymbols",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: mComponents
+    self.store (
+      managedObjectArray: self.mComponents_property.propval,
+      relationshipName: "mComponents",
       intoDictionary: ioDictionary
     )
   //--- To many property: mPadAssignments
@@ -902,18 +902,18 @@ class DeviceInProject : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [DevicePackageInProject])
-  //--- To many property: mComponents
-    self.mComponents_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mComponents",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ComponentInProject])
   //--- To many property: mSymbols
     self.mSymbols_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mSymbols",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [DeviceSymbolInstanceInProject])
+  //--- To many property: mComponents
+    self.mComponents_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mComponents",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ComponentInProject])
   //--- To many property: mPadAssignments
     self.mPadAssignments_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPadAssignments",
@@ -948,12 +948,12 @@ class DeviceInProject : EBManagedObject,
     for managedObject in self.mPackages {
       objects.append (managedObject)
     }
-  //--- To many property: mComponents
-    for managedObject in self.mComponents {
-      objects.append (managedObject)
-    }
   //--- To many property: mSymbols
     for managedObject in self.mSymbols {
+      objects.append (managedObject)
+    }
+  //--- To many property: mComponents
+    for managedObject in self.mComponents {
       objects.append (managedObject)
     }
   //--- To many property: mPadAssignments
@@ -972,12 +972,12 @@ class DeviceInProject : EBManagedObject,
     for managedObject in self.mPackages {
       objects.append (managedObject)
     }
-  //--- To many property: mComponents
-    for managedObject in self.mComponents {
-      objects.append (managedObject)
-    }
   //--- To many property: mSymbols
     for managedObject in self.mSymbols {
+      objects.append (managedObject)
+    }
+  //--- To many property: mComponents
+    for managedObject in self.mComponents {
       objects.append (managedObject)
     }
   //--- To many property: mPadAssignments

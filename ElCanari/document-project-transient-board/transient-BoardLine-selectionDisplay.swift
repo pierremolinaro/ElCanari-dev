@@ -22,7 +22,20 @@ func transient_BoardLine_selectionDisplay (
        _ self_mLayer : BoardLineLayer
 ) -> EBShape {
 //--- START OF USER ZONE 2
-
+      var bp = EBBezierPath ()
+      bp.lineWidth = canariUnitToCocoa (self_mWidth) / 3.0
+      bp.lineCapStyle = .round
+      bp.lineJoinStyle = .round
+      let p1 = CanariPoint (x: self_mX1, y: self_mY1).cocoaPoint
+      let p2 = CanariPoint (x: self_mX2, y: self_mY2).cocoaPoint
+      bp.move (to: p1)
+      bp.line (to: p2)
+      var shape = EBShape (stroke: [bp], .cyan)
+    //--- Knobs
+      shape.add (knobAt: p1, knobIndex: BOARD_LINE_P1, .circ, 2.0)
+      shape.add (knobAt: p2, knobIndex: BOARD_LINE_P2, .circ, 2.0)
+    //---
+      return shape
 //--- END OF USER ZONE 2
 }
 

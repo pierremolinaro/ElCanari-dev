@@ -19,10 +19,27 @@ func transient_BoardLine_objectDisplay (
        _ self_mX2 : Int,                
        _ self_mY2 : Int,                
        _ self_mWidth : Int,             
-       _ self_mLayer : BoardLineLayer
+       _ self_mLayer : BoardLineLayer,  
+       _ prefs_frontSideLegendColorForBoard : NSColor,
+       _ prefs_backSideLegendColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-
+      var bp = EBBezierPath ()
+      bp.lineWidth = canariUnitToCocoa (self_mWidth)
+      bp.lineCapStyle = .round
+      bp.lineJoinStyle = .round
+      let p1 = CanariPoint (x: self_mX1, y: self_mY1).cocoaPoint
+      let p2 = CanariPoint (x: self_mX2, y: self_mY2).cocoaPoint
+      bp.move (to: p1)
+      bp.line (to: p2)
+      let color : NSColor
+      switch self_mLayer {
+      case .legendFront :
+        color = prefs_frontSideLegendColorForBoard
+      case .legendBack :
+        color = prefs_backSideLegendColorForBoard
+      }
+      return EBShape (stroke: [bp], color)
 //--- END OF USER ZONE 2
 }
 
