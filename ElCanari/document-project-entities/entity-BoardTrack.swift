@@ -11,11 +11,25 @@ protocol BoardTrack_mSide : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardTrack_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardTrack_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardTrack
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class BoardTrack : BoardObject,
-         BoardTrack_mSide {
+         BoardTrack_mSide,
+         BoardTrack_objectDisplay,
+         BoardTrack_selectionDisplay {
 
   //····················································································································
   //   Atomic property: mSide
@@ -35,79 +49,79 @@ class BoardTrack : BoardObject,
   var mSide_property_selection : EBSelection <TrackSide> { return self.mSide_property.prop }
 
   //····················································································································
-  //   To one property: mPadRepresentantP1
+  //   To one property: mConnectorP1
   //····················································································································
 
-   let mPadRepresentantP1_property = StoredObject_BoardConnector ()
+   let mConnectorP1_property = StoredObject_BoardConnector ()
 
   //····················································································································
 
-  var mPadRepresentantP1_property_selection : EBSelection <BoardConnector?> {
-    return .single (self.mPadRepresentantP1_property.propval)
+  var mConnectorP1_property_selection : EBSelection <BoardConnector?> {
+    return .single (self.mConnectorP1_property.propval)
   }
 
   //····················································································································
 
-  var mPadRepresentantP1 : BoardConnector? {
+  var mConnectorP1 : BoardConnector? {
     get {
-      return self.mPadRepresentantP1_property.propval
+      return self.mConnectorP1_property.propval
     }
     set {
-      if self.mPadRepresentantP1_property.propval != nil {
-        self.mPadRepresentantP1_property.setProp (nil)
+      if self.mConnectorP1_property.propval != nil {
+        self.mConnectorP1_property.setProp (nil)
       }
       if newValue != nil {
-        self.mPadRepresentantP1_property.setProp (newValue)
+        self.mConnectorP1_property.setProp (newValue)
       }
     }
   }
 
   //····················································································································
 
-  var mPadRepresentantP1_none : StoredObject_BoardConnector { return self.mPadRepresentantP1_property }
+  var mConnectorP1_none : StoredObject_BoardConnector { return self.mConnectorP1_property }
 
   //····················································································································
 
-  var mPadRepresentantP1_none_selection : EBSelection <Bool> {
-    return .single (self.mPadRepresentantP1_property.propval == nil)
+  var mConnectorP1_none_selection : EBSelection <Bool> {
+    return .single (self.mConnectorP1_property.propval == nil)
   }
 
   //····················································································································
-  //   To one property: mPadRepresentantP2
+  //   To one property: mConnectorP2
   //····················································································································
 
-   let mPadRepresentantP2_property = StoredObject_BoardConnector ()
+   let mConnectorP2_property = StoredObject_BoardConnector ()
 
   //····················································································································
 
-  var mPadRepresentantP2_property_selection : EBSelection <BoardConnector?> {
-    return .single (self.mPadRepresentantP2_property.propval)
+  var mConnectorP2_property_selection : EBSelection <BoardConnector?> {
+    return .single (self.mConnectorP2_property.propval)
   }
 
   //····················································································································
 
-  var mPadRepresentantP2 : BoardConnector? {
+  var mConnectorP2 : BoardConnector? {
     get {
-      return self.mPadRepresentantP2_property.propval
+      return self.mConnectorP2_property.propval
     }
     set {
-      if self.mPadRepresentantP2_property.propval != nil {
-        self.mPadRepresentantP2_property.setProp (nil)
+      if self.mConnectorP2_property.propval != nil {
+        self.mConnectorP2_property.setProp (nil)
       }
       if newValue != nil {
-        self.mPadRepresentantP2_property.setProp (newValue)
+        self.mConnectorP2_property.setProp (newValue)
       }
     }
   }
 
   //····················································································································
 
-  var mPadRepresentantP2_none : StoredObject_BoardConnector { return self.mPadRepresentantP2_property }
+  var mConnectorP2_none : StoredObject_BoardConnector { return self.mConnectorP2_property }
 
   //····················································································································
 
-  var mPadRepresentantP2_none_selection : EBSelection <Bool> {
-    return .single (self.mPadRepresentantP2_property.propval == nil)
+  var mConnectorP2_none_selection : EBSelection <Bool> {
+    return .single (self.mConnectorP2_property.propval == nil)
   }
 
   //····················································································································
@@ -118,18 +132,72 @@ class BoardTrack : BoardObject,
     super.init (ebUndoManager)
   //--- Atomic property: mSide
     self.mSide_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: mPadRepresentantP1 (has opposite to many relationship: mTracksP1)
-    self.mPadRepresentantP1_property.ebUndoManager = self.ebUndoManager
-    self.mPadRepresentantP1_property.setOppositeRelationShipFunctions (
+  //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
+    self.mConnectorP1_property.ebUndoManager = self.ebUndoManager
+    self.mConnectorP1_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mTracksP1_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mTracksP1_property.remove (me) } }
     )
-  //--- To one property: mPadRepresentantP2 (has opposite to many relationship: mTracksP2)
-    self.mPadRepresentantP2_property.ebUndoManager = self.ebUndoManager
-    self.mPadRepresentantP2_property.setOppositeRelationShipFunctions (
+  //--- To one property: mConnectorP2 (has opposite to many relationship: mTracksP2)
+    self.mConnectorP2_property.ebUndoManager = self.ebUndoManager
+    self.mConnectorP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mTracksP2_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mTracksP2_property.remove (me) } }
     )
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
+        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
+        kind &= unwSelf.mSide_property_selection.kind ()
+        kind &= g_Preferences!.frontSideLayoutColorForBoard_property_selection.kind ()
+        kind &= g_Preferences!.backSideLayoutColorForBoard_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.mSide_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_BoardTrack_objectDisplay (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mConnectorP1_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.mConnectorP2_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.mSide_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
+        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardTrack_selectionDisplay (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mConnectorP1_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.mConnectorP2_property.addEBObserverOf_location (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -139,6 +207,13 @@ class BoardTrack : BoardObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mConnectorP1_property.removeEBObserverOf_location (self.objectDisplay_property)
+    self.mConnectorP2_property.removeEBObserverOf_location (self.objectDisplay_property)
+    self.mSide_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    self.mConnectorP1_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    self.mConnectorP2_property.removeEBObserverOf_location (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -162,21 +237,37 @@ class BoardTrack : BoardObject,
       valueExplorer: &self.mSide_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "objectDisplay",
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
-      "mPadRepresentantP1",
-      idx:self.mPadRepresentantP1_property.ebObjectIndex,
+      "mConnectorP1",
+      idx:self.mConnectorP1_property.ebObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&self.mPadRepresentantP1_property.mValueExplorer
+      valueExplorer:&self.mConnectorP1_property.mValueExplorer
     )
     createEntryForToOneRelationshipNamed (
-      "mPadRepresentantP2",
-      idx:self.mPadRepresentantP2_property.ebObjectIndex,
+      "mConnectorP2",
+      idx:self.mConnectorP2_property.ebObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&self.mPadRepresentantP2_property.mValueExplorer
+      valueExplorer:&self.mConnectorP2_property.mValueExplorer
     )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
@@ -189,12 +280,12 @@ class BoardTrack : BoardObject,
   //--- Atomic property: mSide
     self.mSide_property.mObserverExplorer = nil
     self.mSide_property.mValueExplorer = nil
-  //--- To one property: mPadRepresentantP1
-    self.mPadRepresentantP1_property.mObserverExplorer = nil
-    self.mPadRepresentantP1_property.mValueExplorer = nil
-  //--- To one property: mPadRepresentantP2
-    self.mPadRepresentantP2_property.mObserverExplorer = nil
-    self.mPadRepresentantP2_property.mValueExplorer = nil
+  //--- To one property: mConnectorP1
+    self.mConnectorP1_property.mObserverExplorer = nil
+    self.mConnectorP1_property.mValueExplorer = nil
+  //--- To one property: mConnectorP2
+    self.mConnectorP2_property.mObserverExplorer = nil
+    self.mConnectorP2_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -213,8 +304,8 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mPadRepresentantP1 = nil
-    self.mPadRepresentantP2 = nil
+    self.mConnectorP1 = nil
+    self.mConnectorP2 = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -236,26 +327,26 @@ class BoardTrack : BoardObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To one property: mPadRepresentantP1
+  //--- To one property: mConnectorP1
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mPadRepresentantP1",
+        inRelationshipName: "mConnectorP1",
         inDictionary: inDictionary,
         managedObjectArray: &managedObjectArray
       )
       if let entity = possibleEntity as? BoardConnector {
-        self.mPadRepresentantP1_property.setProp (entity)
+        self.mConnectorP1_property.setProp (entity)
       }
     }
-  //--- To one property: mPadRepresentantP2
+  //--- To one property: mConnectorP2
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mPadRepresentantP2",
+        inRelationshipName: "mConnectorP2",
         inDictionary: inDictionary,
         managedObjectArray: &managedObjectArray
       )
       if let entity = possibleEntity as? BoardConnector {
-        self.mPadRepresentantP2_property.setProp (entity)
+        self.mConnectorP2_property.setProp (entity)
       }
     }
   }
@@ -276,12 +367,12 @@ class BoardTrack : BoardObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To one property: mPadRepresentantP1
-    if let object = self.mPadRepresentantP1 {
+  //--- To one property: mConnectorP1
+    if let object = self.mConnectorP1 {
       objects.append (object)
     }
-  //--- To one property: mPadRepresentantP2
-    if let object = self.mPadRepresentantP2 {
+  //--- To one property: mConnectorP2
+    if let object = self.mConnectorP2 {
       objects.append (object)
     }
   }
@@ -292,12 +383,12 @@ class BoardTrack : BoardObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To one property: mPadRepresentantP1
-    if let object = self.mPadRepresentantP1 {
+  //--- To one property: mConnectorP1
+    if let object = self.mConnectorP1 {
       objects.append (object)
     }
-  //--- To one property: mPadRepresentantP2
-    if let object = self.mPadRepresentantP2 {
+  //--- To one property: mConnectorP2
+    if let object = self.mConnectorP2 {
       objects.append (object)
     }
   }

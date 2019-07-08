@@ -99,6 +99,12 @@ extension ComponentInProject {
 
   override func operationBeforeRemoving () {
     for connector in self.mConnectors {
+    //--- Assign pad location to connector
+      let descriptor : ComponentPadDescriptor = self.componentPadDictionary! [connector.mComponentPadName]!
+      let pad = descriptor.pads [connector.mPadIndex]
+      connector.mX = cocoaToCanariUnit (pad.location.x)
+      connector.mY = cocoaToCanariUnit (pad.location.y)
+    //--- Detach from component
       connector.mComponent = nil
       connector.mComponentPadName = ""
     }

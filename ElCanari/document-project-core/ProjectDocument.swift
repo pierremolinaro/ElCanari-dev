@@ -81,6 +81,12 @@ import Cocoa
   var boardObjectsController = Controller_ProjectDocument_boardObjectsController ()
 
   //····················································································································
+  //   Selection controller: boardTrackSelectionController
+  //····················································································································
+
+  var boardTrackSelectionController = SelectionController_ProjectDocument_boardTrackSelectionController ()
+
+  //····················································································································
   //   Selection controller: boardLineSelectionController
   //····················································································································
 
@@ -454,6 +460,7 @@ import Cocoa
   @IBOutlet weak var mAddRightLabelSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mAddTextInBoardButton : CanariDragSourceImageButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAddTopLabelSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mAddTrackInBoardButton : CanariDragSourceImageButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAddWireButton : CanariDragSourceButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAddWirePointSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBackRestrictRectangleSwitch : EBSwitch? = nil // An outlet should be declared weak
@@ -531,6 +538,8 @@ import Cocoa
   @IBOutlet weak var mBoardTextTextField : EBTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardTextVerticalAlignmentPopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardTextWeightTextField : EBDoubleField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardTrackInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardTrackSidePopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardVerticalFlipSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardView : EBGraphicView? = nil // An outlet should be declared weak
   @IBOutlet weak var mChangeComponentValueComboxBox : CanariComboBox? = nil // An outlet should be declared weak
@@ -820,6 +829,8 @@ import Cocoa
     self.boardCurveSelectionController.addExplorer (name: "boardCurveSelectionController", y:&y, view:view)
   //--- Array controller property: boardObjectsController
     self.boardObjectsController.addExplorer (name: "boardObjectsController", y:&y, view:view)
+  //--- Selection controller property: boardTrackSelectionController
+    self.boardTrackSelectionController.addExplorer (name: "boardTrackSelectionController", y:&y, view:view)
   //--- Selection controller property: boardLineSelectionController
     self.boardLineSelectionController.addExplorer (name: "boardLineSelectionController", y:&y, view:view)
   //--- Selection controller property: restrictRectangleSelectionController
@@ -878,6 +889,7 @@ import Cocoa
     checkOutletConnection (self.mAddRightLabelSchematicHotKeyTextField, "mAddRightLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddTextInBoardButton, "mAddTextInBoardButton", CanariDragSourceImageButton.self, #file, #line)
     checkOutletConnection (self.mAddTopLabelSchematicHotKeyTextField, "mAddTopLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mAddTrackInBoardButton, "mAddTrackInBoardButton", CanariDragSourceImageButton.self, #file, #line)
     checkOutletConnection (self.mAddWireButton, "mAddWireButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddWirePointSchematicHotKeyTextField, "mAddWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mBackRestrictRectangleSwitch, "mBackRestrictRectangleSwitch", EBSwitch.self, #file, #line)
@@ -955,6 +967,8 @@ import Cocoa
     checkOutletConnection (self.mBoardTextTextField, "mBoardTextTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mBoardTextVerticalAlignmentPopUpButton, "mBoardTextVerticalAlignmentPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardTextWeightTextField, "mBoardTextWeightTextField", EBDoubleField.self, #file, #line)
+    checkOutletConnection (self.mBoardTrackInspectorView, "mBoardTrackInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mBoardTrackSidePopUpButton, "mBoardTrackSidePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardVerticalFlipSwitch, "mBoardVerticalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardView, "mBoardView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
@@ -1183,6 +1197,8 @@ import Cocoa
     self.boardCurveSelectionController.bind_selection (model: self.boardCurveObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Array controller property: boardObjectsController
     self.boardObjectsController.bind_model (self.rootObject.mBoardObjects_property, self.ebUndoManager)
+  //--- Selection controller property: boardTrackSelectionController
+    self.boardTrackSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: boardLineSelectionController
     self.boardLineSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: restrictRectangleSelectionController
@@ -1605,6 +1621,7 @@ import Cocoa
     self.mBoardGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.mBoardGridDisplayFactor_property, file: #file, line: #line)
     self.mBoardGridUnitPopUp?.bind_selectedTag (self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
     self.mBoardGridTextField?.bind_dimensionAndUnit (self.rootObject.mBoardGridStep_property, self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
+    self.mBoardTrackSidePopUpButton?.bind_selectedIndex (self.boardTrackSelectionController.mSide_property, file: #file, line: #line)
     self.mBoardLineWidthUnitPopUp?.bind_selectedTag (self.boardLineSelectionController.mWidthUnit_property, file: #file, line: #line)
     self.mBoardLineWidthTextField?.bind_dimensionAndUnit (self.boardLineSelectionController.mWidth_property, self.boardLineSelectionController.mWidthUnit_property, file: #file, line: #line)
     self.mBoardLineLayerPopUpButton?.bind_selectedIndex (self.boardLineSelectionController.mLayer_property, file: #file, line: #line)
@@ -2208,6 +2225,7 @@ import Cocoa
     self.mBoardGridDisplayFactorPopUpButton?.unbind_selectedTag ()
     self.mBoardGridUnitPopUp?.unbind_selectedTag ()
     self.mBoardGridTextField?.unbind_dimensionAndUnit ()
+    self.mBoardTrackSidePopUpButton?.unbind_selectedIndex ()
     self.mBoardLineWidthUnitPopUp?.unbind_selectedTag ()
     self.mBoardLineWidthTextField?.unbind_dimensionAndUnit ()
     self.mBoardLineLayerPopUpButton?.unbind_selectedIndex ()
@@ -2378,6 +2396,8 @@ import Cocoa
     self.boardCurveSelectionController.unbind_selection ()
   //--- Array controller property: boardObjectsController
     self.boardObjectsController.unbind_model ()
+  //--- Selection controller property: boardTrackSelectionController
+    self.boardTrackSelectionController.unbind_selection ()
   //--- Selection controller property: boardLineSelectionController
     self.boardLineSelectionController.unbind_selection ()
   //--- Selection controller property: restrictRectangleSelectionController
@@ -2446,6 +2466,7 @@ import Cocoa
     self.mAddRightLabelSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddTextInBoardButton?.ebCleanUp ()
     self.mAddTopLabelSchematicHotKeyTextField?.ebCleanUp ()
+    self.mAddTrackInBoardButton?.ebCleanUp ()
     self.mAddWireButton?.ebCleanUp ()
     self.mAddWirePointSchematicHotKeyTextField?.ebCleanUp ()
     self.mBackRestrictRectangleSwitch?.ebCleanUp ()
@@ -2523,6 +2544,8 @@ import Cocoa
     self.mBoardTextTextField?.ebCleanUp ()
     self.mBoardTextVerticalAlignmentPopUpButton?.ebCleanUp ()
     self.mBoardTextWeightTextField?.ebCleanUp ()
+    self.mBoardTrackInspectorView?.ebCleanUp ()
+    self.mBoardTrackSidePopUpButton?.ebCleanUp ()
     self.mBoardVerticalFlipSwitch?.ebCleanUp ()
     self.mBoardView?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
@@ -2734,6 +2757,7 @@ import Cocoa
 //    self.mAddRightLabelSchematicHotKeyTextField = nil
 //    self.mAddTextInBoardButton = nil
 //    self.mAddTopLabelSchematicHotKeyTextField = nil
+//    self.mAddTrackInBoardButton = nil
 //    self.mAddWireButton = nil
 //    self.mAddWirePointSchematicHotKeyTextField = nil
 //    self.mBackRestrictRectangleSwitch = nil
@@ -2811,6 +2835,8 @@ import Cocoa
 //    self.mBoardTextTextField = nil
 //    self.mBoardTextVerticalAlignmentPopUpButton = nil
 //    self.mBoardTextWeightTextField = nil
+//    self.mBoardTrackInspectorView = nil
+//    self.mBoardTrackSidePopUpButton = nil
 //    self.mBoardVerticalFlipSwitch = nil
 //    self.mBoardView = nil
 //    self.mChangeComponentValueComboxBox = nil

@@ -16,8 +16,13 @@ graphic entity BoardConnector : BoardObject {
   property Int mX default 0 ; // Used if not connected to a Pad
   property Int mY default 0 ; // Used if not connected to a Pad
 
-  toMany BoardTrack mTracksP1 inverse toOne mPadRepresentantP1 ;
-  toMany BoardTrack mTracksP2 inverse toOne mPadRepresentantP2 ;
+  toMany BoardTrack mTracksP1 inverse toOne mConnectorP1 ;
+  toMany BoardTrack mTracksP2 inverse toOne mConnectorP2 ;
+
+  transient CanariPoint location dependsFrom
+    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex,
+    self.mX, self.mY
+  ;
 
   transient ConnectorSide side dependsFrom
     self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex

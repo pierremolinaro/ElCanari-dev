@@ -30,6 +30,12 @@ protocol BoardConnector_mY : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardConnector_location : class {
+  var location : CanariPoint? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardConnector_side : class {
   var side : ConnectorSide? { get }
 }
@@ -49,6 +55,7 @@ class BoardConnector : BoardObject,
          BoardConnector_mPadIndex,
          BoardConnector_mX,
          BoardConnector_mY,
+         BoardConnector_location,
          BoardConnector_side,
          BoardConnector_issues {
 
@@ -197,6 +204,29 @@ class BoardConnector : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: location
+  //····················································································································
+
+  let location_property = EBTransientProperty_CanariPoint ()
+
+  //····················································································································
+
+  var location_property_selection : EBSelection <CanariPoint> {
+    return self.location_property.prop
+  }
+
+  //····················································································································
+
+  var location : CanariPoint? {
+    switch self.location_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: side
   //····················································································································
 
@@ -236,14 +266,14 @@ class BoardConnector : BoardObject,
   //--- To many property: mTracksP2 (has opposite relationship)
     self.mTracksP2_property.ebUndoManager = self.ebUndoManager
     self.mTracksP2_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mPadRepresentantP2_property.setProp (me) } },
-      resetter: { inObject in inObject.mPadRepresentantP2_property.setProp (nil) }
+      setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },
+      resetter: { inObject in inObject.mConnectorP2_property.setProp (nil) }
     )
   //--- To many property: mTracksP1 (has opposite relationship)
     self.mTracksP1_property.ebUndoManager = self.ebUndoManager
     self.mTracksP1_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mPadRepresentantP1_property.setProp (me) } },
-      resetter: { inObject in inObject.mPadRepresentantP1_property.setProp (nil) }
+      setter: { [weak self] inObject in if let me = self { inObject.mConnectorP1_property.setProp (me) } },
+      resetter: { inObject in inObject.mConnectorP1_property.setProp (nil) }
     )
   //--- To one property: mComponent (has opposite to many relationship: mConnectors)
     self.mComponent_property.ebUndoManager = self.ebUndoManager
@@ -251,6 +281,36 @@ class BoardConnector : BoardObject,
       setter: { [weak self] inObject in if let me = self { inObject.mConnectors_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mConnectors_property.remove (me) } }
     )
+  //--- Atomic property: location
+    self.location_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mComponent_property.componentPadDictionary_property_selection.kind ()
+        kind &= unwSelf.mComponentPadName_property_selection.kind ()
+        kind &= unwSelf.mPadIndex_property_selection.kind ()
+        kind &= unwSelf.mX_property_selection.kind ()
+        kind &= unwSelf.mY_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_BoardConnector_location (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponent_property.addEBObserverOf_componentPadDictionary (self.location_property)
+    self.mComponentPadName_property.addEBObserver (self.location_property)
+    self.mPadIndex_property.addEBObserver (self.location_property)
+    self.mX_property.addEBObserver (self.location_property)
+    self.mY_property.addEBObserver (self.location_property)
   //--- Atomic property: side
     self.side_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -311,12 +371,12 @@ class BoardConnector : BoardObject,
     self.mComponent_property.addEBObserverOf_padNetDictionary (self.issues_property)
   //--- Install undoers and opposite setter for relationships
     self.mTracksP2_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mPadRepresentantP2_property.setProp (me) } },
-      resetter: { inObject in inObject.mPadRepresentantP2_property.setProp (nil) }
+      setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },
+      resetter: { inObject in inObject.mConnectorP2_property.setProp (nil) }
     )
     self.mTracksP1_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mPadRepresentantP1_property.setProp (me) } },
-      resetter: { inObject in inObject.mPadRepresentantP1_property.setProp (nil) }
+      setter: { [weak self] inObject in if let me = self { inObject.mConnectorP1_property.setProp (me) } },
+      resetter: { inObject in inObject.mConnectorP1_property.setProp (nil) }
     )
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -326,6 +386,11 @@ class BoardConnector : BoardObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mComponent_property.removeEBObserverOf_componentPadDictionary (self.location_property)
+    self.mComponentPadName_property.removeEBObserver (self.location_property)
+    self.mPadIndex_property.removeEBObserver (self.location_property)
+    self.mX_property.removeEBObserver (self.location_property)
+    self.mY_property.removeEBObserver (self.location_property)
     self.mComponent_property.removeEBObserverOf_componentPadDictionary (self.side_property)
     self.mComponentPadName_property.removeEBObserver (self.side_property)
     self.mPadIndex_property.removeEBObserver (self.side_property)
@@ -382,6 +447,14 @@ class BoardConnector : BoardObject,
       valueExplorer: &self.mY_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "location",
+      idx: self.location_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.location_property.mObserverExplorer,
+      valueExplorer: &self.location_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "side",
       idx: self.side_property.ebObjectIndex,

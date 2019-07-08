@@ -14,6 +14,9 @@ fileprivate let kDragAndDropRestrictRectangle = NSPasteboard.PasteboardType (raw
 fileprivate let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.text")
 fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.package")
 fileprivate let kDragAndDropBoardLine = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.line")
+fileprivate let kDragAndDropBoardTrack = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.track")
+
+fileprivate let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -149,7 +152,7 @@ fileprivate let kDragAndDropBoardLine = NSPasteboard.PasteboardType (rawValue: "
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
     self.mBoardScrollView?.register (
       document: self,
-      draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText, kDragAndDropBoardPackage, kDragAndDropBoardLine]
+      draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText, kDragAndDropBoardPackage, kDragAndDropBoardLine, kDragAndDropBoardTrack]
     )
   //--- Set Board inspector segmented control
     let boardInspectors = [
@@ -182,6 +185,7 @@ fileprivate let kDragAndDropBoardLine = NSPasteboard.PasteboardType (rawValue: "
     self.boardObjectsController.register (inspectorView: self.mBoardTextInspectorView, for: BoardText.self)
     self.boardObjectsController.register (inspectorView: self.mComponentInBoardInspectorView, for: ComponentInProject.self)
     self.boardObjectsController.register (inspectorView: self.mBoardLineInspectorView, for: BoardLine.self)
+    self.boardObjectsController.register (inspectorView: self.mBoardTrackInspectorView, for: BoardTrack.self)
   //--- Set Board limits inspector segmented control
     let boardLimitsInspectors = [
       self.mSelectedObjectsBoardLimitsInspectorView,
@@ -263,6 +267,11 @@ fileprivate let kDragAndDropBoardLine = NSPasteboard.PasteboardType (rawValue: "
     self.mAddLineInBoardButton?.register (
       draggedType: kDragAndDropBoardLine,
       draggedObjectFactory: { return BoardLine (nil) },
+      scaleProvider: self.mBoardView
+    )
+    self.mAddTrackInBoardButton?.register (
+      draggedType: kDragAndDropBoardTrack,
+      shapeFactory: { [weak self] in return self?.boardTrackImageFactory () },
       scaleProvider: self.mBoardView
     )
   //---
@@ -464,10 +473,28 @@ fileprivate let kDragAndDropBoardLine = NSPasteboard.PasteboardType (rawValue: "
       }else if let _ = pasteboard.availableType (from: [kDragAndDropBoardLine]) {
         self.performAddBoardLineDragOperation (draggingLocationInDestinationView)
         ok = true
+      }else if let _ = pasteboard.availableType (from: [kDragAndDropBoardTrack]) {
+        self.performAddBoardTrackDragOperation (draggingLocationInDestinationView)
+        ok = true
       }
     }
     self.mPossibleDraggedComponent = nil
     return ok
+  }
+
+  //····················································································································
+
+  private func boardTrackImageFactory () -> EBShape? {
+    let p1 = BoardConnector (nil)
+    p1.mX = 0
+    p1.mY = 0
+    let p2 = BoardConnector (nil)
+    p2.mX = TRACK_INITIAL_SIZE_CANARI_UNIT
+    p2.mY = TRACK_INITIAL_SIZE_CANARI_UNIT
+    let track = BoardTrack (nil)
+    track.mConnectorP1 = p1
+    track.mConnectorP2 = p2
+    return track.objectDisplay
   }
 
   //····················································································································
@@ -519,6 +546,26 @@ fileprivate let kDragAndDropBoardLine = NSPasteboard.PasteboardType (rawValue: "
         }
       }
     }
+  }
+
+  //····················································································································
+
+  private func performAddBoardTrackDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
+    let connector1 = BoardConnector (self.ebUndoManager)
+    connector1.mX = p.x
+    connector1.mY = p.y
+    let connector2 = BoardConnector (self.ebUndoManager)
+    connector2.mX = p.x + TRACK_INITIAL_SIZE_CANARI_UNIT
+    connector2.mY = p.y + TRACK_INITIAL_SIZE_CANARI_UNIT
+    let track = BoardTrack (self.ebUndoManager)
+    track.mSide = NSEvent.modifierFlags.contains (.shift) ? .back : .front
+    track.mConnectorP1 = connector1
+    track.mConnectorP2 = connector2
+    self.rootObject.mBoardObjects.append (connector1)
+    self.rootObject.mBoardObjects.append (connector2)
+    self.rootObject.mBoardObjects.append (track)
+    self.boardObjectsController.setSelection ([track])
   }
 
   //····················································································································

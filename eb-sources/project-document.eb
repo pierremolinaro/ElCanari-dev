@@ -555,6 +555,7 @@ document ProjectDocument root ProjectRoot {
   outlet CanariDragSourceButton mAddRestrictRectangleButton ;
   outlet CanariDragSourceImageButton mAddTextInBoardButton ;
   outlet CanariDragSourceButton mAddLineInBoardButton ;
+  outlet CanariDragSourceImageButton mAddTrackInBoardButton ;
 
   outlet CanariDragSourceTableView mUnplacedPackageTableView $models root.unplacedPackages ;
   transient Int unplacedPackageCount dependsFrom root.unplacedPackages ;
@@ -595,6 +596,14 @@ document ProjectDocument root ProjectRoot {
   outlet CanariDimensionTextField mBoardGridTextField
      $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit
   ;
+
+//--- Board track inspector
+  outlet CanariViewWithKeyView mBoardTrackInspectorView ;
+  selectionController BoardTrack #boardTrackSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  outlet EBPopUpButton mBoardTrackSidePopUpButton $selectedIndex #boardTrackSelectionController.mSide ;
 
 //--- Board line inspector
   outlet CanariViewWithKeyView mBoardLineInspectorView ;

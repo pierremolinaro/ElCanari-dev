@@ -23,7 +23,7 @@ digraph G {
   ComponentInProject[label="<ComponentInProject>ComponentInProject|String mComponentValue|<mConnectors>[BoardConnector] mConnectors|<mDevice>DeviceInProject? mDevice|<mNameFont>FontInProject? mNameFont|Double mNameFontSize|Int mNameIndex|Bool mNameIsVisibleInBoard|String mNamePrefix|Int mNameRotation|<mPackages>[DevicePackageInProject] mPackages|<mRoot>ProjectRoot? mRoot|Int mRotation|<mSelectedPackage>DevicePackageInProject? mSelectedPackage|ComponentSide mSide|<mSymbols>[ComponentSymbolInProject] mSymbols|<mValueFont>FontInProject? mValueFont|Double mValueFontSize|Bool mValueIsVisibleInBoard|Int mValueRotation|Int mX|Int mXName|Int mXUnit|Int mXValue|Int mY|Int mYName|Int mYUnit|Int mYValue"] ;
   ComponentSymbolInProject[label="<ComponentSymbolInProject>ComponentSymbolInProject|String componentValueProxy|Int mCenterX|Int mCenterY|<mComponent>ComponentInProject? mComponent|Int mDisplayComponentNameOffsetX|Int mDisplayComponentNameOffsetY|Bool mDisplayComponentValue|Int mDisplayComponentValueOffsetX|Int mDisplayComponentValueOffsetY|Bool mMirror|<mPoints>[PointInSchematic] mPoints|QuadrantRotation mRotation|<mSheet>SheetInProject? mSheet|String mSymbolInstanceName|String mSymbolTypeName"] ;
   BoardConnector[label="<BoardConnector>BoardConnector|<mComponent>ComponentInProject? mComponent|String mComponentPadName|Int mPadIndex|<mRoot>ProjectRoot? mRoot|<mTracksP1>[BoardTrack] mTracksP1|<mTracksP2>[BoardTrack] mTracksP2|Int mX|Int mY"] ;
-  BoardTrack[label="<BoardTrack>BoardTrack|<mPadRepresentantP1>BoardConnector? mPadRepresentantP1|<mPadRepresentantP2>BoardConnector? mPadRepresentantP2|<mRoot>ProjectRoot? mRoot|TrackSide mSide"] ;
+  BoardTrack[label="<BoardTrack>BoardTrack|<mConnectorP1>BoardConnector? mConnectorP1|<mConnectorP2>BoardConnector? mConnectorP2|<mRoot>ProjectRoot? mRoot|TrackSide mSide"] ;
   BorderCurve[label="<BorderCurve>BorderCurve|Int mCPX1|Int mCPX2|Int mCPY1|Int mCPY2|<mNext>BorderCurve? mNext|<mPrevious>BorderCurve? mPrevious|<mRoot>ProjectRoot? mRoot|BorderCurveShape mShape|Int mX|Int mY"] ;
   BoardObject[label="<BoardObject>BoardObject|<mRoot>ProjectRoot? mRoot"] ;
   ProjectRoot:mBoardObjects -> BoardObject:mRoot [dir=both arrowtail=onormal arrowhead=vee] ;
@@ -66,8 +66,8 @@ digraph G {
   ComponentSymbolInProject -> SchematicObject [arrowhead=dot] ;
   ComponentSymbolInProject:mPoints -> PointInSchematic:mSymbol [dir=both arrowtail=onormal arrowhead=vee] ;
   BoardConnector -> BoardObject [arrowhead=dot] ;
-  BoardConnector:mTracksP1 -> BoardTrack:mPadRepresentantP1 [dir=both arrowtail=onormal arrowhead=vee] ;
-  BoardConnector:mTracksP2 -> BoardTrack:mPadRepresentantP2 [dir=both arrowtail=onormal arrowhead=vee] ;
+  BoardConnector:mTracksP1 -> BoardTrack:mConnectorP1 [dir=both arrowtail=onormal arrowhead=vee] ;
+  BoardConnector:mTracksP2 -> BoardTrack:mConnectorP2 [dir=both arrowtail=onormal arrowhead=vee] ;
   BoardTrack -> BoardObject [arrowhead=dot] ;
   BorderCurve:mPrevious -> BorderCurve:mNext [dir=both arrowtail=onormal arrowhead=onormal] ;
 }

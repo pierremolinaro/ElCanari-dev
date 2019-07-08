@@ -9,18 +9,20 @@ enum TrackSide {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardTrack : BoardObject {
-  toOne BoardConnector mPadRepresentantP1 inverse toMany mTracksP1 ;
-  toOne BoardConnector mPadRepresentantP2 inverse toMany mTracksP2 ;
+  toOne BoardConnector mConnectorP1 inverse toMany mTracksP1 ;
+  toOne BoardConnector mConnectorP2 inverse toMany mTracksP2 ;
 
   property TrackSide mSide default front ;
 
-// override transient EBShape objectDisplay dependsFrom
-//    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex, self.side
-//  ;
+ override transient EBShape objectDisplay dependsFrom
+    self.mConnectorP1.one.location, self.mConnectorP2.one.location, self.mSide,
+    prefs.frontSideLayoutColorForBoard,
+    prefs.backSideLayoutColorForBoard
+  ;
 
-//  override transient EBShape selectionDisplay dependsFrom
-//    self.mComponentPadName// TEMP
-//  ;
+  override transient EBShape selectionDisplay dependsFrom
+    self.mConnectorP1.one.location, self.mConnectorP2.one.location
+  ;
   
 }
 
