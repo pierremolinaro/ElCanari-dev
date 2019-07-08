@@ -4676,10 +4676,8 @@
 		CFEF117C22A449F70095C829 /* document — project — transients — board */ = {
 			isa = PBXGroup;
 			children = (
-				CFBCE76F22D3A08D00DC3505 /* transient-BoardTrack-selectionDisplay.swift */,
-				CFBCE76C22D397BA00DC3505 /* transient-BoardTrack-objectDisplay.swift */,
-				CFBCE76922D3962F00DC3505 /* transient-BoardConnector-location.swift */,
 				CFB9E1E622D33C4D00D681BF /* transient-BoardConnector-issues.swift */,
+				CFBCE76922D3962F00DC3505 /* transient-BoardConnector-location.swift */,
 				CFB9E1E522D33C4C00D681BF /* transient-BoardConnector-side.swift */,
 				CFA4D55D22D36B86007992CD /* transient-BoardLine-objectDisplay.swift */,
 				CFA4D55C22D36B86007992CD /* transient-BoardLine-selectionDisplay.swift */,
@@ -4693,6 +4691,8 @@
 				CFC49C7E22B910C6008BEEC2 /* transient-BoardText-fontName.swift */,
 				CF0432B522B649960016EDE0 /* transient-BoardText-objectDisplay.swift */,
 				CF0432B622B649960016EDE0 /* transient-BoardText-selectionDisplay.swift */,
+				CFBCE76C22D397BA00DC3505 /* transient-BoardTrack-objectDisplay.swift */,
+				CFBCE76F22D3A08D00DC3505 /* transient-BoardTrack-selectionDisplay.swift */,
 				CFEBDB6C22A6B2B700F1917A /* transient-BorderCurve-cp1Xstring.swift */,
 				CFEBDB6B22A6B2B700F1917A /* transient-BorderCurve-cp1Ystring.swift */,
 				CFEBDB6E22A6B2B700F1917A /* transient-BorderCurve-cp2Xstring.swift */,

@@ -2855,7 +2855,8 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: boarderViewBackground
     self.boarderViewBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.borderClearanceBackground_property_selection.kind ()
+        var kind = g_Preferences!.boardBackgroundColorForBoard_property_selection.kind ()
+        kind &= unwSelf.borderClearanceBackground_property_selection.kind ()
         kind &= unwSelf.mBoardObjects_property_selection.kind ()
         switch kind {
         case .empty :
@@ -2863,9 +2864,9 @@ class ProjectRoot : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.borderClearanceBackground_property_selection, unwSelf.mBoardObjects_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_ProjectRoot_boarderViewBackground (v0, v1))
+          switch (g_Preferences!.boardBackgroundColorForBoard_property_selection, unwSelf.borderClearanceBackground_property_selection, unwSelf.mBoardObjects_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ProjectRoot_boarderViewBackground (v0, v1, v2))
           default :
             return .empty
           }
@@ -2874,6 +2875,7 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
+    g_Preferences?.boardBackgroundColorForBoard_property.addEBObserver (self.boarderViewBackground_property)
     self.borderClearanceBackground_property.addEBObserver (self.boarderViewBackground_property)
     self.mBoardObjects_property.addEBObserverOf_objectDisplay (self.boarderViewBackground_property)
   //--- Atomic property: deviceNames
@@ -3154,6 +3156,7 @@ class ProjectRoot : EBManagedObject,
     self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitBorderRight_property)
     self.mBoardLimitsWidth_property.removeEBObserver (self.boardLimitBorderRight_property)
     self.mBorderCurves_property.removeEBObserver (self.borderElementCountString_property)
+    g_Preferences?.boardBackgroundColorForBoard_property.removeEBObserver (self.boarderViewBackground_property)
     self.borderClearanceBackground_property.removeEBObserver (self.boarderViewBackground_property)
     self.mBoardObjects_property.removeEBObserverOf_objectDisplay (self.boarderViewBackground_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)

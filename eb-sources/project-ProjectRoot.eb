@@ -81,8 +81,10 @@ entity ProjectRoot {
   transient EBShape borderClearanceBackground dependsFrom
      self.mBorderCurves.all.descriptor, self.mBoardLimitsWidth, self.mBoardClearance, prefs.boardClearanceColorForBoard ;
 
- transient EBShape boarderViewBackground dependsFrom
-     self.borderClearanceBackground, self.mBoardObjects.all.objectDisplay ;
+  transient EBShape boarderViewBackground dependsFrom
+    prefs.boardBackgroundColorForBoard,
+    self.borderClearanceBackground, self.mBoardObjects.all.objectDisplay
+  ;
 
 //---
   toMany FontInProject mFonts ;

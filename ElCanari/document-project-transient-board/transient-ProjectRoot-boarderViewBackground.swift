@@ -14,6 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_boarderViewBackground (
+       _ prefs_boardBackgroundColorForBoard : NSColor,
        _ self_borderClearanceBackground : EBShape,
        _ self_mBoardObjects_objectDisplay : [BoardObject_objectDisplay]
 ) -> EBShape {
@@ -21,7 +22,7 @@ func transient_ProjectRoot_boarderViewBackground (
        var shape = EBShape ()
        for object in self_mBoardObjects_objectDisplay {
          if let s = object.objectDisplay {
-           shape.add (s)
+           shape.add (s.blended (withFraction: 0.5, of: prefs_boardBackgroundColorForBoard))
          }
        }
        shape.add (self_borderClearanceBackground)

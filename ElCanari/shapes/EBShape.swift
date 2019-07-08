@@ -251,12 +251,6 @@ struct EBShape : Hashable {
 
   var boundingBox : NSRect {
     return self.mCachedBoundingBox
-//
-//    var r = NSRect.null
-//    for element in self.mElements {
-//      r = r.union (element.boundingBox)
-//    }
-//    return r
   }
 
   //····················································································································
@@ -264,15 +258,14 @@ struct EBShape : Hashable {
   //····················································································································
 
   func contains (point inPoint : NSPoint) -> Bool {
-    var result = false
     if self.mCachedBoundingBox.contains (inPoint) {
-      var idx = 0
-      while (idx < self.mElements.count) && !result {
-        result = self.mElements [idx].contains (point: inPoint)
-        idx += 1
+      for element in self.mElements {
+        if element.contains (point: inPoint) {
+          return true
+        }
       }
     }
-    return result
+    return false
   }
 
   //····················································································································
@@ -280,15 +273,14 @@ struct EBShape : Hashable {
   //····················································································································
 
   func intersects (rect inRect : NSRect) -> Bool {
-    var result = false
     if self.mCachedBoundingBox.intersects (inRect) {
-      var idx = 0
-      while (idx < self.mElements.count) && !result {
-        result = self.mElements [idx].intersects (rect: inRect)
-        idx += 1
+      for element in self.mElements {
+        if element.intersects (rect: inRect) {
+          return true
+        }
       }
     }
-    return result
+    return false
   }
 
   //····················································································································
@@ -324,6 +316,21 @@ struct EBShape : Hashable {
   }
 
   //····················································································································
+  //  Blended color
+  //····················································································································
+
+   func blended (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShape {
+    var result = EBShape ()
+    for element in self.mElements {
+      let newElement = element.blended (withFraction: inFraction, of: inColor)
+      result.mElements.append (newElement)
+    }
+    result.mCachedBoundingBox = self.mCachedBoundingBox
+    result.mToolTips = self.mToolTips
+    return result
+   }
+
+  //····················································································································
 
 }
 
@@ -334,6 +341,15 @@ struct EBShape : Hashable {
 enum EBKnobKind {
   case rect
   case circ
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    EBToolTip
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate struct EBToolTip : Hashable {
+  let path : EBBezierPath
+  let string : String
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -399,9 +415,7 @@ fileprivate final class EBShapeElement : EBObject {
   var boundingBox : NSRect {
     var r = NSRect.null
     for bp in self.mFilledPathes {
-      if !bp.isEmpty {
-        r = r.union (bp.bounds)
-      }
+      r = r.union (bp.bounds)
     }
     if let path = self.mClipBezierPath {
       r = r.intersection (path.bounds)
@@ -414,15 +428,14 @@ fileprivate final class EBShapeElement : EBObject {
   //····················································································································
 
   func contains (point inPoint : NSPoint) -> Bool {
-    var result = false
     if self.mClipBezierPath?.contains (inPoint) ?? true {
-      var idx = 0
-      while (idx < self.mFilledPathes.count) && !result {
-        result = self.mFilledPathes [idx].contains (inPoint)
-        idx += 1
+      for path in self.mFilledPathes {
+        if path.contains (inPoint) {
+          return true
+        }
       }
     }
-    return result
+    return false
   }
 
   //····················································································································
@@ -430,15 +443,14 @@ fileprivate final class EBShapeElement : EBObject {
   //····················································································································
 
   func intersects (rect inRect : NSRect) -> Bool {
-    var result = false
     if self.mClipBezierPath?.intersects (rect: inRect) ?? true {
-      var idx = 0
-      while (idx < self.mFilledPathes.count) && !result {
-        result = self.mFilledPathes [idx].intersects (rect: inRect)
-        idx += 1
+      for path in self.mFilledPathes {
+        if path.intersects (rect: inRect) {
+          return true
+        }
       }
     }
-    return result
+    return false
   }
 
   //····················································································································
@@ -473,14 +485,19 @@ fileprivate final class EBShapeElement : EBObject {
   }
 
   //····················································································································
+  //  Blended color
+  //····················································································································
 
-}
+  func blended (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShapeElement {
+    if let color = self.mColor, let newColor = color.blended (withFraction: inFraction, of: inColor) {
+      return EBShapeElement (self.mFilledPathes, newColor, self.mKnobIndex, self.mClipBezierPath)
+    }else{
+      return self
+    }
+  }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  //····················································································································
 
-fileprivate struct EBToolTip : Hashable {
-  let path : EBBezierPath
-  let string : String
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
