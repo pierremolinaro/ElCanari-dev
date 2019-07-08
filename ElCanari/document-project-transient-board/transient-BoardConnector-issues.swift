@@ -14,24 +14,25 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_BoardConnector_issues (
-       _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
-       _ self_mComponentPadName : String,
-       _ self_mPadIndex : Int,        
-       _ self_side : ConnectorSide,   
+       _ self_location : CanariPoint, 
+       _ self_mComponent_none : Bool, 
+       _ self_mTracksP1_count : Int,  
+       _ self_mTracksP2_count : Int,  
        _ self_BoardObject_errorOrWarningIssueSize : Double,
        _ self_mComponent_padNetDictionary : PadNetDictionary?
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
         var issues = CanariIssueArray ()
-        //Swift.print ("\(self_mComponent_padNetDictionary? [self_mComponentPadName])")
-        if let padNetDictionary = self_mComponent_padNetDictionary,
-           padNetDictionary [self_mComponentPadName] != nil,
-           let descriptor : ComponentPadDescriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName]  {
-          let pad = descriptor.pads [self_mPadIndex]
+        var isConnected = (self_mTracksP1_count + self_mTracksP2_count) >= 2
+        if !isConnected {
+          isConnected = !self_mComponent_none && (self_mTracksP1_count + self_mTracksP2_count) >= 1
+        }
+        if !isConnected {
+          let location = self_location.cocoaPoint
           let issueSize = CGFloat (self_BoardObject_errorOrWarningIssueSize)
-          let r = NSRect (x: pad.location.x - issueSize / 2.0, y: pad.location.y - issueSize / 2.0, width: issueSize, height: issueSize)
+          let r = NSRect (x: location.x - issueSize / 2.0, y: location.y - issueSize / 2.0, width: issueSize, height: issueSize)
           let bp = EBBezierPath (ovalIn: r)
-          let issue = CanariIssue (kind: .warning, message: "Hello", path: bp)
+          let issue = CanariIssue (kind: .warning, message: "Temporary", path: bp)
           issues.append (issue)
         }
         return issues

@@ -29,7 +29,8 @@ graphic entity BoardConnector : BoardObject {
   ;
   
   override transient CanariIssueArray issues dependsFrom
-    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex, self.side,
+    self.location, self.mComponent.none,
+    self.mTracksP1.count, self.mTracksP2.count,
     super.BoardObject.errorOrWarningIssueSize,
     self.mComponent.one.padNetDictionary
   ;

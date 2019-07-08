@@ -340,10 +340,10 @@ class BoardConnector : BoardObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mComponent_property.componentPadDictionary_property_selection.kind ()
-        kind &= unwSelf.mComponentPadName_property_selection.kind ()
-        kind &= unwSelf.mPadIndex_property_selection.kind ()
-        kind &= unwSelf.side_property_selection.kind ()
+        var kind = unwSelf.location_property_selection.kind ()
+        kind &= unwSelf.mComponent_none_selection.kind ()
+        kind &= unwSelf.mTracksP1_property.count_property_selection.kind ()
+        kind &= unwSelf.mTracksP2_property.count_property_selection.kind ()
         kind &= unwSelf.errorOrWarningIssueSize_property_selection.kind ()
         kind &= unwSelf.mComponent_property.padNetDictionary_property_selection.kind ()
         switch kind {
@@ -352,7 +352,7 @@ class BoardConnector : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.side_property_selection, unwSelf.errorOrWarningIssueSize_property_selection, unwSelf.mComponent_property.padNetDictionary_property_selection) {
+          switch (unwSelf.location_property_selection, unwSelf.mComponent_none_selection, unwSelf.mTracksP1_property.count_property_selection, unwSelf.mTracksP2_property.count_property_selection, unwSelf.errorOrWarningIssueSize_property_selection, unwSelf.mComponent_property.padNetDictionary_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_BoardConnector_issues (v0, v1, v2, v3, v4, v5))
           default :
@@ -363,10 +363,10 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.addEBObserverOf_componentPadDictionary (self.issues_property)
-    self.mComponentPadName_property.addEBObserver (self.issues_property)
-    self.mPadIndex_property.addEBObserver (self.issues_property)
-    self.side_property.addEBObserver (self.issues_property)
+    self.location_property.addEBObserver (self.issues_property)
+    self.mComponent_property.addEBObserver (self.issues_property)
+    self.mTracksP1_property.addEBObserver (self.issues_property)
+    self.mTracksP2_property.addEBObserver (self.issues_property)
     self.errorOrWarningIssueSize_property.addEBObserver (self.issues_property)
     self.mComponent_property.addEBObserverOf_padNetDictionary (self.issues_property)
   //--- Install undoers and opposite setter for relationships
@@ -394,10 +394,10 @@ class BoardConnector : BoardObject,
     self.mComponent_property.removeEBObserverOf_componentPadDictionary (self.side_property)
     self.mComponentPadName_property.removeEBObserver (self.side_property)
     self.mPadIndex_property.removeEBObserver (self.side_property)
-    self.mComponent_property.removeEBObserverOf_componentPadDictionary (self.issues_property)
-    self.mComponentPadName_property.removeEBObserver (self.issues_property)
-    self.mPadIndex_property.removeEBObserver (self.issues_property)
-    self.side_property.removeEBObserver (self.issues_property)
+    self.location_property.removeEBObserver (self.issues_property)
+    self.mComponent_property.removeEBObserver (self.issues_property)
+    self.mTracksP1_property.removeEBObserver (self.issues_property)
+    self.mTracksP2_property.removeEBObserver (self.issues_property)
     self.errorOrWarningIssueSize_property.removeEBObserver (self.issues_property)
     self.mComponent_property.removeEBObserverOf_padNetDictionary (self.issues_property)
   //--- Unregister properties for handling signature

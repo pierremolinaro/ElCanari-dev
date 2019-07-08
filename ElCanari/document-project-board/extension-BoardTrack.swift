@@ -28,10 +28,16 @@ extension BoardTrack {
   //····················································································································
 
   override func translate (xBy inDx : Int, yBy inDy : Int, userSet ioSet : OCObjectSet) {
-    self.mConnectorP1?.mX += inDx
-    self.mConnectorP1?.mY += inDy
-    self.mConnectorP2?.mX += inDx
-    self.mConnectorP2?.mY += inDy
+    if let connectorP1 = self.mConnectorP1, !ioSet.objects.contains (connectorP1) {
+      ioSet.objects.insert (connectorP1)
+      connectorP1.mX += inDx
+      connectorP1.mY += inDy
+    }
+    if let connectorP2 = self.mConnectorP2, !ioSet.objects.contains (connectorP2) {
+      ioSet.objects.insert (connectorP2)
+      connectorP2.mX += inDx
+      connectorP2.mY += inDy
+    }
   }
 
   //····················································································································
