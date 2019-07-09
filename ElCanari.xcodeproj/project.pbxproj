@@ -527,7 +527,6 @@
 		CF5C4C77219F04D600EAC52A /* canari_package.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727E1B3C4CD600F3CA82 /* canari_package.icns */; };
 		CF5C4C78219F04D600EAC52A /* bezier-curve-in-symbol.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172791B3C4CD600F3CA82 /* bezier-curve-in-symbol.pdf */; };
 		CF5C4C7A219F04D600EAC52A /* FontDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFDA579C1BFA524A00EEF3CB /* FontDocument.xib */; };
-		CF5C4C7B219F04D600EAC52A /* loupe.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172941B3C4CD600F3CA82 /* loupe.pdf */; };
 		CF5C4C7C219F04D600EAC52A /* upDownRightLeftCursor.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B81B3C4CD600F3CA82 /* upDownRightLeftCursor.tiff */; };
 		CF5C4C7D219F04D600EAC52A /* artwork.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172771B3C4CD600F3CA82 /* artwork.tif */; };
 		CF5C4C7E219F04D600EAC52A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC5FBC01FDF06220014A257 /* Assets.xcassets */; };
@@ -843,7 +842,6 @@
 		CF6172DF1B3C4CD600F3CA82 /* Installcomplete.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172911B3C4CD600F3CA82 /* Installcomplete.tif */; };
 		CF6172E01B3C4CD600F3CA82 /* library.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172921B3C4CD600F3CA82 /* library.png */; };
 		CF6172E11B3C4CD600F3CA82 /* line-in-symbol.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */; };
-		CF6172E21B3C4CD600F3CA82 /* loupe.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172941B3C4CD600F3CA82 /* loupe.pdf */; };
 		CF6172E31B3C4CD600F3CA82 /* master-pad-in-package.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172951B3C4CD600F3CA82 /* master-pad-in-package.pdf */; };
 		CF6172E41B3C4CD600F3CA82 /* nc.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172961B3C4CD600F3CA82 /* nc.png */; };
 		CF6172E51B3C4CD600F3CA82 /* NextToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */; };
@@ -2568,7 +2566,6 @@
 		CF6172911B3C4CD600F3CA82 /* Installcomplete.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Installcomplete.tif; sourceTree = "<group>"; };
 		CF6172921B3C4CD600F3CA82 /* library.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = library.png; sourceTree = "<group>"; };
 		CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "line-in-symbol.pdf"; sourceTree = "<group>"; };
-		CF6172941B3C4CD600F3CA82 /* loupe.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = loupe.pdf; sourceTree = "<group>"; };
 		CF6172951B3C4CD600F3CA82 /* master-pad-in-package.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "master-pad-in-package.pdf"; sourceTree = "<group>"; };
 		CF6172961B3C4CD600F3CA82 /* nc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nc.png; sourceTree = "<group>"; };
 		CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NextToolbarImage.tif; sourceTree = "<group>"; };
@@ -3922,7 +3919,6 @@
 				CF6172911B3C4CD600F3CA82 /* Installcomplete.tif */,
 				CF6172921B3C4CD600F3CA82 /* library.png */,
 				CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */,
-				CF6172941B3C4CD600F3CA82 /* loupe.pdf */,
 				CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */,
 				CF6172951B3C4CD600F3CA82 /* master-pad-in-package.pdf */,
 				CF6172961B3C4CD600F3CA82 /* nc.png */,
@@ -4886,7 +4882,6 @@
 				CF6172CC1B3C4CD600F3CA82 /* canari_package.icns in Resources */,
 				CF6172C71B3C4CD600F3CA82 /* bezier-curve-in-symbol.pdf in Resources */,
 				CFDA579F1BFA524A00EEF3CB /* FontDocument.xib in Resources */,
-				CF6172E21B3C4CD600F3CA82 /* loupe.pdf in Resources */,
 				CF6173061B3C4CD600F3CA82 /* upDownRightLeftCursor.tiff in Resources */,
 				CF6172C51B3C4CD600F3CA82 /* artwork.tif in Resources */,
 				CF7A9E3B21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */,
@@ -4978,7 +4973,6 @@
 				CF5C4C77219F04D600EAC52A /* canari_package.icns in Resources */,
 				CF5C4C78219F04D600EAC52A /* bezier-curve-in-symbol.pdf in Resources */,
 				CF5C4C7A219F04D600EAC52A /* FontDocument.xib in Resources */,
-				CF5C4C7B219F04D600EAC52A /* loupe.pdf in Resources */,
 				CF5C4C7C219F04D600EAC52A /* upDownRightLeftCursor.tiff in Resources */,
 				CF5C4C7D219F04D600EAC52A /* artwork.tif in Resources */,
 				CF7A9E3C21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */,
