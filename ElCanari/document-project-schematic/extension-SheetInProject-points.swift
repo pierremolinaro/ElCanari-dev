@@ -28,19 +28,20 @@ extension SheetInProject {
 
   internal func removeUnusedSchematicsPoints (_ ioErrorList : inout [String]) {
   //--- Remove unused points
-    var idx = 0
-    while idx < self.mPoints.count {
-      let point = self.mPoints [idx]
-      let unused = (point.mLabels.count == 0)
-        && (point.mNC == nil)
-        && (point.mWiresP1s.count == 0)
-        && (point.mWiresP2s.count == 0)
-        && (point.mSymbol == nil)
-      if unused {
+    for point in self.mPoints {
+      var used = (point.mLabels.count + point.mWiresP1s.count + point.mWiresP2s.count) > 0
+      if !used {
+        used = point.mNC != nil
+      }
+      if !used {
+        if let symbol = point.mSymbol {
+          used = symbol.mSheet != nil
+        }
+      }
+      if !used { // Remove
         point.mNet = nil
-        self.mPoints.remove (at: idx)
-      }else{
-        idx += 1
+        point.mSheet = nil
+        point.mSymbol = nil
       }
     }
   //--- Check points

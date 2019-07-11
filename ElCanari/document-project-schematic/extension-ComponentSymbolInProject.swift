@@ -185,18 +185,19 @@ extension ComponentSymbolInProject {
     //--- Remove NC
       point.mNC?.mSheet = nil // Remove NC from sheet
       point.mNC = nil // Detach from pin
+    //---
+      let pinLocation = point.location!
+      point.mX = pinLocation.x
+      point.mY = pinLocation.y
+    //---
       point.mSymbolPinName = ""
+      point.mSymbol = nil
+    //---
       if (point.mLabels.count + point.mWiresP1s.count + point.mWiresP2s.count) == 0 {
         point.mSheet = nil // Remove from sheet
         point.mNet = nil // Remove from net
-      }else{ // Define point location from pin
-        let pinLocation = point.location!
-        point.mX = pinLocation.x
-        point.mY = pinLocation.y
       }
     }
-  //--- Detach from symbol
-    self.mPoints = []
   }
 
   //····················································································································

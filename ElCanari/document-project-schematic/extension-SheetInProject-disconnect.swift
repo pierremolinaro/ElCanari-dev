@@ -49,14 +49,20 @@ extension SheetInProject {
     //--- Reassign nets
       var usedNets = Set <NetInProject> ()
       for subnet in subnetsWithSymbolPin {
-        var net = subnet.first!.mNet!
-        if usedNets.contains (net) {
-          net = root.createNetWithAutomaticName ()
+        let point = subnet.first!
+        let noConnection = (point.mLabels.count + point.mWiresP1s.count + point.mWiresP2s.count) == 0
+        if noConnection { // Remove from net
+          point.mNet = nil
         }else{
-          usedNets.insert (net)
-        }
-        for point in subnet {
-          point.mNet = net
+          var net = point.mNet!
+          if usedNets.contains (net) {
+            net = root.createNetWithAutomaticName ()
+          }else{
+            usedNets.insert (net)
+          }
+          for point in subnet {
+            point.mNet = net
+          }
         }
       }
       for subnet in subnetsWithLabelsNoSymbolPin {

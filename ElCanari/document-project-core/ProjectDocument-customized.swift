@@ -299,6 +299,7 @@ fileprivate let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     )
     self.boardObjectsController.mAfterObjectRemovingCallback = self.updateBoardConnectors
     // self.updateBoardConnectors ()
+  //  self.updateSchematicsPointsAndNets ()
   }
 
   //····················································································································
