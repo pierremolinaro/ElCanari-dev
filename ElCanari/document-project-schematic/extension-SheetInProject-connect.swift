@@ -63,35 +63,39 @@ extension SheetInProject {
   //····················································································································
 
   func connectWithoutDialog (points inPoints : [PointInSchematic]) -> ([PointInSchematic], [NetInProject]) {
-    let optionalPoint = self.addPointToWire (at: inPoints [0].location!)
-    var points = inPoints
-    if let newPoint = optionalPoint {
-      points.append (newPoint)
-    }
-    var netSet = Set <NetInProject> ()
-    for point in points {
-      if let net = point.mNet {
-        netSet.insert (net)
+    if inPoints.count < 2 {
+      return ([], []) // For indicating no connection should be done by the caller
+    }else{
+      let optionalPoint = self.addPointToWire (at: inPoints [0].location!)
+      var points = inPoints
+      if let newPoint = optionalPoint {
+        points.append (newPoint)
       }
-    }
-  //---
-    let netArray = Array (netSet).sorted { $0.mNetName < $1.mNetName }
-    if netArray.count == 0 { // Allocate a new net if a point has a label or a pin
-      var hasPinOrLabel = false
-      for p in points {
-        if (p.mSymbol != nil) || (p.mLabels.count > 0) {
-          hasPinOrLabel = true
-          break
+      var netSet = Set <NetInProject> ()
+      for point in points {
+        if let net = point.mNet {
+          netSet.insert (net)
         }
       }
-      let newNet : NetInProject? = hasPinOrLabel ? self.mRoot?.createNetWithAutomaticName () : nil
-      self.propagateAndMerge (net: newNet, to: points)
-      return ([], []) // For indicating connection is done
-    }else if netArray.count == 1 {
-      self.propagateAndMerge (net: netArray [0], to: points)
-      return ([], []) // For indicating connection is done
-    }else{
-      return (points, netArray)
+    //---
+      let netArray = Array (netSet).sorted { $0.mNetName < $1.mNetName }
+      if netArray.count == 0 { // Allocate a new net if a point has a label or a pin
+        var hasPinOrLabel = false
+        for p in points {
+          if (p.mSymbol != nil) || (p.mLabels.count > 0) {
+            hasPinOrLabel = true
+            break
+          }
+        }
+        let newNet : NetInProject? = hasPinOrLabel ? self.mRoot?.createNetWithAutomaticName () : nil
+        self.propagateAndMerge (net: newNet, to: points)
+        return ([], []) // For indicating no connection should be done by the caller
+      }else if netArray.count == 1 {
+        self.propagateAndMerge (net: netArray [0], to: points)
+        return ([], []) // For indicating no connection should be done by the caller
+      }else{
+        return (points, netArray)
+      }
     }
   }
 
@@ -102,32 +106,6 @@ extension SheetInProject {
                 panelForMergingSeveralSubnet inPanel : NSPanel,
                 popUpButtonForMergingSeveralSubnet inPopUp : EBPopUpButton) {
     let (points, netArray) = self.connectWithoutDialog (points: inPoints)
-//    let optionalPoint = self.addPointToWire (at: inPoints [0].location!)
-//    var points = inPoints
-//    if let newPoint = optionalPoint {
-//      points.append (newPoint)
-//    }
-//    var netSet = Set <NetInProject> ()
-//    for point in points {
-//      if let net = point.mNet {
-//        netSet.insert (net)
-//      }
-//    }
-//  //---
-//    let netArray = Array (netSet).sorted { $0.mNetName < $1.mNetName }
-//    if netArray.count == 0 { // Allocate a new net if a point has a label or a pin
-//      var hasPinOrLabel = false
-//      for p in points {
-//        if (p.mSymbol != nil) || (p.mLabels.count > 0) {
-//          hasPinOrLabel = true
-//          break
-//        }
-//      }
-//      let newNet : NetInProject? = hasPinOrLabel ? self.mRoot?.createNetWithAutomaticName () : nil
-//      self.propagateAndMerge (net: newNet, to: points)
-//    }else if netArray.count == 1 {
-//      self.propagateAndMerge (net: netArray [0], to: points)
-//    }else
     if netArray.count == 2 {
       let alert = NSAlert ()
       alert.messageText = "Performing connection will merge two nets."
@@ -179,7 +157,6 @@ extension SheetInProject {
                                                    _ inNetArray : [NetInProject]) {
     let responseIndex = inResponse.rawValue - NSApplication.ModalResponse.alertFirstButtonReturn.rawValue
     if responseIndex < inNetArray.count {
-      // NSLog ("responseIndex \(responseIndex)")
       let newNet = inNetArray [responseIndex]
       self.propagateAndMerge (net: newNet, to: inPoints)
     }

@@ -342,6 +342,7 @@ class BoardConnector : BoardObject,
       if let unwSelf = self {
         var kind = unwSelf.location_property_selection.kind ()
         kind &= unwSelf.mComponent_none_selection.kind ()
+        kind &= unwSelf.mComponentPadName_property_selection.kind ()
         kind &= unwSelf.mTracksP1_property.count_property_selection.kind ()
         kind &= unwSelf.mTracksP2_property.count_property_selection.kind ()
         kind &= unwSelf.errorOrWarningIssueSize_property_selection.kind ()
@@ -352,9 +353,9 @@ class BoardConnector : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.location_property_selection, unwSelf.mComponent_none_selection, unwSelf.mTracksP1_property.count_property_selection, unwSelf.mTracksP2_property.count_property_selection, unwSelf.errorOrWarningIssueSize_property_selection, unwSelf.mComponent_property.padNetDictionary_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_BoardConnector_issues (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.location_property_selection, unwSelf.mComponent_none_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mTracksP1_property.count_property_selection, unwSelf.mTracksP2_property.count_property_selection, unwSelf.errorOrWarningIssueSize_property_selection, unwSelf.mComponent_property.padNetDictionary_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+            return .single (transient_BoardConnector_issues (v0, v1, v2, v3, v4, v5, v6))
           default :
             return .empty
           }
@@ -365,6 +366,7 @@ class BoardConnector : BoardObject,
     }
     self.location_property.addEBObserver (self.issues_property)
     self.mComponent_property.addEBObserver (self.issues_property)
+    self.mComponentPadName_property.addEBObserver (self.issues_property)
     self.mTracksP1_property.addEBObserver (self.issues_property)
     self.mTracksP2_property.addEBObserver (self.issues_property)
     self.errorOrWarningIssueSize_property.addEBObserver (self.issues_property)
@@ -396,6 +398,7 @@ class BoardConnector : BoardObject,
     self.mPadIndex_property.removeEBObserver (self.side_property)
     self.location_property.removeEBObserver (self.issues_property)
     self.mComponent_property.removeEBObserver (self.issues_property)
+    self.mComponentPadName_property.removeEBObserver (self.issues_property)
     self.mTracksP1_property.removeEBObserver (self.issues_property)
     self.mTracksP2_property.removeEBObserver (self.issues_property)
     self.errorOrWarningIssueSize_property.removeEBObserver (self.issues_property)

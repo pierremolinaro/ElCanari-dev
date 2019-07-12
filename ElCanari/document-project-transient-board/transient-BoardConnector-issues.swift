@@ -16,6 +16,7 @@ import Cocoa
 func transient_BoardConnector_issues (
        _ self_location : CanariPoint, 
        _ self_mComponent_none : Bool, 
+       _ self_mComponentPadName : String,
        _ self_mTracksP1_count : Int,  
        _ self_mTracksP2_count : Int,  
        _ self_BoardObject_errorOrWarningIssueSize : Double,
@@ -23,16 +24,20 @@ func transient_BoardConnector_issues (
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
         var issues = CanariIssueArray ()
-        var isConnected = (self_mTracksP1_count + self_mTracksP2_count) >= 2
-        if !isConnected {
-          isConnected = !self_mComponent_none && (self_mTracksP1_count + self_mTracksP2_count) >= 1
+        let noConnectionWarning : Bool
+        if self_mComponent_none {
+          noConnectionWarning = (self_mTracksP1_count + self_mTracksP2_count) < 2
+        }else if let padNetDictionary = self_mComponent_padNetDictionary {
+          noConnectionWarning = padNetDictionary [self_mComponentPadName] != nil
+        }else{
+          noConnectionWarning = false // Temp
         }
-        if !isConnected {
+        if noConnectionWarning {
           let location = self_location.cocoaPoint
           let issueSize = CGFloat (self_BoardObject_errorOrWarningIssueSize)
           let r = NSRect (x: location.x - issueSize / 2.0, y: location.y - issueSize / 2.0, width: issueSize, height: issueSize)
           let bp = EBBezierPath (ovalIn: r)
-          let issue = CanariIssue (kind: .warning, message: "Temporary", path: bp)
+          let issue = CanariIssue (kind: .warning, message: "No Connection", path: bp)
           issues.append (issue)
         }
         return issues
