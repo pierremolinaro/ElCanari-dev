@@ -12,8 +12,32 @@ protocol BoardTrack_mSide : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_objectDisplay : class {
-  var objectDisplay : EBShape? { get }
+protocol BoardTrack_mDefaultTrackWidthUnit : class {
+  var mDefaultTrackWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardTrack_mCustomTrackWidth : class {
+  var mCustomTrackWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardTrack_mCustomTrackWidthUnit : class {
+  var mCustomTrackWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardTrack_mUsesCustomTrackWidth : class {
+  var mUsesCustomTrackWidth : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardTrack_actualTrackWidth : class {
+  var actualTrackWidth : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -35,15 +59,33 @@ protocol BoardTrack_netClassName : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardTrack_netClassTrackWidth : class {
+  var netClassTrackWidth : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardTrack_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardTrack
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class BoardTrack : BoardObject,
          BoardTrack_mSide,
-         BoardTrack_objectDisplay,
+         BoardTrack_mDefaultTrackWidthUnit,
+         BoardTrack_mCustomTrackWidth,
+         BoardTrack_mCustomTrackWidthUnit,
+         BoardTrack_mUsesCustomTrackWidth,
+         BoardTrack_actualTrackWidth,
          BoardTrack_selectionDisplay,
          BoardTrack_netName,
-         BoardTrack_netClassName {
+         BoardTrack_netClassName,
+         BoardTrack_netClassTrackWidth,
+         BoardTrack_objectDisplay {
 
   //····················································································································
   //   Atomic property: mSide
@@ -61,6 +103,74 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   var mSide_property_selection : EBSelection <TrackSide> { return self.mSide_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDefaultTrackWidthUnit
+  //····················································································································
+
+  let mDefaultTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mDefaultTrackWidthUnit : Int {
+    get { return self.mDefaultTrackWidthUnit_property.propval }
+    set { self.mDefaultTrackWidthUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDefaultTrackWidthUnit_property_selection : EBSelection <Int> { return self.mDefaultTrackWidthUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mCustomTrackWidth
+  //····················································································································
+
+  let mCustomTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720)
+
+  //····················································································································
+
+  var mCustomTrackWidth : Int {
+    get { return self.mCustomTrackWidth_property.propval }
+    set { self.mCustomTrackWidth_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mCustomTrackWidth_property_selection : EBSelection <Int> { return self.mCustomTrackWidth_property.prop }
+
+  //····················································································································
+  //   Atomic property: mCustomTrackWidthUnit
+  //····················································································································
+
+  let mCustomTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mCustomTrackWidthUnit : Int {
+    get { return self.mCustomTrackWidthUnit_property.propval }
+    set { self.mCustomTrackWidthUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mCustomTrackWidthUnit_property_selection : EBSelection <Int> { return self.mCustomTrackWidthUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mUsesCustomTrackWidth
+  //····················································································································
+
+  let mUsesCustomTrackWidth_property = EBStoredProperty_Bool (defaultValue: false)
+
+  //····················································································································
+
+  var mUsesCustomTrackWidth : Bool {
+    get { return self.mUsesCustomTrackWidth_property.propval }
+    set { self.mUsesCustomTrackWidth_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mUsesCustomTrackWidth_property_selection : EBSelection <Bool> { return self.mUsesCustomTrackWidth_property.prop }
 
   //····················································································································
   //   To one property: mConnectorP1
@@ -177,6 +287,29 @@ class BoardTrack : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: actualTrackWidth
+  //····················································································································
+
+  let actualTrackWidth_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var actualTrackWidth_property_selection : EBSelection <Int> {
+    return self.actualTrackWidth_property.prop
+  }
+
+  //····················································································································
+
+  var actualTrackWidth : Int? {
+    switch self.actualTrackWidth_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: netName
   //····················································································································
 
@@ -223,6 +356,29 @@ class BoardTrack : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: netClassTrackWidth
+  //····················································································································
+
+  let netClassTrackWidth_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var netClassTrackWidth_property_selection : EBSelection <Int> {
+    return self.netClassTrackWidth_property.prop
+  }
+
+  //····················································································································
+
+  var netClassTrackWidth : Int? {
+    switch self.netClassTrackWidth_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -230,6 +386,14 @@ class BoardTrack : BoardObject,
     super.init (ebUndoManager)
   //--- Atomic property: mSide
     self.mSide_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDefaultTrackWidthUnit
+    self.mDefaultTrackWidthUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mCustomTrackWidth
+    self.mCustomTrackWidth_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mCustomTrackWidthUnit
+    self.mCustomTrackWidthUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mUsesCustomTrackWidth
+    self.mUsesCustomTrackWidth_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.ebUndoManager = self.ebUndoManager
     self.mConnectorP1_property.setOppositeRelationShipFunctions (
@@ -248,23 +412,21 @@ class BoardTrack : BoardObject,
       setter: { [weak self] inObject in if let me = self { inObject.mTracks_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mTracks_property.remove (me) } }
     )
-  //--- Atomic property: objectDisplay
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: actualTrackWidth
+    self.actualTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
-        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
-        kind &= unwSelf.mSide_property_selection.kind ()
-        kind &= g_Preferences!.frontSideLayoutColorForBoard_property_selection.kind ()
-        kind &= g_Preferences!.backSideLayoutColorForBoard_property_selection.kind ()
+        var kind = unwSelf.mNet_property.netClassTrackWidth_property_selection.kind ()
+        kind &= unwSelf.mUsesCustomTrackWidth_property_selection.kind ()
+        kind &= unwSelf.mCustomTrackWidth_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.mSide_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_BoardTrack_objectDisplay (v0, v1, v2, v3, v4))
+          switch (unwSelf.mNet_property.netClassTrackWidth_property_selection, unwSelf.mUsesCustomTrackWidth_property_selection, unwSelf.mCustomTrackWidth_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_BoardTrack_actualTrackWidth (v0, v1, v2))
           default :
             return .empty
           }
@@ -273,11 +435,9 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_location (self.objectDisplay_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.objectDisplay_property)
-    self.mSide_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    self.mNet_property.addEBObserverOf_netClassTrackWidth (self.actualTrackWidth_property)
+    self.mUsesCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
+    self.mCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -346,6 +506,60 @@ class BoardTrack : BoardObject,
       }
     }
     self.mNet_property.addEBObserverOf_netClassName (self.netClassName_property)
+  //--- Atomic property: netClassTrackWidth
+    self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNet_property.netClassTrackWidth_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mNet_property.netClassTrackWidth_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardTrack_netClassTrackWidth (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNet_property.addEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
+        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
+        kind &= unwSelf.mSide_property_selection.kind ()
+        kind &= g_Preferences!.frontSideLayoutColorForBoard_property_selection.kind ()
+        kind &= g_Preferences!.backSideLayoutColorForBoard_property_selection.kind ()
+        kind &= unwSelf.actualTrackWidth_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.mSide_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, unwSelf.actualTrackWidth_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_BoardTrack_objectDisplay (v0, v1, v2, v3, v4, v5))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mConnectorP1_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.mConnectorP2_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.mSide_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    self.actualTrackWidth_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -355,15 +569,20 @@ class BoardTrack : BoardObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mNet_property.removeEBObserverOf_netClassTrackWidth (self.actualTrackWidth_property)
+    self.mUsesCustomTrackWidth_property.removeEBObserver (self.actualTrackWidth_property)
+    self.mCustomTrackWidth_property.removeEBObserver (self.actualTrackWidth_property)
+    self.mConnectorP1_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    self.mConnectorP2_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    self.mNet_property.removeEBObserverOf_mNetName (self.netName_property)
+    self.mNet_property.removeEBObserverOf_netClassName (self.netClassName_property)
+    self.mNet_property.removeEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
     self.mConnectorP1_property.removeEBObserverOf_location (self.objectDisplay_property)
     self.mConnectorP2_property.removeEBObserverOf_location (self.objectDisplay_property)
     self.mSide_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.backSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
-    self.mConnectorP1_property.removeEBObserverOf_location (self.selectionDisplay_property)
-    self.mConnectorP2_property.removeEBObserverOf_location (self.selectionDisplay_property)
-    self.mNet_property.removeEBObserverOf_mNetName (self.netName_property)
-    self.mNet_property.removeEBObserverOf_netClassName (self.netClassName_property)
+    self.actualTrackWidth_property.removeEBObserver (self.objectDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -386,14 +605,46 @@ class BoardTrack : BoardObject,
       observerExplorer: &self.mSide_property.mObserverExplorer,
       valueExplorer: &self.mSide_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
+      "mDefaultTrackWidthUnit",
+      idx: self.mDefaultTrackWidthUnit_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
+      observerExplorer: &self.mDefaultTrackWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.mDefaultTrackWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mCustomTrackWidth",
+      idx: self.mCustomTrackWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCustomTrackWidth_property.mObserverExplorer,
+      valueExplorer: &self.mCustomTrackWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mCustomTrackWidthUnit",
+      idx: self.mCustomTrackWidthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCustomTrackWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.mCustomTrackWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mUsesCustomTrackWidth",
+      idx: self.mUsesCustomTrackWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mUsesCustomTrackWidth_property.mObserverExplorer,
+      valueExplorer: &self.mUsesCustomTrackWidth_property.mValueExplorer
+    )
+    createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "actualTrackWidth",
+      idx: self.actualTrackWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.actualTrackWidth_property.mObserverExplorer,
+      valueExplorer: &self.actualTrackWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
@@ -418,6 +669,22 @@ class BoardTrack : BoardObject,
       view: view,
       observerExplorer: &self.netClassName_property.mObserverExplorer,
       valueExplorer: &self.netClassName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netClassTrackWidth",
+      idx: self.netClassTrackWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netClassTrackWidth_property.mObserverExplorer,
+      valueExplorer: &self.netClassTrackWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "objectDisplay",
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
@@ -453,6 +720,18 @@ class BoardTrack : BoardObject,
   //--- Atomic property: mSide
     self.mSide_property.mObserverExplorer = nil
     self.mSide_property.mValueExplorer = nil
+  //--- Atomic property: mDefaultTrackWidthUnit
+    self.mDefaultTrackWidthUnit_property.mObserverExplorer = nil
+    self.mDefaultTrackWidthUnit_property.mValueExplorer = nil
+  //--- Atomic property: mCustomTrackWidth
+    self.mCustomTrackWidth_property.mObserverExplorer = nil
+    self.mCustomTrackWidth_property.mValueExplorer = nil
+  //--- Atomic property: mCustomTrackWidthUnit
+    self.mCustomTrackWidthUnit_property.mObserverExplorer = nil
+    self.mCustomTrackWidthUnit_property.mValueExplorer = nil
+  //--- Atomic property: mUsesCustomTrackWidth
+    self.mUsesCustomTrackWidth_property.mObserverExplorer = nil
+    self.mUsesCustomTrackWidth_property.mValueExplorer = nil
   //--- To one property: mConnectorP1
     self.mConnectorP1_property.mObserverExplorer = nil
     self.mConnectorP1_property.mValueExplorer = nil
@@ -495,6 +774,14 @@ class BoardTrack : BoardObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mSide
     self.mSide_property.storeIn (dictionary: ioDictionary, forKey:"mSide")
+  //--- Atomic property: mDefaultTrackWidthUnit
+    self.mDefaultTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mDefaultTrackWidthUnit")
+  //--- Atomic property: mCustomTrackWidth
+    self.mCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey:"mCustomTrackWidth")
+  //--- Atomic property: mCustomTrackWidthUnit
+    self.mCustomTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mCustomTrackWidthUnit")
+  //--- Atomic property: mUsesCustomTrackWidth
+    self.mUsesCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey:"mUsesCustomTrackWidth")
   }
 
   //····················································································································
@@ -547,6 +834,14 @@ class BoardTrack : BoardObject,
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSide
     self.mSide_property.readFrom (dictionary: inDictionary, forKey:"mSide")
+  //--- Atomic property: mDefaultTrackWidthUnit
+    self.mDefaultTrackWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mDefaultTrackWidthUnit")
+  //--- Atomic property: mCustomTrackWidth
+    self.mCustomTrackWidth_property.readFrom (dictionary: inDictionary, forKey:"mCustomTrackWidth")
+  //--- Atomic property: mCustomTrackWidthUnit
+    self.mCustomTrackWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mCustomTrackWidthUnit")
+  //--- Atomic property: mUsesCustomTrackWidth
+    self.mUsesCustomTrackWidth_property.readFrom (dictionary: inDictionary, forKey:"mUsesCustomTrackWidth")
   }
 
   //····················································································································

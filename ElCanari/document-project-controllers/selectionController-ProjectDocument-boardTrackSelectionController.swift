@@ -21,13 +21,53 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   }
 
   //····················································································································
-  //   Selection observable property: objectDisplay
+  //   Selection observable property: mDefaultTrackWidthUnit
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  let mDefaultTrackWidthUnit_property = EBPropertyProxy_Int ()
 
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
+  var mDefaultTrackWidthUnit_property_selection : EBSelection <Int> {
+    return self.mDefaultTrackWidthUnit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mCustomTrackWidth
+  //····················································································································
+
+  let mCustomTrackWidth_property = EBPropertyProxy_Int ()
+
+  var mCustomTrackWidth_property_selection : EBSelection <Int> {
+    return self.mCustomTrackWidth_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mCustomTrackWidthUnit
+  //····················································································································
+
+  let mCustomTrackWidthUnit_property = EBPropertyProxy_Int ()
+
+  var mCustomTrackWidthUnit_property_selection : EBSelection <Int> {
+    return self.mCustomTrackWidthUnit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mUsesCustomTrackWidth
+  //····················································································································
+
+  let mUsesCustomTrackWidth_property = EBPropertyProxy_Bool ()
+
+  var mUsesCustomTrackWidth_property_selection : EBSelection <Bool> {
+    return self.mUsesCustomTrackWidth_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: actualTrackWidth
+  //····················································································································
+
+  let actualTrackWidth_property = EBTransientProperty_Int ()
+
+  var actualTrackWidth_property_selection : EBSelection <Int> {
+    return self.actualTrackWidth_property.prop
   }
 
   //····················································································································
@@ -61,6 +101,26 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   }
 
   //····················································································································
+  //   Selection observable property: netClassTrackWidth
+  //····················································································································
+
+  let netClassTrackWidth_property = EBTransientProperty_Int ()
+
+  var netClassTrackWidth_property_selection : EBSelection <Int> {
+    return self.netClassTrackWidth_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: objectDisplay
+  //····················································································································
+
+  let objectDisplay_property = EBTransientProperty_EBShape ()
+
+  var objectDisplay_property_selection : EBSelection <EBShape> {
+    return self.objectDisplay_property.prop
+  }
+
+  //····················································································································
   //   Selected array (not observable)
   //····················································································································
 
@@ -77,10 +137,16 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   func bind_selection (model : ReadOnlyArrayOf_BoardObject, file : String, line : Int) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mSide ()
-    self.bind_property_objectDisplay ()
+    self.bind_property_mDefaultTrackWidthUnit ()
+    self.bind_property_mCustomTrackWidth ()
+    self.bind_property_mCustomTrackWidthUnit ()
+    self.bind_property_mUsesCustomTrackWidth ()
+    self.bind_property_actualTrackWidth ()
     self.bind_property_selectionDisplay ()
     self.bind_property_netName ()
     self.bind_property_netClassName ()
+    self.bind_property_netClassTrackWidth ()
+    self.bind_property_objectDisplay ()
   }
 
   //····················································································································
@@ -94,9 +160,29 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.mSide_property.mWriteModelFunction = nil 
     self.mSide_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mSide (self.mSide_property)
-  //--- objectDisplay
-    self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+  //--- mDefaultTrackWidthUnit
+    self.mDefaultTrackWidthUnit_property.mReadModelFunction = nil 
+    self.mDefaultTrackWidthUnit_property.mWriteModelFunction = nil 
+    self.mDefaultTrackWidthUnit_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mDefaultTrackWidthUnit (self.mDefaultTrackWidthUnit_property)
+  //--- mCustomTrackWidth
+    self.mCustomTrackWidth_property.mReadModelFunction = nil 
+    self.mCustomTrackWidth_property.mWriteModelFunction = nil 
+    self.mCustomTrackWidth_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mCustomTrackWidth (self.mCustomTrackWidth_property)
+  //--- mCustomTrackWidthUnit
+    self.mCustomTrackWidthUnit_property.mReadModelFunction = nil 
+    self.mCustomTrackWidthUnit_property.mWriteModelFunction = nil 
+    self.mCustomTrackWidthUnit_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mCustomTrackWidthUnit (self.mCustomTrackWidthUnit_property)
+  //--- mUsesCustomTrackWidth
+    self.mUsesCustomTrackWidth_property.mReadModelFunction = nil 
+    self.mUsesCustomTrackWidth_property.mWriteModelFunction = nil 
+    self.mUsesCustomTrackWidth_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mUsesCustomTrackWidth (self.mUsesCustomTrackWidth_property)
+  //--- actualTrackWidth
+    self.actualTrackWidth_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_actualTrackWidth (self.actualTrackWidth_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
@@ -106,6 +192,12 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //--- netClassName
     self.netClassName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_netClassName (self.netClassName_property)
+  //--- netClassTrackWidth
+    self.netClassTrackWidth_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
+  //--- objectDisplay
+    self.objectDisplay_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //---
   }
 
@@ -152,6 +244,38 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
       view: view,
       observerExplorer: &self.mSide_property.mObserverExplorer,
       valueExplorer: &self.mSide_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDefaultTrackWidthUnit",
+      idx: self.mDefaultTrackWidthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDefaultTrackWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.mDefaultTrackWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mCustomTrackWidth",
+      idx: self.mCustomTrackWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCustomTrackWidth_property.mObserverExplorer,
+      valueExplorer: &self.mCustomTrackWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mCustomTrackWidthUnit",
+      idx: self.mCustomTrackWidthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCustomTrackWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.mCustomTrackWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mUsesCustomTrackWidth",
+      idx: self.mUsesCustomTrackWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mUsesCustomTrackWidth_property.mObserverExplorer,
+      valueExplorer: &self.mUsesCustomTrackWidth_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -276,9 +400,9 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   }
   //····················································································································
 
-  private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_mDefaultTrackWidthUnit () {
+    self.selectedArray_property.addEBObserverOf_mDefaultTrackWidthUnit (self.mDefaultTrackWidthUnit_property)
+    self.mDefaultTrackWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
@@ -286,10 +410,286 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <EBShape> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.mDefaultTrackWidthUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDefaultTrackWidthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mDefaultTrackWidthUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mDefaultTrackWidthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mDefaultTrackWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mCustomTrackWidth () {
+    self.selectedArray_property.addEBObserverOf_mCustomTrackWidth (self.mCustomTrackWidth_property)
+    self.mCustomTrackWidth_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mCustomTrackWidth_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mCustomTrackWidth_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mCustomTrackWidth_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mCustomTrackWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mCustomTrackWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mCustomTrackWidthUnit () {
+    self.selectedArray_property.addEBObserverOf_mCustomTrackWidthUnit (self.mCustomTrackWidthUnit_property)
+    self.mCustomTrackWidthUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mCustomTrackWidthUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mCustomTrackWidthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mCustomTrackWidthUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mCustomTrackWidthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mCustomTrackWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mUsesCustomTrackWidth () {
+    self.selectedArray_property.addEBObserverOf_mUsesCustomTrackWidth (self.mUsesCustomTrackWidth_property)
+    self.mUsesCustomTrackWidth_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mUsesCustomTrackWidth_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mUsesCustomTrackWidth_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mUsesCustomTrackWidth_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mUsesCustomTrackWidth_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mUsesCustomTrackWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_actualTrackWidth () {
+    self.selectedArray_property.addEBObserverOf_actualTrackWidth (self.actualTrackWidth_property)
+    self.actualTrackWidth_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.actualTrackWidth_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -407,6 +807,84 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var isMultipleSelection = false
           for object in v {
             switch object.netClassName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_netClassTrackWidth () {
+    self.selectedArray_property.addEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
+    self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.netClassTrackWidth_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_objectDisplay () {
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.objectDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :

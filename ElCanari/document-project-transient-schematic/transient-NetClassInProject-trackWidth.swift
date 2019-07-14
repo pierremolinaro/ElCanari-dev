@@ -13,34 +13,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardTrack_objectDisplay (
-       _ self_mConnectorP1_location : CanariPoint?,
-       _ self_mConnectorP2_location : CanariPoint?,
-       _ self_mSide : TrackSide,         
-       _ prefs_frontSideLayoutColorForBoard : NSColor,
-       _ prefs_backSideLayoutColorForBoard : NSColor,
-       _ self_actualTrackWidth : Int
-) -> EBShape {
+func transient_NetClassInProject_trackWidth (
+       _ self_mTrackWidth : Int,             
+       _ self_mTrackWidthUnit : Int
+) -> String {
 //--- START OF USER ZONE 2
-       var shape = EBShape ()
-       if let p1 = self_mConnectorP1_location?.cocoaPoint, let p2 = self_mConnectorP2_location?.cocoaPoint {
-         var bp = EBBezierPath ()
-         let w = (self_actualTrackWidth == 0) ? milsToCanariUnit (10) : self_actualTrackWidth
-         bp.lineWidth = canariUnitToCocoa (w)
-         bp.lineCapStyle = .round
-         bp.lineJoinStyle = .round
-         bp.move (to: p1)
-         bp.line (to: p2)
-         let color : NSColor
-         switch self_mSide {
-         case .front :
-           color = prefs_frontSideLayoutColorForBoard
-         case .back :
-           color = prefs_backSideLayoutColorForBoard
-         }
-         shape.add (stroke: [bp], color)
-       }
-       return shape
+       return stringFrom (valueInCanariUnit: self_mTrackWidth, displayUnit: self_mTrackWidthUnit)
 //--- END OF USER ZONE 2
 }
 

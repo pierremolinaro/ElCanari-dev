@@ -87,7 +87,7 @@ document ProjectDocument root ProjectRoot {
   tableViewController #netClassController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mNetClasses {
     column "name" EBTextObserverField $valueObserver self.mNetClassName
     column "netcolor" EBTextObserverField $backColor self.mNetClassColor
-    column "width" EBTextObserverField $valueObserver self.netWidth
+    column "width" EBTextObserverField $valueObserver self.trackWidth
     column "hole" EBTextObserverField $valueObserver self.viaHoleDiameter
     column "pad" EBTextObserverField $valueObserver self.viaPadDiameter
     column "used" EBTextObserverField $valueObserver self.netUsage
@@ -542,7 +542,7 @@ document ProjectDocument root ProjectRoot {
      $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
   ;
 
-//----------------- Board Object tab
+//----------------- Board Objects tab
   outlet CanariSegmentedControl mBoardInspectorSegmentedControl $selectedPage root.mBoardSelectedInspector ;
   outlet NSView mBaseBoardInspectorView ;
   outlet CanariViewWithKeyView mSelectedObjectsBoardInspectorView ;
@@ -608,6 +608,18 @@ document ProjectDocument root ProjectRoot {
   outlet EBTextObserverField mTrackNetNameTextField $valueObserver #boardTrackSelectionController.netName ;
 
   outlet EBTextObserverField mTrackNetClassNameTextField $valueObserver #boardTrackSelectionController.netClassName ;
+
+  outlet EBPopUpButton mTrackDefaultWidthUnitPopUp $selectedTag #boardTrackSelectionController.mDefaultTrackWidthUnit ;
+  outlet CanariDimensionObserverTextField mTrackDefaultWidthTextField
+     $dimensionAndUnit #boardTrackSelectionController.netClassTrackWidth, #boardTrackSelectionController.mDefaultTrackWidthUnit
+  ;
+
+  outlet EBPopUpButton mTrackCustomWidthUnitPopUp $selectedTag #boardTrackSelectionController.mCustomTrackWidthUnit ;
+  outlet CanariDimensionTextField mTrackCustomWidthTextField
+     $dimensionAndUnit #boardTrackSelectionController.mCustomTrackWidth, #boardTrackSelectionController.mCustomTrackWidthUnit
+  ;
+
+  outlet EBSwitch mUsesCustomTrackWidthSwitch $value #boardTrackSelectionController.mUsesCustomTrackWidth ;
 
 //--- Board line inspector
   outlet CanariViewWithKeyView mBoardLineInspectorView ;

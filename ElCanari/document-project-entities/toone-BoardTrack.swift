@@ -16,16 +16,28 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     inOldValue?.mSide_property.removeEBObserversFrom (&self.mObserversOf_mSide) // Stored property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    inOldValue?.mDefaultTrackWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mDefaultTrackWidthUnit) // Stored property
+    inOldValue?.mCustomTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_mCustomTrackWidth) // Stored property
+    inOldValue?.mCustomTrackWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mCustomTrackWidthUnit) // Stored property
+    inOldValue?.mUsesCustomTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_mUsesCustomTrackWidth) // Stored property
+    inOldValue?.actualTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_actualTrackWidth) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     inOldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
     inOldValue?.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+    inOldValue?.netClassTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
+    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mSide_property.addEBObserversFrom (&self.mObserversOf_mSide) // Stored property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    self.mInternalValue?.mDefaultTrackWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mDefaultTrackWidthUnit) // Stored property
+    self.mInternalValue?.mCustomTrackWidth_property.addEBObserversFrom (&self.mObserversOf_mCustomTrackWidth) // Stored property
+    self.mInternalValue?.mCustomTrackWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mCustomTrackWidthUnit) // Stored property
+    self.mInternalValue?.mUsesCustomTrackWidth_property.addEBObserversFrom (&self.mObserversOf_mUsesCustomTrackWidth) // Stored property
+    self.mInternalValue?.actualTrackWidth_property.addEBObserversFrom (&self.mObserversOf_actualTrackWidth) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     self.mInternalValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
     self.mInternalValue?.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+    self.mInternalValue?.netClassTrackWidth_property.addEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
+    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
   }
 
   //····················································································································
@@ -99,16 +111,16 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   }
 
   //····················································································································
-  //   Observers of 'objectDisplay' transient property
+  //   Observers of 'mDefaultTrackWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private var mObserversOf_mDefaultTrackWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  var mDefaultTrackWidthUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
+      switch (model.mDefaultTrackWidthUnit_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -123,46 +135,326 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDefaultTrackWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.insert (inObserver)
+    self.mObserversOf_mDefaultTrackWidthUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
+       v?.mDefaultTrackWidthUnit_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mDefaultTrackWidthUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.remove (inObserver)
+    self.mObserversOf_mDefaultTrackWidthUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.removeEBObserver (inObserver)
+      v?.mDefaultTrackWidthUnit_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+  final func addEBObserversOf_mDefaultTrackWidthUnit_toElementsOfSet (_ inSet : Set<BoardTrack>) {
     for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
+      self.mObserversOf_mDefaultTrackWidthUnit.apply { (_ observer : EBEvent) in
+        managedObject.mDefaultTrackWidthUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+  final func removeEBObserversOf_mDefaultTrackWidthUnit_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    self.mObserversOf_mDefaultTrackWidthUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDefaultTrackWidthUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mCustomTrackWidth' stored property
+  //····················································································································
+
+  private var mObserversOf_mCustomTrackWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mCustomTrackWidth_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mCustomTrackWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mCustomTrackWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mCustomTrackWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mCustomTrackWidth_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mCustomTrackWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mCustomTrackWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mCustomTrackWidth_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mCustomTrackWidth_toElementsOfSet (_ inSet : Set<BoardTrack>) {
     for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
+      self.mObserversOf_mCustomTrackWidth.apply { (_ observer : EBEvent) in
+        managedObject.mCustomTrackWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mCustomTrackWidth_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    self.mObserversOf_mCustomTrackWidth.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mCustomTrackWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mCustomTrackWidthUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mCustomTrackWidthUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mCustomTrackWidthUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mCustomTrackWidthUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mCustomTrackWidthUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mCustomTrackWidthUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mCustomTrackWidthUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mCustomTrackWidthUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mCustomTrackWidthUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mCustomTrackWidthUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mCustomTrackWidthUnit_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_mCustomTrackWidthUnit.apply { (_ observer : EBEvent) in
+        managedObject.mCustomTrackWidthUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mCustomTrackWidthUnit_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    self.mObserversOf_mCustomTrackWidthUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mCustomTrackWidthUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mUsesCustomTrackWidth' stored property
+  //····················································································································
+
+  private var mObserversOf_mUsesCustomTrackWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mUsesCustomTrackWidth_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mUsesCustomTrackWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mUsesCustomTrackWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mUsesCustomTrackWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mUsesCustomTrackWidth_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mUsesCustomTrackWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mUsesCustomTrackWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mUsesCustomTrackWidth_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mUsesCustomTrackWidth_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_mUsesCustomTrackWidth.apply { (_ observer : EBEvent) in
+        managedObject.mUsesCustomTrackWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mUsesCustomTrackWidth_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    self.mObserversOf_mUsesCustomTrackWidth.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mUsesCustomTrackWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'actualTrackWidth' transient property
+  //····················································································································
+
+  private var mObserversOf_actualTrackWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  var actualTrackWidth_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.actualTrackWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_actualTrackWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_actualTrackWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.actualTrackWidth_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_actualTrackWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_actualTrackWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.actualTrackWidth_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_actualTrackWidth_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_actualTrackWidth.apply { (_ observer : EBEvent) in
+        managedObject.actualTrackWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_actualTrackWidth_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_actualTrackWidth.apply { (_ observer : EBEvent) in
+        managedObject.actualTrackWidth_property.removeEBObserver (observer)
       }
     }
   }
@@ -370,6 +662,144 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
     for managedObject in inSet {
       self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
         managedObject.netClassName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netClassTrackWidth' transient property
+  //····················································································································
+
+  private var mObserversOf_netClassTrackWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netClassTrackWidth_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.netClassTrackWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netClassTrackWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netClassTrackWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netClassTrackWidth_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netClassTrackWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netClassTrackWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netClassTrackWidth_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netClassTrackWidth_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassTrackWidth.apply { (_ observer : EBEvent) in
+        managedObject.netClassTrackWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassTrackWidth.apply { (_ observer : EBEvent) in
+        managedObject.netClassTrackWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
   }

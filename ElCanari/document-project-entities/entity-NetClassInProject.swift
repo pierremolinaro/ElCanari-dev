@@ -18,14 +18,14 @@ protocol NetClassInProject_mNetClassColor : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mNetWidth : class {
-  var mNetWidth : Int { get }
+protocol NetClassInProject_mTrackWidth : class {
+  var mTrackWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mNetWidthUnit : class {
-  var mNetWidthUnit : Int { get }
+protocol NetClassInProject_mTrackWidthUnit : class {
+  var mTrackWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -54,8 +54,8 @@ protocol NetClassInProject_mViaPadDiameterUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_netWidth : class {
-  var netWidth : String? { get }
+protocol NetClassInProject_trackWidth : class {
+  var trackWidth : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -101,13 +101,13 @@ protocol NetClassInProject_netWarningCount : class {
 class NetClassInProject : EBManagedObject,
          NetClassInProject_mNetClassName,
          NetClassInProject_mNetClassColor,
-         NetClassInProject_mNetWidth,
-         NetClassInProject_mNetWidthUnit,
+         NetClassInProject_mTrackWidth,
+         NetClassInProject_mTrackWidthUnit,
          NetClassInProject_mViaHoleDiameter,
          NetClassInProject_mViaHoleDiameterUnit,
          NetClassInProject_mViaPadDiameter,
          NetClassInProject_mViaPadDiameterUnit,
-         NetClassInProject_netWidth,
+         NetClassInProject_trackWidth,
          NetClassInProject_viaHoleDiameter,
          NetClassInProject_viaPadDiameter,
          NetClassInProject_canRemove,
@@ -150,38 +150,38 @@ class NetClassInProject : EBManagedObject,
   var mNetClassColor_property_selection : EBSelection <NSColor> { return self.mNetClassColor_property.prop }
 
   //····················································································································
-  //   Atomic property: mNetWidth
+  //   Atomic property: mTrackWidth
   //····················································································································
 
-  let mNetWidth_property = EBStoredProperty_Int (defaultValue: 45720)
+  let mTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720)
 
   //····················································································································
 
-  var mNetWidth : Int {
-    get { return self.mNetWidth_property.propval }
-    set { self.mNetWidth_property.setProp (newValue) }
+  var mTrackWidth : Int {
+    get { return self.mTrackWidth_property.propval }
+    set { self.mTrackWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNetWidth_property_selection : EBSelection <Int> { return self.mNetWidth_property.prop }
+  var mTrackWidth_property_selection : EBSelection <Int> { return self.mTrackWidth_property.prop }
 
   //····················································································································
-  //   Atomic property: mNetWidthUnit
+  //   Atomic property: mTrackWidthUnit
   //····················································································································
 
-  let mNetWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let mTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
-  var mNetWidthUnit : Int {
-    get { return self.mNetWidthUnit_property.propval }
-    set { self.mNetWidthUnit_property.setProp (newValue) }
+  var mTrackWidthUnit : Int {
+    get { return self.mTrackWidthUnit_property.propval }
+    set { self.mTrackWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNetWidthUnit_property_selection : EBSelection <Int> { return self.mNetWidthUnit_property.prop }
+  var mTrackWidthUnit_property_selection : EBSelection <Int> { return self.mTrackWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mViaHoleDiameter
@@ -271,21 +271,21 @@ class NetClassInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: netWidth
+  //   Transient property: trackWidth
   //····················································································································
 
-  let netWidth_property = EBTransientProperty_String ()
+  let trackWidth_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var netWidth_property_selection : EBSelection <String> {
-    return self.netWidth_property.prop
+  var trackWidth_property_selection : EBSelection <String> {
+    return self.trackWidth_property.prop
   }
 
   //····················································································································
 
-  var netWidth : String? {
-    switch self.netWidth_property_selection {
+  var trackWidth : String? {
+    switch self.trackWidth_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -441,10 +441,10 @@ class NetClassInProject : EBManagedObject,
     self.mNetClassName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mNetClassColor
     self.mNetClassColor_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mNetWidth
-    self.mNetWidth_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mNetWidthUnit
-    self.mNetWidthUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mTrackWidth
+    self.mTrackWidth_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mTrackWidthUnit
+    self.mTrackWidthUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mViaHoleDiameter
     self.mViaHoleDiameter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mViaHoleDiameterUnit
@@ -459,20 +459,20 @@ class NetClassInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mNetClass_property.setProp (me) } },
       resetter: { inObject in inObject.mNetClass_property.setProp (nil) }
     )
-  //--- Atomic property: netWidth
-    self.netWidth_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: trackWidth
+    self.trackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mNetWidth_property_selection.kind ()
-        kind &= unwSelf.mNetWidthUnit_property_selection.kind ()
+        var kind = unwSelf.mTrackWidth_property_selection.kind ()
+        kind &= unwSelf.mTrackWidthUnit_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mNetWidth_property_selection, unwSelf.mNetWidthUnit_property_selection) {
+          switch (unwSelf.mTrackWidth_property_selection, unwSelf.mTrackWidthUnit_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_NetClassInProject_netWidth (v0, v1))
+            return .single (transient_NetClassInProject_trackWidth (v0, v1))
           default :
             return .empty
           }
@@ -481,8 +481,8 @@ class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNetWidth_property.addEBObserver (self.netWidth_property)
-    self.mNetWidthUnit_property.addEBObserver (self.netWidth_property)
+    self.mTrackWidth_property.addEBObserver (self.trackWidth_property)
+    self.mTrackWidthUnit_property.addEBObserver (self.trackWidth_property)
   //--- Atomic property: viaHoleDiameter
     self.viaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -638,8 +638,8 @@ class NetClassInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mNetWidth_property.removeEBObserver (self.netWidth_property)
-    self.mNetWidthUnit_property.removeEBObserver (self.netWidth_property)
+    self.mTrackWidth_property.removeEBObserver (self.trackWidth_property)
+    self.mTrackWidthUnit_property.removeEBObserver (self.trackWidth_property)
     self.mViaHoleDiameter_property.removeEBObserver (self.viaHoleDiameter_property)
     self.mViaHoleDiameterUnit_property.removeEBObserver (self.viaHoleDiameter_property)
     self.mViaPadDiameter_property.removeEBObserver (self.viaPadDiameter_property)
@@ -682,20 +682,20 @@ class NetClassInProject : EBManagedObject,
       valueExplorer: &self.mNetClassColor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mNetWidth",
-      idx: self.mNetWidth_property.ebObjectIndex,
+      "mTrackWidth",
+      idx: self.mTrackWidth_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mNetWidth_property.mObserverExplorer,
-      valueExplorer: &self.mNetWidth_property.mValueExplorer
+      observerExplorer: &self.mTrackWidth_property.mObserverExplorer,
+      valueExplorer: &self.mTrackWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mNetWidthUnit",
-      idx: self.mNetWidthUnit_property.ebObjectIndex,
+      "mTrackWidthUnit",
+      idx: self.mTrackWidthUnit_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mNetWidthUnit_property.mObserverExplorer,
-      valueExplorer: &self.mNetWidthUnit_property.mValueExplorer
+      observerExplorer: &self.mTrackWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.mTrackWidthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mViaHoleDiameter",
@@ -731,12 +731,12 @@ class NetClassInProject : EBManagedObject,
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
-      "netWidth",
-      idx: self.netWidth_property.ebObjectIndex,
+      "trackWidth",
+      idx: self.trackWidth_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.netWidth_property.mObserverExplorer,
-      valueExplorer: &self.netWidth_property.mValueExplorer
+      observerExplorer: &self.trackWidth_property.mObserverExplorer,
+      valueExplorer: &self.trackWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "viaHoleDiameter",
@@ -809,12 +809,12 @@ class NetClassInProject : EBManagedObject,
   //--- Atomic property: mNetClassColor
     self.mNetClassColor_property.mObserverExplorer = nil
     self.mNetClassColor_property.mValueExplorer = nil
-  //--- Atomic property: mNetWidth
-    self.mNetWidth_property.mObserverExplorer = nil
-    self.mNetWidth_property.mValueExplorer = nil
-  //--- Atomic property: mNetWidthUnit
-    self.mNetWidthUnit_property.mObserverExplorer = nil
-    self.mNetWidthUnit_property.mValueExplorer = nil
+  //--- Atomic property: mTrackWidth
+    self.mTrackWidth_property.mObserverExplorer = nil
+    self.mTrackWidth_property.mValueExplorer = nil
+  //--- Atomic property: mTrackWidthUnit
+    self.mTrackWidthUnit_property.mObserverExplorer = nil
+    self.mTrackWidthUnit_property.mValueExplorer = nil
   //--- Atomic property: mViaHoleDiameter
     self.mViaHoleDiameter_property.mObserverExplorer = nil
     self.mViaHoleDiameter_property.mValueExplorer = nil
@@ -862,10 +862,10 @@ class NetClassInProject : EBManagedObject,
     self.mNetClassName_property.storeIn (dictionary: ioDictionary, forKey:"mNetClassName")
   //--- Atomic property: mNetClassColor
     self.mNetClassColor_property.storeIn (dictionary: ioDictionary, forKey:"mNetClassColor")
-  //--- Atomic property: mNetWidth
-    self.mNetWidth_property.storeIn (dictionary: ioDictionary, forKey:"mNetWidth")
-  //--- Atomic property: mNetWidthUnit
-    self.mNetWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mNetWidthUnit")
+  //--- Atomic property: mTrackWidth
+    self.mTrackWidth_property.storeIn (dictionary: ioDictionary, forKey:"mTrackWidth")
+  //--- Atomic property: mTrackWidthUnit
+    self.mTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mTrackWidthUnit")
   //--- Atomic property: mViaHoleDiameter
     self.mViaHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mViaHoleDiameter")
   //--- Atomic property: mViaHoleDiameterUnit
@@ -907,10 +907,10 @@ class NetClassInProject : EBManagedObject,
     self.mNetClassName_property.readFrom (dictionary: inDictionary, forKey:"mNetClassName")
   //--- Atomic property: mNetClassColor
     self.mNetClassColor_property.readFrom (dictionary: inDictionary, forKey:"mNetClassColor")
-  //--- Atomic property: mNetWidth
-    self.mNetWidth_property.readFrom (dictionary: inDictionary, forKey:"mNetWidth")
-  //--- Atomic property: mNetWidthUnit
-    self.mNetWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mNetWidthUnit")
+  //--- Atomic property: mTrackWidth
+    self.mTrackWidth_property.readFrom (dictionary: inDictionary, forKey:"mTrackWidth")
+  //--- Atomic property: mTrackWidthUnit
+    self.mTrackWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mTrackWidthUnit")
   //--- Atomic property: mViaHoleDiameter
     self.mViaHoleDiameter_property.readFrom (dictionary: inDictionary, forKey:"mViaHoleDiameter")
   //--- Atomic property: mViaHoleDiameterUnit

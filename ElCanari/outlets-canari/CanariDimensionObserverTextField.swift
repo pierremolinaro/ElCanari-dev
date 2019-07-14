@@ -48,7 +48,11 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
       self.stringValue = "—"
       self.enableFromValueBinding (false)
     case .single (let propertyValue) :
-      self.doubleValue = propertyValue
+      if propertyValue == 0.0 {
+        self.stringValue = "—"
+      }else{
+        self.doubleValue = propertyValue
+      }
       self.enableFromValueBinding (true)
     }
   }

@@ -15,18 +15,30 @@ graphic entity BoardTrack : BoardObject {
 
   property TrackSide mSide default front ;
 
- override transient EBShape objectDisplay dependsFrom
+  property Int mDefaultTrackWidthUnit default 2_286 ; // mil
+  property Int mCustomTrackWidth default 45_720 ; // 20 mil
+  property Int mCustomTrackWidthUnit default 2_286 ; // mil
+  property Bool mUsesCustomTrackWidth default no ;
+
+  override transient EBShape objectDisplay dependsFrom
     self.mConnectorP1.one.location, self.mConnectorP2.one.location, self.mSide,
     prefs.frontSideLayoutColorForBoard,
-    prefs.backSideLayoutColorForBoard
+    prefs.backSideLayoutColorForBoard,
+    self.actualTrackWidth
   ;
 
   override transient EBShape selectionDisplay dependsFrom
     self.mConnectorP1.one.location, self.mConnectorP2.one.location
   ;
   
+  transient Int actualTrackWidth dependsFrom
+    self.mNet.one.netClassTrackWidth,
+    self.mUsesCustomTrackWidth, self.mCustomTrackWidth
+  ;
+
   transient String netName dependsFrom self.mNet.one.mNetName ;
   transient String netClassName dependsFrom self.mNet.one.netClassName ;
+  transient Int netClassTrackWidth dependsFrom self.mNet.one.netClassTrackWidth ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

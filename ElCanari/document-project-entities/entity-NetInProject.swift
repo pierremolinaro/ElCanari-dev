@@ -18,6 +18,12 @@ protocol NetInProject_netClassName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol NetInProject_netClassTrackWidth : class {
+  var netClassTrackWidth : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol NetInProject_wireColor : class {
   var wireColor : NSColor? { get }
 }
@@ -35,6 +41,7 @@ protocol NetInProject_netPointsInfo : class {
 class NetInProject : EBManagedObject,
          NetInProject_mNetName,
          NetInProject_netClassName,
+         NetInProject_netClassTrackWidth,
          NetInProject_wireColor,
          NetInProject_netPointsInfo {
 
@@ -155,6 +162,29 @@ class NetInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: netClassTrackWidth
+  //····················································································································
+
+  let netClassTrackWidth_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var netClassTrackWidth_property_selection : EBSelection <Int> {
+    return self.netClassTrackWidth_property.prop
+  }
+
+  //····················································································································
+
+  var netClassTrackWidth : Int? {
+    switch self.netClassTrackWidth_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: wireColor
   //····················································································································
 
@@ -248,6 +278,28 @@ class NetInProject : EBManagedObject,
       }
     }
     self.mNetClass_property.addEBObserverOf_mNetClassName (self.netClassName_property)
+  //--- Atomic property: netClassTrackWidth
+    self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNetClass_property.mTrackWidth_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mNetClass_property.mTrackWidth_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_NetInProject_netClassTrackWidth (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNetClass_property.addEBObserverOf_mTrackWidth (self.netClassTrackWidth_property)
   //--- Atomic property: wireColor
     self.wireColor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -310,6 +362,7 @@ class NetInProject : EBManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.mNetClass_property.removeEBObserverOf_mNetClassName (self.netClassName_property)
+    self.mNetClass_property.removeEBObserverOf_mTrackWidth (self.netClassTrackWidth_property)
     self.mNetClass_property.removeEBObserverOf_mNetClassColor (self.wireColor_property)
     self.mPoints_property.removeEBObserverOf_netInfoForPoint (self.netPointsInfo_property)
   //--- Unregister properties for handling signature
@@ -342,6 +395,14 @@ class NetInProject : EBManagedObject,
       view: view,
       observerExplorer: &self.netClassName_property.mObserverExplorer,
       valueExplorer: &self.netClassName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netClassTrackWidth",
+      idx: self.netClassTrackWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netClassTrackWidth_property.mObserverExplorer,
+      valueExplorer: &self.netClassTrackWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "wireColor",

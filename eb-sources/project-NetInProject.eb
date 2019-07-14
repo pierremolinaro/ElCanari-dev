@@ -11,6 +11,8 @@ entity NetInProject {
  
   transient String netClassName dependsFrom self.mNetClass.one.mNetClassName ;
   
+  transient Int netClassTrackWidth dependsFrom self.mNetClass.one.mTrackWidth ;
+  
   transient NSColor wireColor dependsFrom self.mNetClass.one.mNetClassColor ;
 
   transient NetInfoPointArray netPointsInfo dependsFrom self.mPoints.all.netInfoForPoint ;

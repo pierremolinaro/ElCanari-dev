@@ -13,12 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetClassInProject_netWidth (
-       _ self_mNetWidth : Int,             
-       _ self_mNetWidthUnit : Int
-) -> String {
+func transient_NetInProject_netClassTrackWidth (
+       _ self_mNetClass_mTrackWidth : Int?
+) -> Int {
 //--- START OF USER ZONE 2
-       return stringFrom (valueInCanariUnit: self_mNetWidth, displayUnit: self_mNetWidthUnit)
+        return self_mNetClass_mTrackWidth ?? 0
 //--- END OF USER ZONE 2
 }
 

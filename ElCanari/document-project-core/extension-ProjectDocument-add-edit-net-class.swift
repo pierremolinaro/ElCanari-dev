@@ -62,8 +62,8 @@ extension ProjectDocument {
           let netClass = NetClassInProject (self.ebUndoManager)
           netClass.mNetClassName = newNetClassName
           netClass.mNetClassColor = netColor_property.propval
-          netClass.mNetWidth = width_property.propval
-          netClass.mNetWidthUnit = widthUnit_property.propval
+          netClass.mTrackWidth = width_property.propval
+          netClass.mTrackWidthUnit = widthUnit_property.propval
           netClass.mViaHoleDiameter = viaHoleDiameter_property.propval
           netClass.mViaHoleDiameterUnit = viaHoleDiameterUnit_property.propval
           netClass.mViaPadDiameter = viaPadDiameter_property.propval
@@ -117,8 +117,8 @@ extension ProjectDocument {
       self.mAddNetClassTextField?.setSendContinously (true)
       self.classNameTextFieldEditionDidChange (nil)
     //---  Width
-      let width_property = EBStoredProperty_Int (defaultValue: editedNetClass.mNetWidth)
-      let widthUnit_property = EBStoredProperty_Int (defaultValue: editedNetClass.mNetWidthUnit)
+      let width_property = EBStoredProperty_Int (defaultValue: editedNetClass.mTrackWidth)
+      let widthUnit_property = EBStoredProperty_Int (defaultValue: editedNetClass.mTrackWidthUnit)
       self.mNetClassWidthDimensionTextField?.bind_dimensionAndUnit (
         width_property,
         widthUnit_property,
@@ -154,8 +154,8 @@ extension ProjectDocument {
         if inResponse == .stop, let newNetClassName = self.mAddNetClassTextField?.stringValue {
           editedNetClass.mNetClassName = newNetClassName
           editedNetClass.mNetClassColor = netColor_property.propval
-          editedNetClass.mNetWidth = width_property.propval
-          editedNetClass.mNetWidthUnit = widthUnit_property.propval
+          editedNetClass.mTrackWidth = width_property.propval
+          editedNetClass.mTrackWidthUnit = widthUnit_property.propval
           editedNetClass.mViaHoleDiameter = viaHoleDiameter_property.propval
           editedNetClass.mViaHoleDiameterUnit = viaHoleDiameterUnit_property.propval
           editedNetClass.mViaPadDiameter = viaPadDiameter_property.propval

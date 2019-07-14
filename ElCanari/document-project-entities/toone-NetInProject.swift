@@ -17,11 +17,13 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //--- Remove observers from removed objects
     inOldValue?.mNetName_property.removeEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
     inOldValue?.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+    inOldValue?.netClassTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
     inOldValue?.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
     inOldValue?.netPointsInfo_property.removeEBObserversFrom (&self.mObserversOf_netPointsInfo) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mNetName_property.addEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
     self.mInternalValue?.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+    self.mInternalValue?.netClassTrackWidth_property.addEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
     self.mInternalValue?.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
     self.mInternalValue?.netPointsInfo_property.addEBObserversFrom (&self.mObserversOf_netPointsInfo) // Transient property
   }
@@ -161,6 +163,75 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     for managedObject in inSet {
       self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
         managedObject.netClassName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netClassTrackWidth' transient property
+  //····················································································································
+
+  private var mObserversOf_netClassTrackWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netClassTrackWidth_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.netClassTrackWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netClassTrackWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netClassTrackWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netClassTrackWidth_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netClassTrackWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netClassTrackWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netClassTrackWidth_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netClassTrackWidth_toElementsOfSet (_ inSet : Set<NetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassTrackWidth.apply { (_ observer : EBEvent) in
+        managedObject.netClassTrackWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassTrackWidth.apply { (_ observer : EBEvent) in
+        managedObject.netClassTrackWidth_property.removeEBObserver (observer)
       }
     }
   }

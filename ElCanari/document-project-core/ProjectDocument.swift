@@ -722,6 +722,10 @@ import Cocoa
   @IBOutlet weak var mSheetUpButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mSymbolMirrorSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mSymbolRotationSegmentedControl : CanariQuadrantSegmentedControl? = nil // An outlet should be declared weak
+  @IBOutlet weak var mTrackCustomWidthTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mTrackCustomWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mTrackDefaultWidthTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mTrackDefaultWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mTrackNetClassNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mTrackNetNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mUnplacedPackageTableView : CanariDragSourceTableView? = nil // An outlet should be declared weak
@@ -733,6 +737,7 @@ import Cocoa
   @IBOutlet weak var mUpdateDeviceButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mUpdateDevicesAndFontsButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mUpdateFontButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mUsesCustomTrackWidthSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mWireNetNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mWireRenameNetButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mWireRenameNetWithUniqueNewNameButton : EBButton? = nil // An outlet should be declared weak
@@ -1153,6 +1158,10 @@ import Cocoa
     checkOutletConnection (self.mSheetUpButton, "mSheetUpButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSymbolMirrorSwitch, "mSymbolMirrorSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolRotationSegmentedControl, "mSymbolRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mTrackCustomWidthTextField, "mTrackCustomWidthTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mTrackCustomWidthUnitPopUp, "mTrackCustomWidthUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mTrackDefaultWidthTextField, "mTrackDefaultWidthTextField", CanariDimensionObserverTextField.self, #file, #line)
+    checkOutletConnection (self.mTrackDefaultWidthUnitPopUp, "mTrackDefaultWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mTrackNetClassNameTextField, "mTrackNetClassNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mTrackNetNameTextField, "mTrackNetNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mUnplacedPackageTableView, "mUnplacedPackageTableView", CanariDragSourceTableView.self, #file, #line)
@@ -1164,6 +1173,7 @@ import Cocoa
     checkOutletConnection (self.mUpdateDeviceButton, "mUpdateDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpdateDevicesAndFontsButton, "mUpdateDevicesAndFontsButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpdateFontButton, "mUpdateFontButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mUsesCustomTrackWidthSwitch, "mUsesCustomTrackWidthSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mWireNetNameTextField, "mWireNetNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mWireRenameNetButton, "mWireRenameNetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mWireRenameNetWithUniqueNewNameButton, "mWireRenameNetWithUniqueNewNameButton", EBButton.self, #file, #line)
@@ -1628,6 +1638,11 @@ import Cocoa
     self.mBoardTrackSidePopUpButton?.bind_selectedIndex (self.boardTrackSelectionController.mSide_property, file: #file, line: #line)
     self.mTrackNetNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netName_property, file: #file, line: #line)
     self.mTrackNetClassNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netClassName_property, file: #file, line: #line)
+    self.mTrackDefaultWidthUnitPopUp?.bind_selectedTag (self.boardTrackSelectionController.mDefaultTrackWidthUnit_property, file: #file, line: #line)
+    self.mTrackDefaultWidthTextField?.bind_dimensionAndUnit (self.boardTrackSelectionController.netClassTrackWidth_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property, file: #file, line: #line)
+    self.mTrackCustomWidthUnitPopUp?.bind_selectedTag (self.boardTrackSelectionController.mCustomTrackWidthUnit_property, file: #file, line: #line)
+    self.mTrackCustomWidthTextField?.bind_dimensionAndUnit (self.boardTrackSelectionController.mCustomTrackWidth_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property, file: #file, line: #line)
+    self.mUsesCustomTrackWidthSwitch?.bind_value (self.boardTrackSelectionController.mUsesCustomTrackWidth_property, file: #file, line: #line)
     self.mBoardLineWidthUnitPopUp?.bind_selectedTag (self.boardLineSelectionController.mWidthUnit_property, file: #file, line: #line)
     self.mBoardLineWidthTextField?.bind_dimensionAndUnit (self.boardLineSelectionController.mWidth_property, self.boardLineSelectionController.mWidthUnit_property, file: #file, line: #line)
     self.mBoardLineLayerPopUpButton?.bind_selectedIndex (self.boardLineSelectionController.mLayer_property, file: #file, line: #line)
@@ -2234,6 +2249,11 @@ import Cocoa
     self.mBoardTrackSidePopUpButton?.unbind_selectedIndex ()
     self.mTrackNetNameTextField?.unbind_valueObserver ()
     self.mTrackNetClassNameTextField?.unbind_valueObserver ()
+    self.mTrackDefaultWidthUnitPopUp?.unbind_selectedTag ()
+    self.mTrackDefaultWidthTextField?.unbind_dimensionAndUnit ()
+    self.mTrackCustomWidthUnitPopUp?.unbind_selectedTag ()
+    self.mTrackCustomWidthTextField?.unbind_dimensionAndUnit ()
+    self.mUsesCustomTrackWidthSwitch?.unbind_value ()
     self.mBoardLineWidthUnitPopUp?.unbind_selectedTag ()
     self.mBoardLineWidthTextField?.unbind_dimensionAndUnit ()
     self.mBoardLineLayerPopUpButton?.unbind_selectedIndex ()
@@ -2736,6 +2756,10 @@ import Cocoa
     self.mSheetUpButton?.ebCleanUp ()
     self.mSymbolMirrorSwitch?.ebCleanUp ()
     self.mSymbolRotationSegmentedControl?.ebCleanUp ()
+    self.mTrackCustomWidthTextField?.ebCleanUp ()
+    self.mTrackCustomWidthUnitPopUp?.ebCleanUp ()
+    self.mTrackDefaultWidthTextField?.ebCleanUp ()
+    self.mTrackDefaultWidthUnitPopUp?.ebCleanUp ()
     self.mTrackNetClassNameTextField?.ebCleanUp ()
     self.mTrackNetNameTextField?.ebCleanUp ()
     self.mUnplacedPackageTableView?.ebCleanUp ()
@@ -2747,6 +2771,7 @@ import Cocoa
     self.mUpdateDeviceButton?.ebCleanUp ()
     self.mUpdateDevicesAndFontsButton?.ebCleanUp ()
     self.mUpdateFontButton?.ebCleanUp ()
+    self.mUsesCustomTrackWidthSwitch?.ebCleanUp ()
     self.mWireNetNameTextField?.ebCleanUp ()
     self.mWireRenameNetButton?.ebCleanUp ()
     self.mWireRenameNetWithUniqueNewNameButton?.ebCleanUp ()
@@ -3029,6 +3054,10 @@ import Cocoa
 //    self.mSheetUpButton = nil
 //    self.mSymbolMirrorSwitch = nil
 //    self.mSymbolRotationSegmentedControl = nil
+//    self.mTrackCustomWidthTextField = nil
+//    self.mTrackCustomWidthUnitPopUp = nil
+//    self.mTrackDefaultWidthTextField = nil
+//    self.mTrackDefaultWidthUnitPopUp = nil
 //    self.mTrackNetClassNameTextField = nil
 //    self.mTrackNetNameTextField = nil
 //    self.mUnplacedPackageTableView = nil
@@ -3040,6 +3069,7 @@ import Cocoa
 //    self.mUpdateDeviceButton = nil
 //    self.mUpdateDevicesAndFontsButton = nil
 //    self.mUpdateFontButton = nil
+//    self.mUsesCustomTrackWidthSwitch = nil
 //    self.mWireNetNameTextField = nil
 //    self.mWireRenameNetButton = nil
 //    self.mWireRenameNetWithUniqueNewNameButton = nil
