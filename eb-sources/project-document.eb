@@ -605,6 +605,10 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBPopUpButton mBoardTrackSidePopUpButton $selectedIndex #boardTrackSelectionController.mSide ;
 
+  outlet EBTextObserverField mTrackNetNameTextField $valueObserver #boardTrackSelectionController.netName ;
+
+  outlet EBTextObserverField mTrackNetClassNameTextField $valueObserver #boardTrackSelectionController.netClassName ;
+
 //--- Board line inspector
   outlet CanariViewWithKeyView mBoardLineInspectorView ;
   selectionController BoardLine #boardLineSelectionController :

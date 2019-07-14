@@ -100,6 +100,7 @@ extension BoardTrack {
   override func operationBeforeRemoving () {
     self.mConnectorP1 = nil
     self.mConnectorP2 = nil
+    self.mNet = nil
   }
   
   //····················································································································

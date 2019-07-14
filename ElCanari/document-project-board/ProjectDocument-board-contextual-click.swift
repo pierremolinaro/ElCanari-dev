@@ -50,29 +50,32 @@ extension CustomizedProjectDocument {
 
   @objc private func connectInBoardAction (_ inMenuItem : NSMenuItem) {
     if let connectors = inMenuItem.representedObject as? [BoardConnector] {
-    //--- How many connectors connected to a pad ?
-      var connectorsConnectedToAPad = [BoardConnector] ()
-      for c in connectors {
-        if c.mComponent != nil {
-          connectorsConnectedToAPad.append (c)
+      let nets = self.findAllNetsConnectedToPad (connectors)
+      if nets.count <= 1 {
+      //--- How many connectors connected to a pad ?
+        var connectorsConnectedToAPad = [BoardConnector] ()
+        for c in connectors {
+          if c.mComponent != nil {
+            connectorsConnectedToAPad.append (c)
+          }
         }
-      }
-    //---
-      if connectorsConnectedToAPad.count == 0 {
-        let retainedConnector = connectors [0]
-        self.performConnection (retainedConnector, connectors)
-      }else if connectorsConnectedToAPad.count == 1 {
-        let retainedConnector = connectorsConnectedToAPad [0]
-        self.performConnection (retainedConnector, connectors)
-      }else{
-        __NSBeep ()
+      //---
+        if connectorsConnectedToAPad.count == 0 {
+          let retainedConnector = connectors [0]
+          self.performConnection (retainedConnector, connectors, nets.first)
+        }else if connectorsConnectedToAPad.count == 1 {
+          let retainedConnector = connectorsConnectedToAPad [0]
+          self.performConnection (retainedConnector, connectors, nets.first)
+        }else{
+          __NSBeep ()
+        }
       }
     }
   }
 
   //····················································································································
 
-  private func performConnection (_ inRetainedConnector : BoardConnector, _ inOtherConnectors : [BoardConnector]) {
+  private func performConnection (_ inRetainedConnector : BoardConnector, _ inOtherConnectors : [BoardConnector], _ inNet : NetInProject?) {
     for c in inOtherConnectors {
       if ObjectIdentifier (c) != ObjectIdentifier (inRetainedConnector) {
         let tracksP1 = c.mTracksP1
@@ -84,6 +87,65 @@ extension CustomizedProjectDocument {
         c.mRoot = nil // Remove from board objects
       }
     }
+  //--- Propagate net from retained connector
+    var exploredTracks = Set <BoardTrack> (inRetainedConnector.mTracksP1 + inRetainedConnector.mTracksP2)
+    var tracksToExplore = Array (exploredTracks)
+    while let track = tracksToExplore.last {
+      tracksToExplore.removeLast ()
+      track.mNet = inNet
+      var t = [BoardTrack] ()
+      if let c = track.mConnectorP1 {
+        t += c.mTracksP1
+        t += c.mTracksP2
+      }
+      if let c = track.mConnectorP2 {
+        t += c.mTracksP1
+        t += c.mTracksP2
+      }
+      for aTrack in t {
+        if !exploredTracks.contains (aTrack) {
+          exploredTracks.insert (aTrack)
+          tracksToExplore.append (aTrack)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  internal func findAllNetsConnectedToPad (_ inConnectors : [BoardConnector]) -> Set <NetInProject> {
+    var netNameSet = Set <String>  ()
+    var connectorsToExplore = inConnectors
+    var exploredConnectors = Set (inConnectors)
+    while let connector = connectorsToExplore.last {
+      connectorsToExplore.removeLast ()
+      if let net = connector.mComponent?.padNetDictionary? [connector.mComponentPadName] {
+        netNameSet.insert (net)
+      }
+      for track in connector.mTracksP1 {
+        if let c = track.mConnectorP2, !exploredConnectors.contains (c) {
+          connectorsToExplore.append (c)
+          exploredConnectors.insert (c)
+        }
+      }
+      for track in connector.mTracksP2 {
+        if let c = track.mConnectorP1, !exploredConnectors.contains (c) {
+          connectorsToExplore.append (c)
+          exploredConnectors.insert (c)
+        }
+      }
+    }
+  //---
+    var result = Set <NetInProject> ()
+    for netClass in self.rootObject.mNetClasses {
+      for net in netClass.mNets {
+        if netNameSet.contains (net.mNetName) {
+          result.insert (net)
+        }
+      }
+    }
+  //---
+    return result
   }
 
   //····················································································································

@@ -11,6 +11,7 @@ enum TrackSide {
 graphic entity BoardTrack : BoardObject {
   toOne BoardConnector mConnectorP1 inverse toMany mTracksP1 ;
   toOne BoardConnector mConnectorP2 inverse toMany mTracksP2 ;
+  toOne NetInProject mNet inverse toMany mTracks ;
 
   property TrackSide mSide default front ;
 
@@ -24,6 +25,8 @@ graphic entity BoardTrack : BoardObject {
     self.mConnectorP1.one.location, self.mConnectorP2.one.location
   ;
   
+  transient String netName dependsFrom self.mNet.one.mNetName ;
+  transient String netClassName dependsFrom self.mNet.one.netClassName ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

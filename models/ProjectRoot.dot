@@ -9,7 +9,8 @@ digraph G {
   NCInSchematic[label="<NCInSchematic>NCInSchematic|QuadrantRotation mOrientation|<mPoint>PointInSchematic? mPoint|<mSheet>SheetInProject? mSheet"] ;
   LabelInSchematic[label="<LabelInSchematic>LabelInSchematic|QuadrantRotation mOrientation|<mPoint>PointInSchematic? mPoint|<mSheet>SheetInProject? mSheet"] ;
   NetClassInProject[label="<NetClassInProject>NetClassInProject|NSColor mNetClassColor|String mNetClassName|Int mNetWidth|Int mNetWidthUnit|<mNets>[NetInProject] mNets|Int mViaHoleDiameter|Int mViaHoleDiameterUnit|Int mViaPadDiameter|Int mViaPadDiameterUnit"] ;
-  NetInProject[label="<NetInProject>NetInProject|<mNetClass>NetClassInProject? mNetClass|String mNetName|<mPoints>[PointInSchematic] mPoints"] ;
+  NetInProject[label="<NetInProject>NetInProject|<mNetClass>NetClassInProject? mNetClass|String mNetName|<mPoints>[PointInSchematic] mPoints|<mTracks>[BoardTrack] mTracks"] ;
+  BoardTrack[label="<BoardTrack>BoardTrack|<mConnectorP1>BoardConnector? mConnectorP1|<mConnectorP2>BoardConnector? mConnectorP2|<mNet>NetInProject? mNet|<mRoot>ProjectRoot? mRoot|TrackSide mSide"] ;
   FontInProject[label="<FontInProject>FontInProject|<mComponentNames>[ComponentInProject] mComponentNames|<mComponentValues>[ComponentInProject] mComponentValues|String mDescriptiveString|String mFontName|Int mFontVersion|Int mNominalSize|<mTexts>[BoardText] mTexts"] ;
   BoardText[label="<BoardText>BoardText|<mFont>FontInProject? mFont|Double mFontSize|HorizontalAlignment mHorizontalAlignment|BoardTextLayer mLayer|Bool mOblique|<mRoot>ProjectRoot? mRoot|Int mRotation|String mText|BoardTextVerticalAlignment mVerticalAlignment|Double mWeight|Int mX|Int mY"] ;
   DeviceInProject[label="<DeviceInProject>DeviceInProject|<mComponents>[ComponentInProject] mComponents|Data mDeviceFileData|String mDeviceName|Int mDeviceVersion|<mPackages>[DevicePackageInProject] mPackages|<mPadAssignments>[DevicePadAssignmentInProject] mPadAssignments|String mPrefix|<mSymbols>[DeviceSymbolInstanceInProject] mSymbols"] ;
@@ -23,7 +24,6 @@ digraph G {
   ComponentInProject[label="<ComponentInProject>ComponentInProject|String mComponentValue|<mConnectors>[BoardConnector] mConnectors|<mDevice>DeviceInProject? mDevice|<mNameFont>FontInProject? mNameFont|Double mNameFontSize|Int mNameIndex|Bool mNameIsVisibleInBoard|String mNamePrefix|Int mNameRotation|<mPackages>[DevicePackageInProject] mPackages|<mRoot>ProjectRoot? mRoot|Int mRotation|<mSelectedPackage>DevicePackageInProject? mSelectedPackage|ComponentSide mSide|<mSymbols>[ComponentSymbolInProject] mSymbols|<mValueFont>FontInProject? mValueFont|Double mValueFontSize|Bool mValueIsVisibleInBoard|Int mValueRotation|Int mX|Int mXName|Int mXUnit|Int mXValue|Int mY|Int mYName|Int mYUnit|Int mYValue"] ;
   ComponentSymbolInProject[label="<ComponentSymbolInProject>ComponentSymbolInProject|String componentValueProxy|Int mCenterX|Int mCenterY|<mComponent>ComponentInProject? mComponent|Int mDisplayComponentNameOffsetX|Int mDisplayComponentNameOffsetY|Bool mDisplayComponentValue|Int mDisplayComponentValueOffsetX|Int mDisplayComponentValueOffsetY|Bool mMirror|<mPoints>[PointInSchematic] mPoints|QuadrantRotation mRotation|<mSheet>SheetInProject? mSheet|String mSymbolInstanceName|String mSymbolTypeName"] ;
   BoardConnector[label="<BoardConnector>BoardConnector|<mComponent>ComponentInProject? mComponent|String mComponentPadName|Int mPadIndex|<mRoot>ProjectRoot? mRoot|<mTracksP1>[BoardTrack] mTracksP1|<mTracksP2>[BoardTrack] mTracksP2|Int mX|Int mY"] ;
-  BoardTrack[label="<BoardTrack>BoardTrack|<mConnectorP1>BoardConnector? mConnectorP1|<mConnectorP2>BoardConnector? mConnectorP2|<mRoot>ProjectRoot? mRoot|TrackSide mSide"] ;
   BorderCurve[label="<BorderCurve>BorderCurve|Int mCPX1|Int mCPX2|Int mCPY1|Int mCPY2|<mNext>BorderCurve? mNext|<mPrevious>BorderCurve? mPrevious|<mRoot>ProjectRoot? mRoot|BorderCurveShape mShape|Int mX|Int mY"] ;
   BoardObject[label="<BoardObject>BoardObject|<mRoot>ProjectRoot? mRoot"] ;
   ProjectRoot:mBoardObjects -> BoardObject:mRoot [dir=both arrowtail=onormal arrowhead=vee] ;
@@ -46,6 +46,8 @@ digraph G {
   LabelInSchematic -> SchematicObject [arrowhead=dot] ;
   NetClassInProject:mNets -> NetInProject:mNetClass [dir=both arrowtail=onormal arrowhead=vee] ;
   NetInProject:mPoints -> PointInSchematic:mNet [dir=both arrowtail=onormal arrowhead=vee] ;
+  NetInProject:mTracks -> BoardTrack:mNet [dir=both arrowtail=onormal arrowhead=vee] ;
+  BoardTrack -> BoardObject [arrowhead=dot] ;
   FontInProject:mComponentNames -> ComponentInProject:mNameFont [dir=both arrowtail=onormal arrowhead=vee] ;
   FontInProject:mComponentValues -> ComponentInProject:mValueFont [dir=both arrowtail=onormal arrowhead=vee] ;
   FontInProject:mTexts -> BoardText:mFont [dir=both arrowtail=onormal arrowhead=vee] ;
@@ -68,6 +70,5 @@ digraph G {
   BoardConnector -> BoardObject [arrowhead=dot] ;
   BoardConnector:mTracksP1 -> BoardTrack:mConnectorP1 [dir=both arrowtail=onormal arrowhead=vee] ;
   BoardConnector:mTracksP2 -> BoardTrack:mConnectorP2 [dir=both arrowtail=onormal arrowhead=vee] ;
-  BoardTrack -> BoardObject [arrowhead=dot] ;
   BorderCurve:mPrevious -> BorderCurve:mNext [dir=both arrowtail=onormal arrowhead=onormal] ;
 }

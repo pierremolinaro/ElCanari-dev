@@ -23,13 +23,27 @@ protocol BoardTrack_selectionDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardTrack_netName : class {
+  var netName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardTrack_netClassName : class {
+  var netClassName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardTrack
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class BoardTrack : BoardObject,
          BoardTrack_mSide,
          BoardTrack_objectDisplay,
-         BoardTrack_selectionDisplay {
+         BoardTrack_selectionDisplay,
+         BoardTrack_netName,
+         BoardTrack_netClassName {
 
   //····················································································································
   //   Atomic property: mSide
@@ -125,6 +139,90 @@ class BoardTrack : BoardObject,
   }
 
   //····················································································································
+  //   To one property: mNet
+  //····················································································································
+
+   let mNet_property = StoredObject_NetInProject ()
+
+  //····················································································································
+
+  var mNet_property_selection : EBSelection <NetInProject?> {
+    return .single (self.mNet_property.propval)
+  }
+
+  //····················································································································
+
+  var mNet : NetInProject? {
+    get {
+      return self.mNet_property.propval
+    }
+    set {
+      if self.mNet_property.propval != nil {
+        self.mNet_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mNet_property.setProp (newValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mNet_none : StoredObject_NetInProject { return self.mNet_property }
+
+  //····················································································································
+
+  var mNet_none_selection : EBSelection <Bool> {
+    return .single (self.mNet_property.propval == nil)
+  }
+
+  //····················································································································
+  //   Transient property: netName
+  //····················································································································
+
+  let netName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netName_property_selection : EBSelection <String> {
+    return self.netName_property.prop
+  }
+
+  //····················································································································
+
+  var netName : String? {
+    switch self.netName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: netClassName
+  //····················································································································
+
+  let netClassName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netClassName_property_selection : EBSelection <String> {
+    return self.netClassName_property.prop
+  }
+
+  //····················································································································
+
+  var netClassName : String? {
+    switch self.netClassName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -143,6 +241,12 @@ class BoardTrack : BoardObject,
     self.mConnectorP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mTracksP2_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mTracksP2_property.remove (me) } }
+    )
+  //--- To one property: mNet (has opposite to many relationship: mTracks)
+    self.mNet_property.ebUndoManager = self.ebUndoManager
+    self.mNet_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mTracks_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mTracks_property.remove (me) } }
     )
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
@@ -198,6 +302,50 @@ class BoardTrack : BoardObject,
     }
     self.mConnectorP1_property.addEBObserverOf_location (self.selectionDisplay_property)
     self.mConnectorP2_property.addEBObserverOf_location (self.selectionDisplay_property)
+  //--- Atomic property: netName
+    self.netName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNet_property.mNetName_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mNet_property.mNetName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardTrack_netName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNet_property.addEBObserverOf_mNetName (self.netName_property)
+  //--- Atomic property: netClassName
+    self.netClassName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNet_property.netClassName_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mNet_property.netClassName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardTrack_netClassName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNet_property.addEBObserverOf_netClassName (self.netClassName_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -214,6 +362,8 @@ class BoardTrack : BoardObject,
     g_Preferences?.backSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     self.mConnectorP1_property.removeEBObserverOf_location (self.selectionDisplay_property)
     self.mConnectorP2_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    self.mNet_property.removeEBObserverOf_mNetName (self.netName_property)
+    self.mNet_property.removeEBObserverOf_netClassName (self.netClassName_property)
   //--- Unregister properties for handling signature
   }
 
@@ -253,6 +403,22 @@ class BoardTrack : BoardObject,
       observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
       valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "netName",
+      idx: self.netName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netName_property.mObserverExplorer,
+      valueExplorer: &self.netName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netClassName",
+      idx: self.netClassName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netClassName_property.mObserverExplorer,
+      valueExplorer: &self.netClassName_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
@@ -268,6 +434,13 @@ class BoardTrack : BoardObject,
       y: &y,
       view: view,
       valueExplorer:&self.mConnectorP2_property.mValueExplorer
+    )
+    createEntryForToOneRelationshipNamed (
+      "mNet",
+      idx:self.mNet_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mNet_property.mValueExplorer
     )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
@@ -286,6 +459,9 @@ class BoardTrack : BoardObject,
   //--- To one property: mConnectorP2
     self.mConnectorP2_property.mObserverExplorer = nil
     self.mConnectorP2_property.mValueExplorer = nil
+  //--- To one property: mNet
+    self.mNet_property.mObserverExplorer = nil
+    self.mNet_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -306,6 +482,7 @@ class BoardTrack : BoardObject,
   override internal func cleanUpToOneRelationships () {
     self.mConnectorP1 = nil
     self.mConnectorP2 = nil
+    self.mNet = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -349,6 +526,17 @@ class BoardTrack : BoardObject,
         self.mConnectorP2_property.setProp (entity)
       }
     }
+  //--- To one property: mNet
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mNet",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? NetInProject {
+        self.mNet_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -375,6 +563,10 @@ class BoardTrack : BoardObject,
     if let object = self.mConnectorP2 {
       objects.append (object)
     }
+  //--- To one property: mNet
+    if let object = self.mNet {
+      objects.append (object)
+    }
   }
 
   //····················································································································
@@ -389,6 +581,10 @@ class BoardTrack : BoardObject,
     }
   //--- To one property: mConnectorP2
     if let object = self.mConnectorP2 {
+      objects.append (object)
+    }
+  //--- To one property: mNet
+    if let object = self.mNet {
       objects.append (object)
     }
   }

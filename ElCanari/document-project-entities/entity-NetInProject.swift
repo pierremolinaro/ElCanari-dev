@@ -39,6 +39,25 @@ class NetInProject : EBManagedObject,
          NetInProject_netPointsInfo {
 
   //····················································································································
+  //   To many property: mPoints
+  //····················································································································
+
+  let mPoints_property = StoredArrayOf_PointInSchematic ()
+
+  //····················································································································
+
+  var mPoints_property_selection : EBSelection < [PointInSchematic] > {
+    return self.mPoints_property.prop
+  }
+
+  //····················································································································
+
+  var mPoints : [PointInSchematic] {
+    get { return self.mPoints_property.propval }
+    set { self.mPoints_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: mNetName
   //····················································································································
 
@@ -56,22 +75,22 @@ class NetInProject : EBManagedObject,
   var mNetName_property_selection : EBSelection <String> { return self.mNetName_property.prop }
 
   //····················································································································
-  //   To many property: mPoints
+  //   To many property: mTracks
   //····················································································································
 
-  let mPoints_property = StoredArrayOf_PointInSchematic ()
+  let mTracks_property = StoredArrayOf_BoardTrack ()
 
   //····················································································································
 
-  var mPoints_property_selection : EBSelection < [PointInSchematic] > {
-    return self.mPoints_property.prop
+  var mTracks_property_selection : EBSelection < [BoardTrack] > {
+    return self.mTracks_property.prop
   }
 
   //····················································································································
 
-  var mPoints : [PointInSchematic] {
-    get { return self.mPoints_property.propval }
-    set { self.mPoints_property.setProp (newValue) }
+  var mTracks : [BoardTrack] {
+    get { return self.mTracks_property.propval }
+    set { self.mTracks_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -187,11 +206,17 @@ class NetInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mNetName
-    self.mNetName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
+      resetter: { inObject in inObject.mNet_property.setProp (nil) }
+    )
+  //--- Atomic property: mNetName
+    self.mNetName_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mTracks (has opposite relationship)
+    self.mTracks_property.ebUndoManager = self.ebUndoManager
+    self.mTracks_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
       resetter: { inObject in inObject.mNet_property.setProp (nil) }
     )
@@ -272,6 +297,10 @@ class NetInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
       resetter: { inObject in inObject.mNet_property.setProp (nil) }
     )
+    self.mTracks_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
+      resetter: { inObject in inObject.mNet_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -338,6 +367,13 @@ class NetInProject : EBManagedObject,
       view: view,
       valueExplorer:&mPoints_property.mValueExplorer
     )
+    createEntryForToManyRelationshipNamed (
+      "mTracks",
+      idx:mTracks_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mTracks_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mNetClass",
@@ -354,11 +390,13 @@ class NetInProject : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- To many property: mPoints
+    self.mPoints_property.mValueExplorer = nil
   //--- Atomic property: mNetName
     self.mNetName_property.mObserverExplorer = nil
     self.mNetName_property.mValueExplorer = nil
-  //--- To many property: mPoints
-    self.mPoints_property.mValueExplorer = nil
+  //--- To many property: mTracks
+    self.mTracks_property.mValueExplorer = nil
   //--- To one property: mNetClass
     self.mNetClass_property.mObserverExplorer = nil
     self.mNetClass_property.mValueExplorer = nil
@@ -372,6 +410,7 @@ class NetInProject : EBManagedObject,
 
   override internal func cleanUpToManyRelationships () {
     self.mPoints = []
+    self.mTracks = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -392,12 +431,18 @@ class NetInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mNetName
-    self.mNetName_property.storeIn (dictionary: ioDictionary, forKey:"mNetName")
   //--- To many property: mPoints
     self.store (
       managedObjectArray: self.mPoints_property.propval,
       relationshipName: "mPoints",
+      intoDictionary: ioDictionary
+    )
+  //--- Atomic property: mNetName
+    self.mNetName_property.storeIn (dictionary: ioDictionary, forKey:"mNetName")
+  //--- To many property: mTracks
+    self.store (
+      managedObjectArray: self.mTracks_property.propval,
+      relationshipName: "mTracks",
       intoDictionary: ioDictionary
     )
   }
@@ -415,6 +460,12 @@ class NetInProject : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [PointInSchematic])
+  //--- To many property: mTracks
+    self.mTracks_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mTracks",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [BoardTrack])
   //--- To one property: mNetClass
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -448,6 +499,10 @@ class NetInProject : EBManagedObject,
     for managedObject in self.mPoints {
       objects.append (managedObject)
     }
+  //--- To many property: mTracks
+    for managedObject in self.mTracks {
+      objects.append (managedObject)
+    }
   //--- To one property: mNetClass
     if let object = self.mNetClass {
       objects.append (object)
@@ -462,6 +517,10 @@ class NetInProject : EBManagedObject,
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mPoints
     for managedObject in self.mPoints {
+      objects.append (managedObject)
+    }
+  //--- To many property: mTracks
+    for managedObject in self.mTracks {
       objects.append (managedObject)
     }
   //--- To one property: mNetClass

@@ -345,6 +345,47 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   }
 
   //····················································································································
+  //   Observable toMany property: mTracks
+  //····················································································································
+
+  private var mObserversOf_mTracks = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mTracks_property_selection : EBSelection <[BoardTrack]> {
+    if let model = self.propval {
+      switch (model.mTracks_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mTracks (_ inObserver : EBEvent) {
+    self.mObserversOf_mTracks.insert (inObserver)
+    if let object = self.propval {
+      object.mTracks_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mTracks (_ inObserver : EBEvent) {
+    self.mObserversOf_mTracks.remove (inObserver)
+    if let object = self.propval {
+      object.mTracks_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
 
 }
 

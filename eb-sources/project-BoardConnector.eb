@@ -24,6 +24,10 @@ graphic entity BoardConnector : BoardObject {
     self.mX, self.mY
   ;
 
+  transient String netName dependsFrom
+    self.mComponent.one.padNetDictionary, self.mComponentPadName
+  ;
+
   transient ConnectorSide side dependsFrom
     self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex
   ;

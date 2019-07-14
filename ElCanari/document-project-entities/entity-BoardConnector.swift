@@ -36,6 +36,12 @@ protocol BoardConnector_location : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardConnector_netName : class {
+  var netName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardConnector_side : class {
   var side : ConnectorSide? { get }
 }
@@ -56,6 +62,7 @@ class BoardConnector : BoardObject,
          BoardConnector_mX,
          BoardConnector_mY,
          BoardConnector_location,
+         BoardConnector_netName,
          BoardConnector_side,
          BoardConnector_issues {
 
@@ -227,6 +234,29 @@ class BoardConnector : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: netName
+  //····················································································································
+
+  let netName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netName_property_selection : EBSelection <String> {
+    return self.netName_property.prop
+  }
+
+  //····················································································································
+
+  var netName : String? {
+    switch self.netName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: side
   //····················································································································
 
@@ -311,6 +341,30 @@ class BoardConnector : BoardObject,
     self.mPadIndex_property.addEBObserver (self.location_property)
     self.mX_property.addEBObserver (self.location_property)
     self.mY_property.addEBObserver (self.location_property)
+  //--- Atomic property: netName
+    self.netName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mComponent_property.padNetDictionary_property_selection.kind ()
+        kind &= unwSelf.mComponentPadName_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponent_property.padNetDictionary_property_selection, unwSelf.mComponentPadName_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardConnector_netName (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponent_property.addEBObserverOf_padNetDictionary (self.netName_property)
+    self.mComponentPadName_property.addEBObserver (self.netName_property)
   //--- Atomic property: side
     self.side_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -393,6 +447,8 @@ class BoardConnector : BoardObject,
     self.mPadIndex_property.removeEBObserver (self.location_property)
     self.mX_property.removeEBObserver (self.location_property)
     self.mY_property.removeEBObserver (self.location_property)
+    self.mComponent_property.removeEBObserverOf_padNetDictionary (self.netName_property)
+    self.mComponentPadName_property.removeEBObserver (self.netName_property)
     self.mComponent_property.removeEBObserverOf_componentPadDictionary (self.side_property)
     self.mComponentPadName_property.removeEBObserver (self.side_property)
     self.mPadIndex_property.removeEBObserver (self.side_property)
@@ -457,6 +513,14 @@ class BoardConnector : BoardObject,
       view: view,
       observerExplorer: &self.location_property.mObserverExplorer,
       valueExplorer: &self.location_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netName",
+      idx: self.netName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netName_property.mObserverExplorer,
+      valueExplorer: &self.netName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "side",

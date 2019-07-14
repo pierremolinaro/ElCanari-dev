@@ -722,6 +722,8 @@ import Cocoa
   @IBOutlet weak var mSheetUpButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mSymbolMirrorSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mSymbolRotationSegmentedControl : CanariQuadrantSegmentedControl? = nil // An outlet should be declared weak
+  @IBOutlet weak var mTrackNetClassNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mTrackNetNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mUnplacedPackageTableView : CanariDragSourceTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mUnplacedPackagesBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mUnplacedPackagesCountTextField : EBTextObserverField? = nil // An outlet should be declared weak
@@ -1151,6 +1153,8 @@ import Cocoa
     checkOutletConnection (self.mSheetUpButton, "mSheetUpButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSymbolMirrorSwitch, "mSymbolMirrorSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolRotationSegmentedControl, "mSymbolRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mTrackNetClassNameTextField, "mTrackNetClassNameTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mTrackNetNameTextField, "mTrackNetNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mUnplacedPackageTableView, "mUnplacedPackageTableView", CanariDragSourceTableView.self, #file, #line)
     checkOutletConnection (self.mUnplacedPackagesBoardInspectorView, "mUnplacedPackagesBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mUnplacedPackagesCountTextField, "mUnplacedPackagesCountTextField", EBTextObserverField.self, #file, #line)
@@ -1622,6 +1626,8 @@ import Cocoa
     self.mBoardGridUnitPopUp?.bind_selectedTag (self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
     self.mBoardGridTextField?.bind_dimensionAndUnit (self.rootObject.mBoardGridStep_property, self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
     self.mBoardTrackSidePopUpButton?.bind_selectedIndex (self.boardTrackSelectionController.mSide_property, file: #file, line: #line)
+    self.mTrackNetNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netName_property, file: #file, line: #line)
+    self.mTrackNetClassNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netClassName_property, file: #file, line: #line)
     self.mBoardLineWidthUnitPopUp?.bind_selectedTag (self.boardLineSelectionController.mWidthUnit_property, file: #file, line: #line)
     self.mBoardLineWidthTextField?.bind_dimensionAndUnit (self.boardLineSelectionController.mWidth_property, self.boardLineSelectionController.mWidthUnit_property, file: #file, line: #line)
     self.mBoardLineLayerPopUpButton?.bind_selectedIndex (self.boardLineSelectionController.mLayer_property, file: #file, line: #line)
@@ -2226,6 +2232,8 @@ import Cocoa
     self.mBoardGridUnitPopUp?.unbind_selectedTag ()
     self.mBoardGridTextField?.unbind_dimensionAndUnit ()
     self.mBoardTrackSidePopUpButton?.unbind_selectedIndex ()
+    self.mTrackNetNameTextField?.unbind_valueObserver ()
+    self.mTrackNetClassNameTextField?.unbind_valueObserver ()
     self.mBoardLineWidthUnitPopUp?.unbind_selectedTag ()
     self.mBoardLineWidthTextField?.unbind_dimensionAndUnit ()
     self.mBoardLineLayerPopUpButton?.unbind_selectedIndex ()
@@ -2728,6 +2736,8 @@ import Cocoa
     self.mSheetUpButton?.ebCleanUp ()
     self.mSymbolMirrorSwitch?.ebCleanUp ()
     self.mSymbolRotationSegmentedControl?.ebCleanUp ()
+    self.mTrackNetClassNameTextField?.ebCleanUp ()
+    self.mTrackNetNameTextField?.ebCleanUp ()
     self.mUnplacedPackageTableView?.ebCleanUp ()
     self.mUnplacedPackagesBoardInspectorView?.ebCleanUp ()
     self.mUnplacedPackagesCountTextField?.ebCleanUp ()
@@ -3019,6 +3029,8 @@ import Cocoa
 //    self.mSheetUpButton = nil
 //    self.mSymbolMirrorSwitch = nil
 //    self.mSymbolRotationSegmentedControl = nil
+//    self.mTrackNetClassNameTextField = nil
+//    self.mTrackNetNameTextField = nil
 //    self.mUnplacedPackageTableView = nil
 //    self.mUnplacedPackagesBoardInspectorView = nil
 //    self.mUnplacedPackagesCountTextField = nil

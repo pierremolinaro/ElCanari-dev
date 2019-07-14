@@ -21,7 +21,7 @@ func transient_ProjectRoot_issuesDisplay (
         for issue in self_boardIssues {
           let color : NSColor
           switch issue.kind {
-          case .warning : color = .orange
+          case .warning : color = .myOrange
           case .error   : color = .red
           }
           shape.add (filled: [issue.path], color)

@@ -31,9 +31,7 @@ func transient_ProjectRoot_connectedPoints (
           }
         }
         if !warningPath.isEmpty {
-          // Color is F6C050
-          let myOrange = NSColor (red: 0.961, green: 0.750, blue: 0.3125, alpha: 1.0)
-          shape.add (filled: [warningPath], myOrange)
+          shape.add (filled: [warningPath], NSColor.myOrange)
         }
         if !errorPath.isEmpty {
           shape.add (filled: [errorPath], .red)

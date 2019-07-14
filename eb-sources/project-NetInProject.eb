@@ -3,11 +3,12 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity NetInProject {
-  property String mNetName default "" ;
   toOne NetClassInProject mNetClass inverse toMany mNets ;
-
   toMany PointInSchematic mPoints inverse toOne mNet ;
-  
+  toMany BoardTrack mTracks inverse toOne mNet ;
+ 
+  property String mNetName default "" ;
+ 
   transient String netClassName dependsFrom self.mNetClass.one.mNetClassName ;
   
   transient NSColor wireColor dependsFrom self.mNetClass.one.mNetClassColor ;
