@@ -621,6 +621,49 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBSwitch mUsesCustomTrackWidthSwitch $value #boardTrackSelectionController.mUsesCustomTrackWidth ;
 
+
+
+
+
+//--- Board Connector inspector
+  outlet CanariViewWithKeyView mBoardConnectorInspectorView ;
+  selectionController BoardConnector #boardConnectorSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  outlet EBTextObserverField mViaNetNameTextField $valueObserver #boardConnectorSelectionController.netNameFromTracks ;
+
+  outlet EBTextObserverField mViaNetClassNameTextField $valueObserver #boardConnectorSelectionController.netClassName ;
+
+  outlet EBPopUpButton mViaDefaultHoleDiameterUnitPopUp
+    $selectedTag #boardConnectorSelectionController.mDefaultHoleDiameterUnit ;
+  outlet CanariDimensionObserverTextField mViaDefaultHoleDiameterTextField
+     $dimensionAndUnit #boardConnectorSelectionController.viaDefaultHoleDiameter,
+     #boardConnectorSelectionController.mDefaultHoleDiameterUnit
+  ;
+  outlet EBPopUpButton mViaCustomHoleDiameterUnitPopUp
+    $selectedTag #boardConnectorSelectionController.mCustomHoleDiameterUnit ;
+  outlet CanariDimensionTextField mViaCustomHoleDiameterTextField
+     $dimensionAndUnit #boardConnectorSelectionController.mCustomHoleDiameter,
+     #boardConnectorSelectionController.mCustomHoleDiameterUnit
+  ;
+  outlet EBSwitch mUsesCustomHoleDiameterSwitch $value #boardConnectorSelectionController.mUsesCustomHoleDiameter ;
+
+  outlet EBPopUpButton mViaDefaultPadDiameterUnitPopUp
+    $selectedTag #boardConnectorSelectionController.mDefaultPadDiameterUnit ;
+  outlet CanariDimensionObserverTextField mViaDefaultPadDiameterTextField
+     $dimensionAndUnit #boardConnectorSelectionController.viaDefaultPadDiameter,
+     #boardConnectorSelectionController.mDefaultPadDiameterUnit
+  ;
+  outlet EBPopUpButton mViaCustomPadDiameterUnitPopUp
+    $selectedTag #boardConnectorSelectionController.mCustomPadDiameterUnit ;
+  outlet CanariDimensionTextField mViaCustomPadDiameterTextField
+     $dimensionAndUnit #boardConnectorSelectionController.mCustomPadDiameter,
+     #boardConnectorSelectionController.mCustomPadDiameterUnit
+  ;
+  outlet EBSwitch mUsesCustomPadDiameterSwitch $value #boardConnectorSelectionController.mUsesCustomPadDiameter ;
+
+
 //--- Board line inspector
   outlet CanariViewWithKeyView mBoardLineInspectorView ;
   selectionController BoardLine #boardLineSelectionController :

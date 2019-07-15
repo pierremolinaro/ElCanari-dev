@@ -10,8 +10,9 @@ entity NetInProject {
   property String mNetName default "" ;
  
   transient String netClassName dependsFrom self.mNetClass.one.mNetClassName ;
-  
   transient Int netClassTrackWidth dependsFrom self.mNetClass.one.mTrackWidth ;
+  transient Int netClassViaHoleDiameter dependsFrom self.mNetClass.one.mViaHoleDiameter ;
+  transient Int netClassViaPadDiameter dependsFrom self.mNetClass.one.mViaPadDiameter ;
   
   transient NSColor wireColor dependsFrom self.mNetClass.one.mNetClassColor ;
 

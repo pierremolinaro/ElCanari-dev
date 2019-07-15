@@ -25,6 +25,8 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
     inOldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
     inOldValue?.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
     inOldValue?.netClassTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
+    inOldValue?.netClassViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
+    inOldValue?.netClassViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mSide_property.addEBObserversFrom (&self.mObserversOf_mSide) // Stored property
@@ -37,6 +39,8 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
     self.mInternalValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
     self.mInternalValue?.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
     self.mInternalValue?.netClassTrackWidth_property.addEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
+    self.mInternalValue?.netClassViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
+    self.mInternalValue?.netClassViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
   }
 
@@ -731,6 +735,144 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
     for managedObject in inSet {
       self.mObserversOf_netClassTrackWidth.apply { (_ observer : EBEvent) in
         managedObject.netClassTrackWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netClassViaHoleDiameter' transient property
+  //····················································································································
+
+  private var mObserversOf_netClassViaHoleDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netClassViaHoleDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.netClassViaHoleDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netClassViaHoleDiameter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netClassViaHoleDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netClassViaHoleDiameter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netClassViaHoleDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassViaHoleDiameter.apply { (_ observer : EBEvent) in
+        managedObject.netClassViaHoleDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassViaHoleDiameter.apply { (_ observer : EBEvent) in
+        managedObject.netClassViaHoleDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netClassViaPadDiameter' transient property
+  //····················································································································
+
+  private var mObserversOf_netClassViaPadDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netClassViaPadDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.netClassViaPadDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netClassViaPadDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netClassViaPadDiameter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netClassViaPadDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netClassViaPadDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netClassViaPadDiameter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netClassViaPadDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassViaPadDiameter.apply { (_ observer : EBEvent) in
+        managedObject.netClassViaPadDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassViaPadDiameter.apply { (_ observer : EBEvent) in
+        managedObject.netClassViaPadDiameter_property.removeEBObserver (observer)
       }
     }
   }

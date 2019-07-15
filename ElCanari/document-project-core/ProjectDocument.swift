@@ -87,6 +87,12 @@ import Cocoa
   var boardTrackSelectionController = SelectionController_ProjectDocument_boardTrackSelectionController ()
 
   //····················································································································
+  //   Selection controller: boardConnectorSelectionController
+  //····················································································································
+
+  var boardConnectorSelectionController = SelectionController_ProjectDocument_boardConnectorSelectionController ()
+
+  //····················································································································
   //   Selection controller: boardLineSelectionController
   //····················································································································
 
@@ -478,6 +484,7 @@ import Cocoa
   @IBOutlet weak var mBoardComponentSidePopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentValueFontPopUpButton : CanariBoardComponentValueFontPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardComponentValueTextField : EBTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardConnectorInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPX1TextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPX2TextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardCurveCPY1TextField : EBTextObserverField? = nil // An outlet should be declared weak
@@ -737,7 +744,19 @@ import Cocoa
   @IBOutlet weak var mUpdateDeviceButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mUpdateDevicesAndFontsButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mUpdateFontButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mUsesCustomHoleDiameterSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mUsesCustomPadDiameterSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mUsesCustomTrackWidthSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mViaCustomHoleDiameterTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mViaCustomHoleDiameterUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mViaCustomPadDiameterTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mViaCustomPadDiameterUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mViaDefaultHoleDiameterTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mViaDefaultHoleDiameterUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mViaDefaultPadDiameterTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mViaDefaultPadDiameterUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mViaNetClassNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mViaNetNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mWireNetNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mWireRenameNetButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mWireRenameNetWithUniqueNewNameButton : EBButton? = nil // An outlet should be declared weak
@@ -838,6 +857,8 @@ import Cocoa
     self.boardObjectsController.addExplorer (name: "boardObjectsController", y:&y, view:view)
   //--- Selection controller property: boardTrackSelectionController
     self.boardTrackSelectionController.addExplorer (name: "boardTrackSelectionController", y:&y, view:view)
+  //--- Selection controller property: boardConnectorSelectionController
+    self.boardConnectorSelectionController.addExplorer (name: "boardConnectorSelectionController", y:&y, view:view)
   //--- Selection controller property: boardLineSelectionController
     self.boardLineSelectionController.addExplorer (name: "boardLineSelectionController", y:&y, view:view)
   //--- Selection controller property: restrictRectangleSelectionController
@@ -914,6 +935,7 @@ import Cocoa
     checkOutletConnection (self.mBoardComponentSidePopUpButton, "mBoardComponentSidePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardComponentValueFontPopUpButton, "mBoardComponentValueFontPopUpButton", CanariBoardComponentValueFontPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardComponentValueTextField, "mBoardComponentValueTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardConnectorInspectorView, "mBoardConnectorInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPX1TextField, "mBoardCurveCPX1TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPX2TextField, "mBoardCurveCPX2TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPY1TextField, "mBoardCurveCPY1TextField", EBTextObserverField.self, #file, #line)
@@ -1173,7 +1195,19 @@ import Cocoa
     checkOutletConnection (self.mUpdateDeviceButton, "mUpdateDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpdateDevicesAndFontsButton, "mUpdateDevicesAndFontsButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpdateFontButton, "mUpdateFontButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mUsesCustomHoleDiameterSwitch, "mUsesCustomHoleDiameterSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mUsesCustomPadDiameterSwitch, "mUsesCustomPadDiameterSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mUsesCustomTrackWidthSwitch, "mUsesCustomTrackWidthSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mViaCustomHoleDiameterTextField, "mViaCustomHoleDiameterTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mViaCustomHoleDiameterUnitPopUp, "mViaCustomHoleDiameterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mViaCustomPadDiameterTextField, "mViaCustomPadDiameterTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mViaCustomPadDiameterUnitPopUp, "mViaCustomPadDiameterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mViaDefaultHoleDiameterTextField, "mViaDefaultHoleDiameterTextField", CanariDimensionObserverTextField.self, #file, #line)
+    checkOutletConnection (self.mViaDefaultHoleDiameterUnitPopUp, "mViaDefaultHoleDiameterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mViaDefaultPadDiameterTextField, "mViaDefaultPadDiameterTextField", CanariDimensionObserverTextField.self, #file, #line)
+    checkOutletConnection (self.mViaDefaultPadDiameterUnitPopUp, "mViaDefaultPadDiameterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mViaNetClassNameTextField, "mViaNetClassNameTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mViaNetNameTextField, "mViaNetNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mWireNetNameTextField, "mWireNetNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mWireRenameNetButton, "mWireRenameNetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mWireRenameNetWithUniqueNewNameButton, "mWireRenameNetWithUniqueNewNameButton", EBButton.self, #file, #line)
@@ -1213,6 +1247,8 @@ import Cocoa
     self.boardObjectsController.bind_model (self.rootObject.mBoardObjects_property, self.ebUndoManager)
   //--- Selection controller property: boardTrackSelectionController
     self.boardTrackSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: boardConnectorSelectionController
+    self.boardConnectorSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: boardLineSelectionController
     self.boardLineSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: restrictRectangleSelectionController
@@ -1643,6 +1679,18 @@ import Cocoa
     self.mTrackCustomWidthUnitPopUp?.bind_selectedTag (self.boardTrackSelectionController.mCustomTrackWidthUnit_property, file: #file, line: #line)
     self.mTrackCustomWidthTextField?.bind_dimensionAndUnit (self.boardTrackSelectionController.mCustomTrackWidth_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property, file: #file, line: #line)
     self.mUsesCustomTrackWidthSwitch?.bind_value (self.boardTrackSelectionController.mUsesCustomTrackWidth_property, file: #file, line: #line)
+    self.mViaNetNameTextField?.bind_valueObserver (self.boardConnectorSelectionController.netNameFromTracks_property, file: #file, line: #line)
+    self.mViaNetClassNameTextField?.bind_valueObserver (self.boardConnectorSelectionController.netClassName_property, file: #file, line: #line)
+    self.mViaDefaultHoleDiameterUnitPopUp?.bind_selectedTag (self.boardConnectorSelectionController.mDefaultHoleDiameterUnit_property, file: #file, line: #line)
+    self.mViaDefaultHoleDiameterTextField?.bind_dimensionAndUnit (self.boardConnectorSelectionController.viaDefaultHoleDiameter_property, self.boardConnectorSelectionController.mDefaultHoleDiameterUnit_property, file: #file, line: #line)
+    self.mViaCustomHoleDiameterUnitPopUp?.bind_selectedTag (self.boardConnectorSelectionController.mCustomHoleDiameterUnit_property, file: #file, line: #line)
+    self.mViaCustomHoleDiameterTextField?.bind_dimensionAndUnit (self.boardConnectorSelectionController.mCustomHoleDiameter_property, self.boardConnectorSelectionController.mCustomHoleDiameterUnit_property, file: #file, line: #line)
+    self.mUsesCustomHoleDiameterSwitch?.bind_value (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property, file: #file, line: #line)
+    self.mViaDefaultPadDiameterUnitPopUp?.bind_selectedTag (self.boardConnectorSelectionController.mDefaultPadDiameterUnit_property, file: #file, line: #line)
+    self.mViaDefaultPadDiameterTextField?.bind_dimensionAndUnit (self.boardConnectorSelectionController.viaDefaultPadDiameter_property, self.boardConnectorSelectionController.mDefaultPadDiameterUnit_property, file: #file, line: #line)
+    self.mViaCustomPadDiameterUnitPopUp?.bind_selectedTag (self.boardConnectorSelectionController.mCustomPadDiameterUnit_property, file: #file, line: #line)
+    self.mViaCustomPadDiameterTextField?.bind_dimensionAndUnit (self.boardConnectorSelectionController.mCustomPadDiameter_property, self.boardConnectorSelectionController.mCustomPadDiameterUnit_property, file: #file, line: #line)
+    self.mUsesCustomPadDiameterSwitch?.bind_value (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property, file: #file, line: #line)
     self.mBoardLineWidthUnitPopUp?.bind_selectedTag (self.boardLineSelectionController.mWidthUnit_property, file: #file, line: #line)
     self.mBoardLineWidthTextField?.bind_dimensionAndUnit (self.boardLineSelectionController.mWidth_property, self.boardLineSelectionController.mWidthUnit_property, file: #file, line: #line)
     self.mBoardLineLayerPopUpButton?.bind_selectedIndex (self.boardLineSelectionController.mLayer_property, file: #file, line: #line)
@@ -2254,6 +2302,18 @@ import Cocoa
     self.mTrackCustomWidthUnitPopUp?.unbind_selectedTag ()
     self.mTrackCustomWidthTextField?.unbind_dimensionAndUnit ()
     self.mUsesCustomTrackWidthSwitch?.unbind_value ()
+    self.mViaNetNameTextField?.unbind_valueObserver ()
+    self.mViaNetClassNameTextField?.unbind_valueObserver ()
+    self.mViaDefaultHoleDiameterUnitPopUp?.unbind_selectedTag ()
+    self.mViaDefaultHoleDiameterTextField?.unbind_dimensionAndUnit ()
+    self.mViaCustomHoleDiameterUnitPopUp?.unbind_selectedTag ()
+    self.mViaCustomHoleDiameterTextField?.unbind_dimensionAndUnit ()
+    self.mUsesCustomHoleDiameterSwitch?.unbind_value ()
+    self.mViaDefaultPadDiameterUnitPopUp?.unbind_selectedTag ()
+    self.mViaDefaultPadDiameterTextField?.unbind_dimensionAndUnit ()
+    self.mViaCustomPadDiameterUnitPopUp?.unbind_selectedTag ()
+    self.mViaCustomPadDiameterTextField?.unbind_dimensionAndUnit ()
+    self.mUsesCustomPadDiameterSwitch?.unbind_value ()
     self.mBoardLineWidthUnitPopUp?.unbind_selectedTag ()
     self.mBoardLineWidthTextField?.unbind_dimensionAndUnit ()
     self.mBoardLineLayerPopUpButton?.unbind_selectedIndex ()
@@ -2426,6 +2486,8 @@ import Cocoa
     self.boardObjectsController.unbind_model ()
   //--- Selection controller property: boardTrackSelectionController
     self.boardTrackSelectionController.unbind_selection ()
+  //--- Selection controller property: boardConnectorSelectionController
+    self.boardConnectorSelectionController.unbind_selection ()
   //--- Selection controller property: boardLineSelectionController
     self.boardLineSelectionController.unbind_selection ()
   //--- Selection controller property: restrictRectangleSelectionController
@@ -2512,6 +2574,7 @@ import Cocoa
     self.mBoardComponentSidePopUpButton?.ebCleanUp ()
     self.mBoardComponentValueFontPopUpButton?.ebCleanUp ()
     self.mBoardComponentValueTextField?.ebCleanUp ()
+    self.mBoardConnectorInspectorView?.ebCleanUp ()
     self.mBoardCurveCPX1TextField?.ebCleanUp ()
     self.mBoardCurveCPX2TextField?.ebCleanUp ()
     self.mBoardCurveCPY1TextField?.ebCleanUp ()
@@ -2771,7 +2834,19 @@ import Cocoa
     self.mUpdateDeviceButton?.ebCleanUp ()
     self.mUpdateDevicesAndFontsButton?.ebCleanUp ()
     self.mUpdateFontButton?.ebCleanUp ()
+    self.mUsesCustomHoleDiameterSwitch?.ebCleanUp ()
+    self.mUsesCustomPadDiameterSwitch?.ebCleanUp ()
     self.mUsesCustomTrackWidthSwitch?.ebCleanUp ()
+    self.mViaCustomHoleDiameterTextField?.ebCleanUp ()
+    self.mViaCustomHoleDiameterUnitPopUp?.ebCleanUp ()
+    self.mViaCustomPadDiameterTextField?.ebCleanUp ()
+    self.mViaCustomPadDiameterUnitPopUp?.ebCleanUp ()
+    self.mViaDefaultHoleDiameterTextField?.ebCleanUp ()
+    self.mViaDefaultHoleDiameterUnitPopUp?.ebCleanUp ()
+    self.mViaDefaultPadDiameterTextField?.ebCleanUp ()
+    self.mViaDefaultPadDiameterUnitPopUp?.ebCleanUp ()
+    self.mViaNetClassNameTextField?.ebCleanUp ()
+    self.mViaNetNameTextField?.ebCleanUp ()
     self.mWireNetNameTextField?.ebCleanUp ()
     self.mWireRenameNetButton?.ebCleanUp ()
     self.mWireRenameNetWithUniqueNewNameButton?.ebCleanUp ()
@@ -2810,6 +2885,7 @@ import Cocoa
 //    self.mBoardComponentSidePopUpButton = nil
 //    self.mBoardComponentValueFontPopUpButton = nil
 //    self.mBoardComponentValueTextField = nil
+//    self.mBoardConnectorInspectorView = nil
 //    self.mBoardCurveCPX1TextField = nil
 //    self.mBoardCurveCPX2TextField = nil
 //    self.mBoardCurveCPY1TextField = nil
@@ -3069,7 +3145,19 @@ import Cocoa
 //    self.mUpdateDeviceButton = nil
 //    self.mUpdateDevicesAndFontsButton = nil
 //    self.mUpdateFontButton = nil
+//    self.mUsesCustomHoleDiameterSwitch = nil
+//    self.mUsesCustomPadDiameterSwitch = nil
 //    self.mUsesCustomTrackWidthSwitch = nil
+//    self.mViaCustomHoleDiameterTextField = nil
+//    self.mViaCustomHoleDiameterUnitPopUp = nil
+//    self.mViaCustomPadDiameterTextField = nil
+//    self.mViaCustomPadDiameterUnitPopUp = nil
+//    self.mViaDefaultHoleDiameterTextField = nil
+//    self.mViaDefaultHoleDiameterUnitPopUp = nil
+//    self.mViaDefaultPadDiameterTextField = nil
+//    self.mViaDefaultPadDiameterUnitPopUp = nil
+//    self.mViaNetClassNameTextField = nil
+//    self.mViaNetNameTextField = nil
 //    self.mWireNetNameTextField = nil
 //    self.mWireRenameNetButton = nil
 //    self.mWireRenameNetWithUniqueNewNameButton = nil

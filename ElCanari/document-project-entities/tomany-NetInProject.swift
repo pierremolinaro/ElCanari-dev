@@ -18,12 +18,16 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
     self.removeEBObserversOf_mNetName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_netClassName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_wireColor_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netPointsInfo_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_mNetName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netClassTrackWidth_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_wireColor_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netPointsInfo_toElementsOfSet (inAddedSet) // Transient property
   }
@@ -193,6 +197,118 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
     for managedObject in inSet {
       self.mObserversOf_netClassTrackWidth.apply { (_ observer : EBEvent) in
         managedObject.netClassTrackWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netClassViaHoleDiameter' transient property
+  //····················································································································
+
+  private var mObserversOf_netClassViaHoleDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netClassViaHoleDiameter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netClassViaHoleDiameter_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netClassViaHoleDiameter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netClassViaHoleDiameter_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (_ inSet : Set<NetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassViaHoleDiameter.apply { (_ observer : EBEvent) in
+        managedObject.netClassViaHoleDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassViaHoleDiameter.apply { (_ observer : EBEvent) in
+        managedObject.netClassViaHoleDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netClassViaPadDiameter' transient property
+  //····················································································································
+
+  private var mObserversOf_netClassViaPadDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_netClassViaPadDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netClassViaPadDiameter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netClassViaPadDiameter_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netClassViaPadDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netClassViaPadDiameter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netClassViaPadDiameter_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (_ inSet : Set<NetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassViaPadDiameter.apply { (_ observer : EBEvent) in
+        managedObject.netClassViaPadDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassViaPadDiameter.apply { (_ observer : EBEvent) in
+        managedObject.netClassViaPadDiameter_property.removeEBObserver (observer)
       }
     }
   }

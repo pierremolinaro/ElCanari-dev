@@ -19,12 +19,22 @@ graphic entity BoardConnector : BoardObject {
   toMany BoardTrack mTracksP1 inverse toOne mConnectorP1 ;
   toMany BoardTrack mTracksP2 inverse toOne mConnectorP2 ;
 
+  property Int mDefaultHoleDiameterUnit default 2_286 ; // mil
+  property Int mCustomHoleDiameter default 45_720 ; // 20 mil
+  property Int mCustomHoleDiameterUnit default 2_286 ; // mil
+  property Bool mUsesCustomHoleDiameter default no ;
+
+  property Int mDefaultPadDiameterUnit default 2_286 ; // mil
+  property Int mCustomPadDiameter default 91_440 ; // 40 mil
+  property Int mCustomPadDiameterUnit default 2_286 ; // mil
+  property Bool mUsesCustomPadDiameter default no ;
+
   transient CanariPoint location dependsFrom
     self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex,
     self.mX, self.mY
   ;
 
-  transient String netName dependsFrom
+  transient String netNameFromComponentPad dependsFrom
     self.mComponent.one.padNetDictionary, self.mComponentPadName
   ;
 
@@ -41,12 +51,36 @@ graphic entity BoardConnector : BoardObject {
     self.mComponent.one.padNetDictionary
   ;
 
+  transient Int viaDefaultHoleDiameter dependsFrom
+     self.mTracksP1.all.netClassViaHoleDiameter, self.mTracksP2.all.netClassViaHoleDiameter ;
+
+  transient Int viaDefaultPadDiameter dependsFrom
+     self.mTracksP1.all.netClassViaPadDiameter, self.mTracksP2.all.netClassViaPadDiameter ;
+
+  transient String netNameFromTracks dependsFrom
+     self.mTracksP1.all.netName, self.mTracksP2.all.netName ;
+  
+  transient String netClassName dependsFrom
+     self.mTracksP1.all.netClassName, self.mTracksP2.all.netClassName ;
+  
   transient Bool connectedToComponent dependsFrom self.mComponent.none ;
+
+  transient Int actualHoleDiameter dependsFrom
+    self.viaDefaultHoleDiameter,
+    self.mUsesCustomHoleDiameter, self.mCustomHoleDiameter
+  ;
+  
+  transient Int actualPadDiameter dependsFrom
+    self.viaDefaultPadDiameter,
+    self.mUsesCustomPadDiameter, self.mCustomPadDiameter
+  ;
   
   override transient EBShape objectDisplay dependsFrom
     self.connectedToComponent,
     self.side,
-    self.location
+    self.location,
+    self.actualHoleDiameter, self.actualPadDiameter,
+    prefs.frontSidePadColorForBoard
   ;
   
   override transient EBShape selectionDisplay dependsFrom

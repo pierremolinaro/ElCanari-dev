@@ -186,6 +186,7 @@ fileprivate let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     self.boardObjectsController.register (inspectorView: self.mComponentInBoardInspectorView, for: ComponentInProject.self)
     self.boardObjectsController.register (inspectorView: self.mBoardLineInspectorView, for: BoardLine.self)
     self.boardObjectsController.register (inspectorView: self.mBoardTrackInspectorView, for: BoardTrack.self)
+    self.boardObjectsController.register (inspectorView: self.mBoardConnectorInspectorView, for: BoardConnector.self)
     self.mBoardView?.mPopulateContextualMenuClosure = self.populateContextualClickOnBoard
   //--- Set Board limits inspector segmented control
     let boardLimitsInspectors = [

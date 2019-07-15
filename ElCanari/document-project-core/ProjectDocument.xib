@@ -43,6 +43,7 @@
                 <outlet property="mBoardComponentSidePopUpButton" destination="iWf-ep-X89" id="lzV-MS-0ZZ"/>
                 <outlet property="mBoardComponentValueFontPopUpButton" destination="15470" id="zba-lc-IdI"/>
                 <outlet property="mBoardComponentValueTextField" destination="15472" id="5ew-a3-g56"/>
+                <outlet property="mBoardConnectorInspectorView" destination="JGA-D7-K9S" id="Csp-P1-wZe"/>
                 <outlet property="mBoardCurveCPX1TextField" destination="AFG-67-eCo" id="SB9-OV-Afk"/>
                 <outlet property="mBoardCurveCPX2TextField" destination="BUU-Oo-bUK" id="9J6-Zy-J7W"/>
                 <outlet property="mBoardCurveCPY1TextField" destination="YxB-BC-66z" id="9Rq-nn-4jj"/>
@@ -302,7 +303,19 @@
                 <outlet property="mUpdateDeviceButton" destination="2952" id="OwT-m6-V6F"/>
                 <outlet property="mUpdateDevicesAndFontsButton" destination="15620" id="5AE-2M-nJc"/>
                 <outlet property="mUpdateFontButton" destination="2976" id="YXq-m9-y5B"/>
+                <outlet property="mUsesCustomHoleDiameterSwitch" destination="UMk-BB-svf" id="KOc-Gd-h6p"/>
+                <outlet property="mUsesCustomPadDiameterSwitch" destination="pq0-4B-DRt" id="KTY-cv-q4E"/>
                 <outlet property="mUsesCustomTrackWidthSwitch" destination="2256" id="6U3-QC-jzs"/>
+                <outlet property="mViaCustomHoleDiameterTextField" destination="IyD-RE-bVi" id="YPA-mW-XhI"/>
+                <outlet property="mViaCustomHoleDiameterUnitPopUp" destination="Oac-yV-oiw" id="xlp-Ar-oBL"/>
+                <outlet property="mViaCustomPadDiameterTextField" destination="RC5-I8-dr6" id="s7c-UC-1mh"/>
+                <outlet property="mViaCustomPadDiameterUnitPopUp" destination="LS4-k5-MhT" id="nIE-Ff-VCw"/>
+                <outlet property="mViaDefaultHoleDiameterTextField" destination="3FU-Fo-boD" id="jhX-tg-hHw"/>
+                <outlet property="mViaDefaultHoleDiameterUnitPopUp" destination="nAV-aV-ALP" id="4mY-SZ-U6h"/>
+                <outlet property="mViaDefaultPadDiameterTextField" destination="1XD-4w-AaI" id="HqJ-FQ-tku"/>
+                <outlet property="mViaDefaultPadDiameterUnitPopUp" destination="abV-wc-sHr" id="dgL-4N-87m"/>
+                <outlet property="mViaNetClassNameTextField" destination="eH9-5c-Wcf" id="FWd-4Q-Zhq"/>
+                <outlet property="mViaNetNameTextField" destination="jEn-By-UGH" id="ddE-tU-VJ2"/>
                 <outlet property="mWireNetNameTextField" destination="15769" id="HIS-BO-PPh"/>
                 <outlet property="mWireRenameNetButton" destination="eLg-8l-Guf" id="MYZ-9D-4jK"/>
                 <outlet property="mWireRenameNetWithUniqueNewNameButton" destination="kXM-aR-L2U" id="UUs-SO-Yrh"/>
@@ -3283,7 +3296,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="121.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="122" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3297,11 +3310,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="121.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="122" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="121.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="122" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3317,7 +3330,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="206" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="205.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3331,11 +3344,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="593" y="1" width="206" height="17"/>
+                                                <rect key="frame" x="593.5" y="1" width="205.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="206" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="205.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -9274,6 +9287,234 @@ DQ
         <customView id="2TI-rd-8tc" userLabel="Board Inspector : Selected Objects" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+        </customView>
+        <customView id="JGA-D7-K9S" userLabel="Board Inspector : Connector" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="251"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="nKH-1D-0uE">
+                    <rect key="frame" x="60" y="237" width="130" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Via Inspector" id="B8d-Ld-Obb">
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="eH9-5c-Wcf" customClass="EBTextObserverField">
+                    <rect key="frame" x="112" y="192" width="120" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Net Name…" id="Qqd-lG-QHT">
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="8M7-gH-JI9">
+                    <rect key="frame" x="17" y="192" width="91" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Net Class Name" id="WXd-13-tmj">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box verticalHuggingPriority="750" boxType="separator" id="SiK-II-81e">
+                    <rect key="frame" x="20" y="177" width="210" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </box>
+                <button id="UMk-BB-svf" customClass="EBSwitch">
+                    <rect key="frame" x="16" y="105" width="92" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Use Custom" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="ggR-1Y-Y4P">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="IyD-RE-bVi" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="111" y="105" width="57" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,23" drawsBackground="YES" id="WIf-Y7-CvV">
+                        <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="USR-PK-d8K">
+                            <decimal key="minimum" value="NaN"/>
+                            <decimal key="maximum" value="NaN"/>
+                        </numberFormatter>
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton id="Oac-yV-oiw" customClass="EBPopUpButton">
+                    <rect key="frame" x="169" y="107" width="60" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="BON-Bf-UMu" id="RJF-B9-mJI">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="9UB-jZ-1bk">
+                            <items>
+                                <menuItem title="µm" tag="90" id="LJu-hm-51Y"/>
+                                <menuItem title="mm" tag="90000" id="Rue-SH-p4a"/>
+                                <menuItem title="mil" tag="2286" id="Ufa-aZ-ibZ"/>
+                                <menuItem title="inch" state="on" tag="2286000" id="BON-Bf-UMu"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="3FU-Fo-boD" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="109" y="130" width="60" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="-100,23" id="rvY-IM-QjW">
+                        <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="Wmv-Ra-N4w">
+                            <decimal key="minimum" value="NaN"/>
+                            <decimal key="maximum" value="NaN"/>
+                        </numberFormatter>
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton id="nAV-aV-ALP" customClass="EBPopUpButton">
+                    <rect key="frame" x="170" y="132" width="60" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="XWa-HX-vI9" id="ryk-rE-w1e">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="1P2-eK-A65">
+                            <items>
+                                <menuItem title="µm" tag="90" id="yMD-co-J10"/>
+                                <menuItem title="mm" tag="90000" id="8bN-Oc-S9H"/>
+                                <menuItem title="mil" tag="2286" id="Lry-v4-euv"/>
+                                <menuItem title="inch" state="on" tag="2286000" id="XWa-HX-vI9"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="FIw-TZ-zh1">
+                    <rect key="frame" x="17" y="134" width="91" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="From Net Class" id="tAG-QJ-fzE">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="jEn-By-UGH" customClass="EBTextObserverField">
+                    <rect key="frame" x="112" y="215" width="120" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Net Name…" id="0ZC-Z1-zN3">
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="TRd-tW-g0W">
+                    <rect key="frame" x="17" y="215" width="90" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Net Name" id="zyx-Jt-UCD">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="8dc-ws-clB">
+                    <rect key="frame" x="18" y="157" width="214" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Hole Diameter" id="5cL-9X-cQL">
+                        <font key="font" metaFont="systemBold" size="11"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box verticalHuggingPriority="750" boxType="separator" id="B0N-nh-KGx">
+                    <rect key="frame" x="20" y="92" width="210" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </box>
+                <button id="pq0-4B-DRt" customClass="EBSwitch">
+                    <rect key="frame" x="16" y="20" width="92" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Use Custom" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="en3-pi-p5Z">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="RC5-I8-dr6" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="111" y="20" width="57" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,23" drawsBackground="YES" id="vMK-4R-1hf">
+                        <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="JCt-jG-Y1B">
+                            <decimal key="minimum" value="NaN"/>
+                            <decimal key="maximum" value="NaN"/>
+                        </numberFormatter>
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton id="LS4-k5-MhT" customClass="EBPopUpButton">
+                    <rect key="frame" x="169" y="22" width="60" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="SD0-Cy-ppJ" id="Tc7-JU-d2k">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="8QA-Fv-B7R">
+                            <items>
+                                <menuItem title="µm" tag="90" id="gVa-tq-6nH"/>
+                                <menuItem title="mm" tag="90000" id="SXA-Un-N7C"/>
+                                <menuItem title="mil" tag="2286" id="G08-xU-EWw"/>
+                                <menuItem title="inch" state="on" tag="2286000" id="SD0-Cy-ppJ"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1XD-4w-AaI" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="109" y="45" width="60" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="-100,23" id="sJp-eY-uv1">
+                        <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="yNk-Zk-gx6">
+                            <decimal key="minimum" value="NaN"/>
+                            <decimal key="maximum" value="NaN"/>
+                        </numberFormatter>
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton id="abV-wc-sHr" customClass="EBPopUpButton">
+                    <rect key="frame" x="170" y="47" width="60" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="uUx-sM-C8N" id="H4B-e8-1aD">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="bRB-NG-DaC">
+                            <items>
+                                <menuItem title="µm" tag="90" id="JcH-hX-6fK"/>
+                                <menuItem title="mm" tag="90000" id="Qru-yN-BSn"/>
+                                <menuItem title="mil" tag="2286" id="dyW-Cb-yEy"/>
+                                <menuItem title="inch" state="on" tag="2286000" id="uUx-sM-C8N"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="x9l-FB-xeP">
+                    <rect key="frame" x="17" y="49" width="91" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="From Net Class" id="Vle-3A-zNE">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="v2R-7t-aAK">
+                    <rect key="frame" x="18" y="72" width="214" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Pad Diameter" id="jzG-h3-Jdh">
+                        <font key="font" metaFont="systemBold" size="11"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="-739" y="403.5"/>
         </customView>
     </objects>
     <resources>

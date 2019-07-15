@@ -30,14 +30,62 @@ protocol BoardConnector_mY : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardConnector_mDefaultHoleDiameterUnit : class {
+  var mDefaultHoleDiameterUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_mCustomHoleDiameter : class {
+  var mCustomHoleDiameter : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_mCustomHoleDiameterUnit : class {
+  var mCustomHoleDiameterUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_mUsesCustomHoleDiameter : class {
+  var mUsesCustomHoleDiameter : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_mDefaultPadDiameterUnit : class {
+  var mDefaultPadDiameterUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_mCustomPadDiameter : class {
+  var mCustomPadDiameter : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_mCustomPadDiameterUnit : class {
+  var mCustomPadDiameterUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_mUsesCustomPadDiameter : class {
+  var mUsesCustomPadDiameter : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardConnector_location : class {
   var location : CanariPoint? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_netName : class {
-  var netName : String? { get }
+protocol BoardConnector_netNameFromComponentPad : class {
+  var netNameFromComponentPad : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -54,8 +102,44 @@ protocol BoardConnector_issues : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardConnector_viaDefaultHoleDiameter : class {
+  var viaDefaultHoleDiameter : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_viaDefaultPadDiameter : class {
+  var viaDefaultPadDiameter : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_netNameFromTracks : class {
+  var netNameFromTracks : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_netClassName : class {
+  var netClassName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardConnector_connectedToComponent : class {
   var connectedToComponent : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_actualHoleDiameter : class {
+  var actualHoleDiameter : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_actualPadDiameter : class {
+  var actualPadDiameter : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -79,11 +163,25 @@ class BoardConnector : BoardObject,
          BoardConnector_mPadIndex,
          BoardConnector_mX,
          BoardConnector_mY,
+         BoardConnector_mDefaultHoleDiameterUnit,
+         BoardConnector_mCustomHoleDiameter,
+         BoardConnector_mCustomHoleDiameterUnit,
+         BoardConnector_mUsesCustomHoleDiameter,
+         BoardConnector_mDefaultPadDiameterUnit,
+         BoardConnector_mCustomPadDiameter,
+         BoardConnector_mCustomPadDiameterUnit,
+         BoardConnector_mUsesCustomPadDiameter,
          BoardConnector_location,
-         BoardConnector_netName,
+         BoardConnector_netNameFromComponentPad,
          BoardConnector_side,
          BoardConnector_issues,
+         BoardConnector_viaDefaultHoleDiameter,
+         BoardConnector_viaDefaultPadDiameter,
+         BoardConnector_netNameFromTracks,
+         BoardConnector_netClassName,
          BoardConnector_connectedToComponent,
+         BoardConnector_actualHoleDiameter,
+         BoardConnector_actualPadDiameter,
          BoardConnector_objectDisplay,
          BoardConnector_selectionDisplay {
 
@@ -175,6 +273,142 @@ class BoardConnector : BoardObject,
   }
 
   //····················································································································
+  //   Atomic property: mDefaultHoleDiameterUnit
+  //····················································································································
+
+  let mDefaultHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mDefaultHoleDiameterUnit : Int {
+    get { return self.mDefaultHoleDiameterUnit_property.propval }
+    set { self.mDefaultHoleDiameterUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mDefaultHoleDiameterUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mCustomHoleDiameter
+  //····················································································································
+
+  let mCustomHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720)
+
+  //····················································································································
+
+  var mCustomHoleDiameter : Int {
+    get { return self.mCustomHoleDiameter_property.propval }
+    set { self.mCustomHoleDiameter_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mCustomHoleDiameter_property_selection : EBSelection <Int> { return self.mCustomHoleDiameter_property.prop }
+
+  //····················································································································
+  //   Atomic property: mCustomHoleDiameterUnit
+  //····················································································································
+
+  let mCustomHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mCustomHoleDiameterUnit : Int {
+    get { return self.mCustomHoleDiameterUnit_property.propval }
+    set { self.mCustomHoleDiameterUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mCustomHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mCustomHoleDiameterUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mUsesCustomHoleDiameter
+  //····················································································································
+
+  let mUsesCustomHoleDiameter_property = EBStoredProperty_Bool (defaultValue: false)
+
+  //····················································································································
+
+  var mUsesCustomHoleDiameter : Bool {
+    get { return self.mUsesCustomHoleDiameter_property.propval }
+    set { self.mUsesCustomHoleDiameter_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool> { return self.mUsesCustomHoleDiameter_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDefaultPadDiameterUnit
+  //····················································································································
+
+  let mDefaultPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mDefaultPadDiameterUnit : Int {
+    get { return self.mDefaultPadDiameterUnit_property.propval }
+    set { self.mDefaultPadDiameterUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDefaultPadDiameterUnit_property_selection : EBSelection <Int> { return self.mDefaultPadDiameterUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mCustomPadDiameter
+  //····················································································································
+
+  let mCustomPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440)
+
+  //····················································································································
+
+  var mCustomPadDiameter : Int {
+    get { return self.mCustomPadDiameter_property.propval }
+    set { self.mCustomPadDiameter_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mCustomPadDiameter_property_selection : EBSelection <Int> { return self.mCustomPadDiameter_property.prop }
+
+  //····················································································································
+  //   Atomic property: mCustomPadDiameterUnit
+  //····················································································································
+
+  let mCustomPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mCustomPadDiameterUnit : Int {
+    get { return self.mCustomPadDiameterUnit_property.propval }
+    set { self.mCustomPadDiameterUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mCustomPadDiameterUnit_property_selection : EBSelection <Int> { return self.mCustomPadDiameterUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mUsesCustomPadDiameter
+  //····················································································································
+
+  let mUsesCustomPadDiameter_property = EBStoredProperty_Bool (defaultValue: false)
+
+  //····················································································································
+
+  var mUsesCustomPadDiameter : Bool {
+    get { return self.mUsesCustomPadDiameter_property.propval }
+    set { self.mUsesCustomPadDiameter_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mUsesCustomPadDiameter_property_selection : EBSelection <Bool> { return self.mUsesCustomPadDiameter_property.prop }
+
+  //····················································································································
   //   To many property: mTracksP1
   //····················································································································
 
@@ -255,21 +489,21 @@ class BoardConnector : BoardObject,
   }
 
   //····················································································································
-  //   Transient property: netName
+  //   Transient property: netNameFromComponentPad
   //····················································································································
 
-  let netName_property = EBTransientProperty_String ()
+  let netNameFromComponentPad_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var netName_property_selection : EBSelection <String> {
-    return self.netName_property.prop
+  var netNameFromComponentPad_property_selection : EBSelection <String> {
+    return self.netNameFromComponentPad_property.prop
   }
 
   //····················································································································
 
-  var netName : String? {
-    switch self.netName_property_selection {
+  var netNameFromComponentPad : String? {
+    switch self.netNameFromComponentPad_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -301,6 +535,98 @@ class BoardConnector : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: viaDefaultHoleDiameter
+  //····················································································································
+
+  let viaDefaultHoleDiameter_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var viaDefaultHoleDiameter_property_selection : EBSelection <Int> {
+    return self.viaDefaultHoleDiameter_property.prop
+  }
+
+  //····················································································································
+
+  var viaDefaultHoleDiameter : Int? {
+    switch self.viaDefaultHoleDiameter_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: viaDefaultPadDiameter
+  //····················································································································
+
+  let viaDefaultPadDiameter_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var viaDefaultPadDiameter_property_selection : EBSelection <Int> {
+    return self.viaDefaultPadDiameter_property.prop
+  }
+
+  //····················································································································
+
+  var viaDefaultPadDiameter : Int? {
+    switch self.viaDefaultPadDiameter_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: netNameFromTracks
+  //····················································································································
+
+  let netNameFromTracks_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netNameFromTracks_property_selection : EBSelection <String> {
+    return self.netNameFromTracks_property.prop
+  }
+
+  //····················································································································
+
+  var netNameFromTracks : String? {
+    switch self.netNameFromTracks_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: netClassName
+  //····················································································································
+
+  let netClassName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netClassName_property_selection : EBSelection <String> {
+    return self.netClassName_property.prop
+  }
+
+  //····················································································································
+
+  var netClassName : String? {
+    switch self.netClassName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: connectedToComponent
   //····················································································································
 
@@ -316,6 +642,52 @@ class BoardConnector : BoardObject,
 
   var connectedToComponent : Bool? {
     switch self.connectedToComponent_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: actualHoleDiameter
+  //····················································································································
+
+  let actualHoleDiameter_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var actualHoleDiameter_property_selection : EBSelection <Int> {
+    return self.actualHoleDiameter_property.prop
+  }
+
+  //····················································································································
+
+  var actualHoleDiameter : Int? {
+    switch self.actualHoleDiameter_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: actualPadDiameter
+  //····················································································································
+
+  let actualPadDiameter_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var actualPadDiameter_property_selection : EBSelection <Int> {
+    return self.actualPadDiameter_property.prop
+  }
+
+  //····················································································································
+
+  var actualPadDiameter : Int? {
+    switch self.actualPadDiameter_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -343,6 +715,22 @@ class BoardConnector : BoardObject,
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },
       resetter: { inObject in inObject.mConnectorP2_property.setProp (nil) }
     )
+  //--- Atomic property: mDefaultHoleDiameterUnit
+    self.mDefaultHoleDiameterUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mCustomHoleDiameter
+    self.mCustomHoleDiameter_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mCustomHoleDiameterUnit
+    self.mCustomHoleDiameterUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mUsesCustomHoleDiameter
+    self.mUsesCustomHoleDiameter_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDefaultPadDiameterUnit
+    self.mDefaultPadDiameterUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mCustomPadDiameter
+    self.mCustomPadDiameter_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mCustomPadDiameterUnit
+    self.mCustomPadDiameterUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mUsesCustomPadDiameter
+    self.mUsesCustomPadDiameter_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mTracksP1 (has opposite relationship)
     self.mTracksP1_property.ebUndoManager = self.ebUndoManager
     self.mTracksP1_property.setOppositeRelationShipFunctions (
@@ -385,8 +773,8 @@ class BoardConnector : BoardObject,
     self.mPadIndex_property.addEBObserver (self.location_property)
     self.mX_property.addEBObserver (self.location_property)
     self.mY_property.addEBObserver (self.location_property)
-  //--- Atomic property: netName
-    self.netName_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: netNameFromComponentPad
+    self.netNameFromComponentPad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComponent_property.padNetDictionary_property_selection.kind ()
         kind &= unwSelf.mComponentPadName_property_selection.kind ()
@@ -398,7 +786,7 @@ class BoardConnector : BoardObject,
         case .single :
           switch (unwSelf.mComponent_property.padNetDictionary_property_selection, unwSelf.mComponentPadName_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardConnector_netName (v0, v1))
+            return .single (transient_BoardConnector_netNameFromComponentPad (v0, v1))
           default :
             return .empty
           }
@@ -407,8 +795,8 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.addEBObserverOf_padNetDictionary (self.netName_property)
-    self.mComponentPadName_property.addEBObserver (self.netName_property)
+    self.mComponent_property.addEBObserverOf_padNetDictionary (self.netNameFromComponentPad_property)
+    self.mComponentPadName_property.addEBObserver (self.netNameFromComponentPad_property)
   //--- Atomic property: side
     self.side_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -473,6 +861,102 @@ class BoardConnector : BoardObject,
     self.mTracksP2_property.addEBObserver (self.issues_property)
     self.errorOrWarningIssueSize_property.addEBObserver (self.issues_property)
     self.mComponent_property.addEBObserverOf_padNetDictionary (self.issues_property)
+  //--- Atomic property: viaDefaultHoleDiameter
+    self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mTracksP1_property_selection.kind ()
+        kind &= unwSelf.mTracksP2_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardConnector_viaDefaultHoleDiameter (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mTracksP1_property.addEBObserverOf_netClassViaHoleDiameter (self.viaDefaultHoleDiameter_property)
+    self.mTracksP2_property.addEBObserverOf_netClassViaHoleDiameter (self.viaDefaultHoleDiameter_property)
+  //--- Atomic property: viaDefaultPadDiameter
+    self.viaDefaultPadDiameter_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mTracksP1_property_selection.kind ()
+        kind &= unwSelf.mTracksP2_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardConnector_viaDefaultPadDiameter (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mTracksP1_property.addEBObserverOf_netClassViaPadDiameter (self.viaDefaultPadDiameter_property)
+    self.mTracksP2_property.addEBObserverOf_netClassViaPadDiameter (self.viaDefaultPadDiameter_property)
+  //--- Atomic property: netNameFromTracks
+    self.netNameFromTracks_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mTracksP1_property_selection.kind ()
+        kind &= unwSelf.mTracksP2_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardConnector_netNameFromTracks (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mTracksP1_property.addEBObserverOf_netName (self.netNameFromTracks_property)
+    self.mTracksP2_property.addEBObserverOf_netName (self.netNameFromTracks_property)
+  //--- Atomic property: netClassName
+    self.netClassName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mTracksP1_property_selection.kind ()
+        kind &= unwSelf.mTracksP2_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardConnector_netClassName (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mTracksP1_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.mTracksP2_property.addEBObserverOf_netClassName (self.netClassName_property)
   //--- Atomic property: connectedToComponent
     self.connectedToComponent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -495,21 +979,76 @@ class BoardConnector : BoardObject,
       }
     }
     self.mComponent_property.addEBObserver (self.connectedToComponent_property)
-  //--- Atomic property: objectDisplay
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: actualHoleDiameter
+    self.actualHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.connectedToComponent_property_selection.kind ()
-        kind &= unwSelf.side_property_selection.kind ()
-        kind &= unwSelf.location_property_selection.kind ()
+        var kind = unwSelf.viaDefaultHoleDiameter_property_selection.kind ()
+        kind &= unwSelf.mUsesCustomHoleDiameter_property_selection.kind ()
+        kind &= unwSelf.mCustomHoleDiameter_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.connectedToComponent_property_selection, unwSelf.side_property_selection, unwSelf.location_property_selection) {
+          switch (unwSelf.viaDefaultHoleDiameter_property_selection, unwSelf.mUsesCustomHoleDiameter_property_selection, unwSelf.mCustomHoleDiameter_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_BoardConnector_objectDisplay (v0, v1, v2))
+            return .single (transient_BoardConnector_actualHoleDiameter (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.viaDefaultHoleDiameter_property.addEBObserver (self.actualHoleDiameter_property)
+    self.mUsesCustomHoleDiameter_property.addEBObserver (self.actualHoleDiameter_property)
+    self.mCustomHoleDiameter_property.addEBObserver (self.actualHoleDiameter_property)
+  //--- Atomic property: actualPadDiameter
+    self.actualPadDiameter_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.viaDefaultPadDiameter_property_selection.kind ()
+        kind &= unwSelf.mUsesCustomPadDiameter_property_selection.kind ()
+        kind &= unwSelf.mCustomPadDiameter_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.viaDefaultPadDiameter_property_selection, unwSelf.mUsesCustomPadDiameter_property_selection, unwSelf.mCustomPadDiameter_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_BoardConnector_actualPadDiameter (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.viaDefaultPadDiameter_property.addEBObserver (self.actualPadDiameter_property)
+    self.mUsesCustomPadDiameter_property.addEBObserver (self.actualPadDiameter_property)
+    self.mCustomPadDiameter_property.addEBObserver (self.actualPadDiameter_property)
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.connectedToComponent_property_selection.kind ()
+        kind &= unwSelf.side_property_selection.kind ()
+        kind &= unwSelf.location_property_selection.kind ()
+        kind &= unwSelf.actualHoleDiameter_property_selection.kind ()
+        kind &= unwSelf.actualPadDiameter_property_selection.kind ()
+        kind &= g_Preferences!.frontSidePadColorForBoard_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.connectedToComponent_property_selection, unwSelf.side_property_selection, unwSelf.location_property_selection, unwSelf.actualHoleDiameter_property_selection, unwSelf.actualPadDiameter_property_selection, g_Preferences!.frontSidePadColorForBoard_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_BoardConnector_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -521,6 +1060,9 @@ class BoardConnector : BoardObject,
     self.connectedToComponent_property.addEBObserver (self.objectDisplay_property)
     self.side_property.addEBObserver (self.objectDisplay_property)
     self.location_property.addEBObserver (self.objectDisplay_property)
+    self.actualHoleDiameter_property.addEBObserver (self.objectDisplay_property)
+    self.actualPadDiameter_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -569,8 +1111,8 @@ class BoardConnector : BoardObject,
     self.mPadIndex_property.removeEBObserver (self.location_property)
     self.mX_property.removeEBObserver (self.location_property)
     self.mY_property.removeEBObserver (self.location_property)
-    self.mComponent_property.removeEBObserverOf_padNetDictionary (self.netName_property)
-    self.mComponentPadName_property.removeEBObserver (self.netName_property)
+    self.mComponent_property.removeEBObserverOf_padNetDictionary (self.netNameFromComponentPad_property)
+    self.mComponentPadName_property.removeEBObserver (self.netNameFromComponentPad_property)
     self.mComponent_property.removeEBObserverOf_componentPadDictionary (self.side_property)
     self.mComponentPadName_property.removeEBObserver (self.side_property)
     self.mPadIndex_property.removeEBObserver (self.side_property)
@@ -583,10 +1125,27 @@ class BoardConnector : BoardObject,
     self.mTracksP2_property.removeEBObserver (self.issues_property)
     self.errorOrWarningIssueSize_property.removeEBObserver (self.issues_property)
     self.mComponent_property.removeEBObserverOf_padNetDictionary (self.issues_property)
+    self.mTracksP1_property.removeEBObserverOf_netClassViaHoleDiameter (self.viaDefaultHoleDiameter_property)
+    self.mTracksP2_property.removeEBObserverOf_netClassViaHoleDiameter (self.viaDefaultHoleDiameter_property)
+    self.mTracksP1_property.removeEBObserverOf_netClassViaPadDiameter (self.viaDefaultPadDiameter_property)
+    self.mTracksP2_property.removeEBObserverOf_netClassViaPadDiameter (self.viaDefaultPadDiameter_property)
+    self.mTracksP1_property.removeEBObserverOf_netName (self.netNameFromTracks_property)
+    self.mTracksP2_property.removeEBObserverOf_netName (self.netNameFromTracks_property)
+    self.mTracksP1_property.removeEBObserverOf_netClassName (self.netClassName_property)
+    self.mTracksP2_property.removeEBObserverOf_netClassName (self.netClassName_property)
     self.mComponent_property.removeEBObserver (self.connectedToComponent_property)
+    self.viaDefaultHoleDiameter_property.removeEBObserver (self.actualHoleDiameter_property)
+    self.mUsesCustomHoleDiameter_property.removeEBObserver (self.actualHoleDiameter_property)
+    self.mCustomHoleDiameter_property.removeEBObserver (self.actualHoleDiameter_property)
+    self.viaDefaultPadDiameter_property.removeEBObserver (self.actualPadDiameter_property)
+    self.mUsesCustomPadDiameter_property.removeEBObserver (self.actualPadDiameter_property)
+    self.mCustomPadDiameter_property.removeEBObserver (self.actualPadDiameter_property)
     self.connectedToComponent_property.removeEBObserver (self.objectDisplay_property)
     self.side_property.removeEBObserver (self.objectDisplay_property)
     self.location_property.removeEBObserver (self.objectDisplay_property)
+    self.actualHoleDiameter_property.removeEBObserver (self.objectDisplay_property)
+    self.actualPadDiameter_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSidePadColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     self.connectedToComponent_property.removeEBObserver (self.selectionDisplay_property)
     self.side_property.removeEBObserver (self.selectionDisplay_property)
     self.location_property.removeEBObserver (self.selectionDisplay_property)
@@ -636,6 +1195,70 @@ class BoardConnector : BoardObject,
       observerExplorer: &self.mY_property.mObserverExplorer,
       valueExplorer: &self.mY_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mDefaultHoleDiameterUnit",
+      idx: self.mDefaultHoleDiameterUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDefaultHoleDiameterUnit_property.mObserverExplorer,
+      valueExplorer: &self.mDefaultHoleDiameterUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mCustomHoleDiameter",
+      idx: self.mCustomHoleDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCustomHoleDiameter_property.mObserverExplorer,
+      valueExplorer: &self.mCustomHoleDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mCustomHoleDiameterUnit",
+      idx: self.mCustomHoleDiameterUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCustomHoleDiameterUnit_property.mObserverExplorer,
+      valueExplorer: &self.mCustomHoleDiameterUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mUsesCustomHoleDiameter",
+      idx: self.mUsesCustomHoleDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mUsesCustomHoleDiameter_property.mObserverExplorer,
+      valueExplorer: &self.mUsesCustomHoleDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDefaultPadDiameterUnit",
+      idx: self.mDefaultPadDiameterUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDefaultPadDiameterUnit_property.mObserverExplorer,
+      valueExplorer: &self.mDefaultPadDiameterUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mCustomPadDiameter",
+      idx: self.mCustomPadDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCustomPadDiameter_property.mObserverExplorer,
+      valueExplorer: &self.mCustomPadDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mCustomPadDiameterUnit",
+      idx: self.mCustomPadDiameterUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCustomPadDiameterUnit_property.mObserverExplorer,
+      valueExplorer: &self.mCustomPadDiameterUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mUsesCustomPadDiameter",
+      idx: self.mUsesCustomPadDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mUsesCustomPadDiameter_property.mObserverExplorer,
+      valueExplorer: &self.mUsesCustomPadDiameter_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "location",
@@ -646,12 +1269,12 @@ class BoardConnector : BoardObject,
       valueExplorer: &self.location_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "netName",
-      idx: self.netName_property.ebObjectIndex,
+      "netNameFromComponentPad",
+      idx: self.netNameFromComponentPad_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.netName_property.mObserverExplorer,
-      valueExplorer: &self.netName_property.mValueExplorer
+      observerExplorer: &self.netNameFromComponentPad_property.mObserverExplorer,
+      valueExplorer: &self.netNameFromComponentPad_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "side",
@@ -670,12 +1293,60 @@ class BoardConnector : BoardObject,
       valueExplorer: &self.issues_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "viaDefaultHoleDiameter",
+      idx: self.viaDefaultHoleDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.viaDefaultHoleDiameter_property.mObserverExplorer,
+      valueExplorer: &self.viaDefaultHoleDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "viaDefaultPadDiameter",
+      idx: self.viaDefaultPadDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.viaDefaultPadDiameter_property.mObserverExplorer,
+      valueExplorer: &self.viaDefaultPadDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netNameFromTracks",
+      idx: self.netNameFromTracks_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netNameFromTracks_property.mObserverExplorer,
+      valueExplorer: &self.netNameFromTracks_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netClassName",
+      idx: self.netClassName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netClassName_property.mObserverExplorer,
+      valueExplorer: &self.netClassName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "connectedToComponent",
       idx: self.connectedToComponent_property.ebObjectIndex,
       y: &y,
       view: view,
       observerExplorer: &self.connectedToComponent_property.mObserverExplorer,
       valueExplorer: &self.connectedToComponent_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "actualHoleDiameter",
+      idx: self.actualHoleDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.actualHoleDiameter_property.mObserverExplorer,
+      valueExplorer: &self.actualHoleDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "actualPadDiameter",
+      idx: self.actualPadDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.actualPadDiameter_property.mObserverExplorer,
+      valueExplorer: &self.actualPadDiameter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
@@ -738,6 +1409,30 @@ class BoardConnector : BoardObject,
     self.mY_property.mValueExplorer = nil
   //--- To many property: mTracksP2
     self.mTracksP2_property.mValueExplorer = nil
+  //--- Atomic property: mDefaultHoleDiameterUnit
+    self.mDefaultHoleDiameterUnit_property.mObserverExplorer = nil
+    self.mDefaultHoleDiameterUnit_property.mValueExplorer = nil
+  //--- Atomic property: mCustomHoleDiameter
+    self.mCustomHoleDiameter_property.mObserverExplorer = nil
+    self.mCustomHoleDiameter_property.mValueExplorer = nil
+  //--- Atomic property: mCustomHoleDiameterUnit
+    self.mCustomHoleDiameterUnit_property.mObserverExplorer = nil
+    self.mCustomHoleDiameterUnit_property.mValueExplorer = nil
+  //--- Atomic property: mUsesCustomHoleDiameter
+    self.mUsesCustomHoleDiameter_property.mObserverExplorer = nil
+    self.mUsesCustomHoleDiameter_property.mValueExplorer = nil
+  //--- Atomic property: mDefaultPadDiameterUnit
+    self.mDefaultPadDiameterUnit_property.mObserverExplorer = nil
+    self.mDefaultPadDiameterUnit_property.mValueExplorer = nil
+  //--- Atomic property: mCustomPadDiameter
+    self.mCustomPadDiameter_property.mObserverExplorer = nil
+    self.mCustomPadDiameter_property.mValueExplorer = nil
+  //--- Atomic property: mCustomPadDiameterUnit
+    self.mCustomPadDiameterUnit_property.mObserverExplorer = nil
+    self.mCustomPadDiameterUnit_property.mValueExplorer = nil
+  //--- Atomic property: mUsesCustomPadDiameter
+    self.mUsesCustomPadDiameter_property.mObserverExplorer = nil
+    self.mUsesCustomPadDiameter_property.mValueExplorer = nil
   //--- To many property: mTracksP1
     self.mTracksP1_property.mValueExplorer = nil
   //--- To one property: mComponent
@@ -788,6 +1483,22 @@ class BoardConnector : BoardObject,
       relationshipName: "mTracksP2",
       intoDictionary: ioDictionary
     )
+  //--- Atomic property: mDefaultHoleDiameterUnit
+    self.mDefaultHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"mDefaultHoleDiameterUnit")
+  //--- Atomic property: mCustomHoleDiameter
+    self.mCustomHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mCustomHoleDiameter")
+  //--- Atomic property: mCustomHoleDiameterUnit
+    self.mCustomHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"mCustomHoleDiameterUnit")
+  //--- Atomic property: mUsesCustomHoleDiameter
+    self.mUsesCustomHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mUsesCustomHoleDiameter")
+  //--- Atomic property: mDefaultPadDiameterUnit
+    self.mDefaultPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"mDefaultPadDiameterUnit")
+  //--- Atomic property: mCustomPadDiameter
+    self.mCustomPadDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mCustomPadDiameter")
+  //--- Atomic property: mCustomPadDiameterUnit
+    self.mCustomPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"mCustomPadDiameterUnit")
+  //--- Atomic property: mUsesCustomPadDiameter
+    self.mUsesCustomPadDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mUsesCustomPadDiameter")
   //--- To many property: mTracksP1
     self.store (
       managedObjectArray: self.mTracksP1_property.propval,
@@ -842,6 +1553,22 @@ class BoardConnector : BoardObject,
     self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
   //--- Atomic property: mY
     self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
+  //--- Atomic property: mDefaultHoleDiameterUnit
+    self.mDefaultHoleDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"mDefaultHoleDiameterUnit")
+  //--- Atomic property: mCustomHoleDiameter
+    self.mCustomHoleDiameter_property.readFrom (dictionary: inDictionary, forKey:"mCustomHoleDiameter")
+  //--- Atomic property: mCustomHoleDiameterUnit
+    self.mCustomHoleDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"mCustomHoleDiameterUnit")
+  //--- Atomic property: mUsesCustomHoleDiameter
+    self.mUsesCustomHoleDiameter_property.readFrom (dictionary: inDictionary, forKey:"mUsesCustomHoleDiameter")
+  //--- Atomic property: mDefaultPadDiameterUnit
+    self.mDefaultPadDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"mDefaultPadDiameterUnit")
+  //--- Atomic property: mCustomPadDiameter
+    self.mCustomPadDiameter_property.readFrom (dictionary: inDictionary, forKey:"mCustomPadDiameter")
+  //--- Atomic property: mCustomPadDiameterUnit
+    self.mCustomPadDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"mCustomPadDiameterUnit")
+  //--- Atomic property: mUsesCustomPadDiameter
+    self.mUsesCustomPadDiameter_property.readFrom (dictionary: inDictionary, forKey:"mUsesCustomPadDiameter")
   }
 
   //····················································································································

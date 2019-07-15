@@ -13,28 +13,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_objectDisplay (
-       _ self_connectedToComponent : Bool,   
-       _ self_side : ConnectorSide,          
-       _ self_location : CanariPoint,        
-       _ self_actualHoleDiameter : Int,      
-       _ self_actualPadDiameter : Int,       
-       _ prefs_frontSidePadColorForBoard : NSColor
-) -> EBShape {
+func transient_BoardConnector_viaDefaultPadDiameter (
+       _ self_mTracksP1_netClassViaPadDiameter : [BoardTrack_netClassViaPadDiameter],
+       _ self_mTracksP2_netClassViaPadDiameter : [BoardTrack_netClassViaPadDiameter]
+) -> Int {
 //--- START OF USER ZONE 2
-        var shape = EBShape ()
-        if !self_connectedToComponent && (self_side == .both) {
-          let p = self_location.cocoaPoint
-          let padDiameter = canariUnitToCocoa (self_actualPadDiameter)
-          let rPad = NSRect (x: p.x - padDiameter / 2.0, y: p.y - padDiameter / 2.0, width: padDiameter, height: padDiameter)
-          var bp = EBBezierPath (ovalIn: rPad)
-          let holeDiameter = canariUnitToCocoa (self_actualHoleDiameter)
-          let rHole = NSRect (x: p.x - holeDiameter / 2.0, y: p.y - holeDiameter / 2.0, width: holeDiameter, height: holeDiameter)
-          bp.appendOval (in: rHole)
-          bp.windingRule = .evenOdd
-          shape.add (filled: [bp], prefs_frontSidePadColorForBoard)
-        }
-        return shape
+
 //--- END OF USER ZONE 2
 }
 

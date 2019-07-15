@@ -41,6 +41,8 @@ graphic entity BoardTrack : BoardObject {
   transient String netName dependsFrom self.mNet.one.mNetName ;
   transient String netClassName dependsFrom self.mNet.one.netClassName ;
   transient Int netClassTrackWidth dependsFrom self.mNet.one.netClassTrackWidth ;
+  transient Int netClassViaHoleDiameter dependsFrom self.mNet.one.netClassViaHoleDiameter ;
+  transient Int netClassViaPadDiameter dependsFrom self.mNet.one.netClassViaPadDiameter ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

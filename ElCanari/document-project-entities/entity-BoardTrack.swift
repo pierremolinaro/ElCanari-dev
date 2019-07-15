@@ -66,6 +66,18 @@ protocol BoardTrack_netClassTrackWidth : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardTrack_netClassViaHoleDiameter : class {
+  var netClassViaHoleDiameter : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardTrack_netClassViaPadDiameter : class {
+  var netClassViaPadDiameter : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardTrack_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -85,6 +97,8 @@ class BoardTrack : BoardObject,
          BoardTrack_netName,
          BoardTrack_netClassName,
          BoardTrack_netClassTrackWidth,
+         BoardTrack_netClassViaHoleDiameter,
+         BoardTrack_netClassViaPadDiameter,
          BoardTrack_objectDisplay {
 
   //····················································································································
@@ -379,6 +393,52 @@ class BoardTrack : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: netClassViaHoleDiameter
+  //····················································································································
+
+  let netClassViaHoleDiameter_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var netClassViaHoleDiameter_property_selection : EBSelection <Int> {
+    return self.netClassViaHoleDiameter_property.prop
+  }
+
+  //····················································································································
+
+  var netClassViaHoleDiameter : Int? {
+    switch self.netClassViaHoleDiameter_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: netClassViaPadDiameter
+  //····················································································································
+
+  let netClassViaPadDiameter_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var netClassViaPadDiameter_property_selection : EBSelection <Int> {
+    return self.netClassViaPadDiameter_property.prop
+  }
+
+  //····················································································································
+
+  var netClassViaPadDiameter : Int? {
+    switch self.netClassViaPadDiameter_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -532,6 +592,50 @@ class BoardTrack : BoardObject,
       }
     }
     self.mNet_property.addEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
+  //--- Atomic property: netClassViaHoleDiameter
+    self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNet_property.netClassViaHoleDiameter_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mNet_property.netClassViaHoleDiameter_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardTrack_netClassViaHoleDiameter (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNet_property.addEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property)
+  //--- Atomic property: netClassViaPadDiameter
+    self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNet_property.netClassViaPadDiameter_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mNet_property.netClassViaPadDiameter_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardTrack_netClassViaPadDiameter (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNet_property.addEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -583,6 +687,8 @@ class BoardTrack : BoardObject,
     self.mNet_property.removeEBObserverOf_mNetName (self.netName_property)
     self.mNet_property.removeEBObserverOf_netClassName (self.netClassName_property)
     self.mNet_property.removeEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
+    self.mNet_property.removeEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property)
+    self.mNet_property.removeEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
     self.mConnectorP1_property.removeEBObserverOf_location (self.objectDisplay_property)
     self.mConnectorP2_property.removeEBObserverOf_location (self.objectDisplay_property)
     g_Preferences?.frontSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
@@ -683,6 +789,22 @@ class BoardTrack : BoardObject,
       view: view,
       observerExplorer: &self.netClassTrackWidth_property.mObserverExplorer,
       valueExplorer: &self.netClassTrackWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netClassViaHoleDiameter",
+      idx: self.netClassViaHoleDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netClassViaHoleDiameter_property.mObserverExplorer,
+      valueExplorer: &self.netClassViaHoleDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netClassViaPadDiameter",
+      idx: self.netClassViaPadDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netClassViaPadDiameter_property.mObserverExplorer,
+      valueExplorer: &self.netClassViaPadDiameter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
