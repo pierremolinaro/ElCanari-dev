@@ -13,44 +13,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_side (
-       _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
-       _ self_mComponentPadName : String,
-       _ self_mPadIndex : Int,      
-       _ self_mTracksP1_mSide : [BoardTrack_mSide],
-       _ self_mTracksP2_mSide : [BoardTrack_mSide]
-) -> ConnectorSide {
+func transient_BoardConnector_selectionDisplay (
+       _ self_connectedToComponent : Bool,      
+       _ self_side : ConnectorSide,             
+       _ self_location : CanariPoint
+) -> EBShape {
 //--- START OF USER ZONE 2
-        var frontSide = false
-        var backSide = false
-        for track in self_mTracksP1_mSide {
-          switch track.mSide {
-          case .back  : backSide  = true
-          case .front : frontSide = true
-          }
+        var shape = EBShape ()
+        if !self_connectedToComponent && (self_side == .both) {
+          shape.add (knobAt: self_location.cocoaPoint, knobIndex: BOARD_CONNECTOR_KNOB, .rect, 2.0)
         }
-        for track in self_mTracksP2_mSide {
-          switch track.mSide {
-          case .back  : backSide  = true
-          case .front : frontSide = true
-          }
-        }
-        if let descriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName]  {
-          switch descriptor.pads [self_mPadIndex].side {
-          case .back  : backSide  = true
-          case .front : frontSide = true
-          case .both  : backSide  = true ; frontSide = true
-          }
-        }
-        if backSide && frontSide {
-          return  .both
-        }else if backSide {
-          return .back
-        }else if frontSide {
-          return .front
-        }else{
-          return  .both
-        }
+        return shape
 //--- END OF USER ZONE 2
 }
 

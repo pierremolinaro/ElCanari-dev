@@ -16,10 +16,10 @@ import Cocoa
 func transient_BoardTrack_objectDisplay (
        _ self_mConnectorP1_location : CanariPoint?,
        _ self_mConnectorP2_location : CanariPoint?,
-       _ self_mSide : TrackSide,         
        _ prefs_frontSideLayoutColorForBoard : NSColor,
        _ prefs_backSideLayoutColorForBoard : NSColor,
-       _ self_actualTrackWidth : Int
+       _ self_actualTrackWidth : Int,    
+       _ self_mSide : TrackSide
 ) -> EBShape {
 //--- START OF USER ZONE 2
        var shape = EBShape ()

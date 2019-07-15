@@ -13,44 +13,21 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_side (
-       _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
-       _ self_mComponentPadName : String,
-       _ self_mPadIndex : Int,      
-       _ self_mTracksP1_mSide : [BoardTrack_mSide],
-       _ self_mTracksP2_mSide : [BoardTrack_mSide]
-) -> ConnectorSide {
+func transient_BoardConnector_objectDisplay (
+       _ self_connectedToComponent : Bool,   
+       _ self_side : ConnectorSide,          
+       _ self_location : CanariPoint
+) -> EBShape {
 //--- START OF USER ZONE 2
-        var frontSide = false
-        var backSide = false
-        for track in self_mTracksP1_mSide {
-          switch track.mSide {
-          case .back  : backSide  = true
-          case .front : frontSide = true
-          }
+        var shape = EBShape ()
+        if !self_connectedToComponent && (self_side == .both) {
+          let d = milsToCocoaUnit (50.0)
+          let p = self_location.cocoaPoint
+          let r = NSRect (x: p.x - d / 2.0, y: p.y - d / 2.0, width: d, height: d)
+          let bp = EBBezierPath (ovalIn: r)
+          shape.add (filled: [bp], .red)
         }
-        for track in self_mTracksP2_mSide {
-          switch track.mSide {
-          case .back  : backSide  = true
-          case .front : frontSide = true
-          }
-        }
-        if let descriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName]  {
-          switch descriptor.pads [self_mPadIndex].side {
-          case .back  : backSide  = true
-          case .front : frontSide = true
-          case .both  : backSide  = true ; frontSide = true
-          }
-        }
-        if backSide && frontSide {
-          return  .both
-        }else if backSide {
-          return .back
-        }else if frontSide {
-          return .front
-        }else{
-          return  .both
-        }
+        return shape
 //--- END OF USER ZONE 2
 }
 

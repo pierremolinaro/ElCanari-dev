@@ -23,6 +23,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     self.removeEBObserversOf_netName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_side_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_connectedToComponent_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_mComponentPadName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mPadIndex_toElementsOfSet (inAddedSet) // Stored property
@@ -32,6 +35,9 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     self.addEBObserversOf_netName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_side_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_connectedToComponent_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -482,6 +488,174 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     for managedObject in inSet {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'connectedToComponent' transient property
+  //····················································································································
+
+  private var mObserversOf_connectedToComponent = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_connectedToComponent (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_connectedToComponent.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connectedToComponent_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connectedToComponent (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_connectedToComponent.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connectedToComponent_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_connectedToComponent_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedToComponent.apply { (_ observer : EBEvent) in
+        managedObject.connectedToComponent_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_connectedToComponent_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedToComponent.apply { (_ observer : EBEvent) in
+        managedObject.connectedToComponent_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
   }

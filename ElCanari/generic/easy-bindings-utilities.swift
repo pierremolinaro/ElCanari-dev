@@ -2142,6 +2142,8 @@ extension NSBezierPath : ClassPropertyProtocol {
         result += "@\(points[0].x) \(points[0].y) \(points[1].x) \(points[1].y) \(points[2].x) \(points[2].y)"
       case .closePath:
         result += "#"
+      @unknown default :
+        ()
       }
     }
     result += "*\(self.windingRule.rawValue) \(self.lineCapStyle.rawValue) \(self.lineJoinStyle.rawValue)"

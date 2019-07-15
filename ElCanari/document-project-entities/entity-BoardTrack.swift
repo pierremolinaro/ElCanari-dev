@@ -442,16 +442,18 @@ class BoardTrack : BoardObject,
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
+        kind &= unwSelf.mConnectorP1_property.connectedToComponent_property_selection.kind ()
         kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
+        kind &= unwSelf.mConnectorP2_property.connectedToComponent_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardTrack_selectionDisplay (v0, v1))
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP1_property.connectedToComponent_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.mConnectorP2_property.connectedToComponent_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -461,7 +463,9 @@ class BoardTrack : BoardObject,
       }
     }
     self.mConnectorP1_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.mConnectorP1_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property)
     self.mConnectorP2_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.mConnectorP2_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property)
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -533,17 +537,17 @@ class BoardTrack : BoardObject,
       if let unwSelf = self {
         var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
         kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
-        kind &= unwSelf.mSide_property_selection.kind ()
         kind &= g_Preferences!.frontSideLayoutColorForBoard_property_selection.kind ()
         kind &= g_Preferences!.backSideLayoutColorForBoard_property_selection.kind ()
         kind &= unwSelf.actualTrackWidth_property_selection.kind ()
+        kind &= unwSelf.mSide_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.mSide_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, unwSelf.actualTrackWidth_property_selection) {
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, unwSelf.actualTrackWidth_property_selection, unwSelf.mSide_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_BoardTrack_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
@@ -556,10 +560,10 @@ class BoardTrack : BoardObject,
     }
     self.mConnectorP1_property.addEBObserverOf_location (self.objectDisplay_property)
     self.mConnectorP2_property.addEBObserverOf_location (self.objectDisplay_property)
-    self.mSide_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.objectDisplay_property)
+    self.mSide_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -573,16 +577,18 @@ class BoardTrack : BoardObject,
     self.mUsesCustomTrackWidth_property.removeEBObserver (self.actualTrackWidth_property)
     self.mCustomTrackWidth_property.removeEBObserver (self.actualTrackWidth_property)
     self.mConnectorP1_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    self.mConnectorP1_property.removeEBObserverOf_connectedToComponent (self.selectionDisplay_property)
     self.mConnectorP2_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    self.mConnectorP2_property.removeEBObserverOf_connectedToComponent (self.selectionDisplay_property)
     self.mNet_property.removeEBObserverOf_mNetName (self.netName_property)
     self.mNet_property.removeEBObserverOf_netClassName (self.netClassName_property)
     self.mNet_property.removeEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
     self.mConnectorP1_property.removeEBObserverOf_location (self.objectDisplay_property)
     self.mConnectorP2_property.removeEBObserverOf_location (self.objectDisplay_property)
-    self.mSide_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.frontSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.backSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     self.actualTrackWidth_property.removeEBObserver (self.objectDisplay_property)
+    self.mSide_property.removeEBObserver (self.objectDisplay_property)
   //--- Unregister properties for handling signature
   }
 

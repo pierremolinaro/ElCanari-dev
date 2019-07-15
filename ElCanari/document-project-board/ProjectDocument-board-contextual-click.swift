@@ -162,6 +162,14 @@ extension CustomizedProjectDocument {
         isConnected = (c.mComponent != nil) && (c.mTracksP1.count + c.mTracksP2.count) >= 1
       }
       if isConnected {
+        isConnected = false
+        for track in c.mTracksP1 + c.mTracksP2 {
+          if track.mSide == inSide {
+            isConnected = true
+          }
+        }
+      }
+      if isConnected {
         connectedConnectors.append (c)
       }
     }
@@ -173,7 +181,7 @@ extension CustomizedProjectDocument {
       }
       let menuItem = NSMenuItem (title: title, action: #selector (CustomizedProjectDocument.disconnectInBoardAction (_:)), keyEquivalent: "")
       menuItem.target = self
-      menuItem.representedObject = connectedConnectors
+      menuItem.representedObject = (connectedConnectors, inSide)
       menu.addItem (menuItem)
     }
   }
@@ -181,28 +189,30 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc private func disconnectInBoardAction (_ inMenuItem : NSMenuItem) {
-    if let connectors = inMenuItem.representedObject as? [BoardConnector] {
+    if let (connectors, side) = inMenuItem.representedObject as? ([BoardConnector], TrackSide) {
       for c in connectors {
         let location = c.location!
-        let tracksP1 = c.mTracksP1
-        c.mTracksP1 = []
-        for track in tracksP1 {
-          let newConnector = BoardConnector (self.ebUndoManager)
-          newConnector.mRoot = self.rootObject
-          newConnector.mX = location.x
-          newConnector.mY = location.y
-          newConnector.mTracksP1 = [track]
+        for track in c.mTracksP1 {
+          if track.mSide == side {
+            track.mConnectorP1 = nil
+            let newConnector = BoardConnector (self.ebUndoManager)
+            newConnector.mRoot = self.rootObject
+            newConnector.mX = location.x
+            newConnector.mY = location.y
+            newConnector.mTracksP1 = [track]
+          }
         }
-        let tracksP2 = c.mTracksP2
-        c.mTracksP2 = []
-        for track in tracksP2 {
-          let newConnector = BoardConnector (self.ebUndoManager)
-          newConnector.mRoot = self.rootObject
-          newConnector.mX = location.x
-          newConnector.mY = location.y
-          newConnector.mTracksP2 = [track]
+        for track in c.mTracksP2 {
+          if track.mSide == side {
+            track.mConnectorP2 = nil
+            let newConnector = BoardConnector (self.ebUndoManager)
+            newConnector.mRoot = self.rootObject
+            newConnector.mX = location.x
+            newConnector.mY = location.y
+            newConnector.mTracksP2 = [track]
+          }
         }
-        if c.mComponent == nil {
+        if (c.mComponent == nil) && (c.mTracksP1.count == 0) && (c.mTracksP2.count == 0) {
           c.mRoot = nil // Remove from board objects
         }
       }

@@ -23,6 +23,9 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     inOldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
     inOldValue?.side_property.removeEBObserversFrom (&self.mObserversOf_side) // Transient property
     inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    inOldValue?.connectedToComponent_property.removeEBObserversFrom (&self.mObserversOf_connectedToComponent) // Transient property
+    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mComponentPadName_property.addEBObserversFrom (&self.mObserversOf_mComponentPadName) // Stored property
     self.mInternalValue?.mPadIndex_property.addEBObserversFrom (&self.mObserversOf_mPadIndex) // Stored property
@@ -32,6 +35,9 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     self.mInternalValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
     self.mInternalValue?.side_property.addEBObserversFrom (&self.mObserversOf_side) // Transient property
     self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    self.mInternalValue?.connectedToComponent_property.addEBObserversFrom (&self.mObserversOf_connectedToComponent) // Transient property
+    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   }
 
   //····················································································································
@@ -586,6 +592,213 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     for managedObject in inSet {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'connectedToComponent' transient property
+  //····················································································································
+
+  private var mObserversOf_connectedToComponent = EBWeakEventSet ()
+
+  //····················································································································
+
+  var connectedToComponent_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.connectedToComponent_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_connectedToComponent (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_connectedToComponent.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.connectedToComponent_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connectedToComponent (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_connectedToComponent.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.connectedToComponent_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_connectedToComponent_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedToComponent.apply { (_ observer : EBEvent) in
+        managedObject.connectedToComponent_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_connectedToComponent_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedToComponent.apply { (_ observer : EBEvent) in
+        managedObject.connectedToComponent_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
   }

@@ -29,7 +29,8 @@ graphic entity BoardConnector : BoardObject {
   ;
 
   transient ConnectorSide side dependsFrom
-    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex
+    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex,
+    self.mTracksP1.all.mSide, self.mTracksP2.all.mSide
   ;
   
   override transient CanariIssueArray issues dependsFrom
@@ -40,6 +41,19 @@ graphic entity BoardConnector : BoardObject {
     self.mComponent.one.padNetDictionary
   ;
 
+  transient Bool connectedToComponent dependsFrom self.mComponent.none ;
+  
+  override transient EBShape objectDisplay dependsFrom
+    self.connectedToComponent,
+    self.side,
+    self.location
+  ;
+  
+  override transient EBShape selectionDisplay dependsFrom
+    self.connectedToComponent,
+    self.side,
+    self.location
+  ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -53,6 +53,24 @@ protocol BoardConnector_issues : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_connectedToComponent : class {
+  var connectedToComponent : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -64,7 +82,10 @@ class BoardConnector : BoardObject,
          BoardConnector_location,
          BoardConnector_netName,
          BoardConnector_side,
-         BoardConnector_issues {
+         BoardConnector_issues,
+         BoardConnector_connectedToComponent,
+         BoardConnector_objectDisplay,
+         BoardConnector_selectionDisplay {
 
   //····················································································································
   //   Atomic property: mComponentPadName
@@ -280,6 +301,29 @@ class BoardConnector : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: connectedToComponent
+  //····················································································································
+
+  let connectedToComponent_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var connectedToComponent_property_selection : EBSelection <Bool> {
+    return self.connectedToComponent_property.prop
+  }
+
+  //····················································································································
+
+  var connectedToComponent : Bool? {
+    switch self.connectedToComponent_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -371,15 +415,17 @@ class BoardConnector : BoardObject,
         var kind = unwSelf.mComponent_property.componentPadDictionary_property_selection.kind ()
         kind &= unwSelf.mComponentPadName_property_selection.kind ()
         kind &= unwSelf.mPadIndex_property_selection.kind ()
+        kind &= unwSelf.mTracksP1_property_selection.kind ()
+        kind &= unwSelf.mTracksP2_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_BoardConnector_side (v0, v1, v2))
+          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_BoardConnector_side (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -391,6 +437,8 @@ class BoardConnector : BoardObject,
     self.mComponent_property.addEBObserverOf_componentPadDictionary (self.side_property)
     self.mComponentPadName_property.addEBObserver (self.side_property)
     self.mPadIndex_property.addEBObserver (self.side_property)
+    self.mTracksP1_property.addEBObserverOf_mSide (self.side_property)
+    self.mTracksP2_property.addEBObserverOf_mSide (self.side_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -425,6 +473,80 @@ class BoardConnector : BoardObject,
     self.mTracksP2_property.addEBObserver (self.issues_property)
     self.errorOrWarningIssueSize_property.addEBObserver (self.issues_property)
     self.mComponent_property.addEBObserverOf_padNetDictionary (self.issues_property)
+  //--- Atomic property: connectedToComponent
+    self.connectedToComponent_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mComponent_none_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponent_none_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardConnector_connectedToComponent (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponent_property.addEBObserver (self.connectedToComponent_property)
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.connectedToComponent_property_selection.kind ()
+        kind &= unwSelf.side_property_selection.kind ()
+        kind &= unwSelf.location_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.connectedToComponent_property_selection, unwSelf.side_property_selection, unwSelf.location_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_BoardConnector_objectDisplay (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.connectedToComponent_property.addEBObserver (self.objectDisplay_property)
+    self.side_property.addEBObserver (self.objectDisplay_property)
+    self.location_property.addEBObserver (self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.connectedToComponent_property_selection.kind ()
+        kind &= unwSelf.side_property_selection.kind ()
+        kind &= unwSelf.location_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.connectedToComponent_property_selection, unwSelf.side_property_selection, unwSelf.location_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_BoardConnector_selectionDisplay (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.connectedToComponent_property.addEBObserver (self.selectionDisplay_property)
+    self.side_property.addEBObserver (self.selectionDisplay_property)
+    self.location_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
     self.mTracksP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },
@@ -452,6 +574,8 @@ class BoardConnector : BoardObject,
     self.mComponent_property.removeEBObserverOf_componentPadDictionary (self.side_property)
     self.mComponentPadName_property.removeEBObserver (self.side_property)
     self.mPadIndex_property.removeEBObserver (self.side_property)
+    self.mTracksP1_property.removeEBObserverOf_mSide (self.side_property)
+    self.mTracksP2_property.removeEBObserverOf_mSide (self.side_property)
     self.location_property.removeEBObserver (self.issues_property)
     self.mComponent_property.removeEBObserver (self.issues_property)
     self.mComponentPadName_property.removeEBObserver (self.issues_property)
@@ -459,6 +583,13 @@ class BoardConnector : BoardObject,
     self.mTracksP2_property.removeEBObserver (self.issues_property)
     self.errorOrWarningIssueSize_property.removeEBObserver (self.issues_property)
     self.mComponent_property.removeEBObserverOf_padNetDictionary (self.issues_property)
+    self.mComponent_property.removeEBObserver (self.connectedToComponent_property)
+    self.connectedToComponent_property.removeEBObserver (self.objectDisplay_property)
+    self.side_property.removeEBObserver (self.objectDisplay_property)
+    self.location_property.removeEBObserver (self.objectDisplay_property)
+    self.connectedToComponent_property.removeEBObserver (self.selectionDisplay_property)
+    self.side_property.removeEBObserver (self.selectionDisplay_property)
+    self.location_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -537,6 +668,30 @@ class BoardConnector : BoardObject,
       view: view,
       observerExplorer: &self.issues_property.mObserverExplorer,
       valueExplorer: &self.issues_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "connectedToComponent",
+      idx: self.connectedToComponent_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.connectedToComponent_property.mObserverExplorer,
+      valueExplorer: &self.connectedToComponent_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "objectDisplay",
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

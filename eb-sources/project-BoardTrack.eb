@@ -21,14 +21,16 @@ graphic entity BoardTrack : BoardObject {
   property Bool mUsesCustomTrackWidth default no ;
 
   override transient EBShape objectDisplay dependsFrom
-    self.mConnectorP1.one.location, self.mConnectorP2.one.location, self.mSide,
+    self.mConnectorP1.one.location,
+    self.mConnectorP2.one.location,
     prefs.frontSideLayoutColorForBoard,
     prefs.backSideLayoutColorForBoard,
-    self.actualTrackWidth
+    self.actualTrackWidth, self.mSide
   ;
 
   override transient EBShape selectionDisplay dependsFrom
-    self.mConnectorP1.one.location, self.mConnectorP2.one.location
+    self.mConnectorP1.one.location, self.mConnectorP1.one.connectedToComponent,
+    self.mConnectorP2.one.location, self.mConnectorP2.one.connectedToComponent
   ;
   
   transient Int actualTrackWidth dependsFrom
