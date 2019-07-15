@@ -18,7 +18,18 @@ func transient_BoardConnector_viaDefaultHoleDiameter (
        _ self_mTracksP2_netClassViaHoleDiameter : [BoardTrack_netClassViaHoleDiameter]
 ) -> Int {
 //--- START OF USER ZONE 2
-
+        var holes = Set <Int> ()
+        for track in self_mTracksP1_netClassViaHoleDiameter {
+          if let h = track.netClassViaHoleDiameter {
+            holes.insert (h)
+          }
+        }
+        for track in self_mTracksP2_netClassViaHoleDiameter {
+          if let h = track.netClassViaHoleDiameter {
+            holes.insert (h)
+          }
+        }
+        return holes.first ?? 0 
 //--- END OF USER ZONE 2
 }
 

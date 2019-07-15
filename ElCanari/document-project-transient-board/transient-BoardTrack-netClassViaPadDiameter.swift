@@ -17,7 +17,7 @@ func transient_BoardTrack_netClassViaPadDiameter (
        _ self_mNet_netClassViaPadDiameter : Int?
 ) -> Int {
 //--- START OF USER ZONE 2
-
+        return self_mNet_netClassViaPadDiameter ?? 0
 //--- END OF USER ZONE 2
 }
 

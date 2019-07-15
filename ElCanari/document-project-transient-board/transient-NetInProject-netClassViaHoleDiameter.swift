@@ -17,7 +17,7 @@ func transient_NetInProject_netClassViaHoleDiameter (
        _ self_mNetClass_mViaHoleDiameter : Int?
 ) -> Int {
 //--- START OF USER ZONE 2
-
+        return self_mNetClass_mViaHoleDiameter ?? 0
 //--- END OF USER ZONE 2
 }
 

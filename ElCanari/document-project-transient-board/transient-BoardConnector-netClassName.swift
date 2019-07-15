@@ -18,7 +18,18 @@ func transient_BoardConnector_netClassName (
        _ self_mTracksP2_netClassName : [BoardTrack_netClassName]
 ) -> String {
 //--- START OF USER ZONE 2
-
+        var names = Set <String> ()
+        for track in self_mTracksP1_netClassName {
+          if let h = track.netClassName {
+            names.insert (h)
+          }
+        }
+        for track in self_mTracksP2_netClassName {
+          if let h = track.netClassName {
+            names.insert (h)
+          }
+        }
+        return names.first ?? "—"
 //--- END OF USER ZONE 2
 }
 

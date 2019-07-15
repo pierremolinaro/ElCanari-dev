@@ -141,13 +141,13 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   }
 
   //····················································································································
-  //   Selection observable property: netName
+  //   Selection observable property: netNameFromComponentPad
   //····················································································································
 
-  let netName_property = EBTransientProperty_String ()
+  let netNameFromComponentPad_property = EBTransientProperty_String ()
 
-  var netName_property_selection : EBSelection <String> {
-    return self.netName_property.prop
+  var netNameFromComponentPad_property_selection : EBSelection <String> {
+    return self.netNameFromComponentPad_property.prop
   }
 
   //····················································································································
@@ -171,6 +171,46 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   }
 
   //····················································································································
+  //   Selection observable property: viaDefaultHoleDiameter
+  //····················································································································
+
+  let viaDefaultHoleDiameter_property = EBTransientProperty_Int ()
+
+  var viaDefaultHoleDiameter_property_selection : EBSelection <Int> {
+    return self.viaDefaultHoleDiameter_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: viaDefaultPadDiameter
+  //····················································································································
+
+  let viaDefaultPadDiameter_property = EBTransientProperty_Int ()
+
+  var viaDefaultPadDiameter_property_selection : EBSelection <Int> {
+    return self.viaDefaultPadDiameter_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: netNameFromTracks
+  //····················································································································
+
+  let netNameFromTracks_property = EBTransientProperty_String ()
+
+  var netNameFromTracks_property_selection : EBSelection <String> {
+    return self.netNameFromTracks_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: netClassName
+  //····················································································································
+
+  let netClassName_property = EBTransientProperty_String ()
+
+  var netClassName_property_selection : EBSelection <String> {
+    return self.netClassName_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: connectedToComponent
   //····················································································································
 
@@ -178,6 +218,26 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   var connectedToComponent_property_selection : EBSelection <Bool> {
     return self.connectedToComponent_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: actualHoleDiameter
+  //····················································································································
+
+  let actualHoleDiameter_property = EBTransientProperty_Int ()
+
+  var actualHoleDiameter_property_selection : EBSelection <Int> {
+    return self.actualHoleDiameter_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: actualPadDiameter
+  //····················································································································
+
+  let actualPadDiameter_property = EBTransientProperty_Int ()
+
+  var actualPadDiameter_property_selection : EBSelection <Int> {
+    return self.actualPadDiameter_property.prop
   }
 
   //····················································································································
@@ -229,10 +289,16 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.bind_property_mCustomPadDiameterUnit ()
     self.bind_property_mUsesCustomPadDiameter ()
     self.bind_property_location ()
-    self.bind_property_netName ()
+    self.bind_property_netNameFromComponentPad ()
     self.bind_property_side ()
     self.bind_property_issues ()
+    self.bind_property_viaDefaultHoleDiameter ()
+    self.bind_property_viaDefaultPadDiameter ()
+    self.bind_property_netNameFromTracks ()
+    self.bind_property_netClassName ()
     self.bind_property_connectedToComponent ()
+    self.bind_property_actualHoleDiameter ()
+    self.bind_property_actualPadDiameter ()
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
   }
@@ -306,18 +372,36 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //--- location
     self.location_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_location (self.location_property)
-  //--- netName
-    self.netName_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netName (self.netName_property)
+  //--- netNameFromComponentPad
+    self.netNameFromComponentPad_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_netNameFromComponentPad (self.netNameFromComponentPad_property)
   //--- side
     self.side_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_side (self.side_property)
   //--- issues
     self.issues_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
+  //--- viaDefaultHoleDiameter
+    self.viaDefaultHoleDiameter_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_viaDefaultHoleDiameter (self.viaDefaultHoleDiameter_property)
+  //--- viaDefaultPadDiameter
+    self.viaDefaultPadDiameter_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_viaDefaultPadDiameter (self.viaDefaultPadDiameter_property)
+  //--- netNameFromTracks
+    self.netNameFromTracks_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_netNameFromTracks (self.netNameFromTracks_property)
+  //--- netClassName
+    self.netClassName_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_netClassName (self.netClassName_property)
   //--- connectedToComponent
     self.connectedToComponent_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_connectedToComponent (self.connectedToComponent_property)
+  //--- actualHoleDiameter
+    self.actualHoleDiameter_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_actualHoleDiameter (self.actualHoleDiameter_property)
+  //--- actualPadDiameter
+    self.actualPadDiameter_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_actualPadDiameter (self.actualPadDiameter_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
@@ -1380,9 +1464,9 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   }
   //····················································································································
 
-  private final func bind_property_netName () {
-    self.selectedArray_property.addEBObserverOf_netName (self.netName_property)
-    self.netName_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_netNameFromComponentPad () {
+    self.selectedArray_property.addEBObserverOf_netNameFromComponentPad (self.netNameFromComponentPad_property)
+    self.netNameFromComponentPad_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
@@ -1393,7 +1477,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netName_property_selection {
+            switch object.netNameFromComponentPad_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1497,6 +1581,162 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   }
   //····················································································································
 
+  private final func bind_property_viaDefaultHoleDiameter () {
+    self.selectedArray_property.addEBObserverOf_viaDefaultHoleDiameter (self.viaDefaultHoleDiameter_property)
+    self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.viaDefaultHoleDiameter_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_viaDefaultPadDiameter () {
+    self.selectedArray_property.addEBObserverOf_viaDefaultPadDiameter (self.viaDefaultPadDiameter_property)
+    self.viaDefaultPadDiameter_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.viaDefaultPadDiameter_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_netNameFromTracks () {
+    self.selectedArray_property.addEBObserverOf_netNameFromTracks (self.netNameFromTracks_property)
+    self.netNameFromTracks_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.netNameFromTracks_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_netClassName () {
+    self.selectedArray_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.netClassName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.netClassName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
   private final func bind_property_connectedToComponent () {
     self.selectedArray_property.addEBObserverOf_connectedToComponent (self.connectedToComponent_property)
     self.connectedToComponent_property.mReadModelFunction = { [weak self] in
@@ -1511,6 +1751,84 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var isMultipleSelection = false
           for object in v {
             switch object.connectedToComponent_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_actualHoleDiameter () {
+    self.selectedArray_property.addEBObserverOf_actualHoleDiameter (self.actualHoleDiameter_property)
+    self.actualHoleDiameter_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.actualHoleDiameter_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_actualPadDiameter () {
+    self.selectedArray_property.addEBObserverOf_actualPadDiameter (self.actualPadDiameter_property)
+    self.actualPadDiameter_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.actualPadDiameter_property_selection {
             case .empty :
               return .empty
             case .multiple :

@@ -19,7 +19,7 @@ func transient_BoardConnector_actualPadDiameter (
        _ self_mCustomPadDiameter : Int
 ) -> Int {
 //--- START OF USER ZONE 2
-
+        return self_mUsesCustomPadDiameter ? self_mCustomPadDiameter : self_viaDefaultPadDiameter
 //--- END OF USER ZONE 2
 }
 

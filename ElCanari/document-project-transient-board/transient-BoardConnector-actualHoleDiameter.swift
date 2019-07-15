@@ -19,7 +19,7 @@ func transient_BoardConnector_actualHoleDiameter (
        _ self_mCustomHoleDiameter : Int
 ) -> Int {
 //--- START OF USER ZONE 2
-
+       return self_mUsesCustomHoleDiameter ? self_mCustomHoleDiameter : self_viaDefaultHoleDiameter
 //--- END OF USER ZONE 2
 }
 

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_netName (
+func transient_BoardConnector_netNameFromComponentPad (
        _ self_mComponent_padNetDictionary : PadNetDictionary?,
        _ self_mComponentPadName : String
 ) -> String {
