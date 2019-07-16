@@ -30,9 +30,9 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   private func appendConnectInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint) {
-    let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
-    let connectorsFrontSide = self.connectors (at: alignedMouseDownPoint, side: .front)
-    let connectorsBackSide  = self.connectors (at: alignedMouseDownPoint, side: .back)
+   // let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
+    let connectorsFrontSide = self.connectors (at: inUnalignedMouseDownPoint, side: .front)
+    let connectorsBackSide  = self.connectors (at: inUnalignedMouseDownPoint, side: .back)
     if connectorsFrontSide.count > 1 {
       let menuItem = NSMenuItem (title: "Connect in Front Side", action: #selector (CustomizedProjectDocument.connectInBoardAction (_:)), keyEquivalent: "")
       menuItem.target = self

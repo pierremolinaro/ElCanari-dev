@@ -15,10 +15,12 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   internal func connectors (at inLocation : CanariPoint, side inSide : TrackSide) -> [BoardConnector] {
+    let distance = Double (milsToCanariUnit (Int (self.rootObject.mControlKeyHiliteDiameter))) / 2.0
+    let squareOfDistance = distance * distance
     var result = [BoardConnector] ()
     for object in self.rootObject.mBoardObjects {
       if let connector = object as? BoardConnector {
-        var ok = connector.location! == inLocation
+        var ok = CanariPoint.squareOfDistance (connector.location!, inLocation) < squareOfDistance
         if ok {
           switch connector.side! {
           case .front :
