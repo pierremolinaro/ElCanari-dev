@@ -33,6 +33,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mDisplayFrontRestrictRectangles_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mDisplayBackRestrictRectangles_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mErrorOrWarningIssueSize_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mControlKeyHiliteDiameter_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsWidth_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsSelectedInspector_fromElementsOfSet (inRemovedSet) // Stored property
@@ -109,6 +110,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mDisplayFrontRestrictRectangles_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mDisplayBackRestrictRectangles_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mErrorOrWarningIssueSize_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mControlKeyHiliteDiameter_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsWidth_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsWidthUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsSelectedInspector_toElementsOfSet (inAddedSet) // Stored property
@@ -1190,6 +1192,63 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mErrorOrWarningIssueSize_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mControlKeyHiliteDiameter' stored property
+  //····················································································································
+
+  private var mObserversOf_mControlKeyHiliteDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mControlKeyHiliteDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mControlKeyHiliteDiameter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mControlKeyHiliteDiameter_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mControlKeyHiliteDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mControlKeyHiliteDiameter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mControlKeyHiliteDiameter_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mControlKeyHiliteDiameter_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mControlKeyHiliteDiameter.apply { (_ observer : EBEvent) in
+        managedObject.mControlKeyHiliteDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mControlKeyHiliteDiameter_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mControlKeyHiliteDiameter.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mControlKeyHiliteDiameter_property.removeEBObserver (observer)
       }
     }
   }
@@ -4961,6 +5020,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mDisplayFrontRestrictRectangles (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mDisplayBackRestrictRectangles (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mErrorOrWarningIssueSize (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mControlKeyHiliteDiameter (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsWidthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsSelectedInspector (self.mObserverForWritingPreferences)

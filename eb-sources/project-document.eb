@@ -567,6 +567,7 @@ document ProjectDocument root ProjectRoot {
   outlet EBScrollView mBoardScrollView ;
 
   outlet EBGraphicView mBoardView
+    $controlKeyHiliteDiameter root.mControlKeyHiliteDiameter
     $underObjectsDisplay root.boardBackground
     $overObjectsDisplay root.issuesDisplay
     $horizontalFlip root.mBoardHorizontalFlip
@@ -833,6 +834,8 @@ document ProjectDocument root ProjectRoot {
   outlet EBColorWell mBoardBackgroundColorWell $color prefs.boardBackgroundColorForBoard {sendContinously:yes} ;
   
   outlet EBSlider mErrorOrWarningIssueSlider $doubleValue root.mErrorOrWarningIssueSize {sendContinously : yes} ;
+  
+  outlet EBSlider mControlKeyHiliteDiameterSlider $doubleValue root.mControlKeyHiliteDiameter {sendContinously : yes} ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

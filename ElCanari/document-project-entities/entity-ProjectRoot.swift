@@ -114,6 +114,12 @@ protocol ProjectRoot_mErrorOrWarningIssueSize : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mControlKeyHiliteDiameter : class {
+  var mControlKeyHiliteDiameter : Double { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mBoardLimitsWidth : class {
   var mBoardLimitsWidth : Int { get }
 }
@@ -477,6 +483,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mDisplayFrontRestrictRectangles,
          ProjectRoot_mDisplayBackRestrictRectangles,
          ProjectRoot_mErrorOrWarningIssueSize,
+         ProjectRoot_mControlKeyHiliteDiameter,
          ProjectRoot_mBoardLimitsWidth,
          ProjectRoot_mBoardLimitsWidthUnit,
          ProjectRoot_mBoardLimitsSelectedInspector,
@@ -840,6 +847,23 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mErrorOrWarningIssueSize_property_selection : EBSelection <Double> { return self.mErrorOrWarningIssueSize_property.prop }
+
+  //····················································································································
+  //   Atomic property: mControlKeyHiliteDiameter
+  //····················································································································
+
+  let mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 0)
+
+  //····················································································································
+
+  var mControlKeyHiliteDiameter : Double {
+    get { return self.mControlKeyHiliteDiameter_property.propval }
+    set { self.mControlKeyHiliteDiameter_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mControlKeyHiliteDiameter_property_selection : EBSelection <Double> { return self.mControlKeyHiliteDiameter_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsWidth
@@ -2244,6 +2268,8 @@ class ProjectRoot : EBManagedObject,
     self.mDisplayBackRestrictRectangles_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mErrorOrWarningIssueSize
     self.mErrorOrWarningIssueSize_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mControlKeyHiliteDiameter
+    self.mControlKeyHiliteDiameter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -3342,6 +3368,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mErrorOrWarningIssueSize_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mControlKeyHiliteDiameter",
+      idx: self.mControlKeyHiliteDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mControlKeyHiliteDiameter_property.mObserverExplorer,
+      valueExplorer: &self.mControlKeyHiliteDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mBoardLimitsWidth",
       idx: self.mBoardLimitsWidth_property.ebObjectIndex,
       y: &y,
@@ -3910,6 +3944,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mErrorOrWarningIssueSize
     self.mErrorOrWarningIssueSize_property.mObserverExplorer = nil
     self.mErrorOrWarningIssueSize_property.mValueExplorer = nil
+  //--- Atomic property: mControlKeyHiliteDiameter
+    self.mControlKeyHiliteDiameter_property.mObserverExplorer = nil
+    self.mControlKeyHiliteDiameter_property.mValueExplorer = nil
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.mObserverExplorer = nil
     self.mBoardLimitsWidth_property.mValueExplorer = nil
@@ -4082,6 +4119,8 @@ class ProjectRoot : EBManagedObject,
     self.mDisplayBackRestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayBackRestrictRectangles")
   //--- Atomic property: mErrorOrWarningIssueSize
     self.mErrorOrWarningIssueSize_property.storeIn (dictionary: ioDictionary, forKey:"mErrorOrWarningIssueSize")
+  //--- Atomic property: mControlKeyHiliteDiameter
+    self.mControlKeyHiliteDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mControlKeyHiliteDiameter")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -4286,6 +4325,8 @@ class ProjectRoot : EBManagedObject,
     self.mDisplayBackRestrictRectangles_property.readFrom (dictionary: inDictionary, forKey:"mDisplayBackRestrictRectangles")
   //--- Atomic property: mErrorOrWarningIssueSize
     self.mErrorOrWarningIssueSize_property.readFrom (dictionary: inDictionary, forKey:"mErrorOrWarningIssueSize")
+  //--- Atomic property: mControlKeyHiliteDiameter
+    self.mControlKeyHiliteDiameter_property.readFrom (dictionary: inDictionary, forKey:"mControlKeyHiliteDiameter")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit

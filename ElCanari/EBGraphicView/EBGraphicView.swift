@@ -155,10 +155,27 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   internal var mSelectionRectangle : NSRect? = nil {
     didSet {
       if let oldSelectionRectangle = oldValue {
-        self.setNeedsDisplay (oldSelectionRectangle.insetBy(dx: -1.0, dy: -1.0))
+        self.setNeedsDisplay (oldSelectionRectangle.insetBy (dx: -1.0, dy: -1.0))
       }
       if let newSelectionRectangle = self.mSelectionRectangle {
-        self.setNeedsDisplay (newSelectionRectangle.insetBy(dx: -1.0, dy: -1.0))
+        self.setNeedsDisplay (newSelectionRectangle.insetBy (dx: -1.0, dy: -1.0))
+      }
+    }
+  }
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
+  internal var mControlKeyHiliteRectangle : NSRect? = nil {
+    didSet {
+      if self.mControlKeyHiliteRectangle != oldValue {
+        if let oldRect = oldValue {
+          self.setNeedsDisplay (oldRect.insetBy (dx: -1.0, dy: -1.0))
+        }
+        if let newRect = self.mControlKeyHiliteRectangle {
+          self.setNeedsDisplay (newRect.insetBy (dx: -1.0, dy: -1.0))
+        }
       }
     }
   }
@@ -208,6 +225,22 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     didSet {
       self.invalidateGuideBezierPath ()
     }
+  }
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
+  private var mControlKeyHilitedDiameter : CGFloat = 0.0
+
+  //····················································································································
+
+  var controlKeyHilitedDiameter : CGFloat { return self.mControlKeyHilitedDiameter }
+
+  //····················································································································
+
+  final func set (controlKeyHiliteDiameter inControlKeyHiliteDiameter : CGFloat) {
+    self.mControlKeyHilitedDiameter = inControlKeyHiliteDiameter
   }
 
   //····················································································································
@@ -501,7 +534,13 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  internal var mZoomController : Controller_CanariViewWithZoomAndFlip_zoom?
+  internal var mZoomController : Controller_CanariViewWithZoomAndFlip_zoom? = nil
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
+  internal var mControlKeyHiliteDiameterController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -

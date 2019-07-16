@@ -584,6 +584,7 @@ import Cocoa
   @IBOutlet weak var mComponentsPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mConnectAllSymbolPinsSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mConnectSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mControlKeyHiliteDiameterSlider : EBSlider? = nil // An outlet should be declared weak
   @IBOutlet weak var mCurrentComponentNameTextField : NSTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mDeviceLibraryTableView : EBTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mDevicePackageTableView : StringArrayTableView? = nil // An outlet should be declared weak
@@ -1035,6 +1036,7 @@ import Cocoa
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mConnectAllSymbolPinsSchematicHotKeyTextField, "mConnectAllSymbolPinsSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mConnectSchematicHotKeyTextField, "mConnectSchematicHotKeyTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mControlKeyHiliteDiameterSlider, "mControlKeyHiliteDiameterSlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mCurrentComponentNameTextField, "mCurrentComponentNameTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDeviceLibraryTableView, "mDeviceLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDevicePackageTableView, "mDevicePackageTableView", StringArrayTableView.self, #file, #line)
@@ -1649,6 +1651,7 @@ import Cocoa
     self.mBoardInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mBoardSelectedInspector_property, file: #file, line: #line)
     self.mUnplacedPackageTableView?.bind_models (self.rootObject.unplacedPackages_property, file: #file, line: #line)
     self.mUnplacedPackagesCountTextField?.bind_valueObserver (self.unplacedPackagesCountString_property, file: #file, line: #line)
+    self.mBoardView?.bind_controlKeyHiliteDiameter (self.rootObject.mControlKeyHiliteDiameter_property, file: #file, line: #line)
     self.mBoardView?.bind_underObjectsDisplay (self.rootObject.boardBackground_property, file: #file, line: #line)
     self.mBoardView?.bind_overObjectsDisplay (self.rootObject.issuesDisplay_property, file: #file, line: #line)
     self.mBoardView?.bind_horizontalFlip (self.rootObject.mBoardHorizontalFlip_property, file: #file, line: #line)
@@ -1752,6 +1755,7 @@ import Cocoa
     self.mDisplayBoardClearanceColorWell?.bind_color (g_Preferences!.boardClearanceColorForBoard_property, file: #file, line: #line, sendContinously:true)
     self.mBoardBackgroundColorWell?.bind_color (g_Preferences!.boardBackgroundColorForBoard_property, file: #file, line: #line, sendContinously:true)
     self.mErrorOrWarningIssueSlider?.bind_doubleValue (self.rootObject.mErrorOrWarningIssueSize_property, file: #file, line: #line, sendContinously:true)
+    self.mControlKeyHiliteDiameterSlider?.bind_doubleValue (self.rootObject.mControlKeyHiliteDiameter_property, file: #file, line: #line, sendContinously:true)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -2272,6 +2276,7 @@ import Cocoa
     self.mBoardInspectorSegmentedControl?.unbind_selectedPage ()
     self.mUnplacedPackageTableView?.unbind_models ()
     self.mUnplacedPackagesCountTextField?.unbind_valueObserver ()
+    self.mBoardView?.unbind_controlKeyHiliteDiameter ()
     self.mBoardView?.unbind_underObjectsDisplay ()
     self.mBoardView?.unbind_overObjectsDisplay ()
     self.mBoardView?.unbind_horizontalFlip ()
@@ -2375,6 +2380,7 @@ import Cocoa
     self.mDisplayBoardClearanceColorWell?.unbind_color ()
     self.mBoardBackgroundColorWell?.unbind_color ()
     self.mErrorOrWarningIssueSlider?.unbind_doubleValue ()
+    self.mControlKeyHiliteDiameterSlider?.unbind_doubleValue ()
   //--------------------------- Unbind multiple bindings
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -2674,6 +2680,7 @@ import Cocoa
     self.mComponentsPageView?.ebCleanUp ()
     self.mConnectAllSymbolPinsSchematicHotKeyTextField?.ebCleanUp ()
     self.mConnectSchematicHotKeyTextField?.ebCleanUp ()
+    self.mControlKeyHiliteDiameterSlider?.ebCleanUp ()
     self.mCurrentComponentNameTextField?.ebCleanUp ()
     self.mDeviceLibraryTableView?.ebCleanUp ()
     self.mDevicePackageTableView?.ebCleanUp ()
@@ -2985,6 +2992,7 @@ import Cocoa
 //    self.mComponentsPageView = nil
 //    self.mConnectAllSymbolPinsSchematicHotKeyTextField = nil
 //    self.mConnectSchematicHotKeyTextField = nil
+//    self.mControlKeyHiliteDiameterSlider = nil
 //    self.mCurrentComponentNameTextField = nil
 //    self.mDeviceLibraryTableView = nil
 //    self.mDevicePackageTableView = nil

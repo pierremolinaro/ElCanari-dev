@@ -10,6 +10,29 @@ extension EBGraphicView {
 
   //····················································································································
 
+  override func flagsChanged (with inEvent : NSEvent) {
+    let d = self.controlKeyHilitedDiameter
+    if NSEvent.modifierFlags.contains (.control) && (d > 0.0) {
+      let locationInView = self.convert (inEvent.locationInWindow, from: nil)
+      if self.frame.contains (locationInView) {
+        let r = NSRect (
+          x: locationInView.x - d / 2.0,
+          y: locationInView.y - d / 2.0,
+          width: d,
+          height: d
+        )
+        self.mControlKeyHiliteRectangle = r
+      }else{
+        self.mControlKeyHiliteRectangle = nil
+      }
+    }else{
+      self.mControlKeyHiliteRectangle = nil
+    }
+    super.flagsChanged (with: inEvent)
+  }
+
+  //····················································································································
+
   override func mouseMoved (with inEvent : NSEvent) {
     super.mouseMoved (with: inEvent)
     let locationInView = self.convert (inEvent.locationInWindow, from: nil)
@@ -20,6 +43,18 @@ extension EBGraphicView {
     }else{
       self.mMouseExitCallback? ()
     }
+    let d = self.controlKeyHilitedDiameter
+    if NSEvent.modifierFlags.contains (.control) && (d > 0.0) {
+      let r = NSRect (
+        x: locationInView.x - d / 2.0,
+        y: locationInView.y - d / 2.0,
+        width: d,
+        height: d
+      )
+      self.mControlKeyHiliteRectangle = r
+    }else{
+      self.mControlKeyHiliteRectangle = nil
+    }
   }
 
   //····················································································································
@@ -28,6 +63,7 @@ extension EBGraphicView {
     super.mouseExited (with: inEvent)
     self.clearXYplacards ()
     self.mMouseExitCallback? ()
+    self.mControlKeyHiliteRectangle = nil
   }
 
   //····················································································································

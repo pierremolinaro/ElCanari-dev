@@ -17,8 +17,7 @@ extension CustomizedProjectDocument {
   internal func populateContextualClickOnBoard (_ inUnalignedMouseDownPoint : CanariPoint) -> NSMenu {
     let menu = NSMenu ()
   //--- Connect
-    self.appendConnectInBoard (toMenu: menu, inUnalignedMouseDownPoint, .front)
-    self.appendConnectInBoard (toMenu: menu, inUnalignedMouseDownPoint, .back)
+    self.appendConnectInBoard (toMenu: menu, inUnalignedMouseDownPoint)
   //--- Disconnect ?
     self.appendDisconnectInBoard (toMenu: menu, inUnalignedMouseDownPoint, .front)
     self.appendDisconnectInBoard (toMenu: menu, inUnalignedMouseDownPoint, .back)
@@ -30,18 +29,27 @@ extension CustomizedProjectDocument {
   // Connect
   //····················································································································
 
-  private func appendConnectInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
+  private func appendConnectInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint) {
     let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
-    let connectors = self.connectors (at: alignedMouseDownPoint, side: inSide)
-    if connectors.count > 1 {
-      let title : String
-      switch inSide {
-      case .front : title = "Connect in Front Side"
-      case .back  : title = "Connect in Back Side"
-      }
-      let menuItem = NSMenuItem (title: title, action: #selector (CustomizedProjectDocument.connectInBoardAction (_:)), keyEquivalent: "")
+    let connectorsFrontSide = self.connectors (at: alignedMouseDownPoint, side: .front)
+    let connectorsBackSide  = self.connectors (at: alignedMouseDownPoint, side: .back)
+    if connectorsFrontSide.count > 1 {
+      let menuItem = NSMenuItem (title: "Connect in Front Side", action: #selector (CustomizedProjectDocument.connectInBoardAction (_:)), keyEquivalent: "")
       menuItem.target = self
-      menuItem.representedObject = connectors
+      menuItem.representedObject = connectorsBackSide
+      menu.addItem (menuItem)
+    }
+    if connectorsBackSide.count > 1 {
+      let menuItem = NSMenuItem (title: "Connect in Back Side", action: #selector (CustomizedProjectDocument.connectInBoardAction (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.representedObject = connectorsBackSide
+      menu.addItem (menuItem)
+    }
+    let connectorsBothSides = Array (Set (connectorsBackSide + connectorsFrontSide))
+    if connectorsBothSides.count > 1 {
+      let menuItem = NSMenuItem (title: "Connect in both Sides", action: #selector (CustomizedProjectDocument.connectInBoardAction (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.representedObject = connectorsBothSides
       menu.addItem (menuItem)
     }
   }
