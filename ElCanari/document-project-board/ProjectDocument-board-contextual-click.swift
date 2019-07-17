@@ -36,7 +36,7 @@ extension CustomizedProjectDocument {
     if connectorsFrontSide.count > 1 {
       let menuItem = NSMenuItem (title: "Connect in Front Side", action: #selector (CustomizedProjectDocument.connectInBoardAction (_:)), keyEquivalent: "")
       menuItem.target = self
-      menuItem.representedObject = connectorsBackSide
+      menuItem.representedObject = connectorsFrontSide
       menu.addItem (menuItem)
     }
     if connectorsBackSide.count > 1 {
