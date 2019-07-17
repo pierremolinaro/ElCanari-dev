@@ -59,50 +59,49 @@ extension ApplicationDelegate {
           let baseDirectory : String = op.urls [0].path
           let fm = FileManager ()
           let dc = NSDocumentController ()
-          let files = try? fm.subpathsOfDirectory (atPath: baseDirectory)
-          var fileCount = 0
+          let files = fm.subpaths (atPath: baseDirectory)
+          var retainedFiles = [String] ()
           for f in files ?? [] {
-            let fullpath = baseDirectory + "/" + f
-            if extensions.contains (fullpath.pathExtension) {
-              fileCount += 1
+            if f.first! != "." {
+              let fullPath = baseDirectory + "/" + f
+              if extensions.contains (fullPath.pathExtension) {
+                retainedFiles.append (fullPath)
+              }
             }
           }
-          if fileCount == 0 {
+          if retainedFiles.count == 0 {
             let alert = NSAlert ()
             alert.messageText = "No \(inTitle) to Open"
             _ = alert.beginSheetModal (for: window)
           }else{
             let alert = NSAlert ()
-            alert.messageText = "Open \(fileCount) \(inTitle)\((fileCount > 1) ? "s" : "")? This may take a while, and you cannot cancel this operation."
+            alert.messageText = "Open \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")? This may take a while, and you cannot cancel this operation."
             alert.accessoryView = self.mOpenAllDialogAccessoryCheckBox
             alert.informativeText = "Animating is slower, but you have a visual effect during documents opening."
             alert.addButton (withTitle: "Ok")
             alert.addButton (withTitle: "Cancel")
             alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
               if response == .alertFirstButtonReturn {
-                let message = "Opening \(fileCount) \(inTitle)\((fileCount > 1) ? "s" : "")\n"
+                let message = "Opening \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")\n"
                 self.mMaintenanceLogTextView?.appendMessageString (message)
                 let animating = (self.mOpenAllDialogAccessoryCheckBox?.state ?? .on) == .on
                 var count = 0
-                for f in files ?? [] {
-                  let fullpath = baseDirectory + "/" + f
-                  if extensions.contains (fullpath.pathExtension) {
-                    dc.openDocument (
-                      withContentsOf: URL (fileURLWithPath: fullpath),
-                      display: true
-                    ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
-                      if animating {
-                        _ = RunLoop.main.run (mode: .default, before: Date ())
-                      }
-                      if document != nil {
-                        count += 1
-                        let message = (count > 1)
-                          ? "\(count) \(inTitle)s have been opened"
-                          : "\(count) \(inTitle) has been opened"
-                        self.mMaintenanceLogTextField?.stringValue = message
-                      }else{
-                        self.mMaintenanceLogTextView?.appendErrorString ("Cannot open \(f)")
-                      }
+                for fullPath in retainedFiles {
+                  dc.openDocument (
+                    withContentsOf: URL (fileURLWithPath: fullPath),
+                    display: true
+                  ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
+                    if animating {
+                      _ = RunLoop.main.run (mode: .default, before: Date ())
+                    }
+                    if document != nil {
+                      count += 1
+                      let message = (count > 1)
+                        ? "\(count) \(inTitle)s have been opened"
+                        : "\(count) \(inTitle) has been opened"
+                      self.mMaintenanceLogTextField?.stringValue = message
+                    }else{
+                      self.mMaintenanceLogTextView?.appendErrorString ("Cannot open \(fullPath)")
                     }
                   }
                 }
@@ -132,52 +131,50 @@ extension ApplicationDelegate {
           let baseDirectory : String = op.urls [0].path
           let fm = FileManager ()
           let dc = NSDocumentController ()
-          let subPathes = (try? fm.subpathsOfDirectory (atPath: baseDirectory)) ?? []
           let filesInCurrentDirectory = fm.subpaths (atPath: baseDirectory) ?? []
-          var fileCount = 0
-          for f in filesInCurrentDirectory + subPathes {
-            let fullpath = baseDirectory + "/" + f
-            if fullpath.pathExtension == fileExtension {
-              fileCount += 1
+          var retainedFiles = [String] ()
+          for f in filesInCurrentDirectory {
+            if f.first! != "." { // No hidden file
+              let fullPath = baseDirectory + "/" + f
+              if fullPath.pathExtension == fileExtension {
+                retainedFiles.append (fullPath)
+              }
             }
           }
-          if fileCount == 0 {
+          if retainedFiles.count == 0 {
             let alert = NSAlert ()
             alert.messageText = "No project to Open"
             _ = alert.beginSheetModal (for: window)
           }else{
             let alert = NSAlert ()
-            alert.messageText = "Update \(fileCount) project\((fileCount > 1) ? "s" : "")? This may take a while, and you cannot cancel this operation."
+            alert.messageText = "Update \(retainedFiles.count) project\((retainedFiles.count > 1) ? "s" : "")? This may take a while, and you cannot cancel this operation."
             alert.addButton (withTitle: "Ok")
             alert.addButton (withTitle: "Cancel")
             alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
               if response == .alertFirstButtonReturn {
                 self.mMaintenanceLogTextField?.stringValue = "No updated project"
-                self.mMaintenanceLogTextView?.appendMessageString ("Updating \(fileCount) project\((fileCount > 1) ? "s" : "")\n")
-                for f in filesInCurrentDirectory + subPathes {
-                  let fullpath = baseDirectory + "/" + f
-                  if fullpath.pathExtension == fileExtension {
-                    dc.openDocument (
-                      withContentsOf: URL (fileURLWithPath: fullpath),
-                      display: true // animating,
-                    ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
-                      if let projectDocument = document as? CustomizedProjectDocument {
+                self.mMaintenanceLogTextView?.appendMessageString ("Updating \(retainedFiles.count) project\((retainedFiles.count > 1) ? "s" : "")\n")
+                for fullpath in retainedFiles {
+                  dc.openDocument (
+                    withContentsOf: URL (fileURLWithPath: fullpath),
+                    display: true // animating,
+                  ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
+                    if let projectDocument = document as? CustomizedProjectDocument {
 //                        projectDocument.resetDevicesAndFontsVersionAction (nil)
-                        var errorMessages = [String] ()
-                        projectDocument.updateDevices (projectDocument.rootObject.mDevices, &errorMessages)
-                        projectDocument.updateFonts (projectDocument.rootObject.mFonts, &errorMessages)
-                        projectDocument.save (nil)
-                        projectDocument.close ()
-                        if errorMessages.count == 0 {
-                          self.mCount += 1
-                          let message = (self.mCount > 1)
-                            ? "\(self.mCount) projects have been updated."
-                            : "1 project has been updated."
-                          self.mMaintenanceLogTextField?.stringValue = message
-                        }else{
-                          self.mMaintenanceLogTextView?.appendErrorString ("Cannot update \(f)\n")
-                          self.mMaintenanceLogTextView?.appendMessageString (errorMessages.joined (separator: "\n"))
-                        }
+                      var errorMessages = [String] ()
+                      projectDocument.updateDevices (projectDocument.rootObject.mDevices, &errorMessages)
+                      projectDocument.updateFonts (projectDocument.rootObject.mFonts, &errorMessages)
+                      projectDocument.save (nil)
+                      projectDocument.close ()
+                      if errorMessages.count == 0 {
+                        self.mCount += 1
+                        let message = (self.mCount > 1)
+                          ? "\(self.mCount) projects have been updated."
+                          : "1 project has been updated."
+                        self.mMaintenanceLogTextField?.stringValue = message
+                      }else{
+                        self.mMaintenanceLogTextView?.appendErrorString ("Cannot update \(fullpath)\n")
+                        self.mMaintenanceLogTextView?.appendMessageString (errorMessages.joined (separator: "\n"))
                       }
                     }
                   }
@@ -208,54 +205,52 @@ extension ApplicationDelegate {
           let baseDirectory : String = op.urls [0].path
           let fm = FileManager ()
           let dc = NSDocumentController ()
-          let subPathes = (try? fm.subpathsOfDirectory (atPath: baseDirectory)) ?? []
-          let filesInCurrentDirectory = fm.subpaths (atPath: baseDirectory) ?? []
-          var fileCount = 0
-          for f in filesInCurrentDirectory + subPathes {
-            let fullpath = baseDirectory + "/" + f
-            if fullpath.pathExtension == fileExtension {
-              fileCount += 1
+          let subPathes = fm.subpaths (atPath: baseDirectory)
+          var retainedFiles = [String] ()
+          for f in subPathes ?? [] {
+            if f.first! != "." {
+              let fullpath = baseDirectory + "/" + f
+              if fullpath.pathExtension == fileExtension {
+                retainedFiles.append (fullpath)
+              }
             }
           }
-          if fileCount == 0 {
+          if retainedFiles.count == 0 {
             let alert = NSAlert ()
             alert.messageText = "No device to Open"
             _ = alert.beginSheetModal (for: window)
           }else{
             let alert = NSAlert ()
-            alert.messageText = "Update \(fileCount) device\((fileCount > 1) ? "s" : "")? This may take a while, and you cannot cancel this operation."
+            alert.messageText = "Update \(retainedFiles.count) device\((retainedFiles.count > 1) ? "s" : "")? This may take a while, and you cannot cancel this operation."
             alert.addButton (withTitle: "Ok")
             alert.addButton (withTitle: "Cancel")
             alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
               if response == .alertFirstButtonReturn {
                 self.mMaintenanceLogTextField?.stringValue = "No updated device"
-                self.mMaintenanceLogTextView?.appendMessageString ("Updating \(fileCount) device\((fileCount > 1) ? "s" : "")\n")
-                for f in filesInCurrentDirectory + subPathes {
-                  let fullpath = baseDirectory + "/" + f
-                  if fullpath.pathExtension == fileExtension {
-                    dc.openDocument (
-                      withContentsOf: URL (fileURLWithPath: fullpath),
-                      display: true // animating,
-                    ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
-                      if let deviceDocument = document as? CustomizedDeviceDocument {
+                self.mMaintenanceLogTextView?.appendMessageString ("Updating \(retainedFiles.count) device\((retainedFiles.count > 1) ? "s" : "")\n")
+                for fullPath in retainedFiles {
+                  dc.openDocument (
+                    withContentsOf: URL (fileURLWithPath: fullPath),
+                    display: true // animating,
+                  ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
+                    if let deviceDocument = document as? CustomizedDeviceDocument {
 //                        deviceDocument.resetSymbolsVersion ()
 //                        deviceDocument.resetPackagesVersion ()
-                        var okMessages = [String] ()
-                        var errorMessages = [String] ()
-                        deviceDocument.performSymbolsUpdate (&okMessages, &errorMessages)
-                        deviceDocument.performPackagesUpdate (deviceDocument.rootObject.mPackages, &okMessages, &errorMessages)
-                        deviceDocument.save (nil)
-                        deviceDocument.close ()
-                        if errorMessages.count == 0 {
-                          self.mCount += 1
-                          let message = (self.mCount > 1)
-                            ? "\(self.mCount) devices have been updated."
-                            : "1 device has been updated."
-                          self.mMaintenanceLogTextField?.stringValue = message
-                        }else{
-                          self.mMaintenanceLogTextView?.appendErrorString ("Cannot update \(f)\n")
-                          self.mMaintenanceLogTextView?.appendMessageString (errorMessages.joined (separator: "\n"))
-                        }
+                      var okMessages = [String] ()
+                      var errorMessages = [String] ()
+                      deviceDocument.performSymbolsUpdate (&okMessages, &errorMessages)
+                      deviceDocument.performPackagesUpdate (deviceDocument.rootObject.mPackages, &okMessages, &errorMessages)
+                      deviceDocument.save (nil)
+                      deviceDocument.close ()
+                      if errorMessages.count == 0 {
+                        self.mCount += 1
+                        let message = (self.mCount > 1)
+                          ? "\(self.mCount) devices have been updated."
+                          : "1 device has been updated."
+                        self.mMaintenanceLogTextField?.stringValue = message
+                      }else{
+                        self.mMaintenanceLogTextView?.appendErrorString ("Cannot update \(fullPath)\n")
+                        self.mMaintenanceLogTextView?.appendMessageString (errorMessages.joined (separator: "\n"))
                       }
                     }
                   }
