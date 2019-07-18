@@ -21,30 +21,37 @@ func transient_PackagePad_selectionDisplay (
        _ self_padShape : PadShape
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let xCenter = canariUnitToCocoa (self_xCenter)
-    let yCenter = canariUnitToCocoa (self_yCenter)
-    let width = canariUnitToCocoa (self_width)
-    let height = canariUnitToCocoa (self_height)
-    let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
-    var bp : EBBezierPath
-    switch self_padShape {
-    case .rect :
-      bp = EBBezierPath (rect: rPad)
-    case .round :
-      if width < height {
-        bp = EBBezierPath (roundedRect: rPad, xRadius: width / 2.0, yRadius: width / 2.0)
-      }else if width > height {
-        bp = EBBezierPath (roundedRect: rPad, xRadius: height / 2.0, yRadius: height / 2.0)
-      }else{
-        bp = EBBezierPath (ovalIn: rPad)
-      }
-    case .octo :
-      bp = EBBezierPath (octogonInRect: rPad)
-    }
+    var bp = EBBezierPath.pad (
+      centerX: self_xCenter,
+      centerY: self_yCenter,
+      width: self_width,
+      height: self_height,
+      shape: self_padShape
+    )
+//    let xCenter = canariUnitToCocoa (self_xCenter)
+//    let yCenter = canariUnitToCocoa (self_yCenter)
+//    let width = canariUnitToCocoa (self_width)
+//    let height = canariUnitToCocoa (self_height)
+//    let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
+//    var bp : EBBezierPath
+//    switch self_padShape {
+//    case .rect :
+//      bp = EBBezierPath (rect: rPad)
+//    case .round :
+//      if width < height {
+//        bp = EBBezierPath (roundedRect: rPad, xRadius: width / 2.0, yRadius: width / 2.0)
+//      }else if width > height {
+//        bp = EBBezierPath (roundedRect: rPad, xRadius: height / 2.0, yRadius: height / 2.0)
+//      }else{
+//        bp = EBBezierPath (ovalIn: rPad)
+//      }
+//    case .octo :
+//      bp = EBBezierPath (octogonInRect: rPad)
+//    }
     bp.lineWidth = 0.25
     bp.lineCapStyle = .round
     var shape = EBShape ()
-    shape.add (stroke: [bp], NSColor.cyan)
+    shape.add (stroke: [bp], .cyan)
     return shape
 //--- END OF USER ZONE 2
 }

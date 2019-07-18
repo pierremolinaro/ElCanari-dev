@@ -27,10 +27,10 @@ extension NSRect : Hashable {
 
   //····················································································································
 
-  init (center inCenter : NSPoint, size inSize : CGFloat) {
+  init (center inCenter : NSPoint, size inSize : NSSize) {
     self.init ()
-    self.origin = NSPoint (x: inCenter.x - inSize / 2.0, y: inCenter.y - inSize / 2.0)
-    self.size = NSSize (width: inSize, height: inSize)
+    self.origin = NSPoint (x: inCenter.x - inSize.width / 2.0, y: inCenter.y - inSize.height / 2.0)
+    self.size = inSize
   }
 
   //····················································································································

@@ -37,8 +37,14 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
-  var nsBezierPath : NSBezierPath { // § TEMP
+  var nsBezierPath : NSBezierPath {
     return self.mPath.copy () as! OCBezierPath
+  }
+
+  //····················································································································
+
+  var cgPath : CGPath {
+    return self.mPath.cgPath
   }
 
   //····················································································································
@@ -417,27 +423,6 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
-  init (octogonInRect inRect : NSRect) {
-    self.init ()
-    let s2 : CGFloat = sqrt (2.0)
-    let w = inRect.size.width
-    let h = inRect.size.height
-    let x = inRect.origin.x // center x
-    let y = inRect.origin.y // center y
-    let lg = min (w, h) / (1.0 + s2)
-    self.mPath.move (to: NSPoint (x: x + lg / s2,     y: y + h))
-    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y + h))
-    self.mPath.line (to: NSPoint (x: x + w,           y: y + h - lg / s2))
-    self.mPath.line (to: NSPoint (x: x + w,           y: y + lg / s2))
-    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y))
-    self.mPath.line (to: NSPoint (x: x + lg / s2,     y: y))
-    self.mPath.line (to: NSPoint (x: x,               y: y + lg / s2))
-    self.mPath.line (to: NSPoint (x: x,               y: y + h - lg / s2))
-    self.mPath.close ()
-  }
-
-  //····················································································································
-
   init (arcWithTangentFromCenter inCenter : NSPoint,
         radius inRadius : CGFloat,
         startAngleInDegrees inStartAngleInDegrees : CGFloat,
@@ -523,6 +508,27 @@ struct EBBezierPath : Hashable {
     }else{
       self.mPath.appendOval (in: inRect)
     }
+  }
+
+  //····················································································································
+
+  init (octogonInRect inRect : NSRect) {
+    self.init ()
+    let s2 : CGFloat = sqrt (2.0)
+    let w = inRect.size.width
+    let h = inRect.size.height
+    let x = inRect.origin.x // center x
+    let y = inRect.origin.y // center y
+    let lg = min (w, h) / (1.0 + s2)
+    self.mPath.move (to: NSPoint (x: x + lg / s2,     y: y + h))
+    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y + h))
+    self.mPath.line (to: NSPoint (x: x + w,           y: y + h - lg / s2))
+    self.mPath.line (to: NSPoint (x: x + w,           y: y + lg / s2))
+    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y))
+    self.mPath.line (to: NSPoint (x: x + lg / s2,     y: y))
+    self.mPath.line (to: NSPoint (x: x,               y: y + lg / s2))
+    self.mPath.line (to: NSPoint (x: x,               y: y + h - lg / s2))
+    self.mPath.close ()
   }
 
   //····················································································································
