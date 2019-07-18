@@ -598,6 +598,9 @@ document ProjectDocument root ProjectRoot {
      $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit
   ;
 
+//--- ERC Inspector
+  outlet NSTextView mERCLogTextView ;
+
 //--- Board track inspector
   outlet CanariViewWithKeyView mBoardTrackInspectorView ;
   selectionController BoardTrack #boardTrackSelectionController :

@@ -52,8 +52,6 @@ extension EBGraphicView {
         height: d
       )
       self.mControlKeyHiliteRectangle = r
-    }else{
-      self.mControlKeyHiliteRectangle = nil
     }
   }
 

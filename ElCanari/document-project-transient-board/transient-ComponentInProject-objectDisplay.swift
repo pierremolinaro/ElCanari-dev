@@ -48,14 +48,6 @@ func transient_ComponentInProject_objectDisplay (
        _ self_padNetDictionary : PadNetDictionary
 ) -> EBShape {
 //--- START OF USER ZONE 2
-//        var padNetDictionary = [String : String] () // Pad name, net net name
-//        for symbol in self_mSymbols_symbolInfo {
-//          if let symbolInfo = symbol.symbolInfo {
-//            for pin in symbolInfo.pins {
-//              padNetDictionary [pin.padName] = pin.netName
-//            }
-//          }
-//        }
         let padDisplayAttributes : [NSAttributedString.Key : Any]?
         if self_BoardObject_displayPadNumbers {
           padDisplayAttributes = [

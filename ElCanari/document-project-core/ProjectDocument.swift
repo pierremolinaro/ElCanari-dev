@@ -616,6 +616,7 @@ import Cocoa
   @IBOutlet weak var mDisplayPadNumbersSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mDuplicateSelectedComponentsActionButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mERCBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mERCLogTextView : NSTextView? = nil // An outlet should be declared weak
   @IBOutlet weak var mEditDeviceButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mEditFontButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mEditNetClassButton : EBButton? = nil // An outlet should be declared weak
@@ -1068,6 +1069,7 @@ import Cocoa
     checkOutletConnection (self.mDisplayPadNumbersSwitch, "mDisplayPadNumbersSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDuplicateSelectedComponentsActionButton, "mDuplicateSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mERCBoardInspectorView, "mERCBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mERCLogTextView, "mERCLogTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditFontButton, "mEditFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditNetClassButton, "mEditNetClassButton", EBButton.self, #file, #line)
@@ -2712,6 +2714,7 @@ import Cocoa
     self.mDisplayPadNumbersSwitch?.ebCleanUp ()
     self.mDuplicateSelectedComponentsActionButton?.ebCleanUp ()
     self.mERCBoardInspectorView?.ebCleanUp ()
+    self.mERCLogTextView?.ebCleanUp ()
     self.mEditDeviceButton?.ebCleanUp ()
     self.mEditFontButton?.ebCleanUp ()
     self.mEditNetClassButton?.ebCleanUp ()
@@ -3024,6 +3027,7 @@ import Cocoa
 //    self.mDisplayPadNumbersSwitch = nil
 //    self.mDuplicateSelectedComponentsActionButton = nil
 //    self.mERCBoardInspectorView = nil
+//    self.mERCLogTextView = nil
 //    self.mEditDeviceButton = nil
 //    self.mEditFontButton = nil
 //    self.mEditNetClassButton = nil

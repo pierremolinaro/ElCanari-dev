@@ -175,6 +175,7 @@
                 <outlet property="mDisplayPadNumbersSwitch" destination="1786" id="Rj4-zf-Yft"/>
                 <outlet property="mDuplicateSelectedComponentsActionButton" destination="5196" id="euo-vE-NM3"/>
                 <outlet property="mERCBoardInspectorView" destination="16696" id="Iq6-xf-cdK"/>
+                <outlet property="mERCLogTextView" destination="16775" id="yY2-Tz-Yj1"/>
                 <outlet property="mEditDeviceButton" destination="2954" id="h7x-qf-f8n"/>
                 <outlet property="mEditFontButton" destination="2974" id="Jdy-FT-vIW"/>
                 <outlet property="mEditNetClassButton" destination="MCZ-nc-VVA" id="sBc-i6-3za"/>
@@ -2274,7 +2275,7 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton id="13572">
+                <popUpButton hidden="YES" id="13572">
                     <rect key="frame" x="120" y="20" width="112" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" inset="2" id="14791">
@@ -3313,7 +3314,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="123" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="124" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3327,11 +3328,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="123" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="124" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="123" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="124" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3347,7 +3348,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="204.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="203.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3361,11 +3362,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="594.5" y="1" width="204.5" height="17"/>
+                                                <rect key="frame" x="595.5" y="1" width="203.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="204.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="203.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -5192,28 +5193,25 @@ Diameter</string>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                 </customView>
                 <segmentedControl verticalHuggingPriority="750" id="15543" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="3" y="545" width="248" height="20"/>
+                    <rect key="frame" x="2" y="545" width="248" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="roundRect" trackingMode="selectOne" id="15544">
                         <font key="font" metaFont="cellTitle"/>
                         <segments>
-                            <segment toolTip="Selected Object Inspector" image="editorInspector" width="38">
+                            <segment toolTip="Selected Object Inspector" image="editorInspector" width="40">
                                 <nil key="label"/>
                             </segment>
-                            <segment label="+" toolTip="Insert Package In Board Inspector" width="38" tag="1"/>
-                            <segment toolTip="Zoom and Grid Inspector" image="magnifyingGlass" width="38">
+                            <segment label="+" toolTip="Insert Package In Board Inspector" width="40" tag="1"/>
+                            <segment toolTip="Zoom and Grid Inspector" image="magnifyingGlass" width="40">
                                 <nil key="label"/>
                             </segment>
-                            <segment toolTip="Display Inspector" image="display" width="28">
+                            <segment toolTip="Display Inspector" image="display" width="40">
                                 <nil key="label"/>
                             </segment>
-                            <segment toolTip="Router Interface" image="autorouter" width="23" selected="YES">
+                            <segment toolTip="Router Interface" image="autorouter" width="40" selected="YES">
                                 <nil key="label"/>
                             </segment>
-                            <segment label="ERC" toolTip="Board Inspector" width="37"/>
-                            <segment image="circuit-imprime" width="37">
-                                <nil key="label"/>
-                            </segment>
+                            <segment label="ERC" toolTip="Board Inspector" width="40"/>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
@@ -6278,22 +6276,16 @@ TW: Track Width</string>
             <rect key="frame" x="0.0" y="0.0" width="250" height="609"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="16711">
-                    <rect key="frame" x="82" y="586" width="87" height="14"/>
+                <button verticalHuggingPriority="750" id="16758" customClass="EBButton">
+                    <rect key="frame" x="20" y="553" width="210" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="ERC Checking" id="16726">
-                        <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button id="16758">
-                    <rect key="frame" x="20" y="553" width="210" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="Design Rules Check" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="16759">
+                    <buttonCell key="cell" type="roundRect" title="Design Rules Check" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="16759">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="performERCCheckingAction:" target="-2" id="ohp-Ba-b1L"/>
+                    </connections>
                 </button>
                 <splitView dividerStyle="paneSplitter" id="16782">
                     <rect key="frame" x="20" y="53" width="210" height="492"/>
@@ -6304,7 +6296,7 @@ TW: Track Width</string>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" drawsBackground="NO" id="iKn-Nl-Bpd">
                                 <rect key="frame" x="1" y="1" width="193" height="245"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="16775">
                                         <rect key="frame" x="0.0" y="14" width="193" height="245"/>
@@ -6331,7 +6323,7 @@ TW: Track Width</string>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" id="DAb-di-bwE">
                                 <rect key="frame" x="1" y="0.0" width="208" height="234"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" headerView="16763" id="16761">
                                         <rect key="frame" x="0.0" y="0.0" width="208" height="211"/>
@@ -6385,6 +6377,15 @@ TW: Track Width</string>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="16711">
+                    <rect key="frame" x="82" y="595" width="87" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="ERC Checking" id="16726">
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
         </customView>
         <customView id="15079" userLabel="Board Inspector : Line" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
@@ -9413,7 +9414,6 @@ DQ
         <image name="NSStatusUnavailable" width="16" height="16"/>
         <image name="artwork" width="278" height="146"/>
         <image name="autorouter" width="283" height="282"/>
-        <image name="circuit-imprime" width="30.239999771118164" height="29.760000228881836"/>
         <image name="display" width="64" height="64"/>
         <image name="editorInspector" width="60" height="60"/>
         <image name="freeRoutingLogo" width="365" height="115"/>
