@@ -15,7 +15,7 @@ extension DeviceDocument {
   @objc func addSymbolFromLibraryAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
    var currentSymbolNames = Set <String> ()
-   for symbolType in self.rootObject.mSymbolTypes_property.propval {
+   for symbolType in self.rootObject.mSymbolTypes {
      currentSymbolNames.insert (symbolType.mTypeName)
    }
    gOpenSymbolInLibrary?.loadDocumentFromLibrary (

@@ -15,7 +15,7 @@ extension DeviceDocument {
   @objc func addPackageFromLibraryAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
    var currentPackageNames = Set <String> ()
-   for package in self.rootObject.mPackages_property.propval {
+   for package in self.rootObject.mPackages {
      currentPackageNames.insert (package.mName)
    }
    gOpenPackageInLibrary?.loadDocumentFromLibrary (

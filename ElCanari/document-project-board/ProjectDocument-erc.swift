@@ -111,8 +111,8 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   fileprivate func checkPadInsulation (_ ioIssues : inout [CanariIssue]) {
-    var frontPads = [EBBezierPath] ()
-    var backPads = [EBBezierPath] ()
+    var frontPads = [PadGeometryForERC] ()
+    var backPads = [PadGeometryForERC] ()
     for component in self.rootObject.mComponents {
       if component.mRoot != nil { // Is on board
         let packagePadDictionary : PackageMasterPadDictionary = component.packagePadDictionary!
@@ -129,7 +129,7 @@ extension CustomizedProjectDocument {
         af.translate (x: -center.x, y: -center.y)
       //---
         for (_, padDescriptor) in packagePadDictionary {
-          let bp = EBBezierPath.pad (
+          let bp = PadGeometryForERC (
             centerX: padDescriptor.center.x,
             centerY: padDescriptor.center.y,
             width: padDescriptor.padSize.width,
@@ -159,10 +159,10 @@ extension CustomizedProjectDocument {
       let padX = frontPads [idx]
       for idy in 0 ..< idx {
         let padY = frontPads [idy]
-        if padX.intersects (bezierPath: padY) {
+        if padX.intersects (padY) {
           collisionCount += 1
-          var bp = padX
-          bp.append (padY)
+          var bp = padX.bezierPath
+          bp.append (padY.bezierPath)
           bp.windingRule = .nonZero
           let issue = CanariIssue (kind: .error, message: "Pad collision, front side", path: bp, representativeValue: 0)
           ioIssues.append (issue)
@@ -173,10 +173,10 @@ extension CustomizedProjectDocument {
       let padX = backPads [idx]
       for idy in 0 ..< idx {
         let padY = backPads [idy]
-        if padX.intersects (bezierPath: padY) {
+        if padX.intersects (padY) {
           collisionCount += 1
-          var bp = padX
-          bp.append (padY)
+          var bp = padX.bezierPath
+          bp.append (padY.bezierPath)
           bp.windingRule = .nonZero
           let issue = CanariIssue (kind: .error, message: "Pad collision, back side", path: bp, representativeValue: 0)
           ioIssues.append (issue)
@@ -190,8 +190,8 @@ extension CustomizedProjectDocument {
     }else{
       self.mERCLogTextView?.appendErrorString ("\(collisionCount) collisions\n")
     }
-//    let shape = EBShape (filled: frontPads, .yellow)
-//    self.mBoardView?.mOverObjectsDisplay = shape
+    let shape = EBShape (filled: frontPads.bezierPathes (), .yellow)
+    self.mBoardView?.mOverObjectsDisplay = shape
   }
 
   //····················································································································

@@ -34,6 +34,34 @@ extension NSRect : Hashable {
   }
 
   //····················································································································
+
+  init (points inPoints : [NSPoint]) {
+    if inPoints.count == 0 {
+      self = .null
+    }else{
+      var xMin =  CGFloat.greatestFiniteMagnitude
+      var yMin =  CGFloat.greatestFiniteMagnitude
+      var xMax = -CGFloat.greatestFiniteMagnitude
+      var yMax = -CGFloat.greatestFiniteMagnitude
+      for p in inPoints {
+        if xMin > p.x {
+          xMin = p.x
+        }
+        if yMin > p.y {
+          yMin = p.y
+        }
+        if xMax < p.x {
+          xMax = p.x
+        }
+        if yMax < p.y {
+          yMax = p.y
+        }
+      }
+      self = NSRect (x: xMin, y: yMin, width: xMax - xMin, height: yMax - yMin)
+    }
+  }
+
+  //····················································································································
   //   Canari Rect
   //····················································································································
 

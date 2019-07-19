@@ -568,7 +568,7 @@ private func checkPackageLibrary (_ logView : NSTextView?,
                                   packageDict : inout [String : PMPackageDictionaryEntry],
                                   errorCount : inout Int,
                                   warningCount : inout Int) throws {
-  logView?.appendMessageString ("\nChecking fonts library...\n")
+  logView?.appendMessageString ("\nChecking packages library...\n")
   for path in existingLibraryPathArray () {
     let packageLibraryPath = packageLibraryPathForPath (path)
     logView?.appendMessageString (String (format:"  Handling path %@...\n", packageLibraryPath))

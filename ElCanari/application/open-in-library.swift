@@ -229,14 +229,17 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
       var partCountDictionary = [String : Int] ()
       for path in existingLibraryPathArray () {
         let baseDirectory = self.partLibraryPathForPath (path)
-        let files = try fm.subpathsOfDirectory (atPath: baseDirectory)
-        for f in files {
-          if f.pathExtension == inFileExtension {
-            let baseName = f.lastPathComponent.deletingPathExtension
-            if let n = partCountDictionary [baseName] {
-              partCountDictionary [baseName] = n + 1
-            }else{
-              partCountDictionary [baseName] = 1
+        var isDirectory : ObjCBool = false
+        if fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
+          let files = try fm.subpathsOfDirectory (atPath: baseDirectory)
+          for f in files {
+            if f.pathExtension == inFileExtension {
+              let baseName = f.lastPathComponent.deletingPathExtension
+              if let n = partCountDictionary [baseName] {
+                partCountDictionary [baseName] = n + 1
+              }else{
+                partCountDictionary [baseName] = 1
+              }
             }
           }
         }
@@ -245,14 +248,17 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
       var partArray = [LibraryDialogItem] ()
       for path in existingLibraryPathArray () {
         let baseDirectory = self.partLibraryPathForPath (path)
-        let files = try fm.subpathsOfDirectory (atPath: baseDirectory)
-        for f in files {
-          if f.pathExtension == inFileExtension {
-            let fullpath = baseDirectory + "/" + f
-            let baseName = f.lastPathComponent.deletingPathExtension
-            let isDuplicated = (partCountDictionary [baseName] ?? 0) > 1
-            let pathAsArray = f.deletingPathExtension.components (separatedBy: "/")
-            enterPart (&partArray, pathAsArray, fullpath, isDuplicated, inNames.contains (baseName), inBuildPreviewShapeFunction)
+        var isDirectory : ObjCBool = false
+        if fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
+          let files = try fm.subpathsOfDirectory (atPath: baseDirectory)
+          for f in files {
+            if f.pathExtension == inFileExtension {
+              let fullpath = baseDirectory + "/" + f
+              let baseName = f.lastPathComponent.deletingPathExtension
+              let isDuplicated = (partCountDictionary [baseName] ?? 0) > 1
+              let pathAsArray = f.deletingPathExtension.components (separatedBy: "/")
+              enterPart (&partArray, pathAsArray, fullpath, isDuplicated, inNames.contains (baseName), inBuildPreviewShapeFunction)
+            }
           }
         }
       }

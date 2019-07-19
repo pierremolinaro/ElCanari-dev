@@ -1201,8 +1201,6 @@
 		CF99E37621AE920F002AB233 /* CanariIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF99E37321AE920F002AB233 /* CanariIssue.swift */; };
 		CF99E37721AE920F002AB233 /* CanariIssueArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF99E37421AE920F002AB233 /* CanariIssueArray.swift */; };
 		CF99E37821AE920F002AB233 /* CanariIssueArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF99E37421AE920F002AB233 /* CanariIssueArray.swift */; };
-		CF9A129122E106D600170DD7 /* EBBezierPath-intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9A129022E106D600170DD7 /* EBBezierPath-intersection.swift */; };
-		CF9A129222E106D600170DD7 /* EBBezierPath-intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9A129022E106D600170DD7 /* EBBezierPath-intersection.swift */; };
 		CF9AE9F91BFA763C00B68F69 /* entity-FontCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AE9F71BFA763C00B68F69 /* entity-FontCharacter.swift */; };
 		CF9AE9FA1BFA763C00B68F69 /* entity-SegmentForFontCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AE9F81BFA763C00B68F69 /* entity-SegmentForFontCharacter.swift */; };
 		CF9CEF6922DBBA2500D32361 /* transient-BoardTrack-actualTrackWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9CEF6822DBBA2400D32361 /* transient-BoardTrack-actualTrackWidth.swift */; };
@@ -2835,7 +2833,6 @@
 		CF989FD422C7F01F00AC5110 /* transient-BoardObject-displayBackPads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardObject-displayBackPads.swift"; sourceTree = "<group>"; };
 		CF99E37321AE920F002AB233 /* CanariIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariIssue.swift; sourceTree = "<group>"; };
 		CF99E37421AE920F002AB233 /* CanariIssueArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariIssueArray.swift; sourceTree = "<group>"; };
-		CF9A129022E106D600170DD7 /* EBBezierPath-intersection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EBBezierPath-intersection.swift"; sourceTree = "<group>"; };
 		CF9AE9F71BFA763C00B68F69 /* entity-FontCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-FontCharacter.swift"; sourceTree = "<group>"; };
 		CF9AE9F81BFA763C00B68F69 /* entity-SegmentForFontCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SegmentForFontCharacter.swift"; sourceTree = "<group>"; };
 		CF9CEF6822DBBA2400D32361 /* transient-BoardTrack-actualTrackWidth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardTrack-actualTrackWidth.swift"; sourceTree = "<group>"; };
@@ -4613,7 +4610,6 @@
 		CFD1B75221B2E90400F6F9EA /* Shapes */ = {
 			isa = PBXGroup;
 			children = (
-				CF9A129022E106D600170DD7 /* EBBezierPath-intersection.swift */,
 				CF92C3BF22BEC30900C221B2 /* EBBezierPath.swift */,
 				CF28314122CCA5A2000988BA /* EBShape.swift */,
 			);
@@ -5991,7 +5987,6 @@
 				CF90B77421427BA500E725B0 /* transient-FontRoot-currentCharacterCodePointString.swift in Sources */,
 				CFA430A5229AEC41000AA8C8 /* toone-SymbolRoot.swift in Sources */,
 				CFEBDB7322A6B2B700F1917A /* transient-BorderCurve-cp2Ystring.swift in Sources */,
-				CF9A129122E106D600170DD7 /* EBBezierPath-intersection.swift in Sources */,
 				CFBED92720F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift in Sources */,
 				CFF2A1F321B2D18E00945D01 /* transient-SymbolSolidOval-objectDisplay.swift in Sources */,
 				CF00843B21C41B8D003627E9 /* transient-PackageBezier-issues.swift in Sources */,
@@ -7034,7 +7029,6 @@
 				CF4D54C12254B93600DBCB62 /* model-events.swift in Sources */,
 				CF9D4B1F227F796C006E2035 /* action-ProjectDocument-changeValueOfSelectedComponentsAction.swift in Sources */,
 				CF58DF9B21AD7CA30088517F /* selectionController-SymbolDocument-mSymbolPinSelectionController.swift in Sources */,
-				CF9A129222E106D600170DD7 /* EBBezierPath-intersection.swift in Sources */,
 				CFA4308C229AEB96000AA8C8 /* toone-NetClassInProject.swift in Sources */,
 				CF5C4D7B219F04D600EAC52A /* controller-table-view-FontDocument-mSelectedCharacterController.swift in Sources */,
 				CF470CD922AA4BD800D0EA60 /* toone-BoardObject.swift in Sources */,

@@ -31,7 +31,7 @@ func existingLibraryPathArray () -> [String] {
 //    }
 //  }
 //--- User library
-  if let prefs = g_Preferences, prefs.usesUserLibrary_property.propval {
+  if let prefs = g_Preferences, prefs.usesUserLibrary {
     let ulp = userLibraryPath ()
     if fm.fileExists (atPath: ulp) {
       result.append (ulp)
@@ -39,7 +39,7 @@ func existingLibraryPathArray () -> [String] {
   }
 //--- Other libraries
   if let prefs = g_Preferences {
-    for libraryEntry in prefs.additionnalLibraryArray_property.propval {
+    for libraryEntry in prefs.additionnalLibraryArray {
       if libraryEntry.mUses {
         if fm.fileExists (atPath: libraryEntry.mPath) {
           result.append (libraryEntry.mPath)
