@@ -41,7 +41,7 @@ struct GeometricOblong {
     }
   //--- p inside rectangle
     if !inside {
-      let r = GeometricRect (from: self.p1, to: self.p2, height: self.height)
+      let r = GeometricRect (self.p1, self.p2, self.height)
       inside = r.contains (point: p)
     }
     return inside
@@ -49,19 +49,19 @@ struct GeometricOblong {
 
   //····················································································································
 
-  func intersects (rect : GeometricRect) -> Bool {
+  func intersects (rect inRect : GeometricRect) -> Bool {
   //--- rect intersects P1 circle
-    let c1 = GeometricCircle (center: self.p1, radius: self.height / 2.0)
-    var intersects = rect.intersects (circle: c1)
+    let c1 = GeometricCircle (self.p1, self.height / 2.0)
+    var intersects = inRect.intersects (circle: c1)
   //--- rect intersects P2 circle
     if !intersects {
-      let c2 = GeometricCircle (center: self.p2, radius: self.height / 2.0)
-      intersects = rect.intersects (circle: c2)
+      let c2 = GeometricCircle (self.p2, self.height / 2.0)
+      intersects = inRect.intersects (circle: c2)
     }
   //--- rect intersects rectangle
     if !intersects {
-      let r = GeometricRect (from: self.p1, to: self.p2, height: self.height)
-      intersects = rect.intersects (rect: r)
+      let r = GeometricRect (self.p1, self.p2, self.height)
+      intersects = inRect.intersects (rect: r)
     }
     return intersects
   }

@@ -945,7 +945,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
         mSelection.removeAll ()
         let r = CGRect (point: mouseDownLocation, point: mouseDraggedLocation)
         mSelectionRectangle = r
-        let cr = GeometricRect (cgrect: r)
+        let cr = GeometricRect (rect: r)
         for segment in self.mSegmentList {
           if segment.intersects (rect: cr) {
             mSelection.insert (segment)
@@ -969,7 +969,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
         let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
         let r = CGRect (point: mouseDownLocation, point: mouseDraggedLocation)
         mSelectionRectangle = r
-        let cr = GeometricRect (cgrect: r)
+        let cr = GeometricRect (rect: r)
         var selection = Set <SegmentForFontCharacterClass> ()
         for segment in self.mSegmentList {
           if segment.intersects (rect: cr) {

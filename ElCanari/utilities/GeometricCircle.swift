@@ -21,9 +21,9 @@ struct GeometricCircle {
   //   init
   //····················································································································
 
-  init (center : NSPoint, radius : CGFloat) {
-    self.center = center
-    self.radius = radius
+  init (_ inCenter : NSPoint, _ inRadius : CGFloat) {
+    self.center = inCenter
+    self.radius = inRadius
   }
 
   //····················································································································
@@ -59,8 +59,20 @@ struct GeometricCircle {
   //····················································································································
 
   func path () -> NSBezierPath {
-    let r = NSRect (x: center.x - radius, y: center.y - radius, width: radius  * 2.0, height: radius * 2.0)
-    return NSBezierPath (ovalIn: r)
+    return NSBezierPath (ovalIn: self.bounds)
+  }
+
+  //····················································································································
+
+  var bounds : NSRect {
+    let s = NSSize (width: self.radius * 2.0, height: self.radius * 2.0)
+    return NSRect (center: self.center, size: s)
+  }
+
+  //····················································································································
+
+  func transformed (by inAffineTransform : AffineTransform) -> GeometricCircle {
+    return GeometricCircle (inAffineTransform.transform (self.center), self.radius)
   }
 
   //····················································································································

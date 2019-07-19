@@ -41,7 +41,7 @@ graphic entity DeviceRoot {
 
 //--- Packages
   toMany @signature PackageInDevice mPackages inverse toOne mRoot ;
-  property @signature Int mPackageDisplayZoom default 100 ;
+  property @signature Int mPackageDisplayZoom default 400 ;
   property @signature Bool mPackageDisplayHorizontalFlip default no ;
   property @signature Bool mPackageDisplayVerticalFlip default no ;
   property @signature Bool mShowPackages default yes ;
@@ -53,7 +53,7 @@ graphic entity DeviceRoot {
   toMany @signature SymbolTypeInDevice mSymbolTypes ;
   toMany @signature SymbolInstanceInDevice mSymbolInstances ;
 
-  property @signature Int mSymbolDisplayZoom default 100 ;
+  property @signature Int mSymbolDisplayZoom default 400 ;
   property @signature Bool mSymbolDisplayHorizontalFlip default no ;
   property @signature Bool mSymbolDisplayVerticalFlip default no ;
 

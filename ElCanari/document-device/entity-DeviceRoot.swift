@@ -257,7 +257,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mPackageDisplayZoom
   //····················································································································
 
-  let mPackageDisplayZoom_property = EBStoredProperty_Int (defaultValue: 100)
+  let mPackageDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400)
 
   //····················································································································
 
@@ -376,7 +376,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mSymbolDisplayZoom
   //····················································································································
 
-  let mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 100)
+  let mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400)
 
   //····················································································································
 
