@@ -162,8 +162,7 @@ extension CustomizedProjectDocument {
         let padY = frontPads [idy]
         if padX.intersects (padY) {
           collisionCount += 1
-          var bp = padX.bezierPathes
-          bp += padY.bezierPathes
+          let bp = [padX.bezierPath, padY.bezierPath]
           let issue = CanariIssue (kind: .error, message: "Pad collision, front side", pathes: bp, representativeValue: 0)
           ioIssues.append (issue)
         }
@@ -175,8 +174,7 @@ extension CustomizedProjectDocument {
         let padY = backPads [idy]
         if padX.intersects (padY) {
           collisionCount += 1
-          var bp = padX.bezierPathes
-          bp += padY.bezierPathes
+          let bp = [padX.bezierPath, padY.bezierPath]
           let issue = CanariIssue (kind: .error, message: "Pad collision, back side", pathes: bp, representativeValue: 0)
           ioIssues.append (issue)
         }

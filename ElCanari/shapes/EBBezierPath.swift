@@ -33,12 +33,12 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
-  private var mPath : OCBezierPath
+  private var mPath : NSBezierPath
 
   //····················································································································
 
   var nsBezierPath : NSBezierPath {
-    return self.mPath.copy () as! OCBezierPath
+    return self.mPath.copy () as! NSBezierPath
   }
 
   //····················································································································
@@ -50,34 +50,34 @@ struct EBBezierPath : Hashable {
   //····················································································································
 
   init () {
-    mPath = OCBezierPath ()
+    mPath = NSBezierPath ()
   }
 
   //····················································································································
 
   init (rect inRect : NSRect) {
-    self.mPath = OCBezierPath ()
+    self.mPath = NSBezierPath ()
     self.mPath.appendRect (inRect)
   }
 
   //····················································································································
 
   init (ovalIn inRect : NSRect) {
-    self.mPath = OCBezierPath ()
+    self.mPath = NSBezierPath ()
     self.mPath.appendOval (in: inRect)
   }
 
   //····················································································································
 
   init (roundedRect rect : NSRect, xRadius : CGFloat, yRadius : CGFloat) {
-    self.mPath = OCBezierPath ()
+    self.mPath = NSBezierPath ()
     self.mPath.appendRoundedRect (rect, xRadius: xRadius, yRadius: yRadius)
   }
 
   //····················································································································
 
   init (_ inBezierPath : NSBezierPath) { // § TEMP
-    mPath = OCBezierPath ()
+    self.mPath = NSBezierPath ()
     self.mPath.append (inBezierPath)
     self.mPath.lineWidth = inBezierPath.lineWidth
     self.mPath.lineCapStyle = inBezierPath.lineCapStyle
@@ -91,7 +91,7 @@ struct EBBezierPath : Hashable {
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment,
         withAttributes inTextAttributes : [NSAttributedString.Key : Any]) {
-    self.mPath = OCBezierPath ()
+    self.mPath = NSBezierPath ()
     if inString != "" {
     //--- Font
       let font : NSFont
@@ -153,7 +153,7 @@ struct EBBezierPath : Hashable {
     }
     set {
       if !isKnownUniquelyReferenced (&self.mPath) {
-        self.mPath = self.mPath.copy () as! OCBezierPath
+        self.mPath = self.mPath.copy () as! NSBezierPath
       }
       self.mPath.lineWidth = newValue
     }
@@ -168,7 +168,7 @@ struct EBBezierPath : Hashable {
     }
     set {
       if !isKnownUniquelyReferenced (&self.mPath) {
-        self.mPath = self.mPath.copy () as! OCBezierPath
+        self.mPath = self.mPath.copy () as! NSBezierPath
       }
       self.mPath.lineCapStyle = newValue
     }
@@ -182,7 +182,7 @@ struct EBBezierPath : Hashable {
     }
     set {
       if !isKnownUniquelyReferenced (&self.mPath) {
-        self.mPath = self.mPath.copy () as! OCBezierPath
+        self.mPath = self.mPath.copy () as! NSBezierPath
       }
       self.mPath.lineJoinStyle = newValue
     }
@@ -196,7 +196,7 @@ struct EBBezierPath : Hashable {
     }
     set {
       if !isKnownUniquelyReferenced (&self.mPath) {
-        self.mPath = self.mPath.copy () as! OCBezierPath
+        self.mPath = self.mPath.copy () as! NSBezierPath
       }
       self.mPath.windingRule = newValue
     }
@@ -206,7 +206,7 @@ struct EBBezierPath : Hashable {
 
   mutating func appendRect (_ inRect : NSRect) {
     if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! OCBezierPath
+      self.mPath = self.mPath.copy () as! NSBezierPath
     }
     self.mPath.appendRect (inRect)
   }
@@ -215,7 +215,7 @@ struct EBBezierPath : Hashable {
 
   mutating func appendOval (in inRect : NSRect) {
     if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! OCBezierPath
+      self.mPath = self.mPath.copy () as! NSBezierPath
     }
     self.mPath.appendOval (in: inRect)
   }
@@ -224,7 +224,7 @@ struct EBBezierPath : Hashable {
 
   mutating func move (to inPoint : NSPoint) {
     if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! OCBezierPath
+      self.mPath = self.mPath.copy () as! NSBezierPath
     }
     self.mPath.move (to: inPoint)
   }
@@ -233,7 +233,7 @@ struct EBBezierPath : Hashable {
 
   mutating func relativeMove (to inPoint : NSPoint) {
     if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! OCBezierPath
+      self.mPath = self.mPath.copy () as! NSBezierPath
     }
     self.mPath.relativeMove (to: inPoint)
   }
@@ -242,7 +242,7 @@ struct EBBezierPath : Hashable {
 
   mutating func line (to inPoint : NSPoint) {
     if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! OCBezierPath
+      self.mPath = self.mPath.copy () as! NSBezierPath
     }
     self.mPath.line (to: inPoint)
   }
@@ -251,7 +251,7 @@ struct EBBezierPath : Hashable {
 
   mutating func curve (to inPoint : NSPoint, controlPoint1 inCP1 : NSPoint, controlPoint2 inCP2 : NSPoint) {
     if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! OCBezierPath
+      self.mPath = self.mPath.copy () as! NSBezierPath
     }
     self.mPath.curve (to: inPoint, controlPoint1: inCP1, controlPoint2: inCP2)
   }
@@ -260,7 +260,7 @@ struct EBBezierPath : Hashable {
 
   mutating func close () {
     if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! OCBezierPath
+      self.mPath = self.mPath.copy () as! NSBezierPath
     }
     self.mPath.close ()
   }
@@ -269,7 +269,7 @@ struct EBBezierPath : Hashable {
 
   mutating func relativeLine (to inPoint : NSPoint) {
     if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! OCBezierPath
+      self.mPath = self.mPath.copy () as! NSBezierPath
     }
     self.mPath.relativeLine (to: inPoint)
   }
@@ -278,7 +278,7 @@ struct EBBezierPath : Hashable {
 
   mutating func transform (using transform: AffineTransform) {
     if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! OCBezierPath
+      self.mPath = self.mPath.copy () as! NSBezierPath
     }
     self.mPath.transform (using: transform)
   }
@@ -335,7 +335,7 @@ struct EBBezierPath : Hashable {
 
   mutating func append (_ inBezierPath : NSBezierPath) {
     if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! OCBezierPath
+      self.mPath = self.mPath.copy () as! NSBezierPath
     }
     self.mPath.append (inBezierPath)
   }
@@ -344,7 +344,7 @@ struct EBBezierPath : Hashable {
 
   mutating func append (_ inBezierPath : EBBezierPath) {
     if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! OCBezierPath
+      self.mPath = self.mPath.copy () as! NSBezierPath
     }
     self.mPath.append (inBezierPath.nsBezierPath)
   }
@@ -417,7 +417,7 @@ struct EBBezierPath : Hashable {
       miterLimit: self.mPath.miterLimit
     )
     var path = EBBezierPath ()
-    cgPath.apply (info: &path.mPath, function: CGPathCallback)
+    cgPath.apply (info: &path.mPath, function: pathByStrokingCallback)
     return path
   }
 
@@ -497,7 +497,7 @@ struct EBBezierPath : Hashable {
 
   mutating func appendOblong (in inRect : NSRect) {
     if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! OCBezierPath
+      self.mPath = self.mPath.copy () as! NSBezierPath
     }
     let width = inRect.size.width
     let height = inRect.size.height
@@ -533,33 +533,21 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
+  var reversed : EBBezierPath {
+    var result = EBBezierPath ()
+    result.mPath = self.mPath.reversed
+    return result
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// OCBezierPath
+// NSBezierPath
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class OCBezierPath : NSBezierPath, EBUserClassNameProtocol {
-
-  //····················································································································
-
-  required init? (coder : NSCoder) {
-    super.init (coder: coder)
-    noteObjectAllocation (self)
-  }
-
-  //····················································································································
-
-  override init () {
-    super.init ()
-    noteObjectAllocation (self)
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
+extension NSBezierPath {
 
   //····················································································································
   // https://stackoverflow.com/questions/1815568/how-can-i-convert-nsbezierpath-to-cgpath
@@ -591,7 +579,7 @@ fileprivate class OCBezierPath : NSBezierPath, EBUserClassNameProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func CGPathCallback (_ info : UnsafeMutableRawPointer?, _ element : UnsafePointer<CGPathElement>) {
+private func pathByStrokingCallback (_ info : UnsafeMutableRawPointer?, _ element : UnsafePointer<CGPathElement>) {
   if let bezierPath : NSBezierPath = info?.load (as: NSBezierPath.self) {
     let points = element.pointee.points
     switch element.pointee.type {
@@ -613,7 +601,7 @@ private func CGPathCallback (_ info : UnsafeMutableRawPointer?, _ element : Unsa
 //        cp2.y = (qp2.y + ((qp1.y - qp2.y) * m));
         bezierPath.curve (to: qp2, controlPoint1: cp1, controlPoint2: cp2)
     case .addCurveToPoint:
-      bezierPath.curve (to:points[2], controlPoint1: points[0], controlPoint2: points[1])
+      bezierPath.curve (to: points[2], controlPoint1: points[0], controlPoint2: points[1])
     case .closeSubpath:
       bezierPath.close ()
     @unknown default:
