@@ -87,7 +87,7 @@ extension CustomizedProjectDocument {
         let s = NSSize (width: ISSUE_SIZE, height: ISSUE_SIZE)
         let r = NSRect (center: location, size: s)
         let bp = EBBezierPath (ovalIn: r)
-        let issue = CanariIssue (kind: .error, message: "Pad collision in front side", path: bp, representativeValue: 0)
+        let issue = CanariIssue (kind: .error, message: "Pad collision in front side", pathes: [bp], representativeValue: 0)
         issues.append (issue)
       }
       if padsInBackSide > 1 { // Pad collision in front side
@@ -95,7 +95,7 @@ extension CustomizedProjectDocument {
         let s = NSSize (width: ISSUE_SIZE, height: ISSUE_SIZE)
         let r = NSRect (center: location, size: s)
         let bp = EBBezierPath (ovalIn: r)
-        let issue = CanariIssue (kind: .error, message: "Pad collision in back side", path: bp, representativeValue: 0)
+        let issue = CanariIssue (kind: .error, message: "Pad collision in back side", pathes: [bp], representativeValue: 0)
         issues.append (issue)
       }
     }
@@ -111,6 +111,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   fileprivate func checkPadInsulation (_ ioIssues : inout [CanariIssue]) {
+    let clearance = self.rootObject.mLayoutClearance
     var frontPads = [PadGeometryForERC] ()
     var backPads = [PadGeometryForERC] ()
     for component in self.rootObject.mComponents {
@@ -132,8 +133,8 @@ extension CustomizedProjectDocument {
           let bp = PadGeometryForERC (
             centerX: padDescriptor.center.x,
             centerY: padDescriptor.center.y,
-            width: padDescriptor.padSize.width,
-            height: padDescriptor.padSize.height,
+            width: padDescriptor.padSize.width + clearance,
+            height: padDescriptor.padSize.height + clearance,
             shape: padDescriptor.shape
           )
           let transformedBP = bp.transformed (by: af)
@@ -161,10 +162,9 @@ extension CustomizedProjectDocument {
         let padY = frontPads [idy]
         if padX.intersects (padY) {
           collisionCount += 1
-          var bp = padX.bezierPath
-          bp.append (padY.bezierPath)
-          bp.windingRule = .nonZero
-          let issue = CanariIssue (kind: .error, message: "Pad collision, front side", path: bp, representativeValue: 0)
+          var bp = padX.bezierPathes
+          bp += padY.bezierPathes
+          let issue = CanariIssue (kind: .error, message: "Pad collision, front side", pathes: bp, representativeValue: 0)
           ioIssues.append (issue)
         }
       }
@@ -175,10 +175,9 @@ extension CustomizedProjectDocument {
         let padY = backPads [idy]
         if padX.intersects (padY) {
           collisionCount += 1
-          var bp = padX.bezierPath
-          bp.append (padY.bezierPath)
-          bp.windingRule = .nonZero
-          let issue = CanariIssue (kind: .error, message: "Pad collision, back side", path: bp, representativeValue: 0)
+          var bp = padX.bezierPathes
+          bp += padY.bezierPathes
+          let issue = CanariIssue (kind: .error, message: "Pad collision, back side", pathes: bp, representativeValue: 0)
           ioIssues.append (issue)
         }
       }

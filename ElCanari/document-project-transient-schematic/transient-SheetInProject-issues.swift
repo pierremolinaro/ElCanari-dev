@@ -37,7 +37,7 @@ func transient_SheetInProject_issues (
               height: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0
             )
             let path = EBBezierPath (ovalIn: r)
-            issues.append (CanariIssue (kind: .error, message: "\(statusArray.count) points at the same location", path: path))
+            issues.append (CanariIssue (kind: .error, message: "\(statusArray.count) points at the same location", pathes: [path]))
           }else if !statusArray [0].connected {
             let r = NSRect (
               x: canariUnitToCocoa (location.x) - SCHEMATIC_GRID_IN_COCOA_UNIT,
@@ -46,7 +46,7 @@ func transient_SheetInProject_issues (
               height: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0
             )
             let path = EBBezierPath (ovalIn: r)
-            issues.append (CanariIssue (kind: .warning, message: "Unconnected pin", path: path))
+            issues.append (CanariIssue (kind: .warning, message: "Unconnected pin", pathes: [path]))
           }
         }
         return issues

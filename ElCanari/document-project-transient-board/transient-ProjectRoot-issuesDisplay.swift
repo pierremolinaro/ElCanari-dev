@@ -24,7 +24,7 @@ func transient_ProjectRoot_issuesDisplay (
           case .warning : color = .myOrange
           case .error   : color = .red
           }
-          shape.add (filled: [issue.path], color)
+          shape.add (filled: issue.pathes, color)
         }
         return shape
 //--- END OF USER ZONE 2

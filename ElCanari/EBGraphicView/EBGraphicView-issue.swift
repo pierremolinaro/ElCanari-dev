@@ -10,30 +10,25 @@ extension EBGraphicView {
 
   //····················································································································
 
-  func setIssue (_ inBezierPath : EBBezierPath?, _ issueKind : CanariIssueKind) {
-    if self.mIssueBezierPath != inBezierPath {
-      if let bp = self.mIssueBezierPath, !bp.isEmpty {
-        self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
-      }
-      self.mIssueBezierPath = inBezierPath
+  func setIssue (_ inBezierPathes : [EBBezierPath], _ issueKind : CanariIssueKind) {
+    if self.mIssueBezierPathes != inBezierPathes {
+      self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
+      self.mIssueBezierPathes = inBezierPathes
       self.mIssueKind = issueKind
       self.updateViewFrameAndBounds ()
-      if let bp = self.mIssueBezierPath, !bp.isEmpty {
-        self.scrollToVisible (bp.bounds)
-        self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
-      }
+      self.scrollToVisible (self.issueBoundingBox)
+      self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
     }
   }
 
   //····················································································································
 
   internal var issueBoundingBox : NSRect {
-    if let bp = self.mIssueBezierPath, !bp.isEmpty {
-      let e = -bp.lineWidth
-      return bp.bounds.insetBy (dx: e, dy: e)
-    }else{
-      return NSRect.null
+    var box = NSRect.null
+    for bp in self.mIssueBezierPathes {
+      box = box.union (bp.bounds)
     }
+    return box
   }
 
   //····················································································································

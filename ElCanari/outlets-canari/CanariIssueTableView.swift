@@ -85,11 +85,11 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
 
   private func updateIssueDisplay () {
     if self.selectedRow < 0 {
-      self.mIssueDisplayView?.setIssue (nil, .error)
+      self.mIssueDisplayView?.setIssue ([], .error)
       self.mHideIssueButton?.isEnabled = false
     }else{
       let selectedIssue = self.mModelArray [self.selectedRow]
-      self.mIssueDisplayView?.setIssue (selectedIssue.path, selectedIssue.kind)
+      self.mIssueDisplayView?.setIssue (selectedIssue.pathes, selectedIssue.kind)
       self.mHideIssueButton?.isEnabled = true
     }
     var errorCount = 0

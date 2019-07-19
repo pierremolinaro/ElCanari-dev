@@ -38,7 +38,7 @@ func transient_BoardConnector_issues (
           let issueSize = CGFloat (self_BoardObject_errorOrWarningIssueSize)
           let r = NSRect (x: location.x - issueSize / 2.0, y: location.y - issueSize / 2.0, width: issueSize, height: issueSize)
           let bp = EBBezierPath (ovalIn: r)
-          let issue = CanariIssue (kind: .warning, message: "No Connection", path: bp)
+          let issue = CanariIssue (kind: .warning, message: "No Connection", pathes: [bp])
           issues.append (issue)
         }
         return issues

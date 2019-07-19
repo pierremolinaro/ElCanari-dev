@@ -110,18 +110,26 @@ extension EBGraphicView {
   //····················································································································
 
   fileprivate func drawIssue (_ inDirtyRect : NSRect) {
-    if let issueBezierPath = self.mIssueBezierPath, !issueBezierPath.isEmpty {
+    if !self.mIssueBezierPathes.isEmpty {
       switch self.mIssueKind {
       case .error :
         NSColor.red.withAlphaComponent (0.2).setFill ()
-        issueBezierPath.fill ()
+        for bp in self.mIssueBezierPathes {
+          bp.fill ()
+        }
         NSColor.red.setStroke ()
-        issueBezierPath.stroke ()
+        for bp in self.mIssueBezierPathes {
+          bp.stroke ()
+        }
       case .warning :
         NSColor.orange.withAlphaComponent (0.2).setFill ()
-        issueBezierPath.fill ()
+        for bp in self.mIssueBezierPathes {
+          bp.fill ()
+        }
         NSColor.orange.setStroke ()
-        issueBezierPath.stroke ()
+        for bp in self.mIssueBezierPathes {
+          bp.stroke ()
+        }
       }
     }
   }

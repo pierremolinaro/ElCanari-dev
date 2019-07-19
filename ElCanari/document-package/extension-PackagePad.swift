@@ -325,12 +325,14 @@ class PadGeometryForERC {
 
   //····················································································································
 
-  var bezierPath : EBBezierPath {
-    var result = EBBezierPath ()
+  var bezierPathes : [EBBezierPath] {
+    var result = [EBBezierPath] ()
     for circle in self.circles {
       let s = circle.radius * 2.0
       let r = NSRect (center: circle.center, size: NSSize (width: s, height: s))
-      result.appendOval (in: r)
+      let bp = EBBezierPath (ovalIn: r)
+      result.append (bp)
+//      result.appendOval (in: r)
     }
     for r in self.rectangles {
       var bp = EBBezierPath ()
@@ -341,7 +343,6 @@ class PadGeometryForERC {
       let filledBp = bp.pathByStroking
       result.append (filledBp)
     }
-    result.windingRule = .nonZero
     return result
   }
 
@@ -359,7 +360,7 @@ extension Array where Element == PadGeometryForERC {
   func bezierPathes () -> [EBBezierPath] {
     var result = [EBBezierPath] ()
     for entry in self {
-      result.append (entry.bezierPath)
+      result += entry.bezierPathes
     }
     return result
   }

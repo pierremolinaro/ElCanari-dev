@@ -27,7 +27,7 @@ extension Array where Element == CanariIssue {
     )
     var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
-    self.append (CanariIssue (kind: .warning, message: "Empty Pin Name", path: bp))
+    self.append (CanariIssue (kind: .warning, message: "Empty Pin Name", pathes: [bp]))
   }
 
   //····················································································································
@@ -41,7 +41,7 @@ extension Array where Element == CanariIssue {
     )
     var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
-    self.append (CanariIssue (kind: .warning, message: "Empty Text", path: bp))
+    self.append (CanariIssue (kind: .warning, message: "Empty Text", pathes: [bp]))
   }
 
   //····················································································································
@@ -55,7 +55,7 @@ extension Array where Element == CanariIssue {
     )
     var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
-    self.append (CanariIssue (kind: .error, message: "Several pin at the same location", path: bp))
+    self.append (CanariIssue (kind: .error, message: "Several pin at the same location", pathes: [bp]))
   }
 
   //····················································································································
@@ -63,7 +63,7 @@ extension Array where Element == CanariIssue {
   mutating func appendSymbolDuplicatedPinNameIssueAt (rect: NSRect) {
     var bp = EBBezierPath (rect: rect)
     bp.lineWidth = LINE_WIDTH
-    self.append (CanariIssue (kind: .error, message: "Duplicated Pin Name", path: bp))
+    self.append (CanariIssue (kind: .error, message: "Duplicated Pin Name", pathes: [bp]))
   }
 
   //····················································································································
@@ -83,7 +83,7 @@ extension Array where Element == CanariIssue {
     )
     var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
-    self.append (CanariIssue (kind: .error, message: "Pin Horizontal Alignment", path: bp))
+    self.append (CanariIssue (kind: .error, message: "Pin Horizontal Alignment", pathes: [bp]))
   }
 
   //····················································································································
@@ -97,7 +97,7 @@ extension Array where Element == CanariIssue {
     )
     var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
-    self.append (CanariIssue (kind: .error, message: "Pin Vertical Alignment", path: bp))
+    self.append (CanariIssue (kind: .error, message: "Pin Vertical Alignment", pathes: [bp]))
   }
 
   //····················································································································
@@ -111,7 +111,7 @@ extension Array where Element == CanariIssue {
     )
     var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
-    self.append (CanariIssue (kind: .error, message: "Horizontal Alignment", path: bp))
+    self.append (CanariIssue (kind: .error, message: "Horizontal Alignment", pathes: [bp]))
   }
 
   //····················································································································
@@ -125,7 +125,7 @@ extension Array where Element == CanariIssue {
     )
     var bp = EBBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
-    self.append (CanariIssue (kind: .error, message: "Vertical Alignment", path: bp))
+    self.append (CanariIssue (kind: .error, message: "Vertical Alignment", pathes: [bp]))
   }
 
   //····················································································································
@@ -139,7 +139,7 @@ extension Array where Element == CanariIssue {
     )
     var bp = EBBezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
     bp.lineWidth = LINE_WIDTH
-    self.append (CanariIssue (kind: .error, message: "Width Alignment", path: bp))
+    self.append (CanariIssue (kind: .error, message: "Width Alignment", pathes: [bp]))
   }
 
   //····················································································································
@@ -153,7 +153,7 @@ extension Array where Element == CanariIssue {
     )
     var bp = EBBezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
     bp.lineWidth = LINE_WIDTH
-    self.append (CanariIssue (kind: .error, message: "Height Alignment", path: bp))
+    self.append (CanariIssue (kind: .error, message: "Height Alignment", pathes: [bp]))
   }
 
   //····················································································································

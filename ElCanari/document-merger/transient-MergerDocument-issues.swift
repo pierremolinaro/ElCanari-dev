@@ -37,7 +37,7 @@ func transient_MergerDocument_issues (
             let intersectionEnlarged : NSRect = intersection.cocoaRect.insetBy (dx: -3.0, dy: -3.0)
             var bp = EBBezierPath (rect: intersectionEnlarged)
             bp.lineWidth = 3.0
-            let issue = CanariIssue (kind: .error, message: "Intersection", path: bp)
+            let issue = CanariIssue (kind: .error, message: "Intersection", pathes: [bp])
             array.append (issue)
           }
           idy += 1
@@ -52,7 +52,7 @@ func transient_MergerDocument_issues (
           let intersectionEnlarged : NSRect = instanceRect.cocoaRect.insetBy (dx: -3.0, dy: -3.0)
           var bp = EBBezierPath (rect: intersectionEnlarged)
           bp.lineWidth = 3.0
-          let issue = CanariIssue (kind: .error, message: "Outside board", path: bp)
+          let issue = CanariIssue (kind: .error, message: "Outside board", pathes: [bp])
           array.append (issue)
         }
       }

@@ -527,7 +527,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  internal var mIssueBezierPath : EBBezierPath? = nil
+  internal var mIssueBezierPathes = [EBBezierPath] ()
   internal var mIssueKind : CanariIssueKind = .error // Any value, not used if mIssueBezierPath is nil
 
   //····················································································································

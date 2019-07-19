@@ -15,6 +15,8 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : ProjectRoot?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    inOldValue?.mLayoutClearance_property.removeEBObserversFrom (&self.mObserversOf_mLayoutClearance) // Stored property
+    inOldValue?.mLayoutClearanceUnit_property.removeEBObserversFrom (&self.mObserversOf_mLayoutClearanceUnit) // Stored property
     inOldValue?.mBoardSelectedInspector_property.removeEBObserversFrom (&self.mObserversOf_mBoardSelectedInspector) // Stored property
     inOldValue?.mBoardHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mBoardHorizontalFlip) // Stored property
     inOldValue?.mBoardVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mBoardVerticalFlip) // Stored property
@@ -91,6 +93,8 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.schematicStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
     inOldValue?.schematicStatusImage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
   //--- Add observers to added objects
+    self.mInternalValue?.mLayoutClearance_property.addEBObserversFrom (&self.mObserversOf_mLayoutClearance) // Stored property
+    self.mInternalValue?.mLayoutClearanceUnit_property.addEBObserversFrom (&self.mObserversOf_mLayoutClearanceUnit) // Stored property
     self.mInternalValue?.mBoardSelectedInspector_property.addEBObserversFrom (&self.mObserversOf_mBoardSelectedInspector) // Stored property
     self.mInternalValue?.mBoardHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mBoardHorizontalFlip) // Stored property
     self.mInternalValue?.mBoardVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mBoardVerticalFlip) // Stored property
@@ -166,6 +170,146 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.boardBackground_property.addEBObserversFrom (&self.mObserversOf_boardBackground) // Transient property
     self.mInternalValue?.schematicStatusMessage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
     self.mInternalValue?.schematicStatusImage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
+  }
+
+  //····················································································································
+  //   Observers of 'mLayoutClearance' stored property
+  //····················································································································
+
+  private var mObserversOf_mLayoutClearance = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mLayoutClearance_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mLayoutClearance_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mLayoutClearance (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mLayoutClearance.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mLayoutClearance_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mLayoutClearance (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mLayoutClearance.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mLayoutClearance_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mLayoutClearance_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mLayoutClearance.apply { (_ observer : EBEvent) in
+        managedObject.mLayoutClearance_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mLayoutClearance_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mLayoutClearance.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mLayoutClearance_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mLayoutClearanceUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mLayoutClearanceUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mLayoutClearanceUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mLayoutClearanceUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mLayoutClearanceUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mLayoutClearanceUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mLayoutClearanceUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mLayoutClearanceUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mLayoutClearanceUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mLayoutClearanceUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mLayoutClearanceUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mLayoutClearanceUnit.apply { (_ observer : EBEvent) in
+        managedObject.mLayoutClearanceUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mLayoutClearanceUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mLayoutClearanceUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mLayoutClearanceUnit_property.removeEBObserver (observer)
+      }
+    }
   }
 
   //····················································································································

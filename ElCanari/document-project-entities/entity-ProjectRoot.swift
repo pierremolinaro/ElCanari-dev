@@ -6,6 +6,18 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mLayoutClearance : class {
+  var mLayoutClearance : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mLayoutClearanceUnit : class {
+  var mLayoutClearanceUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mBoardSelectedInspector : class {
   var mBoardSelectedInspector : Int { get }
 }
@@ -465,6 +477,8 @@ protocol ProjectRoot_schematicStatusImage : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ProjectRoot : EBManagedObject,
+         ProjectRoot_mLayoutClearance,
+         ProjectRoot_mLayoutClearanceUnit,
          ProjectRoot_mBoardSelectedInspector,
          ProjectRoot_mBoardHorizontalFlip,
          ProjectRoot_mBoardVerticalFlip,
@@ -541,6 +555,40 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_boardBackground,
          ProjectRoot_schematicStatusMessage,
          ProjectRoot_schematicStatusImage {
+
+  //····················································································································
+  //   Atomic property: mLayoutClearance
+  //····················································································································
+
+  let mLayoutClearance_property = EBStoredProperty_Int (defaultValue: 45720)
+
+  //····················································································································
+
+  var mLayoutClearance : Int {
+    get { return self.mLayoutClearance_property.propval }
+    set { self.mLayoutClearance_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mLayoutClearance_property_selection : EBSelection <Int> { return self.mLayoutClearance_property.prop }
+
+  //····················································································································
+  //   Atomic property: mLayoutClearanceUnit
+  //····················································································································
+
+  let mLayoutClearanceUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mLayoutClearanceUnit : Int {
+    get { return self.mLayoutClearanceUnit_property.propval }
+    set { self.mLayoutClearanceUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mLayoutClearanceUnit_property_selection : EBSelection <Int> { return self.mLayoutClearanceUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardSelectedInspector
@@ -2232,6 +2280,10 @@ class ProjectRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- Atomic property: mLayoutClearance
+    self.mLayoutClearance_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mLayoutClearanceUnit
+    self.mLayoutClearanceUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardSelectedInspector
     self.mBoardSelectedInspector_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardHorizontalFlip
@@ -3224,6 +3276,22 @@ class ProjectRoot : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
+      "mLayoutClearance",
+      idx: self.mLayoutClearance_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mLayoutClearance_property.mObserverExplorer,
+      valueExplorer: &self.mLayoutClearance_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mLayoutClearanceUnit",
+      idx: self.mLayoutClearanceUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mLayoutClearanceUnit_property.mObserverExplorer,
+      valueExplorer: &self.mLayoutClearanceUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mBoardSelectedInspector",
       idx: self.mBoardSelectedInspector_property.ebObjectIndex,
       y: &y,
@@ -3890,6 +3958,12 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: mLayoutClearance
+    self.mLayoutClearance_property.mObserverExplorer = nil
+    self.mLayoutClearance_property.mValueExplorer = nil
+  //--- Atomic property: mLayoutClearanceUnit
+    self.mLayoutClearanceUnit_property.mObserverExplorer = nil
+    self.mLayoutClearanceUnit_property.mValueExplorer = nil
   //--- Atomic property: mBoardSelectedInspector
     self.mBoardSelectedInspector_property.mObserverExplorer = nil
     self.mBoardSelectedInspector_property.mValueExplorer = nil
@@ -4083,6 +4157,10 @@ class ProjectRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mLayoutClearance
+    self.mLayoutClearance_property.storeIn (dictionary: ioDictionary, forKey:"mLayoutClearance")
+  //--- Atomic property: mLayoutClearanceUnit
+    self.mLayoutClearanceUnit_property.storeIn (dictionary: ioDictionary, forKey:"mLayoutClearanceUnit")
   //--- Atomic property: mBoardSelectedInspector
     self.mBoardSelectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"mBoardSelectedInspector")
   //--- Atomic property: mBoardHorizontalFlip
@@ -4289,6 +4367,10 @@ class ProjectRoot : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mLayoutClearance
+    self.mLayoutClearance_property.readFrom (dictionary: inDictionary, forKey:"mLayoutClearance")
+  //--- Atomic property: mLayoutClearanceUnit
+    self.mLayoutClearanceUnit_property.readFrom (dictionary: inDictionary, forKey:"mLayoutClearanceUnit")
   //--- Atomic property: mBoardSelectedInspector
     self.mBoardSelectedInspector_property.readFrom (dictionary: inDictionary, forKey:"mBoardSelectedInspector")
   //--- Atomic property: mBoardHorizontalFlip

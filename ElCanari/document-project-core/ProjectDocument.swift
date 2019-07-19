@@ -633,6 +633,8 @@ import Cocoa
   @IBOutlet weak var mHotKeysSchematicInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mInconsistentSchematicErrorPanel : NSPanel? = nil // An outlet should be declared weak
   @IBOutlet weak var mInconsistentSchematicErrorTextView : NSTextView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mLayoutClearancePopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mLayoutClearanceTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mLibraryPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mLimitCurveBezierControlPointsView : NSView? = nil // An outlet should be declared weak
   @IBOutlet weak var mMasterView : NSView? = nil // An outlet should be declared weak
@@ -1086,6 +1088,8 @@ import Cocoa
     checkOutletConnection (self.mHotKeysSchematicInspectorView, "mHotKeysSchematicInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorPanel, "mInconsistentSchematicErrorPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorTextView, "mInconsistentSchematicErrorTextView", NSTextView.self, #file, #line)
+    checkOutletConnection (self.mLayoutClearancePopUp, "mLayoutClearancePopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mLayoutClearanceTextField, "mLayoutClearanceTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mLimitCurveBezierControlPointsView, "mLimitCurveBezierControlPointsView", NSView.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
@@ -1676,6 +1680,8 @@ import Cocoa
     self.mBoardGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.mBoardGridDisplayFactor_property, file: #file, line: #line)
     self.mBoardGridUnitPopUp?.bind_selectedTag (self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
     self.mBoardGridTextField?.bind_dimensionAndUnit (self.rootObject.mBoardGridStep_property, self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
+    self.mLayoutClearancePopUp?.bind_selectedTag (self.rootObject.mLayoutClearanceUnit_property, file: #file, line: #line)
+    self.mLayoutClearanceTextField?.bind_dimensionAndUnit (self.rootObject.mLayoutClearance_property, self.rootObject.mLayoutClearanceUnit_property, file: #file, line: #line)
     self.mBoardTrackSidePopUpButton?.bind_selectedIndex (self.boardTrackSelectionController.mSide_property, file: #file, line: #line)
     self.mTrackNetNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netName_property, file: #file, line: #line)
     self.mTrackNetClassNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netClassName_property, file: #file, line: #line)
@@ -2301,6 +2307,8 @@ import Cocoa
     self.mBoardGridDisplayFactorPopUpButton?.unbind_selectedTag ()
     self.mBoardGridUnitPopUp?.unbind_selectedTag ()
     self.mBoardGridTextField?.unbind_dimensionAndUnit ()
+    self.mLayoutClearancePopUp?.unbind_selectedTag ()
+    self.mLayoutClearanceTextField?.unbind_dimensionAndUnit ()
     self.mBoardTrackSidePopUpButton?.unbind_selectedIndex ()
     self.mTrackNetNameTextField?.unbind_valueObserver ()
     self.mTrackNetClassNameTextField?.unbind_valueObserver ()
@@ -2731,6 +2739,8 @@ import Cocoa
     self.mHotKeysSchematicInspectorView?.ebCleanUp ()
     self.mInconsistentSchematicErrorPanel?.ebCleanUp ()
     self.mInconsistentSchematicErrorTextView?.ebCleanUp ()
+    self.mLayoutClearancePopUp?.ebCleanUp ()
+    self.mLayoutClearanceTextField?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mLimitCurveBezierControlPointsView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
@@ -3044,6 +3054,8 @@ import Cocoa
 //    self.mHotKeysSchematicInspectorView = nil
 //    self.mInconsistentSchematicErrorPanel = nil
 //    self.mInconsistentSchematicErrorTextView = nil
+//    self.mLayoutClearancePopUp = nil
+//    self.mLayoutClearanceTextField = nil
 //    self.mLibraryPageView = nil
 //    self.mLimitCurveBezierControlPointsView = nil
 //    self.mMasterView = nil

@@ -20,21 +20,21 @@ func transient_ProjectRoot_connectedPoints (
 //--- START OF USER ZONE 2
         var shape = EBShape ()
       //--- Issues
-        var warningPath = EBBezierPath ()
-        var errorPath = EBBezierPath ()
+        var warningPathes = [EBBezierPath] ()
+        var errorPathes = [EBBezierPath] ()
         for issue in self_selectedSheetIssues {
           switch issue.kind {
           case .warning :
-            warningPath.append (issue.path)
+            warningPathes += issue.pathes
           case .error :
-            errorPath.append (issue.path)
+            errorPathes += issue.pathes
           }
         }
-        if !warningPath.isEmpty {
-          shape.add (filled: [warningPath], NSColor.myOrange)
+        if !warningPathes.isEmpty {
+          shape.add (filled: warningPathes, NSColor.myOrange)
         }
-        if !errorPath.isEmpty {
-          shape.add (filled: [errorPath], .red)
+        if !errorPathes.isEmpty {
+          shape.add (filled: errorPathes, .red)
         }
       //--- Connected points
         if let connectedPointShape = self_mSelectedSheet_connectedPoints {

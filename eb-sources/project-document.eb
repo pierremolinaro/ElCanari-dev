@@ -598,6 +598,12 @@ document ProjectDocument root ProjectRoot {
      $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit
   ;
 
+//--- Router inspector
+  outlet EBPopUpButton mLayoutClearancePopUp $selectedTag root.mLayoutClearanceUnit ;
+  outlet CanariDimensionTextField mLayoutClearanceTextField
+     $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit
+  ;
+
 //--- ERC Inspector
   outlet NSTextView mERCLogTextView ;
 

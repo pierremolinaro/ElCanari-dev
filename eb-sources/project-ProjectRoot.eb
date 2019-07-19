@@ -6,6 +6,9 @@ entity ProjectRoot {
 //--- Board
   toMany BoardObject mBoardObjects inverse toOne mRoot ;
 
+  property Int mLayoutClearance default 45_720 ; // 20 mil
+  property Int mLayoutClearanceUnit default 2_286 ; // mil
+
   property Int mBoardSelectedInspector default 1 ;
   property Bool mBoardHorizontalFlip default no ;
   property Bool mBoardVerticalFlip default no ;
