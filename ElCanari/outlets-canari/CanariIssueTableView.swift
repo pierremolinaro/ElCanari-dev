@@ -19,15 +19,15 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   //   init
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     self.customInit ()
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     self.customInit ()
   }
   
@@ -134,15 +134,24 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   }
 
   //····················································································································
-  //    Table view data source protocol
+  //    Issues
   //····················································································································
 
   fileprivate var mModelArray = [CanariIssue] () {
     didSet {
       self.reloadData ()
+      self.updateIssueDisplay ()
     }
   }
 
+  //····················································································································
+
+  func setIssues (_ inIssues : [CanariIssue]) {
+    self.mModelArray = inIssues
+  }
+
+  //····················································································································
+  //    Table view data source protocol
   //····················································································································
 
   func numberOfRows (in tableView: NSTableView) -> Int {
@@ -207,7 +216,6 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
     case .multiple :
       self.mModelArray = []
     }
-    self.updateIssueDisplay ()
   }
 
   //····················································································································

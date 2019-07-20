@@ -616,6 +616,7 @@ import Cocoa
   @IBOutlet weak var mDisplayPadNumbersSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mDuplicateSelectedComponentsActionButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mERCBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mERCIssueTableView : CanariIssueTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mERCLogTextView : NSTextView? = nil // An outlet should be declared weak
   @IBOutlet weak var mEditDeviceButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mEditFontButton : EBButton? = nil // An outlet should be declared weak
@@ -630,6 +631,7 @@ import Cocoa
   @IBOutlet weak var mGridZoomBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mGridZoomBoardLimitsInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mGridZoomSchematicsInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mHideERCIssueButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mHotKeysSchematicInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mInconsistentSchematicErrorPanel : NSPanel? = nil // An outlet should be declared weak
   @IBOutlet weak var mInconsistentSchematicErrorTextView : NSTextView? = nil // An outlet should be declared weak
@@ -1071,6 +1073,7 @@ import Cocoa
     checkOutletConnection (self.mDisplayPadNumbersSwitch, "mDisplayPadNumbersSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDuplicateSelectedComponentsActionButton, "mDuplicateSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mERCBoardInspectorView, "mERCBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mERCIssueTableView, "mERCIssueTableView", CanariIssueTableView.self, #file, #line)
     checkOutletConnection (self.mERCLogTextView, "mERCLogTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditFontButton, "mEditFontButton", EBButton.self, #file, #line)
@@ -1085,6 +1088,7 @@ import Cocoa
     checkOutletConnection (self.mGridZoomBoardInspectorView, "mGridZoomBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mGridZoomBoardLimitsInspectorView, "mGridZoomBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mGridZoomSchematicsInspectorView, "mGridZoomSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mHideERCIssueButton, "mHideERCIssueButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mHotKeysSchematicInspectorView, "mHotKeysSchematicInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorPanel, "mInconsistentSchematicErrorPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorTextView, "mInconsistentSchematicErrorTextView", NSTextView.self, #file, #line)
@@ -2722,6 +2726,7 @@ import Cocoa
     self.mDisplayPadNumbersSwitch?.ebCleanUp ()
     self.mDuplicateSelectedComponentsActionButton?.ebCleanUp ()
     self.mERCBoardInspectorView?.ebCleanUp ()
+    self.mERCIssueTableView?.ebCleanUp ()
     self.mERCLogTextView?.ebCleanUp ()
     self.mEditDeviceButton?.ebCleanUp ()
     self.mEditFontButton?.ebCleanUp ()
@@ -2736,6 +2741,7 @@ import Cocoa
     self.mGridZoomBoardInspectorView?.ebCleanUp ()
     self.mGridZoomBoardLimitsInspectorView?.ebCleanUp ()
     self.mGridZoomSchematicsInspectorView?.ebCleanUp ()
+    self.mHideERCIssueButton?.ebCleanUp ()
     self.mHotKeysSchematicInspectorView?.ebCleanUp ()
     self.mInconsistentSchematicErrorPanel?.ebCleanUp ()
     self.mInconsistentSchematicErrorTextView?.ebCleanUp ()
@@ -3037,6 +3043,7 @@ import Cocoa
 //    self.mDisplayPadNumbersSwitch = nil
 //    self.mDuplicateSelectedComponentsActionButton = nil
 //    self.mERCBoardInspectorView = nil
+//    self.mERCIssueTableView = nil
 //    self.mERCLogTextView = nil
 //    self.mEditDeviceButton = nil
 //    self.mEditFontButton = nil
@@ -3051,6 +3058,7 @@ import Cocoa
 //    self.mGridZoomBoardInspectorView = nil
 //    self.mGridZoomBoardLimitsInspectorView = nil
 //    self.mGridZoomSchematicsInspectorView = nil
+//    self.mHideERCIssueButton = nil
 //    self.mHotKeysSchematicInspectorView = nil
 //    self.mInconsistentSchematicErrorPanel = nil
 //    self.mInconsistentSchematicErrorTextView = nil

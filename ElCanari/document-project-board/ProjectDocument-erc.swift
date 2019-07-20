@@ -24,88 +24,90 @@ extension CustomizedProjectDocument {
   //--- Pad insulation
     self.checkPadInsulation (&issues)
   //--- Pad inventory
-    var padLocationNetDict = [NSPoint : [(String, ConnectorSide)]] ()
-    for component in self.rootObject.mComponents {
-    //--- Package coordinates transformation
-      let packagePadDictionary : PackageMasterPadDictionary = component.packagePadDictionary!
-      let padRect = packagePadDictionary.padsRect
-      let center = padRect.center.cocoaPoint
-      var af = AffineTransform ()
-      af.translate (x: canariUnitToCocoa (component.mX), y: canariUnitToCocoa (component.mY))
-      af.rotate (byDegrees: CGFloat (component.mRotation) / 1000.0)
-      if component.mSide == .back {
-        af.scale (x: -1.0, y: 1.0)
-      }
-      af.translate (x: -center.x, y: -center.y)
-    //---
-      let padNetDictionary : PadNetDictionary = component.padNetDictionary!
-      for (_, padDescriptor) in packagePadDictionary {
-        let p = af.transform (padDescriptor.center.cocoaPoint)
-        let side : ConnectorSide
-        switch padDescriptor.style {
-        case .traversing :
-          side = .both
-        case .surface :
-          switch component.mSide {
-          case .front :
-            side = .front
-          case .back :
-            side = .back
-          }
-        }
-        let netName = padNetDictionary [padDescriptor.name] ?? ""
-        padLocationNetDict [p] = (padLocationNetDict [p] ?? []) + [(netName, side)]
-      }
-    }
-  //--- Connector inventory
-    var connectorLocationDictionary = [CanariPoint : [BoardConnector]] ()
-    for object in self.rootObject.mBoardObjects {
-      if let connector = object as? BoardConnector {
-        let p = connector.location!
-        connectorLocationDictionary [p] = (connectorLocationDictionary [p] ?? []) + [connector]
-      }
-    }
-  //--- Check no collision between pads
-    self.mERCLogTextView?.appendMessageString ("Pad collision… ")
-    var collisionCount = 0
-    for (location, pads) in padLocationNetDict {
-      var padsInFrontSide = 0
-      var padsInBackSide = 0
-      for (_, side) in pads {
-        switch side {
-        case .front :
-          padsInFrontSide += 1
-        case .back :
-          padsInBackSide += 1
-        case .both :
-          padsInFrontSide += 1
-          padsInBackSide += 1
-        }
-      }
-      if padsInFrontSide > 1 { // Pad collision in front side
-        collisionCount += 1
-        let s = NSSize (width: ISSUE_SIZE, height: ISSUE_SIZE)
-        let r = NSRect (center: location, size: s)
-        let bp = EBBezierPath (ovalIn: r)
-        let issue = CanariIssue (kind: .error, message: "Pad collision in front side", pathes: [bp], representativeValue: 0)
-        issues.append (issue)
-      }
-      if padsInBackSide > 1 { // Pad collision in front side
-        collisionCount += 1
-        let s = NSSize (width: ISSUE_SIZE, height: ISSUE_SIZE)
-        let r = NSRect (center: location, size: s)
-        let bp = EBBezierPath (ovalIn: r)
-        let issue = CanariIssue (kind: .error, message: "Pad collision in back side", pathes: [bp], representativeValue: 0)
-        issues.append (issue)
-      }
-    }
-    if collisionCount == 0 {
-      self.mERCLogTextView?.appendSuccessString ("none, ok\n")
-    }else if collisionCount == 1 {
-      self.mERCLogTextView?.appendErrorString ("1 collision\n")
-    }else{
-      self.mERCLogTextView?.appendErrorString ("\(collisionCount) collisions\n")
-    }
+//    var padLocationNetDict = [NSPoint : [(String, ConnectorSide)]] ()
+//    for component in self.rootObject.mComponents {
+//    //--- Package coordinates transformation
+//      let packagePadDictionary : PackageMasterPadDictionary = component.packagePadDictionary!
+//      let padRect = packagePadDictionary.padsRect
+//      let center = padRect.center.cocoaPoint
+//      var af = AffineTransform ()
+//      af.translate (x: canariUnitToCocoa (component.mX), y: canariUnitToCocoa (component.mY))
+//      af.rotate (byDegrees: CGFloat (component.mRotation) / 1000.0)
+//      if component.mSide == .back {
+//        af.scale (x: -1.0, y: 1.0)
+//      }
+//      af.translate (x: -center.x, y: -center.y)
+//    //---
+//      let padNetDictionary : PadNetDictionary = component.padNetDictionary!
+//      for (_, padDescriptor) in packagePadDictionary {
+//        let p = af.transform (padDescriptor.center.cocoaPoint)
+//        let side : ConnectorSide
+//        switch padDescriptor.style {
+//        case .traversing :
+//          side = .both
+//        case .surface :
+//          switch component.mSide {
+//          case .front :
+//            side = .front
+//          case .back :
+//            side = .back
+//          }
+//        }
+//        let netName = padNetDictionary [padDescriptor.name] ?? ""
+//        padLocationNetDict [p] = (padLocationNetDict [p] ?? []) + [(netName, side)]
+//      }
+//    }
+//  //--- Connector inventory
+//    var connectorLocationDictionary = [CanariPoint : [BoardConnector]] ()
+//    for object in self.rootObject.mBoardObjects {
+//      if let connector = object as? BoardConnector {
+//        let p = connector.location!
+//        connectorLocationDictionary [p] = (connectorLocationDictionary [p] ?? []) + [connector]
+//      }
+//    }
+//  //--- Check no collision between pads
+//    self.mERCLogTextView?.appendMessageString ("Pad collision… ")
+//    var collisionCount = 0
+//    for (location, pads) in padLocationNetDict {
+//      var padsInFrontSide = 0
+//      var padsInBackSide = 0
+//      for (_, side) in pads {
+//        switch side {
+//        case .front :
+//          padsInFrontSide += 1
+//        case .back :
+//          padsInBackSide += 1
+//        case .both :
+//          padsInFrontSide += 1
+//          padsInBackSide += 1
+//        }
+//      }
+//      if padsInFrontSide > 1 { // Pad collision in front side
+//        collisionCount += 1
+//        let s = NSSize (width: ISSUE_SIZE, height: ISSUE_SIZE)
+//        let r = NSRect (center: location, size: s)
+//        let bp = EBBezierPath (ovalIn: r)
+//        let issue = CanariIssue (kind: .error, message: "Pad collision in front side", pathes: [bp], representativeValue: 0)
+//        issues.append (issue)
+//      }
+//      if padsInBackSide > 1 { // Pad collision in front side
+//        collisionCount += 1
+//        let s = NSSize (width: ISSUE_SIZE, height: ISSUE_SIZE)
+//        let r = NSRect (center: location, size: s)
+//        let bp = EBBezierPath (ovalIn: r)
+//        let issue = CanariIssue (kind: .error, message: "Pad collision in back side", pathes: [bp], representativeValue: 0)
+//        issues.append (issue)
+//      }
+//    }
+//    if collisionCount == 0 {
+//      self.mERCLogTextView?.appendSuccessString ("none, ok\n")
+//    }else if collisionCount == 1 {
+//      self.mERCLogTextView?.appendErrorString ("1 collision\n")
+//    }else{
+//      self.mERCLogTextView?.appendErrorString ("\(collisionCount) collisions\n")
+//    }
+  //--- Update issues
+    self.mERCIssueTableView?.setIssues (issues)
   }
 
   //····················································································································
@@ -150,6 +152,35 @@ extension CustomizedProjectDocument {
             frontPads.append (transformedBP)
             backPads.append (transformedBP)
           }
+//          for slavePad in padDescriptor.slavePads {
+//            let bp = PadGeometryForERC (
+//              centerX: slavePad.center.x,
+//              centerY: slavePad.center.y,
+//              width: slavePad.padSize.width + clearance,
+//              height: slavePad.padSize.height + clearance,
+//              shape: slavePad.shape
+//            )
+//            let transformedBP = bp.transformed (by: af)
+//            switch slavePad.style {
+//            case .traversing :
+//              frontPads.append (transformedBP)
+//              backPads.append (transformedBP)
+//            case .bottomSide :
+//              switch component.mSide {
+//              case .front :
+//                backPads.append (transformedBP)
+//              case .back :
+//                frontPads.append (transformedBP)
+//              }
+//            case .topSide :
+//              switch component.mSide {
+//              case .front :
+//                frontPads.append (transformedBP)
+//              case .back :
+//                backPads.append (transformedBP)
+//              }
+//            }
+//          }
         }
       }
     }
@@ -187,8 +218,8 @@ extension CustomizedProjectDocument {
     }else{
       self.mERCLogTextView?.appendErrorString ("\(collisionCount) collisions\n")
     }
-    let shape = EBShape (filled: frontPads.bezierPathes (), .yellow)
-    self.mBoardView?.mOverObjectsDisplay = shape
+//    let shape = EBShape (filled: frontPads.bezierPathes (), .yellow)
+//    self.mBoardView?.mOverObjectsDisplay = shape
   }
 
   //····················································································································

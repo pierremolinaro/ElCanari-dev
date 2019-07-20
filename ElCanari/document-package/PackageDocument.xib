@@ -3071,7 +3071,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="sbM-Qg-nHw">
                         <rect key="frame" x="1" y="1" width="205" height="432"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="Zuh-hX-zHT" customClass="CanariIssueTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="205" height="432"/>
@@ -3333,7 +3333,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="tb1-Me-Sfj">
-                                    <rect key="frame" x="0.0" y="1" width="685" height="2006.5"/>
+                                    <rect key="frame" x="0.0" y="1.1000000000042292" width="685" height="2006.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

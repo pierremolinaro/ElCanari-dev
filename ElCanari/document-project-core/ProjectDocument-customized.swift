@@ -299,6 +299,11 @@ fileprivate let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
       selectionController: self.componentInBoardSelectionController.selectedArray_property
     )
     self.boardObjectsController.mAfterObjectRemovingCallback = self.updateBoardConnectors
+
+    self.mERCIssueTableView?.register (issueDisplayView: self.mBoardView)
+    self.mERCIssueTableView?.register (hideIssueButton: self.mHideERCIssueButton)
+
+
     // self.updateBoardConnectors ()
   //  self.updateSchematicsPointsAndNets ()
   }

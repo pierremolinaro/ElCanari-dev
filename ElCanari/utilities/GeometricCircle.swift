@@ -38,22 +38,29 @@ struct GeometricCircle {
   //····················································································································
 
   func intersects (segmentFrom p1 : NSPoint, to p2 : NSPoint) -> Bool {
-    var intersects = NSPoint.distance (p1, self.center) <= self.radius
-    if !intersects {
-      intersects = NSPoint.distance (p2, self.center) <= self.radius
+    if NSPoint.distance (p1, self.center) <= self.radius {
+      return true // P1 is inside circle
+    }else if NSPoint.distance (p2, self.center) <= self.radius {
+      return true // P2 is inside circle
+    }else if let (pp1, pp2) = self.bounds.clippedSegment (p1: p1, p2: p2), pp1 != pp2 {
+      let P = NSPoint.distance (pp1, self.center)
+      let Q = NSPoint.distance (pp2, self.center)
+      let D = NSPoint.distance (pp1, pp2)
+      let X = (P * P - Q * Q) / D
+      let H = ((2.0 * P * P + 2.0 * Q * Q - D * D - X * X) / 4.0).squareRoot ()
+      return H <= self.radius
+//      let segmentAngle = NSPoint.angleInRadian (pp1, pp2)
+//      let segmentCenter = NSPoint (x: (pp1.x + pp2.x) / 2.0, y: (pp1.y + pp2.y) / 2.0)
+//      let tr = CGAffineTransform (rotationAngle: -segmentAngle).translatedBy (x:-segmentCenter.x, y:-segmentCenter.y)
+//      let point = self.center.applying (tr)
+//      intersects = abs (point.y) <= self.radius
+//      if intersects {
+//        let segmentLength = NSPoint.distance (pp1, pp2)
+//        intersects = abs (point.x) <= (segmentLength * 0.5)
+//      }
+    }else{
+      return false
     }
-    if !intersects {
-      let segmentAngle = NSPoint.angleInRadian (p1, p2)
-      let segmentCenter = NSPoint (x: (p1.x + p2.x) / 2.0, y: (p1.y + p2.y) / 2.0)
-      let tr = CGAffineTransform (rotationAngle: -segmentAngle).translatedBy (x:-segmentCenter.x, y:-segmentCenter.y)
-      let point = self.center.applying (tr)
-      intersects = abs (point.y) <= self.radius
-      if intersects {
-        let segmentLength = NSPoint.distance (p1, p2)
-        intersects = abs (point.x) <= (segmentLength * 0.5)
-      }
-    }
-    return intersects
   }
 
   //····················································································································

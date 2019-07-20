@@ -604,6 +604,9 @@ document ProjectDocument root ProjectRoot {
      $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit
   ;
 
+  outlet CanariIssueTableView mERCIssueTableView ;
+  outlet EBButton mHideERCIssueButton ;
+
 //--- ERC Inspector
   outlet NSTextView mERCLogTextView ;
 
