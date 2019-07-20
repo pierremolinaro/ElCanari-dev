@@ -112,6 +112,22 @@ extension ComponentInProject {
 
   //····················································································································
 
+  func affineTransformFromPackage () -> AffineTransform {
+    let packagePadDictionary : PackageMasterPadDictionary = self.packagePadDictionary!
+    let padRect = packagePadDictionary.padsRect
+    let center = padRect.center.cocoaPoint
+    var af = AffineTransform ()
+    af.translate (x: canariUnitToCocoa (self.mX), y: canariUnitToCocoa (self.mY))
+    af.rotate (byDegrees: CGFloat (self.mRotation) / 1000.0)
+    if self.mSide == .back {
+      af.scale (x: -1.0, y: 1.0)
+    }
+    af.translate (x: -center.x, y: -center.y)
+    return af
+  }
+  
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

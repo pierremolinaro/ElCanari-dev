@@ -21,92 +21,12 @@ extension CustomizedProjectDocument {
   @IBAction internal func performERCCheckingAction (_ inUnusedSender : Any?) {
     self.mERCLogTextView?.clear ()
     var issues = [CanariIssue] ()
-  //--- Pad insulation
+  //--- Checkings
     self.checkPadInsulation (&issues)
-  //--- Pad inventory
-//    var padLocationNetDict = [NSPoint : [(String, ConnectorSide)]] ()
-//    for component in self.rootObject.mComponents {
-//    //--- Package coordinates transformation
-//      let packagePadDictionary : PackageMasterPadDictionary = component.packagePadDictionary!
-//      let padRect = packagePadDictionary.padsRect
-//      let center = padRect.center.cocoaPoint
-//      var af = AffineTransform ()
-//      af.translate (x: canariUnitToCocoa (component.mX), y: canariUnitToCocoa (component.mY))
-//      af.rotate (byDegrees: CGFloat (component.mRotation) / 1000.0)
-//      if component.mSide == .back {
-//        af.scale (x: -1.0, y: 1.0)
-//      }
-//      af.translate (x: -center.x, y: -center.y)
-//    //---
-//      let padNetDictionary : PadNetDictionary = component.padNetDictionary!
-//      for (_, padDescriptor) in packagePadDictionary {
-//        let p = af.transform (padDescriptor.center.cocoaPoint)
-//        let side : ConnectorSide
-//        switch padDescriptor.style {
-//        case .traversing :
-//          side = .both
-//        case .surface :
-//          switch component.mSide {
-//          case .front :
-//            side = .front
-//          case .back :
-//            side = .back
-//          }
-//        }
-//        let netName = padNetDictionary [padDescriptor.name] ?? ""
-//        padLocationNetDict [p] = (padLocationNetDict [p] ?? []) + [(netName, side)]
-//      }
-//    }
-//  //--- Connector inventory
-//    var connectorLocationDictionary = [CanariPoint : [BoardConnector]] ()
-//    for object in self.rootObject.mBoardObjects {
-//      if let connector = object as? BoardConnector {
-//        let p = connector.location!
-//        connectorLocationDictionary [p] = (connectorLocationDictionary [p] ?? []) + [connector]
-//      }
-//    }
-//  //--- Check no collision between pads
-//    self.mERCLogTextView?.appendMessageString ("Pad collision… ")
-//    var collisionCount = 0
-//    for (location, pads) in padLocationNetDict {
-//      var padsInFrontSide = 0
-//      var padsInBackSide = 0
-//      for (_, side) in pads {
-//        switch side {
-//        case .front :
-//          padsInFrontSide += 1
-//        case .back :
-//          padsInBackSide += 1
-//        case .both :
-//          padsInFrontSide += 1
-//          padsInBackSide += 1
-//        }
-//      }
-//      if padsInFrontSide > 1 { // Pad collision in front side
-//        collisionCount += 1
-//        let s = NSSize (width: ISSUE_SIZE, height: ISSUE_SIZE)
-//        let r = NSRect (center: location, size: s)
-//        let bp = EBBezierPath (ovalIn: r)
-//        let issue = CanariIssue (kind: .error, message: "Pad collision in front side", pathes: [bp], representativeValue: 0)
-//        issues.append (issue)
-//      }
-//      if padsInBackSide > 1 { // Pad collision in front side
-//        collisionCount += 1
-//        let s = NSSize (width: ISSUE_SIZE, height: ISSUE_SIZE)
-//        let r = NSRect (center: location, size: s)
-//        let bp = EBBezierPath (ovalIn: r)
-//        let issue = CanariIssue (kind: .error, message: "Pad collision in back side", pathes: [bp], representativeValue: 0)
-//        issues.append (issue)
-//      }
-//    }
-//    if collisionCount == 0 {
-//      self.mERCLogTextView?.appendSuccessString ("none, ok\n")
-//    }else if collisionCount == 1 {
-//      self.mERCLogTextView?.appendErrorString ("1 collision\n")
-//    }else{
-//      self.mERCLogTextView?.appendErrorString ("\(collisionCount) collisions\n")
-//    }
-  //--- Update issues
+    var netConnectorsDictionary = [String : [(BoardConnector, EBBezierPath)]] ()
+    self.checkPadConnectivity (&issues, &netConnectorsDictionary)
+    self.checkNetConnectivity (&issues, netConnectorsDictionary)
+  //--- Set issues
     self.mERCIssueTableView?.setIssues (issues)
   }
 
@@ -118,69 +38,61 @@ extension CustomizedProjectDocument {
     var backPads = [PadGeometryForERC] ()
     for component in self.rootObject.mComponents {
       if component.mRoot != nil { // Is on board
-        let packagePadDictionary : PackageMasterPadDictionary = component.packagePadDictionary!
-      //--- Package coordinates transformation
-        let padRect = packagePadDictionary.padsRect
-        let center = padRect.center.cocoaPoint
-        var af = AffineTransform ()
-        af.translate (x: canariUnitToCocoa (component.mX), y: canariUnitToCocoa (component.mY))
-        let rotation = CGFloat (component.mRotation) / 1000.0
-        af.rotate (byDegrees: rotation)
-        if component.mSide == .back {
-          af.scale (x: -1.0, y: 1.0)
-        }
-        af.translate (x: -center.x, y: -center.y)
-      //---
-        for (_, padDescriptor) in packagePadDictionary {
-          let bp = PadGeometryForERC (
+        let af = component.affineTransformFromPackage ()
+        for (_, padDescriptor) in component.packagePadDictionary! {
+          let padGeometry = PadGeometryForERC (
             centerX: padDescriptor.center.x,
             centerY: padDescriptor.center.y,
             width: padDescriptor.padSize.width + clearance,
             height: padDescriptor.padSize.height + clearance,
             shape: padDescriptor.shape
           )
-          let transformedBP = bp.transformed (by: af)
+          var componentSidePadGeometry : PadGeometryForERC
+          var oppositeSidePadGeometry  : PadGeometryForERC
           switch padDescriptor.style {
           case .surface :
+            componentSidePadGeometry = padGeometry
+            oppositeSidePadGeometry  = PadGeometryForERC ()
+          case .traversing :
+            componentSidePadGeometry = padGeometry
+            oppositeSidePadGeometry  = padGeometry
+          }
+          for slavePad in padDescriptor.slavePads {
+            let slavePadGeometry = PadGeometryForERC (
+              centerX: slavePad.center.x,
+              centerY: slavePad.center.y,
+              width: slavePad.padSize.width + clearance,
+              height: slavePad.padSize.height + clearance,
+              shape: slavePad.shape
+            )
+            switch slavePad.style {
+            case .bottomSide :
+              oppositeSidePadGeometry = oppositeSidePadGeometry + slavePadGeometry
+            case .topSide :
+              componentSidePadGeometry = componentSidePadGeometry + slavePadGeometry
+            case .traversing :
+              componentSidePadGeometry = componentSidePadGeometry + slavePadGeometry
+              oppositeSidePadGeometry = oppositeSidePadGeometry + slavePadGeometry
+            }
+          }
+          if !componentSidePadGeometry.isEmpty {
+            let componentSideTransformedGeometry = componentSidePadGeometry.transformed (by: af)
             switch component.mSide {
             case .front :
-              frontPads.append (transformedBP)
+              frontPads.append (componentSideTransformedGeometry)
             case .back :
-              backPads.append (transformedBP)
+              backPads.append (componentSideTransformedGeometry)
             }
-          case .traversing :
-            frontPads.append (transformedBP)
-            backPads.append (transformedBP)
           }
-//          for slavePad in padDescriptor.slavePads {
-//            let bp = PadGeometryForERC (
-//              centerX: slavePad.center.x,
-//              centerY: slavePad.center.y,
-//              width: slavePad.padSize.width + clearance,
-//              height: slavePad.padSize.height + clearance,
-//              shape: slavePad.shape
-//            )
-//            let transformedBP = bp.transformed (by: af)
-//            switch slavePad.style {
-//            case .traversing :
-//              frontPads.append (transformedBP)
-//              backPads.append (transformedBP)
-//            case .bottomSide :
-//              switch component.mSide {
-//              case .front :
-//                backPads.append (transformedBP)
-//              case .back :
-//                frontPads.append (transformedBP)
-//              }
-//            case .topSide :
-//              switch component.mSide {
-//              case .front :
-//                frontPads.append (transformedBP)
-//              case .back :
-//                backPads.append (transformedBP)
-//              }
-//            }
-//          }
+          if !oppositeSidePadGeometry.isEmpty {
+            let oppositeSideTransformedGeometry = oppositeSidePadGeometry.transformed (by: af)
+            switch component.mSide {
+            case .front :
+              backPads.append (oppositeSideTransformedGeometry)
+            case .back :
+              frontPads.append (oppositeSideTransformedGeometry)
+            }
+          }
         }
       }
     }
@@ -220,6 +132,99 @@ extension CustomizedProjectDocument {
     }
 //    let shape = EBShape (filled: frontPads.bezierPathes (), .yellow)
 //    self.mBoardView?.mOverObjectsDisplay = shape
+  }
+
+  //····················································································································
+
+  private func checkPadConnectivity (_ ioIssues : inout [CanariIssue],
+                                     _ ioNetConnectorsDictionary : inout [String : [(BoardConnector, EBBezierPath)]]) {
+    self.mERCLogTextView?.appendMessageString ("Pad connection… ")
+    var connectionErrorCount = 0
+    for component in self.rootObject.mComponents {
+      if component.mRoot != nil { // Placed on board
+        let af = component.affineTransformFromPackage ()
+        let padNetDictionary : PadNetDictionary = component.padNetDictionary!
+        for connector in component.mConnectors {
+          let masterPadName = connector.mComponentPadName
+          let padDescriptor = component.packagePadDictionary! [masterPadName]!
+          if let netName = padNetDictionary [masterPadName] {  // Pad should be connected
+            let bp = padDescriptor.bezierPath (index: connector.mPadIndex).transformed (by: af)
+            if (connector.mTracksP1.count + connector.mTracksP2.count) == 0 {
+              let issue = CanariIssue (kind: .error, message: "Pad should be connected", pathes: [bp])
+              ioIssues.append (issue)
+              connectionErrorCount += 1
+            }else{
+              ioNetConnectorsDictionary [netName] = (ioNetConnectorsDictionary [netName] ?? []) + [(connector, bp)]
+            }
+          }else{ // Pad without connection
+            if (connector.mTracksP1.count + connector.mTracksP2.count) != 0 {
+              let bp = padDescriptor.bezierPath (index: connector.mPadIndex).transformed (by: af)
+              let issue = CanariIssue (kind: .error, message: "Pad should be nc", pathes: [bp])
+              ioIssues.append (issue)
+              connectionErrorCount += 1
+            }
+          }
+        }
+      }
+    }
+    if connectionErrorCount == 0 {
+      self.mERCLogTextView?.appendSuccessString ("ok\n")
+    }else if connectionErrorCount == 1 {
+      self.mERCLogTextView?.appendErrorString ("1 error\n")
+    }else{
+      self.mERCLogTextView?.appendErrorString ("\(connectionErrorCount) errors\n")
+    }
+  }
+
+  //····················································································································
+
+  private func checkNetConnectivity (_ ioIssues : inout [CanariIssue],
+                                     _ inNetConnectorsDictionary : [String : [(BoardConnector, EBBezierPath)]]) {
+    self.mERCLogTextView?.appendMessageString ("Net connection… ")
+    var connectivityErrorCount = 0
+    for (netName, padConnectors) in inNetConnectorsDictionary {
+      //Swift.print ("net '\(netName)' : \(connectors.count) connectors")
+      var connectorExploreArray = [padConnectors [0].0]
+      var connectorExploredSet = Set (connectorExploreArray)
+      var exploredTrackSet = Set <BoardTrack> ()
+    //--- Iterative exploration of net
+      while let connector = connectorExploreArray.last {
+        connectorExploreArray.removeLast ()
+        for track in connector.mTracksP1 {
+          if !exploredTrackSet.contains (track) {
+            exploredTrackSet.insert (track)
+            if !connectorExploredSet.contains (track.mConnectorP2!) {
+              connectorExploredSet.insert (track.mConnectorP2!)
+              connectorExploreArray.append (track.mConnectorP2!)
+            }
+          }
+        }
+        for track in connector.mTracksP2 {
+          if !exploredTrackSet.contains (track) {
+            exploredTrackSet.insert (track)
+            if !connectorExploredSet.contains (track.mConnectorP1!) {
+              connectorExploredSet.insert (track.mConnectorP1!)
+              connectorExploreArray.append (track.mConnectorP1!)
+            }
+          }
+        }
+      }
+    //--- Check all pads are accessibles
+      for connector in padConnectors {
+        if !connectorExploredSet.contains (connector.0) {
+          connectivityErrorCount += 1
+          let issue = CanariIssue (kind: .error, message: "Net \(netName): inaccessible pad", pathes: [connector.1])
+          ioIssues.append (issue)
+        }
+      }
+    }
+    if connectivityErrorCount == 0 {
+      self.mERCLogTextView?.appendSuccessString ("ok\n")
+    }else if connectivityErrorCount == 1 {
+      self.mERCLogTextView?.appendErrorString ("1 error\n")
+    }else{
+      self.mERCLogTextView?.appendErrorString ("\(connectivityErrorCount) errors\n")
+    }
   }
 
   //····················································································································

@@ -295,6 +295,29 @@ struct MasterPadDescriptor : Hashable {
 
   //····················································································································
 
+  func bezierPath (index inIndex : Int) -> EBBezierPath {
+    if inIndex == 0 {
+      return EBBezierPath.pad (
+        centerX: self.center.x,
+        centerY: self.center.y,
+        width: self.padSize.width,
+        height: self.padSize.height,
+        shape: self.shape
+      )
+    }else{
+      let slavePad = self.slavePads [inIndex - 1]
+      return EBBezierPath.pad (
+        centerX: slavePad.center.x,
+        centerY: slavePad.center.y,
+        width: slavePad.padSize.width,
+        height: slavePad.padSize.height,
+        shape: slavePad.shape
+      )
+    }
+  }
+
+  //····················································································································
+
   func accumulatePadBezierPathes (into ioShape : inout EBShape,
                                   side : ComponentSide,
                                   padDisplayAttributes : [NSAttributedString.Key : Any]?,
