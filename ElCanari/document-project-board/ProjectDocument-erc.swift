@@ -19,6 +19,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @IBAction internal func performERCCheckingAction (_ inUnusedSender : Any?) {
+    let start = Date ()
     self.mERCLogTextView?.clear ()
     var issues = [CanariIssue] ()
   //--- Checkings
@@ -26,8 +27,11 @@ extension CustomizedProjectDocument {
     var netConnectorsDictionary = [String : [(BoardConnector, EBBezierPath)]] ()
     self.checkPadConnectivity (&issues, &netConnectorsDictionary)
     self.checkNetConnectivity (&issues, netConnectorsDictionary)
+    self.checkTrackInsulation (&issues)
   //--- Set issues
     self.mERCIssueTableView?.setIssues (issues)
+    let durationMS = Date ().timeIntervalSince (start) * 100.0
+    self.mERCLogTextView?.appendMessageString ("Duration \(durationMS.rounded ()) ms")
   }
 
   //····················································································································
@@ -224,6 +228,83 @@ extension CustomizedProjectDocument {
       self.mERCLogTextView?.appendErrorString ("1 error\n")
     }else{
       self.mERCLogTextView?.appendErrorString ("\(connectivityErrorCount) errors\n")
+    }
+  }
+
+  //····················································································································
+
+  private func checkTrackInsulation (_ ioIssues : inout [CanariIssue]) {
+    self.mERCLogTextView?.appendMessageString ("Track insulation… ")
+    var insulationErrorCount = 0
+  //--- Track inventory
+    var frontTrackNetDictionary = [String : [GeometricOblong]] ()
+    var backTrackNetDictionary = [String : [GeometricOblong]] ()
+    for object in self.rootObject.mBoardObjects {
+      if let track = object as? BoardTrack {
+        let netName = track.mNet?.mNetName ?? ""
+        let p1 = track.mConnectorP1!.location!.cocoaPoint
+        let p2 = track.mConnectorP2!.location!.cocoaPoint
+        let w = canariUnitToCocoa (track.actualTrackWidth!)
+        let s = GeometricOblong (from: p1, to: p2, width: w)
+        switch track.mSide {
+        case .front :
+          frontTrackNetDictionary [netName] = (frontTrackNetDictionary [netName] ?? []) + [s]
+        case .back :
+          backTrackNetDictionary [netName] = (backTrackNetDictionary [netName] ?? []) + [s]
+        }
+      }else if let text = object as? BoardText {
+        switch text.mLayer {
+        case .legendBack, .legendFront :
+          ()
+        case .layoutFront :
+          let (_, _, _, _, oblongs) = text.displayInfos ()
+          frontTrackNetDictionary [""] = (frontTrackNetDictionary [""] ?? []) + oblongs
+        case .layoutBack :
+          let (_, _, _, _, oblongs) = text.displayInfos ()
+          backTrackNetDictionary [""] = (backTrackNetDictionary [""] ?? []) + oblongs
+        }
+      }
+    }
+  //--- Track insulation test
+    let frontTrackArrayArray = Array (frontTrackNetDictionary.values)
+    for idx in 1 ..< frontTrackArrayArray.count {
+      let trackArrayX = frontTrackArrayArray [idx]
+      for idy in 0 ..< idx {
+        let trackArrayY = frontTrackArrayArray [idy]
+        for tx in trackArrayX {
+          for ty in trackArrayY {
+            if tx.intersects (oblong: ty) {
+              insulationErrorCount += 1
+              let issue = CanariIssue (kind: .error, message: "Front track collision", pathes: [tx.filledBezierPath(), ty.filledBezierPath()])
+              ioIssues.append (issue)
+            }
+          }
+        }
+      }
+    }
+  //--- Track insulation test
+    let backTrackArrayArray = Array (backTrackNetDictionary.values)
+    for idx in 1 ..< backTrackArrayArray.count {
+      let trackArrayX = backTrackArrayArray [idx]
+      for idy in 0 ..< idx {
+        let trackArrayY = backTrackArrayArray [idy]
+        for tx in trackArrayX {
+          for ty in trackArrayY {
+            if tx.intersects (oblong: ty) {
+              insulationErrorCount += 1
+              let issue = CanariIssue (kind: .error, message: "Back track collision", pathes: [tx.filledBezierPath(), ty.filledBezierPath()])
+              ioIssues.append (issue)
+            }
+          }
+        }
+      }
+    }
+    if insulationErrorCount == 0 {
+      self.mERCLogTextView?.appendSuccessString ("ok\n")
+    }else if insulationErrorCount == 1 {
+      self.mERCLogTextView?.appendErrorString ("1 error\n")
+    }else{
+      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
     }
   }
 

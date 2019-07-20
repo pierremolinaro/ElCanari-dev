@@ -37,6 +37,12 @@ struct GeometricCircle {
 
   //····················································································································
 
+  func intersects (rect inRect : GeometricRect) -> Bool {
+    return inRect.intersects (circle: self)
+  }
+
+  //····················································································································
+
   func intersects (segmentFrom p1 : NSPoint, to p2 : NSPoint) -> Bool {
     if NSPoint.distance (p1, self.center) <= self.radius {
       return true // P1 is inside circle

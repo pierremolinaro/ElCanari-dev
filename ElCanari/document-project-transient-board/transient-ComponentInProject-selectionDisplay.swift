@@ -57,7 +57,7 @@ func transient_ComponentInProject_selectionDisplay (
     //--- Name
       var nonRotatedShape = EBShape ()
       if self_mNameIsVisibleInBoard, let fontDescriptor = self_mNameFont_descriptor {
-        let (textBP, frameBP, origin, _) = boardText_displayInfos (
+        let (textBP, frameBP, origin, _, _) = boardText_displayInfos (
           x: self_mXName + self_mX,
           y: self_mYName + self_mY,
           string: self_componentName,
@@ -87,7 +87,7 @@ func transient_ComponentInProject_selectionDisplay (
       }
     //--- Value
       if self_mValueIsVisibleInBoard, let fontDescriptor = self_mValueFont_descriptor {
-        let (textBP, frameBP, origin, _) = boardText_displayInfos (
+        let (textBP, frameBP, origin, _, _) = boardText_displayInfos (
           x: self_mXValue + self_mX,
           y: self_mYValue + self_mY,
           string: self_mComponentValue,

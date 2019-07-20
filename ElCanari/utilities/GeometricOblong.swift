@@ -14,34 +14,34 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct GeometricOblong {
-  let p1 : CGPoint
-  let p2 : CGPoint
-  let height : CGFloat
+  let p1 : NSPoint
+  let p2 : NSPoint
+  let width : CGFloat
 
   //····················································································································
   //   init
   //····················································································································
 
-  init (from p1 : CGPoint, to p2 : CGPoint, height : CGFloat) {
+  init (from p1 : NSPoint, to p2 : NSPoint, width : CGFloat) {
     self.p1 = p1
     self.p2 = p2
-    self.height = height
+    self.width = width
   }
 
   //····················································································································
   //   Contains point
   //····················································································································
 
-  func contains (point p : CGPoint) -> Bool {
+  func contains (point p : NSPoint) -> Bool {
   //--- p inside P1 circle
-    var inside = CGPoint.distance (self.p1, p) <= (height / 2.0)
+    var inside = NSPoint.distance (self.p1, p) <= (width / 2.0)
   //--- p inside P2 circle
     if !inside {
-      inside = CGPoint.distance (self.p2, p) <= (height / 2.0)
+      inside = NSPoint.distance (self.p2, p) <= (width / 2.0)
     }
   //--- p inside rectangle
     if !inside {
-      let r = GeometricRect (self.p1, self.p2, self.height)
+      let r = GeometricRect (self.p1, self.p2, self.width)
       inside = r.contains (point: p)
     }
     return inside
@@ -49,35 +49,109 @@ struct GeometricOblong {
 
   //····················································································································
 
-  func intersects (rect inRect : GeometricRect) -> Bool {
-  //--- rect intersects P1 circle
-    let c1 = GeometricCircle (self.p1, self.height / 2.0)
-    var intersects = inRect.intersects (circle: c1)
-  //--- rect intersects P2 circle
-    if !intersects {
-      let c2 = GeometricCircle (self.p2, self.height / 2.0)
-      intersects = inRect.intersects (circle: c2)
-    }
-  //--- rect intersects rectangle
-    if !intersects {
-      let r = GeometricRect (self.p1, self.p2, self.height)
-      intersects = inRect.intersects (rect: r)
-    }
-    return intersects
+  func filledBezierPath () -> EBBezierPath {
+    var bp = EBBezierPath ()
+    bp.lineWidth = self.width
+    bp.move (to: self.p1)
+    bp.line (to: self.p2)
+    bp.lineCapStyle = .round
+    return bp.pathByStroking
   }
-  
+
   //····················································································································
 
-  func shape () -> CAShapeLayer {
-    let mutablePath = CGMutablePath ()
-    mutablePath.move (to: self.p1)
-    mutablePath.addLine (to: self.p2)
-    let newLayer = CAShapeLayer ()
-    newLayer.path = mutablePath
-    newLayer.lineWidth = self.height
-    newLayer.lineCap = CAShapeLayerLineCap.round
-    return newLayer
+//  private var mCachedBounds : NSRect? = nil
+//  var bounds : NSRect {
+//    if let b = self.mCachedBounds {
+//      return b
+//    }else{
+//      let w = self.width / 2.0
+//      let left  = min (self.p1.x, self.p2.x) - w
+//      let right = max (self.p1.x, self.p2.x) + w
+//      let bottom = min (self.p1.y, self.p2.y) - w
+//      let top = max (self.p1.y, self.p2.y) + w
+//      let b = NSRect (x: left, y: bottom, width: right - left, height: top - bottom)
+//      self.mCachedBounds = b
+//      return b
+//    }
+//  }
+
+  var bounds : NSRect {
+    let w = self.width / 2.0
+    let left  = min (self.p1.x, self.p2.x) - w
+    let right = max (self.p1.x, self.p2.x) + w
+    let bottom = min (self.p1.y, self.p2.y) - w
+    let top = max (self.p1.y, self.p2.y) + w
+    return NSRect (x: left, y: bottom, width: right - left, height: top - bottom)
+   }
+
+  //····················································································································
+
+  private var circle1 : GeometricCircle {
+    return GeometricCircle (self.p1, self.width / 2.0)
   }
+
+  //····················································································································
+
+  private var circle2 : GeometricCircle {
+    return GeometricCircle (self.p2, self.width / 2.0)
+  }
+
+  //····················································································································
+
+  private var geometricRect : GeometricRect {
+    return GeometricRect (self.p1, self.p2, self.width)
+  }
+
+  //····················································································································
+
+  func intersects (oblong inOther : GeometricOblong) -> Bool {
+    if !self.bounds.intersects (inOther.bounds) {
+      return false
+    }else if self.circle1.intersects (circle: inOther.circle1) {
+      return true
+    }else if self.circle1.intersects (circle: inOther.circle2) {
+      return true
+    }else if self.circle1.intersects (rect: inOther.geometricRect) {
+      return true
+    }else if self.circle2.intersects (circle: inOther.circle1) {
+      return true
+    }else if self.circle2.intersects (circle: inOther.circle2) {
+      return true
+    }else if self.circle2.intersects (rect: inOther.geometricRect) {
+      return true
+    }else if self.geometricRect.intersects (circle: inOther.circle1) {
+      return true
+    }else if self.geometricRect.intersects (circle: inOther.circle2) {
+      return true
+    }else if self.geometricRect.intersects (rect: inOther.geometricRect) {
+      return true
+    }else{
+      return false
+    }
+  }
+
+  //····················································································································
+
+  func intersects (rect inRect : GeometricRect) -> Bool {
+    if inRect.intersects (circle: self.circle1) {
+      return true
+    }else if inRect.intersects (circle: self.circle2) {
+      return true
+    }else if inRect.intersects (rect: self.geometricRect) {
+      return true
+    }else{
+      return false
+    }
+  }
+
+  //····················································································································
+
+  func transformed (by inAffineTransfrom : AffineTransform) -> GeometricOblong {
+    return GeometricOblong (from: inAffineTransfrom.transform (self.p1), to: inAffineTransfrom.transform (self.p2), width: self.width)
+  }
+
+  //····················································································································
 
 }
 

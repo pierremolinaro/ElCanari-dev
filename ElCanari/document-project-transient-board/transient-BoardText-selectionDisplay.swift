@@ -31,7 +31,7 @@ func transient_BoardText_selectionDisplay (
        _ prefs_backSideLegendColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let (textBP, frameBP, origin, rotationKnob) = boardText_displayInfos (
+        let (textBP, frameBP, origin, rotationKnob, _) = boardText_displayInfos (
           x: self_mX,
           y: self_mY,
           string: self_mText,

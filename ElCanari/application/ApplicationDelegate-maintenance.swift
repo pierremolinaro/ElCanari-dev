@@ -160,7 +160,7 @@ extension ApplicationDelegate {
                     display: true // animating,
                   ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
                     if let projectDocument = document as? CustomizedProjectDocument {
-//                        projectDocument.resetDevicesAndFontsVersionAction (nil)
+                      projectDocument.resetDevicesAndFontsVersionAction (nil)
                       var errorMessages = [String] ()
                       projectDocument.updateDevices (projectDocument.rootObject.mDevices, &errorMessages)
                       projectDocument.updateFonts (projectDocument.rootObject.mFonts, &errorMessages)

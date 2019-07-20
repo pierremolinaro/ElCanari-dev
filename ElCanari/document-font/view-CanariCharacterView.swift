@@ -1016,7 +1016,7 @@ extension SegmentForFontCharacterClass {
     let oblong = GeometricOblong (
       from: CGPoint (x: xForX (self.x1), y: yForY (self.y1)),
       to:   CGPoint (x: xForX (self.x2), y: yForY (self.y2)),
-      height: PLACEMENT_GRID * 2.0
+      width: PLACEMENT_GRID * 2.0
     )
     return oblong.contains (point: p)
   }
@@ -1027,7 +1027,7 @@ extension SegmentForFontCharacterClass {
     let oblong = GeometricOblong (
       from: CGPoint (x: xForX (self.x1), y: yForY (self.y1)),
       to:   CGPoint (x: xForX (self.x2), y: yForY (self.y2)),
-      height: PLACEMENT_GRID * 2.0
+      width: PLACEMENT_GRID * 2.0
     )
     return oblong.intersects (rect: r)
   }
