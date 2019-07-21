@@ -10,10 +10,6 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate let ISSUE_SIZE : CGFloat = 10.0
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 extension CustomizedProjectDocument {
 
   //····················································································································
@@ -122,7 +118,7 @@ extension CustomizedProjectDocument {
         if padX.intersects (pad: padY) {
           collisionCount += 1
           let bp = [padX.bezierPath, padY.bezierPath]
-          let issue = CanariIssue (kind: .error, message: "Pad collision, front side", pathes: bp, representativeValue: 0)
+          let issue = CanariIssue (kind: .error, message: "Front side pad collision", pathes: bp, representativeValue: 0)
           ioIssues.append (issue)
         }
       }
@@ -134,7 +130,7 @@ extension CustomizedProjectDocument {
         if padX.intersects (pad: padY) {
           collisionCount += 1
           let bp = [padX.bezierPath, padY.bezierPath]
-          let issue = CanariIssue (kind: .error, message: "Pad collision, back side", pathes: bp, representativeValue: 0)
+          let issue = CanariIssue (kind: .error, message: "Back side pad collision", pathes: bp, representativeValue: 0)
           ioIssues.append (issue)
         }
       }
@@ -142,9 +138,9 @@ extension CustomizedProjectDocument {
     if collisionCount == 0 {
       self.mERCLogTextView?.appendSuccessString ("ok\n")
     }else if collisionCount == 1 {
-      self.mERCLogTextView?.appendErrorString ("1 collision\n")
+      self.mERCLogTextView?.appendErrorString ("1 error\n")
     }else{
-      self.mERCLogTextView?.appendErrorString ("\(collisionCount) collisions\n")
+      self.mERCLogTextView?.appendErrorString ("\(collisionCount) errors\n")
     }
 //    let shape = EBShape (filled: frontPads.bezierPathes (), .yellow)
 //    self.mBoardView?.mOverObjectsDisplay = shape
@@ -252,6 +248,9 @@ extension CustomizedProjectDocument {
   //--- Track inventory
     var frontTrackNetDictionary = [String : [GeometricOblong]] ()
     var backTrackNetDictionary = [String : [GeometricOblong]] ()
+    var frontSideRestrictRectangles = [GeometricRect] ()
+    var backSideRestrictRectangles = [GeometricRect] ()
+    var viaDictionary = [String : [GeometricCircle]] ()
     for object in self.rootObject.mBoardObjects {
       if let track = object as? BoardTrack {
         let netName = track.mNet?.mNetName ?? ""
@@ -264,6 +263,35 @@ extension CustomizedProjectDocument {
           frontTrackNetDictionary [netName] = (frontTrackNetDictionary [netName] ?? []) + [s]
         case .back :
           backTrackNetDictionary [netName] = (backTrackNetDictionary [netName] ?? []) + [s]
+        }
+      }else if let via = object as? BoardConnector {
+        var isVia = via.mComponent == nil
+        if isVia {
+          var hasFrontSideTrack = false
+          var hasBackSideTrack = false
+          for track in via.mTracksP1 + via.mTracksP2 {
+            switch track.mSide {
+            case .back  : hasBackSideTrack  = true
+            case .front : hasFrontSideTrack = true
+            }
+          }
+          isVia = hasFrontSideTrack && hasBackSideTrack
+        }
+        if isVia {
+          let p = via.location!.cocoaPoint
+          let radius = (canariUnitToCocoa (via.actualPadDiameter!) + clearance) / 2.0
+          let c = GeometricCircle (center: p, radius: radius)
+          let netName = via.netNameFromTracks!
+          viaDictionary [netName] = (viaDictionary [netName] ?? []) + [c]
+        }
+      }else if let restrictRect = object as? BoardRestrictRectangle {
+        let canariRect = CanariRect (left: restrictRect.mX, bottom: restrictRect.mY, width: restrictRect.mWidth, height: restrictRect.mHeight)
+        let r = GeometricRect (rect: canariRect.cocoaRect)
+        if restrictRect.mIsInFrontLayer {
+          frontSideRestrictRectangles.append (r)
+        }
+        if restrictRect.mIsInBackLayer {
+          backSideRestrictRectangles.append (r)
         }
       }else if let text = object as? BoardText {
         switch text.mLayer {
@@ -283,25 +311,66 @@ extension CustomizedProjectDocument {
     allKeys.formUnion (backTrackNetDictionary.keys)
     allKeys.formUnion (inFrontPadNetDictionary.keys)
     allKeys.formUnion (inBackPadNetDictionary.keys)
-    var frontLayout = [([GeometricOblong], [PadGeometryForERC])] ()
-    var backLayout  = [([GeometricOblong], [PadGeometryForERC])] ()
+    var frontLayout = [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])] () // Tracks, pads, vias
+    var backLayout  = [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])] () // Tracks, pads, vias
     for key in Array (allKeys).sorted () {
-      frontLayout.append ((frontTrackNetDictionary [key] ?? [], inFrontPadNetDictionary [key] ?? []))
-      backLayout.append ((backTrackNetDictionary [key] ?? [], inBackPadNetDictionary [key] ?? []))
+      frontLayout.append ((frontTrackNetDictionary [key] ?? [], inFrontPadNetDictionary [key] ?? [], viaDictionary [key] ?? []))
+      backLayout.append ((backTrackNetDictionary [key] ?? [], inBackPadNetDictionary [key] ?? [], viaDictionary [key] ?? []))
     }
   //--- Insulation tests
     self.checkTrackTrackInsulation (&ioIssues, "Front", frontLayout)
     self.checkTrackTrackInsulation (&ioIssues, "Back", backLayout)
     self.checkTrackPadInsulation (&ioIssues, "Front", frontLayout)
     self.checkTrackPadInsulation (&ioIssues, "Back", backLayout)
+    self.checkPadRestrictRectInsulation (&ioIssues, "Front", frontLayout, frontSideRestrictRectangles)
+    self.checkPadRestrictRectInsulation (&ioIssues, "Back", backLayout, backSideRestrictRectangles)
+    self.checkTrackRestrictRectInsulation (&ioIssues, "Front", frontLayout, frontSideRestrictRectangles)
+    self.checkTrackRestrictRectInsulation (&ioIssues, "Back", backLayout, backSideRestrictRectangles)
+    self.checkPadViaInsulation (&ioIssues, "Front", frontLayout)
+    self.checkPadViaInsulation (&ioIssues, "Back", backLayout)
+    self.checkTrackViaInsulation (&ioIssues, "Front", frontLayout)
+    self.checkTrackViaInsulation (&ioIssues, "Back", backLayout)
+    self.checkViaRestrictRectInsulation (&ioIssues, "Front", frontLayout, frontSideRestrictRectangles)
+    self.checkViaRestrictRectInsulation (&ioIssues, "Back", backLayout, backSideRestrictRectangles)
+    self.checkViaViaInsulation (&ioIssues, viaDictionary)
+  }
+
+  //····················································································································
+
+  private func checkViaViaInsulation (_ ioIssues : inout [CanariIssue],
+                                      _ inViaDictionary : [String : [GeometricCircle]]) {
+    self.mERCLogTextView?.appendMessageString ("Via vs via… ")
+    var insulationErrorCount = 0
+    var allVias = [GeometricCircle] ()
+    for (_, vias) in inViaDictionary {
+      allVias += vias
+    }
+    for idx in 1 ..< allVias.count {
+      let viaX = allVias [idx]
+      for idy in 0 ..< idx {
+        let viaY = allVias [idy]
+        if viaY.intersects (circle: viaX) {
+          insulationErrorCount += 1
+          let issue = CanariIssue (kind: .error, message: "via collision", pathes: [viaX.bezierPath, viaY.bezierPath])
+          ioIssues.append (issue)
+        }
+      }
+    }
+    if insulationErrorCount == 0 {
+      self.mERCLogTextView?.appendSuccessString ("ok\n")
+    }else if insulationErrorCount == 1 {
+      self.mERCLogTextView?.appendErrorString ("1 error\n")
+    }else{
+      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+    }
   }
 
   //····················································································································
 
   private func checkTrackTrackInsulation (_ ioIssues : inout [CanariIssue],
                                           _ inSide : String,
-                                          _ inLayout : [([GeometricOblong], [PadGeometryForERC])]) {
-    self.mERCLogTextView?.appendMessageString (inSide + " track vs track insulation… ")
+                                          _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
+    self.mERCLogTextView?.appendMessageString (inSide + " track vs track… ")
     var insulationErrorCount = 0
     for idx in 1 ..< inLayout.count {
       let trackArrayX = inLayout [idx].0
@@ -311,7 +380,7 @@ extension CustomizedProjectDocument {
           for ty in trackArrayY {
             if tx.intersects (oblong: ty) {
               insulationErrorCount += 1
-              let issue = CanariIssue (kind: .error, message: inSide + " track collision", pathes: [tx.filledBezierPath(), ty.filledBezierPath()])
+              let issue = CanariIssue (kind: .error, message: inSide + " track collision", pathes: [tx.bezierPath, ty.bezierPath])
               ioIssues.append (issue)
             }
           }
@@ -331,8 +400,8 @@ extension CustomizedProjectDocument {
 
   private func checkTrackPadInsulation (_ ioIssues : inout [CanariIssue],
                                           _ inSide : String,
-                                          _ inLayout : [([GeometricOblong], [PadGeometryForERC])]) {
-    self.mERCLogTextView?.appendMessageString (inSide + " track vs pad insulation… ")
+                                          _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
+    self.mERCLogTextView?.appendMessageString (inSide + " track vs pad… ")
     var insulationErrorCount = 0
     for idx in 1 ..< inLayout.count {
       let trackArrayX = inLayout [idx].0
@@ -342,9 +411,155 @@ extension CustomizedProjectDocument {
           for py in padArrayY {
             if py.intersects (oblong: tx) {
               insulationErrorCount += 1
-              let issue = CanariIssue (kind: .error, message: inSide + " track vs pad collision", pathes: [tx.filledBezierPath(), py.bezierPath])
+              let issue = CanariIssue (kind: .error, message: inSide + " track vs pad collision", pathes: [tx.bezierPath, py.bezierPath])
               ioIssues.append (issue)
             }
+          }
+        }
+      }
+    }
+    if insulationErrorCount == 0 {
+      self.mERCLogTextView?.appendSuccessString ("ok\n")
+    }else if insulationErrorCount == 1 {
+      self.mERCLogTextView?.appendErrorString ("1 error\n")
+    }else{
+      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+    }
+  }
+
+ //····················································································································
+
+  private func checkPadViaInsulation (_ ioIssues : inout [CanariIssue],
+                                      _ inSide : String,
+                                      _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
+    self.mERCLogTextView?.appendMessageString (inSide + " pad vs via… ")
+    var insulationErrorCount = 0
+    for idx in 1 ..< inLayout.count {
+      let padArrayX = inLayout [idx].1
+      for idy in 0 ..< idx {
+        let viaArrayY = inLayout [idy].2
+        for pad in padArrayX {
+          for via in viaArrayY {
+            if pad.intersects (circle: via) {
+              insulationErrorCount += 1
+              let issue = CanariIssue (kind: .error, message: inSide + " track vs via collision", pathes: [pad.bezierPath, via.bezierPath])
+              ioIssues.append (issue)
+            }
+          }
+        }
+      }
+    }
+    if insulationErrorCount == 0 {
+      self.mERCLogTextView?.appendSuccessString ("ok\n")
+    }else if insulationErrorCount == 1 {
+      self.mERCLogTextView?.appendErrorString ("1 error\n")
+    }else{
+      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+    }
+  }
+
+ //····················································································································
+
+  private func checkTrackViaInsulation (_ ioIssues : inout [CanariIssue],
+                                          _ inSide : String,
+                                          _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
+    self.mERCLogTextView?.appendMessageString (inSide + " track vs via… ")
+    var insulationErrorCount = 0
+    for idx in 1 ..< inLayout.count {
+      let trackArrayX = inLayout [idx].0
+      for idy in 0 ..< idx {
+        let viaArrayY = inLayout [idy].2
+        for tx in trackArrayX {
+          for via in viaArrayY {
+            if tx.intersects (circle: via) {
+              insulationErrorCount += 1
+              let issue = CanariIssue (kind: .error, message: inSide + " track vs via collision", pathes: [tx.bezierPath, via.bezierPath])
+              ioIssues.append (issue)
+            }
+          }
+        }
+      }
+    }
+    if insulationErrorCount == 0 {
+      self.mERCLogTextView?.appendSuccessString ("ok\n")
+    }else if insulationErrorCount == 1 {
+      self.mERCLogTextView?.appendErrorString ("1 error\n")
+    }else{
+      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+    }
+  }
+
+  //····················································································································
+
+  private func checkTrackRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
+                                                 _ inSide : String,
+                                                 _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])],
+                                                 _ inRestrictRectangles : [GeometricRect]) {
+    self.mERCLogTextView?.appendMessageString (inSide + " track vs restrict rect… ")
+    var insulationErrorCount = 0
+    for (tracks, _, _) in inLayout {
+      for track in tracks {
+        for rr in inRestrictRectangles {
+          if track.intersects (rect: rr) {
+            insulationErrorCount += 1
+            let issue = CanariIssue (kind: .error, message: inSide + " track vs restrict rect collision", pathes: [track.bezierPath, rr.bezierPath])
+            ioIssues.append (issue)
+          }
+        }
+      }
+    }
+    if insulationErrorCount == 0 {
+      self.mERCLogTextView?.appendSuccessString ("ok\n")
+    }else if insulationErrorCount == 1 {
+      self.mERCLogTextView?.appendErrorString ("1 error\n")
+    }else{
+      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+    }
+  }
+
+  //····················································································································
+
+  private func checkPadRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
+                                               _ inSide : String,
+                                               _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])],
+                                               _ inRestrictRectangles : [GeometricRect]) {
+    self.mERCLogTextView?.appendMessageString (inSide + " pad vs restrict rect… ")
+    var insulationErrorCount = 0
+    for (_, pads, _) in inLayout {
+      for pad in pads {
+        for rr in inRestrictRectangles {
+          if pad.intersects (rect: rr) {
+            insulationErrorCount += 1
+            let issue = CanariIssue (kind: .error, message: inSide + " track vs restrict rect collision", pathes: [pad.bezierPath, rr.bezierPath])
+            ioIssues.append (issue)
+          }
+        }
+      }
+    }
+    if insulationErrorCount == 0 {
+      self.mERCLogTextView?.appendSuccessString ("ok\n")
+    }else if insulationErrorCount == 1 {
+      self.mERCLogTextView?.appendErrorString ("1 error\n")
+    }else{
+      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+    }
+  }
+
+  //····················································································································
+
+  private func checkViaRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
+                                               _ inSide : String,
+                                               _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])],
+                                               _ inRestrictRectangles : [GeometricRect]) {
+    self.mERCLogTextView?.appendMessageString (inSide + " restrict rect vs via… ")
+    var insulationErrorCount = 0
+    for (_, _, vias) in inLayout {
+      for via in vias {
+        for rr in inRestrictRectangles {
+          if via.intersects (rect: rr) {
+            insulationErrorCount += 1
+            let issue = CanariIssue (kind: .error, message: inSide + " via vs restrict rect collision", pathes: [via.bezierPath, rr.bezierPath])
+            ioIssues.append (issue)
           }
         }
       }

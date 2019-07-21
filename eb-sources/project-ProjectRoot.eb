@@ -40,7 +40,7 @@ entity ProjectRoot {
   
   property Double mErrorOrWarningIssueSize default 6.0 ;
   
-  property Double mControlKeyHiliteDiameter default 0.0 ;
+  property Double mControlKeyHiliteDiameter default 100.0 ;
   
 //--- Board border
   toMany BorderCurve mBorderCurves inverse toOne mRoot ;

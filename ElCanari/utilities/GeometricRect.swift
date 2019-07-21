@@ -63,7 +63,7 @@ class GeometricRect {
   //····················································································································
 
   func circumCircle () -> GeometricCircle {
-    return GeometricCircle (self.center, self.circumRadius)
+    return GeometricCircle (center: self.center, radius: self.circumRadius)
   }
 
   //····················································································································
@@ -85,7 +85,7 @@ class GeometricRect {
   //····················································································································
 
   func inscribedCircle () -> GeometricCircle {
-    return GeometricCircle (self.center, self.innerRadius)
+    return GeometricCircle (center: self.center, radius: self.innerRadius)
   }
 
   //····················································································································
@@ -123,64 +123,73 @@ class GeometricRect {
   //····················································································································
 
   func intersects (circle inCircle : GeometricCircle) -> Bool {
-    let centerDistance = NSPoint.distance (self.center, inCircle.center)
-    if centerDistance > (self.circumRadius + inCircle.radius) {
+    if !self.bounds.intersects (inCircle.bounds) {
       return false
-    }else if centerDistance <= (self.innerRadius + inCircle.radius) {
-      return true
     }else{
-    //--- Test intersection between circle and rectangle edge
-      var intersects = false
-      let v = self.vertices
-      var i = 0
-      while !intersects && (i < v.count) {
-        intersects = inCircle.intersects (segmentFrom: v [i], to: v [(i+1) % v.count])
-        i += 1
+      let centerDistance = NSPoint.distance (self.center, inCircle.center)
+      if centerDistance > (self.circumRadius + inCircle.radius) {
+        return false
+      }else if centerDistance <= (self.innerRadius + inCircle.radius) {
+        return true
+      }else{ // § FALSE
+      //--- Test intersection between circle and rectangle edge
+        var intersects = false
+        let v = self.vertices
+        var i = 0
+        while !intersects && (i < v.count) {
+          intersects = inCircle.intersects (segmentFrom: v [i], to: v [(i+1) % v.count])
+          Swift.print ("    i \(i), intersects \(intersects)")
+          i += 1
+        }
+        return intersects
       }
-      return intersects
     }
   }
 
   //····················································································································
 
-  func intersects (rect : GeometricRect) -> Bool {
-  //--- Method of separating axes (https://www.youtube.com/watch?v=WBy6AveIRRs)
-    var intersects = true
-    let vertices1 = self.vertices
-    let vertices2 = rect.vertices
-    do{
-      var i = 0
-      while intersects && (i < vertices1.count) {
-        let ref = NSPoint.product (vertices1 [i], vertices1 [(i+1) % vertices1.count], vertices1 [(i+2) % vertices1.count])
-        var outside = true
-        var j = 0
-        while outside && (j < vertices2.count) {
-          let test = NSPoint.product (vertices1 [i], vertices1 [(i+1) % vertices1.count], vertices2 [j])
-          outside = (ref * test) < 0.0
-          j += 1
+  func intersects (rect inRect : GeometricRect) -> Bool {
+    if !self.bounds.intersects (inRect.bounds) {
+      return false
+    }else{
+    //--- Method of separating axes (https://www.youtube.com/watch?v=WBy6AveIRRs)
+      var intersects = true
+      let vertices1 = self.vertices
+      let vertices2 = inRect.vertices
+      do{
+        var i = 0
+        while intersects && (i < vertices1.count) {
+          let ref = NSPoint.product (vertices1 [i], vertices1 [(i+1) % vertices1.count], vertices1 [(i+2) % vertices1.count])
+          var outside = true
+          var j = 0
+          while outside && (j < vertices2.count) {
+            let test = NSPoint.product (vertices1 [i], vertices1 [(i+1) % vertices1.count], vertices2 [j])
+            outside = (ref * test) < 0.0
+            j += 1
+          }
+          intersects = !outside
+          i += 1
         }
-        intersects = !outside
-        i += 1
       }
-    }
-  //---
-    if intersects {
-      var i = 0
-      while intersects && (i < vertices2.count) {
-        let ref = NSPoint.product (vertices2 [i], vertices2 [(i+1) % vertices2.count], vertices2 [(i+2) % vertices2.count])
-        var outside = true
-        var j = 0
-        while outside && (j < vertices1.count) {
-          let test = NSPoint.product (vertices2 [i], vertices2 [(i+1) % vertices2.count], vertices1 [j])
-          outside = (ref * test) < 0.0
-          j += 1
+    //---
+      if intersects {
+        var i = 0
+        while intersects && (i < vertices2.count) {
+          let ref = NSPoint.product (vertices2 [i], vertices2 [(i+1) % vertices2.count], vertices2 [(i+2) % vertices2.count])
+          var outside = true
+          var j = 0
+          while outside && (j < vertices1.count) {
+            let test = NSPoint.product (vertices2 [i], vertices2 [(i+1) % vertices2.count], vertices1 [j])
+            outside = (ref * test) < 0.0
+            j += 1
+          }
+          intersects = !outside
+          i += 1
         }
-        intersects = !outside
-        i += 1
       }
+    //---
+      return intersects
     }
-  //---
-    return intersects
   }
 
   //····················································································································

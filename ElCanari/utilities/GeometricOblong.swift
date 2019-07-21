@@ -49,7 +49,7 @@ struct GeometricOblong {
 
   //····················································································································
 
-  func filledBezierPath () -> EBBezierPath {
+  var bezierPath : EBBezierPath {
     var bp = EBBezierPath ()
     bp.lineWidth = self.width
     bp.move (to: self.p1)
@@ -88,13 +88,13 @@ struct GeometricOblong {
   //····················································································································
 
   private var circle1 : GeometricCircle {
-    return GeometricCircle (self.p1, self.width / 2.0)
+    return GeometricCircle (center: self.p1, radius: self.width / 2.0)
   }
 
   //····················································································································
 
   private var circle2 : GeometricCircle {
-    return GeometricCircle (self.p2, self.width / 2.0)
+    return GeometricCircle (center: self.p2, radius: self.width / 2.0)
   }
 
   //····················································································································
@@ -106,6 +106,25 @@ struct GeometricOblong {
   //····················································································································
 
   func intersects (circle inCircle : GeometricCircle) -> Bool {
+    let r = self.intersectsRX (circle: inCircle)
+    if r {
+      Swift.print ("Intersect!")
+      if !self.bounds.intersects (inCircle.bounds) {
+        Swift.print (" !bounds")
+      }else if self.circle1.intersects (circle: inCircle) {
+        Swift.print (" c1")
+      }else if self.circle2.intersects (circle: inCircle) {
+        Swift.print (" c2")
+      }else if self.geometricRect.intersects (circle: inCircle) {
+        Swift.print (" rect")
+      }
+    }
+    return r
+  }
+
+  //····················································································································
+
+  func intersectsRX (circle inCircle : GeometricCircle) -> Bool {
     if !self.bounds.intersects (inCircle.bounds) {
       return false
     }else if self.circle1.intersects (circle: inCircle) {

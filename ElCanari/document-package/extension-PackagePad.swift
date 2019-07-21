@@ -199,30 +199,30 @@ class PadGeometryForERC {
       let pRight = NSPoint (x: center.x + (clearance + size.width) / 2.0, y: center.y)
       rects.append (GeometricRect (pLeft, pRight, size.height))
       let pTopLeft = NSPoint (x: center.x - size.width / 2.0, y: center.y + size.height / 2.0)
-      c.append (GeometricCircle (pTopLeft, clearance / 2.0))
+      c.append (GeometricCircle (center: pTopLeft, radius: clearance / 2.0))
       let pTopRight = NSPoint (x: center.x + size.width / 2.0, y: center.y + size.height / 2.0)
-      c.append (GeometricCircle (pTopRight, clearance / 2.0))
+      c.append (GeometricCircle (center: pTopRight, radius: clearance / 2.0))
       let pBottomLeft = NSPoint (x: center.x - size.width / 2.0, y: center.y - size.height / 2.0)
-      c.append (GeometricCircle (pBottomLeft, clearance / 2.0))
+      c.append (GeometricCircle (center: pBottomLeft, radius: clearance / 2.0))
       let pBottomRight = NSPoint (x: center.x + size.width / 2.0, y: center.y - size.height / 2.0)
-      c.append (GeometricCircle (pBottomRight, clearance / 2.0))
+      c.append (GeometricCircle (center: pBottomRight, radius: clearance / 2.0))
     case .round :
       if size.width > size.height {
         let v = (size.width - size.height) / 2.0
         let p1 = NSPoint (x: center.x + v, y: center.y)
         let p2 = NSPoint (x: center.x - v, y: center.y)
         rects.append (GeometricRect (p1, p2, clearance + size.height))
-        c.append (GeometricCircle (p1, (clearance + size.height) / 2.0))
-        c.append (GeometricCircle (p2, (clearance + size.height) / 2.0))
+        c.append (GeometricCircle (center: p1, radius: (clearance + size.height) / 2.0))
+        c.append (GeometricCircle (center: p2, radius: (clearance + size.height) / 2.0))
       }else if size.width < size.height {
         let h = (size.height - size.width) / 2.0
         let p1 = NSPoint (x: center.x, y: center.y + h)
         let p2 = NSPoint (x: center.x, y: center.y - h)
         rects.append (GeometricRect (p1, p2, clearance + size.width))
-        c.append (GeometricCircle (p1, (clearance + size.width) / 2.0))
-        c.append (GeometricCircle (p2, (clearance + size.width) / 2.0))
+        c.append (GeometricCircle (center: p1, radius: (clearance + size.width) / 2.0))
+        c.append (GeometricCircle (center: p2, radius: (clearance + size.width) / 2.0))
       }else{
-        c.append (GeometricCircle (center, (clearance + size.width) / 2.0))
+        c.append (GeometricCircle (center: center, radius: (clearance + size.width) / 2.0))
       }
     case .octo :
       let s2 : CGFloat = sqrt (2.0)
@@ -283,7 +283,7 @@ class PadGeometryForERC {
     var c = [GeometricCircle] ()
     var rects = [GeometricRect] ()
     for circle in self.circles {
-      c.append (GeometricCircle (inAffineTransform.transform (circle.center), circle.radius))
+      c.append (GeometricCircle (center: inAffineTransform.transform (circle.center), radius: circle.radius))
     }
     for r in self.rectangles {
       rects.append (GeometricRect (inAffineTransform.transform (r.p1), inAffineTransform.transform (r.p2), r.width))
@@ -355,18 +355,62 @@ class PadGeometryForERC {
 
   //····················································································································
 
-  func intersects (oblong : GeometricOblong) -> Bool {
-    for circle in self.circles {
-      if oblong.intersects (circle: circle) {
-        return true
+  func intersects (oblong inOblong : GeometricOblong) -> Bool {
+    if !self.bounds.intersects (inOblong.bounds) {
+      return false
+    }else{
+      for circle in self.circles {
+        if inOblong.intersects (circle: circle) {
+          return true
+        }
       }
-    }
-    for rectangle in self.rectangles {
-      if oblong.intersects (rect: rectangle) {
-        return true
+      for rectangle in self.rectangles {
+        if inOblong.intersects (rect: rectangle) {
+          return true
+        }
       }
+      return false
     }
-    return false
+  }
+
+  //····················································································································
+
+  func intersects (rect inRect : GeometricRect) -> Bool {
+    if !self.bounds.intersects (inRect.bounds) {
+      return false
+    }else{
+      for circle in self.circles {
+        if inRect.intersects (circle: circle) {
+          return true
+        }
+      }
+      for rectangle in self.rectangles {
+        if inRect.intersects (rect: rectangle) {
+          return true
+        }
+      }
+      return false
+    }
+  }
+
+  //····················································································································
+
+  func intersects (circle inCircle : GeometricCircle) -> Bool {
+    if !self.bounds.intersects (inCircle.bounds) {
+      return false
+    }else{
+      for circle in self.circles {
+        if circle.intersects (circle: inCircle) {
+          return true
+        }
+      }
+      for rectangle in self.rectangles {
+        if rectangle.intersects (circle: inCircle) {
+          return true
+        }
+      }
+      return false
+    }
   }
 
   //····················································································································

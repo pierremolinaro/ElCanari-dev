@@ -900,7 +900,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mControlKeyHiliteDiameter
   //····················································································································
 
-  let mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 0)
+  let mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 100)
 
   //····················································································································
 
