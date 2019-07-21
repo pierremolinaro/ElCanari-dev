@@ -43,23 +43,23 @@ struct GeometricCircle {
 
   //····················································································································
 
-  func intersects (segmentFrom p1 : NSPoint, to p2 : NSPoint) -> Bool {
-    if NSPoint.distance (p1, self.center) <= self.radius {
-      Swift.print ("    p1 inside")
-      return true // P1 is inside circle
-    }else if NSPoint.distance (p2, self.center) <= self.radius {
-      Swift.print ("    p2 inside")
-      return true // P2 is inside circle
-    }else if let (pp1, pp2) = self.bounds.clippedSegment (p1: p1, p2: p2), pp1 != pp2 {
-      let P = NSPoint.distance (pp1, self.center)
-      let Q = NSPoint.distance (pp2, self.center)
-      let D = NSPoint.distance (pp1, pp2)
-      let X = (P * P - Q * Q) / D
-      let H = (2.0 * P * P + 2.0 * Q * Q - D * D - X * X).squareRoot () / 2.0
-      Swift.print ("    H \(H), radius \(self.radius)")
-      return H <= self.radius
-    }else{
+  func intersects (segmentFrom inP1 : NSPoint, to inP2 : NSPoint) -> Bool {
+  //--- We translate P1, P2, C (center of circle) so that P1 is at (0, 0)
+    let p2x = inP2.x - inP1.x
+    let p2y = inP2.y - inP1.y
+    let Cx = self.center.x - inP1.x
+    let Cy = self.center.y - inP1.y
+  //--- Then we compute the relative abscisse µ of P, the projection of C on P1P2
+    let µ = (p2x * Cx + p2y * Cy) / (p2x * p2x + p2y * p2y)
+    if µ < 0.0 { // Outside
       return false
+    }else if µ > 1.0 { // Outside
+      return false
+    }else{ // Inside: we compute the distance between P and C
+      let dx = µ * p2x - Cx
+      let dy = µ * p2y - Cy
+      let d = (dx * dx + dy * dy).squareRoot ()
+      return d <= self.radius
     }
   }
 

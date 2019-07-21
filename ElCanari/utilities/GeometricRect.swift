@@ -37,11 +37,29 @@ class GeometricRect {
   }
 
   //····················································································································
+
+  init (center inCenter : NSPoint, angleInRadian inAngle : CGFloat, length inLength : CGFloat, width inWidth : CGFloat) {
+    let dx = inLength * cos (inAngle)
+    let dy = inLength * sin (inAngle)
+    self.p1 = NSPoint (x: inCenter.x + dx, y: inCenter.y + dy)
+    self.p2 = NSPoint (x: inCenter.x - dx, y: inCenter.y - dy)
+    self.width = inWidth
+  }
+
+  //····················································································································
   //   Center
   //····················································································································
 
   var center : NSPoint {
     return NSPoint.center (self.p1, self.p2)
+  }
+
+  //····················································································································
+  //   length
+  //····················································································································
+
+  var length : CGFloat {
+    return NSPoint.distance (self.p1, self.p2)
   }
 
   //····················································································································
@@ -129,16 +147,17 @@ class GeometricRect {
       let centerDistance = NSPoint.distance (self.center, inCircle.center)
       if centerDistance > (self.circumRadius + inCircle.radius) {
         return false
-      }else if centerDistance <= (self.innerRadius + inCircle.radius) {
+//      }else if centerDistance <= (self.innerRadius + inCircle.radius) {
+//        return true
+      }else if self.bezierPath.contains (inCircle.center) {
         return true
-      }else{ // § FALSE
+      }else{
       //--- Test intersection between circle and rectangle edge
         var intersects = false
         let v = self.vertices
         var i = 0
         while !intersects && (i < v.count) {
           intersects = inCircle.intersects (segmentFrom: v [i], to: v [(i+1) % v.count])
-          Swift.print ("    i \(i), intersects \(intersects)")
           i += 1
         }
         return intersects

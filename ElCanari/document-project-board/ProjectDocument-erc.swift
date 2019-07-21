@@ -111,27 +111,31 @@ extension CustomizedProjectDocument {
   //--- Check insulation
     self.mERCLogTextView?.appendMessageString ("Pad insulation… ")
     var collisionCount = 0
-    for idx in 1 ..< frontPads.count {
-      let padX = frontPads [idx]
-      for idy in 0 ..< idx {
-        let padY = frontPads [idy]
-        if padX.intersects (pad: padY) {
-          collisionCount += 1
-          let bp = [padX.bezierPath, padY.bezierPath]
-          let issue = CanariIssue (kind: .error, message: "Front side pad collision", pathes: bp, representativeValue: 0)
-          ioIssues.append (issue)
+    if frontPads.count > 1 {
+      for idx in 1 ..< frontPads.count {
+        let padX = frontPads [idx]
+        for idy in 0 ..< idx {
+          let padY = frontPads [idy]
+          if padX.intersects (pad: padY) {
+            collisionCount += 1
+            let bp = [padX.bezierPath, padY.bezierPath]
+            let issue = CanariIssue (kind: .error, message: "Front side pad collision", pathes: bp, representativeValue: 0)
+            ioIssues.append (issue)
+          }
         }
       }
     }
-    for idx in 1 ..< backPads.count {
-      let padX = backPads [idx]
-      for idy in 0 ..< idx {
-        let padY = backPads [idy]
-        if padX.intersects (pad: padY) {
-          collisionCount += 1
-          let bp = [padX.bezierPath, padY.bezierPath]
-          let issue = CanariIssue (kind: .error, message: "Back side pad collision", pathes: bp, representativeValue: 0)
-          ioIssues.append (issue)
+    if backPads.count > 1 {
+      for idx in 1 ..< backPads.count {
+        let padX = backPads [idx]
+        for idy in 0 ..< idx {
+          let padY = backPads [idy]
+          if padX.intersects (pad: padY) {
+            collisionCount += 1
+            let bp = [padX.bezierPath, padY.bezierPath]
+            let issue = CanariIssue (kind: .error, message: "Back side pad collision", pathes: bp, representativeValue: 0)
+            ioIssues.append (issue)
+          }
         }
       }
     }
@@ -345,14 +349,16 @@ extension CustomizedProjectDocument {
     for (_, vias) in inViaDictionary {
       allVias += vias
     }
-    for idx in 1 ..< allVias.count {
-      let viaX = allVias [idx]
-      for idy in 0 ..< idx {
-        let viaY = allVias [idy]
-        if viaY.intersects (circle: viaX) {
-          insulationErrorCount += 1
-          let issue = CanariIssue (kind: .error, message: "via collision", pathes: [viaX.bezierPath, viaY.bezierPath])
-          ioIssues.append (issue)
+    if allVias.count > 1 {
+      for idx in 1 ..< allVias.count {
+        let viaX = allVias [idx]
+        for idy in 0 ..< idx {
+          let viaY = allVias [idy]
+          if viaY.intersects (circle: viaX) {
+            insulationErrorCount += 1
+            let issue = CanariIssue (kind: .error, message: "via collision", pathes: [viaX.bezierPath, viaY.bezierPath])
+            ioIssues.append (issue)
+          }
         }
       }
     }
@@ -372,16 +378,18 @@ extension CustomizedProjectDocument {
                                           _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
     self.mERCLogTextView?.appendMessageString (inSide + " track vs track… ")
     var insulationErrorCount = 0
-    for idx in 1 ..< inLayout.count {
-      let trackArrayX = inLayout [idx].0
-      for idy in 0 ..< idx {
-        let trackArrayY = inLayout [idy].0
-        for tx in trackArrayX {
-          for ty in trackArrayY {
-            if tx.intersects (oblong: ty) {
-              insulationErrorCount += 1
-              let issue = CanariIssue (kind: .error, message: inSide + " track collision", pathes: [tx.bezierPath, ty.bezierPath])
-              ioIssues.append (issue)
+    if inLayout.count > 1 {
+      for idx in 1 ..< inLayout.count {
+        let trackArrayX = inLayout [idx].0
+        for idy in 0 ..< idx {
+          let trackArrayY = inLayout [idy].0
+          for tx in trackArrayX {
+            for ty in trackArrayY {
+              if tx.intersects (oblong: ty) {
+                insulationErrorCount += 1
+                let issue = CanariIssue (kind: .error, message: inSide + " track collision", pathes: [tx.bezierPath, ty.bezierPath])
+                ioIssues.append (issue)
+              }
             }
           }
         }
@@ -403,16 +411,18 @@ extension CustomizedProjectDocument {
                                           _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
     self.mERCLogTextView?.appendMessageString (inSide + " track vs pad… ")
     var insulationErrorCount = 0
-    for idx in 1 ..< inLayout.count {
-      let trackArrayX = inLayout [idx].0
-      for idy in 0 ..< idx {
-        let padArrayY = inLayout [idy].1
-        for tx in trackArrayX {
-          for py in padArrayY {
-            if py.intersects (oblong: tx) {
-              insulationErrorCount += 1
-              let issue = CanariIssue (kind: .error, message: inSide + " track vs pad collision", pathes: [tx.bezierPath, py.bezierPath])
-              ioIssues.append (issue)
+    if inLayout.count > 1 {
+      for idx in 1 ..< inLayout.count {
+        let trackArrayX = inLayout [idx].0
+        for idy in 0 ..< idx {
+          let padArrayY = inLayout [idy].1
+          for tx in trackArrayX {
+            for py in padArrayY {
+              if py.intersects (oblong: tx) {
+                insulationErrorCount += 1
+                let issue = CanariIssue (kind: .error, message: inSide + " track vs pad collision", pathes: [tx.bezierPath, py.bezierPath])
+                ioIssues.append (issue)
+              }
             }
           }
         }
@@ -434,16 +444,18 @@ extension CustomizedProjectDocument {
                                       _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
     self.mERCLogTextView?.appendMessageString (inSide + " pad vs via… ")
     var insulationErrorCount = 0
-    for idx in 1 ..< inLayout.count {
-      let padArrayX = inLayout [idx].1
-      for idy in 0 ..< idx {
-        let viaArrayY = inLayout [idy].2
-        for pad in padArrayX {
-          for via in viaArrayY {
-            if pad.intersects (circle: via) {
-              insulationErrorCount += 1
-              let issue = CanariIssue (kind: .error, message: inSide + " track vs via collision", pathes: [pad.bezierPath, via.bezierPath])
-              ioIssues.append (issue)
+    if inLayout.count > 1 {
+      for idx in 1 ..< inLayout.count {
+        let padArrayX = inLayout [idx].1
+        for idy in 0 ..< idx {
+          let viaArrayY = inLayout [idy].2
+          for pad in padArrayX {
+            for via in viaArrayY {
+              if pad.intersects (circle: via) {
+                insulationErrorCount += 1
+                let issue = CanariIssue (kind: .error, message: inSide + " track vs via collision", pathes: [pad.bezierPath, via.bezierPath])
+                ioIssues.append (issue)
+              }
             }
           }
         }
@@ -465,16 +477,18 @@ extension CustomizedProjectDocument {
                                           _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
     self.mERCLogTextView?.appendMessageString (inSide + " track vs via… ")
     var insulationErrorCount = 0
-    for idx in 1 ..< inLayout.count {
-      let trackArrayX = inLayout [idx].0
-      for idy in 0 ..< idx {
-        let viaArrayY = inLayout [idy].2
-        for tx in trackArrayX {
-          for via in viaArrayY {
-            if tx.intersects (circle: via) {
-              insulationErrorCount += 1
-              let issue = CanariIssue (kind: .error, message: inSide + " track vs via collision", pathes: [tx.bezierPath, via.bezierPath])
-              ioIssues.append (issue)
+    if inLayout.count > 1 {
+      for idx in 1 ..< inLayout.count {
+        let trackArrayX = inLayout [idx].0
+        for idy in 0 ..< idx {
+          let viaArrayY = inLayout [idy].2
+          for tx in trackArrayX {
+            for via in viaArrayY {
+              if tx.intersects (circle: via) {
+                insulationErrorCount += 1
+                let issue = CanariIssue (kind: .error, message: inSide + " track vs via collision", pathes: [tx.bezierPath, via.bezierPath])
+                ioIssues.append (issue)
+              }
             }
           }
         }
