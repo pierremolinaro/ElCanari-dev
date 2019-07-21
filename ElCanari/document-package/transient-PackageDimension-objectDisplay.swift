@@ -28,12 +28,12 @@ func transient_PackageDimension_objectDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
   let arrowSize : CGFloat = 1.5
-  let p1 = CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
-  let p2 = CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2))
+  let p1 = NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
+  let p2 = NSPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2))
   let length = NSPoint.distance (p1, p2)
   var shape = EBShape ()
  //--- Compute angle
-  let angle = CGPoint.angleInRadian (p1, p2)
+  let angle = NSPoint.angleInRadian (p1, p2)
  //--- Draw line
   var bp = EBBezierPath ()
   if length <= (4.0 * arrowSize) {
@@ -60,11 +60,11 @@ func transient_PackageDimension_objectDisplay (
   tr.translate (x: p1.x, y: p1.y)
   tr.rotate (byRadians: angle + rotationIfSmall)
   var path1 = EBBezierPath ()
-  path1.move (to: CGPoint (x: 0.0, y: 0.0))
-  path1.line (to:CGPoint (x: 2.0 * arrowSize, y:  arrowSize))
-  path1.curve (to:CGPoint (x: 2.0 * arrowSize, y: -arrowSize),
-               controlPoint1: CGPoint (x: arrowSize, y: 0.0),
-               controlPoint2: CGPoint (x: arrowSize, y: 0.0))
+  path1.move (to: NSPoint (x: 0.0, y: 0.0))
+  path1.line (to:NSPoint (x: 2.0 * arrowSize, y:  arrowSize))
+  path1.curve (to:NSPoint (x: 2.0 * arrowSize, y: -arrowSize),
+               controlPoint1: NSPoint (x: arrowSize, y: 0.0),
+               controlPoint2: NSPoint (x: arrowSize, y: 0.0))
   path1.close ()
   path1.transform (using: tr)
 //------- Arrow at second point
@@ -72,11 +72,11 @@ func transient_PackageDimension_objectDisplay (
   tr.translate (x: p2.x, y: p2.y)
   tr.rotate (byRadians: angle + .pi + rotationIfSmall)
   var path2 = EBBezierPath ()
-  path2.move (to: CGPoint (x: 0.0, y: 0.0))
-  path2.line (to:CGPoint (x: 2.0 * arrowSize, y:  arrowSize))
-  path2.curve (to:CGPoint (x: 2.0 * arrowSize, y: -arrowSize),
-               controlPoint1: CGPoint (x: arrowSize, y: 0.0),
-               controlPoint2: CGPoint (x: arrowSize, y: 0.0))
+  path2.move (to: NSPoint (x: 0.0, y: 0.0))
+  path2.line (to:NSPoint (x: 2.0 * arrowSize, y:  arrowSize))
+  path2.curve (to:NSPoint (x: 2.0 * arrowSize, y: -arrowSize),
+               controlPoint1: NSPoint (x: arrowSize, y: 0.0),
+               controlPoint2: NSPoint (x: arrowSize, y: 0.0))
   path2.close ()
   path2.transform (using: tr)
   shape.add (filled: [path1, path2], prefs_packageDimensionColor)

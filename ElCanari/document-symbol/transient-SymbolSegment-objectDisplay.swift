@@ -23,8 +23,8 @@ func transient_SymbolSegment_objectDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
     var bp = EBBezierPath ()
-    bp.move (to: CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
-    bp.line (to: CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
+    bp.move (to: NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
+    bp.line (to: NSPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
     bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
     bp.lineCapStyle = .round
     var shape = EBShape ()

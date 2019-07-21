@@ -22,7 +22,7 @@ func transient_SymbolOval_objectDisplay (
        _ prefs_symbolDrawingWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let r = CGRect (
+  let r = NSRect (
     x: canariUnitToCocoa (self_x),
     y: canariUnitToCocoa (self_y),
     width: canariUnitToCocoa (self_width),

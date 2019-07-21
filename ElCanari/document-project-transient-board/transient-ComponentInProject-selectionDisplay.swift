@@ -68,7 +68,8 @@ func transient_ComponentInProject_selectionDisplay (
           frontSide: self_mSide == .front,
           rotation: self_mNameRotation,
           weight: 1.0,
-          oblique: false
+          oblique: false,
+          extraWidth: 0.0
         )
         var bp = EBBezierPath ()
         bp.move (to: absoluteCenter)
@@ -98,7 +99,8 @@ func transient_ComponentInProject_selectionDisplay (
           frontSide: self_mSide == .front,
           rotation: self_mValueRotation,
           weight: 1.0,
-          oblique: false
+          oblique: false,
+          extraWidth: 0.0
         )
         var bp = EBBezierPath ()
         bp.move (to: absoluteCenter)

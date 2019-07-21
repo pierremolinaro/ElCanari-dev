@@ -21,8 +21,8 @@ func transient_PackageSegment_strokeBezierPath (
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2
   let bp = NSBezierPath ()
-  bp.move (to: CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
-  bp.line (to: CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
+  bp.move (to: NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
+  bp.line (to: NSPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
   return bp
 //--- END OF USER ZONE 2
 }

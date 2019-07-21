@@ -167,12 +167,14 @@ extension EBBezierPath {
 class PadGeometryForERC {
   let circles : [GeometricCircle]
   let rectangles : [GeometricRect]
+  let bezierPath : EBBezierPath
 
   //····················································································································
 
   init () {
     self.circles = []
     self.rectangles = []
+    self.bezierPath = EBBezierPath ()
   }
 
   //····················································································································
@@ -181,37 +183,50 @@ class PadGeometryForERC {
         centerY inCenterY : Int,
         width inWidth : Int,
         height inHeight : Int,
+        clearance inClearance : Int,
         shape inShape : PadShape) {
     let center = CanariPoint (x: inCenterX, y: inCenterY).cocoaPoint
     let size = CanariSize (width: inWidth, height: inHeight).cocoaSize
+    let clearance = canariUnitToCocoa (inClearance)
     var c = [GeometricCircle] ()
     var rects = [GeometricRect] ()
     switch inShape {
     case .rect :
-      let p1 = NSPoint (x: center.x, y: center.y + size.height / 2.0)
-      let p2 = NSPoint (x: center.x, y: center.y - size.height / 2.0)
-      rects.append (GeometricRect (p1, p2, size.width))
+      let pTop = NSPoint (x: center.x, y: center.y + (clearance + size.height) / 2.0)
+      let pBottom = NSPoint (x: center.x, y: center.y - (clearance + size.height) / 2.0)
+      rects.append (GeometricRect (pTop, pBottom, size.width))
+      let pLeft  = NSPoint (x: center.x - (clearance + size.width) / 2.0, y: center.y)
+      let pRight = NSPoint (x: center.x + (clearance + size.width) / 2.0, y: center.y)
+      rects.append (GeometricRect (pLeft, pRight, size.height))
+      let pTopLeft = NSPoint (x: center.x - size.width / 2.0, y: center.y + size.height / 2.0)
+      c.append (GeometricCircle (pTopLeft, clearance / 2.0))
+      let pTopRight = NSPoint (x: center.x + size.width / 2.0, y: center.y + size.height / 2.0)
+      c.append (GeometricCircle (pTopRight, clearance / 2.0))
+      let pBottomLeft = NSPoint (x: center.x - size.width / 2.0, y: center.y - size.height / 2.0)
+      c.append (GeometricCircle (pBottomLeft, clearance / 2.0))
+      let pBottomRight = NSPoint (x: center.x + size.width / 2.0, y: center.y - size.height / 2.0)
+      c.append (GeometricCircle (pBottomRight, clearance / 2.0))
     case .round :
       if size.width > size.height {
         let v = (size.width - size.height) / 2.0
         let p1 = NSPoint (x: center.x + v, y: center.y)
         let p2 = NSPoint (x: center.x - v, y: center.y)
-        rects.append (GeometricRect (p1, p2, size.height))
-        c.append (GeometricCircle (p1, size.height / 2.0))
-        c.append (GeometricCircle (p2, size.height / 2.0))
+        rects.append (GeometricRect (p1, p2, clearance + size.height))
+        c.append (GeometricCircle (p1, (clearance + size.height) / 2.0))
+        c.append (GeometricCircle (p2, (clearance + size.height) / 2.0))
       }else if size.width < size.height {
         let h = (size.height - size.width) / 2.0
         let p1 = NSPoint (x: center.x, y: center.y + h)
         let p2 = NSPoint (x: center.x, y: center.y - h)
-        rects.append (GeometricRect (p1, p2, size.width))
-        c.append (GeometricCircle (p1, size.width / 2.0))
-        c.append (GeometricCircle (p2, size.width / 2.0))
+        rects.append (GeometricRect (p1, p2, clearance + size.width))
+        c.append (GeometricCircle (p1, (clearance + size.width) / 2.0))
+        c.append (GeometricCircle (p2, (clearance + size.width) / 2.0))
       }else{
-        c.append (GeometricCircle (center, size.width / 2.0))
+        c.append (GeometricCircle (center, (clearance + size.width) / 2.0))
       }
     case .octo :
       let s2 : CGFloat = sqrt (2.0)
-      let lg = min (size.width, size.height) / (1.0 + s2)
+      let lg = min (size.width + clearance, size.height + clearance) / (1.0 + s2)
       let pLeft  = NSPoint (x: center.x - size.width / 2.0, y: center.y)
       let pRight = NSPoint (x: center.x + size.width / 2.0, y: center.y)
       rects.append (GeometricRect (pLeft, pRight, size.height - lg * s2))
@@ -245,13 +260,21 @@ class PadGeometryForERC {
     }
     self.circles = c
     self.rectangles = rects
+    self.bezierPath = EBBezierPath.pad (
+      centerX: inCenterX,
+      centerY: inCenterY,
+      width: inWidth,
+      height: inHeight,
+      shape: inShape
+    )
   }
 
   //····················································································································
 
-  private init (_ inCircles : [GeometricCircle], _ inRectangles : [GeometricRect]) {
+  private init (_ inCircles : [GeometricCircle], _ inRectangles : [GeometricRect], _ inBezierPath : EBBezierPath) {
     self.circles = inCircles
     self.rectangles = inRectangles
+    self.bezierPath = inBezierPath
   }
 
   //····················································································································
@@ -265,7 +288,7 @@ class PadGeometryForERC {
     for r in self.rectangles {
       rects.append (GeometricRect (inAffineTransform.transform (r.p1), inAffineTransform.transform (r.p2), r.width))
     }
-    return PadGeometryForERC (c, rects)
+    return PadGeometryForERC (c, rects, self.bezierPath.transformed (by: inAffineTransform))
   }
 
   //····················································································································
@@ -289,7 +312,7 @@ class PadGeometryForERC {
 
   //····················································································································
 
-  func intersects (_ inOther : PadGeometryForERC) -> Bool {
+  func intersects (pad inOther : PadGeometryForERC) -> Bool {
     if !self.bounds.intersects (inOther.bounds) {
       return false
     }else{
@@ -332,25 +355,41 @@ class PadGeometryForERC {
 
   //····················································································································
 
-  var bezierPath : EBBezierPath {
-    var result = EBBezierPath ()
+  func intersects (oblong : GeometricOblong) -> Bool {
     for circle in self.circles {
-      let s = circle.radius * 2.0
-      let r = NSRect (center: circle.center, size: NSSize (width: s, height: s))
-      let bp = EBBezierPath (ovalIn: r)
-      result.append (bp.reversed)
+      if oblong.intersects (circle: circle) {
+        return true
+      }
     }
-    for r in self.rectangles {
-      var bp = EBBezierPath ()
-      bp.move (to: r.p1)
-      bp.line (to: r.p2)
-      bp.lineWidth = r.width
-      bp.lineCapStyle = .butt
-      let filledBp = bp.pathByStroking
-      result.append (filledBp)
+    for rectangle in self.rectangles {
+      if oblong.intersects (rect: rectangle) {
+        return true
+      }
     }
-    return result
+    return false
   }
+
+  //····················································································································
+
+//  var bezierPath : EBBezierPath {
+//    var result = EBBezierPath ()
+//    for circle in self.circles {
+//      let s = circle.radius * 2.0
+//      let r = NSRect (center: circle.center, size: NSSize (width: s, height: s))
+//      let bp = EBBezierPath (ovalIn: r)
+//      result.append (bp.reversed)
+//    }
+//    for r in self.rectangles {
+//      var bp = EBBezierPath ()
+//      bp.move (to: r.p1)
+//      bp.line (to: r.p2)
+//      bp.lineWidth = r.width
+//      bp.lineCapStyle = .butt
+//      let filledBp = bp.pathByStroking
+//      result.append (filledBp)
+//    }
+//    return result
+//  }
 
   //····················································································································
 
@@ -361,7 +400,9 @@ class PadGeometryForERC {
   //····················································································································
 
   static func + (_ left : PadGeometryForERC, _ right : PadGeometryForERC) -> PadGeometryForERC {
-    return PadGeometryForERC (left.circles + right.circles, left.rectangles + right.rectangles)
+    var bp = left.bezierPath
+    bp.append (right.bezierPath)
+    return PadGeometryForERC (left.circles + right.circles, left.rectangles + right.rectangles, bp)
   }
 
   //····················································································································

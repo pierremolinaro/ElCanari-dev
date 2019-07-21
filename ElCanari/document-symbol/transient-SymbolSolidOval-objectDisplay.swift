@@ -21,7 +21,7 @@ func transient_SymbolSolidOval_objectDisplay (
        _ prefs_symbolColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let r = CGRect (
+  let r = NSRect (
     x: canariUnitToCocoa (self_x),
     y: canariUnitToCocoa (self_y),
     width: canariUnitToCocoa (self_width),

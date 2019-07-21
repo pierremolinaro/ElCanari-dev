@@ -147,7 +147,7 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   //····················································································································
 
   func setIssues (_ inIssues : [CanariIssue]) {
-    self.mModelArray = inIssues
+    self.mModelArray = inIssues.sorted (by: CanariIssue.displaySortingCompare)
   }
 
   //····················································································································

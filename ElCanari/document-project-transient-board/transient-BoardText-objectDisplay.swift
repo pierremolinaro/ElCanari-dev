@@ -42,7 +42,8 @@ func transient_BoardText_objectDisplay (
           frontSide: (self_mLayer == .layoutFront) || (self_mLayer == .legendFront),
           rotation: self_mRotation,
           weight: self_mWeight,
-          oblique: self_mOblique
+          oblique: self_mOblique,
+          extraWidth: 0.0
         )
         let textColor : NSColor
         switch self_mLayer {

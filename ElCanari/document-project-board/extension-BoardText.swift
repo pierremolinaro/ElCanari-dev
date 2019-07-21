@@ -66,7 +66,8 @@ extension BoardText {
         frontSide: (self.mLayer == .layoutFront) || (self.mLayer == .legendFront),
         rotation: self.mRotation,
         weight: self.mWeight,
-        oblique: self.mOblique
+        oblique: self.mOblique,
+        extraWidth: 0.0
       )
       let newRotationKnobLocation = CanariPoint (x: inNewX, y: inNewY).cocoaPoint
       let newAngleInDegrees = angleInDegreesBetweenNSPoints (origin, newRotationKnobLocation)
@@ -103,7 +104,7 @@ extension BoardText {
 
   //····················································································································
 
-  func displayInfos () -> (EBBezierPath, EBBezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
+  func displayInfos (extraWidth inExtraWidth : CGFloat) -> (EBBezierPath, EBBezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
     return boardText_displayInfos (
       x: self.mX,
       y: self.mY,
@@ -115,7 +116,8 @@ extension BoardText {
       frontSide: (self.mLayer == .legendFront) || (self.mLayer == .layoutFront),
       rotation: self.mRotation,
       weight: self.mWeight,
-      oblique: self.mOblique
+      oblique: self.mOblique,
+      extraWidth: inExtraWidth
     )
   }
 }
@@ -133,13 +135,14 @@ func boardText_displayInfos (
        frontSide inFrontSide : Bool,
        rotation self_mRotation : Int,
        weight self_mWeight : Double,
-       oblique self_mOblique : Bool
+       oblique self_mOblique : Bool,
+       extraWidth inExtraWidth : CGFloat // Used for ERC checking
 ) -> (EBBezierPath, EBBezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
   let s = (self_mText == "") ? "Empty" : self_mText
   var stringWidth : CGFloat = 0.0
   let oblique = self_mOblique ? CGFloat (0.25) : CGFloat (0.0)
   let fontFactor = CGFloat (self_mFontSize) / CGFloat (self_mFont_descriptor.nominalSize)
-  let lineWidth = fontFactor * 2.0 * CGFloat (self_mWeight)
+  let lineWidth = fontFactor * 2.0 * CGFloat (self_mWeight) + inExtraWidth
   var bp = EBBezierPath ()
   bp.lineWidth = lineWidth
   bp.lineCapStyle = .round

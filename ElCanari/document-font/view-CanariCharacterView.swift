@@ -122,28 +122,28 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     bp = NSBezierPath ()
     for y in MIN_Y / 2 ... -1 {
       let yy = yForY (y * 2)
-      bp.move (to: CGPoint (x: 20.0, y: yy))
-      bp.line (to: CGPoint (x: NSMaxX (self.bounds), y: yy))
+      bp.move (to: NSPoint (x: 20.0, y: yy))
+      bp.line (to: NSPoint (x: NSMaxX (self.bounds), y: yy))
     }
     for y in 1 ... MAX_Y / 2 {
       let yy = yForY (y * 2)
-      bp.move (to: CGPoint (x: 20.0, y: yy))
-      bp.line (to: CGPoint (x: NSMaxX (self.bounds), y: yy))
+      bp.move (to: NSPoint (x: 20.0, y: yy))
+      bp.line (to: NSPoint (x: NSMaxX (self.bounds), y: yy))
     }
     for x in 1 ... MAX_X / 2 {
       let xx = xForX (x * 2)
-      bp.move (to: CGPoint (x: xx, y: 0.0))
-      bp.line (to: CGPoint (x: xx, y: yForY (MAX_Y) + 10.0))
+      bp.move (to: NSPoint (x: xx, y: 0.0))
+      bp.line (to: NSPoint (x: xx, y: yForY (MAX_Y) + 10.0))
     }
     bp.lineWidth = 1.0
     NSColor.lightGray.setStroke ()
     bp.stroke ()
   //--- Main X and Y axis
     bp = NSBezierPath ()
-    bp.move (to: CGPoint (x: xForX (0), y: 0.0))
-    bp.line (to: CGPoint (x: xForX (0), y: yForY (MAX_Y) + 10.0))
-    bp.move (to: CGPoint (x: 20.0, y: yForY (0)))
-    bp.line (to: CGPoint (x: NSMaxX (self.bounds), y: yForY (0)))
+    bp.move (to: NSPoint (x: xForX (0), y: 0.0))
+    bp.line (to: NSPoint (x: xForX (0), y: yForY (MAX_Y) + 10.0))
+    bp.move (to: NSPoint (x: 20.0, y: yForY (0)))
+    bp.line (to: NSPoint (x: NSMaxX (self.bounds), y: yForY (0)))
     bp.lineWidth = 1.0
     NSColor.black.setStroke ()
     bp.stroke ()
@@ -177,8 +177,8 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //--- Character segments
     bp = NSBezierPath ()
     for segment in self.mSegmentList {
-      bp.move (to: CGPoint (x: xForX (segment.x1), y: yForY (segment.y1)))
-      bp.line (to: CGPoint (x: xForX (segment.x2), y: yForY (segment.y2)))
+      bp.move (to: NSPoint (x: xForX (segment.x1), y: yForY (segment.y1)))
+      bp.line (to: NSPoint (x: xForX (segment.x2), y: yForY (segment.y2)))
     }
     bp.lineWidth = PLACEMENT_GRID * 2.0
     bp.lineCapStyle = .round
@@ -186,8 +186,8 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     bp.stroke ()
   //--- Character advancement
     let advanceRect = NSRect (
-      origin: CGPoint (x:xForX (self.mAdvancement) - PLACEMENT_GRID / 2.0, y: yForY (0) - PLACEMENT_GRID / 2.0),
-      size: CGSize (width: PLACEMENT_GRID, height: PLACEMENT_GRID)
+      origin: NSPoint (x:xForX (self.mAdvancement) - PLACEMENT_GRID / 2.0, y: yForY (0) - PLACEMENT_GRID / 2.0),
+      size: NSSize (width: PLACEMENT_GRID, height: PLACEMENT_GRID)
     )
     bp = NSBezierPath (ovalIn: advanceRect)
     NSColor.brown.setFill ()
@@ -198,7 +198,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       let fillPath = NSBezierPath ()
       var currentX = 0
       var currentY = 0
-      strokePath.move (to: CGPoint (x: xForX (0), y: yForY (0)))
+      strokePath.move (to: NSPoint (x: xForX (0), y: yForY (0)))
       for segment in self.mSegmentList {
         if (segment.x1 != currentX) || (segment.y1 != currentY) {
           currentX = segment.x1
@@ -823,7 +823,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //  Mouse down
   //····················································································································
 
-  private var mMouseLocation : CGPoint?
+  private var mMouseLocation : NSPoint?
 
   //····················································································································
 
@@ -887,7 +887,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   
   //····················································································································
   
-  private final func waitUntilMouseUpOnMouseDownOnSegment (mouseDownLocation : CGPoint) {
+  private final func waitUntilMouseUpOnMouseDownOnSegment (mouseDownLocation : NSPoint) {
     var mouseLocation = mouseDownLocation
     var loop = true
     while loop {
@@ -910,7 +910,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   
   //····················································································································
   
-  private final func waitUntilMouseUpOnMouseDownAt (mouseDownLocation : CGPoint, for knob : Int) {
+  private final func waitUntilMouseUpOnMouseDownAt (mouseDownLocation : NSPoint, for knob : Int) {
     var mouseLocation = mouseDownLocation
     var loop = true
     while loop {
@@ -933,7 +933,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   
   //····················································································································
   
-  private final func waitUntilMouseUpOnDraggingSelectionRectangleNoShiftKey (mouseDownLocation : CGPoint) {
+  private final func waitUntilMouseUpOnDraggingSelectionRectangleNoShiftKey (mouseDownLocation : NSPoint) {
     var loop = true
     while loop {
       self.display ()
@@ -943,7 +943,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       if loop { // NSLeftMouseDragged
         let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
         mSelection.removeAll ()
-        let r = CGRect (point: mouseDownLocation, point: mouseDraggedLocation)
+        let r = NSRect (point: mouseDownLocation, point: mouseDraggedLocation)
         mSelectionRectangle = r
         let cr = GeometricRect (rect: r)
         for segment in self.mSegmentList {
@@ -957,7 +957,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   
   //····················································································································
   
-  private final func waitUntilMouseUpOnDraggingSelectionRectangleWithShiftKey (mouseDownLocation : CGPoint) {
+  private final func waitUntilMouseUpOnDraggingSelectionRectangleWithShiftKey (mouseDownLocation : NSPoint) {
     let selectionOnMouseDown = mSelection
     var loop = true
     while loop {
@@ -967,7 +967,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       loop = event.type == .leftMouseDragged
       if loop {
         let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
-        let r = CGRect (point: mouseDownLocation, point: mouseDraggedLocation)
+        let r = NSRect (point: mouseDownLocation, point: mouseDraggedLocation)
         mSelectionRectangle = r
         let cr = GeometricRect (rect: r)
         var selection = Set <SegmentForFontCharacterClass> ()
@@ -993,7 +993,7 @@ extension SegmentForFontCharacterClass {
 
   //····················································································································
 
-  final func knobIndexFor (point p : CGPoint) -> Int? { // Return nil if point is outside a knob
+  final func knobIndexFor (point p : NSPoint) -> Int? { // Return nil if point is outside a knob
     var result : Int? = nil
     do{
       let r = knobRect (self.x1, self.y1)
@@ -1012,10 +1012,10 @@ extension SegmentForFontCharacterClass {
 
   //····················································································································
 
-  final func contains (point p : CGPoint) -> Bool {
+  final func contains (point p : NSPoint) -> Bool {
     let oblong = GeometricOblong (
-      from: CGPoint (x: xForX (self.x1), y: yForY (self.y1)),
-      to:   CGPoint (x: xForX (self.x2), y: yForY (self.y2)),
+      from: NSPoint (x: xForX (self.x1), y: yForY (self.y1)),
+      to:   NSPoint (x: xForX (self.x2), y: yForY (self.y2)),
       width: PLACEMENT_GRID * 2.0
     )
     return oblong.contains (point: p)
@@ -1025,8 +1025,8 @@ extension SegmentForFontCharacterClass {
 
   final func intersects (rect r : GeometricRect) -> Bool {
     let oblong = GeometricOblong (
-      from: CGPoint (x: xForX (self.x1), y: yForY (self.y1)),
-      to:   CGPoint (x: xForX (self.x2), y: yForY (self.y2)),
+      from: NSPoint (x: xForX (self.x1), y: yForY (self.y1)),
+      to:   NSPoint (x: xForX (self.x2), y: yForY (self.y2)),
       width: PLACEMENT_GRID * 2.0
     )
     return oblong.intersects (rect: r)

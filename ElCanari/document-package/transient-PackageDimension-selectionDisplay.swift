@@ -25,8 +25,8 @@ func transient_PackageDimension_selectionDisplay (
        _ prefs_dimensionFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let p1 = CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
-  let p2 = CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2))
+  let p1 = NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
+  let p2 = NSPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2))
   let pText = CanariPoint (x: self_xDimension + (self_x1 + self_x2) / 2, y: self_yDimension + (self_y1 + self_y2) / 2).cocoaPoint
   var bp = EBBezierPath ()
   bp.lineWidth = 0.25

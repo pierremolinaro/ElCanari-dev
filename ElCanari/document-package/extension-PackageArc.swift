@@ -70,7 +70,7 @@ extension PackageArc {
         x: canariUnitToCocoa (inNewX),
         y: canariUnitToCocoa (inNewY)
       )
-      let newStartAngle = CGPoint.angleInDegrees (center, newStartAngleKnob)
+      let newStartAngle = NSPoint.angleInDegrees (center, newStartAngleKnob)
       let newCanariStartAngle = Int ((newStartAngle * 1000.0).rounded (.toNearestOrEven))
       self.startAngle = newCanariStartAngle
     }else if inKnobIndex == PACKAGE_ARC_END_ANGLE {
@@ -78,7 +78,7 @@ extension PackageArc {
         x: canariUnitToCocoa (inNewX),
         y: canariUnitToCocoa (inNewY)
       )
-      var newArcAngle = CGPoint.angleInDegrees (center, newEndAngleKnob) - startAngle
+      var newArcAngle = NSPoint.angleInDegrees (center, newEndAngleKnob) - startAngle
       if newArcAngle < 0.0 {
         newArcAngle += 360.0
       }

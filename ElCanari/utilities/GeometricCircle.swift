@@ -53,17 +53,8 @@ struct GeometricCircle {
       let Q = NSPoint.distance (pp2, self.center)
       let D = NSPoint.distance (pp1, pp2)
       let X = (P * P - Q * Q) / D
-      let H = ((2.0 * P * P + 2.0 * Q * Q - D * D - X * X) / 4.0).squareRoot ()
+      let H = (2.0 * P * P + 2.0 * Q * Q - D * D - X * X).squareRoot () / 2.0
       return H <= self.radius
-//      let segmentAngle = NSPoint.angleInRadian (pp1, pp2)
-//      let segmentCenter = NSPoint (x: (pp1.x + pp2.x) / 2.0, y: (pp1.y + pp2.y) / 2.0)
-//      let tr = CGAffineTransform (rotationAngle: -segmentAngle).translatedBy (x:-segmentCenter.x, y:-segmentCenter.y)
-//      let point = self.center.applying (tr)
-//      intersects = abs (point.y) <= self.radius
-//      if intersects {
-//        let segmentLength = NSPoint.distance (pp1, pp2)
-//        intersects = abs (point.x) <= (segmentLength * 0.5)
-//      }
     }else{
       return false
     }

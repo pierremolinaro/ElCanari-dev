@@ -72,7 +72,7 @@ func transient_SymbolRoot_issues (
         }
       }
     //-------------------- Sort issues
-      issues.sort (by: CanariIssue.displaySortingCompare)
+    //  issues.sort (by: CanariIssue.displaySortingCompare)
     //---
       return issues
 //--- END OF USER ZONE 2

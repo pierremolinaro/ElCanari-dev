@@ -137,8 +137,8 @@ final class MergerSegmentArray : EBObject {
       let y2f = canariUnitToCocoa (y2)
       let width = canariUnitToCocoa (segment.width)
       var bp = EBBezierPath ()
-      bp.move (to:CGPoint (x: x1f, y: y1f))
-      bp.line (to:CGPoint (x: x2f, y: y2f))
+      bp.move (to: NSPoint (x: x1f, y: y1f))
+      bp.line (to: NSPoint (x: x2f, y: y2f))
       bp.lineWidth = width
       bp.lineCapStyle = .round
       ioBezierPaths.append (bp)
@@ -187,8 +187,8 @@ final class MergerSegmentArray : EBObject {
       let x2f = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x2) : x2)
       let y2f = canariUnitToCocoa (y2)
       var bp = EBBezierPath ()
-      bp.move (to:CGPoint (x:x1f, y:y1f))
-      bp.line (to:CGPoint (x:x2f, y:y2f))
+      bp.move (to:NSPoint (x:x1f, y:y1f))
+      bp.line (to:NSPoint (x:x2f, y:y2f))
       bp.lineWidth = pdfDrillDiameter
       bp.lineCapStyle = .round
       ioBezierPaths.append (bp)

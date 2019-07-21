@@ -44,15 +44,15 @@ func transient_PackageZone_selectionDisplay (
       bp.move (to: NSPoint (x: x, y: y))
       bp.line (to: NSPoint (x: x + width, y: y))
     }else{
-      let r = CGRect (x: x, y: y, width: width, height: height)
+      let r = NSRect (x: x, y: y, width: width, height: height)
       bp = EBBezierPath (rect: r)
     }
     bp.lineWidth = 0.25
     shape.add (stroke: [bp], NSColor.cyan)
-    shape.add (knobAt:  CGPoint (x: x + width / 2.0, y: y), knobIndex: PACKAGE_ZONE_BOTTOM, .circ, 2.0)
-    shape.add (knobAt:  CGPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_ZONE_LEFT, .circ, 2.0)
-    shape.add (knobAt:  CGPoint (x: x + width / 2.0, y: y + height), knobIndex: PACKAGE_ZONE_TOP, .circ, 2.0)
-    shape.add (knobAt:  CGPoint (x: x + width, y: y + height / 2.0), knobIndex: PACKAGE_ZONE_RIGHT, .circ, 2.0)
+    shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y), knobIndex: PACKAGE_ZONE_BOTTOM, .circ, 2.0)
+    shape.add (knobAt:  NSPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_ZONE_LEFT, .circ, 2.0)
+    shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y + height), knobIndex: PACKAGE_ZONE_TOP, .circ, 2.0)
+    shape.add (knobAt:  NSPoint (x: x + width, y: y + height / 2.0), knobIndex: PACKAGE_ZONE_RIGHT, .circ, 2.0)
   //--- Zone
     let text = (self_zoneName == "") ? "?" : self_zoneName
     let pText = CanariPoint (x: self_xName, y: self_yName).cocoaPoint

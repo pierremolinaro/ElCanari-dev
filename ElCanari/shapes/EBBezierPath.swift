@@ -554,7 +554,7 @@ extension NSBezierPath {
 
   public var cgPath : CGPath {
     let path = CGMutablePath ()
-    var points = [CGPoint] (repeating: .zero, count: 3)
+    var points = [NSPoint] (repeating: .zero, count: 3)
     for idx in 0 ..< self.elementCount {
       let type = self.element (at: idx, associatedPoints: &points)
       switch type {

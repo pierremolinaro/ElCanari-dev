@@ -88,7 +88,7 @@ final class MergerPadArray : EBObject {
     for pad in self.padArray {
       let width = canariUnitToCocoa (pad.width)
       let height = canariUnitToCocoa (pad.height)
-      let r = CGRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
+      let r = NSRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
       var bp : EBBezierPath
       switch pad.shape {
       case .rect :

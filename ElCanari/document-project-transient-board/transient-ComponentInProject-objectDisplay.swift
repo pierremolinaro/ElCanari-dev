@@ -102,7 +102,8 @@ func transient_ComponentInProject_objectDisplay (
             frontSide: self_mSide == .front,
             rotation: self_mNameRotation,
             weight: 1.0,
-            oblique: false
+            oblique: false,
+            extraWidth: 0.0
           )
           let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
           nonRotatedShape.add (filled: [EBBezierPath (rect: textBP.bounds)], nil)
@@ -121,7 +122,8 @@ func transient_ComponentInProject_objectDisplay (
             frontSide: self_mSide == .front,
             rotation: self_mValueRotation,
             weight: 1.0,
-            oblique: false
+            oblique: false,
+            extraWidth: 0.0
           )
           let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
           nonRotatedShape.add (filled: [EBBezierPath (rect: textBP.bounds)], nil)

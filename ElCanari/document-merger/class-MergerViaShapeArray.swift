@@ -42,7 +42,7 @@ final class MergerViaShapeArray : EBObject {
       let x = canariUnitToCocoa (via.x)
       let y = canariUnitToCocoa (via.y)
       let diameter = canariUnitToCocoa (via.padDiameter)
-      let r = CGRect (x: x - diameter / 2.0 , y: y - diameter / 2.0, width: diameter, height: diameter)
+      let r = NSRect (x: x - diameter / 2.0 , y: y - diameter / 2.0, width: diameter, height: diameter)
       let bp = EBBezierPath (ovalIn: r)
       result.append (bp)
     }

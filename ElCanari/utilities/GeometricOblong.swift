@@ -105,6 +105,38 @@ struct GeometricOblong {
 
   //····················································································································
 
+  func intersects (circle inCircle : GeometricCircle) -> Bool {
+    if !self.bounds.intersects (inCircle.bounds) {
+      return false
+    }else if self.circle1.intersects (circle: inCircle) {
+      return true
+    }else if self.circle2.intersects (circle: inCircle) {
+      return true
+    }else if self.geometricRect.intersects (circle: inCircle) {
+      return true
+    }else{
+      return false
+    }
+  }
+
+  //····················································································································
+//
+//  func intersects (rect inOther : GeometricRect) -> Bool {
+//    if !self.bounds.intersects (inOther.bounds) {
+//      return false
+//    }else if self.circle1.intersects (rect: inOther) {
+//      return true
+//    }else if self.circle2.intersects (rect: inOther) {
+//      return true
+//    }else if self.geometricRect.intersects (rect: inOther) {
+//      return true
+//    }else{
+//      return false
+//    }
+//  }
+
+  //····················································································································
+
   func intersects (oblong inOther : GeometricOblong) -> Bool {
     if !self.bounds.intersects (inOther.bounds) {
       return false
@@ -134,7 +166,9 @@ struct GeometricOblong {
   //····················································································································
 
   func intersects (rect inRect : GeometricRect) -> Bool {
-    if inRect.intersects (circle: self.circle1) {
+    if !self.bounds.intersects (inRect.bounds) {
+      return false
+    }else if inRect.intersects (circle: self.circle1) {
       return true
     }else if inRect.intersects (circle: self.circle2) {
       return true

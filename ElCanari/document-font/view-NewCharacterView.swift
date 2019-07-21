@@ -31,7 +31,7 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
     noteObjectAllocation (self)
     let width = ADDRESS_COLUMN_WIDTH + 16.0 * PLACEMENT_GRID
     let height = PLACEMENT_GRID * CGFloat (LINE_COUNT)
-    let newRect = CGRect (x:0.0, y:0.0, width: width, height: height)
+    let newRect = NSRect (x:0.0, y:0.0, width: width, height: height)
     self.frame.size = newRect.size
     self.bounds = newRect
   }
@@ -43,7 +43,7 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
     noteObjectAllocation (self)
     let width = ADDRESS_COLUMN_WIDTH + 16.0 * PLACEMENT_GRID
     let height = PLACEMENT_GRID * CGFloat (LINE_COUNT)
-    let newRect = CGRect (x:0.0, y:0.0, width: width, height: height)
+    let newRect = NSRect (x:0.0, y:0.0, width: width, height: height)
     self.frame.size = newRect.size
     self.bounds = newRect
   }
@@ -59,7 +59,7 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   override func awakeFromNib () { // Scroll view to display the first row
-    self.scroll (CGPoint (x:0.0, y:self.bounds.maxY))
+    self.scroll (NSPoint (x:0.0, y:self.bounds.maxY))
   }
 
   //····················································································································
@@ -78,8 +78,8 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  fileprivate func rectForCharacter (_ inCode : Int) -> CGRect {
-    return CGRect (
+  fileprivate func rectForCharacter (_ inCode : Int) -> NSRect {
+    return NSRect (
       x: ADDRESS_COLUMN_WIDTH + PLACEMENT_GRID * CGFloat (inCode % 16),
       y: PLACEMENT_GRID * CGFloat (LINE_COUNT - 1 - inCode / 16 - 2),
       width: PLACEMENT_GRID,
@@ -132,11 +132,11 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
       }
       let title = String (format: "%04X", (line + 2) * 16)
       let titleAttributedString = NSAttributedString (string: title, attributes: dict)
-      titleAttributedString.draw (at: CGPoint (x:5.0, y: y + 3.0))
+      titleAttributedString.draw (at: NSPoint (x:5.0, y: y + 3.0))
       var x = ADDRESS_COLUMN_WIDTH
       for idx in 0 ..< 16 {
         let code = (line + 2) * 16 + idx
-        let rChar = CGRect (x:x, y:y, width: PLACEMENT_GRID, height: PLACEMENT_GRID)
+        let rChar = NSRect (x:x, y:y, width: PLACEMENT_GRID, height: PLACEMENT_GRID)
         if let selectedCharacter = mSelectedCharacter, selectedCharacter == code {
           NSColor.lightGray.setFill ()
           NSBezierPath.fill (rChar)
@@ -148,7 +148,7 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
         let dict = [NSAttributedString.Key.foregroundColor : mImplementedCharacterSet.contains (code) ? NSColor.lightGray : NSColor.blue]
         let attributedString = NSAttributedString (string: title, attributes: dict)
         let size = attributedString.size ()
-        attributedString.draw (at: CGPoint (x:x + (PLACEMENT_GRID - size.width) / 2.0, y: y + 3.0))
+        attributedString.draw (at: NSPoint (x:x + (PLACEMENT_GRID - size.width) / 2.0, y: y + 3.0))
         x += PLACEMENT_GRID
       }
       line += 1

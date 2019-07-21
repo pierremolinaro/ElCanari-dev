@@ -12,12 +12,16 @@ extension EBGraphicView {
 
   func setIssue (_ inBezierPathes : [EBBezierPath], _ issueKind : CanariIssueKind) {
     if self.mIssueBezierPathes != inBezierPathes {
-      self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
+      if !self.issueBoundingBox.isEmpty {
+        self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
+      }
       self.mIssueBezierPathes = inBezierPathes
       self.mIssueKind = issueKind
       self.updateViewFrameAndBounds ()
-      self.scrollToVisible (self.issueBoundingBox)
-      self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
+      if !self.issueBoundingBox.isEmpty {
+        self.scrollToVisible (self.issueBoundingBox)
+        self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
+      }
     }
   }
 

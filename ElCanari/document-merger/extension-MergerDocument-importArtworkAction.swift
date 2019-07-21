@@ -30,11 +30,11 @@ extension MergerDocument {
       let VIEW_WIDTH : CGFloat = 600.0
       let MARGIN : CGFloat = 14.0
       let BUTTON_HEIGHT : CGFloat = 32.0
-      var rView = CGRect (x:0.0, y:0.0, width:VIEW_WIDTH, height:MARGIN)
+      var rView = NSRect (x:0.0, y:0.0, width:VIEW_WIDTH, height:MARGIN)
       let accessoryView = CanariViewWithBackground (frame: rView)
       for lib in libraries {
         let artworkPath = artworkLibraryPathForPath (lib)
-        let rButton = CGRect (x:MARGIN, y:rView.size.height, width:VIEW_WIDTH - 2.0 * MARGIN, height:BUTTON_HEIGHT)
+        let rButton = NSRect (x:MARGIN, y:rView.size.height, width:VIEW_WIDTH - 2.0 * MARGIN, height:BUTTON_HEIGHT)
         rView.size.height += BUTTON_HEIGHT + MARGIN
         let button = NSButton (frame: rButton)
         button.isEnabled = true

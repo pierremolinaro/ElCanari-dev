@@ -35,7 +35,7 @@ func transient_PackageOval_strokeBezierPath (
     bp.move (to: NSPoint (x: x, y: y))
     bp.line (to: NSPoint (x: x + width, y: y))
   }else{
-    let r = CGRect (x: x, y: y, width: width, height: height)
+    let r = NSRect (x: x, y: y, width: width, height: height)
     bp.appendOval (in: r)
   }
   return bp

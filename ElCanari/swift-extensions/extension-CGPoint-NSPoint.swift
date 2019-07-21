@@ -5,20 +5,20 @@
 import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION CGPoint
+//   EXTENSION NSPoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension CGPoint : Hashable {
+extension NSPoint : Hashable {
 
   //····················································································································
 
-  static func center (_ p1 : CGPoint, _ p2 : CGPoint) -> CGPoint {
-    return CGPoint (x: (p1.x + p2.x) / 2.0, y: (p1.y + p2.y) / 2.0)
+  static func center (_ p1 : NSPoint, _ p2 : NSPoint) -> NSPoint {
+    return NSPoint (x: (p1.x + p2.x) / 2.0, y: (p1.y + p2.y) / 2.0)
   }
 
   //····················································································································
 
-  static func distance (_ p1 : CGPoint, _ p2 : CGPoint) -> CGFloat {
+  static func distance (_ p1 : NSPoint, _ p2 : NSPoint) -> CGFloat {
     let dx = p1.x - p2.x
     let dy = p1.y - p2.y
     return sqrt (dx * dx + dy * dy)
@@ -26,7 +26,7 @@ extension CGPoint : Hashable {
 
   //····················································································································
 
-  func aligned (onGrid inGrid : CGFloat) -> CGPoint {
+  func aligned (onGrid inGrid : CGFloat) -> NSPoint {
     var p = self
     p.x = (p.x / inGrid).rounded (.toNearestOrAwayFromZero) * inGrid
     p.y = (p.y / inGrid).rounded (.toNearestOrAwayFromZero) * inGrid
@@ -51,7 +51,7 @@ extension CGPoint : Hashable {
 
   //····················································································································
 
-  static func product (_ p1 : CGPoint, _ p2 : CGPoint, _ p3 : CGPoint) -> CGFloat {
+  static func product (_ p1 : NSPoint, _ p2 : NSPoint, _ p3 : NSPoint) -> CGFloat {
     let dx2 = p2.x - p1.x
     let dy2 = p2.y - p1.y
     let dx3 = p3.x - p1.x
@@ -61,7 +61,7 @@ extension CGPoint : Hashable {
 
   //····················································································································
 
-  static func angleInRadian (_ p1 : CGPoint, _ p2 : CGPoint) -> CGFloat {
+  static func angleInRadian (_ p1 : NSPoint, _ p2 : NSPoint) -> CGFloat {
     let width = p2.x - p1.x
     let height = p2.y - p1.y
     var angle = atan2 (height, width) // Result in radian
@@ -73,7 +73,7 @@ extension CGPoint : Hashable {
 
   //····················································································································
 
-  static func angleInDegrees (_ p1 : CGPoint, _ p2 : CGPoint) -> CGFloat {
+  static func angleInDegrees (_ p1 : NSPoint, _ p2 : NSPoint) -> CGFloat {
     return self.angleInRadian (p1, p2) * 180.0 / CGFloat.pi
   }
 

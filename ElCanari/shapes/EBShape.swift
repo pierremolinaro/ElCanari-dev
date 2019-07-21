@@ -46,7 +46,7 @@ struct EBShape : Hashable {
   //····················································································································
 
   init (text inString: String,
-        _ inOrigin : CGPoint,
+        _ inOrigin : NSPoint,
         _ inTextAttributes : [NSAttributedString.Key : Any],
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment) {
@@ -56,7 +56,7 @@ struct EBShape : Hashable {
   //····················································································································
 
   init (textKnob inString : String,
-        _ inOrigin : CGPoint,
+        _ inOrigin : NSPoint,
         _ inFont : NSFont,
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment,
@@ -136,7 +136,7 @@ struct EBShape : Hashable {
   //····················································································································
 
   mutating func add (text inString: String,
-                     _ inOrigin : CGPoint,
+                     _ inOrigin : NSPoint,
                      _ inTextAttributes : [NSAttributedString.Key : Any],
                      _ inHorizontalAlignment : EBTextHorizontalAlignment,
                      _ inVerticalAlignment : EBTextVerticalAlignment) {
@@ -180,7 +180,7 @@ struct EBShape : Hashable {
   //····················································································································
 
   mutating func add (textKnob inString : String,
-                     _ inOrigin : CGPoint,
+                     _ inOrigin : NSPoint,
                      _ inFont : NSFont,
                      _ inHorizontalAlignment : EBTextHorizontalAlignment,
                      _ inVerticalAlignment : EBTextVerticalAlignment,

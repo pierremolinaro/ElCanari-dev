@@ -24,10 +24,10 @@ func transient_SymbolBezierCurve_selectionDisplay (
        _ self_cpy2 : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let p1  = CGPoint (x: canariUnitToCocoa (self_x1),   y: canariUnitToCocoa (self_y1))
-  let p2  = CGPoint (x: canariUnitToCocoa (self_x2),   y: canariUnitToCocoa (self_y2))
-  let cp1 = CGPoint (x: canariUnitToCocoa (self_cpx1), y: canariUnitToCocoa (self_cpy1))
-  let cp2 = CGPoint (x: canariUnitToCocoa (self_cpx2), y: canariUnitToCocoa (self_cpy2))
+  let p1  = NSPoint (x: canariUnitToCocoa (self_x1),   y: canariUnitToCocoa (self_y1))
+  let p2  = NSPoint (x: canariUnitToCocoa (self_x2),   y: canariUnitToCocoa (self_y2))
+  let cp1 = NSPoint (x: canariUnitToCocoa (self_cpx1), y: canariUnitToCocoa (self_cpy1))
+  let cp2 = NSPoint (x: canariUnitToCocoa (self_cpx2), y: canariUnitToCocoa (self_cpy2))
   var bp = EBBezierPath ()
   bp.move (to: p1)
   bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)

@@ -484,8 +484,8 @@ extension MergerDocument {
           let start = moduleTransform.transform (NSPoint (x: startX, y: startY))
           let end = moduleTransform.transform (NSPoint (x: endX, y: endY))
           if let packageLine = clippedSegmentEntity (
-            p1_mm: CGPoint (x: start.x, y: start.y),
-            p2_mm: CGPoint (x: end.x, y: end.y),
+            p1_mm: NSPoint (x: start.x, y: start.y),
+            p2_mm: NSPoint (x: end.x, y: end.y),
             width_mm: widthMM,
             clipRect_mm: ioTemporaryBoardModel.mBoardRect_mm,
             self.ebUndoManager,
@@ -713,7 +713,7 @@ func clippedSegmentEntity (p1_mm inP1 : NSPoint,
                            _ inUndoManager : EBUndoManager?,
                            file : String,
                            _ inLine : Int) -> SegmentEntity? {
-  let r : CGRect = inClipRect.insetBy (dx: inWith / 2.0, dy: inWith / 2.0)
+  let r : NSRect = inClipRect.insetBy (dx: inWith / 2.0, dy: inWith / 2.0)
   if let (p1, p2) = r.clippedSegment (p1: inP1, p2: inP2) {
     let segment = SegmentEntity (inUndoManager)
     segment.x1 = millimeterToCanariUnit (p1.x)
