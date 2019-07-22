@@ -18,7 +18,7 @@ entity NetClassInProject {
 
   transient Bool canRemove dependsFrom self.mNets.count ;
   transient String netUsage dependsFrom self.mNets.count ;
-  transient String trackWidth dependsFrom self.mTrackWidth, self.mTrackWidthUnit ;
+  transient String trackWidthString dependsFrom self.mTrackWidth, self.mTrackWidthUnit ;
   transient String viaHoleDiameter dependsFrom self.mViaHoleDiameter, self.mViaHoleDiameterUnit ;
   transient String viaPadDiameter dependsFrom self.mViaPadDiameter, self.mViaPadDiameterUnit ;
   

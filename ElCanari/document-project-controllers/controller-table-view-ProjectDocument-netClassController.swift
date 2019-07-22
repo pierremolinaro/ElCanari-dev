@@ -348,7 +348,7 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.trackWidth_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.trackWidthString_property, file: #file, line: #line)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "hole", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in

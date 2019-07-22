@@ -87,7 +87,7 @@ document ProjectDocument root ProjectRoot {
   tableViewController #netClassController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mNetClasses {
     column "name" EBTextObserverField $valueObserver self.mNetClassName
     column "netcolor" EBTextObserverField $backColor self.mNetClassColor
-    column "width" EBTextObserverField $valueObserver self.trackWidth
+    column "width" EBTextObserverField $valueObserver self.trackWidthString
     column "hole" EBTextObserverField $valueObserver self.viaHoleDiameter
     column "pad" EBTextObserverField $valueObserver self.viaPadDiameter
     column "used" EBTextObserverField $valueObserver self.netUsage

@@ -478,12 +478,12 @@ struct PadLocationAndSide : Hashable {
 
 struct ComponentPadDescriptor : Hashable {
    let padName : String
-   let pads : [PadLocationAndSide] // Master pad, then slave pads (if any)
+   let pads : [PadLocationAndSide] // Master pad (index 0), then slave pads (if any)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias ComponentPadDescriptorDictionary = [String : ComponentPadDescriptor]
+typealias ComponentPadDescriptorDictionary = [String : ComponentPadDescriptor] // Pad name
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -13,8 +13,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetClassInProject_trackWidth (
-       _ self_mTrackWidth : Int,             
+func transient_NetClassInProject_trackWidthString (
+       _ self_mTrackWidth : Int,                   
        _ self_mTrackWidthUnit : Int
 ) -> String {
 //--- START OF USER ZONE 2

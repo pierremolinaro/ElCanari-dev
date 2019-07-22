@@ -54,8 +54,8 @@ protocol NetClassInProject_mViaPadDiameterUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_trackWidth : class {
-  var trackWidth : String? { get }
+protocol NetClassInProject_trackWidthString : class {
+  var trackWidthString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -107,7 +107,7 @@ class NetClassInProject : EBManagedObject,
          NetClassInProject_mViaHoleDiameterUnit,
          NetClassInProject_mViaPadDiameter,
          NetClassInProject_mViaPadDiameterUnit,
-         NetClassInProject_trackWidth,
+         NetClassInProject_trackWidthString,
          NetClassInProject_viaHoleDiameter,
          NetClassInProject_viaPadDiameter,
          NetClassInProject_canRemove,
@@ -271,21 +271,21 @@ class NetClassInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: trackWidth
+  //   Transient property: trackWidthString
   //····················································································································
 
-  let trackWidth_property = EBTransientProperty_String ()
+  let trackWidthString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var trackWidth_property_selection : EBSelection <String> {
-    return self.trackWidth_property.prop
+  var trackWidthString_property_selection : EBSelection <String> {
+    return self.trackWidthString_property.prop
   }
 
   //····················································································································
 
-  var trackWidth : String? {
-    switch self.trackWidth_property_selection {
+  var trackWidthString : String? {
+    switch self.trackWidthString_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -459,8 +459,8 @@ class NetClassInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mNetClass_property.setProp (me) } },
       resetter: { inObject in inObject.mNetClass_property.setProp (nil) }
     )
-  //--- Atomic property: trackWidth
-    self.trackWidth_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: trackWidthString
+    self.trackWidthString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mTrackWidth_property_selection.kind ()
         kind &= unwSelf.mTrackWidthUnit_property_selection.kind ()
@@ -472,7 +472,7 @@ class NetClassInProject : EBManagedObject,
         case .single :
           switch (unwSelf.mTrackWidth_property_selection, unwSelf.mTrackWidthUnit_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_NetClassInProject_trackWidth (v0, v1))
+            return .single (transient_NetClassInProject_trackWidthString (v0, v1))
           default :
             return .empty
           }
@@ -481,8 +481,8 @@ class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mTrackWidth_property.addEBObserver (self.trackWidth_property)
-    self.mTrackWidthUnit_property.addEBObserver (self.trackWidth_property)
+    self.mTrackWidth_property.addEBObserver (self.trackWidthString_property)
+    self.mTrackWidthUnit_property.addEBObserver (self.trackWidthString_property)
   //--- Atomic property: viaHoleDiameter
     self.viaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -638,8 +638,8 @@ class NetClassInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mTrackWidth_property.removeEBObserver (self.trackWidth_property)
-    self.mTrackWidthUnit_property.removeEBObserver (self.trackWidth_property)
+    self.mTrackWidth_property.removeEBObserver (self.trackWidthString_property)
+    self.mTrackWidthUnit_property.removeEBObserver (self.trackWidthString_property)
     self.mViaHoleDiameter_property.removeEBObserver (self.viaHoleDiameter_property)
     self.mViaHoleDiameterUnit_property.removeEBObserver (self.viaHoleDiameter_property)
     self.mViaPadDiameter_property.removeEBObserver (self.viaPadDiameter_property)
@@ -731,12 +731,12 @@ class NetClassInProject : EBManagedObject,
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
-      "trackWidth",
-      idx: self.trackWidth_property.ebObjectIndex,
+      "trackWidthString",
+      idx: self.trackWidthString_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.trackWidth_property.mObserverExplorer,
-      valueExplorer: &self.trackWidth_property.mValueExplorer
+      observerExplorer: &self.trackWidthString_property.mObserverExplorer,
+      valueExplorer: &self.trackWidthString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "viaHoleDiameter",
