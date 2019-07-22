@@ -64,7 +64,7 @@ extension CustomizedProjectDocument {
       netClasses.append (nc)
     }
   //--- Enumerate components
-    var packageDictionary = [DevicePackageInProject : Int] ()
+    var packageDictionary = [PackageDictionaryKey : Int] ()
     var packageArrayForRouting = [PackageTypeForRouting] ()
     var componentArrayForRouting = [ComponentForRouting] ()
     var deviceDictionary = [DeviceDictionaryKey : Int] ()
@@ -196,7 +196,7 @@ fileprivate func indexForDevice (_ inDevice : DeviceInProject,
                                  _ inSelectedPackage : DevicePackageInProject,
                                  _ ioDeviceDictionary : inout [DeviceDictionaryKey : Int],
                                  _ ioDeviceArrayForRouting : inout [DeviceForRouting],
-                                 _ ioPackageDictionary : inout [DevicePackageInProject : Int],
+                                 _ ioPackageDictionary : inout [PackageDictionaryKey : Int],
                                  _ ioPackageArrayForRouting : inout [PackageTypeForRouting],
                                  _ ioPadTypeArrayForRouting : inout [MasterPadForRouting]) -> Int {
   let key = DeviceDictionaryKey (device: inDevice, package: inSelectedPackage)
@@ -206,6 +206,7 @@ fileprivate func indexForDevice (_ inDevice : DeviceInProject,
     let idx = ioDeviceArrayForRouting.count
     ioDeviceDictionary [key] = idx
     let packageIndex = indexForPackage (
+      inDevice,
       inSelectedPackage,
       &ioPackageDictionary,
       &ioPackageArrayForRouting,
@@ -219,12 +220,12 @@ fileprivate func indexForDevice (_ inDevice : DeviceInProject,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func indexForPackage (_ inPackageType : DevicePackageInProject,
-                                  _ ioPackageDictionary : inout [DevicePackageInProject : Int],
+fileprivate func indexForPackage (_ inDevice : DeviceInProject,
+                                  _ inSelectedPackage : DevicePackageInProject,
+                                  _ ioPackageDictionary : inout [PackageDictionaryKey : Int],
                                   _ ioPackageArrayForRouting : inout [PackageTypeForRouting],
-                                  _ ioPadTypeArrayForRouting : inout [MasterPadForRouting]
-                                   ) -> Int {
-  let key = inPackageType
+                                  _ ioPadTypeArrayForRouting : inout [MasterPadForRouting]) -> Int {
+  let key = PackageDictionaryKey (device: inDevice, package: inSelectedPackage)
   if let idx = ioPackageDictionary [key] {
     return idx
   }else{
@@ -232,8 +233,8 @@ fileprivate func indexForPackage (_ inPackageType : DevicePackageInProject,
     let idx = ioPackageArrayForRouting.count
     ioPackageDictionary [key] = idx
   //--- Pad array
-    let padDictionary = inPackageType.packagePadDictionary!
-    let componentCenter = padDictionary.padsRect.center
+    let padDictionary = inSelectedPackage.packagePadDictionary!
+    let deviceCenter = padDictionary.padsRect.center
     var padArrayForRouting = [PadStackForRouting] ()
     for (_, masterPad) in padDictionary {
     //--- Enter master pad
@@ -247,16 +248,16 @@ fileprivate func indexForPackage (_ inPackageType : DevicePackageInProject,
       let psr = PadStackForRouting (
         name: masterPad.name,
         masterPad: masterPadForRouting,
-        centerXmm: canariUnitToMillimeter (masterPad.center.x - componentCenter.x),
-        centerYmm: canariUnitToMillimeter (masterPad.center.y - componentCenter.y),
+        centerXmm: canariUnitToMillimeter (masterPad.center.x - deviceCenter.x),
+        centerYmm: canariUnitToMillimeter (masterPad.center.y - deviceCenter.y)
     //    slavePadStack: slavePadStack,
-        netIndex: nil
+    //    netIndex: nil
       )
       padArrayForRouting.append (psr)
     }
   //--- Enter in package array
     let pfr = PackageTypeForRouting (
-      typeName: inPackageType.mPackageName,
+      typeName: inSelectedPackage.mPackageName,
       padArray: padArrayForRouting.sorted { $0.name < $1.name }
     )
     ioPackageArrayForRouting.append (pfr)
@@ -400,6 +401,13 @@ struct DeviceDictionaryKey : Hashable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+struct PackageDictionaryKey : Hashable {
+  let device : DeviceInProject
+  let package : DevicePackageInProject
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 struct DeviceForRouting {
   let name : String
   let packageIndex : Int
@@ -450,7 +458,7 @@ struct PadStackForRouting {
   let centerXmm : CGFloat // In mm
   let centerYmm : CGFloat // In mm
 //  slavePadStack:slavePadStack
-  let netIndex : Int? // nil means no net
+//  let netIndex : Int? // nil means no net
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -3318,7 +3318,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="125.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="126" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3332,11 +3332,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="125.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="126" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="125.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="126" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3352,7 +3352,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="202" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="201.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3366,11 +3366,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="597" y="1" width="202" height="17"/>
+                                                <rect key="frame" x="597.5" y="1" width="201.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="202" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="201.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -7872,7 +7872,7 @@ Gw
                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="bVV-9o-paz">
                         <rect key="frame" x="147" y="204" width="114" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Net Class:" id="Eot-8x-wo3">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Net Class" id="Eot-8x-wo3">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -7904,7 +7904,7 @@ Gw
                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="7OQ-Qg-q7s">
                         <rect key="frame" x="147" y="151" width="184" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Wire Color in Schematics:" id="Ko8-2g-Bcl">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Wire Color in Schematics" id="Ko8-2g-Bcl">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -7940,7 +7940,7 @@ Gw
                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="7IL-Ap-PWU">
                         <rect key="frame" x="147" y="121" width="126" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Wire Width:" id="PC8-M1-OUr">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Track Width" id="PC8-M1-OUr">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -7977,7 +7977,7 @@ Gw
                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="BrD-Mu-iEf">
                         <rect key="frame" x="147" y="93" width="126" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Via Hole Diameter:" id="NfN-fp-fOr">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Via Hole Diameter" id="NfN-fp-fOr">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -8014,7 +8014,7 @@ Gw
                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="6oG-ot-J9F">
                         <rect key="frame" x="147" y="67" width="126" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Via Pad Diameter:" id="6aY-0v-hqE">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Via Pad Diameter" id="6aY-0v-hqE">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
