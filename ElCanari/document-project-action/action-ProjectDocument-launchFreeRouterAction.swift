@@ -16,7 +16,7 @@ extension ProjectDocument {
 //--- START OF USER ZONE 2
         if let freeRouterApplication : String = Bundle.main.path (forResource: "freerouter-pm", ofType: "app") {
           // Swift.print (freeRouterApplication)
-          let ok = NSWorkspace.shared.launchApplication (freeRouterApplication)
+          _ = NSWorkspace.shared.launchApplication (freeRouterApplication)
         }else{
 
         }
