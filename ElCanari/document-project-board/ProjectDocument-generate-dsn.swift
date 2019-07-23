@@ -38,7 +38,6 @@ extension CustomizedProjectDocument {
   //--- Border
     let boardLimitExtend = -self.rootObject.mBoardLimitsWidth / 2
     let boardBoundBox = self.rootObject.boardBoundBox!.insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
-    let boardClearanceInMM = canariUnitToMillimeter (self.rootObject.mBoardClearance + self.rootObject.mBoardLimitsWidth)
     let signalPolygonVertices = self.buildSignalPolygon ()
   //--- Restrict rectangles
     var restrictRectangles = [RestrictRectangleForRouting] ()
@@ -72,7 +71,7 @@ extension CustomizedProjectDocument {
     var packageDictionary = [PackageDictionaryKey : Int] ()
     var packageArrayForRouting = [PackageTypeForRouting] ()
     var componentArrayForRouting = [ComponentForRouting] ()
-    var padTypeArrayForRouting = [MasterPadForRouting] ()
+    var padTypeArrayForRouting = [PadTypeForRouting] ()
     for component in self.rootObject.mComponents {
       if component.mRoot != nil { // Placed on board
         let device = component.mDevice!
@@ -116,7 +115,7 @@ extension CustomizedProjectDocument {
     s += "  )\n"
     s += "  (resolution mm 300)\n"
     s += "  (structure\n"
-    addBoardBoundary (&s, boardBoundBox, signalPolygonVertices, boardClearanceInMM)
+    addBoardBoundary (&s, boardBoundBox, signalPolygonVertices)
     addSnapAngle (&s)
     addViaClasses (&s, netClasses)
     s += "    (control (via_at_smd off))\n"
@@ -177,7 +176,7 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
                                   _ inSelectedPackage : DevicePackageInProject,
                                   _ ioPackageDictionary : inout [PackageDictionaryKey : Int],
                                   _ ioPackageArrayForRouting : inout [PackageTypeForRouting],
-                                  _ ioPadTypeArrayForRouting : inout [MasterPadForRouting]) -> Int {
+                                  _ ioPadTypeArrayForRouting : inout [PadTypeForRouting]) -> Int {
   let key = PackageDictionaryKey (device: inDevice, package: inSelectedPackage)
   if let idx = ioPackageDictionary [key] {
     return idx
@@ -188,23 +187,50 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
   //--- Pad array
     let padDictionary = inSelectedPackage.packagePadDictionary!
     let deviceCenter = padDictionary.padsRect.center
-    var padArrayForRouting = [PadStackForRouting] ()
+    var padArrayForRouting = [PadInstanceForRouting] ()
     for (_, masterPad) in padDictionary {
     //--- Enter master pad
-      let masterPadForRouting = findOrAddMasterPad (
+      let masterPadForRouting = findOrAddPadType (
         canariWidth: masterPad.padSize.width,
         canariHeight: masterPad.padSize.height,
-        style: masterPad.style,
+        onFrontSide: true,
+        onBackSide: masterPad.style == .traversing,
         shape: masterPad.shape,
         &ioPadTypeArrayForRouting
       )
-      let psr = PadStackForRouting (
+      let psr = PadInstanceForRouting (
         name: masterPad.name,
         masterPad: masterPadForRouting,
         centerXmm: canariUnitToMillimeter (masterPad.center.x - deviceCenter.x),
         centerYmm: canariUnitToMillimeter (masterPad.center.y - deviceCenter.y)
       )
       padArrayForRouting.append (psr)
+    //--- Enter slave pads
+      for slavePad in masterPad.slavePads {
+        let onFrontSide : Bool
+        let onBackSide : Bool
+        switch slavePad.style {
+        case .bottomSide : onFrontSide = false ; onBackSide = true
+        case .topSide    : onFrontSide = true  ; onBackSide = false
+        case .traversing : onFrontSide = true  ; onBackSide = true
+        }
+      //--- Enter slave pad
+        let slavePadForRouting = findOrAddPadType (
+          canariWidth: slavePad.padSize.width,
+          canariHeight: slavePad.padSize.height,
+          onFrontSide: onFrontSide,
+          onBackSide: onBackSide,
+          shape: slavePad.shape,
+          &ioPadTypeArrayForRouting
+        )
+        let psr = PadInstanceForRouting (
+          name: masterPad.name, // + ":\(slavePadIndex)",
+          masterPad: slavePadForRouting,
+          centerXmm: canariUnitToMillimeter (slavePad.center.x - deviceCenter.x),
+          centerYmm: canariUnitToMillimeter (slavePad.center.y - deviceCenter.y)
+        )
+        padArrayForRouting.append (psr)
+      }
     }
   //--- Enter in package array
     let pfr = PackageTypeForRouting (
@@ -219,24 +245,26 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func findOrAddMasterPad (canariWidth inWidth : Int,
-                                     canariHeight inHeight : Int,
-                                     style inStyle : PadStyle,
-                                     shape inShape : PadShape,
-                                     _ ioPadTypeArrayForRouting : inout [MasterPadForRouting]) -> MasterPadForRouting {
+fileprivate func findOrAddPadType (canariWidth inWidth : Int,
+                                   canariHeight inHeight : Int,
+                                   onFrontSide inFrontSide : Bool,
+                                   onBackSide  inBackSide : Bool,
+                                   shape inShape : PadShape,
+                                   _ ioPadTypeArrayForRouting : inout [PadTypeForRouting]) -> PadTypeForRouting {
 //--- Search in existing pads
   for mp in ioPadTypeArrayForRouting {
-    if ((mp.canariWidth == inWidth) && (mp.canariHeight == inHeight) && (mp.style == inStyle) && (mp.shape == inShape)) {
+    if ((mp.canariWidth == inWidth) && (mp.canariHeight == inHeight) && (mp.onFrontSide == inFrontSide)  && (mp.onBackSide == inBackSide) && (mp.shape == inShape)) {
       return mp
     }
   }
 //--- If not found, create it
-  let newPad = MasterPadForRouting (
+  let newPad = PadTypeForRouting (
     name: "ps\(ioPadTypeArrayForRouting.count)",
     canariWidth: inWidth,
     canariHeight: inHeight,
     shape: inShape,
-    style: inStyle
+    onFrontSide: inFrontSide,
+    onBackSide: inBackSide
   )
   ioPadTypeArrayForRouting.append (newPad)
   return newPad
@@ -297,38 +325,27 @@ struct ComponentForRouting {
 
 struct PackageTypeForRouting {
   let typeName : String
-  let padArray : [PadStackForRouting]
+  let padArray : [PadInstanceForRouting]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct PadStackForRouting {
+struct PadInstanceForRouting {
   let name : String
-  let masterPad : MasterPadForRouting
+  let masterPad : PadTypeForRouting
   let centerXmm : CGFloat // In mm
   let centerYmm : CGFloat // In mm
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct PadElementForRouting {
-  let centerX : Int
-  let centerY : Int
-  let width : Int
-  let height : Int
-  let shape : PadShape
-  let side : ComponentSide
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct MasterPadForRouting {
+struct PadTypeForRouting {
   let name : String
   let canariWidth  : Int
   let canariHeight : Int
   let shape : PadShape
-  let style : PadStyle
+  let onFrontSide : Bool
+  let onBackSide  : Bool
 
   //····················································································································
 
@@ -340,15 +357,18 @@ struct MasterPadForRouting {
     case .rect :
       shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
     case .round :
-      if halfWidth < halfHeight {
-        shapeString = "(path \(inSide) \(halfWidth * 2.0) 0 \(halfWidth - halfHeight) 0 \(halfHeight - halfWidth) (aperture_type round))"
-  //      shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
-      }else if halfWidth > halfHeight {
-        shapeString = "(path \(inSide) \(halfWidth * 2.0) \(halfWidth - halfHeight) 0 \(halfHeight - halfWidth) 0 (aperture_type round))"
-//        shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
-      }else{
+      if halfWidth == halfHeight {
         shapeString = "(circle \(inSide) \(halfWidth * 2.0) 0 0)"
+      }else{
+        shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
       }
+//      if halfWidth < halfHeight {
+//        shapeString = "(path \(inSide) \(halfWidth * 2.0) 0 \(halfWidth - halfHeight) 0 \(halfHeight - halfWidth) (aperture_type round))"
+//      }else if halfWidth > halfHeight {
+//        shapeString = "(path \(inSide) \(halfWidth * 2.0) \(halfWidth - halfHeight) 0 \(halfHeight - halfWidth) 0 (aperture_type round))"
+//      }else{
+//        shapeString = "(circle \(inSide) \(halfWidth * 2.0) 0 0)"
+//      }
     case .octo :
       let s2 : CGFloat = sqrt (2.0)
       let w = halfWidth * 2.0
@@ -372,12 +392,6 @@ struct MasterPadForRouting {
       s += " \(vertices [0].x) \(vertices [0].y)" // Close path
       s += ")"
       shapeString = s
-//      if halfWidth < halfHeight {
-//        shapeString = "(path \(inSide) \(halfWidth * 2.0) 0 \(halfWidth - halfHeight) 0 \(halfHeight - halfWidth))"
-//      }else{
-//        shapeString = "(path \(inSide) \(halfHeight * 2.0) \(halfWidth - halfHeight) \(halfHeight - halfWidth) 0)"
-//      }
-  //    shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
     }
     return shapeString
   }
@@ -425,14 +439,13 @@ fileprivate func addViaPadStackLibrary (_ ioString : inout String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addComponentPadStackLibrary (_ ioString : inout String,
-                                              _ inPadTypeArrayForRouting : [MasterPadForRouting]) {
+                                              _ inPadTypeArrayForRouting : [PadTypeForRouting]) {
   for pad in inPadTypeArrayForRouting {
     ioString += "    (padstack \"\(pad.name)\"\n"
-    switch pad.style {
-    case .surface :
+    if pad.onFrontSide {
       ioString += "      (shape \(pad.padStringFor (side: FRONT_SIDE)))\n"
-    case .traversing :
-      ioString += "      (shape \(pad.padStringFor (side: FRONT_SIDE)))\n"
+    }
+    if pad.onBackSide {
       ioString += "      (shape \(pad.padStringFor (side: BACK_SIDE)))\n"
     }
     ioString += "    )\n"
@@ -456,8 +469,7 @@ fileprivate func addDeviceLibrary (_ ioString : inout String,
 
 fileprivate func addBoardBoundary (_ ioString : inout String,
                                    _ inBoardBoundBox : CanariRect,
-                                   _ inSignalPolygonVertices : [NSPoint], // In millimeters
-                                   _ inBoardClearanceInMM : CGFloat) {
+                                   _ inSignalPolygonVertices : [NSPoint]) { // In millimeters
   let bbLeft = canariUnitToMillimeter (inBoardBoundBox.origin.x)
   let bbBottom = canariUnitToMillimeter (inBoardBoundBox.origin.y)
   let bbRight = bbLeft + canariUnitToMillimeter (inBoardBoundBox.size.width)
@@ -466,11 +478,11 @@ fileprivate func addBoardBoundary (_ ioString : inout String,
   ioString += "      (rect pcb \(bbLeft) \(bbBottom) \(bbRight) \(bbTop))\n"
   ioString += "    )\n"
   ioString += "    (boundary\n"
-  ioString += "      (path signal \(inBoardClearanceInMM)"
+  ioString += "      (polygon signal 0\n"
   for p in inSignalPolygonVertices {
-    ioString += " \(p.x) \(p.y)"
+    ioString += "        \(p.x) \(p.y)\n"
   }
-  ioString += ")\n"
+  ioString += "      )\n"
   ioString += "    )\n"
 }
 

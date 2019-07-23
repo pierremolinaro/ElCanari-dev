@@ -545,7 +545,7 @@ struct EBBezierPath : Hashable {
     let savedDefaultFlatness = NSBezierPath.defaultFlatness
     NSBezierPath.defaultFlatness = inFlatness
     let flattenedBP = self.mPath.flattened
-
+    NSBezierPath.defaultFlatness = savedDefaultFlatness
     var result = [NSPoint] ()
     var curvePoints = [NSPoint] (repeating: .zero, count: 3)
     for idx in 0 ..< flattenedBP.elementCount {
@@ -563,7 +563,6 @@ struct EBBezierPath : Hashable {
          ()
       }
     }
-    NSBezierPath.defaultFlatness = savedDefaultFlatness
     return result
   }
 
