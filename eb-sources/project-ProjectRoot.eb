@@ -1,4 +1,16 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum AutorouterPreferredDirections {
+  vFronthBack, hFrontVback
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum AutorouterSnapAngle {
+  rectilinear, octolinear, anyAngle
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //     P R O J E C T    R O O T
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -6,6 +18,9 @@ entity ProjectRoot {
 //--- Board
   toMany BoardObject mBoardObjects inverse toOne mRoot ;
 
+  property AutorouterPreferredDirections mAutoRouterPreferredDirections default vFronthBack ;
+  property AutorouterSnapAngle mAutorouterSnapAngle default octolinear ;
+  
   property Int mLayoutClearance default 45_720 ; // 20 mil
   property Int mLayoutClearanceUnit default 2_286 ; // mil
 

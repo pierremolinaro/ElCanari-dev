@@ -15,6 +15,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   internal override func updateObservers (removedSet inRemovedSet : Set <ProjectRoot>, addedSet inAddedSet : Set <ProjectRoot>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
+    self.removeEBObserversOf_mAutoRouterPreferredDirections_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mAutorouterSnapAngle_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mLayoutClearance_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mLayoutClearanceUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardSelectedInspector_fromElementsOfSet (inRemovedSet) // Stored property
@@ -94,6 +96,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_schematicStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectedSheetObjects_fromElementsOfSet (inAddedSet) // ToMany proxy
   //--- Add observers to added objects
+    self.addEBObserversOf_mAutoRouterPreferredDirections_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mAutorouterSnapAngle_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mLayoutClearance_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mLayoutClearanceUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardSelectedInspector_toElementsOfSet (inAddedSet) // Stored property
@@ -172,6 +176,120 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_schematicStatusMessage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_schematicStatusImage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectedSheetObjects_toElementsOfSet (inAddedSet) // ToMany proxy
+  }
+
+  //····················································································································
+  //   Observers of 'mAutoRouterPreferredDirections' stored property
+  //····················································································································
+
+  private var mObserversOf_mAutoRouterPreferredDirections = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mAutoRouterPreferredDirections (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mAutoRouterPreferredDirections.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAutoRouterPreferredDirections_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mAutoRouterPreferredDirections (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mAutoRouterPreferredDirections.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAutoRouterPreferredDirections_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mAutoRouterPreferredDirections_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mAutoRouterPreferredDirections.apply { (_ observer : EBEvent) in
+        managedObject.mAutoRouterPreferredDirections_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mAutoRouterPreferredDirections_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mAutoRouterPreferredDirections.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mAutoRouterPreferredDirections_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mAutorouterSnapAngle' stored property
+  //····················································································································
+
+  private var mObserversOf_mAutorouterSnapAngle = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mAutorouterSnapAngle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mAutorouterSnapAngle.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAutorouterSnapAngle_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mAutorouterSnapAngle (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mAutorouterSnapAngle.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAutorouterSnapAngle_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mAutorouterSnapAngle_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mAutorouterSnapAngle.apply { (_ observer : EBEvent) in
+        managedObject.mAutorouterSnapAngle_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mAutorouterSnapAngle_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mAutorouterSnapAngle.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mAutorouterSnapAngle_property.removeEBObserver (observer)
+      }
+    }
   }
 
   //····················································································································
@@ -5120,6 +5238,8 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
       }
       self.setProp (objectArray)
     }
+    self.addEBObserverOf_mAutoRouterPreferredDirections (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mAutorouterSnapAngle (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLayoutClearance (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLayoutClearanceUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardSelectedInspector (self.mObserverForWritingPreferences)

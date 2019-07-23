@@ -6,6 +6,18 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mAutoRouterPreferredDirections : class {
+  var mAutoRouterPreferredDirections : AutorouterPreferredDirections { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mAutorouterSnapAngle : class {
+  var mAutorouterSnapAngle : AutorouterSnapAngle { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mLayoutClearance : class {
   var mLayoutClearance : Int { get }
 }
@@ -477,6 +489,8 @@ protocol ProjectRoot_schematicStatusImage : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ProjectRoot : EBManagedObject,
+         ProjectRoot_mAutoRouterPreferredDirections,
+         ProjectRoot_mAutorouterSnapAngle,
          ProjectRoot_mLayoutClearance,
          ProjectRoot_mLayoutClearanceUnit,
          ProjectRoot_mBoardSelectedInspector,
@@ -555,6 +569,40 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_boardBackground,
          ProjectRoot_schematicStatusMessage,
          ProjectRoot_schematicStatusImage {
+
+  //····················································································································
+  //   Atomic property: mAutoRouterPreferredDirections
+  //····················································································································
+
+  let mAutoRouterPreferredDirections_property = EBStoredProperty_AutorouterPreferredDirections (defaultValue: AutorouterPreferredDirections.vFronthBack)
+
+  //····················································································································
+
+  var mAutoRouterPreferredDirections : AutorouterPreferredDirections {
+    get { return self.mAutoRouterPreferredDirections_property.propval }
+    set { self.mAutoRouterPreferredDirections_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mAutoRouterPreferredDirections_property_selection : EBSelection <AutorouterPreferredDirections> { return self.mAutoRouterPreferredDirections_property.prop }
+
+  //····················································································································
+  //   Atomic property: mAutorouterSnapAngle
+  //····················································································································
+
+  let mAutorouterSnapAngle_property = EBStoredProperty_AutorouterSnapAngle (defaultValue: AutorouterSnapAngle.octolinear)
+
+  //····················································································································
+
+  var mAutorouterSnapAngle : AutorouterSnapAngle {
+    get { return self.mAutorouterSnapAngle_property.propval }
+    set { self.mAutorouterSnapAngle_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mAutorouterSnapAngle_property_selection : EBSelection <AutorouterSnapAngle> { return self.mAutorouterSnapAngle_property.prop }
 
   //····················································································································
   //   Atomic property: mLayoutClearance
@@ -2280,6 +2328,10 @@ class ProjectRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- Atomic property: mAutoRouterPreferredDirections
+    self.mAutoRouterPreferredDirections_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mAutorouterSnapAngle
+    self.mAutorouterSnapAngle_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mLayoutClearance
     self.mLayoutClearance_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mLayoutClearanceUnit
@@ -3276,6 +3328,22 @@ class ProjectRoot : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
+      "mAutoRouterPreferredDirections",
+      idx: self.mAutoRouterPreferredDirections_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mAutoRouterPreferredDirections_property.mObserverExplorer,
+      valueExplorer: &self.mAutoRouterPreferredDirections_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mAutorouterSnapAngle",
+      idx: self.mAutorouterSnapAngle_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mAutorouterSnapAngle_property.mObserverExplorer,
+      valueExplorer: &self.mAutorouterSnapAngle_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mLayoutClearance",
       idx: self.mLayoutClearance_property.ebObjectIndex,
       y: &y,
@@ -3958,6 +4026,12 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: mAutoRouterPreferredDirections
+    self.mAutoRouterPreferredDirections_property.mObserverExplorer = nil
+    self.mAutoRouterPreferredDirections_property.mValueExplorer = nil
+  //--- Atomic property: mAutorouterSnapAngle
+    self.mAutorouterSnapAngle_property.mObserverExplorer = nil
+    self.mAutorouterSnapAngle_property.mValueExplorer = nil
   //--- Atomic property: mLayoutClearance
     self.mLayoutClearance_property.mObserverExplorer = nil
     self.mLayoutClearance_property.mValueExplorer = nil
@@ -4157,6 +4231,10 @@ class ProjectRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mAutoRouterPreferredDirections
+    self.mAutoRouterPreferredDirections_property.storeIn (dictionary: ioDictionary, forKey:"mAutoRouterPreferredDirections")
+  //--- Atomic property: mAutorouterSnapAngle
+    self.mAutorouterSnapAngle_property.storeIn (dictionary: ioDictionary, forKey:"mAutorouterSnapAngle")
   //--- Atomic property: mLayoutClearance
     self.mLayoutClearance_property.storeIn (dictionary: ioDictionary, forKey:"mLayoutClearance")
   //--- Atomic property: mLayoutClearanceUnit
@@ -4367,6 +4445,10 @@ class ProjectRoot : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mAutoRouterPreferredDirections
+    self.mAutoRouterPreferredDirections_property.readFrom (dictionary: inDictionary, forKey:"mAutoRouterPreferredDirections")
+  //--- Atomic property: mAutorouterSnapAngle
+    self.mAutorouterSnapAngle_property.readFrom (dictionary: inDictionary, forKey:"mAutorouterSnapAngle")
   //--- Atomic property: mLayoutClearance
     self.mLayoutClearance_property.readFrom (dictionary: inDictionary, forKey:"mLayoutClearance")
   //--- Atomic property: mLayoutClearanceUnit

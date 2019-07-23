@@ -902,6 +902,10 @@
 		CF61BA3821CCEA66000CC5EF /* action-PackageDocument-programHelpAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61BA3721CCEA66000CC5EF /* action-PackageDocument-programHelpAction.swift */; };
 		CF61BA3921CCEA66000CC5EF /* action-PackageDocument-programHelpAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61BA3721CCEA66000CC5EF /* action-PackageDocument-programHelpAction.swift */; };
 		CF6436162104ED960020988A /* transient-BoardModel-imageForModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6436152104ED950020988A /* transient-BoardModel-imageForModel.swift */; };
+		CF644E1122E7560C004B7ED3 /* enum-AutorouterPreferredDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF644E1022E7560B004B7ED3 /* enum-AutorouterPreferredDirections.swift */; };
+		CF644E1222E7560C004B7ED3 /* enum-AutorouterPreferredDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF644E1022E7560B004B7ED3 /* enum-AutorouterPreferredDirections.swift */; };
+		CF644E1422E75744004B7ED3 /* enum-AutorouterSnapAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF644E1322E75744004B7ED3 /* enum-AutorouterSnapAngle.swift */; };
+		CF644E1522E75744004B7ED3 /* enum-AutorouterSnapAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF644E1322E75744004B7ED3 /* enum-AutorouterSnapAngle.swift */; };
 		CF64AFA4225B78C100E40C83 /* extension-ProjectDocument-devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */; };
 		CF64AFA5225B78C100E40C83 /* extension-ProjectDocument-devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */; };
 		CF64AFA6225B78C100E40C83 /* extension-ProjectDocument-fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA3225B78C100E40C83 /* extension-ProjectDocument-fonts.swift */; };
@@ -2664,6 +2668,8 @@
 		CF619DFE20ED0DB40024F387 /* transient-BoardModel-instanceCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-instanceCount.swift"; sourceTree = "<group>"; };
 		CF61BA3721CCEA66000CC5EF /* action-PackageDocument-programHelpAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-PackageDocument-programHelpAction.swift"; sourceTree = "<group>"; };
 		CF6436152104ED950020988A /* transient-BoardModel-imageForModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-imageForModel.swift"; sourceTree = "<group>"; };
+		CF644E1022E7560B004B7ED3 /* enum-AutorouterPreferredDirections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-AutorouterPreferredDirections.swift"; sourceTree = "<group>"; };
+		CF644E1322E75744004B7ED3 /* enum-AutorouterSnapAngle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-AutorouterSnapAngle.swift"; sourceTree = "<group>"; };
 		CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-devices.swift"; sourceTree = "<group>"; };
 		CF64AFA3225B78C100E40C83 /* extension-ProjectDocument-fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-fonts.swift"; sourceTree = "<group>"; };
 		CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-add-components.swift"; sourceTree = "<group>"; };
@@ -4430,6 +4436,7 @@
 		CFB1DAFE2282D2FB005F9811 /* document — project — entities */ = {
 			isa = PBXGroup;
 			children = (
+				CF644E1322E75744004B7ED3 /* enum-AutorouterSnapAngle.swift */,
 				CFD5AC8B22D382570031BD9E /* entity-BoardConnector.swift */,
 				CFA4D55222D36B69007992CD /* entity-BoardLine.swift */,
 				CF470CD322AA4BD700D0EA60 /* entity-BoardObject.swift */,
@@ -4458,6 +4465,7 @@
 				CFB1DB0C2282D31F005F9811 /* entity-SchematicObject.swift */,
 				CFB1DB072282D31E005F9811 /* entity-SheetInProject.swift */,
 				CFB1DB102282D31F005F9811 /* entity-WireInSchematic.swift */,
+				CF644E1022E7560B004B7ED3 /* enum-AutorouterPreferredDirections.swift */,
 				CFA4D55322D36B6A007992CD /* enum-BoardLineLayer.swift */,
 				CF0432BE22B649A70016EDE0 /* enum-BoardTextLayer.swift */,
 				CFCCB35322B7C1D400301DF2 /* enum-BoardTextVerticalAlignment.swift */,
@@ -5532,6 +5540,7 @@
 				CF2A01F721DE7C4200F3A379 /* transient-PackageSlavePad-padNumberDisplay.swift in Sources */,
 				CF4B39CD21D40F8F001217C6 /* transient-PackageSlavePad-padName.swift in Sources */,
 				CFE53B7222A03828001150B2 /* transient-PointInSchematic-symbolRotation.swift in Sources */,
+				CF644E1422E75744004B7ED3 /* enum-AutorouterSnapAngle.swift in Sources */,
 				CFA43015229AEB69000AA8C8 /* tomany-PackageSegment.swift in Sources */,
 				CF71F92A1B3EA3DF00FB5049 /* EBTextField.swift in Sources */,
 				CF3E2DF020EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift in Sources */,
@@ -6149,6 +6158,7 @@
 				CFEAAD6D2231827C00F69A12 /* action-DeviceDocument-resetSelectedSymbolVersion.swift in Sources */,
 				CF30CDE321C5709800CFE9CC /* transient-PackagePad-issues.swift in Sources */,
 				CFF5C1A422DCACE900CEC1BA /* transient-BoardConnector-netClassName.swift in Sources */,
+				CF644E1122E7560C004B7ED3 /* enum-AutorouterPreferredDirections.swift in Sources */,
 				CFA42FA8229AEAEC000AA8C8 /* toone-SegmentForFontCharacter.swift in Sources */,
 				CF35A54C21A825BC00A0E500 /* extension-String.swift in Sources */,
 				CFB1DB352282D31F005F9811 /* entity-DeviceInProject.swift in Sources */,
@@ -6575,6 +6585,7 @@
 				CFA42FC9229AEB0A000AA8C8 /* toone-MergerRoot.swift in Sources */,
 				CF6E148221CD151C008E2180 /* selectionController-PackageDocument-mPackageZoneSelectionController.swift in Sources */,
 				CF001F7721F8B1940091518E /* func-getSystemProxy.swift in Sources */,
+				CF644E1522E75744004B7ED3 /* enum-AutorouterSnapAngle.swift in Sources */,
 				CF358EED22296F5100EDE173 /* extension-DeviceDocument.swift in Sources */,
 				CFBCE78922D3ACA300DC3505 /* extension-BoardText.swift in Sources */,
 				CF853E51224911C900FA57CD /* transient-FontCharacter-issues.swift in Sources */,
@@ -7192,6 +7203,7 @@
 				CF30CDE421C5709800CFE9CC /* transient-PackagePad-issues.swift in Sources */,
 				CF35A54D21A825BC00A0E500 /* extension-String.swift in Sources */,
 				CFF5C1A522DCACE900CEC1BA /* transient-BoardConnector-netClassName.swift in Sources */,
+				CF644E1222E7560C004B7ED3 /* enum-AutorouterPreferredDirections.swift in Sources */,
 				CFF5EF0722269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift in Sources */,
 				CFA43084229AEB96000AA8C8 /* tomany-ProjectRoot.swift in Sources */,
 				CFEF118222A44A250095C829 /* transient-BorderCurve-selectionDisplay.swift in Sources */,

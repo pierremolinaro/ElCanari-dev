@@ -469,6 +469,8 @@ import Cocoa
   @IBOutlet weak var mAddTrackInBoardButton : CanariDragSourceImageButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAddWireButton : CanariDragSourceButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAddWirePointSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mAutoRouterPreferredDirectionPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mAutorouterSnapAnglePopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mBackRestrictRectangleSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mBaseBoardInspectorView : NSView? = nil // An outlet should be declared weak
   @IBOutlet weak var mBaseBoardLimitsInspectorView : NSView? = nil // An outlet should be declared weak
@@ -926,6 +928,8 @@ import Cocoa
     checkOutletConnection (self.mAddTrackInBoardButton, "mAddTrackInBoardButton", CanariDragSourceImageButton.self, #file, #line)
     checkOutletConnection (self.mAddWireButton, "mAddWireButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddWirePointSchematicHotKeyTextField, "mAddWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mAutoRouterPreferredDirectionPopUp, "mAutoRouterPreferredDirectionPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mAutorouterSnapAnglePopUp, "mAutorouterSnapAnglePopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBackRestrictRectangleSwitch, "mBackRestrictRectangleSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBaseBoardInspectorView, "mBaseBoardInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBaseBoardLimitsInspectorView, "mBaseBoardLimitsInspectorView", NSView.self, #file, #line)
@@ -1686,6 +1690,8 @@ import Cocoa
     self.mBoardGridTextField?.bind_dimensionAndUnit (self.rootObject.mBoardGridStep_property, self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
     self.mLayoutClearancePopUp?.bind_selectedTag (self.rootObject.mLayoutClearanceUnit_property, file: #file, line: #line)
     self.mLayoutClearanceTextField?.bind_dimensionAndUnit (self.rootObject.mLayoutClearance_property, self.rootObject.mLayoutClearanceUnit_property, file: #file, line: #line)
+    self.mAutoRouterPreferredDirectionPopUp?.bind_selectedIndex (self.rootObject.mAutoRouterPreferredDirections_property, file: #file, line: #line)
+    self.mAutorouterSnapAnglePopUp?.bind_selectedIndex (self.rootObject.mAutorouterSnapAngle_property, file: #file, line: #line)
     self.mBoardTrackSidePopUpButton?.bind_selectedIndex (self.boardTrackSelectionController.mSide_property, file: #file, line: #line)
     self.mTrackNetNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netName_property, file: #file, line: #line)
     self.mTrackNetClassNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netClassName_property, file: #file, line: #line)
@@ -2313,6 +2319,8 @@ import Cocoa
     self.mBoardGridTextField?.unbind_dimensionAndUnit ()
     self.mLayoutClearancePopUp?.unbind_selectedTag ()
     self.mLayoutClearanceTextField?.unbind_dimensionAndUnit ()
+    self.mAutoRouterPreferredDirectionPopUp?.unbind_selectedIndex ()
+    self.mAutorouterSnapAnglePopUp?.unbind_selectedIndex ()
     self.mBoardTrackSidePopUpButton?.unbind_selectedIndex ()
     self.mTrackNetNameTextField?.unbind_valueObserver ()
     self.mTrackNetClassNameTextField?.unbind_valueObserver ()
@@ -2579,6 +2587,8 @@ import Cocoa
     self.mAddTrackInBoardButton?.ebCleanUp ()
     self.mAddWireButton?.ebCleanUp ()
     self.mAddWirePointSchematicHotKeyTextField?.ebCleanUp ()
+    self.mAutoRouterPreferredDirectionPopUp?.ebCleanUp ()
+    self.mAutorouterSnapAnglePopUp?.ebCleanUp ()
     self.mBackRestrictRectangleSwitch?.ebCleanUp ()
     self.mBaseBoardInspectorView?.ebCleanUp ()
     self.mBaseBoardLimitsInspectorView?.ebCleanUp ()
@@ -2896,6 +2906,8 @@ import Cocoa
 //    self.mAddTrackInBoardButton = nil
 //    self.mAddWireButton = nil
 //    self.mAddWirePointSchematicHotKeyTextField = nil
+//    self.mAutoRouterPreferredDirectionPopUp = nil
+//    self.mAutorouterSnapAnglePopUp = nil
 //    self.mBackRestrictRectangleSwitch = nil
 //    self.mBaseBoardInspectorView = nil
 //    self.mBaseBoardLimitsInspectorView = nil

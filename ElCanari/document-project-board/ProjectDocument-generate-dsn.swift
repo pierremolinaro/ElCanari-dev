@@ -116,11 +116,11 @@ extension CustomizedProjectDocument {
     s += "  (resolution mm 300)\n"
     s += "  (structure\n"
     addBoardBoundary (&s, boardBoundBox, signalPolygonVertices)
-    addSnapAngle (&s)
+    addSnapAngle (&s, self.rootObject.mAutorouterSnapAngle)
     addViaClasses (&s, netClasses)
     s += "    (control (via_at_smd off))\n"
     addRuleClearance (&s, clearanceInMM: clearanceInMM)
-    autorouteSettings (&s)
+    autorouteSettings (&s, self.rootObject.mAutoRouterPreferredDirections)
     addRestrictRectangles (&s, restrictRectangles)
     s += "  )\n"
     addComponentsPlacement (&s, componentArrayForRouting, packageArrayForRouting)
@@ -503,15 +503,33 @@ fileprivate func addBoardBoundary (_ ioString : inout String,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func addSnapAngle (_ ioString : inout String) {
+fileprivate func addSnapAngle (_ ioString : inout String, _ inSnapAngle : AutorouterSnapAngle) {
   ioString += "    (snap_angle\n"
-  ioString += "      fortyfive_degree\n"
+  switch inSnapAngle {
+  case .rectilinear :
+    ioString += "      ninety_degree\n"
+  case .octolinear :
+    ioString += "      fortyfive_degree\n"
+  case .anyAngle :
+    ioString += "      none\n"
+  }
   ioString += "    )\n"
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func autorouteSettings (_ ioString : inout String) {
+fileprivate func autorouteSettings (_ ioString : inout String,
+                                    _ inRouterPreferredDirection : AutorouterPreferredDirections) {
+  let frontPreferredDir : String
+  let backPreferredDir : String
+  switch inRouterPreferredDirection {
+  case .hFrontVback :
+    frontPreferredDir = "horizontal"
+    backPreferredDir = "vertical"
+  case .vFronthBack :
+    frontPreferredDir = "vertical"
+    backPreferredDir = "horizontal"
+  }
   ioString += "    (layer \(FRONT_SIDE) (type signal))\n"
   ioString += "    (layer \(BACK_SIDE) (type signal))\n"
   ioString += "    (autoroute_settings\n"
@@ -520,15 +538,15 @@ fileprivate func autorouteSettings (_ ioString : inout String) {
   ioString += "      (plane_via_costs 5)\n"
   ioString += "      (start_ripup_costs 100)\n"
   ioString += "      (start_pass_no 1)\n"
-  ioString += "      (layer_rule \(BACK_SIDE)\n"
+  ioString += "      (layer_rule \(FRONT_SIDE)\n"
   ioString += "        (active on)\n"
-  ioString += "        (prefered_direction horizontal)\n"
+  ioString += "        (prefered_direction \(frontPreferredDir))\n"
   ioString += "        (prefered_direction_trace_costs 1.0)\n"
   ioString += "        (against_prefered_direction_trace_costs 2.7)\n"
   ioString += "      )\n"
-  ioString += "      (layer_rule \(FRONT_SIDE)\n"
+  ioString += "      (layer_rule \(BACK_SIDE)\n"
   ioString += "        (active on)\n"
-  ioString += "        (prefered_direction vertical)\n"
+  ioString += "        (prefered_direction \(backPreferredDir))\n"
   ioString += "        (prefered_direction_trace_costs 1.0)\n"
   ioString += "        (against_prefered_direction_trace_costs 2.7)\n"
   ioString += "      )\n"
