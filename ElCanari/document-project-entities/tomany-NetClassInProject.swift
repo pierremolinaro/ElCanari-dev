@@ -23,9 +23,13 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     self.removeEBObserversOf_mViaHoleDiameterUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mViaPadDiameter_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mViaPadDiameterUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mAllowTracksOnFrontSide_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mAllowTracksOnBackSide_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_trackWidthString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_viaPadDiameter_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_allowTracksOnFrontSideString_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_allowTracksOnBackSideString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_canRemove_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netUsage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netsDescription_fromElementsOfSet (inRemovedSet) // Transient property
@@ -39,9 +43,13 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     self.addEBObserversOf_mViaHoleDiameterUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mViaPadDiameter_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mViaPadDiameterUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mAllowTracksOnFrontSide_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mAllowTracksOnBackSide_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_trackWidthString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_viaHoleDiameter_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_viaPadDiameter_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_allowTracksOnFrontSideString_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_allowTracksOnBackSideString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_canRemove_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netUsage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netsDescription_toElementsOfSet (inAddedSet) // Transient property
@@ -505,6 +513,120 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   }
 
   //····················································································································
+  //   Observers of 'mAllowTracksOnFrontSide' stored property
+  //····················································································································
+
+  private var mObserversOf_mAllowTracksOnFrontSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mAllowTracksOnFrontSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mAllowTracksOnFrontSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAllowTracksOnFrontSide_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mAllowTracksOnFrontSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mAllowTracksOnFrontSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAllowTracksOnFrontSide_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mAllowTracksOnFrontSide_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mAllowTracksOnFrontSide.apply { (_ observer : EBEvent) in
+        managedObject.mAllowTracksOnFrontSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mAllowTracksOnFrontSide_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    self.mObserversOf_mAllowTracksOnFrontSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mAllowTracksOnFrontSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mAllowTracksOnBackSide' stored property
+  //····················································································································
+
+  private var mObserversOf_mAllowTracksOnBackSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mAllowTracksOnBackSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mAllowTracksOnBackSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAllowTracksOnBackSide_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mAllowTracksOnBackSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mAllowTracksOnBackSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAllowTracksOnBackSide_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mAllowTracksOnBackSide_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mAllowTracksOnBackSide.apply { (_ observer : EBEvent) in
+        managedObject.mAllowTracksOnBackSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mAllowTracksOnBackSide_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    self.mObserversOf_mAllowTracksOnBackSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mAllowTracksOnBackSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'trackWidthString' transient property
   //····················································································································
 
@@ -668,6 +790,118 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet {
       self.mObserversOf_viaPadDiameter.apply { (_ observer : EBEvent) in
         managedObject.viaPadDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'allowTracksOnFrontSideString' transient property
+  //····················································································································
+
+  private var mObserversOf_allowTracksOnFrontSideString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_allowTracksOnFrontSideString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_allowTracksOnFrontSideString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.allowTracksOnFrontSideString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_allowTracksOnFrontSideString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_allowTracksOnFrontSideString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.allowTracksOnFrontSideString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_allowTracksOnFrontSideString_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_allowTracksOnFrontSideString.apply { (_ observer : EBEvent) in
+        managedObject.allowTracksOnFrontSideString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_allowTracksOnFrontSideString_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_allowTracksOnFrontSideString.apply { (_ observer : EBEvent) in
+        managedObject.allowTracksOnFrontSideString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'allowTracksOnBackSideString' transient property
+  //····················································································································
+
+  private var mObserversOf_allowTracksOnBackSideString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_allowTracksOnBackSideString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_allowTracksOnBackSideString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.allowTracksOnBackSideString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_allowTracksOnBackSideString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_allowTracksOnBackSideString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.allowTracksOnBackSideString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_allowTracksOnBackSideString_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_allowTracksOnBackSideString.apply { (_ observer : EBEvent) in
+        managedObject.allowTracksOnBackSideString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_allowTracksOnBackSideString_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_allowTracksOnBackSideString.apply { (_ observer : EBEvent) in
+        managedObject.allowTracksOnBackSideString_property.removeEBObserver (observer)
       }
     }
   }
@@ -1377,6 +1611,8 @@ final class PreferencesArrayOf_NetClassInProject : StoredArrayOf_NetClassInProje
     self.addEBObserverOf_mViaHoleDiameterUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mViaPadDiameter (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mViaPadDiameterUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mAllowTracksOnFrontSide (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mAllowTracksOnBackSide (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 

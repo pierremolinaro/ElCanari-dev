@@ -220,6 +220,18 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
       }else{
         presentErrorWindow (file, line, "\"used\" column view unknown")
       }
+    //--- Check 'onFront' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "onFront")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"onFront\" column view unknown")
+      }
+    //--- Check 'onBack' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "onBack")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"onBack\" column view unknown")
+      }
     //--- Set table view sort descriptors
       for sortDescriptor in self.mSortDescriptorArray {
         if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
@@ -370,6 +382,20 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.netUsage_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "onFront", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnFrontSideString_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "onBack", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnBackSideString_property, file: #file, line: #line)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")

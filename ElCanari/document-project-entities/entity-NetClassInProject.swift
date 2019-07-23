@@ -54,6 +54,18 @@ protocol NetClassInProject_mViaPadDiameterUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol NetClassInProject_mAllowTracksOnFrontSide : class {
+  var mAllowTracksOnFrontSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_mAllowTracksOnBackSide : class {
+  var mAllowTracksOnBackSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol NetClassInProject_trackWidthString : class {
   var trackWidthString : String? { get }
 }
@@ -68,6 +80,18 @@ protocol NetClassInProject_viaHoleDiameter : class {
 
 protocol NetClassInProject_viaPadDiameter : class {
   var viaPadDiameter : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_allowTracksOnFrontSideString : class {
+  var allowTracksOnFrontSideString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_allowTracksOnBackSideString : class {
+  var allowTracksOnBackSideString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -107,9 +131,13 @@ class NetClassInProject : EBManagedObject,
          NetClassInProject_mViaHoleDiameterUnit,
          NetClassInProject_mViaPadDiameter,
          NetClassInProject_mViaPadDiameterUnit,
+         NetClassInProject_mAllowTracksOnFrontSide,
+         NetClassInProject_mAllowTracksOnBackSide,
          NetClassInProject_trackWidthString,
          NetClassInProject_viaHoleDiameter,
          NetClassInProject_viaPadDiameter,
+         NetClassInProject_allowTracksOnFrontSideString,
+         NetClassInProject_allowTracksOnBackSideString,
          NetClassInProject_canRemove,
          NetClassInProject_netUsage,
          NetClassInProject_netsDescription,
@@ -252,6 +280,40 @@ class NetClassInProject : EBManagedObject,
   var mViaPadDiameterUnit_property_selection : EBSelection <Int> { return self.mViaPadDiameterUnit_property.prop }
 
   //····················································································································
+  //   Atomic property: mAllowTracksOnFrontSide
+  //····················································································································
+
+  let mAllowTracksOnFrontSide_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mAllowTracksOnFrontSide : Bool {
+    get { return self.mAllowTracksOnFrontSide_property.propval }
+    set { self.mAllowTracksOnFrontSide_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mAllowTracksOnFrontSide_property_selection : EBSelection <Bool> { return self.mAllowTracksOnFrontSide_property.prop }
+
+  //····················································································································
+  //   Atomic property: mAllowTracksOnBackSide
+  //····················································································································
+
+  let mAllowTracksOnBackSide_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mAllowTracksOnBackSide : Bool {
+    get { return self.mAllowTracksOnBackSide_property.propval }
+    set { self.mAllowTracksOnBackSide_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mAllowTracksOnBackSide_property_selection : EBSelection <Bool> { return self.mAllowTracksOnBackSide_property.prop }
+
+  //····················································································································
   //   To many property: mNets
   //····················································································································
 
@@ -332,6 +394,52 @@ class NetClassInProject : EBManagedObject,
 
   var viaPadDiameter : String? {
     switch self.viaPadDiameter_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: allowTracksOnFrontSideString
+  //····················································································································
+
+  let allowTracksOnFrontSideString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var allowTracksOnFrontSideString_property_selection : EBSelection <String> {
+    return self.allowTracksOnFrontSideString_property.prop
+  }
+
+  //····················································································································
+
+  var allowTracksOnFrontSideString : String? {
+    switch self.allowTracksOnFrontSideString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: allowTracksOnBackSideString
+  //····················································································································
+
+  let allowTracksOnBackSideString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var allowTracksOnBackSideString_property_selection : EBSelection <String> {
+    return self.allowTracksOnBackSideString_property.prop
+  }
+
+  //····················································································································
+
+  var allowTracksOnBackSideString : String? {
+    switch self.allowTracksOnBackSideString_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -453,6 +561,10 @@ class NetClassInProject : EBManagedObject,
     self.mViaPadDiameter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mViaPadDiameterUnit
     self.mViaPadDiameterUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mAllowTracksOnFrontSide
+    self.mAllowTracksOnFrontSide_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mAllowTracksOnBackSide
+    self.mAllowTracksOnBackSide_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mNets (has opposite relationship)
     self.mNets_property.ebUndoManager = self.ebUndoManager
     self.mNets_property.setOppositeRelationShipFunctions (
@@ -531,6 +643,50 @@ class NetClassInProject : EBManagedObject,
     }
     self.mViaPadDiameter_property.addEBObserver (self.viaPadDiameter_property)
     self.mViaPadDiameterUnit_property.addEBObserver (self.viaPadDiameter_property)
+  //--- Atomic property: allowTracksOnFrontSideString
+    self.allowTracksOnFrontSideString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mAllowTracksOnFrontSide_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mAllowTracksOnFrontSide_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_NetClassInProject_allowTracksOnFrontSideString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mAllowTracksOnFrontSide_property.addEBObserver (self.allowTracksOnFrontSideString_property)
+  //--- Atomic property: allowTracksOnBackSideString
+    self.allowTracksOnBackSideString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mAllowTracksOnBackSide_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mAllowTracksOnBackSide_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_NetClassInProject_allowTracksOnBackSideString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mAllowTracksOnBackSide_property.addEBObserver (self.allowTracksOnBackSideString_property)
   //--- Atomic property: canRemove
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -644,6 +800,8 @@ class NetClassInProject : EBManagedObject,
     self.mViaHoleDiameterUnit_property.removeEBObserver (self.viaHoleDiameter_property)
     self.mViaPadDiameter_property.removeEBObserver (self.viaPadDiameter_property)
     self.mViaPadDiameterUnit_property.removeEBObserver (self.viaPadDiameter_property)
+    self.mAllowTracksOnFrontSide_property.removeEBObserver (self.allowTracksOnFrontSideString_property)
+    self.mAllowTracksOnBackSide_property.removeEBObserver (self.allowTracksOnBackSideString_property)
     self.mNets_property.removeEBObserver (self.canRemove_property)
     self.mNets_property.removeEBObserver (self.netUsage_property)
     self.mNets_property.removeEBObserver (self.netsDescription_property)
@@ -729,6 +887,22 @@ class NetClassInProject : EBManagedObject,
       observerExplorer: &self.mViaPadDiameterUnit_property.mObserverExplorer,
       valueExplorer: &self.mViaPadDiameterUnit_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mAllowTracksOnFrontSide",
+      idx: self.mAllowTracksOnFrontSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mAllowTracksOnFrontSide_property.mObserverExplorer,
+      valueExplorer: &self.mAllowTracksOnFrontSide_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mAllowTracksOnBackSide",
+      idx: self.mAllowTracksOnBackSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mAllowTracksOnBackSide_property.mObserverExplorer,
+      valueExplorer: &self.mAllowTracksOnBackSide_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "trackWidthString",
@@ -753,6 +927,22 @@ class NetClassInProject : EBManagedObject,
       view: view,
       observerExplorer: &self.viaPadDiameter_property.mObserverExplorer,
       valueExplorer: &self.viaPadDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "allowTracksOnFrontSideString",
+      idx: self.allowTracksOnFrontSideString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.allowTracksOnFrontSideString_property.mObserverExplorer,
+      valueExplorer: &self.allowTracksOnFrontSideString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "allowTracksOnBackSideString",
+      idx: self.allowTracksOnBackSideString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.allowTracksOnBackSideString_property.mObserverExplorer,
+      valueExplorer: &self.allowTracksOnBackSideString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "canRemove",
@@ -827,6 +1017,12 @@ class NetClassInProject : EBManagedObject,
   //--- Atomic property: mViaPadDiameterUnit
     self.mViaPadDiameterUnit_property.mObserverExplorer = nil
     self.mViaPadDiameterUnit_property.mValueExplorer = nil
+  //--- Atomic property: mAllowTracksOnFrontSide
+    self.mAllowTracksOnFrontSide_property.mObserverExplorer = nil
+    self.mAllowTracksOnFrontSide_property.mValueExplorer = nil
+  //--- Atomic property: mAllowTracksOnBackSide
+    self.mAllowTracksOnBackSide_property.mObserverExplorer = nil
+    self.mAllowTracksOnBackSide_property.mValueExplorer = nil
   //--- To many property: mNets
     self.mNets_property.mValueExplorer = nil
   //---
@@ -874,6 +1070,10 @@ class NetClassInProject : EBManagedObject,
     self.mViaPadDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mViaPadDiameter")
   //--- Atomic property: mViaPadDiameterUnit
     self.mViaPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"mViaPadDiameterUnit")
+  //--- Atomic property: mAllowTracksOnFrontSide
+    self.mAllowTracksOnFrontSide_property.storeIn (dictionary: ioDictionary, forKey:"mAllowTracksOnFrontSide")
+  //--- Atomic property: mAllowTracksOnBackSide
+    self.mAllowTracksOnBackSide_property.storeIn (dictionary: ioDictionary, forKey:"mAllowTracksOnBackSide")
   //--- To many property: mNets
     self.store (
       managedObjectArray: self.mNets_property.propval,
@@ -919,6 +1119,10 @@ class NetClassInProject : EBManagedObject,
     self.mViaPadDiameter_property.readFrom (dictionary: inDictionary, forKey:"mViaPadDiameter")
   //--- Atomic property: mViaPadDiameterUnit
     self.mViaPadDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"mViaPadDiameterUnit")
+  //--- Atomic property: mAllowTracksOnFrontSide
+    self.mAllowTracksOnFrontSide_property.readFrom (dictionary: inDictionary, forKey:"mAllowTracksOnFrontSide")
+  //--- Atomic property: mAllowTracksOnBackSide
+    self.mAllowTracksOnBackSide_property.readFrom (dictionary: inDictionary, forKey:"mAllowTracksOnBackSide")
   }
 
   //····················································································································

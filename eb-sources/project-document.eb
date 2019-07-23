@@ -91,6 +91,8 @@ document ProjectDocument root ProjectRoot {
     column "hole" EBTextObserverField $valueObserver self.viaHoleDiameter
     column "pad" EBTextObserverField $valueObserver self.viaPadDiameter
     column "used" EBTextObserverField $valueObserver self.netUsage
+    column "onFront" EBTextObserverField $valueObserver self.allowTracksOnFrontSideString
+    column "onBack" EBTextObserverField $valueObserver self.allowTracksOnBackSideString
   }
   outlet EBTableView mNetClassTableView $tableValue #netClassController ;
 
@@ -101,6 +103,8 @@ document ProjectDocument root ProjectRoot {
   outlet NSTextField mAddNetClassErrorMessageTextField ;
   outlet CanariDimensionTextField mNetClassWidthDimensionTextField ;
   outlet EBPopUpButton mNetClassWidthUnitPopUpButton ;
+  outlet EBSwitch mAllowTracksOnFrontSideSwitch ;
+  outlet EBSwitch mAllowTracksOnBackSideSwitch ;
   outlet CanariDimensionTextField mNetClassHoleDiameterDimensionTextField ;
   outlet EBPopUpButton mNetClassHoleDiameterUnitPopUpButton ;
   outlet CanariDimensionTextField mNetClassPadDiameterDimensionTextField ;

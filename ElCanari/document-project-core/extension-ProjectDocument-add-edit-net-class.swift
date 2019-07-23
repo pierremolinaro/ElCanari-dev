@@ -23,6 +23,12 @@ extension ProjectDocument {
       self.mAddNetClassTextField?.isContinuous = true
       self.mAddNetClassTextField?.setSendContinously (true)
       self.newClassNameTextFieldDidChange (nil)
+    //---  Allow Back track
+      let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: true)
+      self.mAllowTracksOnBackSideSwitch?.bind_value (allowBackTrack_property, file: #file, line: #line)
+    //---  Allow front track
+      let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: true)
+      self.mAllowTracksOnFrontSideSwitch?.bind_value (allowFrontTrack_property, file: #file, line: #line)
     //---  Width
       let width_property = EBStoredProperty_Int (defaultValue: 45_720) // 20 mils
       let widthUnit_property = EBStoredProperty_Int (defaultValue: 2_286) // mils
@@ -68,6 +74,8 @@ extension ProjectDocument {
           netClass.mViaHoleDiameterUnit = viaHoleDiameterUnit_property.propval
           netClass.mViaPadDiameter = viaPadDiameter_property.propval
           netClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
+          netClass.mAllowTracksOnFrontSide = allowFrontTrack_property.propval
+          netClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
           self.rootObject.mNetClasses.append (netClass)
           self.netClassController.setSelection ([netClass])
         }
@@ -78,6 +86,8 @@ extension ProjectDocument {
         self.mNetClassPadDiameterDimensionTextField?.unbind_dimensionAndUnit ()
         self.mNetClassPadDiameterUnitPopUpButton?.unbind_selectedTag ()
         self.mNetClassColorWell?.unbind_color ()
+        self.mAllowTracksOnFrontSideSwitch?.unbind_value ()
+        self.mAllowTracksOnBackSideSwitch?.unbind_value ()
       }
     }
   }
@@ -116,6 +126,12 @@ extension ProjectDocument {
       self.mAddNetClassTextField?.isContinuous = true
       self.mAddNetClassTextField?.setSendContinously (true)
       self.classNameTextFieldEditionDidChange (nil)
+    //---  Allow Back track
+      let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnBackSide)
+      self.mAllowTracksOnBackSideSwitch?.bind_value (allowBackTrack_property, file: #file, line: #line)
+    //---  Allow front track
+      let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnFrontSide)
+      self.mAllowTracksOnFrontSideSwitch?.bind_value (allowFrontTrack_property, file: #file, line: #line)
     //---  Width
       let width_property = EBStoredProperty_Int (defaultValue: editedNetClass.mTrackWidth)
       let widthUnit_property = EBStoredProperty_Int (defaultValue: editedNetClass.mTrackWidthUnit)
@@ -160,6 +176,8 @@ extension ProjectDocument {
           editedNetClass.mViaHoleDiameterUnit = viaHoleDiameterUnit_property.propval
           editedNetClass.mViaPadDiameter = viaPadDiameter_property.propval
           editedNetClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
+          editedNetClass.mAllowTracksOnFrontSide = allowFrontTrack_property.propval
+          editedNetClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
         }
         self.mNetClassWidthDimensionTextField?.unbind_dimensionAndUnit ()
         self.mNetClassWidthUnitPopUpButton?.unbind_selectedTag ()
@@ -168,6 +186,8 @@ extension ProjectDocument {
         self.mNetClassPadDiameterDimensionTextField?.unbind_dimensionAndUnit ()
         self.mNetClassPadDiameterUnitPopUpButton?.unbind_selectedTag ()
         self.mNetClassColorWell?.unbind_color ()
+        self.mAllowTracksOnFrontSideSwitch?.unbind_value ()
+        self.mAllowTracksOnBackSideSwitch?.unbind_value ()
       }
     }
   }

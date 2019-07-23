@@ -469,6 +469,8 @@ import Cocoa
   @IBOutlet weak var mAddTrackInBoardButton : CanariDragSourceImageButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAddWireButton : CanariDragSourceButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAddWirePointSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mAllowTracksOnBackSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mAllowTracksOnFrontSideSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mAutoRouterPreferredDirectionPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAutorouterSnapAnglePopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mBackRestrictRectangleSwitch : EBSwitch? = nil // An outlet should be declared weak
@@ -928,6 +930,8 @@ import Cocoa
     checkOutletConnection (self.mAddTrackInBoardButton, "mAddTrackInBoardButton", CanariDragSourceImageButton.self, #file, #line)
     checkOutletConnection (self.mAddWireButton, "mAddWireButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddWirePointSchematicHotKeyTextField, "mAddWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mAllowTracksOnBackSideSwitch, "mAllowTracksOnBackSideSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mAllowTracksOnFrontSideSwitch, "mAllowTracksOnFrontSideSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mAutoRouterPreferredDirectionPopUp, "mAutoRouterPreferredDirectionPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mAutorouterSnapAnglePopUp, "mAutorouterSnapAnglePopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBackRestrictRectangleSwitch, "mBackRestrictRectangleSwitch", EBSwitch.self, #file, #line)
@@ -2587,6 +2591,8 @@ import Cocoa
     self.mAddTrackInBoardButton?.ebCleanUp ()
     self.mAddWireButton?.ebCleanUp ()
     self.mAddWirePointSchematicHotKeyTextField?.ebCleanUp ()
+    self.mAllowTracksOnBackSideSwitch?.ebCleanUp ()
+    self.mAllowTracksOnFrontSideSwitch?.ebCleanUp ()
     self.mAutoRouterPreferredDirectionPopUp?.ebCleanUp ()
     self.mAutorouterSnapAnglePopUp?.ebCleanUp ()
     self.mBackRestrictRectangleSwitch?.ebCleanUp ()
@@ -2906,6 +2912,8 @@ import Cocoa
 //    self.mAddTrackInBoardButton = nil
 //    self.mAddWireButton = nil
 //    self.mAddWirePointSchematicHotKeyTextField = nil
+//    self.mAllowTracksOnBackSideSwitch = nil
+//    self.mAllowTracksOnFrontSideSwitch = nil
 //    self.mAutoRouterPreferredDirectionPopUp = nil
 //    self.mAutorouterSnapAnglePopUp = nil
 //    self.mBackRestrictRectangleSwitch = nil

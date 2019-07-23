@@ -63,7 +63,9 @@ extension CustomizedProjectDocument {
         name: netClass.mNetClassName,
         trackWidthInMM: canariUnitToMillimeter (netClass.mTrackWidth),
         viaPadDiameterInMM: canariUnitToMillimeter (netClass.mViaPadDiameter),
-        netNames: netNames
+        netNames: netNames,
+        allowTracksOnFrontSide: netClass.mAllowTracksOnFrontSide,
+        allowTracksOnBackSide: netClass.mAllowTracksOnBackSide
       )
       netClasses.append (nc)
     }
@@ -298,6 +300,8 @@ struct NetClassForRouting {
   let trackWidthInMM : CGFloat
   let viaPadDiameterInMM : CGFloat
   let netNames : [String]
+  let allowTracksOnFrontSide : Bool
+  let allowTracksOnBackSide : Bool
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -587,7 +591,15 @@ fileprivate func addNetClasses (_ ioString : inout String, _ inNetClasses : [Net
     ioString += "        (width \(netClass.trackWidthInMM))\n"
     ioString += "      )\n"
     ioString += "      (circuit\n"
-    ioString += "        (use_layer \(FRONT_SIDE) \(BACK_SIDE))\n"
+//    ioString += "        (use_layer \(FRONT_SIDE) \(BACK_SIDE))\n"
+    ioString += "        (use_layer"
+    if netClass.allowTracksOnFrontSide {
+      ioString += " \(FRONT_SIDE)"
+    }
+    if netClass.allowTracksOnBackSide {
+      ioString += " \(BACK_SIDE)"
+    }
+    ioString += ")\n"
     ioString += "      )\n"
     ioString += "    )\n"
   }

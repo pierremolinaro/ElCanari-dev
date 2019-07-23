@@ -16,11 +16,17 @@ entity NetClassInProject {
   property Int mViaPadDiameter default 91_440 ; // 40 mils
   property Int mViaPadDiameterUnit default 2_286 ; // mil
 
+  property Bool mAllowTracksOnFrontSide default yes ;
+  property Bool mAllowTracksOnBackSide default yes ;
+  
   transient Bool canRemove dependsFrom self.mNets.count ;
   transient String netUsage dependsFrom self.mNets.count ;
   transient String trackWidthString dependsFrom self.mTrackWidth, self.mTrackWidthUnit ;
   transient String viaHoleDiameter dependsFrom self.mViaHoleDiameter, self.mViaHoleDiameterUnit ;
   transient String viaPadDiameter dependsFrom self.mViaPadDiameter, self.mViaPadDiameterUnit ;
+  
+  transient String allowTracksOnFrontSideString dependsFrom self.mAllowTracksOnFrontSide ;
+  transient String allowTracksOnBackSideString dependsFrom self.mAllowTracksOnBackSide ;
   
   transient NetInfoArray netsDescription dependsFrom
     self.mNets,
