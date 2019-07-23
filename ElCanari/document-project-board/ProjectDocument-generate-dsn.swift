@@ -193,8 +193,8 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
       let masterPadForRouting = findOrAddPadType (
         canariWidth: masterPad.padSize.width,
         canariHeight: masterPad.padSize.height,
-        onFrontSide: true,
-        onBackSide: masterPad.style == .traversing,
+        onComponentSide: true,
+        onOppositeSide: masterPad.style == .traversing,
         shape: masterPad.shape,
         &ioPadTypeArrayForRouting
       )
@@ -207,29 +207,29 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
       padArrayForRouting.append (psr)
     //--- Enter slave pads
       for slavePad in masterPad.slavePads {
-        let onFrontSide : Bool
-        let onBackSide : Bool
+        let onComponentSide : Bool
+        let onOppositeSide : Bool
         switch slavePad.style {
-        case .bottomSide : onFrontSide = false ; onBackSide = true
-        case .topSide    : onFrontSide = true  ; onBackSide = false
-        case .traversing : onFrontSide = true  ; onBackSide = true
+        case .bottomSide : onComponentSide = false ; onOppositeSide = true
+        case .topSide    : onComponentSide = true  ; onOppositeSide = false
+        case .traversing : onComponentSide = true  ; onOppositeSide = true
         }
       //--- Enter slave pad
         let slavePadForRouting = findOrAddPadType (
           canariWidth: slavePad.padSize.width,
           canariHeight: slavePad.padSize.height,
-          onFrontSide: onFrontSide,
-          onBackSide: onBackSide,
+          onComponentSide: onComponentSide,
+          onOppositeSide: onOppositeSide,
           shape: slavePad.shape,
           &ioPadTypeArrayForRouting
         )
-        let psr = PadInstanceForRouting (
+        let pir = PadInstanceForRouting (
           name: masterPad.name, // + ":\(slavePadIndex)",
           masterPad: slavePadForRouting,
           centerXmm: canariUnitToMillimeter (slavePad.center.x - deviceCenter.x),
           centerYmm: canariUnitToMillimeter (slavePad.center.y - deviceCenter.y)
         )
-        padArrayForRouting.append (psr)
+        padArrayForRouting.append (pir)
       }
     }
   //--- Enter in package array
@@ -247,13 +247,13 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
 
 fileprivate func findOrAddPadType (canariWidth inWidth : Int,
                                    canariHeight inHeight : Int,
-                                   onFrontSide inFrontSide : Bool,
-                                   onBackSide  inBackSide : Bool,
+                                   onComponentSide inComponentSide : Bool,
+                                   onOppositeSide  inOppositeSide : Bool,
                                    shape inShape : PadShape,
                                    _ ioPadTypeArrayForRouting : inout [PadTypeForRouting]) -> PadTypeForRouting {
 //--- Search in existing pads
   for mp in ioPadTypeArrayForRouting {
-    if ((mp.canariWidth == inWidth) && (mp.canariHeight == inHeight) && (mp.onFrontSide == inFrontSide)  && (mp.onBackSide == inBackSide) && (mp.shape == inShape)) {
+    if ((mp.canariWidth == inWidth) && (mp.canariHeight == inHeight) && (mp.onComponentSide == inComponentSide)  && (mp.onOppositeSide == inOppositeSide) && (mp.shape == inShape)) {
       return mp
     }
   }
@@ -263,8 +263,8 @@ fileprivate func findOrAddPadType (canariWidth inWidth : Int,
     canariWidth: inWidth,
     canariHeight: inHeight,
     shape: inShape,
-    onFrontSide: inFrontSide,
-    onBackSide: inBackSide
+    onComponentSide: inComponentSide,
+    onOppositeSide: inOppositeSide
   )
   ioPadTypeArrayForRouting.append (newPad)
   return newPad
@@ -344,8 +344,8 @@ struct PadTypeForRouting {
   let canariWidth  : Int
   let canariHeight : Int
   let shape : PadShape
-  let onFrontSide : Bool
-  let onBackSide  : Bool
+  let onComponentSide : Bool
+  let onOppositeSide  : Bool
 
   //····················································································································
 
@@ -357,18 +357,33 @@ struct PadTypeForRouting {
     case .rect :
       shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
     case .round :
-      if halfWidth == halfHeight {
+      if halfWidth == halfHeight { // Circular pad
         shapeString = "(circle \(inSide) \(halfWidth * 2.0) 0 0)"
-      }else{
-        shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
+      }else{ // Oblong: generate an octogon
+        //shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
+        let s2 : CGFloat = sqrt (2.0)
+        let w = halfWidth * 2.0
+        let h = halfHeight * 2.0
+        let x = -halfWidth
+        let y = -halfHeight
+        let lg = min (w, h) / (1.0 + s2)
+        var vertices = [NSPoint] ()
+        vertices.append (NSPoint (x: x + lg / s2,     y: y + h))
+        vertices.append (NSPoint (x: x + w - lg / s2, y: y + h))
+        vertices.append (NSPoint (x: x + w,           y: y + h - lg / s2))
+        vertices.append (NSPoint (x: x + w,           y: y + lg / s2))
+        vertices.append (NSPoint (x: x + w - lg / s2, y: y))
+        vertices.append (NSPoint (x: x + lg / s2,     y: y))
+        vertices.append (NSPoint (x: x,               y: y + lg / s2))
+        vertices.append (NSPoint (x: x,               y: y + h - lg / s2))
+        var s = "(polygon \(inSide) 0"
+        for p in vertices {
+          s += " \(p.x) \(p.y)"
+        }
+        s += " \(vertices [0].x) \(vertices [0].y)" // Close path
+        s += ")"
+        shapeString = s
       }
-//      if halfWidth < halfHeight {
-//        shapeString = "(path \(inSide) \(halfWidth * 2.0) 0 \(halfWidth - halfHeight) 0 \(halfHeight - halfWidth) (aperture_type round))"
-//      }else if halfWidth > halfHeight {
-//        shapeString = "(path \(inSide) \(halfWidth * 2.0) \(halfWidth - halfHeight) 0 \(halfHeight - halfWidth) 0 (aperture_type round))"
-//      }else{
-//        shapeString = "(circle \(inSide) \(halfWidth * 2.0) 0 0)"
-//      }
     case .octo :
       let s2 : CGFloat = sqrt (2.0)
       let w = halfWidth * 2.0
@@ -442,10 +457,10 @@ fileprivate func addComponentPadStackLibrary (_ ioString : inout String,
                                               _ inPadTypeArrayForRouting : [PadTypeForRouting]) {
   for pad in inPadTypeArrayForRouting {
     ioString += "    (padstack \"\(pad.name)\"\n"
-    if pad.onFrontSide {
+    if pad.onComponentSide {
       ioString += "      (shape \(pad.padStringFor (side: FRONT_SIDE)))\n"
     }
-    if pad.onBackSide {
+    if pad.onOppositeSide {
       ioString += "      (shape \(pad.padStringFor (side: BACK_SIDE)))\n"
     }
     ioString += "    )\n"
