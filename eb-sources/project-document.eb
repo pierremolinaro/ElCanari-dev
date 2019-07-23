@@ -614,6 +614,9 @@ document ProjectDocument root ProjectRoot {
   outlet EBPopUpButton mAutoRouterPreferredDirectionPopUp $selectedIndex root.mAutoRouterPreferredDirections ;
   outlet EBPopUpButton mAutorouterSnapAnglePopUp $selectedIndex root.mAutorouterSnapAngle ;
   
+  action launchFreeRouterAction ;
+  outlet EBButton mLaunchFreeRouterButton $run launchFreeRouterAction ;
+
 //--- ERC Inspector
   outlet NSTextView mERCLogTextView ;
 

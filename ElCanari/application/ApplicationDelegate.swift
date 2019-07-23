@@ -43,7 +43,6 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
   //····················································································································
 
   func applicationDidFinishLaunching (_ notification: Notification) {
-  //  buildDebugMenu ()
     self.mMaintenanceLogTextField?.stringValue = ""
     if g_Preferences?.checkForSystemLibraryAtStartUp ?? false {
       if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {

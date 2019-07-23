@@ -639,6 +639,7 @@ import Cocoa
   @IBOutlet weak var mHotKeysSchematicInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mInconsistentSchematicErrorPanel : NSPanel? = nil // An outlet should be declared weak
   @IBOutlet weak var mInconsistentSchematicErrorTextView : NSTextView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mLaunchFreeRouterButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mLayoutClearancePopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mLayoutClearanceTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mLibraryPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
@@ -1100,6 +1101,7 @@ import Cocoa
     checkOutletConnection (self.mHotKeysSchematicInspectorView, "mHotKeysSchematicInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorPanel, "mInconsistentSchematicErrorPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorTextView, "mInconsistentSchematicErrorTextView", NSTextView.self, #file, #line)
+    checkOutletConnection (self.mLaunchFreeRouterButton, "mLaunchFreeRouterButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mLayoutClearancePopUp, "mLayoutClearancePopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mLayoutClearanceTextField, "mLayoutClearanceTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
@@ -2186,6 +2188,8 @@ import Cocoa
     self.mSetDateToNowButton?.action = #selector (ProjectDocument.setDateToNowAction (_:))
     self.mOpenSetDateDialogButton?.target = self
     self.mOpenSetDateDialogButton?.action = #selector (ProjectDocument.openSetDateDialogAction (_:))
+    self.mLaunchFreeRouterButton?.target = self
+    self.mLaunchFreeRouterButton?.action = #selector (ProjectDocument.launchFreeRouterAction (_:))
   //--------------------------- Read documentFilePath model 
     self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
@@ -2570,6 +2574,7 @@ import Cocoa
     self.mRemoveSheetButton?.target = nil
     self.mSetDateToNowButton?.target = nil
     self.mOpenSetDateDialogButton?.target = nil
+    self.mLaunchFreeRouterButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddBottomSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddCommentButton?.ebCleanUp ()
@@ -2761,6 +2766,7 @@ import Cocoa
     self.mHotKeysSchematicInspectorView?.ebCleanUp ()
     self.mInconsistentSchematicErrorPanel?.ebCleanUp ()
     self.mInconsistentSchematicErrorTextView?.ebCleanUp ()
+    self.mLaunchFreeRouterButton?.ebCleanUp ()
     self.mLayoutClearancePopUp?.ebCleanUp ()
     self.mLayoutClearanceTextField?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
@@ -3082,6 +3088,7 @@ import Cocoa
 //    self.mHotKeysSchematicInspectorView = nil
 //    self.mInconsistentSchematicErrorPanel = nil
 //    self.mInconsistentSchematicErrorTextView = nil
+//    self.mLaunchFreeRouterButton = nil
 //    self.mLayoutClearancePopUp = nil
 //    self.mLayoutClearanceTextField = nil
 //    self.mLibraryPageView = nil
