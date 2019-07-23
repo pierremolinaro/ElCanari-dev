@@ -35,6 +35,11 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   private func dsnContents () -> String {
+  //--- Border
+    let boardLimitExtend = -self.rootObject.mBoardLimitsWidth / 2
+    let boardBoundBox = self.rootObject.boardBoundBox!.insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
+    let boardClearanceInMM = canariUnitToMillimeter (self.rootObject.mBoardClearance + self.rootObject.mBoardLimitsWidth)
+    let signalPolygonVertices = self.buildSignalPolygon ()
   //--- Restrict rectangles
     var restrictRectangles = [RestrictRectangleForRouting] ()
     for object in self.rootObject.mBoardObjects {
@@ -67,91 +72,39 @@ extension CustomizedProjectDocument {
     var packageDictionary = [PackageDictionaryKey : Int] ()
     var packageArrayForRouting = [PackageTypeForRouting] ()
     var componentArrayForRouting = [ComponentForRouting] ()
-    var deviceDictionary = [DeviceDictionaryKey : Int] ()
-    var deviceArrayForRouting = [DeviceForRouting] ()
     var padTypeArrayForRouting = [MasterPadForRouting] ()
     for component in self.rootObject.mComponents {
-      let device = component.mDevice!
-      let deviceIndex = indexForDevice (
-        device,
-        component.mSelectedPackage!,
-        &deviceDictionary,
-        &deviceArrayForRouting,
-        &packageDictionary,
-        &packageArrayForRouting,
-        &padTypeArrayForRouting
-      )
-    //--- Build net list
-      var padNetArray = [PadNetDescriptor] ()
-      let componentPadDictionary : ComponentPadDescriptorDictionary = component.componentPadDictionary!
-      let componentPads : [ComponentPadDescriptor] = Array (componentPadDictionary.values)
-      let padNetDictionary : PadNetDictionary = component.padNetDictionary!
-      for pad in componentPads {
-        let pnd = PadNetDescriptor (padString: pad.padName, netName: padNetDictionary [pad.padName])
-        padNetArray.append (pnd)
+      if component.mRoot != nil { // Placed on board
+        let device = component.mDevice!
+        let deviceIndex = indexForPackage (
+          device,
+          component.mSelectedPackage!,
+          &packageDictionary,
+          &packageArrayForRouting,
+          &padTypeArrayForRouting
+        )
+      //--- Build net list
+        var padNetArray = [PadNetDescriptor] ()
+        let componentPadDictionary : ComponentPadDescriptorDictionary = component.componentPadDictionary!
+        let componentPads : [ComponentPadDescriptor] = Array (componentPadDictionary.values)
+        let padNetDictionary : PadNetDictionary = component.padNetDictionary!
+        for pad in componentPads {
+          let pnd = PadNetDescriptor (padString: pad.padName, netName: padNetDictionary [pad.padName])
+          padNetArray.append (pnd)
+        }
+      //--- Enter component
+        let cfr = ComponentForRouting (
+          deviceIndex: deviceIndex,
+          componentName: component.componentName!,
+          placed: component.mRoot != nil,
+          originX: component.mX,
+          originY: component.mY,
+          rotation: CGFloat (component.mRotation) / 1000.0,
+          side: component.mSide,
+          netList: padNetArray.sorted { $0.padString < $1.padString }
+        )
+        componentArrayForRouting.append (cfr)
       }
-//   for symbol in component.mSymbols {
-//     for pin in symbol.mPoints {
-//       let pnd = PadNetDescriptor (padString: "", net: pin.mNet)
-//       padNetArray.append (pnd)
-//     }
-//
-//   }
-//    NSMutableArray * pinArray = [NSMutableArray new] ;
-//    NSArray * sortedSymbolArray = [component.symbols.allObjects sortedArrayUsingSelector:@selector(compareByIdentifier:)] ;
-//    for (PMClassForSymbolInProjectEntity * sis in sortedSymbolArray) {
-//      macroCheckObject (sis, PMClassForSymbolInProjectEntity) ;
-//      NSArray * pins = [sis.pins.allObjects sortedArrayUsingSelector:@selector(compareByIdentifier:)] ;
-//      for (PMClassForPinInProjectPadInBoardEntity * pin in pins) {
-//        macroCheckObject (pin, PMClassForPinInProjectPadInBoardEntity) ;
-//        PMPadNetDescriptor * descriptor = [[PMPadNetDescriptor alloc]
-//          initWithPadString:[pin padString]
-//          net:[pin net]
-//        ] ;
-//        [pinArray addObject:descriptor] ;
-//      }
-//    }
-//  //--- Add not connected pads
-//    for (PMClassForPadRepresentantInProjectEntity * ppa in device.pads) {
-//      macroCheckObject (ppa, PMClassForPadRepresentantInProjectEntity) ;
-//      if (nil == ppa.pin) {
-//        PMPadNetDescriptor * descriptor = [[PMPadNetDescriptor alloc]
-//          initWithPadString:ppa.padQualifiedName
-//          net:nil
-//        ] ;
-//        [pinArray addObject:descriptor] ;
-//      }
-//    }
-//  //---
-//    NSArray * sortedPinArray = [pinArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:
-//      [[NSSortDescriptor alloc] initWithKey:@"padString" ascending:YES] HERE
-//    ]] ;
-//    for (PMPadNetDescriptor * pip in sortedPinArray) {
-//      macroCheckObject (pip, PMPadNetDescriptor) ;
-//      PMClassForNetEntity * net = pip.net ;
-//      if (net == nil) { // Not connected
-//        [componentNetListArrayForRouting addObject:[NSNumber numberWithInteger:-1] HERE] ;
-//      }else{
-//        NSNumber * v = [netDictionary objectForKey:[NSValue valueWithNonretainedObject:net]] ;
-//        if (nil == v) {
-//          [componentNetListArrayForRouting addObject:[NSNumber numberWithInteger:-1] HERE] ;
-//        }else{
-//          [componentNetListArrayForRouting addObject:v HERE] ;
-//        }
-//      }
-//    }
-    //--- Enter component
-      let cfr = ComponentForRouting (
-        deviceIndex: deviceIndex,
-        componentName: component.componentName!,
-        placed: component.mRoot != nil,
-        originX: component.mX,
-        originY: component.mY,
-        rotation: CGFloat (component.mRotation) / 1000.0,
-        side: component.mSide,
-        netList: padNetArray.sorted { $0.padString < $1.padString }
-      )
-      componentArrayForRouting.append (cfr)
     }
     let clearanceInMM = canariUnitToMillimeter (self.rootObject.mLayoutClearance)
   //--- Generate
@@ -163,7 +116,7 @@ extension CustomizedProjectDocument {
     s += "  )\n"
     s += "  (resolution mm 300)\n"
     s += "  (structure\n"
-    addBoardBoundary (&s)
+    addBoardBoundary (&s, boardBoundBox, signalPolygonVertices, boardClearanceInMM)
     addSnapAngle (&s)
     addViaClasses (&s, netClasses)
     s += "    (control (via_at_smd off))\n"
@@ -171,9 +124,9 @@ extension CustomizedProjectDocument {
     autorouteSettings (&s)
     addRestrictRectangles (&s, restrictRectangles)
     s += "  )\n"
-    addComponentsPlacement (&s, componentArrayForRouting, deviceArrayForRouting)
+    addComponentsPlacement (&s, componentArrayForRouting, packageArrayForRouting)
     s += "  (library\n"
-    addDeviceLibrary (&s, deviceArrayForRouting, packageArrayForRouting)
+    addDeviceLibrary (&s, packageArrayForRouting)
     addViaPadStackLibrary (&s, netClasses)
     addComponentPadStackLibrary (&s, padTypeArrayForRouting)
     s += "  )\n"
@@ -188,34 +141,34 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func indexForDevice (_ inDevice : DeviceInProject,
-                                 _ inSelectedPackage : DevicePackageInProject,
-                                 _ ioDeviceDictionary : inout [DeviceDictionaryKey : Int],
-                                 _ ioDeviceArrayForRouting : inout [DeviceForRouting],
-                                 _ ioPackageDictionary : inout [PackageDictionaryKey : Int],
-                                 _ ioPackageArrayForRouting : inout [PackageTypeForRouting],
-                                 _ ioPadTypeArrayForRouting : inout [MasterPadForRouting]) -> Int {
-  let key = DeviceDictionaryKey (device: inDevice, package: inSelectedPackage)
-  if let idx = ioDeviceDictionary [key] {
-    return idx
-  }else{
-    let idx = ioDeviceArrayForRouting.count
-    ioDeviceDictionary [key] = idx
-    let packageIndex = indexForPackage (
-      inDevice,
-      inSelectedPackage,
-      &ioPackageDictionary,
-      &ioPackageArrayForRouting,
-      &ioPadTypeArrayForRouting
-    )
-    let d = DeviceForRouting (name: inDevice.mDeviceName, packageIndex: packageIndex)
-    ioDeviceArrayForRouting.append (d)
-    return idx
+  private func buildSignalPolygon () -> [NSPoint] { // Points in millimeters
+    var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
+    for curve in self.rootObject.mBorderCurves {
+      let descriptor = curve.descriptor!
+      curveDictionary [descriptor.p1] = descriptor
+    }
+    var clearanceBP = EBBezierPath ()
+    var descriptor = self.rootObject.mBorderCurves [0].descriptor!
+    let p = descriptor.p1
+    clearanceBP.move (to: p.millimeterPoint)
+    var loop = true
+    while loop {
+      switch descriptor.shape {
+      case .line :
+        clearanceBP.line (to: descriptor.p2.millimeterPoint)
+      case .bezier :
+        let cp1 = descriptor.cp1.millimeterPoint
+        let cp2 = descriptor.cp2.millimeterPoint
+        clearanceBP.curve (to: descriptor.p2.millimeterPoint, controlPoint1: cp1, controlPoint2: cp2)
+      }
+      descriptor = curveDictionary [descriptor.p2]!
+      loop = p != descriptor.p1
+    }
+    return clearanceBP.pointsByFlattening (withFlatness: 0.1)
   }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -250,95 +203,18 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
         masterPad: masterPadForRouting,
         centerXmm: canariUnitToMillimeter (masterPad.center.x - deviceCenter.x),
         centerYmm: canariUnitToMillimeter (masterPad.center.y - deviceCenter.y)
-    //    slavePadStack: slavePadStack,
-    //    netIndex: nil
       )
       padArrayForRouting.append (psr)
     }
   //--- Enter in package array
     let pfr = PackageTypeForRouting (
-      typeName: inSelectedPackage.mPackageName,
+      typeName: inDevice.mDeviceName + ":" + inSelectedPackage.mPackageName,
       padArray: padArrayForRouting.sorted { $0.name < $1.name }
     )
     ioPackageArrayForRouting.append (pfr)
   //---
     return idx
   }
-//  NSValue * key = [NSValue valueWithNonretainedObject:inPackageType] ;
-//  NSNumber * idx = [ioPackageDictionary objectForKey:key] ;
-//  if (idx == nil) {
-//  //--- Enter device index in device dictionary
-//    idx = [NSNumber numberWithUnsignedInteger:[ioPackageArrayForRouting count]] ;
-//    [ioPackageDictionary setObject:idx forKey:key HERE] ;
-//  //--- pad array
-//    NSMutableArray * padArrayForRouting = [NSMutableArray arrayWithCapacity:0] ;
-//    NSArray * padArray = inPackageType.pads.allObjects ;
-//    NSArray * sortedPadArray = [padArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:
-//      [[NSSortDescriptor alloc] initWithKey:@"padQualifiedName" ascending:YES] HERE
-//    ]] ;
-//    const EBPoint offset = [[sortedPadArray objectAtIndex:0 HERE OFCLASS (PMClassForMasterPadInProjectEntity)] padCenter] ;
-//  //--- Enter slave pads
-//    for (PMClassForMasterPadInProjectEntity * pad in sortedPadArray) {
-//      macroCheckObject (pad, PMClassForMasterPadInProjectEntity) ;
-//      NSMutableArray * slavePadStack = [NSMutableArray new] ;
-//    //--- Enter slave pads
-//      for (PMClassForSlavePadInProjectEntity * sp in pad.slavePads) {
-//        macroCheckObject (sp, PMClassForSlavePadInProjectEntity) ;
-//        const EBPoint center = {
-//          sp.padCenter.x - offset.x,
-//          sp.padCenter.y - offset.y
-//        } ;
-//        const NSInteger slavePadSide = [sp side] ;
-//        // NSLog (@"slavePadSide %d", slavePadSide) ;
-//        if ((slavePadSide == 0) || (slavePadSide == 1)) {
-//          PMPadElementForRouting * pt = [[PMPadElementForRouting alloc]
-//            initWithX:center.x
-//            y:center.y
-//            width:sp.padSize.width
-//            height:sp.padSize.height
-//            holeDiameter:sp.holeDiameter
-//            shape:sp.padShape
-//            onComponentSide:YES
-//          ] ;
-//          [slavePadStack addObject:pt] ;
-//        }
-//        if ((slavePadSide == 0) || (slavePadSide == 2)) {
-//          PMPadElementForRouting * pt = [[PMPadElementForRouting alloc]
-//            initWithX:center.x
-//            y:center.y
-//            width:sp.padSize.width
-//            height:sp.padSize.height
-//            holeDiameter:sp.holeDiameter
-//            shape:sp.padShape
-//            onComponentSide:NO
-//          ] ;
-//          [slavePadStack addObject:pt] ;
-//        }
-//      }
-//    //--- Enter master pad
-//      const EBPoint center = {pad.padCenter.x - offset.x, pad.padCenter.y - offset.y} ;
-//      PMMasterPadForRouting * masterPad = findOrAddMasterPad (pad.padSize.width,
-//                                                              pad.padSize.height,
-//                                                              pad.side,
-//                                                              pad.padShape,
-//                                                              ioPadTypeArrayForRouting) ;
-//      PMPadStackForRouting * pfr = [[PMPadStackForRouting alloc]
-//        initWithName:[pad padQualifiedName]
-//        masterPad:masterPad
-//        masterPadCenter:center
-//        slavePadStack:slavePadStack
-//        netIndex:-1
-//      ] ;
-//      [padArrayForRouting addObject:pfr] ;
-//    }
-//  //--- Enter in device array
-//    PMPackageTypeForRouting * pfr = [[PMPackageTypeForRouting alloc]
-//      initWithPackageTypeName:inPackageType.packageTypeName
-//      padArray:padArrayForRouting
-//    ] ;
-//    [ioPackageArrayForRouting addObject:pfr] ;
-//  }
-//  return idx.unsignedIntegerValue ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -354,35 +230,16 @@ fileprivate func findOrAddMasterPad (canariWidth inWidth : Int,
       return mp
     }
   }
-//  for (NSUInteger i=0 ; (i<ioPadTypeArrayForRouting.count) && (nil == result) ; i++) {
-//    PMMasterPadForRouting * mp = [ioPadTypeArrayForRouting objectAtIndex:i] ;
-//    if ((mp.width == inWidth) && (mp.height == inHeight) && (mp.side == inSide) && (mp.shape == inShape)) {
-//      result = mp ;
-//    }
-//  }
 //--- If not found, create it
- let newPad = MasterPadForRouting (
-   name: "ps\(ioPadTypeArrayForRouting.count)",
-   canariWidth: inWidth,
-   canariHeight: inHeight,
-   shape: inShape,
-   style: inStyle
- )
- ioPadTypeArrayForRouting.append (newPad)
- return newPad
-// if (nil == result) {
-//   NSString * padTypeName = [NSString stringWithFormat:@"ps%lu", ioPadTypeArrayForRouting.count] ;
-//   result = [[PMMasterPadForRouting alloc]
-//     initWithName:padTypeName
-//     width:inWidth
-//     height:inHeight
-//     side:inSide
-//     shape:inShape
-//   ] ;
-//   [ioPadTypeArrayForRouting addObject:result] ;
-// }
-////---
-//  return result ;
+  let newPad = MasterPadForRouting (
+    name: "ps\(ioPadTypeArrayForRouting.count)",
+    canariWidth: inWidth,
+    canariHeight: inHeight,
+    shape: inShape,
+    style: inStyle
+  )
+  ioPadTypeArrayForRouting.append (newPad)
+  return newPad
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -390,13 +247,6 @@ fileprivate func findOrAddMasterPad (canariWidth inWidth : Int,
 struct PadNetDescriptor {
   let padString : String
   let netName : String?
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct DeviceDictionaryKey : Hashable {
-  let device : DeviceInProject
-  let package : DevicePackageInProject
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -457,8 +307,7 @@ struct PadStackForRouting {
   let masterPad : MasterPadForRouting
   let centerXmm : CGFloat // In mm
   let centerYmm : CGFloat // In mm
-//  slavePadStack:slavePadStack
-//  let netIndex : Int? // nil means no net
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -492,17 +341,47 @@ struct MasterPadForRouting {
       shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
     case .round :
       if halfWidth < halfHeight {
-        shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
+        shapeString = "(path \(inSide) \(halfWidth * 2.0) 0 \(halfWidth - halfHeight) 0 \(halfHeight - halfWidth) (aperture_type round))"
+  //      shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
       }else if halfWidth > halfHeight {
-        shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
+        shapeString = "(path \(inSide) \(halfWidth * 2.0) \(halfWidth - halfHeight) 0 \(halfHeight - halfWidth) 0 (aperture_type round))"
+//        shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
       }else{
         shapeString = "(circle \(inSide) \(halfWidth * 2.0) 0 0)"
       }
     case .octo :
-      shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
+      let s2 : CGFloat = sqrt (2.0)
+      let w = halfWidth * 2.0
+      let h = halfHeight * 2.0
+      let x = -halfWidth
+      let y = -halfHeight
+      let lg = min (w, h) / (1.0 + s2)
+      var vertices = [NSPoint] ()
+      vertices.append (NSPoint (x: x + lg / s2,     y: y + h))
+      vertices.append (NSPoint (x: x + w - lg / s2, y: y + h))
+      vertices.append (NSPoint (x: x + w,           y: y + h - lg / s2))
+      vertices.append (NSPoint (x: x + w,           y: y + lg / s2))
+      vertices.append (NSPoint (x: x + w - lg / s2, y: y))
+      vertices.append (NSPoint (x: x + lg / s2,     y: y))
+      vertices.append (NSPoint (x: x,               y: y + lg / s2))
+      vertices.append (NSPoint (x: x,               y: y + h - lg / s2))
+      var s = "(polygon \(inSide) 0"
+      for p in vertices {
+        s += " \(p.x) \(p.y)"
+      }
+      s += " \(vertices [0].x) \(vertices [0].y)" // Close path
+      s += ")"
+      shapeString = s
+//      if halfWidth < halfHeight {
+//        shapeString = "(path \(inSide) \(halfWidth * 2.0) 0 \(halfWidth - halfHeight) 0 \(halfHeight - halfWidth))"
+//      }else{
+//        shapeString = "(path \(inSide) \(halfHeight * 2.0) \(halfWidth - halfHeight) \(halfHeight - halfWidth) 0)"
+//      }
+  //    shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
     }
     return shapeString
   }
+
   //····················································································································
 
 }
@@ -563,36 +442,35 @@ fileprivate func addComponentPadStackLibrary (_ ioString : inout String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addDeviceLibrary (_ ioString : inout String,
-                                   _ inDeviceArrayForRouting : [DeviceForRouting],
                                    _ inPackageArrayForRouting : [PackageTypeForRouting]) {
-  var imageNameSet = Set <String> ()
-  for device in inDeviceArrayForRouting {
-    let key = "\(device.name)_\(device.packageIndex)"
-    if !imageNameSet.contains (key) {
-      imageNameSet.insert (key)
-      ioString += "    (image \"\(device.name)\"\n"
-      let packageType : PackageTypeForRouting = inPackageArrayForRouting [device.packageIndex]
-      for pad in packageType.padArray {
-        ioString += "      (pin \(pad.masterPad.name) \(pad.name) \(pad.centerXmm) \(pad.centerYmm))\n"
-//  let name : String
-//  let masterPad : MasterPadForRouting
-//  let masterPadCenter : NSPoint
-////  slavePadStack:slavePadStack
-//  let netIndex : Int? // nil means no net
-      }
-      ioString += "    )\n"
+  for package in inPackageArrayForRouting {
+    ioString += "    (image \"\(package.typeName)\"\n"
+    for pad in package.padArray {
+      ioString += "      (pin \(pad.masterPad.name) \(pad.name) \(pad.centerXmm) \(pad.centerYmm))\n"
     }
+    ioString += "    )\n"
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func addBoardBoundary (_ ioString : inout String) {
+fileprivate func addBoardBoundary (_ ioString : inout String,
+                                   _ inBoardBoundBox : CanariRect,
+                                   _ inSignalPolygonVertices : [NSPoint], // In millimeters
+                                   _ inBoardClearanceInMM : CGFloat) {
+  let bbLeft = canariUnitToMillimeter (inBoardBoundBox.origin.x)
+  let bbBottom = canariUnitToMillimeter (inBoardBoundBox.origin.y)
+  let bbRight = bbLeft + canariUnitToMillimeter (inBoardBoundBox.size.width)
+  let bbTop = bbBottom + canariUnitToMillimeter (inBoardBoundBox.size.height)
   ioString += "    (boundary\n"
-  ioString += "      (rect pcb 0 0 100 100)\n"
+  ioString += "      (rect pcb \(bbLeft) \(bbBottom) \(bbRight) \(bbTop))\n"
   ioString += "    )\n"
   ioString += "    (boundary\n"
-  ioString += "      (rect signal 1.5 1.5 98.5 98.5)\n"
+  ioString += "      (path signal \(inBoardClearanceInMM)"
+  for p in inSignalPolygonVertices {
+    ioString += " \(p.x) \(p.y)"
+  }
+  ioString += ")\n"
   ioString += "    )\n"
 }
 
@@ -680,7 +558,7 @@ fileprivate func addRuleClearance (_ ioString : inout String, clearanceInMM inCl
 
 fileprivate func addComponentsPlacement (_ ioString : inout String,
                                          _ inComponents : [ComponentForRouting],
-                                         _ inDeviceArrayForRouting : [DeviceForRouting]) {
+                                         _ inPackageArrayForRouting : [PackageTypeForRouting]) {
   ioString += "  (placement\n"
   for component in inComponents {
     let x = canariUnitToMillimeter (component.originX)
@@ -690,7 +568,7 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
     case .back : side = "back"
     case .front : side = "front"
     }
-    ioString += "    (component \"\(inDeviceArrayForRouting [component.deviceIndex].name)\"\n"
+    ioString += "    (component \"\(inPackageArrayForRouting [component.deviceIndex].typeName)\"\n"
     ioString += "      (place\n"
     ioString += "        \"\(component.componentName)\" \(x) \(y) \(side) \(component.rotation)\n"
     var idx = 1

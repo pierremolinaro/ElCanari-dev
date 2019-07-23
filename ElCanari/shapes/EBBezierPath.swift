@@ -541,6 +541,34 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
+  func pointsByFlattening (withFlatness inFlatness : CGFloat) -> [NSPoint] {
+    let savedDefaultFlatness = NSBezierPath.defaultFlatness
+    NSBezierPath.defaultFlatness = inFlatness
+    let flattenedBP = self.mPath.flattened
+
+    var result = [NSPoint] ()
+    var curvePoints = [NSPoint] (repeating: .zero, count: 3)
+    for idx in 0 ..< flattenedBP.elementCount {
+      let type = flattenedBP.element (at: idx, associatedPoints: &curvePoints)
+      switch type {
+      case .moveTo:
+        result.append (curvePoints[0])
+      case .lineTo:
+        result.append (curvePoints[0])
+      case .curveTo: // No curve, Bezier path is flattened
+        ()
+      case .closePath:
+        result.append (result[0])
+      @unknown default:
+         ()
+      }
+    }
+    NSBezierPath.defaultFlatness = savedDefaultFlatness
+    return result
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
