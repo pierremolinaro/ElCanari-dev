@@ -131,6 +131,16 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   }
 
   //····················································································································
+  //   Selection observable property: trackLength
+  //····················································································································
+
+  let trackLength_property = EBTransientProperty_Double ()
+
+  var trackLength_property_selection : EBSelection <Double> {
+    return self.trackLength_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
@@ -168,6 +178,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.bind_property_netClassTrackWidth ()
     self.bind_property_netClassViaHoleDiameter ()
     self.bind_property_netClassViaPadDiameter ()
+    self.bind_property_trackLength ()
     self.bind_property_objectDisplay ()
   }
 
@@ -223,6 +234,9 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //--- netClassViaPadDiameter
     self.netClassViaPadDiameter_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
+  //--- trackLength
+    self.trackLength_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_trackLength (self.trackLength_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
@@ -952,6 +966,45 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var isMultipleSelection = false
           for object in v {
             switch object.netClassViaPadDiameter_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_trackLength () {
+    self.selectedArray_property.addEBObserverOf_trackLength (self.trackLength_property)
+    self.trackLength_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Double> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.trackLength_property_selection {
             case .empty :
               return .empty
             case .multiple :

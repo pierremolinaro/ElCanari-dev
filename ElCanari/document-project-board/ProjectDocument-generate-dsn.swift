@@ -530,7 +530,7 @@ fileprivate func autorouteSettings (_ ioString : inout String,
   case .hFrontVback :
     frontPreferredDir = "horizontal"
     backPreferredDir = "vertical"
-  case .vFronthBack :
+  case .vFrontHback :
     frontPreferredDir = "vertical"
     backPreferredDir = "horizontal"
   }

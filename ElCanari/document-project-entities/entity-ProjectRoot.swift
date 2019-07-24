@@ -18,6 +18,12 @@ protocol ProjectRoot_mAutorouterSnapAngle : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mTrackLengthUnit : class {
+  var mTrackLengthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mLayoutClearance : class {
   var mLayoutClearance : Int { get }
 }
@@ -354,6 +360,24 @@ protocol ProjectRoot_netsDescription : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_viaCountString : class {
+  var viaCountString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_trackCountString : class {
+  var trackCountString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_trackLengthString : class {
+  var trackLengthString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_boardIssues : class {
   var boardIssues : CanariIssueArray? { get }
 }
@@ -491,6 +515,7 @@ protocol ProjectRoot_schematicStatusImage : class {
 class ProjectRoot : EBManagedObject,
          ProjectRoot_mAutoRouterPreferredDirections,
          ProjectRoot_mAutorouterSnapAngle,
+         ProjectRoot_mTrackLengthUnit,
          ProjectRoot_mLayoutClearance,
          ProjectRoot_mLayoutClearanceUnit,
          ProjectRoot_mBoardSelectedInspector,
@@ -547,6 +572,9 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_connexionErrorString,
          ProjectRoot_sheetIndexes,
          ProjectRoot_netsDescription,
+         ProjectRoot_viaCountString,
+         ProjectRoot_trackCountString,
+         ProjectRoot_trackLengthString,
          ProjectRoot_boardIssues,
          ProjectRoot_issuesDisplay,
          ProjectRoot_borderClearanceBackground,
@@ -574,7 +602,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mAutoRouterPreferredDirections
   //····················································································································
 
-  let mAutoRouterPreferredDirections_property = EBStoredProperty_AutorouterPreferredDirections (defaultValue: AutorouterPreferredDirections.vFronthBack)
+  let mAutoRouterPreferredDirections_property = EBStoredProperty_AutorouterPreferredDirections (defaultValue: AutorouterPreferredDirections.vFrontHback)
 
   //····················································································································
 
@@ -603,6 +631,23 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mAutorouterSnapAngle_property_selection : EBSelection <AutorouterSnapAngle> { return self.mAutorouterSnapAngle_property.prop }
+
+  //····················································································································
+  //   Atomic property: mTrackLengthUnit
+  //····················································································································
+
+  let mTrackLengthUnit_property = EBStoredProperty_Int (defaultValue: 90000000)
+
+  //····················································································································
+
+  var mTrackLengthUnit : Int {
+    get { return self.mTrackLengthUnit_property.propval }
+    set { self.mTrackLengthUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mTrackLengthUnit_property_selection : EBSelection <Int> { return self.mTrackLengthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mLayoutClearance
@@ -1817,6 +1862,75 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: viaCountString
+  //····················································································································
+
+  let viaCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var viaCountString_property_selection : EBSelection <String> {
+    return self.viaCountString_property.prop
+  }
+
+  //····················································································································
+
+  var viaCountString : String? {
+    switch self.viaCountString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: trackCountString
+  //····················································································································
+
+  let trackCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var trackCountString_property_selection : EBSelection <String> {
+    return self.trackCountString_property.prop
+  }
+
+  //····················································································································
+
+  var trackCountString : String? {
+    switch self.trackCountString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: trackLengthString
+  //····················································································································
+
+  let trackLengthString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var trackLengthString_property_selection : EBSelection <String> {
+    return self.trackLengthString_property.prop
+  }
+
+  //····················································································································
+
+  var trackLengthString : String? {
+    switch self.trackLengthString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: boardIssues
   //····················································································································
 
@@ -2332,6 +2446,8 @@ class ProjectRoot : EBManagedObject,
     self.mAutoRouterPreferredDirections_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mAutorouterSnapAngle
     self.mAutorouterSnapAngle_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mTrackLengthUnit
+    self.mTrackLengthUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mLayoutClearance
     self.mLayoutClearance_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mLayoutClearanceUnit
@@ -2664,6 +2780,74 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mNetClasses_property.addEBObserverOf_netsDescription (self.netsDescription_property)
+  //--- Atomic property: viaCountString
+    self.viaCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mBoardObjects_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBoardObjects_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_viaCountString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardObjects_property.addEBObserverOf_isVia (self.viaCountString_property)
+  //--- Atomic property: trackCountString
+    self.trackCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mBoardObjects_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBoardObjects_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_trackCountString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardObjects_property.addEBObserverOf_trackLength (self.trackCountString_property)
+  //--- Atomic property: trackLengthString
+    self.trackLengthString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mBoardObjects_property_selection.kind ()
+        kind &= unwSelf.mTrackLengthUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBoardObjects_property_selection, unwSelf.mTrackLengthUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ProjectRoot_trackLengthString (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardObjects_property.addEBObserverOf_trackLength (self.trackLengthString_property)
+    self.mTrackLengthUnit_property.addEBObserver (self.trackLengthString_property)
   //--- Atomic property: boardIssues
     self.boardIssues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3257,6 +3441,10 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
     self.mSheets_property.removeEBObserver (self.sheetIndexes_property)
     self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netsDescription_property)
+    self.mBoardObjects_property.removeEBObserverOf_isVia (self.viaCountString_property)
+    self.mBoardObjects_property.removeEBObserverOf_trackLength (self.trackCountString_property)
+    self.mBoardObjects_property.removeEBObserverOf_trackLength (self.trackLengthString_property)
+    self.mTrackLengthUnit_property.removeEBObserver (self.trackLengthString_property)
     self.mBoardObjects_property.removeEBObserverOf_issues (self.boardIssues_property)
     self.boardIssues_property.removeEBObserver (self.issuesDisplay_property)
     self.mBorderCurves_property.removeEBObserverOf_descriptor (self.borderClearanceBackground_property)
@@ -3342,6 +3530,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.mAutorouterSnapAngle_property.mObserverExplorer,
       valueExplorer: &self.mAutorouterSnapAngle_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mTrackLengthUnit",
+      idx: self.mTrackLengthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mTrackLengthUnit_property.mObserverExplorer,
+      valueExplorer: &self.mTrackLengthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mLayoutClearance",
@@ -3785,6 +3981,30 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.netsDescription_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "viaCountString",
+      idx: self.viaCountString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.viaCountString_property.mObserverExplorer,
+      valueExplorer: &self.viaCountString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "trackCountString",
+      idx: self.trackCountString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.trackCountString_property.mObserverExplorer,
+      valueExplorer: &self.trackCountString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "trackLengthString",
+      idx: self.trackLengthString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.trackLengthString_property.mObserverExplorer,
+      valueExplorer: &self.trackLengthString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "boardIssues",
       idx: self.boardIssues_property.ebObjectIndex,
       y: &y,
@@ -4032,6 +4252,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mAutorouterSnapAngle
     self.mAutorouterSnapAngle_property.mObserverExplorer = nil
     self.mAutorouterSnapAngle_property.mValueExplorer = nil
+  //--- Atomic property: mTrackLengthUnit
+    self.mTrackLengthUnit_property.mObserverExplorer = nil
+    self.mTrackLengthUnit_property.mValueExplorer = nil
   //--- Atomic property: mLayoutClearance
     self.mLayoutClearance_property.mObserverExplorer = nil
     self.mLayoutClearance_property.mValueExplorer = nil
@@ -4235,6 +4458,8 @@ class ProjectRoot : EBManagedObject,
     self.mAutoRouterPreferredDirections_property.storeIn (dictionary: ioDictionary, forKey:"mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle
     self.mAutorouterSnapAngle_property.storeIn (dictionary: ioDictionary, forKey:"mAutorouterSnapAngle")
+  //--- Atomic property: mTrackLengthUnit
+    self.mTrackLengthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mTrackLengthUnit")
   //--- Atomic property: mLayoutClearance
     self.mLayoutClearance_property.storeIn (dictionary: ioDictionary, forKey:"mLayoutClearance")
   //--- Atomic property: mLayoutClearanceUnit
@@ -4449,6 +4674,8 @@ class ProjectRoot : EBManagedObject,
     self.mAutoRouterPreferredDirections_property.readFrom (dictionary: inDictionary, forKey:"mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle
     self.mAutorouterSnapAngle_property.readFrom (dictionary: inDictionary, forKey:"mAutorouterSnapAngle")
+  //--- Atomic property: mTrackLengthUnit
+    self.mTrackLengthUnit_property.readFrom (dictionary: inDictionary, forKey:"mTrackLengthUnit")
   //--- Atomic property: mLayoutClearance
     self.mLayoutClearance_property.readFrom (dictionary: inDictionary, forKey:"mLayoutClearance")
   //--- Atomic property: mLayoutClearanceUnit

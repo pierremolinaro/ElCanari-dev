@@ -44,7 +44,7 @@ struct CanariPoint : Equatable, Hashable {
 
   //····················································································································
 
-  static func squareOfDistance (_ p1 : CanariPoint, _ p2 : CanariPoint) -> Double {
+  static func squareOfCanariDistance (_ p1 : CanariPoint, _ p2 : CanariPoint) -> Double {
     let dx = Double (p1.x - p2.x)
     let dy = Double (p1.y - p2.y)
     return dx * dx + dy * dy

@@ -36,6 +36,18 @@ protocol BoardObject_issues : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardObject_isVia : class {
+  var isVia : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_trackLength : class {
+  var trackLength : Double? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardObject_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
 }
@@ -62,6 +74,8 @@ class BoardObject : EBGraphicManagedObject,
          BoardObject_displayBackPads,
          BoardObject_displayPadNumbers,
          BoardObject_issues,
+         BoardObject_isVia,
+         BoardObject_trackLength,
          BoardObject_selectionDisplay,
          BoardObject_objectDisplay,
          BoardObject_errorOrWarningIssueSize {
@@ -212,6 +226,52 @@ class BoardObject : EBGraphicManagedObject,
 
   var issues : CanariIssueArray? {
     switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: isVia
+  //····················································································································
+
+  let isVia_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var isVia_property_selection : EBSelection <Bool> {
+    return self.isVia_property.prop
+  }
+
+  //····················································································································
+
+  var isVia : Bool? {
+    switch self.isVia_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: trackLength
+  //····················································································································
+
+  let trackLength_property = EBTransientProperty_Double ()
+
+  //····················································································································
+
+  var trackLength_property_selection : EBSelection <Double> {
+    return self.trackLength_property.prop
+  }
+
+  //····················································································································
+
+  var trackLength : Double? {
+    switch self.trackLength_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -432,6 +492,22 @@ class BoardObject : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.issues_property.mObserverExplorer,
       valueExplorer: &self.issues_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "isVia",
+      idx: self.isVia_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.isVia_property.mObserverExplorer,
+      valueExplorer: &self.isVia_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "trackLength",
+      idx: self.trackLength_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.trackLength_property.mObserverExplorer,
+      valueExplorer: &self.trackLength_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",

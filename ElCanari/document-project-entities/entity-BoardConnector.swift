@@ -96,6 +96,12 @@ protocol BoardConnector_side : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardConnector_isVia : class {
+  var isVia : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardConnector_issues : class {
   var issues : CanariIssueArray? { get }
 }
@@ -174,6 +180,7 @@ class BoardConnector : BoardObject,
          BoardConnector_location,
          BoardConnector_netNameFromComponentPad,
          BoardConnector_side,
+         BoardConnector_isVia,
          BoardConnector_issues,
          BoardConnector_viaDefaultHoleDiameter,
          BoardConnector_viaDefaultPadDiameter,
@@ -827,6 +834,32 @@ class BoardConnector : BoardObject,
     self.mPadIndex_property.addEBObserver (self.side_property)
     self.mTracksP1_property.addEBObserverOf_mSide (self.side_property)
     self.mTracksP2_property.addEBObserverOf_mSide (self.side_property)
+  //--- Atomic property: isVia
+    self.isVia_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mTracksP1_property_selection.kind ()
+        kind &= unwSelf.mTracksP2_property_selection.kind ()
+        kind &= unwSelf.mComponent_none_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection, unwSelf.mComponent_none_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_BoardConnector_isVia (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mTracksP1_property.addEBObserverOf_mSide (self.isVia_property)
+    self.mTracksP2_property.addEBObserverOf_mSide (self.isVia_property)
+    self.mComponent_property.addEBObserver (self.isVia_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1118,6 +1151,9 @@ class BoardConnector : BoardObject,
     self.mPadIndex_property.removeEBObserver (self.side_property)
     self.mTracksP1_property.removeEBObserverOf_mSide (self.side_property)
     self.mTracksP2_property.removeEBObserverOf_mSide (self.side_property)
+    self.mTracksP1_property.removeEBObserverOf_mSide (self.isVia_property)
+    self.mTracksP2_property.removeEBObserverOf_mSide (self.isVia_property)
+    self.mComponent_property.removeEBObserver (self.isVia_property)
     self.location_property.removeEBObserver (self.issues_property)
     self.mComponent_property.removeEBObserver (self.issues_property)
     self.mComponentPadName_property.removeEBObserver (self.issues_property)
@@ -1283,6 +1319,14 @@ class BoardConnector : BoardObject,
       view: view,
       observerExplorer: &self.side_property.mObserverExplorer,
       valueExplorer: &self.side_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "isVia",
+      idx: self.isVia_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.isVia_property.mObserverExplorer,
+      valueExplorer: &self.isVia_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",

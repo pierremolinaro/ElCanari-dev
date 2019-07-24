@@ -7,7 +7,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum AutorouterPreferredDirections : Int, EnumPropertyProtocol {
-  case vFronthBack = 0
+  case vFrontHback = 0
   case hFrontVback = 1
 
 
@@ -15,7 +15,7 @@ enum AutorouterPreferredDirections : Int, EnumPropertyProtocol {
 
   init? (string : String) {
     switch string {
-      case "vFronthBack" : self = .vFronthBack // 0
+      case "vFrontHback" : self = .vFrontHback // 0
       case "hFrontVback" : self = .hFrontVback // 1
       case _ : return nil
     }
@@ -25,7 +25,7 @@ enum AutorouterPreferredDirections : Int, EnumPropertyProtocol {
 
   func descriptionForExplorer () -> String {
     switch self {
-      case .vFronthBack : return "vFronthBack" // 0
+      case .vFrontHback : return "vFrontHback" // 0
       case .hFrontVback : return "hFrontVback" // 1
     }
   }
@@ -66,7 +66,7 @@ enum AutorouterPreferredDirections : Int, EnumPropertyProtocol {
   }
 
   static func convertFromNSObject (object : NSObject) -> AutorouterPreferredDirections {
-    var result = AutorouterPreferredDirections.vFronthBack
+    var result = AutorouterPreferredDirections.vFrontHback
     if let number = object as? NSNumber, let v = AutorouterPreferredDirections (rawValue: number.intValue) {
       result = v
     }

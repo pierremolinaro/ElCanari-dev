@@ -30,6 +30,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     inOldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location) // Transient property
     inOldValue?.netNameFromComponentPad_property.removeEBObserversFrom (&self.mObserversOf_netNameFromComponentPad) // Transient property
     inOldValue?.side_property.removeEBObserversFrom (&self.mObserversOf_side) // Transient property
+    inOldValue?.isVia_property.removeEBObserversFrom (&self.mObserversOf_isVia) // Transient property
     inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
     inOldValue?.viaDefaultHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaDefaultHoleDiameter) // Transient property
     inOldValue?.viaDefaultPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaDefaultPadDiameter) // Transient property
@@ -56,6 +57,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     self.mInternalValue?.location_property.addEBObserversFrom (&self.mObserversOf_location) // Transient property
     self.mInternalValue?.netNameFromComponentPad_property.addEBObserversFrom (&self.mObserversOf_netNameFromComponentPad) // Transient property
     self.mInternalValue?.side_property.addEBObserversFrom (&self.mObserversOf_side) // Transient property
+    self.mInternalValue?.isVia_property.addEBObserversFrom (&self.mObserversOf_isVia) // Transient property
     self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
     self.mInternalValue?.viaDefaultHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_viaDefaultHoleDiameter) // Transient property
     self.mInternalValue?.viaDefaultPadDiameter_property.addEBObserversFrom (&self.mObserversOf_viaDefaultPadDiameter) // Transient property
@@ -1111,6 +1113,75 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     for managedObject in inSet {
       self.mObserversOf_side.apply { (_ observer : EBEvent) in
         managedObject.side_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'isVia' transient property
+  //····················································································································
+
+  private var mObserversOf_isVia = EBWeakEventSet ()
+
+  //····················································································································
+
+  var isVia_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.isVia_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_isVia (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_isVia.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.isVia_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isVia (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_isVia.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.isVia_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_isVia_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_isVia.apply { (_ observer : EBEvent) in
+        managedObject.isVia_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_isVia_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_isVia.apply { (_ observer : EBEvent) in
+        managedObject.isVia_property.removeEBObserver (observer)
       }
     }
   }

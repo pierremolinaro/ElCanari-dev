@@ -43,6 +43,8 @@ graphic entity BoardConnector : BoardObject {
     self.mTracksP1.all.mSide, self.mTracksP2.all.mSide
   ;
   
+  override transient Bool isVia dependsFrom self.mTracksP1.all.mSide, self.mTracksP2.all.mSide, self.mComponent.none ;
+
   override transient CanariIssueArray issues dependsFrom
     self.location, self.mComponent.none,
     self.mComponentPadName,

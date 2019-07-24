@@ -617,6 +617,11 @@ document ProjectDocument root ProjectRoot {
   action launchFreeRouterAction ;
   outlet EBButton mLaunchFreeRouterButton $run launchFreeRouterAction ;
 
+  outlet EBTextObserverField mViaCountTextField $valueObserver root.viaCountString ;
+  outlet EBTextObserverField mTrackCountTextField $valueObserver root.trackCountString ;
+  outlet EBTextObserverField mTrackLengthTextField $valueObserver root.trackLengthString ;
+  outlet EBPopUpButton mTrackLengthUnitPopUp $selectedTag root.mTrackLengthUnit ;
+
 //--- ERC Inspector
   outlet NSTextView mERCLogTextView ;
 

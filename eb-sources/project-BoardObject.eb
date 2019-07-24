@@ -16,6 +16,10 @@ abstract graphic entity BoardObject {
   transient Double errorOrWarningIssueSize dependsFrom self.mRoot.one.mErrorOrWarningIssueSize ;
   
   abstract transient CanariIssueArray issues ;
+  
+  abstract transient Bool isVia ;
+  
+  abstract transient Double trackLength ; // In Canari Unit
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

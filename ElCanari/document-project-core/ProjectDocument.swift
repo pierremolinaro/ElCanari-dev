@@ -740,10 +740,13 @@ import Cocoa
   @IBOutlet weak var mSheetUpButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mSymbolMirrorSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mSymbolRotationSegmentedControl : CanariQuadrantSegmentedControl? = nil // An outlet should be declared weak
+  @IBOutlet weak var mTrackCountTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mTrackCustomWidthTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mTrackCustomWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mTrackDefaultWidthTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mTrackDefaultWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mTrackLengthTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mTrackLengthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mTrackNetClassNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mTrackNetNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mUnplacedPackageTableView : CanariDragSourceTableView? = nil // An outlet should be declared weak
@@ -758,6 +761,7 @@ import Cocoa
   @IBOutlet weak var mUsesCustomHoleDiameterSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mUsesCustomPadDiameterSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mUsesCustomTrackWidthSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mViaCountTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mViaCustomHoleDiameterTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mViaCustomHoleDiameterUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mViaCustomPadDiameterTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
@@ -1202,10 +1206,13 @@ import Cocoa
     checkOutletConnection (self.mSheetUpButton, "mSheetUpButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSymbolMirrorSwitch, "mSymbolMirrorSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolRotationSegmentedControl, "mSymbolRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mTrackCountTextField, "mTrackCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mTrackCustomWidthTextField, "mTrackCustomWidthTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mTrackCustomWidthUnitPopUp, "mTrackCustomWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mTrackDefaultWidthTextField, "mTrackDefaultWidthTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mTrackDefaultWidthUnitPopUp, "mTrackDefaultWidthUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mTrackLengthTextField, "mTrackLengthTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mTrackLengthUnitPopUp, "mTrackLengthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mTrackNetClassNameTextField, "mTrackNetClassNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mTrackNetNameTextField, "mTrackNetNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mUnplacedPackageTableView, "mUnplacedPackageTableView", CanariDragSourceTableView.self, #file, #line)
@@ -1220,6 +1227,7 @@ import Cocoa
     checkOutletConnection (self.mUsesCustomHoleDiameterSwitch, "mUsesCustomHoleDiameterSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mUsesCustomPadDiameterSwitch, "mUsesCustomPadDiameterSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mUsesCustomTrackWidthSwitch, "mUsesCustomTrackWidthSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mViaCountTextField, "mViaCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mViaCustomHoleDiameterTextField, "mViaCustomHoleDiameterTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mViaCustomHoleDiameterUnitPopUp, "mViaCustomHoleDiameterUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mViaCustomPadDiameterTextField, "mViaCustomPadDiameterTextField", CanariDimensionTextField.self, #file, #line)
@@ -1698,6 +1706,10 @@ import Cocoa
     self.mLayoutClearanceTextField?.bind_dimensionAndUnit (self.rootObject.mLayoutClearance_property, self.rootObject.mLayoutClearanceUnit_property, file: #file, line: #line)
     self.mAutoRouterPreferredDirectionPopUp?.bind_selectedIndex (self.rootObject.mAutoRouterPreferredDirections_property, file: #file, line: #line)
     self.mAutorouterSnapAnglePopUp?.bind_selectedIndex (self.rootObject.mAutorouterSnapAngle_property, file: #file, line: #line)
+    self.mViaCountTextField?.bind_valueObserver (self.rootObject.viaCountString_property, file: #file, line: #line)
+    self.mTrackCountTextField?.bind_valueObserver (self.rootObject.trackCountString_property, file: #file, line: #line)
+    self.mTrackLengthTextField?.bind_valueObserver (self.rootObject.trackLengthString_property, file: #file, line: #line)
+    self.mTrackLengthUnitPopUp?.bind_selectedTag (self.rootObject.mTrackLengthUnit_property, file: #file, line: #line)
     self.mBoardTrackSidePopUpButton?.bind_selectedIndex (self.boardTrackSelectionController.mSide_property, file: #file, line: #line)
     self.mTrackNetNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netName_property, file: #file, line: #line)
     self.mTrackNetClassNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netClassName_property, file: #file, line: #line)
@@ -2329,6 +2341,10 @@ import Cocoa
     self.mLayoutClearanceTextField?.unbind_dimensionAndUnit ()
     self.mAutoRouterPreferredDirectionPopUp?.unbind_selectedIndex ()
     self.mAutorouterSnapAnglePopUp?.unbind_selectedIndex ()
+    self.mViaCountTextField?.unbind_valueObserver ()
+    self.mTrackCountTextField?.unbind_valueObserver ()
+    self.mTrackLengthTextField?.unbind_valueObserver ()
+    self.mTrackLengthUnitPopUp?.unbind_selectedTag ()
     self.mBoardTrackSidePopUpButton?.unbind_selectedIndex ()
     self.mTrackNetNameTextField?.unbind_valueObserver ()
     self.mTrackNetClassNameTextField?.unbind_valueObserver ()
@@ -2867,10 +2883,13 @@ import Cocoa
     self.mSheetUpButton?.ebCleanUp ()
     self.mSymbolMirrorSwitch?.ebCleanUp ()
     self.mSymbolRotationSegmentedControl?.ebCleanUp ()
+    self.mTrackCountTextField?.ebCleanUp ()
     self.mTrackCustomWidthTextField?.ebCleanUp ()
     self.mTrackCustomWidthUnitPopUp?.ebCleanUp ()
     self.mTrackDefaultWidthTextField?.ebCleanUp ()
     self.mTrackDefaultWidthUnitPopUp?.ebCleanUp ()
+    self.mTrackLengthTextField?.ebCleanUp ()
+    self.mTrackLengthUnitPopUp?.ebCleanUp ()
     self.mTrackNetClassNameTextField?.ebCleanUp ()
     self.mTrackNetNameTextField?.ebCleanUp ()
     self.mUnplacedPackageTableView?.ebCleanUp ()
@@ -2885,6 +2904,7 @@ import Cocoa
     self.mUsesCustomHoleDiameterSwitch?.ebCleanUp ()
     self.mUsesCustomPadDiameterSwitch?.ebCleanUp ()
     self.mUsesCustomTrackWidthSwitch?.ebCleanUp ()
+    self.mViaCountTextField?.ebCleanUp ()
     self.mViaCustomHoleDiameterTextField?.ebCleanUp ()
     self.mViaCustomHoleDiameterUnitPopUp?.ebCleanUp ()
     self.mViaCustomPadDiameterTextField?.ebCleanUp ()
@@ -3189,10 +3209,13 @@ import Cocoa
 //    self.mSheetUpButton = nil
 //    self.mSymbolMirrorSwitch = nil
 //    self.mSymbolRotationSegmentedControl = nil
+//    self.mTrackCountTextField = nil
 //    self.mTrackCustomWidthTextField = nil
 //    self.mTrackCustomWidthUnitPopUp = nil
 //    self.mTrackDefaultWidthTextField = nil
 //    self.mTrackDefaultWidthUnitPopUp = nil
+//    self.mTrackLengthTextField = nil
+//    self.mTrackLengthUnitPopUp = nil
 //    self.mTrackNetClassNameTextField = nil
 //    self.mTrackNetNameTextField = nil
 //    self.mUnplacedPackageTableView = nil
@@ -3207,6 +3230,7 @@ import Cocoa
 //    self.mUsesCustomHoleDiameterSwitch = nil
 //    self.mUsesCustomPadDiameterSwitch = nil
 //    self.mUsesCustomTrackWidthSwitch = nil
+//    self.mViaCountTextField = nil
 //    self.mViaCustomHoleDiameterTextField = nil
 //    self.mViaCustomHoleDiameterUnitPopUp = nil
 //    self.mViaCustomPadDiameterTextField = nil

@@ -92,7 +92,7 @@ extension CustomizedProjectDocument {
     if let (removedBorderCurve, unalignedMouseDownPoint) = inSender.representedObject as? (BorderCurve, CanariPoint) {
       let p1  = CanariPoint (x: removedBorderCurve.mX, y: removedBorderCurve.mY)
       let p2  = CanariPoint (x: removedBorderCurve.mNext!.mX, y: removedBorderCurve.mNext!.mY)
-      if CanariPoint.squareOfDistance (p1, unalignedMouseDownPoint) < CanariPoint.squareOfDistance (p2, unalignedMouseDownPoint) {
+      if CanariPoint.squareOfCanariDistance (p1, unalignedMouseDownPoint) < CanariPoint.squareOfCanariDistance (p2, unalignedMouseDownPoint) {
         let nextBorderCurve = removedBorderCurve.mNext!
         let previousBorderCurve = removedBorderCurve.mPrevious!
         removedBorderCurve.mNext = nil

@@ -1,7 +1,7 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum AutorouterPreferredDirections {
-  vFronthBack, hFrontVback
+  vFrontHback, hFrontVback
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -18,8 +18,9 @@ entity ProjectRoot {
 //--- Board
   toMany BoardObject mBoardObjects inverse toOne mRoot ;
 
-  property AutorouterPreferredDirections mAutoRouterPreferredDirections default vFronthBack ;
+  property AutorouterPreferredDirections mAutoRouterPreferredDirections default vFrontHback ;
   property AutorouterSnapAngle mAutorouterSnapAngle default octolinear ;
+  property Int mTrackLengthUnit default 90_000_000 ; // meter
   
   property Int mLayoutClearance default 45_720 ; // 20 mil
   property Int mLayoutClearanceUnit default 2_286 ; // mil
@@ -37,6 +38,10 @@ entity ProjectRoot {
     self.mBoardGridStep, self.mBoardGridDisplayFactor
   ;
 
+  transient String viaCountString dependsFrom self.mBoardObjects.all.isVia ;
+  transient String trackCountString dependsFrom self.mBoardObjects.all.trackLength ;
+  transient String trackLengthString dependsFrom self.mBoardObjects.all.trackLength, self.mTrackLengthUnit ;
+  
   transient CanariIssueArray boardIssues dependsFrom self.mBoardObjects.all.issues ;
   transient EBShape issuesDisplay dependsFrom self.boardIssues ;
 

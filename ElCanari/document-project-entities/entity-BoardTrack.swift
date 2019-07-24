@@ -78,6 +78,12 @@ protocol BoardTrack_netClassViaPadDiameter : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardTrack_trackLength : class {
+  var trackLength : Double? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardTrack_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -99,6 +105,7 @@ class BoardTrack : BoardObject,
          BoardTrack_netClassTrackWidth,
          BoardTrack_netClassViaHoleDiameter,
          BoardTrack_netClassViaPadDiameter,
+         BoardTrack_trackLength,
          BoardTrack_objectDisplay {
 
   //····················································································································
@@ -636,6 +643,30 @@ class BoardTrack : BoardObject,
       }
     }
     self.mNet_property.addEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
+  //--- Atomic property: trackLength
+    self.trackLength_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
+        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardTrack_trackLength (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mConnectorP1_property.addEBObserverOf_location (self.trackLength_property)
+    self.mConnectorP2_property.addEBObserverOf_location (self.trackLength_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -689,6 +720,8 @@ class BoardTrack : BoardObject,
     self.mNet_property.removeEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
     self.mNet_property.removeEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property)
     self.mNet_property.removeEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
+    self.mConnectorP1_property.removeEBObserverOf_location (self.trackLength_property)
+    self.mConnectorP2_property.removeEBObserverOf_location (self.trackLength_property)
     self.mConnectorP1_property.removeEBObserverOf_location (self.objectDisplay_property)
     self.mConnectorP2_property.removeEBObserverOf_location (self.objectDisplay_property)
     g_Preferences?.frontSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
@@ -805,6 +838,14 @@ class BoardTrack : BoardObject,
       view: view,
       observerExplorer: &self.netClassViaPadDiameter_property.mObserverExplorer,
       valueExplorer: &self.netClassViaPadDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "trackLength",
+      idx: self.trackLength_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.trackLength_property.mObserverExplorer,
+      valueExplorer: &self.trackLength_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",

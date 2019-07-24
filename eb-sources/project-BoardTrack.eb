@@ -43,6 +43,9 @@ graphic entity BoardTrack : BoardObject {
   transient Int netClassTrackWidth dependsFrom self.mNet.one.netClassTrackWidth ;
   transient Int netClassViaHoleDiameter dependsFrom self.mNet.one.netClassViaHoleDiameter ;
   transient Int netClassViaPadDiameter dependsFrom self.mNet.one.netClassViaPadDiameter ;
+  
+  override transient Double trackLength // In Canari Unit
+    dependsFrom self.mConnectorP1.one.location, self.mConnectorP2.one.location ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

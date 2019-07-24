@@ -299,10 +299,13 @@
                 <outlet property="mSheetUpButton" destination="15836" id="N7V-Uz-FY8"/>
                 <outlet property="mSymbolMirrorSwitch" destination="psf-Qy-hmK" id="J0X-nC-8Vi"/>
                 <outlet property="mSymbolRotationSegmentedControl" destination="XO8-iJ-UW4" id="R4E-hc-WDC"/>
+                <outlet property="mTrackCountTextField" destination="mfE-62-a9Q" id="kIr-ji-tFh"/>
                 <outlet property="mTrackCustomWidthTextField" destination="2254" id="QBN-32-Jww"/>
                 <outlet property="mTrackCustomWidthUnitPopUp" destination="2248" id="d4d-le-wCU"/>
                 <outlet property="mTrackDefaultWidthTextField" destination="2243" id="4oO-Yr-4kL"/>
                 <outlet property="mTrackDefaultWidthUnitPopUp" destination="2237" id="cC8-1u-9ua"/>
+                <outlet property="mTrackLengthTextField" destination="639-bN-Xq5" id="Cyd-tR-7BD"/>
+                <outlet property="mTrackLengthUnitPopUp" destination="1Xm-Km-fBX" id="fCH-kq-J5j"/>
                 <outlet property="mTrackNetClassNameTextField" destination="2563" id="DGB-W3-eCO"/>
                 <outlet property="mTrackNetNameTextField" destination="2232" id="mm1-4U-hkS"/>
                 <outlet property="mUnplacedPackageTableView" destination="15584" id="syX-9E-abg"/>
@@ -317,6 +320,7 @@
                 <outlet property="mUsesCustomHoleDiameterSwitch" destination="UMk-BB-svf" id="KOc-Gd-h6p"/>
                 <outlet property="mUsesCustomPadDiameterSwitch" destination="pq0-4B-DRt" id="KTY-cv-q4E"/>
                 <outlet property="mUsesCustomTrackWidthSwitch" destination="2256" id="6U3-QC-jzs"/>
+                <outlet property="mViaCountTextField" destination="4I2-4l-W10" id="PRr-hW-5rS"/>
                 <outlet property="mViaCustomHoleDiameterTextField" destination="IyD-RE-bVi" id="YPA-mW-XhI"/>
                 <outlet property="mViaCustomHoleDiameterUnitPopUp" destination="Oac-yV-oiw" id="xlp-Ar-oBL"/>
                 <outlet property="mViaCustomPadDiameterTextField" destination="RC5-I8-dr6" id="s7c-UC-1mh"/>
@@ -3323,7 +3327,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="127.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="128" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3337,11 +3341,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="127.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="128" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="127.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3357,7 +3361,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="200" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="199.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3371,11 +3375,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="599" y="1" width="200" height="17"/>
+                                                <rect key="frame" x="599.5" y="1" width="199.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="199.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -6123,11 +6127,11 @@ TW: Track Width</string>
             </subviews>
         </customView>
         <customView id="10702" userLabel="Board Inspector : Autorouter" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="371"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="393"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15864">
-                    <rect key="frame" x="18" y="332" width="69" height="14"/>
+                    <rect key="frame" x="18" y="354" width="69" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Clearance" id="15875">
                         <font key="font" metaFont="smallSystem"/>
@@ -6136,7 +6140,7 @@ TW: Track Width</string>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15865" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="92" y="330" width="58" height="19"/>
+                    <rect key="frame" x="92" y="352" width="58" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="15873">
                         <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="15874">
@@ -6153,7 +6157,7 @@ TW: Track Width</string>
                     </textFieldCell>
                 </textField>
                 <popUpButton id="15866" customClass="EBPopUpButton">
-                    <rect key="frame" x="161" y="330" width="69" height="17"/>
+                    <rect key="frame" x="161" y="352" width="69" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="15872" id="15867">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -6169,7 +6173,7 @@ TW: Track Width</string>
                     </popUpButtonCell>
                 </popUpButton>
                 <button toolTip="Launch JNLP FreeRouter" id="15910" customClass="EBButton">
-                    <rect key="frame" x="40" y="152" width="170" height="57"/>
+                    <rect key="frame" x="40" y="179" width="170" height="57"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="freeRoutingLogo" imagePosition="only" alignment="center" controlSize="small" imageScaling="proportionallyUpOrDown" inset="2" id="15915">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -6177,7 +6181,7 @@ TW: Track Width</string>
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" id="15911" customClass="EBButton">
-                    <rect key="frame" x="55" y="216" width="140" height="17"/>
+                    <rect key="frame" x="55" y="249" width="140" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Export DSN file…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="15914">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -6188,19 +6192,15 @@ TW: Track Width</string>
                     </connections>
                 </button>
                 <box verticalHuggingPriority="750" boxType="separator" id="15934">
-                    <rect key="frame" x="20" y="320" width="207" height="5"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </box>
-                <box verticalHuggingPriority="750" boxType="separator" id="15936">
-                    <rect key="frame" x="20" y="239" width="207" height="5"/>
+                    <rect key="frame" x="20" y="342" width="207" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
                 <box verticalHuggingPriority="750" boxType="separator" id="15967">
-                    <rect key="frame" x="20" y="61" width="207" height="5"/>
+                    <rect key="frame" x="20" y="96" width="207" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="16245">
-                    <rect key="frame" x="75" y="357" width="100" height="14"/>
+                    <rect key="frame" x="75" y="379" width="100" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Router Interface" id="16246">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -6209,7 +6209,7 @@ TW: Track Width</string>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="EnQ-FP-zdx">
-                    <rect key="frame" x="18" y="300" width="123" height="14"/>
+                    <rect key="frame" x="18" y="322" width="123" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Autorouter Settings" id="vKv-wH-kSe">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -6218,7 +6218,7 @@ TW: Track Width</string>
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="nZn-Xg-DQL" customClass="EBPopUpButton">
-                    <rect key="frame" x="20" y="275" width="210" height="17"/>
+                    <rect key="frame" x="20" y="297" width="210" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="| Top Side, — bottom side" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="XXL-3u-8fn" id="wsJ-UB-GSz">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -6232,7 +6232,7 @@ TW: Track Width</string>
                     </popUpButtonCell>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" id="RLS-9v-9zM" customClass="EBPopUpButton">
-                    <rect key="frame" x="20" y="251" width="210" height="17"/>
+                    <rect key="frame" x="20" y="273" width="210" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Rectilinear routing (90°)" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="dTO-Qn-5Wj" id="AEg-ji-1LN">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -6247,23 +6247,97 @@ TW: Track Width</string>
                     </popUpButtonCell>
                 </popUpButton>
                 <button id="15912">
-                    <rect key="frame" x="55" y="117" width="140" height="25"/>
+                    <rect key="frame" x="55" y="144" width="140" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" title="Import SES file…" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="15913">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="16217">
-                    <rect key="frame" x="55" y="82" width="140" height="25"/>
+                <button verticalHuggingPriority="750" id="16217">
+                    <rect key="frame" x="55" y="109" width="140" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="Design Rules Check" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="16218">
+                    <buttonCell key="cell" type="roundRect" title="Design Rules Check" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="16218">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="performERCCheckingAction:" target="-2" id="JuZ-6N-H9B"/>
+                    </connections>
                 </button>
+                <textField toolTip="Number of vias" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="4I2-4l-W10" customClass="EBTextObserverField">
+                    <rect key="frame" x="95" y="46" width="134" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="9999" id="CJF-gf-qVe">
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField toolTip="Number of segment tracks" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="mfE-62-a9Q" customClass="EBTextObserverField">
+                    <rect key="frame" x="95" y="72" width="134" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="9999" id="0ex-Gq-anc">
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="3r6-sL-0wZ">
+                    <rect key="frame" x="18" y="20" width="73" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Trace Length" id="3LC-ku-0nX">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="639-bN-Xq5" customClass="EBTextObserverField">
+                    <rect key="frame" x="95" y="20" width="74" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="xxx" id="k63-ck-com">
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="U9Y-hX-aC4">
+                    <rect key="frame" x="18" y="72" width="73" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Segments" id="tX0-pZ-Ox1">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="xPz-uz-Yi5">
+                    <rect key="frame" x="18" y="46" width="73" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Vias" id="bM6-Qi-Aua">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton id="1Xm-Km-fBX" customClass="EBPopUpButton">
+                    <rect key="frame" x="178" y="22" width="49" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="2V1-Lw-nh7" id="pgm-pQ-LCE">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="C1p-G1-mEe">
+                            <items>
+                                <menuItem title="mil" tag="2286" id="Bkf-ZF-LJ0"/>
+                                <menuItem title="mm" tag="90000" id="Lhr-UJ-LQw"/>
+                                <menuItem title="cm" tag="900000" id="1eN-19-NoG"/>
+                                <menuItem title="inch" state="on" tag="2286000" id="2V1-Lw-nh7"/>
+                                <menuItem title="m" tag="90000000" id="K7f-aU-i5U"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="139" y="35.5"/>
+            <point key="canvasLocation" x="-21" y="37.5"/>
         </customView>
         <customView id="16696" userLabel="Board Inspector : ERC" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="609"/>
