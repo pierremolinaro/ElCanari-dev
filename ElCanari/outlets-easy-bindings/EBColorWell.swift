@@ -52,6 +52,7 @@ import Cocoa
   var mSendContinously = false
 
   func bind_color (_ object : EBReadWriteProperty_NSColor, file : String, line : Int, sendContinously : Bool) {
+    NSColorPanel.shared.showsAlpha = true
     self.mSendContinously = sendContinously
     self.mValueController = Controller_EBColorWell_color (object:object, outlet:self)
   }

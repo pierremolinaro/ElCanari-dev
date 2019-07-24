@@ -3327,7 +3327,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="128" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="128.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3341,11 +3341,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="128" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="128.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="128.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3361,7 +3361,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="199.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="199" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3375,11 +3375,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="599.5" y="1" width="199.5" height="17"/>
+                                                <rect key="frame" x="600" y="1" width="199" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="199.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -5155,54 +5155,54 @@ Diameter</string>
             <rect key="frame" x="0.0" y="0.0" width="847" height="614"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <popUpButton hidden="YES" id="7046">
+                <popUpButton id="7046">
                     <rect key="frame" x="10" y="578" width="50" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" imagePosition="only" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" preferredEdge="maxX" selectedItem="7895" id="14734">
+                    <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" imagePosition="only" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" preferredEdge="maxX" autoenablesItems="NO" selectedItem="7895" id="14734">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="7048">
+                        <menu key="menu" title="OtherViews" autoenablesItems="NO" id="7048">
                             <items>
                                 <menuItem image="NSSmartBadgeTemplate" hidden="YES" id="7895"/>
-                                <menuItem title="Select all Components" keyEquivalent="a" id="15137">
+                                <menuItem title="Select all Components" enabled="NO" keyEquivalent="a" id="15137">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                 </menuItem>
-                                <menuItem title="Select Components…" id="16625">
+                                <menuItem title="Select Components…" enabled="NO" id="16625">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                 </menuItem>
-                                <menuItem title="Select Component" id="15856">
+                                <menuItem title="Select Component" enabled="NO" id="15856">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <menu key="submenu" title="Select Component" id="15857">
                                         <items>
-                                            <menuItem title="Item" id="15858">
+                                            <menuItem title="Item" enabled="NO" id="15858">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                         </items>
                                     </menu>
                                 </menuItem>
-                                <menuItem title="Select all Passing Points" id="16105">
+                                <menuItem title="Select all Passing Points" enabled="NO" id="16105">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES"/>
                                 </menuItem>
-                                <menuItem title="Select all Tracks" id="16204">
+                                <menuItem title="Select all Tracks" enabled="NO" id="16204">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES"/>
                                 </menuItem>
-                                <menuItem title="Select Tracks from Selected Track Net" keyEquivalent="t" id="16605">
+                                <menuItem title="Select Tracks from Selected Track Net" enabled="NO" keyEquivalent="t" id="16605">
                                     <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 </menuItem>
-                                <menuItem title="Select Track of Net" id="16268">
+                                <menuItem title="Select Track of Net" enabled="NO" id="16268">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <menu key="submenu" title="Select Track of Net" id="16269">
                                         <items>
-                                            <menuItem title="Item" id="16270">
+                                            <menuItem title="Item" enabled="NO" id="16270">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                         </items>
                                     </menu>
                                 </menuItem>
-                                <menuItem title="Select all Vias" id="16207">
+                                <menuItem title="Select all Vias" enabled="NO" id="16207">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES"/>
                                 </menuItem>
-                                <menuItem title="Select all Restrict Rectangles" id="16210">
+                                <menuItem title="Select all Restrict Rectangles" enabled="NO" id="16210">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES"/>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="15539"/>
@@ -5210,7 +5210,7 @@ Diameter</string>
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <menu key="submenu" title="Rename all Components" id="16054">
                                         <items>
-                                            <menuItem title="Left to Right, Upwards" id="16055">
+                                            <menuItem title="Left to Right, Upwards" enabled="NO" id="16055">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                         </items>
@@ -5219,9 +5219,12 @@ Diameter</string>
                                 <menuItem isSeparatorItem="YES" id="16050"/>
                                 <menuItem title="Remove all Tracks and Vias" keyEquivalent="r" id="15065">
                                     <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                    <connections>
+                                        <action selector="removeAllViasAndTracksActions:" target="-2" id="zmN-4P-lpq"/>
+                                    </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="15852"/>
-                                <menuItem title="Duplicate Selected Components" id="15853">
+                                <menuItem title="Duplicate Selected Components" enabled="NO" id="15853">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                 </menuItem>
                             </items>
@@ -5340,7 +5343,7 @@ Diameter</string>
                     </buttonCell>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="217.5" y="2466"/>
+            <point key="canvasLocation" x="-21" y="2427"/>
         </customView>
         <customView id="3140" userLabel="Page : Product" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="812" height="656"/>
