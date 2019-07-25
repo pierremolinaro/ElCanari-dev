@@ -887,6 +887,7 @@ class BorderCurve : EBGraphicManagedObject,
         kind &= unwSelf.mCPY2_property_selection.kind ()
         kind &= unwSelf.mShape_property_selection.kind ()
         kind &= unwSelf.mRoot_property.mBoardLimitsWidth_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mBoardClearance_property_selection.kind ()
         kind &= g_Preferences!.boardLimitsColorForBoard_property_selection.kind ()
         switch kind {
         case .empty :
@@ -894,9 +895,9 @@ class BorderCurve : EBGraphicManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mNext_property.mX_property_selection, unwSelf.mNext_property.mY_property_selection, unwSelf.mCPX1_property_selection, unwSelf.mCPY1_property_selection, unwSelf.mCPX2_property_selection, unwSelf.mCPY2_property_selection, unwSelf.mShape_property_selection, unwSelf.mRoot_property.mBoardLimitsWidth_property_selection, g_Preferences!.boardLimitsColorForBoard_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
-            return .single (transient_BorderCurve_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mNext_property.mX_property_selection, unwSelf.mNext_property.mY_property_selection, unwSelf.mCPX1_property_selection, unwSelf.mCPY1_property_selection, unwSelf.mCPX2_property_selection, unwSelf.mCPY2_property_selection, unwSelf.mShape_property_selection, unwSelf.mRoot_property.mBoardLimitsWidth_property_selection, unwSelf.mRoot_property.mBoardClearance_property_selection, g_Preferences!.boardLimitsColorForBoard_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+            return .single (transient_BorderCurve_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
           default :
             return .empty
           }
@@ -915,6 +916,7 @@ class BorderCurve : EBGraphicManagedObject,
     self.mCPY2_property.addEBObserver (self.objectDisplay_property)
     self.mShape_property.addEBObserver (self.objectDisplay_property)
     self.mRoot_property.addEBObserverOf_mBoardLimitsWidth (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mBoardClearance (self.objectDisplay_property)
     g_Preferences?.boardLimitsColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: isLine
     self.isLine_property.mReadModelFunction = { [weak self] in
@@ -1020,6 +1022,7 @@ class BorderCurve : EBGraphicManagedObject,
     self.mCPY2_property.removeEBObserver (self.objectDisplay_property)
     self.mShape_property.removeEBObserver (self.objectDisplay_property)
     self.mRoot_property.removeEBObserverOf_mBoardLimitsWidth (self.objectDisplay_property)
+    self.mRoot_property.removeEBObserverOf_mBoardClearance (self.objectDisplay_property)
     g_Preferences?.boardLimitsColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     self.mShape_property.removeEBObserver (self.isLine_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)

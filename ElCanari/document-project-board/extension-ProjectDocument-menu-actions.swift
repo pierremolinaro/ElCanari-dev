@@ -17,7 +17,7 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  @IBAction func removeAllViasAndTracksActions (_ inUnusedSender : Any?) {
+  @IBAction func removeAllViasAndTracksAction (_ inUnusedSender : Any?) {
   //--- Remove all tracks
     for object in self.rootObject.mBoardObjects {
       if let track = object as? BoardTrack {
@@ -35,6 +35,42 @@ extension CustomizedProjectDocument {
         }
       }
     }
+  }
+
+  //····················································································································
+
+  @IBAction func sortBoardObjectsFollowingBoardLayersAction (_ inUnusedSender : Any?) {
+    var backTracks = [BoardObject] ()
+    var backComponents = [BoardObject] ()
+    var others = [BoardObject] ()
+    var frontComponents = [BoardObject] ()
+    var frontTracks = [BoardObject] ()
+    var restrictRectangles = [BoardObject] ()
+    var connectors = [BoardObject] ()
+    for object in self.rootObject.mBoardObjects {
+      if let connector = object as? BoardConnector {
+        connectors.append (connector)
+      }else if let rr = object as? BoardRestrictRectangle {
+        restrictRectangles.append (rr)
+      }else if let track = object as? BoardTrack {
+        switch track.mSide {
+        case .front :
+          frontTracks.append (track)
+        case .back :
+          backTracks.append (track)
+        }
+      }else if let component = object as? ComponentInProject {
+        switch component.mSide {
+        case .front :
+          frontComponents.append (component)
+        case .back :
+          backComponents.append (component)
+        }
+      }else{
+        others.append (object)
+      }
+    }
+    self.rootObject.mBoardObjects = backTracks + backComponents + others + frontComponents + frontTracks + restrictRectangles + connectors
   }
 
   //····················································································································

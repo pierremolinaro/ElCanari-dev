@@ -390,12 +390,6 @@ protocol ProjectRoot_issuesDisplay : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_borderClearanceBackground : class {
-  var borderClearanceBackground : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ProjectRoot_boardBoundBox : class {
   var boardBoundBox : CanariRect? { get }
 }
@@ -456,6 +450,12 @@ protocol ProjectRoot_borderElementCountString : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_borderOutlineBackground : class {
+  var borderOutlineBackground : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_boarderViewBackground : class {
   var boarderViewBackground : EBShape? { get }
 }
@@ -488,12 +488,6 @@ protocol ProjectRoot_unplacedSymbols : class {
 
 protocol ProjectRoot_unplacedPackages : class {
   var unplacedPackages : StringTagArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_boardBackground : class {
-  var boardBackground : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -577,7 +571,6 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_trackLengthString,
          ProjectRoot_boardIssues,
          ProjectRoot_issuesDisplay,
-         ProjectRoot_borderClearanceBackground,
          ProjectRoot_boardBoundBox,
          ProjectRoot_boardLimitPointsTop,
          ProjectRoot_boardLimitPointsBottom,
@@ -588,13 +581,13 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_boardLimitBorderLeft,
          ProjectRoot_boardLimitBorderRight,
          ProjectRoot_borderElementCountString,
+         ProjectRoot_borderOutlineBackground,
          ProjectRoot_boarderViewBackground,
          ProjectRoot_deviceNames,
          ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_netWarningCount,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_unplacedPackages,
-         ProjectRoot_boardBackground,
          ProjectRoot_schematicStatusMessage,
          ProjectRoot_schematicStatusImage {
 
@@ -1977,29 +1970,6 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: borderClearanceBackground
-  //····················································································································
-
-  let borderClearanceBackground_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  var borderClearanceBackground_property_selection : EBSelection <EBShape> {
-    return self.borderClearanceBackground_property.prop
-  }
-
-  //····················································································································
-
-  var borderClearanceBackground : EBShape? {
-    switch self.borderClearanceBackground_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: boardBoundBox
   //····················································································································
 
@@ -2230,6 +2200,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: borderOutlineBackground
+  //····················································································································
+
+  let borderOutlineBackground_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var borderOutlineBackground_property_selection : EBSelection <EBShape> {
+    return self.borderOutlineBackground_property.prop
+  }
+
+  //····················································································································
+
+  var borderOutlineBackground : EBShape? {
+    switch self.borderOutlineBackground_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: boarderViewBackground
   //····················································································································
 
@@ -2360,29 +2353,6 @@ class ProjectRoot : EBManagedObject,
 
   var unplacedPackages : StringTagArray? {
     switch self.unplacedPackages_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: boardBackground
-  //····················································································································
-
-  let boardBackground_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  var boardBackground_property_selection : EBSelection <EBShape> {
-    return self.boardBackground_property.prop
-  }
-
-  //····················································································································
-
-  var boardBackground : EBShape? {
-    switch self.boardBackground_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2892,34 +2862,6 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.boardIssues_property.addEBObserver (self.issuesDisplay_property)
-  //--- Atomic property: borderClearanceBackground
-    self.borderClearanceBackground_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mBorderCurves_property_selection.kind ()
-        kind &= unwSelf.mBoardLimitsWidth_property_selection.kind ()
-        kind &= unwSelf.mBoardClearance_property_selection.kind ()
-        kind &= g_Preferences!.boardClearanceColorForBoard_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mBorderCurves_property_selection, unwSelf.mBoardLimitsWidth_property_selection, unwSelf.mBoardClearance_property_selection, g_Preferences!.boardClearanceColorForBoard_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_ProjectRoot_borderClearanceBackground (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mBorderCurves_property.addEBObserverOf_descriptor (self.borderClearanceBackground_property)
-    self.mBoardLimitsWidth_property.addEBObserver (self.borderClearanceBackground_property)
-    self.mBoardClearance_property.addEBObserver (self.borderClearanceBackground_property)
-    g_Preferences?.boardClearanceColorForBoard_property.addEBObserver (self.borderClearanceBackground_property)
   //--- Atomic property: boardBoundBox
     self.boardBoundBox_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3166,11 +3108,41 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mBorderCurves_property.addEBObserver (self.borderElementCountString_property)
+  //--- Atomic property: borderOutlineBackground
+    self.borderOutlineBackground_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mBorderCurves_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsWidth_property_selection.kind ()
+        kind &= g_Preferences!.boardLimitsColorForBoard_property_selection.kind ()
+        kind &= unwSelf.mBoardClearance_property_selection.kind ()
+        kind &= g_Preferences!.boardClearanceColorForBoard_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBorderCurves_property_selection, unwSelf.mBoardLimitsWidth_property_selection, g_Preferences!.boardLimitsColorForBoard_property_selection, unwSelf.mBoardClearance_property_selection, g_Preferences!.boardClearanceColorForBoard_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_ProjectRoot_borderOutlineBackground (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBorderCurves_property.addEBObserverOf_descriptor (self.borderOutlineBackground_property)
+    self.mBoardLimitsWidth_property.addEBObserver (self.borderOutlineBackground_property)
+    g_Preferences?.boardLimitsColorForBoard_property.addEBObserver (self.borderOutlineBackground_property)
+    self.mBoardClearance_property.addEBObserver (self.borderOutlineBackground_property)
+    g_Preferences?.boardClearanceColorForBoard_property.addEBObserver (self.borderOutlineBackground_property)
   //--- Atomic property: boarderViewBackground
     self.boarderViewBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.boardBackgroundColorForBoard_property_selection.kind ()
-        kind &= unwSelf.borderClearanceBackground_property_selection.kind ()
+        kind &= unwSelf.borderOutlineBackground_property_selection.kind ()
         kind &= unwSelf.mBoardObjects_property_selection.kind ()
         switch kind {
         case .empty :
@@ -3178,7 +3150,7 @@ class ProjectRoot : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (g_Preferences!.boardBackgroundColorForBoard_property_selection, unwSelf.borderClearanceBackground_property_selection, unwSelf.mBoardObjects_property_selection) {
+          switch (g_Preferences!.boardBackgroundColorForBoard_property_selection, unwSelf.borderOutlineBackground_property_selection, unwSelf.mBoardObjects_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_ProjectRoot_boarderViewBackground (v0, v1, v2))
           default :
@@ -3190,7 +3162,7 @@ class ProjectRoot : EBManagedObject,
       }
     }
     g_Preferences?.boardBackgroundColorForBoard_property.addEBObserver (self.boarderViewBackground_property)
-    self.borderClearanceBackground_property.addEBObserver (self.boarderViewBackground_property)
+    self.borderOutlineBackground_property.addEBObserver (self.boarderViewBackground_property)
     self.mBoardObjects_property.addEBObserverOf_objectDisplay (self.boarderViewBackground_property)
   //--- Atomic property: deviceNames
     self.deviceNames_property.mReadModelFunction = { [weak self] in
@@ -3320,30 +3292,6 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.addEBObserverOf_componentName (self.unplacedPackages_property)
     self.mComponents_property.addEBObserverOf_mComponentValue (self.unplacedPackages_property)
     self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
-  //--- Atomic property: boardBackground
-    self.boardBackground_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.borderClearanceBackground_property_selection.kind ()
-        kind &= unwSelf.mBorderCurves_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.borderClearanceBackground_property_selection, unwSelf.mBorderCurves_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_ProjectRoot_boardBackground (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.borderClearanceBackground_property.addEBObserver (self.boardBackground_property)
-    self.mBorderCurves_property.addEBObserverOf_objectDisplay (self.boardBackground_property)
   //--- Atomic property: schematicStatusMessage
     self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3447,10 +3395,6 @@ class ProjectRoot : EBManagedObject,
     self.mTrackLengthUnit_property.removeEBObserver (self.trackLengthString_property)
     self.mBoardObjects_property.removeEBObserverOf_issues (self.boardIssues_property)
     self.boardIssues_property.removeEBObserver (self.issuesDisplay_property)
-    self.mBorderCurves_property.removeEBObserverOf_descriptor (self.borderClearanceBackground_property)
-    self.mBoardLimitsWidth_property.removeEBObserver (self.borderClearanceBackground_property)
-    self.mBoardClearance_property.removeEBObserver (self.borderClearanceBackground_property)
-    g_Preferences?.boardClearanceColorForBoard_property.removeEBObserver (self.borderClearanceBackground_property)
     self.mBorderCurves_property.removeEBObserverOf_descriptor (self.boardBoundBox_property)
     self.mBoardLimitsWidth_property.removeEBObserver (self.boardBoundBox_property)
     self.mBorderCurves_property.removeEBObserverOf_mY (self.boardLimitPointsTop_property)
@@ -3474,8 +3418,13 @@ class ProjectRoot : EBManagedObject,
     self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitBorderRight_property)
     self.mBoardLimitsWidth_property.removeEBObserver (self.boardLimitBorderRight_property)
     self.mBorderCurves_property.removeEBObserver (self.borderElementCountString_property)
+    self.mBorderCurves_property.removeEBObserverOf_descriptor (self.borderOutlineBackground_property)
+    self.mBoardLimitsWidth_property.removeEBObserver (self.borderOutlineBackground_property)
+    g_Preferences?.boardLimitsColorForBoard_property.removeEBObserver (self.borderOutlineBackground_property)
+    self.mBoardClearance_property.removeEBObserver (self.borderOutlineBackground_property)
+    g_Preferences?.boardClearanceColorForBoard_property.removeEBObserver (self.borderOutlineBackground_property)
     g_Preferences?.boardBackgroundColorForBoard_property.removeEBObserver (self.boarderViewBackground_property)
-    self.borderClearanceBackground_property.removeEBObserver (self.boarderViewBackground_property)
+    self.borderOutlineBackground_property.removeEBObserver (self.boarderViewBackground_property)
     self.mBoardObjects_property.removeEBObserverOf_objectDisplay (self.boarderViewBackground_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
     self.mSchematicTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
@@ -3491,8 +3440,6 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.removeEBObserverOf_componentName (self.unplacedPackages_property)
     self.mComponents_property.removeEBObserverOf_mComponentValue (self.unplacedPackages_property)
     self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
-    self.borderClearanceBackground_property.removeEBObserver (self.boardBackground_property)
-    self.mBorderCurves_property.removeEBObserverOf_objectDisplay (self.boardBackground_property)
     self.unplacedSymbols_property.removeEBObserver (self.schematicStatusMessage_property)
     self.netWarningCount_property.removeEBObserver (self.schematicStatusMessage_property)
     self.mSheets_property.removeEBObserverOf_connexionWarnings (self.schematicStatusMessage_property)
@@ -4021,14 +3968,6 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.issuesDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "borderClearanceBackground",
-      idx: self.borderClearanceBackground_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.borderClearanceBackground_property.mObserverExplorer,
-      valueExplorer: &self.borderClearanceBackground_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "boardBoundBox",
       idx: self.boardBoundBox_property.ebObjectIndex,
       y: &y,
@@ -4109,6 +4048,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.borderElementCountString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "borderOutlineBackground",
+      idx: self.borderOutlineBackground_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.borderOutlineBackground_property.mObserverExplorer,
+      valueExplorer: &self.borderOutlineBackground_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "boarderViewBackground",
       idx: self.boarderViewBackground_property.ebObjectIndex,
       y: &y,
@@ -4155,14 +4102,6 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.unplacedPackages_property.mObserverExplorer,
       valueExplorer: &self.unplacedPackages_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardBackground",
-      idx: self.boardBackground_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardBackground_property.mObserverExplorer,
-      valueExplorer: &self.boardBackground_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "schematicStatusMessage",

@@ -15,7 +15,7 @@ import Cocoa
 
 func transient_ProjectRoot_boarderViewBackground (
        _ prefs_boardBackgroundColorForBoard : NSColor,
-       _ self_borderClearanceBackground : EBShape,
+       _ self_borderOutlineBackground : EBShape,  
        _ self_mBoardObjects_objectDisplay : [BoardObject_objectDisplay]
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -25,7 +25,7 @@ func transient_ProjectRoot_boarderViewBackground (
            shape.add (s.blended (withFraction: 0.5, of: prefs_boardBackgroundColorForBoard))
          }
        }
-       shape.add (self_borderClearanceBackground)
+       shape.add (self_borderOutlineBackground)
        return shape
 //--- END OF USER ZONE 2
 }

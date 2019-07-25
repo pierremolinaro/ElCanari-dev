@@ -13,10 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_borderClearanceBackground (
+func transient_ProjectRoot_borderOutlineBackground (
        _ self_mBorderCurves_descriptor : [BorderCurve_descriptor],
-       _ self_mBoardLimitsWidth : Int,                
-       _ self_mBoardClearance : Int,                  
+       _ self_mBoardLimitsWidth : Int,              
+       _ prefs_boardLimitsColorForBoard : NSColor,  
+       _ self_mBoardClearance : Int,                
        _ prefs_boardClearanceColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -25,27 +26,35 @@ func transient_ProjectRoot_borderClearanceBackground (
           let descriptor = curve.descriptor!
           curveDictionary [descriptor.p1] = descriptor
         }
-        var clearanceBP = EBBezierPath ()
+        var bp = EBBezierPath ()
         var descriptor = self_mBorderCurves_descriptor [0].descriptor!
         let p = descriptor.p1
-        clearanceBP.move (to: p.cocoaPoint)
+        bp.move (to: p.cocoaPoint)
         var loop = true
         while loop {
           switch descriptor.shape {
           case .line :
-            clearanceBP.line (to: descriptor.p2.cocoaPoint)
+            bp.line (to: descriptor.p2.cocoaPoint)
           case .bezier :
             let cp1 = descriptor.cp1.cocoaPoint
             let cp2 = descriptor.cp2.cocoaPoint
-            clearanceBP.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
+            bp.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
           }
           descriptor = curveDictionary [descriptor.p2]!
           loop = p != descriptor.p1
         }
-        clearanceBP.lineCapStyle = .round
-        clearanceBP.lineJoinStyle = .round
-        clearanceBP.lineWidth = canariUnitToCocoa (self_mBoardLimitsWidth + self_mBoardClearance)
-        return EBShape (stroke: [clearanceBP], prefs_boardClearanceColorForBoard, clip: clearanceBP)
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
+        var shape = EBShape ()
+      //---
+        var outlineFrame = bp
+        outlineFrame.lineWidth = 2.0 * canariUnitToCocoa (self_mBoardLimitsWidth + self_mBoardClearance)
+        shape.add (filled: [outlineFrame.pathByStroking], prefs_boardLimitsColorForBoard, clip: .outside (bp))
+      //---
+        var clearanceFrame = bp
+        clearanceFrame.lineWidth = 2.0 * canariUnitToCocoa (self_mBoardClearance)
+        shape.add (filled: [clearanceFrame.pathByStroking], prefs_boardClearanceColorForBoard, clip: .outside (bp))
+        return shape
 //--- END OF USER ZONE 2
 }
 

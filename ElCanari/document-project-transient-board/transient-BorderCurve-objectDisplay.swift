@@ -24,13 +24,15 @@ func transient_BorderCurve_objectDisplay (
        _ self_mCPY2 : Int,                
        _ self_mShape : BorderCurveShape,  
        _ self_mRoot_mBoardLimitsWidth : Int?,
+       _ self_mRoot_mBoardClearance : Int?,
        _ prefs_boardLimitsColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var result = EBShape ()
         if let x2 = self_mNext_mX,
            let y2 = self_mNext_mY,
-           let width = self_mRoot_mBoardLimitsWidth {
+           let boardWidth = self_mRoot_mBoardLimitsWidth,
+           let boardClearance = self_mRoot_mBoardClearance {
           let p1 = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
           let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
           var bp = EBBezierPath ()
@@ -45,15 +47,8 @@ func transient_BorderCurve_objectDisplay (
           }
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          bp.lineWidth = canariUnitToCocoa (width)
+          bp.lineWidth = 2.0 * canariUnitToCocoa (boardWidth + boardClearance)
           result.add (stroke: [bp], prefs_boardLimitsColorForBoard)
-//        //---
-//          let s = BOARD_LIMITS_KNOB_SIZE / 2.0
-//          let r1 = NSRect (x: p1.x - s / 2.0, y: p1.y - s / 2.0, width: s, height: s)
-//          bp = EBBezierPath (ovalIn: r1)
-//          let r2 = NSRect (x: p2.x - s / 2.0, y: p2.y - s / 2.0, width: s, height: s)
-//          bp.appendOval (in: r2)
-//          result.add (filled: [bp], .orange)
         }
         return result
 //--- END OF USER ZONE 2

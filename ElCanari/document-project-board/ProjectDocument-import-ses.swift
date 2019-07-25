@@ -192,7 +192,7 @@ extension CustomizedProjectDocument {
 
   private func enterResults (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                              _ inRoutedViaArray : [BoardConnector]) {
-    self.removeAllViasAndTracksActions (nil)
+    self.removeAllViasAndTracksAction (nil)
   //---
     var addedObjectArray = [BoardObject] ()
     addedObjectArray += inRoutedViaArray as [BoardObject]

@@ -45,9 +45,6 @@ entity ProjectRoot {
   transient CanariIssueArray boardIssues dependsFrom self.mBoardObjects.all.issues ;
   transient EBShape issuesDisplay dependsFrom self.boardIssues ;
 
-  transient EBShape boardBackground dependsFrom
-     self.borderClearanceBackground, self.mBorderCurves.all.objectDisplay ;
-
   property Bool mDisplayFrontPads default yes ;
   property Bool mDisplayBackPads default yes ;
   property Bool mDisplayPadNumbers default yes ;
@@ -103,12 +100,15 @@ entity ProjectRoot {
   
   transient String borderElementCountString dependsFrom self.mBorderCurves.count ;
 
-  transient EBShape borderClearanceBackground dependsFrom
-     self.mBorderCurves.all.descriptor, self.mBoardLimitsWidth, self.mBoardClearance, prefs.boardClearanceColorForBoard ;
+  transient EBShape borderOutlineBackground dependsFrom
+     self.mBorderCurves.all.descriptor,
+     self.mBoardLimitsWidth, prefs.boardLimitsColorForBoard,
+     self.mBoardClearance, prefs.boardClearanceColorForBoard ;
 
   transient EBShape boarderViewBackground dependsFrom
     prefs.boardBackgroundColorForBoard,
-    self.borderClearanceBackground, self.mBoardObjects.all.objectDisplay
+    self.borderOutlineBackground,
+    self.mBoardObjects.all.objectDisplay
   ;
 
 //---

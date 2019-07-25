@@ -35,20 +35,6 @@ func transient_PackagePad_objectDisplay (
       height: self_height,
       shape: self_padShape
     )
-//    let xCenter = canariUnitToCocoa (self_xCenter)
-//    let yCenter = canariUnitToCocoa (self_yCenter)
-//    let width = canariUnitToCocoa (self_width)
-//    let height = canariUnitToCocoa (self_height)
-//    let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
-//    var bp : EBBezierPath
-//    switch self_padShape {
-//    case .rect :
-//      bp = EBBezierPath (rect: rPad)
-//    case .round :
-//      bp = EBBezierPath (oblongInRect: rPad)
-//    case .octo :
-//      bp = EBBezierPath (octogonInRect: rPad)
-//    }
     switch self_padStyle {
     case .traversing :
       let xCenter = canariUnitToCocoa (self_xCenter)

@@ -1680,7 +1680,7 @@ import Cocoa
     self.mUnplacedPackageTableView?.bind_models (self.rootObject.unplacedPackages_property, file: #file, line: #line)
     self.mUnplacedPackagesCountTextField?.bind_valueObserver (self.unplacedPackagesCountString_property, file: #file, line: #line)
     self.mBoardView?.bind_controlKeyHiliteDiameter (self.rootObject.mControlKeyHiliteDiameter_property, file: #file, line: #line)
-    self.mBoardView?.bind_underObjectsDisplay (self.rootObject.boardBackground_property, file: #file, line: #line)
+    self.mBoardView?.bind_underObjectsDisplay (self.rootObject.borderOutlineBackground_property, file: #file, line: #line)
     self.mBoardView?.bind_overObjectsDisplay (self.rootObject.issuesDisplay_property, file: #file, line: #line)
     self.mBoardView?.bind_horizontalFlip (self.rootObject.mBoardHorizontalFlip_property, file: #file, line: #line)
     self.mBoardView?.bind_verticalFlip (self.rootObject.mBoardVerticalFlip_property, file: #file, line: #line)

@@ -30,8 +30,8 @@ struct EBShape : Hashable {
   init (filled inFilledPaths : [EBBezierPath],
         _ inColor : NSColor?,
         knobIndex inKnobIndex : Int? = nil,
-        clip inClipBezierPath : EBBezierPath? = nil) {
-    self.add (filled: inFilledPaths, inColor, knobIndex: inKnobIndex, clip: inClipBezierPath)
+        clip inClipRule : EBClipRule = .none) {
+    self.add (filled: inFilledPaths, inColor, knobIndex: inKnobIndex, clip: inClipRule)
   }
 
   //····················································································································
@@ -39,8 +39,8 @@ struct EBShape : Hashable {
   init (stroke inStrokePaths : [EBBezierPath],
         _ inColor : NSColor,
         knobIndex inKnobIndex : Int? = nil,
-        clip inClipBezierPath : EBBezierPath? = nil) {
-    self.add (stroke: inStrokePaths, inColor, knobIndex: inKnobIndex, clip: inClipBezierPath)
+        clip inClipRule : EBClipRule = .none) {
+    self.add (stroke: inStrokePaths, inColor, knobIndex: inKnobIndex, clip: inClipRule)
   }
 
   //····················································································································
@@ -78,7 +78,7 @@ struct EBShape : Hashable {
   mutating func add (filled inFilledPaths : [EBBezierPath],
                      _ inColor : NSColor?,
                      knobIndex inKnobIndex : Int? = nil,
-                     clip inClipBezierPath : EBBezierPath? = nil) {
+                     clip inClipRule : EBClipRule = .none) {
     var nonEmptyBezierPathes = [EBBezierPath] ()
     for path in inFilledPaths {
       if !path.isEmpty {
@@ -86,7 +86,7 @@ struct EBShape : Hashable {
       }
     }
     if nonEmptyBezierPathes.count > 0 {
-      let e = EBShapeElement (nonEmptyBezierPathes, inColor, inKnobIndex, inClipBezierPath)
+      let e = EBShapeElement (nonEmptyBezierPathes, inColor, inKnobIndex, inClipRule)
       self.mElements.append (e)
       self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
     }
@@ -97,7 +97,7 @@ struct EBShape : Hashable {
   mutating func add (stroke inStrokePathes : [EBBezierPath],
                      _ inColor : NSColor,
                      knobIndex inKnobIndex : Int? = nil,
-                     clip inClipBezierPath : EBBezierPath? = nil) {
+                     clip inClipRule : EBClipRule = .none) {
     var filledBezierPathes = [EBBezierPath] ()
     for path in inStrokePathes {
       if !path.isEmpty, path.lineWidth > 0.0 {
@@ -105,7 +105,7 @@ struct EBShape : Hashable {
       }
     }
     if filledBezierPathes.count > 0 {
-      let e = EBShapeElement (filledBezierPathes, inColor, inKnobIndex, inClipBezierPath)
+      let e = EBShapeElement (filledBezierPathes, inColor, inKnobIndex, inClipRule)
       self.mElements.append (e)
       self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
     }
@@ -123,7 +123,7 @@ struct EBShape : Hashable {
       bp = EBBezierPath (ovalIn: r)
     }
   //--- Background
-    let e = EBShapeElement ([bp], .white, inKobIndex, nil)
+    let e = EBShapeElement ([bp], .white, inKobIndex, .none)
     self.mElements.append (e)
     self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
   //--- Line
@@ -159,17 +159,17 @@ struct EBShape : Hashable {
     //--- Append background ?
       if let backColor = inTextAttributes [NSAttributedString.Key.backgroundColor] as? NSColor {
         let bp = EBBezierPath (rect: filledBezierPath.bounds)
-        let e = EBShapeElement ([bp], backColor, nil, nil)
+        let e = EBShapeElement ([bp], backColor, nil, .none)
         self.mElements.append (e)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
       }else{
         let bp = EBBezierPath (rect: filledBezierPath.bounds)
-        let e = EBShapeElement ([bp], nil, nil, nil)
+        let e = EBShapeElement ([bp], nil, nil, .none)
         self.mElements.append (e)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
      }
     //--- Append text
-      let e = EBShapeElement ([filledBezierPath], textColor, nil, nil)
+      let e = EBShapeElement ([filledBezierPath], textColor, nil, .none)
       self.mElements.append (e)
       self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
     }
@@ -203,14 +203,14 @@ struct EBShape : Hashable {
       bp.lineWidth = 0.5
       bp.lineJoinStyle = .round
       bp.lineCapStyle = .round
-      let e1 = EBShapeElement ([bp], .white, inKnobIndex, nil)
+      let e1 = EBShapeElement ([bp], .white, inKnobIndex, .none)
       self.mElements.append (e1)
-      let e2 = EBShapeElement ([bp.pathByStroking], .cyan, inKnobIndex, nil)
+      let e2 = EBShapeElement ([bp.pathByStroking], .cyan, inKnobIndex, .none)
       self.mElements.append (e2)
       self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
     }
   //--- Append text
-    let e = EBShapeElement ([filledBezierPath], .black, nil, nil)
+    let e = EBShapeElement ([filledBezierPath], .black, nil, .none)
     self.mElements.append (e)
     self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
   }
@@ -353,10 +353,20 @@ fileprivate struct EBToolTip : Hashable {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// OCBezierPath
+//    EBClipRule
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class EBShapeElement : EBObject {
+enum EBClipRule : Hashable {
+  case none
+  case inside (EBBezierPath)
+  case outside (EBBezierPath)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// EBShapeElement
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate final class EBShapeElement : Hashable {
 
   //····················································································································
   // Properties
@@ -365,27 +375,50 @@ fileprivate final class EBShapeElement : EBObject {
   private let mFilledPathes : [EBBezierPath]
   private let mColor : NSColor?
   private let mKnobIndex : Int?
-  private let mClipBezierPath : EBBezierPath?
+  private let mClipRule : EBClipRule
 
   //····················································································································
   //  init
   //····················································································································
 
   init (_ inFilledPathes : [EBBezierPath],
-         _ inColor : NSColor?,
-         _ inKnobIndex : Int? = nil,
-         _ inClipBezierPath : EBBezierPath?) {
+        _ inColor : NSColor?,
+        _ inKnobIndex : Int? = nil,
+        _ inClipRule : EBClipRule) {
     mFilledPathes = inFilledPathes
     mColor = inColor
     mKnobIndex = inKnobIndex
-    if let clipBezierPath = inClipBezierPath, !clipBezierPath.isEmpty {
-      mClipBezierPath = inClipBezierPath
-    }else{
-      mClipBezierPath = nil
-    }
-    super.init ()
+    mClipRule = inClipRule
   }
 
+  //····················································································································
+  // Hashable
+  //····················································································································
+
+   func hash (into hasher: inout Hasher) {
+    self.mColor?.hash (into: &hasher)
+    self.mKnobIndex?.hash (into: &hasher)
+    self.mClipRule.hash (into: &hasher)
+    self.mFilledPathes.hash (into: &hasher)
+  }
+
+  //····················································································································
+  // Equatable
+  //····················································································································
+
+  static func == (lhs: EBShapeElement, rhs: EBShapeElement) -> Bool {
+    var result = lhs.mColor == rhs.mColor
+    if result {
+      result = lhs.mKnobIndex == rhs.mKnobIndex
+    }
+    if result {
+      result = lhs.mClipRule == rhs.mClipRule
+    }
+    if result {
+      result = lhs.mFilledPathes == rhs.mFilledPathes
+    }
+    return result
+  }
   //····················································································································
   //  Draw Rect
   //····················································································································
@@ -393,16 +426,29 @@ fileprivate final class EBShapeElement : EBObject {
   func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
     if let color = self.mColor {
       color.setFill ()
-      if let clipBezierPath = self.mClipBezierPath {
+      switch self.mClipRule {
+      case .none :
+        ()
+      case .inside (let clipBezierPath) :
         NSGraphicsContext.saveGraphicsState ()
         clipBezierPath.addClip ()
+      case .outside (let clipBezierPath) :
+        NSGraphicsContext.saveGraphicsState ()
+        let clip = NSBezierPath (rect: self.boundingBox)
+        clip.append (clipBezierPath.reversed.nsBezierPath)
+        clip.setClip ()
       }
       for bp in self.mFilledPathes {
         if !bp.isEmpty && inView.needsToDraw (bp.bounds) {
           bp.fill ()
         }
       }
-      if self.mClipBezierPath != nil {
+      switch self.mClipRule {
+      case .none :
+        ()
+      case .inside (_) :
+        NSGraphicsContext.restoreGraphicsState ()
+      case .outside (_) :
         NSGraphicsContext.restoreGraphicsState ()
       }
     }
@@ -417,8 +463,13 @@ fileprivate final class EBShapeElement : EBObject {
     for bp in self.mFilledPathes {
       r = r.union (bp.bounds)
     }
-    if let path = self.mClipBezierPath {
-      r = r.intersection (path.bounds)
+    switch self.mClipRule {
+    case .none :
+      ()
+    case .inside (let clipBezierPath) :
+      r = r.intersection (clipBezierPath.bounds)
+    case .outside (_) :
+      ()
     }
     return r
   }
@@ -428,7 +479,17 @@ fileprivate final class EBShapeElement : EBObject {
   //····················································································································
 
   func contains (point inPoint : NSPoint) -> Bool {
-    if self.mClipBezierPath?.contains (inPoint) ?? true {
+    let ok : Bool
+    switch self.mClipRule {
+    case .none :
+      ok = true
+    case .inside (let clipBezierPath) :
+      ok = clipBezierPath.contains (inPoint)
+
+    case .outside (let clipBezierPath) :
+      ok = !clipBezierPath.contains (inPoint)
+    }
+    if ok {
       for path in self.mFilledPathes {
         if path.contains (inPoint) {
           return true
@@ -443,7 +504,17 @@ fileprivate final class EBShapeElement : EBObject {
   //····················································································································
 
   func intersects (rect inRect : NSRect) -> Bool {
-    if self.mClipBezierPath?.intersects (rect: inRect) ?? true {
+    let ok : Bool
+    switch self.mClipRule {
+    case .none :
+      ok = true
+    case .inside (let clipBezierPath) :
+      ok = clipBezierPath.intersects (rect: inRect)
+
+    case .outside (let clipBezierPath) :
+      ok = !clipBezierPath.intersects (rect: inRect)
+    }
+    if ok { // self.mClipBezierPath?.intersects (rect: inRect) ?? true {
       for path in self.mFilledPathes {
         if path.intersects (rect: inRect) {
           return true
@@ -475,13 +546,16 @@ fileprivate final class EBShapeElement : EBObject {
     for path in self.mFilledPathes {
       paths.append (path.transformed(by: inAffineTransform))
     }
-    let clipBezierPath : EBBezierPath?
-    if let path = self.mClipBezierPath {
-      clipBezierPath = path.transformed (by: inAffineTransform)
-    }else{
-      clipBezierPath = nil
+    let clipRule : EBClipRule
+    switch self.mClipRule {
+    case .none :
+      clipRule = .none
+    case .inside (let bp) :
+      clipRule = .inside (bp.transformed (by: inAffineTransform))
+    case .outside (let bp) :
+      clipRule = .outside (bp.transformed (by: inAffineTransform))
     }
-    return EBShapeElement (paths, self.mColor, self.mKnobIndex, clipBezierPath)
+    return EBShapeElement (paths, self.mColor, self.mKnobIndex, clipRule)
   }
 
   //····················································································································
@@ -490,7 +564,7 @@ fileprivate final class EBShapeElement : EBObject {
 
   func blended (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShapeElement {
     if let color = self.mColor, let newColor = color.blended (withFraction: inFraction, of: inColor) {
-      return EBShapeElement (self.mFilledPathes, newColor, self.mKnobIndex, self.mClipBezierPath)
+      return EBShapeElement (self.mFilledPathes, newColor, self.mKnobIndex, self.mClipRule)
     }else{
       return self
     }

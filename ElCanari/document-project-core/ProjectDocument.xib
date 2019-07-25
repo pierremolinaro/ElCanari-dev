@@ -606,9 +606,9 @@ Gw
                     <toolbarItem implicitItemIdentifier="EF387671-AD45-446D-8972-FF6D4D7E527A" label="Page" paletteLabel="Page" id="14938">
                         <nil key="toolTip"/>
                         <size key="minSize" width="540" height="20"/>
-                        <size key="maxSize" width="687" height="25"/>
+                        <size key="maxSize" width="698" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="14936" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="14" width="683" height="20"/>
+                            <rect key="frame" x="0.0" y="14" width="698" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" state="on" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="14937">
                                 <font key="font" metaFont="cellTitle"/>
@@ -618,8 +618,8 @@ Gw
                                     <segment label="Schematic"/>
                                     <segment label="Net Classes"/>
                                     <segment label="Net List" selected="YES"/>
-                                    <segment label="Board Limits"/>
-                                    <segment label="Board Objects"/>
+                                    <segment label="Board Outline"/>
+                                    <segment label="Board Contents"/>
                                     <segment label="Product"/>
                                 </segments>
                             </segmentedCell>
@@ -666,6 +666,7 @@ Gw
                     <toolbarItem reference="16503"/>
                 </defaultToolbarItems>
             </toolbar>
+            <point key="canvasLocation" x="22" y="2174"/>
         </window>
         <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="573" userLabel="Dialog : Change Package" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
@@ -3327,7 +3328,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="128.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="129" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3341,11 +3342,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="128.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="129" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="129" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3361,7 +3362,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="199" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="198.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3375,11 +3376,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="600" y="1" width="199" height="17"/>
+                                                <rect key="frame" x="600.5" y="1" width="198.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="198.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -5158,7 +5159,7 @@ Diameter</string>
                 <popUpButton id="7046">
                     <rect key="frame" x="10" y="578" width="50" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" imagePosition="only" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" preferredEdge="maxX" autoenablesItems="NO" selectedItem="7895" id="14734">
+                    <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" imagePosition="only" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" preferredEdge="maxX" autoenablesItems="NO" id="14734">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" autoenablesItems="NO" id="7048">
@@ -5220,7 +5221,13 @@ Diameter</string>
                                 <menuItem title="Remove all Tracks and Vias" keyEquivalent="r" id="15065">
                                     <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                     <connections>
-                                        <action selector="removeAllViasAndTracksActions:" target="-2" id="zmN-4P-lpq"/>
+                                        <action selector="removeAllViasAndTracksAction:" target="-2" id="Ygk-e6-f6Z"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem title="Sort object following board layers" id="kfk-aR-WcB">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                    <connections>
+                                        <action selector="sortBoardObjectsFollowingBoardLayersAction:" target="-2" id="3AS-P9-UUc"/>
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="15852"/>

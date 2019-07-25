@@ -50,7 +50,7 @@ func transient_BoardRestrictRectangle_objectDisplay (
             bp.relativeLine (to: NSPoint (x: lg, y: -lg))
             y -= GRID_INTERVAL
           }
-          shape.add (stroke: [bp], prefs_backSideRestrictRectangleColorForBoard, clip: rectBP)
+          shape.add (stroke: [bp], prefs_backSideRestrictRectangleColorForBoard, clip: .inside (rectBP))
         }
       //--- Front layer
         if self_mIsInFrontLayer {
@@ -70,7 +70,7 @@ func transient_BoardRestrictRectangle_objectDisplay (
             bp.relativeLine (to: NSPoint (x: lg, y: lg))
             y += GRID_INTERVAL
           }
-          shape.add (stroke: [bp], prefs_frontSideRestrictRectangleColorForBoard, clip: rectBP)
+          shape.add (stroke: [bp], prefs_frontSideRestrictRectangleColorForBoard, clip: .inside (rectBP))
         }
       //--- Append rect frame
         do{
