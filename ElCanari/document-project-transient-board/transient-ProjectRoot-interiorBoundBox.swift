@@ -13,16 +13,39 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_boardLimitPointsTop (
-       _ self_mBorderCurves_mY : [BorderCurve_mY],
-       _ self_mBoardPointsBoundingBoxUnit : Int
-) -> String {
+func transient_ProjectRoot_interiorBoundBox (
+       _ self_mBorderCurves_descriptor : [BorderCurve_descriptor]
+) -> CanariRect {
 //--- START OF USER ZONE 2
-        var maxY = Int.min
-        for p in self_mBorderCurves_mY {
-          maxY = max (maxY, p.mY)
+        var minX = CGFloat.greatestFiniteMagnitude
+        var maxX = CGFloat.leastNormalMagnitude
+        var minY = CGFloat.greatestFiniteMagnitude
+        var maxY = CGFloat.leastNormalMagnitude
+        for limit in self_mBorderCurves_descriptor {
+          let descriptor = limit.descriptor!
+          let p1 = descriptor.p1.cocoaPoint
+          let p2 = descriptor.p2.cocoaPoint
+          switch descriptor.shape {
+          case .line :
+            minX = min (minX, p1.x, p2.x)
+            maxX = max (maxX, p1.x, p2.x)
+            minY = min (minY, p1.y, p2.y)
+            maxY = max (maxY, p1.y, p2.y)
+          case .bezier :
+            let cp1 = descriptor.cp1.cocoaPoint
+            let cp2 = descriptor.cp2.cocoaPoint
+            var bp = EBBezierPath ()
+            bp.move (to: p1)
+            bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
+            let r = bp.bounds
+            minX = min (minX, r.minX)
+            maxX = max (maxX, r.maxX)
+            minY = min (minY, r.minY)
+            maxY = max (maxY, r.maxY)
+          }
         }
-        return stringFrom (valueInCanariUnit: maxY, displayUnit: self_mBoardPointsBoundingBoxUnit)
+        let boundBox = NSRect (x: minX, y: minY, width: maxX - minX, height: maxY - minY)
+        return boundBox.canariRect
 //--- END OF USER ZONE 2
 }
 

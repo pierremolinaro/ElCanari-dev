@@ -37,7 +37,7 @@ struct EBShape : Hashable {
   //····················································································································
 
   init (stroke inStrokePaths : [EBBezierPath],
-        _ inColor : NSColor,
+        _ inColor : NSColor?,
         knobIndex inKnobIndex : Int? = nil,
         clip inClipRule : EBClipRule = .none) {
     self.add (stroke: inStrokePaths, inColor, knobIndex: inKnobIndex, clip: inClipRule)
@@ -95,7 +95,7 @@ struct EBShape : Hashable {
   //····················································································································
 
   mutating func add (stroke inStrokePathes : [EBBezierPath],
-                     _ inColor : NSColor,
+                     _ inColor : NSColor?,
                      knobIndex inKnobIndex : Int? = nil,
                      clip inClipRule : EBClipRule = .none) {
     var filledBezierPathes = [EBBezierPath] ()

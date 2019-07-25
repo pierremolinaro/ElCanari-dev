@@ -14,14 +14,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_boardLimitBorderTop (
-       _ self_boardBoundBox : CanariRect,       
+       _ self_interiorBoundBox : CanariRect,    
        _ self_mBoardLimitsWidth : Int,          
+       _ self_mBoardClearance : Int,            
        _ self_mBoardLimitsBoundingBoxUnit : Int
 ) -> String {
 //--- START OF USER ZONE 2
-        let maxY = self_boardBoundBox.top + self_mBoardLimitsWidth / 2
+        let maxY = self_interiorBoundBox.top + self_mBoardLimitsWidth + self_mBoardClearance
         return stringFrom (valueInCanariUnit: maxY, displayUnit: self_mBoardLimitsBoundingBoxUnit)
-
 //--- END OF USER ZONE 2
 }
 

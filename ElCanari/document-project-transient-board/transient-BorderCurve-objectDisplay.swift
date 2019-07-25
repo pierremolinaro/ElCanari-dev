@@ -24,8 +24,7 @@ func transient_BorderCurve_objectDisplay (
        _ self_mCPY2 : Int,                
        _ self_mShape : BorderCurveShape,  
        _ self_mRoot_mBoardLimitsWidth : Int?,
-       _ self_mRoot_mBoardClearance : Int?,
-       _ prefs_boardLimitsColorForBoard : NSColor
+       _ self_mRoot_mBoardClearance : Int?
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var result = EBShape ()
@@ -48,7 +47,7 @@ func transient_BorderCurve_objectDisplay (
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
           bp.lineWidth = 2.0 * canariUnitToCocoa (boardWidth + boardClearance)
-          result.add (stroke: [bp], prefs_boardLimitsColorForBoard)
+          result.add (stroke: [bp], nil)
         }
         return result
 //--- END OF USER ZONE 2

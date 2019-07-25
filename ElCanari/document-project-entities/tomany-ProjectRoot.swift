@@ -78,11 +78,11 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_trackLengthString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardIssues_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_issuesDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_boardBoundBox_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_boardLimitPointsTop_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_boardLimitPointsBottom_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_boardLimitPointsLeft_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_boardLimitPointsRight_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_interiorBoundBox_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_boardInteriorTop_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_boardInteriorBottom_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_boardInteriorLeft_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_boardInteriorRight_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardLimitBorderTop_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardLimitBorderBottom_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardLimitBorderLeft_fromElementsOfSet (inRemovedSet) // Transient property
@@ -162,11 +162,11 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_trackLengthString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardIssues_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_issuesDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_boardBoundBox_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_boardLimitPointsTop_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_boardLimitPointsBottom_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_boardLimitPointsLeft_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_boardLimitPointsRight_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_interiorBoundBox_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_boardInteriorTop_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_boardInteriorBottom_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_boardInteriorLeft_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_boardInteriorRight_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardLimitBorderTop_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardLimitBorderBottom_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardLimitBorderLeft_toElementsOfSet (inAddedSet) // Transient property
@@ -3877,281 +3877,281 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'boardBoundBox' transient property
+  //   Observers of 'interiorBoundBox' transient property
   //····················································································································
 
-  private var mObserversOf_boardBoundBox = EBWeakEventSet ()
+  private var mObserversOf_interiorBoundBox = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_boardBoundBox (_ inObserver : EBEvent) {
+  final func addEBObserverOf_interiorBoundBox (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_boardBoundBox.insert (inObserver)
+    self.mObserversOf_interiorBoundBox.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardBoundBox_property.addEBObserver (inObserver)
+        managedObject.interiorBoundBox_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boardBoundBox (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_interiorBoundBox (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_boardBoundBox.remove (inObserver)
+    self.mObserversOf_interiorBoundBox.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardBoundBox_property.removeEBObserver (inObserver)
+        managedObject.interiorBoundBox_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_boardBoundBox_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_interiorBoundBox_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_boardBoundBox.apply { (_ observer : EBEvent) in
-        managedObject.boardBoundBox_property.addEBObserver (observer)
+      self.mObserversOf_interiorBoundBox.apply { (_ observer : EBEvent) in
+        managedObject.interiorBoundBox_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_boardBoundBox_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func removeEBObserversOf_interiorBoundBox_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_boardBoundBox.apply { (_ observer : EBEvent) in
-        managedObject.boardBoundBox_property.removeEBObserver (observer)
+      self.mObserversOf_interiorBoundBox.apply { (_ observer : EBEvent) in
+        managedObject.interiorBoundBox_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'boardLimitPointsTop' transient property
+  //   Observers of 'boardInteriorTop' transient property
   //····················································································································
 
-  private var mObserversOf_boardLimitPointsTop = EBWeakEventSet ()
+  private var mObserversOf_boardInteriorTop = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitPointsTop (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardInteriorTop (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_boardLimitPointsTop.insert (inObserver)
+    self.mObserversOf_boardInteriorTop.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitPointsTop_property.addEBObserver (inObserver)
+        managedObject.boardInteriorTop_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boardLimitPointsTop (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_boardInteriorTop (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_boardLimitPointsTop.remove (inObserver)
+    self.mObserversOf_boardInteriorTop.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitPointsTop_property.removeEBObserver (inObserver)
+        managedObject.boardInteriorTop_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_boardLimitPointsTop_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_boardInteriorTop_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_boardLimitPointsTop.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitPointsTop_property.addEBObserver (observer)
+      self.mObserversOf_boardInteriorTop.apply { (_ observer : EBEvent) in
+        managedObject.boardInteriorTop_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_boardLimitPointsTop_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func removeEBObserversOf_boardInteriorTop_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_boardLimitPointsTop.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitPointsTop_property.removeEBObserver (observer)
+      self.mObserversOf_boardInteriorTop.apply { (_ observer : EBEvent) in
+        managedObject.boardInteriorTop_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'boardLimitPointsBottom' transient property
+  //   Observers of 'boardInteriorBottom' transient property
   //····················································································································
 
-  private var mObserversOf_boardLimitPointsBottom = EBWeakEventSet ()
+  private var mObserversOf_boardInteriorBottom = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitPointsBottom (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardInteriorBottom (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_boardLimitPointsBottom.insert (inObserver)
+    self.mObserversOf_boardInteriorBottom.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitPointsBottom_property.addEBObserver (inObserver)
+        managedObject.boardInteriorBottom_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boardLimitPointsBottom (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_boardInteriorBottom (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_boardLimitPointsBottom.remove (inObserver)
+    self.mObserversOf_boardInteriorBottom.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitPointsBottom_property.removeEBObserver (inObserver)
+        managedObject.boardInteriorBottom_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_boardLimitPointsBottom_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_boardInteriorBottom_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_boardLimitPointsBottom.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitPointsBottom_property.addEBObserver (observer)
+      self.mObserversOf_boardInteriorBottom.apply { (_ observer : EBEvent) in
+        managedObject.boardInteriorBottom_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_boardLimitPointsBottom_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func removeEBObserversOf_boardInteriorBottom_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_boardLimitPointsBottom.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitPointsBottom_property.removeEBObserver (observer)
+      self.mObserversOf_boardInteriorBottom.apply { (_ observer : EBEvent) in
+        managedObject.boardInteriorBottom_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'boardLimitPointsLeft' transient property
+  //   Observers of 'boardInteriorLeft' transient property
   //····················································································································
 
-  private var mObserversOf_boardLimitPointsLeft = EBWeakEventSet ()
+  private var mObserversOf_boardInteriorLeft = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitPointsLeft (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardInteriorLeft (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_boardLimitPointsLeft.insert (inObserver)
+    self.mObserversOf_boardInteriorLeft.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitPointsLeft_property.addEBObserver (inObserver)
+        managedObject.boardInteriorLeft_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boardLimitPointsLeft (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_boardInteriorLeft (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_boardLimitPointsLeft.remove (inObserver)
+    self.mObserversOf_boardInteriorLeft.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitPointsLeft_property.removeEBObserver (inObserver)
+        managedObject.boardInteriorLeft_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_boardLimitPointsLeft_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_boardInteriorLeft_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_boardLimitPointsLeft.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitPointsLeft_property.addEBObserver (observer)
+      self.mObserversOf_boardInteriorLeft.apply { (_ observer : EBEvent) in
+        managedObject.boardInteriorLeft_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_boardLimitPointsLeft_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func removeEBObserversOf_boardInteriorLeft_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_boardLimitPointsLeft.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitPointsLeft_property.removeEBObserver (observer)
+      self.mObserversOf_boardInteriorLeft.apply { (_ observer : EBEvent) in
+        managedObject.boardInteriorLeft_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'boardLimitPointsRight' transient property
+  //   Observers of 'boardInteriorRight' transient property
   //····················································································································
 
-  private var mObserversOf_boardLimitPointsRight = EBWeakEventSet ()
+  private var mObserversOf_boardInteriorRight = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitPointsRight (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardInteriorRight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_boardLimitPointsRight.insert (inObserver)
+    self.mObserversOf_boardInteriorRight.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitPointsRight_property.addEBObserver (inObserver)
+        managedObject.boardInteriorRight_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boardLimitPointsRight (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_boardInteriorRight (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_boardLimitPointsRight.remove (inObserver)
+    self.mObserversOf_boardInteriorRight.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitPointsRight_property.removeEBObserver (inObserver)
+        managedObject.boardInteriorRight_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_boardLimitPointsRight_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_boardInteriorRight_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_boardLimitPointsRight.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitPointsRight_property.addEBObserver (observer)
+      self.mObserversOf_boardInteriorRight.apply { (_ observer : EBEvent) in
+        managedObject.boardInteriorRight_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_boardLimitPointsRight_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func removeEBObserversOf_boardInteriorRight_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_boardLimitPointsRight.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitPointsRight_property.removeEBObserver (observer)
+      self.mObserversOf_boardInteriorRight.apply { (_ observer : EBEvent) in
+        managedObject.boardInteriorRight_property.removeEBObserver (observer)
       }
     }
   }

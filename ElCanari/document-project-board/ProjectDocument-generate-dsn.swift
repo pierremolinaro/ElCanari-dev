@@ -37,7 +37,7 @@ extension CustomizedProjectDocument {
   private func dsnContents () -> String {
   //--- Border
     let boardLimitExtend = -self.rootObject.mBoardLimitsWidth / 2
-    let boardBoundBox = self.rootObject.boardBoundBox!.insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
+    let boardBoundBox = self.rootObject.interiorBoundBox!.insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
     let signalPolygonVertices = self.buildSignalPolygon ()
   //--- Restrict rectangles
     var restrictRectangles = [RestrictRectangleForDSNExport] ()

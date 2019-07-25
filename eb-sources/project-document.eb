@@ -521,10 +521,10 @@ document ProjectDocument root ProjectRoot {
 //--- Operation Inspector
   outlet EBTextObserverField mBoardLimitsElementCountTextField $valueObserver root.borderElementCountString ;  
 
-  outlet EBTextObserverField mBoardLimitPointsTopTextField $valueObserver root.boardLimitPointsTop ;
-  outlet EBTextObserverField mBoardLimitPointsBottomTextField $valueObserver root.boardLimitPointsBottom ;
-  outlet EBTextObserverField mBoardLimitPointsLeftTextField $valueObserver root.boardLimitPointsLeft ;
-  outlet EBTextObserverField mBoardLimitPointsRightTextField $valueObserver root.boardLimitPointsRight ;  
+  outlet EBTextObserverField mBoardLimitPointsTopTextField $valueObserver root.boardInteriorTop ;
+  outlet EBTextObserverField mBoardLimitPointsBottomTextField $valueObserver root.boardInteriorBottom ;
+  outlet EBTextObserverField mBoardLimitPointsLeftTextField $valueObserver root.boardInteriorLeft ;
+  outlet EBTextObserverField mBoardLimitPointsRightTextField $valueObserver root.boardInteriorRight ;  
 
   outlet EBPopUpButton mBoardPointsBoundingBoxUnitPopUp $selectedTag root.mBoardPointsBoundingBoxUnit ;
 

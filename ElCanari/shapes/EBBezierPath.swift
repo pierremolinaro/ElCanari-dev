@@ -568,37 +568,6 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
-//  func firstClosedPath () -> EBBezierPath {
-//    let result = EBBezierPath ()
-//    var points = [NSPoint] (repeating: .zero, count: 3)
-//    var hasMoveTo = false
-//    for idx in 0 ..< self.mPath.elementCount {
-//      let type = self.mPath.element (at: idx, associatedPoints: &points)
-//      switch type {
-//      case .moveTo:
-//        if hasMoveTo {
-//          Swift.print ("elementCount \(self.mPath.elementCount) -> \(result.mPath.elementCount)")
-//          return result
-//        }
-//        hasMoveTo = true
-//        result.mPath.move (to: points[0])
-//      case .lineTo:
-//        result.mPath.line (to: points[0])
-//      case .curveTo:
-//        result.mPath.curve (to: points[2], controlPoint1: points[0], controlPoint2: points[1])
-//      case .closePath:
-//        result.mPath.close ()
-//        Swift.print ("elementCount2 \(self.mPath.elementCount) -> \(result.mPath.elementCount)")
-//        return result
-//      @unknown default:
-//         ()
-//      }
-//    }
-//    return result
-//  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

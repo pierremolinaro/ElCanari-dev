@@ -13,16 +13,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_boardLimitPointsBottom (
-       _ self_mBorderCurves_mY : [BorderCurve_mY], 
+func transient_ProjectRoot_boardInteriorRight (
+       _ self_interiorBoundBox : CanariRect,   
        _ self_mBoardPointsBoundingBoxUnit : Int
 ) -> String {
 //--- START OF USER ZONE 2
-        var minY = Int.max
-        for p in self_mBorderCurves_mY {
-          minY = min (minY, p.mY)
-        }
-        return stringFrom (valueInCanariUnit: minY, displayUnit: self_mBoardPointsBoundingBoxUnit)
+        return stringFrom (valueInCanariUnit: self_interiorBoundBox.right, displayUnit: self_mBoardPointsBoundingBoxUnit)
 //--- END OF USER ZONE 2
 }
 

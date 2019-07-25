@@ -5152,7 +5152,7 @@ Diameter</string>
             </subviews>
             <point key="canvasLocation" x="410" y="39"/>
         </customView>
-        <customView id="3080" userLabel="Page : Board Objects" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+        <customView id="3080" userLabel="Page : Board Contents" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="847" height="614"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -8573,7 +8573,7 @@ DQ
             </view>
             <point key="canvasLocation" x="322" y="173"/>
         </window>
-        <customView id="jyP-KX-6Ox" userLabel="Page : Board Limits" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+        <customView id="jyP-KX-6Ox" userLabel="Page : Board Outline" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="847" height="614"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -8582,7 +8582,7 @@ DQ
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="c9v-RA-cje">
                         <rect key="frame" x="1" y="1" width="580" height="597"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="Qcf-ie-EQi" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="579" height="593"/>
@@ -8750,11 +8750,11 @@ DQ
             <point key="canvasLocation" x="-473" y="247.5"/>
         </customView>
         <customView id="m9b-ER-vMM" userLabel="Board Limits Inspector : Selected Limit" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="225"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="293"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="CyQ-xr-gG3">
-                    <rect key="frame" x="56" y="206" width="138" height="14"/>
+                    <rect key="frame" x="56" y="274" width="138" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Limit Inspector" id="Lcf-qM-ms3">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -8763,7 +8763,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <popUpButton id="cVG-k1-9Re" customClass="EBPopUpButton">
-                    <rect key="frame" x="170" y="178" width="60" height="17"/>
+                    <rect key="frame" x="170" y="246" width="60" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="Eau-r8-nYU" id="GIH-Z8-SaH">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -8779,7 +8779,7 @@ DQ
                     </popUpButtonCell>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="VXn-ef-v0C">
-                    <rect key="frame" x="18" y="152" width="21" height="14"/>
+                    <rect key="frame" x="18" y="220" width="21" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="X" id="Teu-yl-9hi">
                         <font key="font" metaFont="smallSystem"/>
@@ -8788,7 +8788,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="bu0-QI-KEY">
-                    <rect key="frame" x="128" y="152" width="21" height="14"/>
+                    <rect key="frame" x="128" y="220" width="21" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="Y" id="lql-OW-LfF">
                         <font key="font" metaFont="smallSystem"/>
@@ -8797,7 +8797,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="8OD-c2-C3G">
-                    <rect key="frame" x="18" y="180" width="64" height="14"/>
+                    <rect key="frame" x="18" y="248" width="64" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="End Points" id="f46-07-jYp">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -8806,7 +8806,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="s7y-ih-t4w" customClass="EBTextObserverField">
-                    <rect key="frame" x="149" y="152" width="83" height="14"/>
+                    <rect key="frame" x="149" y="220" width="83" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="9 999, 99 mm" id="qVJ-mH-5rK">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -8815,7 +8815,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="gNg-h7-pdK" customClass="EBTextObserverField">
-                    <rect key="frame" x="41" y="152" width="83" height="14"/>
+                    <rect key="frame" x="41" y="220" width="83" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="9 999, 99 mm" id="Php-da-e6h">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -8824,7 +8824,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="SpG-qH-6V6">
-                    <rect key="frame" x="18" y="130" width="21" height="14"/>
+                    <rect key="frame" x="18" y="198" width="21" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="X" id="n8N-Sl-bgl">
                         <font key="font" metaFont="smallSystem"/>
@@ -8833,7 +8833,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="NLv-74-d0Q">
-                    <rect key="frame" x="128" y="130" width="21" height="14"/>
+                    <rect key="frame" x="128" y="198" width="21" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="Y" id="37L-Wx-hkA">
                         <font key="font" metaFont="smallSystem"/>
@@ -8842,7 +8842,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZbB-fW-WWe" customClass="EBTextObserverField">
-                    <rect key="frame" x="149" y="130" width="83" height="14"/>
+                    <rect key="frame" x="149" y="198" width="83" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="9 999, 99 mm" id="LRZ-d2-dIm">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -8851,7 +8851,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="FK6-VZ-PnJ" customClass="EBTextObserverField">
-                    <rect key="frame" x="41" y="130" width="83" height="14"/>
+                    <rect key="frame" x="41" y="198" width="83" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="9 999, 99 mm" id="aS6-bn-TXW">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -8860,7 +8860,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <customView id="c48-xm-8fN">
-                    <rect key="frame" x="20" y="20" width="210" height="64"/>
+                    <rect key="frame" x="20" y="88" width="210" height="64"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yr3-DG-XVy">
@@ -8947,7 +8947,7 @@ DQ
                     </subviews>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wko-6p-6v9">
-                    <rect key="frame" x="18" y="98" width="50" height="14"/>
+                    <rect key="frame" x="18" y="166" width="50" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="Shape" id="a7c-zs-fi5">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -8956,7 +8956,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <popUpButton id="NhK-wf-daA" customClass="EBPopUpButton">
-                    <rect key="frame" x="74" y="96" width="101" height="17"/>
+                    <rect key="frame" x="74" y="164" width="101" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Bezier Curve" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="90000" inset="2" preferredEdge="maxY" selectedItem="wcy-eu-cTu" id="JM4-z3-AlT">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -8970,23 +8970,23 @@ DQ
                     </popUpButtonCell>
                 </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="-899" y="-95.5"/>
+            <point key="canvasLocation" x="-1094" y="-105.5"/>
         </customView>
         <customView id="4A5-MX-PW7" userLabel="Board Limits Inspector : Operation" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="317"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="494"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="dlm-51-XeW">
-                    <rect key="frame" x="43" y="256" width="164" height="14"/>
+                    <rect key="frame" x="60" y="363" width="130" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Border Points Bounding Box" id="O4s-fA-xV4">
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Interior Bounding Box" id="O4s-fA-xV4">
                         <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <box boxType="custom" cornerRadius="4" title="Box" id="O1L-gG-BnR">
-                    <rect key="frame" x="29" y="196" width="193" height="45"/>
+                    <rect key="frame" x="29" y="303" width="193" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="7I6-uy-d8v">
                         <rect key="frame" x="1" y="1" width="191" height="43"/>
@@ -9012,7 +9012,7 @@ DQ
                     </view>
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="goI-nI-N9z" customClass="EBTextObserverField">
-                    <rect key="frame" x="161" y="212" width="69" height="14"/>
+                    <rect key="frame" x="161" y="319" width="69" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" selectable="YES" alignment="right" title="••• right •••" drawsBackground="YES" id="nXI-FO-jkQ">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -9021,7 +9021,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="veH-2K-gch" customClass="EBTextObserverField">
-                    <rect key="frame" x="77" y="234" width="96" height="14"/>
+                    <rect key="frame" x="77" y="341" width="96" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" selectable="YES" alignment="center" title="••• top •••" drawsBackground="YES" id="Xfu-wu-0RG">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -9030,7 +9030,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="CV5-qR-0Tq" customClass="EBTextObserverField">
-                    <rect key="frame" x="77" y="190" width="96" height="14"/>
+                    <rect key="frame" x="77" y="297" width="96" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" selectable="YES" alignment="center" title="••• bottom •••" drawsBackground="YES" id="riE-QH-UDa">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -9039,7 +9039,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="gUJ-S5-MdF" customClass="EBTextObserverField">
-                    <rect key="frame" x="20" y="212" width="71" height="14"/>
+                    <rect key="frame" x="20" y="319" width="71" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" selectable="YES" alignment="left" title="••• left •••" drawsBackground="YES" id="xAP-9W-OGr">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -9048,16 +9048,16 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Zfi-ts-Yap">
-                    <rect key="frame" x="67" y="151" width="116" height="14"/>
+                    <rect key="frame" x="65" y="258" width="121" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Limit Bounding Box" id="ZAu-mb-pOz">
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Board Bounding Box" id="ZAu-mb-pOz">
                         <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <box boxType="custom" cornerRadius="4" title="Box" id="EWB-wa-1NW">
-                    <rect key="frame" x="29" y="91" width="193" height="45"/>
+                    <rect key="frame" x="29" y="198" width="193" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="w6X-sM-Mdu">
                         <rect key="frame" x="1" y="1" width="191" height="43"/>
@@ -9065,7 +9065,7 @@ DQ
                     </view>
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="zkz-dd-y0f" customClass="EBTextObserverField">
-                    <rect key="frame" x="161" y="107" width="69" height="14"/>
+                    <rect key="frame" x="161" y="214" width="69" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" selectable="YES" alignment="right" title="••• right •••" drawsBackground="YES" id="lvC-hA-iL4">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -9074,7 +9074,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <popUpButton id="A2s-6T-RBw" customClass="EBPopUpButton">
-                    <rect key="frame" x="95" y="105" width="60" height="17"/>
+                    <rect key="frame" x="95" y="212" width="60" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="oeG-UZ-1fm" id="OxT-hu-dwl">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -9090,7 +9090,7 @@ DQ
                     </popUpButtonCell>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EKY-Uj-Jic" customClass="EBTextObserverField">
-                    <rect key="frame" x="77" y="129" width="96" height="14"/>
+                    <rect key="frame" x="77" y="236" width="96" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" selectable="YES" alignment="center" title="••• top •••" drawsBackground="YES" id="HmU-jj-C81">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -9099,7 +9099,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="X9Y-cZ-IOx" customClass="EBTextObserverField">
-                    <rect key="frame" x="77" y="85" width="96" height="14"/>
+                    <rect key="frame" x="77" y="192" width="96" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" selectable="YES" alignment="center" title="••• bottom •••" drawsBackground="YES" id="ZKN-VC-I5q">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -9108,7 +9108,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="3i8-DP-5MF" customClass="EBTextObserverField">
-                    <rect key="frame" x="20" y="107" width="71" height="14"/>
+                    <rect key="frame" x="20" y="214" width="71" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" selectable="YES" alignment="left" title="••• left •••" drawsBackground="YES" id="qBA-Qc-RlU">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -9117,7 +9117,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="YBO-RL-s6o" customClass="EBTextObserverField">
-                    <rect key="frame" x="56" y="296" width="138" height="14"/>
+                    <rect key="frame" x="56" y="473" width="138" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="element count" id="lzY-AQ-DWp">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -9126,7 +9126,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <popUpButton id="MJJ-7P-hAD" customClass="EBPopUpButton">
-                    <rect key="frame" x="170" y="51" width="60" height="17"/>
+                    <rect key="frame" x="170" y="438" width="60" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="J3z-XF-xk1" id="xa4-m5-iSt">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -9142,7 +9142,7 @@ DQ
                     </popUpButtonCell>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="cjp-Vq-y5s" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="106" y="50" width="57" height="21"/>
+                    <rect key="frame" x="106" y="437" width="57" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,23" drawsBackground="YES" id="1DN-ml-wod">
                         <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="u6F-3a-7WO">
@@ -9155,7 +9155,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Lg5-mO-aBT">
-                    <rect key="frame" x="18" y="53" width="76" height="14"/>
+                    <rect key="frame" x="18" y="440" width="76" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Limit Width" id="FEN-jS-dBR">
                         <font key="font" metaFont="smallSystem"/>
@@ -9164,7 +9164,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <popUpButton id="0mw-bN-gaV" customClass="EBPopUpButton">
-                    <rect key="frame" x="170" y="21" width="60" height="17"/>
+                    <rect key="frame" x="170" y="408" width="60" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="fsF-S1-3Pd" id="WG1-4f-8LR">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -9180,7 +9180,7 @@ DQ
                     </popUpButtonCell>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="IVD-tM-Vib" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="106" y="20" width="57" height="21"/>
+                    <rect key="frame" x="106" y="407" width="57" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,23" drawsBackground="YES" id="iDJ-xM-uPK">
                         <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="RKA-EG-ipg">
@@ -9193,7 +9193,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="jzv-J9-phc">
-                    <rect key="frame" x="18" y="23" width="76" height="14"/>
+                    <rect key="frame" x="18" y="410" width="76" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Clearance" id="zxW-9v-zlJ">
                         <font key="font" metaFont="smallSystem"/>
@@ -9202,7 +9202,7 @@ DQ
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="-1133" y="271.5"/>
+            <point key="canvasLocation" x="-1133" y="360"/>
         </customView>
         <customView id="ph8-QY-Yza" userLabel="Board Limits Inspector : Base View" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="181"/>
