@@ -17,7 +17,7 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  @IBAction func removeAllViasAndTracksActions (_ inSender : Any?) {
+  @IBAction func removeAllViasAndTracksActions (_ inUnusedSender : Any?) {
   //--- Remove all tracks
     for object in self.rootObject.mBoardObjects {
       if let track = object as? BoardTrack {

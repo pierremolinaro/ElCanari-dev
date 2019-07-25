@@ -10,8 +10,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate let FRONT_SIDE = "ComponentSide"
-fileprivate let BACK_SIDE  = "SolderSide"
+let COMPONENT_SIDE = "ComponentSide"
+let SOLDER_SIDE    = "SolderSide"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -40,11 +40,11 @@ extension CustomizedProjectDocument {
     let boardBoundBox = self.rootObject.boardBoundBox!.insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
     let signalPolygonVertices = self.buildSignalPolygon ()
   //--- Restrict rectangles
-    var restrictRectangles = [RestrictRectangleForRouting] ()
+    var restrictRectangles = [RestrictRectangleForDSNExport] ()
     for object in self.rootObject.mBoardObjects {
       if let restrictRectangle = object as? BoardRestrictRectangle {
         let r = CanariRect (left: restrictRectangle.mX, bottom: restrictRectangle.mY, width: restrictRectangle.mWidth, height: restrictRectangle.mHeight)
-        let rr = RestrictRectangleForRouting (
+        let rr = RestrictRectangleForDSNExport (
           rect: r,
           frontSide: restrictRectangle.mIsInFrontLayer,
           backSide: restrictRectangle.mIsInBackLayer
@@ -53,13 +53,13 @@ extension CustomizedProjectDocument {
       }
     }
   //--- Net classes
-    var netClasses = [NetClassForRouting] ()
+    var netClasses = [NetClassForDSNExport] ()
     for netClass in self.rootObject.mNetClasses {
       var netNames = [String] ()
       for net in netClass.mNets {
         netNames.append (net.mNetName)
       }
-      let nc = NetClassForRouting (
+      let nc = NetClassForDSNExport (
         name: netClass.mNetClassName,
         trackWidthInMM: canariUnitToMillimeter (netClass.mTrackWidth),
         viaPadDiameterInMM: canariUnitToMillimeter (netClass.mViaPadDiameter),
@@ -70,14 +70,14 @@ extension CustomizedProjectDocument {
       netClasses.append (nc)
     }
   //--- Enumerate components
-    var packageDictionary = [PackageDictionaryKey : Int] ()
-    var packageArrayForRouting = [PackageTypeForRouting] ()
-    var componentArrayForRouting = [ComponentForRouting] ()
-    var padTypeArrayForRouting = [PadTypeForRouting] ()
+    var packageDictionary = [PackageDictionaryKeyForDSNExport : Int] ()
+    var packageArrayForRouting = [PackageTypeForDSNExport] ()
+    var componentArrayForRouting = [ComponentForDSNExport] ()
+    var padTypeArrayForRouting = [PadTypeForDSNExport] ()
     for component in self.rootObject.mComponents {
       if component.mRoot != nil { // Placed on board
         let device = component.mDevice!
-        let deviceIndex = indexForPackage (
+        let packageIndex = indexForPackage (
           device,
           component.mSelectedPackage!,
           &packageDictionary,
@@ -85,17 +85,17 @@ extension CustomizedProjectDocument {
           &padTypeArrayForRouting
         )
       //--- Build net list
-        var padNetArray = [PadNetDescriptor] ()
+        var padNetArray = [PadNetDescriptorForDSNExport] ()
         let componentPadDictionary : ComponentPadDescriptorDictionary = component.componentPadDictionary!
         let componentPads : [ComponentPadDescriptor] = Array (componentPadDictionary.values)
         let padNetDictionary : PadNetDictionary = component.padNetDictionary!
         for pad in componentPads {
-          let pnd = PadNetDescriptor (padString: pad.padName, netName: padNetDictionary [pad.padName])
+          let pnd = PadNetDescriptorForDSNExport (padString: pad.padName, netName: padNetDictionary [pad.padName])
           padNetArray.append (pnd)
         }
       //--- Enter component
-        let cfr = ComponentForRouting (
-          deviceIndex: deviceIndex,
+        let cfr = ComponentForDSNExport (
+          packageIndex: packageIndex,
           componentName: component.componentName!,
           placed: component.mRoot != nil,
           originX: component.mX,
@@ -176,10 +176,10 @@ extension CustomizedProjectDocument {
 
 fileprivate func indexForPackage (_ inDevice : DeviceInProject,
                                   _ inSelectedPackage : DevicePackageInProject,
-                                  _ ioPackageDictionary : inout [PackageDictionaryKey : Int],
-                                  _ ioPackageArrayForRouting : inout [PackageTypeForRouting],
-                                  _ ioPadTypeArrayForRouting : inout [PadTypeForRouting]) -> Int {
-  let key = PackageDictionaryKey (device: inDevice, package: inSelectedPackage)
+                                  _ ioPackageDictionary : inout [PackageDictionaryKeyForDSNExport : Int],
+                                  _ ioPackageArrayForRouting : inout [PackageTypeForDSNExport],
+                                  _ ioPadTypeArrayForRouting : inout [PadTypeForDSNExport]) -> Int {
+  let key = PackageDictionaryKeyForDSNExport (device: inDevice, package: inSelectedPackage)
   if let idx = ioPackageDictionary [key] {
     return idx
   }else{
@@ -189,7 +189,7 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
   //--- Pad array
     let padDictionary = inSelectedPackage.packagePadDictionary!
     let deviceCenter = padDictionary.padsRect.center
-    var padArrayForRouting = [PadInstanceForRouting] ()
+    var padArrayForRouting = [PadInstanceForDSNExport] ()
     for (_, masterPad) in padDictionary {
     //--- Enter master pad
       let masterPadForRouting = findOrAddPadType (
@@ -200,7 +200,7 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
         shape: masterPad.shape,
         &ioPadTypeArrayForRouting
       )
-      let psr = PadInstanceForRouting (
+      let psr = PadInstanceForDSNExport (
         name: masterPad.name,
         masterPad: masterPadForRouting,
         centerXmm: canariUnitToMillimeter (masterPad.center.x - deviceCenter.x),
@@ -225,7 +225,7 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
           shape: slavePad.shape,
           &ioPadTypeArrayForRouting
         )
-        let pir = PadInstanceForRouting (
+        let pir = PadInstanceForDSNExport (
           name: masterPad.name, // + ":\(slavePadIndex)",
           masterPad: slavePadForRouting,
           centerXmm: canariUnitToMillimeter (slavePad.center.x - deviceCenter.x),
@@ -235,7 +235,7 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
       }
     }
   //--- Enter in package array
-    let pfr = PackageTypeForRouting (
+    let pfr = PackageTypeForDSNExport (
       typeName: inDevice.mDeviceName + ":" + inSelectedPackage.mPackageName,
       padArray: padArrayForRouting.sorted { $0.name < $1.name }
     )
@@ -252,7 +252,7 @@ fileprivate func findOrAddPadType (canariWidth inWidth : Int,
                                    onComponentSide inComponentSide : Bool,
                                    onOppositeSide  inOppositeSide : Bool,
                                    shape inShape : PadShape,
-                                   _ ioPadTypeArrayForRouting : inout [PadTypeForRouting]) -> PadTypeForRouting {
+                                   _ ioPadTypeArrayForRouting : inout [PadTypeForDSNExport]) -> PadTypeForDSNExport {
 //--- Search in existing pads
   for mp in ioPadTypeArrayForRouting {
     if ((mp.canariWidth == inWidth) && (mp.canariHeight == inHeight) && (mp.onComponentSide == inComponentSide)  && (mp.onOppositeSide == inOppositeSide) && (mp.shape == inShape)) {
@@ -260,7 +260,7 @@ fileprivate func findOrAddPadType (canariWidth inWidth : Int,
     }
   }
 //--- If not found, create it
-  let newPad = PadTypeForRouting (
+  let newPad = PadTypeForDSNExport (
     name: "ps\(ioPadTypeArrayForRouting.count)",
     canariWidth: inWidth,
     canariHeight: inHeight,
@@ -274,28 +274,21 @@ fileprivate func findOrAddPadType (canariWidth inWidth : Int,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct PadNetDescriptor {
+fileprivate struct PadNetDescriptorForDSNExport {
   let padString : String
   let netName : String?
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct PackageDictionaryKey : Hashable {
+fileprivate struct PackageDictionaryKeyForDSNExport : Hashable {
   let device : DeviceInProject
   let package : DevicePackageInProject
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct DeviceForRouting {
-  let name : String
-  let packageIndex : Int
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct NetClassForRouting {
+fileprivate struct NetClassForDSNExport {
   let name : String
   let trackWidthInMM : CGFloat
   let viaPadDiameterInMM : CGFloat
@@ -306,7 +299,7 @@ struct NetClassForRouting {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct RestrictRectangleForRouting {
+fileprivate struct RestrictRectangleForDSNExport {
   let rect : CanariRect
   let frontSide : Bool
   let backSide  : Bool
@@ -314,36 +307,36 @@ struct RestrictRectangleForRouting {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct ComponentForRouting {
-  let deviceIndex : Int
+fileprivate struct ComponentForDSNExport {
+  let packageIndex : Int
   let componentName : String
   let placed : Bool
   let originX : Int
   let originY : Int
   let rotation : CGFloat
   let side : ComponentSide
-  let netList : [PadNetDescriptor]
+  let netList : [PadNetDescriptorForDSNExport]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct PackageTypeForRouting {
+fileprivate struct PackageTypeForDSNExport {
   let typeName : String
-  let padArray : [PadInstanceForRouting]
+  let padArray : [PadInstanceForDSNExport]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct PadInstanceForRouting {
+fileprivate struct PadInstanceForDSNExport {
   let name : String
-  let masterPad : PadTypeForRouting
+  let masterPad : PadTypeForDSNExport
   let centerXmm : CGFloat // In mm
   let centerYmm : CGFloat // In mm
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct PadTypeForRouting {
+fileprivate struct PadTypeForDSNExport {
   let name : String
   let canariWidth  : Int
   let canariHeight : Int
@@ -422,7 +415,7 @@ struct PadTypeForRouting {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addNetwork (_ ioString : inout String,
-                             _ inComponentArrayForRouting : [ComponentForRouting]) {
+                             _ inComponentArrayForRouting : [ComponentForDSNExport]) {
   var netWorkDictionary = [String : [String]] ()
   for component in inComponentArrayForRouting {
     let componentName = component.componentName
@@ -446,11 +439,11 @@ fileprivate func addNetwork (_ ioString : inout String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addViaPadStackLibrary (_ ioString : inout String,
-                                        _ inNetClasses : [NetClassForRouting]) {
+                                        _ inNetClasses : [NetClassForDSNExport]) {
   for netClass in inNetClasses {
     ioString += "    (padstack \"viaForClass\(netClass.name)\"\n"
-    ioString += "      (shape (circle \(BACK_SIDE) \(netClass.viaPadDiameterInMM) 0 0))\n"
-    ioString += "      (shape (circle \(FRONT_SIDE) \(netClass.viaPadDiameterInMM) 0 0))\n"
+    ioString += "      (shape (circle \(SOLDER_SIDE) \(netClass.viaPadDiameterInMM) 0 0))\n"
+    ioString += "      (shape (circle \(COMPONENT_SIDE) \(netClass.viaPadDiameterInMM) 0 0))\n"
     ioString += "    )\n"
   }
 }
@@ -458,14 +451,14 @@ fileprivate func addViaPadStackLibrary (_ ioString : inout String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addComponentPadStackLibrary (_ ioString : inout String,
-                                              _ inPadTypeArrayForRouting : [PadTypeForRouting]) {
+                                              _ inPadTypeArrayForRouting : [PadTypeForDSNExport]) {
   for pad in inPadTypeArrayForRouting {
     ioString += "    (padstack \"\(pad.name)\"\n"
     if pad.onComponentSide {
-      ioString += "      (shape \(pad.padStringFor (side: FRONT_SIDE)))\n"
+      ioString += "      (shape \(pad.padStringFor (side: COMPONENT_SIDE)))\n"
     }
     if pad.onOppositeSide {
-      ioString += "      (shape \(pad.padStringFor (side: BACK_SIDE)))\n"
+      ioString += "      (shape \(pad.padStringFor (side: SOLDER_SIDE)))\n"
     }
     ioString += "    )\n"
   }
@@ -474,7 +467,7 @@ fileprivate func addComponentPadStackLibrary (_ ioString : inout String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addDeviceLibrary (_ ioString : inout String,
-                                   _ inPackageArrayForRouting : [PackageTypeForRouting]) {
+                                   _ inPackageArrayForRouting : [PackageTypeForDSNExport]) {
   for package in inPackageArrayForRouting {
     ioString += "    (image \"\(package.typeName)\"\n"
     for pad in package.padArray {
@@ -534,21 +527,21 @@ fileprivate func autorouteSettings (_ ioString : inout String,
     frontPreferredDir = "vertical"
     backPreferredDir = "horizontal"
   }
-  ioString += "    (layer \(FRONT_SIDE) (type signal))\n"
-  ioString += "    (layer \(BACK_SIDE) (type signal))\n"
+  ioString += "    (layer \(COMPONENT_SIDE) (type signal))\n"
+  ioString += "    (layer \(SOLDER_SIDE) (type signal))\n"
   ioString += "    (autoroute_settings\n"
   ioString += "      (vias on)\n"
   ioString += "      (via_costs 50)\n"
   ioString += "      (plane_via_costs 5)\n"
   ioString += "      (start_ripup_costs 100)\n"
   ioString += "      (start_pass_no 1)\n"
-  ioString += "      (layer_rule \(FRONT_SIDE)\n"
+  ioString += "      (layer_rule \(COMPONENT_SIDE)\n"
   ioString += "        (active on)\n"
   ioString += "        (prefered_direction \(frontPreferredDir))\n"
   ioString += "        (prefered_direction_trace_costs 1.0)\n"
   ioString += "        (against_prefered_direction_trace_costs 2.7)\n"
   ioString += "      )\n"
-  ioString += "      (layer_rule \(BACK_SIDE)\n"
+  ioString += "      (layer_rule \(SOLDER_SIDE)\n"
   ioString += "        (active on)\n"
   ioString += "        (prefered_direction \(backPreferredDir))\n"
   ioString += "        (prefered_direction_trace_costs 1.0)\n"
@@ -559,7 +552,7 @@ fileprivate func autorouteSettings (_ ioString : inout String,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func addViaClasses (_ ioString : inout String, _ inNetClasses : [NetClassForRouting]) {
+fileprivate func addViaClasses (_ ioString : inout String, _ inNetClasses : [NetClassForDSNExport]) {
   ioString += "    (via"
   for netClass in inNetClasses {
     ioString += " \"viaForClass\(netClass.name)\""
@@ -569,7 +562,7 @@ fileprivate func addViaClasses (_ ioString : inout String, _ inNetClasses : [Net
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func addViaRules (_ ioString : inout String, _ inNetClasses : [NetClassForRouting]) {
+fileprivate func addViaRules (_ ioString : inout String, _ inNetClasses : [NetClassForDSNExport]) {
   for netClass in inNetClasses {
     ioString += "    (via_rule\n"
     ioString += "      \"viaRuleForClass\(netClass.name)\" \"viaForClass\(netClass.name)\"\n"
@@ -579,7 +572,7 @@ fileprivate func addViaRules (_ ioString : inout String, _ inNetClasses : [NetCl
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func addNetClasses (_ ioString : inout String, _ inNetClasses : [NetClassForRouting]) {
+fileprivate func addNetClasses (_ ioString : inout String, _ inNetClasses : [NetClassForDSNExport]) {
   for netClass in inNetClasses {
     ioString += "    (class \"class_\(netClass.name)\"\n"
     for netName in netClass.netNames {
@@ -591,13 +584,13 @@ fileprivate func addNetClasses (_ ioString : inout String, _ inNetClasses : [Net
     ioString += "        (width \(netClass.trackWidthInMM))\n"
     ioString += "      )\n"
     ioString += "      (circuit\n"
-//    ioString += "        (use_layer \(FRONT_SIDE) \(BACK_SIDE))\n"
+//    ioString += "        (use_layer \(COMPONENT_SIDE) \(SOLDER_SIDE))\n"
     ioString += "        (use_layer"
     if netClass.allowTracksOnFrontSide {
-      ioString += " \(FRONT_SIDE)"
+      ioString += " \(COMPONENT_SIDE)"
     }
     if netClass.allowTracksOnBackSide {
-      ioString += " \(BACK_SIDE)"
+      ioString += " \(SOLDER_SIDE)"
     }
     ioString += ")\n"
     ioString += "      )\n"
@@ -614,8 +607,8 @@ fileprivate func addRuleClearance (_ ioString : inout String, clearanceInMM inCl
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addComponentsPlacement (_ ioString : inout String,
-                                         _ inComponents : [ComponentForRouting],
-                                         _ inPackageArrayForRouting : [PackageTypeForRouting]) {
+                                         _ inComponents : [ComponentForDSNExport],
+                                         _ inPackageArrayForRouting : [PackageTypeForDSNExport]) {
   ioString += "  (placement\n"
   for component in inComponents {
     let x = canariUnitToMillimeter (component.originX)
@@ -625,7 +618,7 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
     case .back : side = "back"
     case .front : side = "front"
     }
-    ioString += "    (component \"\(inPackageArrayForRouting [component.deviceIndex].typeName)\"\n"
+    ioString += "    (component \"\(inPackageArrayForRouting [component.packageIndex].typeName)\"\n"
     ioString += "      (place\n"
     ioString += "        \"\(component.componentName)\" \(x) \(y) \(side) \(component.rotation)\n"
     var idx = 1
@@ -642,7 +635,7 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addRestrictRectangles (_ ioString : inout String,
-                                        _ inRestrictRectangles : [RestrictRectangleForRouting]) {
+                                        _ inRestrictRectangles : [RestrictRectangleForDSNExport]) {
   for rr in inRestrictRectangles {
     let left = canariUnitToMillimeter (rr.rect.left)
     let bottom = canariUnitToMillimeter (rr.rect.bottom)
@@ -650,13 +643,13 @@ fileprivate func addRestrictRectangles (_ ioString : inout String,
     let top = bottom + canariUnitToMillimeter (rr.rect.height)
     if rr.frontSide {
       ioString += "    (keepout\n"
-      ioString += "      (rect \(FRONT_SIDE) \(left) \(bottom) \(right) \(top))\n"
+      ioString += "      (rect \(COMPONENT_SIDE) \(left) \(bottom) \(right) \(top))\n"
       ioString += "      (clearance_class default)\n"
       ioString += "    )\n"
     }
     if rr.backSide {
       ioString += "    (keepout\n"
-      ioString += "      (rect \(BACK_SIDE) \(left) \(bottom) \(right) \(top))\n"
+      ioString += "      (rect \(SOLDER_SIDE) \(left) \(bottom) \(right) \(top))\n"
       ioString += "      (clearance_class default)\n"
       ioString += "    )\n"
     }
@@ -664,4 +657,3 @@ fileprivate func addRestrictRectangles (_ ioString : inout String,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

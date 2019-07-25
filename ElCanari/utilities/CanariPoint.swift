@@ -88,6 +88,54 @@ struct CanariPoint : Equatable, Hashable {
 
  //····················································································································
 
+ static func segmentStrictlyContainsEBPoint (_ inP1 : CanariPoint,
+                                             _ inP2 : CanariPoint,
+                                             _ inP : CanariPoint) -> Bool {
+  let p1x = inP1.x
+  let p1y = inP1.y
+  let p2x = inP2.x
+  let p2y = inP2.y
+  let px  = inP.x
+  let py  = inP.y
+  var within = ((p1x - px) * (p1y - p2y)) == ((p1y - py) * (p1x - p2x))
+  if within {
+    if p1x == p2x { // vertical segment
+      within = (py > min (p1y, p2y)) && (py < max (p1y, p2y))
+    }else if p1y == p2y { // vertical segment
+      within = (px > min (p1x, p2x)) && (px < max (p1x, p2x))
+    }else{ // Other segment
+      within = (px > min (p1x, p2x)) && (px < max (p1x, p2x)) && (py > min (p1y, p2y)) && (py < max (p1y, p2y))
+    }
+  }
+  return within
+}
+
+//BOOL
+//segmentStrictlyContainsEBPoint (const EBPoint inP1,
+//                                const EBPoint inP2,
+//                                const EBPoint inP) {
+//  const long long p1x = inP1.x ;
+//  const long long p1y = inP1.y ;
+//  const long long p2x = inP2.x ;
+//  const long long p2y = inP2.y ;
+//  const long long px  = inP.x ;
+//  const long long py  = inP.y ;
+//  BOOL within = ((p1x - px) * (p1y - p2y)) == ((p1y - py) * (p1x - p2x)) ;
+//  if (within) {
+//    if (p1x == p2x) { // vertical segment
+//      within = (py > iminl (p1y, p2y)) && (py < imaxl (p1y, p2y)) ;
+//    }else if (p1y == p2y) { // vertical segment
+//      within = (px > iminl (p1x, p2x)) && (px < imaxl (p1x, p2x)) ;
+//    }else{ // Other segment
+//      within = (px > iminl (p1x, p2x)) && (px < imaxl (p1x, p2x)) && (py > iminl (p1y, p2y)) && (py < imaxl (p1y, p2y)) ;
+//    }
+//  }
+//  return within ;
+//}
+
+ //····················································································································
+
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
