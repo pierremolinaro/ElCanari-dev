@@ -2011,27 +2011,27 @@ extension Date : ValuePropertyProtocol {
     let archiver = NSKeyedArchiver (forWritingWith: data)
     archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
     archiver.finishEncoding ()
-    //let data = NSKeyedArchiver.archivedData (withRootObject: self)
     return (data as Data).ebHashValue ()
   }
 
   //····················································································································
 
   func convertToNSObject () -> NSObject {
-    let data = NSMutableData ()
-    let archiver = NSKeyedArchiver (forWritingWith: data)
-    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
-    archiver.finishEncoding ()
-    return data as NSObject
-    // return NSKeyedArchiver.archivedData (withRootObject: self) as NSObject
+    return self as NSObject
+//    let data = NSMutableData ()
+//    let archiver = NSKeyedArchiver (forWritingWith: data)
+//    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+//    archiver.finishEncoding ()
+//    return data as NSObject
   }
 
   //····················································································································
 
   static func convertFromNSObject (object : NSObject) -> Date {
-    return NSKeyedUnarchiver.unarchiveObject (with: object as! Data) as! Date
+    return (object as? Date) ?? Date ()
+ //   return NSKeyedUnarchiver.unarchiveObject (with: object as! Data) as! Date  }
   }
-
+  
   //····················································································································
 
 }

@@ -332,7 +332,7 @@ prefs {
   property Bool checkForSystemLibraryAtStartUp default yes ;
   outlet EBSwitch mCheckForSystemLibraryAtStartUpSwitch $value self.checkForSystemLibraryAtStartUp ;
 
-  property Date mLastSystemLibraryCheckTime default date ;
+  property Date mLastSystemLibraryCheckTime default distantPast ;
 
   outlet CanariDateObserverField nextSystemLibraryCheckDate
     $dateObserver self.mLastSystemLibraryCheckTime

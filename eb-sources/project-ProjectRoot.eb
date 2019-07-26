@@ -129,7 +129,7 @@ entity ProjectRoot {
   property Int mSelectedSchematicInspector default 0 ;
   property String mSchematicTitle default "" ;
   property String mSchematicVersion default "" ;
-  property Date mSchematicDate default date ;
+  property Date mSchematicDate default now ;
   property Bool mSchematicHorizontalFlip default no ;
   property Bool mSchematicVerticalFlip default no ;
   property Int mSchematicZoom default 100 ;

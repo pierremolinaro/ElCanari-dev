@@ -1133,6 +1133,8 @@
 		CF880FEF1DDB85F400954D4E /* GeometricCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF880FEE1DDB85F400954D4E /* GeometricCircle.swift */; };
 		CF88969F21E13334007A0F1C /* open-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88969E21E13334007A0F1C /* open-in-library.swift */; };
 		CF8896A021E13334007A0F1C /* open-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88969E21E13334007A0F1C /* open-in-library.swift */; };
+		CF88F74322EB028E00EEBE38 /* check-system-lib-update-at-launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88F74222EB028E00EEBE38 /* check-system-lib-update-at-launch.swift */; };
+		CF88F74422EB028E00EEBE38 /* check-system-lib-update-at-launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88F74222EB028E00EEBE38 /* check-system-lib-update-at-launch.swift */; };
 		CF8A099A223191D600A17B92 /* entity-SymbolInstanceInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A0999223191D500A17B92 /* entity-SymbolInstanceInDevice.swift */; };
 		CF8A099B223191D600A17B92 /* entity-SymbolInstanceInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A0999223191D500A17B92 /* entity-SymbolInstanceInDevice.swift */; };
 		CF8A099D223191E700A17B92 /* transient-SymbolTypeInDevice-instanceCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A099C223191E700A17B92 /* transient-SymbolTypeInDevice-instanceCount.swift */; };
@@ -2822,6 +2824,7 @@
 		CF87F3E120F0CE4500918586 /* enum-PadSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-PadSide.swift"; sourceTree = "<group>"; };
 		CF880FEE1DDB85F400954D4E /* GeometricCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometricCircle.swift; sourceTree = "<group>"; };
 		CF88969E21E13334007A0F1C /* open-in-library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "open-in-library.swift"; sourceTree = "<group>"; };
+		CF88F74222EB028E00EEBE38 /* check-system-lib-update-at-launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "check-system-lib-update-at-launch.swift"; sourceTree = "<group>"; };
 		CF8A0999223191D500A17B92 /* entity-SymbolInstanceInDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SymbolInstanceInDevice.swift"; sourceTree = "<group>"; };
 		CF8A099C223191E700A17B92 /* transient-SymbolTypeInDevice-instanceCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolTypeInDevice-instanceCount.swift"; sourceTree = "<group>"; };
 		CF8A099F2231969300A17B92 /* controller-array-DeviceDocument-mSymbolDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-array-DeviceDocument-mSymbolDisplayController.swift"; sourceTree = "<group>"; };
@@ -4100,6 +4103,7 @@
 			children = (
 				CF730B4621F87EFA00944B3E /* ApplicationDelegate-updateLibraryFromRepository.swift */,
 				CF18963521F9E9C000F94354 /* button-LibraryUpdateButton.swift */,
+				CF88F74222EB028E00EEBE38 /* check-system-lib-update-at-launch.swift */,
 				CF001F6C21F8AB610091518E /* class-LibraryOperationElement.swift */,
 				CF001F7221F8AFA10091518E /* controller-CanariLibraryUpdateController.swift */,
 				CF18963821F9F5FE00F94354 /* entry-point-update-from-repository-revision-list.swift */,
@@ -6247,6 +6251,7 @@
 				CF9D4BC4227F79A9006E2035 /* transient-ProjectDocument-canRemoveSelectedDevices.swift in Sources */,
 				CF2A491E1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathDescent.swift in Sources */,
 				CF9D4B96227F79A9006E2035 /* transient-ProjectRoot-connexionErrorString.swift in Sources */,
+				CF88F74322EB028E00EEBE38 /* check-system-lib-update-at-launch.swift in Sources */,
 				CF9D4BF2227F79A9006E2035 /* transient-NetClassInProject-viaPadDiameter.swift in Sources */,
 				CF2A69A6226F4B8900261C47 /* CanariNewComponentFromDevicePullDownButton.swift in Sources */,
 				CFA4307D229AEB96000AA8C8 /* tomany-NCInSchematic.swift in Sources */,
@@ -7301,6 +7306,7 @@
 				CFBCE79B22D3ACC000DC3505 /* extension-NCInSchematic.swift in Sources */,
 				CF5C4DA6219F04D600EAC52A /* transient-MergerRoot-boardRect.swift in Sources */,
 				CF4D083221C2DE4300380ACA /* action-PackageDocument-resetVersionAction.swift in Sources */,
+				CF88F74422EB028E00EEBE38 /* check-system-lib-update-at-launch.swift in Sources */,
 				CF5C4DA8219F04D600EAC52A /* transient-BoardModel-frontComponentNameSegments.swift in Sources */,
 				CF6B32FB21C91FA100E3B985 /* entity-PackageDimension.swift in Sources */,
 				CFB9E1E822D33C4D00D681BF /* transient-BoardConnector-side.swift in Sources */,

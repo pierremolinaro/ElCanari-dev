@@ -44,26 +44,7 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
 
   func applicationDidFinishLaunching (_ notification: Notification) {
     self.mMaintenanceLogTextField?.stringValue = ""
-    if g_Preferences?.checkForSystemLibraryAtStartUp ?? false {
-      if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {
-        let lastCheckDate = g_Preferences?.mLastSystemLibraryCheckTime ?? Date ()
-        var nextInterval = 24.0 * 3600.0  // One day
-        if let tag = g_Preferences?.systemLibraryCheckTimeInterval {
-          if tag == 1 {
-            nextInterval *= 7.0 // One week
-          }else if tag == 2 {
-            nextInterval *= 30.0 // One month
-          }
-        }
-        let checkDate = Date (timeInterval: nextInterval, since:lastCheckDate)
-        if checkDate < Date () {
-          startLibraryUpdateOperation (nil, logTextView)
-          g_Preferences?.mLastSystemLibraryCheckTime = Date ()
-        }
-      }else{
-        NSLog ("g_Preferences?.mLibraryUpdateLogTextView is nil")
-      }
-    }
+    self.checkForLibraryUpdateAtLaunch ()
   //--- Observe last update application last check time
     UserDefaults.standard.addObserver (
       self,

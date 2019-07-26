@@ -2650,7 +2650,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //   Atomic property: mLastSystemLibraryCheckTime
   //····················································································································
 
-  let mLastSystemLibraryCheckTime_property = EBPreferencesProperty_Date (defaultValue: Date (), prefKey: Preferences_mLastSystemLibraryCheckTime)
+  let mLastSystemLibraryCheckTime_property = EBPreferencesProperty_Date (defaultValue: Date.distantPast, prefKey: Preferences_mLastSystemLibraryCheckTime)
 
   //····················································································································
 
