@@ -6,6 +6,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mArtworkName : class {
+  var mArtworkName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mAutoRouterPreferredDirections : class {
   var mAutoRouterPreferredDirections : AutorouterPreferredDirections { get }
 }
@@ -507,6 +513,7 @@ protocol ProjectRoot_schematicStatusImage : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ProjectRoot : EBManagedObject,
+         ProjectRoot_mArtworkName,
          ProjectRoot_mAutoRouterPreferredDirections,
          ProjectRoot_mAutorouterSnapAngle,
          ProjectRoot_mTrackLengthUnit,
@@ -590,6 +597,23 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_unplacedPackages,
          ProjectRoot_schematicStatusMessage,
          ProjectRoot_schematicStatusImage {
+
+  //····················································································································
+  //   Atomic property: mArtworkName
+  //····················································································································
+
+  let mArtworkName_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mArtworkName : String {
+    get { return self.mArtworkName_property.propval }
+    set { self.mArtworkName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mArtworkName_property_selection : EBSelection <String> { return self.mArtworkName_property.prop }
 
   //····················································································································
   //   Atomic property: mAutoRouterPreferredDirections
@@ -1855,6 +1879,44 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   To one property: mArtwork
+  //····················································································································
+
+   let mArtwork_property = StoredObject_ArtworkRoot ()
+
+  //····················································································································
+
+  var mArtwork_property_selection : EBSelection <ArtworkRoot?> {
+    return .single (self.mArtwork_property.propval)
+  }
+
+  //····················································································································
+
+  var mArtwork : ArtworkRoot? {
+    get {
+      return self.mArtwork_property.propval
+    }
+    set {
+      if self.mArtwork_property.propval != nil {
+        self.mArtwork_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mArtwork_property.setProp (newValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mArtwork_none : StoredObject_ArtworkRoot { return self.mArtwork_property }
+
+  //····················································································································
+
+  var mArtwork_none_selection : EBSelection <Bool> {
+    return .single (self.mArtwork_property.propval == nil)
+  }
+
+  //····················································································································
   //   Transient property: viaCountString
   //····················································································································
 
@@ -2412,6 +2474,8 @@ class ProjectRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- Atomic property: mArtworkName
+    self.mArtworkName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mAutorouterSnapAngle
@@ -2750,6 +2814,8 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mNetClasses_property.addEBObserverOf_netsDescription (self.netsDescription_property)
+  //--- To one property: mArtwork
+    self.mArtwork_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: viaCountString
     self.viaCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3472,6 +3538,14 @@ class ProjectRoot : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
+      "mArtworkName",
+      idx: self.mArtworkName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mArtworkName_property.mObserverExplorer,
+      valueExplorer: &self.mArtworkName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mAutoRouterPreferredDirections",
       idx: self.mAutoRouterPreferredDirections_property.ebObjectIndex,
       y: &y,
@@ -4186,6 +4260,13 @@ class ProjectRoot : EBManagedObject,
       view: view,
       valueExplorer:&self.mSelectedSheet_property.mValueExplorer
     )
+    createEntryForToOneRelationshipNamed (
+      "mArtwork",
+      idx:self.mArtwork_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mArtwork_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
@@ -4194,6 +4275,9 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: mArtworkName
+    self.mArtworkName_property.mObserverExplorer = nil
+    self.mArtworkName_property.mValueExplorer = nil
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.mObserverExplorer = nil
     self.mAutoRouterPreferredDirections_property.mValueExplorer = nil
@@ -4366,6 +4450,9 @@ class ProjectRoot : EBManagedObject,
   //--- To one property: mSelectedSheet
     self.mSelectedSheet_property.mObserverExplorer = nil
     self.mSelectedSheet_property.mValueExplorer = nil
+  //--- To one property: mArtwork
+    self.mArtwork_property.mObserverExplorer = nil
+    self.mArtwork_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -4392,6 +4479,7 @@ class ProjectRoot : EBManagedObject,
 
   override internal func cleanUpToOneRelationships () {
     self.mSelectedSheet = nil
+    self.mArtwork = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -4402,6 +4490,8 @@ class ProjectRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mArtworkName
+    self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey:"mArtworkName")
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.storeIn (dictionary: ioDictionary, forKey:"mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle
@@ -4548,6 +4638,10 @@ class ProjectRoot : EBManagedObject,
     self.store (managedObject:self.mSelectedSheet_property.propval,
       relationshipName: "mSelectedSheet",
       intoDictionary: ioDictionary)
+  //--- To one property: mArtwork
+    self.store (managedObject:self.mArtwork_property.propval,
+      relationshipName: "mArtwork",
+      intoDictionary: ioDictionary)
   }
 
   //····················································································································
@@ -4610,6 +4704,17 @@ class ProjectRoot : EBManagedObject,
         self.mSelectedSheet_property.setProp (entity)
       }
     }
+  //--- To one property: mArtwork
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mArtwork",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? ArtworkRoot {
+        self.mArtwork_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -4618,6 +4723,8 @@ class ProjectRoot : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mArtworkName
+    self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey:"mArtworkName")
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.readFrom (dictionary: inDictionary, forKey:"mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle
@@ -4758,6 +4865,10 @@ class ProjectRoot : EBManagedObject,
     if let object = self.mSelectedSheet {
       objects.append (object)
     }
+  //--- To one property: mArtwork
+    if let object = self.mArtwork {
+      objects.append (object)
+    }
   }
 
   //····················································································································
@@ -4796,6 +4907,10 @@ class ProjectRoot : EBManagedObject,
     }
   //--- To one property: mSelectedSheet
     if let object = self.mSelectedSheet {
+      objects.append (object)
+    }
+  //--- To one property: mArtwork
+    if let object = self.mArtwork {
       objects.append (object)
     }
   }

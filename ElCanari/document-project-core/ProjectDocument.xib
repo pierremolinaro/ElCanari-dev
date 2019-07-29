@@ -30,6 +30,9 @@
                 <outlet property="mAddWirePointSchematicHotKeyTextField" destination="BGk-yW-02a" id="o8V-bL-DCB"/>
                 <outlet property="mAllowTracksOnBackSideSwitch" destination="Lxs-Q9-ZnA" id="RIP-Xy-Lvw"/>
                 <outlet property="mAllowTracksOnFrontSideSwitch" destination="Hod-Bp-C7K" id="KdE-hm-aYr"/>
+                <outlet property="mArtworkNameTextField" destination="3143" id="LYO-qN-AUs"/>
+                <outlet property="mArtworkTabView" destination="3321" id="W3I-Di-aAw"/>
+                <outlet property="mArtworlImportButton" destination="3141" id="hG7-gS-k9l"/>
                 <outlet property="mAutoRouterPreferredDirectionPopUp" destination="nZn-Xg-DQL" id="eiK-ZY-Lvo"/>
                 <outlet property="mAutorouterSnapAnglePopUp" destination="RLS-9v-9zM" id="QQX-Ao-I1C"/>
                 <outlet property="mBackRestrictRectangleSwitch" destination="15528" id="tAi-8r-ip2"/>
@@ -191,6 +194,7 @@
                 <outlet property="mExportDeviceButton" destination="16608" id="Nx0-iS-2kA"/>
                 <outlet property="mFontLibraryTableView" destination="2965" id="MIT-IO-zdp"/>
                 <outlet property="mFrontRestrictRectangleSwitch" destination="15526" id="xlI-dU-zxN"/>
+                <outlet property="mGenerateProductFilesActionButton" destination="3244" id="MSC-eR-Zoe"/>
                 <outlet property="mGridZoomBoardInspectorView" destination="1289" id="FFn-Lz-hvg"/>
                 <outlet property="mGridZoomBoardLimitsInspectorView" destination="aQV-Xb-N6w" id="uug-g1-raA"/>
                 <outlet property="mGridZoomSchematicsInspectorView" destination="1238" id="hZC-Xb-ibf"/>
@@ -228,6 +232,7 @@
                 <outlet property="mNetWarningTextField" destination="UPu-gi-9aK" id="9NU-XK-5m9"/>
                 <outlet property="mNewComponentFromDevicePullDownButton" destination="16068" id="O6b-vO-Jgo"/>
                 <outlet property="mNewSheetButton" destination="15305" id="avd-uu-pSJ"/>
+                <outlet property="mNoArtworkMessageTextField" destination="3320" id="ryv-Jj-2F9"/>
                 <outlet property="mOpenSetDateDialogButton" destination="57m-MU-Yg3" id="A3d-Ww-meV"/>
                 <outlet property="mOperationBoardLimitsInspectorView" destination="4A5-MX-PW7" id="8PO-nJ-51Z"/>
                 <outlet property="mPageSegmentedControl" destination="14936" id="5Ju-ZZ-zRf"/>
@@ -3328,7 +3333,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="129" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="130" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3342,11 +3347,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="129" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="130" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="129" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3362,7 +3367,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="198.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="197.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3376,11 +3381,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="600.5" y="1" width="198.5" height="17"/>
+                                                <rect key="frame" x="601.5" y="1" width="197.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="198.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="197.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -6047,15 +6052,15 @@ TW: Track Width</string>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="3244">
-                    <rect key="frame" x="20" y="528" width="159" height="25"/>
+                <button verticalHuggingPriority="750" id="3244" customClass="EBButton">
+                    <rect key="frame" x="20" y="528" width="159" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="Generate Files" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14741">
+                    <buttonCell key="cell" type="roundRect" title="Generate Files" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14741">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="3243">
+                <button id="3243" customClass="EBButton">
                     <rect key="frame" x="20" y="563" width="159" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" title="Design Rules Check" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14740">
@@ -6063,7 +6068,7 @@ TW: Track Width</string>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="3143">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="3143" customClass="EBTextObserverField">
                     <rect key="frame" x="17" y="596" width="165" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="attached artwork file name" id="14739">
@@ -6072,14 +6077,6 @@ TW: Track Width</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="3141">
-                    <rect key="frame" x="20" y="618" width="159" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="Import Artwork…" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14738">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
                 <customView id="16792">
                     <rect key="frame" x="187" y="563" width="619" height="89"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -6134,6 +6131,14 @@ TW: Track Width</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" id="3141" customClass="EBButton">
+                    <rect key="frame" x="21" y="619" width="159" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="Import Artwork…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14738">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
             </subviews>
         </customView>
         <customView id="10702" userLabel="Board Inspector : Autorouter" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">

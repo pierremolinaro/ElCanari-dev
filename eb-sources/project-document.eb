@@ -862,6 +862,18 @@ document ProjectDocument root ProjectRoot {
   outlet EBSlider mErrorOrWarningIssueSlider $doubleValue root.mErrorOrWarningIssueSize {sendContinously : yes} ;
   
   outlet EBSlider mControlKeyHiliteDiameterSlider $doubleValue root.mControlKeyHiliteDiameter {sendContinously : yes} ;
+  
+//--- Artwork
+  outlet EBTextObserverField mArtworkNameTextField $valueObserver root.mArtworkName ;
+  outlet NSTextField mNoArtworkMessageTextField $hidden !root.mArtwork.none ;
+  outlet NSTabView mArtworkTabView $hidden root.mArtwork.none ;
+
+  action importArtworkAction ;
+  transient String artworlImportButtonTitle dependsFrom root.mArtwork.none ;
+  outlet EBButton mArtworlImportButton $run importArtworkAction $title self.artworlImportButtonTitle ;
+
+  action generateProductFilesAction ;
+  outlet EBButton mGenerateProductFilesActionButton $run generateProductFilesAction $enabled !root.mArtwork.none ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

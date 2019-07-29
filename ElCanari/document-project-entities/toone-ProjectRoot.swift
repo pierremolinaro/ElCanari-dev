@@ -15,6 +15,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : ProjectRoot?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    inOldValue?.mArtworkName_property.removeEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
     inOldValue?.mAutoRouterPreferredDirections_property.removeEBObserversFrom (&self.mObserversOf_mAutoRouterPreferredDirections) // Stored property
     inOldValue?.mAutorouterSnapAngle_property.removeEBObserversFrom (&self.mObserversOf_mAutorouterSnapAngle) // Stored property
     inOldValue?.mTrackLengthUnit_property.removeEBObserversFrom (&self.mObserversOf_mTrackLengthUnit) // Stored property
@@ -98,6 +99,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.schematicStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
     inOldValue?.schematicStatusImage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
   //--- Add observers to added objects
+    self.mInternalValue?.mArtworkName_property.addEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
     self.mInternalValue?.mAutoRouterPreferredDirections_property.addEBObserversFrom (&self.mObserversOf_mAutoRouterPreferredDirections) // Stored property
     self.mInternalValue?.mAutorouterSnapAngle_property.addEBObserversFrom (&self.mObserversOf_mAutorouterSnapAngle) // Stored property
     self.mInternalValue?.mTrackLengthUnit_property.addEBObserversFrom (&self.mObserversOf_mTrackLengthUnit) // Stored property
@@ -180,6 +182,76 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.unplacedPackages_property.addEBObserversFrom (&self.mObserversOf_unplacedPackages) // Transient property
     self.mInternalValue?.schematicStatusMessage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
     self.mInternalValue?.schematicStatusImage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
+  }
+
+  //····················································································································
+  //   Observers of 'mArtworkName' stored property
+  //····················································································································
+
+  private var mObserversOf_mArtworkName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mArtworkName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mArtworkName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mArtworkName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mArtworkName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mArtworkName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mArtworkName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mArtworkName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mArtworkName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mArtworkName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mArtworkName.apply { (_ observer : EBEvent) in
+        managedObject.mArtworkName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mArtworkName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mArtworkName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mArtworkName_property.removeEBObserver (observer)
+      }
+    }
   }
 
   //····················································································································

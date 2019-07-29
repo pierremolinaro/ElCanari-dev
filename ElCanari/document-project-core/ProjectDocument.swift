@@ -307,6 +307,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: artworlImportButtonTitle
+  //····················································································································
+
+  let artworlImportButtonTitle_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var artworlImportButtonTitle_property_selection : EBSelection <String> {
+    return self.artworlImportButtonTitle_property.prop
+  }
+
+  //····················································································································
+
+  var artworlImportButtonTitle : String? {
+    switch self.artworlImportButtonTitle_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: canRemoveSelectedDevices
   //····················································································································
 
@@ -471,6 +494,9 @@ import Cocoa
   @IBOutlet weak var mAddWirePointSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mAllowTracksOnBackSideSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mAllowTracksOnFrontSideSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mArtworkNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mArtworkTabView : NSTabView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mArtworlImportButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAutoRouterPreferredDirectionPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAutorouterSnapAnglePopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mBackRestrictRectangleSwitch : EBSwitch? = nil // An outlet should be declared weak
@@ -632,6 +658,7 @@ import Cocoa
   @IBOutlet weak var mExportDeviceButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mFontLibraryTableView : EBTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mFrontRestrictRectangleSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mGenerateProductFilesActionButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mGridZoomBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mGridZoomBoardLimitsInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mGridZoomSchematicsInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
@@ -669,6 +696,7 @@ import Cocoa
   @IBOutlet weak var mNetWarningTextField : EBIntObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mNewComponentFromDevicePullDownButton : CanariNewComponentFromDevicePullDownButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mNewSheetButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mNoArtworkMessageTextField : NSTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mOpenSetDateDialogButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mOperationBoardLimitsInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mPageSegmentedControl : CanariSegmentedControl? = nil // An outlet should be declared weak
@@ -815,6 +843,9 @@ import Cocoa
   var mController_mLimitCurveBezierControlPointsView_hidden : MultipleBindingController_hidden? = nil
   var mController_mFrontRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
   var mController_mBackRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
+  var mController_mNoArtworkMessageTextField_hidden : MultipleBindingController_hidden? = nil
+  var mController_mArtworkTabView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -937,6 +968,9 @@ import Cocoa
     checkOutletConnection (self.mAddWirePointSchematicHotKeyTextField, "mAddWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAllowTracksOnBackSideSwitch, "mAllowTracksOnBackSideSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mAllowTracksOnFrontSideSwitch, "mAllowTracksOnFrontSideSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mArtworkNameTextField, "mArtworkNameTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mArtworkTabView, "mArtworkTabView", NSTabView.self, #file, #line)
+    checkOutletConnection (self.mArtworlImportButton, "mArtworlImportButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAutoRouterPreferredDirectionPopUp, "mAutoRouterPreferredDirectionPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mAutorouterSnapAnglePopUp, "mAutorouterSnapAnglePopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBackRestrictRectangleSwitch, "mBackRestrictRectangleSwitch", EBSwitch.self, #file, #line)
@@ -1098,6 +1132,7 @@ import Cocoa
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mFrontRestrictRectangleSwitch, "mFrontRestrictRectangleSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mGenerateProductFilesActionButton, "mGenerateProductFilesActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mGridZoomBoardInspectorView, "mGridZoomBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mGridZoomBoardLimitsInspectorView, "mGridZoomBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mGridZoomSchematicsInspectorView, "mGridZoomSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -1135,6 +1170,7 @@ import Cocoa
     checkOutletConnection (self.mNetWarningTextField, "mNetWarningTextField", EBIntObserverField.self, #file, #line)
     checkOutletConnection (self.mNewComponentFromDevicePullDownButton, "mNewComponentFromDevicePullDownButton", CanariNewComponentFromDevicePullDownButton.self, #file, #line)
     checkOutletConnection (self.mNewSheetButton, "mNewSheetButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mNoArtworkMessageTextField, "mNoArtworkMessageTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mOpenSetDateDialogButton, "mOpenSetDateDialogButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mOperationBoardLimitsInspectorView, "mOperationBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
@@ -1445,6 +1481,28 @@ import Cocoa
       }
     }
     self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property)
+  //--- Atomic property: artworlImportButtonTitle
+    self.artworlImportButtonTitle_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.mArtwork_none_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.rootObject.mArtwork_none_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_artworlImportButtonTitle (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mArtwork_property.addEBObserver (self.artworlImportButtonTitle_property)
   //--- Atomic property: canRemoveSelectedDevices
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1792,6 +1850,8 @@ import Cocoa
     self.mBoardBackgroundColorWell?.bind_color (g_Preferences!.boardBackgroundColorForBoard_property, file: #file, line: #line, sendContinously:true)
     self.mErrorOrWarningIssueSlider?.bind_doubleValue (self.rootObject.mErrorOrWarningIssueSize_property, file: #file, line: #line, sendContinously:true)
     self.mControlKeyHiliteDiameterSlider?.bind_doubleValue (self.rootObject.mControlKeyHiliteDiameter_property, file: #file, line: #line, sendContinously:true)
+    self.mArtworkNameTextField?.bind_valueObserver (self.rootObject.mArtworkName_property, file: #file, line: #line)
+    self.mArtworlImportButton?.bind_title (self.artworlImportButtonTitle_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -2149,6 +2209,36 @@ import Cocoa
       self.restrictRectangleSelectionController.mIsInFrontLayer_property.addEBObserver (controller)
       self.mController_mBackRestrictRectangleSwitch_enabled = controller
     }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return !self.rootObject.mArtwork_none_selection
+        },
+        outlet: self.mNoArtworkMessageTextField
+      )
+      self.rootObject.mArtwork_none.addEBObserver (controller)
+      self.mController_mNoArtworkMessageTextField_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return self.rootObject.mArtwork_none_selection
+        },
+        outlet: self.mArtworkTabView
+      )
+      self.rootObject.mArtwork_none.addEBObserver (controller)
+      self.mController_mArtworkTabView_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return !self.rootObject.mArtwork_none_selection
+        },
+        outlet: self.mGenerateProductFilesActionButton
+      )
+      self.rootObject.mArtwork_none.addEBObserver (controller)
+      self.mController_mGenerateProductFilesActionButton_enabled = controller
+    }
   //--------------------------- Set targets / actions
     self.mAddComponentButton?.target = self
     self.mAddComponentButton?.action = #selector (ProjectDocument.addComponentAction (_:))
@@ -2202,6 +2292,10 @@ import Cocoa
     self.mOpenSetDateDialogButton?.action = #selector (ProjectDocument.openSetDateDialogAction (_:))
     self.mLaunchFreeRouterButton?.target = self
     self.mLaunchFreeRouterButton?.action = #selector (ProjectDocument.launchFreeRouterAction (_:))
+    self.mArtworlImportButton?.target = self
+    self.mArtworlImportButton?.action = #selector (ProjectDocument.importArtworkAction (_:))
+    self.mGenerateProductFilesActionButton?.target = self
+    self.mGenerateProductFilesActionButton?.action = #selector (ProjectDocument.generateProductFilesAction (_:))
   //--------------------------- Read documentFilePath model 
     self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
@@ -2427,6 +2521,8 @@ import Cocoa
     self.mBoardBackgroundColorWell?.unbind_color ()
     self.mErrorOrWarningIssueSlider?.unbind_doubleValue ()
     self.mControlKeyHiliteDiameterSlider?.unbind_doubleValue ()
+    self.mArtworkNameTextField?.unbind_valueObserver ()
+    self.mArtworlImportButton?.unbind_title ()
   //--------------------------- Unbind multiple bindings
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -2504,6 +2600,12 @@ import Cocoa
     self.mController_mFrontRestrictRectangleSwitch_enabled = nil
     self.restrictRectangleSelectionController.mIsInFrontLayer_property.removeEBObserver (self.mController_mBackRestrictRectangleSwitch_enabled!)
     self.mController_mBackRestrictRectangleSwitch_enabled = nil
+    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mNoArtworkMessageTextField_hidden!)
+    self.mController_mNoArtworkMessageTextField_hidden = nil
+    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mArtworkTabView_hidden!)
+    self.mController_mArtworkTabView_hidden = nil
+    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
+    self.mController_mGenerateProductFilesActionButton_enabled = nil
   //--------------------------- Unbind array controllers
     self.componentController.unbind_tableView (self.mComponentTableView)
     self.netClassController.unbind_tableView (self.mNetClassTableView)
@@ -2558,6 +2660,7 @@ import Cocoa
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
+    self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
     self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
@@ -2591,6 +2694,8 @@ import Cocoa
     self.mSetDateToNowButton?.target = nil
     self.mOpenSetDateDialogButton?.target = nil
     self.mLaunchFreeRouterButton?.target = nil
+    self.mArtworlImportButton?.target = nil
+    self.mGenerateProductFilesActionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddBottomSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddCommentButton?.ebCleanUp ()
@@ -2614,6 +2719,9 @@ import Cocoa
     self.mAddWirePointSchematicHotKeyTextField?.ebCleanUp ()
     self.mAllowTracksOnBackSideSwitch?.ebCleanUp ()
     self.mAllowTracksOnFrontSideSwitch?.ebCleanUp ()
+    self.mArtworkNameTextField?.ebCleanUp ()
+    self.mArtworkTabView?.ebCleanUp ()
+    self.mArtworlImportButton?.ebCleanUp ()
     self.mAutoRouterPreferredDirectionPopUp?.ebCleanUp ()
     self.mAutorouterSnapAnglePopUp?.ebCleanUp ()
     self.mBackRestrictRectangleSwitch?.ebCleanUp ()
@@ -2775,6 +2883,7 @@ import Cocoa
     self.mExportDeviceButton?.ebCleanUp ()
     self.mFontLibraryTableView?.ebCleanUp ()
     self.mFrontRestrictRectangleSwitch?.ebCleanUp ()
+    self.mGenerateProductFilesActionButton?.ebCleanUp ()
     self.mGridZoomBoardInspectorView?.ebCleanUp ()
     self.mGridZoomBoardLimitsInspectorView?.ebCleanUp ()
     self.mGridZoomSchematicsInspectorView?.ebCleanUp ()
@@ -2812,6 +2921,7 @@ import Cocoa
     self.mNetWarningTextField?.ebCleanUp ()
     self.mNewComponentFromDevicePullDownButton?.ebCleanUp ()
     self.mNewSheetButton?.ebCleanUp ()
+    self.mNoArtworkMessageTextField?.ebCleanUp ()
     self.mOpenSetDateDialogButton?.ebCleanUp ()
     self.mOperationBoardLimitsInspectorView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
@@ -2940,6 +3050,9 @@ import Cocoa
 //    self.mAddWirePointSchematicHotKeyTextField = nil
 //    self.mAllowTracksOnBackSideSwitch = nil
 //    self.mAllowTracksOnFrontSideSwitch = nil
+//    self.mArtworkNameTextField = nil
+//    self.mArtworkTabView = nil
+//    self.mArtworlImportButton = nil
 //    self.mAutoRouterPreferredDirectionPopUp = nil
 //    self.mAutorouterSnapAnglePopUp = nil
 //    self.mBackRestrictRectangleSwitch = nil
@@ -3101,6 +3214,7 @@ import Cocoa
 //    self.mExportDeviceButton = nil
 //    self.mFontLibraryTableView = nil
 //    self.mFrontRestrictRectangleSwitch = nil
+//    self.mGenerateProductFilesActionButton = nil
 //    self.mGridZoomBoardInspectorView = nil
 //    self.mGridZoomBoardLimitsInspectorView = nil
 //    self.mGridZoomSchematicsInspectorView = nil
@@ -3138,6 +3252,7 @@ import Cocoa
 //    self.mNetWarningTextField = nil
 //    self.mNewComponentFromDevicePullDownButton = nil
 //    self.mNewSheetButton = nil
+//    self.mNoArtworkMessageTextField = nil
 //    self.mOpenSetDateDialogButton = nil
 //    self.mOperationBoardLimitsInspectorView = nil
 //    self.mPageSegmentedControl = nil

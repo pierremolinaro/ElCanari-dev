@@ -15,6 +15,10 @@ enum AutorouterSnapAngle {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity ProjectRoot {
+//--- Artwork
+  property String mArtworkName default "" ;
+  toOne ArtworkRoot mArtwork ;
+
 //--- Board
   toMany BoardObject mBoardObjects inverse toOne mRoot ;
 

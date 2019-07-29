@@ -15,6 +15,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   internal override func updateObservers (removedSet inRemovedSet : Set <ProjectRoot>, addedSet inAddedSet : Set <ProjectRoot>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
+    self.removeEBObserversOf_mArtworkName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mAutoRouterPreferredDirections_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mAutorouterSnapAngle_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mTrackLengthUnit_fromElementsOfSet (inRemovedSet) // Stored property
@@ -99,6 +100,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_schematicStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectedSheetObjects_fromElementsOfSet (inAddedSet) // ToMany proxy
   //--- Add observers to added objects
+    self.addEBObserversOf_mArtworkName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mAutoRouterPreferredDirections_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mAutorouterSnapAngle_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mTrackLengthUnit_toElementsOfSet (inAddedSet) // Stored property
@@ -182,6 +184,63 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_schematicStatusMessage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_schematicStatusImage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectedSheetObjects_toElementsOfSet (inAddedSet) // ToMany proxy
+  }
+
+  //····················································································································
+  //   Observers of 'mArtworkName' stored property
+  //····················································································································
+
+  private var mObserversOf_mArtworkName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mArtworkName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mArtworkName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mArtworkName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mArtworkName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mArtworkName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mArtworkName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mArtworkName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mArtworkName.apply { (_ observer : EBEvent) in
+        managedObject.mArtworkName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mArtworkName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mArtworkName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mArtworkName_property.removeEBObserver (observer)
+      }
+    }
   }
 
   //····················································································································
@@ -5413,6 +5472,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
       }
       self.setProp (objectArray)
     }
+    self.addEBObserverOf_mArtworkName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAutoRouterPreferredDirections (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAutorouterSnapAngle (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mTrackLengthUnit (self.mObserverForWritingPreferences)
