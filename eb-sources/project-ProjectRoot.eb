@@ -11,6 +11,12 @@ enum AutorouterSnapAngle {
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum ERCStatus {
+  unknown, error, success
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //     P R O J E C T    R O O T
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -18,6 +24,11 @@ entity ProjectRoot {
 //--- Artwork
   property String mArtworkName default "" ;
   toOne ArtworkRoot mArtwork ;
+
+//--- ERC Status
+  property ERCStatus mERCStatus default unknown ;
+  transient NSImage mERCStatusImage dependsFrom self.mERCStatus ;
+  transient String mERCStatusMessage dependsFrom self.mERCStatus ;
 
 //--- Board
   toMany BoardObject mBoardObjects inverse toOne mRoot ;

@@ -15,12 +15,12 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @IBAction internal func performERCCheckingAction (_ inUnusedSender : Any?) {
-    self.performERCChecking ()
+    _ = self.performERCChecking ()
   }
 
   //····················································································································
 
-  internal func performERCChecking () {
+  internal func performERCChecking () -> Bool {
     let start = Date ()
     self.mERCLogTextView?.clear ()
     var issues = [CanariIssue] ()
@@ -36,6 +36,9 @@ extension CustomizedProjectDocument {
     self.mERCIssueTableView?.setIssues (issues)
     let durationMS = Date ().timeIntervalSince (start) * 1000.0
     self.mERCLogTextView?.appendMessageString ("Duration \(durationMS.rounded ()) ms")
+    self.rootObject.mERCStatus = issues.isEmpty ? .success : .error
+  //---
+    return issues.isEmpty
   }
 
   //····················································································································

@@ -20,6 +20,7 @@ document ProjectDocument root ProjectRoot {
     $image root.schematicStatusImage
     $tooltip root.schematicStatusMessage
   ;
+  outlet EBImageObserverView mERCStatusImageViewInToolbar $image root.mERCStatusImage $tooltip root.mERCStatusMessage ;
 
 //---------------------- Components Tab
   action addComponentAction ;

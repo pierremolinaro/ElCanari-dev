@@ -648,6 +648,7 @@ import Cocoa
   @IBOutlet weak var mERCBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mERCIssueTableView : CanariIssueTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mERCLogTextView : NSTextView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mERCStatusImageViewInToolbar : EBImageObserverView? = nil // An outlet should be declared weak
   @IBOutlet weak var mEditDeviceButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mEditFontButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mEditNetClassButton : EBButton? = nil // An outlet should be declared weak
@@ -1122,6 +1123,7 @@ import Cocoa
     checkOutletConnection (self.mERCBoardInspectorView, "mERCBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mERCIssueTableView, "mERCIssueTableView", CanariIssueTableView.self, #file, #line)
     checkOutletConnection (self.mERCLogTextView, "mERCLogTextView", NSTextView.self, #file, #line)
+    checkOutletConnection (self.mERCStatusImageViewInToolbar, "mERCStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditFontButton, "mEditFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditNetClassButton, "mEditNetClassButton", EBButton.self, #file, #line)
@@ -1646,6 +1648,8 @@ import Cocoa
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
     self.mSchematicStatusImageViewInToolbar?.bind_image (self.rootObject.schematicStatusImage_property, file: #file, line: #line)
     self.mSchematicStatusImageViewInToolbar?.bind_tooltip (self.rootObject.schematicStatusMessage_property, file: #file, line: #line)
+    self.mERCStatusImageViewInToolbar?.bind_image (self.rootObject.mERCStatusImage_property, file: #file, line: #line)
+    self.mERCStatusImageViewInToolbar?.bind_tooltip (self.rootObject.mERCStatusMessage_property, file: #file, line: #line)
     self.mNewComponentFromDevicePullDownButton?.bind_deviceNames (self.rootObject.deviceNames_property, file: #file, line: #line)
     self.mComponentCountTextField?.bind_valueObserver (self.componentCount_property, file: #file, line: #line)
     self.mDevicePackageTableView?.bind_array (self.selectedDevicePackageNames_property, file: #file, line: #line)
@@ -2317,6 +2321,8 @@ import Cocoa
     self.mPageSegmentedControl?.unbind_selectedPage ()
     self.mSchematicStatusImageViewInToolbar?.unbind_image ()
     self.mSchematicStatusImageViewInToolbar?.unbind_tooltip ()
+    self.mERCStatusImageViewInToolbar?.unbind_image ()
+    self.mERCStatusImageViewInToolbar?.unbind_tooltip ()
     self.mNewComponentFromDevicePullDownButton?.unbind_deviceNames ()
     self.mComponentCountTextField?.unbind_valueObserver ()
     self.mDevicePackageTableView?.unbind_array ()
@@ -2873,6 +2879,7 @@ import Cocoa
     self.mERCBoardInspectorView?.ebCleanUp ()
     self.mERCIssueTableView?.ebCleanUp ()
     self.mERCLogTextView?.ebCleanUp ()
+    self.mERCStatusImageViewInToolbar?.ebCleanUp ()
     self.mEditDeviceButton?.ebCleanUp ()
     self.mEditFontButton?.ebCleanUp ()
     self.mEditNetClassButton?.ebCleanUp ()
@@ -3204,6 +3211,7 @@ import Cocoa
 //    self.mERCBoardInspectorView = nil
 //    self.mERCIssueTableView = nil
 //    self.mERCLogTextView = nil
+//    self.mERCStatusImageViewInToolbar = nil
 //    self.mEditDeviceButton = nil
 //    self.mEditFontButton = nil
 //    self.mEditNetClassButton = nil

@@ -303,6 +303,8 @@ fileprivate let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     self.mERCIssueTableView?.register (issueDisplayView: self.mBoardView)
     self.mERCIssueTableView?.register (hideIssueButton: self.mHideERCIssueButton)
 
+//    self.mBoardView?.mObjectsDidChangeCallBack = { self.rootObject.mERCStatus = .unknown }
+
 
     // self.updateBoardConnectors ()
   //  self.updateSchematicsPointsAndNets ()
@@ -323,6 +325,7 @@ fileprivate let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     self.mBoardView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
     self.schematicObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
     self.boardObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
+//    self.mBoardView?.mObjectsDidChangeCallBack = nil  // Required for breaking strong reference cycle
   //--- Pop up button controllers
     self.mSelectedWireNetClassPopUpController.unbind_model ()
     self.mSelectedWireNetClassPopUpController.attachPopUpButton (nil)

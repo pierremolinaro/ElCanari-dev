@@ -12,6 +12,12 @@ protocol ProjectRoot_mArtworkName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mERCStatus : class {
+  var mERCStatus : ERCStatus { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mAutoRouterPreferredDirections : class {
   var mAutoRouterPreferredDirections : AutorouterPreferredDirections { get }
 }
@@ -318,6 +324,18 @@ protocol ProjectRoot_selectedSheetTitle : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mERCStatusImage : class {
+  var mERCStatusImage : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mERCStatusMessage : class {
+  var mERCStatusMessage : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_boardGridStepMultipliedByDisplayFactor : class {
   var boardGridStepMultipliedByDisplayFactor : Int? { get }
 }
@@ -514,6 +532,7 @@ protocol ProjectRoot_schematicStatusImage : class {
 
 class ProjectRoot : EBManagedObject,
          ProjectRoot_mArtworkName,
+         ProjectRoot_mERCStatus,
          ProjectRoot_mAutoRouterPreferredDirections,
          ProjectRoot_mAutorouterSnapAngle,
          ProjectRoot_mTrackLengthUnit,
@@ -565,6 +584,8 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicGridDisplayFactor,
          ProjectRoot_mSchematicSheetOrientation,
          ProjectRoot_selectedSheetTitle,
+         ProjectRoot_mERCStatusImage,
+         ProjectRoot_mERCStatusMessage,
          ProjectRoot_boardGridStepMultipliedByDisplayFactor,
          ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor,
          ProjectRoot_selectedSheetIssues,
@@ -614,6 +635,23 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mArtworkName_property_selection : EBSelection <String> { return self.mArtworkName_property.prop }
+
+  //····················································································································
+  //   Atomic property: mERCStatus
+  //····················································································································
+
+  let mERCStatus_property = EBStoredProperty_ERCStatus (defaultValue: ERCStatus.unknown)
+
+  //····················································································································
+
+  var mERCStatus : ERCStatus {
+    get { return self.mERCStatus_property.propval }
+    set { self.mERCStatus_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mERCStatus_property_selection : EBSelection <ERCStatus> { return self.mERCStatus_property.prop }
 
   //····················································································································
   //   Atomic property: mAutoRouterPreferredDirections
@@ -1657,6 +1695,52 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: mERCStatusImage
+  //····················································································································
+
+  let mERCStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  var mERCStatusImage_property_selection : EBSelection <NSImage> {
+    return self.mERCStatusImage_property.prop
+  }
+
+  //····················································································································
+
+  var mERCStatusImage : NSImage? {
+    switch self.mERCStatusImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mERCStatusMessage
+  //····················································································································
+
+  let mERCStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var mERCStatusMessage_property_selection : EBSelection <String> {
+    return self.mERCStatusMessage_property.prop
+  }
+
+  //····················································································································
+
+  var mERCStatusMessage : String? {
+    switch self.mERCStatusMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: boardGridStepMultipliedByDisplayFactor
   //····················································································································
 
@@ -2476,6 +2560,8 @@ class ProjectRoot : EBManagedObject,
     super.init (ebUndoManager)
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mERCStatus
+    self.mERCStatus_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mAutorouterSnapAngle
@@ -2630,6 +2716,50 @@ class ProjectRoot : EBManagedObject,
       self.mSelectedSheet_property.addEBObserverOf_mObjects (controller)
       self.selectedSheetObjects_modelDidChangeController = controller
     }
+  //--- Atomic property: mERCStatusImage
+    self.mERCStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mERCStatus_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mERCStatus_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_mERCStatusImage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mERCStatus_property.addEBObserver (self.mERCStatusImage_property)
+  //--- Atomic property: mERCStatusMessage
+    self.mERCStatusMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mERCStatus_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mERCStatus_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_mERCStatusMessage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mERCStatus_property.addEBObserver (self.mERCStatusMessage_property)
   //--- Atomic property: boardGridStepMultipliedByDisplayFactor
     self.boardGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3450,6 +3580,8 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetObjects_property.setModel (nil)
     self.selectedSheetObjects_modelDidChangeController?.unregister ()
     self.selectedSheetObjects_modelDidChangeController = nil
+    self.mERCStatus_property.removeEBObserver (self.mERCStatusImage_property)
+    self.mERCStatus_property.removeEBObserver (self.mERCStatusMessage_property)
     self.mBoardGridStep_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
     self.mBoardGridDisplayFactor_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
     self.mBoardLimitsGridStep_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
@@ -3544,6 +3676,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.mArtworkName_property.mObserverExplorer,
       valueExplorer: &self.mArtworkName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mERCStatus",
+      idx: self.mERCStatus_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mERCStatus_property.mObserverExplorer,
+      valueExplorer: &self.mERCStatus_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mAutoRouterPreferredDirections",
@@ -3947,6 +4087,22 @@ class ProjectRoot : EBManagedObject,
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
+      "mERCStatusImage",
+      idx: self.mERCStatusImage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mERCStatusImage_property.mObserverExplorer,
+      valueExplorer: &self.mERCStatusImage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mERCStatusMessage",
+      idx: self.mERCStatusMessage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mERCStatusMessage_property.mObserverExplorer,
+      valueExplorer: &self.mERCStatusMessage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "boardGridStepMultipliedByDisplayFactor",
       idx: self.boardGridStepMultipliedByDisplayFactor_property.ebObjectIndex,
       y: &y,
@@ -4278,6 +4434,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.mObserverExplorer = nil
     self.mArtworkName_property.mValueExplorer = nil
+  //--- Atomic property: mERCStatus
+    self.mERCStatus_property.mObserverExplorer = nil
+    self.mERCStatus_property.mValueExplorer = nil
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.mObserverExplorer = nil
     self.mAutoRouterPreferredDirections_property.mValueExplorer = nil
@@ -4492,6 +4651,8 @@ class ProjectRoot : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey:"mArtworkName")
+  //--- Atomic property: mERCStatus
+    self.mERCStatus_property.storeIn (dictionary: ioDictionary, forKey:"mERCStatus")
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.storeIn (dictionary: ioDictionary, forKey:"mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle
@@ -4725,6 +4886,8 @@ class ProjectRoot : EBManagedObject,
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey:"mArtworkName")
+  //--- Atomic property: mERCStatus
+    self.mERCStatus_property.readFrom (dictionary: inDictionary, forKey:"mERCStatus")
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.readFrom (dictionary: inDictionary, forKey:"mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle

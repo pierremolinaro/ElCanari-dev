@@ -21,6 +21,7 @@ extension CustomizedProjectDocument {
     op.canChooseFiles = true
     op.allowedFileTypes = ["ses"]
     op.beginSheetModal (for: self.windowForSheet!) { (inReturnCode) in
+      op.orderOut (nil)
       if inReturnCode == .OK, let s = try? String (contentsOf: op.urls [0]) {
         self.handleSESFileContents (s)
       }
@@ -130,17 +131,38 @@ extension CustomizedProjectDocument {
         }
       }
     //--- Send to canari
-     if errorMessage == "" {
-       self.enterResults (routedTracks, routedVias)
-     }
+      if errorMessage == "" {
+        self.enterResults (routedTracks, routedVias)
+      }
     }
   //---
-    if errorMessage != "", let windowForSheet = self.windowForSheet {
+    if errorMessage == "" {
+      self.afterImportSESSuccess ()
+    }else{
       let alert = NSAlert ()
       alert.messageText =  "Cannot Import the .ses File"
       alert.addButton (withTitle: "Ok")
       alert.informativeText = "Cannot Import the .ses File, due to the following errors:\(errorMessage)"
-      alert.beginSheetModal (for: windowForSheet) { (response) in }
+      alert.beginSheetModal (for: self.windowForSheet!) { (response) in }
+    }
+  }
+
+  //····················································································································
+
+  private func afterImportSESSuccess () {
+  //--- ERC Checking
+    let ok = self.performERCChecking ()
+    if !ok {
+      let alert = NSAlert ()
+      alert.messageText =  "ERC Checking error."
+      alert.addButton (withTitle: "Close")
+      alert.addButton (withTitle: "Select ERC Inspector")
+      alert.informativeText = "The ses file has been successfully imported, but ERC checking has detected error(s)."
+      alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
+        if response == .alertSecondButtonReturn {
+          self.rootObject.mBoardSelectedInspector = 5
+        }
+      }
     }
   }
 

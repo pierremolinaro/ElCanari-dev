@@ -42,17 +42,6 @@ class OpenFontInLibrary : OpenInLibrary {
     self.buildOutlineViewDataSource (extension: "ElCanariFont", alreadyLoadedDocuments: inNames, {
       (_ inRootObject : EBManagedObject?) -> NSImage? in
       return nil // NSImage (named: okStatusImageName)
-//      let partShape = EBShape ()
-//      if let fontRoot = inRootObject as? FontRoot {
-//        for object in fontRoot.symbolObjects_property.propval {
-//          if let shape = object.objectDisplay {
-//            partShape.append (shape)
-//          }
-//        }
-//      }
-//      inRootObject?.removeRecursivelyAllRelationsShips ()
-//      let box = partShape.boundingBox
-//      return box.isEmpty ? nil : buildPDFimage (frame: box, shape: partShape, backgroundColor: g_Preferences?.symbolBackgroundColor)
     })
   }
 

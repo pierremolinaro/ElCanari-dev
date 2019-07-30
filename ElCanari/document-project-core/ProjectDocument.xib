@@ -184,6 +184,7 @@
                 <outlet property="mERCBoardInspectorView" destination="16696" id="Iq6-xf-cdK"/>
                 <outlet property="mERCIssueTableView" destination="16761" id="B3j-OH-BnM"/>
                 <outlet property="mERCLogTextView" destination="16775" id="yY2-Tz-Yj1"/>
+                <outlet property="mERCStatusImageViewInToolbar" destination="16504" id="chY-1e-tal"/>
                 <outlet property="mEditDeviceButton" destination="2954" id="h7x-qf-f8n"/>
                 <outlet property="mEditFontButton" destination="2974" id="Jdy-FT-vIW"/>
                 <outlet property="mEditNetClassButton" destination="MCZ-nc-VVA" id="sBc-i6-3za"/>
@@ -650,12 +651,12 @@ Gw
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSStatusUnavailable" id="14960"/>
                         </imageView>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="5F7D9CF1-ACF6-4D6F-9B4F-B753C7414900" label="DRC" paletteLabel="DRC" image="NSStatusUnavailable" id="16503" userLabel="Toolbar Item - DRC">
+                    <toolbarItem implicitItemIdentifier="5F7D9CF1-ACF6-4D6F-9B4F-B753C7414900" label="ERC" paletteLabel="ERC" image="NSStatusUnavailable" id="16503" userLabel="Toolbar Item - DRC">
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="24" height="24"/>
                         <imageView key="view" id="16504" customClass="EBImageObserverView">
-                            <rect key="frame" x="4" y="14" width="24" height="24"/>
+                            <rect key="frame" x="3" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSStatusUnavailable" id="16505"/>
                         </imageView>
@@ -3333,7 +3334,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="130" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="130.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3347,11 +3348,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="130" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="130.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="130.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3367,7 +3368,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="197.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="197" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3381,11 +3382,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="601.5" y="1" width="197.5" height="17"/>
+                                                <rect key="frame" x="602" y="1" width="197" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="197.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="197" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -5266,7 +5267,7 @@ Diameter</string>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="vjz-46-hdV">
                         <rect key="frame" x="1" y="1" width="580" height="597"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView id="3082" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="579" height="593"/>
@@ -8587,7 +8588,7 @@ DQ
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="c9v-RA-cje">
                         <rect key="frame" x="1" y="1" width="580" height="597"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView id="Qcf-ie-EQi" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="579" height="593"/>
