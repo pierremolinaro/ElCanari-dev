@@ -87,6 +87,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.boardStatusImage_property.removeEBObserversFrom (&self.mObserversOf_boardStatusImage) // Transient property
     inOldValue?.boardStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_boardStatusMessage) // Transient property
     inOldValue?.interiorBoundBox_property.removeEBObserversFrom (&self.mObserversOf_interiorBoundBox) // Transient property
+    inOldValue?.boardBoundBox_property.removeEBObserversFrom (&self.mObserversOf_boardBoundBox) // Transient property
     inOldValue?.boardInteriorTop_property.removeEBObserversFrom (&self.mObserversOf_boardInteriorTop) // Transient property
     inOldValue?.boardInteriorBottom_property.removeEBObserversFrom (&self.mObserversOf_boardInteriorBottom) // Transient property
     inOldValue?.boardInteriorLeft_property.removeEBObserversFrom (&self.mObserversOf_boardInteriorLeft) // Transient property
@@ -178,6 +179,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.boardStatusImage_property.addEBObserversFrom (&self.mObserversOf_boardStatusImage) // Transient property
     self.mInternalValue?.boardStatusMessage_property.addEBObserversFrom (&self.mObserversOf_boardStatusMessage) // Transient property
     self.mInternalValue?.interiorBoundBox_property.addEBObserversFrom (&self.mObserversOf_interiorBoundBox) // Transient property
+    self.mInternalValue?.boardBoundBox_property.addEBObserversFrom (&self.mObserversOf_boardBoundBox) // Transient property
     self.mInternalValue?.boardInteriorTop_property.addEBObserversFrom (&self.mObserversOf_boardInteriorTop) // Transient property
     self.mInternalValue?.boardInteriorBottom_property.addEBObserversFrom (&self.mObserversOf_boardInteriorBottom) // Transient property
     self.mInternalValue?.boardInteriorLeft_property.addEBObserversFrom (&self.mObserversOf_boardInteriorLeft) // Transient property
@@ -5285,6 +5287,75 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_interiorBoundBox.apply { (_ observer : EBEvent) in
         managedObject.interiorBoundBox_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardBoundBox' transient property
+  //····················································································································
+
+  private var mObserversOf_boardBoundBox = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardBoundBox_property_selection : EBSelection <CanariRect?> {
+    if let model = self.propval {
+      switch (model.boardBoundBox_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardBoundBox (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_boardBoundBox.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.boardBoundBox_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardBoundBox (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_boardBoundBox.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.boardBoundBox_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardBoundBox_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boardBoundBox.apply { (_ observer : EBEvent) in
+        managedObject.boardBoundBox_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardBoundBox_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boardBoundBox.apply { (_ observer : EBEvent) in
+        managedObject.boardBoundBox_property.removeEBObserver (observer)
       }
     }
   }

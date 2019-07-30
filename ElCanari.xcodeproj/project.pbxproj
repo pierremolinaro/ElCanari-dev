@@ -2229,6 +2229,12 @@
 		CFF4675822F06D0C00AEC761 /* transient-BoardText-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4675622F06D0C00AEC761 /* transient-BoardText-signatureForERCChecking.swift */; };
 		CFF4675A22F0705300AEC761 /* transient-BoardTrack-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4675922F0705200AEC761 /* transient-BoardTrack-signatureForERCChecking.swift */; };
 		CFF4675B22F0705300AEC761 /* transient-BoardTrack-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4675922F0705200AEC761 /* transient-BoardTrack-signatureForERCChecking.swift */; };
+		CFF4684122F0791500AEC761 /* ProjectDocument-generate-product-files.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4684022F0791500AEC761 /* ProjectDocument-generate-product-files.swift */; };
+		CFF4684222F0791600AEC761 /* ProjectDocument-generate-product-files.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4684022F0791500AEC761 /* ProjectDocument-generate-product-files.swift */; };
+		CFF4684422F07F9200AEC761 /* transient-ProjectDocument-documentFilePathOk.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4684322F07F9200AEC761 /* transient-ProjectDocument-documentFilePathOk.swift */; };
+		CFF4684522F07F9200AEC761 /* transient-ProjectDocument-documentFilePathOk.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4684322F07F9200AEC761 /* transient-ProjectDocument-documentFilePathOk.swift */; };
+		CFF4684722F094D500AEC761 /* transient-ProjectRoot-boardBoundBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4684622F094D500AEC761 /* transient-ProjectRoot-boardBoundBox.swift */; };
+		CFF4684822F094D500AEC761 /* transient-ProjectRoot-boardBoundBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF4684622F094D500AEC761 /* transient-ProjectRoot-boardBoundBox.swift */; };
 		CFF5C19522DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF5C19422DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift */; };
 		CFF5C19622DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF5C19422DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift */; };
 		CFF5C19A22DCA95D00CEC1BA /* transient-BoardTrack-netClassViaHoleDiameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF5C19722DCA95D00CEC1BA /* transient-BoardTrack-netClassViaHoleDiameter.swift */; };
@@ -3448,6 +3454,9 @@
 		CFF4675322F06C3300AEC761 /* transient-BoardConnector-signatureForERCChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardConnector-signatureForERCChecking.swift"; sourceTree = "<group>"; };
 		CFF4675622F06D0C00AEC761 /* transient-BoardText-signatureForERCChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardText-signatureForERCChecking.swift"; sourceTree = "<group>"; };
 		CFF4675922F0705200AEC761 /* transient-BoardTrack-signatureForERCChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardTrack-signatureForERCChecking.swift"; sourceTree = "<group>"; };
+		CFF4684022F0791500AEC761 /* ProjectDocument-generate-product-files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-generate-product-files.swift"; sourceTree = "<group>"; };
+		CFF4684322F07F9200AEC761 /* transient-ProjectDocument-documentFilePathOk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectDocument-documentFilePathOk.swift"; sourceTree = "<group>"; };
+		CFF4684622F094D500AEC761 /* transient-ProjectRoot-boardBoundBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectRoot-boardBoundBox.swift"; sourceTree = "<group>"; };
 		CFF5C19422DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ProjectDocument-boardConnectorSelectionController.swift"; sourceTree = "<group>"; };
 		CFF5C19722DCA95D00CEC1BA /* transient-BoardTrack-netClassViaHoleDiameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardTrack-netClassViaHoleDiameter.swift"; sourceTree = "<group>"; };
 		CFF5C19822DCA95D00CEC1BA /* transient-BoardConnector-viaDefaultHoleDiameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardConnector-viaDefaultHoleDiameter.swift"; sourceTree = "<group>"; };
@@ -4906,8 +4915,10 @@
 				CFF5C19922DCA95D00CEC1BA /* transient-NetInProject-netClassViaHoleDiameter.swift */,
 				CFF5C1A622DCB06800CEC1BA /* transient-NetInProject-netClassViaPadDiameter.swift */,
 				CF59643A22EF0EDE0040C354 /* transient-ProjectDocument-artworlImportButtonTitle.swift */,
+				CFF4684322F07F9200AEC761 /* transient-ProjectDocument-documentFilePathOk.swift */,
 				CF5788D722C274A800A10949 /* transient-ProjectDocument-unplacedPackageCount.swift */,
 				CF5788D822C274A900A10949 /* transient-ProjectDocument-unplacedPackagesCountString.swift */,
+				CFF4684622F094D500AEC761 /* transient-ProjectRoot-boardBoundBox.swift */,
 				CFF63D1A22B416A400032398 /* transient-ProjectRoot-boarderViewBackground.swift */,
 				CF470CD022AA49F000D0EA60 /* transient-ProjectRoot-boardGridStepMultipliedByDisplayFactor.swift */,
 				CFFBEDD222A54CCA001BF689 /* transient-ProjectRoot-boardInteriorBottom.swift */,
@@ -4968,6 +4979,7 @@
 				CF3414D922DFBDE800D0CEB6 /* ProjectDocument-erc.swift */,
 				CF049BDB22E50180000B4845 /* ProjectDocument-generate-dsn.swift */,
 				CF94213C22E8C7980043D7DD /* ProjectDocument-import-ses.swift */,
+				CFF4684022F0791500AEC761 /* ProjectDocument-generate-product-files.swift */,
 			);
 			name = "document — project — board";
 			path = "ElCanari/document-project-board";
@@ -5310,6 +5322,7 @@
 				CF3FD6862104F83D0009B269 /* transient-MergerBoardInstance-objectDisplay.swift in Sources */,
 				CFA42F7F229AEACF000AA8C8 /* toone-PadProxyInDevice.swift in Sources */,
 				CFCD1F6221A1CBFF00A8297B /* entity-SymbolRoot.swift in Sources */,
+				CFF4684422F07F9200AEC761 /* transient-ProjectDocument-documentFilePathOk.swift in Sources */,
 				CF05C9B921A809AC0021652C /* transient-SymbolBezierCurve-issues.swift in Sources */,
 				CF5124E7222AA52300FA4364 /* controller-array-DeviceDocument-mPackageDisplayController.swift in Sources */,
 				CFA42FFB229AEB68000AA8C8 /* tomany-PackageRoot.swift in Sources */,
@@ -5378,6 +5391,7 @@
 				CFB0D1E71B46FBC000006BD2 /* CanariDimensionTextField.swift in Sources */,
 				CFA42F7D229AEACF000AA8C8 /* toone-MasterPadInDevice.swift in Sources */,
 				CFA42F5B229AEAAF000AA8C8 /* toone-ArtworkFileGenerationParameters.swift in Sources */,
+				CFF4684122F0791500AEC761 /* ProjectDocument-generate-product-files.swift in Sources */,
 				CF968B0021BBD81B0010175E /* EBGraphicView-binding-horizontalFlip.swift in Sources */,
 				CFD7FFF622A7B9120039DB80 /* selectionController-ProjectDocument-boardCurveSelectionController.swift in Sources */,
 				CFA42F61229AEAAF000AA8C8 /* toone-ArtworkRoot.swift in Sources */,
@@ -5655,6 +5669,7 @@
 				CF71F92A1B3EA3DF00FB5049 /* EBTextField.swift in Sources */,
 				CF3E2DF020EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift in Sources */,
 				CF1D9C7B21BBEB2200FFF459 /* EBGraphicView-binding-overObjectsDisplay.swift in Sources */,
+				CFF4684722F094D500AEC761 /* transient-ProjectRoot-boardBoundBox.swift in Sources */,
 				CFD24153222C0BB1000D6B65 /* transient-DeviceRoot-packagePadNameSetsAreConsistent.swift in Sources */,
 				CF5EB1DB22A5BDA400D80550 /* transient-ProjectRoot-boardLimitBorderBottom.swift in Sources */,
 				CF0EFB331C0382BA0035FF76 /* CharacterSegmentListClass.swift in Sources */,
@@ -6378,6 +6393,7 @@
 				CF85859121C5124300082CE3 /* transient-PackageArc-selectionDisplay.swift in Sources */,
 				CF5C4CC3219F04D600EAC52A /* transient-MergerBoardInstance-objectDisplay.swift in Sources */,
 				CFCD1F6321A1CBFF00A8297B /* entity-SymbolRoot.swift in Sources */,
+				CFF4684522F07F9200AEC761 /* transient-ProjectDocument-documentFilePathOk.swift in Sources */,
 				CF05C9BA21A809AC0021652C /* transient-SymbolBezierCurve-issues.swift in Sources */,
 				CF5124E8222AA52300FA4364 /* controller-array-DeviceDocument-mPackageDisplayController.swift in Sources */,
 				CF9D4B27227F796C006E2035 /* action-ProjectDocument-removeFontAction.swift in Sources */,
@@ -6446,6 +6462,7 @@
 				CF9D4BC7227F79A9006E2035 /* transient-DeviceInProject-symbolAndTypesNames.swift in Sources */,
 				CFA4D55922D36B6A007992CD /* entity-BoardLine.swift in Sources */,
 				CF5789C322C28B3200A10949 /* transient-ComponentInProject-strokeBezierPath.swift in Sources */,
+				CFF4684222F0791600AEC761 /* ProjectDocument-generate-product-files.swift in Sources */,
 				CF9D4B25227F796C006E2035 /* action-ProjectDocument-resetFontVersionAction.swift in Sources */,
 				CF4B39C821D3F7A5001217C6 /* selectionController-PackageDocument-mPackageSlavePadSelectionController.swift in Sources */,
 				CFFDCEE321C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift in Sources */,
@@ -6723,6 +6740,7 @@
 				CF358EED22296F5100EDE173 /* extension-DeviceDocument.swift in Sources */,
 				CFBCE78922D3ACA300DC3505 /* extension-BoardText.swift in Sources */,
 				CF853E51224911C900FA57CD /* transient-FontCharacter-issues.swift in Sources */,
+				CFF4684822F094D500AEC761 /* transient-ProjectRoot-boardBoundBox.swift in Sources */,
 				CFCD3ACB21FC76F300DE503C /* phase2-download-file-list-for-commit.swift in Sources */,
 				CF00844E21C42A91003627E9 /* entity-PackageOval.swift in Sources */,
 				CF5C4D0C219F04D600EAC52A /* transient-BoardModel-backPadArray.swift in Sources */,

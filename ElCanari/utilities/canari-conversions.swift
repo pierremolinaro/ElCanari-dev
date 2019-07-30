@@ -38,6 +38,12 @@ func cocoaToCanariUnit (_ inValue : CGFloat) -> Int {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+func cocoaToInch (_ inValue : CGFloat) -> CGFloat {
+  return inValue / 72.0
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 func canariUnitToInch (_ inValue : Int) -> CGFloat {
   return (CGFloat (inValue) / 2_286_000.0)
 }

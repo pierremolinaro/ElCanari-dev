@@ -120,9 +120,6 @@ graphic entity ComponentInProject : BoardObject {
   property Int mValueRotation default 0 ; // 1000 -> 1°
 
   transient String componentValueFontName dependsFrom self.mValueFont.one.mFontName ;
-  
-//--- Connectors  
-//  toMany ConnectorInBoard mConnectors inverse toOne mComponent ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

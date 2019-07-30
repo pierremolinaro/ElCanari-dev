@@ -330,6 +330,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: documentFilePathOk
+  //····················································································································
+
+  let documentFilePathOk_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var documentFilePathOk_property_selection : EBSelection <Bool> {
+    return self.documentFilePathOk_property.prop
+  }
+
+  //····················································································································
+
+  var documentFilePathOk : Bool? {
+    switch self.documentFilePathOk_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: canRemoveSelectedDevices
   //····················································································································
 
@@ -668,6 +691,7 @@ import Cocoa
   @IBOutlet weak var mHotKeysSchematicInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mInconsistentSchematicErrorPanel : NSPanel? = nil // An outlet should be declared weak
   @IBOutlet weak var mInconsistentSchematicErrorTextView : NSTextView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mIncorrectFileNameMessageView : NSView? = nil // An outlet should be declared weak
   @IBOutlet weak var mLaunchFreeRouterButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mLayoutClearancePopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mLayoutClearanceTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
@@ -703,6 +727,7 @@ import Cocoa
   @IBOutlet weak var mOperationBoardLimitsInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mPageSegmentedControl : CanariSegmentedControl? = nil // An outlet should be declared weak
   @IBOutlet weak var mPinPadAssignmentTableView : ThreeStringArrayTableView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mProductFileGenerationLogTextView : NSTextView? = nil // An outlet should be declared weak
   @IBOutlet weak var mProductPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mRemoveDeviceButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mRemoveEmbeddedDevicesButton : EBButton? = nil // An outlet should be declared weak
@@ -848,6 +873,7 @@ import Cocoa
   var mController_mNoArtworkMessageTextField_hidden : MultipleBindingController_hidden? = nil
   var mController_mArtworkTabView_hidden : MultipleBindingController_hidden? = nil
   var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mIncorrectFileNameMessageView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
@@ -1144,6 +1170,7 @@ import Cocoa
     checkOutletConnection (self.mHotKeysSchematicInspectorView, "mHotKeysSchematicInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorPanel, "mInconsistentSchematicErrorPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorTextView, "mInconsistentSchematicErrorTextView", NSTextView.self, #file, #line)
+    checkOutletConnection (self.mIncorrectFileNameMessageView, "mIncorrectFileNameMessageView", NSView.self, #file, #line)
     checkOutletConnection (self.mLaunchFreeRouterButton, "mLaunchFreeRouterButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mLayoutClearancePopUp, "mLayoutClearancePopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mLayoutClearanceTextField, "mLayoutClearanceTextField", CanariDimensionTextField.self, #file, #line)
@@ -1179,6 +1206,7 @@ import Cocoa
     checkOutletConnection (self.mOperationBoardLimitsInspectorView, "mOperationBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mPinPadAssignmentTableView, "mPinPadAssignmentTableView", ThreeStringArrayTableView.self, #file, #line)
+    checkOutletConnection (self.mProductFileGenerationLogTextView, "mProductFileGenerationLogTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mRemoveDeviceButton, "mRemoveDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveEmbeddedDevicesButton, "mRemoveEmbeddedDevicesButton", EBButton.self, #file, #line)
@@ -1507,6 +1535,28 @@ import Cocoa
       }
     }
     self.rootObject.mArtwork_property.addEBObserver (self.artworlImportButtonTitle_property)
+  //--- Atomic property: documentFilePathOk
+    self.documentFilePathOk_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.documentFilePath_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.documentFilePath_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_documentFilePathOk (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.documentFilePath_property.addEBObserver (self.documentFilePathOk_property)
   //--- Atomic property: canRemoveSelectedDevices
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2247,6 +2297,16 @@ import Cocoa
       self.rootObject.mArtwork_none.addEBObserver (controller)
       self.mController_mGenerateProductFilesActionButton_enabled = controller
     }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return self.documentFilePathOk_property_selection
+        },
+        outlet: self.mIncorrectFileNameMessageView
+      )
+      self.documentFilePathOk_property.addEBObserver (controller)
+      self.mController_mIncorrectFileNameMessageView_hidden = controller
+    }
   //--------------------------- Set targets / actions
     self.mAddComponentButton?.target = self
     self.mAddComponentButton?.action = #selector (ProjectDocument.addComponentAction (_:))
@@ -2618,6 +2678,8 @@ import Cocoa
     self.mController_mArtworkTabView_hidden = nil
     self.rootObject.mArtwork_none.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
     self.mController_mGenerateProductFilesActionButton_enabled = nil
+    self.documentFilePathOk_property.removeEBObserver (self.mController_mIncorrectFileNameMessageView_hidden!)
+    self.mController_mIncorrectFileNameMessageView_hidden = nil
   //--------------------------- Unbind array controllers
     self.componentController.unbind_tableView (self.mComponentTableView)
     self.netClassController.unbind_tableView (self.mNetClassTableView)
@@ -2673,6 +2735,7 @@ import Cocoa
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
     self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
+    self.documentFilePath_property.removeEBObserver (self.documentFilePathOk_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
     self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
@@ -2905,6 +2968,7 @@ import Cocoa
     self.mHotKeysSchematicInspectorView?.ebCleanUp ()
     self.mInconsistentSchematicErrorPanel?.ebCleanUp ()
     self.mInconsistentSchematicErrorTextView?.ebCleanUp ()
+    self.mIncorrectFileNameMessageView?.ebCleanUp ()
     self.mLaunchFreeRouterButton?.ebCleanUp ()
     self.mLayoutClearancePopUp?.ebCleanUp ()
     self.mLayoutClearanceTextField?.ebCleanUp ()
@@ -2940,6 +3004,7 @@ import Cocoa
     self.mOperationBoardLimitsInspectorView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mPinPadAssignmentTableView?.ebCleanUp ()
+    self.mProductFileGenerationLogTextView?.ebCleanUp ()
     self.mProductPageView?.ebCleanUp ()
     self.mRemoveDeviceButton?.ebCleanUp ()
     self.mRemoveEmbeddedDevicesButton?.ebCleanUp ()
@@ -3238,6 +3303,7 @@ import Cocoa
 //    self.mHotKeysSchematicInspectorView = nil
 //    self.mInconsistentSchematicErrorPanel = nil
 //    self.mInconsistentSchematicErrorTextView = nil
+//    self.mIncorrectFileNameMessageView = nil
 //    self.mLaunchFreeRouterButton = nil
 //    self.mLayoutClearancePopUp = nil
 //    self.mLayoutClearanceTextField = nil
@@ -3273,6 +3339,7 @@ import Cocoa
 //    self.mOperationBoardLimitsInspectorView = nil
 //    self.mPageSegmentedControl = nil
 //    self.mPinPadAssignmentTableView = nil
+//    self.mProductFileGenerationLogTextView = nil
 //    self.mProductPageView = nil
 //    self.mRemoveDeviceButton = nil
 //    self.mRemoveEmbeddedDevicesButton = nil

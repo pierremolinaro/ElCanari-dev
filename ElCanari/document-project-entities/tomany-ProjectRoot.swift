@@ -87,6 +87,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_boardStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardStatusMessage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_interiorBoundBox_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_boardBoundBox_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardInteriorTop_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardInteriorBottom_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardInteriorLeft_fromElementsOfSet (inRemovedSet) // Transient property
@@ -179,6 +180,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_boardStatusImage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardStatusMessage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_interiorBoundBox_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_boardBoundBox_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardInteriorTop_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardInteriorBottom_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardInteriorLeft_toElementsOfSet (inAddedSet) // Transient property
@@ -4395,6 +4397,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_interiorBoundBox.apply { (_ observer : EBEvent) in
         managedObject.interiorBoundBox_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardBoundBox' transient property
+  //····················································································································
+
+  private var mObserversOf_boardBoundBox = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardBoundBox (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_boardBoundBox.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardBoundBox_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardBoundBox (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_boardBoundBox.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardBoundBox_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardBoundBox_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boardBoundBox.apply { (_ observer : EBEvent) in
+        managedObject.boardBoundBox_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardBoundBox_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boardBoundBox.apply { (_ observer : EBEvent) in
+        managedObject.boardBoundBox_property.removeEBObserver (observer)
       }
     }
   }

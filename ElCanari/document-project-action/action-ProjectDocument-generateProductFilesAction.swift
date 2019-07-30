@@ -14,7 +14,7 @@ import Cocoa
 extension ProjectDocument {
   @objc func generateProductFilesAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-
+        self.generateProductFiles ()
 //--- END OF USER ZONE 2
   }
 }

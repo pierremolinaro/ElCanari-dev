@@ -869,6 +869,7 @@ document ProjectDocument root ProjectRoot {
   outlet EBTextObserverField mArtworkNameTextField $valueObserver root.mArtworkName ;
   outlet NSTextField mNoArtworkMessageTextField $hidden !root.mArtwork.none ;
   outlet NSTabView mArtworkTabView $hidden root.mArtwork.none ;
+  outlet NSTextView mProductFileGenerationLogTextView ;
 
   action importArtworkAction ;
   transient String artworlImportButtonTitle dependsFrom root.mArtwork.none ;
@@ -876,6 +877,9 @@ document ProjectDocument root ProjectRoot {
 
   action generateProductFilesAction ;
   outlet EBButton mGenerateProductFilesActionButton $run generateProductFilesAction $enabled !root.mArtwork.none ;
+  
+  transient Bool documentFilePathOk dependsFrom self.documentFilePath ;
+  outlet NSView mIncorrectFileNameMessageView $hidden self.documentFilePathOk ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

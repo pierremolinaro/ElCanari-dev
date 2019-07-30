@@ -100,20 +100,18 @@ entity ProjectRoot {
 
   transient CanariRect interiorBoundBox dependsFrom self.mBorderCurves.all.descriptor ;
     
+  transient CanariRect boardBoundBox dependsFrom self.interiorBoundBox, self.mBoardLimitsWidth, self.mBoardClearance ;
+    
   transient String boardInteriorTop dependsFrom self.interiorBoundBox, self.mBoardPointsBoundingBoxUnit ;
   transient String boardInteriorBottom dependsFrom self.interiorBoundBox, self.mBoardPointsBoundingBoxUnit ;
   transient String boardInteriorLeft dependsFrom self.interiorBoundBox, self.mBoardPointsBoundingBoxUnit ;
   transient String boardInteriorRight dependsFrom self.interiorBoundBox, self.mBoardPointsBoundingBoxUnit ;
 
-  transient String boardLimitBorderTop dependsFrom
-    self.interiorBoundBox, self.mBoardLimitsWidth, self.mBoardClearance, self.mBoardLimitsBoundingBoxUnit ;
-  transient String boardLimitBorderBottom dependsFrom
-    self.interiorBoundBox, self.mBoardLimitsBoundingBoxUnit, self.mBoardClearance, self.mBoardLimitsWidth ;
-  transient String boardLimitBorderLeft dependsFrom
-    self.interiorBoundBox, self.mBoardLimitsBoundingBoxUnit, self.mBoardClearance, self.mBoardLimitsWidth ;
-  transient String boardLimitBorderRight dependsFrom
-    self.interiorBoundBox, self.mBoardLimitsBoundingBoxUnit, self.mBoardClearance, self.mBoardLimitsWidth ;
-  
+  transient String boardLimitBorderTop dependsFrom self.boardBoundBox, self.mBoardLimitsBoundingBoxUnit ;
+  transient String boardLimitBorderBottom dependsFrom self.boardBoundBox, self.mBoardLimitsBoundingBoxUnit ;
+  transient String boardLimitBorderLeft dependsFrom self.boardBoundBox, self.mBoardLimitsBoundingBoxUnit ;
+  transient String boardLimitBorderRight dependsFrom self.boardBoundBox, self.mBoardLimitsBoundingBoxUnit ;
+   
   transient String borderElementCountString dependsFrom self.mBorderCurves.count ;
 
   transient EBShape borderOutlineBackground dependsFrom
