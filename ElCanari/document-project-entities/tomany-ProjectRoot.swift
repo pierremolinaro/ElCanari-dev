@@ -16,7 +16,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mArtworkName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mERCStatus_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mLastERCCheckingIsSuccess_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mLastERCCheckingSignature_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mAutoRouterPreferredDirections_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mAutorouterSnapAngle_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mTrackLengthUnit_fromElementsOfSet (inRemovedSet) // Stored property
@@ -67,8 +68,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mSchematicGridStyle_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSchematicGridDisplayFactor_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSchematicSheetOrientation_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mERCStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_mERCStatusMessage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardGridStepMultipliedByDisplayFactor_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (inRemovedSet) // Transient property
@@ -77,11 +76,16 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_sheetIndexes_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netsDescription_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_ercStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_ercStatusMessage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_viaCountString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_trackCountString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_trackLengthString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardIssues_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_issuesDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_boardStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_boardStatusMessage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_interiorBoundBox_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardInteriorTop_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardInteriorBottom_fromElementsOfSet (inRemovedSet) // Transient property
@@ -104,7 +108,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_selectedSheetObjects_fromElementsOfSet (inAddedSet) // ToMany proxy
   //--- Add observers to added objects
     self.addEBObserversOf_mArtworkName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mERCStatus_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mLastERCCheckingIsSuccess_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mLastERCCheckingSignature_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mAutoRouterPreferredDirections_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mAutorouterSnapAngle_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mTrackLengthUnit_toElementsOfSet (inAddedSet) // Stored property
@@ -155,8 +160,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mSchematicGridStyle_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSchematicGridDisplayFactor_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSchematicSheetOrientation_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mERCStatusImage_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_mERCStatusMessage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardGridStepMultipliedByDisplayFactor_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (inAddedSet) // Transient property
@@ -165,11 +168,16 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_connexionErrorString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_sheetIndexes_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netsDescription_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_ercStatusImage_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_ercStatusMessage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_viaCountString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_trackCountString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_trackLengthString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardIssues_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_issuesDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_boardStatusImage_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_boardStatusMessage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_interiorBoundBox_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardInteriorTop_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardInteriorBottom_toElementsOfSet (inAddedSet) // Transient property
@@ -250,58 +258,115 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'mERCStatus' stored property
+  //   Observers of 'mLastERCCheckingIsSuccess' stored property
   //····················································································································
 
-  private var mObserversOf_mERCStatus = EBWeakEventSet ()
+  private var mObserversOf_mLastERCCheckingIsSuccess = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mERCStatus (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mLastERCCheckingIsSuccess (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mERCStatus.insert (inObserver)
+    self.mObserversOf_mLastERCCheckingIsSuccess.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mERCStatus_property.addEBObserver (inObserver)
+        managedObject.mLastERCCheckingIsSuccess_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mERCStatus (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mLastERCCheckingIsSuccess (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mERCStatus.remove (inObserver)
+    self.mObserversOf_mLastERCCheckingIsSuccess.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mERCStatus_property.removeEBObserver (inObserver)
+        managedObject.mLastERCCheckingIsSuccess_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mERCStatus_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_mLastERCCheckingIsSuccess_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mERCStatus.apply { (_ observer : EBEvent) in
-        managedObject.mERCStatus_property.addEBObserver (observer)
+      self.mObserversOf_mLastERCCheckingIsSuccess.apply { (_ observer : EBEvent) in
+        managedObject.mLastERCCheckingIsSuccess_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mERCStatus_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mERCStatus.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mLastERCCheckingIsSuccess_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mLastERCCheckingIsSuccess.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mERCStatus_property.removeEBObserver (observer)
+        managedObject.mLastERCCheckingIsSuccess_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mLastERCCheckingSignature' stored property
+  //····················································································································
+
+  private var mObserversOf_mLastERCCheckingSignature = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mLastERCCheckingSignature (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mLastERCCheckingSignature.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mLastERCCheckingSignature_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mLastERCCheckingSignature (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mLastERCCheckingSignature.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mLastERCCheckingSignature_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mLastERCCheckingSignature_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mLastERCCheckingSignature.apply { (_ observer : EBEvent) in
+        managedObject.mLastERCCheckingSignature_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mLastERCCheckingSignature_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mLastERCCheckingSignature.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mLastERCCheckingSignature_property.removeEBObserver (observer)
       }
     }
   }
@@ -3271,118 +3336,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'mERCStatusImage' transient property
-  //····················································································································
-
-  private var mObserversOf_mERCStatusImage = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mERCStatusImage (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mERCStatusImage.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mERCStatusImage_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mERCStatusImage (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mERCStatusImage.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mERCStatusImage_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mERCStatusImage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mERCStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.mERCStatusImage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mERCStatusImage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mERCStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.mERCStatusImage_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mERCStatusMessage' transient property
-  //····················································································································
-
-  private var mObserversOf_mERCStatusMessage = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mERCStatusMessage (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mERCStatusMessage.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mERCStatusMessage_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mERCStatusMessage (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mERCStatusMessage.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mERCStatusMessage_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mERCStatusMessage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mERCStatusMessage.apply { (_ observer : EBEvent) in
-        managedObject.mERCStatusMessage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mERCStatusMessage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mERCStatusMessage.apply { (_ observer : EBEvent) in
-        managedObject.mERCStatusMessage_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardGridStepMultipliedByDisplayFactor' transient property
   //····················································································································
 
@@ -3831,6 +3784,174 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'signatureForERCChecking' transient property
+  //····················································································································
+
+  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.signatureForERCChecking_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.signatureForERCChecking_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'ercStatusImage' transient property
+  //····················································································································
+
+  private var mObserversOf_ercStatusImage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_ercStatusImage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_ercStatusImage.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.ercStatusImage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_ercStatusImage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_ercStatusImage.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.ercStatusImage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_ercStatusImage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_ercStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.ercStatusImage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_ercStatusImage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_ercStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.ercStatusImage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'ercStatusMessage' transient property
+  //····················································································································
+
+  private var mObserversOf_ercStatusMessage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_ercStatusMessage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_ercStatusMessage.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.ercStatusMessage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_ercStatusMessage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_ercStatusMessage.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.ercStatusMessage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_ercStatusMessage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_ercStatusMessage.apply { (_ observer : EBEvent) in
+        managedObject.ercStatusMessage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_ercStatusMessage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_ercStatusMessage.apply { (_ observer : EBEvent) in
+        managedObject.ercStatusMessage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'viaCountString' transient property
   //····················································································································
 
@@ -4106,6 +4227,118 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_issuesDisplay.apply { (_ observer : EBEvent) in
         managedObject.issuesDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardStatusImage' transient property
+  //····················································································································
+
+  private var mObserversOf_boardStatusImage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardStatusImage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_boardStatusImage.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardStatusImage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardStatusImage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_boardStatusImage.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardStatusImage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardStatusImage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boardStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.boardStatusImage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardStatusImage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boardStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.boardStatusImage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardStatusMessage' transient property
+  //····················································································································
+
+  private var mObserversOf_boardStatusMessage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardStatusMessage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_boardStatusMessage.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardStatusMessage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardStatusMessage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_boardStatusMessage.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardStatusMessage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardStatusMessage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boardStatusMessage.apply { (_ observer : EBEvent) in
+        managedObject.boardStatusMessage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardStatusMessage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boardStatusMessage.apply { (_ observer : EBEvent) in
+        managedObject.boardStatusMessage_property.removeEBObserver (observer)
       }
     }
   }
@@ -5648,7 +5881,8 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
       self.setProp (objectArray)
     }
     self.addEBObserverOf_mArtworkName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mERCStatus (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mLastERCCheckingIsSuccess (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mLastERCCheckingSignature (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAutoRouterPreferredDirections (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAutorouterSnapAngle (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mTrackLengthUnit (self.mObserverForWritingPreferences)

@@ -1839,6 +1839,35 @@ extension String : ValuePropertyProtocol {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    extension UInt32 : ValuePropertyProtocol
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension UInt32 : ValuePropertyProtocol {
+
+  //····················································································································
+
+  func ebHashValue () -> UInt32 {
+    return self
+  }
+
+  //····················································································································
+
+  func convertToNSObject () -> NSObject {
+    return NSNumber (value: self)
+  }
+
+  //····················································································································
+
+  static func convertFromNSObject (object : NSObject) -> UInt32 {
+    let number = object as! NSNumber
+    return number.uint32Value
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    extension Int : ValuePropertyProtocol
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1909,7 +1938,7 @@ extension Bool : ValuePropertyProtocol {
 
   func ebHashValue () -> UInt32 {
     var crc : UInt32 = 0
-    crc.accumulateByte (self ? 1 : 0)
+    crc.accumulateUInt8 (self ? 1 : 0)
     return crc
   }
 
@@ -2090,7 +2119,7 @@ extension Data : ValuePropertyProtocol {
   func ebHashValue () -> UInt32 {
     var crc : UInt32 = 0
     for i in 0 ..< self.count {
-      crc.accumulateByte (self [i])
+      crc.accumulateUInt8 (self [i])
     }
     return crc
   }

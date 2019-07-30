@@ -48,6 +48,12 @@ protocol BoardObject_trackLength : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardObject_signatureForERCChecking : class {
+  var signatureForERCChecking : UInt32? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardObject_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
 }
@@ -76,6 +82,7 @@ class BoardObject : EBGraphicManagedObject,
          BoardObject_issues,
          BoardObject_isVia,
          BoardObject_trackLength,
+         BoardObject_signatureForERCChecking,
          BoardObject_selectionDisplay,
          BoardObject_objectDisplay,
          BoardObject_errorOrWarningIssueSize {
@@ -272,6 +279,29 @@ class BoardObject : EBGraphicManagedObject,
 
   var trackLength : Double? {
     switch self.trackLength_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: signatureForERCChecking
+  //····················································································································
+
+  let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+
+  //····················································································································
+
+  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
+    return self.signatureForERCChecking_property.prop
+  }
+
+  //····················································································································
+
+  var signatureForERCChecking : UInt32? {
+    switch self.signatureForERCChecking_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -508,6 +538,14 @@ class BoardObject : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.trackLength_property.mObserverExplorer,
       valueExplorer: &self.trackLength_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "signatureForERCChecking",
+      idx: self.signatureForERCChecking_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",

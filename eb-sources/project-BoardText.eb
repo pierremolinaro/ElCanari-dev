@@ -49,6 +49,11 @@ graphic entity BoardText : BoardObject {
   ;
   
   transient String fontName dependsFrom self.mFont.one.mFontName ;
+
+  override transient UInt32 signatureForERCChecking dependsFrom
+    self.mLayer, self.mX, self.mY, self.mText, self.mFontSize,
+    self.mFont.one.descriptor, self.mHorizontalAlignment, self.mVerticalAlignment,
+    self.mRotation, self.mWeight, self.mOblique ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

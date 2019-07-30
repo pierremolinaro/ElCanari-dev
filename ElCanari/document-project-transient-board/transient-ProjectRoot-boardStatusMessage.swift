@@ -13,15 +13,33 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_mERCStatusImage (
-       _ self_mERCStatus : ERCStatus
-) -> NSImage {
+func transient_ProjectRoot_boardStatusMessage (
+       _ self_boardIssues : CanariIssueArray
+) -> String {
 //--- START OF USER ZONE 2
-        switch self_mERCStatus {
-        case .error : return NSImage (named: errorStatusImageName)!
-        case .success : return NSImage (named: okStatusImageName)!
-        case .unknown : return NSImage (named: unknownStatusImageName)!
+        var errorCount = 0
+        var warningCount = 0
+        for issue in self_boardIssues {
+          switch issue.kind {
+          case .error : errorCount += 1
+          case .warning : warningCount += 1
+          }
         }
+        var a = [String] ()
+        if errorCount == 1 {
+          a.append ("1 error.")
+        }else if errorCount > 1 {
+          a.append ("\(errorCount) errors.")
+        }
+        if warningCount == 1 {
+          a.append ("1 warning.")
+        }else if warningCount > 1 {
+          a.append ("\(warningCount) warnings.")
+        }
+        if a.isEmpty {
+          a.append ("Ok.")
+        }
+        return a.joined (separator: "\n")
 //--- END OF USER ZONE 2
 }
 

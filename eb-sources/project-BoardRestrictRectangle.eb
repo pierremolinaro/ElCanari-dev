@@ -22,6 +22,9 @@ graphic entity BoardRestrictRectangle : BoardObject {
     self.mIsInFrontLayer, self.mIsInBackLayer
   ;
 
+  override transient UInt32 signatureForERCChecking dependsFrom
+    self.mX, self.mY, self.mWidth, self.mHeight,
+    self.mIsInFrontLayer, self.mIsInBackLayer ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

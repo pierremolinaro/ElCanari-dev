@@ -28,6 +28,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_fontName_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
@@ -42,6 +43,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_fontName_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -778,6 +780,62 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
     for managedObject in inSet {
       self.mObserversOf_fontName.apply { (_ observer : EBEvent) in
         managedObject.fontName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'signatureForERCChecking' transient property
+  //····················································································································
+
+  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.signatureForERCChecking_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.signatureForERCChecking_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<BoardText>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<BoardText>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
       }
     }
   }

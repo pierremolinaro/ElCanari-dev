@@ -11,12 +11,6 @@ enum AutorouterSnapAngle {
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum ERCStatus {
-  unknown, error, success
-}
-
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //     P R O J E C T    R O O T
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -26,9 +20,14 @@ entity ProjectRoot {
   toOne ArtworkRoot mArtwork ;
 
 //--- ERC Status
-  property ERCStatus mERCStatus default unknown ;
-  transient NSImage mERCStatusImage dependsFrom self.mERCStatus ;
-  transient String mERCStatusMessage dependsFrom self.mERCStatus ;
+  property Bool mLastERCCheckingIsSuccess default no ;
+  property UInt32 mLastERCCheckingSignature default 1 ;
+
+  transient UInt32 signatureForERCChecking dependsFrom self.mBoardObjects.all.signatureForERCChecking ;
+  transient NSImage ercStatusImage dependsFrom
+     self.mLastERCCheckingIsSuccess, self.mLastERCCheckingSignature, self.signatureForERCChecking ;
+  transient String ercStatusMessage dependsFrom
+     self.mLastERCCheckingIsSuccess, self.mLastERCCheckingSignature, self.signatureForERCChecking ;
 
 //--- Board
   toMany BoardObject mBoardObjects inverse toOne mRoot ;
@@ -59,6 +58,8 @@ entity ProjectRoot {
   
   transient CanariIssueArray boardIssues dependsFrom self.mBoardObjects.all.issues ;
   transient EBShape issuesDisplay dependsFrom self.boardIssues ;
+  transient NSImage boardStatusImage dependsFrom self.boardIssues ;
+  transient String boardStatusMessage dependsFrom self.boardIssues ;
 
   property Bool mDisplayFrontPads default yes ;
   property Bool mDisplayBackPads default yes ;

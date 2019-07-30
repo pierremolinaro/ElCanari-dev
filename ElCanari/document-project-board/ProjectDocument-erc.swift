@@ -36,7 +36,9 @@ extension CustomizedProjectDocument {
     self.mERCIssueTableView?.setIssues (issues)
     let durationMS = Date ().timeIntervalSince (start) * 1000.0
     self.mERCLogTextView?.appendMessageString ("Duration \(durationMS.rounded ()) ms")
-    self.rootObject.mERCStatus = issues.isEmpty ? .success : .error
+  //--- Update status
+    self.rootObject.mLastERCCheckingIsSuccess = issues.isEmpty
+    self.rootObject.mLastERCCheckingSignature = self.rootObject.signatureForERCChecking ?? 0
   //---
     return issues.isEmpty
   }

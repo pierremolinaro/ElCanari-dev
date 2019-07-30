@@ -22,6 +22,7 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
     inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
     inOldValue?.isVia_property.removeEBObserversFrom (&self.mObserversOf_isVia) // Transient property
     inOldValue?.trackLength_property.removeEBObserversFrom (&self.mObserversOf_trackLength) // Transient property
+    inOldValue?.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     inOldValue?.errorOrWarningIssueSize_property.removeEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
@@ -33,6 +34,7 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
     self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
     self.mInternalValue?.isVia_property.addEBObserversFrom (&self.mObserversOf_isVia) // Transient property
     self.mInternalValue?.trackLength_property.addEBObserversFrom (&self.mObserversOf_trackLength) // Transient property
+    self.mInternalValue?.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     self.mInternalValue?.errorOrWarningIssueSize_property.addEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
@@ -517,6 +519,75 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
     for managedObject in inSet {
       self.mObserversOf_trackLength.apply { (_ observer : EBEvent) in
         managedObject.trackLength_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'signatureForERCChecking' transient property
+  //····················································································································
+
+  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+
+  //····················································································································
+
+  var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
+    if let model = self.propval {
+      switch (model.signatureForERCChecking_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.signatureForERCChecking_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.signatureForERCChecking_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
       }
     }
   }

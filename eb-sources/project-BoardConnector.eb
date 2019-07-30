@@ -90,6 +90,9 @@ graphic entity BoardConnector : BoardObject {
     self.side,
     self.location
   ;
+
+  override transient UInt32 signatureForERCChecking dependsFrom
+    self.location, self.isVia, self.actualPadDiameter ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

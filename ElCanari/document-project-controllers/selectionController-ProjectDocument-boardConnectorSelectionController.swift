@@ -271,6 +271,16 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   }
 
   //····················································································································
+  //   Selection observable property: signatureForERCChecking
+  //····················································································································
+
+  let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+
+  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
+    return self.signatureForERCChecking_property.prop
+  }
+
+  //····················································································································
   //   Selected array (not observable)
   //····················································································································
 
@@ -312,6 +322,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.bind_property_actualPadDiameter ()
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
+    self.bind_property_signatureForERCChecking ()
   }
 
   //····················································································································
@@ -422,6 +433,9 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  //--- signatureForERCChecking
+    self.signatureForERCChecking_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
   //---
   }
 
@@ -1960,6 +1974,45 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var isMultipleSelection = false
           for object in v {
             switch object.selectionDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_signatureForERCChecking () {
+    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <UInt32> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.signatureForERCChecking_property_selection {
             case .empty :
               return .empty
             case .multiple :

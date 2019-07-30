@@ -241,6 +241,18 @@ struct BoardCharSegment : Hashable {
 struct BoardFontCharacter : Hashable {
   let advancement : Int
   let segments : [BoardCharSegment]
+
+  func ebHashValue () -> UInt32 {
+    var crc : UInt32 = 0
+    crc.accumulateUInt32 (advancement.ebHashValue ())
+    for segment in segments {
+      crc.accumulateInt8 (segment.x1)
+      crc.accumulateInt8 (segment.y1)
+      crc.accumulateInt8 (segment.x2)
+      crc.accumulateInt8 (segment.y2)
+    }
+    return crc
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -252,6 +264,17 @@ typealias BoardFontDictionary = [UInt32 : BoardFontCharacter]
 struct BoardFontDescriptor : Hashable {
   let nominalSize : Int
   let dictionary :  BoardFontDictionary
+
+  func ebHashValue () -> UInt32 {
+    var crc : UInt32 = 0
+    crc.accumulateUInt32 (nominalSize.ebHashValue ())
+    for key in dictionary.keys.sorted () {
+      crc.accumulateUInt32 (key.ebHashValue ())
+      crc.accumulateUInt32 (dictionary [key]!.ebHashValue ())
+    }
+    return crc
+  }
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

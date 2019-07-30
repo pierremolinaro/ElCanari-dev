@@ -105,26 +105,25 @@ struct GeometricOblong {
 
   //····················································································································
 
-  func intersects (circle inCircle : GeometricCircle) -> Bool {
-    let r = self.intersectsRX (circle: inCircle)
-    if r {
-      Swift.print ("Intersect!")
-      if !self.bounds.intersects (inCircle.bounds) {
-        Swift.print (" !bounds")
-      }else if self.circle1.intersects (circle: inCircle) {
-        Swift.print (" c1")
-      }else if self.circle2.intersects (circle: inCircle) {
-        Swift.print (" c2")
-      }else if self.geometricRect.intersects (circle: inCircle) {
-        Swift.print (" rect")
-      }
-    }
-    return r
-  }
+//  func intersects (circle inCircle : GeometricCircle) -> Bool {
+//    let r = self.intersectsRX (circle: inCircle)
+//    if r {
+//      if !self.bounds.intersects (inCircle.bounds) {
+//        Swift.print (" !bounds")
+//      }else if self.circle1.intersects (circle: inCircle) {
+//        Swift.print (" c1")
+//      }else if self.circle2.intersects (circle: inCircle) {
+//        Swift.print (" c2")
+//      }else if self.geometricRect.intersects (circle: inCircle) {
+//        Swift.print (" rect")
+//      }
+//    }
+//    return r
+//  }
 
   //····················································································································
 
-  func intersectsRX (circle inCircle : GeometricCircle) -> Bool {
+  func intersects (circle inCircle : GeometricCircle) -> Bool {
     if !self.bounds.intersects (inCircle.bounds) {
       return false
     }else if self.circle1.intersects (circle: inCircle) {

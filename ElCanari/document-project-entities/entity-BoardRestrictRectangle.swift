@@ -53,6 +53,12 @@ protocol BoardRestrictRectangle_selectionDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardRestrictRectangle_signatureForERCChecking : class {
+  var signatureForERCChecking : UInt32? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardRestrictRectangle
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -64,7 +70,8 @@ class BoardRestrictRectangle : BoardObject,
          BoardRestrictRectangle_mIsInBackLayer,
          BoardRestrictRectangle_mX,
          BoardRestrictRectangle_objectDisplay,
-         BoardRestrictRectangle_selectionDisplay {
+         BoardRestrictRectangle_selectionDisplay,
+         BoardRestrictRectangle_signatureForERCChecking {
 
   //····················································································································
   //   Atomic property: mY
@@ -254,6 +261,38 @@ class BoardRestrictRectangle : BoardObject,
     self.mHeight_property.addEBObserver (self.selectionDisplay_property)
     self.mIsInFrontLayer_property.addEBObserver (self.selectionDisplay_property)
     self.mIsInBackLayer_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: signatureForERCChecking
+    self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mX_property_selection.kind ()
+        kind &= unwSelf.mY_property_selection.kind ()
+        kind &= unwSelf.mWidth_property_selection.kind ()
+        kind &= unwSelf.mHeight_property_selection.kind ()
+        kind &= unwSelf.mIsInFrontLayer_property_selection.kind ()
+        kind &= unwSelf.mIsInBackLayer_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mIsInFrontLayer_property_selection, unwSelf.mIsInBackLayer_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_BoardRestrictRectangle_signatureForERCChecking (v0, v1, v2, v3, v4, v5))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mX_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mY_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mWidth_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mHeight_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mIsInFrontLayer_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mIsInBackLayer_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -277,6 +316,12 @@ class BoardRestrictRectangle : BoardObject,
     self.mHeight_property.removeEBObserver (self.selectionDisplay_property)
     self.mIsInFrontLayer_property.removeEBObserver (self.selectionDisplay_property)
     self.mIsInBackLayer_property.removeEBObserver (self.selectionDisplay_property)
+    self.mX_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mY_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mWidth_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mHeight_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mIsInFrontLayer_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mIsInBackLayer_property.removeEBObserver (self.signatureForERCChecking_property)
   //--- Unregister properties for handling signature
   }
 
@@ -355,6 +400,14 @@ class BoardRestrictRectangle : BoardObject,
       view: view,
       observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
       valueExplorer: &self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "signatureForERCChecking",
+      idx: self.signatureForERCChecking_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)

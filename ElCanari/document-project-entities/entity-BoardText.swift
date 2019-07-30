@@ -83,6 +83,12 @@ protocol BoardText_fontName : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardText_signatureForERCChecking : class {
+  var signatureForERCChecking : UInt32? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -99,7 +105,8 @@ class BoardText : BoardObject,
          BoardText_mOblique,
          BoardText_objectDisplay,
          BoardText_selectionDisplay,
-         BoardText_fontName {
+         BoardText_fontName,
+         BoardText_signatureForERCChecking {
 
   //····················································································································
   //   Atomic property: mX
@@ -486,6 +493,48 @@ class BoardText : BoardObject,
       }
     }
     self.mFont_property.addEBObserverOf_mFontName (self.fontName_property)
+  //--- Atomic property: signatureForERCChecking
+    self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mLayer_property_selection.kind ()
+        kind &= unwSelf.mX_property_selection.kind ()
+        kind &= unwSelf.mY_property_selection.kind ()
+        kind &= unwSelf.mText_property_selection.kind ()
+        kind &= unwSelf.mFontSize_property_selection.kind ()
+        kind &= unwSelf.mFont_property.descriptor_property_selection.kind ()
+        kind &= unwSelf.mHorizontalAlignment_property_selection.kind ()
+        kind &= unwSelf.mVerticalAlignment_property_selection.kind ()
+        kind &= unwSelf.mRotation_property_selection.kind ()
+        kind &= unwSelf.mWeight_property_selection.kind ()
+        kind &= unwSelf.mOblique_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mLayer_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mRotation_property_selection, unwSelf.mWeight_property_selection, unwSelf.mOblique_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
+            return .single (transient_BoardText_signatureForERCChecking (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mLayer_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mX_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mY_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mText_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mFontSize_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mFont_property.addEBObserverOf_descriptor (self.signatureForERCChecking_property)
+    self.mHorizontalAlignment_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mVerticalAlignment_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mRotation_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mWeight_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mOblique_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -526,6 +575,17 @@ class BoardText : BoardObject,
     g_Preferences?.backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.backSideLegendColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     self.mFont_property.removeEBObserverOf_mFontName (self.fontName_property)
+    self.mLayer_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mX_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mY_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mText_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mFontSize_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mFont_property.removeEBObserverOf_descriptor (self.signatureForERCChecking_property)
+    self.mHorizontalAlignment_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mVerticalAlignment_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mRotation_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mWeight_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.mOblique_property.removeEBObserver (self.signatureForERCChecking_property)
   //--- Unregister properties for handling signature
   }
 
@@ -644,6 +704,14 @@ class BoardText : BoardObject,
       view: view,
       observerExplorer: &self.fontName_property.mObserverExplorer,
       valueExplorer: &self.fontName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "signatureForERCChecking",
+      idx: self.signatureForERCChecking_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)

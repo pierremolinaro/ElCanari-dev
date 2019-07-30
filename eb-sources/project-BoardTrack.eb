@@ -46,6 +46,9 @@ graphic entity BoardTrack : BoardObject {
   
   override transient Double trackLength // In Canari Unit
     dependsFrom self.mConnectorP1.one.location, self.mConnectorP2.one.location ;
+
+  override transient UInt32 signatureForERCChecking dependsFrom
+    self.mSide, self.actualTrackWidth ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

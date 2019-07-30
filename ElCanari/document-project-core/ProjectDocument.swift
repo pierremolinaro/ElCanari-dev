@@ -564,6 +564,7 @@ import Cocoa
   @IBOutlet weak var mBoardObjectsPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardPointsBoundingBoxUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardScrollView : EBScrollView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mBoardStatusImageViewInToolbar : EBImageObserverView? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardTextFontPopUpButton : CanariBoardTextFontPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardTextFontSizeField : EBDoubleField? = nil // An outlet should be declared weak
   @IBOutlet weak var mBoardTextHorizontalAlignmentPopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
@@ -1039,6 +1040,7 @@ import Cocoa
     checkOutletConnection (self.mBoardObjectsPageView, "mBoardObjectsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardPointsBoundingBoxUnitPopUp, "mBoardPointsBoundingBoxUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardScrollView, "mBoardScrollView", EBScrollView.self, #file, #line)
+    checkOutletConnection (self.mBoardStatusImageViewInToolbar, "mBoardStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
     checkOutletConnection (self.mBoardTextFontPopUpButton, "mBoardTextFontPopUpButton", CanariBoardTextFontPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardTextFontSizeField, "mBoardTextFontSizeField", EBDoubleField.self, #file, #line)
     checkOutletConnection (self.mBoardTextHorizontalAlignmentPopUpButton, "mBoardTextHorizontalAlignmentPopUpButton", EBPopUpButton.self, #file, #line)
@@ -1648,8 +1650,10 @@ import Cocoa
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
     self.mSchematicStatusImageViewInToolbar?.bind_image (self.rootObject.schematicStatusImage_property, file: #file, line: #line)
     self.mSchematicStatusImageViewInToolbar?.bind_tooltip (self.rootObject.schematicStatusMessage_property, file: #file, line: #line)
-    self.mERCStatusImageViewInToolbar?.bind_image (self.rootObject.mERCStatusImage_property, file: #file, line: #line)
-    self.mERCStatusImageViewInToolbar?.bind_tooltip (self.rootObject.mERCStatusMessage_property, file: #file, line: #line)
+    self.mBoardStatusImageViewInToolbar?.bind_image (self.rootObject.boardStatusImage_property, file: #file, line: #line)
+    self.mBoardStatusImageViewInToolbar?.bind_tooltip (self.rootObject.boardStatusMessage_property, file: #file, line: #line)
+    self.mERCStatusImageViewInToolbar?.bind_image (self.rootObject.ercStatusImage_property, file: #file, line: #line)
+    self.mERCStatusImageViewInToolbar?.bind_tooltip (self.rootObject.ercStatusMessage_property, file: #file, line: #line)
     self.mNewComponentFromDevicePullDownButton?.bind_deviceNames (self.rootObject.deviceNames_property, file: #file, line: #line)
     self.mComponentCountTextField?.bind_valueObserver (self.componentCount_property, file: #file, line: #line)
     self.mDevicePackageTableView?.bind_array (self.selectedDevicePackageNames_property, file: #file, line: #line)
@@ -2321,6 +2325,8 @@ import Cocoa
     self.mPageSegmentedControl?.unbind_selectedPage ()
     self.mSchematicStatusImageViewInToolbar?.unbind_image ()
     self.mSchematicStatusImageViewInToolbar?.unbind_tooltip ()
+    self.mBoardStatusImageViewInToolbar?.unbind_image ()
+    self.mBoardStatusImageViewInToolbar?.unbind_tooltip ()
     self.mERCStatusImageViewInToolbar?.unbind_image ()
     self.mERCStatusImageViewInToolbar?.unbind_tooltip ()
     self.mNewComponentFromDevicePullDownButton?.unbind_deviceNames ()
@@ -2795,6 +2801,7 @@ import Cocoa
     self.mBoardObjectsPageView?.ebCleanUp ()
     self.mBoardPointsBoundingBoxUnitPopUp?.ebCleanUp ()
     self.mBoardScrollView?.ebCleanUp ()
+    self.mBoardStatusImageViewInToolbar?.ebCleanUp ()
     self.mBoardTextFontPopUpButton?.ebCleanUp ()
     self.mBoardTextFontSizeField?.ebCleanUp ()
     self.mBoardTextHorizontalAlignmentPopUpButton?.ebCleanUp ()
@@ -3127,6 +3134,7 @@ import Cocoa
 //    self.mBoardObjectsPageView = nil
 //    self.mBoardPointsBoundingBoxUnitPopUp = nil
 //    self.mBoardScrollView = nil
+//    self.mBoardStatusImageViewInToolbar = nil
 //    self.mBoardTextFontPopUpButton = nil
 //    self.mBoardTextFontSizeField = nil
 //    self.mBoardTextHorizontalAlignmentPopUpButton = nil

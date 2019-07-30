@@ -100,6 +100,7 @@
                 <outlet property="mBoardObjectsPageView" destination="3080" id="ZoI-T2-ES9"/>
                 <outlet property="mBoardPointsBoundingBoxUnitPopUp" destination="Nyb-FS-6hn" id="exL-lw-31a"/>
                 <outlet property="mBoardScrollView" destination="3081" id="upJ-2D-qri"/>
+                <outlet property="mBoardStatusImageViewInToolbar" destination="14959" id="ljv-sC-5LP"/>
                 <outlet property="mBoardTextFontPopUpButton" destination="1532" id="Ppv-kd-jra"/>
                 <outlet property="mBoardTextFontSizeField" destination="1517" id="Vfi-98-ton"/>
                 <outlet property="mBoardTextHorizontalAlignmentPopUpButton" destination="Mxs-aJ-mOU" id="g8w-XX-Wqd"/>

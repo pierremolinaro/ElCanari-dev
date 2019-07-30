@@ -84,6 +84,12 @@ protocol BoardTrack_trackLength : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardTrack_signatureForERCChecking : class {
+  var signatureForERCChecking : UInt32? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardTrack_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -106,6 +112,7 @@ class BoardTrack : BoardObject,
          BoardTrack_netClassViaHoleDiameter,
          BoardTrack_netClassViaPadDiameter,
          BoardTrack_trackLength,
+         BoardTrack_signatureForERCChecking,
          BoardTrack_objectDisplay {
 
   //····················································································································
@@ -667,6 +674,30 @@ class BoardTrack : BoardObject,
     }
     self.mConnectorP1_property.addEBObserverOf_location (self.trackLength_property)
     self.mConnectorP2_property.addEBObserverOf_location (self.trackLength_property)
+  //--- Atomic property: signatureForERCChecking
+    self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mSide_property_selection.kind ()
+        kind &= unwSelf.actualTrackWidth_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mSide_property_selection, unwSelf.actualTrackWidth_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardTrack_signatureForERCChecking (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSide_property.addEBObserver (self.signatureForERCChecking_property)
+    self.actualTrackWidth_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -722,6 +753,8 @@ class BoardTrack : BoardObject,
     self.mNet_property.removeEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
     self.mConnectorP1_property.removeEBObserverOf_location (self.trackLength_property)
     self.mConnectorP2_property.removeEBObserverOf_location (self.trackLength_property)
+    self.mSide_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.actualTrackWidth_property.removeEBObserver (self.signatureForERCChecking_property)
     self.mConnectorP1_property.removeEBObserverOf_location (self.objectDisplay_property)
     self.mConnectorP2_property.removeEBObserverOf_location (self.objectDisplay_property)
     g_Preferences?.frontSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
@@ -846,6 +879,14 @@ class BoardTrack : BoardObject,
       view: view,
       observerExplorer: &self.trackLength_property.mObserverExplorer,
       valueExplorer: &self.trackLength_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "signatureForERCChecking",
+      idx: self.signatureForERCChecking_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",

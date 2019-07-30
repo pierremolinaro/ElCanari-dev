@@ -13,15 +13,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_mERCStatusMessage (
-       _ self_mERCStatus : ERCStatus
-) -> String {
+func transient_ProjectRoot_signatureForERCChecking (
+       _ self_mBoardObjects_signatureForERCChecking : [BoardObject_signatureForERCChecking]
+) -> UInt32 {
 //--- START OF USER ZONE 2
-        switch self_mERCStatus {
-        case .error : return "There are ERC errors"
-        case .success : return "ERC checking success"
-        case .unknown : return "ERC checking not done"
-        }
+       var crc : UInt32 = 0
+       for object in self_mBoardObjects_signatureForERCChecking {
+         if let signature = object.signatureForERCChecking {
+           crc.accumulateUInt32 (signature)
+         }
+       }
+       return crc
 //--- END OF USER ZONE 2
 }
 

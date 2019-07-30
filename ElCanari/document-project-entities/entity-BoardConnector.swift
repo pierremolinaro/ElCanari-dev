@@ -161,6 +161,12 @@ protocol BoardConnector_selectionDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardConnector_signatureForERCChecking : class {
+  var signatureForERCChecking : UInt32? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -190,7 +196,8 @@ class BoardConnector : BoardObject,
          BoardConnector_actualHoleDiameter,
          BoardConnector_actualPadDiameter,
          BoardConnector_objectDisplay,
-         BoardConnector_selectionDisplay {
+         BoardConnector_selectionDisplay,
+         BoardConnector_signatureForERCChecking {
 
   //····················································································································
   //   Atomic property: mComponentPadName
@@ -1122,6 +1129,32 @@ class BoardConnector : BoardObject,
     self.connectedToComponent_property.addEBObserver (self.selectionDisplay_property)
     self.side_property.addEBObserver (self.selectionDisplay_property)
     self.location_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: signatureForERCChecking
+    self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.location_property_selection.kind ()
+        kind &= unwSelf.isVia_property_selection.kind ()
+        kind &= unwSelf.actualPadDiameter_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.location_property_selection, unwSelf.isVia_property_selection, unwSelf.actualPadDiameter_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_BoardConnector_signatureForERCChecking (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.location_property.addEBObserver (self.signatureForERCChecking_property)
+    self.isVia_property.addEBObserver (self.signatureForERCChecking_property)
+    self.actualPadDiameter_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
     self.mTracksP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },
@@ -1185,6 +1218,9 @@ class BoardConnector : BoardObject,
     self.connectedToComponent_property.removeEBObserver (self.selectionDisplay_property)
     self.side_property.removeEBObserver (self.selectionDisplay_property)
     self.location_property.removeEBObserver (self.selectionDisplay_property)
+    self.location_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.isVia_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.actualPadDiameter_property.removeEBObserver (self.signatureForERCChecking_property)
   //--- Unregister properties for handling signature
   }
 
@@ -1407,6 +1443,14 @@ class BoardConnector : BoardObject,
       view: view,
       observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
       valueExplorer: &self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "signatureForERCChecking",
+      idx: self.signatureForERCChecking_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

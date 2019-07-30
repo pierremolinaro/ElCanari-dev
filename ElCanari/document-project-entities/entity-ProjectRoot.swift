@@ -12,8 +12,14 @@ protocol ProjectRoot_mArtworkName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mERCStatus : class {
-  var mERCStatus : ERCStatus { get }
+protocol ProjectRoot_mLastERCCheckingIsSuccess : class {
+  var mLastERCCheckingIsSuccess : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mLastERCCheckingSignature : class {
+  var mLastERCCheckingSignature : UInt32 { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -324,18 +330,6 @@ protocol ProjectRoot_selectedSheetTitle : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mERCStatusImage : class {
-  var mERCStatusImage : NSImage? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_mERCStatusMessage : class {
-  var mERCStatusMessage : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ProjectRoot_boardGridStepMultipliedByDisplayFactor : class {
   var boardGridStepMultipliedByDisplayFactor : Int? { get }
 }
@@ -384,6 +378,24 @@ protocol ProjectRoot_netsDescription : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_signatureForERCChecking : class {
+  var signatureForERCChecking : UInt32? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_ercStatusImage : class {
+  var ercStatusImage : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_ercStatusMessage : class {
+  var ercStatusMessage : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_viaCountString : class {
   var viaCountString : String? { get }
 }
@@ -410,6 +422,18 @@ protocol ProjectRoot_boardIssues : class {
 
 protocol ProjectRoot_issuesDisplay : class {
   var issuesDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardStatusImage : class {
+  var boardStatusImage : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardStatusMessage : class {
+  var boardStatusMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -532,7 +556,8 @@ protocol ProjectRoot_schematicStatusImage : class {
 
 class ProjectRoot : EBManagedObject,
          ProjectRoot_mArtworkName,
-         ProjectRoot_mERCStatus,
+         ProjectRoot_mLastERCCheckingIsSuccess,
+         ProjectRoot_mLastERCCheckingSignature,
          ProjectRoot_mAutoRouterPreferredDirections,
          ProjectRoot_mAutorouterSnapAngle,
          ProjectRoot_mTrackLengthUnit,
@@ -584,8 +609,6 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicGridDisplayFactor,
          ProjectRoot_mSchematicSheetOrientation,
          ProjectRoot_selectedSheetTitle,
-         ProjectRoot_mERCStatusImage,
-         ProjectRoot_mERCStatusMessage,
          ProjectRoot_boardGridStepMultipliedByDisplayFactor,
          ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor,
          ProjectRoot_selectedSheetIssues,
@@ -594,11 +617,16 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_connexionErrorString,
          ProjectRoot_sheetIndexes,
          ProjectRoot_netsDescription,
+         ProjectRoot_signatureForERCChecking,
+         ProjectRoot_ercStatusImage,
+         ProjectRoot_ercStatusMessage,
          ProjectRoot_viaCountString,
          ProjectRoot_trackCountString,
          ProjectRoot_trackLengthString,
          ProjectRoot_boardIssues,
          ProjectRoot_issuesDisplay,
+         ProjectRoot_boardStatusImage,
+         ProjectRoot_boardStatusMessage,
          ProjectRoot_interiorBoundBox,
          ProjectRoot_boardInteriorTop,
          ProjectRoot_boardInteriorBottom,
@@ -637,21 +665,38 @@ class ProjectRoot : EBManagedObject,
   var mArtworkName_property_selection : EBSelection <String> { return self.mArtworkName_property.prop }
 
   //····················································································································
-  //   Atomic property: mERCStatus
+  //   Atomic property: mLastERCCheckingIsSuccess
   //····················································································································
 
-  let mERCStatus_property = EBStoredProperty_ERCStatus (defaultValue: ERCStatus.unknown)
+  let mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
-  var mERCStatus : ERCStatus {
-    get { return self.mERCStatus_property.propval }
-    set { self.mERCStatus_property.setProp (newValue) }
+  var mLastERCCheckingIsSuccess : Bool {
+    get { return self.mLastERCCheckingIsSuccess_property.propval }
+    set { self.mLastERCCheckingIsSuccess_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mERCStatus_property_selection : EBSelection <ERCStatus> { return self.mERCStatus_property.prop }
+  var mLastERCCheckingIsSuccess_property_selection : EBSelection <Bool> { return self.mLastERCCheckingIsSuccess_property.prop }
+
+  //····················································································································
+  //   Atomic property: mLastERCCheckingSignature
+  //····················································································································
+
+  let mLastERCCheckingSignature_property = EBStoredProperty_UInt32 (defaultValue: 1)
+
+  //····················································································································
+
+  var mLastERCCheckingSignature : UInt32 {
+    get { return self.mLastERCCheckingSignature_property.propval }
+    set { self.mLastERCCheckingSignature_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mLastERCCheckingSignature_property_selection : EBSelection <UInt32> { return self.mLastERCCheckingSignature_property.prop }
 
   //····················································································································
   //   Atomic property: mAutoRouterPreferredDirections
@@ -1695,52 +1740,6 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: mERCStatusImage
-  //····················································································································
-
-  let mERCStatusImage_property = EBTransientProperty_NSImage ()
-
-  //····················································································································
-
-  var mERCStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mERCStatusImage_property.prop
-  }
-
-  //····················································································································
-
-  var mERCStatusImage : NSImage? {
-    switch self.mERCStatusImage_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: mERCStatusMessage
-  //····················································································································
-
-  let mERCStatusMessage_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var mERCStatusMessage_property_selection : EBSelection <String> {
-    return self.mERCStatusMessage_property.prop
-  }
-
-  //····················································································································
-
-  var mERCStatusMessage : String? {
-    switch self.mERCStatusMessage_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: boardGridStepMultipliedByDisplayFactor
   //····················································································································
 
@@ -2001,6 +2000,75 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: signatureForERCChecking
+  //····················································································································
+
+  let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+
+  //····················································································································
+
+  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
+    return self.signatureForERCChecking_property.prop
+  }
+
+  //····················································································································
+
+  var signatureForERCChecking : UInt32? {
+    switch self.signatureForERCChecking_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: ercStatusImage
+  //····················································································································
+
+  let ercStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  var ercStatusImage_property_selection : EBSelection <NSImage> {
+    return self.ercStatusImage_property.prop
+  }
+
+  //····················································································································
+
+  var ercStatusImage : NSImage? {
+    switch self.ercStatusImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: ercStatusMessage
+  //····················································································································
+
+  let ercStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var ercStatusMessage_property_selection : EBSelection <String> {
+    return self.ercStatusMessage_property.prop
+  }
+
+  //····················································································································
+
+  var ercStatusMessage : String? {
+    switch self.ercStatusMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: viaCountString
   //····················································································································
 
@@ -2108,6 +2176,52 @@ class ProjectRoot : EBManagedObject,
 
   var issuesDisplay : EBShape? {
     switch self.issuesDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardStatusImage
+  //····················································································································
+
+  let boardStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  var boardStatusImage_property_selection : EBSelection <NSImage> {
+    return self.boardStatusImage_property.prop
+  }
+
+  //····················································································································
+
+  var boardStatusImage : NSImage? {
+    switch self.boardStatusImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardStatusMessage
+  //····················································································································
+
+  let boardStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var boardStatusMessage_property_selection : EBSelection <String> {
+    return self.boardStatusMessage_property.prop
+  }
+
+  //····················································································································
+
+  var boardStatusMessage : String? {
+    switch self.boardStatusMessage_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2560,8 +2674,10 @@ class ProjectRoot : EBManagedObject,
     super.init (ebUndoManager)
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mERCStatus
-    self.mERCStatus_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mLastERCCheckingIsSuccess
+    self.mLastERCCheckingIsSuccess_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mLastERCCheckingSignature
+    self.mLastERCCheckingSignature_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mAutorouterSnapAngle
@@ -2716,50 +2832,6 @@ class ProjectRoot : EBManagedObject,
       self.mSelectedSheet_property.addEBObserverOf_mObjects (controller)
       self.selectedSheetObjects_modelDidChangeController = controller
     }
-  //--- Atomic property: mERCStatusImage
-    self.mERCStatusImage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mERCStatus_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mERCStatus_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectRoot_mERCStatusImage (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mERCStatus_property.addEBObserver (self.mERCStatusImage_property)
-  //--- Atomic property: mERCStatusMessage
-    self.mERCStatusMessage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mERCStatus_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mERCStatus_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectRoot_mERCStatusMessage (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mERCStatus_property.addEBObserver (self.mERCStatusMessage_property)
   //--- Atomic property: boardGridStepMultipliedByDisplayFactor
     self.boardGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2946,6 +3018,80 @@ class ProjectRoot : EBManagedObject,
     self.mNetClasses_property.addEBObserverOf_netsDescription (self.netsDescription_property)
   //--- To one property: mArtwork
     self.mArtwork_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: signatureForERCChecking
+    self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mBoardObjects_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBoardObjects_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_signatureForERCChecking (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardObjects_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+  //--- Atomic property: ercStatusImage
+    self.ercStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mLastERCCheckingIsSuccess_property_selection.kind ()
+        kind &= unwSelf.mLastERCCheckingSignature_property_selection.kind ()
+        kind &= unwSelf.signatureForERCChecking_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mLastERCCheckingIsSuccess_property_selection, unwSelf.mLastERCCheckingSignature_property_selection, unwSelf.signatureForERCChecking_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ProjectRoot_ercStatusImage (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mLastERCCheckingIsSuccess_property.addEBObserver (self.ercStatusImage_property)
+    self.mLastERCCheckingSignature_property.addEBObserver (self.ercStatusImage_property)
+    self.signatureForERCChecking_property.addEBObserver (self.ercStatusImage_property)
+  //--- Atomic property: ercStatusMessage
+    self.ercStatusMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mLastERCCheckingIsSuccess_property_selection.kind ()
+        kind &= unwSelf.mLastERCCheckingSignature_property_selection.kind ()
+        kind &= unwSelf.signatureForERCChecking_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mLastERCCheckingIsSuccess_property_selection, unwSelf.mLastERCCheckingSignature_property_selection, unwSelf.signatureForERCChecking_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ProjectRoot_ercStatusMessage (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mLastERCCheckingIsSuccess_property.addEBObserver (self.ercStatusMessage_property)
+    self.mLastERCCheckingSignature_property.addEBObserver (self.ercStatusMessage_property)
+    self.signatureForERCChecking_property.addEBObserver (self.ercStatusMessage_property)
   //--- Atomic property: viaCountString
     self.viaCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3058,6 +3204,50 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.boardIssues_property.addEBObserver (self.issuesDisplay_property)
+  //--- Atomic property: boardStatusImage
+    self.boardStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.boardIssues_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.boardIssues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_boardStatusImage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardIssues_property.addEBObserver (self.boardStatusImage_property)
+  //--- Atomic property: boardStatusMessage
+    self.boardStatusMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.boardIssues_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.boardIssues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_boardStatusMessage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardIssues_property.addEBObserver (self.boardStatusMessage_property)
   //--- Atomic property: interiorBoundBox
     self.interiorBoundBox_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3580,8 +3770,6 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetObjects_property.setModel (nil)
     self.selectedSheetObjects_modelDidChangeController?.unregister ()
     self.selectedSheetObjects_modelDidChangeController = nil
-    self.mERCStatus_property.removeEBObserver (self.mERCStatusImage_property)
-    self.mERCStatus_property.removeEBObserver (self.mERCStatusMessage_property)
     self.mBoardGridStep_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
     self.mBoardGridDisplayFactor_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
     self.mBoardLimitsGridStep_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
@@ -3593,12 +3781,21 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
     self.mSheets_property.removeEBObserver (self.sheetIndexes_property)
     self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netsDescription_property)
+    self.mBoardObjects_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.mLastERCCheckingIsSuccess_property.removeEBObserver (self.ercStatusImage_property)
+    self.mLastERCCheckingSignature_property.removeEBObserver (self.ercStatusImage_property)
+    self.signatureForERCChecking_property.removeEBObserver (self.ercStatusImage_property)
+    self.mLastERCCheckingIsSuccess_property.removeEBObserver (self.ercStatusMessage_property)
+    self.mLastERCCheckingSignature_property.removeEBObserver (self.ercStatusMessage_property)
+    self.signatureForERCChecking_property.removeEBObserver (self.ercStatusMessage_property)
     self.mBoardObjects_property.removeEBObserverOf_isVia (self.viaCountString_property)
     self.mBoardObjects_property.removeEBObserverOf_trackLength (self.trackCountString_property)
     self.mBoardObjects_property.removeEBObserverOf_trackLength (self.trackLengthString_property)
     self.mTrackLengthUnit_property.removeEBObserver (self.trackLengthString_property)
     self.mBoardObjects_property.removeEBObserverOf_issues (self.boardIssues_property)
     self.boardIssues_property.removeEBObserver (self.issuesDisplay_property)
+    self.boardIssues_property.removeEBObserver (self.boardStatusImage_property)
+    self.boardIssues_property.removeEBObserver (self.boardStatusMessage_property)
     self.mBorderCurves_property.removeEBObserverOf_descriptor (self.interiorBoundBox_property)
     self.interiorBoundBox_property.removeEBObserver (self.boardInteriorTop_property)
     self.mBoardPointsBoundingBoxUnit_property.removeEBObserver (self.boardInteriorTop_property)
@@ -3678,12 +3875,20 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mArtworkName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mERCStatus",
-      idx: self.mERCStatus_property.ebObjectIndex,
+      "mLastERCCheckingIsSuccess",
+      idx: self.mLastERCCheckingIsSuccess_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mERCStatus_property.mObserverExplorer,
-      valueExplorer: &self.mERCStatus_property.mValueExplorer
+      observerExplorer: &self.mLastERCCheckingIsSuccess_property.mObserverExplorer,
+      valueExplorer: &self.mLastERCCheckingIsSuccess_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mLastERCCheckingSignature",
+      idx: self.mLastERCCheckingSignature_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mLastERCCheckingSignature_property.mObserverExplorer,
+      valueExplorer: &self.mLastERCCheckingSignature_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mAutoRouterPreferredDirections",
@@ -4087,22 +4292,6 @@ class ProjectRoot : EBManagedObject,
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
-      "mERCStatusImage",
-      idx: self.mERCStatusImage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mERCStatusImage_property.mObserverExplorer,
-      valueExplorer: &self.mERCStatusImage_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mERCStatusMessage",
-      idx: self.mERCStatusMessage_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mERCStatusMessage_property.mObserverExplorer,
-      valueExplorer: &self.mERCStatusMessage_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "boardGridStepMultipliedByDisplayFactor",
       idx: self.boardGridStepMultipliedByDisplayFactor_property.ebObjectIndex,
       y: &y,
@@ -4167,6 +4356,30 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.netsDescription_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "signatureForERCChecking",
+      idx: self.signatureForERCChecking_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "ercStatusImage",
+      idx: self.ercStatusImage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.ercStatusImage_property.mObserverExplorer,
+      valueExplorer: &self.ercStatusImage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "ercStatusMessage",
+      idx: self.ercStatusMessage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.ercStatusMessage_property.mObserverExplorer,
+      valueExplorer: &self.ercStatusMessage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "viaCountString",
       idx: self.viaCountString_property.ebObjectIndex,
       y: &y,
@@ -4205,6 +4418,22 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.issuesDisplay_property.mObserverExplorer,
       valueExplorer: &self.issuesDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardStatusImage",
+      idx: self.boardStatusImage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardStatusImage_property.mObserverExplorer,
+      valueExplorer: &self.boardStatusImage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardStatusMessage",
+      idx: self.boardStatusMessage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardStatusMessage_property.mObserverExplorer,
+      valueExplorer: &self.boardStatusMessage_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "interiorBoundBox",
@@ -4434,9 +4663,12 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.mObserverExplorer = nil
     self.mArtworkName_property.mValueExplorer = nil
-  //--- Atomic property: mERCStatus
-    self.mERCStatus_property.mObserverExplorer = nil
-    self.mERCStatus_property.mValueExplorer = nil
+  //--- Atomic property: mLastERCCheckingIsSuccess
+    self.mLastERCCheckingIsSuccess_property.mObserverExplorer = nil
+    self.mLastERCCheckingIsSuccess_property.mValueExplorer = nil
+  //--- Atomic property: mLastERCCheckingSignature
+    self.mLastERCCheckingSignature_property.mObserverExplorer = nil
+    self.mLastERCCheckingSignature_property.mValueExplorer = nil
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.mObserverExplorer = nil
     self.mAutoRouterPreferredDirections_property.mValueExplorer = nil
@@ -4651,8 +4883,10 @@ class ProjectRoot : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey:"mArtworkName")
-  //--- Atomic property: mERCStatus
-    self.mERCStatus_property.storeIn (dictionary: ioDictionary, forKey:"mERCStatus")
+  //--- Atomic property: mLastERCCheckingIsSuccess
+    self.mLastERCCheckingIsSuccess_property.storeIn (dictionary: ioDictionary, forKey:"mLastERCCheckingIsSuccess")
+  //--- Atomic property: mLastERCCheckingSignature
+    self.mLastERCCheckingSignature_property.storeIn (dictionary: ioDictionary, forKey:"mLastERCCheckingSignature")
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.storeIn (dictionary: ioDictionary, forKey:"mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle
@@ -4886,8 +5120,10 @@ class ProjectRoot : EBManagedObject,
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey:"mArtworkName")
-  //--- Atomic property: mERCStatus
-    self.mERCStatus_property.readFrom (dictionary: inDictionary, forKey:"mERCStatus")
+  //--- Atomic property: mLastERCCheckingIsSuccess
+    self.mLastERCCheckingIsSuccess_property.readFrom (dictionary: inDictionary, forKey:"mLastERCCheckingIsSuccess")
+  //--- Atomic property: mLastERCCheckingSignature
+    self.mLastERCCheckingSignature_property.readFrom (dictionary: inDictionary, forKey:"mLastERCCheckingSignature")
   //--- Atomic property: mAutoRouterPreferredDirections
     self.mAutoRouterPreferredDirections_property.readFrom (dictionary: inDictionary, forKey:"mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle

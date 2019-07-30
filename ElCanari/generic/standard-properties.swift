@@ -5,6 +5,53 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property UInt32
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_UInt32    = EBReadOnlyValueProperty <UInt32>
+typealias EBTransientProperty_UInt32   = EBTransientValueProperty <UInt32>
+typealias EBReadWriteProperty_UInt32   = EBReadWriteValueProperty <UInt32>
+typealias EBPropertyProxy_UInt32       = EBPropertyValueProxy <UInt32>
+typealias EBStoredProperty_UInt32      = EBStoredValueProperty <UInt32>
+typealias EBPreferencesProperty_UInt32 = EBPreferencesValueProperty <UInt32>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func compare_UInt32_properties (_ left : EBReadOnlyProperty_UInt32, _ right : EBReadOnlyProperty_UInt32) -> ComparisonResult {
+  switch left.prop {
+  case .empty :
+    switch right.prop {
+    case .empty :
+      return .orderedSame
+    default:
+      return .orderedAscending
+    }
+  case .multiple :
+    switch right.prop {
+    case .empty :
+      return .orderedDescending
+    case .multiple :
+      return .orderedSame
+   case .single (_) :
+      return .orderedAscending
+   }
+ case .single (let currentValue) :
+    switch right.prop {
+    case .empty, .multiple :
+      return .orderedDescending
+    case .single (let otherValue) :
+      if currentValue < otherValue {
+        return .orderedAscending
+      }else if currentValue > otherValue {
+        return .orderedDescending
+      }else{
+        return .orderedSame
+      }
+    }
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property Int
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
