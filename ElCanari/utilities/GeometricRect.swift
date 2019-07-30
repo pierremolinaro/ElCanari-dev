@@ -38,13 +38,13 @@ class GeometricRect {
 
   //····················································································································
 
-  init (center inCenter : NSPoint, angleInRadian inAngle : CGFloat, length inLength : CGFloat, width inWidth : CGFloat) {
-    let dx = inLength * cos (inAngle)
-    let dy = inLength * sin (inAngle)
-    self.p1 = NSPoint (x: inCenter.x + dx, y: inCenter.y + dy)
-    self.p2 = NSPoint (x: inCenter.x - dx, y: inCenter.y - dy)
-    self.width = inWidth
-  }
+//  init (center inCenter : NSPoint, angleInRadian inAngle : CGFloat, length inLength : CGFloat, width inWidth : CGFloat) {
+//    let dx = inLength * 0.5 * cos (inAngle)
+//    let dy = inLength * 0.5 * sin (inAngle)
+//    self.p1 = NSPoint (x: inCenter.x + dx, y: inCenter.y + dy)
+//    self.p2 = NSPoint (x: inCenter.x - dx, y: inCenter.y - dy)
+//    self.width = inWidth
+//  }
 
   //····················································································································
   //   Center
@@ -124,8 +124,8 @@ class GeometricRect {
       return v
     }else{
       let angle = NSPoint.angleInRadian (self.p1, self.p2)
-      let dx = self.width * sin (angle) / 2.0
-      let dy = self.width * cos (angle) / 2.0
+      let dx = self.width * 0.5 * sin (angle)
+      let dy = self.width * 0.5 * cos (angle)
       var v = [NSPoint] ()
       v.append (NSPoint (x: self.p1.x - dx, y: self.p1.y + dy))
       v.append (NSPoint (x: self.p1.x + dx, y: self.p1.y - dy))
@@ -153,14 +153,28 @@ class GeometricRect {
         return true
       }else{
       //--- Test intersection between circle and rectangle edge
-        var intersects = false
         let v = self.vertices
-        var i = 0
-        while !intersects && (i < v.count) {
-          intersects = inCircle.intersects (segmentFrom: v [i], to: v [(i+1) % v.count])
-          i += 1
+        for i in 0 ..< v.count {
+          let j = (i+1) % v.count
+          let intersects = inCircle.intersects (segmentFrom: v [i], to: v [j])
+          if intersects {
+//            Swift.print ("    intersects i\(i)")
+//            for k in 0 ..< v.count {
+//              Swift.print ("      [\(v[k].x), \(v[k].y)]")
+//            }
+//            Swift.print ("    center [\(inCircle.center.x), \(inCircle.center.y)] radius \(inCircle.radius)")
+//            Swift.print ("    p1 [\(self.p1.x), \(self.p1.y)]")
+//            Swift.print ("    p2 [\(self.p2.x), \(self.p2.y)]")
+//            let angle = NSPoint.angleInRadian (self.p1, self.p2)
+//            let dx = self.width * sin (angle) / 2.0
+//            let dy = self.width * cos (angle) / 2.0
+//            Swift.print ("    width \(self.width)")
+//            Swift.print ("    angle \(angle)")
+//            Swift.print ("    dx \(dx), dy \(dy)")
+            return true
+          }
         }
-        return intersects
+        return false
       }
     }
   }

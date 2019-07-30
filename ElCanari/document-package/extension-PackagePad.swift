@@ -263,8 +263,8 @@ class PadGeometryForERC {
     self.bezierPath = EBBezierPath.pad (
       centerX: inCenterX,
       centerY: inCenterY,
-      width: inWidth,
-      height: inHeight,
+      width: inWidth + inClearance,
+      height: inHeight + inClearance,
       shape: inShape
     )
   }

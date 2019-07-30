@@ -34,10 +34,10 @@ struct GeometricOblong {
 
   func contains (point p : NSPoint) -> Bool {
   //--- p inside P1 circle
-    var inside = NSPoint.distance (self.p1, p) <= (width / 2.0)
+    var inside = NSPoint.distance (self.p1, p) <= (self.width / 2.0)
   //--- p inside P2 circle
     if !inside {
-      inside = NSPoint.distance (self.p2, p) <= (width / 2.0)
+      inside = NSPoint.distance (self.p2, p) <= (self.width / 2.0)
     }
   //--- p inside rectangle
     if !inside {
@@ -78,10 +78,10 @@ struct GeometricOblong {
 
   var bounds : NSRect {
     let w = self.width / 2.0
-    let left  = min (self.p1.x, self.p2.x) - w
-    let right = max (self.p1.x, self.p2.x) + w
+    let left   = min (self.p1.x, self.p2.x) - w
+    let right  = max (self.p1.x, self.p2.x) + w
     let bottom = min (self.p1.y, self.p2.y) - w
-    let top = max (self.p1.y, self.p2.y) + w
+    let top    = max (self.p1.y, self.p2.y) + w
     return NSRect (x: left, y: bottom, width: right - left, height: top - bottom)
    }
 
@@ -138,20 +138,20 @@ struct GeometricOblong {
   }
 
   //····················································································································
-//
-//  func intersects (rect inOther : GeometricRect) -> Bool {
-//    if !self.bounds.intersects (inOther.bounds) {
-//      return false
-//    }else if self.circle1.intersects (rect: inOther) {
-//      return true
-//    }else if self.circle2.intersects (rect: inOther) {
-//      return true
-//    }else if self.geometricRect.intersects (rect: inOther) {
-//      return true
-//    }else{
-//      return false
-//    }
-//  }
+
+  func intersects (rect inRect : GeometricRect) -> Bool {
+    if !self.bounds.intersects (inRect.bounds) {
+      return false
+    }else if inRect.intersects (circle: self.circle1) {
+      return true
+    }else if inRect.intersects (circle: self.circle2) {
+      return true
+    }else if inRect.intersects (rect: self.geometricRect) {
+      return true
+    }else{
+      return false
+    }
+  }
 
   //····················································································································
 
@@ -175,22 +175,6 @@ struct GeometricOblong {
     }else if self.geometricRect.intersects (circle: inOther.circle2) {
       return true
     }else if self.geometricRect.intersects (rect: inOther.geometricRect) {
-      return true
-    }else{
-      return false
-    }
-  }
-
-  //····················································································································
-
-  func intersects (rect inRect : GeometricRect) -> Bool {
-    if !self.bounds.intersects (inRect.bounds) {
-      return false
-    }else if inRect.intersects (circle: self.circle1) {
-      return true
-    }else if inRect.intersects (circle: self.circle2) {
-      return true
-    }else if inRect.intersects (rect: self.geometricRect) {
       return true
     }else{
       return false

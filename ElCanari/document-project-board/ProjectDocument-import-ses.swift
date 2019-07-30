@@ -74,7 +74,7 @@ extension CustomizedProjectDocument {
     }else{
     //--- Extract tracks (components [0] is not a valid track description
       for trackDescription in Array (components [1 ..< components.count]) {
-        let scanner = Scanner  (string: trackDescription)
+        let scanner = Scanner (string: trackDescription)
         var ok = scanner.scanString ("(path", into: nil)
         if ok {
           let scanLocation = scanner.scanLocation
@@ -115,8 +115,8 @@ extension CustomizedProjectDocument {
             }
             if let netClass = foundNetClass {
               let via = BoardConnector (self.ebUndoManager)
-              via.mX = lround (x) * resolution
-              via.mY = lround (y) * resolution
+              via.mX = Int (x * Double (resolution))
+              via.mY = Int (y * Double (resolution))
               via.mUsesCustomHoleDiameter = true
               via.mCustomHoleDiameter = netClass.viaHoleDiameter
               via.mUsesCustomPadDiameter = true
@@ -177,8 +177,8 @@ extension CustomizedProjectDocument {
       let p = via.location!
       let dx = Double (inP.x - p.x)
       let dy = Double (inP.y - p.y)
-      let d2 = dx * dx + dy * dy
-      let found = d2 <= (2286.0 * 2286.0 * 2.0)
+      let dSquare = dx * dx + dy * dy
+      let found = dSquare <= (2286.0 * 2286.0 * 2.0)
       if found {
         return via
       }
@@ -195,8 +195,8 @@ extension CustomizedProjectDocument {
         let p = connector.location!
         let dx = Double (inP.x - p.x)
         let dy = Double (inP.y - p.y)
-        let d2 = dx * dx + dy * dy
-        let found = d2 <= (2286.0 * 2286.0 * 2.0)
+        let dSquare = dx * dx + dy * dy
+        let found = dSquare <= (2286.0 * 2286.0 * 2.0)
         if found {
           return connector
         }
