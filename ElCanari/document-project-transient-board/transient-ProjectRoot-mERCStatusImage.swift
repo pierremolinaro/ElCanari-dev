@@ -17,7 +17,11 @@ func transient_ProjectRoot_mERCStatusImage (
        _ self_mERCStatus : ERCStatus
 ) -> NSImage {
 //--- START OF USER ZONE 2
-
+        switch self_mERCStatus {
+        case .error : return NSImage (named: errorStatusImageName)!
+        case .success : return NSImage (named: okStatusImageName)!
+        case .unknown : return NSImage (named: unknownStatusImageName)!
+        }
 //--- END OF USER ZONE 2
 }
 

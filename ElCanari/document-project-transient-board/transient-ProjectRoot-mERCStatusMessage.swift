@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_mECRStatusMessage (
+func transient_ProjectRoot_mERCStatusMessage (
        _ self_mERCStatus : ERCStatus
 ) -> String {
 //--- START OF USER ZONE 2
