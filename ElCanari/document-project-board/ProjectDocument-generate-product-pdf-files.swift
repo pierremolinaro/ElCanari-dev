@@ -41,6 +41,7 @@ extension ProjectDocument {
     let path = inPath + inDescriptor.fileExtension + ".pdf"
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
     var strokePathes = [EBBezierPath] ()
+    var filledPathes = [EBBezierPath] ()
     if inDescriptor.drawBoardLimits {
       strokePathes.append ([inProductData.boardLimitWidth : [inProductData.boardLimitPath]])
     }
@@ -64,7 +65,7 @@ extension ProjectDocument {
     }
     if inDescriptor.drawTextsLegendTopSide {
       strokePathes.append (inProductData.legendFrontTexts)
-      strokePathes.append (lines: inProductData.frontLines)
+      strokePathes.append (oblongs: inProductData.frontLines)
     }
     if inDescriptor.drawTextsLayoutTopSide {
       strokePathes.append (inProductData.layoutFrontTexts)
@@ -74,28 +75,30 @@ extension ProjectDocument {
     }
     if inDescriptor.drawTextsLegendBottomSide {
       strokePathes.append (inProductData.legendBackTexts)
-      strokePathes.append (lines: inProductData.backLines)
+      strokePathes.append (oblongs: inProductData.backLines)
     }
     if inDescriptor.drawVias {
-      for (location, diameter) in inProductData.viaPads {
-        var bp = EBBezierPath ()
-        bp.lineWidth = diameter
-        bp.lineCapStyle = .round
-        bp.lineJoinStyle = .round
-        bp.move (to: location)
-        bp.line (to: location)
-        strokePathes.append (bp)
-      }
+      strokePathes.append (circles: inProductData.viaPads)
     }
     if inDescriptor.drawTracksTopSide {
-      strokePathes.append (lines: inProductData.frontTracks)
+      strokePathes.append (oblongs: inProductData.frontTracks)
      }
     if inDescriptor.drawTracksBottomSide {
-      strokePathes.append (lines: inProductData.backTracks)
+      strokePathes.append (oblongs: inProductData.backTracks)
+    }
+    if inDescriptor.drawPadsTopSide {
+      strokePathes.append (circles: inProductData.frontCircularPads)
+      strokePathes.append (oblongs: inProductData.frontOblongPads)
+      filledPathes.append (polygons: inProductData.frontPolygonPads)
+    }
+    if inDescriptor.drawPadsBottomSide {
+      strokePathes.append (circles: inProductData.backCircularPads)
+      strokePathes.append (oblongs: inProductData.backOblongPads)
+      filledPathes.append (polygons: inProductData.backPolygonPads)
     }
 
-
-    let shape = EBShape (stroke: strokePathes, .black)
+    var shape = EBShape (stroke: strokePathes, .black)
+    shape.add (filled: filledPathes, .black)
     let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: .white)
     try data.write (to: URL (fileURLWithPath: path))
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
@@ -126,7 +129,7 @@ extension Array where Element == EBBezierPath {
 
   //····················································································································
 
-  mutating func append (lines inLines : [ProductLine]) {
+  mutating func append (oblongs inLines : [ProductOblong]) {
     for segment in inLines {
       var bp = EBBezierPath ()
       bp.lineWidth = segment.width
@@ -134,6 +137,34 @@ extension Array where Element == EBBezierPath {
       bp.lineJoinStyle = .round
       bp.move (to: segment.p1)
       bp.line (to: segment.p2)
+      self.append (bp)
+    }
+  }
+
+  //····················································································································
+
+  mutating func append (circles inCircles : [ProductCircle]) {
+    for circle in inCircles {
+      var bp = EBBezierPath ()
+      bp.lineWidth = circle.diameter
+      bp.lineCapStyle = .round
+      bp.lineJoinStyle = .round
+      bp.move (to: circle.center)
+      bp.line (to: circle.center)
+      self.append (bp)
+    }
+  }
+
+  //····················································································································
+
+  mutating func append (polygons inPolygons : [ProductPolygon]) {
+    for polygon in inPolygons {
+      var bp = EBBezierPath ()
+      bp.move (to: polygon.origin)
+      for p in polygon.points {
+        bp.line (to: p)
+      }
+      bp.close ()
       self.append (bp)
     }
   }

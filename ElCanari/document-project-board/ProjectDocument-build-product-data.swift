@@ -22,7 +22,9 @@ extension ProjectDocument {
     let viaPads = self.buildViaPads ()
     let (frontTracks, backTracks) = self.buildTracks ()
     let (frontLines, backLines) = self.buildLines ()
-
+    let (frontCircularPads, backCircularPads) = self.buildCircularPads ()
+    let (frontOblongPads, backOblongPads) = self.buildOblongPads ()
+    let (frontPolygonPads, backPolygonPads) = self.buildPolygonPads ()
   //---
     return ProductData (
       boardBoundBox: self.rootObject.boardBoundBox!.cocoaRect,
@@ -43,7 +45,13 @@ extension ProjectDocument {
       frontTracks: frontTracks,
       backTracks: backTracks,
       frontLines: frontLines,
-      backLines: backLines
+      backLines: backLines,
+      frontCircularPads: frontCircularPads,
+      backCircularPads: backCircularPads,
+      frontOblongPads: frontOblongPads,
+      backOblongPads: backOblongPads,
+      frontPolygonPads: frontPolygonPads,
+      backPolygonPads: backPolygonPads
     )
   }
   
@@ -127,7 +135,6 @@ extension ProjectDocument {
         result [hd] = (result [hd] ?? []) + [(p, p)]
       }else if let component = object as? ComponentInProject {
         let af = component.packageToComponentAffineTransform ()
-      //---
         for (_, masterPad) in component.packagePadDictionary! {
           switch masterPad.style {
           case .traversing :
@@ -323,13 +330,13 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func buildViaPads () -> [(NSPoint, CGFloat)] { // Center, diameter
-    var result = [(NSPoint, CGFloat)] ()
+  private func buildViaPads () -> [ProductCircle] { // Center, diameter
+    var result = [ProductCircle] ()
     for object in self.rootObject.mBoardObjects {
       if let via = object as? BoardConnector, let isVia = via.isVia, isVia {
         let p = via.location!.cocoaPoint
         let padDiameter = canariUnitToCocoa (via.actualPadDiameter!)
-        result.append ((p, padDiameter))
+        result.append (ProductCircle (center: p, diameter: padDiameter))
       }
     }
     return result
@@ -337,15 +344,15 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func buildTracks () -> ([ProductLine], [ProductLine]) {
-    var frontTracks = [ProductLine] ()
-    var backTracks = [ProductLine] ()
+  private func buildTracks () -> ([ProductOblong], [ProductOblong]) {
+    var frontTracks = [ProductOblong] ()
+    var backTracks = [ProductOblong] ()
     for object in self.rootObject.mBoardObjects {
       if let track = object as? BoardTrack {
         let p1 = track.mConnectorP1!.location!.cocoaPoint
         let p2 = track.mConnectorP2!.location!.cocoaPoint
         let width = canariUnitToCocoa (track.actualTrackWidth!)
-        let t = ProductLine (p1: p1, p2: p2, width: width)
+        let t = ProductOblong (p1: p1, p2: p2, width: width)
         switch track.mSide {
         case .back :
           backTracks.append (t)
@@ -359,15 +366,15 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func buildLines () -> ([ProductLine], [ProductLine]) {
-    var frontLines = [ProductLine] ()
-    var backLines = [ProductLine] ()
+  private func buildLines () -> ([ProductOblong], [ProductOblong]) {
+    var frontLines = [ProductOblong] ()
+    var backLines = [ProductOblong] ()
     for object in self.rootObject.mBoardObjects {
       if let line = object as? BoardLine {
         let p1 = CanariPoint (x: line.mX1, y: line.mY1).cocoaPoint
         let p2 = CanariPoint (x: line.mX2, y: line.mY2).cocoaPoint
         let width = canariUnitToCocoa (line.mWidth)
-        let t = ProductLine (p1: p1, p2: p2, width: width)
+        let t = ProductOblong (p1: p1, p2: p2, width: width)
         switch line.mLayer {
         case .legendBack :
           backLines.append (t)
@@ -381,14 +388,256 @@ extension ProjectDocument {
 
   //····················································································································
 
+  fileprivate func buildCircularPads () -> ([ProductCircle], [ProductCircle]) {
+    var frontCircularPads = [ProductCircle] ()
+    var backCircularPads = [ProductCircle] ()
+    for object in self.rootObject.mBoardObjects {
+      if let component = object as? ComponentInProject {
+        let af = component.packageToComponentAffineTransform ()
+        for (_, masterPad) in component.packagePadDictionary! {
+          if let circle = circle (masterPad.center, masterPad.padSize, masterPad.shape, af) {
+            switch masterPad.style {
+            case .traversing :
+              frontCircularPads.append (circle)
+              backCircularPads.append (circle)
+            case .surface :
+              switch component.mSide {
+              case .back :
+                backCircularPads.append (circle)
+              case .front :
+                frontCircularPads.append (circle)
+              }
+            }
+          }
+          for slavePad in masterPad.slavePads {
+            if let circle = circle (slavePad.center, slavePad.padSize, slavePad.shape, af) {
+              switch slavePad.style {
+              case .traversing :
+                frontCircularPads.append (circle)
+                backCircularPads.append (circle)
+              case .bottomSide :
+                switch component.mSide {
+                case .front :
+                  backCircularPads.append (circle)
+                case .back :
+                  frontCircularPads.append (circle)
+                }
+              case .topSide :
+                switch component.mSide {
+                case .back :
+                  backCircularPads.append (circle)
+                case .front :
+                  frontCircularPads.append (circle)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return (frontCircularPads, backCircularPads)
+  }
+
+  //····················································································································
+
+  fileprivate func buildOblongPads () -> ([ProductOblong], [ProductOblong]) {
+    var frontOblongPads = [ProductOblong] ()
+    var backOblongPads = [ProductOblong] ()
+    for object in self.rootObject.mBoardObjects {
+      if let component = object as? ComponentInProject {
+        let af = component.packageToComponentAffineTransform ()
+        for (_, masterPad) in component.packagePadDictionary! {
+          if let oblong = oblong (masterPad.center, masterPad.padSize, masterPad.shape, af) {
+            switch masterPad.style {
+            case .traversing :
+              frontOblongPads.append (oblong)
+              backOblongPads.append (oblong)
+            case .surface :
+              switch component.mSide {
+              case .back :
+                backOblongPads.append (oblong)
+              case .front :
+                frontOblongPads.append (oblong)
+              }
+            }
+          }
+          for slavePad in masterPad.slavePads {
+            if let oblong = oblong (slavePad.center, slavePad.padSize, slavePad.shape, af) {
+              switch slavePad.style {
+              case .traversing :
+                frontOblongPads.append (oblong)
+                backOblongPads.append (oblong)
+              case .bottomSide :
+                switch component.mSide {
+                case .front :
+                  backOblongPads.append (oblong)
+                case .back :
+                  frontOblongPads.append (oblong)
+                }
+              case .topSide :
+                switch component.mSide {
+                case .back :
+                  backOblongPads.append (oblong)
+                case .front :
+                  frontOblongPads.append (oblong)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return (frontOblongPads, backOblongPads)
+  }
+
+  //····················································································································
+
+  fileprivate func buildPolygonPads () -> ([ProductPolygon], [ProductPolygon]) {
+    var frontPolygonPads = [ProductPolygon] ()
+    var backPolygonPads = [ProductPolygon] ()
+    for object in self.rootObject.mBoardObjects {
+      if let component = object as? ComponentInProject {
+        let af = component.packageToComponentAffineTransform ()
+        for (_, masterPad) in component.packagePadDictionary! {
+          if let polygon = polygon (masterPad.center, masterPad.padSize, masterPad.shape, af) {
+            switch masterPad.style {
+            case .traversing :
+              frontPolygonPads.append (polygon)
+              backPolygonPads.append (polygon)
+            case .surface :
+              switch component.mSide {
+              case .back :
+                backPolygonPads.append (polygon)
+              case .front :
+                frontPolygonPads.append (polygon)
+              }
+            }
+          }
+          for slavePad in masterPad.slavePads {
+           if let polygon = polygon (slavePad.center, slavePad.padSize, slavePad.shape, af) {
+             switch slavePad.style {
+              case .traversing :
+                frontPolygonPads.append (polygon)
+                backPolygonPads.append (polygon)
+              case .bottomSide :
+                switch component.mSide {
+                case .front :
+                  backPolygonPads.append (polygon)
+                case .back :
+                  frontPolygonPads.append (polygon)
+                }
+              case .topSide :
+                switch component.mSide {
+                case .back :
+                  backPolygonPads.append (polygon)
+                case .front :
+                  frontPolygonPads.append (polygon)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return (frontPolygonPads, backPolygonPads)
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct ProductLine { // All in Cocoa Unit
+fileprivate func circle (_ inCenter : CanariPoint,
+                         _ inPadSize : CanariSize,
+                         _ inShape : PadShape,
+                         _ inAffineTransform : AffineTransform) -> ProductCircle? {
+  switch inShape {
+  case .rect, .octo :
+    return nil
+  case .round :
+    if inPadSize.width == inPadSize.height { // Circular
+      let p = inAffineTransform.transform (inCenter.cocoaPoint)
+      let d = canariUnitToCocoa (inPadSize.width)
+      return ProductCircle (center: p, diameter: d)
+    }else{
+      return nil
+    }
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func polygon (_ inCenter : CanariPoint,
+                          _ inPadSize : CanariSize,
+                          _ inShape : PadShape,
+                          _ inAffineTransform : AffineTransform) -> ProductPolygon? {
+  switch inShape {
+  case .rect :
+    let p = inCenter.cocoaPoint
+    let padSize = inPadSize.cocoaSize
+    let w = -padSize.width / 2.0
+    let h = -padSize.height / 2.0
+    let p0 = inAffineTransform.transform (NSPoint (x: p.x - w, y: p.y - h))
+    let p1 = inAffineTransform.transform (NSPoint (x: p.x + w, y: p.y - h))
+    let p2 = inAffineTransform.transform (NSPoint (x: p.x + w, y: p.y + h))
+    let p3 = inAffineTransform.transform (NSPoint (x: p.x - w, y: p.y + h))
+    return ProductPolygon (origin: p0, points: [p1, p2, p3])
+  case .octo :
+    return nil
+  case .round :
+    return nil
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func oblong (_ inCenter : CanariPoint,
+                         _ inPadSize : CanariSize,
+                         _ inShape : PadShape,
+                         _ inAffineTransform : AffineTransform) -> ProductOblong? {
+  switch inShape {
+  case .rect, .octo :
+    return nil
+  case .round :
+    let p = inCenter.cocoaPoint
+    let padSize = inPadSize.cocoaSize
+    if inPadSize.width < inPadSize.height { // Vertical oblong
+      let p1 = inAffineTransform.transform (NSPoint (x: p.x, y: p.y - (padSize.height - padSize.width) / 2.0))
+      let p2 = inAffineTransform.transform (NSPoint (x: p.x, y: p.y + (padSize.height - padSize.width) / 2.0))
+      let w = canariUnitToCocoa (inPadSize.width)
+      return ProductOblong (p1: p1, p2: p2, width: w)
+    }else if inPadSize.width > inPadSize.height { // Horizontal oblong
+      let p1 = inAffineTransform.transform (NSPoint (x: p.x - (padSize.width - padSize.height) / 2.0, y: p.y))
+      let p2 = inAffineTransform.transform (NSPoint (x: p.x + (padSize.width - padSize.height) / 2.0, y: p.y))
+      let w = canariUnitToCocoa (inPadSize.height)
+      return ProductOblong (p1: p1, p2: p2, width: w)
+    }else{ // Circular
+      return nil
+    }
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct ProductOblong { // All in Cocoa Unit
   let p1 : NSPoint
   let p2 : NSPoint
   let width : CGFloat
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct ProductCircle { // All in Cocoa Unit
+  let center : NSPoint
+  let diameter : CGFloat
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct ProductPolygon { // All in Cocoa Unit
+  let origin : NSPoint
+  let points : [NSPoint]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -408,11 +657,17 @@ struct ProductData { // All in Cocoa Unit
   let layoutFrontTexts : [CGFloat : [EBLinePath]]
   let layoutBackTexts : [CGFloat : [EBLinePath]]
   let legendBackTexts : [CGFloat : [EBLinePath]]
-  let viaPads : [(NSPoint, CGFloat)] // Center, diameter
-  let frontTracks : [ProductLine]
-  let backTracks : [ProductLine]
-  let frontLines : [ProductLine]
-  let backLines : [ProductLine]
+  let viaPads : [ProductCircle] // Center, diameter
+  let frontTracks : [ProductOblong]
+  let backTracks : [ProductOblong]
+  let frontLines : [ProductOblong]
+  let backLines : [ProductOblong]
+  let frontCircularPads : [ProductCircle]
+  let backCircularPads : [ProductCircle]
+  let frontOblongPads : [ProductOblong]
+  let backOblongPads : [ProductOblong]
+  let frontPolygonPads : [ProductPolygon]
+  let backPolygonPads : [ProductPolygon]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

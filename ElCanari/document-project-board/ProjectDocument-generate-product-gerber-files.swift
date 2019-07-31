@@ -59,7 +59,7 @@ extension ProjectDocument {
     var s = "%FSLAX24Y24*%\n" // A = Absolute coordinates, 24 = all data are in 2.4 form
     s += "%MOIN*%\n" // length unit is inch
     var apertureDictionary = [CGFloat : [String]] ()
-    var polygons = [[String]] ()
+    var polygons = [ProductPolygon] ()
     if inDescriptor.drawBoardLimits {
       apertureDictionary.append ([inProductData.boardLimitWidth : [inProductData.boardLimitPath]])
     }
@@ -83,7 +83,7 @@ extension ProjectDocument {
     }
     if inDescriptor.drawTextsLegendTopSide {
       apertureDictionary.append (inProductData.legendFrontTexts)
-      apertureDictionary.append (lines: inProductData.frontLines)
+      apertureDictionary.append (oblongs: inProductData.frontLines)
     }
     if inDescriptor.drawTextsLayoutTopSide {
       apertureDictionary.append (inProductData.layoutFrontTexts)
@@ -93,22 +93,27 @@ extension ProjectDocument {
     }
     if inDescriptor.drawTextsLegendBottomSide {
       apertureDictionary.append (inProductData.legendBackTexts)
-      apertureDictionary.append (lines: inProductData.backLines)
+      apertureDictionary.append (oblongs: inProductData.backLines)
     }
     if inDescriptor.drawVias {
-      for (location, diameter) in inProductData.viaPads {
-        apertureDictionary.appendFlash (at: location, for: diameter)
-      }
+      apertureDictionary.append (circles: inProductData.viaPads)
     }
     if inDescriptor.drawTracksTopSide {
-      apertureDictionary.append (lines: inProductData.frontTracks)
+      apertureDictionary.append (oblongs: inProductData.frontTracks)
     }
     if inDescriptor.drawTracksBottomSide {
-      apertureDictionary.append (lines: inProductData.backTracks)
+      apertureDictionary.append (oblongs: inProductData.backTracks)
     }
-
-
-
+    if inDescriptor.drawPadsTopSide {
+      apertureDictionary.append (circles: inProductData.frontCircularPads)
+      apertureDictionary.append (oblongs: inProductData.frontOblongPads)
+      polygons += inProductData.frontPolygonPads
+    }
+    if inDescriptor.drawPadsBottomSide {
+      apertureDictionary.append (circles: inProductData.backCircularPads)
+      apertureDictionary.append (oblongs: inProductData.backOblongPads)
+      polygons += inProductData.backPolygonPads
+    }
   //--- Write aperture diameters
     let keys = apertureDictionary.keys.sorted ()
     var idx = 10
@@ -130,8 +135,14 @@ extension ProjectDocument {
   //--- Write polygon fills
     for poly in polygons {
       s += "G36*\n"
-      for str in poly {
-        s += str + "*\n"
+      let x0 = cocoaToMilTenth (poly.origin.x)
+      let y0 = cocoaToMilTenth (poly.origin.y)
+      s.append ("X\(x0)Y\(y0)D02*")
+      s += "G01*\n"
+      for p in poly.points {
+        let x = cocoaToMilTenth (p.x)
+        let y = cocoaToMilTenth (p.y)
+        s.append ("X\(x)Y\(y)D01*")
       }
       s += "G37*\n"
     }
@@ -195,16 +206,18 @@ extension Dictionary where Key == CGFloat, Value == [String] {
 
   //····················································································································
 
-  mutating func appendFlash (at inLocation : NSPoint, for inAperture : CGFloat) {
-    let x = cocoaToMilTenth (inLocation.x)
-    let y = cocoaToMilTenth (inLocation.y)
-    let flash = "X\(x)Y\(y)D03"
-    self.append ([flash], for: inAperture)
+  mutating func append (circles inCircles : [ProductCircle]) {
+    for circle in inCircles {
+      let x = cocoaToMilTenth (circle.center.x)
+      let y = cocoaToMilTenth (circle.center.y)
+      let flash = "X\(x)Y\(y)D03"
+      self.append ([flash], for: circle.diameter)
+    }
   }
 
   //····················································································································
 
-  mutating func append (lines inLines : [ProductLine]) {
+  mutating func append (oblongs inLines : [ProductOblong]) {
     for segment in inLines {
       let x1 = cocoaToMilTenth (segment.p1.x)
       let y1 = cocoaToMilTenth (segment.p1.y)
@@ -214,6 +227,19 @@ extension Dictionary where Key == CGFloat, Value == [String] {
       self.append (line, for: segment.width)
     }
   }
+
+  //····················································································································
+
+//  mutating func append (polygons inPolygons : [ProductPolygon]) {
+//    for polygon in inPolygons {
+//      let x1 = cocoaToMilTenth (segment.p1.x)
+//      let y1 = cocoaToMilTenth (segment.p1.y)
+//      let x2 = cocoaToMilTenth (segment.p2.x)
+//      let y2 = cocoaToMilTenth (segment.p2.y)
+//      let line = ["X\(x1)Y\(y1)D02", "X\(x2)Y\(y2)D01"]
+//      self.append (line, for: segment.width)
+//    }
+//  }
 
   //····················································································································
 
