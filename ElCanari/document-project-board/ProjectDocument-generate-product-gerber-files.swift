@@ -62,10 +62,6 @@ extension ProjectDocument {
     var polygons = [[String]] ()
     if inDescriptor.drawBoardLimits {
       apertureDictionary.append ([inProductData.boardLimitWidth : [inProductData.boardLimitPath]])
-//      var drawings = [String] ()
-//      inProductData.boardLimitPolygon.appendGerberCodeTo (&drawings)
-//      let apertureString = "C,\(String(format: "%.4f", cocoaToInch (inProductData.boardLimitWidth)))"
-//      apertureDictionary [apertureString] = (apertureDictionary [apertureString] ?? []) + drawings
     }
     if inDescriptor.drawPackageLegendTopSide {
       apertureDictionary.append (inProductData.frontPackageLegend)
@@ -78,6 +74,12 @@ extension ProjectDocument {
     }
     if inDescriptor.drawComponentNamesBottomSide {
       apertureDictionary.append (inProductData.backComponentNames)
+    }
+    if inDescriptor.drawComponentValuesTopSide {
+      apertureDictionary.append (inProductData.frontComponentValues)
+    }
+    if inDescriptor.drawComponentValuesBottomSide {
+      apertureDictionary.append (inProductData.backComponentValues)
     }
 
 

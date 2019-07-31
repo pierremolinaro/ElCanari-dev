@@ -56,6 +56,12 @@ extension ProjectDocument {
     if inDescriptor.drawComponentNamesBottomSide {
       pathes.append (inProductData.backComponentNames)
     }
+    if inDescriptor.drawComponentValuesTopSide {
+      pathes.append (inProductData.frontComponentValues)
+    }
+    if inDescriptor.drawComponentValuesBottomSide {
+      pathes.append (inProductData.backComponentValues)
+    }
 
 
     let shape = EBShape (stroke: pathes, .black)

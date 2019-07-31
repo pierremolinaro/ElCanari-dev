@@ -17,6 +17,7 @@ extension ProjectDocument {
   internal func buildProductData () -> ProductData {
     let (frontPackageLegend, backPackageLegend) = self.buildPackageLegend ()
     let (frontComponentNames, backComponentNames) = self.buildComponentNamePathes ()
+    let (frontComponentValues, backComponentValues) = self.buildComponentValuePathes ()
 
   //---
     return ProductData (
@@ -27,7 +28,9 @@ extension ProjectDocument {
       frontPackageLegend: frontPackageLegend,
       backPackageLegend: backPackageLegend,
       frontComponentNames: frontComponentNames,
-      backComponentNames: backComponentNames
+      backComponentNames: backComponentNames,
+      frontComponentValues: frontComponentValues,
+      backComponentValues: backComponentValues
     )
   }
   
@@ -231,6 +234,42 @@ extension ProjectDocument {
 
   //····················································································································
 
+  private func buildComponentValuePathes () -> ([CGFloat : [EBLinePath]], [CGFloat : [EBLinePath]]) {
+    var frontComponentValues = [CGFloat : [EBLinePath]] () // Aperture, path
+    var backComponentValues = [CGFloat : [EBLinePath]] () // Aperture, path
+    for object in self.rootObject.mBoardObjects {
+      if let component = object as? ComponentInProject {
+        if component.mValueIsVisibleInBoard, let fontDescriptor = component.mValueFont!.descriptor {
+          let (textBP, _, _, _, _) = boardText_displayInfos (
+            x: component.mXValue + component.mX,
+            y: component.mYValue + component.mY,
+            string: component.mComponentValue,
+            fontSize: component.mValueFontSize,
+            fontDescriptor,
+            horizontalAlignment: .center,
+            verticalAlignment: .center,
+            frontSide: component.mSide == .front,
+            rotation: component.mValueRotation,
+            weight: 1.0,
+            oblique: false,
+            extraWidth: 0.0
+          )
+          let aperture = textBP.lineWidth
+          let pathArray = textBP.pointsByFlattening (withFlatness: 0.1)
+          switch component.mSide {
+          case .back :
+            backComponentValues [aperture] = (backComponentValues [aperture] ?? []) + pathArray
+          case .front :
+            frontComponentValues [aperture] = (frontComponentValues [aperture] ?? []) + pathArray
+          }
+        }
+      }
+    }
+    return (frontComponentValues, backComponentValues)
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -244,6 +283,8 @@ struct ProductData { // All in Cocoa Unit
   let backPackageLegend :  [CGFloat : [EBLinePath]]
   let frontComponentNames : [CGFloat : [EBLinePath]]
   let backComponentNames:  [CGFloat : [EBLinePath]]
+  let frontComponentValues : [CGFloat : [EBLinePath]]
+  let backComponentValues : [CGFloat : [EBLinePath]]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
