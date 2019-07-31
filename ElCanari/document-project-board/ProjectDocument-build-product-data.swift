@@ -18,6 +18,7 @@ extension ProjectDocument {
     let (frontPackageLegend, backPackageLegend) = self.buildPackageLegend ()
     let (frontComponentNames, backComponentNames) = self.buildComponentNamePathes ()
     let (frontComponentValues, backComponentValues) = self.buildComponentValuePathes ()
+    let (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts) = self.buildTextPathes ()
 
   //---
     return ProductData (
@@ -30,7 +31,11 @@ extension ProjectDocument {
       frontComponentNames: frontComponentNames,
       backComponentNames: backComponentNames,
       frontComponentValues: frontComponentValues,
-      backComponentValues: backComponentValues
+      backComponentValues: backComponentValues,
+      legendFrontTexts: legendFrontTexts,
+      layoutFrontTexts: layoutFrontTexts,
+      layoutBackTexts: layoutBackTexts,
+      legendBackTexts: legendBackTexts
     )
   }
   
@@ -270,6 +275,46 @@ extension ProjectDocument {
 
   //····················································································································
 
+  private func buildTextPathes () -> ([CGFloat : [EBLinePath]], [CGFloat : [EBLinePath]], [CGFloat : [EBLinePath]], [CGFloat : [EBLinePath]]) {
+    var legendFrontTexts = [CGFloat : [EBLinePath]] () // Aperture, path
+    var layoutFrontTexts = [CGFloat : [EBLinePath]] () // Aperture, path
+    var layoutBackTexts = [CGFloat : [EBLinePath]] () // Aperture, path
+    var legendBackTexts = [CGFloat : [EBLinePath]] () // Aperture, path
+    for object in self.rootObject.mBoardObjects {
+      if let text = object as? BoardText {
+        let (textBP, _, _, _, _) = boardText_displayInfos (
+          x: text.mX,
+          y: text.mY,
+          string: text.mText,
+          fontSize: text.mFontSize,
+          text.mFont!.descriptor!,
+          horizontalAlignment: text.mHorizontalAlignment,
+          verticalAlignment: text.mVerticalAlignment,
+          frontSide: (text.mLayer == .layoutFront) || (text.mLayer == .legendFront),
+          rotation: text.mRotation,
+          weight: text.mWeight,
+          oblique: text.mOblique,
+          extraWidth: 0.0
+        )
+        let aperture = textBP.lineWidth
+        let pathArray = textBP.pointsByFlattening (withFlatness: 0.1)
+        switch text.mLayer {
+        case .legendFront :
+          legendFrontTexts [aperture] = (legendFrontTexts [aperture] ?? []) + pathArray
+        case .layoutFront :
+          layoutFrontTexts [aperture] = (layoutFrontTexts [aperture] ?? []) + pathArray
+        case .layoutBack :
+          layoutBackTexts [aperture] = (layoutBackTexts [aperture] ?? []) + pathArray
+        case .legendBack :
+          legendBackTexts [aperture] = (legendBackTexts [aperture] ?? []) + pathArray
+        }
+      }
+    }
+    return (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts)
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -285,6 +330,10 @@ struct ProductData { // All in Cocoa Unit
   let backComponentNames:  [CGFloat : [EBLinePath]]
   let frontComponentValues : [CGFloat : [EBLinePath]]
   let backComponentValues : [CGFloat : [EBLinePath]]
+  let legendFrontTexts : [CGFloat : [EBLinePath]]
+  let layoutFrontTexts : [CGFloat : [EBLinePath]]
+  let layoutBackTexts : [CGFloat : [EBLinePath]]
+  let legendBackTexts : [CGFloat : [EBLinePath]]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -81,6 +81,18 @@ extension ProjectDocument {
     if inDescriptor.drawComponentValuesBottomSide {
       apertureDictionary.append (inProductData.backComponentValues)
     }
+    if inDescriptor.drawTextsLegendTopSide {
+      apertureDictionary.append (inProductData.legendFrontTexts)
+    }
+    if inDescriptor.drawTextsLayoutTopSide {
+      apertureDictionary.append (inProductData.layoutFrontTexts)
+    }
+    if inDescriptor.drawTextsLayoutBottomSide {
+      apertureDictionary.append (inProductData.layoutBackTexts)
+    }
+    if inDescriptor.drawTextsLegendBottomSide {
+      apertureDictionary.append (inProductData.legendBackTexts)
+    }
 
 
 

@@ -62,6 +62,18 @@ extension ProjectDocument {
     if inDescriptor.drawComponentValuesBottomSide {
       pathes.append (inProductData.backComponentValues)
     }
+    if inDescriptor.drawTextsLegendTopSide {
+      pathes.append (inProductData.legendFrontTexts)
+    }
+    if inDescriptor.drawTextsLayoutTopSide {
+      pathes.append (inProductData.layoutFrontTexts)
+    }
+    if inDescriptor.drawTextsLayoutBottomSide {
+      pathes.append (inProductData.layoutBackTexts)
+    }
+    if inDescriptor.drawTextsLegendBottomSide {
+      pathes.append (inProductData.legendBackTexts)
+    }
 
 
     let shape = EBShape (stroke: pathes, .black)
