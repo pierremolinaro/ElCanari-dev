@@ -58,7 +58,7 @@ extension ProjectDocument {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
     var s = "%FSLAX24Y24*%\n" // A = Absolute coordinates, 24 = all data are in 2.4 form
     s += "%MOIN*%\n" // length unit is inch
-    var apertureDictionary = [String : [String]] ()
+    var apertureDictionary = [CGFloat : [String]] ()
     var polygons = [[String]] ()
     if inDescriptor.drawBoardLimits {
       apertureDictionary.append ([inProductData.boardLimitWidth : [inProductData.boardLimitPath]])
@@ -93,7 +93,11 @@ extension ProjectDocument {
     if inDescriptor.drawTextsLegendBottomSide {
       apertureDictionary.append (inProductData.legendBackTexts)
     }
-
+    if inDescriptor.drawVias {
+      for (location, diameter) in inProductData.viaPads {
+        apertureDictionary.appendFlash (at: location, for: diameter)
+      }
+    }
 
 
 
@@ -101,7 +105,8 @@ extension ProjectDocument {
     let keys = apertureDictionary.keys.sorted ()
     var idx = 10
     for aperture in keys {
-      s += "%ADD\(idx)\(aperture)*%\n"
+      let apertureString = "C,\(String(format: "%.4f", cocoaToInch (aperture)))"
+      s += "%ADD\(idx)\(apertureString)*%\n"
       idx += 1
     }
   //--- Write drawings
@@ -160,13 +165,13 @@ extension EBLinePath {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-extension Dictionary where Key == String, Value == [String] {
+extension Dictionary where Key == CGFloat, Value == [String] {
 
   //····················································································································
 
   mutating func append (_ inStringArray : [String], for inAperture : CGFloat) {
-   let apertureString = "C,\(String(format: "%.4f", cocoaToInch (inAperture)))"
-   self [apertureString] = (self [apertureString] ?? []) + inStringArray
+ //  let apertureString = "C,\(String(format: "%.4f", cocoaToInch (inAperture)))"
+   self [inAperture] = (self [inAperture] ?? []) + inStringArray
   }
 
   //····················································································································
@@ -179,6 +184,15 @@ extension Dictionary where Key == String, Value == [String] {
       }
       self.append (drawings, for: aperture)
     }
+  }
+
+  //····················································································································
+
+  mutating func appendFlash (at inLocation : NSPoint, for inAperture : CGFloat) {
+    let x = cocoaToMilTenth (inLocation.x)
+    let y = cocoaToMilTenth (inLocation.y)
+    let flash = "X\(x)Y\(y)D03"
+    self.append ([flash], for: inAperture)
   }
 
   //····················································································································

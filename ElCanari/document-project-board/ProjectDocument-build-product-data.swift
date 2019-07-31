@@ -19,6 +19,7 @@ extension ProjectDocument {
     let (frontComponentNames, backComponentNames) = self.buildComponentNamePathes ()
     let (frontComponentValues, backComponentValues) = self.buildComponentValuePathes ()
     let (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts) = self.buildTextPathes ()
+    let viaPads = self.buildViaPads ()
 
   //---
     return ProductData (
@@ -35,7 +36,8 @@ extension ProjectDocument {
       legendFrontTexts: legendFrontTexts,
       layoutFrontTexts: layoutFrontTexts,
       layoutBackTexts: layoutBackTexts,
-      legendBackTexts: legendBackTexts
+      legendBackTexts: legendBackTexts,
+      viaPads: viaPads
     )
   }
   
@@ -315,6 +317,20 @@ extension ProjectDocument {
 
   //····················································································································
 
+  private func buildViaPads () -> [(NSPoint, CGFloat)] { // Center, diameter
+    var result = [(NSPoint, CGFloat)] ()
+    for object in self.rootObject.mBoardObjects {
+      if let via = object as? BoardConnector, let isVia = via.isVia, isVia {
+        let p = via.location!.cocoaPoint
+        let padDiameter = canariUnitToCocoa (via.actualPadDiameter!)
+        result.append ((p, padDiameter))
+      }
+    }
+    return result
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -334,6 +350,7 @@ struct ProductData { // All in Cocoa Unit
   let layoutFrontTexts : [CGFloat : [EBLinePath]]
   let layoutBackTexts : [CGFloat : [EBLinePath]]
   let legendBackTexts : [CGFloat : [EBLinePath]]
+  let viaPads : [(NSPoint, CGFloat)] // Center, diameter
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

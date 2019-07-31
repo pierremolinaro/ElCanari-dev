@@ -40,43 +40,54 @@ extension ProjectDocument {
                                      _ inProductData : ProductData) throws {
     let path = inPath + inDescriptor.fileExtension + ".pdf"
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
-    var pathes = [EBBezierPath] ()
+    var strokePathes = [EBBezierPath] ()
     if inDescriptor.drawBoardLimits {
-      pathes.append ([inProductData.boardLimitWidth : [inProductData.boardLimitPath]])
+      strokePathes.append ([inProductData.boardLimitWidth : [inProductData.boardLimitPath]])
     }
     if inDescriptor.drawPackageLegendTopSide {
-      pathes.append (inProductData.frontPackageLegend)
+      strokePathes.append (inProductData.frontPackageLegend)
     }
     if inDescriptor.drawPackageLegendBottomSide {
-      pathes.append (inProductData.backPackageLegend)
+      strokePathes.append (inProductData.backPackageLegend)
     }
     if inDescriptor.drawComponentNamesTopSide {
-      pathes.append (inProductData.frontComponentNames)
+      strokePathes.append (inProductData.frontComponentNames)
     }
     if inDescriptor.drawComponentNamesBottomSide {
-      pathes.append (inProductData.backComponentNames)
+      strokePathes.append (inProductData.backComponentNames)
     }
     if inDescriptor.drawComponentValuesTopSide {
-      pathes.append (inProductData.frontComponentValues)
+      strokePathes.append (inProductData.frontComponentValues)
     }
     if inDescriptor.drawComponentValuesBottomSide {
-      pathes.append (inProductData.backComponentValues)
+      strokePathes.append (inProductData.backComponentValues)
     }
     if inDescriptor.drawTextsLegendTopSide {
-      pathes.append (inProductData.legendFrontTexts)
+      strokePathes.append (inProductData.legendFrontTexts)
     }
     if inDescriptor.drawTextsLayoutTopSide {
-      pathes.append (inProductData.layoutFrontTexts)
+      strokePathes.append (inProductData.layoutFrontTexts)
     }
     if inDescriptor.drawTextsLayoutBottomSide {
-      pathes.append (inProductData.layoutBackTexts)
+      strokePathes.append (inProductData.layoutBackTexts)
     }
     if inDescriptor.drawTextsLegendBottomSide {
-      pathes.append (inProductData.legendBackTexts)
+      strokePathes.append (inProductData.legendBackTexts)
+    }
+    if inDescriptor.drawVias {
+      for (location, diameter) in inProductData.viaPads {
+        var bp = EBBezierPath ()
+        bp.lineWidth = diameter
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
+        bp.move (to: location)
+        bp.line (to: location)
+        strokePathes.append (bp)
+      }
     }
 
 
-    let shape = EBShape (stroke: pathes, .black)
+    let shape = EBShape (stroke: strokePathes, .black)
     let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: .white)
     try data.write (to: URL (fileURLWithPath: path))
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
