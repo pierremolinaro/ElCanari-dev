@@ -541,12 +541,12 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
-  func pointsByFlattening (withFlatness inFlatness : CGFloat) -> [LinePath] { // Array of pathes
+  func pointsByFlattening (withFlatness inFlatness : CGFloat) -> [EBLinePath] { // Array of pathes
     let savedDefaultFlatness = NSBezierPath.defaultFlatness
     NSBezierPath.defaultFlatness = inFlatness
     let flattenedBP = self.mPath.flattened
     NSBezierPath.defaultFlatness = savedDefaultFlatness
-    var result = [LinePath] ()
+    var result = [EBLinePath] ()
     var curvePoints = [NSPoint] (repeating: .zero, count: 3)
     var optionalStartPoint : NSPoint? = nil
     var linePoints = [NSPoint] ()
@@ -555,7 +555,7 @@ struct EBBezierPath : Hashable {
       switch type {
       case .moveTo:
         if let startPoint = optionalStartPoint, linePoints.count > 0 {
-          let path = LinePath (origin: startPoint, lines: linePoints, closed: false)
+          let path = EBLinePath (origin: startPoint, lines: linePoints, closed: false)
           result.append (path)
         }
         optionalStartPoint = curvePoints[0]
@@ -566,7 +566,7 @@ struct EBBezierPath : Hashable {
         ()
       case .closePath:
         if let startPoint = optionalStartPoint, linePoints.count > 0  {
-          let path = LinePath (origin: startPoint, lines: linePoints, closed: true)
+          let path = EBLinePath (origin: startPoint, lines: linePoints, closed: true)
           result.append (path)
           optionalStartPoint = nil
           linePoints.removeAll ()
@@ -576,46 +576,10 @@ struct EBBezierPath : Hashable {
       }
     }
     if let startPoint = optionalStartPoint, linePoints.count > 0 {
-      let path = LinePath (origin: startPoint, lines: linePoints, closed: false)
+      let path = EBLinePath (origin: startPoint, lines: linePoints, closed: false)
       result.append (path)
     }
     return result
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// LinePath
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct LinePath {
-  let origin : NSPoint
-  let lines : [NSPoint]
-  let closed : Bool
-
-  //····················································································································
-
-  func transformed (by inAffineTransform : AffineTransform) -> LinePath {
-    let transformedOrigin = inAffineTransform.transform (self.origin)
-    var transformedLines = [NSPoint] ()
-    for p in self.lines {
-      transformedLines.append (inAffineTransform.transform (p))
-    }
-    return LinePath (origin: transformedOrigin, lines: transformedLines, closed: self.closed)
-  }
-
-  //····················································································································
-
-  func appendToBezierPath (_ ioBezierPath : inout EBBezierPath) {
-    ioBezierPath.move (to: self.origin)
-    for p in self.lines {
-      ioBezierPath.line (to:p)
-    }
-    if self.closed {
-      ioBezierPath.close ()
-    }
   }
 
   //····················································································································

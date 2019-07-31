@@ -1,0 +1,46 @@
+//
+//  EBBezierPath.swift
+//  ElCanari
+//
+//  Created by Pierre Molinaro on 22/06/2019.
+//
+
+import Cocoa
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// EBLinePath
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct EBLinePath {
+  let origin : NSPoint
+  let lines : [NSPoint]
+  let closed : Bool
+
+  //····················································································································
+
+  func transformed (by inAffineTransform : AffineTransform) -> EBLinePath {
+    let transformedOrigin = inAffineTransform.transform (self.origin)
+    var transformedLines = [NSPoint] ()
+    for p in self.lines {
+      transformedLines.append (inAffineTransform.transform (p))
+    }
+    return EBLinePath (origin: transformedOrigin, lines: transformedLines, closed: self.closed)
+  }
+
+  //····················································································································
+
+  func appendToBezierPath (_ ioBezierPath : inout EBBezierPath) {
+    ioBezierPath.move (to: self.origin)
+    for p in self.lines {
+      ioBezierPath.line (to:p)
+    }
+    if self.closed {
+      ioBezierPath.close ()
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

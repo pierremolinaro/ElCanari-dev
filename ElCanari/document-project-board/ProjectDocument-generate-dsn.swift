@@ -142,7 +142,7 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  private func buildSignalPolygon () -> LinePath { // Points in millimeters
+  private func buildSignalPolygon () -> EBLinePath { // Points in millimeters
     var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
     for curve in self.rootObject.mBorderCurves {
       let descriptor = curve.descriptor!
@@ -481,7 +481,7 @@ fileprivate func addDeviceLibrary (_ ioString : inout String,
 
 fileprivate func addBoardBoundary (_ ioString : inout String,
                                    _ inBoardBoundBox : CanariRect,
-                                   _ inSignalPolygonVertices : LinePath) { // In millimeters
+                                   _ inSignalPolygonVertices : EBLinePath) { // In millimeters
   let bbLeft = canariUnitToMillimeter (inBoardBoundBox.origin.x)
   let bbBottom = canariUnitToMillimeter (inBoardBoundBox.origin.y)
   let bbRight = bbLeft + canariUnitToMillimeter (inBoardBoundBox.size.width)
