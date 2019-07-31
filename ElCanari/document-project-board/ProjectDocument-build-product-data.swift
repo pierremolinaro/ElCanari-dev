@@ -16,21 +16,24 @@ extension ProjectDocument {
 
   internal func buildProductData () -> ProductData {
     let (frontPackageLegend, backPackageLegend) = self.buildPackageLegend ()
+    let (frontComponentNames, backComponentNames) = self.buildComponentNamePathes ()
 
   //---
     return ProductData (
       boardBoundBox: self.rootObject.boardBoundBox!.cocoaRect,
-      boardLimitPolygon: self.buildBoardLimitPolygon (),
+      boardLimitPath: self.buildBoardLimitPath (),
       boardLimitWidth: canariUnitToCocoa (self.rootObject.mBoardLimitsWidth),
       holeDictionary: self.buildHoleDictionary (),
       frontPackageLegend: frontPackageLegend,
-      backPackageLegend: backPackageLegend
+      backPackageLegend: backPackageLegend,
+      frontComponentNames: frontComponentNames,
+      backComponentNames: backComponentNames
     )
   }
   
   //····················································································································
 
-  private func buildBoardLimitPolygon () -> EBLinePath {
+  private func buildBoardLimitPath () -> EBLinePath {
     var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
     for curve in self.rootObject.mBorderCurves {
       let descriptor = curve.descriptor!
@@ -192,17 +195,55 @@ extension ProjectDocument {
 
   //····················································································································
 
+  private func buildComponentNamePathes () -> ([CGFloat : [EBLinePath]], [CGFloat : [EBLinePath]]) {
+    var frontComponentNames = [CGFloat : [EBLinePath]] () // Aperture, path
+    var backComponentNames = [CGFloat : [EBLinePath]] () // Aperture, path
+    for object in self.rootObject.mBoardObjects {
+      if let component = object as? ComponentInProject {
+        if component.mNameIsVisibleInBoard, let fontDescriptor = component.mNameFont!.descriptor {
+          let (textBP, _, _, _, _) = boardText_displayInfos (
+            x: component.mXName + component.mX,
+            y: component.mYName + component.mY,
+            string: component.componentName!,
+            fontSize: component.mNameFontSize,
+            fontDescriptor,
+            horizontalAlignment: .center,
+            verticalAlignment: .center,
+            frontSide: component.mSide == .front,
+            rotation: component.mNameRotation,
+            weight: 1.0,
+            oblique: false,
+            extraWidth: 0.0
+          )
+          let aperture = textBP.lineWidth
+          let pathArray = textBP.pointsByFlattening (withFlatness: 0.1)
+          switch component.mSide {
+          case .back :
+            backComponentNames [aperture] = (backComponentNames [aperture] ?? []) + pathArray
+          case .front :
+            frontComponentNames [aperture] = (frontComponentNames [aperture] ?? []) + pathArray
+          }
+        }
+      }
+    }
+    return (frontComponentNames, backComponentNames)
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct ProductData { // All in Cocoa Unit
   let boardBoundBox : NSRect
-  let boardLimitPolygon : EBLinePath
+  let boardLimitPath : EBLinePath
   let boardLimitWidth : CGFloat
   let holeDictionary : [CGFloat : [(NSPoint, NSPoint)]]
   let frontPackageLegend : [CGFloat : [EBLinePath]]
   let backPackageLegend :  [CGFloat : [EBLinePath]]
+  let frontComponentNames : [CGFloat : [EBLinePath]]
+  let backComponentNames:  [CGFloat : [EBLinePath]]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

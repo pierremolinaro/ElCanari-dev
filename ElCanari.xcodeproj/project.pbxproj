@@ -1722,6 +1722,10 @@
 		CFAA044922F1BA3300030A0C /* ProjectDocument-build-product-data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA044722F1BA3300030A0C /* ProjectDocument-build-product-data.swift */; };
 		CFAA052F22F1D4F300030A0C /* EBLinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA052E22F1D4F300030A0C /* EBLinePath.swift */; };
 		CFAA053022F1D4F300030A0C /* EBLinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA052E22F1D4F300030A0C /* EBLinePath.swift */; };
+		CFAA053222F1DE8000030A0C /* ProjectDocument-generate-product-gerber-files.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA053122F1DE8000030A0C /* ProjectDocument-generate-product-gerber-files.swift */; };
+		CFAA053322F1DE8000030A0C /* ProjectDocument-generate-product-gerber-files.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA053122F1DE8000030A0C /* ProjectDocument-generate-product-gerber-files.swift */; };
+		CFAA053522F1DF2D00030A0C /* ProjectDocument-generate-product-pdf-files.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA053422F1DF2D00030A0C /* ProjectDocument-generate-product-pdf-files.swift */; };
+		CFAA053622F1DF2D00030A0C /* ProjectDocument-generate-product-pdf-files.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA053422F1DF2D00030A0C /* ProjectDocument-generate-product-pdf-files.swift */; };
 		CFAA74191B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA74181B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift */; };
 		CFAA741D1B46AE1100327BAE /* CanariViewWithKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA741C1B46AE1100327BAE /* CanariViewWithKeyView.swift */; };
 		CFAA756222E77D68002F7F36 /* freerouter-pm.app in Resources */ = {isa = PBXBuildFile; fileRef = CFAA756122E77D68002F7F36 /* freerouter-pm.app */; };
@@ -3160,6 +3164,8 @@
 		CFA655CD21060672001E5067 /* action-MergerDocument-moveUpAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-moveUpAction.swift"; sourceTree = "<group>"; };
 		CFAA044722F1BA3300030A0C /* ProjectDocument-build-product-data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-build-product-data.swift"; sourceTree = "<group>"; };
 		CFAA052E22F1D4F300030A0C /* EBLinePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBLinePath.swift; sourceTree = "<group>"; };
+		CFAA053122F1DE8000030A0C /* ProjectDocument-generate-product-gerber-files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-generate-product-gerber-files.swift"; sourceTree = "<group>"; };
+		CFAA053422F1DF2D00030A0C /* ProjectDocument-generate-product-pdf-files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-generate-product-pdf-files.swift"; sourceTree = "<group>"; };
 		CFAA74181B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-ArtworkFileGenerationParameters.swift"; sourceTree = "<group>"; };
 		CFAA741C1B46AE1100327BAE /* CanariViewWithKeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariViewWithKeyView.swift; sourceTree = "<group>"; };
 		CFAA756122E77D68002F7F36 /* freerouter-pm.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = "freerouter-pm.app"; sourceTree = "<group>"; };
@@ -4987,6 +4993,8 @@
 				CF3414D922DFBDE800D0CEB6 /* ProjectDocument-erc.swift */,
 				CF049BDB22E50180000B4845 /* ProjectDocument-generate-dsn.swift */,
 				CFF4684022F0791500AEC761 /* ProjectDocument-generate-product-files.swift */,
+				CFAA053122F1DE8000030A0C /* ProjectDocument-generate-product-gerber-files.swift */,
+				CFAA053422F1DF2D00030A0C /* ProjectDocument-generate-product-pdf-files.swift */,
 				CF94213C22E8C7980043D7DD /* ProjectDocument-import-ses.swift */,
 			);
 			name = "document — project — board";
@@ -5384,6 +5392,7 @@
 				CF30CDE921C5709800CFE9CC /* entity-PackagePad.swift in Sources */,
 				CF6A65F91B468ACF00BA5135 /* CanariSegmentedControl.swift in Sources */,
 				CF69ABD321A6C08100F5E49A /* entity-SymbolPin.swift in Sources */,
+				CFAA053222F1DE8000030A0C /* ProjectDocument-generate-product-gerber-files.swift in Sources */,
 				CF186B031B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift in Sources */,
 				CF4EC7382284988100902FBB /* extension-SheetInProject-connect.swift in Sources */,
 				CFC5BB592232D44D00E03849 /* transient-SymbolInstanceInDevice-unconnectedPins.swift in Sources */,
@@ -6108,6 +6117,7 @@
 				CFB1DB312282D31F005F9811 /* entity-ComponentInProject.swift in Sources */,
 				CFB4801A20DC1B8B00CF9639 /* entity-BoardModel.swift in Sources */,
 				CF9D4BF4227F79A9006E2035 /* transient-DeviceInProject-packageNames.swift in Sources */,
+				CFAA053522F1DF2D00030A0C /* ProjectDocument-generate-product-pdf-files.swift in Sources */,
 				CF7EF0B522D3679F0047FDE4 /* tomany-BoardTrack.swift in Sources */,
 				CFF5C1AD22DCB06800CEC1BA /* transient-BoardConnector-viaDefaultPadDiameter.swift in Sources */,
 				CF3D745321A802F9004F6C43 /* extension-HorizontalAlignment.swift in Sources */,
@@ -6457,6 +6467,7 @@
 				CF518E222282CFAE002BCEE5 /* controller-array-ProjectDocument-schematicObjectsController.swift in Sources */,
 				CF5C4CD0219F04D600EAC52A /* EBGraphicManagedObject.swift in Sources */,
 				CF5C4CD2219F04D600EAC52A /* controller-table-view-MergerDocument-mBoardModelController.swift in Sources */,
+				CFAA053322F1DE8000030A0C /* ProjectDocument-generate-product-gerber-files.swift in Sources */,
 				CFA430AA229AEC41000AA8C8 /* tomany-SymbolOval.swift in Sources */,
 				CF5C4CD3219F04D600EAC52A /* EBButton.swift in Sources */,
 				CF4EC72D228492FF00902FBB /* extension-SheetInProject-wires-containing-point.swift in Sources */,
@@ -7181,6 +7192,7 @@
 				CF5C4D6E219F04D600EAC52A /* transient-ArtworkDocument-mStatusMessage.swift in Sources */,
 				CF5C4D6F219F04D600EAC52A /* transient-MergerDocument-incorrectDocumentFileErrorMessage.swift in Sources */,
 				CFA42F90229AEACF000AA8C8 /* toone-PackageInDevice.swift in Sources */,
+				CFAA053622F1DF2D00030A0C /* ProjectDocument-generate-product-pdf-files.swift in Sources */,
 				CF5C4D70219F04D600EAC52A /* controller-array-MergerDocument-mBoardInstanceController.swift in Sources */,
 				CFE85AAC21A5D76600991A66 /* transient-SymbolText-selectionDisplay.swift in Sources */,
 				CF5C4D72219F04D600EAC52A /* transient-MergerRoot-boardDisplayRect.swift in Sources */,
