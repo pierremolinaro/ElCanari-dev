@@ -480,7 +480,6 @@ extension MergerDocument {
           let right = canariUnitToMilTenth (r.left + r.width - lineWidth / 2)
           let bottom = canariUnitToMilTenth (r.bottom + lineWidth / 2)
           let top = canariUnitToMilTenth (r.bottom + r.height - lineWidth / 2)
-          // NSLog ("instance \(r.x) \(r.y) \(r.x + r.width) \(r.y + r.height), \(board.myModel_property.propval!.modelLimitWidth)")
           var drawings = [String] ()
           drawings.append ("X\( left)Y\(bottom)D02") // Move to
           drawings.append ("X\( left)Y\(   top)D01") // Line to

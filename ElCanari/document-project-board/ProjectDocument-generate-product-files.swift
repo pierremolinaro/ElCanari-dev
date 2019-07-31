@@ -101,21 +101,31 @@ extension ProjectDocument {
 
   private func performProductFilesGeneration (atPath inDocumentFilePathWithoutExtension : String, _ inArtwork : ArtworkRoot) throws {
     let baseName = inDocumentFilePathWithoutExtension.lastPathComponent
-    let boardBoundBox = self.rootObject.boardBoundBox!.cocoaRect
-  //--- Build drill dictionary
-    let holeDictionary = self.buildHoleDictionary ()
+  //--- Build produc data dictionary
+    let productData = ProductData (
+      boardBoundBox: self.rootObject.boardBoundBox!.cocoaRect,
+      boardLimitPolygon: self.buildBoardLimitPolygon (),
+      boardLimitWidth: canariUnitToCocoa (self.rootObject.mBoardLimitsWidth),
+      holeDictionary: self.buildHoleDictionary ()
+    )
   //--- Create gerber directory (first, delete existing dir)
     let gerberDirPath = inDocumentFilePathWithoutExtension + "-gerber"
     let generatedGerberFilePath = gerberDirPath + "/" + baseName + "."
     try self.removeAndCreateDirectory (atPath: gerberDirPath)
   //--- Write gerber files
-    try self.writeGerberDrillFile (atPath: generatedGerberFilePath + inArtwork.drillDataFileExtension, holeDictionary)
+    try self.writeGerberDrillFile (atPath: generatedGerberFilePath + inArtwork.drillDataFileExtension, productData)
+    for productDescriptor in inArtwork.fileGenerationParameterArray {
+      try self.writeGerberProductFile (atPath: generatedGerberFilePath, productDescriptor)
+    }
   //--- Create PDF directory (first, delete existing dir)
     let pdfDirPath = inDocumentFilePathWithoutExtension + "-pdf"
     let generatedPDFFilePath = pdfDirPath + "/" + baseName + "."
     try self.removeAndCreateDirectory (atPath: pdfDirPath)
   //--- Write PDF files
-    try self.writePDFDrillFile (atPath: generatedPDFFilePath + inArtwork.drillDataFileExtension + ".pdf", holeDictionary, boardBoundBox)
+    try self.writePDFDrillFile (atPath: generatedPDFFilePath + inArtwork.drillDataFileExtension + ".pdf", productData)
+    for productDescriptor in inArtwork.fileGenerationParameterArray {
+      try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, productData)
+    }
   }
 
   //····················································································································
@@ -204,11 +214,80 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func writeGerberDrillFile (atPath inPath : String, _ inHoleDictionary : [Int : [(NSPoint, NSPoint)]]) throws {
+  private func buildBoardLimitPolygon () -> [NSPoint] {
+    var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
+    for curve in self.rootObject.mBorderCurves {
+      let descriptor = curve.descriptor!
+      curveDictionary [descriptor.p1] = descriptor
+    }
+    var bp = EBBezierPath ()
+    var descriptor = self.rootObject.mBorderCurves [0].descriptor!
+    let p = descriptor.p1
+    bp.move (to: p.cocoaPoint)
+    var loop = true
+    while loop {
+      switch descriptor.shape {
+      case .line :
+        bp.line (to: descriptor.p2.cocoaPoint)
+      case .bezier :
+        let cp1 = descriptor.cp1.cocoaPoint
+        let cp2 = descriptor.cp2.cocoaPoint
+        bp.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
+      }
+      descriptor = curveDictionary [descriptor.p2]!
+      loop = p != descriptor.p1
+    }
+    bp.close ()
+  //---
+    bp.lineJoinStyle = .round
+    bp.lineCapStyle = .round
+    bp.lineWidth = canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance * 2)
+    let strokeBP = bp.pathByStroking
+    // Swift.print ("BezierPath BEGIN")
+    var closedPathCount = 0
+    let retainedClosedPath = 2
+    var retainedBP = EBBezierPath ()
+    var points = [NSPoint] (repeating: .zero, count: 3)
+    for i in 0 ..< strokeBP.nsBezierPath.elementCount {
+      let type = strokeBP.nsBezierPath.element (at: i, associatedPoints: &points)
+      switch type {
+      case .moveTo:
+        // Swift.print ("  moveTo: \(points[0].x) \(points[0].y)")
+        closedPathCount += 1
+        if closedPathCount == retainedClosedPath {
+          retainedBP.move (to: points[0])
+        }
+      case .lineTo:
+        // Swift.print ("  lineTo: \(points[0].x) \(points[0].y)")
+        if closedPathCount == retainedClosedPath {
+          retainedBP.line (to: points[0])
+        }
+      case .curveTo:
+        // Swift.print ("  curveTo")
+        if closedPathCount == retainedClosedPath {
+          retainedBP.curve (to: points[2], controlPoint1: points[0], controlPoint2: points[1])
+        }
+      case .closePath:
+        // Swift.print ("  closePath")
+        if closedPathCount == retainedClosedPath {
+          retainedBP.close ()
+        }
+      @unknown default :
+        ()
+      }
+    }
+    //Swift.print ("BezierPath END")
+  //---
+    return retainedBP.pointsByFlattening (withFlatness: 0.1)
+  }
+
+  //····················································································································
+
+  private func writeGerberDrillFile (atPath inPath : String, _ inProductData : ProductData) throws {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
     var s = "M48\n"
     s += "INCH\n"
-    let keys = inHoleDictionary.keys.sorted ()
+    let keys = inProductData.holeDictionary.keys.sorted ()
  //--- Write hole diameters
     var idx = 0
     for diameter in keys {
@@ -223,7 +302,7 @@ extension ProjectDocument {
     for diameter in keys {
       idx += 1
       s += "T\(idx)\n"
-      for (p1, p2) in inHoleDictionary [diameter]! {
+      for (p1, p2) in inProductData.holeDictionary [diameter]! {
         if (p1.x == p2.x) && (p1.y == p2.y) { // Circular
           s += "X\(String(format: "%.4f", cocoaToInch (p1.x)))Y\(String(format: "%.4f", cocoaToInch (p1.y)))\n"
         }else{ // oblong
@@ -243,10 +322,20 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func writePDFDrillFile (atPath inPath : String, _ inHoleDictionary : [Int : [(NSPoint, NSPoint)]], _ inBoardBoundBox : NSRect) throws {
+  private func writeGerberProductFile (atPath inPath : String, _ inDescriptor : ArtworkFileGenerationParameters) throws {
+    let path = inPath + inDescriptor.fileExtension
+    self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
+
+
+    self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+  }
+
+  //····················································································································
+
+  private func writePDFDrillFile (atPath inPath : String, _ inProductData : ProductData) throws {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
     var pathes = [EBBezierPath] ()
-    for (holeDiameter, segmentList) in inHoleDictionary {
+    for (holeDiameter, segmentList) in inProductData.holeDictionary {
       var bp = EBBezierPath ()
       bp.lineWidth = canariUnitToCocoa (holeDiameter)
       bp.lineCapStyle = .round
@@ -257,13 +346,69 @@ extension ProjectDocument {
       pathes.append (bp)
     }
     let shape = EBShape (stroke: pathes, .black)
-    let data = buildPDFimageData (frame: inBoardBoundBox, shape: shape, backgroundColor: .white)
+    let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: .white)
     try data.write (to: URL (fileURLWithPath: inPath))
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }
 
   //····················································································································
 
+  private func writePDFProductFile (atPath inPath : String,
+                                    _ inDescriptor : ArtworkFileGenerationParameters,
+                                    _ inProductData : ProductData) throws {
+    let path = inPath + inDescriptor.fileExtension + ".pdf"
+    self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
+    var pathes = [EBBezierPath] ()
+    if inDescriptor.drawBoardLimits {
+      var bp = EBBezierPath ()
+      bp.move (to: inProductData.boardLimitPolygon [0])
+      for p in Array (inProductData.boardLimitPolygon [1 ..< inProductData.boardLimitPolygon.count]) {
+        bp.line (to: p)
+      }
+      bp.close ()
+      bp.lineCapStyle = .round
+      bp.lineJoinStyle = .round
+      bp.lineWidth = inProductData.boardLimitWidth
+//      let strokeBP = bp.pathByStroking
+//      Swift.print ("BezierPath BEGIN")
+//      var points = [NSPoint] (repeating: .zero, count: 3)
+//      for i in 0 ..< strokeBP.nsBezierPath.elementCount {
+//        let type = strokeBP.nsBezierPath.element (at: i, associatedPoints: &points)
+//        switch type {
+//        case .moveTo:
+//          Swift.print ("  moveTo: \(points[0].x) \(points[0].y)")
+//        case .lineTo:
+//          Swift.print ("  lineTo: \(points[0].x) \(points[0].y)")
+//        case .curveTo:
+//          Swift.print ("  curveTo")
+//        case .closePath:
+//          Swift.print ("  closePath")
+//        @unknown default :
+//          ()
+//        }
+//      }
+//      Swift.print ("BezierPath END")
+      pathes.append (bp)
+    }
+
+
+    let shape = EBShape (stroke: pathes, .black)
+    let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: .white)
+    try data.write (to: URL (fileURLWithPath: path))
+    self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct ProductData { // All in Cocoa Unit
+  let boardBoundBox : NSRect
+  let boardLimitPolygon : [NSPoint]
+  let boardLimitWidth : CGFloat
+  let holeDictionary : [Int : [(NSPoint, NSPoint)]]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
