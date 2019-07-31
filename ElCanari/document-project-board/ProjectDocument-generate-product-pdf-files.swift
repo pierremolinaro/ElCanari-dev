@@ -64,6 +64,7 @@ extension ProjectDocument {
     }
     if inDescriptor.drawTextsLegendTopSide {
       strokePathes.append (inProductData.legendFrontTexts)
+      strokePathes.append (lines: inProductData.frontLines)
     }
     if inDescriptor.drawTextsLayoutTopSide {
       strokePathes.append (inProductData.layoutFrontTexts)
@@ -73,6 +74,7 @@ extension ProjectDocument {
     }
     if inDescriptor.drawTextsLegendBottomSide {
       strokePathes.append (inProductData.legendBackTexts)
+      strokePathes.append (lines: inProductData.backLines)
     }
     if inDescriptor.drawVias {
       for (location, diameter) in inProductData.viaPads {
@@ -86,26 +88,10 @@ extension ProjectDocument {
       }
     }
     if inDescriptor.drawTracksTopSide {
-      for t in inProductData.frontTracks {
-        var bp = EBBezierPath ()
-        bp.lineWidth = t.width
-        bp.lineCapStyle = .round
-        bp.lineJoinStyle = .round
-        bp.move (to: t.p1)
-        bp.line (to: t.p2)
-        strokePathes.append (bp)
-      }
-    }
+      strokePathes.append (lines: inProductData.frontTracks)
+     }
     if inDescriptor.drawTracksBottomSide {
-      for t in inProductData.backTracks {
-        var bp = EBBezierPath ()
-        bp.lineWidth = t.width
-        bp.lineCapStyle = .round
-        bp.lineJoinStyle = .round
-        bp.move (to: t.p1)
-        bp.line (to: t.p2)
-        strokePathes.append (bp)
-      }
+      strokePathes.append (lines: inProductData.backTracks)
     }
 
 
@@ -134,6 +120,20 @@ extension Array where Element == EBBezierPath {
       for path in pathArray {
         path.appendToBezierPath (&bp)
       }
+      self.append (bp)
+    }
+  }
+
+  //····················································································································
+
+  mutating func append (lines inLines : [ProductLine]) {
+    for segment in inLines {
+      var bp = EBBezierPath ()
+      bp.lineWidth = segment.width
+      bp.lineCapStyle = .round
+      bp.lineJoinStyle = .round
+      bp.move (to: segment.p1)
+      bp.line (to: segment.p2)
       self.append (bp)
     }
   }

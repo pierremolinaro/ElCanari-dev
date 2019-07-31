@@ -21,6 +21,7 @@ extension ProjectDocument {
     let (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts) = self.buildTextPathes ()
     let viaPads = self.buildViaPads ()
     let (frontTracks, backTracks) = self.buildTracks ()
+    let (frontLines, backLines) = self.buildLines ()
 
   //---
     return ProductData (
@@ -40,7 +41,9 @@ extension ProjectDocument {
       legendBackTexts: legendBackTexts,
       viaPads: viaPads,
       frontTracks: frontTracks,
-      backTracks: backTracks
+      backTracks: backTracks,
+      frontLines: frontLines,
+      backLines: backLines
     )
   }
   
@@ -334,15 +337,15 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func buildTracks () -> ([ProductTrack], [ProductTrack]) {
-    var frontTracks = [ProductTrack] ()
-    var backTracks = [ProductTrack] ()
+  private func buildTracks () -> ([ProductLine], [ProductLine]) {
+    var frontTracks = [ProductLine] ()
+    var backTracks = [ProductLine] ()
     for object in self.rootObject.mBoardObjects {
       if let track = object as? BoardTrack {
         let p1 = track.mConnectorP1!.location!.cocoaPoint
         let p2 = track.mConnectorP2!.location!.cocoaPoint
         let width = canariUnitToCocoa (track.actualTrackWidth!)
-        let t = ProductTrack (p1: p1, p2: p2, width: width)
+        let t = ProductLine (p1: p1, p2: p2, width: width)
         switch track.mSide {
         case .back :
           backTracks.append (t)
@@ -356,11 +359,33 @@ extension ProjectDocument {
 
   //····················································································································
 
+  private func buildLines () -> ([ProductLine], [ProductLine]) {
+    var frontLines = [ProductLine] ()
+    var backLines = [ProductLine] ()
+    for object in self.rootObject.mBoardObjects {
+      if let line = object as? BoardLine {
+        let p1 = CanariPoint (x: line.mX1, y: line.mY1).cocoaPoint
+        let p2 = CanariPoint (x: line.mX2, y: line.mY2).cocoaPoint
+        let width = canariUnitToCocoa (line.mWidth)
+        let t = ProductLine (p1: p1, p2: p2, width: width)
+        switch line.mLayer {
+        case .legendBack :
+          backLines.append (t)
+        case .legendFront :
+          frontLines.append (t)
+        }
+      }
+    }
+    return (frontLines, backLines)
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct ProductTrack { // All in Cocoa Unit
+struct ProductLine { // All in Cocoa Unit
   let p1 : NSPoint
   let p2 : NSPoint
   let width : CGFloat
@@ -384,8 +409,10 @@ struct ProductData { // All in Cocoa Unit
   let layoutBackTexts : [CGFloat : [EBLinePath]]
   let legendBackTexts : [CGFloat : [EBLinePath]]
   let viaPads : [(NSPoint, CGFloat)] // Center, diameter
-  let frontTracks : [ProductTrack]
-  let backTracks : [ProductTrack]
+  let frontTracks : [ProductLine]
+  let backTracks : [ProductLine]
+  let frontLines : [ProductLine]
+  let backLines : [ProductLine]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

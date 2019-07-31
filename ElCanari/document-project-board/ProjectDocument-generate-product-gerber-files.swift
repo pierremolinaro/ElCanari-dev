@@ -83,6 +83,7 @@ extension ProjectDocument {
     }
     if inDescriptor.drawTextsLegendTopSide {
       apertureDictionary.append (inProductData.legendFrontTexts)
+      apertureDictionary.append (lines: inProductData.frontLines)
     }
     if inDescriptor.drawTextsLayoutTopSide {
       apertureDictionary.append (inProductData.layoutFrontTexts)
@@ -92,6 +93,7 @@ extension ProjectDocument {
     }
     if inDescriptor.drawTextsLegendBottomSide {
       apertureDictionary.append (inProductData.legendBackTexts)
+      apertureDictionary.append (lines: inProductData.backLines)
     }
     if inDescriptor.drawVias {
       for (location, diameter) in inProductData.viaPads {
@@ -99,14 +101,10 @@ extension ProjectDocument {
       }
     }
     if inDescriptor.drawTracksTopSide {
-      for t in inProductData.frontTracks {
-        apertureDictionary.appendLine (from: t.p1, to: t.p2, for: t.width)
-      }
+      apertureDictionary.append (lines: inProductData.frontTracks)
     }
     if inDescriptor.drawTracksBottomSide {
-      for t in inProductData.backTracks {
-        apertureDictionary.appendLine (from: t.p1, to: t.p2, for: t.width)
-      }
+      apertureDictionary.append (lines: inProductData.backTracks)
     }
 
 
@@ -206,13 +204,15 @@ extension Dictionary where Key == CGFloat, Value == [String] {
 
   //····················································································································
 
-  mutating func appendLine (from inP1 : NSPoint, to inP2 : NSPoint, for inAperture : CGFloat) {
-    let x1 = cocoaToMilTenth (inP1.x)
-    let y1 = cocoaToMilTenth (inP1.y)
-    let x2 = cocoaToMilTenth (inP2.x)
-    let y2 = cocoaToMilTenth (inP2.y)
-    let line = ["X\(x1)Y\(y1)D02", "X\(x2)Y\(y2)D01"]
-    self.append (line, for: inAperture)
+  mutating func append (lines inLines : [ProductLine]) {
+    for segment in inLines {
+      let x1 = cocoaToMilTenth (segment.p1.x)
+      let y1 = cocoaToMilTenth (segment.p1.y)
+      let x2 = cocoaToMilTenth (segment.p2.x)
+      let y2 = cocoaToMilTenth (segment.p2.y)
+      let line = ["X\(x1)Y\(y1)D02", "X\(x2)Y\(y2)D01"]
+      self.append (line, for: segment.width)
+    }
   }
 
   //····················································································································
