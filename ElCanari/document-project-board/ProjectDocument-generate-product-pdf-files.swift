@@ -85,6 +85,28 @@ extension ProjectDocument {
         strokePathes.append (bp)
       }
     }
+    if inDescriptor.drawTracksTopSide {
+      for t in inProductData.frontTracks {
+        var bp = EBBezierPath ()
+        bp.lineWidth = t.width
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
+        bp.move (to: t.p1)
+        bp.line (to: t.p2)
+        strokePathes.append (bp)
+      }
+    }
+    if inDescriptor.drawTracksBottomSide {
+      for t in inProductData.backTracks {
+        var bp = EBBezierPath ()
+        bp.lineWidth = t.width
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
+        bp.move (to: t.p1)
+        bp.line (to: t.p2)
+        strokePathes.append (bp)
+      }
+    }
 
 
     let shape = EBShape (stroke: strokePathes, .black)

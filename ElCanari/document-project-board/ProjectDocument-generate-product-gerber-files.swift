@@ -98,6 +98,16 @@ extension ProjectDocument {
         apertureDictionary.appendFlash (at: location, for: diameter)
       }
     }
+    if inDescriptor.drawTracksTopSide {
+      for t in inProductData.frontTracks {
+        apertureDictionary.appendLine (from: t.p1, to: t.p2, for: t.width)
+      }
+    }
+    if inDescriptor.drawTracksBottomSide {
+      for t in inProductData.backTracks {
+        apertureDictionary.appendLine (from: t.p1, to: t.p2, for: t.width)
+      }
+    }
 
 
 
@@ -170,7 +180,6 @@ extension Dictionary where Key == CGFloat, Value == [String] {
   //····················································································································
 
   mutating func append (_ inStringArray : [String], for inAperture : CGFloat) {
- //  let apertureString = "C,\(String(format: "%.4f", cocoaToInch (inAperture)))"
    self [inAperture] = (self [inAperture] ?? []) + inStringArray
   }
 
@@ -193,6 +202,17 @@ extension Dictionary where Key == CGFloat, Value == [String] {
     let y = cocoaToMilTenth (inLocation.y)
     let flash = "X\(x)Y\(y)D03"
     self.append ([flash], for: inAperture)
+  }
+
+  //····················································································································
+
+  mutating func appendLine (from inP1 : NSPoint, to inP2 : NSPoint, for inAperture : CGFloat) {
+    let x1 = cocoaToMilTenth (inP1.x)
+    let y1 = cocoaToMilTenth (inP1.y)
+    let x2 = cocoaToMilTenth (inP2.x)
+    let y2 = cocoaToMilTenth (inP2.y)
+    let line = ["X\(x1)Y\(y1)D02", "X\(x2)Y\(y2)D01"]
+    self.append (line, for: inAperture)
   }
 
   //····················································································································

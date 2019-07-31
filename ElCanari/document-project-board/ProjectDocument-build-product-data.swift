@@ -20,6 +20,7 @@ extension ProjectDocument {
     let (frontComponentValues, backComponentValues) = self.buildComponentValuePathes ()
     let (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts) = self.buildTextPathes ()
     let viaPads = self.buildViaPads ()
+    let (frontTracks, backTracks) = self.buildTracks ()
 
   //---
     return ProductData (
@@ -37,7 +38,9 @@ extension ProjectDocument {
       layoutFrontTexts: layoutFrontTexts,
       layoutBackTexts: layoutBackTexts,
       legendBackTexts: legendBackTexts,
-      viaPads: viaPads
+      viaPads: viaPads,
+      frontTracks: frontTracks,
+      backTracks: backTracks
     )
   }
   
@@ -331,6 +334,36 @@ extension ProjectDocument {
 
   //····················································································································
 
+  private func buildTracks () -> ([ProductTrack], [ProductTrack]) {
+    var frontTracks = [ProductTrack] ()
+    var backTracks = [ProductTrack] ()
+    for object in self.rootObject.mBoardObjects {
+      if let track = object as? BoardTrack {
+        let p1 = track.mConnectorP1!.location!.cocoaPoint
+        let p2 = track.mConnectorP2!.location!.cocoaPoint
+        let width = canariUnitToCocoa (track.actualTrackWidth!)
+        let t = ProductTrack (p1: p1, p2: p2, width: width)
+        switch track.mSide {
+        case .back :
+          backTracks.append (t)
+        case .front :
+          frontTracks.append (t)
+        }
+      }
+    }
+    return (frontTracks, backTracks)
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct ProductTrack { // All in Cocoa Unit
+  let p1 : NSPoint
+  let p2 : NSPoint
+  let width : CGFloat
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -351,6 +384,8 @@ struct ProductData { // All in Cocoa Unit
   let layoutBackTexts : [CGFloat : [EBLinePath]]
   let legendBackTexts : [CGFloat : [EBLinePath]]
   let viaPads : [(NSPoint, CGFloat)] // Center, diameter
+  let frontTracks : [ProductTrack]
+  let backTracks : [ProductTrack]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
