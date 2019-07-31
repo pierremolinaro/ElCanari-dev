@@ -101,13 +101,8 @@ extension ProjectDocument {
 
   private func performProductFilesGeneration (atPath inDocumentFilePathWithoutExtension : String, _ inArtwork : ArtworkRoot) throws {
     let baseName = inDocumentFilePathWithoutExtension.lastPathComponent
-  //--- Build produc data dictionary
-    let productData = ProductData (
-      boardBoundBox: self.rootObject.boardBoundBox!.cocoaRect,
-      boardLimitPolygon: self.buildBoardLimitPolygon (),
-      boardLimitWidth: canariUnitToCocoa (self.rootObject.mBoardLimitsWidth),
-      holeDictionary: self.buildHoleDictionary ()
-    )
+  //--- Build product data 
+    let productData = self.buildProductData ()
   //--- Create gerber directory (first, delete existing dir)
     let gerberDirPath = inDocumentFilePathWithoutExtension + "-gerber"
     let generatedGerberFilePath = gerberDirPath + "/" + baseName + "."
@@ -115,7 +110,7 @@ extension ProjectDocument {
   //--- Write gerber files
     try self.writeGerberDrillFile (atPath: generatedGerberFilePath + inArtwork.drillDataFileExtension, productData)
     for productDescriptor in inArtwork.fileGenerationParameterArray {
-      try self.writeGerberProductFile (atPath: generatedGerberFilePath, productDescriptor)
+      try self.writeGerberProductFile (atPath: generatedGerberFilePath, productDescriptor, productData)
     }
   //--- Create PDF directory (first, delete existing dir)
     let pdfDirPath = inDocumentFilePathWithoutExtension + "-pdf"
@@ -146,143 +141,6 @@ extension ProjectDocument {
 
   //····················································································································
 
-  fileprivate func buildHoleDictionary () -> [Int : [(NSPoint, NSPoint)]] {
-    var result = [Int : [(NSPoint, NSPoint)]] ()
-    for object in self.rootObject.mBoardObjects {
-      if let connector = object as? BoardConnector, let isVia = connector.isVia, isVia {
-        let p = connector.location!.cocoaPoint
-        let hd = connector.actualHoleDiameter!
-        result [hd] = (result [hd] ?? []) + [(p, p)]
-      }else if let component = object as? ComponentInProject {
-        let packagePadDictionary : PackageMasterPadDictionary = component.packagePadDictionary!
-      //---
-        let center = packagePadDictionary.padsRect.center.cocoaPoint
-        var af = AffineTransform ()
-        af.translate (x: canariUnitToCocoa (component.mX), y: canariUnitToCocoa (component.mY))
-        af.rotate (byDegrees: CGFloat (component.mRotation) / 1000.0)
-        if component.mSide == .back {
-          af.scale (x: -1.0, y: 1.0)
-        }
-        af.translate (x: -center.x, y: -center.y)
-      //---
-        for (_, masterPad) in packagePadDictionary {
-          switch masterPad.style {
-          case .traversing :
-            let p = masterPad.center.cocoaPoint
-            let holeSize = masterPad.holeSize.cocoaSize
-            if masterPad.holeSize.width < masterPad.holeSize.height { // Vertical oblong
-              let p1 = af.transform (NSPoint (x: p.x, y: p.y - (holeSize.height - holeSize.width) / 2.0))
-              let p2 = af.transform (NSPoint (x: p.x, y: p.y + (holeSize.height - holeSize.width) / 2.0))
-              result [masterPad.holeSize.width] = (result [masterPad.holeSize.width] ?? []) + [(p1, p2)]
-            }else if masterPad.holeSize.width > masterPad.holeSize.height { // Horizontal oblong
-              let p1 = af.transform (NSPoint (x: p.x - (holeSize.width - holeSize.height) / 2.0, y: p.y))
-              let p2 = af.transform (NSPoint (x: p.x + (holeSize.width - holeSize.height) / 2.0, y: p.y))
-              result [masterPad.holeSize.height] = (result [masterPad.holeSize.height] ?? []) + [(p1, p2)]
-            }else{ // Circular
-              let pp = af.transform (p)
-              result [masterPad.holeSize.width] = (result [masterPad.holeSize.width] ?? []) + [(pp, pp)]
-            }
-          case .surface :
-            ()
-          }
-          for slavePad in masterPad.slavePads {
-            switch slavePad.style {
-            case .traversing :
-              let p = slavePad.center.cocoaPoint
-              let holeSize = slavePad.holeSize.cocoaSize
-              if slavePad.holeSize.width < slavePad.holeSize.height { // Vertical oblong
-                let p1 = af.transform (NSPoint (x: p.x, y: p.y - (holeSize.height - holeSize.width) / 2.0))
-                let p2 = af.transform (NSPoint (x: p.x, y: p.y + (holeSize.height - holeSize.width) / 2.0))
-                result [slavePad.holeSize.width] = (result [slavePad.holeSize.width] ?? []) + [(p1, p2)]
-              }else if slavePad.holeSize.width > slavePad.holeSize.height { // Horizontal oblong
-                let p1 = af.transform (NSPoint (x: p.x - (holeSize.width - holeSize.height) / 2.0, y: p.y))
-                let p2 = af.transform (NSPoint (x: p.x + (holeSize.width - holeSize.height) / 2.0, y: p.y))
-                result [slavePad.holeSize.height] = (result [slavePad.holeSize.height] ?? []) + [(p1, p2)]
-              }else{ // Circular
-                let pp = af.transform (p)
-                result [slavePad.holeSize.width] = (result [slavePad.holeSize.width] ?? []) + [(pp, pp)]
-              }
-            case .bottomSide, .topSide :
-              ()
-            }
-          }
-        }
-      }
-    }
-    return result
-  }
-
-  //····················································································································
-
-  private func buildBoardLimitPolygon () -> [NSPoint] {
-    var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
-    for curve in self.rootObject.mBorderCurves {
-      let descriptor = curve.descriptor!
-      curveDictionary [descriptor.p1] = descriptor
-    }
-    var bp = EBBezierPath ()
-    var descriptor = self.rootObject.mBorderCurves [0].descriptor!
-    let p = descriptor.p1
-    bp.move (to: p.cocoaPoint)
-    var loop = true
-    while loop {
-      switch descriptor.shape {
-      case .line :
-        bp.line (to: descriptor.p2.cocoaPoint)
-      case .bezier :
-        let cp1 = descriptor.cp1.cocoaPoint
-        let cp2 = descriptor.cp2.cocoaPoint
-        bp.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
-      }
-      descriptor = curveDictionary [descriptor.p2]!
-      loop = p != descriptor.p1
-    }
-    bp.close ()
-  //---
-    bp.lineJoinStyle = .round
-    bp.lineCapStyle = .round
-    bp.lineWidth = canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance * 2)
-    let strokeBP = bp.pathByStroking
-    // Swift.print ("BezierPath BEGIN")
-    var closedPathCount = 0
-    let retainedClosedPath = 2
-    var retainedBP = EBBezierPath ()
-    var points = [NSPoint] (repeating: .zero, count: 3)
-    for i in 0 ..< strokeBP.nsBezierPath.elementCount {
-      let type = strokeBP.nsBezierPath.element (at: i, associatedPoints: &points)
-      switch type {
-      case .moveTo:
-        // Swift.print ("  moveTo: \(points[0].x) \(points[0].y)")
-        closedPathCount += 1
-        if closedPathCount == retainedClosedPath {
-          retainedBP.move (to: points[0])
-        }
-      case .lineTo:
-        // Swift.print ("  lineTo: \(points[0].x) \(points[0].y)")
-        if closedPathCount == retainedClosedPath {
-          retainedBP.line (to: points[0])
-        }
-      case .curveTo:
-        // Swift.print ("  curveTo")
-        if closedPathCount == retainedClosedPath {
-          retainedBP.curve (to: points[2], controlPoint1: points[0], controlPoint2: points[1])
-        }
-      case .closePath:
-        // Swift.print ("  closePath")
-        if closedPathCount == retainedClosedPath {
-          retainedBP.close ()
-        }
-      @unknown default :
-        ()
-      }
-    }
-    //Swift.print ("BezierPath END")
-  //---
-    return retainedBP.pointsByFlattening (withFlatness: 0.1)
-  }
-
-  //····················································································································
-
   private func writeGerberDrillFile (atPath inPath : String, _ inProductData : ProductData) throws {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
     var s = "M48\n"
@@ -292,7 +150,7 @@ extension ProjectDocument {
     var idx = 0
     for diameter in keys {
       idx += 1
-      s += "T\(idx)C\(String(format: "%.4f", canariUnitToInch (diameter)))\n"
+      s += "T\(idx)C\(String(format: "%.4f", cocoaToInch (diameter)))\n"
     }
  //--- Write holes
     s += "%\n"
@@ -322,11 +180,57 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func writeGerberProductFile (atPath inPath : String, _ inDescriptor : ArtworkFileGenerationParameters) throws {
+  private func writeGerberProductFile (atPath inPath : String, _ inDescriptor : ArtworkFileGenerationParameters, _ inProductData : ProductData) throws {
     let path = inPath + inDescriptor.fileExtension
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
-
-
+    var s = "%FSLAX24Y24*%\n" // A = Absolute coordinates, 24 = all data are in 2.4 form
+    s += "%MOIN*%\n" // length unit is inch
+    var apertureDictionary = [String : [String]] ()
+    var polygons = [[String]] ()
+    if inDescriptor.drawBoardLimits {
+      let boardLimitPolygon = inProductData.boardLimitPolygon
+      var drawings = [String] ()
+      drawings.append ("X\(cocoaToMilTenth (boardLimitPolygon.origin.x))Y\(boardLimitPolygon.origin.y)D02")
+      for p in boardLimitPolygon.lines {
+        let x = cocoaToMilTenth (p.x)
+        let y = cocoaToMilTenth (p.y)
+        drawings.append ("X\(x)Y\(y)D01")
+      }
+      if boardLimitPolygon.closed {
+        drawings.append ("X\(cocoaToMilTenth (boardLimitPolygon.origin.x))Y\(boardLimitPolygon.origin.y)D01")
+      }
+      let apertureString = "C,\(String(format: "%.4f", cocoaToInch (inProductData.boardLimitWidth)))"
+      apertureDictionary [apertureString] = (apertureDictionary [apertureString] ?? []) + drawings
+    }
+    let keys = apertureDictionary.keys.sorted ()
+  //--- Write aperture diameters
+    var idx = 10
+    for aperture in keys {
+      s += "%ADD\(idx)\(aperture)*%\n"
+      idx += 1
+    }
+  //--- Write drawings
+    idx = 10
+    for aperture in keys {
+      s += "D\(idx)*\n"
+      s += "G01" // Linear interpolation
+      for element in apertureDictionary [aperture]! {
+        s += element + "*\n"
+      }
+      idx += 1
+    }
+  //--- Write polygon fills
+    for poly in polygons {
+      s += "G36*\n"
+      for str in poly {
+        s += str + "*\n"
+      }
+      s += "G37*\n"
+    }
+  //--- Write file
+    s += "M02*\n"
+    let data : Data? = s.data (using: .ascii, allowLossyConversion:false)
+    try data?.write (to: URL (fileURLWithPath: path), options: .atomic)
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }
 
@@ -337,7 +241,7 @@ extension ProjectDocument {
     var pathes = [EBBezierPath] ()
     for (holeDiameter, segmentList) in inProductData.holeDictionary {
       var bp = EBBezierPath ()
-      bp.lineWidth = canariUnitToCocoa (holeDiameter)
+      bp.lineWidth = holeDiameter
       bp.lineCapStyle = .round
       for segment in segmentList {
         bp.move (to: segment.0)
@@ -361,34 +265,29 @@ extension ProjectDocument {
     var pathes = [EBBezierPath] ()
     if inDescriptor.drawBoardLimits {
       var bp = EBBezierPath ()
-      bp.move (to: inProductData.boardLimitPolygon [0])
-      for p in Array (inProductData.boardLimitPolygon [1 ..< inProductData.boardLimitPolygon.count]) {
+      bp.move (to: inProductData.boardLimitPolygon.origin)
+      for p in inProductData.boardLimitPolygon.lines {
         bp.line (to: p)
       }
-      bp.close ()
+      if inProductData.boardLimitPolygon.closed {
+        bp.close ()
+      }
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round
       bp.lineWidth = inProductData.boardLimitWidth
-//      let strokeBP = bp.pathByStroking
-//      Swift.print ("BezierPath BEGIN")
-//      var points = [NSPoint] (repeating: .zero, count: 3)
-//      for i in 0 ..< strokeBP.nsBezierPath.elementCount {
-//        let type = strokeBP.nsBezierPath.element (at: i, associatedPoints: &points)
-//        switch type {
-//        case .moveTo:
-//          Swift.print ("  moveTo: \(points[0].x) \(points[0].y)")
-//        case .lineTo:
-//          Swift.print ("  lineTo: \(points[0].x) \(points[0].y)")
-//        case .curveTo:
-//          Swift.print ("  curveTo")
-//        case .closePath:
-//          Swift.print ("  closePath")
-//        @unknown default :
-//          ()
-//        }
-//      }
-//      Swift.print ("BezierPath END")
       pathes.append (bp)
+    }
+    if inDescriptor.drawPackageLegendTopSide {
+      for (aperture, pathArray) in inProductData.frontPackageLegend {
+        var bp = EBBezierPath ()
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
+        bp.lineWidth = aperture
+        for path in pathArray {
+          path.appendToBezierPath (&bp)
+        }
+        pathes.append (bp)
+      }
     }
 
 
@@ -400,15 +299,6 @@ extension ProjectDocument {
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct ProductData { // All in Cocoa Unit
-  let boardBoundBox : NSRect
-  let boardLimitPolygon : [NSPoint]
-  let boardLimitWidth : CGFloat
-  let holeDictionary : [Int : [(NSPoint, NSPoint)]]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

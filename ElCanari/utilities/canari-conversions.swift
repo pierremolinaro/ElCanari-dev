@@ -44,6 +44,12 @@ func cocoaToInch (_ inValue : CGFloat) -> CGFloat {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+func cocoaToMilTenth (_ inValue : CGFloat) -> Int {
+  return Int (inValue * 10_000.0 / 72.0)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 func canariUnitToInch (_ inValue : Int) -> CGFloat {
   return (CGFloat (inValue) / 2_286_000.0)
 }

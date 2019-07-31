@@ -142,7 +142,7 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  private func buildSignalPolygon () -> [NSPoint] { // Points in millimeters
+  private func buildSignalPolygon () -> LinePath { // Points in millimeters
     var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
     for curve in self.rootObject.mBorderCurves {
       let descriptor = curve.descriptor!
@@ -165,7 +165,7 @@ extension CustomizedProjectDocument {
       descriptor = curveDictionary [descriptor.p2]!
       loop = p != descriptor.p1
     }
-    return clearanceBP.pointsByFlattening (withFlatness: 0.1)
+    return clearanceBP.pointsByFlattening (withFlatness: 0.1) [0]
   }
 
   //····················································································································
@@ -481,7 +481,7 @@ fileprivate func addDeviceLibrary (_ ioString : inout String,
 
 fileprivate func addBoardBoundary (_ ioString : inout String,
                                    _ inBoardBoundBox : CanariRect,
-                                   _ inSignalPolygonVertices : [NSPoint]) { // In millimeters
+                                   _ inSignalPolygonVertices : LinePath) { // In millimeters
   let bbLeft = canariUnitToMillimeter (inBoardBoundBox.origin.x)
   let bbBottom = canariUnitToMillimeter (inBoardBoundBox.origin.y)
   let bbRight = bbLeft + canariUnitToMillimeter (inBoardBoundBox.size.width)
@@ -491,8 +491,12 @@ fileprivate func addBoardBoundary (_ ioString : inout String,
   ioString += "    )\n"
   ioString += "    (boundary\n"
   ioString += "      (polygon signal 0\n"
-  for p in inSignalPolygonVertices {
+  ioString += "        \(inSignalPolygonVertices.origin.x) \(inSignalPolygonVertices.origin.y)\n"
+  for p in inSignalPolygonVertices.lines {
     ioString += "        \(p.x) \(p.y)\n"
+  }
+  if inSignalPolygonVertices.closed {
+    ioString += "        \(inSignalPolygonVertices.origin.x) \(inSignalPolygonVertices.origin.y)\n"
   }
   ioString += "      )\n"
   ioString += "    )\n"

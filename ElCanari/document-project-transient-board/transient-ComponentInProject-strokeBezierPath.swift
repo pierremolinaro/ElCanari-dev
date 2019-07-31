@@ -15,9 +15,14 @@ import Cocoa
 
 func transient_ComponentInProject_strokeBezierPath (
        _ self_mSelectedPackage_mStrokeBezierPath : NSBezierPath?
-) -> NSBezierPath {
+) -> EBBezierPath {
 //--- START OF USER ZONE 2
-        return self_mSelectedPackage_mStrokeBezierPath ?? NSBezierPath ()
+        if let bp = self_mSelectedPackage_mStrokeBezierPath {
+          return EBBezierPath (bp)
+        }else{
+          return EBBezierPath ()
+        }
+//        return self_mSelectedPackage_mStrokeBezierPath ?? EBBezierPath ()
 //--- END OF USER ZONE 2
 }
 

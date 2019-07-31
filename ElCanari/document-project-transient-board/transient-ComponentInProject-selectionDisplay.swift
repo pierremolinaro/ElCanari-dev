@@ -18,7 +18,7 @@ func transient_ComponentInProject_selectionDisplay (
        _ self_mY : Int,                             
        _ self_mRotation : Int,                      
        _ self_mSide : ComponentSide,                
-       _ self_strokeBezierPath : NSBezierPath,      
+       _ self_strokeBezierPath : EBBezierPath,      
        _ self_mNameIsVisibleInBoard : Bool,         
        _ self_mXName : Int,                         
        _ self_mYName : Int,                         
@@ -43,7 +43,7 @@ func transient_ComponentInProject_selectionDisplay (
       let knobDx = (self_mSide == .back) ? -COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE ;
       let rotationKnobLocation = NSPoint (x: rPadsCenter.x + knobDx, y: rPadsCenter.y)
       var rotatedShape = EBShape ()
-      var strokeBezierPath = EBBezierPath (self_strokeBezierPath)
+      var strokeBezierPath = self_strokeBezierPath
       strokeBezierPath.move (to: rPadsCenter)
       strokeBezierPath.line (to: rotationKnobLocation)
       strokeBezierPath.lineWidth = lineWidth

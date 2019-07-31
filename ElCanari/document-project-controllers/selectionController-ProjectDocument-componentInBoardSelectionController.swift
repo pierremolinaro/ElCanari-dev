@@ -284,9 +284,9 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //   Selection observable property: strokeBezierPath
   //····················································································································
 
-  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let strokeBezierPath_property = EBTransientProperty_EBBezierPath ()
 
-  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
+  var strokeBezierPath_property_selection : EBSelection <EBBezierPath> {
     return self.strokeBezierPath_property.prop
   }
 
@@ -2439,7 +2439,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <NSBezierPath> ()
+          var s = Set <EBBezierPath> ()
           var isMultipleSelection = false
           for object in v {
             switch object.strokeBezierPath_property_selection {

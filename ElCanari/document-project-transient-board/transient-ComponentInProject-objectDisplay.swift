@@ -19,7 +19,7 @@ func transient_ComponentInProject_objectDisplay (
        _ self_mRotation : Int,                   
        _ self_mSide : ComponentSide,             
        _ self_packagePadDictionary : PackageMasterPadDictionary,
-       _ self_strokeBezierPath : NSBezierPath,   
+       _ self_strokeBezierPath : EBBezierPath,   
        _ prefs_frontSideLegendColorForBoard : NSColor,
        _ prefs_backSideLegendColorForBoard : NSColor,
        _ prefs_packageDrawingWidthMultpliedByTenForBoard : Int,
@@ -58,7 +58,7 @@ func transient_ComponentInProject_objectDisplay (
           padDisplayAttributes = nil
         }
       //--- Legend
-        var strokeBezierPath = EBBezierPath (self_strokeBezierPath)
+        var strokeBezierPath = self_strokeBezierPath
         strokeBezierPath.lineWidth = CGFloat (prefs_packageDrawingWidthMultpliedByTenForBoard) / 10.0
         strokeBezierPath.lineCapStyle = .round
         strokeBezierPath.lineJoinStyle = .round

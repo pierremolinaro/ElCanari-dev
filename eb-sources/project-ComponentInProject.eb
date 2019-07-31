@@ -39,7 +39,7 @@ graphic entity ComponentInProject : BoardObject {
 
   transient String componentIsPlacedInBoardString dependsFrom self.componentIsPlacedInBoard ;
 
-  transient NSBezierPath strokeBezierPath dependsFrom self.mSelectedPackage.one.mStrokeBezierPath ;
+  transient EBBezierPath strokeBezierPath dependsFrom self.mSelectedPackage.one.mStrokeBezierPath ;
 
   transient PadNetDictionary padNetDictionary dependsFrom self.mSymbols.all.symbolInfo ;
  
