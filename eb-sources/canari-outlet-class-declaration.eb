@@ -2,6 +2,9 @@
 //   Canari Outlets
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+extern outlet class CanariObserverSwitch ;
+binding CanariObserverSwitch $valueObserver : transient Bool ;
+
 extern outlet class NSDatePicker ;
 
 extern outlet class StringArrayTableView : EBTableView ;

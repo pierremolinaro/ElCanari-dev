@@ -880,6 +880,71 @@ document ProjectDocument root ProjectRoot {
   
   transient Bool documentFilePathOk dependsFrom self.documentFilePath ;
   outlet NSView mIncorrectFileNameMessageView $hidden self.documentFilePathOk ;
+
+//---------------- Minima Page
+  outlet EBPopUpButton mMinPPTPTTTWinEBUnitPopUp $selectedTag root.minPPTPTTTWdisplayUnit ;
+  outlet CanariDimensionObserverTextField mMinPPTPTTTWdisplayUnitTextField
+     $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit
+  ;
+
+  outlet EBPopUpButton mOARUnitPopUp $selectedTag root.minValueForOARdisplayUnit ;
+  outlet CanariDimensionObserverTextField mOARValueTextField
+     $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit
+  ;
+
+  outlet EBPopUpButton mPHDUnitPopUp $selectedTag root.minValueForPHDdisplayUnit ;
+  outlet CanariDimensionObserverTextField mPHDValueTextField
+     $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit
+  ;
+
+  outlet EBPopUpButton minValueForBoardLimitUnitPopUp $selectedTag root.minValueForBoardLimitWidthDisplayUnit ;
+  outlet CanariDimensionObserverTextField minValueForBoardLimitTextField
+     $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
+  ;
+
+//--- Drill Page
+  outlet EBTextObserverField mDrillDataFileExtensionTextField $valueObserver root.drillDataFileExtension ;
+
+//--- Data Tab
+  outlet EBTableView mDataTableView $tableValue #mDataController ;
+  selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;
+  tableViewController #mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
+     column "name" sort name EBTextObserverField $valueObserver self.name
+  }
+
+  outlet EBTextObserverField mExtensionTextField $valueObserver #mDataSelection.fileExtension ;
+//  outlet CanariObserverSwitch mDrawBoardInternalLimitsSwitch $valueObserver #mDataSelection.drawInternalBoardLimits ;
+  outlet CanariObserverSwitch mDrawBoardLimitsSwitch $valueObserver #mDataSelection.drawBoardLimits ;
+  outlet CanariObserverSwitch mDrawComponentValuesTopSideSwitch $valueObserver #mDataSelection.drawComponentValuesTopSide ;
+  outlet CanariObserverSwitch mDrawComponentValuesBottomSideSwitch $valueObserver #mDataSelection.drawComponentValuesBottomSide ;
+  outlet CanariObserverSwitch mDrawComponentNamesTopSideSwitch $valueObserver #mDataSelection.drawComponentNamesTopSide ;
+  outlet CanariObserverSwitch mDrawComponentNamesBottomSideSwitch $valueObserver #mDataSelection.drawComponentNamesBottomSide ;
+  outlet CanariObserverSwitch mDrawPackageLegendTopSideSwitch $valueObserver #mDataSelection.drawPackageLegendTopSide ;
+  outlet CanariObserverSwitch mDrawPackageLegendBottomSideSwitch $valueObserver #mDataSelection.drawPackageLegendBottomSide ;
+//  outlet CanariObserverSwitch mDrawPadHolesInPDFSwitch $valueObserver #mDataSelection.drawPadHolesInPDF ;
+  outlet CanariObserverSwitch mDrawPadsTopSideSwitch $valueObserver #mDataSelection.drawPadsTopSide ;
+  outlet CanariObserverSwitch mDrawPadsBottomSideSwitch $valueObserver #mDataSelection.drawPadsBottomSide ;
+  outlet CanariObserverSwitch mDrawTextsLayoutTopSideSwitch $valueObserver #mDataSelection.drawTextsLayoutTopSide ;
+  outlet CanariObserverSwitch mDrawTextsLayoutBottomSideSwitch $valueObserver #mDataSelection.drawTextsLayoutBottomSide ;
+  outlet CanariObserverSwitch mDrawTextsLegendTopSideSwitch $valueObserver #mDataSelection.drawTextsLegendTopSide ;
+  outlet CanariObserverSwitch mDrawTextsLegendBottomSideSwitch $valueObserver #mDataSelection.drawTextsLegendBottomSide ;
+  outlet CanariObserverSwitch mDrawTracksTopSideSwitch $valueObserver #mDataSelection.drawTracksTopSide ;
+  outlet CanariObserverSwitch mDrawTracksBottomSideSwitch $valueObserver #mDataSelection.drawTracksBottomSide ;
+  outlet CanariObserverSwitch mDrawViasSwitch $valueObserver #mDataSelection.drawVias ;
+  outlet CanariObserverSwitch mHorizontalMirrorSwitch $valueObserver #mDataSelection.horizontalMirror ;
+
+//  outlet EBPopUpButton mMeasurementUnitForPadHoleInPDFPopUp $selectedTag #mDataSelection.measurementUnitForPadHoleInPDF ;
+//  outlet CanariDimensionTextField mDimensionForPadHoleInPDFTextField
+//     $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF
+//  ;
+//  outlet NSView mPadHoleDefinitionView $hidden !#mDataSelection.drawPadHolesInPDF ;
+//  transient String mGeneratedFileCountString dependsFrom #mDataController.sortedArray.count ;
+//  outlet EBTextObserverField mGeneratedFileCountTextField $valueObserver self.mGeneratedFileCountString ;
+
+  outlet EBTextObserverView mCommentTextView $valueObserver root.comments ;
+  outlet EBIntObserverField mArtworkVersionTextField $valueObserver root.mArtworkVersion {autoFormatter: no} ;
+//  outlet CanariSignatureField mArtworkSignatureTextField $signature root.artworkSignature ;
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------

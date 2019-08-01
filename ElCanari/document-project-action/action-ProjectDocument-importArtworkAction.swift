@@ -20,9 +20,12 @@ extension ProjectDocument {
               windowForSheet: window,
               alreadyLoadedDocuments: [],
               callBack: { (_ inData : Data, _ inName : String) in
-                if let (_, _, rootObject) = try? loadEasyBindingFile (self.ebUndoManager, from: inData), let artworkRoot = rootObject as? ArtworkRoot {
+                if let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (self.ebUndoManager, from: inData), let artworkRoot = rootObject as? ArtworkRoot {
                   self.rootObject.mArtwork = artworkRoot
                   self.rootObject.mArtworkName = inName
+                  if let version = metadataDictionary [PMArtworkVersion] as? Int {
+                    self.rootObject.mArtworkVersion = version
+                  }
                 }
               },
               postAction: {}
@@ -30,6 +33,7 @@ extension ProjectDocument {
           }else{ // Detach artwork
             self.rootObject.mArtwork = nil
             self.rootObject.mArtworkName = ""
+            self.rootObject.mArtworkVersion = 0
           }
         }
 //--- END OF USER ZONE 2

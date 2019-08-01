@@ -117,10 +117,22 @@ import Cocoa
   var componentInBoardSelectionController = SelectionController_ProjectDocument_componentInBoardSelectionController ()
 
   //····················································································································
+  //   Array controller: mDataController
+  //····················································································································
+
+  var mDataController = Controller_ProjectDocument_mDataController ()
+
+  //····················································································································
   //   Array controller: componentController
   //····················································································································
 
   var componentController = Controller_ProjectDocument_componentController ()
+
+  //····················································································································
+  //   Selection controller: mDataSelection
+  //····················································································································
+
+  var mDataSelection = SelectionController_ProjectDocument_mDataSelection ()
 
   //····················································································································
   //   Transient property: netCount
@@ -519,6 +531,7 @@ import Cocoa
   @IBOutlet weak var mAllowTracksOnFrontSideSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mArtworkNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mArtworkTabView : NSTabView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mArtworkVersionTextField : EBIntObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mArtworlImportButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAutoRouterPreferredDirectionPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mAutorouterSnapAnglePopUp : EBPopUpButton? = nil // An outlet should be declared weak
@@ -614,6 +627,7 @@ import Cocoa
   @IBOutlet weak var mChangeValueValidationButton : NSButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mCommentInSchematicsInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mCommentInSchematicsTextField : EBTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mCommentTextView : EBTextObserverView? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentCountTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentInBoardCenterXPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mComponentInBoardCenterXTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
@@ -640,6 +654,7 @@ import Cocoa
   @IBOutlet weak var mConnectSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mControlKeyHiliteDiameterSlider : EBSlider? = nil // An outlet should be declared weak
   @IBOutlet weak var mCurrentComponentNameTextField : NSTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDataTableView : EBTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mDeviceLibraryTableView : EBTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mDevicePackageTableView : StringArrayTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mDeviceSymbolTableView : TwoStringArrayTableView? = nil // An outlet should be declared weak
@@ -668,6 +683,23 @@ import Cocoa
   @IBOutlet weak var mDisplayFrontRestrictRectanglesSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayPadNumbersColorWell : EBColorWell? = nil // An outlet should be declared weak
   @IBOutlet weak var mDisplayPadNumbersSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawBoardLimitsSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawComponentNamesBottomSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawComponentNamesTopSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawComponentValuesBottomSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawComponentValuesTopSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawPackageLegendBottomSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawPackageLegendTopSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawPadsBottomSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawPadsTopSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawTextsLayoutBottomSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawTextsLayoutTopSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawTextsLegendBottomSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawTextsLegendTopSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawTracksBottomSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawTracksTopSideSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrawViasSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
+  @IBOutlet weak var mDrillDataFileExtensionTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mDuplicateSelectedComponentsActionButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mERCBoardInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mERCIssueTableView : CanariIssueTableView? = nil // An outlet should be declared weak
@@ -681,6 +713,7 @@ import Cocoa
   @IBOutlet weak var mExchangeSymbolPopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mExchangeSymbolSchematicHotKeyTextField : NSTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mExportDeviceButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mExtensionTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mFontLibraryTableView : EBTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mFrontRestrictRectangleSwitch : EBSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mGenerateProductFilesActionButton : EBButton? = nil // An outlet should be declared weak
@@ -688,6 +721,7 @@ import Cocoa
   @IBOutlet weak var mGridZoomBoardLimitsInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mGridZoomSchematicsInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mHideERCIssueButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mHorizontalMirrorSwitch : CanariObserverSwitch? = nil // An outlet should be declared weak
   @IBOutlet weak var mHotKeysSchematicInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
   @IBOutlet weak var mInconsistentSchematicErrorPanel : NSPanel? = nil // An outlet should be declared weak
   @IBOutlet weak var mInconsistentSchematicErrorTextView : NSTextView? = nil // An outlet should be declared weak
@@ -702,6 +736,8 @@ import Cocoa
   @IBOutlet weak var mMergeNetPopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mMergeSeveralSubnetsPanel : NSPanel? = nil // An outlet should be declared weak
   @IBOutlet weak var mMergeSeveralSubnetsPopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMinPPTPTTTWdisplayUnitTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mMoveSelectedObjectsToSheetPanel : NSPanel? = nil // An outlet should be declared weak
   @IBOutlet weak var mMoveSelectedObjectsToSheetPopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mNCInSchematicsInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
@@ -723,8 +759,12 @@ import Cocoa
   @IBOutlet weak var mNewComponentFromDevicePullDownButton : CanariNewComponentFromDevicePullDownButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mNewSheetButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mNoArtworkMessageTextField : NSTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mOARUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mOARValueTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mOpenSetDateDialogButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mOperationBoardLimitsInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet weak var mPHDUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var mPHDValueTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
   @IBOutlet weak var mPageSegmentedControl : CanariSegmentedControl? = nil // An outlet should be declared weak
   @IBOutlet weak var mPinPadAssignmentTableView : ThreeStringArrayTableView? = nil // An outlet should be declared weak
   @IBOutlet weak var mProductFileGenerationLogTextView : NSTextView? = nil // An outlet should be declared weak
@@ -830,6 +870,8 @@ import Cocoa
   @IBOutlet weak var mWireNetNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
   @IBOutlet weak var mWireRenameNetButton : EBButton? = nil // An outlet should be declared weak
   @IBOutlet weak var mWireRenameNetWithUniqueNewNameButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet weak var minValueForBoardLimitTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet weak var minValueForBoardLimitUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
 
   //····················································································································
   //    Multiple bindings controllers
@@ -941,8 +983,12 @@ import Cocoa
     self.boardTextSelectionController.addExplorer (name: "boardTextSelectionController", y:&y, view:view)
   //--- Selection controller property: componentInBoardSelectionController
     self.componentInBoardSelectionController.addExplorer (name: "componentInBoardSelectionController", y:&y, view:view)
+  //--- Array controller property: mDataController
+    self.mDataController.addExplorer (name: "mDataController", y:&y, view:view)
   //--- Array controller property: componentController
     self.componentController.addExplorer (name: "componentController", y:&y, view:view)
+  //--- Selection controller property: mDataSelection
+    self.mDataSelection.addExplorer (name: "mDataSelection", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -998,6 +1044,7 @@ import Cocoa
     checkOutletConnection (self.mAllowTracksOnFrontSideSwitch, "mAllowTracksOnFrontSideSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mArtworkNameTextField, "mArtworkNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mArtworkTabView, "mArtworkTabView", NSTabView.self, #file, #line)
+    checkOutletConnection (self.mArtworkVersionTextField, "mArtworkVersionTextField", EBIntObserverField.self, #file, #line)
     checkOutletConnection (self.mArtworlImportButton, "mArtworlImportButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAutoRouterPreferredDirectionPopUp, "mAutoRouterPreferredDirectionPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mAutorouterSnapAnglePopUp, "mAutorouterSnapAnglePopUp", EBPopUpButton.self, #file, #line)
@@ -1093,6 +1140,7 @@ import Cocoa
     checkOutletConnection (self.mChangeValueValidationButton, "mChangeValueValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mCommentInSchematicsInspectorView, "mCommentInSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mCommentInSchematicsTextField, "mCommentInSchematicsTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextObserverView.self, #file, #line)
     checkOutletConnection (self.mComponentCountTextField, "mComponentCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentInBoardCenterXPopUp, "mComponentInBoardCenterXPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mComponentInBoardCenterXTextField, "mComponentInBoardCenterXTextField", CanariDimensionTextField.self, #file, #line)
@@ -1119,6 +1167,7 @@ import Cocoa
     checkOutletConnection (self.mConnectSchematicHotKeyTextField, "mConnectSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mControlKeyHiliteDiameterSlider, "mControlKeyHiliteDiameterSlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mCurrentComponentNameTextField, "mCurrentComponentNameTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mDataTableView, "mDataTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDeviceLibraryTableView, "mDeviceLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDevicePackageTableView, "mDevicePackageTableView", StringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mDeviceSymbolTableView, "mDeviceSymbolTableView", TwoStringArrayTableView.self, #file, #line)
@@ -1147,6 +1196,23 @@ import Cocoa
     checkOutletConnection (self.mDisplayFrontRestrictRectanglesSwitch, "mDisplayFrontRestrictRectanglesSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayPadNumbersColorWell, "mDisplayPadNumbersColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDisplayPadNumbersSwitch, "mDisplayPadNumbersSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawBoardLimitsSwitch, "mDrawBoardLimitsSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawComponentNamesBottomSideSwitch, "mDrawComponentNamesBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawComponentNamesTopSideSwitch, "mDrawComponentNamesTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawComponentValuesBottomSideSwitch, "mDrawComponentValuesBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawComponentValuesTopSideSwitch, "mDrawComponentValuesTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawPackageLegendBottomSideSwitch, "mDrawPackageLegendBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawPackageLegendTopSideSwitch, "mDrawPackageLegendTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawPadsBottomSideSwitch, "mDrawPadsBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawPadsTopSideSwitch, "mDrawPadsTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTextsLayoutBottomSideSwitch, "mDrawTextsLayoutBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTextsLayoutTopSideSwitch, "mDrawTextsLayoutTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTextsLegendBottomSideSwitch, "mDrawTextsLegendBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTextsLegendTopSideSwitch, "mDrawTextsLegendTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTracksBottomSideSwitch, "mDrawTracksBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTracksTopSideSwitch, "mDrawTracksTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawViasSwitch, "mDrawViasSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrillDataFileExtensionTextField, "mDrillDataFileExtensionTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mDuplicateSelectedComponentsActionButton, "mDuplicateSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mERCBoardInspectorView, "mERCBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mERCIssueTableView, "mERCIssueTableView", CanariIssueTableView.self, #file, #line)
@@ -1160,6 +1226,7 @@ import Cocoa
     checkOutletConnection (self.mExchangeSymbolPopUpButton, "mExchangeSymbolPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mExchangeSymbolSchematicHotKeyTextField, "mExchangeSymbolSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mExtensionTextField, "mExtensionTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mFrontRestrictRectangleSwitch, "mFrontRestrictRectangleSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mGenerateProductFilesActionButton, "mGenerateProductFilesActionButton", EBButton.self, #file, #line)
@@ -1167,6 +1234,7 @@ import Cocoa
     checkOutletConnection (self.mGridZoomBoardLimitsInspectorView, "mGridZoomBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mGridZoomSchematicsInspectorView, "mGridZoomSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mHideERCIssueButton, "mHideERCIssueButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mHorizontalMirrorSwitch, "mHorizontalMirrorSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mHotKeysSchematicInspectorView, "mHotKeysSchematicInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorPanel, "mInconsistentSchematicErrorPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorTextView, "mInconsistentSchematicErrorTextView", NSTextView.self, #file, #line)
@@ -1181,6 +1249,8 @@ import Cocoa
     checkOutletConnection (self.mMergeNetPopUpButton, "mMergeNetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mMergeSeveralSubnetsPanel, "mMergeSeveralSubnetsPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mMergeSeveralSubnetsPopUpButton, "mMergeSeveralSubnetsPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mMinPPTPTTTWdisplayUnitTextField, "mMinPPTPTTTWdisplayUnitTextField", CanariDimensionObserverTextField.self, #file, #line)
+    checkOutletConnection (self.mMinPPTPTTTWinEBUnitPopUp, "mMinPPTPTTTWinEBUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mMoveSelectedObjectsToSheetPanel, "mMoveSelectedObjectsToSheetPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mMoveSelectedObjectsToSheetPopUpButton, "mMoveSelectedObjectsToSheetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mNCInSchematicsInspectorView, "mNCInSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -1202,8 +1272,12 @@ import Cocoa
     checkOutletConnection (self.mNewComponentFromDevicePullDownButton, "mNewComponentFromDevicePullDownButton", CanariNewComponentFromDevicePullDownButton.self, #file, #line)
     checkOutletConnection (self.mNewSheetButton, "mNewSheetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mNoArtworkMessageTextField, "mNoArtworkMessageTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mOARUnitPopUp, "mOARUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mOARValueTextField, "mOARValueTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mOpenSetDateDialogButton, "mOpenSetDateDialogButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mOperationBoardLimitsInspectorView, "mOperationBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mPHDUnitPopUp, "mPHDUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPHDValueTextField, "mPHDValueTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mPinPadAssignmentTableView, "mPinPadAssignmentTableView", ThreeStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mProductFileGenerationLogTextView, "mProductFileGenerationLogTextView", NSTextView.self, #file, #line)
@@ -1309,6 +1383,8 @@ import Cocoa
     checkOutletConnection (self.mWireNetNameTextField, "mWireNetNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mWireRenameNetButton, "mWireRenameNetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mWireRenameNetWithUniqueNewNameButton, "mWireRenameNetWithUniqueNewNameButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.minValueForBoardLimitTextField, "minValueForBoardLimitTextField", CanariDimensionObserverTextField.self, #file, #line)
+    checkOutletConnection (self.minValueForBoardLimitUnitPopUp, "minValueForBoardLimitUnitPopUp", EBPopUpButton.self, #file, #line)
    }
   
   //····················································································································
@@ -1355,8 +1431,12 @@ import Cocoa
     self.boardTextSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: componentInBoardSelectionController
     self.componentInBoardSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Array controller property: mDataController
+    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
   //--- Array controller property: componentController
     self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
+  //--- Selection controller property: mDataSelection
+    self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: netCount
     self.netCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1693,6 +1773,7 @@ import Cocoa
     self.netClassController.bind_tableView (self.mNetClassTableView, file: #file, line: #line)
     self.projectFontController.bind_tableView (self.mFontLibraryTableView, file: #file, line: #line)
     self.projectDeviceController.bind_tableView (self.mDeviceLibraryTableView, file: #file, line: #line)
+    self.mDataController.bind_tableView (self.mDataTableView, file: #file, line: #line)
     self.schematicObjectsController.bind_ebView (self.mSchematicsView)
     self.boardCurveObjectsController.bind_ebView (self.mBoardLimitsView)
     self.boardObjectsController.bind_ebView (self.mBoardView)
@@ -1910,6 +1991,35 @@ import Cocoa
     self.mControlKeyHiliteDiameterSlider?.bind_doubleValue (self.rootObject.mControlKeyHiliteDiameter_property, file: #file, line: #line, sendContinously:true)
     self.mArtworkNameTextField?.bind_valueObserver (self.rootObject.mArtworkName_property, file: #file, line: #line)
     self.mArtworlImportButton?.bind_title (self.artworlImportButtonTitle_property, file: #file, line: #line)
+    self.mMinPPTPTTTWinEBUnitPopUp?.bind_selectedTag (self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
+    self.mMinPPTPTTTWdisplayUnitTextField?.bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
+    self.mOARUnitPopUp?.bind_selectedTag (self.rootObject.minValueForOARdisplayUnit_property, file: #file, line: #line)
+    self.mOARValueTextField?.bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property, file: #file, line: #line)
+    self.mPHDUnitPopUp?.bind_selectedTag (self.rootObject.minValueForPHDdisplayUnit_property, file: #file, line: #line)
+    self.mPHDValueTextField?.bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property, file: #file, line: #line)
+    self.minValueForBoardLimitUnitPopUp?.bind_selectedTag (self.rootObject.minValueForBoardLimitWidthDisplayUnit_property, file: #file, line: #line)
+    self.minValueForBoardLimitTextField?.bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property, file: #file, line: #line)
+    self.mDrillDataFileExtensionTextField?.bind_valueObserver (self.rootObject.drillDataFileExtension_property, file: #file, line: #line)
+    self.mExtensionTextField?.bind_valueObserver (self.mDataSelection.fileExtension_property, file: #file, line: #line)
+    self.mDrawBoardLimitsSwitch?.bind_valueObserver (self.mDataSelection.drawBoardLimits_property, file: #file, line: #line)
+    self.mDrawComponentValuesTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawComponentValuesTopSide_property, file: #file, line: #line)
+    self.mDrawComponentValuesBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawComponentValuesBottomSide_property, file: #file, line: #line)
+    self.mDrawComponentNamesTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawComponentNamesTopSide_property, file: #file, line: #line)
+    self.mDrawComponentNamesBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawComponentNamesBottomSide_property, file: #file, line: #line)
+    self.mDrawPackageLegendTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawPackageLegendTopSide_property, file: #file, line: #line)
+    self.mDrawPackageLegendBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawPackageLegendBottomSide_property, file: #file, line: #line)
+    self.mDrawPadsTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawPadsTopSide_property, file: #file, line: #line)
+    self.mDrawPadsBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawPadsBottomSide_property, file: #file, line: #line)
+    self.mDrawTextsLayoutTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawTextsLayoutTopSide_property, file: #file, line: #line)
+    self.mDrawTextsLayoutBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawTextsLayoutBottomSide_property, file: #file, line: #line)
+    self.mDrawTextsLegendTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawTextsLegendTopSide_property, file: #file, line: #line)
+    self.mDrawTextsLegendBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawTextsLegendBottomSide_property, file: #file, line: #line)
+    self.mDrawTracksTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawTracksTopSide_property, file: #file, line: #line)
+    self.mDrawTracksBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawTracksBottomSide_property, file: #file, line: #line)
+    self.mDrawViasSwitch?.bind_valueObserver (self.mDataSelection.drawVias_property, file: #file, line: #line)
+    self.mHorizontalMirrorSwitch?.bind_valueObserver (self.mDataSelection.horizontalMirror_property, file: #file, line: #line)
+    self.mCommentTextView?.bind_valueObserver (self.rootObject.comments_property, file: #file, line: #line)
+    self.mArtworkVersionTextField?.bind_valueObserver (self.rootObject.mArtworkVersion_property, file: #file, line: #line, autoFormatter:false)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -2595,6 +2705,35 @@ import Cocoa
     self.mControlKeyHiliteDiameterSlider?.unbind_doubleValue ()
     self.mArtworkNameTextField?.unbind_valueObserver ()
     self.mArtworlImportButton?.unbind_title ()
+    self.mMinPPTPTTTWinEBUnitPopUp?.unbind_selectedTag ()
+    self.mMinPPTPTTTWdisplayUnitTextField?.unbind_dimensionAndUnit ()
+    self.mOARUnitPopUp?.unbind_selectedTag ()
+    self.mOARValueTextField?.unbind_dimensionAndUnit ()
+    self.mPHDUnitPopUp?.unbind_selectedTag ()
+    self.mPHDValueTextField?.unbind_dimensionAndUnit ()
+    self.minValueForBoardLimitUnitPopUp?.unbind_selectedTag ()
+    self.minValueForBoardLimitTextField?.unbind_dimensionAndUnit ()
+    self.mDrillDataFileExtensionTextField?.unbind_valueObserver ()
+    self.mExtensionTextField?.unbind_valueObserver ()
+    self.mDrawBoardLimitsSwitch?.unbind_valueObserver ()
+    self.mDrawComponentValuesTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawComponentValuesBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawComponentNamesTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawComponentNamesBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawPackageLegendTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawPackageLegendBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawPadsTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawPadsBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawTextsLayoutTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawTextsLayoutBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawTextsLegendTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawTextsLegendBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawTracksTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawTracksBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawViasSwitch?.unbind_valueObserver ()
+    self.mHorizontalMirrorSwitch?.unbind_valueObserver ()
+    self.mCommentTextView?.unbind_valueObserver ()
+    self.mArtworkVersionTextField?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -2685,6 +2824,7 @@ import Cocoa
     self.netClassController.unbind_tableView (self.mNetClassTableView)
     self.projectFontController.unbind_tableView (self.mFontLibraryTableView)
     self.projectDeviceController.unbind_tableView (self.mDeviceLibraryTableView)
+    self.mDataController.unbind_tableView (self.mDataTableView)
     self.schematicObjectsController.unbind_ebView (self.mSchematicsView)
     self.boardCurveObjectsController.unbind_ebView (self.mBoardLimitsView)
     self.boardObjectsController.unbind_ebView (self.mBoardView)
@@ -2724,8 +2864,12 @@ import Cocoa
     self.boardTextSelectionController.unbind_selection ()
   //--- Selection controller property: componentInBoardSelectionController
     self.componentInBoardSelectionController.unbind_selection ()
+  //--- Array controller property: mDataController
+    self.mDataController.unbind_model ()
   //--- Array controller property: componentController
     self.componentController.unbind_model ()
+  //--- Selection controller property: mDataSelection
+    self.mDataSelection.unbind_selection ()
     self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
@@ -2796,6 +2940,7 @@ import Cocoa
     self.mAllowTracksOnFrontSideSwitch?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
     self.mArtworkTabView?.ebCleanUp ()
+    self.mArtworkVersionTextField?.ebCleanUp ()
     self.mArtworlImportButton?.ebCleanUp ()
     self.mAutoRouterPreferredDirectionPopUp?.ebCleanUp ()
     self.mAutorouterSnapAnglePopUp?.ebCleanUp ()
@@ -2891,6 +3036,7 @@ import Cocoa
     self.mChangeValueValidationButton?.ebCleanUp ()
     self.mCommentInSchematicsInspectorView?.ebCleanUp ()
     self.mCommentInSchematicsTextField?.ebCleanUp ()
+    self.mCommentTextView?.ebCleanUp ()
     self.mComponentCountTextField?.ebCleanUp ()
     self.mComponentInBoardCenterXPopUp?.ebCleanUp ()
     self.mComponentInBoardCenterXTextField?.ebCleanUp ()
@@ -2917,6 +3063,7 @@ import Cocoa
     self.mConnectSchematicHotKeyTextField?.ebCleanUp ()
     self.mControlKeyHiliteDiameterSlider?.ebCleanUp ()
     self.mCurrentComponentNameTextField?.ebCleanUp ()
+    self.mDataTableView?.ebCleanUp ()
     self.mDeviceLibraryTableView?.ebCleanUp ()
     self.mDevicePackageTableView?.ebCleanUp ()
     self.mDeviceSymbolTableView?.ebCleanUp ()
@@ -2945,6 +3092,23 @@ import Cocoa
     self.mDisplayFrontRestrictRectanglesSwitch?.ebCleanUp ()
     self.mDisplayPadNumbersColorWell?.ebCleanUp ()
     self.mDisplayPadNumbersSwitch?.ebCleanUp ()
+    self.mDrawBoardLimitsSwitch?.ebCleanUp ()
+    self.mDrawComponentNamesBottomSideSwitch?.ebCleanUp ()
+    self.mDrawComponentNamesTopSideSwitch?.ebCleanUp ()
+    self.mDrawComponentValuesBottomSideSwitch?.ebCleanUp ()
+    self.mDrawComponentValuesTopSideSwitch?.ebCleanUp ()
+    self.mDrawPackageLegendBottomSideSwitch?.ebCleanUp ()
+    self.mDrawPackageLegendTopSideSwitch?.ebCleanUp ()
+    self.mDrawPadsBottomSideSwitch?.ebCleanUp ()
+    self.mDrawPadsTopSideSwitch?.ebCleanUp ()
+    self.mDrawTextsLayoutBottomSideSwitch?.ebCleanUp ()
+    self.mDrawTextsLayoutTopSideSwitch?.ebCleanUp ()
+    self.mDrawTextsLegendBottomSideSwitch?.ebCleanUp ()
+    self.mDrawTextsLegendTopSideSwitch?.ebCleanUp ()
+    self.mDrawTracksBottomSideSwitch?.ebCleanUp ()
+    self.mDrawTracksTopSideSwitch?.ebCleanUp ()
+    self.mDrawViasSwitch?.ebCleanUp ()
+    self.mDrillDataFileExtensionTextField?.ebCleanUp ()
     self.mDuplicateSelectedComponentsActionButton?.ebCleanUp ()
     self.mERCBoardInspectorView?.ebCleanUp ()
     self.mERCIssueTableView?.ebCleanUp ()
@@ -2958,6 +3122,7 @@ import Cocoa
     self.mExchangeSymbolPopUpButton?.ebCleanUp ()
     self.mExchangeSymbolSchematicHotKeyTextField?.ebCleanUp ()
     self.mExportDeviceButton?.ebCleanUp ()
+    self.mExtensionTextField?.ebCleanUp ()
     self.mFontLibraryTableView?.ebCleanUp ()
     self.mFrontRestrictRectangleSwitch?.ebCleanUp ()
     self.mGenerateProductFilesActionButton?.ebCleanUp ()
@@ -2965,6 +3130,7 @@ import Cocoa
     self.mGridZoomBoardLimitsInspectorView?.ebCleanUp ()
     self.mGridZoomSchematicsInspectorView?.ebCleanUp ()
     self.mHideERCIssueButton?.ebCleanUp ()
+    self.mHorizontalMirrorSwitch?.ebCleanUp ()
     self.mHotKeysSchematicInspectorView?.ebCleanUp ()
     self.mInconsistentSchematicErrorPanel?.ebCleanUp ()
     self.mInconsistentSchematicErrorTextView?.ebCleanUp ()
@@ -2979,6 +3145,8 @@ import Cocoa
     self.mMergeNetPopUpButton?.ebCleanUp ()
     self.mMergeSeveralSubnetsPanel?.ebCleanUp ()
     self.mMergeSeveralSubnetsPopUpButton?.ebCleanUp ()
+    self.mMinPPTPTTTWdisplayUnitTextField?.ebCleanUp ()
+    self.mMinPPTPTTTWinEBUnitPopUp?.ebCleanUp ()
     self.mMoveSelectedObjectsToSheetPanel?.ebCleanUp ()
     self.mMoveSelectedObjectsToSheetPopUpButton?.ebCleanUp ()
     self.mNCInSchematicsInspectorView?.ebCleanUp ()
@@ -3000,8 +3168,12 @@ import Cocoa
     self.mNewComponentFromDevicePullDownButton?.ebCleanUp ()
     self.mNewSheetButton?.ebCleanUp ()
     self.mNoArtworkMessageTextField?.ebCleanUp ()
+    self.mOARUnitPopUp?.ebCleanUp ()
+    self.mOARValueTextField?.ebCleanUp ()
     self.mOpenSetDateDialogButton?.ebCleanUp ()
     self.mOperationBoardLimitsInspectorView?.ebCleanUp ()
+    self.mPHDUnitPopUp?.ebCleanUp ()
+    self.mPHDValueTextField?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mPinPadAssignmentTableView?.ebCleanUp ()
     self.mProductFileGenerationLogTextView?.ebCleanUp ()
@@ -3107,6 +3279,8 @@ import Cocoa
     self.mWireNetNameTextField?.ebCleanUp ()
     self.mWireRenameNetButton?.ebCleanUp ()
     self.mWireRenameNetWithUniqueNewNameButton?.ebCleanUp ()
+    self.minValueForBoardLimitTextField?.ebCleanUp ()
+    self.minValueForBoardLimitUnitPopUp?.ebCleanUp ()
 //    self.mAddBottomSchematicHotKeyTextField = nil
 //    self.mAddCommentButton = nil
 //    self.mAddComponentButton = nil
@@ -3131,6 +3305,7 @@ import Cocoa
 //    self.mAllowTracksOnFrontSideSwitch = nil
 //    self.mArtworkNameTextField = nil
 //    self.mArtworkTabView = nil
+//    self.mArtworkVersionTextField = nil
 //    self.mArtworlImportButton = nil
 //    self.mAutoRouterPreferredDirectionPopUp = nil
 //    self.mAutorouterSnapAnglePopUp = nil
@@ -3226,6 +3401,7 @@ import Cocoa
 //    self.mChangeValueValidationButton = nil
 //    self.mCommentInSchematicsInspectorView = nil
 //    self.mCommentInSchematicsTextField = nil
+//    self.mCommentTextView = nil
 //    self.mComponentCountTextField = nil
 //    self.mComponentInBoardCenterXPopUp = nil
 //    self.mComponentInBoardCenterXTextField = nil
@@ -3252,6 +3428,7 @@ import Cocoa
 //    self.mConnectSchematicHotKeyTextField = nil
 //    self.mControlKeyHiliteDiameterSlider = nil
 //    self.mCurrentComponentNameTextField = nil
+//    self.mDataTableView = nil
 //    self.mDeviceLibraryTableView = nil
 //    self.mDevicePackageTableView = nil
 //    self.mDeviceSymbolTableView = nil
@@ -3280,6 +3457,23 @@ import Cocoa
 //    self.mDisplayFrontRestrictRectanglesSwitch = nil
 //    self.mDisplayPadNumbersColorWell = nil
 //    self.mDisplayPadNumbersSwitch = nil
+//    self.mDrawBoardLimitsSwitch = nil
+//    self.mDrawComponentNamesBottomSideSwitch = nil
+//    self.mDrawComponentNamesTopSideSwitch = nil
+//    self.mDrawComponentValuesBottomSideSwitch = nil
+//    self.mDrawComponentValuesTopSideSwitch = nil
+//    self.mDrawPackageLegendBottomSideSwitch = nil
+//    self.mDrawPackageLegendTopSideSwitch = nil
+//    self.mDrawPadsBottomSideSwitch = nil
+//    self.mDrawPadsTopSideSwitch = nil
+//    self.mDrawTextsLayoutBottomSideSwitch = nil
+//    self.mDrawTextsLayoutTopSideSwitch = nil
+//    self.mDrawTextsLegendBottomSideSwitch = nil
+//    self.mDrawTextsLegendTopSideSwitch = nil
+//    self.mDrawTracksBottomSideSwitch = nil
+//    self.mDrawTracksTopSideSwitch = nil
+//    self.mDrawViasSwitch = nil
+//    self.mDrillDataFileExtensionTextField = nil
 //    self.mDuplicateSelectedComponentsActionButton = nil
 //    self.mERCBoardInspectorView = nil
 //    self.mERCIssueTableView = nil
@@ -3293,6 +3487,7 @@ import Cocoa
 //    self.mExchangeSymbolPopUpButton = nil
 //    self.mExchangeSymbolSchematicHotKeyTextField = nil
 //    self.mExportDeviceButton = nil
+//    self.mExtensionTextField = nil
 //    self.mFontLibraryTableView = nil
 //    self.mFrontRestrictRectangleSwitch = nil
 //    self.mGenerateProductFilesActionButton = nil
@@ -3300,6 +3495,7 @@ import Cocoa
 //    self.mGridZoomBoardLimitsInspectorView = nil
 //    self.mGridZoomSchematicsInspectorView = nil
 //    self.mHideERCIssueButton = nil
+//    self.mHorizontalMirrorSwitch = nil
 //    self.mHotKeysSchematicInspectorView = nil
 //    self.mInconsistentSchematicErrorPanel = nil
 //    self.mInconsistentSchematicErrorTextView = nil
@@ -3314,6 +3510,8 @@ import Cocoa
 //    self.mMergeNetPopUpButton = nil
 //    self.mMergeSeveralSubnetsPanel = nil
 //    self.mMergeSeveralSubnetsPopUpButton = nil
+//    self.mMinPPTPTTTWdisplayUnitTextField = nil
+//    self.mMinPPTPTTTWinEBUnitPopUp = nil
 //    self.mMoveSelectedObjectsToSheetPanel = nil
 //    self.mMoveSelectedObjectsToSheetPopUpButton = nil
 //    self.mNCInSchematicsInspectorView = nil
@@ -3335,8 +3533,12 @@ import Cocoa
 //    self.mNewComponentFromDevicePullDownButton = nil
 //    self.mNewSheetButton = nil
 //    self.mNoArtworkMessageTextField = nil
+//    self.mOARUnitPopUp = nil
+//    self.mOARValueTextField = nil
 //    self.mOpenSetDateDialogButton = nil
 //    self.mOperationBoardLimitsInspectorView = nil
+//    self.mPHDUnitPopUp = nil
+//    self.mPHDValueTextField = nil
 //    self.mPageSegmentedControl = nil
 //    self.mPinPadAssignmentTableView = nil
 //    self.mProductFileGenerationLogTextView = nil
@@ -3442,6 +3644,8 @@ import Cocoa
 //    self.mWireNetNameTextField = nil
 //    self.mWireRenameNetButton = nil
 //    self.mWireRenameNetWithUniqueNewNameButton = nil
+//    self.minValueForBoardLimitTextField = nil
+//    self.minValueForBoardLimitUnitPopUp = nil
   }
 
   //····················································································································

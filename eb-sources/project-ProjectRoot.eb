@@ -17,7 +17,28 @@ enum AutorouterSnapAngle {
 entity ProjectRoot {
 //--- Artwork
   property String mArtworkName default "" ;
+  property Int mArtworkVersion default 0 ;
   toOne ArtworkRoot mArtwork ;
+
+  property proxy Int minPPTPTTTWdisplayUnit : mArtwork.minPPTPTTTWdisplayUnit ;
+  property proxy Int minPPTPTTTW : mArtwork.minPPTPTTTW ;
+  
+  property proxy Int minValueForOARdisplayUnit : mArtwork.minValueForOARdisplayUnit ;
+  property proxy Int minValueForOARinEBUnit : mArtwork.minValueForOARinEBUnit ;
+  
+  property proxy Int minValueForPHDdisplayUnit : mArtwork.minValueForPHDdisplayUnit ;
+  property proxy Int minValueForPHDinEBUnit : mArtwork.minValueForPHDinEBUnit ;
+ 
+  property proxy Int minValueForBoardLimitWidth : mArtwork.minValueForBoardLimitWidth ;
+  property proxy Int minValueForBoardLimitWidthDisplayUnit : mArtwork.minValueForBoardLimitWidthDisplayUnit ;
+ 
+  property proxy String drillDataFileExtension : mArtwork.drillDataFileExtension ;
+
+  toMany proxy ArtworkFileGenerationParameters fileGenerationParameterArray : mArtwork.fileGenerationParameterArray ;
+
+  property proxy String comments : mArtwork.comments ;
+
+//  transient Int artworkSignature dependsFrom self.mArtwork.one.signature ;
 
 //--- ERC Status
   property Bool mLastERCCheckingIsSuccess default no ;
