@@ -223,7 +223,7 @@ extension ProjectDocument {
     var backComponentNames = [CGFloat : [EBLinePath]] () // Aperture, path
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject {
-        if component.mNameIsVisibleInBoard, let fontDescriptor = component.mNameFont!.descriptor {
+        if component.mNameIsVisibleInBoard, let fontDescriptor = component.mNameFont?.descriptor {
           let (textBP, _, _, _, _) = boardText_displayInfos (
             x: component.mXName + component.mX,
             y: component.mYName + component.mY,
@@ -259,7 +259,7 @@ extension ProjectDocument {
     var backComponentValues = [CGFloat : [EBLinePath]] () // Aperture, path
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject {
-        if component.mValueIsVisibleInBoard, let fontDescriptor = component.mValueFont!.descriptor {
+        if component.mValueIsVisibleInBoard, let fontDescriptor = component.mValueFont?.descriptor {
           let (textBP, _, _, _, _) = boardText_displayInfos (
             x: component.mXValue + component.mX,
             y: component.mYValue + component.mY,
@@ -576,15 +576,28 @@ fileprivate func polygon (_ inCenter : CanariPoint,
   case .rect :
     let p = inCenter.cocoaPoint
     let padSize = inPadSize.cocoaSize
-    let w = -padSize.width / 2.0
-    let h = -padSize.height / 2.0
-    let p0 = inAffineTransform.transform (NSPoint (x: p.x - w, y: p.y - h))
-    let p1 = inAffineTransform.transform (NSPoint (x: p.x + w, y: p.y - h))
-    let p2 = inAffineTransform.transform (NSPoint (x: p.x + w, y: p.y + h))
-    let p3 = inAffineTransform.transform (NSPoint (x: p.x - w, y: p.y + h))
+    let w = padSize.width / 2.0
+    let h = padSize.height / 2.0
+    let p0 = inAffineTransform.transform (NSPoint (x: p.x + w, y: p.y + h))
+    let p1 = inAffineTransform.transform (NSPoint (x: p.x - w, y: p.y + h))
+    let p2 = inAffineTransform.transform (NSPoint (x: p.x - w, y: p.y - h))
+    let p3 = inAffineTransform.transform (NSPoint (x: p.x + w, y: p.y - h))
     return ProductPolygon (origin: p0, points: [p1, p2, p3])
   case .octo :
-    return nil
+    let padSize = inPadSize.cocoaSize
+    let w = padSize.width / 2.0
+    let h = padSize.height / 2.0
+    let p = inCenter.cocoaPoint
+    let lg = min (w, h) / (1.0 + 1.0 / sqrt (2.0))
+    let p0 = inAffineTransform.transform (NSPoint (x: p.x + w - lg, y: p.y + h))
+    let p1 = inAffineTransform.transform (NSPoint (x: p.x + w,      y: p.y + h - lg))
+    let p2 = inAffineTransform.transform (NSPoint (x: p.x + w,      y: p.y - h + lg))
+    let p3 = inAffineTransform.transform (NSPoint (x: p.x + w - lg, y: p.y - h))
+    let p4 = inAffineTransform.transform (NSPoint (x: p.x - w + lg, y: p.y - h))
+    let p5 = inAffineTransform.transform (NSPoint (x: p.x - w,      y: p.y - h + lg))
+    let p6 = inAffineTransform.transform (NSPoint (x: p.x - w,      y: p.y + h - lg))
+    let p7 = inAffineTransform.transform (NSPoint (x: p.x - w + lg, y: p.y + h))
+    return ProductPolygon (origin: p0, points: [p1, p2, p3, p4, p5, p6, p7])
   case .round :
     return nil
   }
