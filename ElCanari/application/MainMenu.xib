@@ -264,7 +264,7 @@
                             <menuItem isSeparatorItem="YES" id="74">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Maintenance…" id="wW8-JA-jJA">
+                            <menuItem title="Batch Operations…" id="wW8-JA-jJA" userLabel="Batch Operations…">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="makeKeyAndOrderFront:" target="NwM-Dn-TT2" id="gY5-Nt-S12"/>
@@ -3088,7 +3088,7 @@ Gw
             </view>
             <point key="canvasLocation" x="-4109" y="-688"/>
         </window>
-        <window title="Maintenance" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="MAINTENANCE" animationBehavior="default" id="NwM-Dn-TT2" userLabel="Window : Maintenance">
+        <window title="Batch Operations" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="MAINTENANCE" animationBehavior="default" id="NwM-Dn-TT2" userLabel="Window : Batch">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="131" y="158" width="434" height="290"/>
@@ -3243,7 +3243,7 @@ Gw
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-1158" y="-2034"/>
+            <point key="canvasLocation" x="-1235" y="-2049"/>
         </window>
         <customObject id="kOJ-WV-yuh" customClass="OpenFontInLibrary" customModule="ElCanari" customModuleProvider="target">
             <connections>
@@ -3638,14 +3638,14 @@ Gw
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="x8Q-GK-cwq">
+                    <scrollView autohidesScrollers="YES" horizontalLineScroll="45" horizontalPageScroll="10" verticalLineScroll="45" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="x8Q-GK-cwq">
                         <rect key="frame" x="20" y="100" width="384" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="14l-t9-red">
-                            <rect key="frame" x="1" y="23" width="382" height="456"/>
+                            <rect key="frame" x="1" y="0.0" width="382" height="479"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="20" rowSizeStyle="automatic" headerView="2DD-Bh-L9R" viewBased="YES" indentationPerLevel="16" outlineTableColumn="cEb-iz-4lC" id="eeA-n5-j01">
+                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="43" rowSizeStyle="automatic" headerView="2DD-Bh-L9R" viewBased="YES" indentationPerLevel="16" outlineTableColumn="cEb-iz-4lC" id="eeA-n5-j01">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="456"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
