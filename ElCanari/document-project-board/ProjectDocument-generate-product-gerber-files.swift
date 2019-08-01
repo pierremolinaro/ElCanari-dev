@@ -56,63 +56,70 @@ extension ProjectDocument {
   internal func writeGerberProductFile (atPath inPath : String, _ inDescriptor : ArtworkFileGenerationParameters, _ inProductData : ProductData) throws {
     let path = inPath + inDescriptor.fileExtension
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
+    var af = AffineTransform ()
+    if inDescriptor.horizontalMirror {
+      let t = inProductData.boardBoundBox.origin.x + inProductData.boardBoundBox.size.width / 2.0
+      af.translate (x: t, y: 0.0)
+      af.scale (x: -1.0, y: 1.0)
+      af.translate (x: -t, y: 0.0)
+    }
     var s = "%FSLAX24Y24*%\n" // A = Absolute coordinates, 24 = all data are in 2.4 form
     s += "%MOIN*%\n" // length unit is inch
     var apertureDictionary = [CGFloat : [String]] ()
     var polygons = [ProductPolygon] ()
     if inDescriptor.drawBoardLimits {
-      apertureDictionary.append ([inProductData.boardLimitWidth : [inProductData.boardLimitPath]])
+      apertureDictionary.append ([inProductData.boardLimitWidth : [inProductData.boardLimitPath]], af)
     }
     if inDescriptor.drawPackageLegendTopSide {
-      apertureDictionary.append (inProductData.frontPackageLegend)
+      apertureDictionary.append (inProductData.frontPackageLegend, af)
     }
     if inDescriptor.drawPackageLegendBottomSide {
-      apertureDictionary.append (inProductData.backPackageLegend)
+      apertureDictionary.append (inProductData.backPackageLegend, af)
     }
     if inDescriptor.drawComponentNamesTopSide {
-      apertureDictionary.append (inProductData.frontComponentNames)
+      apertureDictionary.append (inProductData.frontComponentNames, af)
     }
     if inDescriptor.drawComponentNamesBottomSide {
-      apertureDictionary.append (inProductData.backComponentNames)
+      apertureDictionary.append (inProductData.backComponentNames, af)
     }
     if inDescriptor.drawComponentValuesTopSide {
-      apertureDictionary.append (inProductData.frontComponentValues)
+      apertureDictionary.append (inProductData.frontComponentValues, af)
     }
     if inDescriptor.drawComponentValuesBottomSide {
-      apertureDictionary.append (inProductData.backComponentValues)
+      apertureDictionary.append (inProductData.backComponentValues, af)
     }
     if inDescriptor.drawTextsLegendTopSide {
-      apertureDictionary.append (inProductData.legendFrontTexts)
-      apertureDictionary.append (oblongs: inProductData.frontLines)
+      apertureDictionary.append (inProductData.legendFrontTexts, af)
+      apertureDictionary.append (oblongs: inProductData.frontLines, af)
     }
     if inDescriptor.drawTextsLayoutTopSide {
-      apertureDictionary.append (inProductData.layoutFrontTexts)
+      apertureDictionary.append (inProductData.layoutFrontTexts, af)
     }
     if inDescriptor.drawTextsLayoutBottomSide {
-      apertureDictionary.append (inProductData.layoutBackTexts)
+      apertureDictionary.append (inProductData.layoutBackTexts, af)
     }
     if inDescriptor.drawTextsLegendBottomSide {
-      apertureDictionary.append (inProductData.legendBackTexts)
-      apertureDictionary.append (oblongs: inProductData.backLines)
+      apertureDictionary.append (inProductData.legendBackTexts, af)
+      apertureDictionary.append (oblongs: inProductData.backLines, af)
     }
     if inDescriptor.drawVias {
-      apertureDictionary.append (circles: inProductData.viaPads)
+      apertureDictionary.append (circles: inProductData.viaPads, af)
     }
     if inDescriptor.drawTracksTopSide {
-      apertureDictionary.append (oblongs: inProductData.frontTracks)
+      apertureDictionary.append (oblongs: inProductData.frontTracks, af)
     }
     if inDescriptor.drawTracksBottomSide {
-      apertureDictionary.append (oblongs: inProductData.backTracks)
+      apertureDictionary.append (oblongs: inProductData.backTracks, af)
     }
     if inDescriptor.drawPadsTopSide {
-      apertureDictionary.append (circles: inProductData.frontCircularPads)
-      apertureDictionary.append (oblongs: inProductData.frontOblongPads)
-      polygons += inProductData.frontPolygonPads
+      apertureDictionary.append (circles: inProductData.frontCircularPads, af)
+      apertureDictionary.append (oblongs: inProductData.frontOblongPads, af)
+      polygons += inProductData.frontPolygonPads.transformed (by: af)
     }
     if inDescriptor.drawPadsBottomSide {
-      apertureDictionary.append (circles: inProductData.backCircularPads)
-      apertureDictionary.append (oblongs: inProductData.backOblongPads)
-      polygons += inProductData.backPolygonPads
+      apertureDictionary.append (circles: inProductData.backCircularPads, af)
+      apertureDictionary.append (oblongs: inProductData.backOblongPads, af)
+      polygons += inProductData.backPolygonPads.transformed (by: af)
     }
   //--- Write aperture diameters
     let keys = apertureDictionary.keys.sorted ()
@@ -163,13 +170,15 @@ extension EBLinePath {
 
   //····················································································································
 
-  func appendGerberCodeTo (_ ioStringArray : inout [String]) {
-    let x = cocoaToMilTenth (self.origin.x)
-    let y = cocoaToMilTenth (self.origin.y)
+  func appendGerberCodeTo (_ ioStringArray : inout [String], _ inAffineTransform : AffineTransform) {
+    let to = inAffineTransform.transform (self.origin)
+    let x = cocoaToMilTenth (to.x)
+    let y = cocoaToMilTenth (to.y)
     ioStringArray.append ("X\(x)Y\(y)D02")
     for p in self.lines {
-      let x = cocoaToMilTenth (p.x)
-      let y = cocoaToMilTenth (p.y)
+      let tp = inAffineTransform.transform (p)
+      let x = cocoaToMilTenth (tp.x)
+      let y = cocoaToMilTenth (tp.y)
       ioStringArray.append ("X\(x)Y\(y)D01")
     }
     if self.closed {
@@ -194,11 +203,11 @@ extension Dictionary where Key == CGFloat, Value == [String] {
 
   //····················································································································
 
-  mutating func append (_ inApertureDict : [CGFloat : [EBLinePath]]) {
+  mutating func append (_ inApertureDict : [CGFloat : [EBLinePath]], _ inAffineTransform : AffineTransform) {
     for (aperture, pathArray) in inApertureDict {
       var drawings = [String] ()
       for path in pathArray {
-        path.appendGerberCodeTo (&drawings)
+        path.appendGerberCodeTo (&drawings, inAffineTransform)
       }
       self.append (drawings, for: aperture)
     }
@@ -206,10 +215,11 @@ extension Dictionary where Key == CGFloat, Value == [String] {
 
   //····················································································································
 
-  mutating func append (circles inCircles : [ProductCircle]) {
+  mutating func append (circles inCircles : [ProductCircle], _ inAffineTransform : AffineTransform) {
     for circle in inCircles {
-      let x = cocoaToMilTenth (circle.center.x)
-      let y = cocoaToMilTenth (circle.center.y)
+      let tc = inAffineTransform.transform (circle.center)
+      let x = cocoaToMilTenth (tc.x)
+      let y = cocoaToMilTenth (tc.y)
       let flash = "X\(x)Y\(y)D03"
       self.append ([flash], for: circle.diameter)
     }
@@ -217,12 +227,14 @@ extension Dictionary where Key == CGFloat, Value == [String] {
 
   //····················································································································
 
-  mutating func append (oblongs inLines : [ProductOblong]) {
+  mutating func append (oblongs inLines : [ProductOblong], _ inAffineTransform : AffineTransform) {
     for segment in inLines {
-      let x1 = cocoaToMilTenth (segment.p1.x)
-      let y1 = cocoaToMilTenth (segment.p1.y)
-      let x2 = cocoaToMilTenth (segment.p2.x)
-      let y2 = cocoaToMilTenth (segment.p2.y)
+      let p1 = inAffineTransform.transform (segment.p1)
+      let x1 = cocoaToMilTenth (p1.x)
+      let y1 = cocoaToMilTenth (p1.y)
+      let p2 = inAffineTransform.transform (segment.p2)
+      let x2 = cocoaToMilTenth (p2.x)
+      let y2 = cocoaToMilTenth (p2.y)
       let line = ["X\(x1)Y\(y1)D02", "X\(x2)Y\(y2)D01"]
       self.append (line, for: segment.width)
     }
@@ -230,16 +242,21 @@ extension Dictionary where Key == CGFloat, Value == [String] {
 
   //····················································································································
 
-//  mutating func append (polygons inPolygons : [ProductPolygon]) {
-//    for polygon in inPolygons {
-//      let x1 = cocoaToMilTenth (segment.p1.x)
-//      let y1 = cocoaToMilTenth (segment.p1.y)
-//      let x2 = cocoaToMilTenth (segment.p2.x)
-//      let y2 = cocoaToMilTenth (segment.p2.y)
-//      let line = ["X\(x1)Y\(y1)D02", "X\(x2)Y\(y2)D01"]
-//      self.append (line, for: segment.width)
-//    }
-//  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension Array where Element == ProductPolygon {
+
+  //····················································································································
+
+  func transformed (by inAffineTransform : AffineTransform) -> [ProductPolygon] {
+    var result = [ProductPolygon] ()
+    for polygon in self {
+      result.append (polygon.transformed (by: inAffineTransform))
+    }
+    return result
+  }
 
   //····················································································································
 

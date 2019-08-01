@@ -29,10 +29,10 @@ struct EBLinePath {
 
   //····················································································································
 
-  func appendToBezierPath (_ ioBezierPath : inout EBBezierPath) {
-    ioBezierPath.move (to: self.origin)
+  func appendToBezierPath (_ ioBezierPath : inout EBBezierPath, _ inAffineTransform : AffineTransform) {
+    ioBezierPath.move (to: inAffineTransform.transform (self.origin))
     for p in self.lines {
-      ioBezierPath.line (to:p)
+      ioBezierPath.line (to: inAffineTransform.transform (p))
     }
     if self.closed {
       ioBezierPath.close ()

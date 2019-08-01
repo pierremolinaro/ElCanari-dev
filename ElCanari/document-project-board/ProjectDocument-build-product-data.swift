@@ -651,6 +651,20 @@ struct ProductCircle { // All in Cocoa Unit
 struct ProductPolygon { // All in Cocoa Unit
   let origin : NSPoint
   let points : [NSPoint]
+
+  //····················································································································
+
+  func transformed (by inAffineTransform : AffineTransform) -> ProductPolygon {
+    let to = inAffineTransform.transform (self.origin)
+    var tps = [NSPoint] ()
+    for p in self.points {
+      tps.append (inAffineTransform.transform (p))
+    }
+    return ProductPolygon (origin: to, points: tps)
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
