@@ -124,6 +124,10 @@ extension MergerDocument {
               newArray = newTemporaryBoardModel.frontLegendLines
               newTemporaryBoardModel.frontLegendLines = []
               updatedBoardModel.frontLegendLines = newArray
+
+              newArray = newTemporaryBoardModel.internalBoardsLimits
+              newTemporaryBoardModel.internalBoardsLimits = []
+              updatedBoardModel.internalBoardsLimits = newArray
             }
           }else{ // Cannot read file
             let alert = NSAlert ()

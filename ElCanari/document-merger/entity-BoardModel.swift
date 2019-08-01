@@ -2036,7 +2036,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.backLegendLinesSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_backLegendLinesBezierPaths (v0))
           default :
             return .empty
           }
@@ -2088,7 +2088,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.frontLegendTextsSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_frontLegendTextsBezierPaths (v0))
           default :
             return .empty
           }
@@ -2140,7 +2140,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.frontLayoutTextsSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_frontLayoutTextsBezierPaths (v0))
           default :
             return .empty
           }
@@ -2192,7 +2192,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.backLegendTextsSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_backLegendTextsBezierPaths (v0))
           default :
             return .empty
           }
@@ -2244,7 +2244,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.backLayoutTextsSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_backLayoutTextsBezierPaths (v0))
           default :
             return .empty
           }
@@ -2296,7 +2296,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.internalBoardsLimitsSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_internalBoardsLimitsBezierPaths (v0))
           default :
             return .empty
           }
@@ -2348,7 +2348,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.drillSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_holesBezierPaths (v0))
           default :
             return .empty
           }
@@ -2610,7 +2610,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.backComponentNameSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_backComponentNamesBezierPaths (v0))
           default :
             return .empty
           }
@@ -2662,7 +2662,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.frontComponentNameSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_frontComponentNamesBezierPaths (v0))
           default :
             return .empty
           }
@@ -2714,7 +2714,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.frontComponentValueSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_frontComponentValuesBezierPaths (v0))
           default :
             return .empty
           }
@@ -2766,7 +2766,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.backComponentValueSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_backComponentValuesBezierPaths (v0))
           default :
             return .empty
           }
@@ -2818,7 +2818,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.backTrackSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_backTracksBezierPaths (v0))
           default :
             return .empty
           }
@@ -2870,7 +2870,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.frontTrackSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_frontTracksBezierPaths (v0))
           default :
             return .empty
           }
@@ -2922,7 +2922,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.frontPackagesSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_frontPackagesBezierPaths (v0))
           default :
             return .empty
           }
@@ -2974,7 +2974,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.backPackagesSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_backPackagesBezierPaths (v0))
           default :
             return .empty
           }
@@ -3018,7 +3018,7 @@ class BoardModel : EBManagedObject,
         case .single :
           switch (unwSelf.frontLegendLinesSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
+            return .single (transient_BoardModel_frontLegendLinesBezierPaths (v0))
           default :
             return .empty
           }

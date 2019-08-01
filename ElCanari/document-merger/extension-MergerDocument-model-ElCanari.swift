@@ -88,7 +88,7 @@ extension MergerDocument {
       segment.width = ints [4]
       internalBoardsLimitsEntities.append (segment)
     }
-    boardModel.internalBoardsLimits_property.setProp (internalBoardsLimitsEntities)
+    boardModel.internalBoardsLimits = internalBoardsLimitsEntities
   //--- Front tracks
     var frontTrackEntities = [SegmentEntity] ()
     let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-FRONT", &errorArray)
@@ -102,7 +102,7 @@ extension MergerDocument {
       track.width = ints [4]
       frontTrackEntities.append (track)
     }
-    boardModel.frontTracks_property.setProp (frontTrackEntities)
+    boardModel.frontTracks = frontTrackEntities
   //--- Back tracks
     var backTrackEntities = [SegmentEntity] ()
     let backTracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-BACK", &errorArray)
@@ -116,7 +116,7 @@ extension MergerDocument {
       track.width = ints [4]
       backTrackEntities.append (track)
     }
-    boardModel.backTracks_property.setProp (backTrackEntities)
+    boardModel.backTracks = backTrackEntities
   //--- Vias
     var viaEntities = [BoardModelVia] ()
     let vias = stringArray (fromDict: inBoardArchiveDict, key: "VIAS", &errorArray)
@@ -128,7 +128,7 @@ extension MergerDocument {
       via.padDiameter = ints [2]
       viaEntities.append (via)
     }
-    boardModel.vias_property.setProp (viaEntities)
+    boardModel.vias = viaEntities
   //--- Back Legend texts
     var backLegendLinesEntities = [SegmentEntity] ()
     let backLegendLines = stringArray (fromDict: inBoardArchiveDict, key: "LINES-BACK", &errorArray)
@@ -145,7 +145,7 @@ extension MergerDocument {
         backLegendLinesEntities.append (segment)
       }
     }
-    boardModel.backLegendLines_property.setProp (backLegendLinesEntities)
+    boardModel.backLegendLines = backLegendLinesEntities
   //--- Front Legend texts
     var frontLegendLinesEntities = [SegmentEntity] ()
     let frontLegendLines = stringArray (fromDict: inBoardArchiveDict, key: "LINES-FRONT", &errorArray)
@@ -162,7 +162,7 @@ extension MergerDocument {
         frontLegendLinesEntities.append (segment)
       }
     }
-    boardModel.frontLegendLines_property.setProp (frontLegendLinesEntities)
+    boardModel.frontLegendLines = frontLegendLinesEntities
   //--- Front Layout texts
     var frontLayoutTextEntities = [SegmentEntity] ()
     let frontLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LAYOUT-FRONT", &errorArray)
@@ -176,7 +176,7 @@ extension MergerDocument {
       segment.width = ints [4]
       frontLayoutTextEntities.append (segment)
     }
-    boardModel.frontLayoutTexts_property.setProp (frontLayoutTextEntities)
+    boardModel.frontLayoutTexts = frontLayoutTextEntities
   //--- Back Layout texts
     var backLayoutTextEntities = [SegmentEntity] ()
     let backLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LAYOUT-BACK", &errorArray)
@@ -190,7 +190,7 @@ extension MergerDocument {
       segment.width = ints [4]
       backLayoutTextEntities.append (segment)
     }
-    boardModel.backLayoutTexts_property.setProp (backLayoutTextEntities)
+    boardModel.backLayoutTexts = backLayoutTextEntities
   //--- Back Legend texts
     var backLegendTextEntities = [SegmentEntity] ()
     let backLegendTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LEGEND-BACK", &errorArray)
@@ -207,7 +207,7 @@ extension MergerDocument {
         backLegendTextEntities.append (segment)
       }
     }
-    boardModel.backLegendTexts_property.setProp (backLegendTextEntities)
+    boardModel.backLegendTexts = backLegendTextEntities
   //--- Front Legend texts
     var frontLegendTextEntities = [SegmentEntity] ()
     let frontTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LEGEND-FRONT", &errorArray)
@@ -224,7 +224,7 @@ extension MergerDocument {
         frontLegendTextEntities.append (segment)
       }
     }
-    boardModel.frontLegendTexts_property.setProp (frontLegendTextEntities)
+    boardModel.frontLegendTexts = frontLegendTextEntities
   //--- Back packages
     var backPackagesEntities = [SegmentEntity] ()
     let backPackages = stringArray (fromDict: inBoardArchiveDict, key: "PACKAGES-BACK", &errorArray)
@@ -241,7 +241,7 @@ extension MergerDocument {
         backPackagesEntities.append (segment)
       }
     }
-    boardModel.backPackages_property.setProp (backPackagesEntities)
+    boardModel.backPackages = backPackagesEntities
   //--- Front packages
     var frontPackagesEntities = [SegmentEntity] ()
     let frontPackages = stringArray (fromDict: inBoardArchiveDict, key: "PACKAGES-FRONT", &errorArray)
@@ -258,7 +258,7 @@ extension MergerDocument {
         frontPackagesEntities.append (segment)
       }
     }
-    boardModel.frontPackages_property.setProp (frontPackagesEntities)
+    boardModel.frontPackages = frontPackagesEntities
   //--- Back component names
     var backComponentNamesEntities = [SegmentEntity] ()
     let backComponentNames = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-NAMES-BACK", &errorArray)
@@ -275,7 +275,7 @@ extension MergerDocument {
         backComponentNamesEntities.append (segment)
       }
     }
-    boardModel.backComponentNames_property.setProp (backComponentNamesEntities)
+    boardModel.backComponentNames = backComponentNamesEntities
   //--- Front component names
     var frontComponentNamesEntities = [SegmentEntity] ()
     let frontComponentNames = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-NAMES-FRONT", &errorArray)
@@ -292,7 +292,7 @@ extension MergerDocument {
         frontComponentNamesEntities.append (segment)
       }
     }
-    boardModel.frontComponentNames_property.setProp (frontComponentNamesEntities)
+    boardModel.frontComponentNames = frontComponentNamesEntities
   //--- Front component values
     var frontComponentValuesEntities = [SegmentEntity] ()
     let frontComponentValues = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-VALUES-FRONT", &errorArray)
@@ -309,7 +309,7 @@ extension MergerDocument {
         frontComponentValuesEntities.append (segment)
       }
     }
-    boardModel.frontComponentValues_property.setProp (frontComponentValuesEntities)
+    boardModel.frontComponentValues = frontComponentValuesEntities
   //--- Back component values
     var backComponentValuesEntities = [SegmentEntity] ()
     let backComponentValues = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-VALUES-BACK", &errorArray)
@@ -326,7 +326,7 @@ extension MergerDocument {
         backComponentValuesEntities.append (segment)
       }
     }
-    boardModel.backComponentValues_property.setProp (backComponentValuesEntities)
+    boardModel.backComponentValues = backComponentValuesEntities
   //--- Drills
     var drillEntities = [SegmentEntity] ()
     let drills = stringArray (fromDict: inBoardArchiveDict, key: "DRILLS", &errorArray)
@@ -363,7 +363,7 @@ extension MergerDocument {
       }
       backPadEntities.append (pad)
     }
-    boardModel.backPads_property.setProp (backPadEntities)
+    boardModel.backPads = backPadEntities
   //--- Front pads
     var frontPadEntities = [BoardModelPad] ()
     let frontPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-FRONT", &errorArray)
@@ -384,7 +384,7 @@ extension MergerDocument {
       }
       frontPadEntities.append (pad)
     }
-    boardModel.frontPads_property.setProp (frontPadEntities)
+    boardModel.frontPads = frontPadEntities
   //--- Dictionary import ok ?
     if errorArray.count != 0 { // Error
       var s = ""
@@ -395,7 +395,7 @@ extension MergerDocument {
         s += anError
       }
       let alert = NSAlert ()
-      alert.messageText = "Cannot Analyse file contents"
+      alert.messageText = "Cannot Analyze file contents"
       alert.informativeText = s
       alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
     }

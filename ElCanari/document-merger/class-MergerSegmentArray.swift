@@ -10,21 +10,6 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func transient_segmentsToBezierPaths (_ segments : MergerSegmentArray) -> BezierPathArray {
-  var result = BezierPathArray ()
-  for segment in segments.segmentArray {
-     var bp = EBBezierPath ()
-     bp.move (to: NSPoint (x: canariUnitToCocoa (segment.x1), y: canariUnitToCocoa (segment.y1)))
-     bp.line (to: NSPoint (x: canariUnitToCocoa (segment.x2), y: canariUnitToCocoa (segment.y2)))
-     bp.lineWidth = canariUnitToCocoa (segment.width)
-     bp.lineCapStyle = .round
-     result.append (bp)
-  }
-  return result
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   MergerSegmentArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -46,6 +31,21 @@ final class MergerSegmentArray : EBObject {
   override init () {
     segmentArray = []
     super.init ()
+  }
+
+  //····················································································································
+
+  func bezierPathArray () -> BezierPathArray {
+    var result = BezierPathArray ()
+    for segment in self.segmentArray {
+       var bp = EBBezierPath ()
+       bp.move (to: NSPoint (x: canariUnitToCocoa (segment.x1), y: canariUnitToCocoa (segment.y1)))
+       bp.line (to: NSPoint (x: canariUnitToCocoa (segment.x2), y: canariUnitToCocoa (segment.y2)))
+       bp.lineWidth = canariUnitToCocoa (segment.width)
+       bp.lineCapStyle = .round
+       result.append (bp)
+    }
+    return result
   }
 
   //····················································································································

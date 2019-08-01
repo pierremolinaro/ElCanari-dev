@@ -13,24 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_internalBoardsLimitsSegments (
-       _ self_internalBoardsLimits_x1 : [SegmentEntity_x1],
-       _ self_internalBoardsLimits_y1 : [SegmentEntity_y1],
-       _ self_internalBoardsLimits_x2 : [SegmentEntity_x2],
-       _ self_internalBoardsLimits_y2 : [SegmentEntity_y2],
-       _ self_internalBoardsLimits_width : [SegmentEntity_width]
-) -> MergerSegmentArray {
+func transient_BoardModel_frontLayoutTextsBezierPaths (
+       _ self_frontLayoutTextsSegments : MergerSegmentArray
+) -> BezierPathArray {
 //--- START OF USER ZONE 2
-  var segmentArray = [CanariSegment] ()
-  for idx in 0 ..< self_internalBoardsLimits_x1.count {
-    let x1 = self_internalBoardsLimits_x1 [idx].x1
-    let y1 = self_internalBoardsLimits_y1 [idx].y1
-    let x2 = self_internalBoardsLimits_x2 [idx].x2
-    let y2 = self_internalBoardsLimits_y2 [idx].y2
-    let width = self_internalBoardsLimits_width [idx].width
-    segmentArray.append (CanariSegment (x1: x1, y1: y1, x2: x2, y2: y2, width: width))
-  }
-  return MergerSegmentArray (segmentArray)
+        return self_frontLayoutTextsSegments.bezierPathArray ()
 //--- END OF USER ZONE 2
 }
 

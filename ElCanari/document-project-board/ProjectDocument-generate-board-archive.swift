@@ -21,6 +21,7 @@ extension ProjectDocument {
     boardArchive ["ARTWORK"] = self.rootObject.mArtworkName
   //--- Add Board limits
     let af = self.addBoardLimits (&boardArchive, inProductData)
+    addBoardLimitPathToArchive (&boardArchive, inProductData.boardLimitPath, self.rootObject.mBoardLimitsWidth, af)
     addLinePathes (&boardArchive, inProductData.backComponentNames, "COMPONENT-NAMES-BACK", af)
     addLinePathes (&boardArchive, inProductData.frontComponentNames, "COMPONENT-NAMES-FRONT", af)
     addLinePathes (&boardArchive, inProductData.backComponentValues, "COMPONENT-VALUES-BACK", af)
@@ -57,6 +58,8 @@ extension ProjectDocument {
   //--- Transformation for translating origin to (0, 0)
     var af = AffineTransform ()
     af.translate (x: -boardBoundBox.origin.x, y: -boardBoundBox.origin.y)
+  //--- Write board frame
+  //---
     return af
   }
 
@@ -108,14 +111,28 @@ extension ProjectDocument {
         }
       }
     }
-
-
     ioBoardArchive ["PADS-BACK"] = backPads
     ioBoardArchive ["PADS-FRONT"] = frontPads
   }
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func addBoardLimitPathToArchive (_ ioBoardArchive : inout [String : Any],
+                                             _ inPath : EBLinePath,
+                                             _ inWidth : Int,
+                                             _ inAffineTransform : AffineTransform) {
+   var stringArray = [String] ()
+   var p0 = inAffineTransform.transform (inPath.origin).canariPoint
+   for p in inPath.lines {
+     let pp = inAffineTransform.transform (p).canariPoint
+     stringArray.append ("\(p0.x) \(p0.y) \(pp.x) \(pp.y) \(inWidth)")
+     p0 = pp
+   }
+   ioBoardArchive ["INTERNAL-BOARDS-LIMITS"] = stringArray
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

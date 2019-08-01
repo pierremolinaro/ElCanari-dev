@@ -24,7 +24,7 @@ entity BoardModel {
     self.frontLegendLines.all.width
   ;
 
-  transient BezierPathArray frontLegendLinesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontLegendLinesSegments ;
+  transient BezierPathArray frontLegendLinesBezierPaths dependsFrom self.frontLegendLinesSegments ;
 
 //--- Back Legend Lines
   toMany SegmentEntity backLegendLines ;
@@ -35,7 +35,7 @@ entity BoardModel {
     self.backLegendLines.all.width
   ;
 
-  transient BezierPathArray backLegendLinesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backLegendLinesSegments ;
+  transient BezierPathArray backLegendLinesBezierPaths dependsFrom self.backLegendLinesSegments ;
 
 //--- Front Legend Texts
   toMany SegmentEntity frontLegendTexts ;
@@ -46,7 +46,7 @@ entity BoardModel {
     self.frontLegendTexts.all.width
   ;
 
-  transient BezierPathArray frontLegendTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontLegendTextsSegments ;
+  transient BezierPathArray frontLegendTextsBezierPaths dependsFrom self.frontLegendTextsSegments ;
 
 //--- Front Layout Texts
   toMany SegmentEntity frontLayoutTexts ;
@@ -57,7 +57,7 @@ entity BoardModel {
     self.frontLayoutTexts.all.width
   ;
 
-  transient BezierPathArray frontLayoutTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontLayoutTextsSegments ;
+  transient BezierPathArray frontLayoutTextsBezierPaths dependsFrom self.frontLayoutTextsSegments ;
 
 //--- Back Legend Texts
   toMany SegmentEntity backLegendTexts ;
@@ -68,7 +68,7 @@ entity BoardModel {
     self.backLegendTexts.all.width
   ;
 
-  transient BezierPathArray backLegendTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backLegendTextsSegments ;
+  transient BezierPathArray backLegendTextsBezierPaths dependsFrom self.backLegendTextsSegments ;
 
 //--- Back Layout Texts
   toMany SegmentEntity backLayoutTexts ;
@@ -79,7 +79,7 @@ entity BoardModel {
     self.backLayoutTexts.all.width
   ;
 
-  transient BezierPathArray backLayoutTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backLayoutTextsSegments ;
+  transient BezierPathArray backLayoutTextsBezierPaths dependsFrom self.backLayoutTextsSegments ;
 
 //--- Internal board limits
   toMany SegmentEntity internalBoardsLimits ;
@@ -90,7 +90,7 @@ entity BoardModel {
     self.internalBoardsLimits.all.width
   ;
 
-  transient BezierPathArray internalBoardsLimitsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.internalBoardsLimitsSegments ;
+  transient BezierPathArray internalBoardsLimitsBezierPaths dependsFrom self.internalBoardsLimitsSegments ;
 
 //--- Drills
   toMany SegmentEntity drills ;
@@ -98,7 +98,7 @@ entity BoardModel {
   transient MergerSegmentArray drillSegments
     dependsFrom self.drills.all.x1, self.drills.all.y1, self.drills.all.x2, self.drills.all.y2, self.drills.all.width ;
 
-  transient BezierPathArray holesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.drillSegments ;
+  transient BezierPathArray holesBezierPaths dependsFrom self.drillSegments ;
 
 //--- Vias
   toMany BoardModelVia vias ;
@@ -145,7 +145,7 @@ entity BoardModel {
     self.backComponentNames.all.width
   ;
 
-  transient BezierPathArray backComponentNamesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backComponentNameSegments ;
+  transient BezierPathArray backComponentNamesBezierPaths dependsFrom self.backComponentNameSegments ;
 
 //--- Front component names
   toMany SegmentEntity frontComponentNames ;
@@ -156,7 +156,7 @@ entity BoardModel {
     self.frontComponentNames.all.width
   ;
 
-  transient BezierPathArray frontComponentNamesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontComponentNameSegments ;
+  transient BezierPathArray frontComponentNamesBezierPaths dependsFrom self.frontComponentNameSegments ;
 
 //--- Front component values
   toMany SegmentEntity frontComponentValues ;
@@ -167,7 +167,7 @@ entity BoardModel {
     self.frontComponentValues.all.width
   ;
 
-  transient BezierPathArray frontComponentValuesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontComponentValueSegments ;
+  transient BezierPathArray frontComponentValuesBezierPaths dependsFrom self.frontComponentValueSegments ;
 
 //--- Back component values
   toMany SegmentEntity backComponentValues ;
@@ -178,7 +178,7 @@ entity BoardModel {
     self.backComponentValues.all.width
   ;
 
-  transient BezierPathArray backComponentValuesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backComponentValueSegments ;
+  transient BezierPathArray backComponentValuesBezierPaths dependsFrom self.backComponentValueSegments ;
 
 //--- Back tracks
   toMany SegmentEntity backTracks ;
@@ -189,7 +189,7 @@ entity BoardModel {
     self.backTracks.all.width
   ;
 
-  transient BezierPathArray backTracksBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backTrackSegments ;
+  transient BezierPathArray backTracksBezierPaths dependsFrom self.backTrackSegments ;
 
 //--- Front tracks
   toMany SegmentEntity frontTracks ;
@@ -200,7 +200,7 @@ entity BoardModel {
     self.frontTracks.all.width
   ;
 
-  transient BezierPathArray frontTracksBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontTrackSegments ;
+  transient BezierPathArray frontTracksBezierPaths dependsFrom self.frontTrackSegments ;
 
 //--- Front packages
   toMany SegmentEntity frontPackages ;
@@ -211,7 +211,7 @@ entity BoardModel {
     self.frontPackages.all.width
   ;
 
-  transient BezierPathArray frontPackagesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontPackagesSegments ;
+  transient BezierPathArray frontPackagesBezierPaths dependsFrom self.frontPackagesSegments ;
 
 //--- Back packages
   toMany SegmentEntity backPackages ;
@@ -222,7 +222,7 @@ entity BoardModel {
     self.backPackages.all.width
   ;
 
-  transient BezierPathArray backPackagesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backPackagesSegments ;
+  transient BezierPathArray backPackagesBezierPaths dependsFrom self.backPackagesSegments ;
 
 
 //--- Image for model

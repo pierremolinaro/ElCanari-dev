@@ -109,10 +109,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Write status
     fileData.append (metadataStatusForSaving ())
   //--- Append metadata dictionary
-    let metaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary,
-      format:PropertyListSerialization.PropertyListFormat.binary,
-      options:0
-    )
+    let metaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary, format: .binary, options: 0)
     fileData.append (1)
     fileData.appendAutosizedData (metaData)
   //--- Append document data
@@ -409,15 +406,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     }
   //---
     super.removeWindowController (inWindowController)
-  //--- Horrible hack: run a method 5s in future on main thread, for preventing the document to deallocated in background thread
-//    let deadline = DispatchTime (uptimeNanoseconds: DispatchTime.now ().uptimeNanoseconds + 5 * 1_000_000_000)
-//    DispatchQueue.main.asyncAfter (deadline: deadline) { self.nop () }
   }
-
-  //····················································································································
-
-//  @objc func nop () {
-//  }
 
   //····················································································································
   //    Signature observer
