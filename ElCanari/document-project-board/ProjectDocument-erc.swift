@@ -92,9 +92,9 @@ extension ProjectDocument {
               shape: slavePad.shape
             )
             switch slavePad.style {
-            case .bottomSide :
+            case .oppositeSide :
               oppositeSidePadGeometry = oppositeSidePadGeometry + slavePadGeometry
-            case .topSide :
+            case .componentSide :
               componentSidePadGeometry = componentSidePadGeometry + slavePadGeometry
             case .traversing :
               componentSidePadGeometry = componentSidePadGeometry + slavePadGeometry

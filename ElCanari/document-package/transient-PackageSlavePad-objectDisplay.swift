@@ -63,13 +63,13 @@ func transient_PackageSlavePad_objectDisplay (
       }else{
         return EBShape ()
       }
-    case .topSide :
+    case .componentSide :
       if prefs_displayPackageFrontSidePads {
         return EBShape (filled: [bp], prefs_frontSidePadColor)
       }else{
         return EBShape ()
       }
-    case .bottomSide :
+    case .oppositeSide :
       if prefs_displayPackageBackSidePads {
         return EBShape (filled: [bp], prefs_backSidePadColor)
       }else{

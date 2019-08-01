@@ -454,7 +454,7 @@ struct SlavePadDescriptor : Hashable {
       }else if let color = backPadColor {
         ioShape.add (filled: [bp], color)
       }
-    case .topSide :
+    case .componentSide :
       switch side {
       case .front :
         if let color = frontPadColor {
@@ -465,7 +465,7 @@ struct SlavePadDescriptor : Hashable {
           ioShape.add (filled: [bp], color)
         }
       }
-    case .bottomSide :
+    case .oppositeSide :
       switch side {
       case .front :
         if let color = backPadColor {

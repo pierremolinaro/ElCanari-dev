@@ -212,8 +212,8 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
         let onComponentSide : Bool
         let onOppositeSide : Bool
         switch slavePad.style {
-        case .bottomSide : onComponentSide = false ; onOppositeSide = true
-        case .topSide    : onComponentSide = true  ; onOppositeSide = false
+        case .oppositeSide : onComponentSide = false ; onOppositeSide = true
+        case .componentSide : onComponentSide = true  ; onOppositeSide = false
         case .traversing : onComponentSide = true  ; onOppositeSide = true
         }
       //--- Enter slave pad

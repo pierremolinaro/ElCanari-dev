@@ -8,8 +8,8 @@ import Cocoa
 
 enum SlavePadStyle : Int, EnumPropertyProtocol {
   case traversing = 0
-  case topSide = 1
-  case bottomSide = 2
+  case componentSide = 1
+  case oppositeSide = 2
 
 
   //····················································································································
@@ -17,8 +17,8 @@ enum SlavePadStyle : Int, EnumPropertyProtocol {
   init? (string : String) {
     switch string {
       case "traversing" : self = .traversing // 0
-      case "topSide" : self = .topSide // 1
-      case "bottomSide" : self = .bottomSide // 2
+      case "componentSide" : self = .componentSide // 1
+      case "oppositeSide" : self = .oppositeSide // 2
       case _ : return nil
     }
   }
@@ -28,8 +28,8 @@ enum SlavePadStyle : Int, EnumPropertyProtocol {
   func descriptionForExplorer () -> String {
     switch self {
       case .traversing : return "traversing" // 0
-      case .topSide : return "topSide" // 1
-      case .bottomSide : return "bottomSide" // 2
+      case .componentSide : return "componentSide" // 1
+      case .oppositeSide : return "oppositeSide" // 2
     }
   }
 

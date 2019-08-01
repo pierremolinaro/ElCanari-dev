@@ -1983,6 +1983,8 @@
 		CFD5AC9122D382570031BD9E /* tomany-BoardConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD5AC8C22D382570031BD9E /* tomany-BoardConnector.swift */; };
 		CFD5AC9222D382570031BD9E /* toone-BoardConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD5AC8D22D382570031BD9E /* toone-BoardConnector.swift */; };
 		CFD5AC9322D382570031BD9E /* toone-BoardConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD5AC8D22D382570031BD9E /* toone-BoardConnector.swift */; };
+		CFD5C42022F317D600E3DF0D /* ProjectDocument-generate-board-archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD5C41F22F317D600E3DF0D /* ProjectDocument-generate-board-archive.swift */; };
+		CFD5C42122F317D600E3DF0D /* ProjectDocument-generate-board-archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD5C41F22F317D600E3DF0D /* ProjectDocument-generate-board-archive.swift */; };
 		CFD7338A2258B8D6009B2614 /* open-font-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD733892258B8D6009B2614 /* open-font-in-library.swift */; };
 		CFD7338B2258B8D6009B2614 /* open-font-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD733892258B8D6009B2614 /* open-font-in-library.swift */; };
 		CFD7338D2258C87E009B2614 /* transient-FontDocument-mMetadataStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7338C2258C87E009B2614 /* transient-FontDocument-mMetadataStatus.swift */; };
@@ -3319,6 +3321,7 @@
 		CFD5AC8B22D382570031BD9E /* entity-BoardConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-BoardConnector.swift"; sourceTree = "<group>"; };
 		CFD5AC8C22D382570031BD9E /* tomany-BoardConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "tomany-BoardConnector.swift"; sourceTree = "<group>"; };
 		CFD5AC8D22D382570031BD9E /* toone-BoardConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-BoardConnector.swift"; sourceTree = "<group>"; };
+		CFD5C41F22F317D600E3DF0D /* ProjectDocument-generate-board-archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-generate-board-archive.swift"; sourceTree = "<group>"; };
 		CFD733892258B8D6009B2614 /* open-font-in-library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "open-font-in-library.swift"; sourceTree = "<group>"; };
 		CFD7338C2258C87E009B2614 /* transient-FontDocument-mMetadataStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontDocument-mMetadataStatus.swift"; sourceTree = "<group>"; };
 		CFD7E80420EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-importArtworkAction.swift"; sourceTree = "<group>"; };
@@ -5008,6 +5011,7 @@
 				CFAA053122F1DE8000030A0C /* ProjectDocument-generate-product-gerber-files.swift */,
 				CFAA053422F1DF2D00030A0C /* ProjectDocument-generate-product-pdf-files.swift */,
 				CF94213C22E8C7980043D7DD /* ProjectDocument-import-ses.swift */,
+				CFD5C41F22F317D600E3DF0D /* ProjectDocument-generate-board-archive.swift */,
 			);
 			name = "document — project — board";
 			path = "ElCanari/document-project-board";
@@ -6328,6 +6332,7 @@
 				CF6172641B3C4BA900F3CA82 /* easy-bindings-utilities.swift in Sources */,
 				CFA4304D229AEB96000AA8C8 /* toone-LabelInSchematic.swift in Sources */,
 				CFD22D4522D26365004DFFDC /* action-ProjectDocument-updateDevicesAndFontsAction.swift in Sources */,
+				CFD5C42022F317D600E3DF0D /* ProjectDocument-generate-board-archive.swift in Sources */,
 				CF6B571E22CAA828006910BF /* EBGraphicView-tool-tips.swift in Sources */,
 				CF9D4B2E227F796C006E2035 /* action-ProjectDocument-editDeviceAction.swift in Sources */,
 				CFEAAD6D2231827C00F69A12 /* action-DeviceDocument-resetSelectedSymbolVersion.swift in Sources */,
@@ -7406,6 +7411,7 @@
 				CF470CD222AA49F000D0EA60 /* transient-ProjectRoot-boardGridStepMultipliedByDisplayFactor.swift in Sources */,
 				CF4EC7302284937000902FBB /* ProjectDocument-schematic-contextual-click.swift in Sources */,
 				CF9D4B39227F796C006E2035 /* action-ProjectDocument-addNetClassAction.swift in Sources */,
+				CFD5C42122F317D600E3DF0D /* ProjectDocument-generate-board-archive.swift in Sources */,
 				CFA42F96229AEACF000AA8C8 /* toone-SlavePadInDevice.swift in Sources */,
 				CFEAAD6E2231827C00F69A12 /* action-DeviceDocument-resetSelectedSymbolVersion.swift in Sources */,
 				CF30CDE421C5709800CFE9CC /* transient-PackagePad-issues.swift in Sources */,

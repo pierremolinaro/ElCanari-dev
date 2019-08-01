@@ -121,6 +121,9 @@ extension ProjectDocument {
     for productDescriptor in inArtwork.fileGenerationParameterArray {
       try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, productData)
     }
+  //--- Write board archive
+    let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
+    try self.writeBoardArchiveFile (atPath: boardArchiveFilePath, productData)
   }
 
   //····················································································································

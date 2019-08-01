@@ -178,7 +178,7 @@ extension ProjectDocument {
                 let s = canariUnitToCocoa (slavePad.holeSize.width)
                 result [s] = (result [s] ?? []) + [(pp, pp)]
               }
-            case .bottomSide, .topSide :
+            case .oppositeSide, .componentSide :
               ()
             }
           }
@@ -415,14 +415,14 @@ extension ProjectDocument {
               case .traversing :
                 frontCircularPads.append (circle)
                 backCircularPads.append (circle)
-              case .bottomSide :
+              case .oppositeSide :
                 switch component.mSide {
                 case .front :
                   backCircularPads.append (circle)
                 case .back :
                   frontCircularPads.append (circle)
                 }
-              case .topSide :
+              case .componentSide :
                 switch component.mSide {
                 case .back :
                   backCircularPads.append (circle)
@@ -467,14 +467,14 @@ extension ProjectDocument {
               case .traversing :
                 frontOblongPads.append (oblong)
                 backOblongPads.append (oblong)
-              case .bottomSide :
+              case .oppositeSide :
                 switch component.mSide {
                 case .front :
                   backOblongPads.append (oblong)
                 case .back :
                   frontOblongPads.append (oblong)
                 }
-              case .topSide :
+              case .componentSide :
                 switch component.mSide {
                 case .back :
                   backOblongPads.append (oblong)
@@ -519,14 +519,14 @@ extension ProjectDocument {
               case .traversing :
                 frontPolygonPads.append (polygon)
                 backPolygonPads.append (polygon)
-              case .bottomSide :
+              case .oppositeSide :
                 switch component.mSide {
                 case .front :
                   backPolygonPads.append (polygon)
                 case .back :
                   frontPolygonPads.append (polygon)
                 }
-              case .topSide :
+              case .componentSide :
                 switch component.mSide {
                 case .back :
                   backPolygonPads.append (polygon)
@@ -684,7 +684,7 @@ struct ProductData { // All in Cocoa Unit
   let layoutFrontTexts : [CGFloat : [EBLinePath]]
   let layoutBackTexts : [CGFloat : [EBLinePath]]
   let legendBackTexts : [CGFloat : [EBLinePath]]
-  let viaPads : [ProductCircle] // Center, diameter
+  let viaPads : [ProductCircle]
   let frontTracks : [ProductOblong]
   let backTracks : [ProductOblong]
   let frontLines : [ProductOblong]

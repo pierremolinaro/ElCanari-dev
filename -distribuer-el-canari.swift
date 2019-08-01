@@ -24,7 +24,7 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "0.7.0"
+let VERSION_CANARI = "1.0.0"
 let NOTES : [String] = []
 let BUGFIXES : [String] = []
 let CHANGES : [String] = []

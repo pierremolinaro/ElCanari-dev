@@ -45,9 +45,9 @@ func transient_SlavePadInDevice_backSideFilledBezierPath (
       let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
-    case .topSide :
+    case .componentSide :
       bp = EBBezierPath ()
-    case .bottomSide :
+    case .oppositeSide :
       ()
     }
     return bp

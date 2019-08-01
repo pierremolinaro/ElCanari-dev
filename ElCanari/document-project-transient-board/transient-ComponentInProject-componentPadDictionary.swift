@@ -50,14 +50,14 @@ func transient_ComponentInProject_componentPadDictionary (
             switch slavePad.style {
             case .traversing :
               padSide = .both
-            case .bottomSide :
+            case .oppositeSide :
               switch self_mSide {
               case .back :
                 padSide = .front
               case .front :
                 padSide = .back
               }
-            case .topSide :
+            case .componentSide :
               switch self_mSide {
               case .back :
                 padSide = .back

@@ -351,17 +351,13 @@ extension PackageDocument {
     if self.test ("traversing", inString, &ioIndex, &ioOk) {
       padStyle = .traversing
     }else if self.test ("topSide", inString, &ioIndex, &ioOk) {
-      padStyle = .topSide
+      padStyle = .componentSide
     }else{
       self.checkName ("bottomSide", inString, &ioIndex, &ioOk)
-      padStyle = .bottomSide
+      padStyle = .oppositeSide
     }
     self.checkName ("hole", inString, &ioIndex, &ioOk)
     let ((holeWidth, holeWidthUnit), (holeHeight, holeHeightUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
-//    let holeWidth = self.scanNumber (inString, &ioIndex, &ioOk)
-//    let holeWidthUnit = self.scanUnit (inString, &ioIndex, &ioOk)
-//    let holeHeight = self.scanNumber (inString, &ioIndex, &ioOk)
-//    let holeHeightUnit = self.scanUnit (inString, &ioIndex, &ioOk)
     self.checkName ("id", inString, &ioIndex, &ioOk)
     let slavePadErrorLocation = ioIndex
     let masterPadID = self.scanNumber (inString, &ioIndex, &ioOk)
@@ -415,8 +411,6 @@ extension PackageDocument {
     }
     self.checkName ("hole", inString, &ioIndex, &ioOk)
     let ((holeWidth, holeWidthUnit), (holeHeight, holeHeightUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
-//    let (holeWidth, holeWidthUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
-//    let (holeHeight, holeHeightUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
     self.checkName ("number", inString, &ioIndex, &ioOk)
     let padNumber = self.scanNumber (inString, &ioIndex, &ioOk)
     let object = PackagePad (self.ebUndoManager)
