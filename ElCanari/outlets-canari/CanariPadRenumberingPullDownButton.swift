@@ -58,7 +58,7 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
   func bind_currentNumber (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
     self.mCurrentNumberController = EBSimpleController (
       observedObjects: [model],
-      callBack: { [weak self] in self?.update (fromPadNumber: model) }
+      callBack: { self.update (fromPadNumber: model) }
      )
   }
 
@@ -139,7 +139,7 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
   func bind_currentZoneName (_ model : EBReadOnlyProperty_String, file : String, line : Int) {
     self.mCurrentZoneController = EBSimpleController (
       observedObjects: [model],
-      callBack: { [weak self] in self?.update (fromZoneName: model) }
+      callBack: { self.update (fromZoneName: model) }
      )
   }
 

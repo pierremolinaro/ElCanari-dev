@@ -60,7 +60,7 @@ import Cocoa
     if self.formatter != nil {
       presentErrorWindow (file, line, "the EBTextObserverField outlet has a formatter")
     }
-    self.mValueController = EBSimpleController (observedObjects: [object], callBack: { [weak self] in self?.updateValue (object) } )
+    self.mValueController = EBSimpleController (observedObjects: [object], callBack: { self.updateValue (object) } )
   }
 
   //····················································································································

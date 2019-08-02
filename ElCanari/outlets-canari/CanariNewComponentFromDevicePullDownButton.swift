@@ -58,7 +58,7 @@ class CanariNewComponentFromDevicePullDownButton : NSPopUpButton, EBUserClassNam
   func bind_deviceNames (_ model : EBReadOnlyProperty_StringArray, file : String, line : Int) {
     self.mCurrentNumberController = EBSimpleController (
       observedObjects: [model],
-      callBack: { [weak self] in self?.update (fromPadNumber: model) }
+      callBack: { self.update (fromPadNumber: model) }
      )
   }
 

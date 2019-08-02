@@ -52,7 +52,7 @@ import Cocoa
   func bind_title (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
     self.mTitleController = EBSimpleController (
       observedObjects: [object],
-      callBack: { [weak self] in self?.updateTitle (object) }
+      callBack: { self.updateTitle (object) }
     )
   }
 

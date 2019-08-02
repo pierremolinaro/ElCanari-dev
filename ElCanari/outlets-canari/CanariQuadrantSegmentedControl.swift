@@ -14,8 +14,8 @@ class CanariQuadrantSegmentedControl : NSSegmentedControl, EBUserClassNameProtoc
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     noteObjectAllocation (self)
   }
 
@@ -93,7 +93,6 @@ final class Controller_CanariQuadrantSegmentedControl_quadrant : EBSimpleControl
     mObject = object
     mOutlet = outlet
     super.init (observedObjects: [object], callBack: { outlet.updateSelectedSegment (object) })
-//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

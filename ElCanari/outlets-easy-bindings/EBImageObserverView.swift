@@ -55,7 +55,7 @@ import Cocoa
   //····················································································································
 
   func bind_image (_ object : EBReadOnlyProperty_NSImage, file : String, line : Int) {
-    self.mImageController = EBSimpleController (observedObjects: [object], callBack: { [weak self] in self?.updateImage (object) } )
+    self.mImageController = EBSimpleController (observedObjects: [object], callBack: { self.updateImage (object) } )
   }
 
   //····················································································································
@@ -90,7 +90,7 @@ import Cocoa
   //····················································································································
 
   func bind_tooltip (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
-    self.mTooltipController = EBSimpleController (observedObjects: [object], callBack : { [weak self] in self?.updateTooltip (object) })
+    self.mTooltipController = EBSimpleController (observedObjects: [object], callBack : { self.updateTooltip (object) })
   }
 
   //····················································································································

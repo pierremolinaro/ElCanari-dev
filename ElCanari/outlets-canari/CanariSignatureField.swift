@@ -8,8 +8,8 @@ class CanariSignatureField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     self.isEditable = false
     self.drawsBackground = false
     self.isBordered = false
@@ -18,8 +18,8 @@ class CanariSignatureField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     self.isEditable = false
     self.drawsBackground = false
     self.isBordered = false
@@ -43,7 +43,7 @@ class CanariSignatureField : NSTextField, EBUserClassNameProtocol {
   func bind_signature (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
     self.mController = EBSimpleController (
       observedObjects: [model],
-      callBack: { [weak self] in self?.update (from: model) }
+      callBack: { self.update (from: model) }
     )
   }
 

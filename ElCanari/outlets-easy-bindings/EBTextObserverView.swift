@@ -52,7 +52,7 @@ import Cocoa
   func bind_valueObserver (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
     self.mValueController = EBSimpleController (
       observedObjects: [object],
-      callBack: { [weak self] in self?.updateTextValue (object) }
+      callBack: { self.updateTextValue (object) }
     )
   }
 

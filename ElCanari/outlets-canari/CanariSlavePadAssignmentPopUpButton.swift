@@ -58,7 +58,7 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
   func bind_masterPadName (_ model : EBReadOnlyProperty_String, file : String, line : Int) {
     self.mCurrentZoneController = EBSimpleController (
       observedObjects: [model],
-      callBack: { [weak self] in self?.update (fromMasterPadName: model) }
+      callBack: { self.update (fromMasterPadName: model) }
     )
   }
 

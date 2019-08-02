@@ -8,7 +8,7 @@ class CanariMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  required init (coder: NSCoder) {
+  required init (coder : NSCoder) {
     super.init (coder:coder)
     noteObjectAllocation (self)
   }
@@ -57,10 +57,10 @@ class CanariMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_populateSubmenus (_ object : EBReadOnlyProperty_CanariMenuItemListClass, file:String, line:Int) {
+  func bind_populateSubmenus (_ object : EBReadOnlyProperty_CanariMenuItemListClass, file : String, line : Int) {
     self.mValueController = EBSimpleController (
       observedObjects: [object],
-      callBack: { [weak self] in self?.updateOutlet (object) }
+      callBack: { self.updateOutlet (object) }
     )
   }
 

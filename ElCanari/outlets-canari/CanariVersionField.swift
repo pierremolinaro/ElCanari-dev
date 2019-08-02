@@ -8,8 +8,8 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     self.isEditable = false
     self.drawsBackground = false
     self.isBordered = false
@@ -18,8 +18,8 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     self.isEditable = false
     self.drawsBackground = false
     self.isBordered = false
@@ -43,7 +43,7 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
   func bind_version (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
     self.mVersionController = EBSimpleController (
       observedObjects: [model],
-      callBack: { [weak self] in self?.update (from: model) }
+      callBack: { self.update (from: model) }
     )
   }
 
@@ -81,7 +81,7 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
   func bind_versionShouldChange (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
     self.mVersionShouldChangeController = EBSimpleController (
       observedObjects: [model],
-      callBack: { [weak self] in self?.update (from: model) }
+      callBack: { self.update (from: model) }
      )
   }
 
