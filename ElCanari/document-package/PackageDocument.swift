@@ -165,201 +165,201 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet weak var mAddArcButton : CanariDragSourceButton? // An outlet should be declared weak
-  @IBOutlet weak var mAddBezierButton : CanariDragSourceButton? // An outlet should be declared weak
-  @IBOutlet weak var mAddDimensionButton : CanariDragSourceButton? // An outlet should be declared weak
-  @IBOutlet weak var mAddGuideButton : CanariDragSourceButton? // An outlet should be declared weak
-  @IBOutlet weak var mAddOvalButton : CanariDragSourceButton? // An outlet should be declared weak
-  @IBOutlet weak var mAddPadButton : CanariDragSourceButton? // An outlet should be declared weak
-  @IBOutlet weak var mAddSegmentButton : CanariDragSourceButton? // An outlet should be declared weak
-  @IBOutlet weak var mAddSlavePadButton : CanariDragSourceButton? // An outlet should be declared weak
-  @IBOutlet weak var mAddZoneButton : CanariDragSourceButton? // An outlet should be declared weak
-  @IBOutlet weak var mArcAngle : CanariAngleTextField? // An outlet should be declared weak
-  @IBOutlet weak var mArcEndTangentTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mArcEndTangentUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mArcInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mArcPathIsClosedSwitch : EBSwitch? // An outlet should be declared weak
-  @IBOutlet weak var mArcRadiusTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mArcRadiusUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mArcStartAngleSlider : CanariAngleSlider? // An outlet should be declared weak
-  @IBOutlet weak var mArcStartAngleTextField : CanariAngleTextField? // An outlet should be declared weak
-  @IBOutlet weak var mArcStartTangentTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mArcStartTangentUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mArcXCenterTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mArcXCenterUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mArcYCenterTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mArcYCenterUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mAutoNumberingInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mBaseInspectorView : NSView? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveCPX1TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveCPX1UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveCPX2TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveCPX2UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveCPY1TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveCPY1UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveCPY2TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveCPY2UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveX1TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveX1UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveX2TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveX2UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveY1TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveY1UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveY2TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mBezierCurveY2UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mBezierInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mBottomSidePadColorWell : EBColorWell? // An outlet should be declared weak
-  @IBOutlet weak var mClearProgramErrorButton : EBButton? // An outlet should be declared weak
-  @IBOutlet weak var mCommentTextView : EBTextView? // An outlet should be declared weak
-  @IBOutlet weak var mComposedPackageScrollView : EBScrollView? // An outlet should be declared weak
-  @IBOutlet weak var mComposedPackageView : EBGraphicView? // An outlet should be declared weak
-  @IBOutlet weak var mCrossColorOfPackageGridColorWell : EBColorWell? // An outlet should be declared weak
-  @IBOutlet weak var mDeselectIssueButton : EBButton? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionDistanceTextField : CanariDimensionObserverTextField? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionDistanceUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionX1TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionX1UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionX2TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionX2UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionXLabelTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionXLabelUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionY1TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionY1UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionY2TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionY2UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionYLabelTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mDimensionYLabelUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mDisplayBottomSidePadSwitch : EBSwitch? // An outlet should be declared weak
-  @IBOutlet weak var mDisplayInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mDisplayTopSidePadSwitch : EBSwitch? // An outlet should be declared weak
-  @IBOutlet weak var mGridDisplayPopUpButton : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mGridStyle : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mGridTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mGridUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mGridZoomInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mGuideInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mGuideX1TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mGuideX1UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mGuideX2TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mGuideX2UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mGuideY1TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mGuideY1UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mGuideY2TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mGuideY2UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mHorizontalFlip : EBSwitch? // An outlet should be declared weak
-  @IBOutlet weak var mInfosPageView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mInspectorSegmentedControl : CanariSegmentedControl? // An outlet should be declared weak
-  @IBOutlet weak var mIssueInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mIssueScrollView : NSScrollView? // An outlet should be declared weak
-  @IBOutlet weak var mIssueTableView : CanariIssueTableView? // An outlet should be declared weak
-  @IBOutlet weak var mIssueTextField : EBTextObserverField? // An outlet should be declared weak
-  @IBOutlet weak var mIssuesInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mLineColorOfPackageGridColorWell : EBColorWell? // An outlet should be declared weak
-  @IBOutlet weak var mLoadFromDesignButton : EBButton? // An outlet should be declared weak
-  @IBOutlet weak var mMasterView : NSView? // An outlet should be declared weak
-  @IBOutlet weak var mOvalHeightTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mOvalHeightUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mOvalInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mOvalWidthTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mOvalWidthUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mOvalXTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mOvalXUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mOvalYTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mOvalYUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPackageBackgroundColorColorWell : EBColorWell? // An outlet should be declared weak
-  @IBOutlet weak var mPackageColorColorWell : EBColorWell? // An outlet should be declared weak
-  @IBOutlet weak var mPackageDrawingWidthMultipliedByTenPopupButton : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPackagePadShapePopUpButton : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPackagePadStylePopUpButton : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPackagePageView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mPackageSlavePadShapePopUpButton : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPackageSlavePadStylePopUpButton : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPadAnnularRingTextField : CanariDimensionObserverTextField? // An outlet should be declared weak
-  @IBOutlet weak var mPadAnnularRingUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPadHeightTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mPadHeightUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPadHoleHeightTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mPadHoleHeightUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPadHoleWidthTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mPadHoleWidthUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPadInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mPadNumberColorWell : EBColorWell? // An outlet should be declared weak
-  @IBOutlet weak var mPadNumberFontButton : EBFontButton? // An outlet should be declared weak
-  @IBOutlet weak var mPadNumberTextField : EBIntObserverField? // An outlet should be declared weak
-  @IBOutlet weak var mPadNumberingPopUpButton : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPadRenumberingPullDownButton : CanariPadRenumberingPullDownButton? // An outlet should be declared weak
-  @IBOutlet weak var mPadSlaveCountTextField : EBIntObserverField? // An outlet should be declared weak
-  @IBOutlet weak var mPadStyleView : NSView? // An outlet should be declared weak
-  @IBOutlet weak var mPadWidthTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mPadWidthUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPadXCenterTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mPadXCenterUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPadYCenterTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mPadYCenterUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mPadZoneNameTextField : EBTextObserverField? // An outlet should be declared weak
-  @IBOutlet weak var mPageSegmentedControl : CanariSegmentedControl? // An outlet should be declared weak
-  @IBOutlet weak var mProgramErrorTextField : EBTextField? // An outlet should be declared weak
-  @IBOutlet weak var mProgramHelpButton : EBButton? // An outlet should be declared weak
-  @IBOutlet weak var mProgramHelpSheet : NSPanel? // An outlet should be declared weak
-  @IBOutlet weak var mProgramPageView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mProgramTextView : EBTextView? // An outlet should be declared weak
-  @IBOutlet weak var mResetVersionButton : EBButton? // An outlet should be declared weak
-  @IBOutlet weak var mRunProgramButton : EBButton? // An outlet should be declared weak
-  @IBOutlet weak var mSegmentInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mSegmentLengthTextField : CanariDimensionObserverTextField? // An outlet should be declared weak
-  @IBOutlet weak var mSegmentLengthUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mSegmentX1TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mSegmentX1UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mSegmentX2TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mSegmentX2UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mSegmentY1TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mSegmentY1UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mSegmentY2TextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mSegmentY2UnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mSelectedObjectsInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mSetDimensionTextOriginAtMidX : EBButton? // An outlet should be declared weak
-  @IBOutlet weak var mSetDimensionTextOriginAtMidY : EBButton? // An outlet should be declared weak
-  @IBOutlet weak var mShowPadNumberSwitch : EBSwitch? // An outlet should be declared weak
-  @IBOutlet weak var mSignatureTextField : CanariSignatureField? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadAnnularRingTextField : CanariDimensionObserverTextField? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadAnnularRingUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadAssignmentPopUpButton : CanariSlavePadAssignmentPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadHeightTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadHeightUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadHoleHeightTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadHoleHeightUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadHoleWidthTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadHoleWidthUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadStyleView : NSView? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadWidthTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadWidthUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadXCenterTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadXCenterUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadYCenterTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mSlavePadYCenterUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mStatusImageViewInToolbar : EBImageObserverView? // An outlet should be declared weak
-  @IBOutlet weak var mTopSidePadColorWell : EBColorWell? // An outlet should be declared weak
-  @IBOutlet weak var mVersionField : CanariVersionField? // An outlet should be declared weak
-  @IBOutlet weak var mVerticalFlip : EBSwitch? // An outlet should be declared weak
-  @IBOutlet weak var mXPlacardUnitPopUpButton : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mYPlacardUnitPopUpButton : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mZoneHeightTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mZoneHeightUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mZoneInspectorView : CanariViewWithKeyView? // An outlet should be declared weak
-  @IBOutlet weak var mZoneNameTextField : EBTextField? // An outlet should be declared weak
-  @IBOutlet weak var mZoneNumberingPopUpButton : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mZoneWidthTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mZoneWidthUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mZoneXLabelTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mZoneXLabelUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mZoneXTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mZoneXUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mZoneYLabelTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mZoneYLabelUnitPopUp : EBPopUpButton? // An outlet should be declared weak
-  @IBOutlet weak var mZoneYTextField : CanariDimensionTextField? // An outlet should be declared weak
-  @IBOutlet weak var mZoneYUnitPopUp : EBPopUpButton? // An outlet should be declared weak
+  @IBOutlet /* weak */ var mAddArcButton : CanariDragSourceButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mAddBezierButton : CanariDragSourceButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mAddDimensionButton : CanariDragSourceButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mAddGuideButton : CanariDragSourceButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mAddOvalButton : CanariDragSourceButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mAddPadButton : CanariDragSourceButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mAddSegmentButton : CanariDragSourceButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mAddSlavePadButton : CanariDragSourceButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mAddZoneButton : CanariDragSourceButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcAngle : CanariAngleTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcEndTangentTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcEndTangentUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcPathIsClosedSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcRadiusTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcRadiusUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcStartAngleSlider : CanariAngleSlider? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcStartAngleTextField : CanariAngleTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcStartTangentTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcStartTangentUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcXCenterTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcXCenterUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcYCenterTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mArcYCenterUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mAutoNumberingInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBaseInspectorView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveCPX1TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveCPX1UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveCPX2TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveCPX2UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveCPY1TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveCPY1UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveCPY2TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveCPY2UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveX1TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveX1UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveX2TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveX2UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveY1TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveY1UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveY2TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierCurveY2UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBezierInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mBottomSidePadColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mClearProgramErrorButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mCommentTextView : EBTextView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mComposedPackageScrollView : EBScrollView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mComposedPackageView : EBGraphicView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mCrossColorOfPackageGridColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDeselectIssueButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionDistanceTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionDistanceUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionX1TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionX1UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionX2TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionX2UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionXLabelTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionXLabelUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionY1TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionY1UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionY2TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionY2UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionYLabelTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDimensionYLabelUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDisplayBottomSidePadSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDisplayInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mDisplayTopSidePadSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGridDisplayPopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGridStyle : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGridTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGridUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGridZoomInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGuideInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGuideX1TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGuideX1UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGuideX2TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGuideX2UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGuideY1TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGuideY1UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGuideY2TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mGuideY2UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mHorizontalFlip : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mInfosPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mInspectorSegmentedControl : CanariSegmentedControl? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mIssueInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mIssueScrollView : NSScrollView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mIssueTableView : CanariIssueTableView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mIssueTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mIssuesInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mLineColorOfPackageGridColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mLoadFromDesignButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mMasterView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mOvalHeightTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mOvalHeightUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mOvalInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mOvalWidthTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mOvalWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mOvalXTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mOvalXUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mOvalYTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mOvalYUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPackageBackgroundColorColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPackageColorColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPackageDrawingWidthMultipliedByTenPopupButton : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPackagePadShapePopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPackagePadStylePopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPackagePageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPackageSlavePadShapePopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPackageSlavePadStylePopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadAnnularRingTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadAnnularRingUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadHeightTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadHeightUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadHoleHeightTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadHoleHeightUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadHoleWidthTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadHoleWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadNumberColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadNumberFontButton : EBFontButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadNumberTextField : EBIntObserverField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadNumberingPopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadRenumberingPullDownButton : CanariPadRenumberingPullDownButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadSlaveCountTextField : EBIntObserverField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadStyleView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadWidthTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadXCenterTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadXCenterUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadYCenterTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadYCenterUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPadZoneNameTextField : EBTextObserverField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mPageSegmentedControl : CanariSegmentedControl? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mProgramErrorTextField : EBTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mProgramHelpButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mProgramHelpSheet : NSPanel? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mProgramPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mProgramTextView : EBTextView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mResetVersionButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mRunProgramButton : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSegmentInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSegmentLengthTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSegmentLengthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSegmentX1TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSegmentX1UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSegmentX2TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSegmentX2UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSegmentY1TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSegmentY1UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSegmentY2TextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSegmentY2UnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSelectedObjectsInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSetDimensionTextOriginAtMidX : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSetDimensionTextOriginAtMidY : EBButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mShowPadNumberSwitch : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSignatureTextField : CanariSignatureField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadAnnularRingTextField : CanariDimensionObserverTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadAnnularRingUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadAssignmentPopUpButton : CanariSlavePadAssignmentPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadHeightTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadHeightUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadHoleHeightTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadHoleHeightUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadHoleWidthTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadHoleWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadStyleView : NSView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadWidthTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadXCenterTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadXCenterUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadYCenterTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mSlavePadYCenterUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mStatusImageViewInToolbar : EBImageObserverView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mTopSidePadColorWell : EBColorWell? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mVersionField : CanariVersionField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mVerticalFlip : EBSwitch? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mXPlacardUnitPopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mYPlacardUnitPopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneHeightTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneHeightUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneInspectorView : CanariViewWithKeyView? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneNameTextField : EBTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneNumberingPopUpButton : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneWidthTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneWidthUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneXLabelTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneXLabelUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneXTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneXUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneYLabelTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneYLabelUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneYTextField : CanariDimensionTextField? = nil // An outlet should be declared weak
+  @IBOutlet /* weak */ var mZoneYUnitPopUp : EBPopUpButton? = nil // An outlet should be declared weak
 
   //····················································································································
   //    Multiple bindings controllers

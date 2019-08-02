@@ -831,6 +831,11 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
             </subviews>
             <point key="canvasLocation" x="254" y="304"/>
         </customView>
+        <customView id="Ltm-SG-T6z">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <point key="canvasLocation" x="-1460" y="1"/>
+        </customView>
     </objects>
     <resources>
         <image name="NSStatusAvailable" width="16" height="16"/>
