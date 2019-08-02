@@ -1503,7 +1503,7 @@ final class PreferencesArrayOf_PackageArc : StoredArrayOf_PackageArc {
     self.addEBObserverOf_startTangentUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_endTangentUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_xCenter (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

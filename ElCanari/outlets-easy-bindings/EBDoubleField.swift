@@ -150,7 +150,6 @@ final class Controller_EBDoubleField_value : EBSimpleController {
     }else if !(mOutlet.formatter is NumberFormatter) {
       presentErrorWindow (file, line, "the formatter should be an NSNumberFormatter")
     }
-//    se>lf.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

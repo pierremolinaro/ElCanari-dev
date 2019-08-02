@@ -1971,7 +1971,7 @@ final class PreferencesArrayOf_DeviceRoot : StoredArrayOf_DeviceRoot {
     self.addEBObserverOf_mSymbolDisplayHorizontalFlip (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSymbolDisplayVerticalFlip (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mImageData (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

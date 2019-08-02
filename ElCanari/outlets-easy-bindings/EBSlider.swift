@@ -12,15 +12,15 @@ import Cocoa
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     noteObjectAllocation (self)
   }
 
@@ -124,7 +124,6 @@ final class Controller_EBSlider_doubleValue : EBSimpleController {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], callBack: { outlet.updateDoubleValue (object) })
-//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -152,7 +151,6 @@ final class Controller_EBSlider_intValue : EBSimpleController {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects: [object], callBack: { outlet.updateIntValue (object) })
-//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

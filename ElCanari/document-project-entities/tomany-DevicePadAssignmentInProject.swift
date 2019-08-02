@@ -667,7 +667,7 @@ final class PreferencesArrayOf_DevicePadAssignmentInProject : StoredArrayOf_Devi
       self.setProp (objectArray)
     }
     self.addEBObserverOf_mPadName (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

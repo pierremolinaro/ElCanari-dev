@@ -1197,7 +1197,7 @@ final class PreferencesArrayOf_FontRoot : StoredArrayOf_FontRoot {
     self.addEBObserverOf_selectedTab (self.mObserverForWritingPreferences)
     self.addEBObserverOf_selectedInspector (self.mObserverForWritingPreferences)
     self.addEBObserverOf_currentCharacterCodePoint (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

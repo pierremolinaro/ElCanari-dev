@@ -1149,7 +1149,7 @@ final class PreferencesArrayOf_SymbolPinTypeInDevice : StoredArrayOf_SymbolPinTy
     self.addEBObserverOf_mXNumber (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mYNumber (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mNumberHorizontalAlignment (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

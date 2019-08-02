@@ -113,7 +113,6 @@ final class Controller_EBTextField_value : EBSimpleController {
     if self.mOutlet.formatter != nil {
       presentErrorWindow (file, line, "the EBTextField outlet has a formatter")
     }
-//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

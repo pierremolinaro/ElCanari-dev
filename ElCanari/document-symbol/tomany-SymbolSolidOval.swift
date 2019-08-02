@@ -963,7 +963,7 @@ final class PreferencesArrayOf_SymbolSolidOval : StoredArrayOf_SymbolSolidOval {
     self.addEBObserverOf_width (self.mObserverForWritingPreferences)
     self.addEBObserverOf_height (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

@@ -1503,7 +1503,7 @@ final class PreferencesArrayOf_PackageDimension : StoredArrayOf_PackageDimension
     self.addEBObserverOf_yDimensionUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_distanceUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x1 (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

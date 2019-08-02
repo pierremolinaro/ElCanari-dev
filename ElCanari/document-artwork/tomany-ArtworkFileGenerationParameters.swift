@@ -1871,7 +1871,7 @@ final class PreferencesArrayOf_ArtworkFileGenerationParameters : StoredArrayOf_A
     self.addEBObserverOf_name (self.mObserverForWritingPreferences)
     self.addEBObserverOf_measurementUnitForPadHoleInPDF (self.mObserverForWritingPreferences)
     self.addEBObserverOf_padHoleDiameterInPDF (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

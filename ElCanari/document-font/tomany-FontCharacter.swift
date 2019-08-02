@@ -963,7 +963,7 @@ final class PreferencesArrayOf_FontCharacter : StoredArrayOf_FontCharacter {
     self.addEBObserverOf_advance (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mWarnsWhenNoSegment (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mWarnsWhenAdvanceIsZero (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

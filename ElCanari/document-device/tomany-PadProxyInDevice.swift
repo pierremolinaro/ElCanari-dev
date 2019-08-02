@@ -785,7 +785,7 @@ final class PreferencesArrayOf_PadProxyInDevice : StoredArrayOf_PadProxyInDevice
     }
     self.addEBObserverOf_mPadName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mIsNC (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

@@ -241,7 +241,7 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
 
   private func startObservingSelectionShape () {
     self.mModel?.addEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
-    self.mObjectSelectionObserver.mEventCallBack = { [weak self] in self?.computeSelectionShape () }
+    self.mObjectSelectionObserver.mEventCallBack = { self.computeSelectionShape () }
   }
 
   //····················································································································

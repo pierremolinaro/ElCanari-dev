@@ -1607,7 +1607,7 @@ final class PreferencesArrayOf_BorderCurve : StoredArrayOf_BorderCurve {
     self.addEBObserverOf_mCPX2 (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mCPY2 (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mShape (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

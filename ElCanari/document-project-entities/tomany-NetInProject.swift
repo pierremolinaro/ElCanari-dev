@@ -899,7 +899,7 @@ final class PreferencesArrayOf_NetInProject : StoredArrayOf_NetInProject {
       self.setProp (objectArray)
     }
     self.addEBObserverOf_mNetName (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

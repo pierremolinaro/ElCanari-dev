@@ -841,7 +841,7 @@ final class PreferencesArrayOf_LabelInSchematic : StoredArrayOf_LabelInSchematic
       self.setProp (objectArray)
     }
     self.addEBObserverOf_mOrientation (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

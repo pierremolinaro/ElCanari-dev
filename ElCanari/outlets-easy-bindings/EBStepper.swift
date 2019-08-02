@@ -12,15 +12,15 @@ import Cocoa
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
+  required init? (coder : NSCoder) {
     super.init (coder:coder)
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     noteObjectAllocation (self)
   }
   
@@ -86,8 +86,7 @@ final class Controller_EBStepper_value : EBSimpleController {
   init (object : EBReadWriteProperty_Int, outlet : EBStepper) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], callBack: { outlet.updateValue (object) })
- //   self.mEventCallBack = { [weak self] in self?.updateOutlet () }
+    super.init (observedObjects: [object], callBack: { outlet.updateValue (object) })
   }
 
   //····················································································································

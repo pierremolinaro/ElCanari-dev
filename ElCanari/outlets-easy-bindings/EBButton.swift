@@ -47,12 +47,16 @@ import Cocoa
 
   private var mTitleController : EBSimpleController? = nil
 
+  //····················································································································
+
   func bind_title (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
     self.mTitleController = EBSimpleController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateTitle (object) }
     )
   }
+
+  //····················································································································
 
   func unbind_title () {
     self.mTitleController?.unregister ()

@@ -1267,7 +1267,7 @@ final class PreferencesArrayOf_BoardLine : StoredArrayOf_BoardLine {
     self.addEBObserverOf_mY2Unit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLayer (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mWidth (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

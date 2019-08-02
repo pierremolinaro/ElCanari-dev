@@ -1621,7 +1621,7 @@ final class PreferencesArrayOf_PackageRoot : StoredArrayOf_PackageRoot {
     self.addEBObserverOf_padNumbering (self.mObserverForWritingPreferences)
     self.addEBObserverOf_xPlacardUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_yPlacardUnit (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

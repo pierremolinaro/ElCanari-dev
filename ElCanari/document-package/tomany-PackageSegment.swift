@@ -1321,7 +1321,7 @@ final class PreferencesArrayOf_PackageSegment : StoredArrayOf_PackageSegment {
     self.addEBObserverOf_y2Unit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_lengthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x1 (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

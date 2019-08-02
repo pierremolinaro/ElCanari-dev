@@ -1207,7 +1207,7 @@ final class PreferencesArrayOf_SymbolRoot : StoredArrayOf_SymbolRoot {
     self.addEBObserverOf_xPlacardUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_yPlacardUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_selectedPageIndex (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

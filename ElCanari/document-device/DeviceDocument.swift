@@ -233,75 +233,75 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet weak var mAddPackageFromLibraryButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mAddSymbolFromLibraryButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mAddSymbolInstancePullDownButton : AddSymbolInstancePullDownButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mAssignedPadProxyTableView : AssignedPadProxysInDeviceTableView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mAssignmentPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mAssignmentSplitView : NSSplitView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mBindButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mCommentTextView : EBTextView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mComposedPackageView : EBGraphicView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mComposedSymbolView : EBGraphicView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mCopyImageButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mDescriptionPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mDocumentationTableView : DeviceDocumentationTableView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mEditSelectedPackagesButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mEditSelectedSymbolsButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mExportSelectedPackagesButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mExportSelectedSymbolsButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mInconsistentPackagePadNameSetsMessageScrollView : NSScrollView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mInconsistentPackagePadNameSetsMessageTextView : EBTextObserverView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mInconsistentPadNameSetTextField : EBTextObserverField? = nil // An outlet should be declared weak
-  @IBOutlet weak var mInconsistentSymbolNameMessageScrollView : NSScrollView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mInconsistentSymbolNameMessageTextView : EBTextObserverView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mInfosPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mIssueTextView : EBTextObserverView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mLibraryPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mMasterView : NSView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mNCButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mPackageBackPadsColorWell : EBColorWell? = nil // An outlet should be declared weak
-  @IBOutlet weak var mPackageDisplayHorizontalFlipSwitch : EBSwitch? = nil // An outlet should be declared weak
-  @IBOutlet weak var mPackageDisplayVerticalFlipSwitch : EBSwitch? = nil // An outlet should be declared weak
-  @IBOutlet weak var mPackageFrontPadsColorWell : EBColorWell? = nil // An outlet should be declared weak
-  @IBOutlet weak var mPackageNumbersColorWell : EBColorWell? = nil // An outlet should be declared weak
-  @IBOutlet weak var mPackagePageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mPackageTableView : EBTableView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mPackagesColorWell : EBColorWell? = nil // An outlet should be declared weak
-  @IBOutlet weak var mPageSegmentedControl : CanariSegmentedControl? = nil // An outlet should be declared weak
-  @IBOutlet weak var mPasteImageButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mPrefixTextField : EBTextField? = nil // An outlet should be declared weak
-  @IBOutlet weak var mRemoveImageButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mRemoveSelectedDocButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mRepresentationImageView : DeviceDroppableImageView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mResetSelectedPackageVersionButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mResetSelectedSymbolVersionButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mResetSymbolAndPackagesVersionButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mResetVersionButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mSaveDocButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mShowDocButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mShowPackageBackPadsSwitch : EBSwitch? = nil // An outlet should be declared weak
-  @IBOutlet weak var mShowPackageFrontPadsSwitch : EBSwitch? = nil // An outlet should be declared weak
-  @IBOutlet weak var mShowPackagePadNumbersSwitch : EBSwitch? = nil // An outlet should be declared weak
-  @IBOutlet weak var mShowPackagesSwitch : EBSwitch? = nil // An outlet should be declared weak
-  @IBOutlet weak var mSignatureTextField : CanariSignatureField? = nil // An outlet should be declared weak
-  @IBOutlet weak var mStatusImageViewInToolbar : EBImageObserverView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mSymbolDisplayHorizontalFlipSwitch : EBSwitch? = nil // An outlet should be declared weak
-  @IBOutlet weak var mSymbolDisplayVerticalFlipSwitch : EBSwitch? = nil // An outlet should be declared weak
-  @IBOutlet weak var mSymbolErrorMessageTitleTextField : NSTextField? = nil // An outlet should be declared weak
-  @IBOutlet weak var mSymbolNameTextField : EBTextField? = nil // An outlet should be declared weak
-  @IBOutlet weak var mSymbolPageView : CanariViewWithKeyView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mSymbolTableView : EBTableView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mSymbolTypeTextField : EBTextObserverField? = nil // An outlet should be declared weak
-  @IBOutlet weak var mTitleTextField : EBTextField? = nil // An outlet should be declared weak
-  @IBOutlet weak var mUnbindAllButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mUnbindButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mUnconnectedPadsInDeviceTableView : UnconnectedPadsInDeviceTableView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mUnconnectedSymbolPinsInDeviceTableView : UnconnectedSymbolPinsInDeviceTableView? = nil // An outlet should be declared weak
-  @IBOutlet weak var mUpdateSelectedPackagesButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mUpdateSelectedSymbolsButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mUpdateSymbolAndPackagesButton : EBButton? = nil // An outlet should be declared weak
-  @IBOutlet weak var mVersionField : CanariVersionField? = nil // An outlet should be declared weak
+  @IBOutlet weak var mAddPackageFromLibraryButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mAddSymbolFromLibraryButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mAddSymbolInstancePullDownButton : AddSymbolInstancePullDownButton? // An outlet should be declared weak
+  @IBOutlet weak var mAssignedPadProxyTableView : AssignedPadProxysInDeviceTableView? // An outlet should be declared weak
+  @IBOutlet weak var mAssignmentPageView : CanariViewWithKeyView? // An outlet should be declared weak
+  @IBOutlet weak var mAssignmentSplitView : NSSplitView? // An outlet should be declared weak
+  @IBOutlet weak var mBindButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mCommentTextView : EBTextView? // An outlet should be declared weak
+  @IBOutlet weak var mComposedPackageView : EBGraphicView? // An outlet should be declared weak
+  @IBOutlet weak var mComposedSymbolView : EBGraphicView? // An outlet should be declared weak
+  @IBOutlet weak var mCopyImageButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mDescriptionPageView : CanariViewWithKeyView? // An outlet should be declared weak
+  @IBOutlet weak var mDocumentationTableView : DeviceDocumentationTableView? // An outlet should be declared weak
+  @IBOutlet weak var mEditSelectedPackagesButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mEditSelectedSymbolsButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mExportSelectedPackagesButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mExportSelectedSymbolsButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mInconsistentPackagePadNameSetsMessageScrollView : NSScrollView? // An outlet should be declared weak
+  @IBOutlet weak var mInconsistentPackagePadNameSetsMessageTextView : EBTextObserverView? // An outlet should be declared weak
+  @IBOutlet weak var mInconsistentPadNameSetTextField : EBTextObserverField? // An outlet should be declared weak
+  @IBOutlet weak var mInconsistentSymbolNameMessageScrollView : NSScrollView? // An outlet should be declared weak
+  @IBOutlet weak var mInconsistentSymbolNameMessageTextView : EBTextObserverView? // An outlet should be declared weak
+  @IBOutlet weak var mInfosPageView : CanariViewWithKeyView? // An outlet should be declared weak
+  @IBOutlet weak var mIssueTextView : EBTextObserverView? // An outlet should be declared weak
+  @IBOutlet weak var mLibraryPageView : CanariViewWithKeyView? // An outlet should be declared weak
+  @IBOutlet weak var mMasterView : NSView? // An outlet should be declared weak
+  @IBOutlet weak var mNCButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mPackageBackPadsColorWell : EBColorWell? // An outlet should be declared weak
+  @IBOutlet weak var mPackageDisplayHorizontalFlipSwitch : EBSwitch? // An outlet should be declared weak
+  @IBOutlet weak var mPackageDisplayVerticalFlipSwitch : EBSwitch? // An outlet should be declared weak
+  @IBOutlet weak var mPackageFrontPadsColorWell : EBColorWell? // An outlet should be declared weak
+  @IBOutlet weak var mPackageNumbersColorWell : EBColorWell? // An outlet should be declared weak
+  @IBOutlet weak var mPackagePageView : CanariViewWithKeyView? // An outlet should be declared weak
+  @IBOutlet weak var mPackageTableView : EBTableView? // An outlet should be declared weak
+  @IBOutlet weak var mPackagesColorWell : EBColorWell? // An outlet should be declared weak
+  @IBOutlet weak var mPageSegmentedControl : CanariSegmentedControl? // An outlet should be declared weak
+  @IBOutlet weak var mPasteImageButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mPrefixTextField : EBTextField? // An outlet should be declared weak
+  @IBOutlet weak var mRemoveImageButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mRemoveSelectedDocButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mRepresentationImageView : DeviceDroppableImageView? // An outlet should be declared weak
+  @IBOutlet weak var mResetSelectedPackageVersionButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mResetSelectedSymbolVersionButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mResetSymbolAndPackagesVersionButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mResetVersionButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mSaveDocButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mShowDocButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mShowPackageBackPadsSwitch : EBSwitch? // An outlet should be declared weak
+  @IBOutlet weak var mShowPackageFrontPadsSwitch : EBSwitch? // An outlet should be declared weak
+  @IBOutlet weak var mShowPackagePadNumbersSwitch : EBSwitch? // An outlet should be declared weak
+  @IBOutlet weak var mShowPackagesSwitch : EBSwitch? // An outlet should be declared weak
+  @IBOutlet weak var mSignatureTextField : CanariSignatureField? // An outlet should be declared weak
+  @IBOutlet weak var mStatusImageViewInToolbar : EBImageObserverView? // An outlet should be declared weak
+  @IBOutlet weak var mSymbolDisplayHorizontalFlipSwitch : EBSwitch? // An outlet should be declared weak
+  @IBOutlet weak var mSymbolDisplayVerticalFlipSwitch : EBSwitch? // An outlet should be declared weak
+  @IBOutlet weak var mSymbolErrorMessageTitleTextField : NSTextField? // An outlet should be declared weak
+  @IBOutlet weak var mSymbolNameTextField : EBTextField? // An outlet should be declared weak
+  @IBOutlet weak var mSymbolPageView : CanariViewWithKeyView? // An outlet should be declared weak
+  @IBOutlet weak var mSymbolTableView : EBTableView? // An outlet should be declared weak
+  @IBOutlet weak var mSymbolTypeTextField : EBTextObserverField? // An outlet should be declared weak
+  @IBOutlet weak var mTitleTextField : EBTextField? // An outlet should be declared weak
+  @IBOutlet weak var mUnbindAllButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mUnbindButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mUnconnectedPadsInDeviceTableView : UnconnectedPadsInDeviceTableView? // An outlet should be declared weak
+  @IBOutlet weak var mUnconnectedSymbolPinsInDeviceTableView : UnconnectedSymbolPinsInDeviceTableView? // An outlet should be declared weak
+  @IBOutlet weak var mUpdateSelectedPackagesButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mUpdateSelectedSymbolsButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mUpdateSymbolAndPackagesButton : EBButton? // An outlet should be declared weak
+  @IBOutlet weak var mVersionField : CanariVersionField? // An outlet should be declared weak
 
   //····················································································································
   //    Multiple bindings controllers
@@ -383,7 +383,7 @@ import Cocoa
   //    windowNibName
   //····················································································································
 
-  override var windowNibName : NSNib.Name {
+  override var windowNibName : NSNib.Name? {
     return NSNib.Name ("DeviceDocument")
   }
   

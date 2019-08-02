@@ -1613,7 +1613,7 @@ final class PreferencesArrayOf_NetClassInProject : StoredArrayOf_NetClassInProje
     self.addEBObserverOf_mViaPadDiameterUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAllowTracksOnFrontSide (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAllowTracksOnBackSide (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

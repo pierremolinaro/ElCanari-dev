@@ -839,7 +839,7 @@ final class PreferencesArrayOf_SchematicObject : StoredArrayOf_SchematicObject {
       }
       self.setProp (objectArray)
     }
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

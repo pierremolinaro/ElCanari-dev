@@ -1367,7 +1367,7 @@ final class PreferencesArrayOf_PointInSchematic : StoredArrayOf_PointInSchematic
     self.addEBObserverOf_mSymbolPinName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

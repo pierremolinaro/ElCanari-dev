@@ -1199,7 +1199,7 @@ final class PreferencesArrayOf_PackageInDevice : StoredArrayOf_PackageInDevice {
     self.addEBObserverOf_mStrokeBezierPath (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

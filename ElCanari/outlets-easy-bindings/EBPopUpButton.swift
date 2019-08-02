@@ -123,7 +123,6 @@ final class Controller_EBPopUpButton_selectedTag : EBSimpleController {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects: [object], callBack: { outlet.updateOutlet (object) })
-  //  self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -152,7 +151,6 @@ final class Controller_EBPopUpButton_Index : EBSimpleController {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], callBack: { outlet.updateIndex (object) } )
-//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

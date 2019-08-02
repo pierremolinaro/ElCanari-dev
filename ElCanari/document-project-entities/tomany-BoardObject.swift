@@ -1129,7 +1129,7 @@ final class PreferencesArrayOf_BoardObject : StoredArrayOf_BoardObject {
       }
       self.setProp (objectArray)
     }
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

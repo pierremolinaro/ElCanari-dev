@@ -1203,7 +1203,7 @@ final class PreferencesArrayOf_SymbolBezierCurve : StoredArrayOf_SymbolBezierCur
     self.addEBObserverOf_cpx2 (self.mObserverForWritingPreferences)
     self.addEBObserverOf_cpy2 (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x1 (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

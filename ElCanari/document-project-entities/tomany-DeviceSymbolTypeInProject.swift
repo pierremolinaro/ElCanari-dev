@@ -671,7 +671,7 @@ final class PreferencesArrayOf_DeviceSymbolTypeInProject : StoredArrayOf_DeviceS
     self.addEBObserverOf_mSymbolTypeName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mStrokeBezierPath (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mFilledBezierPath (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

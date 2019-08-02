@@ -6680,7 +6680,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mSchematicGridStyle (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSchematicGridDisplayFactor (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSchematicSheetOrientation (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

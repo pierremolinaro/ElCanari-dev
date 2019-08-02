@@ -1195,7 +1195,7 @@ final class PreferencesArrayOf_DeviceInProject : StoredArrayOf_DeviceInProject {
     self.addEBObserverOf_mPrefix (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mDeviceVersion (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mDeviceFileData (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

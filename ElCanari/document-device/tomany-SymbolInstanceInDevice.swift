@@ -961,7 +961,7 @@ final class PreferencesArrayOf_SymbolInstanceInDevice : StoredArrayOf_SymbolInst
     self.addEBObserverOf_mInstanceName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

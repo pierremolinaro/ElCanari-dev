@@ -1151,7 +1151,7 @@ final class PreferencesArrayOf_ArtworkRoot : StoredArrayOf_ArtworkRoot {
     self.addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_minValueForBoardLimitWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_drillDataFileExtension (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

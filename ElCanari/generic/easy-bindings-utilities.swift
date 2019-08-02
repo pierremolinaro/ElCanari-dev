@@ -422,7 +422,8 @@ class EBSimpleController : EBOutletEvent {
 
   //····················································································································
 
-  func unregister () {
+  override func unregister () {
+    super.unregister ()
     for object in self.mPrivateObservedObjects {
       object.removeEBObserver (self)
     }

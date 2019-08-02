@@ -905,7 +905,7 @@ final class PreferencesArrayOf_SymbolText : StoredArrayOf_SymbolText {
     self.addEBObserverOf_text (self.mObserverForWritingPreferences)
     self.addEBObserverOf_horizontalAlignment (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

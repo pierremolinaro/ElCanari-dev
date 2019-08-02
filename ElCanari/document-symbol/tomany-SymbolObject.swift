@@ -665,7 +665,7 @@ final class PreferencesArrayOf_SymbolObject : StoredArrayOf_SymbolObject {
       }
       self.setProp (objectArray)
     }
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

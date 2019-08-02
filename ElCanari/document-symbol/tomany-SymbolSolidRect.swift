@@ -963,7 +963,7 @@ final class PreferencesArrayOf_SymbolSolidRect : StoredArrayOf_SymbolSolidRect {
     self.addEBObserverOf_width (self.mObserverForWritingPreferences)
     self.addEBObserverOf_height (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

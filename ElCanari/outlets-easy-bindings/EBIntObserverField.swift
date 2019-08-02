@@ -104,7 +104,6 @@ final class Controller_EBIntObserverField_readOnlyValue : EBSimpleController {
     }else if !(self.mOutlet.formatter is NumberFormatter) {
       presentErrorWindow (file, line, "the formatter should be an NSNumberFormatter")
     }
-  //  self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

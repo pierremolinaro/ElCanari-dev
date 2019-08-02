@@ -1556,7 +1556,7 @@ final class PreferencesArrayOf_ComponentSymbolInProject : StoredArrayOf_Componen
     self.addEBObserverOf_mDisplayComponentValue (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mDisplayComponentValueOffsetX (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mDisplayComponentValueOffsetY (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

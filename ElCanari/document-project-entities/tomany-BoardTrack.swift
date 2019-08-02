@@ -1371,7 +1371,7 @@ final class PreferencesArrayOf_BoardTrack : StoredArrayOf_BoardTrack {
     self.addEBObserverOf_mCustomTrackWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mCustomTrackWidthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mUsesCustomTrackWidth (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

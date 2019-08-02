@@ -963,7 +963,7 @@ final class PreferencesArrayOf_SymbolSegment : StoredArrayOf_SymbolSegment {
     self.addEBObserverOf_x2 (self.mObserverForWritingPreferences)
     self.addEBObserverOf_y2 (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x1 (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

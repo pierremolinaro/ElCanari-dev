@@ -47,7 +47,8 @@ class ProjectSheetController : EBOutletEvent {
 
   //····················································································································
 
-  func unregister () {
+  override func unregister () {
+    super.unregister ()
     if let document = self.mDocument {
       document.rootObject.mSheets_property.removeEBObserverOf_mSheetTitle (self)
       document.rootObject.mSheets_property.removeEBObserverOf_connexionWarnings (self)

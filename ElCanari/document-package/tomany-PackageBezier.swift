@@ -1683,7 +1683,7 @@ final class PreferencesArrayOf_PackageBezier : StoredArrayOf_PackageBezier {
     self.addEBObserverOf_cpx2Unit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_cpy2Unit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x1 (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································

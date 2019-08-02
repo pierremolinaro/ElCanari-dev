@@ -2039,7 +2039,7 @@ final class PreferencesArrayOf_MergerRoot : StoredArrayOf_MergerRoot {
     self.addEBObserverOf_generateGerberProductFile (self.mObserverForWritingPreferences)
     self.addEBObserverOf_generatePDFProductFile (self.mObserverForWritingPreferences)
     self.addEBObserverOf_generatedBoardArchiveFormat (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
   //····················································································································
