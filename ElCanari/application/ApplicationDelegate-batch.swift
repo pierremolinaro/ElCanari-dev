@@ -75,7 +75,7 @@ extension ApplicationDelegate {
             _ = alert.beginSheetModal (for: window)
           }else{
             let alert = NSAlert ()
-            alert.messageText = "Open \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")? This may take a while, and you cannot cancel this operation."
+            alert.messageText = "Open \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
             alert.accessoryView = self.mOpenAllDialogAccessoryCheckBox
             alert.informativeText = "Animating is slower, but you have a visual effect during documents opening."
             alert.addButton (withTitle: "Ok")
@@ -147,7 +147,7 @@ extension ApplicationDelegate {
             _ = alert.beginSheetModal (for: window)
           }else{
             let alert = NSAlert ()
-            alert.messageText = "Update \(retainedFiles.count) project\((retainedFiles.count > 1) ? "s" : "")? This may take a while, and you cannot cancel this operation."
+            alert.messageText = "Update \(retainedFiles.count) project\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
             alert.addButton (withTitle: "Ok")
             alert.addButton (withTitle: "Cancel")
             alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
@@ -221,7 +221,7 @@ extension ApplicationDelegate {
             _ = alert.beginSheetModal (for: window)
           }else{
             let alert = NSAlert ()
-            alert.messageText = "Update \(retainedFiles.count) device\((retainedFiles.count > 1) ? "s" : "")? This may take a while, and you cannot cancel this operation."
+            alert.messageText = "Update \(retainedFiles.count) device\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
             alert.addButton (withTitle: "Ok")
             alert.addButton (withTitle: "Cancel")
             alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
