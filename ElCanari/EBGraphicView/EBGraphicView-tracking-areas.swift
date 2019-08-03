@@ -11,9 +11,8 @@ extension EBGraphicView {
   //····················································································································
 
   override func updateTrackingAreas () { // This is required for receiving mouse moved and mouseExited events
-  //--- Remove current tracking areas
-    let currentTrackingAreas = self.trackingAreas
-    for trackingArea in currentTrackingAreas {
+  //--- Remove current tracking area
+    if let trackingArea = self.mTrackingArea {
       self.removeTrackingArea (trackingArea)
     }
   //--- Add Updated tracking area
@@ -24,6 +23,7 @@ extension EBGraphicView {
       userInfo: nil
     )
     self.addTrackingArea (trackingArea)
+    self.mTrackingArea = trackingArea
   //---
     super.updateTrackingAreas ()
   }

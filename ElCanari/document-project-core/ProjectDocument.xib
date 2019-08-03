@@ -5254,7 +5254,7 @@ Diameter</string>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Line in Legend" id="15553" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
+                <button toolTip="Add Line in Board" id="15553" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="95" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="line-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="15554">
@@ -5262,18 +5262,15 @@ Diameter</string>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button id="15556" customClass="CanariDragSourceImageButton" customModule="ElCanari" customModuleProvider="target">
+                <button toolTip="Add Track; hint: option + click starts a new track on front side." id="15556" customClass="CanariDragSourceImageButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="215" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <string key="toolTip">Add Track; hints:
-  - option + click starts a new track on front side,
-  - ctrl + option + click starts a new track on back side.</string>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="track-in-board" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="15557">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Line in Legend" id="M4y-0f-E9J" customClass="CanariDragSourceImageButton" customModule="ElCanari" customModuleProvider="target">
+                <button toolTip="Add Text in Board" id="M4y-0f-E9J" customClass="CanariDragSourceImageButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="122" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="text-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="SSR-Im-lHO">
@@ -5281,7 +5278,7 @@ Diameter</string>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <popUpButton verticalHuggingPriority="750" id="3S2-ao-nFD" customClass="EBPopUpButton">
+                <popUpButton toolTip="Side of the track added by option + click or dragging button" verticalHuggingPriority="750" id="3S2-ao-nFD" customClass="EBPopUpButton">
                     <rect key="frame" x="158" y="580" width="52" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Front" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="CRr-Wl-L78" id="nzC-U3-5Ml">

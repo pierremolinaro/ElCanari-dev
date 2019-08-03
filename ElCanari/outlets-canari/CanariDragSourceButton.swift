@@ -108,9 +108,13 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
   //  Hilite when mouse is within button
   //····················································································································
 
+  private var mTrackingArea : NSTrackingArea? = nil
+
+  //····················································································································
+
   override func updateTrackingAreas () { // This is required for receiving mouseEntered and mouseExited events
-  //--- Remove all tracking areas
-    for trackingArea in self.trackingAreas {
+  //--- Remove current tracking area
+    if let trackingArea = self.mTrackingArea {
       self.removeTrackingArea (trackingArea)
     }
   //--- Add Updated tracking area
@@ -121,6 +125,7 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
       userInfo: nil
     )
     self.addTrackingArea (trackingArea)
+    self.mTrackingArea = trackingArea
   //---
     super.updateTrackingAreas ()
   }
