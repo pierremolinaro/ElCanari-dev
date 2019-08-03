@@ -84,6 +84,27 @@ extension BoardConnector {
 
   //····················································································································
 
+  func connectedTracksNet () -> NetInProject? {
+    var netSet = Set <NetInProject> ()
+    for t in self.mTracksP1 {
+      if let net = t.mNet {
+        netSet.insert (net)
+      }
+    }
+    for t in self.mTracksP2 {
+      if let net = t.mNet {
+        netSet.insert (net)
+      }
+    }
+    if netSet.count == 1 {
+      return netSet.first
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

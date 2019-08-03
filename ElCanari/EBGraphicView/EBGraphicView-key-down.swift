@@ -25,6 +25,7 @@ extension EBGraphicView {
         if self.mOptionClickOperationInProgress {
           self.mOptionClickOperationInProgress = false
           self.mAbortOptionMouseOperationCallback? ()
+          self.viewController?.ebUndoManager?.undo ()
         }
       case NSEvent.SpecialKey.upArrow.unicodeScalar :
         _ = self.wantsToTranslateSelection (byX: 0, byY:amount)

@@ -560,6 +560,7 @@ document ProjectDocument root ProjectRoot {
   outlet CanariDragSourceButton mAddRestrictRectangleButton ;
   outlet CanariDragSourceImageButton mAddTextInBoardButton ;
   outlet CanariDragSourceButton mAddLineInBoardButton ;
+  outlet EBPopUpButton mInsertedTrackSidePopUpButton ;
   outlet CanariDragSourceImageButton mAddTrackInBoardButton ;
 
   outlet CanariDragSourceTableView mUnplacedPackageTableView $models root.unplacedPackages ;

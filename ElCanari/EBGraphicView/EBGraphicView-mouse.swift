@@ -229,14 +229,18 @@ extension EBGraphicView {
 
   override func mouseUp (with inEvent : NSEvent) {
     super.mouseUp (with: inEvent)
+    var accepts = true
     if self.mOptionClickOperationInProgress {
       let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
-      self.mStopOptionMouseUpCallback? (unalignedLocationInView)
+      accepts = self.mStopOptionMouseUpCallback? (unalignedLocationInView) ?? true
       self.mOptionClickOperationInProgress = false
     }
     if self.mPerformEndUndoGroupingOnMouseUp {
       self.mPerformEndUndoGroupingOnMouseUp = false
       self.viewController?.ebUndoManager?.endUndoGrouping ()
+    }
+    if !accepts {
+      self.viewController?.ebUndoManager?.undo ()
     }
     self.mLastMouseDraggedLocation = nil
     self.mSelectionRectangleOrigin = nil
@@ -265,7 +269,6 @@ extension EBGraphicView {
         possibleObjectIndex = idx
       }
     }
-    //Swift.print ("possibleObjectIndex \(possibleObjectIndex), possibleKnobIndex \(possibleKnobIndex)")
     return (possibleObjectIndex, possibleKnobIndex)
   }
 

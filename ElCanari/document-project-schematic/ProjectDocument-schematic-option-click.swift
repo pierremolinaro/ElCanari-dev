@@ -65,15 +65,12 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   internal func abortWireCreationOnOptionMouseUp () {
-     if self.mWireCreatedByOptionClick != nil {
-       self.ebUndoManager.undo ()
-       self.mWireCreatedByOptionClick = nil
-     }
+    self.mWireCreatedByOptionClick = nil
   }
 
   //····················································································································
 
-  internal func stopWireCreationOnOptionMouseUp (at inUnalignedMousePoint : NSPoint) {
+  internal func stopWireCreationOnOptionMouseUp (at inUnalignedMousePoint : NSPoint) -> Bool {
      if let wire = self.mWireCreatedByOptionClick, let selectedSheet = self.rootObject.mSelectedSheet {
        let p1 = wire.mP1!.location!
        let p2 = wire.mP2!.location!
@@ -88,8 +85,8 @@ extension CustomizedProjectDocument {
        }
        self.mWireCreatedByOptionClick = nil
      }
+     return true // Accepts wire creation
   }
-
 
   //····················································································································
 

@@ -16,7 +16,9 @@ fileprivate let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue
 fileprivate let kDragAndDropBoardLine = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.line")
 fileprivate let kDragAndDropBoardTrack = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.track")
 
-fileprivate let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -68,6 +70,12 @@ fileprivate let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //····················································································································
 
   internal var mWireCreatedByOptionClick : WireInSchematic? = nil
+
+  //····················································································································
+  //  TRACK CREATED BY AN OPTION CLICK
+  //····················································································································
+
+  internal var mTrackCreatedByOptionClick : BoardTrack? = nil
 
   //····················································································································
   //  POP UP BUTTON CONTROLLERS FOR SELECTING NET CLASS
@@ -124,7 +132,14 @@ fileprivate let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
        start: { [weak self] (inUnalignedMouseLocation) in self?.startWireCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
        continue: { [weak self] (inUnalignedMouseLocation) in self?.continueWireCreationOnOptionMouseDragged (at: inUnalignedMouseLocation) },
        abort: { [weak self] in self?.abortWireCreationOnOptionMouseUp () },
-       stop: { [weak self] (inUnalignedMouseLocation) in self?.stopWireCreationOnOptionMouseUp (at: inUnalignedMouseLocation) }
+       stop: { [weak self] (inUnalignedMouseLocation) in self?.stopWireCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
+     )
+  //--- Option click for creating track
+     self.mBoardView?.setOptionMouseCallbacks (
+       start: { [weak self] (inUnalignedMouseLocation) in self?.startTrackCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
+       continue: { [weak self] (inUnalignedMouseLocation) in self?.continueTrackCreationOnOptionMouseDragged (at: inUnalignedMouseLocation) },
+       abort: { [weak self] in self?.abortTrackCreationOnOptionMouseUp () },
+       stop: { [weak self] (inUnalignedMouseLocation) in self?.stopTrackCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
      )
   //--- Pop up button controllers
     self.mSelectedWireNetClassPopUpController.bind_model (
@@ -302,9 +317,6 @@ fileprivate let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
 
     self.mERCIssueTableView?.register (issueDisplayView: self.mBoardView)
     self.mERCIssueTableView?.register (hideIssueButton: self.mHideERCIssueButton)
-
-//    self.mBoardView?.mObjectsDidChangeCallBack = { self.rootObject.mERCStatus = .unknown }
-
 
     // self.updateBoardConnectors ()
   //  self.updateSchematicsPointsAndNets ()
@@ -558,26 +570,6 @@ fileprivate let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
         }
       }
     }
-  }
-
-  //····················································································································
-
-  private func performAddBoardTrackDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
-    let connector1 = BoardConnector (self.ebUndoManager)
-    connector1.mX = p.x
-    connector1.mY = p.y
-    let connector2 = BoardConnector (self.ebUndoManager)
-    connector2.mX = p.x + TRACK_INITIAL_SIZE_CANARI_UNIT
-    connector2.mY = p.y + TRACK_INITIAL_SIZE_CANARI_UNIT
-    let track = BoardTrack (self.ebUndoManager)
-    track.mSide = NSEvent.modifierFlags.contains (.shift) ? .back : .front
-    track.mConnectorP1 = connector1
-    track.mConnectorP2 = connector2
-    self.rootObject.mBoardObjects.append (connector1)
-    self.rootObject.mBoardObjects.append (connector2)
-    self.rootObject.mBoardObjects.append (track)
-    self.boardObjectsController.setSelection ([track])
   }
 
   //····················································································································

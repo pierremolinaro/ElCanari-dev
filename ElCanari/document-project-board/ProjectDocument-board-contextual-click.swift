@@ -58,25 +58,31 @@ extension CustomizedProjectDocument {
 
   @objc private func connectInBoardAction (_ inMenuItem : NSMenuItem) {
     if let connectors = inMenuItem.representedObject as? [BoardConnector] {
-      let nets = self.findAllNetsConnectedToPad (connectors)
-      if nets.count <= 1 {
-      //--- How many connectors connected to a pad ?
-        var connectorsConnectedToAPad = [BoardConnector] ()
-        for c in connectors {
-          if c.mComponent != nil {
-            connectorsConnectedToAPad.append (c)
-          }
+      self.tryToConnect (connectors)
+    }
+  }
+
+  //····················································································································
+
+  internal func tryToConnect (_ inConnectors : [BoardConnector]) {
+    let nets = self.findAllNetsConnectedToPad (inConnectors)
+    if nets.count <= 1 {
+    //--- How many connectors connected to a pad ?
+      var connectorsConnectedToAPad = [BoardConnector] ()
+      for c in inConnectors {
+        if c.mComponent != nil {
+          connectorsConnectedToAPad.append (c)
         }
-      //---
-        if connectorsConnectedToAPad.count == 0 {
-          let retainedConnector = connectors [0]
-          self.performConnection (retainedConnector, connectors, nets.first)
-        }else if connectorsConnectedToAPad.count == 1 {
-          let retainedConnector = connectorsConnectedToAPad [0]
-          self.performConnection (retainedConnector, connectors, nets.first)
-        }else{
-          __NSBeep ()
-        }
+      }
+    //---
+      if connectorsConnectedToAPad.count == 0 {
+        let retainedConnector = inConnectors [0]
+        self.performConnection (retainedConnector, inConnectors, nets.first)
+      }else if connectorsConnectedToAPad.count == 1 {
+        let retainedConnector = connectorsConnectedToAPad [0]
+        self.performConnection (retainedConnector, inConnectors, nets.first)
+      }else{
+        __NSBeep ()
       }
     }
   }

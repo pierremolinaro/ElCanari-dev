@@ -1098,6 +1098,8 @@
 		CF7C0A0221E4DAC900FFB7A2 /* open-package-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C0A0021E4DAC900FFB7A2 /* open-package-in-library.swift */; };
 		CF7C30E621CCCA9E00EFFDCA /* PackageDocument-pad-numbering.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C30E521CCCA9D00EFFDCA /* PackageDocument-pad-numbering.swift */; };
 		CF7C30E721CCCA9E00EFFDCA /* PackageDocument-pad-numbering.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C30E521CCCA9D00EFFDCA /* PackageDocument-pad-numbering.swift */; };
+		CF7C3BCE22F5DE62001DF064 /* ProjectDocument-add-drag-track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C3BCD22F5DE62001DF064 /* ProjectDocument-add-drag-track.swift */; };
+		CF7C3BCF22F5DE62001DF064 /* ProjectDocument-add-drag-track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C3BCD22F5DE62001DF064 /* ProjectDocument-add-drag-track.swift */; };
 		CF7C5A5D1B46F6BF00213EA8 /* selectionController-ArtworkDocument-mDataSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C5A5C1B46F6BF00213EA8 /* selectionController-ArtworkDocument-mDataSelection.swift */; };
 		CF7C5A5F1B46F6DB00213EA8 /* controller-table-view-ArtworkDocument-mDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C5A5E1B46F6DB00213EA8 /* controller-table-view-ArtworkDocument-mDataController.swift */; };
 		CF7E69F022820FF00024233A /* transient-LabelInSchematic-location.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E69ED22820FF00024233A /* transient-LabelInSchematic-location.swift */; };
@@ -2876,6 +2878,7 @@
 		CF7C09FD21E4BA8C00FFB7A2 /* open-symbol-in-library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "open-symbol-in-library.swift"; sourceTree = "<group>"; };
 		CF7C0A0021E4DAC900FFB7A2 /* open-package-in-library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "open-package-in-library.swift"; sourceTree = "<group>"; };
 		CF7C30E521CCCA9D00EFFDCA /* PackageDocument-pad-numbering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PackageDocument-pad-numbering.swift"; sourceTree = "<group>"; };
+		CF7C3BCD22F5DE62001DF064 /* ProjectDocument-add-drag-track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-add-drag-track.swift"; sourceTree = "<group>"; };
 		CF7C5A5C1B46F6BF00213EA8 /* selectionController-ArtworkDocument-mDataSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ArtworkDocument-mDataSelection.swift"; sourceTree = "<group>"; };
 		CF7C5A5E1B46F6DB00213EA8 /* controller-table-view-ArtworkDocument-mDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-ArtworkDocument-mDataController.swift"; sourceTree = "<group>"; };
 		CF7E69ED22820FF00024233A /* transient-LabelInSchematic-location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-LabelInSchematic-location.swift"; sourceTree = "<group>"; };
@@ -5065,6 +5068,7 @@
 				CFBCE77B22D3ACA300DC3505 /* extension-BorderCurve.swift */,
 				CFB5949922E34E4A009DBC1C /* extension-ComponentInProject.swift */,
 				CF94213922E8C2100043D7DD /* extension-ProjectDocument-menu-actions.swift */,
+				CF7C3BCD22F5DE62001DF064 /* ProjectDocument-add-drag-track.swift */,
 				CFBCE7A222D3AEAC00DC3505 /* ProjectDocument-board-contextual-click.swift */,
 				CFFBEEC422A55881001BF689 /* ProjectDocument-board-limits-contextual-click.swift */,
 				CFAA044722F1BA3300030A0C /* ProjectDocument-build-product-data.swift */,
@@ -6002,6 +6006,7 @@
 				CF9D4B1C227F796C006E2035 /* action-ProjectDocument-changePackageOfSelectedComponentsAction.swift in Sources */,
 				CFA655CE21060672001E5067 /* action-MergerDocument-moveDownAction.swift in Sources */,
 				CFA43043229AEB96000AA8C8 /* toone-CommentInSchematic.swift in Sources */,
+				CF7C3BCE22F5DE62001DF064 /* ProjectDocument-add-drag-track.swift in Sources */,
 				CF65805820EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift in Sources */,
 				CF9D4BB2227F79A9006E2035 /* transient-SheetInProject-connexionErrors.swift in Sources */,
 				CF6B32FD21C927B400E3B985 /* extension-PackageDimension.swift in Sources */,
@@ -7097,6 +7102,7 @@
 				CF5C4D38219F04D600EAC52A /* selectionController-MergerDocument-mBoardInstanceSelection.swift in Sources */,
 				CFA4307A229AEB96000AA8C8 /* tomany-DeviceSymbolInstanceInProject.swift in Sources */,
 				CF4A463821C2FF8D005F722D /* controller-array-PackageDocument-mPackageObjectsController.swift in Sources */,
+				CF7C3BCF22F5DE62001DF064 /* ProjectDocument-add-drag-track.swift in Sources */,
 				CF5C4D39219F04D600EAC52A /* ApplicationDelegate-new-document.swift in Sources */,
 				CF1D9C8821BBFBB100FFF459 /* EBGraphicView-key-down.swift in Sources */,
 				CF30CDE821C5709800CFE9CC /* transient-PackagePad-selectionDisplay.swift in Sources */,
@@ -7659,7 +7665,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACH_O_TYPE = mh_execute;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;
@@ -7795,7 +7801,7 @@
 				);
 				LLVM_LTO = YES;
 				MACH_O_TYPE = mh_execute;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
