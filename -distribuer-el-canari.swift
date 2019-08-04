@@ -184,7 +184,7 @@ do{
   }
   //-------------------- Construction package
   let packageFile = PRODUCT_NAME + "-" + VERSION_CANARI + ".pkg"
-  runCommand ("/usr/bin/productbuild", ["--component", "build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app", "/Applications", packageFile])
+  runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app", "/Applications", packageFile])
   runCommand ("/bin/cp", [packageFile, DISTRIBUTION_DIR])
   //-------------------- Créer l'archive de Cocoa canari
   let nomArchive = PRODUCT_NAME + "-" + VERSION_CANARI
