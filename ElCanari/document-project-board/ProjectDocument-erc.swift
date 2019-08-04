@@ -395,7 +395,7 @@ extension ProjectDocument {
           case .front :
             if !connectorOnFrontSide {
               let bp = padDescriptor.bezierPath (index: 0, extraWidth: clearance).transformed (by: inAffineTransform)
-              let bp2 = track.bezierPath (inExtraWidth: clearance)
+              let bp2 = track.bezierPath (extraWidth: clearance)
               let issue = CanariIssue (kind: .error, message: "Pad in back side, track in front side", pathes: [bp, bp2])
               ioIssues.append (issue)
               ioConnectionErrorCount += 1
@@ -403,7 +403,7 @@ extension ProjectDocument {
           case .back :
             if !connectorOnBackSide {
               let bp = padDescriptor.bezierPath (index: 0, extraWidth: clearance).transformed (by: inAffineTransform)
-              let bp2 = track.bezierPath (inExtraWidth: clearance)
+              let bp2 = track.bezierPath (extraWidth: clearance)
               let issue = CanariIssue (kind: .error, message: "Pad in front side, track in back side", pathes: [bp, bp2])
               ioIssues.append (issue)
               ioConnectionErrorCount += 1
@@ -438,7 +438,7 @@ extension ProjectDocument {
           case .front :
             if !connectorOnFrontSide {
               let bp = padDescriptor.bezierPath (index: inConnector.mPadIndex, extraWidth: clearance).transformed (by: inAffineTransform)
-              let bp2 = track.bezierPath (inExtraWidth: clearance)
+              let bp2 = track.bezierPath (extraWidth: clearance)
               let issue = CanariIssue (kind: .error, message: "Pad in back side, track in front side", pathes: [bp, bp2])
               ioIssues.append (issue)
               ioConnectionErrorCount += 1
@@ -446,7 +446,7 @@ extension ProjectDocument {
           case .back :
             if !connectorOnBackSide {
               let bp = padDescriptor.bezierPath (index: inConnector.mPadIndex, extraWidth: clearance).transformed (by: inAffineTransform)
-              let bp2 = track.bezierPath (inExtraWidth: clearance)
+              let bp2 = track.bezierPath (extraWidth: clearance)
               let issue = CanariIssue (kind: .error, message: "Pad in front side, track in back side", pathes: [bp, bp2])
               ioIssues.append (issue)
               ioConnectionErrorCount += 1
