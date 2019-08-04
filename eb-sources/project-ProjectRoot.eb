@@ -38,13 +38,13 @@ entity ProjectRoot {
 
   property proxy String comments : mArtwork.comments ;
 
-//  transient Int artworkSignature dependsFrom self.mArtwork.one.signature ;
-
 //--- ERC Status
   property Bool mLastERCCheckingIsSuccess default no ;
   property UInt32 mLastERCCheckingSignature default 1 ;
 
-  transient UInt32 signatureForERCChecking dependsFrom self.mBoardObjects.all.signatureForERCChecking ;
+  transient UInt32 signatureForERCChecking dependsFrom
+    self.mBoardObjects.all.signatureForERCChecking, self.mArtwork.one.signatureForERCChecking ;
+ 
   transient NSImage ercStatusImage dependsFrom
      self.mLastERCCheckingIsSuccess, self.mLastERCCheckingSignature, self.signatureForERCChecking ;
   transient String ercStatusMessage dependsFrom

@@ -26,6 +26,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
     self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_selectedTab_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_comments_toElementsOfSet (inAddedSet) // Stored property
@@ -38,6 +39,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
     self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -663,6 +665,62 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drillDataFileExtension_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'signatureForERCChecking' transient property
+  //····················································································································
+
+  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.signatureForERCChecking_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_signatureForERCChecking.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.signatureForERCChecking_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
+        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
       }
     }
   }

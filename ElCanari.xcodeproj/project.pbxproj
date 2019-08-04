@@ -1948,6 +1948,8 @@
 		CFC5BB622232DB4400E03849 /* view-UnconnectedSymbolPinsInDeviceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5BB612232DB4400E03849 /* view-UnconnectedSymbolPinsInDeviceTableView.swift */; };
 		CFC5BB632232DB4400E03849 /* view-UnconnectedSymbolPinsInDeviceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5BB612232DB4400E03849 /* view-UnconnectedSymbolPinsInDeviceTableView.swift */; };
 		CFC5FBC11FDF06220014A257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC5FBC01FDF06220014A257 /* Assets.xcassets */; };
+		CFC6325822F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC6325722F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift */; };
+		CFC6325922F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC6325722F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift */; };
 		CFC80AA520E6390500C1A156 /* transient-BoardModel-drillSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC80AA420E6390500C1A156 /* transient-BoardModel-drillSegments.swift */; };
 		CFC8547821E91817006ADB6C /* transient-DeviceDocument-mMetadataStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC8547421E91817006ADB6C /* transient-DeviceDocument-mMetadataStatus.swift */; };
 		CFC8547921E91817006ADB6C /* transient-DeviceDocument-mMetadataStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC8547421E91817006ADB6C /* transient-DeviceDocument-mMetadataStatus.swift */; };
@@ -3333,6 +3335,7 @@
 		CFC5BB5E2232D5AD00E03849 /* transient-DeviceRoot-unconnectedPins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceRoot-unconnectedPins.swift"; sourceTree = "<group>"; };
 		CFC5BB612232DB4400E03849 /* view-UnconnectedSymbolPinsInDeviceTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "view-UnconnectedSymbolPinsInDeviceTableView.swift"; sourceTree = "<group>"; };
 		CFC5FBC01FDF06220014A257 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CFC6325722F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ArtworkRoot-signatureForERCChecking.swift"; sourceTree = "<group>"; };
 		CFC80AA420E6390500C1A156 /* transient-BoardModel-drillSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-drillSegments.swift"; sourceTree = "<group>"; };
 		CFC8547421E91817006ADB6C /* transient-DeviceDocument-mMetadataStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceDocument-mMetadataStatus.swift"; sourceTree = "<group>"; };
 		CFC8547521E91817006ADB6C /* transient-DeviceRoot-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceRoot-issues.swift"; sourceTree = "<group>"; };
@@ -4616,6 +4619,7 @@
 				CFE652DC1DD4B23A00BAC27A /* transient-ArtworkDocument-mGeneratedFileCountString.swift */,
 				CF0CABEA1EB8E3B800DA81FF /* transient-ArtworkDocument-mStatusImage.swift */,
 				CF0CABEB1EB8E3B800DA81FF /* transient-ArtworkDocument-mStatusMessage.swift */,
+				CFC6325722F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift */,
 			);
 			name = "document — artwork";
 			path = "ElCanari/document-artwork";
@@ -5694,6 +5698,7 @@
 				CF69ABD121A6C08100F5E49A /* transient-SymbolPin-objectDisplay.swift in Sources */,
 				CFA430B1229AEC41000AA8C8 /* tomany-SymbolObject.swift in Sources */,
 				CF470CDA22AA4BD800D0EA60 /* tomany-BoardObject.swift in Sources */,
+				CFC6325822F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift in Sources */,
 				CF6B32E621C8F75000E3B985 /* transient-PackageGuide-issues.swift in Sources */,
 				CF12885A20FF5E81007B808C /* transient-BoardModel-frontPadsBezierPaths.swift in Sources */,
 				CF2B9CE221C2A8D100EE5683 /* entity-PackageRoot.swift in Sources */,
@@ -6790,6 +6795,7 @@
 				CF6B32E721C8F75000E3B985 /* transient-PackageGuide-issues.swift in Sources */,
 				CF5C4CFD219F04D600EAC52A /* transient-BoardModel-frontPadsBezierPaths.swift in Sources */,
 				CF9D4B33227F796C006E2035 /* action-ProjectDocument-newSheetAction.swift in Sources */,
+				CFC6325922F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift in Sources */,
 				CF2E6CF922A12648008D6960 /* transient-PointInSchematic-netClassName.swift in Sources */,
 				CF2B9CE321C2A8D100EE5683 /* entity-PackageRoot.swift in Sources */,
 				CF7E69FE2282230A0024233A /* transient-LabelInSchematic-netName.swift in Sources */,

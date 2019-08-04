@@ -83,7 +83,7 @@ final class MergerPadArray : EBObject {
 
   //····················································································································
 
-  func buidBezierPaths () -> BezierPathArray {
+  func buildBezierPaths () -> BezierPathArray {
     var result = BezierPathArray ()
     for pad in self.padArray {
       let width = canariUnitToCocoa (pad.width)

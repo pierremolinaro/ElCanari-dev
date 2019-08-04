@@ -33,6 +33,7 @@ extension ProjectDocument {
     self.mERCLogTextView?.clear ()
     var issues = [CanariIssue] ()
   //--- Checkings
+    self.checkVersusArtwork (&issues)
     var frontPadNetDictionary = [String : [PadGeometryForERC]] ()
     var backPadNetDictionary = [String : [PadGeometryForERC]] ()
     self.checkPadInsulation (&issues, &frontPadNetDictionary, &backPadNetDictionary)
@@ -49,6 +50,162 @@ extension ProjectDocument {
     self.rootObject.mLastERCCheckingSignature = self.rootObject.signatureForERCChecking ?? 0
   //---
     return issues.isEmpty
+  }
+
+  //····················································································································
+
+  fileprivate func checkVersusArtwork (_ ioIssues : inout [CanariIssue]) {
+    if let artwork = self.rootObject.mArtwork {
+    //--- Clearance
+      self.mERCLogTextView?.appendMessageString ("Check artwork clearance… ")
+      if artwork.minPPTPTTTW <= self.rootObject.mLayoutClearance {
+        self.mERCLogTextView?.appendSuccessString ("ok\n")
+      }else{
+        self.mERCLogTextView?.appendErrorString ("error\n")
+        let issue = CanariIssue (kind: .error, message: "Artwork clearance should be lower or equal than router clearance", pathes: [])
+        ioIssues.append (issue)
+      }
+    //--- Board limit width
+      self.mERCLogTextView?.appendMessageString ("Check board limits width… ")
+      if artwork.minValueForBoardLimitWidth <= self.rootObject.mBoardLimitsWidth {
+        self.mERCLogTextView?.appendSuccessString ("ok\n")
+      }else{
+        self.mERCLogTextView?.appendErrorString ("error\n")
+        let issue = CanariIssue (kind: .error, message: "Artwork board limits width should be lower or equal than board limits width", pathes: [])
+        ioIssues.append (issue)
+      }
+    //--- Board OAR and PHD of vias
+      self.checkViasOARAndPHD (&ioIssues, artwork.minValueForOARinEBUnit, artwork.minValueForPHDinEBUnit)
+    //--- Board OAR and PHD of pads
+      self.checkPadsOARAndPHD (&ioIssues, artwork.minValueForOARinEBUnit, artwork.minValueForPHDinEBUnit)
+
+    }else{
+      self.mERCLogTextView?.appendMessageString ("No artwork checking: artwork is not set.\n")
+    }
+  }
+
+  //····················································································································
+
+  fileprivate func checkViasOARAndPHD (_ ioIssues : inout [CanariIssue], _ inOAR : Int, _ inPHD : Int) {
+    self.mERCLogTextView?.appendMessageString ("Check vias OAR and PHD… ")
+    var errorCount = 0
+    for object in self.rootObject.mBoardObjects {
+      if let connector = object as? BoardConnector, let isVia = connector.isVia, isVia {
+        let viaHoleDiameter = connector.actualHoleDiameter!
+        let viaOAR = (connector.actualPadDiameter! - viaHoleDiameter) / 2
+        if viaHoleDiameter < inPHD {
+          let center = connector.location!.cocoaPoint
+          let w = canariUnitToCocoa (connector.actualPadDiameter! + self.rootObject.mLayoutClearance)
+          let r = NSRect (center: center, size: NSSize (width: w, height: w))
+          let bp = EBBezierPath (ovalIn: r)
+          let issue = CanariIssue (kind: .error, message: "Hole diameter should be greater or equal to artwork PHD", pathes: [bp])
+          ioIssues.append (issue)
+          errorCount += 1
+        }
+        if viaOAR < inOAR {
+          let center = connector.location!.cocoaPoint
+          let w = canariUnitToCocoa (connector.actualPadDiameter! + self.rootObject.mLayoutClearance)
+          let r = NSRect (center: center, size: NSSize (width: w, height: w))
+          let bp = EBBezierPath (ovalIn: r)
+          let issue = CanariIssue (kind: .error, message: "Annular ring should be greater or equal to artwork OAR", pathes: [bp])
+          ioIssues.append (issue)
+          errorCount += 1
+        }
+      }
+    }
+    if errorCount == 0 {
+      self.mERCLogTextView?.appendSuccessString ("ok\n")
+    }else if errorCount == 1 {
+      self.mERCLogTextView?.appendErrorString ("1 error\n")
+    }else{
+      self.mERCLogTextView?.appendErrorString ("\(errorCount) errors\n")
+    }
+  }
+
+  //····················································································································
+
+  fileprivate func checkPadsOARAndPHD (_ ioIssues : inout [CanariIssue], _ inOAR : Int, _ inPHD : Int) {
+    self.mERCLogTextView?.appendMessageString ("Check pads OAR and PHD… ")
+    let clearance = self.rootObject.mLayoutClearance
+    var errorCount = 0
+    for object in self.rootObject.mBoardObjects {
+      if let component = object as? ComponentInProject {
+        let af = component.affineTransformFromPackage ()
+        for (_, padDescriptor) in component.packagePadDictionary! {
+          switch padDescriptor.style {
+          case .surface :
+             ()
+          case .traversing :
+            let phd = min (padDescriptor.holeSize.width, padDescriptor.holeSize.height)
+            if phd < inPHD {
+              let bp = EBBezierPath.pad (
+                centerX: padDescriptor.center.x,
+                centerY: padDescriptor.center.y,
+                width: padDescriptor.padSize.width + clearance,
+                height: padDescriptor.padSize.height + clearance,
+                shape: padDescriptor.shape
+              ).transformed (by: af)
+              let issue = CanariIssue (kind: .error, message: "Pad hole diameter should be greater or equal to artwork PHD", pathes: [bp])
+              ioIssues.append (issue)
+              errorCount += 1
+            }
+            let oar = min (padDescriptor.padSize.width - padDescriptor.holeSize.width, padDescriptor.padSize.height - padDescriptor.holeSize.height) / 2
+            if oar < inOAR {
+              let bp = EBBezierPath.pad (
+                centerX: padDescriptor.center.x,
+                centerY: padDescriptor.center.y,
+                width: padDescriptor.padSize.width + clearance,
+                height: padDescriptor.padSize.height + clearance,
+                shape: padDescriptor.shape
+              ).transformed (by: af)
+              let issue = CanariIssue (kind: .error, message: "Pad OAR should be greater or equal to artwork OAR", pathes: [bp])
+              ioIssues.append (issue)
+              errorCount += 1
+            }
+          }
+          for slavePad in padDescriptor.slavePads {
+            switch slavePad.style {
+            case .oppositeSide, .componentSide :
+              ()
+            case .traversing :
+              let phd = min (slavePad.holeSize.width, slavePad.holeSize.height)
+              if phd < inPHD {
+                let bp = EBBezierPath.pad (
+                  centerX: slavePad.center.x,
+                  centerY: slavePad.center.y,
+                  width: slavePad.padSize.width + clearance,
+                  height: slavePad.padSize.height + clearance,
+                  shape: slavePad.shape
+                ).transformed (by: af)
+                let issue = CanariIssue (kind: .error, message: "Pad hole diameter should be greater or equal to artwork PHD", pathes: [bp])
+                ioIssues.append (issue)
+                errorCount += 1
+              }
+              let oar = min (slavePad.padSize.width - slavePad.holeSize.width, slavePad.padSize.height - slavePad.holeSize.height) / 2
+              if oar < inOAR {
+                let bp = EBBezierPath.pad (
+                  centerX: slavePad.center.x,
+                  centerY: slavePad.center.y,
+                  width: slavePad.padSize.width + clearance,
+                  height: slavePad.padSize.height + clearance,
+                  shape: slavePad.shape
+                ).transformed (by: af)
+                let issue = CanariIssue (kind: .error, message: "Pad OAR should be greater or equal to artwork OAR", pathes: [bp])
+                ioIssues.append (issue)
+                errorCount += 1
+              }
+            }
+          }
+        }
+      }
+    }
+    if errorCount == 0 {
+      self.mERCLogTextView?.appendSuccessString ("ok\n")
+    }else if errorCount == 1 {
+      self.mERCLogTextView?.appendErrorString ("1 error\n")
+    }else{
+      self.mERCLogTextView?.appendErrorString ("\(errorCount) errors\n")
+    }
   }
 
   //····················································································································
@@ -138,7 +295,7 @@ extension ProjectDocument {
           if padX.intersects (pad: padY) {
             collisionCount += 1
             let bp = [padX.bezierPath, padY.bezierPath]
-            let issue = CanariIssue (kind: .error, message: "Front side pad collision", pathes: bp, representativeValue: 0)
+            let issue = CanariIssue (kind: .error, message: "Front side pad collision", pathes: bp)
             ioIssues.append (issue)
           }
         }
@@ -152,7 +309,7 @@ extension ProjectDocument {
           if padX.intersects (pad: padY) {
             collisionCount += 1
             let bp = [padX.bezierPath, padY.bezierPath]
-            let issue = CanariIssue (kind: .error, message: "Back side pad collision", pathes: bp, representativeValue: 0)
+            let issue = CanariIssue (kind: .error, message: "Back side pad collision", pathes: bp)
             ioIssues.append (issue)
           }
         }
@@ -165,8 +322,6 @@ extension ProjectDocument {
     }else{
       self.mERCLogTextView?.appendErrorString ("\(collisionCount) errors\n")
     }
-//    let shape = EBShape (filled: frontPads.bezierPathes (), .yellow)
-//    self.mBoardView?.mOverObjectsDisplay = shape
   }
 
   //····················································································································

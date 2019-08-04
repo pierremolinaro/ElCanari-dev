@@ -21,6 +21,10 @@ entity ArtworkRoot {
 
 //--- Excellon drill data
   property @signature String drillDataFileExtension default "drf" ;
+  
+//--- For artwork embedded in document
+  transient UInt32 signatureForERCChecking dependsFrom
+     self.minPPTPTTTW, self.minValueForOARinEBUnit, self.minValueForBoardLimitWidth, self.minValueForPHDinEBUnit ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -39,13 +39,6 @@ func transient_PackageSlavePad_objectDisplay (
       bp = EBBezierPath (rect: rPad)
     case .round :
       bp = EBBezierPath (oblongInRect: rPad)
-//      if width < height {
-//        bp = EBBezierPath (roundedRect: rPad, xRadius: width / 2.0, yRadius: width / 2.0)
-//      }else if width > height {
-//        bp = EBBezierPath (roundedRect: rPad, xRadius: height / 2.0, yRadius: height / 2.0)
-//      }else{
-//        bp = EBBezierPath (ovalIn: rPad)
-//      }
     case .octo :
       bp = EBBezierPath (octogonInRect: rPad)
     }

@@ -71,6 +71,12 @@ protocol ArtworkRoot_drillDataFileExtension : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_signatureForERCChecking : class {
+  var signatureForERCChecking : UInt32? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -85,7 +91,8 @@ class ArtworkRoot : EBManagedObject,
          ArtworkRoot_minValueForPHDinEBUnit,
          ArtworkRoot_minValueForBoardLimitWidthDisplayUnit,
          ArtworkRoot_minValueForBoardLimitWidth,
-         ArtworkRoot_drillDataFileExtension {
+         ArtworkRoot_drillDataFileExtension,
+         ArtworkRoot_signatureForERCChecking {
 
   //····················································································································
   //   Atomic property: selectedTab
@@ -294,6 +301,29 @@ class ArtworkRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: signatureForERCChecking
+  //····················································································································
+
+  let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+
+  //····················································································································
+
+  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
+    return self.signatureForERCChecking_property.prop
+  }
+
+  //····················································································································
+
+  var signatureForERCChecking : UInt32? {
+    switch self.signatureForERCChecking_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -323,6 +353,34 @@ class ArtworkRoot : EBManagedObject,
     self.drillDataFileExtension_property.ebUndoManager = self.ebUndoManager
   //--- To many property: fileGenerationParameterArray (no option)
     self.fileGenerationParameterArray_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: signatureForERCChecking
+    self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.minPPTPTTTW_property_selection.kind ()
+        kind &= unwSelf.minValueForOARinEBUnit_property_selection.kind ()
+        kind &= unwSelf.minValueForBoardLimitWidth_property_selection.kind ()
+        kind &= unwSelf.minValueForPHDinEBUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.minPPTPTTTW_property_selection, unwSelf.minValueForOARinEBUnit_property_selection, unwSelf.minValueForBoardLimitWidth_property_selection, unwSelf.minValueForPHDinEBUnit_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_ArtworkRoot_signatureForERCChecking (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.minPPTPTTTW_property.addEBObserver (self.signatureForERCChecking_property)
+    self.minValueForOARinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
+    self.minValueForBoardLimitWidth_property.addEBObserver (self.signatureForERCChecking_property)
+    self.minValueForPHDinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.comments_property.setSignatureObserver (observer: self)
@@ -339,6 +397,10 @@ class ArtworkRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.minPPTPTTTW_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.minValueForOARinEBUnit_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.minValueForBoardLimitWidth_property.removeEBObserver (self.signatureForERCChecking_property)
+    self.minValueForPHDinEBUnit_property.removeEBObserver (self.signatureForERCChecking_property)
   //--- Unregister properties for handling signature
     self.comments_property.setSignatureObserver (observer: nil)
     self.drillDataFileExtension_property.setSignatureObserver (observer: nil)
@@ -449,6 +511,14 @@ class ArtworkRoot : EBManagedObject,
       valueExplorer: &self.drillDataFileExtension_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "signatureForERCChecking",
+      idx: self.signatureForERCChecking_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
+      valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "fileGenerationParameterArray",

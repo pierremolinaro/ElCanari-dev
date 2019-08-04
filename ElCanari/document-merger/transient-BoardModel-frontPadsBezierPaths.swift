@@ -17,7 +17,7 @@ func transient_BoardModel_frontPadsBezierPaths (
        _ self_frontPadArray : MergerPadArray
 ) -> BezierPathArray {
 //--- START OF USER ZONE 2
-  return self_frontPadArray.buidBezierPaths ()
+  return self_frontPadArray.buildBezierPaths ()
 //--- END OF USER ZONE 2
 }
 

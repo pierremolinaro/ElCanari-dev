@@ -3620,16 +3620,17 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mBoardObjects_property_selection.kind ()
+        var kind = unwSelf.mBoardObjects_property_selection.kind ()
+        kind &= unwSelf.mArtwork_property.signatureForERCChecking_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mBoardObjects_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectRoot_signatureForERCChecking (v0))
+          switch (unwSelf.mBoardObjects_property_selection, unwSelf.mArtwork_property.signatureForERCChecking_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ProjectRoot_signatureForERCChecking (v0, v1))
           default :
             return .empty
           }
@@ -3639,6 +3640,7 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mBoardObjects_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.mArtwork_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
   //--- Atomic property: ercStatusImage
     self.ercStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4445,6 +4447,7 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.removeEBObserver (self.sheetIndexes_property)
     self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netsDescription_property)
     self.mBoardObjects_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.mArtwork_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
     self.mLastERCCheckingIsSuccess_property.removeEBObserver (self.ercStatusImage_property)
     self.mLastERCCheckingSignature_property.removeEBObserver (self.ercStatusImage_property)
     self.signatureForERCChecking_property.removeEBObserver (self.ercStatusImage_property)
