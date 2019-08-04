@@ -141,6 +141,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
        abort: { [weak self] in self?.abortTrackCreationOnOptionMouseUp () },
        stop: { [weak self] (inUnalignedMouseLocation) in self?.stopTrackCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
      )
+     self.mBoardView?.mDrawFrameIssue = false
   //--- Pop up button controllers
     self.mSelectedWireNetClassPopUpController.bind_model (
       self.rootObject.mNetClasses_property,

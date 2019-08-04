@@ -318,13 +318,13 @@ struct MasterPadDescriptor : Hashable {
 
   //····················································································································
 
-  func bezierPath (index inIndex : Int) -> EBBezierPath {
+  func bezierPath (index inIndex : Int, extraWidth : Int = 0) -> EBBezierPath {
     if inIndex == 0 {
       return EBBezierPath.pad (
         centerX: self.center.x,
         centerY: self.center.y,
-        width: self.padSize.width,
-        height: self.padSize.height,
+        width: self.padSize.width + extraWidth,
+        height: self.padSize.height + extraWidth,
         shape: self.shape
       )
     }else{
@@ -332,8 +332,8 @@ struct MasterPadDescriptor : Hashable {
       return EBBezierPath.pad (
         centerX: slavePad.center.x,
         centerY: slavePad.center.y,
-        width: slavePad.padSize.width,
-        height: slavePad.padSize.height,
+        width: slavePad.padSize.width + extraWidth,
+        height: slavePad.padSize.height + extraWidth,
         shape: slavePad.shape
       )
     }

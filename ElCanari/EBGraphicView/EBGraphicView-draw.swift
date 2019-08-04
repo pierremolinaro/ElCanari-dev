@@ -113,22 +113,26 @@ extension EBGraphicView {
     if !self.mIssueBezierPathes.isEmpty {
       switch self.mIssueKind {
       case .error :
-        NSColor.red.withAlphaComponent (0.2).setFill ()
+        NSColor.red.withAlphaComponent (0.5).setFill ()
         for bp in self.mIssueBezierPathes {
           bp.fill ()
         }
-        NSColor.red.setStroke ()
-        for bp in self.mIssueBezierPathes {
-          bp.stroke ()
+        if self.mDrawFrameIssue {
+          NSColor.red.setStroke ()
+          for bp in self.mIssueBezierPathes {
+            bp.stroke ()
+          }
         }
       case .warning :
-        NSColor.orange.withAlphaComponent (0.2).setFill ()
+        NSColor.orange.withAlphaComponent (0.5).setFill ()
         for bp in self.mIssueBezierPathes {
           bp.fill ()
         }
-        NSColor.orange.setStroke ()
-        for bp in self.mIssueBezierPathes {
-          bp.stroke ()
+        if self.mDrawFrameIssue {
+          NSColor.orange.setStroke ()
+          for bp in self.mIssueBezierPathes {
+            bp.stroke ()
+          }
         }
       }
     }

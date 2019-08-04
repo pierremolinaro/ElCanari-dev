@@ -190,14 +190,13 @@ extension ProjectDocument {
               connectionErrorCount += 1
             }else{
               ioNetConnectorsDictionary [netName] = (ioNetConnectorsDictionary [netName] ?? []) + [(connector, bp)]
+              self.checkPadSizeVersusConnectedTracksSide (&ioIssues, connector, af, &connectionErrorCount)
             }
-          }else{ // Pad without connection
-            if (connector.mTracksP1.count + connector.mTracksP2.count) != 0 {
-              let bp = padDescriptor.bezierPath (index: connector.mPadIndex).transformed (by: af)
-              let issue = CanariIssue (kind: .error, message: "Pad should be nc", pathes: [bp])
-              ioIssues.append (issue)
-              connectionErrorCount += 1
-            }
+          }else if (connector.mTracksP1.count + connector.mTracksP2.count) != 0 { // Pad without connection
+            let bp = padDescriptor.bezierPath (index: connector.mPadIndex).transformed (by: af)
+            let issue = CanariIssue (kind: .error, message: "Pad should be nc", pathes: [bp])
+            ioIssues.append (issue)
+            connectionErrorCount += 1
           }
         }
       }
@@ -208,6 +207,98 @@ extension ProjectDocument {
       self.mERCLogTextView?.appendErrorString ("1 error\n")
     }else{
       self.mERCLogTextView?.appendErrorString ("\(connectionErrorCount) errors\n")
+    }
+  }
+
+  //····················································································································
+
+  private func checkPadSizeVersusConnectedTracksSide (_ ioIssues : inout [CanariIssue],
+                                                      _ inConnector : BoardConnector,
+                                                      _ inAffineTransform : AffineTransform,
+                                                      _ ioConnectionErrorCount : inout Int) {
+    if let component = inConnector.mComponent {
+      let clearance = self.rootObject.mLayoutClearance
+      let masterPadName = inConnector.mComponentPadName
+      let padDescriptor = component.packagePadDictionary! [masterPadName]!
+      if inConnector.mPadIndex == 0 { // Master pad
+        var connectorOnFrontSide = false
+        var connectorOnBackSide = false
+        switch padDescriptor.style {
+        case .traversing :
+          connectorOnFrontSide = true
+          connectorOnBackSide = true
+        case .surface :
+          switch component.mSide {
+          case .front :
+            connectorOnFrontSide = true
+          case .back :
+            connectorOnBackSide = true
+          }
+        }
+        for track in inConnector.mTracksP1 + inConnector.mTracksP2 {
+          switch track.mSide {
+          case .front :
+            if !connectorOnFrontSide {
+              let bp = padDescriptor.bezierPath (index: 0, extraWidth: clearance).transformed (by: inAffineTransform)
+              let bp2 = track.bezierPath (inExtraWidth: clearance)
+              let issue = CanariIssue (kind: .error, message: "Pad in back side, track in front side", pathes: [bp, bp2])
+              ioIssues.append (issue)
+              ioConnectionErrorCount += 1
+            }
+          case .back :
+            if !connectorOnBackSide {
+              let bp = padDescriptor.bezierPath (index: 0, extraWidth: clearance).transformed (by: inAffineTransform)
+              let bp2 = track.bezierPath (inExtraWidth: clearance)
+              let issue = CanariIssue (kind: .error, message: "Pad in front side, track in back side", pathes: [bp, bp2])
+              ioIssues.append (issue)
+              ioConnectionErrorCount += 1
+            }
+          }
+        }
+      }else{ // Slave pad
+        let slavePad = padDescriptor.slavePads [inConnector.mPadIndex - 1]
+        var connectorOnFrontSide = false
+        var connectorOnBackSide = false
+        switch slavePad.style {
+        case .traversing :
+          connectorOnFrontSide = true
+          connectorOnBackSide = true
+        case .componentSide :
+          switch component.mSide {
+          case .front :
+            connectorOnFrontSide = true
+          case .back :
+            connectorOnBackSide = true
+          }
+        case .oppositeSide :
+          switch component.mSide {
+          case .front :
+            connectorOnBackSide = true
+          case .back :
+            connectorOnFrontSide = true
+          }
+        }
+        for track in inConnector.mTracksP1 + inConnector.mTracksP2 {
+          switch track.mSide {
+          case .front :
+            if !connectorOnFrontSide {
+              let bp = padDescriptor.bezierPath (index: inConnector.mPadIndex, extraWidth: clearance).transformed (by: inAffineTransform)
+              let bp2 = track.bezierPath (inExtraWidth: clearance)
+              let issue = CanariIssue (kind: .error, message: "Pad in back side, track in front side", pathes: [bp, bp2])
+              ioIssues.append (issue)
+              ioConnectionErrorCount += 1
+            }
+          case .back :
+            if !connectorOnBackSide {
+              let bp = padDescriptor.bezierPath (index: inConnector.mPadIndex, extraWidth: clearance).transformed (by: inAffineTransform)
+              let bp2 = track.bezierPath (inExtraWidth: clearance)
+              let issue = CanariIssue (kind: .error, message: "Pad in front side, track in back side", pathes: [bp, bp2])
+              ioIssues.append (issue)
+              ioConnectionErrorCount += 1
+            }
+          }
+        }
+      }
     }
   }
 
