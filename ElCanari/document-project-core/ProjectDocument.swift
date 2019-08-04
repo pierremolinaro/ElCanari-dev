@@ -625,6 +625,7 @@ import Cocoa
   @IBOutlet var mChangeValueOfSelectedComponentsActionButton : EBButton? = nil
   @IBOutlet var mChangeValuePanel : NSPanel? = nil
   @IBOutlet var mChangeValueValidationButton : NSButton? = nil
+  @IBOutlet var mCommentColorInSchematicsTextField : EBColorWell? = nil
   @IBOutlet var mCommentInSchematicsInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mCommentInSchematicsTextField : EBTextField? = nil
   @IBOutlet var mCommentTextView : EBTextObserverView? = nil
@@ -1139,6 +1140,7 @@ import Cocoa
     checkOutletConnection (self.mChangeValueOfSelectedComponentsActionButton, "mChangeValueOfSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mChangeValuePanel, "mChangeValuePanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mChangeValueValidationButton, "mChangeValueValidationButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mCommentColorInSchematicsTextField, "mCommentColorInSchematicsTextField", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mCommentInSchematicsInspectorView, "mCommentInSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mCommentInSchematicsTextField, "mCommentInSchematicsTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextObserverView.self, #file, #line)
@@ -1815,6 +1817,7 @@ import Cocoa
     self.mWireNetNameTextField?.bind_valueObserver (self.wireInSchematicSelectionController.netName_property, file: #file, line: #line)
     self.mNCRotationSegmentedControl?.bind_quadrant (self.ncInSchematicSelectionController.mOrientation_property, file: #file, line: #line)
     self.mCommentInSchematicsTextField?.bind_value (self.commentInSchematicSelectionController.mComment_property, file: #file, line: #line, sendContinously:true)
+    self.mCommentColorInSchematicsTextField?.bind_color (self.commentInSchematicSelectionController.mColor_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsLabelRotationSegmentedControl?.bind_quadrant (self.schematicLabelSelectionController.mOrientation_property, file: #file, line: #line)
     self.mSchematicsLabelNetNameTextField?.bind_valueObserver (self.schematicLabelSelectionController.netName_property, file: #file, line: #line)
     self.mComponentSymbolShowComponentValueSwitch?.bind_value (self.componentSymbolSelectionController.mDisplayComponentValue_property, file: #file, line: #line)
@@ -2529,6 +2532,7 @@ import Cocoa
     self.mWireNetNameTextField?.unbind_valueObserver ()
     self.mNCRotationSegmentedControl?.unbind_quadrant ()
     self.mCommentInSchematicsTextField?.unbind_value ()
+    self.mCommentColorInSchematicsTextField?.unbind_color ()
     self.mSchematicsLabelRotationSegmentedControl?.unbind_quadrant ()
     self.mSchematicsLabelNetNameTextField?.unbind_valueObserver ()
     self.mComponentSymbolShowComponentValueSwitch?.unbind_value ()
@@ -3036,6 +3040,7 @@ import Cocoa
     self.mChangeValueOfSelectedComponentsActionButton?.ebCleanUp ()
     self.mChangeValuePanel?.ebCleanUp ()
     self.mChangeValueValidationButton?.ebCleanUp ()
+    self.mCommentColorInSchematicsTextField?.ebCleanUp ()
     self.mCommentInSchematicsInspectorView?.ebCleanUp ()
     self.mCommentInSchematicsTextField?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
@@ -3403,6 +3408,7 @@ import Cocoa
     self.mChangeValueOfSelectedComponentsActionButton = nil
     self.mChangeValuePanel = nil
     self.mChangeValueValidationButton = nil
+    self.mCommentColorInSchematicsTextField = nil
     self.mCommentInSchematicsInspectorView = nil
     self.mCommentInSchematicsTextField = nil
     self.mCommentTextView = nil

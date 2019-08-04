@@ -15,6 +15,7 @@ import Cocoa
 
 func transient_CommentInSchematic_selectionDisplay (
        _ self_mComment : String,                    
+       _ self_mColor : NSColor,                     
        _ self_mX : Int,                             
        _ self_mY : Int
 ) -> EBShape {
@@ -25,6 +26,7 @@ func transient_CommentInSchematic_selectionDisplay (
           (self_mComment == "") ? "Empty comment" : self_mComment,
           p,
           NSFont.systemFont (ofSize: NSFont.smallSystemFontSize),
+          self_mColor,
           .center,
           .center,
           knobIndex: 0

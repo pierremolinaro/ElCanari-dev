@@ -11,6 +11,16 @@ import Cocoa
 final class SelectionController_ProjectDocument_commentInSchematicSelectionController : EBObject {
 
   //····················································································································
+  //   Selection observable property: mColor
+  //····················································································································
+
+  let mColor_property = EBPropertyProxy_NSColor ()
+
+  var mColor_property_selection : EBSelection <NSColor> {
+    return self.mColor_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: mX
   //····················································································································
 
@@ -76,6 +86,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
 
   func bind_selection (model : ReadOnlyArrayOf_SchematicObject, file : String, line : Int) {
     self.selectedArray_property.setDataProvider (model)
+    self.bind_property_mColor ()
     self.bind_property_mX ()
     self.bind_property_mY ()
     self.bind_property_mComment ()
@@ -89,6 +100,11 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
 
   func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
+  //--- mColor
+    self.mColor_property.mReadModelFunction = nil 
+    self.mColor_property.mWriteModelFunction = nil 
+    self.mColor_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mColor (self.mColor_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
@@ -149,6 +165,14 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   //-------------------------------------------------- Adding properties
     let view = NSView (frame: r)
     var y : CGFloat = 0.0
+    createEntryForPropertyNamed (
+      "mColor",
+      idx: self.mColor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mColor_property.mObserverExplorer,
+      valueExplorer: &self.mColor_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "mX",
       idx: self.mX_property.ebObjectIndex,
@@ -225,6 +249,75 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     self.mExplorerWindow = nil
   }
 
+  //····················································································································
+
+  private final func bind_property_mColor () {
+    self.selectedArray_property.addEBObserverOf_mColor (self.mColor_property)
+    self.mColor_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NSColor> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mColor_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mColor_property.mWriteModelFunction = { [weak self] (inValue : NSColor) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mColor_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mColor_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : NSColor, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mColor_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
   //····················································································································
 
   private final func bind_property_mX () {

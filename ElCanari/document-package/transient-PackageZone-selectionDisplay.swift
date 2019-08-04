@@ -56,7 +56,7 @@ func transient_PackageZone_selectionDisplay (
   //--- Zone
     let text = (self_zoneName == "") ? "?" : self_zoneName
     let pText = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
-    shape.add (textKnob: text, pText, prefs_padZoneFont, .center, .center, knobIndex: PACKAGE_ZONE_NAME)
+    shape.add (textKnob: text, pText, prefs_padZoneFont, .black, .center, .center, knobIndex: PACKAGE_ZONE_NAME)
   //---
     return shape
 //--- END OF USER ZONE 2

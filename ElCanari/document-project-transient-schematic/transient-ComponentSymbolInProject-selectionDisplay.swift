@@ -76,6 +76,7 @@ func transient_ComponentSymbolInProject_selectionDisplay (
             self_symbolInfo.componentName,
             componentNameCenter.cocoaPoint,
             prefs_pinNameFont,
+            .black,
             .center,
             .center,
             knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB

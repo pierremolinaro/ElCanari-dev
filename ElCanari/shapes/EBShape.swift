@@ -61,7 +61,7 @@ struct EBShape : Hashable {
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment,
         knobIndex inKnobIndex : Int) {
-    self.add (textKnob: inString, inOrigin, inFont, inHorizontalAlignment, inVerticalAlignment, knobIndex: inKnobIndex)
+    self.add (textKnob: inString, inOrigin, inFont, .black, inHorizontalAlignment, inVerticalAlignment, knobIndex: inKnobIndex)
   }
 
   //····················································································································
@@ -182,6 +182,7 @@ struct EBShape : Hashable {
   mutating func add (textKnob inString : String,
                      _ inOrigin : NSPoint,
                      _ inFont : NSFont,
+                     _ inColor : NSColor,
                      _ inHorizontalAlignment : EBTextHorizontalAlignment,
                      _ inVerticalAlignment : EBTextVerticalAlignment,
                      knobIndex inKnobIndex : Int) {
@@ -210,7 +211,7 @@ struct EBShape : Hashable {
       self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
     }
   //--- Append text
-    let e = EBShapeElement ([filledBezierPath], .black, nil, .none)
+    let e = EBShapeElement ([filledBezierPath], inColor, nil, .none)
     self.mElements.append (e)
     self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
   }

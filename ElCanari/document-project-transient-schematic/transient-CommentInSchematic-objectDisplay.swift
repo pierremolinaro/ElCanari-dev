@@ -15,13 +15,15 @@ import Cocoa
 
 func transient_CommentInSchematic_objectDisplay (
        _ self_mComment : String,                 
+       _ self_mColor : NSColor,                  
        _ self_mX : Int,                          
        _ self_mY : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let p = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
         let textAttributes : [NSAttributedString.Key : Any] = [
-          NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+          NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize),
+          NSAttributedString.Key.foregroundColor : self_mColor
         ]
         return EBShape (
           text: (self_mComment == "") ? "Empty comment" : self_mComment,

@@ -6,6 +6,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol CommentInSchematic_mColor : class {
+  var mColor : NSColor { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol CommentInSchematic_mX : class {
   var mX : Int { get }
 }
@@ -39,11 +45,29 @@ protocol CommentInSchematic_selectionDisplay : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class CommentInSchematic : SchematicObject,
+         CommentInSchematic_mColor,
          CommentInSchematic_mX,
          CommentInSchematic_mY,
          CommentInSchematic_mComment,
          CommentInSchematic_objectDisplay,
          CommentInSchematic_selectionDisplay {
+
+  //····················································································································
+  //   Atomic property: mColor
+  //····················································································································
+
+  let mColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.black)
+
+  //····················································································································
+
+  var mColor : NSColor {
+    get { return self.mColor_property.propval }
+    set { self.mColor_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mColor_property_selection : EBSelection <NSColor> { return self.mColor_property.prop }
 
   //····················································································································
   //   Atomic property: mX
@@ -102,6 +126,8 @@ class CommentInSchematic : SchematicObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- Atomic property: mColor
+    self.mColor_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mX
     self.mX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mY
@@ -112,6 +138,7 @@ class CommentInSchematic : SchematicObject,
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComment_property_selection.kind ()
+        kind &= unwSelf.mColor_property_selection.kind ()
         kind &= unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
         switch kind {
@@ -120,9 +147,9 @@ class CommentInSchematic : SchematicObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComment_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_CommentInSchematic_objectDisplay (v0, v1, v2))
+          switch (unwSelf.mComment_property_selection, unwSelf.mColor_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_CommentInSchematic_objectDisplay (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -132,12 +159,14 @@ class CommentInSchematic : SchematicObject,
       }
     }
     self.mComment_property.addEBObserver (self.objectDisplay_property)
+    self.mColor_property.addEBObserver (self.objectDisplay_property)
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComment_property_selection.kind ()
+        kind &= unwSelf.mColor_property_selection.kind ()
         kind &= unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
         switch kind {
@@ -146,9 +175,9 @@ class CommentInSchematic : SchematicObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComment_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_CommentInSchematic_selectionDisplay (v0, v1, v2))
+          switch (unwSelf.mComment_property_selection, unwSelf.mColor_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_CommentInSchematic_selectionDisplay (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -158,6 +187,7 @@ class CommentInSchematic : SchematicObject,
       }
     }
     self.mComment_property.addEBObserver (self.selectionDisplay_property)
+    self.mColor_property.addEBObserver (self.selectionDisplay_property)
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
@@ -170,9 +200,11 @@ class CommentInSchematic : SchematicObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.mComment_property.removeEBObserver (self.objectDisplay_property)
+    self.mColor_property.removeEBObserver (self.objectDisplay_property)
     self.mX_property.removeEBObserver (self.objectDisplay_property)
     self.mY_property.removeEBObserver (self.objectDisplay_property)
     self.mComment_property.removeEBObserver (self.selectionDisplay_property)
+    self.mColor_property.removeEBObserver (self.selectionDisplay_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
@@ -189,6 +221,14 @@ class CommentInSchematic : SchematicObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "mColor",
+      idx: self.mColor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mColor_property.mObserverExplorer,
+      valueExplorer: &self.mColor_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "mX",
       idx: self.mX_property.ebObjectIndex,
@@ -240,6 +280,9 @@ class CommentInSchematic : SchematicObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: mColor
+    self.mColor_property.mObserverExplorer = nil
+    self.mColor_property.mValueExplorer = nil
   //--- Atomic property: mX
     self.mX_property.mObserverExplorer = nil
     self.mX_property.mValueExplorer = nil
@@ -277,6 +320,8 @@ class CommentInSchematic : SchematicObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mColor
+    self.mColor_property.storeIn (dictionary: ioDictionary, forKey:"mColor")
   //--- Atomic property: mX
     self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
   //--- Atomic property: mY
@@ -300,6 +345,8 @@ class CommentInSchematic : SchematicObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mColor
+    self.mColor_property.readFrom (dictionary: inDictionary, forKey:"mColor")
   //--- Atomic property: mX
     self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
   //--- Atomic property: mY

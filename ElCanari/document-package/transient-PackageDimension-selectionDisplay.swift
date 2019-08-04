@@ -41,7 +41,7 @@ func transient_PackageDimension_selectionDisplay (
   shape.add (stroke: [bp], NSColor.cyan)
   shape.add (knobAt:  p1, knobIndex: PACKAGE_DIMENSION_ENDPOINT_1, .circ, 2.0)
   shape.add (knobAt:  p2, knobIndex: PACKAGE_DIMENSION_ENDPOINT_2, .circ, 2.0)
-  shape.add (textKnob: dimensionText, pText, prefs_dimensionFont, .center, .center, knobIndex: PACKAGE_DIMENSION_TEXT)
+  shape.add (textKnob: dimensionText, pText, prefs_dimensionFont, .black, .center, .center, knobIndex: PACKAGE_DIMENSION_TEXT)
 //---
   return shape
 //--- END OF USER ZONE 2

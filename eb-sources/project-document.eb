@@ -365,6 +365,10 @@ document ProjectDocument root ProjectRoot {
     $value #commentInSchematicSelectionController.mComment {sendContinously : yes}
   ;
 
+  outlet EBColorWell mCommentColorInSchematicsTextField
+    $color #commentInSchematicSelectionController.mColor {sendContinously : yes}
+  ;
+
 //--- Selected label in schematic inspector
   outlet CanariViewWithKeyView mSchematicsLabelInspectorView ;
   selectionController LabelInSchematic #schematicLabelSelectionController :

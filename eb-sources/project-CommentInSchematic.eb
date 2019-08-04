@@ -4,17 +4,21 @@
 
 graphic entity CommentInSchematic : SchematicObject {
   property String mComment default "" ;
+  property NSColor mColor default black ;
+
   property Int mX default 0 ;
   property Int mY default 0 ;
   
   override transient EBShape objectDisplay dependsFrom
     self.mComment,
+    self.mColor,
     self.mX,
     self.mY
   ;
 
   override transient EBShape selectionDisplay dependsFrom
     self.mComment,
+    self.mColor,
     self.mX,
     self.mY
   ;
