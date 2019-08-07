@@ -41,21 +41,21 @@ graphic entity DeviceRoot {
 
 //--- Packages
   toMany @signature PackageInDevice mPackages inverse toOne mRoot ;
-  property @signature Int mPackageDisplayZoom default 400 ;
-  property @signature Bool mPackageDisplayHorizontalFlip default no ;
-  property @signature Bool mPackageDisplayVerticalFlip default no ;
-  property @signature Bool mShowPackages default yes ;
-  property @signature Bool mShowPackagePadNumbers default yes ;
-  property @signature Bool mShowPackageFrontPads default yes ;
-  property @signature Bool mShowPackageBackPads default yes ;
+  property Int mPackageDisplayZoom default 400 ;
+  property Bool mPackageDisplayHorizontalFlip default no ;
+  property Bool mPackageDisplayVerticalFlip default no ;
+  property Bool mShowPackages default yes ;
+  property Bool mShowPackagePadNumbers default yes ;
+  property Bool mShowPackageFrontPads default yes ;
+  property Bool mShowPackageBackPads default yes ;
 
 //--- Symbols
   toMany @signature SymbolTypeInDevice mSymbolTypes ;
   toMany @signature SymbolInstanceInDevice mSymbolInstances ;
 
-  property @signature Int mSymbolDisplayZoom default 400 ;
-  property @signature Bool mSymbolDisplayHorizontalFlip default no ;
-  property @signature Bool mSymbolDisplayVerticalFlip default no ;
+  property Int mSymbolDisplayZoom default 400 ;
+  property Bool mSymbolDisplayHorizontalFlip default no ;
+  property Bool mSymbolDisplayVerticalFlip default no ;
 
   transient StringArray symbolTypeNames dependsFrom self.mSymbolTypes.all.mTypeName ;
 
@@ -102,6 +102,8 @@ graphic entity PackageInDevice {
 
   transient String versionString dependsFrom self.mVersion ;
 
+  transient String documentSizeString dependsFrom self.mFileData ;
+
   transient BezierPathArray frontSidePadFilledBezierPathArray dependsFrom
     self.mMasterPads.all.frontSideFilledBezierPathArray
   ;
@@ -127,6 +129,11 @@ graphic entity PackageInDevice {
   ;
 
   transient EBShape selectionDisplay dependsFrom
+     self.mMasterPads.all.padNumberDisplay,
+     self.mRoot.one.mShowPackagePadNumbers,
+     self.mRoot.one.mShowPackages,
+     self.mRoot.one.mShowPackageFrontPads,
+     self.mRoot.one.mShowPackageBackPads,
      self.mStrokeBezierPath,
      prefs.packageDrawingWidthMultipliedByTen,
      self.frontSidePadFilledBezierPathArray,
@@ -215,6 +222,8 @@ entity SymbolTypeInDevice {
   transient String versionString dependsFrom self.mVersion ;
 
   transient Int instanceCount dependsFrom self.mInstances.count ;
+
+  transient String documentSizeString dependsFrom self.mFileData ;
 
   transient EBShape pinNameShape dependsFrom self.mPinTypes.all.nameShape ;
 }

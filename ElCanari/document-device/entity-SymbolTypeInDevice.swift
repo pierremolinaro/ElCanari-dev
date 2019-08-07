@@ -48,6 +48,12 @@ protocol SymbolTypeInDevice_instanceCount : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SymbolTypeInDevice_documentSizeString : class {
+  var documentSizeString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SymbolTypeInDevice_pinNameShape : class {
   var pinNameShape : EBShape? { get }
 }
@@ -64,6 +70,7 @@ class SymbolTypeInDevice : EBManagedObject,
          SymbolTypeInDevice_mFilledBezierPath,
          SymbolTypeInDevice_versionString,
          SymbolTypeInDevice_instanceCount,
+         SymbolTypeInDevice_documentSizeString,
          SymbolTypeInDevice_pinNameShape {
 
   //····················································································································
@@ -236,6 +243,29 @@ class SymbolTypeInDevice : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: documentSizeString
+  //····················································································································
+
+  let documentSizeString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var documentSizeString_property_selection : EBSelection <String> {
+    return self.documentSizeString_property.prop
+  }
+
+  //····················································································································
+
+  var documentSizeString : String? {
+    switch self.documentSizeString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: pinNameShape
   //····················································································································
 
@@ -326,6 +356,28 @@ class SymbolTypeInDevice : EBManagedObject,
       }
     }
     self.mInstances_property.addEBObserver (self.instanceCount_property)
+  //--- Atomic property: documentSizeString
+    self.documentSizeString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mFileData_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mFileData_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SymbolTypeInDevice_documentSizeString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mFileData_property.addEBObserver (self.documentSizeString_property)
   //--- Atomic property: pinNameShape
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -370,6 +422,7 @@ class SymbolTypeInDevice : EBManagedObject,
     super.removeAllObservers ()
     self.mVersion_property.removeEBObserver (self.versionString_property)
     self.mInstances_property.removeEBObserver (self.instanceCount_property)
+    self.mFileData_property.removeEBObserver (self.documentSizeString_property)
     self.mPinTypes_property.removeEBObserverOf_nameShape (self.pinNameShape_property)
   //--- Unregister properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: nil)
@@ -448,6 +501,14 @@ class SymbolTypeInDevice : EBManagedObject,
       view: view,
       observerExplorer: &self.instanceCount_property.mObserverExplorer,
       valueExplorer: &self.instanceCount_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "documentSizeString",
+      idx: self.documentSizeString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.documentSizeString_property.mObserverExplorer,
+      valueExplorer: &self.documentSizeString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "pinNameShape",

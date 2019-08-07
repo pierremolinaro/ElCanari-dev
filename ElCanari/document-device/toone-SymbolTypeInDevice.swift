@@ -22,6 +22,7 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
     inOldValue?.mFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
     inOldValue?.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
     inOldValue?.instanceCount_property.removeEBObserversFrom (&self.mObserversOf_instanceCount) // Transient property
+    inOldValue?.documentSizeString_property.removeEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
     inOldValue?.pinNameShape_property.removeEBObserversFrom (&self.mObserversOf_pinNameShape) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mTypeName_property.addEBObserversFrom (&self.mObserversOf_mTypeName) // Stored property
@@ -31,6 +32,7 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
     self.mInternalValue?.mFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
     self.mInternalValue?.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
     self.mInternalValue?.instanceCount_property.addEBObserversFrom (&self.mObserversOf_instanceCount) // Transient property
+    self.mInternalValue?.documentSizeString_property.addEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
     self.mInternalValue?.pinNameShape_property.addEBObserversFrom (&self.mObserversOf_pinNameShape) // Transient property
   }
 
@@ -518,6 +520,75 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
     for managedObject in inSet {
       self.mObserversOf_instanceCount.apply { (_ observer : EBEvent) in
         managedObject.instanceCount_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'documentSizeString' transient property
+  //····················································································································
+
+  private var mObserversOf_documentSizeString = EBWeakEventSet ()
+
+  //····················································································································
+
+  var documentSizeString_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.documentSizeString_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_documentSizeString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_documentSizeString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.documentSizeString_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_documentSizeString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_documentSizeString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.documentSizeString_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_documentSizeString_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_documentSizeString.apply { (_ observer : EBEvent) in
+        managedObject.documentSizeString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_documentSizeString_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_documentSizeString.apply { (_ observer : EBEvent) in
+        managedObject.documentSizeString_property.removeEBObserver (observer)
       }
     }
   }

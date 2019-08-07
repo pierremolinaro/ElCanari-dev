@@ -22,6 +22,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
     self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_documentSizeString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_frontSidePadFilledBezierPathArray_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_backSidePadFilledBezierPathArray_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
@@ -35,6 +36,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
     self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_documentSizeString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_frontSidePadFilledBezierPathArray_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_backSidePadFilledBezierPathArray_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
@@ -436,6 +438,62 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
     for managedObject in inSet {
       self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
         managedObject.versionString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'documentSizeString' transient property
+  //····················································································································
+
+  private var mObserversOf_documentSizeString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_documentSizeString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_documentSizeString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.documentSizeString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_documentSizeString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_documentSizeString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.documentSizeString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_documentSizeString_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_documentSizeString.apply { (_ observer : EBEvent) in
+        managedObject.documentSizeString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_documentSizeString_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_documentSizeString.apply { (_ observer : EBEvent) in
+        managedObject.documentSizeString_property.removeEBObserver (observer)
       }
     }
   }

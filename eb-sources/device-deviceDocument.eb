@@ -145,7 +145,6 @@ document DeviceDocument root DeviceRoot {
   ;
 
 //-------------------------- Page : Library
-
   action resetSymbolsAndPackagesVersion ;
   outlet EBButton mResetSymbolAndPackagesVersionButton
     $run resetSymbolsAndPackagesVersion
@@ -163,6 +162,7 @@ document DeviceDocument root DeviceRoot {
      column "symbol" EBTextObserverField $valueObserver self.mTypeName
      column "version" EBTextObserverField $valueObserver self.versionString
      column "count" EBIntObserverField $valueObserver self.instanceCount {autoFormatter : yes}
+     column "size" EBTextObserverField $valueObserver self.documentSizeString
   }
   outlet EBTableView mSymbolTableView $tableValue #mSymbolController ;
 
@@ -194,6 +194,7 @@ document DeviceDocument root DeviceRoot {
   tableViewController #mPackageController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mPackages {
      column "package" EBTextObserverField $valueObserver self.mName
      column "version" EBTextObserverField $valueObserver self.versionString
+     column "size" EBTextObserverField $valueObserver self.documentSizeString
   }
   outlet EBTableView mPackageTableView $tableValue #mPackageController ;
 

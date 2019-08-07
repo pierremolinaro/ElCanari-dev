@@ -32,60 +32,56 @@ func transient_PackageInDevice_objectDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
       var shape = EBShape ()
-    //--- Compute display rect
-      var r = NSRect.null
-      if !self_mStrokeBezierPath.isEmpty {
-        r = r.union (self_mStrokeBezierPath.bounds)
-      }
-      r = r.union (self_frontSidePadFilledBezierPathArray.bounds)
-      r = r.union (self_backSidePadFilledBezierPathArray.bounds)
-    //--- Frame
-      let nameTextAttributes : [NSAttributedString.Key : Any] = [
-        NSAttributedString.Key.font : NSFont.systemFont (ofSize: 4.0)
-      ]
-      let frameRadius : CGFloat = 3.0
-      let enlarge = -frameRadius - CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 20.0
-      r = r.insetBy (dx: enlarge, dy: enlarge)
-      let nameOrigin = NSPoint (x: r.midX, y: r.maxY)
-      let s = self_mName.size (withAttributes: nameTextAttributes)
-      r.size.height += s.height
-      let e = (r.size.width - s.width) / 2.0 - frameRadius
-      if e < 0.0 {
-        r = r.insetBy (dx: e, dy: 0.0)
-      }
-      var bp = EBBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
-      shape.add (filled: [bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!)
-      bp.move (to: NSPoint (x: r.minX, y: nameOrigin.y))
-      bp.line (to: NSPoint (x: r.maxX, y: nameOrigin.y))
-      bp.lineWidth = 0.5
-      shape.add (stroke: [bp], NSColor.lightGray)
-    //--- Name
-      let nameShape = EBShape (text: self_mName, nameOrigin, nameTextAttributes, .center, .above)
-      shape.add (nameShape)
     //--- Back side pad
+      var packageShape = EBShape ()
       if self_mRoot_mShowPackageBackPads ?? false {
-        shape.add (filled: self_backSidePadFilledBezierPathArray.array, prefs_backSidePadColor)
+        packageShape.add (filled: self_backSidePadFilledBezierPathArray.array, prefs_backSidePadColor)
       }
     //--- Top side pad
       if self_mRoot_mShowPackageFrontPads ?? false {
-        shape.add (filled: self_frontSidePadFilledBezierPathArray.array, prefs_frontSidePadColor)
+        packageShape.add (filled: self_frontSidePadFilledBezierPathArray.array, prefs_frontSidePadColor)
       }
     //--- Pad number
       if self_mRoot_mShowPackagePadNumbers ?? false {
         for pad in self_mMasterPads_padNumberDisplay {
           if let textShape = pad.padNumberDisplay {
-            shape.add (textShape)
+            packageShape.add (textShape)
           }
         }
       }
     //--- Package shape
       if self_mRoot_mShowPackages ?? false {
-        bp = EBBezierPath ()
+        var bp = EBBezierPath ()
         bp.append (self_mStrokeBezierPath)
         bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
         bp.lineCapStyle = .round
-        shape.add (stroke: [bp], prefs_packageColor)
+        packageShape.add (stroke: [bp], prefs_packageColor)
       }
+      let MARGIN : CGFloat = 1.0
+      var r = packageShape.boundingBox.insetBy (dx: -MARGIN, dy: -MARGIN)
+    //--- Package Name
+      let nameTextAttributes : [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : NSFont.systemFont (ofSize: 4.0)
+      ]
+      let nameShapeSize = EBShape (text: self_mName, NSPoint (), nameTextAttributes, .center, .above).boundingBox.size
+      if nameShapeSize.width > r.width {
+        r = r.insetBy (dx: (r.width - nameShapeSize.width) / 2.0, dy: 0.0)
+      }
+    //---
+      let horizontalSeparatorY = r.maxY
+      r.size.height += nameShapeSize.height + 2.0 * MARGIN
+      let frameRadius : CGFloat = 3.0
+      r = r.insetBy (dx: -frameRadius - CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 20.0, dy: -CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 20.0)
+      let nameOrigin = NSPoint (x: r.midX, y: horizontalSeparatorY + MARGIN)
+      var bp = EBBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
+      shape.add (filled: [bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!)
+      bp.move (to: NSPoint (x: r.minX, y: horizontalSeparatorY))
+      bp.line (to: NSPoint (x: r.maxX, y: horizontalSeparatorY))
+      bp.lineWidth = 0.5
+      shape.add (stroke: [bp], .lightGray)
+    //--- Name
+      shape.add (text: self_mName, nameOrigin, nameTextAttributes, .center, .above)
+      shape.add (packageShape)
     //---
       var transform = AffineTransform ()
       transform.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
