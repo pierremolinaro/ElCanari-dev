@@ -30,14 +30,12 @@ extension PackageInDevice {
   //····················································································································
 
   override func operationBeforeRemoving () {
-    super.operationBeforeRemoving ()
-    for masterPad in self.mMasterPads_property.propval {
-      for slavePad in masterPad.mSlavePads_property.propval {
-        slavePad.cleanUpRelationshipsAndRemoveAllObservers ()
+    for masterPad in self.mMasterPads {
+      for slavePad in masterPad.mSlavePads {
+        slavePad.mMasterPad = nil
       }
-      masterPad.cleanUpRelationshipsAndRemoveAllObservers ()
     }
-    self.cleanUpRelationshipsAndRemoveAllObservers ()
+    super.operationBeforeRemoving ()
   }
 
   //····················································································································
