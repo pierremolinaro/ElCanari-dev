@@ -115,7 +115,7 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_DeviceInProject ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_DeviceInProject ()
 
   //····················································································································
 

@@ -817,7 +817,7 @@ final class ProxyArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevic
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: SymbolTypeInDevice
+//    Stored Array: SymbolTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EBSignatureObserverProtocol {
@@ -899,7 +899,7 @@ class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EB
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -951,9 +951,6 @@ class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EB
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -963,7 +960,7 @@ class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EB
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -971,7 +968,7 @@ class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EB
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -988,6 +985,51 @@ class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EB
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: SymbolTypeInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice {
+
+  //····················································································································
+
+  override var prop : EBSelection < [SymbolTypeInDevice] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [SymbolTypeInDevice]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [SymbolTypeInDevice] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : SymbolTypeInDevice) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : SymbolTypeInDevice) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

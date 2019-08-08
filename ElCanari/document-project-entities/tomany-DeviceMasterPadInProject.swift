@@ -879,7 +879,7 @@ final class ProxyArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMaste
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: DeviceMasterPadInProject
+//    Stored Array: DeviceMasterPadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadInProject, EBSignatureObserverProtocol {
@@ -961,7 +961,7 @@ class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadI
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -1013,9 +1013,6 @@ class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadI
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -1025,7 +1022,7 @@ class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadI
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -1033,7 +1030,7 @@ class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadI
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -1050,6 +1047,51 @@ class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadI
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: DeviceMasterPadInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadInProject {
+
+  //····················································································································
+
+  override var prop : EBSelection < [DeviceMasterPadInProject] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [DeviceMasterPadInProject]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [DeviceMasterPadInProject] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : DeviceMasterPadInProject) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : DeviceMasterPadInProject) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

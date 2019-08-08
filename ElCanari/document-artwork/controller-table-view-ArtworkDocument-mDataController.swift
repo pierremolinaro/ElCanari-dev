@@ -118,7 +118,7 @@ final class Controller_ArtworkDocument_mDataController : ReadOnlyAbstractGeneric
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_ArtworkFileGenerationParameters ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_ArtworkFileGenerationParameters ()
 
   //····················································································································
 

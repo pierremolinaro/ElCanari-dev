@@ -639,7 +639,7 @@ final class ProxyArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: LabelInSchematic
+//    Stored Array: LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSignatureObserverProtocol {
@@ -721,7 +721,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -773,9 +773,6 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -785,7 +782,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -793,7 +790,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -810,6 +807,51 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: LabelInSchematic
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic {
+
+  //····················································································································
+
+  override var prop : EBSelection < [LabelInSchematic] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [LabelInSchematic]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [LabelInSchematic] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : LabelInSchematic) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : LabelInSchematic) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

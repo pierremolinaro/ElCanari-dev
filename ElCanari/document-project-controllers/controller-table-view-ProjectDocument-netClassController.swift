@@ -115,7 +115,7 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_NetClassInProject ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_NetClassInProject ()
 
   //····················································································································
 

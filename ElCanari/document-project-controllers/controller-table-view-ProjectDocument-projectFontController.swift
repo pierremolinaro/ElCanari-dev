@@ -115,7 +115,7 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_FontInProject ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_FontInProject ()
 
   //····················································································································
 

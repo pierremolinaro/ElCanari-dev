@@ -29,23 +29,26 @@ import Cocoa
   }
 
   //····················································································································
-  //  title binding
+  //  $title binding
   //····················································································································
 
   fileprivate func updateTitle (_ object : EBReadOnlyProperty_String) {
     switch object.prop {
     case .empty :
       self.title = "—"
+      self.toolTip = nil
     case .multiple :
       self.title = "—"
+      self.toolTip = nil
     case .single (let v) :
       self.title = v
+      self.toolTip = v
     }
   }
 
   //····················································································································
 
-  private var mTitleController : EBSimpleController? = nil
+  fileprivate var mTitleController : EBSimpleController? = nil
 
   //····················································································································
 
@@ -72,6 +75,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBButton_TableViewCell) class EBButton_TableViewCell : EBTableCellView {
+
+  //····················································································································
+
   @IBOutlet var mCellOutlet : EBButton? = nil
 
   //····················································································································
@@ -84,6 +90,12 @@ import Cocoa
     }else{
       presentErrorWindow (file, line, "\"\(columnName)\" column view mCellOutlet is nil (should be an instance of EBButton)")
     }
+  }
+
+  //····················································································································
+
+  func update () {
+    self.mCellOutlet?.mTitleController?.mEventCallBack? ()
   }
 
   //····················································································································

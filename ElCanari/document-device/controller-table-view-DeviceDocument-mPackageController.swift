@@ -115,7 +115,7 @@ final class Controller_DeviceDocument_mPackageController : ReadOnlyAbstractGener
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_PackageInDevice ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_PackageInDevice ()
 
   //····················································································································
 

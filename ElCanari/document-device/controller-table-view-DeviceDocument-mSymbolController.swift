@@ -115,7 +115,7 @@ final class Controller_DeviceDocument_mSymbolController : ReadOnlyAbstractGeneri
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_SymbolTypeInDevice ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_SymbolTypeInDevice ()
 
   //····················································································································
 

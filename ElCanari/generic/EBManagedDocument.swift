@@ -378,7 +378,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       gDebugMenuItemsAdded = true
       let menuItem = NSMenuItem (
         title: "Explore document",
-        action: #selector (EBManagedDocument.showObjectExplorerWindow(_:)),
+        action: #selector (EBManagedDocument.showObjectExplorerWindow (_:)),
         keyEquivalent: ""
       )
       addItemToDebugMenu (menuItem)
@@ -574,8 +574,8 @@ class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObser
 
   //····················································································································
 
-  private weak var mUndoManager : EBUndoManager? // SOULD BE WEAK
-  private weak var mSignatureObserver : EBSignatureObserverEvent? // SOULD BE WEAK
+  private weak var mUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverEvent? = nil // SOULD BE WEAK
   private var mSignatureAtStartUp : UInt32 = 0
 
   //····················································································································
@@ -651,7 +651,7 @@ class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObser
 //  EBSignatureObserverEvent
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBSignatureObserverEvent : EBTransientProperty_Int, EBSignatureObserverProtocol {
+class EBSignatureObserverEvent : EBTransientProperty_UInt32, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -663,7 +663,7 @@ class EBSignatureObserverEvent : EBTransientProperty_Int, EBSignatureObserverPro
     super.init ()
     self.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        return .single (Int (unwSelf.signature ()))
+        return .single (unwSelf.signature ())
       }else{
         return .empty
       }

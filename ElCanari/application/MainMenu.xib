@@ -1909,7 +1909,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button toolTip="Reveal this directory in Finder" verticalHuggingPriority="750" id="6278" customClass="EBButton">
-                    <rect key="frame" x="73" y="302" width="394" height="17"/>
+                    <rect key="frame" x="55" y="302" width="360" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="--- system library path ---" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6279">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1929,9 +1929,9 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="PcB-tf-SfN">
                         <rect key="frame" x="1" y="0.0" width="398" height="92"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="5743" viewBased="YES" id="5740" customClass="EBTableView" customModule="ElCanari" customModuleProvider="target">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="UserLibraryTableView" rowSizeStyle="automatic" headerView="5743" viewBased="YES" id="5740" customClass="EBTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="398" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -1939,7 +1939,7 @@
                                 <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="path" width="161" minWidth="67.368160000000003" maxWidth="1000" id="5745">
+                                    <tableColumn identifier="path" width="301" minWidth="67.368160000000003" maxWidth="1000" id="5745">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Library Path">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1952,22 +1952,21 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="02Q-bJ-cfK" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="1" y="1" width="161" height="17"/>
+                                            <tableCellView id="02Q-bJ-cfK" customClass="EBButton_TableViewCell">
+                                                <rect key="frame" x="1" y="1" width="301" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="td7-fo-Xqn" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="3" width="161" height="14"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ftN-pH-5qU">
+                                                    <button verticalHuggingPriority="750" id="f1q-SJ-oxh" customClass="EBButton">
+                                                        <rect key="frame" x="-2" y="-5" width="305" height="28"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                        <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="left" controlSize="small" imageScaling="proportionallyDown" inset="2" id="6DQ-Ck-EaH">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
+                                                        </buttonCell>
+                                                    </button>
                                                 </subviews>
                                                 <connections>
-                                                    <outlet property="mCellOutlet" destination="td7-fo-Xqn" id="ym7-mp-gv2"/>
+                                                    <outlet property="mCellOutlet" destination="f1q-SJ-oxh" id="ZXW-mH-3LL"/>
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>
@@ -1982,7 +1981,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="ZJk-0z-0nr" customClass="EBImageObserverView_TableViewCell">
-                                                <rect key="frame" x="165" y="1" width="48" height="17"/>
+                                                <rect key="frame" x="305" y="1" width="48" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="WUa-Em-lJV" customClass="EBImageObserverView">
@@ -1997,8 +1996,8 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="uses" width="35" minWidth="10" maxWidth="3.4028234663852886e+38" id="6268">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Uses">
+                                    <tableColumn identifier="uses" width="40" minWidth="40" maxWidth="40" id="6268">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Uses">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -2010,12 +2009,12 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="uses" id="ZDj-pV-ibS" customClass="EBSwitch_TableViewCell">
-                                                <rect key="frame" x="216" y="1" width="35" height="17"/>
+                                                <rect key="frame" x="356" y="1" width="40" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" id="qp0-gj-9te" customClass="EBSwitch">
-                                                        <rect key="frame" x="0.0" y="-3" width="34" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <rect key="frame" x="0.0" y="-3" width="39" height="20"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" controlSize="small" inset="2" id="2UU-iZ-BQB">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
@@ -2024,37 +2023,6 @@
                                                 </subviews>
                                                 <connections>
                                                     <outlet property="mCellOutlet" destination="qp0-gj-9te" id="rNM-1i-dPJ"/>
-                                                </connections>
-                                            </tableCellView>
-                                        </prototypeCellViews>
-                                    </tableColumn>
-                                    <tableColumn identifier="reveal" width="142" minWidth="10" maxWidth="3.4028234663852886e+38" id="6281">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Reveal">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <buttonCell key="dataCell" type="bevel" title="Reveal" bezelStyle="rounded" alignment="center" controlSize="small" inset="2" id="6283">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystem"/>
-                                        </buttonCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        <prototypeCellViews>
-                                            <tableCellView id="X2O-71-OLp" customClass="EBButton_TableViewCell">
-                                                <rect key="frame" x="254" y="1" width="142" height="17"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button verticalHuggingPriority="750" id="Onx-4I-3X7" customClass="EBButton">
-                                                        <rect key="frame" x="-1" y="1" width="145" height="19"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <buttonCell key="cell" type="square" title="Reveal" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" imageScaling="proportionallyDown" inset="2" id="hbJ-Qv-zjt">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                </subviews>
-                                                <connections>
-                                                    <outlet property="mCellOutlet" destination="Onx-4I-3X7" id="68i-Rn-SNF"/>
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>
@@ -2076,14 +2044,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <button toolTip="Includes this directory in Canari Library search path" id="6265" customClass="EBSwitch">
-                    <rect key="frame" x="52" y="302" width="22" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" alignment="left" controlSize="small" lineBreakMode="truncatingMiddle" truncatesLastVisibleLine="YES" state="on" inset="2" id="6266">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
                 <button verticalHuggingPriority="750" id="5737" customClass="EBButton">
                     <rect key="frame" x="73" y="77" width="22" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -2200,6 +2160,14 @@
                         <connections>
                             <action selector="updateLibrary:" target="212" id="BiT-pS-hnb"/>
                         </connections>
+                    </buttonCell>
+                </button>
+                <button toolTip="Includes this directory in Canari Library search path" id="6265" customClass="EBSwitch">
+                    <rect key="frame" x="420" y="301" width="49" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Uses" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" lineBreakMode="truncatingMiddle" truncatesLastVisibleLine="YES" state="on" inset="2" id="6266">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
             </subviews>

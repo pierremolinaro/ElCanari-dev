@@ -354,10 +354,10 @@ prefs {
   tableViewController #additionnalLibraryArrayController {
     allowsEmptySelection:no, allowsMultipleSelection:no
   } self.additionnalLibraryArray {
-     column "path" EBTextObserverField $valueObserver self.mPath
+//     column "path" EBTextObserverField $valueObserver self.mPath
      column "uses" EBSwitch $value self.mUses
      column "status" EBImageObserverView $image self.mStatusImage
-     column "reveal" EBButton $run revealLibraryInFinderAction
+     column "path" EBButton $run revealLibraryInFinderAction $title self.mPath
   }
 //--- Add Entry Button
   action addLibraryEntryAction ;

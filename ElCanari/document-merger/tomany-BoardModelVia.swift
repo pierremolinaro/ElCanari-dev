@@ -467,7 +467,7 @@ final class ProxyArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: BoardModelVia
+//    Stored Array: BoardModelVia
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureObserverProtocol {
@@ -549,7 +549,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -601,9 +601,6 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -613,7 +610,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -621,7 +618,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -638,6 +635,51 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: BoardModelVia
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
+
+  //····················································································································
+
+  override var prop : EBSelection < [BoardModelVia] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [BoardModelVia]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [BoardModelVia] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : BoardModelVia) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : BoardModelVia) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

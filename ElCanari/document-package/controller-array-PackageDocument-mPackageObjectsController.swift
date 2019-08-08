@@ -53,7 +53,7 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_PackageObject ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_PackageObject () // §
 
   //····················································································································
 

@@ -584,7 +584,7 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: CanariLibraryEntry
+//    Stored Array: CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EBSignatureObserverProtocol {
@@ -666,7 +666,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -718,9 +718,6 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -730,7 +727,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -738,7 +735,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -755,6 +752,51 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: CanariLibraryEntry
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry {
+
+  //····················································································································
+
+  override var prop : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [CanariLibraryEntry]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [CanariLibraryEntry] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : CanariLibraryEntry) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : CanariLibraryEntry) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

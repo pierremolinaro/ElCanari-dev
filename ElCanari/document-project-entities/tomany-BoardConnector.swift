@@ -1868,7 +1868,7 @@ final class ProxyArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: BoardConnector
+//    Stored Array: BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatureObserverProtocol {
@@ -1950,7 +1950,7 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -2002,9 +2002,6 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -2014,7 +2011,7 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -2022,7 +2019,7 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -2039,6 +2036,51 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: BoardConnector
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector {
+
+  //····················································································································
+
+  override var prop : EBSelection < [BoardConnector] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [BoardConnector]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [BoardConnector] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : BoardConnector) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : BoardConnector) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

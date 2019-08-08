@@ -758,7 +758,7 @@ final class ProxyArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: SymbolSolidOval
+//    Stored Array: SymbolSolidOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EBSignatureObserverProtocol {
@@ -840,7 +840,7 @@ class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EBSignat
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -892,9 +892,6 @@ class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EBSignat
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -904,7 +901,7 @@ class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EBSignat
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -912,7 +909,7 @@ class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EBSignat
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -929,6 +926,51 @@ class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EBSignat
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: SymbolSolidOval
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval {
+
+  //····················································································································
+
+  override var prop : EBSelection < [SymbolSolidOval] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [SymbolSolidOval]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [SymbolSolidOval] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : SymbolSolidOval) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : SymbolSolidOval) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

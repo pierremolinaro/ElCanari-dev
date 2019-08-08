@@ -133,7 +133,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_ComponentInProject ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_ComponentInProject ()
 
   //····················································································································
 

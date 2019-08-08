@@ -700,7 +700,7 @@ final class ProxyArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: FontInProject
+//    Stored Array: FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureObserverProtocol {
@@ -782,7 +782,7 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -834,9 +834,6 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -846,7 +843,7 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -854,7 +851,7 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -871,6 +868,51 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: FontInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
+
+  //····················································································································
+
+  override var prop : EBSelection < [FontInProject] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [FontInProject]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [FontInProject] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : FontInProject) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : FontInProject) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

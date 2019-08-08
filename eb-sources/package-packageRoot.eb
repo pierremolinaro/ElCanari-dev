@@ -223,16 +223,16 @@ graphic entity PackagePad : PackageObject {
   property @signature PadStyle padStyle default traversing ;
   property @signature Int padNumber default 0 ;
 
-  property @signature Int xCenterUnit default 2_286 ;
-  property @signature Int yCenterUnit default 2_286 ;
-  property @signature Int widthUnit  default 2_286 ;
-  property @signature Int heightUnit  default 2_286 ;
-  property @signature Int holeWidthUnit default 2_286 ;
-  property @signature Int holeHeightUnit default 2_286 ;
-  property @signature Int annularRingUnit default 2_286 ;
+  property Int xCenterUnit default 2_286 ;
+  property Int yCenterUnit default 2_286 ;
+  property Int widthUnit  default 2_286 ;
+  property Int heightUnit  default 2_286 ;
+  property Int holeWidthUnit default 2_286 ;
+  property Int holeHeightUnit default 2_286 ;
+  property Int annularRingUnit default 2_286 ;
 
   toOne PackageZone zone ;
-  toMany PackageSlavePad slaves inverse toOne master ;
+  toMany @signature PackageSlavePad slaves inverse toOne master ;
 
   override transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeWidth, self.holeHeight,

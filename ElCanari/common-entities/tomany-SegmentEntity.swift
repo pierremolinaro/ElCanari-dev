@@ -585,7 +585,7 @@ final class ProxyArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: SegmentEntity
+//    Stored Array: SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureObserverProtocol {
@@ -667,7 +667,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -719,9 +719,6 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -731,7 +728,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -739,7 +736,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -756,6 +753,51 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: SegmentEntity
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity {
+
+  //····················································································································
+
+  override var prop : EBSelection < [SegmentEntity] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [SegmentEntity]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [SegmentEntity] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : SegmentEntity) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : SegmentEntity) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

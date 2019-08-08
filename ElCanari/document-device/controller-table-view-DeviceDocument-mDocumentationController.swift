@@ -115,7 +115,7 @@ final class Controller_DeviceDocument_mDocumentationController : ReadOnlyAbstrac
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_DeviceDocumentation ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_DeviceDocumentation ()
 
   //····················································································································
 

@@ -994,7 +994,7 @@ final class ProxyArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: SymbolBezierCurve
+//    Stored Array: SymbolBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSignatureObserverProtocol {
@@ -1076,7 +1076,7 @@ class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSi
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -1128,9 +1128,6 @@ class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSi
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -1140,7 +1137,7 @@ class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSi
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -1148,7 +1145,7 @@ class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSi
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -1165,6 +1162,51 @@ class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSi
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: SymbolBezierCurve
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve {
+
+  //····················································································································
+
+  override var prop : EBSelection < [SymbolBezierCurve] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [SymbolBezierCurve]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [SymbolBezierCurve] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : SymbolBezierCurve) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : SymbolBezierCurve) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

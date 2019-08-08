@@ -118,7 +118,7 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_BoardModel ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_BoardModel ()
 
   //····················································································································
 

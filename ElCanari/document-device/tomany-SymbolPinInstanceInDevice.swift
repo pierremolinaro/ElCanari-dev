@@ -580,7 +580,7 @@ final class ProxyArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinI
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: SymbolPinInstanceInDevice
+//    Stored Array: SymbolPinInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstanceInDevice, EBSignatureObserverProtocol {
@@ -662,7 +662,7 @@ class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstan
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -714,9 +714,6 @@ class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstan
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -726,7 +723,7 @@ class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstan
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -734,7 +731,7 @@ class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstan
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -751,6 +748,51 @@ class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstan
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: SymbolPinInstanceInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstanceInDevice {
+
+  //····················································································································
+
+  override var prop : EBSelection < [SymbolPinInstanceInDevice] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [SymbolPinInstanceInDevice]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [SymbolPinInstanceInDevice] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : SymbolPinInstanceInDevice) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : SymbolPinInstanceInDevice) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

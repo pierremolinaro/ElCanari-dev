@@ -41,12 +41,15 @@ import Cocoa
     case .empty :
       self.enableFromValueBinding (false)
       self.stringValue = "—"
+      self.toolTip = nil
     case .single (let v):
       self.enableFromValueBinding (true)
       self.stringValue = v
+      self.toolTip = v
     case .multiple :
       self.enableFromValueBinding (false)
       self.stringValue = "—"
+      self.toolTip = nil
     }
   }
 

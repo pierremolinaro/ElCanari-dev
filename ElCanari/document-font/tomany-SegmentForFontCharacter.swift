@@ -642,7 +642,7 @@ final class ProxyArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFo
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: SegmentForFontCharacter
+//    Stored Array: SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCharacter, EBSignatureObserverProtocol {
@@ -724,7 +724,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -776,9 +776,6 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -788,7 +785,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -796,7 +793,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -813,6 +810,51 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: SegmentForFontCharacter
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCharacter {
+
+  //····················································································································
+
+  override var prop : EBSelection < [SegmentForFontCharacter] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [SegmentForFontCharacter]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [SegmentForFontCharacter] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : SegmentForFontCharacter) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : SegmentForFontCharacter) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

@@ -53,7 +53,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_SymbolInstanceInDevice ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_SymbolInstanceInDevice () // §
 
   //····················································································································
 

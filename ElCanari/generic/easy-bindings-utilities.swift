@@ -1209,8 +1209,8 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\\n")
         }
-        postEvent ()
-        clearSignatureCache ()
+        self.postEvent ()
+        self.clearSignatureCache ()
       }
     }
   }
@@ -1313,7 +1313,7 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = propval.ebHashValue ()
+      computedSignature = self.propval.ebHashValue ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -2061,7 +2061,7 @@ extension Date : ValuePropertyProtocol {
     return (object as? Date) ?? Date ()
  //   return NSKeyedUnarchiver.unarchiveObject (with: object as! Data) as! Date  }
   }
-  
+
   //····················································································································
 
 }

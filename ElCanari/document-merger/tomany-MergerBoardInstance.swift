@@ -757,7 +757,7 @@ final class ProxyArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInsta
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: MergerBoardInstance
+//    Stored Array: MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, EBSignatureObserverProtocol {
@@ -839,7 +839,7 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -891,9 +891,6 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -903,7 +900,7 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -911,7 +908,7 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -928,6 +925,51 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: MergerBoardInstance
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance {
+
+  //····················································································································
+
+  override var prop : EBSelection < [MergerBoardInstance] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [MergerBoardInstance]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [MergerBoardInstance] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : MergerBoardInstance) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : MergerBoardInstance) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

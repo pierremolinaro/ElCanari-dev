@@ -229,7 +229,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   @objc func showObjectWindowFromExplorerButton (_ : Any) {
     self.showExplorerWindow ()
   }
-  
+
   //····················································································································
   //   deleteWindowAction
   //····················································································································
@@ -341,14 +341,17 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   //····················································································································
 
   private final var mSignature : UInt32? = nil
-  
+
   //····················································································································
 
   final func signature () -> UInt32 {
-    if self.mSignature == nil {
-      self.mSignature = computeSignature ()
+    if let s = self.mSignature {
+      return s
+    }else{
+      let s = self.computeSignature ()
+      self.mSignature = s
+      return s
     }
-    return self.mSignature!
   }
 
   //····················································································································

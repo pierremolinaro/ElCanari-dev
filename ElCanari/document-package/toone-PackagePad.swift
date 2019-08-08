@@ -2272,9 +2272,9 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
 
   //····················································································································
 
-  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    self.mSignatureObserver = observer
-    self.mInternalValue?.setSignatureObserver (observer: observer)
+  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver = inObserver
+ // §   self.mInternalValue?.setSignatureObserver (observer: observer)
   }
 
   //····················································································································
@@ -2284,7 +2284,7 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -2292,7 +2292,7 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     if let object = self.mInternalValue {
       crc.accumulateUInt32 (object.signature ())

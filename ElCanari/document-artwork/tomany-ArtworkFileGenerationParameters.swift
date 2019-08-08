@@ -1647,7 +1647,7 @@ final class ProxyArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Artw
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: ArtworkFileGenerationParameters
+//    Stored Array: ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFileGenerationParameters, EBSignatureObserverProtocol {
@@ -1729,7 +1729,7 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -1781,9 +1781,6 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -1793,7 +1790,7 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -1801,7 +1798,7 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -1818,6 +1815,51 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: ArtworkFileGenerationParameters
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFileGenerationParameters {
+
+  //····················································································································
+
+  override var prop : EBSelection < [ArtworkFileGenerationParameters] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [ArtworkFileGenerationParameters]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [ArtworkFileGenerationParameters] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : ArtworkFileGenerationParameters) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : ArtworkFileGenerationParameters) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

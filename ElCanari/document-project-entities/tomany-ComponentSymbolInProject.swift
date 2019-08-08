@@ -1344,7 +1344,7 @@ final class ProxyArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSy
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: ComponentSymbolInProject
+//    Stored Array: ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolInProject, EBSignatureObserverProtocol {
@@ -1426,7 +1426,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -1478,9 +1478,6 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -1490,7 +1487,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -1498,7 +1495,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -1515,6 +1512,51 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: ComponentSymbolInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolInProject {
+
+  //····················································································································
+
+  override var prop : EBSelection < [ComponentSymbolInProject] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [ComponentSymbolInProject]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [ComponentSymbolInProject] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : ComponentSymbolInProject) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : ComponentSymbolInProject) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

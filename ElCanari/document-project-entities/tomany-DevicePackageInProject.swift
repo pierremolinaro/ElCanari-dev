@@ -466,7 +466,7 @@ final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackage
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: DevicePackageInProject
+//    Stored Array: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject, EBSignatureObserverProtocol {
@@ -548,7 +548,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -600,9 +600,6 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -612,7 +609,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -620,7 +617,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -637,6 +634,51 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: DevicePackageInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject {
+
+  //····················································································································
+
+  override var prop : EBSelection < [DevicePackageInProject] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [DevicePackageInProject]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [DevicePackageInProject] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : DevicePackageInProject) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : DevicePackageInProject) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

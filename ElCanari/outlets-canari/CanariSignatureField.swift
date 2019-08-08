@@ -40,7 +40,7 @@ class CanariSignatureField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_signature (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
+  func bind_signature (_ model : EBReadOnlyProperty_UInt32, file : String, line : Int) {
     self.mController = EBSimpleController (
       observedObjects: [model],
       callBack: { self.update (from: model) }
@@ -56,13 +56,12 @@ class CanariSignatureField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private func update (from model : EBReadOnlyProperty_Int) {
+  private func update (from model : EBReadOnlyProperty_UInt32) {
     switch model.prop {
     case .empty :
       self.stringValue = "—"
     case .single (let v) :
-      let uv = UInt32 (v)
-      self.stringValue = String (format: "%04X:%04X", arguments: [uv >> 16, uv & 0xFFFF])
+      self.stringValue = String (format: "%04X:%04X", v >> 16, v & 0xFFFF)
     case .multiple :
       self.stringValue = "—"
     }

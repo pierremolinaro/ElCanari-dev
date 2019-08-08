@@ -644,7 +644,7 @@ final class ProxyArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: BoardModelPad
+//    Stored Array: BoardModelPad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureObserverProtocol {
@@ -726,7 +726,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -778,9 +778,6 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -790,7 +787,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -798,7 +795,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -815,6 +812,51 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: BoardModelPad
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
+
+  //····················································································································
+
+  override var prop : EBSelection < [BoardModelPad] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [BoardModelPad]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [BoardModelPad] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : BoardModelPad) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : BoardModelPad) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

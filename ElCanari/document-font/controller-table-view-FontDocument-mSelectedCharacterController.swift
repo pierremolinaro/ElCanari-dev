@@ -115,7 +115,7 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_FontCharacter ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_FontCharacter ()
 
   //····················································································································
 

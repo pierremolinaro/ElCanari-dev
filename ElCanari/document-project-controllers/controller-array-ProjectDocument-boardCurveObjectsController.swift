@@ -53,7 +53,7 @@ final class Controller_ProjectDocument_boardCurveObjectsController : ReadOnlyAbs
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_BorderCurve ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_BorderCurve () // §
 
   //····················································································································
 

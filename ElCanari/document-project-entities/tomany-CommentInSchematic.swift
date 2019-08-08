@@ -642,7 +642,7 @@ final class ProxyArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchemati
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: CommentInSchematic
+//    Stored Array: CommentInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EBSignatureObserverProtocol {
@@ -724,7 +724,7 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -776,9 +776,6 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -788,7 +785,7 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -796,7 +793,7 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -813,6 +810,51 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: CommentInSchematic
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic {
+
+  //····················································································································
+
+  override var prop : EBSelection < [CommentInSchematic] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [CommentInSchematic]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [CommentInSchematic] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : CommentInSchematic) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : CommentInSchematic) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

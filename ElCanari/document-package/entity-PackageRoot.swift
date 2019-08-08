@@ -733,71 +733,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.issues_property.addEBObserver (self.noIssue_property)
   //--- Install undoers and opposite setter for relationships
     self.packagePads_property.setDataProvider (self.packageObjects_property)
-    /* self.packagePads_property.mReadModelFunction =  { [weak self] in
-      if let model = self?.packageObjects_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let modelArray) :
-          var array = [PackagePad] ()
-          for baseObject in modelArray {
-            if let object = baseObject as? PackagePad {
-              array.append (object)
-            }
-          }
-          return .single (array)
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.packageObjects_property.addEBObserver (self.packagePads_property) */
     self.packageSlavePads_property.setDataProvider (self.packageObjects_property)
-    /* self.packageSlavePads_property.mReadModelFunction =  { [weak self] in
-      if let model = self?.packageObjects_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let modelArray) :
-          var array = [PackageSlavePad] ()
-          for baseObject in modelArray {
-            if let object = baseObject as? PackageSlavePad {
-              array.append (object)
-            }
-          }
-          return .single (array)
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.packageObjects_property.addEBObserver (self.packageSlavePads_property) */
     self.packageZones_property.setDataProvider (self.packageObjects_property)
-    /* self.packageZones_property.mReadModelFunction =  { [weak self] in
-      if let model = self?.packageObjects_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let modelArray) :
-          var array = [PackageZone] ()
-          for baseObject in modelArray {
-            if let object = baseObject as? PackageZone {
-              array.append (object)
-            }
-          }
-          return .single (array)
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.packageObjects_property.addEBObserver (self.packageZones_property) */
   //--- Register properties for handling signature
     self.comments_property.setSignatureObserver (observer: self)
     self.packageObjects_property.setSignatureObserver (observer: self)

@@ -1055,7 +1055,7 @@ final class ProxyArrayOf_BoardLine : ReadWriteArrayOf_BoardLine {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: BoardLine
+//    Stored Array: BoardLine
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverProtocol {
@@ -1137,7 +1137,7 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -1189,9 +1189,6 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -1201,7 +1198,7 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -1209,7 +1206,7 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -1226,6 +1223,51 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: BoardLine
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_BoardLine : ReadWriteArrayOf_BoardLine {
+
+  //····················································································································
+
+  override var prop : EBSelection < [BoardLine] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [BoardLine]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [BoardLine] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : BoardLine) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : BoardLine) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

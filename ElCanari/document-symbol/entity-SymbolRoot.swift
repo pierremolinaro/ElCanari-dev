@@ -429,27 +429,6 @@ class SymbolRoot : EBManagedObject,
     self.issues_property.addEBObserver (self.noIssue_property)
   //--- Install undoers and opposite setter for relationships
     self.symbolPins_property.setDataProvider (self.symbolObjects_property)
-    /* self.symbolPins_property.mReadModelFunction =  { [weak self] in
-      if let model = self?.symbolObjects_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let modelArray) :
-          var array = [SymbolPin] ()
-          for baseObject in modelArray {
-            if let object = baseObject as? SymbolPin {
-              array.append (object)
-            }
-          }
-          return .single (array)
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.symbolObjects_property.addEBObserver (self.symbolPins_property) */
   //--- Register properties for handling signature
     self.comments_property.setSignatureObserver (observer: self)
     self.symbolObjects_property.setSignatureObserver (observer: self)

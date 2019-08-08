@@ -53,7 +53,7 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_SymbolObject ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_SymbolObject () // §
 
   //····················································································································
 

@@ -1466,7 +1466,7 @@ final class ProxyArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: PackageBezier
+//    Stored Array: PackageBezier
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSignatureObserverProtocol {
@@ -1548,7 +1548,7 @@ class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSignatureO
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -1600,9 +1600,6 @@ class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSignatureO
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -1612,7 +1609,7 @@ class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSignatureO
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -1620,7 +1617,7 @@ class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSignatureO
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -1637,6 +1634,51 @@ class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSignatureO
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: PackageBezier
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
+
+  //····················································································································
+
+  override var prop : EBSelection < [PackageBezier] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [PackageBezier]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [PackageBezier] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : PackageBezier) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : PackageBezier) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }

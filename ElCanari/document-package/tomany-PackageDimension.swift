@@ -1289,7 +1289,7 @@ final class ProxyArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: PackageDimension
+//    Stored Array: PackageDimension
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSignatureObserverProtocol {
@@ -1371,7 +1371,7 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
-    }
+   }
   //---
     for managedObject in inAddedSet {
       managedObject.setSignatureObserver (observer: self)
@@ -1423,9 +1423,6 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mInternalArrayValue {
-      object.setSignatureObserver (observer: observer)
-    }
   }
 
   //····················································································································
@@ -1435,7 +1432,7 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = computeSignature ()
+      computedSignature = self.computeSignature ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
@@ -1443,7 +1440,7 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
   
   //····················································································································
 
-  final func computeSignature () -> UInt32 {
+  final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
@@ -1460,6 +1457,51 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
     }
   }
 
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Stand alone Array: PackageDimension
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StandAloneArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension {
+
+  //····················································································································
+
+  override var prop : EBSelection < [PackageDimension] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [PackageDimension]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [PackageDimension] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    self.postEvent ()
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  func remove (_ object : PackageDimension) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : PackageDimension) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
  
 }
