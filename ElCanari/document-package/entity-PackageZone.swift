@@ -584,6 +584,7 @@ class PackageZone : PackageObject,
     self.yNameUnit_property.setSignatureObserver (observer: self)
     self.yUnit_property.setSignatureObserver (observer: self)
     self.zoneName_property.setSignatureObserver (observer: self)
+    self.zoneNumbering_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 
@@ -634,6 +635,7 @@ class PackageZone : PackageObject,
     self.yNameUnit_property.setSignatureObserver (observer: nil)
     self.yUnit_property.setSignatureObserver (observer: nil)
     self.zoneName_property.setSignatureObserver (observer: nil)
+    self.zoneNumbering_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -982,6 +984,7 @@ class PackageZone : PackageObject,
     crc.accumulateUInt32 (self.yNameUnit_property.signature ())
     crc.accumulateUInt32 (self.yUnit_property.signature ())
     crc.accumulateUInt32 (self.zoneName_property.signature ())
+    crc.accumulateUInt32 (self.zoneNumbering_property.signature ())
     return crc
   }
 

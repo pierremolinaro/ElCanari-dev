@@ -1062,16 +1062,23 @@ class PackagePad : PackageObject,
       resetter: { inObject in inObject.master_property.setProp (nil) }
     )
   //--- Register properties for handling signature
+    self.annularRingUnit_property.setSignatureObserver (observer: self)
     self.height_property.setSignatureObserver (observer: self)
+    self.heightUnit_property.setSignatureObserver (observer: self)
     self.holeHeight_property.setSignatureObserver (observer: self)
+    self.holeHeightUnit_property.setSignatureObserver (observer: self)
     self.holeWidth_property.setSignatureObserver (observer: self)
+    self.holeWidthUnit_property.setSignatureObserver (observer: self)
     self.padNumber_property.setSignatureObserver (observer: self)
     self.padShape_property.setSignatureObserver (observer: self)
     self.padStyle_property.setSignatureObserver (observer: self)
     self.slaves_property.setSignatureObserver (observer: self)
     self.width_property.setSignatureObserver (observer: self)
+    self.widthUnit_property.setSignatureObserver (observer: self)
     self.xCenter_property.setSignatureObserver (observer: self)
+    self.xCenterUnit_property.setSignatureObserver (observer: self)
     self.yCenter_property.setSignatureObserver (observer: self)
+    self.yCenterUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 
@@ -1119,16 +1126,23 @@ class PackagePad : PackageObject,
     g_Preferences?.padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
     self.padName_property.removeEBObserver (self.padNumberDisplay_property)
   //--- Unregister properties for handling signature
+    self.annularRingUnit_property.setSignatureObserver (observer: nil)
     self.height_property.setSignatureObserver (observer: nil)
+    self.heightUnit_property.setSignatureObserver (observer: nil)
     self.holeHeight_property.setSignatureObserver (observer: nil)
+    self.holeHeightUnit_property.setSignatureObserver (observer: nil)
     self.holeWidth_property.setSignatureObserver (observer: nil)
+    self.holeWidthUnit_property.setSignatureObserver (observer: nil)
     self.padNumber_property.setSignatureObserver (observer: nil)
     self.padShape_property.setSignatureObserver (observer: nil)
     self.padStyle_property.setSignatureObserver (observer: nil)
     self.slaves_property.setSignatureObserver (observer: nil)
     self.width_property.setSignatureObserver (observer: nil)
+    self.widthUnit_property.setSignatureObserver (observer: nil)
     self.xCenter_property.setSignatureObserver (observer: nil)
+    self.xCenterUnit_property.setSignatureObserver (observer: nil)
     self.yCenter_property.setSignatureObserver (observer: nil)
+    self.yCenterUnit_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -1614,16 +1628,23 @@ class PackagePad : PackageObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
+    crc.accumulateUInt32 (self.annularRingUnit_property.signature ())
     crc.accumulateUInt32 (self.height_property.signature ())
+    crc.accumulateUInt32 (self.heightUnit_property.signature ())
     crc.accumulateUInt32 (self.holeHeight_property.signature ())
+    crc.accumulateUInt32 (self.holeHeightUnit_property.signature ())
     crc.accumulateUInt32 (self.holeWidth_property.signature ())
+    crc.accumulateUInt32 (self.holeWidthUnit_property.signature ())
     crc.accumulateUInt32 (self.padNumber_property.signature ())
     crc.accumulateUInt32 (self.padShape_property.signature ())
     crc.accumulateUInt32 (self.padStyle_property.signature ())
     crc.accumulateUInt32 (self.slaves_property.signature ())
     crc.accumulateUInt32 (self.width_property.signature ())
+    crc.accumulateUInt32 (self.widthUnit_property.signature ())
     crc.accumulateUInt32 (self.xCenter_property.signature ())
+    crc.accumulateUInt32 (self.xCenterUnit_property.signature ())
     crc.accumulateUInt32 (self.yCenter_property.signature ())
+    crc.accumulateUInt32 (self.yCenterUnit_property.signature ())
     return crc
   }
 
