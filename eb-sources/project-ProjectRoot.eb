@@ -81,16 +81,6 @@ entity ProjectRoot {
   transient EBShape issuesDisplay dependsFrom self.boardIssues ;
   transient NSImage boardStatusImage dependsFrom self.boardIssues ;
   transient String boardStatusMessage dependsFrom self.boardIssues ;
-
-  property Bool mDisplayFrontPads default yes ;
-  property Bool mDisplayBackPads default yes ;
-  property Bool mDisplayPadNumbers default yes ;
-  property Bool mDisplayFrontLegend default yes ;
-  property Bool mDisplayBackLegend default yes ;
-  property Bool mDisplayFrontLayout default yes ;
-  property Bool mDisplayBackLayout default yes ;
-  property Bool mDisplayFrontRestrictRectangles default yes ;
-  property Bool mDisplayBackRestrictRectangles default yes ;
   
   property Double mErrorOrWarningIssueSize default 6.0 ;
   

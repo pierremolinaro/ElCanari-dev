@@ -257,30 +257,39 @@ prefs {
   property NSColor boardClearanceColorForBoard default yellow;
   outlet EBColorWell mBoardClearanceColorWell $color self.boardClearanceColorForBoard {sendContinously:no} ;
 //--- Front Side Restrict Rectangle Color
+  property Bool displayFrontRestrictRectangles default yes ;
   property NSColor frontSideRestrictRectangleColorForBoard default blue;
   outlet EBColorWell mBoardTopSideRestrictRectangleColorWell $color self.frontSideRestrictRectangleColorForBoard {sendContinously:no} ;
 //--- Back Side Restrict Rectangle Color
+  property Bool displayBackRestrictRectangles default yes ;
   property NSColor backSideRestrictRectangleColorForBoard default green;
   outlet EBColorWell mBoardBottomSideRestrictRectangleColorWell $color self.backSideRestrictRectangleColorForBoard {sendContinously:no} ;
 //--- Front Side Legend Color
+  property Bool displayFrontLegendForBoard default yes ;
   property NSColor frontSideLegendColorForBoard default brown;
   outlet EBColorWell mBoardTopSideLegendColorWell $color self.frontSideLegendColorForBoard {sendContinously:no} ;
 //--- Front Side Layout Color
+  property Bool displayFrontLayoutForBoard default yes ;
   property NSColor frontSideLayoutColorForBoard default blue;
   outlet EBColorWell mBoardTopSideLayoutColorWell $color self.frontSideLayoutColorForBoard {sendContinously:no} ;
 //--- Back Side Layout Color
+  property Bool displayBackLayoutForBoard default yes ;
   property NSColor backSideLayoutColorForBoard default green;
   outlet EBColorWell mBoardBottomSideLayoutColorWell $color self.backSideLayoutColorForBoard {sendContinously:no} ;
 //--- Back Side Legend Color
+  property Bool displayBackLegendForBoard default yes ;
   property NSColor backSideLegendColorForBoard default white;
   outlet EBColorWell mBoardBottomSideLegendColorWell $color self.backSideLegendColorForBoard {sendContinously:no};
 //--- Front Side Pad Color
+  property Bool displayFrontPadsForBoard default yes ;
   property NSColor frontSidePadColorForBoard default blue;
   outlet EBColorWell mBoardTopSidePadColorWell $color self.frontSidePadColorForBoard {sendContinously:no};
 //--- Back Side Pad Color
+  property Bool displayBackPadsForBoard default yes ;
   property NSColor backSidePadColorForBoard default green;
   outlet EBColorWell mBoardBottomSidePadColorWell $color self.backSidePadColorForBoard {sendContinously:no};
 //--- Pad Number Font
+  property Bool displayPadNumbersForBoard default yes ;
   property NSFont padNumberFontForBoard default 3 ; // toolTipsFontOfSize:3 ;
   outlet EBFontButton mBoardPadFontButton $fontValue self.padNumberFontForBoard;
 //--- Pad Number Color
@@ -354,7 +363,6 @@ prefs {
   tableViewController #additionnalLibraryArrayController {
     allowsEmptySelection:no, allowsMultipleSelection:no
   } self.additionnalLibraryArray {
-//     column "path" EBTextObserverField $valueObserver self.mPath
      column "uses" EBSwitch $value self.mUses
      column "status" EBImageObserverView $image self.mStatusImage
      column "path" EBButton $run revealLibraryInFinderAction $title self.mPath

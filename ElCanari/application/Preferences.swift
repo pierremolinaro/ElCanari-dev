@@ -67,14 +67,23 @@ let Preferences_warningBackgroundColorForBoard = "Preferences:warningBackgroundC
 let Preferences_drawEWarningBackgroundForBoard = "Preferences:drawEWarningBackgroundForBoard"
 let Preferences_boardLimitsColorForBoard = "Preferences:boardLimitsColorForBoard"
 let Preferences_boardClearanceColorForBoard = "Preferences:boardClearanceColorForBoard"
+let Preferences_displayFrontRestrictRectangles = "Preferences:displayFrontRestrictRectangles"
 let Preferences_frontSideRestrictRectangleColorForBoard = "Preferences:frontSideRestrictRectangleColorForBoard"
+let Preferences_displayBackRestrictRectangles = "Preferences:displayBackRestrictRectangles"
 let Preferences_backSideRestrictRectangleColorForBoard = "Preferences:backSideRestrictRectangleColorForBoard"
+let Preferences_displayFrontLegendForBoard = "Preferences:displayFrontLegendForBoard"
 let Preferences_frontSideLegendColorForBoard = "Preferences:frontSideLegendColorForBoard"
+let Preferences_displayFrontLayoutForBoard = "Preferences:displayFrontLayoutForBoard"
 let Preferences_frontSideLayoutColorForBoard = "Preferences:frontSideLayoutColorForBoard"
+let Preferences_displayBackLayoutForBoard = "Preferences:displayBackLayoutForBoard"
 let Preferences_backSideLayoutColorForBoard = "Preferences:backSideLayoutColorForBoard"
+let Preferences_displayBackLegendForBoard = "Preferences:displayBackLegendForBoard"
 let Preferences_backSideLegendColorForBoard = "Preferences:backSideLegendColorForBoard"
+let Preferences_displayFrontPadsForBoard = "Preferences:displayFrontPadsForBoard"
 let Preferences_frontSidePadColorForBoard = "Preferences:frontSidePadColorForBoard"
+let Preferences_displayBackPadsForBoard = "Preferences:displayBackPadsForBoard"
 let Preferences_backSidePadColorForBoard = "Preferences:backSidePadColorForBoard"
+let Preferences_displayPadNumbersForBoard = "Preferences:displayPadNumbersForBoard"
 let Preferences_padNumberFontForBoard = "Preferences:padNumberFontForBoard"
 let Preferences_padNumberColorForBoard = "Preferences:padNumberColorForBoard"
 let Preferences_packageDrawingWidthMultpliedByTenForBoard = "Preferences:packageDrawingWidthMultpliedByTenForBoard"
@@ -1132,6 +1141,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var boardClearanceColorForBoard_property_selection : EBSelection <NSColor> { return self.boardClearanceColorForBoard_property.prop }
 
   //····················································································································
+  //   Atomic property: displayFrontRestrictRectangles
+  //····················································································································
+
+  let displayFrontRestrictRectangles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayFrontRestrictRectangles)
+
+  //····················································································································
+
+  var displayFrontRestrictRectangles : Bool {
+    get { return self.displayFrontRestrictRectangles_property.propval }
+    set { self.displayFrontRestrictRectangles_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var displayFrontRestrictRectangles_property_selection : EBSelection <Bool> { return self.displayFrontRestrictRectangles_property.prop }
+
+  //····················································································································
   //   Atomic property: frontSideRestrictRectangleColorForBoard
   //····················································································································
 
@@ -1147,6 +1173,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var frontSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSideRestrictRectangleColorForBoard_property.prop }
+
+  //····················································································································
+  //   Atomic property: displayBackRestrictRectangles
+  //····················································································································
+
+  let displayBackRestrictRectangles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayBackRestrictRectangles)
+
+  //····················································································································
+
+  var displayBackRestrictRectangles : Bool {
+    get { return self.displayBackRestrictRectangles_property.propval }
+    set { self.displayBackRestrictRectangles_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var displayBackRestrictRectangles_property_selection : EBSelection <Bool> { return self.displayBackRestrictRectangles_property.prop }
 
   //····················································································································
   //   Atomic property: backSideRestrictRectangleColorForBoard
@@ -1166,6 +1209,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var backSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return self.backSideRestrictRectangleColorForBoard_property.prop }
 
   //····················································································································
+  //   Atomic property: displayFrontLegendForBoard
+  //····················································································································
+
+  let displayFrontLegendForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayFrontLegendForBoard)
+
+  //····················································································································
+
+  var displayFrontLegendForBoard : Bool {
+    get { return self.displayFrontLegendForBoard_property.propval }
+    set { self.displayFrontLegendForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var displayFrontLegendForBoard_property_selection : EBSelection <Bool> { return self.displayFrontLegendForBoard_property.prop }
+
+  //····················································································································
   //   Atomic property: frontSideLegendColorForBoard
   //····················································································································
 
@@ -1181,6 +1241,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var frontSideLegendColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSideLegendColorForBoard_property.prop }
+
+  //····················································································································
+  //   Atomic property: displayFrontLayoutForBoard
+  //····················································································································
+
+  let displayFrontLayoutForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayFrontLayoutForBoard)
+
+  //····················································································································
+
+  var displayFrontLayoutForBoard : Bool {
+    get { return self.displayFrontLayoutForBoard_property.propval }
+    set { self.displayFrontLayoutForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var displayFrontLayoutForBoard_property_selection : EBSelection <Bool> { return self.displayFrontLayoutForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: frontSideLayoutColorForBoard
@@ -1200,6 +1277,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var frontSideLayoutColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSideLayoutColorForBoard_property.prop }
 
   //····················································································································
+  //   Atomic property: displayBackLayoutForBoard
+  //····················································································································
+
+  let displayBackLayoutForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayBackLayoutForBoard)
+
+  //····················································································································
+
+  var displayBackLayoutForBoard : Bool {
+    get { return self.displayBackLayoutForBoard_property.propval }
+    set { self.displayBackLayoutForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var displayBackLayoutForBoard_property_selection : EBSelection <Bool> { return self.displayBackLayoutForBoard_property.prop }
+
+  //····················································································································
   //   Atomic property: backSideLayoutColorForBoard
   //····················································································································
 
@@ -1215,6 +1309,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var backSideLayoutColorForBoard_property_selection : EBSelection <NSColor> { return self.backSideLayoutColorForBoard_property.prop }
+
+  //····················································································································
+  //   Atomic property: displayBackLegendForBoard
+  //····················································································································
+
+  let displayBackLegendForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayBackLegendForBoard)
+
+  //····················································································································
+
+  var displayBackLegendForBoard : Bool {
+    get { return self.displayBackLegendForBoard_property.propval }
+    set { self.displayBackLegendForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var displayBackLegendForBoard_property_selection : EBSelection <Bool> { return self.displayBackLegendForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: backSideLegendColorForBoard
@@ -1234,6 +1345,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var backSideLegendColorForBoard_property_selection : EBSelection <NSColor> { return self.backSideLegendColorForBoard_property.prop }
 
   //····················································································································
+  //   Atomic property: displayFrontPadsForBoard
+  //····················································································································
+
+  let displayFrontPadsForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayFrontPadsForBoard)
+
+  //····················································································································
+
+  var displayFrontPadsForBoard : Bool {
+    get { return self.displayFrontPadsForBoard_property.propval }
+    set { self.displayFrontPadsForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var displayFrontPadsForBoard_property_selection : EBSelection <Bool> { return self.displayFrontPadsForBoard_property.prop }
+
+  //····················································································································
   //   Atomic property: frontSidePadColorForBoard
   //····················································································································
 
@@ -1251,6 +1379,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var frontSidePadColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSidePadColorForBoard_property.prop }
 
   //····················································································································
+  //   Atomic property: displayBackPadsForBoard
+  //····················································································································
+
+  let displayBackPadsForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayBackPadsForBoard)
+
+  //····················································································································
+
+  var displayBackPadsForBoard : Bool {
+    get { return self.displayBackPadsForBoard_property.propval }
+    set { self.displayBackPadsForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var displayBackPadsForBoard_property_selection : EBSelection <Bool> { return self.displayBackPadsForBoard_property.prop }
+
+  //····················································································································
   //   Atomic property: backSidePadColorForBoard
   //····················································································································
 
@@ -1266,6 +1411,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var backSidePadColorForBoard_property_selection : EBSelection <NSColor> { return self.backSidePadColorForBoard_property.prop }
+
+  //····················································································································
+  //   Atomic property: displayPadNumbersForBoard
+  //····················································································································
+
+  let displayPadNumbersForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayPadNumbersForBoard)
+
+  //····················································································································
+
+  var displayPadNumbersForBoard : Bool {
+    get { return self.displayPadNumbersForBoard_property.propval }
+    set { self.displayPadNumbersForBoard_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var displayPadNumbersForBoard_property_selection : EBSelection <Bool> { return self.displayPadNumbersForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: padNumberFontForBoard
@@ -3053,22 +3215,40 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.boardLimitsColorForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardClearanceColorForBoard
     self.boardClearanceColorForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: displayFrontRestrictRectangles
+    self.displayFrontRestrictRectangles_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: frontSideRestrictRectangleColorForBoard
     self.frontSideRestrictRectangleColorForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: displayBackRestrictRectangles
+    self.displayBackRestrictRectangles_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: backSideRestrictRectangleColorForBoard
     self.backSideRestrictRectangleColorForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: displayFrontLegendForBoard
+    self.displayFrontLegendForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: frontSideLegendColorForBoard
     self.frontSideLegendColorForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: displayFrontLayoutForBoard
+    self.displayFrontLayoutForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: frontSideLayoutColorForBoard
     self.frontSideLayoutColorForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: displayBackLayoutForBoard
+    self.displayBackLayoutForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: backSideLayoutColorForBoard
     self.backSideLayoutColorForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: displayBackLegendForBoard
+    self.displayBackLegendForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: backSideLegendColorForBoard
     self.backSideLegendColorForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: displayFrontPadsForBoard
+    self.displayFrontPadsForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: frontSidePadColorForBoard
     self.frontSidePadColorForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: displayBackPadsForBoard
+    self.displayBackPadsForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: backSidePadColorForBoard
     self.backSidePadColorForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: displayPadNumbersForBoard
+    self.displayPadNumbersForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumberFontForBoard
     self.padNumberFontForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumberColorForBoard

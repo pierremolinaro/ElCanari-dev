@@ -20,71 +20,77 @@ func transient_BoardRestrictRectangle_objectDisplay (
        _ self_mHeight : Int,                         
        _ self_mIsInFrontLayer : Bool,                
        _ self_mIsInBackLayer : Bool,                 
+       _ prefs_displayFrontRestrictRectangles : Bool,
+       _ prefs_displayBackRestrictRectangles : Bool, 
        _ prefs_frontSideRestrictRectangleColorForBoard : NSColor,
        _ prefs_backSideRestrictRectangleColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let r = CanariRect (left: self_mX, bottom: self_mY, width: self_mWidth, height: self_mHeight)
-        let cocoaRect = r.cocoaRect
-        let rectBP = EBBezierPath (rect: cocoaRect)
-        let lg = max (cocoaRect.size.width, cocoaRect.size.height)
-        let GRID_INTERVAL : CGFloat = 5.0
-        let GRID_LINE_WIDTH : CGFloat = 0.5
-      //--- Transparent background (for selection)
-        var shape = EBShape (filled: [rectBP], nil)
-      //--- Back layer
-        if self_mIsInBackLayer {
-          var bp = EBBezierPath ()
-          bp.lineWidth = GRID_LINE_WIDTH
-          bp.lineJoinStyle = .round
-          bp.lineCapStyle = .round
-          var x = cocoaRect.minX
-          while x < cocoaRect.maxX {
-            bp.move (to: NSPoint (x: x, y: cocoaRect.maxY))
-            bp.relativeLine (to: NSPoint (x: lg, y: -lg))
-            x += GRID_INTERVAL
+        var shape = EBShape ()
+        let display = (self_mIsInFrontLayer && prefs_displayFrontRestrictRectangles) || (self_mIsInBackLayer && prefs_displayBackRestrictRectangles)
+        if display {
+          let r = CanariRect (left: self_mX, bottom: self_mY, width: self_mWidth, height: self_mHeight)
+          let cocoaRect = r.cocoaRect
+          let rectBP = EBBezierPath (rect: cocoaRect)
+          let lg = max (cocoaRect.size.width, cocoaRect.size.height)
+          let GRID_INTERVAL : CGFloat = 5.0
+          let GRID_LINE_WIDTH : CGFloat = 0.5
+        //--- Transparent background (for selection)
+          shape.add (filled: [rectBP], nil)
+        //--- Back layer
+          if self_mIsInBackLayer && prefs_displayBackRestrictRectangles {
+            var bp = EBBezierPath ()
+            bp.lineWidth = GRID_LINE_WIDTH
+            bp.lineJoinStyle = .round
+            bp.lineCapStyle = .round
+            var x = cocoaRect.minX
+            while x < cocoaRect.maxX {
+              bp.move (to: NSPoint (x: x, y: cocoaRect.maxY))
+              bp.relativeLine (to: NSPoint (x: lg, y: -lg))
+              x += GRID_INTERVAL
+            }
+            var y = cocoaRect.maxY - GRID_INTERVAL
+            while y > cocoaRect.minY {
+              bp.move (to: NSPoint (x: cocoaRect.minX, y: y))
+              bp.relativeLine (to: NSPoint (x: lg, y: -lg))
+              y -= GRID_INTERVAL
+            }
+            shape.add (stroke: [bp], prefs_backSideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
-          var y = cocoaRect.maxY - GRID_INTERVAL
-          while y > cocoaRect.minY {
-            bp.move (to: NSPoint (x: cocoaRect.minX, y: y))
-            bp.relativeLine (to: NSPoint (x: lg, y: -lg))
-            y -= GRID_INTERVAL
+        //--- Front layer
+          if self_mIsInFrontLayer && prefs_displayFrontRestrictRectangles {
+            var bp = EBBezierPath ()
+            bp.lineWidth = GRID_LINE_WIDTH
+            bp.lineJoinStyle = .round
+            bp.lineCapStyle = .round
+            var x = cocoaRect.minX
+            while x < cocoaRect.maxX {
+              bp.move (to: NSPoint (x: x, y: cocoaRect.minY))
+              bp.relativeLine (to: NSPoint (x: lg, y: lg))
+              x += GRID_INTERVAL
+            }
+            var y = cocoaRect.minY + GRID_INTERVAL
+            while y < cocoaRect.maxY {
+              bp.move (to: NSPoint (x: cocoaRect.minX, y: y))
+              bp.relativeLine (to: NSPoint (x: lg, y: lg))
+              y += GRID_INTERVAL
+            }
+            shape.add (stroke: [bp], prefs_frontSideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
-          shape.add (stroke: [bp], prefs_backSideRestrictRectangleColorForBoard, clip: .inside (rectBP))
-        }
-      //--- Front layer
-        if self_mIsInFrontLayer {
-          var bp = EBBezierPath ()
-          bp.lineWidth = GRID_LINE_WIDTH
-          bp.lineJoinStyle = .round
-          bp.lineCapStyle = .round
-          var x = cocoaRect.minX
-          while x < cocoaRect.maxX {
-            bp.move (to: NSPoint (x: x, y: cocoaRect.minY))
-            bp.relativeLine (to: NSPoint (x: lg, y: lg))
-            x += GRID_INTERVAL
+        //--- Append rect frame
+          do{
+            var bp = EBBezierPath (rect: cocoaRect.insetBy (dx: 0.25, dy: 0.25))
+            bp.lineWidth = 0.5
+            bp.lineJoinStyle = .round
+            bp.lineCapStyle = .round
+            let frameColor : NSColor
+            if self_mIsInFrontLayer {
+              frameColor = prefs_frontSideRestrictRectangleColorForBoard
+            }else{
+              frameColor = prefs_backSideRestrictRectangleColorForBoard
+            }
+            shape.add (stroke: [bp], frameColor)
           }
-          var y = cocoaRect.minY + GRID_INTERVAL
-          while y < cocoaRect.maxY {
-            bp.move (to: NSPoint (x: cocoaRect.minX, y: y))
-            bp.relativeLine (to: NSPoint (x: lg, y: lg))
-            y += GRID_INTERVAL
-          }
-          shape.add (stroke: [bp], prefs_frontSideRestrictRectangleColorForBoard, clip: .inside (rectBP))
-        }
-      //--- Append rect frame
-        do{
-          var bp = EBBezierPath (rect: cocoaRect.insetBy (dx: 0.25, dy: 0.25))
-          bp.lineWidth = 0.5
-          bp.lineJoinStyle = .round
-          bp.lineCapStyle = .round
-          let frameColor : NSColor
-          if self_mIsInFrontLayer {
-            frameColor = prefs_frontSideRestrictRectangleColorForBoard
-          }else{
-            frameColor = prefs_backSideRestrictRectangleColorForBoard
-          }
-          shape.add (stroke: [bp], frameColor)
         }
       //---
         return shape

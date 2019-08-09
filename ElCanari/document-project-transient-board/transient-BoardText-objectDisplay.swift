@@ -25,6 +25,10 @@ func transient_BoardText_objectDisplay (
        _ self_mRotation : Int,          
        _ self_mWeight : Double,         
        _ self_mOblique : Bool,          
+       _ prefs_displayFrontLegendForBoard : Bool,
+       _ prefs_displayBackLegendForBoard : Bool,
+       _ prefs_displayFrontLayoutForBoard : Bool,
+       _ prefs_displayBackLayoutForBoard : Bool,
        _ prefs_frontSideLegendColorForBoard : NSColor,
        _ prefs_frontSideLayoutColorForBoard : NSColor,
        _ prefs_backSideLayoutColorForBoard : NSColor,
@@ -46,22 +50,28 @@ func transient_BoardText_objectDisplay (
           extraWidth: 0.0
         )
         let textColor : NSColor
+        let display : Bool
         switch self_mLayer {
         case .legendFront :
           textColor = prefs_frontSideLegendColorForBoard
+          display = prefs_displayFrontLegendForBoard
         case .layoutFront :
           textColor = prefs_frontSideLayoutColorForBoard
+          display = prefs_displayFrontLayoutForBoard
         case .layoutBack :
           textColor = prefs_backSideLayoutColorForBoard
+          display = prefs_displayBackLayoutForBoard
         case .legendBack :
           textColor = prefs_backSideLegendColorForBoard
+          display = prefs_displayBackLegendForBoard
         }
-        let textShape = EBShape (stroke: [textBP], textColor)
-      //--- Transparent background
-        let backgroundBP = EBBezierPath (rect: textShape.boundingBox)
         var shape = EBShape ()
-        shape.add (filled: [backgroundBP], nil)
-        shape.add (textShape)
+        if display {
+          let textShape = EBShape (stroke: [textBP], textColor)
+          let backgroundBP = EBBezierPath (rect: textShape.boundingBox) //--- Transparent background
+          shape.add (filled: [backgroundBP], nil)
+          shape.add (textShape)
+        }
       //---
         return shape
 //--- END OF USER ZONE 2

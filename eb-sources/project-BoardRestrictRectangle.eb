@@ -14,7 +14,10 @@ graphic entity BoardRestrictRectangle : BoardObject {
   override transient EBShape objectDisplay dependsFrom
     self.mX, self.mY, self.mWidth, self.mHeight,
     self.mIsInFrontLayer, self.mIsInBackLayer,
-    prefs.frontSideRestrictRectangleColorForBoard, prefs.backSideRestrictRectangleColorForBoard
+    prefs.displayFrontRestrictRectangles,
+    prefs.displayBackRestrictRectangles,
+    prefs.frontSideRestrictRectangleColorForBoard,
+    prefs.backSideRestrictRectangleColorForBoard
   ;
 
   override transient EBShape selectionDisplay dependsFrom

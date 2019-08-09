@@ -833,31 +833,31 @@ document ProjectDocument root ProjectRoot {
   outlet CanariBoardComponentValueFontPopUpButton mBoardComponentValueFontPopUpButton ;
   
 //--- Display inspector
-  outlet EBSwitch mDisplayFrontPadsSwitch $value root.mDisplayFrontPads ;
+  outlet EBSwitch mDisplayFrontPadsSwitch $value prefs.displayFrontPadsForBoard ;
   outlet EBColorWell mDisplayFrontPadsColorWell $color prefs.frontSidePadColorForBoard {sendContinously:yes} ;
 
-  outlet EBSwitch mDisplayBackPadsSwitch $value root.mDisplayBackPads ;
+  outlet EBSwitch mDisplayBackPadsSwitch $value prefs.displayBackPadsForBoard ;
   outlet EBColorWell mDisplayBackPadsColorWell $color prefs.backSidePadColorForBoard {sendContinously:yes} ;
 
-  outlet EBSwitch mDisplayPadNumbersSwitch $value root.mDisplayPadNumbers ;
+  outlet EBSwitch mDisplayPadNumbersSwitch $value prefs.displayPadNumbersForBoard ;
   outlet EBColorWell mDisplayPadNumbersColorWell $color prefs.padNumberColorForBoard {sendContinously:yes} ;
 
-  outlet EBSwitch mDisplayFrontLegendSwitch $value root.mDisplayFrontLegend ;
+  outlet EBSwitch mDisplayFrontLegendSwitch $value prefs.displayFrontLegendForBoard ;
   outlet EBColorWell mDisplayFrontLegendColorWell $color prefs.frontSideLegendColorForBoard {sendContinously:yes} ;
 
-  outlet EBSwitch mDisplayBackLegendSwitch $value root.mDisplayBackLegend ;
+  outlet EBSwitch mDisplayBackLegendSwitch $value prefs.displayBackLegendForBoard ;
   outlet EBColorWell mDisplayBackLegendColorWell $color prefs.backSideLegendColorForBoard {sendContinously:yes} ;
 
-  outlet EBSwitch mDisplayFrontLayoutSwitch $value root.mDisplayFrontLayout ;
+  outlet EBSwitch mDisplayFrontLayoutSwitch $value prefs.displayFrontLayoutForBoard ;
   outlet EBColorWell mDisplayFrontLayoutColorWell $color prefs.frontSideLayoutColorForBoard {sendContinously:yes} ;
 
-  outlet EBSwitch mDisplayBackLayoutSwitch $value root.mDisplayBackLayout ;
+  outlet EBSwitch mDisplayBackLayoutSwitch $value prefs.displayBackLayoutForBoard ;
   outlet EBColorWell mDisplayBackLayoutColorWell $color prefs.backSideLayoutColorForBoard {sendContinously:yes} ;
 
-  outlet EBSwitch mDisplayFrontRestrictRectanglesSwitch $value root.mDisplayFrontRestrictRectangles ;
+  outlet EBSwitch mDisplayFrontRestrictRectanglesSwitch $value prefs.displayFrontRestrictRectangles ;
   outlet EBColorWell mDisplayFrontRestrictRectanglesColorWell $color prefs.frontSideRestrictRectangleColorForBoard {sendContinously:yes} ;
 
-  outlet EBSwitch mDisplayBackRestrictRectanglesSwitch $value root.mDisplayBackRestrictRectangles ;
+  outlet EBSwitch mDisplayBackRestrictRectanglesSwitch $value prefs.displayBackRestrictRectangles ;
   outlet EBColorWell mDisplayBackRestrictRectanglesColorWell $color prefs.backSideRestrictRectangleColorForBoard {sendContinously:yes} ;
 
   outlet EBColorWell mDisplayBoardLimitsColorWell $color prefs.boardLimitsColorForBoard {sendContinously:yes} ;

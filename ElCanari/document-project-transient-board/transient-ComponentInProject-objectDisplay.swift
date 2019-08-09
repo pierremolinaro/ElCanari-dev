@@ -24,12 +24,12 @@ func transient_ComponentInProject_objectDisplay (
        _ prefs_backSideLegendColorForBoard : NSColor,
        _ prefs_packageDrawingWidthMultpliedByTenForBoard : Int,
        _ prefs_frontSidePadColorForBoard : NSColor,
-       _ self_BoardObject_displayFrontPads : Bool,
+       _ prefs_displayFrontPadsForBoard : Bool,  
        _ prefs_backSidePadColorForBoard : NSColor,
-       _ self_BoardObject_displayBackPads : Bool,
+       _ prefs_displayBackPadsForBoard : Bool,   
        _ prefs_padNumberFontForBoard : NSFont,   
        _ prefs_padNumberColorForBoard : NSColor, 
-       _ self_BoardObject_displayPadNumbers : Bool,
+       _ prefs_displayPadNumbersForBoard : Bool, 
        _ self_mNameIsVisibleInBoard : Bool,      
        _ self_mXName : Int,                      
        _ self_mYName : Int,                      
@@ -49,7 +49,7 @@ func transient_ComponentInProject_objectDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let padDisplayAttributes : [NSAttributedString.Key : Any]?
-        if self_BoardObject_displayPadNumbers {
+        if prefs_displayPadNumbersForBoard {
           padDisplayAttributes = [
             NSAttributedString.Key.font : prefs_padNumberFontForBoard,
             NSAttributedString.Key.foregroundColor : prefs_padNumberColorForBoard
@@ -83,8 +83,8 @@ func transient_ComponentInProject_objectDisplay (
             side: self_mSide,
             padDisplayAttributes: padDisplayAttributes,
             padNumberAF: padNumberAffineTransform,
-            frontPadColor: self_BoardObject_displayFrontPads ? prefs_frontSidePadColorForBoard : nil,
-            backPadColor: self_BoardObject_displayBackPads ? prefs_backSidePadColorForBoard : nil,
+            frontPadColor: prefs_displayFrontPadsForBoard ? prefs_frontSidePadColorForBoard : nil,
+            backPadColor: prefs_displayBackPadsForBoard ? prefs_backSidePadColorForBoard : nil,
             padNetDictionary: self_padNetDictionary
           )
         }

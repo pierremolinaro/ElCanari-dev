@@ -16,6 +16,8 @@ import Cocoa
 func transient_BoardTrack_objectDisplay (
        _ self_mConnectorP1_location : CanariPoint?,
        _ self_mConnectorP2_location : CanariPoint?,
+       _ prefs_displayFrontLayoutForBoard : Bool,
+       _ prefs_displayBackLayoutForBoard : Bool,
        _ prefs_frontSideLayoutColorForBoard : NSColor,
        _ prefs_backSideLayoutColorForBoard : NSColor,
        _ self_actualTrackWidth : Int,    
@@ -32,13 +34,18 @@ func transient_BoardTrack_objectDisplay (
          bp.move (to: p1)
          bp.line (to: p2)
          let color : NSColor
+         let display : Bool
          switch self_mSide {
          case .front :
            color = prefs_frontSideLayoutColorForBoard
+           display = prefs_displayFrontLayoutForBoard
          case .back :
+           display = prefs_displayBackLayoutForBoard
            color = prefs_backSideLayoutColorForBoard
          }
-         shape.add (stroke: [bp], color)
+         if display {
+           shape.add (stroke: [bp], color)
+         }
        }
        return shape
 //--- END OF USER ZONE 2
