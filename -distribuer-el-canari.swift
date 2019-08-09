@@ -26,7 +26,11 @@ enum ProductKind {
 
 let VERSION_CANARI = "1.0.2"
 let NOTES : [String] = []
-let BUGFIXES : [String] = ["Merger: fixed importation of octogonal pads"]
+let BUGFIXES : [String] = [
+  "Merger: fixed importation of octogonal pads",
+  "Project: fixed crash on removing non empty sheet",
+  "Project: fixed board objects display switches"
+]
 let CHANGES : [String] = []
 let NEWS : [String] = []
 let BUILD_KIND = ProductKind.release
