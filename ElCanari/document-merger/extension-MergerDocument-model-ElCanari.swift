@@ -299,8 +299,8 @@ extension MergerDocument {
     for str in frontComponentValues {
       let ints = array5int (fromString: str, &errorArray)
       if let segment = clippedSegmentEntity (
-        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
-        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y: canariUnitToMillimeter (ints [1])),
+        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y: canariUnitToMillimeter (ints [3])),
         width_mm: canariUnitToMillimeter (ints [4]),
         clipRect_mm: boardRect_mm,
         self.ebUndoManager,
@@ -316,8 +316,8 @@ extension MergerDocument {
     for str in backComponentValues {
       let ints = array5int (fromString: str, &errorArray)
       if let segment = clippedSegmentEntity (
-        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
-        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y: canariUnitToMillimeter (ints [1])),
+        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y: canariUnitToMillimeter (ints [3])),
         width_mm: canariUnitToMillimeter (ints [4]),
         clipRect_mm: boardRect_mm,
         self.ebUndoManager,
@@ -379,6 +379,8 @@ extension MergerDocument {
         pad.shape = .rect
       }else if shapeString == "ROUND" {
         pad.shape = .round
+      }else if shapeString == "OCTO" {
+        pad.shape = .octo
       }else{
         errorArray.append ("Invalid pad shape \"\(shapeString)\".")
       }
@@ -576,7 +578,7 @@ fileprivate func array5int (fromString inString : String, _ errorArray : inout [
       }
     }
   }
-//--- If an error occurs, add fake int to get a five element vector
+//--- If an error occurs, add fake int(s) to get a five element vector
   while result.count < 5 {
     result.append (0)
   }

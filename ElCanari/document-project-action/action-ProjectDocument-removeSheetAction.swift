@@ -15,6 +15,17 @@ extension ProjectDocument {
   @objc func removeSheetAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
       if let selectedSheet = self.rootObject.mSelectedSheet, let idx = self.rootObject.mSheets.firstIndex (of: selectedSheet) {
+      //--- Remove all objects
+         for point in selectedSheet.mPoints {
+           point.mSheet = nil
+           point.mSymbol = nil
+           point.mSymbolPinName = ""
+         }
+         for object in selectedSheet.mObjects {
+           object.operationBeforeRemoving ()
+           object.mSheet = nil
+         }
+      //---
         self.rootObject.mSheets.remove (at: idx)
         let newSelectedSheetIndex = min (idx, self.rootObject.mSheets.count - 1)
         self.rootObject.mSelectedSheet = self.rootObject.mSheets [newSelectedSheetIndex]
