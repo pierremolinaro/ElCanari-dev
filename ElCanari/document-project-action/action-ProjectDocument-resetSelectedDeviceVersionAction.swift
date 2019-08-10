@@ -12,11 +12,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension ProjectDocument {
-  @objc func resetDeviceVersionAction (_ sender : NSObject?) {
+  @objc func resetSelectedDeviceVersionAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-        for device in self.rootObject.mDevices {
+        for device in self.projectDeviceController.selectedArray {
           device.mDeviceVersion = 0
-          device.mDeviceFileData = Data ()
         }
 //--- END OF USER ZONE 2
   }
