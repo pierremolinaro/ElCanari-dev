@@ -1263,8 +1263,8 @@
 		CF9D4B41227F796C006E2035 /* action-ProjectDocument-removeSheetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D4B17227F796C006E2035 /* action-ProjectDocument-removeSheetAction.swift */; };
 		CF9D4B42227F796C006E2035 /* action-ProjectDocument-editNetClassAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D4B18227F796C006E2035 /* action-ProjectDocument-editNetClassAction.swift */; };
 		CF9D4B43227F796C006E2035 /* action-ProjectDocument-editNetClassAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D4B18227F796C006E2035 /* action-ProjectDocument-editNetClassAction.swift */; };
-		CF9D4B44227F796C006E2035 /* action-ProjectDocument-resetDeviceVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D4B19227F796C006E2035 /* action-ProjectDocument-resetDeviceVersionAction.swift */; };
-		CF9D4B45227F796C006E2035 /* action-ProjectDocument-resetDeviceVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D4B19227F796C006E2035 /* action-ProjectDocument-resetDeviceVersionAction.swift */; };
+		CF9D4B44227F796C006E2035 /* action-ProjectDocument-resetSelectedDeviceVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D4B19227F796C006E2035 /* action-ProjectDocument-resetSelectedDeviceVersionAction.swift */; };
+		CF9D4B45227F796C006E2035 /* action-ProjectDocument-resetSelectedDeviceVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D4B19227F796C006E2035 /* action-ProjectDocument-resetSelectedDeviceVersionAction.swift */; };
 		CF9D4B88227F79A9006E2035 /* transient-DevicePadAssignmentInProject-pinPadAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D4B47227F79A4006E2035 /* transient-DevicePadAssignmentInProject-pinPadAssignment.swift */; };
 		CF9D4B89227F79A9006E2035 /* transient-DevicePadAssignmentInProject-pinPadAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D4B47227F79A4006E2035 /* transient-DevicePadAssignmentInProject-pinPadAssignment.swift */; };
 		CF9D4B8A227F79A9006E2035 /* transient-ComponentSymbolInProject-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D4B48227F79A4006E2035 /* transient-ComponentSymbolInProject-objectDisplay.swift */; };
@@ -2906,7 +2906,7 @@
 		CF9D4B16227F796C006E2035 /* action-ProjectDocument-setDateToNowAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-setDateToNowAction.swift"; sourceTree = "<group>"; };
 		CF9D4B17227F796C006E2035 /* action-ProjectDocument-removeSheetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-removeSheetAction.swift"; sourceTree = "<group>"; };
 		CF9D4B18227F796C006E2035 /* action-ProjectDocument-editNetClassAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-editNetClassAction.swift"; sourceTree = "<group>"; };
-		CF9D4B19227F796C006E2035 /* action-ProjectDocument-resetDeviceVersionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-resetDeviceVersionAction.swift"; sourceTree = "<group>"; };
+		CF9D4B19227F796C006E2035 /* action-ProjectDocument-resetSelectedDeviceVersionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-resetSelectedDeviceVersionAction.swift"; sourceTree = "<group>"; };
 		CF9D4B47227F79A4006E2035 /* transient-DevicePadAssignmentInProject-pinPadAssignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DevicePadAssignmentInProject-pinPadAssignment.swift"; sourceTree = "<group>"; };
 		CF9D4B48227F79A4006E2035 /* transient-ComponentSymbolInProject-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ComponentSymbolInProject-objectDisplay.swift"; sourceTree = "<group>"; };
 		CF9D4B49227F79A4006E2035 /* transient-ProjectRoot-unplacedSymbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectRoot-unplacedSymbols.swift"; sourceTree = "<group>"; };
@@ -4193,7 +4193,7 @@
 				CF9D4B08227F796A006E2035 /* action-ProjectDocument-removeSelectedComponentsAction.swift */,
 				CF9D4B17227F796C006E2035 /* action-ProjectDocument-removeSheetAction.swift */,
 				CFD22D4122D26241004DFFDC /* action-ProjectDocument-resetDevicesAndFontsVersionAction.swift */,
-				CF9D4B19227F796C006E2035 /* action-ProjectDocument-resetDeviceVersionAction.swift */,
+				CF9D4B19227F796C006E2035 /* action-ProjectDocument-resetSelectedDeviceVersionAction.swift */,
 				CF9D4B09227F796A006E2035 /* action-ProjectDocument-resetFontVersionAction.swift */,
 				CF9D4B16227F796C006E2035 /* action-ProjectDocument-setDateToNowAction.swift */,
 				CF9D4B0D227F796B006E2035 /* action-ProjectDocument-updateDeviceAction.swift */,
@@ -5601,7 +5601,7 @@
 				CFE85A7121A5B37900991A66 /* entity-SymbolBezierCurve.swift in Sources */,
 				CF9D4B8A227F79A9006E2035 /* transient-ComponentSymbolInProject-objectDisplay.swift in Sources */,
 				CFDBA0E922491BC900C658B2 /* transient-FontDocument-mStatusImage.swift in Sources */,
-				CF9D4B44227F796C006E2035 /* action-ProjectDocument-resetDeviceVersionAction.swift in Sources */,
+				CF9D4B44227F796C006E2035 /* action-ProjectDocument-resetSelectedDeviceVersionAction.swift in Sources */,
 				CF9D4BAA227F79A9006E2035 /* transient-ProjectDocument-canRemoveNetClasses.swift in Sources */,
 				CFF2A1FA21B2D24A00945D01 /* extension-SymbolSolidOval.swift in Sources */,
 				CFEBDB7522A6B2B700F1917A /* transient-BorderCurve-cp2Xstring.swift in Sources */,
@@ -6741,7 +6741,7 @@
 				CF2ED48421ADAD830019114E /* CanariIssueTableView.swift in Sources */,
 				CF5C4D1C219F04D600EAC52A /* EBTextView.swift in Sources */,
 				CFEAAD47223175CE00F69A12 /* entity-SymbolTypeInDevice.swift in Sources */,
-				CF9D4B45227F796C006E2035 /* action-ProjectDocument-resetDeviceVersionAction.swift in Sources */,
+				CF9D4B45227F796C006E2035 /* action-ProjectDocument-resetSelectedDeviceVersionAction.swift in Sources */,
 				CF144833227AF4240004E7ED /* extension-QuadrantRotation.swift in Sources */,
 				CFA42FB3229AEAEC000AA8C8 /* toone-FontCharacter.swift in Sources */,
 				CFEAAD662231807B00F69A12 /* transient-SymbolTypeInDevice-versionString.swift in Sources */,

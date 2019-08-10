@@ -790,9 +790,9 @@ import Cocoa
   @IBOutlet var mRenameNetOkButton : EBButton? = nil
   @IBOutlet var mRenameNetPanel : NSPanel? = nil
   @IBOutlet var mRenameNetTextField : EBTextField? = nil
-  @IBOutlet var mResetDeviceVersionButton : EBButton? = nil
   @IBOutlet var mResetDevicesAndFontsVersionButton : EBButton? = nil
   @IBOutlet var mResetFontVersionButton : EBButton? = nil
+  @IBOutlet var mResetSelectedDeviceVersionButton : EBButton? = nil
   @IBOutlet var mRestrictRectangleInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mRouterBoardInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mSchematicLabelInsulateSubnetButton : EBButton? = nil
@@ -893,7 +893,7 @@ import Cocoa
   var mController_mUpdateFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mResetFontVersionButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mResetDeviceVersionButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mResetSelectedDeviceVersionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mExportDeviceButton_enabled : MultipleBindingController_enabled? = nil
@@ -1305,9 +1305,9 @@ import Cocoa
     checkOutletConnection (self.mRenameNetOkButton, "mRenameNetOkButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRenameNetPanel, "mRenameNetPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mRenameNetTextField, "mRenameNetTextField", EBTextField.self, #file, #line)
-    checkOutletConnection (self.mResetDeviceVersionButton, "mResetDeviceVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetDevicesAndFontsVersionButton, "mResetDevicesAndFontsVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mResetSelectedDeviceVersionButton, "mResetSelectedDeviceVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRestrictRectangleInspectorView, "mRestrictRectangleInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mRouterBoardInspectorView, "mRouterBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSchematicLabelInsulateSubnetButton, "mSchematicLabelInsulateSubnetButton", EBButton.self, #file, #line)
@@ -2173,10 +2173,10 @@ import Cocoa
         computeFunction: {
           return (self.projectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
-        outlet: self.mResetDeviceVersionButton
+        outlet: self.mResetSelectedDeviceVersionButton
       )
       self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
-      self.mController_mResetDeviceVersionButton_enabled = controller
+      self.mController_mResetSelectedDeviceVersionButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
@@ -2455,8 +2455,8 @@ import Cocoa
     self.mRemoveFontButton?.action = #selector (ProjectDocument.removeFontAction (_:))
     self.mResetFontVersionButton?.target = self
     self.mResetFontVersionButton?.action = #selector (ProjectDocument.resetFontVersionAction (_:))
-    self.mResetDeviceVersionButton?.target = self
-    self.mResetDeviceVersionButton?.action = #selector (ProjectDocument.resetDeviceVersionAction (_:))
+    self.mResetSelectedDeviceVersionButton?.target = self
+    self.mResetSelectedDeviceVersionButton?.action = #selector (ProjectDocument.resetSelectedDeviceVersionAction (_:))
     self.mRemoveDeviceButton?.target = self
     self.mRemoveDeviceButton?.action = #selector (ProjectDocument.removeDeviceAction (_:))
     self.mEditDeviceButton?.target = self
@@ -2771,8 +2771,8 @@ import Cocoa
     self.mController_mRemoveFontButton_enabled = nil
     self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetFontVersionButton_enabled!)
     self.mController_mResetFontVersionButton_enabled = nil
-    self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetDeviceVersionButton_enabled!)
-    self.mController_mResetDeviceVersionButton_enabled = nil
+    self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedDeviceVersionButton_enabled!)
+    self.mController_mResetSelectedDeviceVersionButton_enabled = nil
     self.canRemoveSelectedDevices_property.removeEBObserver (self.mController_mRemoveDeviceButton_enabled!)
     self.mController_mRemoveDeviceButton_enabled = nil
     self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditDeviceButton_enabled!)
@@ -2909,7 +2909,7 @@ import Cocoa
     self.mUpdateFontButton?.target = nil
     self.mRemoveFontButton?.target = nil
     self.mResetFontVersionButton?.target = nil
-    self.mResetDeviceVersionButton?.target = nil
+    self.mResetSelectedDeviceVersionButton?.target = nil
     self.mRemoveDeviceButton?.target = nil
     self.mEditDeviceButton?.target = nil
     self.mExportDeviceButton?.target = nil
@@ -3205,9 +3205,9 @@ import Cocoa
     self.mRenameNetOkButton?.ebCleanUp ()
     self.mRenameNetPanel?.ebCleanUp ()
     self.mRenameNetTextField?.ebCleanUp ()
-    self.mResetDeviceVersionButton?.ebCleanUp ()
     self.mResetDevicesAndFontsVersionButton?.ebCleanUp ()
     self.mResetFontVersionButton?.ebCleanUp ()
+    self.mResetSelectedDeviceVersionButton?.ebCleanUp ()
     self.mRestrictRectangleInspectorView?.ebCleanUp ()
     self.mRouterBoardInspectorView?.ebCleanUp ()
     self.mSchematicLabelInsulateSubnetButton?.ebCleanUp ()
@@ -3573,9 +3573,9 @@ import Cocoa
     self.mRenameNetOkButton = nil
     self.mRenameNetPanel = nil
     self.mRenameNetTextField = nil
-    self.mResetDeviceVersionButton = nil
     self.mResetDevicesAndFontsVersionButton = nil
     self.mResetFontVersionButton = nil
+    self.mResetSelectedDeviceVersionButton = nil
     self.mRestrictRectangleInspectorView = nil
     self.mRouterBoardInspectorView = nil
     self.mSchematicLabelInsulateSubnetButton = nil

@@ -14,7 +14,7 @@ import Cocoa
 extension ProjectDocument {
   @objc func resetDeviceVersionAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        for device in self.rootObject.mDevices_property.propval {
+        for device in self.rootObject.mDevices {
           device.mDeviceVersion = 0
           device.mDeviceFileData = Data ()
         }

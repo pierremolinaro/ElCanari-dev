@@ -165,9 +165,9 @@ document ProjectDocument root ProjectRoot {
   outlet EBTableView mFontLibraryTableView $tableValue #projectFontController ;
 
 //--- Devices
-  action resetDeviceVersionAction ;
-  outlet EBButton mResetDeviceVersionButton
-    $run resetDeviceVersionAction
+  action resetSelectedDeviceVersionAction ;
+  outlet EBButton mResetSelectedDeviceVersionButton
+    $run resetSelectedDeviceVersionAction
     $enabled #projectDeviceController.selectedArray.count > 0
   ;
 
