@@ -27,7 +27,7 @@ enum ProductKind {
 let VERSION_CANARI = "1.0.3"
 let NOTES : [String] = []
 let BUGFIXES : [String] = []
-let CHANGES : [String] = []
+let CHANGES : [String] = ["FreeRouter: the size has been slightly reduced"]
 let NEWS : [String] = ["Package: counterclock autonumbering start angle"]
 let BUILD_KIND = ProductKind.release
 
