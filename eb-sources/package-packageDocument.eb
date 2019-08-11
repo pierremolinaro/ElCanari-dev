@@ -22,7 +22,6 @@ document PackageDocument root PackageRoot {
   outlet CanariViewWithKeyView mSelectedObjectsInspectorView ;
   outlet CanariViewWithKeyView mGridZoomInspectorView ;
   outlet CanariViewWithKeyView mDisplayInspectorView ;
-  outlet CanariViewWithKeyView mAutoNumberingInspectorView ;
   outlet CanariViewWithKeyView mIssuesInspectorView ;
 
 //--- Segment inspector
@@ -373,6 +372,7 @@ document PackageDocument root PackageRoot {
   outlet EBTextField mZoneNameTextField $value #mPackageZoneSelectionController.zoneName {sendContinously : yes} ;
 //--- Zone numbering
   outlet EBPopUpButton mZoneNumberingPopUpButton $selectedIndex #mPackageZoneSelectionController.zoneNumbering ;
+  
 //--- xLabel
   outlet EBPopUpButton mZoneXLabelUnitPopUp $selectedTag #mPackageZoneSelectionController.xNameUnit ;
   outlet CanariDimensionTextField mZoneXLabelTextField
@@ -386,8 +386,12 @@ document PackageDocument root PackageRoot {
 
 
 
-//--- Pad numbering inspector
+//----------------- Pad numbering inspector
   outlet EBPopUpButton mPadNumberingPopUpButton $selectedIndex root.padNumbering ;
+  outlet EBIntField mCounterClockNumberingStartAngleIntField
+     $value root.counterClockNumberingStartAngle {sendContinously : yes, autoFormatter : no}
+  ;
+  outlet NSView mCounterClockNumberingStartAngleView $hidden !root.counterClockNumbering ;
 
 //------- Issues
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;

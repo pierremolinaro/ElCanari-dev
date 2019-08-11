@@ -189,7 +189,6 @@ import Cocoa
   @IBOutlet var mArcXCenterUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mArcYCenterTextField : CanariDimensionTextField? = nil
   @IBOutlet var mArcYCenterUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mAutoNumberingInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mBaseInspectorView : NSView? = nil
   @IBOutlet var mBezierCurveCPX1TextField : CanariDimensionTextField? = nil
   @IBOutlet var mBezierCurveCPX1UnitPopUp : EBPopUpButton? = nil
@@ -213,6 +212,8 @@ import Cocoa
   @IBOutlet var mCommentTextView : EBTextView? = nil
   @IBOutlet var mComposedPackageScrollView : EBScrollView? = nil
   @IBOutlet var mComposedPackageView : EBGraphicView? = nil
+  @IBOutlet var mCounterClockNumberingStartAngleIntField : EBIntField? = nil
+  @IBOutlet var mCounterClockNumberingStartAngleView : NSView? = nil
   @IBOutlet var mCrossColorOfPackageGridColorWell : EBColorWell? = nil
   @IBOutlet var mDeselectIssueButton : EBButton? = nil
   @IBOutlet var mDimensionDistanceTextField : CanariDimensionObserverTextField? = nil
@@ -368,6 +369,7 @@ import Cocoa
   var mController_mPadStyleView_hidden : MultipleBindingController_hidden? = nil
   var mController_mPadRenumberingPullDownButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSlavePadStyleView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mCounterClockNumberingStartAngleView_hidden : MultipleBindingController_hidden? = nil
   var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
   var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
   var mController_mAddSlavePadButton_enabled : MultipleBindingController_enabled? = nil
@@ -477,7 +479,6 @@ import Cocoa
     checkOutletConnection (self.mArcXCenterUnitPopUp, "mArcXCenterUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mArcYCenterTextField, "mArcYCenterTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mArcYCenterUnitPopUp, "mArcYCenterUnitPopUp", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mAutoNumberingInspectorView, "mAutoNumberingInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBaseInspectorView, "mBaseInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBezierCurveCPX1TextField, "mBezierCurveCPX1TextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mBezierCurveCPX1UnitPopUp, "mBezierCurveCPX1UnitPopUp", EBPopUpButton.self, #file, #line)
@@ -501,6 +502,8 @@ import Cocoa
     checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
     checkOutletConnection (self.mComposedPackageScrollView, "mComposedPackageScrollView", EBScrollView.self, #file, #line)
     checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mCounterClockNumberingStartAngleIntField, "mCounterClockNumberingStartAngleIntField", EBIntField.self, #file, #line)
+    checkOutletConnection (self.mCounterClockNumberingStartAngleView, "mCounterClockNumberingStartAngleView", NSView.self, #file, #line)
     checkOutletConnection (self.mCrossColorOfPackageGridColorWell, "mCrossColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDeselectIssueButton, "mDeselectIssueButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mDimensionDistanceTextField, "mDimensionDistanceTextField", CanariDimensionObserverTextField.self, #file, #line)
@@ -874,6 +877,7 @@ import Cocoa
     self.mZoneYLabelUnitPopUp?.bind_selectedTag (self.mPackageZoneSelectionController.yNameUnit_property, file: #file, line: #line)
     self.mZoneYLabelTextField?.bind_dimensionAndUnit (self.mPackageZoneSelectionController.yName_property, self.mPackageZoneSelectionController.yNameUnit_property, file: #file, line: #line)
     self.mPadNumberingPopUpButton?.bind_selectedIndex (self.rootObject.padNumbering_property, file: #file, line: #line)
+    self.mCounterClockNumberingStartAngleIntField?.bind_value (self.rootObject.counterClockNumberingStartAngle_property, file: #file, line: #line, sendContinously:true, autoFormatter:false)
     self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
     self.mIssueTextField?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
@@ -947,6 +951,16 @@ import Cocoa
       )
       self.mPackageSlavePadSelectionController.padIsTraversing_property.addEBObserver (controller)
       self.mController_mSlavePadStyleView_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return !self.rootObject.counterClockNumbering_property_selection
+        },
+        outlet: self.mCounterClockNumberingStartAngleView
+      )
+      self.rootObject.counterClockNumbering_property.addEBObserver (controller)
+      self.mController_mCounterClockNumberingStartAngleView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
@@ -1139,6 +1153,7 @@ import Cocoa
     self.mZoneYLabelUnitPopUp?.unbind_selectedTag ()
     self.mZoneYLabelTextField?.unbind_dimensionAndUnit ()
     self.mPadNumberingPopUpButton?.unbind_selectedIndex ()
+    self.mCounterClockNumberingStartAngleIntField?.unbind_value ()
     self.mStatusImageViewInToolbar?.unbind_image ()
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
     self.mIssueTextField?.unbind_valueObserver ()
@@ -1189,6 +1204,8 @@ import Cocoa
     self.mController_mPadRenumberingPullDownButton_enabled = nil
     self.mPackageSlavePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mSlavePadStyleView_hidden!)
     self.mController_mSlavePadStyleView_hidden = nil
+    self.rootObject.counterClockNumbering_property.removeEBObserver (self.mController_mCounterClockNumberingStartAngleView_hidden!)
+    self.mController_mCounterClockNumberingStartAngleView_hidden = nil
     self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
     self.mController_mDeselectIssueButton_hidden = nil
     self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
@@ -1253,7 +1270,6 @@ import Cocoa
     self.mArcXCenterUnitPopUp?.ebCleanUp ()
     self.mArcYCenterTextField?.ebCleanUp ()
     self.mArcYCenterUnitPopUp?.ebCleanUp ()
-    self.mAutoNumberingInspectorView?.ebCleanUp ()
     self.mBaseInspectorView?.ebCleanUp ()
     self.mBezierCurveCPX1TextField?.ebCleanUp ()
     self.mBezierCurveCPX1UnitPopUp?.ebCleanUp ()
@@ -1277,6 +1293,8 @@ import Cocoa
     self.mCommentTextView?.ebCleanUp ()
     self.mComposedPackageScrollView?.ebCleanUp ()
     self.mComposedPackageView?.ebCleanUp ()
+    self.mCounterClockNumberingStartAngleIntField?.ebCleanUp ()
+    self.mCounterClockNumberingStartAngleView?.ebCleanUp ()
     self.mCrossColorOfPackageGridColorWell?.ebCleanUp ()
     self.mDeselectIssueButton?.ebCleanUp ()
     self.mDimensionDistanceTextField?.ebCleanUp ()
@@ -1449,7 +1467,6 @@ import Cocoa
     self.mArcXCenterUnitPopUp = nil
     self.mArcYCenterTextField = nil
     self.mArcYCenterUnitPopUp = nil
-    self.mAutoNumberingInspectorView = nil
     self.mBaseInspectorView = nil
     self.mBezierCurveCPX1TextField = nil
     self.mBezierCurveCPX1UnitPopUp = nil
@@ -1473,6 +1490,8 @@ import Cocoa
     self.mCommentTextView = nil
     self.mComposedPackageScrollView = nil
     self.mComposedPackageView = nil
+    self.mCounterClockNumberingStartAngleIntField = nil
+    self.mCounterClockNumberingStartAngleView = nil
     self.mCrossColorOfPackageGridColorWell = nil
     self.mDeselectIssueButton = nil
     self.mDimensionDistanceTextField = nil

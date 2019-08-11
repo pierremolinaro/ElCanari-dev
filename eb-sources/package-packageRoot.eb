@@ -51,6 +51,8 @@ graphic entity PackageRoot {
 //--- Pad numbering
   property PadNumbering padNumbering default noNumbering ;
   transient Bool freePadNumbering dependsFrom self.padNumbering ;
+  transient Bool counterClockNumbering dependsFrom self.padNumbering ;
+  property @signature Int counterClockNumberingStartAngle default 180 ;
 
 //--- XY placard unit
   property @signature Int xPlacardUnit default 2_286 ; // mils

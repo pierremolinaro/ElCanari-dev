@@ -1012,6 +1012,8 @@
 		CF78DE96222D65CA00E89DCA /* transient-SlavePadInDevice-frontSideFilledBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE8F222D65CA00E89DCA /* transient-SlavePadInDevice-frontSideFilledBezierPath.swift */; };
 		CF78DE97222D65CA00E89DCA /* transient-SlavePadInDevice-padNumberDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE90222D65CA00E89DCA /* transient-SlavePadInDevice-padNumberDisplay.swift */; };
 		CF78DE98222D65CA00E89DCA /* transient-SlavePadInDevice-padNumberDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE90222D65CA00E89DCA /* transient-SlavePadInDevice-padNumberDisplay.swift */; };
+		CF7A0E8223007136008121AA /* transient-PackageRoot-counterClockNumbering.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0E8123007136008121AA /* transient-PackageRoot-counterClockNumbering.swift */; };
+		CF7A0E8323007136008121AA /* transient-PackageRoot-counterClockNumbering.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0E8123007136008121AA /* transient-PackageRoot-counterClockNumbering.swift */; };
 		CF7A9E3B21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */; };
 		CF7A9E3C21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */; };
 		CF7A9F2521BDB0A400AC0FC7 /* extension-Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */; };
@@ -2767,6 +2769,7 @@
 		CF78DE8E222D65CA00E89DCA /* entity-SlavePadInDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SlavePadInDevice.swift"; sourceTree = "<group>"; };
 		CF78DE8F222D65CA00E89DCA /* transient-SlavePadInDevice-frontSideFilledBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SlavePadInDevice-frontSideFilledBezierPath.swift"; sourceTree = "<group>"; };
 		CF78DE90222D65CA00E89DCA /* transient-SlavePadInDevice-padNumberDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SlavePadInDevice-padNumberDisplay.swift"; sourceTree = "<group>"; };
+		CF7A0E8123007136008121AA /* transient-PackageRoot-counterClockNumbering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageRoot-counterClockNumbering.swift"; sourceTree = "<group>"; };
 		CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifyingGlass.png; sourceTree = "<group>"; };
 		CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-Data.swift"; sourceTree = "<group>"; };
 		CF7A9F2A21BDB2B000AC0FC7 /* extension-NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-NSObject.swift"; sourceTree = "<group>"; };
@@ -3645,6 +3648,7 @@
 				CF4B39DB21D50695001217C6 /* transient-PackagePad-slavePadCount.swift */,
 				CF4B39D521D4E8B1001217C6 /* transient-PackagePad-zoneAllowsManualRenumbering.swift */,
 				CF6E148621CD32CA008E2180 /* transient-PackagePad-zoneName.swift */,
+				CF7A0E8123007136008121AA /* transient-PackageRoot-counterClockNumbering.swift */,
 				CF4B39CF21D41501001217C6 /* transient-PackageRoot-freePadNumbering.swift */,
 				CF4A6C0C21C6BF0F00997A19 /* transient-PackageRoot-gridStepMultipliedByDisplayFactor.swift */,
 				CF00845F21C4363E003627E9 /* transient-PackageRoot-issues.swift */,
@@ -5670,6 +5674,7 @@
 				CFC9566F20E25F4000B7F94F /* EBMenuItem.swift in Sources */,
 				CFA4304F229AEB96000AA8C8 /* toone-ProjectRoot.swift in Sources */,
 				CF0E9D072229AC0E00124F04 /* transient-PackageInDevice-versionString.swift in Sources */,
+				CF7A0E8223007136008121AA /* transient-PackageRoot-counterClockNumbering.swift in Sources */,
 				CFB1DB252282D31F005F9811 /* entity-SheetInProject.swift in Sources */,
 				CF71F9281B3EA3DF00FB5049 /* EBPopUpButton.swift in Sources */,
 				CFF5C1A122DCAC0A00CEC1BA /* transient-BoardConnector-netNameFromTracks.swift in Sources */,
@@ -6766,6 +6771,7 @@
 				CFE85A8D21A5C1C100991A66 /* CanariPoint.swift in Sources */,
 				CFDD886C22342612008D3781 /* transient-DeviceDocument-hasUnconnectedPin.swift in Sources */,
 				CF9D4BED227F79A9006E2035 /* transient-SheetInProject-connexionWarnings.swift in Sources */,
+				CF7A0E8323007136008121AA /* transient-PackageRoot-counterClockNumbering.swift in Sources */,
 				CF2A8D1822ABE2830026CD16 /* ProjectDocument-schematic-select-all-connected.swift in Sources */,
 				CF11AB9E225A211F0092A524 /* open-device-in-library.swift.swift in Sources */,
 				CF6B32EF21C8F99B00E3B985 /* selectionController-PackageDocument-mPackageGuideSelectionController.swift in Sources */,

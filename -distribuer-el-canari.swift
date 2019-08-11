@@ -24,15 +24,11 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.2"
+let VERSION_CANARI = "1.0.3"
 let NOTES : [String] = []
-let BUGFIXES : [String] = [
-  "Merger: fixed importation of octogonal pads",
-  "Project: fixed crash on removing non empty sheet",
-  "Project: fixed board objects display switches"
-]
+let BUGFIXES : [String] = []
 let CHANGES : [String] = []
-let NEWS : [String] = []
+let NEWS : [String] = ["Package: counterclock autonumbering start angle"]
 let BUILD_KIND = ProductKind.release
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

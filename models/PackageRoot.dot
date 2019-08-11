@@ -1,7 +1,7 @@
 digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
-  PackageRoot[label="<PackageRoot>PackageRoot|String comments|Int gridDisplayFactor|Int gridStep|Int gridStepUnit|GridStyle gridStyle|Bool horizontalFlip|<packageObjects>[PackageObject] packageObjects|<packagePads>[PackagePad] packagePads|<packageSlavePads>[PackageSlavePad] packageSlavePads|<packageZones>[PackageZone] packageZones|PadNumbering padNumbering|String program|Int selectedInspector|Int selectedPageIndex|Bool verticalFlip|Int xPlacardUnit|Int yPlacardUnit|Int zoom"] ;
+  PackageRoot[label="<PackageRoot>PackageRoot|String comments|Int counterClockNumberingStartAngle|Int gridDisplayFactor|Int gridStep|Int gridStepUnit|GridStyle gridStyle|Bool horizontalFlip|<packageObjects>[PackageObject] packageObjects|<packagePads>[PackagePad] packagePads|<packageSlavePads>[PackageSlavePad] packageSlavePads|<packageZones>[PackageZone] packageZones|PadNumbering padNumbering|String program|Int selectedInspector|Int selectedPageIndex|Bool verticalFlip|Int xPlacardUnit|Int yPlacardUnit|Int zoom"] ;
   PackageObject[label="<PackageObject>PackageObject"] ;
   PackageRoot:packageObjects -> PackageObject:PackageObject [dir=both arrowtail=none arrowhead=vee] ;
 }

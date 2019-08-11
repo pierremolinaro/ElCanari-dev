@@ -78,6 +78,12 @@ protocol PackageRoot_padNumbering : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageRoot_counterClockNumberingStartAngle : class {
+  var counterClockNumberingStartAngle : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageRoot_xPlacardUnit : class {
   var xPlacardUnit : Int { get }
 }
@@ -92,6 +98,12 @@ protocol PackageRoot_yPlacardUnit : class {
 
 protocol PackageRoot_freePadNumbering : class {
   var freePadNumbering : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_counterClockNumbering : class {
+  var counterClockNumbering : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -135,9 +147,11 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_gridDisplayFactor,
          PackageRoot_zoom,
          PackageRoot_padNumbering,
+         PackageRoot_counterClockNumberingStartAngle,
          PackageRoot_xPlacardUnit,
          PackageRoot_yPlacardUnit,
          PackageRoot_freePadNumbering,
+         PackageRoot_counterClockNumbering,
          PackageRoot_gridStepMultipliedByDisplayFactor,
          PackageRoot_padNumberDisplay,
          PackageRoot_issues,
@@ -348,6 +362,23 @@ class PackageRoot : EBGraphicManagedObject,
   var padNumbering_property_selection : EBSelection <PadNumbering> { return self.padNumbering_property.prop }
 
   //····················································································································
+  //   Atomic property: counterClockNumberingStartAngle
+  //····················································································································
+
+  let counterClockNumberingStartAngle_property = EBStoredProperty_Int (defaultValue: 180)
+
+  //····················································································································
+
+  var counterClockNumberingStartAngle : Int {
+    get { return self.counterClockNumberingStartAngle_property.propval }
+    set { self.counterClockNumberingStartAngle_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var counterClockNumberingStartAngle_property_selection : EBSelection <Int> { return self.counterClockNumberingStartAngle_property.prop }
+
+  //····················································································································
   //   Atomic property: xPlacardUnit
   //····················································································································
 
@@ -478,6 +509,29 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: counterClockNumbering
+  //····················································································································
+
+  let counterClockNumbering_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var counterClockNumbering_property_selection : EBSelection <Bool> {
+    return self.counterClockNumbering_property.prop
+  }
+
+  //····················································································································
+
+  var counterClockNumbering : Bool? {
+    switch self.counterClockNumbering_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: gridStepMultipliedByDisplayFactor
   //····················································································································
 
@@ -599,6 +653,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.zoom_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumbering
     self.padNumbering_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: counterClockNumberingStartAngle
+    self.counterClockNumberingStartAngle_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: xPlacardUnit
     self.xPlacardUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yPlacardUnit
@@ -627,6 +683,28 @@ class PackageRoot : EBGraphicManagedObject,
       }
     }
     self.padNumbering_property.addEBObserver (self.freePadNumbering_property)
+  //--- Atomic property: counterClockNumbering
+    self.counterClockNumbering_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.padNumbering_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.padNumbering_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageRoot_counterClockNumbering (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.padNumbering_property.addEBObserver (self.counterClockNumbering_property)
   //--- Atomic property: gridStepMultipliedByDisplayFactor
     self.gridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -737,6 +815,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.packageZones_property.setDataProvider (self.packageObjects_property)
   //--- Register properties for handling signature
     self.comments_property.setSignatureObserver (observer: self)
+    self.counterClockNumberingStartAngle_property.setSignatureObserver (observer: self)
     self.packageObjects_property.setSignatureObserver (observer: self)
     self.program_property.setSignatureObserver (observer: self)
     self.xPlacardUnit_property.setSignatureObserver (observer: self)
@@ -755,6 +834,7 @@ class PackageRoot : EBGraphicManagedObject,
   //--- To many property: packageZones
     self.packageObjects_property.removeEBObserver (self.packageZones_property)
     self.padNumbering_property.removeEBObserver (self.freePadNumbering_property)
+    self.padNumbering_property.removeEBObserver (self.counterClockNumbering_property)
     self.gridStep_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
     self.gridDisplayFactor_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
     g_Preferences?.showPadNumber_property.removeEBObserver (self.padNumberDisplay_property)
@@ -772,6 +852,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.packageZones_property.setDataProvider (nil)
   //--- Unregister properties for handling signature
     self.comments_property.setSignatureObserver (observer: nil)
+    self.counterClockNumberingStartAngle_property.setSignatureObserver (observer: nil)
     self.packageObjects_property.setSignatureObserver (observer: nil)
     self.program_property.setSignatureObserver (observer: nil)
     self.xPlacardUnit_property.setSignatureObserver (observer: nil)
@@ -886,6 +967,14 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer: &self.padNumbering_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "counterClockNumberingStartAngle",
+      idx: self.counterClockNumberingStartAngle_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.counterClockNumberingStartAngle_property.mObserverExplorer,
+      valueExplorer: &self.counterClockNumberingStartAngle_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "xPlacardUnit",
       idx: self.xPlacardUnit_property.ebObjectIndex,
       y: &y,
@@ -909,6 +998,14 @@ class PackageRoot : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.freePadNumbering_property.mObserverExplorer,
       valueExplorer: &self.freePadNumbering_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "counterClockNumbering",
+      idx: self.counterClockNumbering_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.counterClockNumbering_property.mObserverExplorer,
+      valueExplorer: &self.counterClockNumbering_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "gridStepMultipliedByDisplayFactor",
@@ -995,6 +1092,9 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: padNumbering
     self.padNumbering_property.mObserverExplorer = nil
     self.padNumbering_property.mValueExplorer = nil
+  //--- Atomic property: counterClockNumberingStartAngle
+    self.counterClockNumberingStartAngle_property.mObserverExplorer = nil
+    self.counterClockNumberingStartAngle_property.mValueExplorer = nil
   //--- Atomic property: xPlacardUnit
     self.xPlacardUnit_property.mObserverExplorer = nil
     self.xPlacardUnit_property.mValueExplorer = nil
@@ -1056,6 +1156,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
   //--- Atomic property: padNumbering
     self.padNumbering_property.storeIn (dictionary: ioDictionary, forKey:"padNumbering")
+  //--- Atomic property: counterClockNumberingStartAngle
+    self.counterClockNumberingStartAngle_property.storeIn (dictionary: ioDictionary, forKey:"counterClockNumberingStartAngle")
   //--- Atomic property: xPlacardUnit
     self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"xPlacardUnit")
   //--- Atomic property: yPlacardUnit
@@ -1113,6 +1215,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
   //--- Atomic property: padNumbering
     self.padNumbering_property.readFrom (dictionary: inDictionary, forKey:"padNumbering")
+  //--- Atomic property: counterClockNumberingStartAngle
+    self.counterClockNumberingStartAngle_property.readFrom (dictionary: inDictionary, forKey:"counterClockNumberingStartAngle")
   //--- Atomic property: xPlacardUnit
     self.xPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"xPlacardUnit")
   //--- Atomic property: yPlacardUnit
@@ -1174,6 +1278,7 @@ class PackageRoot : EBGraphicManagedObject,
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.comments_property.signature ())
+    crc.accumulateUInt32 (self.counterClockNumberingStartAngle_property.signature ())
     crc.accumulateUInt32 (self.packageObjects_property.signature ())
     crc.accumulateUInt32 (self.program_property.signature ())
     crc.accumulateUInt32 (self.xPlacardUnit_property.signature ())

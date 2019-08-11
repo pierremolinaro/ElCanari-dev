@@ -70,7 +70,6 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       self.mSelectedObjectsInspectorView,
       self.mGridZoomInspectorView,
       self.mDisplayInspectorView,
-      self.mAutoNumberingInspectorView,
       self.mIssuesInspectorView
     ]
     self.mInspectorSegmentedControl?.register (masterView: self.mBaseInspectorView, inspectors)
@@ -140,7 +139,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //--- Set issue display view
     self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
-    self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 4)
+    self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 3)
   //--- Update display
     if let view = self.mComposedPackageView {
       DispatchQueue.main.async { _ = view.scrollToVisible (view.objectsAndIssueBoundingBox) }

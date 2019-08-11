@@ -16,6 +16,7 @@ extension CustomizedPackageDocument {
     self.rootObject.packageZones_property.addEBObserverOf_rect (self.mPadNumberingObserver)
     self.rootObject.packageZones_property.addEBObserverOf_zoneNumbering (self.mPadNumberingObserver)
     self.rootObject.packageZones_property.addEBObserver (self.mPadNumberingObserver)
+    self.rootObject.counterClockNumberingStartAngle_property.addEBObserver (self.mPadNumberingObserver)
   }
 
   //····················································································································
@@ -51,8 +52,8 @@ extension CustomizedPackageDocument {
   //--- Link slave pads to any pad
     let allSlavePads = self.rootObject.packageSlavePads_property.propval
     for slavePad in allSlavePads {
-      if slavePad.master_property.propval == nil {
-        slavePad.master_property.setProp (aPad)
+      if slavePad.master == nil {
+        slavePad.master = aPad
       }
     }
   }
@@ -103,7 +104,8 @@ extension CustomizedPackageDocument {
           }
         }
         let center = CanariPoint (x: (xMin + xMax) / 2, y: (yMin + yMax) / 2)
-        allPads.sort (by: { $0.angle (from: center) < $1.angle (from: center) } )
+        let startAngle = CGFloat (self.rootObject.counterClockNumberingStartAngle) * .pi / 180.0
+        allPads.sort (by: { $0.angleInRadian (from: center, from: startAngle) < $1.angleInRadian (from: center, from: startAngle) } )
       }
     case .upRight :
       allPads.sort (by: { ($0.yCenter > $1.yCenter) || (($0.yCenter == $1.yCenter) && ($0.xCenter > $1.xCenter)) } )

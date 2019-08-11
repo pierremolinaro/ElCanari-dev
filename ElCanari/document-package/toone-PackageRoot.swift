@@ -27,9 +27,11 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     inOldValue?.gridDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_gridDisplayFactor) // Stored property
     inOldValue?.zoom_property.removeEBObserversFrom (&self.mObserversOf_zoom) // Stored property
     inOldValue?.padNumbering_property.removeEBObserversFrom (&self.mObserversOf_padNumbering) // Stored property
+    inOldValue?.counterClockNumberingStartAngle_property.removeEBObserversFrom (&self.mObserversOf_counterClockNumberingStartAngle) // Stored property
     inOldValue?.xPlacardUnit_property.removeEBObserversFrom (&self.mObserversOf_xPlacardUnit) // Stored property
     inOldValue?.yPlacardUnit_property.removeEBObserversFrom (&self.mObserversOf_yPlacardUnit) // Stored property
     inOldValue?.freePadNumbering_property.removeEBObserversFrom (&self.mObserversOf_freePadNumbering) // Transient property
+    inOldValue?.counterClockNumbering_property.removeEBObserversFrom (&self.mObserversOf_counterClockNumbering) // Transient property
     inOldValue?.gridStepMultipliedByDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_gridStepMultipliedByDisplayFactor) // Transient property
     inOldValue?.padNumberDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
     inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
@@ -47,9 +49,11 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     self.mInternalValue?.gridDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_gridDisplayFactor) // Stored property
     self.mInternalValue?.zoom_property.addEBObserversFrom (&self.mObserversOf_zoom) // Stored property
     self.mInternalValue?.padNumbering_property.addEBObserversFrom (&self.mObserversOf_padNumbering) // Stored property
+    self.mInternalValue?.counterClockNumberingStartAngle_property.addEBObserversFrom (&self.mObserversOf_counterClockNumberingStartAngle) // Stored property
     self.mInternalValue?.xPlacardUnit_property.addEBObserversFrom (&self.mObserversOf_xPlacardUnit) // Stored property
     self.mInternalValue?.yPlacardUnit_property.addEBObserversFrom (&self.mObserversOf_yPlacardUnit) // Stored property
     self.mInternalValue?.freePadNumbering_property.addEBObserversFrom (&self.mObserversOf_freePadNumbering) // Transient property
+    self.mInternalValue?.counterClockNumbering_property.addEBObserversFrom (&self.mObserversOf_counterClockNumbering) // Transient property
     self.mInternalValue?.gridStepMultipliedByDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_gridStepMultipliedByDisplayFactor) // Transient property
     self.mInternalValue?.padNumberDisplay_property.addEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
     self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
@@ -897,6 +901,76 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   }
 
   //····················································································································
+  //   Observers of 'counterClockNumberingStartAngle' stored property
+  //····················································································································
+
+  private var mObserversOf_counterClockNumberingStartAngle = EBWeakEventSet ()
+
+  //····················································································································
+
+  var counterClockNumberingStartAngle_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.counterClockNumberingStartAngle_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_counterClockNumberingStartAngle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_counterClockNumberingStartAngle.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.counterClockNumberingStartAngle_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_counterClockNumberingStartAngle (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_counterClockNumberingStartAngle.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.counterClockNumberingStartAngle_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_counterClockNumberingStartAngle_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_counterClockNumberingStartAngle.apply { (_ observer : EBEvent) in
+        managedObject.counterClockNumberingStartAngle_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_counterClockNumberingStartAngle_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    self.mObserversOf_counterClockNumberingStartAngle.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.counterClockNumberingStartAngle_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'xPlacardUnit' stored property
   //····················································································································
 
@@ -1101,6 +1175,75 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     for managedObject in inSet {
       self.mObserversOf_freePadNumbering.apply { (_ observer : EBEvent) in
         managedObject.freePadNumbering_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'counterClockNumbering' transient property
+  //····················································································································
+
+  private var mObserversOf_counterClockNumbering = EBWeakEventSet ()
+
+  //····················································································································
+
+  var counterClockNumbering_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.counterClockNumbering_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_counterClockNumbering (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_counterClockNumbering.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.counterClockNumbering_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_counterClockNumbering (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_counterClockNumbering.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.counterClockNumbering_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_counterClockNumbering_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_counterClockNumbering.apply { (_ observer : EBEvent) in
+        managedObject.counterClockNumbering_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_counterClockNumbering_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_counterClockNumbering.apply { (_ observer : EBEvent) in
+        managedObject.counterClockNumbering_property.removeEBObserver (observer)
       }
     }
   }
