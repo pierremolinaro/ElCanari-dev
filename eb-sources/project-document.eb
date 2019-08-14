@@ -184,6 +184,16 @@ document ProjectDocument root ProjectRoot {
     $enabled #projectDeviceController.selectedArray.count > 0
   ;
 
+  action renameDeviceAction ;
+  outlet EBButton mRenameDeviceButton
+    $run renameDeviceAction
+    $enabled #projectDeviceController.selectedArray.count == 1
+  ;
+  outlet NSPanel mRenameDevicePanel ;
+  outlet EBTextField mRenameDeviceNameTextField ;
+  outlet NSTextField mRenameDeviceErrorMessageTextField ;
+  outlet NSButton mRenameDeviceValidationButton ;
+
   action exportDeviceAction ;
   outlet EBButton mExportDeviceButton
     $run exportDeviceAction

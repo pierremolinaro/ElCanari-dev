@@ -82,10 +82,11 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
 
   //····················································································································
 
-  init (dimension:EBReadWriteProperty_Int,
-        unit:EBReadOnlyProperty_Int,
+  init (dimension : EBReadWriteProperty_Int,
+        unit : EBReadOnlyProperty_Int,
         outlet : CanariDimensionTextField,
-        file : String, line : Int) {
+        file : String,
+        line : Int) {
     mDimension = dimension
     mUnit = unit
     mOutlet = outlet

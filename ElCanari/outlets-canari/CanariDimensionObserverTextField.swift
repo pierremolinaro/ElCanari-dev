@@ -13,22 +13,39 @@ import Cocoa
 
 class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
+  private var mNumberFormatter : NumberFormatter
+
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    mNumberFormatter = NumberFormatter ()
+    super.init (coder: coder)
     self.delegate = self
     noteObjectAllocation (self)
+    self.configureFormatter ()
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    mNumberFormatter = NumberFormatter ()
+    super.init (frame: frame)
     self.delegate = self
     noteObjectAllocation (self)
+    self.configureFormatter ()
   }
-  
+
+  //····················································································································
+
+  private func configureFormatter () {
+    self.mNumberFormatter.formatterBehavior = .behavior10_4
+    self.mNumberFormatter.numberStyle = .decimal
+    self.mNumberFormatter.localizesFormat = true
+    self.mNumberFormatter.minimumFractionDigits = 2
+    self.mNumberFormatter.maximumFractionDigits = 2
+    self.mNumberFormatter.isLenient = true
+  }
+
   //····················································································································
 
   deinit {
@@ -59,14 +76,16 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
 
   //····················································································································
 
-  private var mController : Controller_CanariDimensionObserverTextField_dimensionAndUnit?
+  private var mController : EBSimpleController?
 
   //····················································································································
 
-  func bind_dimensionAndUnit (_ object : EBReadOnlyProperty_Int,
+  func bind_dimensionAndUnit (_ dimension : EBReadOnlyProperty_Int,
                               _ unit : EBReadOnlyProperty_Int,
-                              file : String, line:Int) {
-    self.mController = Controller_CanariDimensionObserverTextField_dimensionAndUnit (dimension:object, unit:unit, outlet:self, file:file, line:line)
+                              file : String,
+                              line : Int) {
+//    self.mController = EBSimpleController (dimension:object, unit:unit, outlet:self, file:file, line:line)
+    self.mController = EBSimpleController (observedObjects: [dimension, unit], callBack: { self.updateOutlet (dimension: dimension, unit: unit) })
   }
 
   //····················································································································
@@ -84,23 +103,20 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
 //   Controller Controller_CanariDimensionObserverTextField_dimensionAndUnit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariDimensionObserverTextField_dimensionAndUnit : EBSimpleController {
-
-  //····················································································································
-
-  init (dimension:EBReadOnlyProperty_Int,
-        unit:EBReadOnlyProperty_Int,
-        outlet : CanariDimensionObserverTextField,
-        file : String, line : Int) {
-    super.init (observedObjects: [dimension, unit], callBack: { outlet.updateOutlet(dimension: dimension, unit: unit) })
-    if outlet.formatter == nil {
-      presentErrorWindow (file, line, "the CanariDimensionObserverTextField outlet has no formatter")
-    }
-  }
-
-  //····················································································································
-
-}
+//final class Controller_CanariDimensionObserverTextField_dimensionAndUnit : EBSimpleController {
+//
+//  //····················································································································
+//
+//  init (dimension:EBReadOnlyProperty_Int,
+//        unit:EBReadOnlyProperty_Int,
+//        outlet : CanariDimensionObserverTextField,
+//        file : String, line : Int) {
+//    super.init (observedObjects: [dimension, unit], callBack: { outlet.updateOutlet(dimension: dimension, unit: unit) })
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

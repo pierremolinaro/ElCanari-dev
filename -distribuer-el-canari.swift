@@ -24,11 +24,11 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.3"
+let VERSION_CANARI = "1.0.4"
 let NOTES : [String] = []
-let BUGFIXES : [String] = []
-let CHANGES : [String] = ["FreeRouter: the size has been slightly reduced"]
-let NEWS : [String] = ["Package: counterclock autonumbering start angle"]
+let BUGFIXES : [String] = ["Rounding of dimension text fields"]
+let CHANGES : [String] = []
+let NEWS : [String] = ["Project: Rename device name dialog"]
 let BUILD_KIND = ProductKind.release
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
