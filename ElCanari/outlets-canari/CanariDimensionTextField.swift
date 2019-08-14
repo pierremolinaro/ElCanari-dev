@@ -123,7 +123,8 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
       break
     case .single (let unit) :
       if let outletValueNumber = self.mNumberFormatter.number (from: self.mOutlet.stringValue) {
-        let value : Int = 90 * Int (round (outletValueNumber.doubleValue * Double (unit) / 90.0))
+     //   let value : Int = 90 * Int (round (outletValueNumber.doubleValue * Double (unit) / 90.0))
+        let value : Int = Int ((outletValueNumber.doubleValue * Double (unit)).rounded ())
         _ = self.mDimension.validateAndSetProp (value, windowForSheet: sender.window)
       }else{
         __NSBeep ()
