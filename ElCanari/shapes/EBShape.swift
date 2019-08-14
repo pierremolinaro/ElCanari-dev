@@ -204,7 +204,16 @@ struct EBShape : Hashable {
       bp.lineWidth = 0.5
       bp.lineJoinStyle = .round
       bp.lineCapStyle = .round
-      let e1 = EBShapeElement ([bp], .white, inKnobIndex, .none)
+      let rgbColor = inColor.usingColorSpace (.sRGB)
+      var red : CGFloat = 0.0
+      var green : CGFloat = 0.0
+      var blue : CGFloat = 0.0
+      rgbColor?.getRed (&red, green: &green, blue: &blue, alpha: nil)
+      red += 0.5 ; if red > 1.0 { red -= 1.0 }
+      green += 0.5 ; if green > 1.0 { green -= 1.0 }
+      blue += 0.5 ; if blue > 1.0 { blue -= 1.0 }
+      let backgroundColor = NSColor (red: red, green: green, blue: blue, alpha: 1.0)
+      let e1 = EBShapeElement ([bp], backgroundColor, inKnobIndex, .none)
       self.mElements.append (e1)
       let e2 = EBShapeElement ([bp.pathByStroking], .cyan, inKnobIndex, .none)
       self.mElements.append (e2)
