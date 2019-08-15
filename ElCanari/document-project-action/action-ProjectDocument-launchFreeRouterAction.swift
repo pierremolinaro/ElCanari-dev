@@ -15,10 +15,17 @@ extension ProjectDocument {
   @objc func launchFreeRouterAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
         if let freeRouterApplication : String = Bundle.main.path (forResource: "freerouter-pm", ofType: "app") {
-          // Swift.print (freeRouterApplication)
-          _ = NSWorkspace.shared.launchApplication (freeRouterApplication)
+          let ok = NSWorkspace.shared.launchApplication (freeRouterApplication)
+          if !ok {
+            let alert = NSAlert ()
+            alert.messageText = "Cannot launch FreeRouter application"
+            alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+          }
         }else{
-
+            let alert = NSAlert ()
+            alert.messageText = "Internal Error"
+            alert.informativeText = "FreeRouter application does not exist."
+            alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
         }
 //--- END OF USER ZONE 2
   }

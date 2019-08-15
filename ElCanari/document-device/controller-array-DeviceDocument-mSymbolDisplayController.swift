@@ -879,12 +879,16 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   var canRotate90Clockwise : Bool {
-    for object in self.selectedArray_property.propset {
-      if object.canRotate90Clockwise () {
-        return true
+    if self.selectedArray.count == 0 {
+      return false
+    }else{
+      for object in self.selectedArray {
+        if !object.canRotate90Clockwise () {
+          return false
+        }
       }
+      return true
     }
-    return false
   }
 
  //····················································································································
@@ -905,12 +909,16 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   var canRotate90CounterClockwise : Bool {
-    for object in self.selectedArray_property.propset {
-      if object.canRotate90CounterClockwise () {
-        return true
+    if self.selectedArray.count == 0 {
+      return false
+    }else{
+      for object in self.selectedArray {
+        if !object.canRotate90CounterClockwise () {
+          return false
+        }
       }
+      return true
     }
-    return false
   }
 
   //····················································································································

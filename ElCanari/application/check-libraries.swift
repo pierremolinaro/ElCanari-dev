@@ -81,7 +81,7 @@ func checkLibrary (_ window : NSWindow,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func presentAlertWithLocalizedMessage (_ inLocalizedMessage : String, window:NSWindow) {
+private func presentAlertWithLocalizedMessage (_ inLocalizedMessage : String, window : NSWindow) {
   let alert = NSAlert ()
   alert.messageText = inLocalizedMessage
   alert.beginSheetModal (for: window) { (NSModalResponse) in }

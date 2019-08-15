@@ -16,15 +16,15 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     noteObjectAllocation (self)
   }
 
@@ -86,20 +86,20 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
   private func buildMenu () {
     self.enableFromValueBinding (self.mDocument != nil)
     if let document = self.mDocument {
-      let allZones = document.rootObject.packageZones_property.propval
+      let allZones = document.rootObject.packageZones
       var myZone : PackageZone? = nil
       for zone in allZones {
-        if zone.zoneName == mCurrentZoneName {
+        if zone.zoneName == self.mCurrentZoneName {
           myZone = zone
           break
         }
       }
-      let allPads = document.rootObject.packagePads_property.propval.sorted (by: { $0.padNumber < $1.padNumber } )
+      let allPads = document.rootObject.packagePads.sorted (by: { $0.padNumber < $1.padNumber } )
       self.removeAllItems ()
       self.autoenablesItems = false
       self.addItem (withTitle: "Exchange with")
       for pad in allPads {
-        if pad.zone_property.propval === myZone {
+        if pad.zone === myZone {
           self.addItem (withTitle: pad.padName ?? "?")
           let menuItem = self.lastItem!
           menuItem.isEnabled = pad.padNumber != self.mCurrentPadNumber
@@ -113,10 +113,10 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
 
   //····················································································································
 
-  @objc func performRenumbering (_ inSender: NSMenuItem) {
+  @objc func performRenumbering (_ inSender : NSMenuItem) {
    // Swift.print ("Exchange \(self.mCurrentPadNumber) <-> \(inSender.tag)")
     if let document = self.mDocument {
-      let allPads = document.rootObject.packagePads_property.propval
+      let allPads = document.rootObject.packagePads
       for pad in allPads {
         if pad.padNumber == self.mCurrentPadNumber {
           pad.padNumber = inSender.tag
