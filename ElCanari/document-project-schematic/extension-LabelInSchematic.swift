@@ -54,7 +54,7 @@ extension LabelInSchematic {
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation270
@@ -69,7 +69,7 @@ extension LabelInSchematic {
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation90

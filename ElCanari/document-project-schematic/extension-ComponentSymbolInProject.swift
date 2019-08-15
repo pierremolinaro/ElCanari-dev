@@ -100,8 +100,8 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
-    let p = inRect.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
+  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let p = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y
     if self.mMirror {
@@ -113,8 +113,8 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
-    let p = inRect.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
+  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let p = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y
     if self.mMirror {

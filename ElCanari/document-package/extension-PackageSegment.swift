@@ -69,6 +69,40 @@ extension PackageSegment {
   }
 
   //····················································································································
+  //  Rotate 90°
+  //····················································································································
+
+  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+    let p1  = CanariPoint (x: self.x1, y: self.y1)
+    let p2  = CanariPoint (x: self.x2, y: self.y2)
+    accumulatedPoints.insert (p1)
+    accumulatedPoints.insert (p2)
+    return true
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
+    let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
+    self.x1 = p1.x
+    self.y1 = p1.y
+    self.x2 = p2.x
+    self.y2 = p2.y
+  }
+
+  //····················································································································
+
+  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
+    let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
+    self.x1 = p1.x
+    self.y1 = p1.y
+    self.x2 = p2.x
+    self.y2 = p2.y
+  }
+
+  //····················································································································
   //  COPY AND PASTE
   //····················································································································
 

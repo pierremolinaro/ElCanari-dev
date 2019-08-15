@@ -106,15 +106,11 @@ extension PackageBezier {
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
-    var p1  = CanariPoint (x: self.x1, y: self.y1)
-    var p2  = CanariPoint (x: self.x2, y: self.y2)
-    var cp1 = CanariPoint (x: self.cpx1, y: self.cpy1)
-    var cp2 = CanariPoint (x: self.cpx2, y: cpy2)
-    p1 = inRect.rotated90Clockwise (p1)
-    p2 = inRect.rotated90Clockwise (p2)
-    cp1 = inRect.rotated90Clockwise (cp1)
-    cp2 = inRect.rotated90Clockwise (cp2)
+  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
+    let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
+    let cp1 = inRotationCenter.rotated90Clockwise (x: self.cpx1, y: self.cpy1)
+    let cp2 = inRotationCenter.rotated90Clockwise (x: self.cpx2, y: self.cpy2)
     self.x1 = p1.x
     self.y1 = p1.y
     self.cpx1 = cp1.x
@@ -127,15 +123,11 @@ extension PackageBezier {
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
-    var p1  = CanariPoint (x: self.x1, y: self.y1)
-    var p2  = CanariPoint (x: self.x2, y: self.y2)
-    var cp1 = CanariPoint (x: self.cpx1, y: self.cpy1)
-    var cp2 = CanariPoint (x: self.cpx2, y: cpy2)
-    p1 = inRect.rotated90CounterClockwise (p1)
-    p2 = inRect.rotated90CounterClockwise (p2)
-    cp1 = inRect.rotated90CounterClockwise (cp1)
-    cp2 = inRect.rotated90CounterClockwise (cp2)
+  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
+    let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
+    let cp1 = inRotationCenter.rotated90CounterClockwise (x: self.cpx1, y: self.cpy1)
+    let cp2 = inRotationCenter.rotated90CounterClockwise (x: self.cpx2, y: self.cpy2)
     self.x1 = p1.x
     self.y1 = p1.y
     self.cpx1 = cp1.x

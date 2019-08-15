@@ -45,13 +45,13 @@ extension PackageGuide {
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return x1 != x2
+    return self.x1 != self.x2
   }
 
   //····················································································································
 
   override func flipHorizontally () {
-    (x1, x2) = (x2, x1)
+    (self.x1, self.x2) = (self.x2, self.x1)
   }
 
   //····················································································································
@@ -59,13 +59,45 @@ extension PackageGuide {
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return y1 != y2
+    return self.y1 != self.y2
   }
 
   //····················································································································
 
   override func flipVertically () {
-    (y1, y2) = (y2, y1)
+    (self.y1, self.y2) = (self.y2, self.y1)
+  }
+
+  //····················································································································
+  //  Rotate 90°
+  //····················································································································
+
+  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+    accumulatedPoints.insert (x: self.x1, y: self.y1)
+    accumulatedPoints.insert (x: self.x2, y: self.y2)
+    return true
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
+    self.x1 = p1.x
+    self.y1 = p1.y
+    let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
+    self.x2 = p2.x
+    self.y2 = p2.y
+  }
+
+  //····················································································································
+
+  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
+    self.x1 = p1.x
+    self.y1 = p1.y
+    let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
+    self.x2 = p2.x
+    self.y2 = p2.y
   }
 
   //····················································································································

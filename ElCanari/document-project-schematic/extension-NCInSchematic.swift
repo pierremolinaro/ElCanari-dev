@@ -25,12 +25,14 @@ extension NCInSchematic {
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+    let p = self.mPoint!.location!
+    accumulatedPoints.insert (p)
     return true
   }
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation270
@@ -45,8 +47,8 @@ extension NCInSchematic {
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
-    switch self.mOrientation {
+  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+  switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation90
     case .rotation90 :

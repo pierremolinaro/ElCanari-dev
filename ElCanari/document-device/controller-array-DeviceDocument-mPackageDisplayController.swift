@@ -880,9 +880,9 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
 
   func rotate90Clockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet.points))
-    var userSet = OCObjectSet ()
+    let userSet = OCObjectSet ()
     for object in self.selectedArray {
-      object.rotate90Clockwise (from: OCCanariRect (r), userSet: userSet)
+      object.rotate90Clockwise (from: OCCanariPoint (r.center), userSet: userSet)
     }
   }
 
@@ -890,9 +890,9 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
 
   func rotate90CounterClockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet.points))
-    var userSet = OCObjectSet ()
+    let userSet = OCObjectSet ()
     for object in self.selectedArray {
-      object.rotate90CounterClockwise (from: OCCanariRect (r), userSet: userSet)
+      object.rotate90CounterClockwise (from: OCCanariPoint (r.center), userSet: userSet)
     }
   }
 

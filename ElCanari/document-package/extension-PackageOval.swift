@@ -70,6 +70,34 @@ extension PackageOval {
   }
 
   //····················································································································
+  //  Rotate 90°
+  //····················································································································
+
+  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+    accumulatedPoints.insert (x: self.x, y: self.y)
+    accumulatedPoints.insert (x: self.x + self.width, y: self.y + self.height)
+    return true
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let newCenter = inRotationCenter.rotated90Clockwise (x: self.x + self.width / 2, y: self.y + self.height / 2)
+    (self.width, self.height) = (self.height, self.width)
+    self.x = newCenter.x - self.width / 2
+    self.y = newCenter.y - self.height / 2
+  }
+
+  //····················································································································
+
+  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.x + self.width / 2, y: self.y + self.height / 2)
+    (self.width, self.height) = (self.height, self.width)
+    self.x = newCenter.x - self.width / 2
+    self.y = newCenter.y - self.height / 2
+  }
+
+  //····················································································································
   //  COPY AND PASTE
   //····················································································································
 

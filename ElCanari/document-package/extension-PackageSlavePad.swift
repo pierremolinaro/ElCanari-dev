@@ -28,6 +28,35 @@ extension PackageSlavePad {
   }
 
   //····················································································································
+  //  Rotate 90°
+  //····················································································································
+
+  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+    accumulatedPoints.insert (x: self.xCenter, y: self.yCenter)
+    return true
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let newCenter = inRotationCenter.rotated90Clockwise (x: self.xCenter, y: self.yCenter)
+    self.xCenter = newCenter.x
+    self.yCenter = newCenter.y
+    (self.width, self.height) = (self.height, self.width)
+    (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
+  }
+
+  //····················································································································
+
+  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.xCenter, y: self.yCenter)
+    self.xCenter = newCenter.x
+    self.yCenter = newCenter.y
+    (self.width, self.height) = (self.height, self.width)
+    (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
+  }
+
+  //····················································································································
   //  Knob
   //····················································································································
 
