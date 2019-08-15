@@ -138,8 +138,8 @@ extension BoardRestrictRectangle {
 
   override func alignmentPoints () -> OCCanariPointSet {
     let result = OCCanariPointSet ()
-    result.points.insert (CanariPoint (x: self.mX, y: self.mY))
-    result.points.insert (CanariPoint (x: self.mX + self.mWidth, y: self.mY + self.mHeight))
+    result.insert (CanariPoint (x: self.mX, y: self.mY))
+    result.insert (CanariPoint (x: self.mX + self.mWidth, y: self.mY + self.mHeight))
     return result
   }
 

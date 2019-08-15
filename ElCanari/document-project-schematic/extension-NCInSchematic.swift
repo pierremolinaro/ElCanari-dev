@@ -21,10 +21,16 @@ extension NCInSchematic {
   }
 
   //····················································································································
-  //  ROTATE 90 CLOCKWISE
+  //  ROTATE 90
   //····················································································································
 
-  override func rotate90Clockwise () {
+  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+    return true
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation270
@@ -39,15 +45,7 @@ extension NCInSchematic {
 
   //····················································································································
 
-  override func canRotate90Clockwise () -> Bool {
-    return true
-  }
-
-  //····················································································································
-  //  ROTATE 90 COUNTER CLOCKWISE
-  //····················································································································
-
-  override func rotate90CounterClockwise () {
+  override func rotate90CounterClockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation90
@@ -58,12 +56,6 @@ extension NCInSchematic {
     case .rotation270 :
       self.mOrientation = .rotation0
     }
-  }
-
-  //····················································································································
-
-  override func canRotate90CounterClockwise () -> Bool {
-    return true
   }
 
   //····················································································································

@@ -81,7 +81,7 @@ extension PackagePad {
 
   override func alignmentPoints () -> OCCanariPointSet {
     let result = OCCanariPointSet ()
-    result.points.insert (CanariPoint (x: self.xCenter, y: self.yCenter))
+    result.insert (CanariPoint (x: self.xCenter, y: self.yCenter))
     return result
   }
 

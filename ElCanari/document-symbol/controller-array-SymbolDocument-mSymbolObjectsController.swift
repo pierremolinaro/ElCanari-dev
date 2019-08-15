@@ -128,23 +128,14 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
     }
     self.selectedArray_property.addEBObserver (self.canFlipVertically_property)
   //---
-    self.canRotate90Clockwise_property.mReadModelFunction = { [weak self] in
+    self.canRotate90_property.mReadModelFunction = { [weak self] in
       if let me = self {
-        return .single (me.canRotate90Clockwise)
+        return .single (me.canRotate90)
       }else{
         return .empty
       }
     }
-    self.selectedArray_property.addEBObserver (self.canRotate90Clockwise_property)
-  //---
-    self.canRotate90CounterClockwise_property.mReadModelFunction = { [weak self] in
-      if let me = self {
-        return .single (me.canRotate90CounterClockwise)
-      }else{
-        return .empty
-      }
-    }
-    self.selectedArray_property.addEBObserver (self.canRotate90CounterClockwise_property)
+    self.selectedArray_property.addEBObserver (self.canRotate90_property)
   }
 
   //····················································································································
@@ -862,62 +853,46 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
   }
 
   //····················································································································
-  // ROTATE 90 CLOCKWISE
+  // ROTATE 90
   // MARK: -
   //····················································································································
 
-  var canRotate90Clockwise_property = EBTransientProperty_Bool ()
+  var canRotate90_property = EBTransientProperty_Bool ()
+  private var mRotate90PointSet = OCCanariPointSet ()
+
+ //····················································································································
+
+  var canRotate90 : Bool {
+    self.mRotate90PointSet.removeAll ()
+    if self.selectedArray.count == 0 {
+      return false
+    }else{
+      for object in self.selectedArray {
+        if !object.canRotate90 (accumulatedPoints: self.mRotate90PointSet) {
+          return false
+        }
+      }
+      return !self.mRotate90PointSet.isEmpty
+    }
+  }
 
   //····················································································································
 
   func rotate90Clockwise () {
-    for object in self.selectedArray_property.propset {
-      object.rotate90Clockwise ()
+    let r = CanariRect (points: Array (self.mRotate90PointSet.points))
+    var userSet = OCObjectSet ()
+    for object in self.selectedArray {
+      object.rotate90Clockwise (from: OCCanariRect (r), userSet: userSet)
     }
   }
-
-  //····················································································································
-
-  var canRotate90Clockwise : Bool {
-    if self.selectedArray.count == 0 {
-      return false
-    }else{
-      for object in self.selectedArray {
-        if !object.canRotate90Clockwise () {
-          return false
-        }
-      }
-      return true
-    }
-  }
-
- //····················································································································
-  // ROTATE 90 COUNTER CLOCKWISE
-  // MARK: -
-  //····················································································································
-
-  var canRotate90CounterClockwise_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
   func rotate90CounterClockwise () {
-    for object in self.selectedArray_property.propset {
-      object.rotate90CounterClockwise ()
-    }
-  }
-
-  //····················································································································
-
-  var canRotate90CounterClockwise : Bool {
-    if self.selectedArray.count == 0 {
-      return false
-    }else{
-      for object in self.selectedArray {
-        if !object.canRotate90CounterClockwise () {
-          return false
-        }
-      }
-      return true
+    let r = CanariRect (points: Array (self.mRotate90PointSet.points))
+    var userSet = OCObjectSet ()
+    for object in self.selectedArray {
+      object.rotate90CounterClockwise (from: OCCanariRect (r), userSet: userSet)
     }
   }
 

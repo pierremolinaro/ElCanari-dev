@@ -89,25 +89,32 @@ extension PackageBezier {
   }
 
   //····················································································································
-  //  Rotate clockwise
+  //  Rotate 90°
   //····················································································································
 
-  override func canRotate90Clockwise () -> Bool {
+  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+    let p1  = CanariPoint (x: self.x1, y: self.y1)
+    let p2  = CanariPoint (x: self.x2, y: self.y2)
+    let cp1 = CanariPoint (x: self.cpx1, y: self.cpy1)
+    let cp2 = CanariPoint (x: self.cpx2, y: cpy2)
+    accumulatedPoints.insert (p1)
+    accumulatedPoints.insert (p2)
+    accumulatedPoints.insert (cp1)
+    accumulatedPoints.insert (cp2)
     return true
   }
 
   //····················································································································
 
-  override func rotate90Clockwise () {
+  override func rotate90Clockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
     var p1  = CanariPoint (x: self.x1, y: self.y1)
     var p2  = CanariPoint (x: self.x2, y: self.y2)
     var cp1 = CanariPoint (x: self.cpx1, y: self.cpy1)
     var cp2 = CanariPoint (x: self.cpx2, y: cpy2)
-    let r = CanariRect (p1: p1, p2: p2, p3: cp1, p4: cp2)
-    p1 = r.rotated90Clockwise (p1)
-    p2 = r.rotated90Clockwise (p2)
-    cp1 = r.rotated90Clockwise (cp1)
-    cp2 = r.rotated90Clockwise (cp2)
+    p1 = inRect.rotated90Clockwise (p1)
+    p2 = inRect.rotated90Clockwise (p2)
+    cp1 = inRect.rotated90Clockwise (cp1)
+    cp2 = inRect.rotated90Clockwise (cp2)
     self.x1 = p1.x
     self.y1 = p1.y
     self.cpx1 = cp1.x
@@ -119,25 +126,16 @@ extension PackageBezier {
   }
 
   //····················································································································
-  //  Rotate counter clockwise
-  //····················································································································
 
-  override func canRotate90CounterClockwise () -> Bool {
-    return true
-  }
-
-  //····················································································································
-
-  override func rotate90CounterClockwise () {
+  override func rotate90CounterClockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
     var p1  = CanariPoint (x: self.x1, y: self.y1)
     var p2  = CanariPoint (x: self.x2, y: self.y2)
     var cp1 = CanariPoint (x: self.cpx1, y: self.cpy1)
     var cp2 = CanariPoint (x: self.cpx2, y: cpy2)
-    let r = CanariRect (p1: p1, p2: p2, p3: cp1, p4: cp2)
-    p1 = r.rotated90CounterClockwise (p1)
-    p2 = r.rotated90CounterClockwise (p2)
-    cp1 = r.rotated90CounterClockwise (cp1)
-    cp2 = r.rotated90CounterClockwise (cp2)
+    p1 = inRect.rotated90CounterClockwise (p1)
+    p2 = inRect.rotated90CounterClockwise (p2)
+    cp1 = inRect.rotated90CounterClockwise (cp1)
+    cp2 = inRect.rotated90CounterClockwise (cp2)
     self.x1 = p1.x
     self.y1 = p1.y
     self.cpx1 = cp1.x
@@ -203,10 +201,10 @@ extension PackageBezier {
 
   override func alignmentPoints () -> OCCanariPointSet {
     let result = OCCanariPointSet ()
-    result.points.insert (CanariPoint (x: self.x1, y: self.y1))
-    result.points.insert (CanariPoint (x: self.x2, y: self.y2))
-    result.points.insert (CanariPoint (x: self.cpx1, y: self.cpy1))
-    result.points.insert (CanariPoint (x: self.cpx2, y: self.cpy2))
+    result.insert (CanariPoint (x: self.x1, y: self.y1))
+    result.insert (CanariPoint (x: self.x2, y: self.y2))
+    result.insert (CanariPoint (x: self.cpx1, y: self.cpy1))
+    result.insert (CanariPoint (x: self.cpx2, y: self.cpy2))
     return result
   }
 

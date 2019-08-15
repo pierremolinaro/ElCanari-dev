@@ -40,9 +40,9 @@ extension EBGraphicView {
     }else if action == #selector (EBGraphicView.flipVertically(_:)) {
       validate = self.viewController?.canFlipVertically ?? false
     }else if action == #selector (EBGraphicView.rotate90Clockwise(_:)) {
-      validate = self.viewController?.canRotate90Clockwise ?? false
+      validate = self.viewController?.canRotate90 ?? false
     }else if action == #selector (EBGraphicView.rotate90CounterClockwise(_:)) {
-      validate = self.viewController?.canRotate90CounterClockwise ?? false
+      validate = self.viewController?.canRotate90 ?? false
     }else{
       validate = false
     }

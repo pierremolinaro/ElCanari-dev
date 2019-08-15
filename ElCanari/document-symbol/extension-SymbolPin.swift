@@ -189,9 +189,9 @@ extension SymbolPin {
 
   override func alignmentPoints () -> OCCanariPointSet {
     let result = OCCanariPointSet ()
-    result.points.insert (CanariPoint (x: self.xPin, y: self.yPin))
-    result.points.insert (CanariPoint (x: self.xName, y: self.yName))
-    result.points.insert (CanariPoint (x: self.xNumber, y: self.yNumber))
+    result.insert (CanariPoint (x: self.xPin, y: self.yPin))
+    result.insert (CanariPoint (x: self.xName, y: self.yName))
+    result.insert (CanariPoint (x: self.xNumber, y: self.yNumber))
     return result
   }
 

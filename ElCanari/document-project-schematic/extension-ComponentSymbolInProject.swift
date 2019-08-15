@@ -92,13 +92,18 @@ extension ComponentSymbolInProject {
   //  ROTATE 90 CLOCKWISE
   //····················································································································
 
-  override func canRotate90Clockwise () -> Bool {
+  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+    let p = CanariPoint (x: self.mCenterX, y: self.mCenterY)
+    accumulatedPoints.insert (p)
     return true
   }
 
   //····················································································································
 
-  override func rotate90Clockwise () {
+  override func rotate90Clockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
+    let p = inRect.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
+    self.mCenterX = p.x
+    self.mCenterY = p.y
     if self.mMirror {
       self.mRotation.rotateCounterClockwise ()
     }else{
@@ -107,16 +112,11 @@ extension ComponentSymbolInProject {
   }
 
   //····················································································································
-  //  ROTATE 90 COUNTER CLOCKWISE
-  //····················································································································
 
-  override func canRotate90CounterClockwise () -> Bool {
-    return true
-  }
-
-  //····················································································································
-
-  override func rotate90CounterClockwise () {
+  override func rotate90CounterClockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
+    let p = inRect.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
+    self.mCenterX = p.x
+    self.mCenterY = p.y
     if self.mMirror {
       self.mRotation.rotateClockwise ()
     }else{
@@ -165,15 +165,15 @@ extension ComponentSymbolInProject {
     let result = OCCanariPointSet ()
     if let symbolInfo = self.symbolInfo {
       for pin in symbolInfo.pins {
-        result.points.insert (pin.pinLocation)
+        result.insert (pin.pinLocation)
       }
     }
     if self.mDisplayComponentValue {
       let p = CanariPoint (x: self.mCenterX + self.mDisplayComponentValueOffsetX, y: self.mCenterY + self.mDisplayComponentValueOffsetY)
-      result.points.insert (p)
+      result.insert (p)
     }
     let p = CanariPoint (x: self.mCenterX + self.mDisplayComponentNameOffsetX, y: self.mCenterY + self.mDisplayComponentNameOffsetY)
-    result.points.insert (p)
+    result.insert (p)
     return result
   }
 

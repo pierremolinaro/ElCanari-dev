@@ -59,7 +59,7 @@ extension CommentInSchematic {
 
   override func alignmentPoints () -> OCCanariPointSet {
     let result = OCCanariPointSet ()
-    result.points.insert (CanariPoint (x: self.mX, y: self.mY))
+    result.insert (CanariPoint (x: self.mX, y: self.mY))
     return result
   }
 

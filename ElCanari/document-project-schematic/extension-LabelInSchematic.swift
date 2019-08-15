@@ -43,10 +43,18 @@ extension LabelInSchematic {
   }
 
   //····················································································································
-  //  ROTATE 90 CLOCKWISE
+  //  ROTATE 90
   //····················································································································
 
-  override func rotate90Clockwise () {
+  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+    let p = CanariPoint (x: self.mPoint!.mX, y: self.mPoint!.mY)
+    accumulatedPoints.insert (p)
+    return true
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation270
@@ -61,15 +69,7 @@ extension LabelInSchematic {
 
   //····················································································································
 
-  override func canRotate90Clockwise () -> Bool {
-    return true
-  }
-
-  //····················································································································
-  //  ROTATE 90 COUNTER CLOCKWISE
-  //····················································································································
-
-  override func rotate90CounterClockwise () {
+  override func rotate90CounterClockwise (from inRect : OCCanariRect, userSet ioSet : OCObjectSet) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation90
@@ -80,12 +80,6 @@ extension LabelInSchematic {
     case .rotation270 :
       self.mOrientation = .rotation0
     }
-  }
-
-  //····················································································································
-
-  override func canRotate90CounterClockwise () -> Bool {
-    return true
   }
 
   //····················································································································

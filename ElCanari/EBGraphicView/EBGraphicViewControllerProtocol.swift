@@ -56,10 +56,8 @@ protocol EBGraphicViewControllerProtocol : class {
   var canFlipVertically : Bool { get }
   func flipVertically ()
 
-  var canRotate90Clockwise : Bool { get }
+  var canRotate90 : Bool { get }
   func rotate90Clockwise ()
-
-  var canRotate90CounterClockwise : Bool { get }
   func rotate90CounterClockwise ()
 
 //  var canGroup : Bool { get }
