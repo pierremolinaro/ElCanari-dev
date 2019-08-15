@@ -20,21 +20,39 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @IBAction internal func performGenerateDSNFileAction (_ inUnusedSender : Any?) {
-    let s = self.dsnContents ()
+    var hasTrack = false
+    for object in self.rootObject.mBoardObjects {
+      if object is BoardTrack {
+        hasTrack = true
+        break
+      }
+    }
     let savePanel = NSSavePanel ()
+    savePanel.accessoryView = self.mSaveDSNFileAuxiliaryView
+    self.mExportTrackAndViasToDSNSwitch?.isEnabled = hasTrack
+    if !hasTrack {
+      self.mExportTrackAndViasToDSNSwitch?.state = .off
+    }
     savePanel.allowedFileTypes = ["dsn"]
     savePanel.allowsOtherFileTypes = false
     savePanel.nameFieldStringValue = "design.dsn"
     savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in
+      savePanel.orderOut (nil)
       if inResponse == .OK, let url = savePanel.url {
-        try? s.write (to: url, atomically: true, encoding: .ascii)
+        do{
+          let exportTracks = hasTrack && (self.mExportTrackAndViasToDSNSwitch!.state == .on)
+          let s = self.dsnContents (exportTracks)
+          try s.write (to: url, atomically: true, encoding: .utf8)
+        }catch (let error) {
+          self.windowForSheet!.presentError (error)
+        }
       }
     }
   }
 
   //····················································································································
 
-  private func dsnContents () -> String {
+  private func dsnContents (_ inExportTracks : Bool) -> String {
   //--- Border
     let boardLimitExtend = -self.rootObject.mBoardLimitsWidth / 2
     let boardBoundBox = self.rootObject.interiorBoundBox!.insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
@@ -136,6 +154,9 @@ extension CustomizedProjectDocument {
     addViaRules (&s, netClasses)
     addNetClasses (&s, netClasses)
     s += "  )\n"
+    if inExportTracks {
+      self.exportTracksAndVias (&s)
+    }
     s += ")\n"
     return s
   }
@@ -166,6 +187,44 @@ extension CustomizedProjectDocument {
       loop = p != descriptor.p1
     }
     return clearanceBP.pointsByFlattening (withFlatness: 0.1) [0]
+  }
+
+  //····················································································································
+
+  private func exportTracksAndVias (_ ioString : inout String) {
+    ioString += "  (wiring\n"
+  //--- Export tracks
+    for object in self.rootObject.mBoardObjects {
+      if let track = object as? BoardTrack {
+        let side : String
+        switch track.mSide {
+        case .front : side = COMPONENT_SIDE
+        case .back : side = SOLDER_SIDE
+        }
+        let netName = track.mNet!.mNetName
+        let widthMM = canariUnitToMillimeter (track.actualTrackWidth!)
+        let p1 = track.mConnectorP1!.location!.millimeterPoint
+        let p2 = track.mConnectorP2!.location!.millimeterPoint
+        ioString += "    (wire\n"
+        ioString += "      (path \(side) \(widthMM) \(p1.x) \(p1.y) \(p2.x) \(p2.y))\n"
+        ioString += "      (net \"\(netName)\")\n"
+        ioString += "      (clearance_class default)\n"
+        ioString += "    )\n"
+      }
+    }
+  //--- Export via
+    for object in self.rootObject.mBoardObjects {
+      if let via = object as? BoardConnector, let isVia = via.isVia, isVia {
+        let p = via.location!.millimeterPoint
+        let netName = via.netNameFromTracks!
+        ioString += "    (via \"viaForClassDefault\" \(p.x) \(p.y)\n"
+        ioString += "      (net \"\(netName)\")\n"
+        ioString += "      (clearance_class default)\n"
+        ioString += "    )\n"
+      }
+    }
+  //---
+    ioString += "  )\n"
   }
 
   //····················································································································
@@ -588,7 +647,6 @@ fileprivate func addNetClasses (_ ioString : inout String, _ inNetClasses : [Net
     ioString += "        (width \(netClass.trackWidthInMM))\n"
     ioString += "      )\n"
     ioString += "      (circuit\n"
-//    ioString += "        (use_layer \(COMPONENT_SIDE) \(SOLDER_SIDE))\n"
     ioString += "        (use_layer"
     if netClass.allowTracksOnFrontSide {
       ioString += " \(COMPONENT_SIDE)"

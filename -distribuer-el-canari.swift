@@ -24,11 +24,11 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.4"
+let VERSION_CANARI = "1.0.5"
 let NOTES : [String] = []
-let BUGFIXES : [String] = ["Rounding of dimension text fields"]
+let BUGFIXES : [String] = ["Project: export DSN file, when net names have accentuated letters"]
 let CHANGES : [String] = []
-let NEWS : [String] = ["Project: Rename device name dialog"]
+let NEWS : [String] = ["Project: checkbox for exporting tracks and vias to DSN file"]
 let BUILD_KIND = ProductKind.release
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

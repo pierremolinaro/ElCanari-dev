@@ -239,9 +239,6 @@ document ProjectDocument root ProjectRoot {
   outlet NSPanel mMoveSelectedObjectsToSheetPanel ;
   outlet EBPopUpButton mMoveSelectedObjectsToSheetPopUpButton ;
 
-//  outlet EBTextObserverField mConnexionErrorTextField $valueObserver root.connexionErrorString ;
-//  outlet EBTextObserverField mConnexionWarningTextField $valueObserver root.connexionWarningString ;
-
 //--- Contextual menus
   outlet NSPanel mMergeSeveralSubnetsPanel ;
   outlet EBPopUpButton mMergeSeveralSubnetsPopUpButton ;
@@ -623,6 +620,9 @@ document ProjectDocument root ProjectRoot {
   outlet CanariDimensionTextField mLayoutClearanceTextField
      $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit
   ;
+
+  outlet NSView mSaveDSNFileAuxiliaryView ;
+  outlet EBSwitch mExportTrackAndViasToDSNSwitch ;
 
   outlet CanariIssueTableView mERCIssueTableView ;
   outlet EBButton mHideERCIssueButton ;

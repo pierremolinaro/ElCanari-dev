@@ -714,6 +714,7 @@ import Cocoa
   @IBOutlet var mExchangeSymbolPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mExchangeSymbolSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet var mExportDeviceButton : EBButton? = nil
+  @IBOutlet var mExportTrackAndViasToDSNSwitch : EBSwitch? = nil
   @IBOutlet var mExtensionTextField : EBTextObserverField? = nil
   @IBOutlet var mFontLibraryTableView : EBTableView? = nil
   @IBOutlet var mFrontRestrictRectangleSwitch : EBSwitch? = nil
@@ -800,6 +801,7 @@ import Cocoa
   @IBOutlet var mResetSelectedDeviceVersionButton : EBButton? = nil
   @IBOutlet var mRestrictRectangleInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mRouterBoardInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet var mSaveDSNFileAuxiliaryView : NSView? = nil
   @IBOutlet var mSchematicLabelInsulateSubnetButton : EBButton? = nil
   @IBOutlet var mSchematicLabelMergeSubnetButton : EBButton? = nil
   @IBOutlet var mSchematicLabelNetClassButton : EBPopUpButton? = nil
@@ -1235,6 +1237,7 @@ import Cocoa
     checkOutletConnection (self.mExchangeSymbolPopUpButton, "mExchangeSymbolPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mExchangeSymbolSchematicHotKeyTextField, "mExchangeSymbolSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mExportTrackAndViasToDSNSwitch, "mExportTrackAndViasToDSNSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mExtensionTextField, "mExtensionTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mFrontRestrictRectangleSwitch, "mFrontRestrictRectangleSwitch", EBSwitch.self, #file, #line)
@@ -1321,6 +1324,7 @@ import Cocoa
     checkOutletConnection (self.mResetSelectedDeviceVersionButton, "mResetSelectedDeviceVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRestrictRectangleInspectorView, "mRestrictRectangleInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mRouterBoardInspectorView, "mRouterBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSaveDSNFileAuxiliaryView, "mSaveDSNFileAuxiliaryView", NSView.self, #file, #line)
     checkOutletConnection (self.mSchematicLabelInsulateSubnetButton, "mSchematicLabelInsulateSubnetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicLabelMergeSubnetButton, "mSchematicLabelMergeSubnetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicLabelNetClassButton, "mSchematicLabelNetClassButton", EBPopUpButton.self, #file, #line)
@@ -3155,6 +3159,7 @@ import Cocoa
     self.mExchangeSymbolPopUpButton?.ebCleanUp ()
     self.mExchangeSymbolSchematicHotKeyTextField?.ebCleanUp ()
     self.mExportDeviceButton?.ebCleanUp ()
+    self.mExportTrackAndViasToDSNSwitch?.ebCleanUp ()
     self.mExtensionTextField?.ebCleanUp ()
     self.mFontLibraryTableView?.ebCleanUp ()
     self.mFrontRestrictRectangleSwitch?.ebCleanUp ()
@@ -3241,6 +3246,7 @@ import Cocoa
     self.mResetSelectedDeviceVersionButton?.ebCleanUp ()
     self.mRestrictRectangleInspectorView?.ebCleanUp ()
     self.mRouterBoardInspectorView?.ebCleanUp ()
+    self.mSaveDSNFileAuxiliaryView?.ebCleanUp ()
     self.mSchematicLabelInsulateSubnetButton?.ebCleanUp ()
     self.mSchematicLabelMergeSubnetButton?.ebCleanUp ()
     self.mSchematicLabelNetClassButton?.ebCleanUp ()
@@ -3528,6 +3534,7 @@ import Cocoa
     self.mExchangeSymbolPopUpButton = nil
     self.mExchangeSymbolSchematicHotKeyTextField = nil
     self.mExportDeviceButton = nil
+    self.mExportTrackAndViasToDSNSwitch = nil
     self.mExtensionTextField = nil
     self.mFontLibraryTableView = nil
     self.mFrontRestrictRectangleSwitch = nil
@@ -3614,6 +3621,7 @@ import Cocoa
     self.mResetSelectedDeviceVersionButton = nil
     self.mRestrictRectangleInspectorView = nil
     self.mRouterBoardInspectorView = nil
+    self.mSaveDSNFileAuxiliaryView = nil
     self.mSchematicLabelInsulateSubnetButton = nil
     self.mSchematicLabelMergeSubnetButton = nil
     self.mSchematicLabelNetClassButton = nil
