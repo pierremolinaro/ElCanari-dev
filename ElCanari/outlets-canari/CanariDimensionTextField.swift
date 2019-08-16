@@ -8,16 +8,16 @@ class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFie
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     self.delegate = self
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     self.delegate = self
     noteObjectAllocation (self)
   }
@@ -78,7 +78,6 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
   private var mOutlet: CanariDimensionTextField
   private var mDimension : EBReadWriteProperty_Int
   private var mUnit : EBReadOnlyProperty_Int
-  private var mNumberFormatter : NumberFormatter
 
   //····················································································································
 
@@ -90,7 +89,6 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     mDimension = dimension
     mUnit = unit
     mOutlet = outlet
-    mNumberFormatter = NumberFormatter ()
     super.init (
       observedObjects:[dimension, unit],
       callBack: { outlet.updateOutlet (dimension: dimension, unit: unit) }
@@ -99,13 +97,14 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     self.mOutlet.target = self
     self.mOutlet.action = #selector(Controller_CanariDimensionTextField_dimensionAndUnit.action(_:))
   //--- Number formatter
-    self.mNumberFormatter.formatterBehavior = .behavior10_4
-    self.mNumberFormatter.numberStyle = .decimal
-    self.mNumberFormatter.localizesFormat = true
-    self.mNumberFormatter.minimumFractionDigits = 2
-    self.mNumberFormatter.maximumFractionDigits = 2
-    self.mNumberFormatter.isLenient = true
-    self.mOutlet.formatter = self.mNumberFormatter
+    let numberFormatter = NumberFormatter ()
+    numberFormatter.formatterBehavior = .behavior10_4
+    numberFormatter.numberStyle = .decimal
+    numberFormatter.localizesFormat = true
+    numberFormatter.minimumFractionDigits = 2
+    numberFormatter.maximumFractionDigits = 2
+    numberFormatter.isLenient = true
+    self.mOutlet.formatter = numberFormatter
   }
 
   //····················································································································
@@ -123,9 +122,8 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     case .empty, .multiple :
       break
     case .single (let unit) :
-      if let outletValueNumber = self.mNumberFormatter.number (from: self.mOutlet.stringValue) {
-     //   let value : Int = 90 * Int (round (outletValueNumber.doubleValue * Double (unit) / 90.0))
-        let value : Int = Int ((outletValueNumber.doubleValue * Double (unit)).rounded ())
+      if let formatter = self.mOutlet.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.mOutlet.stringValue) {
+        let value = Int ((outletValueNumber.doubleValue * Double (unit)).rounded ())
         _ = self.mDimension.validateAndSetProp (value, windowForSheet: sender.window)
       }else{
         __NSBeep ()

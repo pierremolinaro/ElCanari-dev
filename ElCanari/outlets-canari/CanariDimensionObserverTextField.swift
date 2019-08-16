@@ -13,12 +13,9 @@ import Cocoa
 
 class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
-  private var mNumberFormatter : NumberFormatter
-
   //····················································································································
 
   required init? (coder : NSCoder) {
-    mNumberFormatter = NumberFormatter ()
     super.init (coder: coder)
     self.delegate = self
     noteObjectAllocation (self)
@@ -28,7 +25,6 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
   //····················································································································
 
   override init (frame : NSRect) {
-    mNumberFormatter = NumberFormatter ()
     super.init (frame: frame)
     self.delegate = self
     noteObjectAllocation (self)
@@ -38,12 +34,14 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
   //····················································································································
 
   private func configureFormatter () {
-    self.mNumberFormatter.formatterBehavior = .behavior10_4
-    self.mNumberFormatter.numberStyle = .decimal
-    self.mNumberFormatter.localizesFormat = true
-    self.mNumberFormatter.minimumFractionDigits = 2
-    self.mNumberFormatter.maximumFractionDigits = 2
-    self.mNumberFormatter.isLenient = true
+    let numberFormatter = NumberFormatter ()
+    numberFormatter.formatterBehavior = .behavior10_4
+    numberFormatter.numberStyle = .decimal
+    numberFormatter.localizesFormat = true
+    numberFormatter.minimumFractionDigits = 2
+    numberFormatter.maximumFractionDigits = 2
+    numberFormatter.isLenient = true
+    self.formatter = numberFormatter
   }
 
   //····················································································································
@@ -84,7 +82,6 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
                               _ unit : EBReadOnlyProperty_Int,
                               file : String,
                               line : Int) {
-//    self.mController = EBSimpleController (dimension:object, unit:unit, outlet:self, file:file, line:line)
     self.mController = EBSimpleController (observedObjects: [dimension, unit], callBack: { self.updateOutlet (dimension: dimension, unit: unit) })
   }
 
