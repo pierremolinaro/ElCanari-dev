@@ -78,7 +78,7 @@ extension SheetInProject {
         }
       }
     //---
-      let netArray = Array (netSet).sorted { $0.mNetName < $1.mNetName }
+      let netArray = Array (netSet).sorted { $0.mNetName.uppercased () < $1.mNetName.uppercased () }
       if netArray.count == 0 { // Allocate a new net if a point has a label or a pin
         var hasPinOrLabel = false
         for p in points {

@@ -16,7 +16,7 @@ extension DeviceDocument {
 //--- START OF USER ZONE 2
         var possiblePadProxy : PadProxyInDevice? = nil
         if let selectedName = self.mUnconnectedPadsInDeviceTableView?.selectedPadName {
-          for padProxy in self.rootObject.mPadProxies_property.propval {
+          for padProxy in self.rootObject.mPadProxies {
             if padProxy.mPadName == selectedName {
               possiblePadProxy = padProxy
             }
@@ -24,8 +24,8 @@ extension DeviceDocument {
         }
         var possibleSymbolPin : SymbolPinInstanceInDevice? = nil
         if let selectedSymbolPin = self.mUnconnectedSymbolPinsInDeviceTableView?.selectedSymbolPin {
-          for symbolInstance in self.rootObject.mSymbolInstances_property.propval {
-            for symbolPin in symbolInstance.mPinInstances_property.propval {
+          for symbolInstance in self.rootObject.mSymbolInstances {
+            for symbolPin in symbolInstance.mPinInstances {
               if (symbolPin.pinName! == selectedSymbolPin.pinName) && (symbolPin.symbolName! == selectedSymbolPin.symbolInstanceName) {
                 possibleSymbolPin = symbolPin
               }
@@ -33,7 +33,7 @@ extension DeviceDocument {
           }
         }
         if let padProxy = possiblePadProxy, let symbolPin = possibleSymbolPin {
-          padProxy.mPinInstance_property.setProp (symbolPin)
+          padProxy.mPinInstance = symbolPin
           padProxy.mIsNC = false
         }
 //--- END OF USER ZONE 2

@@ -17,7 +17,7 @@ extension DeviceDocument {
     if let selectedPadProxy = self.mAssignedPadProxyTableView?.selectedPadProxy {
       for padProxy in self.rootObject.mPadProxies_property.propval {
         if padProxy.mPadName == selectedPadProxy.padName {
-          padProxy.mPinInstance_property.setProp (nil)
+          padProxy.mPinInstance = nil
           padProxy.mIsNC = false
         }
       }

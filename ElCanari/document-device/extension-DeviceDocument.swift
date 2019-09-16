@@ -34,15 +34,22 @@ extension DeviceDocument {
       symbolType.mFileData = inData
       symbolType.mStrokeBezierPath = strokeBezierPathes
       symbolType.mFilledBezierPath = filledBezierPathes
-      symbolType.mPinTypes_property.setProp (symbolPinTypes)
+      symbolType.mPinTypes = symbolPinTypes
+      var pinLocations = [CanariPoint] ()
+      for pinType in symbolPinTypes {
+        pinLocations.append (CanariPoint (x: pinType.mPinX, y: pinType.mPinY))
+      }
+      let pinsCenter = CanariRect (points: pinLocations).center
       self.rootObject.mSymbolTypes_property.add (symbolType)
       let symbolInstance = SymbolInstanceInDevice (self.ebUndoManager)
       self.rootObject.mSymbolInstances_property.add (symbolInstance)
-      symbolInstance.mType_property.setProp (symbolType)
+      symbolInstance.mType = symbolType
+      symbolInstance.mX = -pinsCenter.x
+      symbolInstance.mY = -pinsCenter.y
     //--- Add pin instances
       for pinType in symbolPinTypes {
         let pinInstance = SymbolPinInstanceInDevice (self.ebUndoManager)
-        pinInstance.mType_property.setProp (pinType)
+        pinInstance.mType = pinType
         symbolInstance.mPinInstances_property.add (pinInstance)
       }
     }
@@ -146,7 +153,15 @@ extension DeviceDocument {
       )
       packageRoot.removeRecursivelyAllRelationsShips ()
 
+      var masterPadsLocations = [CanariPoint] ()
+      for masterPad in masterPads {
+        masterPadsLocations.append (CanariPoint (x: masterPad.mCenterX, y: masterPad.mCenterY))
+      }
+      let masterPadsCenter = CanariRect (points: masterPadsLocations).center
+
       let package = PackageInDevice (self.ebUndoManager)
+      package.mX = -masterPadsCenter.x
+      package.mY = -masterPadsCenter.y
       package.mVersion = version
       package.mName = inName
       package.mFileData = inData

@@ -228,7 +228,7 @@ extension CustomizedProjectDocument {
           nets.append (net)
         }
       }
-      nets.sort { $0.mNetName < $1.mNetName }
+      nets.sort { $0.mNetName.uppercased () < $1.mNetName.uppercased () }
       for net in nets {
         popup.addItem (withTitle: net.mNetName)
         popup.lastItem?.representedObject = net
