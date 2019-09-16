@@ -1,5 +1,33 @@
 //--- START OF USER ZONE 1
 
+extension ProjectDocument {
+  private func performRemoveSelectedComponents () {
+    for component in self.componentController.selectedArray {
+      if let idx = self.rootObject.mComponents.firstIndex (of: component) {
+      //--- Remove all symbols from schematics sheets
+        for symbol in component.mSymbols {
+          symbol.mSheet = nil
+          symbol.operationBeforeRemoving ()
+        }
+        component.mSymbols = []
+     //--- Remove package from board
+        component.operationBeforeRemoving ()
+        component.mSelectedPackage = nil
+      //--- Remove from component list
+        self.rootObject.mComponents.remove (at: idx)
+      //--- Adapt remaining component names
+        let prefix = component.mDevice!.mPrefix
+        component.mDevice = nil
+        let index = component.mNameIndex
+        for remainingComponent in self.rootObject.mComponents {
+          if (prefix == remainingComponent.mDevice!.mPrefix) && (remainingComponent.mNameIndex > index) {
+            remainingComponent.mNameIndex -= 1
+          }
+        }
+      }
+    }
+  }
+}
 
 //--- END OF USER ZONE 1
 
@@ -14,24 +42,31 @@ import Cocoa
 extension ProjectDocument {
   @objc func removeSelectedComponentsAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        for component in self.componentController.selectedArray_property.propval {
-          if let idx = self.rootObject.mComponents.firstIndex (of: component) {
-          //--- Remove all symbols from schematics sheets
-            for symbol in component.mSymbols {
-              symbol.mSheet = nil
+        var inSchematicsOrInBoard = false
+        for component in self.componentController.selectedArray {
+          for symbol in component.mSymbols {
+            if symbol.mSheet != nil {
+              inSchematicsOrInBoard = true
             }
-          //--- Remove from component lis
-            self.rootObject.mComponents.remove (at: idx)
-          //--- Adapt remaining component names
-            let prefix = component.mDevice!.mPrefix
-            let index = component.mNameIndex
-            component.mDevice = nil
-            component.mSelectedPackage = nil
-            component.mSymbols = []
-            for remainingComponent in self.rootObject.mComponents {
-              if (prefix == remainingComponent.mDevice!.mPrefix) && (remainingComponent.mNameIndex > index) {
-                remainingComponent.mNameIndex -= 1
-              }
+          }
+          if component.mRoot != nil {
+            inSchematicsOrInBoard = true
+          }
+        }
+        if !inSchematicsOrInBoard {
+          self.performRemoveSelectedComponents ()
+        }else{
+          let alert = NSAlert ()
+          if self.componentController.selectedArray.count > 1 {
+            alert.messageText = "Removed components have symbols in schematic and/or package in board."
+          }else{
+            alert.messageText = "Removed component has symbols in schematic and/or package in board."
+          }
+          alert.addButton (withTitle: "Ok")
+          alert.addButton (withTitle: "Cancel")
+          alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
+            if response == .alertFirstButtonReturn {
+              self.performRemoveSelectedComponents ()
             }
           }
         }
