@@ -32,7 +32,7 @@ class CanariOkButtonForSheet : EBButton {
 
   @objc func dismissSheetAction (_ sender : Any?) {
     if let mySheet = self.window, let parent = mySheet.sheetParent {
-      parent.endEditing (for: nil)
+      mySheet.endEditing (for: nil)
       parent.endSheet (mySheet, returnCode: NSApplication.ModalResponse.stop)
     }
   }
