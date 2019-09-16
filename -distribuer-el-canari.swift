@@ -27,7 +27,7 @@ enum ProductKind {
 let VERSION_CANARI = "1.0.6"
 let NOTES : [String] = []
 let BUGFIXES : [String] = ["Project: clean component removing"]
-let CHANGES : [String] = ["]
+let CHANGES : [String] = []
 let NEWS : [String] = []
 let BUILD_KIND = ProductKind.release
 

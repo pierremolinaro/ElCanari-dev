@@ -74,10 +74,11 @@ extension CustomizedProjectDocument {
      if let wire = self.mWireCreatedByOptionClick, let selectedSheet = self.rootObject.mSelectedSheet {
        let p1 = wire.mP1!.location!
        let p2 = wire.mP2!.location!
-       if (p1.x == p2.x) && (p1.y == p2.y) {
+       if (p1.x == p2.x) && (p1.y == p2.y) { // Zero length wire: remove it
          wire.mP1 = nil
          wire.mP2 = nil
          wire.mSheet = nil
+         self.updateSchematicsPointsAndNets ()
        }else{
          let points = selectedSheet.pointsInSchematics (at: p2)
          self.connectInSchematic (points: points)

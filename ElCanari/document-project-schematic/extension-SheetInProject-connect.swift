@@ -63,14 +63,14 @@ extension SheetInProject {
   //····················································································································
 
   func connectWithoutDialog (points inPoints : [PointInSchematic]) -> ([PointInSchematic], [NetInProject]) {
-    if inPoints.count < 2 {
+    let optionalPoint = self.addPointToWire (at: inPoints [0].location!)
+    var points = inPoints
+    if let newPoint = optionalPoint {
+      points.append (newPoint)
+    }
+    if points.count < 2 {
       return ([], []) // For indicating no connection should be done by the caller
     }else{
-      let optionalPoint = self.addPointToWire (at: inPoints [0].location!)
-      var points = inPoints
-      if let newPoint = optionalPoint {
-        points.append (newPoint)
-      }
       var netSet = Set <NetInProject> ()
       for point in points {
         if let net = point.mNet {
