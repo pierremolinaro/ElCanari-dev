@@ -222,15 +222,20 @@ extension CustomizedProjectDocument {
       popup.removeAllItems ()
       var selectedIndex : Int? = nil
       var idx = 0
+      var nets = [NetInProject] ()
       for netClass in self.rootObject.mNetClasses {
         for net in netClass.mNets {
-          popup.addItem (withTitle: net.mNetName)
-          popup.lastItem?.representedObject = net
-          if initialNetName == net.mNetName {
-            selectedIndex = idx
-          }
-          idx += 1
+          nets.append (net)
         }
+      }
+      nets.sort { $0.mNetName < $1.mNetName }
+      for net in nets {
+        popup.addItem (withTitle: net.mNetName)
+        popup.lastItem?.representedObject = net
+        if initialNetName == net.mNetName {
+          selectedIndex = idx
+        }
+        idx += 1
       }
       if let idx = selectedIndex {
         popup.selectItem (at: idx)
