@@ -708,7 +708,6 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     }
   //--- Notify observers
     self.postEvent ()
-    self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()
   }
@@ -772,8 +771,11 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
-  }
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
 
   //····················································································································
 

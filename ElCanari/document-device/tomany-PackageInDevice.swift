@@ -1119,7 +1119,6 @@ class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EBSignat
     }
   //--- Notify observers
     self.postEvent ()
-    self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1183,8 +1182,11 @@ class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EBSignat
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
-  }
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
 
   //····················································································································
 

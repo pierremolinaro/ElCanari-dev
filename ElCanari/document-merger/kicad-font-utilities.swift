@@ -78,7 +78,7 @@ func drawKicadString (str inString : String,
   var totalHeight : CGFloat = 0.0
   var widthArray = [CGFloat] ()
   var heightArray = [CGFloat] ()
-  let components = inString.components (separatedBy: "\\n")
+  let components = inString.components (separatedBy: "\n") // Ou "\\n" ?
   for str in components {
     let (stringWidth, stringHeight) = stringMetrics (str: str, fontSize: inFontSize, font: inKicadFont)
     totalHeight += stringHeight

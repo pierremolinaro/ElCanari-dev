@@ -533,7 +533,6 @@ class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSignatureO
     }
   //--- Notify observers
     self.postEvent ()
-    self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()
   }
@@ -597,8 +596,11 @@ class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSignatureO
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
-  }
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
 
   //····················································································································
 

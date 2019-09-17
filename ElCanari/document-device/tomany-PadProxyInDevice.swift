@@ -651,7 +651,6 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
     }
   //--- Notify observers
     self.postEvent ()
-    self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()
   }
@@ -715,8 +714,11 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
-  }
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
 
   //····················································································································
 

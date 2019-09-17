@@ -166,7 +166,7 @@ extension DeviceDocument {
       package.mName = inName
       package.mFileData = inData
       package.mStrokeBezierPath = strokeBezierPathes.nsBezierPath
-      package.mMasterPads_property.setProp (masterPads)
+      package.mMasterPads = masterPads
       self.rootObject.mPackages_property.add (package)
       self.updatePadProxies ()
     }
@@ -238,15 +238,15 @@ extension DeviceDocument {
   func updatePadProxies () {
   //--- Inventory of current pad names
     var currentPackagePadNameSet = Set <String> ()
-    for package in self.rootObject.mPackages_property.propval {
-      for masterPad in package.mMasterPads_property.propval {
+    for package in self.rootObject.mPackages {
+      for masterPad in package.mMasterPads {
         currentPackagePadNameSet.insert (masterPad.mName)
       }
     }
   //--- Inventory of current pad proxies
     var currentProxyPadNameSet = Set <String> ()
     var padProxyDictionary = [String : PadProxyInDevice] ()
-    for padProxy in self.rootObject.mPadProxies_property.propval {
+    for padProxy in self.rootObject.mPadProxies {
       padProxyDictionary [padProxy.mPadName] = padProxy
       currentProxyPadNameSet.insert (padProxy.mPadName)
     }

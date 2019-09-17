@@ -180,7 +180,26 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   //    populateExplorerWindow
   //····················································································································
 
+  private var mSignatureObserverExplorer : NSPopUpButton? = nil
+  private var mSignatureValueExplorer : NSTextField? = nil {
+    didSet {
+      if let s = self.mSignature {
+        self.mSignatureValueExplorer?.stringValue = String (format: "%04X:%04X", s >> 16, s & 0xFFFF)
+      }else{
+        self.mSignatureValueExplorer?.stringValue = "nil"
+      }
+    }
+  }
+
   func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    createEntryForPropertyNamed (
+      "Signature",
+      idx: self.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSignatureObserverExplorer,
+      valueExplorer: &self.mSignatureValueExplorer
+    )
   }
 
   //····················································································································
@@ -322,7 +341,9 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
+    observer?.clearSignatureCache ()
   }
 
   //····················································································································
@@ -332,6 +353,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   final func clearSignatureCache () {
     if self.mSignature != nil {
       self.mSignature = nil
+      self.mSignatureValueExplorer?.stringValue = "nil"
       self.mSignatureObserver?.clearSignatureCache ()
     }
   }
@@ -349,6 +371,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
       return s
     }else{
       let s = self.computeSignature ()
+      self.mSignatureValueExplorer?.stringValue = String (format: "%04X:%04X", s >> 16, s & 0xFFFF)
       self.mSignature = s
       return s
     }

@@ -654,8 +654,10 @@ final class StoredObject_WireInSchematic : ReadWriteObject_WireInSchematic, EBSi
   //····················································································································
 
   final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
- // §   self.mInternalValue?.setSignatureObserver (observer: observer)
+    inObserver?.clearSignatureCache ()
+    self.clearSignatureCache ()
   }
 
   //····················································································································

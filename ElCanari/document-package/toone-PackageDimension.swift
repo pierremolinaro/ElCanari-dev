@@ -1519,8 +1519,10 @@ final class StoredObject_PackageDimension : ReadWriteObject_PackageDimension, EB
   //····················································································································
 
   final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
- // §   self.mInternalValue?.setSignatureObserver (observer: observer)
+    inObserver?.clearSignatureCache ()
+    self.clearSignatureCache ()
   }
 
   //····················································································································

@@ -1969,8 +1969,10 @@ final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureO
   //····················································································································
 
   final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
- // §   self.mInternalValue?.setSignatureObserver (observer: observer)
+    inObserver?.clearSignatureCache ()
+    self.clearSignatureCache ()
   }
 
   //····················································································································

@@ -1088,8 +1088,10 @@ final class StoredObject_PackageGuide : ReadWriteObject_PackageGuide, EBSignatur
   //····················································································································
 
   final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
- // §   self.mInternalValue?.setSignatureObserver (observer: observer)
+    inObserver?.clearSignatureCache ()
+    self.clearSignatureCache ()
   }
 
   //····················································································································

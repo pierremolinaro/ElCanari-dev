@@ -296,7 +296,7 @@
                     <toolbarItem reference="2891"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="102" y="296"/>
+            <point key="canvasLocation" x="203" y="175"/>
         </window>
         <customView id="1364" userLabel="Inspector : Dimension" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
@@ -3346,7 +3346,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="tb1-Me-Sfj">
-                                    <rect key="frame" x="0.0" y="1.3000000000126875" width="685" height="2006.5"/>
+                                    <rect key="frame" x="0.0" y="1.4000000000169166" width="685" height="2006.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

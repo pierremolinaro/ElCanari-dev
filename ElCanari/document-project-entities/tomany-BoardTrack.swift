@@ -1234,7 +1234,6 @@ class StoredArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack, EBSignatureObserve
     }
   //--- Notify observers
     self.postEvent ()
-    self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1298,8 +1297,11 @@ class StoredArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack, EBSignatureObserve
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
-  }
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
 
   //····················································································································
 

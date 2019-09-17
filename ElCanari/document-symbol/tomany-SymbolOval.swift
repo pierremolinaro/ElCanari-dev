@@ -827,7 +827,6 @@ class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureObserve
     }
   //--- Notify observers
     self.postEvent ()
-    self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()
   }
@@ -891,8 +890,11 @@ class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureObserve
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
-  }
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
 
   //····················································································································
 

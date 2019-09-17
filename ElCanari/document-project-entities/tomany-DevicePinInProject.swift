@@ -1183,7 +1183,6 @@ class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject, EB
     }
   //--- Notify observers
     self.postEvent ()
-    self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1247,8 +1246,11 @@ class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject, EB
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
-  }
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
 
   //····················································································································
 

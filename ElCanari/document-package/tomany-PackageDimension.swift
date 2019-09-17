@@ -1358,7 +1358,6 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
     }
   //--- Notify observers
     self.postEvent ()
-    self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1422,8 +1421,11 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
-  }
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
 
   //····················································································································
 

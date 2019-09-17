@@ -1060,7 +1060,6 @@ class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObserverPro
     }
   //--- Notify observers
     self.postEvent ()
-    self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1124,8 +1123,11 @@ class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObserverPro
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
-  }
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
 
   //····················································································································
 

@@ -1121,11 +1121,11 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
     if self.mCachedValue != nil {
       self.mCachedValue = nil
       if logEvents () {
-        appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) propagation\\n")
+        appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) nil\\n")
+      appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 
@@ -1171,7 +1171,7 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
 
   //····················································································································
 
-  weak var ebUndoManager : UndoManager?  // SOULD BE WEAK
+  weak var ebUndoManager : UndoManager? = nil  // SOULD BE WEAK
   var mSetterDelegate : Optional < (_ inValue : T) -> Void >
 
   //····················································································································
@@ -1207,7 +1207,7 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
         self.mValueExplorer?.stringValue = "\(mValue)"
         self.ebUndoManager?.registerUndo (withTarget: self, selector: #selector(performUndo(_:)), object: oldValue.convertToNSObject ())
         if logEvents () {
-          appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\\n")
+          appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
         self.postEvent ()
         self.clearSignatureCache ()
@@ -1294,7 +1294,10 @@ class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProper
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
   }
 
   //····················································································································
@@ -1400,11 +1403,11 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> where T : Equat
       self.mValueCache = nil
       self.mValueExplorer?.stringValue = "nil"
       if logEvents () {
-        appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) propagation\\n")
+        appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) nil\\n")
+      appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 
@@ -1526,11 +1529,11 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
     if self.mCachedValue != nil {
       self.mCachedValue = nil
       if logEvents () {
-        appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) propagation\\n")
+        appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) nil\\n")
+      appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 
@@ -1578,7 +1581,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  weak var ebUndoManager : UndoManager? // SOULD BE WEAK
+  weak var ebUndoManager : UndoManager? = nil // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
   var mSetterDelegate : ((_ inValue : T) -> Void)?
 
@@ -1634,10 +1637,10 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
         self.mValueExplorer?.stringValue = "\(mValue)"
         self.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
         if logEvents () {
-          appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\\n")
+          appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
-        postEvent ()
-        clearSignatureCache ()
+        self.postEvent ()
+        self.clearSignatureCache ()
       }
     }
   }
@@ -1721,7 +1724,10 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
   }
 
   //····················································································································
@@ -1794,11 +1800,11 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
       self.mValueCache = nil
       self.mValueExplorer?.stringValue = "nil"
       if logEvents () {
-        appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) propagation\\n")
+        appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) nil\\n")
+      appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 
@@ -2507,11 +2513,11 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
     if self.mCachedValue != nil {
       self.mCachedValue = nil
       if logEvents () {
-        appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) propagation\\n")
+        appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) nil\\n")
+      appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 
@@ -2556,7 +2562,7 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProperty <T> {
-  weak var ebUndoManager : UndoManager? // SOULD BE WEAK
+  weak var ebUndoManager : UndoManager? = nil // SOULD BE WEAK
   var mSetterDelegate : ((_ inValue : T) -> Void)?
 
   //····················································································································
@@ -2592,7 +2598,7 @@ class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProper
         self.mValueExplorer?.stringValue = "\(mValue)"
         self.ebUndoManager?.registerUndo (withTarget: self, selector: #selector (performUndo(_:)), object: oldValue)
         if logEvents () {
-          appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\\n")
+          appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
         self.postEvent ()
         self.clearSignatureCache ()
@@ -2675,7 +2681,10 @@ class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProper
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
   }
 
   //····················································································································
@@ -2781,12 +2790,12 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> where T : Equat
       self.mValueExplorer?.stringValue = "nil"
       if logEvents () {
         let className = String (describing:type(of: self))
-        appendMessageString ("Transient \(className) \(explorerIndexString (self.ebObjectIndex)) propagation\\n")
+        appendMessageString ("Transient \(className) \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
       let className = String (describing:type(of: self))
-      appendMessageString ("Transient \(className) \(explorerIndexString (self.ebObjectIndex)) nil\\n")
+      appendMessageString ("Transient \(className) \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

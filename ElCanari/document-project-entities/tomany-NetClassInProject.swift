@@ -1471,7 +1471,6 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
     }
   //--- Notify observers
     self.postEvent ()
-    self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1535,8 +1534,11 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
-  }
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
 
   //····················································································································
 

@@ -1358,7 +1358,6 @@ class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureObserve
     }
   //--- Notify observers
     self.postEvent ()
-    self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()
   }
@@ -1422,8 +1421,11 @@ class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureObserve
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
-  }
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
 
   //····················································································································
 

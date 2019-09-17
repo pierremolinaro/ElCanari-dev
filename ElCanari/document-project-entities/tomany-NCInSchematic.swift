@@ -534,7 +534,6 @@ class StoredArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic, EBSignatureO
     }
   //--- Notify observers
     self.postEvent ()
-    self.clearSignatureCache ()
   //---
     super.notifyModelDidChange ()
   }
@@ -598,8 +597,11 @@ class StoredArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic, EBSignatureO
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
-  }
+    observer?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
 
   //····················································································································
 
