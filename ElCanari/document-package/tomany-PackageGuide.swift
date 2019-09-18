@@ -942,6 +942,19 @@ final class ProxyArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide {
 class StoredArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide, EBSignatureObserverProtocol {
 
   //····················································································································
+
+  init (usedForSignature inUsedForSignature : Bool) {
+    mUsedForSignature = inUsedForSignature
+    super.init ()
+  }
+
+  //····················································································································
+  //   Signature ?
+  //····················································································································
+
+  private let mUsedForSignature : Bool
+  
+  //····················································································································
   //   Undo manager
   //····················································································································
 
@@ -1015,12 +1028,16 @@ class StoredArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide, EBSignatureObs
 
   internal override func updateObservers (removedSet inRemovedSet : Set <PackageGuide>, addedSet inAddedSet : Set <PackageGuide>) {
     for managedObject in inRemovedSet {
-      managedObject.setSignatureObserver (observer: nil)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: nil)
+      }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
     for managedObject in inAddedSet {
-      managedObject.setSignatureObserver (observer: self)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: self)
+      }
       self.mSetOppositeRelationship? (managedObject)
     }
   //---
@@ -1170,7 +1187,7 @@ final class PreferencesArrayOf_PackageGuide : StoredArrayOf_PackageGuide {
 
   init (prefKey : String) {
     self.mPrefKey = prefKey
-    super.init ()
+    super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [PackageGuide] ()
       for dictionary in array {

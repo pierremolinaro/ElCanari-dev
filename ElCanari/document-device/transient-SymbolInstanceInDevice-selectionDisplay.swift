@@ -16,6 +16,8 @@ import Cocoa
 func transient_SymbolInstanceInDevice_selectionDisplay (
        _ self_mType_mStrokeBezierPath : NSBezierPath?,  
        _ self_mType_mFilledBezierPath : NSBezierPath?,  
+       _ self_mType_pinNameShape : EBShape?,            
+       _ self_mPinInstances_numberShape : [SymbolPinInstanceInDevice_numberShape],
        _ self_symbolQualifiedName : String,             
        _ prefs_symbolDrawingWidthMultipliedByTen : Int, 
        _ self_mX : Int,                                 
@@ -24,7 +26,8 @@ func transient_SymbolInstanceInDevice_selectionDisplay (
 //--- START OF USER ZONE 2
        var shape = EBShape ()
        if let strokeBezierPath = self_mType_mStrokeBezierPath,
-          let filledBezierPath = self_mType_mFilledBezierPath {
+          let filledBezierPath = self_mType_mFilledBezierPath,
+          let pinNameShape = self_mType_pinNameShape {
       //--- Compute display rect
         var r = NSRect.null
         if !strokeBezierPath.isEmpty {
@@ -32,6 +35,14 @@ func transient_SymbolInstanceInDevice_selectionDisplay (
         }
         if !filledBezierPath.isEmpty {
           r = r.union (filledBezierPath.bounds)
+        }
+      //--- Pin names
+        r = r.union (pinNameShape.boundingBox)
+      //--- Pin numbers
+        for p in self_mPinInstances_numberShape {
+          if let s = p.numberShape {
+            r = r.union (s.boundingBox)
+          }
         }
       //--- Frame
         let VERTICAL_MARGIN : CGFloat = 1.0

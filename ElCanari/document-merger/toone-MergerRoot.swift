@@ -2137,6 +2137,19 @@ final class ProxyObject_MergerRoot : ReadWriteObject_MergerRoot {
 
 final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObserverProtocol {
 
+ //····················································································································
+
+  init (usedForSignature inUsedForSignature : Bool) {
+    mUsedForSignature = inUsedForSignature
+    super.init ()
+  }
+
+  //····················································································································
+  //   Signature ?
+  //····················································································································
+
+  private let mUsedForSignature : Bool
+  
   //····················································································································
   //   Undo manager
   //····················································································································
@@ -2182,12 +2195,16 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
     self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
   //---
     if let object = inOldValue {
-      object.setSignatureObserver (observer: nil)
+      if self.mUsedForSignature {
+        object.setSignatureObserver (observer: nil)
+      }
       self.mResetOppositeRelationship? (object)
     }
   //---
     if let object = self.mInternalValue {
-      object.setSignatureObserver (observer: self)
+      if self.mUsedForSignature {
+        object.setSignatureObserver (observer: self)
+      }
       self.mSetOppositeRelationship? (object)
     }
   //---

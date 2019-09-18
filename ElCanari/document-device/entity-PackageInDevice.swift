@@ -207,7 +207,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   To many property: mMasterPads
   //····················································································································
 
-  let mMasterPads_property = StoredArrayOf_MasterPadInDevice ()
+  let mMasterPads_property = StoredArrayOf_MasterPadInDevice (usedForSignature: true)
 
   //····················································································································
 
@@ -226,7 +226,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-   let mRoot_property = StoredObject_DeviceRoot ()
+   let mRoot_property = StoredObject_DeviceRoot (usedForSignature: false)
 
   //····················································································································
 
@@ -612,8 +612,6 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mName_property.setSignatureObserver (observer: self)
     self.mStrokeBezierPath_property.setSignatureObserver (observer: self)
     self.mVersion_property.setSignatureObserver (observer: self)
-    self.mX_property.setSignatureObserver (observer: self)
-    self.mY_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 
@@ -659,8 +657,6 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mName_property.setSignatureObserver (observer: nil)
     self.mStrokeBezierPath_property.setSignatureObserver (observer: nil)
     self.mVersion_property.setSignatureObserver (observer: nil)
-    self.mX_property.setSignatureObserver (observer: nil)
-    self.mY_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -965,8 +961,6 @@ class PackageInDevice : EBGraphicManagedObject,
     crc.accumulateUInt32 (self.mName_property.signature ())
     crc.accumulateUInt32 (self.mStrokeBezierPath_property.signature ())
     crc.accumulateUInt32 (self.mVersion_property.signature ())
-    crc.accumulateUInt32 (self.mX_property.signature ())
-    crc.accumulateUInt32 (self.mY_property.signature ())
     return crc
   }
 

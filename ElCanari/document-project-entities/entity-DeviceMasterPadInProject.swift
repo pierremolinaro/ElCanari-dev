@@ -237,7 +237,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   To many property: mSlavePads
   //····················································································································
 
-  let mSlavePads_property = StoredArrayOf_DeviceSlavePadInProject ()
+  let mSlavePads_property = StoredArrayOf_DeviceSlavePadInProject (usedForSignature: false)
 
   //····················································································································
 

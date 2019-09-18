@@ -52,7 +52,7 @@ class NCInSchematic : SchematicObject,
   //   To one property: mPoint
   //····················································································································
 
-   let mPoint_property = StoredObject_PointInSchematic ()
+   let mPoint_property = StoredObject_PointInSchematic (usedForSignature: false)
 
   //····················································································································
 

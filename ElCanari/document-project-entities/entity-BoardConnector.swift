@@ -271,7 +271,7 @@ class BoardConnector : BoardObject,
   //   To many property: mTracksP2
   //····················································································································
 
-  let mTracksP2_property = StoredArrayOf_BoardTrack ()
+  let mTracksP2_property = StoredArrayOf_BoardTrack (usedForSignature: false)
 
   //····················································································································
 
@@ -426,7 +426,7 @@ class BoardConnector : BoardObject,
   //   To many property: mTracksP1
   //····················································································································
 
-  let mTracksP1_property = StoredArrayOf_BoardTrack ()
+  let mTracksP1_property = StoredArrayOf_BoardTrack (usedForSignature: false)
 
   //····················································································································
 
@@ -445,7 +445,7 @@ class BoardConnector : BoardObject,
   //   To one property: mComponent
   //····················································································································
 
-   let mComponent_property = StoredObject_ComponentInProject ()
+   let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false)
 
   //····················································································································
 

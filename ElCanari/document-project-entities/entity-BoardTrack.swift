@@ -204,7 +204,7 @@ class BoardTrack : BoardObject,
   //   To one property: mConnectorP1
   //····················································································································
 
-   let mConnectorP1_property = StoredObject_BoardConnector ()
+   let mConnectorP1_property = StoredObject_BoardConnector (usedForSignature: false)
 
   //····················································································································
 
@@ -242,7 +242,7 @@ class BoardTrack : BoardObject,
   //   To one property: mConnectorP2
   //····················································································································
 
-   let mConnectorP2_property = StoredObject_BoardConnector ()
+   let mConnectorP2_property = StoredObject_BoardConnector (usedForSignature: false)
 
   //····················································································································
 
@@ -280,7 +280,7 @@ class BoardTrack : BoardObject,
   //   To one property: mNet
   //····················································································································
 
-   let mNet_property = StoredObject_NetInProject ()
+   let mNet_property = StoredObject_NetInProject (usedForSignature: false)
 
   //····················································································································
 

@@ -703,6 +703,19 @@ final class ProxyArrayOf_NetInProject : ReadWriteArrayOf_NetInProject {
 class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+
+  init (usedForSignature inUsedForSignature : Bool) {
+    mUsedForSignature = inUsedForSignature
+    super.init ()
+  }
+
+  //····················································································································
+  //   Signature ?
+  //····················································································································
+
+  private let mUsedForSignature : Bool
+  
+  //····················································································································
   //   Undo manager
   //····················································································································
 
@@ -776,12 +789,16 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
 
   internal override func updateObservers (removedSet inRemovedSet : Set <NetInProject>, addedSet inAddedSet : Set <NetInProject>) {
     for managedObject in inRemovedSet {
-      managedObject.setSignatureObserver (observer: nil)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: nil)
+      }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
     for managedObject in inAddedSet {
-      managedObject.setSignatureObserver (observer: self)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: self)
+      }
       self.mSetOppositeRelationship? (managedObject)
     }
   //---
@@ -931,7 +948,7 @@ final class PreferencesArrayOf_NetInProject : StoredArrayOf_NetInProject {
 
   init (prefKey : String) {
     self.mPrefKey = prefKey
-    super.init ()
+    super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [NetInProject] ()
       for dictionary in array {

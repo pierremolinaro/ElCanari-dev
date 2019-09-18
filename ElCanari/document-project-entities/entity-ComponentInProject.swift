@@ -341,7 +341,7 @@ class ComponentInProject : BoardObject,
   //   To many property: mConnectors
   //····················································································································
 
-  let mConnectors_property = StoredArrayOf_BoardConnector ()
+  let mConnectors_property = StoredArrayOf_BoardConnector (usedForSignature: false)
 
   //····················································································································
 
@@ -360,7 +360,7 @@ class ComponentInProject : BoardObject,
   //   To many property: mSymbols
   //····················································································································
 
-  let mSymbols_property = StoredArrayOf_ComponentSymbolInProject ()
+  let mSymbols_property = StoredArrayOf_ComponentSymbolInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -670,7 +670,7 @@ class ComponentInProject : BoardObject,
   //   To one property: mDevice
   //····················································································································
 
-   let mDevice_property = StoredObject_DeviceInProject ()
+   let mDevice_property = StoredObject_DeviceInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -731,7 +731,7 @@ class ComponentInProject : BoardObject,
   //   To one property: mSelectedPackage
   //····················································································································
 
-   let mSelectedPackage_property = StoredObject_DevicePackageInProject ()
+   let mSelectedPackage_property = StoredObject_DevicePackageInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -907,7 +907,7 @@ class ComponentInProject : BoardObject,
   //   To one property: mNameFont
   //····················································································································
 
-   let mNameFont_property = StoredObject_FontInProject ()
+   let mNameFont_property = StoredObject_FontInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -945,7 +945,7 @@ class ComponentInProject : BoardObject,
   //   To one property: mValueFont
   //····················································································································
 
-   let mValueFont_property = StoredObject_FontInProject ()
+   let mValueFont_property = StoredObject_FontInProject (usedForSignature: false)
 
   //····················································································································
 

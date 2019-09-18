@@ -166,7 +166,7 @@ class DeviceInProject : EBManagedObject,
   //   To many property: mPackages
   //····················································································································
 
-  let mPackages_property = StoredArrayOf_DevicePackageInProject ()
+  let mPackages_property = StoredArrayOf_DevicePackageInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -185,7 +185,7 @@ class DeviceInProject : EBManagedObject,
   //   To many property: mSymbols
   //····················································································································
 
-  let mSymbols_property = StoredArrayOf_DeviceSymbolInstanceInProject ()
+  let mSymbols_property = StoredArrayOf_DeviceSymbolInstanceInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -204,7 +204,7 @@ class DeviceInProject : EBManagedObject,
   //   To many property: mComponents
   //····················································································································
 
-  let mComponents_property = StoredArrayOf_ComponentInProject ()
+  let mComponents_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -223,7 +223,7 @@ class DeviceInProject : EBManagedObject,
   //   To many property: mPadAssignments
   //····················································································································
 
-  let mPadAssignments_property = StoredArrayOf_DevicePadAssignmentInProject ()
+  let mPadAssignments_property = StoredArrayOf_DevicePadAssignmentInProject (usedForSignature: false)
 
   //····················································································································
 

@@ -63,7 +63,7 @@ class NetInProject : EBManagedObject,
   //   To many property: mPoints
   //····················································································································
 
-  let mPoints_property = StoredArrayOf_PointInSchematic ()
+  let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false)
 
   //····················································································································
 
@@ -99,7 +99,7 @@ class NetInProject : EBManagedObject,
   //   To many property: mTracks
   //····················································································································
 
-  let mTracks_property = StoredArrayOf_BoardTrack ()
+  let mTracks_property = StoredArrayOf_BoardTrack (usedForSignature: false)
 
   //····················································································································
 
@@ -118,7 +118,7 @@ class NetInProject : EBManagedObject,
   //   To one property: mNetClass
   //····················································································································
 
-   let mNetClass_property = StoredObject_NetClassInProject ()
+   let mNetClass_property = StoredObject_NetClassInProject (usedForSignature: false)
 
   //····················································································································
 

@@ -121,7 +121,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   To one property: myModel
   //····················································································································
 
-   let myModel_property = StoredObject_BoardModel ()
+   let myModel_property = StoredObject_BoardModel (usedForSignature: false)
 
   //····················································································································
 
@@ -228,7 +228,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   To one property: myRoot
   //····················································································································
 
-   let myRoot_property = StoredObject_MergerRoot ()
+   let myRoot_property = StoredObject_MergerRoot (usedForSignature: false)
 
   //····················································································································
 

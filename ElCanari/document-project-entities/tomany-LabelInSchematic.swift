@@ -645,6 +645,19 @@ final class ProxyArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic {
 class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSignatureObserverProtocol {
 
   //····················································································································
+
+  init (usedForSignature inUsedForSignature : Bool) {
+    mUsedForSignature = inUsedForSignature
+    super.init ()
+  }
+
+  //····················································································································
+  //   Signature ?
+  //····················································································································
+
+  private let mUsedForSignature : Bool
+  
+  //····················································································································
   //   Undo manager
   //····················································································································
 
@@ -718,12 +731,16 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
 
   internal override func updateObservers (removedSet inRemovedSet : Set <LabelInSchematic>, addedSet inAddedSet : Set <LabelInSchematic>) {
     for managedObject in inRemovedSet {
-      managedObject.setSignatureObserver (observer: nil)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: nil)
+      }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
     for managedObject in inAddedSet {
-      managedObject.setSignatureObserver (observer: self)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: self)
+      }
       self.mSetOppositeRelationship? (managedObject)
     }
   //---
@@ -873,7 +890,7 @@ final class PreferencesArrayOf_LabelInSchematic : StoredArrayOf_LabelInSchematic
 
   init (prefKey : String) {
     self.mPrefKey = prefKey
-    super.init ()
+    super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [LabelInSchematic] ()
       for dictionary in array {

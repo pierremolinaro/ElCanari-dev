@@ -189,7 +189,7 @@ class FontRoot : EBManagedObject,
   //   To many property: characters
   //····················································································································
 
-  let characters_property = StoredArrayOf_FontCharacter ()
+  let characters_property = StoredArrayOf_FontCharacter (usedForSignature: true)
 
   //····················································································································
 

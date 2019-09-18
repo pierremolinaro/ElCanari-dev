@@ -251,7 +251,7 @@ class SymbolRoot : EBManagedObject,
   //   To many property: symbolObjects
   //····················································································································
 
-  let symbolObjects_property = StoredArrayOf_SymbolObject ()
+  let symbolObjects_property = StoredArrayOf_SymbolObject (usedForSignature: true)
 
   //····················································································································
 

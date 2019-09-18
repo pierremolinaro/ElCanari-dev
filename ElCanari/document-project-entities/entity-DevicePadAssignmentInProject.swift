@@ -52,7 +52,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //   To one property: mPin
   //····················································································································
 
-   let mPin_property = StoredObject_DevicePinInProject ()
+   let mPin_property = StoredObject_DevicePinInProject (usedForSignature: false)
 
   //····················································································································
 

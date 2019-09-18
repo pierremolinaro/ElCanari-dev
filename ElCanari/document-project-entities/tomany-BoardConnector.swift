@@ -1874,6 +1874,19 @@ final class ProxyArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector {
 class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatureObserverProtocol {
 
   //····················································································································
+
+  init (usedForSignature inUsedForSignature : Bool) {
+    mUsedForSignature = inUsedForSignature
+    super.init ()
+  }
+
+  //····················································································································
+  //   Signature ?
+  //····················································································································
+
+  private let mUsedForSignature : Bool
+  
+  //····················································································································
   //   Undo manager
   //····················································································································
 
@@ -1947,12 +1960,16 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
 
   internal override func updateObservers (removedSet inRemovedSet : Set <BoardConnector>, addedSet inAddedSet : Set <BoardConnector>) {
     for managedObject in inRemovedSet {
-      managedObject.setSignatureObserver (observer: nil)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: nil)
+      }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
     for managedObject in inAddedSet {
-      managedObject.setSignatureObserver (observer: self)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: self)
+      }
       self.mSetOppositeRelationship? (managedObject)
     }
   //---
@@ -2102,7 +2119,7 @@ final class PreferencesArrayOf_BoardConnector : StoredArrayOf_BoardConnector {
 
   init (prefKey : String) {
     self.mPrefKey = prefKey
-    super.init ()
+    super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [BoardConnector] ()
       for dictionary in array {

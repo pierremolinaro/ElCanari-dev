@@ -1117,6 +1117,19 @@ final class ProxyArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment {
 class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatureObserverProtocol {
 
   //····················································································································
+
+  init (usedForSignature inUsedForSignature : Bool) {
+    mUsedForSignature = inUsedForSignature
+    super.init ()
+  }
+
+  //····················································································································
+  //   Signature ?
+  //····················································································································
+
+  private let mUsedForSignature : Bool
+  
+  //····················································································································
   //   Undo manager
   //····················································································································
 
@@ -1190,12 +1203,16 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
 
   internal override func updateObservers (removedSet inRemovedSet : Set <PackageSegment>, addedSet inAddedSet : Set <PackageSegment>) {
     for managedObject in inRemovedSet {
-      managedObject.setSignatureObserver (observer: nil)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: nil)
+      }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
     for managedObject in inAddedSet {
-      managedObject.setSignatureObserver (observer: self)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: self)
+      }
       self.mSetOppositeRelationship? (managedObject)
     }
   //---
@@ -1345,7 +1362,7 @@ final class PreferencesArrayOf_PackageSegment : StoredArrayOf_PackageSegment {
 
   init (prefKey : String) {
     self.mPrefKey = prefKey
-    super.init ()
+    super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [PackageSegment] ()
       for dictionary in array {

@@ -1653,6 +1653,19 @@ final class ProxyArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Artw
 class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFileGenerationParameters, EBSignatureObserverProtocol {
 
   //····················································································································
+
+  init (usedForSignature inUsedForSignature : Bool) {
+    mUsedForSignature = inUsedForSignature
+    super.init ()
+  }
+
+  //····················································································································
+  //   Signature ?
+  //····················································································································
+
+  private let mUsedForSignature : Bool
+  
+  //····················································································································
   //   Undo manager
   //····················································································································
 
@@ -1726,12 +1739,16 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
 
   internal override func updateObservers (removedSet inRemovedSet : Set <ArtworkFileGenerationParameters>, addedSet inAddedSet : Set <ArtworkFileGenerationParameters>) {
     for managedObject in inRemovedSet {
-      managedObject.setSignatureObserver (observer: nil)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: nil)
+      }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
     for managedObject in inAddedSet {
-      managedObject.setSignatureObserver (observer: self)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: self)
+      }
       self.mSetOppositeRelationship? (managedObject)
     }
   //---
@@ -1881,7 +1898,7 @@ final class PreferencesArrayOf_ArtworkFileGenerationParameters : StoredArrayOf_A
 
   init (prefKey : String) {
     self.mPrefKey = prefKey
-    super.init ()
+    super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [ArtworkFileGenerationParameters] ()
       for dictionary in array {

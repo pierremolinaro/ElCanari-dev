@@ -56,7 +56,7 @@ class SheetInProject : EBManagedObject,
   //   To many property: mObjects
   //····················································································································
 
-  let mObjects_property = StoredArrayOf_SchematicObject ()
+  let mObjects_property = StoredArrayOf_SchematicObject (usedForSignature: false)
 
   //····················································································································
 
@@ -75,7 +75,7 @@ class SheetInProject : EBManagedObject,
   //   To many property: mPoints
   //····················································································································
 
-  let mPoints_property = StoredArrayOf_PointInSchematic ()
+  let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false)
 
   //····················································································································
 
@@ -111,7 +111,7 @@ class SheetInProject : EBManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-   let mRoot_property = StoredObject_ProjectRoot ()
+   let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false)
 
   //····················································································································
 

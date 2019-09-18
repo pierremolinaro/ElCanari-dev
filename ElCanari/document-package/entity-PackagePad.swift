@@ -475,7 +475,7 @@ class PackagePad : PackageObject,
   //   To many property: slaves
   //····················································································································
 
-  let slaves_property = StoredArrayOf_PackageSlavePad ()
+  let slaves_property = StoredArrayOf_PackageSlavePad (usedForSignature: true)
 
   //····················································································································
 
@@ -494,7 +494,7 @@ class PackagePad : PackageObject,
   //   To one property: zone
   //····················································································································
 
-   let zone_property = StoredObject_PackageZone ()
+   let zone_property = StoredObject_PackageZone (usedForSignature: false)
 
   //····················································································································
 

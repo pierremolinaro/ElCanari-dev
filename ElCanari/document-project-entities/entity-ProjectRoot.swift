@@ -1250,7 +1250,7 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mSheets
   //····················································································································
 
-  let mSheets_property = StoredArrayOf_SheetInProject ()
+  let mSheets_property = StoredArrayOf_SheetInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -1439,7 +1439,7 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mNetClasses
   //····················································································································
 
-  let mNetClasses_property = StoredArrayOf_NetClassInProject ()
+  let mNetClasses_property = StoredArrayOf_NetClassInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -1458,7 +1458,7 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mFonts
   //····················································································································
 
-  let mFonts_property = StoredArrayOf_FontInProject ()
+  let mFonts_property = StoredArrayOf_FontInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -1477,7 +1477,7 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mDevices
   //····················································································································
 
-  let mDevices_property = StoredArrayOf_DeviceInProject ()
+  let mDevices_property = StoredArrayOf_DeviceInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -1496,7 +1496,7 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mBorderCurves
   //····················································································································
 
-  let mBorderCurves_property = StoredArrayOf_BorderCurve ()
+  let mBorderCurves_property = StoredArrayOf_BorderCurve (usedForSignature: false)
 
   //····················································································································
 
@@ -1515,7 +1515,7 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mBoardObjects
   //····················································································································
 
-  let mBoardObjects_property = StoredArrayOf_BoardObject ()
+  let mBoardObjects_property = StoredArrayOf_BoardObject (usedForSignature: false)
 
   //····················································································································
 
@@ -1551,7 +1551,7 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mComponents
   //····················································································································
 
-  let mComponents_property = StoredArrayOf_ComponentInProject ()
+  let mComponents_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -1984,7 +1984,7 @@ class ProjectRoot : EBManagedObject,
   //   To one property: mSelectedSheet
   //····················································································································
 
-   let mSelectedSheet_property = StoredObject_SheetInProject ()
+   let mSelectedSheet_property = StoredObject_SheetInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -2160,7 +2160,7 @@ class ProjectRoot : EBManagedObject,
   //   To one property: mArtwork
   //····················································································································
 
-   let mArtwork_property = StoredObject_ArtworkRoot ()
+   let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
 
   //····················································································································
 

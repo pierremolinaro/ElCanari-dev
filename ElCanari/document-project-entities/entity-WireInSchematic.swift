@@ -49,7 +49,7 @@ class WireInSchematic : SchematicObject,
   //   To one property: mP1
   //····················································································································
 
-   let mP1_property = StoredObject_PointInSchematic ()
+   let mP1_property = StoredObject_PointInSchematic (usedForSignature: false)
 
   //····················································································································
 
@@ -87,7 +87,7 @@ class WireInSchematic : SchematicObject,
   //   To one property: mP2
   //····················································································································
 
-   let mP2_property = StoredObject_PointInSchematic ()
+   let mP2_property = StoredObject_PointInSchematic (usedForSignature: false)
 
   //····················································································································
 

@@ -266,7 +266,7 @@ class BorderCurve : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-   let mRoot_property = StoredObject_ProjectRoot ()
+   let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false)
 
   //····················································································································
 
@@ -304,7 +304,7 @@ class BorderCurve : EBGraphicManagedObject,
   //   To one property: mNext
   //····················································································································
 
-   let mNext_property = StoredObject_BorderCurve ()
+   let mNext_property = StoredObject_BorderCurve (usedForSignature: false)
 
   //····················································································································
 
@@ -342,7 +342,7 @@ class BorderCurve : EBGraphicManagedObject,
   //   To one property: mPrevious
   //····················································································································
 
-   let mPrevious_property = StoredObject_BorderCurve ()
+   let mPrevious_property = StoredObject_BorderCurve (usedForSignature: false)
 
   //····················································································································
 

@@ -544,6 +544,19 @@ final class ProxyObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIns
 
 final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinInstanceInDevice, EBSignatureObserverProtocol {
 
+ //····················································································································
+
+  init (usedForSignature inUsedForSignature : Bool) {
+    mUsedForSignature = inUsedForSignature
+    super.init ()
+  }
+
+  //····················································································································
+  //   Signature ?
+  //····················································································································
+
+  private let mUsedForSignature : Bool
+  
   //····················································································································
   //   Undo manager
   //····················································································································
@@ -589,12 +602,16 @@ final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIn
     self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
   //---
     if let object = inOldValue {
-      object.setSignatureObserver (observer: nil)
+      if self.mUsedForSignature {
+        object.setSignatureObserver (observer: nil)
+      }
       self.mResetOppositeRelationship? (object)
     }
   //---
     if let object = self.mInternalValue {
-      object.setSignatureObserver (observer: self)
+      if self.mUsedForSignature {
+        object.setSignatureObserver (observer: self)
+      }
       self.mSetOppositeRelationship? (object)
     }
   //---

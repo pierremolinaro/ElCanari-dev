@@ -1761,6 +1761,19 @@ final class ProxyArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
 class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserverProtocol {
 
   //····················································································································
+
+  init (usedForSignature inUsedForSignature : Bool) {
+    mUsedForSignature = inUsedForSignature
+    super.init ()
+  }
+
+  //····················································································································
+  //   Signature ?
+  //····················································································································
+
+  private let mUsedForSignature : Bool
+  
+  //····················································································································
   //   Undo manager
   //····················································································································
 
@@ -1834,12 +1847,16 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
 
   internal override func updateObservers (removedSet inRemovedSet : Set <DeviceRoot>, addedSet inAddedSet : Set <DeviceRoot>) {
     for managedObject in inRemovedSet {
-      managedObject.setSignatureObserver (observer: nil)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: nil)
+      }
       self.mResetOppositeRelationship? (managedObject)
    }
   //---
     for managedObject in inAddedSet {
-      managedObject.setSignatureObserver (observer: self)
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: self)
+      }
       self.mSetOppositeRelationship? (managedObject)
     }
   //---
@@ -1989,7 +2006,7 @@ final class PreferencesArrayOf_DeviceRoot : StoredArrayOf_DeviceRoot {
 
   init (prefKey : String) {
     self.mPrefKey = prefKey
-    super.init ()
+    super.init (usedForSignature: false)
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [DeviceRoot] ()
       for dictionary in array {

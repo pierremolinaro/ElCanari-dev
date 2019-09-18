@@ -327,7 +327,7 @@ class ComponentSymbolInProject : SchematicObject,
   //   To many property: mPoints
   //····················································································································
 
-  let mPoints_property = StoredArrayOf_PointInSchematic ()
+  let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false)
 
   //····················································································································
 
@@ -374,7 +374,7 @@ class ComponentSymbolInProject : SchematicObject,
   //   To one property: mComponent
   //····················································································································
 
-   let mComponent_property = StoredObject_ComponentInProject ()
+   let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false)
 
   //····················································································································
 

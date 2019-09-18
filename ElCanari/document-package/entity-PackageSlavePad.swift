@@ -423,7 +423,7 @@ class PackageSlavePad : PackageObject,
   //   To one property: master
   //····················································································································
 
-   let master_property = StoredObject_PackagePad ()
+   let master_property = StoredObject_PackagePad (usedForSignature: false)
 
   //····················································································································
 

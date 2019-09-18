@@ -77,7 +77,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   To many property: mInstances
   //····················································································································
 
-  let mInstances_property = StoredArrayOf_SymbolInstanceInDevice ()
+  let mInstances_property = StoredArrayOf_SymbolInstanceInDevice (usedForSignature: false)
 
   //····················································································································
 
@@ -181,7 +181,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   To many property: mPinTypes
   //····················································································································
 
-  let mPinTypes_property = StoredArrayOf_SymbolPinTypeInDevice ()
+  let mPinTypes_property = StoredArrayOf_SymbolPinTypeInDevice (usedForSignature: true)
 
   //····················································································································
 
@@ -408,7 +408,6 @@ class SymbolTypeInDevice : EBManagedObject,
   //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
     self.mFilledBezierPath_property.setSignatureObserver (observer: self)
-    self.mInstances_property.setSignatureObserver (observer: self)
     self.mPinTypes_property.setSignatureObserver (observer: self)
     self.mStrokeBezierPath_property.setSignatureObserver (observer: self)
     self.mTypeName_property.setSignatureObserver (observer: self)
@@ -427,7 +426,6 @@ class SymbolTypeInDevice : EBManagedObject,
   //--- Unregister properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: nil)
     self.mFilledBezierPath_property.setSignatureObserver (observer: nil)
-    self.mInstances_property.setSignatureObserver (observer: nil)
     self.mPinTypes_property.setSignatureObserver (observer: nil)
     self.mStrokeBezierPath_property.setSignatureObserver (observer: nil)
     self.mTypeName_property.setSignatureObserver (observer: nil)
@@ -694,7 +692,6 @@ class SymbolTypeInDevice : EBManagedObject,
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.mFileData_property.signature ())
     crc.accumulateUInt32 (self.mFilledBezierPath_property.signature ())
-    crc.accumulateUInt32 (self.mInstances_property.signature ())
     crc.accumulateUInt32 (self.mPinTypes_property.signature ())
     crc.accumulateUInt32 (self.mStrokeBezierPath_property.signature ())
     crc.accumulateUInt32 (self.mTypeName_property.signature ())

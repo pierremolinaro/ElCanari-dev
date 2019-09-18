@@ -480,7 +480,7 @@ class BoardModel : EBManagedObject,
   //   To many property: frontLegendLines
   //····················································································································
 
-  let frontLegendLines_property = StoredArrayOf_SegmentEntity ()
+  let frontLegendLines_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -499,7 +499,7 @@ class BoardModel : EBManagedObject,
   //   To many property: backLegendLines
   //····················································································································
 
-  let backLegendLines_property = StoredArrayOf_SegmentEntity ()
+  let backLegendLines_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -518,7 +518,7 @@ class BoardModel : EBManagedObject,
   //   To many property: frontLegendTexts
   //····················································································································
 
-  let frontLegendTexts_property = StoredArrayOf_SegmentEntity ()
+  let frontLegendTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -537,7 +537,7 @@ class BoardModel : EBManagedObject,
   //   To many property: frontLayoutTexts
   //····················································································································
 
-  let frontLayoutTexts_property = StoredArrayOf_SegmentEntity ()
+  let frontLayoutTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -556,7 +556,7 @@ class BoardModel : EBManagedObject,
   //   To many property: backLegendTexts
   //····················································································································
 
-  let backLegendTexts_property = StoredArrayOf_SegmentEntity ()
+  let backLegendTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -575,7 +575,7 @@ class BoardModel : EBManagedObject,
   //   To many property: backLayoutTexts
   //····················································································································
 
-  let backLayoutTexts_property = StoredArrayOf_SegmentEntity ()
+  let backLayoutTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -594,7 +594,7 @@ class BoardModel : EBManagedObject,
   //   To many property: internalBoardsLimits
   //····················································································································
 
-  let internalBoardsLimits_property = StoredArrayOf_SegmentEntity ()
+  let internalBoardsLimits_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -613,7 +613,7 @@ class BoardModel : EBManagedObject,
   //   To many property: drills
   //····················································································································
 
-  let drills_property = StoredArrayOf_SegmentEntity ()
+  let drills_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -632,7 +632,7 @@ class BoardModel : EBManagedObject,
   //   To many property: vias
   //····················································································································
 
-  let vias_property = StoredArrayOf_BoardModelVia ()
+  let vias_property = StoredArrayOf_BoardModelVia (usedForSignature: false)
 
   //····················································································································
 
@@ -651,7 +651,7 @@ class BoardModel : EBManagedObject,
   //   To many property: frontPads
   //····················································································································
 
-  let frontPads_property = StoredArrayOf_BoardModelPad ()
+  let frontPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false)
 
   //····················································································································
 
@@ -670,7 +670,7 @@ class BoardModel : EBManagedObject,
   //   To many property: backPads
   //····················································································································
 
-  let backPads_property = StoredArrayOf_BoardModelPad ()
+  let backPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false)
 
   //····················································································································
 
@@ -723,7 +723,7 @@ class BoardModel : EBManagedObject,
   //   To many property: backComponentNames
   //····················································································································
 
-  let backComponentNames_property = StoredArrayOf_SegmentEntity ()
+  let backComponentNames_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -742,7 +742,7 @@ class BoardModel : EBManagedObject,
   //   To many property: frontComponentNames
   //····················································································································
 
-  let frontComponentNames_property = StoredArrayOf_SegmentEntity ()
+  let frontComponentNames_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -761,7 +761,7 @@ class BoardModel : EBManagedObject,
   //   To many property: frontComponentValues
   //····················································································································
 
-  let frontComponentValues_property = StoredArrayOf_SegmentEntity ()
+  let frontComponentValues_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -780,7 +780,7 @@ class BoardModel : EBManagedObject,
   //   To many property: backComponentValues
   //····················································································································
 
-  let backComponentValues_property = StoredArrayOf_SegmentEntity ()
+  let backComponentValues_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -799,7 +799,7 @@ class BoardModel : EBManagedObject,
   //   To many property: backTracks
   //····················································································································
 
-  let backTracks_property = StoredArrayOf_SegmentEntity ()
+  let backTracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -818,7 +818,7 @@ class BoardModel : EBManagedObject,
   //   To many property: frontTracks
   //····················································································································
 
-  let frontTracks_property = StoredArrayOf_SegmentEntity ()
+  let frontTracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -837,7 +837,7 @@ class BoardModel : EBManagedObject,
   //   To many property: frontPackages
   //····················································································································
 
-  let frontPackages_property = StoredArrayOf_SegmentEntity ()
+  let frontPackages_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -856,7 +856,7 @@ class BoardModel : EBManagedObject,
   //   To many property: backPackages
   //····················································································································
 
-  let backPackages_property = StoredArrayOf_SegmentEntity ()
+  let backPackages_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
 
   //····················································································································
 
@@ -892,7 +892,7 @@ class BoardModel : EBManagedObject,
   //   To many property: myInstances
   //····················································································································
 
-  let myInstances_property = StoredArrayOf_MergerBoardInstance ()
+  let myInstances_property = StoredArrayOf_MergerBoardInstance (usedForSignature: false)
 
   //····················································································································
 

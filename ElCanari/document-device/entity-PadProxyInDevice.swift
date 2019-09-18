@@ -83,7 +83,7 @@ class PadProxyInDevice : EBManagedObject,
   //   To one property: mPinInstance
   //····················································································································
 
-   let mPinInstance_property = StoredObject_SymbolPinInstanceInDevice ()
+   let mPinInstance_property = StoredObject_SymbolPinInstanceInDevice (usedForSignature: false)
 
   //····················································································································
 

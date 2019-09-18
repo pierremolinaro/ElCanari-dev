@@ -63,7 +63,7 @@ class FontInProject : EBManagedObject,
   //   To many property: mTexts
   //····················································································································
 
-  let mTexts_property = StoredArrayOf_BoardText ()
+  let mTexts_property = StoredArrayOf_BoardText (usedForSignature: false)
 
   //····················································································································
 
@@ -150,7 +150,7 @@ class FontInProject : EBManagedObject,
   //   To many property: mComponentNames
   //····················································································································
 
-  let mComponentNames_property = StoredArrayOf_ComponentInProject ()
+  let mComponentNames_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
 
   //····················································································································
 
@@ -169,7 +169,7 @@ class FontInProject : EBManagedObject,
   //   To many property: mComponentValues
   //····················································································································
 
-  let mComponentValues_property = StoredArrayOf_ComponentInProject ()
+  let mComponentValues_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
 
   //····················································································································
 

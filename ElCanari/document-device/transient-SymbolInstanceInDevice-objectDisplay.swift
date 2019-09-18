@@ -37,6 +37,14 @@ func transient_SymbolInstanceInDevice_objectDisplay (
         if !filledBezierPath.isEmpty {
           r = r.union (filledBezierPath.bounds)
         }
+      //--- Pin names
+        r = r.union (pinNameShape.boundingBox)
+      //--- Pin numbers
+        for p in self_mPinInstances_numberShape {
+          if let s = p.numberShape {
+            r = r.union (s.boundingBox)
+          }
+        }
         if !r.isNull {
           let MARGIN : CGFloat = 1.0
        //--- Name shape

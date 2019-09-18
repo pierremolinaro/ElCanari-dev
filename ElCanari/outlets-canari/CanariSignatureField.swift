@@ -43,7 +43,9 @@ class CanariSignatureField : NSTextField, EBUserClassNameProtocol {
   func bind_signature (_ model : EBReadOnlyProperty_UInt32, file : String, line : Int) {
     self.mController = EBSimpleController (
       observedObjects: [model],
-      callBack: { self.update (from: model) }
+      callBack: {
+        self.update (from: model)
+      }
     )
   }
 
@@ -62,6 +64,7 @@ class CanariSignatureField : NSTextField, EBUserClassNameProtocol {
       self.stringValue = "—"
     case .single (let v) :
       self.stringValue = String (format: "%04X:%04X", v >> 16, v & 0xFFFF)
+//      Swift.print ("Signature Display -- \(self.stringValue)")
     case .multiple :
       self.stringValue = "—"
     }
@@ -70,5 +73,20 @@ class CanariSignatureField : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+//class EBMySimpleController : EBSimpleController {
+//
+//  //····················································································································
+//
+//  override func postEvent () {
+//    super.postEvent ()
+//    Swift.print ("Signature Controller -- post event")
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -285,7 +285,7 @@ class ArtworkRoot : EBManagedObject,
   //   To many property: fileGenerationParameterArray
   //····················································································································
 
-  let fileGenerationParameterArray_property = StoredArrayOf_ArtworkFileGenerationParameters ()
+  let fileGenerationParameterArray_property = StoredArrayOf_ArtworkFileGenerationParameters (usedForSignature: true)
 
   //····················································································································
 

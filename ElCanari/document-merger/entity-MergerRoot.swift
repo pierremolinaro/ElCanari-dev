@@ -196,7 +196,7 @@ class MergerRoot : EBManagedObject,
   //   To many property: boardModels
   //····················································································································
 
-  let boardModels_property = StoredArrayOf_BoardModel ()
+  let boardModels_property = StoredArrayOf_BoardModel (usedForSignature: false)
 
   //····················································································································
 
@@ -215,7 +215,7 @@ class MergerRoot : EBManagedObject,
   //   To many property: boardInstances
   //····················································································································
 
-  let boardInstances_property = StoredArrayOf_MergerBoardInstance ()
+  let boardInstances_property = StoredArrayOf_MergerBoardInstance (usedForSignature: false)
 
   //····················································································································
 
@@ -689,7 +689,7 @@ class MergerRoot : EBManagedObject,
   //   To one property: artwork
   //····················································································································
 
-   let artwork_property = StoredObject_ArtworkRoot ()
+   let artwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
 
   //····················································································································
 

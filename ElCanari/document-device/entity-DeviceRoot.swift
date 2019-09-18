@@ -427,7 +427,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mDocs
   //····················································································································
 
-  let mDocs_property = StoredArrayOf_DeviceDocumentation ()
+  let mDocs_property = StoredArrayOf_DeviceDocumentation (usedForSignature: true)
 
   //····················································································································
 
@@ -446,7 +446,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mSymbolInstances
   //····················································································································
 
-  let mSymbolInstances_property = StoredArrayOf_SymbolInstanceInDevice ()
+  let mSymbolInstances_property = StoredArrayOf_SymbolInstanceInDevice (usedForSignature: true)
 
   //····················································································································
 
@@ -465,7 +465,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mPackages
   //····················································································································
 
-  let mPackages_property = StoredArrayOf_PackageInDevice ()
+  let mPackages_property = StoredArrayOf_PackageInDevice (usedForSignature: true)
 
   //····················································································································
 
@@ -484,7 +484,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mSymbolTypes
   //····················································································································
 
-  let mSymbolTypes_property = StoredArrayOf_SymbolTypeInDevice ()
+  let mSymbolTypes_property = StoredArrayOf_SymbolTypeInDevice (usedForSignature: true)
 
   //····················································································································
 
@@ -520,7 +520,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mPadProxies
   //····················································································································
 
-  let mPadProxies_property = StoredArrayOf_PadProxyInDevice ()
+  let mPadProxies_property = StoredArrayOf_PadProxyInDevice (usedForSignature: true)
 
   //····················································································································
 

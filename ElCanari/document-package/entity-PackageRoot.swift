@@ -416,7 +416,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   To many property: packageObjects
   //····················································································································
 
-  let packageObjects_property = StoredArrayOf_PackageObject ()
+  let packageObjects_property = StoredArrayOf_PackageObject (usedForSignature: true)
 
   //····················································································································
 

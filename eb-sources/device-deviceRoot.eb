@@ -97,8 +97,8 @@ graphic entity PackageInDevice {
 
   property @signature NSBezierPath mStrokeBezierPath default empty ;
 
-  property @signature Int mX default 0 ;
-  property @signature Int mY default 0 ;
+  property Int mX default 0 ;
+  property Int mY default 0 ;
 
   transient String versionString dependsFrom self.mVersion ;
 
@@ -209,7 +209,7 @@ entity SlavePadInDevice {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SymbolTypeInDevice {
-  toMany @signature SymbolInstanceInDevice mInstances inverse toOne mType ;
+  toMany SymbolInstanceInDevice mInstances inverse toOne mType ;
   toMany @signature SymbolPinTypeInDevice mPinTypes ;
 
   property @signature String mTypeName default "" ;
@@ -259,11 +259,11 @@ entity SymbolPinTypeInDevice {
 
 graphic entity SymbolInstanceInDevice {
   toOne SymbolTypeInDevice mType inverse toMany mInstances ;
-  toMany SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
+  toMany @signature SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
 
   property @signature String mInstanceName default "" ;
-  property @signature Int mX default 0 ;
-  property @signature Int mY default 0 ;
+  property Int mX default 0 ;
+  property Int mY default 0 ;
 
   transient EBShape objectDisplay dependsFrom
      self.mType.one.mStrokeBezierPath,
@@ -283,6 +283,8 @@ graphic entity SymbolInstanceInDevice {
   transient EBShape selectionDisplay dependsFrom
      self.mType.one.mStrokeBezierPath,
      self.mType.one.mFilledBezierPath,
+     self.mType.one.pinNameShape,
+     self.mPinInstances.all.numberShape,
      self.symbolQualifiedName,
      prefs.symbolDrawingWidthMultipliedByTen,
      self.mX, self.mY
@@ -322,6 +324,8 @@ entity SymbolPinInstanceInDevice {
 entity PadProxyInDevice {
   toOne SymbolPinInstanceInDevice mPinInstance inverse toOne mPadProxy ;
 
+ // property proxy String pinInstanceName2 : mPinInstance.pinName ;
+  
   property @signature String mPadName default "" ;
 
   property @signature Bool mIsNC default no ;
