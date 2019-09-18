@@ -53,7 +53,7 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_SchematicObject () // §
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_SchematicObject ()
 
   //····················································································································
 

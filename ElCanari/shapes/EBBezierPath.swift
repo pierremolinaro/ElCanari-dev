@@ -76,7 +76,7 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
-  init (_ inBezierPath : NSBezierPath) { // § TEMP
+  init (_ inBezierPath : NSBezierPath) {
     self.mPath = NSBezierPath ()
     self.mPath.append (inBezierPath)
     self.mPath.lineWidth = inBezierPath.lineWidth

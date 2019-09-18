@@ -161,7 +161,11 @@ entity ProjectRoot {
   property GridStyle mSchematicGridStyle default line ;
   property Int mSchematicGridDisplayFactor default 4 ;
 
-  property SchematicSheetOrientation mSchematicSheetOrientation default horizontal ;
+  property Int mSchematicCustomWidth default 27_000_000 ; // 300 mm
+  property Int mSchematicCustomWidthUnit default 90_000 ; // mm
+  property Int mSchematicCustomHeight default 27_000_000 ; // 300 mm
+  property Int mSchematicCustomHeightUnit default 90_000 ; // mm
+  property SchematicSheetOrientation mSchematicSheetOrientation default a4Horizontal ;
 
   transient StringArray deviceNames dependsFrom self.mDevices.all.mDeviceName ;
 
@@ -181,7 +185,9 @@ entity ProjectRoot {
     self.mSelectedSheet.one.mSheetTitle,
     self.mSheets,
     self.mSelectedSheet,
-    self.mSchematicDate
+    self.mSchematicDate,
+    self.mSchematicCustomWidth,
+    self.mSchematicCustomHeight
   ;
   
   transient String connexionWarningString dependsFrom self.mSheets.all.connexionWarnings ;

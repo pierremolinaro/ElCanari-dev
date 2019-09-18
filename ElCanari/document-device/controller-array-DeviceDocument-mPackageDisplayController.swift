@@ -53,7 +53,7 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_PackageInDevice () // §
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_PackageInDevice ()
 
   //····················································································································
 

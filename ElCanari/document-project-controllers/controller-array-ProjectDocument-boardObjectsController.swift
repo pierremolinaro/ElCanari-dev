@@ -53,7 +53,7 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_BoardObject () // §
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_BoardObject ()
 
   //····················································································································
 

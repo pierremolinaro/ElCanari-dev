@@ -59,6 +59,10 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mSchematicZoom_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSchematicGridStyle_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSchematicGridDisplayFactor_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSchematicCustomWidth_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSchematicCustomWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSchematicCustomHeight_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSchematicCustomHeightUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSchematicSheetOrientation_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_boardGridStepMultipliedByDisplayFactor_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_fromElementsOfSet (inRemovedSet) // Transient property
@@ -145,6 +149,10 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mSchematicZoom_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSchematicGridStyle_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSchematicGridDisplayFactor_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSchematicCustomWidth_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSchematicCustomWidthUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSchematicCustomHeight_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSchematicCustomHeightUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSchematicSheetOrientation_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_boardGridStepMultipliedByDisplayFactor_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_toElementsOfSet (inAddedSet) // Transient property
@@ -2692,6 +2700,234 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSchematicGridDisplayFactor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSchematicCustomWidth' stored property
+  //····················································································································
+
+  private var mObserversOf_mSchematicCustomWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSchematicCustomWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSchematicCustomWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicCustomWidth_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSchematicCustomWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSchematicCustomWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicCustomWidth_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSchematicCustomWidth_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSchematicCustomWidth.apply { (_ observer : EBEvent) in
+        managedObject.mSchematicCustomWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSchematicCustomWidth_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mSchematicCustomWidth.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSchematicCustomWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSchematicCustomWidthUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mSchematicCustomWidthUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSchematicCustomWidthUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSchematicCustomWidthUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicCustomWidthUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSchematicCustomWidthUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSchematicCustomWidthUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicCustomWidthUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSchematicCustomWidthUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSchematicCustomWidthUnit.apply { (_ observer : EBEvent) in
+        managedObject.mSchematicCustomWidthUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSchematicCustomWidthUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mSchematicCustomWidthUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSchematicCustomWidthUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSchematicCustomHeight' stored property
+  //····················································································································
+
+  private var mObserversOf_mSchematicCustomHeight = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSchematicCustomHeight (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSchematicCustomHeight.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicCustomHeight_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSchematicCustomHeight (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSchematicCustomHeight.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicCustomHeight_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSchematicCustomHeight_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSchematicCustomHeight.apply { (_ observer : EBEvent) in
+        managedObject.mSchematicCustomHeight_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSchematicCustomHeight_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mSchematicCustomHeight.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSchematicCustomHeight_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSchematicCustomHeightUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mSchematicCustomHeightUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSchematicCustomHeightUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSchematicCustomHeightUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicCustomHeightUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSchematicCustomHeightUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSchematicCustomHeightUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicCustomHeightUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSchematicCustomHeightUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSchematicCustomHeightUnit.apply { (_ observer : EBEvent) in
+        managedObject.mSchematicCustomHeightUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSchematicCustomHeightUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mSchematicCustomHeightUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSchematicCustomHeightUnit_property.removeEBObserver (observer)
       }
     }
   }
@@ -6200,6 +6436,10 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mSchematicZoom (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSchematicGridStyle (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSchematicGridDisplayFactor (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicCustomWidth (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicCustomWidthUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicCustomHeight (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSchematicCustomHeightUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSchematicSheetOrientation (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }

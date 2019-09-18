@@ -7,16 +7,18 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum SchematicSheetOrientation : Int, EnumPropertyProtocol {
-  case vertical = 0
-  case horizontal = 1
+  case a4Vertical = 0
+  case a4Horizontal = 1
+  case custom = 2
 
 
   //····················································································································
 
   init? (string : String) {
     switch string {
-      case "vertical" : self = .vertical // 0
-      case "horizontal" : self = .horizontal // 1
+      case "a4Vertical" : self = .a4Vertical // 0
+      case "a4Horizontal" : self = .a4Horizontal // 1
+      case "custom" : self = .custom // 2
       case _ : return nil
     }
   }
@@ -25,8 +27,9 @@ enum SchematicSheetOrientation : Int, EnumPropertyProtocol {
 
   func descriptionForExplorer () -> String {
     switch self {
-      case .vertical : return "vertical" // 0
-      case .horizontal : return "horizontal" // 1
+      case .a4Vertical : return "a4Vertical" // 0
+      case .a4Horizontal : return "a4Horizontal" // 1
+      case .custom : return "custom" // 2
     }
   }
 
@@ -66,7 +69,7 @@ enum SchematicSheetOrientation : Int, EnumPropertyProtocol {
   }
 
   static func convertFromNSObject (object : NSObject) -> SchematicSheetOrientation {
-    var result = SchematicSheetOrientation.vertical
+    var result = SchematicSheetOrientation.a4Vertical
     if let number = object as? NSNumber, let v = SchematicSheetOrientation (rawValue: number.intValue) {
       result = v
     }

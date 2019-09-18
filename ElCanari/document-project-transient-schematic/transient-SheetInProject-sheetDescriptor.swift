@@ -16,6 +16,8 @@ import Cocoa
 func transient_SheetInProject_sheetDescriptor (
        _ self_mRoot_mSchematicSheetOrientation : SchematicSheetOrientation?,
        _ self_mRoot_sheetIndexes : IntArray?,  
+       _ self_mRoot_mSchematicCustomWidth : Int?,
+       _ self_mRoot_mSchematicCustomHeight : Int?,
        _ self_ebObjectIndex : Int
 ) -> SchematicSheetDescriptor {
 //--- START OF USER ZONE 2
@@ -29,22 +31,32 @@ func transient_SheetInProject_sheetDescriptor (
         let gutterWidth = cocoaToCanariUnit (SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT)
         let gutterHeight = cocoaToCanariUnit (SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT)
         switch self_mRoot_mSchematicSheetOrientation! {
-        case .horizontal :
+        case .a4Horizontal :
           let width = A4MaxSize - leftMargin - rightMargin - 2 * gutterWidth
           let height = A4MinSize - topMargin - bottomMargin - 2 * gutterHeight
           return SchematicSheetDescriptor (
             size: CanariSize (width: width, height: height),
-            horizontalDivisions: 8,
-            verticalDivisions: 6,
+            horizontalDivisions: 10,
+            verticalDivisions: (10 * A4MinSize) / A4MaxSize,
             sheetIndex: sheetIndex
           )
-        case .vertical :
+        case .a4Vertical :
           let width = A4MinSize - leftMargin - rightMargin - 2 * gutterWidth
           let height = A4MaxSize - topMargin - bottomMargin - 2 * gutterHeight
           return SchematicSheetDescriptor (
             size: CanariSize (width: width, height: height),
-            horizontalDivisions: 6,
-            verticalDivisions: 8,
+            horizontalDivisions: (10 * A4MinSize) / A4MaxSize,
+            verticalDivisions: 10,
+            sheetIndex: sheetIndex
+          )
+        case .custom :
+          let width = self_mRoot_mSchematicCustomWidth!
+          let height = self_mRoot_mSchematicCustomHeight!
+          let m = max (width, height)
+          return SchematicSheetDescriptor (
+            size: CanariSize (width: width, height: height),
+            horizontalDivisions: (10 * width) / m,
+            verticalDivisions: (10 * height) / m,
             sheetIndex: sheetIndex
           )
         }

@@ -270,6 +270,30 @@ protocol ProjectRoot_mSchematicGridDisplayFactor : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mSchematicCustomWidth : class {
+  var mSchematicCustomWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mSchematicCustomWidthUnit : class {
+  var mSchematicCustomWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mSchematicCustomHeight : class {
+  var mSchematicCustomHeight : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mSchematicCustomHeightUnit : class {
+  var mSchematicCustomHeightUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mSchematicSheetOrientation : class {
   var mSchematicSheetOrientation : SchematicSheetOrientation { get }
 }
@@ -617,6 +641,10 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicZoom,
          ProjectRoot_mSchematicGridStyle,
          ProjectRoot_mSchematicGridDisplayFactor,
+         ProjectRoot_mSchematicCustomWidth,
+         ProjectRoot_mSchematicCustomWidthUnit,
+         ProjectRoot_mSchematicCustomHeight,
+         ProjectRoot_mSchematicCustomHeightUnit,
          ProjectRoot_mSchematicSheetOrientation,
          ProjectRoot_minPPTPTTTWdisplayUnit,
          ProjectRoot_minPPTPTTTW,
@@ -1436,6 +1464,74 @@ class ProjectRoot : EBManagedObject,
   var mSchematicGridDisplayFactor_property_selection : EBSelection <Int> { return self.mSchematicGridDisplayFactor_property.prop }
 
   //····················································································································
+  //   Atomic property: mSchematicCustomWidth
+  //····················································································································
+
+  let mSchematicCustomWidth_property = EBStoredProperty_Int (defaultValue: 27000000)
+
+  //····················································································································
+
+  var mSchematicCustomWidth : Int {
+    get { return self.mSchematicCustomWidth_property.propval }
+    set { self.mSchematicCustomWidth_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSchematicCustomWidth_property_selection : EBSelection <Int> { return self.mSchematicCustomWidth_property.prop }
+
+  //····················································································································
+  //   Atomic property: mSchematicCustomWidthUnit
+  //····················································································································
+
+  let mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  //····················································································································
+
+  var mSchematicCustomWidthUnit : Int {
+    get { return self.mSchematicCustomWidthUnit_property.propval }
+    set { self.mSchematicCustomWidthUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSchematicCustomWidthUnit_property_selection : EBSelection <Int> { return self.mSchematicCustomWidthUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mSchematicCustomHeight
+  //····················································································································
+
+  let mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000)
+
+  //····················································································································
+
+  var mSchematicCustomHeight : Int {
+    get { return self.mSchematicCustomHeight_property.propval }
+    set { self.mSchematicCustomHeight_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSchematicCustomHeight_property_selection : EBSelection <Int> { return self.mSchematicCustomHeight_property.prop }
+
+  //····················································································································
+  //   Atomic property: mSchematicCustomHeightUnit
+  //····················································································································
+
+  let mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  //····················································································································
+
+  var mSchematicCustomHeightUnit : Int {
+    get { return self.mSchematicCustomHeightUnit_property.propval }
+    set { self.mSchematicCustomHeightUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSchematicCustomHeightUnit_property_selection : EBSelection <Int> { return self.mSchematicCustomHeightUnit_property.prop }
+
+  //····················································································································
   //   To many property: mNetClasses
   //····················································································································
 
@@ -1493,6 +1589,23 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: mSchematicSheetOrientation
+  //····················································································································
+
+  let mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal)
+
+  //····················································································································
+
+  var mSchematicSheetOrientation : SchematicSheetOrientation {
+    get { return self.mSchematicSheetOrientation_property.propval }
+    set { self.mSchematicSheetOrientation_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSchematicSheetOrientation_property_selection : EBSelection <SchematicSheetOrientation> { return self.mSchematicSheetOrientation_property.prop }
+
+  //····················································································································
   //   To many property: mBorderCurves
   //····················································································································
 
@@ -1529,23 +1642,6 @@ class ProjectRoot : EBManagedObject,
     get { return self.mBoardObjects_property.propval }
     set { self.mBoardObjects_property.setProp (newValue) }
   }
-
-  //····················································································································
-  //   Atomic property: mSchematicSheetOrientation
-  //····················································································································
-
-  let mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.horizontal)
-
-  //····················································································································
-
-  var mSchematicSheetOrientation : SchematicSheetOrientation {
-    get { return self.mSchematicSheetOrientation_property.propval }
-    set { self.mSchematicSheetOrientation_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mSchematicSheetOrientation_property_selection : EBSelection <SchematicSheetOrientation> { return self.mSchematicSheetOrientation_property.prop }
 
   //····················································································································
   //   To many property: mComponents
@@ -2984,12 +3080,22 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicGridStyle_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSchematicGridDisplayFactor
     self.mSchematicGridDisplayFactor_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSchematicCustomWidth
+    self.mSchematicCustomWidth_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSchematicCustomWidthUnit
+    self.mSchematicCustomWidthUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSchematicCustomHeight
+    self.mSchematicCustomHeight_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSchematicCustomHeightUnit
+    self.mSchematicCustomHeightUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mNetClasses (no option)
     self.mNetClasses_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mFonts (no option)
     self.mFonts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mDevices (no option)
     self.mDevices_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSchematicSheetOrientation
+    self.mSchematicSheetOrientation_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mBorderCurves (has opposite relationship)
     self.mBorderCurves_property.ebUndoManager = self.ebUndoManager
     self.mBorderCurves_property.setOppositeRelationShipFunctions (
@@ -3002,8 +3108,6 @@ class ProjectRoot : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
-  //--- Atomic property: mSchematicSheetOrientation
-    self.mSchematicSheetOrientation_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mComponents (no option)
     self.mComponents_property.ebUndoManager = self.ebUndoManager
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
@@ -3965,15 +4069,17 @@ class ProjectRoot : EBManagedObject,
         kind &= unwSelf.mSheets_property_selection.kind ()
         kind &= unwSelf.mSelectedSheet_property_selection.kind ()
         kind &= unwSelf.mSchematicDate_property_selection.kind ()
+        kind &= unwSelf.mSchematicCustomWidth_property_selection.kind ()
+        kind &= unwSelf.mSchematicCustomHeight_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mSchematicTitle_property_selection, unwSelf.mSchematicVersion_property_selection, unwSelf.mSchematicSheetOrientation_property_selection, unwSelf.mSelectedSheet_property.mSheetTitle_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSelectedSheet_property_selection, unwSelf.mSchematicDate_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-            return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6))
+          switch (unwSelf.mSchematicTitle_property_selection, unwSelf.mSchematicVersion_property_selection, unwSelf.mSchematicSheetOrientation_property_selection, unwSelf.mSelectedSheet_property.mSheetTitle_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSelectedSheet_property_selection, unwSelf.mSchematicDate_property_selection, unwSelf.mSchematicCustomWidth_property_selection, unwSelf.mSchematicCustomHeight_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
             return .empty
           }
@@ -3989,6 +4095,8 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicCustomWidth_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicCustomHeight_property.addEBObserver (self.schematicBackgroundDisplay_property)
   //--- Atomic property: netWarningCount
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4265,6 +4373,8 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicDate_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicCustomWidth_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicCustomHeight_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mNetClasses_property.removeEBObserverOf_netWarningCount (self.netWarningCount_property)
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mComponents_property.removeEBObserver (self.unplacedPackages_property)
@@ -4644,6 +4754,38 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.mSchematicGridDisplayFactor_property.mObserverExplorer,
       valueExplorer: &self.mSchematicGridDisplayFactor_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSchematicCustomWidth",
+      idx: self.mSchematicCustomWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicCustomWidth_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicCustomWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSchematicCustomWidthUnit",
+      idx: self.mSchematicCustomWidthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicCustomWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicCustomWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSchematicCustomHeight",
+      idx: self.mSchematicCustomHeight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicCustomHeight_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicCustomHeight_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSchematicCustomHeightUnit",
+      idx: self.mSchematicCustomHeightUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicCustomHeightUnit_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicCustomHeightUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSchematicSheetOrientation",
@@ -5165,19 +5307,31 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mSchematicGridDisplayFactor
     self.mSchematicGridDisplayFactor_property.mObserverExplorer = nil
     self.mSchematicGridDisplayFactor_property.mValueExplorer = nil
+  //--- Atomic property: mSchematicCustomWidth
+    self.mSchematicCustomWidth_property.mObserverExplorer = nil
+    self.mSchematicCustomWidth_property.mValueExplorer = nil
+  //--- Atomic property: mSchematicCustomWidthUnit
+    self.mSchematicCustomWidthUnit_property.mObserverExplorer = nil
+    self.mSchematicCustomWidthUnit_property.mValueExplorer = nil
+  //--- Atomic property: mSchematicCustomHeight
+    self.mSchematicCustomHeight_property.mObserverExplorer = nil
+    self.mSchematicCustomHeight_property.mValueExplorer = nil
+  //--- Atomic property: mSchematicCustomHeightUnit
+    self.mSchematicCustomHeightUnit_property.mObserverExplorer = nil
+    self.mSchematicCustomHeightUnit_property.mValueExplorer = nil
   //--- To many property: mNetClasses
     self.mNetClasses_property.mValueExplorer = nil
   //--- To many property: mFonts
     self.mFonts_property.mValueExplorer = nil
   //--- To many property: mDevices
     self.mDevices_property.mValueExplorer = nil
+  //--- Atomic property: mSchematicSheetOrientation
+    self.mSchematicSheetOrientation_property.mObserverExplorer = nil
+    self.mSchematicSheetOrientation_property.mValueExplorer = nil
   //--- To many property: mBorderCurves
     self.mBorderCurves_property.mValueExplorer = nil
   //--- To many property: mBoardObjects
     self.mBoardObjects_property.mValueExplorer = nil
-  //--- Atomic property: mSchematicSheetOrientation
-    self.mSchematicSheetOrientation_property.mObserverExplorer = nil
-    self.mSchematicSheetOrientation_property.mValueExplorer = nil
   //--- To many property: mComponents
     self.mComponents_property.mValueExplorer = nil
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
@@ -5354,6 +5508,14 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicGridStyle_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicGridStyle")
   //--- Atomic property: mSchematicGridDisplayFactor
     self.mSchematicGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicGridDisplayFactor")
+  //--- Atomic property: mSchematicCustomWidth
+    self.mSchematicCustomWidth_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicCustomWidth")
+  //--- Atomic property: mSchematicCustomWidthUnit
+    self.mSchematicCustomWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicCustomWidthUnit")
+  //--- Atomic property: mSchematicCustomHeight
+    self.mSchematicCustomHeight_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicCustomHeight")
+  //--- Atomic property: mSchematicCustomHeightUnit
+    self.mSchematicCustomHeightUnit_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicCustomHeightUnit")
   //--- To many property: mNetClasses
     self.store (
       managedObjectArray: self.mNetClasses_property.propval,
@@ -5372,6 +5534,8 @@ class ProjectRoot : EBManagedObject,
       relationshipName: "mDevices",
       intoDictionary: ioDictionary
     )
+  //--- Atomic property: mSchematicSheetOrientation
+    self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicSheetOrientation")
   //--- To many property: mBorderCurves
     self.store (
       managedObjectArray: self.mBorderCurves_property.propval,
@@ -5384,8 +5548,6 @@ class ProjectRoot : EBManagedObject,
       relationshipName: "mBoardObjects",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mSchematicSheetOrientation
-    self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicSheetOrientation")
   //--- To many property: mComponents
     self.store (
       managedObjectArray: self.mComponents_property.propval,
@@ -5569,6 +5731,14 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicGridStyle_property.readFrom (dictionary: inDictionary, forKey:"mSchematicGridStyle")
   //--- Atomic property: mSchematicGridDisplayFactor
     self.mSchematicGridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey:"mSchematicGridDisplayFactor")
+  //--- Atomic property: mSchematicCustomWidth
+    self.mSchematicCustomWidth_property.readFrom (dictionary: inDictionary, forKey:"mSchematicCustomWidth")
+  //--- Atomic property: mSchematicCustomWidthUnit
+    self.mSchematicCustomWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mSchematicCustomWidthUnit")
+  //--- Atomic property: mSchematicCustomHeight
+    self.mSchematicCustomHeight_property.readFrom (dictionary: inDictionary, forKey:"mSchematicCustomHeight")
+  //--- Atomic property: mSchematicCustomHeightUnit
+    self.mSchematicCustomHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"mSchematicCustomHeightUnit")
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.readFrom (dictionary: inDictionary, forKey:"mSchematicSheetOrientation")
   }

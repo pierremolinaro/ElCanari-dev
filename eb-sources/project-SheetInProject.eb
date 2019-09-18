@@ -1,8 +1,4 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum SchematicSheetOrientation { vertical, horizontal }
-
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Sheet
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -24,6 +20,8 @@ entity SheetInProject {
   transient SchematicSheetDescriptor sheetDescriptor dependsFrom
      self.mRoot.one.mSchematicSheetOrientation,
      self.mRoot.one.sheetIndexes,
+     self.mRoot.one.mSchematicCustomWidth,
+     self.mRoot.one.mSchematicCustomHeight,
      self
   ;
 }

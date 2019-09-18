@@ -40,7 +40,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_DevicePackageInProject () // §
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_DevicePackageInProject ()
 
   //····················································································································
 

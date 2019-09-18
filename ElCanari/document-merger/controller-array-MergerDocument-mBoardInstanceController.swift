@@ -53,7 +53,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_MergerBoardInstance () // §
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_MergerBoardInstance ()
 
   //····················································································································
 

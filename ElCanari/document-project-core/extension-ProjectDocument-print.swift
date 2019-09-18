@@ -52,14 +52,18 @@ extension CustomizedProjectDocument {
       let pageWidth  : CGFloat
       let pageHeight : CGFloat
       switch self.rootObject.mSchematicSheetOrientation {
-      case .horizontal :
+      case .a4Horizontal :
         pageWidth = SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT
         pageHeight = SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT
         orientation = .landscape
-      case .vertical :
+      case .a4Vertical :
         pageWidth = SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT
         pageHeight = SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT
         orientation = .portrait
+      case .custom :
+         pageWidth = canariUnitToCocoa (self.rootObject.mSchematicCustomWidth) + SCHEMATIC_LEFT_MARGIN_COCOA_UNIT + SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT + 2.0
+         pageHeight = canariUnitToCocoa (self.rootObject.mSchematicCustomHeight) + SCHEMATIC_TOP_MARGIN_COCOA_UNIT + SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT + 2.0
+         orientation = (pageWidth >= pageHeight) ? .landscape : .portrait
       }
     //--- Build print view
       let sheets = self.rootObject.mSheets

@@ -296,6 +296,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: schematicSheetOrientationIsCustom
+  //····················································································································
+
+  let schematicSheetOrientationIsCustom_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var schematicSheetOrientationIsCustom_property_selection : EBSelection <Bool> {
+    return self.schematicSheetOrientationIsCustom_property.prop
+  }
+
+  //····················································································································
+
+  var schematicSheetOrientationIsCustom : Bool? {
+    switch self.schematicSheetOrientationIsCustom_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: netCountString
   //····················································································································
 
@@ -802,6 +825,11 @@ import Cocoa
   @IBOutlet var mRestrictRectangleInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mRouterBoardInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mSaveDSNFileAuxiliaryView : NSView? = nil
+  @IBOutlet var mSchematicCustomHeightTextField : CanariDimensionTextField? = nil
+  @IBOutlet var mSchematicCustomHeightUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet var mSchematicCustomSizeView : NSView? = nil
+  @IBOutlet var mSchematicCustomWidthTextField : CanariDimensionTextField? = nil
+  @IBOutlet var mSchematicCustomWidthUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mSchematicLabelInsulateSubnetButton : EBButton? = nil
   @IBOutlet var mSchematicLabelMergeSubnetButton : EBButton? = nil
   @IBOutlet var mSchematicLabelNetClassButton : EBPopUpButton? = nil
@@ -906,6 +934,7 @@ import Cocoa
   var mController_mRenameDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mExportDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateDeviceButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mSchematicCustomSizeView_hidden : MultipleBindingController_hidden? = nil
   var mController_mRemoveSheetButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mWireRenameNetButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mWireRenameNetWithUniqueNewNameButton_enabled : MultipleBindingController_enabled? = nil
@@ -1325,6 +1354,11 @@ import Cocoa
     checkOutletConnection (self.mRestrictRectangleInspectorView, "mRestrictRectangleInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mRouterBoardInspectorView, "mRouterBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSaveDSNFileAuxiliaryView, "mSaveDSNFileAuxiliaryView", NSView.self, #file, #line)
+    checkOutletConnection (self.mSchematicCustomHeightTextField, "mSchematicCustomHeightTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mSchematicCustomHeightUnitPopUp, "mSchematicCustomHeightUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSchematicCustomSizeView, "mSchematicCustomSizeView", NSView.self, #file, #line)
+    checkOutletConnection (self.mSchematicCustomWidthTextField, "mSchematicCustomWidthTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mSchematicCustomWidthUnitPopUp, "mSchematicCustomWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSchematicLabelInsulateSubnetButton, "mSchematicLabelInsulateSubnetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicLabelMergeSubnetButton, "mSchematicLabelMergeSubnetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicLabelNetClassButton, "mSchematicLabelNetClassButton", EBPopUpButton.self, #file, #line)
@@ -1590,6 +1624,28 @@ import Cocoa
       }
     }
     self.projectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+  //--- Atomic property: schematicSheetOrientationIsCustom
+    self.schematicSheetOrientationIsCustom_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.mSchematicSheetOrientation_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.rootObject.mSchematicSheetOrientation_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_schematicSheetOrientationIsCustom (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mSchematicSheetOrientation_property.addEBObserver (self.schematicSheetOrientationIsCustom_property)
   //--- Atomic property: netCountString
     self.netCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1819,6 +1875,10 @@ import Cocoa
     self.mSchematicsTitleTextField?.bind_value (self.rootObject.mSchematicTitle_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsVersionTextField?.bind_value (self.rootObject.mSchematicVersion_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsSheetOrientationSegmentedControl?.bind_selectedSegment (self.rootObject.mSchematicSheetOrientation_property, file: #file, line: #line)
+    self.mSchematicCustomWidthUnitPopUp?.bind_selectedTag (self.rootObject.mSchematicCustomWidthUnit_property, file: #file, line: #line)
+    self.mSchematicCustomWidthTextField?.bind_dimensionAndUnit (self.rootObject.mSchematicCustomWidth_property, self.rootObject.mSchematicCustomWidthUnit_property, file: #file, line: #line)
+    self.mSchematicCustomHeightUnitPopUp?.bind_selectedTag (self.rootObject.mSchematicCustomHeightUnit_property, file: #file, line: #line)
+    self.mSchematicCustomHeightTextField?.bind_dimensionAndUnit (self.rootObject.mSchematicCustomHeight_property, self.rootObject.mSchematicCustomHeightUnit_property, file: #file, line: #line)
     self.mSelectedSheetTitleTextField?.bind_value (self.rootObject.selectedSheetTitle_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsView?.bind_underObjectsDisplay (self.rootObject.schematicBackgroundDisplay_property, file: #file, line: #line)
     self.mSchematicsView?.bind_overObjectsDisplay (self.rootObject.connectedPoints_property, file: #file, line: #line)
@@ -2244,6 +2304,16 @@ import Cocoa
       self.mController_mUpdateDeviceButton_enabled = controller
     }
     do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return !self.schematicSheetOrientationIsCustom_property_selection
+        },
+        outlet: self.mSchematicCustomSizeView
+      )
+      self.schematicSheetOrientationIsCustom_property.addEBObserver (controller)
+      self.mController_mSchematicCustomSizeView_hidden = controller
+    }
+    do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
           return (self.rootObject.mSheets_property.count_property_selection > EBSelection.single (1))
@@ -2546,6 +2616,10 @@ import Cocoa
     self.mSchematicsTitleTextField?.unbind_value ()
     self.mSchematicsVersionTextField?.unbind_value ()
     self.mSchematicsSheetOrientationSegmentedControl?.unbind_selectedSegment ()
+    self.mSchematicCustomWidthUnitPopUp?.unbind_selectedTag ()
+    self.mSchematicCustomWidthTextField?.unbind_dimensionAndUnit ()
+    self.mSchematicCustomHeightUnitPopUp?.unbind_selectedTag ()
+    self.mSchematicCustomHeightTextField?.unbind_dimensionAndUnit ()
     self.mSelectedSheetTitleTextField?.unbind_value ()
     self.mSchematicsView?.unbind_underObjectsDisplay ()
     self.mSchematicsView?.unbind_overObjectsDisplay ()
@@ -2810,6 +2884,8 @@ import Cocoa
     self.mController_mExportDeviceButton_enabled = nil
     self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateDeviceButton_enabled!)
     self.mController_mUpdateDeviceButton_enabled = nil
+    self.schematicSheetOrientationIsCustom_property.removeEBObserver (self.mController_mSchematicCustomSizeView_hidden!)
+    self.mController_mSchematicCustomSizeView_hidden = nil
     self.rootObject.mSheets_property.count_property.removeEBObserver (self.mController_mRemoveSheetButton_enabled!)
     self.mController_mRemoveSheetButton_enabled = nil
     self.wireInSchematicSelectionController.hasNet_property.removeEBObserver (self.mController_mWireRenameNetButton_enabled!)
@@ -2912,6 +2988,7 @@ import Cocoa
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    self.rootObject.mSchematicSheetOrientation_property.removeEBObserver (self.schematicSheetOrientationIsCustom_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
     self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
     self.documentFilePath_property.removeEBObserver (self.documentFilePathOk_property)
@@ -3247,6 +3324,11 @@ import Cocoa
     self.mRestrictRectangleInspectorView?.ebCleanUp ()
     self.mRouterBoardInspectorView?.ebCleanUp ()
     self.mSaveDSNFileAuxiliaryView?.ebCleanUp ()
+    self.mSchematicCustomHeightTextField?.ebCleanUp ()
+    self.mSchematicCustomHeightUnitPopUp?.ebCleanUp ()
+    self.mSchematicCustomSizeView?.ebCleanUp ()
+    self.mSchematicCustomWidthTextField?.ebCleanUp ()
+    self.mSchematicCustomWidthUnitPopUp?.ebCleanUp ()
     self.mSchematicLabelInsulateSubnetButton?.ebCleanUp ()
     self.mSchematicLabelMergeSubnetButton?.ebCleanUp ()
     self.mSchematicLabelNetClassButton?.ebCleanUp ()
@@ -3622,6 +3704,11 @@ import Cocoa
     self.mRestrictRectangleInspectorView = nil
     self.mRouterBoardInspectorView = nil
     self.mSaveDSNFileAuxiliaryView = nil
+    self.mSchematicCustomHeightTextField = nil
+    self.mSchematicCustomHeightUnitPopUp = nil
+    self.mSchematicCustomSizeView = nil
+    self.mSchematicCustomWidthTextField = nil
+    self.mSchematicCustomWidthUnitPopUp = nil
     self.mSchematicLabelInsulateSubnetButton = nil
     self.mSchematicLabelMergeSubnetButton = nil
     self.mSchematicLabelNetClassButton = nil

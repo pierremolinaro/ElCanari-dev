@@ -283,6 +283,20 @@ document ProjectDocument root ProjectRoot {
   outlet CanariEnumSegmentedControl mSchematicsSheetOrientationSegmentedControl
     $selectedSegment root.mSchematicSheetOrientation
   ;
+
+  outlet EBPopUpButton mSchematicCustomWidthUnitPopUp $selectedTag root.mSchematicCustomWidthUnit ;
+  outlet CanariDimensionTextField mSchematicCustomWidthTextField
+     $dimensionAndUnit root.mSchematicCustomWidth, root.mSchematicCustomWidthUnit
+  ;
+
+  outlet EBPopUpButton mSchematicCustomHeightUnitPopUp $selectedTag root.mSchematicCustomHeightUnit ;
+  outlet CanariDimensionTextField mSchematicCustomHeightTextField
+     $dimensionAndUnit root.mSchematicCustomHeight, root.mSchematicCustomHeightUnit
+  ;
+
+  transient Bool schematicSheetOrientationIsCustom dependsFrom root.mSchematicSheetOrientation ;
+  outlet NSView mSchematicCustomSizeView $hidden !self.schematicSheetOrientationIsCustom ;
+  
   outlet EBTextField mSelectedSheetTitleTextField $value root.selectedSheetTitle {sendContinously : yes} ;
 
   outlet EBPopUpButton mSheetPopUpButton ; // All bindings done programmatically

@@ -20,7 +20,9 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
        _ self_mSelectedSheet_mSheetTitle : String?,    
        _ self_mSheets : [EBManagedObject_alloc_index_protocol],
        _ self_mSelectedSheet : EBManagedObject_alloc_index_protocol?,
-       _ self_mSchematicDate : Date
+       _ self_mSchematicDate : Date,                   
+       _ self_mSchematicCustomWidth : Int,             
+       _ self_mSchematicCustomHeight : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let textAttributes : [NSAttributedString.Key : Any] = [
@@ -36,20 +38,20 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
         var shape = EBShape ()
         let A4Height : CGFloat
         let A4Width  : CGFloat
-        let hMarks : Int
-        let vMarks : Int
         switch self_mSchematicSheetOrientation {
-        case .horizontal :
+        case .a4Horizontal :
            A4Height = SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT - SCHEMATIC_TOP_MARGIN_COCOA_UNIT - SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT - 2.0
            A4Width  = SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT - SCHEMATIC_LEFT_MARGIN_COCOA_UNIT - SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT - 2.0
-           hMarks = 8
-           vMarks = 6
-        case .vertical :
+        case .a4Vertical :
            A4Height = SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT - SCHEMATIC_TOP_MARGIN_COCOA_UNIT - SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT - 2.0
            A4Width  = SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT - SCHEMATIC_LEFT_MARGIN_COCOA_UNIT - SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT - 2.0
-           hMarks = 6
-           vMarks = 8
+        case .custom :
+           A4Height = canariUnitToCocoa (self_mSchematicCustomHeight)
+           A4Width  = canariUnitToCocoa (self_mSchematicCustomWidth)
         }
+        let m = max (A4Height, A4Width)
+        let vMarks = Int ((10.0 * A4Height) / m)
+        let hMarks = Int ((10.0 * A4Width) / m)
       //---
         var filledBP = EBBezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT, height: A4Height))
         filledBP.appendRect (NSRect (x: OFFSET, y: A4Height - SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: A4Width, height: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT))
