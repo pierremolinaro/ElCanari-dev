@@ -15,9 +15,9 @@ extension DeviceDocument {
   @objc func performNCAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
         if let selectedName = self.mUnconnectedPadsInDeviceTableView?.selectedPadName {
-          for padProxy in self.rootObject.mPadProxies_property.propval {
+          for padProxy in self.rootObject.mPadProxies {
             if padProxy.mPadName == selectedName {
-             padProxy.mPinInstance_property.setProp (nil)
+             padProxy.mPinInstance = nil
              padProxy.mIsNC = true
             }
           }

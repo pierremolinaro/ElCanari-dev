@@ -35,6 +35,7 @@ extension DeviceDocument {
         if let padProxy = possiblePadProxy, let symbolPin = possibleSymbolPin {
           padProxy.mPinInstance = symbolPin
           padProxy.mIsNC = false
+          padProxy.mPinInstanceName = symbolPin.pinName!
         }
 //--- END OF USER ZONE 2
   }

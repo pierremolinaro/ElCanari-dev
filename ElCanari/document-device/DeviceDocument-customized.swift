@@ -55,9 +55,12 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
-  //--- TEMPORARY
-     //    self.rootObject.packages_property.setProp ([])
-     //   self.rootObject.mSymbolTypes_property.setProp ([])
+  //--- TEMPORARY: update pad proxies with pin instance names
+    for padProxy in self.rootObject.mPadProxies {
+      if let symbolPin = padProxy.mPinInstance {
+        padProxy.mPinInstanceName = symbolPin.pinName!
+      }
+    }
  //--- Set pages segmented control
     let pages = [
       self.mDescriptionPageView,

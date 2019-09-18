@@ -15,10 +15,11 @@ extension DeviceDocument {
   @objc func performUnbindAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if let selectedPadProxy = self.mAssignedPadProxyTableView?.selectedPadProxy {
-      for padProxy in self.rootObject.mPadProxies_property.propval {
+      for padProxy in self.rootObject.mPadProxies {
         if padProxy.mPadName == selectedPadProxy.padName {
           padProxy.mPinInstance = nil
           padProxy.mIsNC = false
+          padProxy.mPinInstanceName = ""
         }
       }
     }

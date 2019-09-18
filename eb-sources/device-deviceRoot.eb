@@ -70,7 +70,7 @@ graphic entity DeviceRoot {
   transient AssignedPadProxiesInDevice assignedPadProxies dependsFrom
     self.mPadProxies.all.mPadName,
     self.mPadProxies.all.symbolName,
-    self.mPadProxies.all.pinInstanceName,
+    self.mPadProxies.all.mPinInstanceName,
     self.mPadProxies.all.isConnected ;
 }
 
@@ -323,16 +323,14 @@ entity SymbolPinInstanceInDevice {
 
 entity PadProxyInDevice {
   toOne SymbolPinInstanceInDevice mPinInstance inverse toOne mPadProxy ;
-
- // property proxy String pinInstanceName2 : mPinInstance.pinName ;
+  
+  property @signature String mPinInstanceName default "" ; // Used for signature
   
   property @signature String mPadName default "" ;
 
   property @signature Bool mIsNC default no ;
 
   transient Bool isConnected dependsFrom self.mIsNC, self.mPinInstance.none ;
-
-  transient String pinInstanceName dependsFrom self.mPinInstance.one.pinName ;
 
   transient String symbolName dependsFrom self.mPinInstance.one.symbolName ;
 }

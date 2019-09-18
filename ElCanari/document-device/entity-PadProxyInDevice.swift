@@ -6,6 +6,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PadProxyInDevice_mPinInstanceName : class {
+  var mPinInstanceName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PadProxyInDevice_mPadName : class {
   var mPadName : String { get }
 }
@@ -24,12 +30,6 @@ protocol PadProxyInDevice_isConnected : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PadProxyInDevice_pinInstanceName : class {
-  var pinInstanceName : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol PadProxyInDevice_symbolName : class {
   var symbolName : String? { get }
 }
@@ -39,11 +39,28 @@ protocol PadProxyInDevice_symbolName : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class PadProxyInDevice : EBManagedObject,
+         PadProxyInDevice_mPinInstanceName,
          PadProxyInDevice_mPadName,
          PadProxyInDevice_mIsNC,
          PadProxyInDevice_isConnected,
-         PadProxyInDevice_pinInstanceName,
          PadProxyInDevice_symbolName {
+
+  //····················································································································
+  //   Atomic property: mPinInstanceName
+  //····················································································································
+
+  let mPinInstanceName_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mPinInstanceName : String {
+    get { return self.mPinInstanceName_property.propval }
+    set { self.mPinInstanceName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mPinInstanceName_property_selection : EBSelection <String> { return self.mPinInstanceName_property.prop }
 
   //····················································································································
   //   Atomic property: mPadName
@@ -141,29 +158,6 @@ class PadProxyInDevice : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: pinInstanceName
-  //····················································································································
-
-  let pinInstanceName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var pinInstanceName_property_selection : EBSelection <String> {
-    return self.pinInstanceName_property.prop
-  }
-
-  //····················································································································
-
-  var pinInstanceName : String? {
-    switch self.pinInstanceName_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: symbolName
   //····················································································································
 
@@ -192,6 +186,8 @@ class PadProxyInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- Atomic property: mPinInstanceName
+    self.mPinInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPadName
     self.mPadName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mIsNC
@@ -226,28 +222,6 @@ class PadProxyInDevice : EBManagedObject,
     }
     self.mIsNC_property.addEBObserver (self.isConnected_property)
     self.mPinInstance_property.addEBObserver (self.isConnected_property)
-  //--- Atomic property: pinInstanceName
-    self.pinInstanceName_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mPinInstance_property.pinName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mPinInstance_property.pinName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PadProxyInDevice_pinInstanceName (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mPinInstance_property.addEBObserverOf_pinName (self.pinInstanceName_property)
   //--- Atomic property: symbolName
     self.symbolName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -274,6 +248,7 @@ class PadProxyInDevice : EBManagedObject,
   //--- Register properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: self)
     self.mPadName_property.setSignatureObserver (observer: self)
+    self.mPinInstanceName_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 
@@ -283,11 +258,11 @@ class PadProxyInDevice : EBManagedObject,
     super.removeAllObservers ()
     self.mIsNC_property.removeEBObserver (self.isConnected_property)
     self.mPinInstance_property.removeEBObserver (self.isConnected_property)
-    self.mPinInstance_property.removeEBObserverOf_pinName (self.pinInstanceName_property)
     self.mPinInstance_property.removeEBObserverOf_symbolName (self.symbolName_property)
   //--- Unregister properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: nil)
     self.mPadName_property.setSignatureObserver (observer: nil)
+    self.mPinInstanceName_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -301,6 +276,14 @@ class PadProxyInDevice : EBManagedObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "mPinInstanceName",
+      idx: self.mPinInstanceName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mPinInstanceName_property.mObserverExplorer,
+      valueExplorer: &self.mPinInstanceName_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "mPadName",
       idx: self.mPadName_property.ebObjectIndex,
@@ -327,14 +310,6 @@ class PadProxyInDevice : EBManagedObject,
       valueExplorer: &self.isConnected_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "pinInstanceName",
-      idx: self.pinInstanceName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.pinInstanceName_property.mObserverExplorer,
-      valueExplorer: &self.pinInstanceName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "symbolName",
       idx: self.symbolName_property.ebObjectIndex,
       y: &y,
@@ -359,6 +334,9 @@ class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: mPinInstanceName
+    self.mPinInstanceName_property.mObserverExplorer = nil
+    self.mPinInstanceName_property.mValueExplorer = nil
   //--- Atomic property: mPadName
     self.mPadName_property.mObserverExplorer = nil
     self.mPadName_property.mValueExplorer = nil
@@ -397,6 +375,8 @@ class PadProxyInDevice : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mPinInstanceName
+    self.mPinInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mPinInstanceName")
   //--- Atomic property: mPadName
     self.mPadName_property.storeIn (dictionary: ioDictionary, forKey:"mPadName")
   //--- Atomic property: mIsNC
@@ -433,6 +413,8 @@ class PadProxyInDevice : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mPinInstanceName
+    self.mPinInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mPinInstanceName")
   //--- Atomic property: mPadName
     self.mPadName_property.readFrom (dictionary: inDictionary, forKey:"mPadName")
   //--- Atomic property: mIsNC
@@ -471,6 +453,7 @@ class PadProxyInDevice : EBManagedObject,
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.mIsNC_property.signature ())
     crc.accumulateUInt32 (self.mPadName_property.signature ())
+    crc.accumulateUInt32 (self.mPinInstanceName_property.signature ())
     return crc
   }
 

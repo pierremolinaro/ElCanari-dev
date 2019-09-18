@@ -14,9 +14,10 @@ import Cocoa
 extension DeviceDocument {
   @objc func performUnbindAllAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-          for padProxy in self.rootObject.mPadProxies_property.propval {
+          for padProxy in self.rootObject.mPadProxies {
             padProxy.mIsNC = false
-            padProxy.mPinInstance_property.setProp (nil)
+            padProxy.mPinInstance = nil
+            padProxy.mPinInstanceName = ""
           }
 //--- END OF USER ZONE 2
   }

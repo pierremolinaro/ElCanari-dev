@@ -16,7 +16,7 @@ import Cocoa
 func transient_DeviceRoot_assignedPadProxies (
        _ self_mPadProxies_mPadName : [PadProxyInDevice_mPadName],
        _ self_mPadProxies_symbolName : [PadProxyInDevice_symbolName],
-       _ self_mPadProxies_pinInstanceName : [PadProxyInDevice_pinInstanceName],
+       _ self_mPadProxies_mPinInstanceName : [PadProxyInDevice_mPinInstanceName],
        _ self_mPadProxies_isConnected : [PadProxyInDevice_isConnected]
 ) -> AssignedPadProxiesInDevice {
 //--- START OF USER ZONE 2
@@ -27,7 +27,7 @@ func transient_DeviceRoot_assignedPadProxies (
             let padProxy = AssignedPadProxy (
               padName: self_mPadProxies_mPadName [idx].mPadName,
               symbolInstanceName: self_mPadProxies_symbolName [idx].symbolName ?? "nil(1)",
-              pinName: self_mPadProxies_pinInstanceName [idx].pinInstanceName ?? "nil(2)"
+              pinName: self_mPadProxies_mPinInstanceName [idx].mPinInstanceName
             )
             array.append (padProxy)
           }

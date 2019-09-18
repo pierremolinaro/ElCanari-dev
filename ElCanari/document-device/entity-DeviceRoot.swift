@@ -1021,7 +1021,7 @@ class DeviceRoot : EBGraphicManagedObject,
     }
     self.mPadProxies_property.addEBObserverOf_mPadName (self.assignedPadProxies_property)
     self.mPadProxies_property.addEBObserverOf_symbolName (self.assignedPadProxies_property)
-    self.mPadProxies_property.addEBObserverOf_pinInstanceName (self.assignedPadProxies_property)
+    self.mPadProxies_property.addEBObserverOf_mPinInstanceName (self.assignedPadProxies_property)
     self.mPadProxies_property.addEBObserverOf_isConnected (self.assignedPadProxies_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
@@ -1097,7 +1097,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPadProxies_property.removeEBObserverOf_isConnected (self.unconnectedPads_property)
     self.mPadProxies_property.removeEBObserverOf_mPadName (self.assignedPadProxies_property)
     self.mPadProxies_property.removeEBObserverOf_symbolName (self.assignedPadProxies_property)
-    self.mPadProxies_property.removeEBObserverOf_pinInstanceName (self.assignedPadProxies_property)
+    self.mPadProxies_property.removeEBObserverOf_mPinInstanceName (self.assignedPadProxies_property)
     self.mPadProxies_property.removeEBObserverOf_isConnected (self.assignedPadProxies_property)
     self.mTitle_property.removeEBObserver (self.issues_property)
     self.mPrefix_property.removeEBObserver (self.issues_property)
