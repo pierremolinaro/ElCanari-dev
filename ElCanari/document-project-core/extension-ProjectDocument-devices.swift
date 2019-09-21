@@ -176,10 +176,18 @@ extension ProjectDocument {
         inDeviceInProject.mSymbols.append (symbolInstanceInProject)
         for pinInDevice in symbolTypeInDevice.mPinTypes {
           let pinInProject = DevicePinInProject (self.ebUndoManager)
+//          if pinInDevice.mName == "" {
+//            Swift.print ("ERROR pinInDevice.mName")
+//          }
           pinInProject.mPinName = pinInDevice.mName
           pinInProject.mSymbolInstanceName = symbolInstanceInDevice.mInstanceName
+//          if symbolInstanceInDevice.mInstanceName == "" {
+//            Swift.print ("ERROR symbolInstanceInDevice.mInstanceName")
+//          }
           pinInProject.mSymbolTypeName = symbolTypeInProject.mSymbolTypeName
-          // NSLog ("pinInProject.mSymbolTypeName \(pinInProject.mSymbolTypeName)")
+//          if pinInProject.mSymbolTypeName == "" {
+//            Swift.print ("ERROR pinInProject.mSymbolTypeName")
+//          }
           pinInProject.mNameHorizontalAlignment = pinInDevice.mNameHorizontalAlignment
           pinInProject.mNumberHorizontalAlignment = pinInDevice.mNumberHorizontalAlignment
           pinInProject.mPinNameIsDisplayedInSchematic = pinInDevice.mPinNameIsDisplayedInSchematics

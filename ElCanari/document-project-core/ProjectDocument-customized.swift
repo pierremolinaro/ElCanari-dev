@@ -630,7 +630,9 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //--- Create points in schematics
     let symbolInfo : ComponentSymbolInfo = inSymbol.symbolInfo!
     let symbolPins : [ComponentPinDescriptor] = symbolInfo.pins
+    // Swift.print ("\(symbolPins.count) pins")
     for pin in symbolPins {
+      // Swift.print ("\(pin.pinIdentifier.symbol.symbolInstanceName) — \(inSymbol.mSymbolInstanceName)")
       if pin.pinIdentifier.symbol.symbolInstanceName == inSymbol.mSymbolInstanceName {
         let point = PointInSchematic (self.ebUndoManager)
         point.mSymbol = inSymbol

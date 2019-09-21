@@ -43,7 +43,10 @@ func transient_ComponentSymbolInProject_symbolInfo (
           ]
           var pins = [ComponentPinDescriptor] ()
           for pinPadAssignment in deviceInfo.assignments {
-            if let pin = pinPadAssignment.pin, pin.symbol.symbolInstanceName == self_mSymbolInstanceName {
+            if let pin = pinPadAssignment.pin,
+               pin.symbol.symbolInstanceName == self_mSymbolInstanceName,
+               pin.symbol.symbolTypeName == self_mSymbolTypeName {
+              // Swift.print ("\(#file):\(#line) — \(pin.symbol.symbolInstanceName)")
               var pinTextShape = EBShape ()
             //--- Pin name
               if pin.pinNameIsDisplayedInSchematics {

@@ -62,7 +62,7 @@ extension ProjectDocument {
           }else{
             alert.messageText = "Removed component has symbols in schematic and/or package in board."
           }
-          alert.addButton (withTitle: "Ok")
+          alert.addButton (withTitle: "Remove")
           alert.addButton (withTitle: "Cancel")
           alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
             if response == .alertFirstButtonReturn {

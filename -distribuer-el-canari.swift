@@ -24,11 +24,11 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.7"
+let VERSION_CANARI = "1.0.8"
 let NOTES : [String] = []
-let BUGFIXES : [String] = ["Device: fixed signature computation"]
+let BUGFIXES : [String] = ["Project: fixed symbol insertion in schematic"]
 let CHANGES : [String] = []
-let NEWS : [String] = ["Project: added custom size for schematic"]
+let NEWS : [String] = []
 let BUILD_KIND = ProductKind.release
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
