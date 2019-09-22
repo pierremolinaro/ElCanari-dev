@@ -22,15 +22,28 @@ extension CustomizedProjectDocument {
     op.allowedFileTypes = ["ses"]
     op.beginSheetModal (for: self.windowForSheet!) { (inReturnCode) in
       op.orderOut (nil)
-      if inReturnCode == .OK, let s = try? String (contentsOf: op.urls [0]) {
-        self.handleSESFileContents (s)
+      if inReturnCode == .OK,
+         let s = try? String (contentsOf: op.urls [0]),
+         let panel = self.mImportSESPanel,
+         let textField = self.mImportSESTextField,
+         let progressIndicator = self.mImportSESProgressIndicator {
+        self.handleSESFileContents (s, panel, textField, progressIndicator)
       }
     }
   }
 
   //····················································································································
 
-  private func handleSESFileContents (_ inFileContents : String) {
+  private func handleSESFileContents (_ inFileContents : String,
+                                      _ inPanel : NSPanel,
+                                      _ inTextField : NSTextField,
+                                      _ inProgressIndicator : EBProgressIndicator) {
+  //--- Display sheet
+    inTextField.stringValue = "Extracting Tracks…"
+    inProgressIndicator.minValue = 0.0
+    inProgressIndicator.doubleValue = 0.0
+    inProgressIndicator.maxValue = 5.0
+    self.windowForSheet?.beginSheet (inPanel)
   //--- Build net class array
     var netClassArray = [NetClassSESImporting] ()
     for netClass in self.rootObject.mNetClasses {
@@ -68,7 +81,6 @@ extension CustomizedProjectDocument {
         }
       }
     }
-    // NSLog (@"resolution %ld", resolution) ;
     if 0 == resolution {
       errorMessage += "\n  - cannot extract resolution from input file"
     }else{
@@ -94,6 +106,9 @@ extension CustomizedProjectDocument {
         }
       }
     //--- Extract vias
+      inTextField.stringValue = "Extracting Vias…"
+      inProgressIndicator.doubleValue += 1.0
+      _ = RunLoop.main.run (mode: .default, before: Date ())
       if components.count > 0 {
         let stopSet = CharacterSet (charactersIn: " ")
         var viaComponents = inFileContents.components (separatedBy: "(via viaForClass")
@@ -132,9 +147,10 @@ extension CustomizedProjectDocument {
       }
     //--- Send to canari
       if errorMessage == "" {
-        self.enterResults (routedTracks, routedVias)
+        self.enterResults (routedTracks, routedVias, inTextField, inProgressIndicator)
       }
     }
+    self.windowForSheet?.endSheet (inPanel)
   //---
     if errorMessage == "" {
       self.afterImportSESSuccess ()
@@ -213,8 +229,13 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   private func enterResults (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
-                             _ inRoutedViaArray : [BoardConnector]) {
-    self.removeAllViasAndTracksAction (nil)
+                             _ inRoutedViaArray : [BoardConnector],
+                             _ inTextField : NSTextField,
+                             _ inProgressIndicator : EBProgressIndicator) {
+    inTextField.stringValue = "Remove Current Tracks and Vias…"
+    inProgressIndicator.doubleValue += 1.0
+    _ = RunLoop.main.run (mode: .default, before: Date ())
+    self.removeAllViasAndTracks ()
   //---
     var addedObjectArray = [BoardObject] ()
     addedObjectArray += inRoutedViaArray as [BoardObject]
@@ -228,9 +249,11 @@ extension CustomizedProjectDocument {
       }
     }
   //--- Write tracks
-    // NSLog (@"WRITE TRACKS") ;
+    inTextField.stringValue = "Adding Tracks and Vias…"
+    inProgressIndicator.doubleValue += 1.0
+    _ = RunLoop.main.run (mode: .default, before: Date ())
     for t in routedTracksArray {
-      let track = BoardTrack (self.ebUndoManager)
+     let track = BoardTrack (self.ebUndoManager)
       track.mConnectorP1 = findOrAddConnector (at: t.p1, t.side, inRoutedViaArray, &connectorArray, &addedObjectArray)
       track.mConnectorP2 = findOrAddConnector (at: t.p2, t.side, inRoutedViaArray, &connectorArray, &addedObjectArray)
       track.mSide = t.side
@@ -249,7 +272,11 @@ extension CustomizedProjectDocument {
       }
     }
   //--- Propagate net reference from pads to connected tracks
+    inTextField.stringValue = "Propagate Net References…"
+    inProgressIndicator.doubleValue += 1.0
+    _ = RunLoop.main.run (mode: .default, before: Date ())
     for object in self.rootObject.mBoardObjects {
+      inProgressIndicator.doubleValue += 1.0
       if let pad = object as? BoardConnector, let component = pad.mComponent {
         let padNetDictionary = component.padNetDictionary!
         if let netName = padNetDictionary [pad.mComponentPadName] {

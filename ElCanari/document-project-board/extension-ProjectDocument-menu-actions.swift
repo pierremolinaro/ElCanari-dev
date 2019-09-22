@@ -8,7 +8,6 @@
 
 import Cocoa
 
-
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION CustomizedProjectDocument
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -18,15 +17,24 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @IBAction func removeAllViasAndTracksAction (_ inUnusedSender : Any?) {
+    self.removeAllViasAndTracks ()
+  }
+
+  //····················································································································
+
+  internal func removeAllViasAndTracks () {
   //--- Remove all tracks
+    var conservedObjects = [BoardObject] ()
     for object in self.rootObject.mBoardObjects {
       if let track = object as? BoardTrack {
         track.mConnectorP1 = nil
         track.mConnectorP2 = nil
         track.mNet = nil
-        track.mRoot = nil
+      }else{
+        conservedObjects.append (object)
       }
     }
+    self.rootObject.mBoardObjects = conservedObjects
   //--- Remove all vias
     for object in self.rootObject.mBoardObjects {
       if let via = object as? BoardConnector {

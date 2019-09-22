@@ -13,6 +13,7 @@ extension ProjectDocument {
      //--- Remove package from board
         component.operationBeforeRemoving ()
         component.mSelectedPackage = nil
+        component.mRoot = nil
       //--- Remove from component list
         self.rootObject.mComponents.remove (at: idx)
       //--- Adapt remaining component names

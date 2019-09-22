@@ -588,6 +588,10 @@ document ProjectDocument root ProjectRoot {
   outlet EBPopUpButton mInsertedTrackSidePopUpButton ;
   outlet CanariDragSourceImageButton mAddTrackInBoardButton ;
 
+  outlet NSPanel mImportSESPanel ;
+  outlet NSTextField mImportSESTextField ;
+  outlet EBProgressIndicator mImportSESProgressIndicator ;
+  
   outlet CanariDragSourceTableView mUnplacedPackageTableView $models root.unplacedPackages ;
   transient Int unplacedPackageCount dependsFrom root.unplacedPackages ;
   transient String unplacedPackagesCountString dependsFrom self.unplacedPackageCount ;

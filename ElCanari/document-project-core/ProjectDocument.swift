@@ -748,6 +748,9 @@ import Cocoa
   @IBOutlet var mHideERCIssueButton : EBButton? = nil
   @IBOutlet var mHorizontalMirrorSwitch : CanariObserverSwitch? = nil
   @IBOutlet var mHotKeysSchematicInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet var mImportSESPanel : NSPanel? = nil
+  @IBOutlet var mImportSESProgressIndicator : EBProgressIndicator? = nil
+  @IBOutlet var mImportSESTextField : NSTextField? = nil
   @IBOutlet var mInconsistentSchematicErrorPanel : NSPanel? = nil
   @IBOutlet var mInconsistentSchematicErrorTextView : NSTextView? = nil
   @IBOutlet var mIncorrectFileNameMessageView : NSView? = nil
@@ -1277,6 +1280,9 @@ import Cocoa
     checkOutletConnection (self.mHideERCIssueButton, "mHideERCIssueButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mHorizontalMirrorSwitch, "mHorizontalMirrorSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mHotKeysSchematicInspectorView, "mHotKeysSchematicInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mImportSESPanel, "mImportSESPanel", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mImportSESProgressIndicator, "mImportSESProgressIndicator", EBProgressIndicator.self, #file, #line)
+    checkOutletConnection (self.mImportSESTextField, "mImportSESTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorPanel, "mInconsistentSchematicErrorPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorTextView, "mInconsistentSchematicErrorTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mIncorrectFileNameMessageView, "mIncorrectFileNameMessageView", NSView.self, #file, #line)
@@ -3247,6 +3253,9 @@ import Cocoa
     self.mHideERCIssueButton?.ebCleanUp ()
     self.mHorizontalMirrorSwitch?.ebCleanUp ()
     self.mHotKeysSchematicInspectorView?.ebCleanUp ()
+    self.mImportSESPanel?.ebCleanUp ()
+    self.mImportSESProgressIndicator?.ebCleanUp ()
+    self.mImportSESTextField?.ebCleanUp ()
     self.mInconsistentSchematicErrorPanel?.ebCleanUp ()
     self.mInconsistentSchematicErrorTextView?.ebCleanUp ()
     self.mIncorrectFileNameMessageView?.ebCleanUp ()
@@ -3627,6 +3636,9 @@ import Cocoa
     self.mHideERCIssueButton = nil
     self.mHorizontalMirrorSwitch = nil
     self.mHotKeysSchematicInspectorView = nil
+    self.mImportSESPanel = nil
+    self.mImportSESProgressIndicator = nil
+    self.mImportSESTextField = nil
     self.mInconsistentSchematicErrorPanel = nil
     self.mInconsistentSchematicErrorTextView = nil
     self.mIncorrectFileNameMessageView = nil
