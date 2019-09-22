@@ -523,9 +523,9 @@ extension CustomizedProjectDocument {
       if menu.numberOfItems > 0 {
         menu.addItem (.separator ())
       }
-      let menuItem = NSMenuItem (title: "Add Point to Wire…", action: #selector (CustomizedProjectDocument.addPointToWireAction (_:)), keyEquivalent: "")
+      let menuItem = NSMenuItem (title: "Add Point to Wire", action: #selector (CustomizedProjectDocument.addPointToWireAction (_:)), keyEquivalent: "")
       menuItem.target = self
-      menuItem.representedObject = inCanariAlignedMouseDownLocation
+      menuItem.representedObject = (inCanariAlignedMouseDownLocation, inWires [0])
       menu.addItem (menuItem)
     }
   }
@@ -533,8 +533,10 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc private func addPointToWireAction (_ inSender : NSMenuItem) {
-    if let location = inSender.representedObject as? CanariPoint {
-      self.addPointToWireInSchematic (at: location)
+    if let (location, wire) = inSender.representedObject as? (CanariPoint, WireInSchematic) {
+      if let selectedSheet = self.rootObject.mSelectedSheet {
+        _ = selectedSheet.self.addPoint (toWire: wire, at: location)
+      }
     }
   }
 
