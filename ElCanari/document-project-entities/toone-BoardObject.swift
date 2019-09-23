@@ -20,6 +20,7 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
     inOldValue?.isVia_property.removeEBObserversFrom (&self.mObserversOf_isVia) // Transient property
     inOldValue?.trackLength_property.removeEBObserversFrom (&self.mObserversOf_trackLength) // Transient property
     inOldValue?.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    inOldValue?.netNameAndPadLocation_property.removeEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     inOldValue?.errorOrWarningIssueSize_property.removeEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
@@ -29,6 +30,7 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
     self.mInternalValue?.isVia_property.addEBObserversFrom (&self.mObserversOf_isVia) // Transient property
     self.mInternalValue?.trackLength_property.addEBObserversFrom (&self.mObserversOf_trackLength) // Transient property
     self.mInternalValue?.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    self.mInternalValue?.netNameAndPadLocation_property.addEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     self.mInternalValue?.errorOrWarningIssueSize_property.addEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
@@ -375,6 +377,75 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
     for managedObject in inSet {
       self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
         managedObject.signatureForERCChecking_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netNameAndPadLocation' transient property
+  //····················································································································
+
+  private var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netNameAndPadLocation_property_selection : EBSelection <NetNameAndPadLocationArray?> {
+    if let model = self.propval {
+      switch (model.netNameAndPadLocation_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netNameAndPadLocation.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netNameAndPadLocation_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netNameAndPadLocation.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netNameAndPadLocation_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netNameAndPadLocation_toElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
+        managedObject.netNameAndPadLocation_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (_ inSet : Set<BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
+        managedObject.netNameAndPadLocation_property.removeEBObserver (observer)
       }
     }
   }

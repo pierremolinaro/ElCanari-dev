@@ -36,6 +36,12 @@ protocol BoardObject_signatureForERCChecking : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardObject_netNameAndPadLocation : class {
+  var netNameAndPadLocation : NetNameAndPadLocationArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardObject_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
 }
@@ -62,6 +68,7 @@ class BoardObject : EBGraphicManagedObject,
          BoardObject_isVia,
          BoardObject_trackLength,
          BoardObject_signatureForERCChecking,
+         BoardObject_netNameAndPadLocation,
          BoardObject_selectionDisplay,
          BoardObject_objectDisplay,
          BoardObject_errorOrWarningIssueSize {
@@ -220,6 +227,29 @@ class BoardObject : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: netNameAndPadLocation
+  //····················································································································
+
+  let netNameAndPadLocation_property = EBTransientProperty_NetNameAndPadLocationArray ()
+
+  //····················································································································
+
+  var netNameAndPadLocation_property_selection : EBSelection <NetNameAndPadLocationArray> {
+    return self.netNameAndPadLocation_property.prop
+  }
+
+  //····················································································································
+
+  var netNameAndPadLocation : NetNameAndPadLocationArray? {
+    switch self.netNameAndPadLocation_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: errorOrWarningIssueSize
   //····················································································································
 
@@ -363,6 +393,14 @@ class BoardObject : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.signatureForERCChecking_property.mObserverExplorer,
       valueExplorer: &self.signatureForERCChecking_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netNameAndPadLocation",
+      idx: self.netNameAndPadLocation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netNameAndPadLocation_property.mObserverExplorer,
+      valueExplorer: &self.netNameAndPadLocation_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",

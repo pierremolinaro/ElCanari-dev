@@ -757,7 +757,7 @@ class NetClassInProject : EBManagedObject,
     }
     self.mNets_property.addEBObserver (self.netsDescription_property)
     self.mNets_property.addEBObserverOf_mNetName (self.netsDescription_property)
-    self.mNets_property.addEBObserverOf_netPointsInfo (self.netsDescription_property)
+    self.mNets_property.addEBObserverOf_netSchematicPointsInfo (self.netsDescription_property)
     self.mNetClassName_property.addEBObserver (self.netsDescription_property)
   //--- Atomic property: netWarningCount
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
@@ -806,7 +806,7 @@ class NetClassInProject : EBManagedObject,
     self.mNets_property.removeEBObserver (self.netUsage_property)
     self.mNets_property.removeEBObserver (self.netsDescription_property)
     self.mNets_property.removeEBObserverOf_mNetName (self.netsDescription_property)
-    self.mNets_property.removeEBObserverOf_netPointsInfo (self.netsDescription_property)
+    self.mNets_property.removeEBObserverOf_netSchematicPointsInfo (self.netsDescription_property)
     self.mNetClassName_property.removeEBObserver (self.netsDescription_property)
     self.netsDescription_property.removeEBObserver (self.netWarningCount_property)
   //--- Unregister properties for handling signature

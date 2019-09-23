@@ -16,7 +16,7 @@ entity NetInProject {
   
   transient NSColor wireColor dependsFrom self.mNetClass.one.mNetClassColor ;
 
-  transient NetInfoPointArray netPointsInfo dependsFrom self.mPoints.all.netInfoForPoint ;
+  transient NetInfoPointArray netSchematicPointsInfo dependsFrom self.mPoints.all.netInfoForPoint ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

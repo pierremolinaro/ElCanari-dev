@@ -21,7 +21,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     inOldValue?.netClassViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
     inOldValue?.netClassViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
     inOldValue?.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
-    inOldValue?.netPointsInfo_property.removeEBObserversFrom (&self.mObserversOf_netPointsInfo) // Transient property
+    inOldValue?.netSchematicPointsInfo_property.removeEBObserversFrom (&self.mObserversOf_netSchematicPointsInfo) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mNetName_property.addEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
     self.mInternalValue?.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
@@ -29,7 +29,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     self.mInternalValue?.netClassViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
     self.mInternalValue?.netClassViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
     self.mInternalValue?.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
-    self.mInternalValue?.netPointsInfo_property.addEBObserversFrom (&self.mObserversOf_netPointsInfo) // Transient property
+    self.mInternalValue?.netSchematicPointsInfo_property.addEBObserversFrom (&self.mObserversOf_netSchematicPointsInfo) // Transient property
   }
 
   //····················································································································
@@ -448,16 +448,16 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   }
 
   //····················································································································
-  //   Observers of 'netPointsInfo' transient property
+  //   Observers of 'netSchematicPointsInfo' transient property
   //····················································································································
 
-  private var mObserversOf_netPointsInfo = EBWeakEventSet ()
+  private var mObserversOf_netSchematicPointsInfo = EBWeakEventSet ()
 
   //····················································································································
 
-  var netPointsInfo_property_selection : EBSelection <NetInfoPointArray?> {
+  var netSchematicPointsInfo_property_selection : EBSelection <NetInfoPointArray?> {
     if let model = self.propval {
-      switch (model.netPointsInfo_property_selection) {
+      switch (model.netSchematicPointsInfo_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -472,46 +472,46 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserverOf_netPointsInfo (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netSchematicPointsInfo (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_netPointsInfo.insert (inObserver)
+    self.mObserversOf_netSchematicPointsInfo.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netPointsInfo_property.addEBObserver (inObserver)
+      v?.netSchematicPointsInfo_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_netPointsInfo (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netSchematicPointsInfo (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_netPointsInfo.remove (inObserver)
+    self.mObserversOf_netSchematicPointsInfo.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netPointsInfo_property.removeEBObserver (inObserver)
+      v?.netSchematicPointsInfo_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_netPointsInfo_toElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func addEBObserversOf_netSchematicPointsInfo_toElementsOfSet (_ inSet : Set<NetInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_netPointsInfo.apply { (_ observer : EBEvent) in
-        managedObject.netPointsInfo_property.addEBObserver (observer)
+      self.mObserversOf_netSchematicPointsInfo.apply { (_ observer : EBEvent) in
+        managedObject.netSchematicPointsInfo_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_netPointsInfo_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func removeEBObserversOf_netSchematicPointsInfo_fromElementsOfSet (_ inSet : Set<NetInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_netPointsInfo.apply { (_ observer : EBEvent) in
-        managedObject.netPointsInfo_property.removeEBObserver (observer)
+      self.mObserversOf_netSchematicPointsInfo.apply { (_ observer : EBEvent) in
+        managedObject.netSchematicPointsInfo_property.removeEBObserver (observer)
       }
     }
   }

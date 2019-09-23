@@ -141,6 +141,16 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   }
 
   //····················································································································
+  //   Selection observable property: endPointsLocation
+  //····················································································································
+
+  let endPointsLocation_property = EBTransientProperty_CanariPointArray ()
+
+  var endPointsLocation_property_selection : EBSelection <CanariPointArray> {
+    return self.endPointsLocation_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: signatureForERCChecking
   //····················································································································
 
@@ -189,6 +199,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.bind_property_netClassViaHoleDiameter ()
     self.bind_property_netClassViaPadDiameter ()
     self.bind_property_trackLength ()
+    self.bind_property_endPointsLocation ()
     self.bind_property_signatureForERCChecking ()
     self.bind_property_objectDisplay ()
   }
@@ -248,6 +259,9 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //--- trackLength
     self.trackLength_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_trackLength (self.trackLength_property)
+  //--- endPointsLocation
+    self.endPointsLocation_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_endPointsLocation (self.endPointsLocation_property)
   //--- signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
@@ -1019,6 +1033,45 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var isMultipleSelection = false
           for object in v {
             switch object.trackLength_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_endPointsLocation () {
+    self.selectedArray_property.addEBObserverOf_endPointsLocation (self.endPointsLocation_property)
+    self.endPointsLocation_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <CanariPointArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.endPointsLocation_property_selection {
             case .empty :
               return .empty
             case .multiple :

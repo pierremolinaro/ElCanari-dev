@@ -151,6 +151,16 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   }
 
   //····················································································································
+  //   Selection observable property: netNameAndPadLocation
+  //····················································································································
+
+  let netNameAndPadLocation_property = EBTransientProperty_NetNameAndPadLocationArray ()
+
+  var netNameAndPadLocation_property_selection : EBSelection <NetNameAndPadLocationArray> {
+    return self.netNameAndPadLocation_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: side
   //····················································································································
 
@@ -310,6 +320,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
     self.bind_property_mUsesCustomPadDiameter ()
     self.bind_property_location ()
     self.bind_property_netNameFromComponentPad ()
+    self.bind_property_netNameAndPadLocation ()
     self.bind_property_side ()
     self.bind_property_isVia ()
     self.bind_property_issues ()
@@ -397,6 +408,9 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //--- netNameFromComponentPad
     self.netNameFromComponentPad_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_netNameFromComponentPad (self.netNameFromComponentPad_property)
+  //--- netNameAndPadLocation
+    self.netNameAndPadLocation_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_netNameAndPadLocation (self.netNameAndPadLocation_property)
   //--- side
     self.side_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_side (self.side_property)
@@ -1506,6 +1520,45 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var isMultipleSelection = false
           for object in v {
             switch object.netNameFromComponentPad_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_netNameAndPadLocation () {
+    self.selectedArray_property.addEBObserverOf_netNameAndPadLocation (self.netNameAndPadLocation_property)
+    self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NetNameAndPadLocationArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.netNameAndPadLocation_property_selection {
             case .empty :
               return .empty
             case .multiple :

@@ -604,7 +604,7 @@ document ProjectDocument root ProjectRoot {
   outlet EBGraphicView mBoardView
     $controlKeyHiliteDiameter root.mControlKeyHiliteDiameter
     $underObjectsDisplay root.borderOutlineBackground
-    $overObjectsDisplay root.issuesDisplay
+    $overObjectsDisplay root.overDisplay
     $horizontalFlip root.mBoardHorizontalFlip
     $verticalFlip root.mBoardVerticalFlip
     $graphicController #boardObjectsController

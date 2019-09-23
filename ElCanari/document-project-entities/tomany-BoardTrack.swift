@@ -28,6 +28,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
     self.removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_trackLength_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_endPointsLocation_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
@@ -44,6 +45,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
     self.addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_trackLength_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_endPointsLocation_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
   }
@@ -777,6 +779,62 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
     for managedObject in inSet {
       self.mObserversOf_trackLength.apply { (_ observer : EBEvent) in
         managedObject.trackLength_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'endPointsLocation' transient property
+  //····················································································································
+
+  private var mObserversOf_endPointsLocation = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_endPointsLocation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_endPointsLocation.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.endPointsLocation_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_endPointsLocation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_endPointsLocation.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.endPointsLocation_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_endPointsLocation_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_endPointsLocation.apply { (_ observer : EBEvent) in
+        managedObject.endPointsLocation_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_endPointsLocation_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_endPointsLocation.apply { (_ observer : EBEvent) in
+        managedObject.endPointsLocation_property.removeEBObserver (observer)
       }
     }
   }

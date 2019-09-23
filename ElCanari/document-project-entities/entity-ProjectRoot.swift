@@ -456,12 +456,6 @@ protocol ProjectRoot_boardIssues : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_issuesDisplay : class {
-  var issuesDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ProjectRoot_boardStatusImage : class {
   var boardStatusImage : NSImage? { get }
 }
@@ -570,6 +564,18 @@ protocol ProjectRoot_netWarningCount : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_rastnetShape : class {
+  var rastnetShape : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_overDisplay : class {
+  var overDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_unplacedSymbols : class {
   var unplacedSymbols : StringTagArray? { get }
 }
@@ -672,7 +678,6 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_trackCountString,
          ProjectRoot_trackLengthString,
          ProjectRoot_boardIssues,
-         ProjectRoot_issuesDisplay,
          ProjectRoot_boardStatusImage,
          ProjectRoot_boardStatusMessage,
          ProjectRoot_interiorBoundBox,
@@ -691,6 +696,8 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_deviceNames,
          ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_netWarningCount,
+         ProjectRoot_rastnetShape,
+         ProjectRoot_overDisplay,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_unplacedPackages,
          ProjectRoot_schematicStatusMessage,
@@ -2452,29 +2459,6 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: issuesDisplay
-  //····················································································································
-
-  let issuesDisplay_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  var issuesDisplay_property_selection : EBSelection <EBShape> {
-    return self.issuesDisplay_property.prop
-  }
-
-  //····················································································································
-
-  var issuesDisplay : EBShape? {
-    switch self.issuesDisplay_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: boardStatusImage
   //····················································································································
 
@@ -2881,6 +2865,52 @@ class ProjectRoot : EBManagedObject,
 
   var netWarningCount : Int? {
     switch self.netWarningCount_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: rastnetShape
+  //····················································································································
+
+  let rastnetShape_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var rastnetShape_property_selection : EBSelection <EBShape> {
+    return self.rastnetShape_property.prop
+  }
+
+  //····················································································································
+
+  var rastnetShape : EBShape? {
+    switch self.rastnetShape_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: overDisplay
+  //····················································································································
+
+  let overDisplay_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var overDisplay_property_selection : EBSelection <EBShape> {
+    return self.overDisplay_property.prop
+  }
+
+  //····················································································································
+
+  var overDisplay : EBShape? {
+    switch self.overDisplay_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -3653,28 +3683,6 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mBoardObjects_property.addEBObserverOf_issues (self.boardIssues_property)
-  //--- Atomic property: issuesDisplay
-    self.issuesDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.boardIssues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.boardIssues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectRoot_issuesDisplay (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.boardIssues_property.addEBObserver (self.issuesDisplay_property)
   //--- Atomic property: boardStatusImage
     self.boardStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4119,6 +4127,52 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mNetClasses_property.addEBObserverOf_netWarningCount (self.netWarningCount_property)
+  //--- Atomic property: rastnetShape
+    self.rastnetShape_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mBoardObjects_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBoardObjects_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_rastnetShape (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
+  //--- Atomic property: overDisplay
+    self.overDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.rastnetShape_property_selection.kind ()
+        kind &= unwSelf.boardIssues_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.rastnetShape_property_selection, unwSelf.boardIssues_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ProjectRoot_overDisplay (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rastnetShape_property.addEBObserver (self.overDisplay_property)
+    self.boardIssues_property.addEBObserver (self.overDisplay_property)
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4333,7 +4387,6 @@ class ProjectRoot : EBManagedObject,
     self.mBoardObjects_property.removeEBObserverOf_trackLength (self.trackLengthString_property)
     self.mTrackLengthUnit_property.removeEBObserver (self.trackLengthString_property)
     self.mBoardObjects_property.removeEBObserverOf_issues (self.boardIssues_property)
-    self.boardIssues_property.removeEBObserver (self.issuesDisplay_property)
     self.boardIssues_property.removeEBObserver (self.boardStatusImage_property)
     self.boardIssues_property.removeEBObserver (self.boardStatusMessage_property)
     self.mBorderCurves_property.removeEBObserverOf_descriptor (self.interiorBoundBox_property)
@@ -4376,6 +4429,9 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicCustomWidth_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicCustomHeight_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mNetClasses_property.removeEBObserverOf_netWarningCount (self.netWarningCount_property)
+    self.mBoardObjects_property.removeEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
+    self.rastnetShape_property.removeEBObserver (self.overDisplay_property)
+    self.boardIssues_property.removeEBObserver (self.overDisplay_property)
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mComponents_property.removeEBObserver (self.unplacedPackages_property)
     self.mComponents_property.removeEBObserverOf_componentName (self.unplacedPackages_property)
@@ -4917,14 +4973,6 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.boardIssues_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "issuesDisplay",
-      idx: self.issuesDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.issuesDisplay_property.mObserverExplorer,
-      valueExplorer: &self.issuesDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "boardStatusImage",
       idx: self.boardStatusImage_property.ebObjectIndex,
       y: &y,
@@ -5067,6 +5115,22 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.netWarningCount_property.mObserverExplorer,
       valueExplorer: &self.netWarningCount_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "rastnetShape",
+      idx: self.rastnetShape_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.rastnetShape_property.mObserverExplorer,
+      valueExplorer: &self.rastnetShape_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "overDisplay",
+      idx: self.overDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.overDisplay_property.mObserverExplorer,
+      valueExplorer: &self.overDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "unplacedSymbols",

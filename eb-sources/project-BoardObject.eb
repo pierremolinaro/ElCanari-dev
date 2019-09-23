@@ -16,6 +16,8 @@ abstract graphic entity BoardObject {
   abstract transient Double trackLength ; // In Canari Unit
   
   abstract transient UInt32 signatureForERCChecking ;
+  
+  abstract transient NetNameAndPadLocationArray netNameAndPadLocation ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

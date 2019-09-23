@@ -42,8 +42,8 @@ protocol NetInProject_wireColor : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetInProject_netPointsInfo : class {
-  var netPointsInfo : NetInfoPointArray? { get }
+protocol NetInProject_netSchematicPointsInfo : class {
+  var netSchematicPointsInfo : NetInfoPointArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -57,7 +57,7 @@ class NetInProject : EBManagedObject,
          NetInProject_netClassViaHoleDiameter,
          NetInProject_netClassViaPadDiameter,
          NetInProject_wireColor,
-         NetInProject_netPointsInfo {
+         NetInProject_netSchematicPointsInfo {
 
   //····················································································································
   //   To many property: mPoints
@@ -268,21 +268,21 @@ class NetInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: netPointsInfo
+  //   Transient property: netSchematicPointsInfo
   //····················································································································
 
-  let netPointsInfo_property = EBTransientProperty_NetInfoPointArray ()
+  let netSchematicPointsInfo_property = EBTransientProperty_NetInfoPointArray ()
 
   //····················································································································
 
-  var netPointsInfo_property_selection : EBSelection <NetInfoPointArray> {
-    return self.netPointsInfo_property.prop
+  var netSchematicPointsInfo_property_selection : EBSelection <NetInfoPointArray> {
+    return self.netSchematicPointsInfo_property.prop
   }
 
   //····················································································································
 
-  var netPointsInfo : NetInfoPointArray? {
-    switch self.netPointsInfo_property_selection {
+  var netSchematicPointsInfo : NetInfoPointArray? {
+    switch self.netSchematicPointsInfo_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -426,8 +426,8 @@ class NetInProject : EBManagedObject,
       }
     }
     self.mNetClass_property.addEBObserverOf_mNetClassColor (self.wireColor_property)
-  //--- Atomic property: netPointsInfo
-    self.netPointsInfo_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: netSchematicPointsInfo
+    self.netSchematicPointsInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPoints_property_selection.kind ()
         switch kind {
@@ -438,7 +438,7 @@ class NetInProject : EBManagedObject,
         case .single :
           switch (unwSelf.mPoints_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_NetInProject_netPointsInfo (v0))
+            return .single (transient_NetInProject_netSchematicPointsInfo (v0))
           default :
             return .empty
           }
@@ -447,7 +447,7 @@ class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPoints_property.addEBObserverOf_netInfoForPoint (self.netPointsInfo_property)
+    self.mPoints_property.addEBObserverOf_netInfoForPoint (self.netSchematicPointsInfo_property)
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
@@ -470,7 +470,7 @@ class NetInProject : EBManagedObject,
     self.mNetClass_property.removeEBObserverOf_mViaHoleDiameter (self.netClassViaHoleDiameter_property)
     self.mNetClass_property.removeEBObserverOf_mViaPadDiameter (self.netClassViaPadDiameter_property)
     self.mNetClass_property.removeEBObserverOf_mNetClassColor (self.wireColor_property)
-    self.mPoints_property.removeEBObserverOf_netInfoForPoint (self.netPointsInfo_property)
+    self.mPoints_property.removeEBObserverOf_netInfoForPoint (self.netSchematicPointsInfo_property)
   //--- Unregister properties for handling signature
   }
 
@@ -535,12 +535,12 @@ class NetInProject : EBManagedObject,
       valueExplorer: &self.wireColor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "netPointsInfo",
-      idx: self.netPointsInfo_property.ebObjectIndex,
+      "netSchematicPointsInfo",
+      idx: self.netSchematicPointsInfo_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.netPointsInfo_property.mObserverExplorer,
-      valueExplorer: &self.netPointsInfo_property.mValueExplorer
+      observerExplorer: &self.netSchematicPointsInfo_property.mObserverExplorer,
+      valueExplorer: &self.netSchematicPointsInfo_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

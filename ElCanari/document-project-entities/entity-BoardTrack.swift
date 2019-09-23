@@ -84,6 +84,12 @@ protocol BoardTrack_trackLength : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardTrack_endPointsLocation : class {
+  var endPointsLocation : CanariPointArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardTrack_signatureForERCChecking : class {
   var signatureForERCChecking : UInt32? { get }
 }
@@ -112,6 +118,7 @@ class BoardTrack : BoardObject,
          BoardTrack_netClassViaHoleDiameter,
          BoardTrack_netClassViaPadDiameter,
          BoardTrack_trackLength,
+         BoardTrack_endPointsLocation,
          BoardTrack_signatureForERCChecking,
          BoardTrack_objectDisplay {
 
@@ -453,6 +460,29 @@ class BoardTrack : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: endPointsLocation
+  //····················································································································
+
+  let endPointsLocation_property = EBTransientProperty_CanariPointArray ()
+
+  //····················································································································
+
+  var endPointsLocation_property_selection : EBSelection <CanariPointArray> {
+    return self.endPointsLocation_property.prop
+  }
+
+  //····················································································································
+
+  var endPointsLocation : CanariPointArray? {
+    switch self.endPointsLocation_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -674,6 +704,30 @@ class BoardTrack : BoardObject,
     }
     self.mConnectorP1_property.addEBObserverOf_location (self.trackLength_property)
     self.mConnectorP2_property.addEBObserverOf_location (self.trackLength_property)
+  //--- Atomic property: endPointsLocation
+    self.endPointsLocation_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
+        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardTrack_endPointsLocation (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mConnectorP1_property.addEBObserverOf_location (self.endPointsLocation_property)
+    self.mConnectorP2_property.addEBObserverOf_location (self.endPointsLocation_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -757,6 +811,8 @@ class BoardTrack : BoardObject,
     self.mNet_property.removeEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
     self.mConnectorP1_property.removeEBObserverOf_location (self.trackLength_property)
     self.mConnectorP2_property.removeEBObserverOf_location (self.trackLength_property)
+    self.mConnectorP1_property.removeEBObserverOf_location (self.endPointsLocation_property)
+    self.mConnectorP2_property.removeEBObserverOf_location (self.endPointsLocation_property)
     self.mSide_property.removeEBObserver (self.signatureForERCChecking_property)
     self.actualTrackWidth_property.removeEBObserver (self.signatureForERCChecking_property)
     self.mConnectorP1_property.removeEBObserverOf_location (self.objectDisplay_property)
@@ -885,6 +941,14 @@ class BoardTrack : BoardObject,
       view: view,
       observerExplorer: &self.trackLength_property.mObserverExplorer,
       valueExplorer: &self.trackLength_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "endPointsLocation",
+      idx: self.endPointsLocation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.endPointsLocation_property.mObserverExplorer,
+      valueExplorer: &self.endPointsLocation_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "signatureForERCChecking",

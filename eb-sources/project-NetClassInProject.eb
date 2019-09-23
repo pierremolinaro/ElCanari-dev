@@ -31,7 +31,7 @@ entity NetClassInProject {
   transient NetInfoArray netsDescription dependsFrom
     self.mNets,
     self.mNets.all.mNetName,
-    self.mNets.all.netPointsInfo,
+    self.mNets.all.netSchematicPointsInfo,
     self.mNetClassName ;
 
   transient Int netWarningCount dependsFrom self.netsDescription ;

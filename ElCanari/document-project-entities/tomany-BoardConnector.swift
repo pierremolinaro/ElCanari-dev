@@ -29,6 +29,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     self.removeEBObserversOf_mUsesCustomPadDiameter_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_location_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netNameFromComponentPad_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_side_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_isVia_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
@@ -57,6 +58,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     self.addEBObserversOf_mUsesCustomPadDiameter_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_location_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netNameFromComponentPad_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_netNameAndPadLocation_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_side_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_isVia_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
@@ -864,6 +866,62 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     for managedObject in inSet {
       self.mObserversOf_netNameFromComponentPad.apply { (_ observer : EBEvent) in
         managedObject.netNameFromComponentPad_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netNameAndPadLocation' transient property
+  //····················································································································
+
+  private var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netNameAndPadLocation.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netNameAndPadLocation_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netNameAndPadLocation.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netNameAndPadLocation_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netNameAndPadLocation_toElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
+        managedObject.netNameAndPadLocation_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (_ inSet : Set<BoardConnector>) {
+    for managedObject in inSet {
+      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
+        managedObject.netNameAndPadLocation_property.removeEBObserver (observer)
       }
     }
   }

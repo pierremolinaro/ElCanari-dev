@@ -13,20 +13,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_issuesDisplay (
-       _ self_boardIssues : CanariIssueArray
-) -> EBShape {
+func transient_BoardTrack_endPointsLocation (
+       _ self_mConnectorP1_location : CanariPoint?,
+       _ self_mConnectorP2_location : CanariPoint?
+) -> CanariPointArray {
 //--- START OF USER ZONE 2
-        var shape = EBShape ()
-        for issue in self_boardIssues {
-          let color : NSColor
-          switch issue.kind {
-          case .warning : color = .myOrange
-          case .error   : color = .red
-          }
-          shape.add (filled: issue.pathes, color)
-        }
-        return shape
+        let array = [self_mConnectorP1_location!, self_mConnectorP2_location!]
+        return array
 //--- END OF USER ZONE 2
 }
 

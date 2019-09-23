@@ -21,7 +21,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
     self.removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_wireColor_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_netPointsInfo_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_netSchematicPointsInfo_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_mNetName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
@@ -29,7 +29,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
     self.addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_wireColor_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_netPointsInfo_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_netSchematicPointsInfo_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -370,57 +370,57 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   }
 
   //····················································································································
-  //   Observers of 'netPointsInfo' transient property
+  //   Observers of 'netSchematicPointsInfo' transient property
   //····················································································································
 
-  private var mObserversOf_netPointsInfo = EBWeakEventSet ()
+  private var mObserversOf_netSchematicPointsInfo = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_netPointsInfo (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netSchematicPointsInfo (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_netPointsInfo.insert (inObserver)
+    self.mObserversOf_netSchematicPointsInfo.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netPointsInfo_property.addEBObserver (inObserver)
+        managedObject.netSchematicPointsInfo_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_netPointsInfo (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netSchematicPointsInfo (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_netPointsInfo.remove (inObserver)
+    self.mObserversOf_netSchematicPointsInfo.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netPointsInfo_property.removeEBObserver (inObserver)
+        managedObject.netSchematicPointsInfo_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_netPointsInfo_toElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func addEBObserversOf_netSchematicPointsInfo_toElementsOfSet (_ inSet : Set<NetInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_netPointsInfo.apply { (_ observer : EBEvent) in
-        managedObject.netPointsInfo_property.addEBObserver (observer)
+      self.mObserversOf_netSchematicPointsInfo.apply { (_ observer : EBEvent) in
+        managedObject.netSchematicPointsInfo_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_netPointsInfo_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func removeEBObserversOf_netSchematicPointsInfo_fromElementsOfSet (_ inSet : Set<NetInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_netPointsInfo.apply { (_ observer : EBEvent) in
-        managedObject.netPointsInfo_property.removeEBObserver (observer)
+      self.mObserversOf_netSchematicPointsInfo.apply { (_ observer : EBEvent) in
+        managedObject.netSchematicPointsInfo_property.removeEBObserver (observer)
       }
     }
   }

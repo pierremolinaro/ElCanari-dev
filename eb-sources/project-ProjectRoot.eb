@@ -78,7 +78,6 @@ entity ProjectRoot {
   transient String trackLengthString dependsFrom self.mBoardObjects.all.trackLength, self.mTrackLengthUnit ;
   
   transient CanariIssueArray boardIssues dependsFrom self.mBoardObjects.all.issues ;
-  transient EBShape issuesDisplay dependsFrom self.boardIssues ;
   transient NSImage boardStatusImage dependsFrom self.boardIssues ;
   transient String boardStatusMessage dependsFrom self.boardIssues ;
   
@@ -213,6 +212,10 @@ entity ProjectRoot {
   transient IntArray sheetIndexes dependsFrom self.mSheets ;
 
   transient Int netWarningCount dependsFrom self.mNetClasses.all.netWarningCount ;
+  
+  transient EBShape rastnetShape dependsFrom self.mBoardObjects.all.netNameAndPadLocation ;
+
+  transient EBShape overDisplay dependsFrom self.rastnetShape, self.boardIssues ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

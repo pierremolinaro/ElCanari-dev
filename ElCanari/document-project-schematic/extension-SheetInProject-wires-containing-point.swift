@@ -16,7 +16,7 @@ extension SheetInProject {
 
   internal func wiresStrictlyContaining (point inPoint : CanariPoint) -> [WireInSchematic] {
     let canariAlignedPoint = inPoint.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
-    let width = cocoaToCanariUnit (CGFloat (g_Preferences!.symbolDrawingWidthMultipliedByTen) / 5.0)
+    let width = cocoaToCanariUnit (CGFloat (g_Preferences!.symbolDrawingWidthMultipliedByTen) / 2.5)
     var result = [WireInSchematic]  ()
     for object in self.mObjects {
       if let wire = object as? WireInSchematic {

@@ -279,7 +279,7 @@ struct BoardFontDescriptor : Hashable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias PackageMasterPadDictionary = [String : MasterPadDescriptor]
+typealias PackageMasterPadDictionary = [String : MasterPadDescriptor] // Pad name, descriptor
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -511,5 +511,14 @@ typealias ComponentPadDescriptorDictionary = [String : ComponentPadDescriptor] /
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias PadNetDictionary = [String : String] // Pad name, associated net
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct NetNameAndPadLocation : Equatable, Hashable {
+  let netName : String
+  let location : CanariPoint
+}
+
+typealias NetNameAndPadLocationArray = [NetNameAndPadLocation]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -13,17 +13,18 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetInProject_netPointsInfo (
-       _ self_mPoints_netInfoForPoint : [PointInSchematic_netInfoForPoint]
-) -> NetInfoPointArray {
+func transient_BoardConnector_netNameAndPadLocation (
+       _ self_mComponent_padNetDictionary : PadNetDictionary?,
+       _ self_mComponentPadName : String,            
+       _ self_location : CanariPoint
+) -> NetNameAndPadLocationArray {
 //--- START OF USER ZONE 2
-        var pointArray = NetInfoPointArray ()
-        for point in self_mPoints_netInfoForPoint {
-          if let a = point.netInfoForPoint {
-            pointArray.append (a)
-          }
-        }
-        return pointArray
+       if let netName = self_mComponent_padNetDictionary? [self_mComponentPadName] {
+        return [NetNameAndPadLocation (netName: netName, location: self_location)]
+       }else{
+         return []
+       }
+
 //--- END OF USER ZONE 2
 }
 

@@ -38,6 +38,10 @@ graphic entity BoardConnector : BoardObject {
     self.mComponent.one.padNetDictionary, self.mComponentPadName
   ;
 
+  override transient NetNameAndPadLocationArray netNameAndPadLocation dependsFrom
+    self.mComponent.one.padNetDictionary, self.mComponentPadName, self.location
+  ;
+
   transient ConnectorSide side dependsFrom
     self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex,
     self.mTracksP1.all.mSide, self.mTracksP2.all.mSide
