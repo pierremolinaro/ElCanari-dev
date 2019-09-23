@@ -1,16 +1,4 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum AutorouterPreferredDirections {
-  vFrontHback, hFrontVback
-}
-
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum AutorouterSnapAngle {
-  rectilinear, octolinear, anyAngle
-}
-
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //     P R O J E C T    R O O T
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -85,6 +73,8 @@ entity ProjectRoot {
   
   property Double mControlKeyHiliteDiameter default 100.0 ;
   
+  property RastnetDisplay mRastnetDisplay default allNets ;
+
 //--- Board border
   toMany BorderCurve mBorderCurves inverse toOne mRoot ;
   property Int mBoardLimitsWidth default 90_000 ; // 1 mm
@@ -213,7 +203,7 @@ entity ProjectRoot {
 
   transient Int netWarningCount dependsFrom self.mNetClasses.all.netWarningCount ;
   
-  transient EBShape rastnetShape dependsFrom self.mBoardObjects.all.netNameAndPadLocation ;
+  transient EBShape rastnetShape dependsFrom self.mBoardObjects.all.netNameAndPadLocation, self.mRastnetDisplay ;
 
   transient EBShape overDisplay dependsFrom self.rastnetShape, self.boardIssues ;
 }

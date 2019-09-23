@@ -898,6 +898,8 @@ document ProjectDocument root ProjectRoot {
   
   outlet EBSlider mControlKeyHiliteDiameterSlider $doubleValue root.mControlKeyHiliteDiameter {sendContinously : yes} ;
   
+  
+  outlet EBPopUpButton mRastnetDisplayPopUpButton $selectedIndex root.mRastnetDisplay ;
 //--- Artwork
   outlet EBTextObserverField mArtworkNameTextField $valueObserver root.mArtworkName ;
   outlet NSTextField mNoArtworkMessageTextField $hidden !root.mArtwork.none ;

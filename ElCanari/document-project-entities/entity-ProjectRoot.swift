@@ -120,6 +120,12 @@ protocol ProjectRoot_mControlKeyHiliteDiameter : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mRastnetDisplay : class {
+  var mRastnetDisplay : RastnetDisplay { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mBoardLimitsWidth : class {
   var mBoardLimitsWidth : Int { get }
 }
@@ -622,6 +628,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardGridStepUnit,
          ProjectRoot_mErrorOrWarningIssueSize,
          ProjectRoot_mControlKeyHiliteDiameter,
+         ProjectRoot_mRastnetDisplay,
          ProjectRoot_mBoardLimitsWidth,
          ProjectRoot_mBoardLimitsWidthUnit,
          ProjectRoot_mBoardLimitsSelectedInspector,
@@ -1025,6 +1032,23 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mControlKeyHiliteDiameter_property_selection : EBSelection <Double> { return self.mControlKeyHiliteDiameter_property.prop }
+
+  //····················································································································
+  //   Atomic property: mRastnetDisplay
+  //····················································································································
+
+  let mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets)
+
+  //····················································································································
+
+  var mRastnetDisplay : RastnetDisplay {
+    get { return self.mRastnetDisplay_property.propval }
+    set { self.mRastnetDisplay_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mRastnetDisplay_property_selection : EBSelection <RastnetDisplay> { return self.mRastnetDisplay_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsWidth
@@ -3054,6 +3078,8 @@ class ProjectRoot : EBManagedObject,
     self.mErrorOrWarningIssueSize_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mControlKeyHiliteDiameter
     self.mControlKeyHiliteDiameter_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mRastnetDisplay
+    self.mRastnetDisplay_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -4130,16 +4156,17 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: rastnetShape
     self.rastnetShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mBoardObjects_property_selection.kind ()
+        var kind = unwSelf.mBoardObjects_property_selection.kind ()
+        kind &= unwSelf.mRastnetDisplay_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mBoardObjects_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectRoot_rastnetShape (v0))
+          switch (unwSelf.mBoardObjects_property_selection, unwSelf.mRastnetDisplay_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ProjectRoot_rastnetShape (v0, v1))
           default :
             return .empty
           }
@@ -4149,6 +4176,7 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
+    self.mRastnetDisplay_property.addEBObserver (self.rastnetShape_property)
   //--- Atomic property: overDisplay
     self.overDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4430,6 +4458,7 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicCustomHeight_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mNetClasses_property.removeEBObserverOf_netWarningCount (self.netWarningCount_property)
     self.mBoardObjects_property.removeEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
+    self.mRastnetDisplay_property.removeEBObserver (self.rastnetShape_property)
     self.rastnetShape_property.removeEBObserver (self.overDisplay_property)
     self.boardIssues_property.removeEBObserver (self.overDisplay_property)
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
@@ -4610,6 +4639,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.mControlKeyHiliteDiameter_property.mObserverExplorer,
       valueExplorer: &self.mControlKeyHiliteDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mRastnetDisplay",
+      idx: self.mRastnetDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mRastnetDisplay_property.mObserverExplorer,
+      valueExplorer: &self.mRastnetDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mBoardLimitsWidth",
@@ -5294,6 +5331,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mControlKeyHiliteDiameter
     self.mControlKeyHiliteDiameter_property.mObserverExplorer = nil
     self.mControlKeyHiliteDiameter_property.mValueExplorer = nil
+  //--- Atomic property: mRastnetDisplay
+    self.mRastnetDisplay_property.mObserverExplorer = nil
+    self.mRastnetDisplay_property.mValueExplorer = nil
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.mObserverExplorer = nil
     self.mBoardLimitsWidth_property.mValueExplorer = nil
@@ -5516,6 +5556,8 @@ class ProjectRoot : EBManagedObject,
     self.mErrorOrWarningIssueSize_property.storeIn (dictionary: ioDictionary, forKey:"mErrorOrWarningIssueSize")
   //--- Atomic property: mControlKeyHiliteDiameter
     self.mControlKeyHiliteDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mControlKeyHiliteDiameter")
+  //--- Atomic property: mRastnetDisplay
+    self.mRastnetDisplay_property.storeIn (dictionary: ioDictionary, forKey:"mRastnetDisplay")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -5745,6 +5787,8 @@ class ProjectRoot : EBManagedObject,
     self.mErrorOrWarningIssueSize_property.readFrom (dictionary: inDictionary, forKey:"mErrorOrWarningIssueSize")
   //--- Atomic property: mControlKeyHiliteDiameter
     self.mControlKeyHiliteDiameter_property.readFrom (dictionary: inDictionary, forKey:"mControlKeyHiliteDiameter")
+  //--- Atomic property: mRastnetDisplay
+    self.mRastnetDisplay_property.readFrom (dictionary: inDictionary, forKey:"mRastnetDisplay")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit

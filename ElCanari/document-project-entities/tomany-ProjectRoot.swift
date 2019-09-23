@@ -34,6 +34,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mBoardGridStepUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mErrorOrWarningIssueSize_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mControlKeyHiliteDiameter_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mRastnetDisplay_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsWidth_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsSelectedInspector_fromElementsOfSet (inRemovedSet) // Stored property
@@ -125,6 +126,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mBoardGridStepUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mErrorOrWarningIssueSize_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mControlKeyHiliteDiameter_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mRastnetDisplay_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsWidth_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsWidthUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsSelectedInspector_toElementsOfSet (inAddedSet) // Stored property
@@ -1277,6 +1279,63 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mControlKeyHiliteDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mRastnetDisplay' stored property
+  //····················································································································
+
+  private var mObserversOf_mRastnetDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mRastnetDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mRastnetDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mRastnetDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mRastnetDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mRastnetDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mRastnetDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mRastnetDisplay_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mRastnetDisplay.apply { (_ observer : EBEvent) in
+        managedObject.mRastnetDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mRastnetDisplay_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mRastnetDisplay.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mRastnetDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -6469,6 +6528,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mBoardGridStepUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mErrorOrWarningIssueSize (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mControlKeyHiliteDiameter (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mRastnetDisplay (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsWidthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsSelectedInspector (self.mObserverForWritingPreferences)

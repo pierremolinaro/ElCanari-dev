@@ -540,6 +540,8 @@
 		CF52BEC52337ECC10018B89C /* transient-ProjectRoot-rastnetShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52BEC32337ECC10018B89C /* transient-ProjectRoot-rastnetShape.swift */; };
 		CF52BECA2338AA180018B89C /* transient-BoardConnector-netNameAndPadLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52BEC92338AA180018B89C /* transient-BoardConnector-netNameAndPadLocation.swift */; };
 		CF52BECB2338AA180018B89C /* transient-BoardConnector-netNameAndPadLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52BEC92338AA180018B89C /* transient-BoardConnector-netNameAndPadLocation.swift */; };
+		CF52BECD2338B5910018B89C /* enum-RastnetDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52BECC2338B5910018B89C /* enum-RastnetDisplay.swift */; };
+		CF52BECE2338B5910018B89C /* enum-RastnetDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52BECC2338B5910018B89C /* enum-RastnetDisplay.swift */; };
 		CF52DF5121501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52DF4F21501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift */; };
 		CF52DF5221501DBF00FAF0ED /* transient-SegmentForFontCharacter-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52DF5021501DBF00FAF0ED /* transient-SegmentForFontCharacter-selectionDisplay.swift */; };
 		CF53200F229A948C0055136B /* extension-ProjectRoot-create-net.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53200E229A948C0055136B /* extension-ProjectRoot-create-net.swift */; };
@@ -2626,6 +2628,7 @@
 		CF52BEBA2337E2E90018B89C /* transient-BoardTrack-endPointsLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardTrack-endPointsLocation.swift"; sourceTree = "<group>"; };
 		CF52BEC32337ECC10018B89C /* transient-ProjectRoot-rastnetShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectRoot-rastnetShape.swift"; sourceTree = "<group>"; };
 		CF52BEC92338AA180018B89C /* transient-BoardConnector-netNameAndPadLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardConnector-netNameAndPadLocation.swift"; sourceTree = "<group>"; };
+		CF52BECC2338B5910018B89C /* enum-RastnetDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-RastnetDisplay.swift"; sourceTree = "<group>"; };
 		CF52DF4F21501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SegmentForFontCharacter-objectDisplay.swift"; sourceTree = "<group>"; };
 		CF52DF5021501DBF00FAF0ED /* transient-SegmentForFontCharacter-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SegmentForFontCharacter-selectionDisplay.swift"; sourceTree = "<group>"; };
 		CF53200E229A948C0055136B /* extension-ProjectRoot-create-net.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-ProjectRoot-create-net.swift"; sourceTree = "<group>"; };
@@ -4547,6 +4550,7 @@
 				CFD7FFF822A7BA840039DB80 /* enum-BorderCurveShape.swift */,
 				CF0EE34322C8C478008CB4A7 /* enum-ComponentSide.swift */,
 				CFF3936022CE3F160088E1C6 /* enum-ConnectorSide.swift */,
+				CF52BECC2338B5910018B89C /* enum-RastnetDisplay.swift */,
 				CFB1DB082282D31F005F9811 /* enum-SchematicSheetOrientation.swift */,
 				CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */,
 				CFD5AC8C22D382570031BD9E /* tomany-BoardConnector.swift */,
@@ -6088,6 +6092,7 @@
 				CF6B32F821C91FA100E3B985 /* transient-PackageDimension-selectionDisplay.swift in Sources */,
 				CF9D4BE2227F79A9006E2035 /* transient-SheetInProject-connectedPoints.swift in Sources */,
 				CFD7FFEA22A7B8DA0039DB80 /* entity-BorderCurve.swift in Sources */,
+				CF52BECD2338B5910018B89C /* enum-RastnetDisplay.swift in Sources */,
 				CF92C3C022BEC30900C221B2 /* EBBezierPath.swift in Sources */,
 				CFCC4BE720EAB3E6006A9CC5 /* transient-MergerRoot-boardWidth.swift in Sources */,
 				CF4D54C02254B93600DBCB62 /* model-events.swift in Sources */,
@@ -7190,6 +7195,7 @@
 				CF470CD922AA4BD800D0EA60 /* toone-BoardObject.swift in Sources */,
 				CFA43000229AEB68000AA8C8 /* toone-PackageObject.swift in Sources */,
 				CFEAAD502231788D00F69A12 /* extension-SymbolRoot.swift in Sources */,
+				CF52BECE2338B5910018B89C /* enum-RastnetDisplay.swift in Sources */,
 				CFF63C2722B3EF3100032398 /* tomany-BoardRestrictRectangle.swift in Sources */,
 				CF00845421C42A91003627E9 /* transient-PackageOval-selectionDisplay.swift in Sources */,
 				CF5C4D7D219F04D600EAC52A /* action-Preferences-revealUserLibraryInFinderAction.swift in Sources */,

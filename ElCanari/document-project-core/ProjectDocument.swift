@@ -798,6 +798,7 @@ import Cocoa
   @IBOutlet var mPinPadAssignmentTableView : ThreeStringArrayTableView? = nil
   @IBOutlet var mProductFileGenerationLogTextView : NSTextView? = nil
   @IBOutlet var mProductPageView : CanariViewWithKeyView? = nil
+  @IBOutlet var mRastnetDisplayPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mRemoveDeviceButton : EBButton? = nil
   @IBOutlet var mRemoveEmbeddedDevicesButton : EBButton? = nil
   @IBOutlet var mRemoveFontButton : EBButton? = nil
@@ -1330,6 +1331,7 @@ import Cocoa
     checkOutletConnection (self.mPinPadAssignmentTableView, "mPinPadAssignmentTableView", ThreeStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mProductFileGenerationLogTextView, "mProductFileGenerationLogTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mRastnetDisplayPopUpButton, "mRastnetDisplayPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mRemoveDeviceButton, "mRemoveDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveEmbeddedDevicesButton, "mRemoveEmbeddedDevicesButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveFontButton, "mRemoveFontButton", EBButton.self, #file, #line)
@@ -2075,6 +2077,7 @@ import Cocoa
     self.mBoardBackgroundColorWell?.bind_color (g_Preferences!.boardBackgroundColorForBoard_property, file: #file, line: #line, sendContinously:true)
     self.mErrorOrWarningIssueSlider?.bind_doubleValue (self.rootObject.mErrorOrWarningIssueSize_property, file: #file, line: #line, sendContinously:true)
     self.mControlKeyHiliteDiameterSlider?.bind_doubleValue (self.rootObject.mControlKeyHiliteDiameter_property, file: #file, line: #line, sendContinously:true)
+    self.mRastnetDisplayPopUpButton?.bind_selectedIndex (self.rootObject.mRastnetDisplay_property, file: #file, line: #line)
     self.mArtworkNameTextField?.bind_valueObserver (self.rootObject.mArtworkName_property, file: #file, line: #line)
     self.mArtworlImportButton?.bind_title (self.artworlImportButtonTitle_property, file: #file, line: #line)
     self.mMinPPTPTTTWinEBUnitPopUp?.bind_selectedTag (self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
@@ -2816,6 +2819,7 @@ import Cocoa
     self.mBoardBackgroundColorWell?.unbind_color ()
     self.mErrorOrWarningIssueSlider?.unbind_doubleValue ()
     self.mControlKeyHiliteDiameterSlider?.unbind_doubleValue ()
+    self.mRastnetDisplayPopUpButton?.unbind_selectedIndex ()
     self.mArtworkNameTextField?.unbind_valueObserver ()
     self.mArtworlImportButton?.unbind_title ()
     self.mMinPPTPTTTWinEBUnitPopUp?.unbind_selectedTag ()
@@ -3303,6 +3307,7 @@ import Cocoa
     self.mPinPadAssignmentTableView?.ebCleanUp ()
     self.mProductFileGenerationLogTextView?.ebCleanUp ()
     self.mProductPageView?.ebCleanUp ()
+    self.mRastnetDisplayPopUpButton?.ebCleanUp ()
     self.mRemoveDeviceButton?.ebCleanUp ()
     self.mRemoveEmbeddedDevicesButton?.ebCleanUp ()
     self.mRemoveFontButton?.ebCleanUp ()
@@ -3686,6 +3691,7 @@ import Cocoa
     self.mPinPadAssignmentTableView = nil
     self.mProductFileGenerationLogTextView = nil
     self.mProductPageView = nil
+    self.mRastnetDisplayPopUpButton = nil
     self.mRemoveDeviceButton = nil
     self.mRemoveEmbeddedDevicesButton = nil
     self.mRemoveFontButton = nil

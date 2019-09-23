@@ -39,9 +39,9 @@ private func computeRasnet (_ inPointArray : [CanariPoint], _ ioBezierPath : ino
           let p2 = points [j]
           let dd = CanariPoint.squareOfCanariDistance (p1, p2)
           if dd < d {
+            d = dd
             firstPointIndex = i
             secondPointIndex = j
-            d = dd
           }
         }
       }
@@ -64,7 +64,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_rastnetShape (
-       _ self_mBoardObjects_netNameAndPadLocation : [BoardObject_netNameAndPadLocation]
+       _ self_mBoardObjects_netNameAndPadLocation : [BoardObject_netNameAndPadLocation],
+       _ self_mRastnetDisplay : RastnetDisplay
 ) -> EBShape {
 //--- START OF USER ZONE 2
       //--- Build net dictionary
@@ -79,11 +80,13 @@ func transient_ProjectRoot_rastnetShape (
           }
         }
         var bp = EBBezierPath ()
-        bp.lineWidth = 1.0
-        bp.lineJoinStyle = .round
-        bp.lineCapStyle = .round
-        for (_, locationArray) in dictionary {
-          computeRasnet (locationArray, &bp)
+        if self_mRastnetDisplay == .allNets {
+          bp.lineWidth = 0.5
+          bp.lineJoinStyle = .round
+          bp.lineCapStyle = .round
+          for (_, locationArray) in dictionary {
+            computeRasnet (locationArray, &bp)
+          }
         }
         return EBShape (stroke: [bp], .yellow)
 //--- END OF USER ZONE 2
