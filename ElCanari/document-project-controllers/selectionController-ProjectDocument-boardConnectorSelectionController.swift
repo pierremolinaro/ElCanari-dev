@@ -154,9 +154,9 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //   Selection observable property: netNameAndPadLocation
   //····················································································································
 
-  let netNameAndPadLocation_property = EBTransientProperty_NetNameAndPadLocationArray ()
+  let netNameAndPadLocation_property = EBTransientProperty_RastnetInfoArray ()
 
-  var netNameAndPadLocation_property_selection : EBSelection <NetNameAndPadLocationArray> {
+  var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray> {
     return self.netNameAndPadLocation_property.prop
   }
 
@@ -1555,7 +1555,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <NetNameAndPadLocationArray> ()
+          var s = Set <RastnetInfoArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.netNameAndPadLocation_property_selection {

@@ -276,6 +276,7 @@
                 <outlet property="mPinPadAssignmentTableView" destination="16486" id="eqm-rc-qV0"/>
                 <outlet property="mProductFileGenerationLogTextView" destination="16778" id="XNK-nK-oKo"/>
                 <outlet property="mProductPageView" destination="3140" id="bk0-vm-fc6"/>
+                <outlet property="mRasnetComponentNameSelectionPopUpButton" destination="nLc-G9-3Sd" id="QkR-vh-12w"/>
                 <outlet property="mRasnetNetNameSelectionPopUpButton" destination="Jf2-Mg-Fhb" id="aQr-3T-Cke"/>
                 <outlet property="mRastnetDisplayPopUpButton" destination="him-Cm-DsX" id="raY-BI-w70"/>
                 <outlet property="mRemoveDeviceButton" destination="2941" id="YNQ-og-Qzd"/>
@@ -1994,7 +1995,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="uUv-DV-O77">
-                    <rect key="frame" x="18" y="140" width="127" height="14"/>
+                    <rect key="frame" x="18" y="140" width="55" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Rastnet" id="Okr-QQ-AMH">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -2003,16 +2004,17 @@ Gw
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="him-Cm-DsX" customClass="EBPopUpButton">
-                    <rect key="frame" x="151" y="138" width="77" height="17"/>
+                    <rect key="frame" x="79" y="138" width="149" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Only Net:" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="TpW-G5-QBl" id="lVm-uO-Raq">
+                    <popUpButtonCell key="cell" type="roundRect" title="Nets of Component:" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="U8F-wa-cEE" id="lVm-uO-Raq">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" id="8YS-L2-sQX">
                             <items>
                                 <menuItem title="No" id="1hW-Jl-54m"/>
                                 <menuItem title="All Nets" id="l4y-zK-BCh"/>
-                                <menuItem title="Only Net:" state="on" id="TpW-G5-QBl"/>
+                                <menuItem title="Only Net:" id="TpW-G5-QBl"/>
+                                <menuItem title="Nets of Component:" id="U8F-wa-cEE"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -2020,20 +2022,31 @@ Gw
                 <popUpButton verticalHuggingPriority="750" id="Jf2-Mg-Fhb" customClass="CanariSelectionPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="115" width="208" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Item 1" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="ggC-CT-HmW" id="DvE-1W-oUy">
+                    <popUpButtonCell key="cell" type="roundRect" title="net names…" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="ggC-CT-HmW" id="DvE-1W-oUy">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" id="E4X-wl-3Pe">
                             <items>
-                                <menuItem title="Item 1" state="on" id="ggC-CT-HmW"/>
-                                <menuItem title="Item 2" id="N8x-en-WxD"/>
-                                <menuItem title="Item 3" id="KZg-wd-t13"/>
+                                <menuItem title="net names…" id="ggC-CT-HmW"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <popUpButton verticalHuggingPriority="750" id="nLc-G9-3Sd" customClass="CanariSelectionPopUpButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="20" y="114" width="208" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="component names…" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Orm-im-WPC" id="7kP-LQ-9YM">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" id="bah-36-gkd">
+                            <items>
+                                <menuItem title="component names…" id="Orm-im-WPC"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="477" y="813"/>
+            <point key="canvasLocation" x="338" y="789"/>
         </customView>
         <customView id="2048" userLabel="Board Inspector : Component" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="451"/>

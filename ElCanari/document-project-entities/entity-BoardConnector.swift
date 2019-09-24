@@ -91,7 +91,7 @@ protocol BoardConnector_netNameFromComponentPad : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardConnector_netNameAndPadLocation : class {
-  var netNameAndPadLocation : NetNameAndPadLocationArray? { get }
+  var netNameAndPadLocation : RastnetInfoArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -824,15 +824,16 @@ class BoardConnector : BoardObject,
         var kind = unwSelf.mComponent_property.padNetDictionary_property_selection.kind ()
         kind &= unwSelf.mComponentPadName_property_selection.kind ()
         kind &= unwSelf.location_property_selection.kind ()
+        kind &= unwSelf.mComponent_property.componentName_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComponent_property.padNetDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.location_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_BoardConnector_netNameAndPadLocation (v0, v1, v2))
+          switch (unwSelf.mComponent_property.padNetDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.location_property_selection, unwSelf.mComponent_property.componentName_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_BoardConnector_netNameAndPadLocation (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -844,6 +845,7 @@ class BoardConnector : BoardObject,
     self.mComponent_property.addEBObserverOf_padNetDictionary (self.netNameAndPadLocation_property)
     self.mComponentPadName_property.addEBObserver (self.netNameAndPadLocation_property)
     self.location_property.addEBObserver (self.netNameAndPadLocation_property)
+    self.mComponent_property.addEBObserverOf_componentName (self.netNameAndPadLocation_property)
   //--- Atomic property: side
     self.side_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1215,6 +1217,7 @@ class BoardConnector : BoardObject,
     self.mComponent_property.removeEBObserverOf_padNetDictionary (self.netNameAndPadLocation_property)
     self.mComponentPadName_property.removeEBObserver (self.netNameAndPadLocation_property)
     self.location_property.removeEBObserver (self.netNameAndPadLocation_property)
+    self.mComponent_property.removeEBObserverOf_componentName (self.netNameAndPadLocation_property)
     self.mComponent_property.removeEBObserverOf_componentPadDictionary (self.side_property)
     self.mComponentPadName_property.removeEBObserver (self.side_property)
     self.mPadIndex_property.removeEBObserver (self.side_property)

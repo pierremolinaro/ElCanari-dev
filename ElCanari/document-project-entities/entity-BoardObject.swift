@@ -37,7 +37,7 @@ protocol BoardObject_signatureForERCChecking : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardObject_netNameAndPadLocation : class {
-  var netNameAndPadLocation : NetNameAndPadLocationArray? { get }
+  var netNameAndPadLocation : RastnetInfoArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -230,17 +230,17 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: netNameAndPadLocation
   //····················································································································
 
-  let netNameAndPadLocation_property = EBTransientProperty_NetNameAndPadLocationArray ()
+  let netNameAndPadLocation_property = EBTransientProperty_RastnetInfoArray ()
 
   //····················································································································
 
-  var netNameAndPadLocation_property_selection : EBSelection <NetNameAndPadLocationArray> {
+  var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray> {
     return self.netNameAndPadLocation_property.prop
   }
 
   //····················································································································
 
-  var netNameAndPadLocation : NetNameAndPadLocationArray? {
+  var netNameAndPadLocation : RastnetInfoArray? {
     switch self.netNameAndPadLocation_property_selection {
     case .empty, .multiple :
       return nil

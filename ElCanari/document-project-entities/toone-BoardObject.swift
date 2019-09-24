@@ -389,7 +389,7 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
 
   //····················································································································
 
-  var netNameAndPadLocation_property_selection : EBSelection <NetNameAndPadLocationArray?> {
+  var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray?> {
     if let model = self.propval {
       switch (model.netNameAndPadLocation_property_selection) {
       case .empty :

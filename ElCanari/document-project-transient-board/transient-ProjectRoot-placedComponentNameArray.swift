@@ -13,18 +13,20 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_netNameAndPadLocation (
-       _ self_mComponent_padNetDictionary : PadNetDictionary?,
-       _ self_mComponentPadName : String,            
-       _ self_location : CanariPoint,                
-       _ self_mComponent_componentName : String?
-) -> RastnetInfoArray {
+func transient_ProjectRoot_placedComponentNameArray (
+       _ self_mComponents_componentName : [ComponentInProject_componentName],
+       _ self_mComponents_componentIsPlacedInBoard : [ComponentInProject_componentIsPlacedInBoard]
+) -> StringArray {
 //--- START OF USER ZONE 2
-       if let netName = self_mComponent_padNetDictionary? [self_mComponentPadName] {
-        return [RastnetInfo (netName: netName, location: self_location, componentName: self_mComponent_componentName!)]
-       }else{
-         return []
-       }
+        var result = StringArray ()
+        var idx = 0
+        while idx < self_mComponents_componentName.count {
+          if self_mComponents_componentIsPlacedInBoard [idx].componentIsPlacedInBoard! {
+            result.append (self_mComponents_componentName [idx].componentName!)
+          }
+          idx += 1
+        }
+        return result
 
 //--- END OF USER ZONE 2
 }

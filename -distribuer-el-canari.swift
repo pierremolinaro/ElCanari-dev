@@ -15,7 +15,7 @@ enum ProductKind {
   var string : String {
     switch self {
       case .release : return "Release"
-      case .debug : return "Debug"
+      case .debug   : return "Debug"
     }
   }
 }
@@ -24,11 +24,11 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.8"
+let VERSION_CANARI = "1.0.9"
 let NOTES : [String] = []
-let BUGFIXES : [String] = ["Project: fixed symbol insertion in schematic"]
+let BUGFIXES : [String] = []
 let CHANGES : [String] = []
-let NEWS : [String] = []
+let NEWS : [String] = ["Project: added display rastnet in Board"]
 let BUILD_KIND = ProductKind.release
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

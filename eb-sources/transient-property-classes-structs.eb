@@ -26,7 +26,7 @@ transient property struct SlavePadDescriptor ;
 transient property struct MasterPadDescriptor ;
 transient property struct PackageMasterPadDictionary ;
 transient property struct ComponentPadDescriptorDictionary ;
-transient property struct NetNameAndPadLocationArray ;
+transient property struct RastnetInfoArray ;
 
 transient property struct DeviceSymbolDictionary ;
 transient property struct IntArray ;

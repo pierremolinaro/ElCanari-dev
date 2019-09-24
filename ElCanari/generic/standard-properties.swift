@@ -563,11 +563,11 @@ typealias EBReadOnlyProperty_ComponentPadDescriptorDictionary    = EBReadOnlyVal
 typealias EBTransientProperty_ComponentPadDescriptorDictionary   = EBTransientValueProperty <ComponentPadDescriptorDictionary>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Scalar property NetNameAndPadLocationArray
+//   Scalar property RastnetInfoArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_NetNameAndPadLocationArray    = EBReadOnlyValueProperty <NetNameAndPadLocationArray>
-typealias EBTransientProperty_NetNameAndPadLocationArray   = EBTransientValueProperty <NetNameAndPadLocationArray>
+typealias EBReadOnlyProperty_RastnetInfoArray    = EBReadOnlyValueProperty <RastnetInfoArray>
+typealias EBTransientProperty_RastnetInfoArray   = EBTransientValueProperty <RastnetInfoArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property DeviceSymbolDictionary

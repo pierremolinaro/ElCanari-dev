@@ -901,8 +901,13 @@ document ProjectDocument root ProjectRoot {
   outlet EBPopUpButton mRastnetDisplayPopUpButton $selectedIndex root.mRastnetDisplay ;
   transient Bool rastnetDisplayOneNet dependsFrom root.mRastnetDisplay ;
   outlet CanariSelectionPopUpButton mRasnetNetNameSelectionPopUpButton
-    $selectedNameInArray root.mRastnetDisplayedNet, root.netNamesArray
+    $selectedNameInArray root.mRastnetDisplayedNetName, root.netNamesArray
     $hidden !self.rastnetDisplayOneNet
+  ;
+  transient Bool rastnetDisplayComponentNet dependsFrom root.mRastnetDisplay ;
+  outlet CanariSelectionPopUpButton mRasnetComponentNameSelectionPopUpButton
+    $selectedNameInArray root.mRastnetDisplayedComponentName, root.placedComponentNameArray
+    $hidden !self.rastnetDisplayComponentNet
   ;
 
 //--- Artwork

@@ -65,7 +65,8 @@ import Cocoa
 
 func transient_ProjectRoot_rastnetShape (
        _ self_mRastnetDisplay : RastnetDisplay,
-       _ self_mRastnetDisplayedNet : String,
+       _ self_mRastnetDisplayedNetName : String,
+       _ self_mRastnetDisplayedComponentName : String,
        _ self_mBoardObjects_netNameAndPadLocation : [BoardObject_netNameAndPadLocation]
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -97,7 +98,7 @@ func transient_ProjectRoot_rastnetShape (
         for optionalArray in self_mBoardObjects_netNameAndPadLocation {
           if let array = optionalArray.netNameAndPadLocation {
             for p in array {
-              if self_mRastnetDisplayedNet == p.netName {
+              if self_mRastnetDisplayedNetName == p.netName {
                 locationArray.append (p.location)
               }
             }
@@ -108,6 +109,39 @@ func transient_ProjectRoot_rastnetShape (
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         computeRasnet (locationArray, &bp)
+        return EBShape (stroke: [bp], .yellow)
+      case .componentNets :
+      //--- Build net set
+         var netNameSet = Set <String> ()
+         for optionalArray in self_mBoardObjects_netNameAndPadLocation {
+          if let array = optionalArray.netNameAndPadLocation {
+            for p in array {
+              if p.componentName == self_mRastnetDisplayedComponentName {
+                netNameSet.insert (p.netName)
+              }
+            }
+          }
+        }
+     //--- Build net dictionary
+        var dictionary = [String : [CanariPoint]] ()
+        for optionalArray in self_mBoardObjects_netNameAndPadLocation {
+          if let array = optionalArray.netNameAndPadLocation {
+            for p in array {
+              let netName = p.netName
+              if netNameSet.contains (netName) {
+                let location = p.location
+                dictionary [netName] = (dictionary [netName] ?? []) + [location]
+              }
+            }
+          }
+        }
+        var bp = EBBezierPath ()
+        bp.lineWidth = 0.5
+        bp.lineJoinStyle = .round
+        bp.lineCapStyle = .round
+        for (_, locationArray) in dictionary {
+          computeRasnet (locationArray, &bp)
+        }
         return EBShape (stroke: [bp], .yellow)
       }
 //--- END OF USER ZONE 2

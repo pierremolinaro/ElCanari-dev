@@ -514,11 +514,12 @@ typealias PadNetDictionary = [String : String] // Pad name, associated net
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct NetNameAndPadLocation : Equatable, Hashable {
+struct RastnetInfo : Equatable, Hashable {
   let netName : String
   let location : CanariPoint
+  let componentName : String
 }
 
-typealias NetNameAndPadLocationArray = [NetNameAndPadLocation]
+typealias RastnetInfoArray = [RastnetInfo]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

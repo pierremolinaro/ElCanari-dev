@@ -74,7 +74,8 @@ entity ProjectRoot {
   property Double mControlKeyHiliteDiameter default 100.0 ;
   
   property RastnetDisplay mRastnetDisplay default allNets ;
-  property String mRastnetDisplayedNet default "" ;
+  property String mRastnetDisplayedNetName default "" ;
+  property String mRastnetDisplayedComponentName default "" ;
 
 //--- Board border
   toMany BorderCurve mBorderCurves inverse toOne mRoot ;
@@ -168,6 +169,11 @@ entity ProjectRoot {
     self.mComponents.all.componentIsPlacedInBoard
   ;
 
+  transient StringArray placedComponentNameArray dependsFrom
+    self.mComponents.all.componentName,
+    self.mComponents.all.componentIsPlacedInBoard
+  ;
+
   transient EBShape schematicBackgroundDisplay dependsFrom
     self.mSchematicTitle,
     self.mSchematicVersion,
@@ -208,7 +214,8 @@ entity ProjectRoot {
   
   transient EBShape rastnetShape dependsFrom
     self.mRastnetDisplay,
-    self.mRastnetDisplayedNet,
+    self.mRastnetDisplayedNetName,
+    self.mRastnetDisplayedComponentName,
     self.mBoardObjects.all.netNameAndPadLocation
   ;
 

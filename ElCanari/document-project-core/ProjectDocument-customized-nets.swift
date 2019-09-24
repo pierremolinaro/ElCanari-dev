@@ -147,9 +147,9 @@ extension CustomizedProjectDocument {
       }
     }
     if netNameSet.count == 0 {
-      self.rootObject.mRastnetDisplayedNet = ""
-    }else if !netNameSet.contains (self.rootObject.mRastnetDisplayedNet) {
-      self.rootObject.mRastnetDisplayedNet = netNameSet.first!
+      self.rootObject.mRastnetDisplayedNetName = ""
+    }else if !netNameSet.contains (self.rootObject.mRastnetDisplayedNetName) {
+      self.rootObject.mRastnetDisplayedNetName = netNameSet.first!
     }
   }
 
