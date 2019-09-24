@@ -34,8 +34,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mBoardGridStepUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mErrorOrWarningIssueSize_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mControlKeyHiliteDiameter_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mRastnetDisplayedNetName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mRastnetDisplayedComponentName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsWidth_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLimitsSelectedInspector_fromElementsOfSet (inRemovedSet) // Stored property
@@ -67,6 +65,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mSchematicCustomHeightUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSchematicSheetOrientation_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mRastnetDisplay_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mRastnetDisplayedNetName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mRastnetDisplayedComponentName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_boardGridStepMultipliedByDisplayFactor_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (inRemovedSet) // Transient property
@@ -75,13 +75,13 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_sheetIndexes_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netsDescription_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_boardIssues_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_ercStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_ercStatusMessage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_viaCountString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_trackCountString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_trackLengthString_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_boardIssues_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardStatusMessage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_interiorBoundBox_fromElementsOfSet (inRemovedSet) // Transient property
@@ -101,8 +101,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_schematicBackgroundDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netWarningCount_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netNamesArray_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_rastnetShape_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_overDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_unplacedPackages_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_placedComponentNameArray_fromElementsOfSet (inRemovedSet) // Transient property
@@ -130,8 +128,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mBoardGridStepUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mErrorOrWarningIssueSize_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mControlKeyHiliteDiameter_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mRastnetDisplayedNetName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mRastnetDisplayedComponentName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsWidth_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsWidthUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLimitsSelectedInspector_toElementsOfSet (inAddedSet) // Stored property
@@ -163,6 +159,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mSchematicCustomHeightUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSchematicSheetOrientation_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mRastnetDisplay_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mRastnetDisplayedNetName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mRastnetDisplayedComponentName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_boardGridStepMultipliedByDisplayFactor_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (inAddedSet) // Transient property
@@ -171,13 +169,13 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_connexionErrorString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_sheetIndexes_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netsDescription_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_boardIssues_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_ercStatusImage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_ercStatusMessage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_viaCountString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_trackCountString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_trackLengthString_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_boardIssues_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardStatusImage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardStatusMessage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_interiorBoundBox_toElementsOfSet (inAddedSet) // Transient property
@@ -197,8 +195,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_schematicBackgroundDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netWarningCount_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netNamesArray_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_rastnetShape_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_overDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_unplacedSymbols_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_unplacedPackages_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_placedComponentNameArray_toElementsOfSet (inAddedSet) // Transient property
@@ -1287,120 +1283,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mControlKeyHiliteDiameter_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mRastnetDisplayedNetName' stored property
-  //····················································································································
-
-  private var mObserversOf_mRastnetDisplayedNetName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mRastnetDisplayedNetName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mRastnetDisplayedNetName.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mRastnetDisplayedNetName_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mRastnetDisplayedNetName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mRastnetDisplayedNetName.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mRastnetDisplayedNetName_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mRastnetDisplayedNetName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mRastnetDisplayedNetName.apply { (_ observer : EBEvent) in
-        managedObject.mRastnetDisplayedNetName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mRastnetDisplayedNetName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mRastnetDisplayedNetName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mRastnetDisplayedNetName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mRastnetDisplayedComponentName' stored property
-  //····················································································································
-
-  private var mObserversOf_mRastnetDisplayedComponentName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mRastnetDisplayedComponentName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mRastnetDisplayedComponentName.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mRastnetDisplayedComponentName_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mRastnetDisplayedComponentName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mRastnetDisplayedComponentName.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mRastnetDisplayedComponentName_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mRastnetDisplayedComponentName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mRastnetDisplayedComponentName.apply { (_ observer : EBEvent) in
-        managedObject.mRastnetDisplayedComponentName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mRastnetDisplayedComponentName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mRastnetDisplayedComponentName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mRastnetDisplayedComponentName_property.removeEBObserver (observer)
       }
     }
   }
@@ -3173,6 +3055,120 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'mRastnetDisplayedNetName' stored property
+  //····················································································································
+
+  private var mObserversOf_mRastnetDisplayedNetName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mRastnetDisplayedNetName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mRastnetDisplayedNetName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mRastnetDisplayedNetName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mRastnetDisplayedNetName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mRastnetDisplayedNetName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mRastnetDisplayedNetName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mRastnetDisplayedNetName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mRastnetDisplayedNetName.apply { (_ observer : EBEvent) in
+        managedObject.mRastnetDisplayedNetName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mRastnetDisplayedNetName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mRastnetDisplayedNetName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mRastnetDisplayedNetName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mRastnetDisplayedComponentName' stored property
+  //····················································································································
+
+  private var mObserversOf_mRastnetDisplayedComponentName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mRastnetDisplayedComponentName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mRastnetDisplayedComponentName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mRastnetDisplayedComponentName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mRastnetDisplayedComponentName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mRastnetDisplayedComponentName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mRastnetDisplayedComponentName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mRastnetDisplayedComponentName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mRastnetDisplayedComponentName.apply { (_ observer : EBEvent) in
+        managedObject.mRastnetDisplayedComponentName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mRastnetDisplayedComponentName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mRastnetDisplayedComponentName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mRastnetDisplayedComponentName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'selectedSheetObjects' toMany proxy
   //····················································································································
 
@@ -4362,6 +4358,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'boardIssues' transient property
+  //····················································································································
+
+  private var mObserversOf_boardIssues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardIssues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_boardIssues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardIssues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardIssues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_boardIssues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardIssues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardIssues_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boardIssues.apply { (_ observer : EBEvent) in
+        managedObject.boardIssues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardIssues_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boardIssues.apply { (_ observer : EBEvent) in
+        managedObject.boardIssues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
@@ -4693,62 +4745,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_trackLengthString.apply { (_ observer : EBEvent) in
         managedObject.trackLengthString_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'boardIssues' transient property
-  //····················································································································
-
-  private var mObserversOf_boardIssues = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardIssues (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_boardIssues.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.boardIssues_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardIssues (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_boardIssues.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.boardIssues_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardIssues_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardIssues.apply { (_ observer : EBEvent) in
-        managedObject.boardIssues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardIssues_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardIssues.apply { (_ observer : EBEvent) in
-        managedObject.boardIssues_property.removeEBObserver (observer)
       }
     }
   }
@@ -5818,118 +5814,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'rastnetShape' transient property
-  //····················································································································
-
-  private var mObserversOf_rastnetShape = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_rastnetShape (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_rastnetShape.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.rastnetShape_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_rastnetShape (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_rastnetShape.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.rastnetShape_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_rastnetShape_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_rastnetShape.apply { (_ observer : EBEvent) in
-        managedObject.rastnetShape_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_rastnetShape_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_rastnetShape.apply { (_ observer : EBEvent) in
-        managedObject.rastnetShape_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'overDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_overDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_overDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_overDisplay.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.overDisplay_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_overDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_overDisplay.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.overDisplay_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_overDisplay_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_overDisplay.apply { (_ observer : EBEvent) in
-        managedObject.overDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_overDisplay_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_overDisplay.apply { (_ observer : EBEvent) in
-        managedObject.overDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
@@ -6762,8 +6646,6 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mBoardGridStepUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mErrorOrWarningIssueSize (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mControlKeyHiliteDiameter (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mRastnetDisplayedNetName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mRastnetDisplayedComponentName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsWidthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLimitsSelectedInspector (self.mObserverForWritingPreferences)
@@ -6795,6 +6677,8 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mSchematicCustomHeightUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSchematicSheetOrientation (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mRastnetDisplay (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mRastnetDisplayedNetName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mRastnetDisplayedComponentName (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

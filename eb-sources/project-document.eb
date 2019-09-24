@@ -601,10 +601,13 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBScrollView mBoardScrollView ;
 
+  
+  transient EBShape overDisplay dependsFrom self.rastnetShape, root.boardIssues ;
+
   outlet EBGraphicView mBoardView
     $controlKeyHiliteDiameter root.mControlKeyHiliteDiameter
     $underObjectsDisplay root.borderOutlineBackground
-    $overObjectsDisplay root.overDisplay
+    $overObjectsDisplay self.overDisplay
     $horizontalFlip root.mBoardHorizontalFlip
     $verticalFlip root.mBoardVerticalFlip
     $graphicController #boardObjectsController
@@ -909,6 +912,14 @@ document ProjectDocument root ProjectRoot {
     $selectedNameInArray root.mRastnetDisplayedComponentName, root.placedComponentNameArray
     $hidden !self.rastnetDisplayComponentNet
   ;
+  transient EBShape rastnetShape dependsFrom
+    root.mRastnetDisplay,
+    root.mRastnetDisplayedNetName,
+    root.mRastnetDisplayedComponentName,
+    root.mBoardObjects.all.netNameAndPadLocation,
+    #boardObjectsController.selectedArray.all.componentName
+  ;
+
 
 //--- Artwork
   outlet EBTextObserverField mArtworkNameTextField $valueObserver root.mArtworkName ;

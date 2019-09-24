@@ -42,6 +42,12 @@ protocol BoardObject_netNameAndPadLocation : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardObject_componentName : class {
+  var componentName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardObject_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
 }
@@ -69,6 +75,7 @@ class BoardObject : EBGraphicManagedObject,
          BoardObject_trackLength,
          BoardObject_signatureForERCChecking,
          BoardObject_netNameAndPadLocation,
+         BoardObject_componentName,
          BoardObject_selectionDisplay,
          BoardObject_objectDisplay,
          BoardObject_errorOrWarningIssueSize {
@@ -250,6 +257,29 @@ class BoardObject : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: componentName
+  //····················································································································
+
+  let componentName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var componentName_property_selection : EBSelection <String> {
+    return self.componentName_property.prop
+  }
+
+  //····················································································································
+
+  var componentName : String? {
+    switch self.componentName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: errorOrWarningIssueSize
   //····················································································································
 
@@ -401,6 +431,14 @@ class BoardObject : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.netNameAndPadLocation_property.mObserverExplorer,
       valueExplorer: &self.netNameAndPadLocation_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "componentName",
+      idx: self.componentName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.componentName_property.mObserverExplorer,
+      valueExplorer: &self.componentName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",

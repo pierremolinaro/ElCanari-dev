@@ -90,7 +90,7 @@ graphic entity ComponentInProject : BoardObject {
 //--- Component Name
   property String mNamePrefix default "" ;
   property Int mNameIndex default 0 ;
-  transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
+  override transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
 
 //--- Component location in board  
   property Int mX default 0 ;

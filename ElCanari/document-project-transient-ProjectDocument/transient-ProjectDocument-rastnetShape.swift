@@ -63,20 +63,21 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_rastnetShape (
-       _ self_mRastnetDisplay : RastnetDisplay,
-       _ self_mRastnetDisplayedNetName : String,
-       _ self_mRastnetDisplayedComponentName : String,
-       _ self_mBoardObjects_netNameAndPadLocation : [BoardObject_netNameAndPadLocation]
+func transient_ProjectDocument_rastnetShape (
+       _ root_mRastnetDisplay : RastnetDisplay,
+       _ root_mRastnetDisplayedNetName : String,
+       _ root_mRastnetDisplayedComponentName : String,
+       _ root_mBoardObjects_netNameAndPadLocation : [BoardObject_netNameAndPadLocation],
+       _ self_boardObjectsController_selectedArray_all_componentName : [BoardObject_componentName]
 ) -> EBShape {
 //--- START OF USER ZONE 2
-      switch self_mRastnetDisplay {
+      switch root_mRastnetDisplay {
       case .hidden :
         return EBShape ()
       case .allNets :
       //--- Build net dictionary
         var dictionary = [String : [CanariPoint]] ()
-        for optionalArray in self_mBoardObjects_netNameAndPadLocation {
+        for optionalArray in root_mBoardObjects_netNameAndPadLocation {
           if let array = optionalArray.netNameAndPadLocation {
             for p in array {
               let netName = p.netName
@@ -95,10 +96,10 @@ func transient_ProjectRoot_rastnetShape (
         return EBShape (stroke: [bp], .yellow)
       case .oneNet :
         var locationArray = [CanariPoint] ()
-        for optionalArray in self_mBoardObjects_netNameAndPadLocation {
+        for optionalArray in root_mBoardObjects_netNameAndPadLocation {
           if let array = optionalArray.netNameAndPadLocation {
             for p in array {
-              if self_mRastnetDisplayedNetName == p.netName {
+              if root_mRastnetDisplayedNetName == p.netName {
                 locationArray.append (p.location)
               }
             }
@@ -110,13 +111,20 @@ func transient_ProjectRoot_rastnetShape (
         bp.lineCapStyle = .round
         computeRasnet (locationArray, &bp)
         return EBShape (stroke: [bp], .yellow)
-      case .componentNets :
+      case .selectedComponents :
+      //--- Build selected component name set
+        var selectedComponentNameSet = Set <String> ()
+        for object in self_boardObjectsController_selectedArray_all_componentName {
+          if let componentName = object.componentName {
+            selectedComponentNameSet.insert (componentName)
+          }
+        }
       //--- Build net set
          var netNameSet = Set <String> ()
-         for optionalArray in self_mBoardObjects_netNameAndPadLocation {
+         for optionalArray in root_mBoardObjects_netNameAndPadLocation {
           if let array = optionalArray.netNameAndPadLocation {
             for p in array {
-              if p.componentName == self_mRastnetDisplayedComponentName {
+              if selectedComponentNameSet.contains (p.componentName) {
                 netNameSet.insert (p.netName)
               }
             }
@@ -124,7 +132,40 @@ func transient_ProjectRoot_rastnetShape (
         }
      //--- Build net dictionary
         var dictionary = [String : [CanariPoint]] ()
-        for optionalArray in self_mBoardObjects_netNameAndPadLocation {
+        for optionalArray in root_mBoardObjects_netNameAndPadLocation {
+          if let array = optionalArray.netNameAndPadLocation {
+            for p in array {
+              let netName = p.netName
+              if netNameSet.contains (netName) {
+                let location = p.location
+                dictionary [netName] = (dictionary [netName] ?? []) + [location]
+              }
+            }
+          }
+        }
+        var bp = EBBezierPath ()
+        bp.lineWidth = 0.5
+        bp.lineJoinStyle = .round
+        bp.lineCapStyle = .round
+        for (_, locationArray) in dictionary {
+          computeRasnet (locationArray, &bp)
+        }
+        return EBShape (stroke: [bp], .yellow)
+      case .componentNets :
+      //--- Build net set
+         var netNameSet = Set <String> ()
+         for optionalArray in root_mBoardObjects_netNameAndPadLocation {
+          if let array = optionalArray.netNameAndPadLocation {
+            for p in array {
+              if p.componentName == root_mRastnetDisplayedComponentName {
+                netNameSet.insert (p.netName)
+              }
+            }
+          }
+        }
+     //--- Build net dictionary
+        var dictionary = [String : [CanariPoint]] ()
+        for optionalArray in root_mBoardObjects_netNameAndPadLocation {
           if let array = optionalArray.netNameAndPadLocation {
             for p in array {
               let netName = p.netName

@@ -2006,7 +2006,7 @@ Gw
                 <popUpButton verticalHuggingPriority="750" id="him-Cm-DsX" customClass="EBPopUpButton">
                     <rect key="frame" x="79" y="138" width="149" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Nets of Component:" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="U8F-wa-cEE" id="lVm-uO-Raq">
+                    <popUpButtonCell key="cell" type="roundRect" title="No" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="1hW-Jl-54m" id="lVm-uO-Raq">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" id="8YS-L2-sQX">
@@ -2015,6 +2015,7 @@ Gw
                                 <menuItem title="All Nets" id="l4y-zK-BCh"/>
                                 <menuItem title="Only Net:" id="TpW-G5-QBl"/>
                                 <menuItem title="Nets of Component:" id="U8F-wa-cEE"/>
+                                <menuItem title="SelectedComponent" id="zkz-QR-pVi"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -2022,12 +2023,12 @@ Gw
                 <popUpButton verticalHuggingPriority="750" id="Jf2-Mg-Fhb" customClass="CanariSelectionPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="115" width="208" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="net names…" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="ggC-CT-HmW" id="DvE-1W-oUy">
+                    <popUpButtonCell key="cell" type="roundRect" title="net names…" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="ggC-CT-HmW" id="DvE-1W-oUy">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" id="E4X-wl-3Pe">
                             <items>
-                                <menuItem title="net names…" id="ggC-CT-HmW"/>
+                                <menuItem title="net names…" state="on" id="ggC-CT-HmW"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -2035,12 +2036,12 @@ Gw
                 <popUpButton verticalHuggingPriority="750" id="nLc-G9-3Sd" customClass="CanariSelectionPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="114" width="208" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="component names…" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Orm-im-WPC" id="7kP-LQ-9YM">
+                    <popUpButtonCell key="cell" type="roundRect" title="component names…" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Orm-im-WPC" id="7kP-LQ-9YM">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" id="bah-36-gkd">
                             <items>
-                                <menuItem title="component names…" id="Orm-im-WPC"/>
+                                <menuItem title="component names…" state="on" id="Orm-im-WPC"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -2713,7 +2714,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="140.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="141" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2727,11 +2728,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="140.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="141" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="141" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -2747,7 +2748,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="187" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="186.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2761,11 +2762,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="612" y="1" width="187" height="17"/>
+                                                <rect key="frame" x="612.5" y="1" width="186.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="186.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>

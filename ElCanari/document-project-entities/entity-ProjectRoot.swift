@@ -120,18 +120,6 @@ protocol ProjectRoot_mControlKeyHiliteDiameter : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mRastnetDisplayedNetName : class {
-  var mRastnetDisplayedNetName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_mRastnetDisplayedComponentName : class {
-  var mRastnetDisplayedComponentName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ProjectRoot_mBoardLimitsWidth : class {
   var mBoardLimitsWidth : Int { get }
 }
@@ -318,6 +306,18 @@ protocol ProjectRoot_mRastnetDisplay : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mRastnetDisplayedNetName : class {
+  var mRastnetDisplayedNetName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mRastnetDisplayedComponentName : class {
+  var mRastnetDisplayedComponentName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_minPPTPTTTWdisplayUnit : class {
   var minPPTPTTTWdisplayUnit : Int? { get }
 }
@@ -432,6 +432,12 @@ protocol ProjectRoot_netsDescription : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_boardIssues : class {
+  var boardIssues : CanariIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_signatureForERCChecking : class {
   var signatureForERCChecking : UInt32? { get }
 }
@@ -464,12 +470,6 @@ protocol ProjectRoot_trackCountString : class {
 
 protocol ProjectRoot_trackLengthString : class {
   var trackLengthString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_boardIssues : class {
-  var boardIssues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -588,18 +588,6 @@ protocol ProjectRoot_netNamesArray : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_rastnetShape : class {
-  var rastnetShape : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_overDisplay : class {
-  var overDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ProjectRoot_unplacedSymbols : class {
   var unplacedSymbols : StringTagArray? { get }
 }
@@ -652,8 +640,6 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardGridStepUnit,
          ProjectRoot_mErrorOrWarningIssueSize,
          ProjectRoot_mControlKeyHiliteDiameter,
-         ProjectRoot_mRastnetDisplayedNetName,
-         ProjectRoot_mRastnetDisplayedComponentName,
          ProjectRoot_mBoardLimitsWidth,
          ProjectRoot_mBoardLimitsWidthUnit,
          ProjectRoot_mBoardLimitsSelectedInspector,
@@ -685,6 +671,8 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicCustomHeightUnit,
          ProjectRoot_mSchematicSheetOrientation,
          ProjectRoot_mRastnetDisplay,
+         ProjectRoot_mRastnetDisplayedNetName,
+         ProjectRoot_mRastnetDisplayedComponentName,
          ProjectRoot_minPPTPTTTWdisplayUnit,
          ProjectRoot_minPPTPTTTW,
          ProjectRoot_minValueForOARdisplayUnit,
@@ -704,13 +692,13 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_connexionErrorString,
          ProjectRoot_sheetIndexes,
          ProjectRoot_netsDescription,
+         ProjectRoot_boardIssues,
          ProjectRoot_signatureForERCChecking,
          ProjectRoot_ercStatusImage,
          ProjectRoot_ercStatusMessage,
          ProjectRoot_viaCountString,
          ProjectRoot_trackCountString,
          ProjectRoot_trackLengthString,
-         ProjectRoot_boardIssues,
          ProjectRoot_boardStatusImage,
          ProjectRoot_boardStatusMessage,
          ProjectRoot_interiorBoundBox,
@@ -730,8 +718,6 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_netWarningCount,
          ProjectRoot_netNamesArray,
-         ProjectRoot_rastnetShape,
-         ProjectRoot_overDisplay,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_unplacedPackages,
          ProjectRoot_placedComponentNameArray,
@@ -1060,40 +1046,6 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mControlKeyHiliteDiameter_property_selection : EBSelection <Double> { return self.mControlKeyHiliteDiameter_property.prop }
-
-  //····················································································································
-  //   Atomic property: mRastnetDisplayedNetName
-  //····················································································································
-
-  let mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "")
-
-  //····················································································································
-
-  var mRastnetDisplayedNetName : String {
-    get { return self.mRastnetDisplayedNetName_property.propval }
-    set { self.mRastnetDisplayedNetName_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mRastnetDisplayedNetName_property_selection : EBSelection <String> { return self.mRastnetDisplayedNetName_property.prop }
-
-  //····················································································································
-  //   Atomic property: mRastnetDisplayedComponentName
-  //····················································································································
-
-  let mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "")
-
-  //····················································································································
-
-  var mRastnetDisplayedComponentName : String {
-    get { return self.mRastnetDisplayedComponentName_property.propval }
-    set { self.mRastnetDisplayedComponentName_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mRastnetDisplayedComponentName_property_selection : EBSelection <String> { return self.mRastnetDisplayedComponentName_property.prop }
 
   //····················································································································
   //   Atomic property: mBoardLimitsWidth
@@ -1737,6 +1689,40 @@ class ProjectRoot : EBManagedObject,
   var mRastnetDisplay_property_selection : EBSelection <RastnetDisplay> { return self.mRastnetDisplay_property.prop }
 
   //····················································································································
+  //   Atomic property: mRastnetDisplayedNetName
+  //····················································································································
+
+  let mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mRastnetDisplayedNetName : String {
+    get { return self.mRastnetDisplayedNetName_property.propval }
+    set { self.mRastnetDisplayedNetName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mRastnetDisplayedNetName_property_selection : EBSelection <String> { return self.mRastnetDisplayedNetName_property.prop }
+
+  //····················································································································
+  //   Atomic property: mRastnetDisplayedComponentName
+  //····················································································································
+
+  let mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mRastnetDisplayedComponentName : String {
+    get { return self.mRastnetDisplayedComponentName_property.propval }
+    set { self.mRastnetDisplayedComponentName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mRastnetDisplayedComponentName_property_selection : EBSelection <String> { return self.mRastnetDisplayedComponentName_property.prop }
+
+  //····················································································································
   //   To many property: mComponents
   //····················································································································
 
@@ -2346,6 +2332,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: boardIssues
+  //····················································································································
+
+  let boardIssues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  var boardIssues_property_selection : EBSelection <CanariIssueArray> {
+    return self.boardIssues_property.prop
+  }
+
+  //····················································································································
+
+  var boardIssues : CanariIssueArray? {
+    switch self.boardIssues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   To one property: mArtwork
   //····················································································································
 
@@ -2514,29 +2523,6 @@ class ProjectRoot : EBManagedObject,
 
   var trackLengthString : String? {
     switch self.trackLengthString_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: boardIssues
-  //····················································································································
-
-  let boardIssues_property = EBTransientProperty_CanariIssueArray ()
-
-  //····················································································································
-
-  var boardIssues_property_selection : EBSelection <CanariIssueArray> {
-    return self.boardIssues_property.prop
-  }
-
-  //····················································································································
-
-  var boardIssues : CanariIssueArray? {
-    switch self.boardIssues_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2982,52 +2968,6 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: rastnetShape
-  //····················································································································
-
-  let rastnetShape_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  var rastnetShape_property_selection : EBSelection <EBShape> {
-    return self.rastnetShape_property.prop
-  }
-
-  //····················································································································
-
-  var rastnetShape : EBShape? {
-    switch self.rastnetShape_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: overDisplay
-  //····················································································································
-
-  let overDisplay_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  var overDisplay_property_selection : EBSelection <EBShape> {
-    return self.overDisplay_property.prop
-  }
-
-  //····················································································································
-
-  var overDisplay : EBShape? {
-    switch self.overDisplay_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: unplacedSymbols
   //····················································································································
 
@@ -3186,10 +3126,6 @@ class ProjectRoot : EBManagedObject,
     self.mErrorOrWarningIssueSize_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mControlKeyHiliteDiameter
     self.mControlKeyHiliteDiameter_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mRastnetDisplayedNetName
-    self.mRastnetDisplayedNetName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mRastnetDisplayedComponentName
-    self.mRastnetDisplayedComponentName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -3276,6 +3212,10 @@ class ProjectRoot : EBManagedObject,
     )
   //--- Atomic property: mRastnetDisplay
     self.mRastnetDisplay_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mRastnetDisplayedNetName
+    self.mRastnetDisplayedNetName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mRastnetDisplayedComponentName
+    self.mRastnetDisplayedComponentName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mComponents (no option)
     self.mComponents_property.ebUndoManager = self.ebUndoManager
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
@@ -3653,6 +3593,28 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mNetClasses_property.addEBObserverOf_netsDescription (self.netsDescription_property)
+  //--- Atomic property: boardIssues
+    self.boardIssues_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mBoardObjects_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBoardObjects_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_boardIssues (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardObjects_property.addEBObserverOf_issues (self.boardIssues_property)
   //--- To one property: mArtwork
     self.mArtwork_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: signatureForERCChecking
@@ -3799,28 +3761,6 @@ class ProjectRoot : EBManagedObject,
     }
     self.mBoardObjects_property.addEBObserverOf_trackLength (self.trackLengthString_property)
     self.mTrackLengthUnit_property.addEBObserver (self.trackLengthString_property)
-  //--- Atomic property: boardIssues
-    self.boardIssues_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mBoardObjects_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mBoardObjects_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectRoot_boardIssues (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mBoardObjects_property.addEBObserverOf_issues (self.boardIssues_property)
   //--- Atomic property: boardStatusImage
     self.boardStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4287,58 +4227,6 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mNetClasses_property.addEBObserverOf_netsDescription (self.netNamesArray_property)
-  //--- Atomic property: rastnetShape
-    self.rastnetShape_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mRastnetDisplay_property_selection.kind ()
-        kind &= unwSelf.mRastnetDisplayedNetName_property_selection.kind ()
-        kind &= unwSelf.mRastnetDisplayedComponentName_property_selection.kind ()
-        kind &= unwSelf.mBoardObjects_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mRastnetDisplay_property_selection, unwSelf.mRastnetDisplayedNetName_property_selection, unwSelf.mRastnetDisplayedComponentName_property_selection, unwSelf.mBoardObjects_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_ProjectRoot_rastnetShape (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mRastnetDisplay_property.addEBObserver (self.rastnetShape_property)
-    self.mRastnetDisplayedNetName_property.addEBObserver (self.rastnetShape_property)
-    self.mRastnetDisplayedComponentName_property.addEBObserver (self.rastnetShape_property)
-    self.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
-  //--- Atomic property: overDisplay
-    self.overDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.rastnetShape_property_selection.kind ()
-        kind &= unwSelf.boardIssues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.rastnetShape_property_selection, unwSelf.boardIssues_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_ProjectRoot_overDisplay (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rastnetShape_property.addEBObserver (self.overDisplay_property)
-    self.boardIssues_property.addEBObserver (self.overDisplay_property)
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4564,6 +4452,7 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
     self.mSheets_property.removeEBObserver (self.sheetIndexes_property)
     self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netsDescription_property)
+    self.mBoardObjects_property.removeEBObserverOf_issues (self.boardIssues_property)
     self.mBoardObjects_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
     self.mArtwork_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
     self.mLastERCCheckingIsSuccess_property.removeEBObserver (self.ercStatusImage_property)
@@ -4576,7 +4465,6 @@ class ProjectRoot : EBManagedObject,
     self.mBoardObjects_property.removeEBObserverOf_trackLength (self.trackCountString_property)
     self.mBoardObjects_property.removeEBObserverOf_trackLength (self.trackLengthString_property)
     self.mTrackLengthUnit_property.removeEBObserver (self.trackLengthString_property)
-    self.mBoardObjects_property.removeEBObserverOf_issues (self.boardIssues_property)
     self.boardIssues_property.removeEBObserver (self.boardStatusImage_property)
     self.boardIssues_property.removeEBObserver (self.boardStatusMessage_property)
     self.mBorderCurves_property.removeEBObserverOf_descriptor (self.interiorBoundBox_property)
@@ -4620,12 +4508,6 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicCustomHeight_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mNetClasses_property.removeEBObserverOf_netWarningCount (self.netWarningCount_property)
     self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netNamesArray_property)
-    self.mRastnetDisplay_property.removeEBObserver (self.rastnetShape_property)
-    self.mRastnetDisplayedNetName_property.removeEBObserver (self.rastnetShape_property)
-    self.mRastnetDisplayedComponentName_property.removeEBObserver (self.rastnetShape_property)
-    self.mBoardObjects_property.removeEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
-    self.rastnetShape_property.removeEBObserver (self.overDisplay_property)
-    self.boardIssues_property.removeEBObserver (self.overDisplay_property)
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mComponents_property.removeEBObserver (self.unplacedPackages_property)
     self.mComponents_property.removeEBObserverOf_componentName (self.unplacedPackages_property)
@@ -4806,22 +4688,6 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.mControlKeyHiliteDiameter_property.mObserverExplorer,
       valueExplorer: &self.mControlKeyHiliteDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRastnetDisplayedNetName",
-      idx: self.mRastnetDisplayedNetName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRastnetDisplayedNetName_property.mObserverExplorer,
-      valueExplorer: &self.mRastnetDisplayedNetName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mRastnetDisplayedComponentName",
-      idx: self.mRastnetDisplayedComponentName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mRastnetDisplayedComponentName_property.mObserverExplorer,
-      valueExplorer: &self.mRastnetDisplayedComponentName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mBoardLimitsWidth",
@@ -5071,6 +4937,22 @@ class ProjectRoot : EBManagedObject,
       observerExplorer: &self.mRastnetDisplay_property.mObserverExplorer,
       valueExplorer: &self.mRastnetDisplay_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mRastnetDisplayedNetName",
+      idx: self.mRastnetDisplayedNetName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mRastnetDisplayedNetName_property.mObserverExplorer,
+      valueExplorer: &self.mRastnetDisplayedNetName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mRastnetDisplayedComponentName",
+      idx: self.mRastnetDisplayedComponentName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mRastnetDisplayedComponentName_property.mObserverExplorer,
+      valueExplorer: &self.mRastnetDisplayedComponentName_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "boardGridStepMultipliedByDisplayFactor",
@@ -5137,6 +5019,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.netsDescription_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "boardIssues",
+      idx: self.boardIssues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardIssues_property.mObserverExplorer,
+      valueExplorer: &self.boardIssues_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "signatureForERCChecking",
       idx: self.signatureForERCChecking_property.ebObjectIndex,
       y: &y,
@@ -5183,14 +5073,6 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.trackLengthString_property.mObserverExplorer,
       valueExplorer: &self.trackLengthString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardIssues",
-      idx: self.boardIssues_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.boardIssues_property.mObserverExplorer,
-      valueExplorer: &self.boardIssues_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardStatusImage",
@@ -5343,22 +5225,6 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.netNamesArray_property.mObserverExplorer,
       valueExplorer: &self.netNamesArray_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "rastnetShape",
-      idx: self.rastnetShape_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.rastnetShape_property.mObserverExplorer,
-      valueExplorer: &self.rastnetShape_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "overDisplay",
-      idx: self.overDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.overDisplay_property.mObserverExplorer,
-      valueExplorer: &self.overDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "unplacedSymbols",
@@ -5530,12 +5396,6 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mControlKeyHiliteDiameter
     self.mControlKeyHiliteDiameter_property.mObserverExplorer = nil
     self.mControlKeyHiliteDiameter_property.mValueExplorer = nil
-  //--- Atomic property: mRastnetDisplayedNetName
-    self.mRastnetDisplayedNetName_property.mObserverExplorer = nil
-    self.mRastnetDisplayedNetName_property.mValueExplorer = nil
-  //--- Atomic property: mRastnetDisplayedComponentName
-    self.mRastnetDisplayedComponentName_property.mObserverExplorer = nil
-    self.mRastnetDisplayedComponentName_property.mValueExplorer = nil
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.mObserverExplorer = nil
     self.mBoardLimitsWidth_property.mValueExplorer = nil
@@ -5641,6 +5501,12 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mRastnetDisplay
     self.mRastnetDisplay_property.mObserverExplorer = nil
     self.mRastnetDisplay_property.mValueExplorer = nil
+  //--- Atomic property: mRastnetDisplayedNetName
+    self.mRastnetDisplayedNetName_property.mObserverExplorer = nil
+    self.mRastnetDisplayedNetName_property.mValueExplorer = nil
+  //--- Atomic property: mRastnetDisplayedComponentName
+    self.mRastnetDisplayedComponentName_property.mObserverExplorer = nil
+    self.mRastnetDisplayedComponentName_property.mValueExplorer = nil
   //--- To many property: mComponents
     self.mComponents_property.mValueExplorer = nil
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
@@ -5761,10 +5627,6 @@ class ProjectRoot : EBManagedObject,
     self.mErrorOrWarningIssueSize_property.storeIn (dictionary: ioDictionary, forKey:"mErrorOrWarningIssueSize")
   //--- Atomic property: mControlKeyHiliteDiameter
     self.mControlKeyHiliteDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mControlKeyHiliteDiameter")
-  //--- Atomic property: mRastnetDisplayedNetName
-    self.mRastnetDisplayedNetName_property.storeIn (dictionary: ioDictionary, forKey:"mRastnetDisplayedNetName")
-  //--- Atomic property: mRastnetDisplayedComponentName
-    self.mRastnetDisplayedComponentName_property.storeIn (dictionary: ioDictionary, forKey:"mRastnetDisplayedComponentName")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -5863,6 +5725,10 @@ class ProjectRoot : EBManagedObject,
     )
   //--- Atomic property: mRastnetDisplay
     self.mRastnetDisplay_property.storeIn (dictionary: ioDictionary, forKey:"mRastnetDisplay")
+  //--- Atomic property: mRastnetDisplayedNetName
+    self.mRastnetDisplayedNetName_property.storeIn (dictionary: ioDictionary, forKey:"mRastnetDisplayedNetName")
+  //--- Atomic property: mRastnetDisplayedComponentName
+    self.mRastnetDisplayedComponentName_property.storeIn (dictionary: ioDictionary, forKey:"mRastnetDisplayedComponentName")
   //--- To many property: mComponents
     self.store (
       managedObjectArray: self.mComponents_property.propval,
@@ -5996,10 +5862,6 @@ class ProjectRoot : EBManagedObject,
     self.mErrorOrWarningIssueSize_property.readFrom (dictionary: inDictionary, forKey:"mErrorOrWarningIssueSize")
   //--- Atomic property: mControlKeyHiliteDiameter
     self.mControlKeyHiliteDiameter_property.readFrom (dictionary: inDictionary, forKey:"mControlKeyHiliteDiameter")
-  //--- Atomic property: mRastnetDisplayedNetName
-    self.mRastnetDisplayedNetName_property.readFrom (dictionary: inDictionary, forKey:"mRastnetDisplayedNetName")
-  //--- Atomic property: mRastnetDisplayedComponentName
-    self.mRastnetDisplayedComponentName_property.readFrom (dictionary: inDictionary, forKey:"mRastnetDisplayedComponentName")
   //--- Atomic property: mBoardLimitsWidth
     self.mBoardLimitsWidth_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsWidth")
   //--- Atomic property: mBoardLimitsWidthUnit
@@ -6062,6 +5924,10 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicSheetOrientation_property.readFrom (dictionary: inDictionary, forKey:"mSchematicSheetOrientation")
   //--- Atomic property: mRastnetDisplay
     self.mRastnetDisplay_property.readFrom (dictionary: inDictionary, forKey:"mRastnetDisplay")
+  //--- Atomic property: mRastnetDisplayedNetName
+    self.mRastnetDisplayedNetName_property.readFrom (dictionary: inDictionary, forKey:"mRastnetDisplayedNetName")
+  //--- Atomic property: mRastnetDisplayedComponentName
+    self.mRastnetDisplayedComponentName_property.readFrom (dictionary: inDictionary, forKey:"mRastnetDisplayedComponentName")
   }
 
   //····················································································································

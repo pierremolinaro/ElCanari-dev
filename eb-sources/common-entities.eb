@@ -59,7 +59,7 @@ enum AutorouterSnapAngle {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum RastnetDisplay {
-  hidden, allNets, oneNet, componentNets
+  hidden, allNets, oneNet, componentNets, selectedComponents
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -11,6 +11,7 @@ enum RastnetDisplay : Int, EnumPropertyProtocol {
   case allNets = 1
   case oneNet = 2
   case componentNets = 3
+  case selectedComponents = 4
 
 
   //····················································································································
@@ -21,6 +22,7 @@ enum RastnetDisplay : Int, EnumPropertyProtocol {
       case "allNets" : self = .allNets // 1
       case "oneNet" : self = .oneNet // 2
       case "componentNets" : self = .componentNets // 3
+      case "selectedComponents" : self = .selectedComponents // 4
       case _ : return nil
     }
   }
@@ -33,6 +35,7 @@ enum RastnetDisplay : Int, EnumPropertyProtocol {
       case .allNets : return "allNets" // 1
       case .oneNet : return "oneNet" // 2
       case .componentNets : return "componentNets" // 3
+      case .selectedComponents : return "selectedComponents" // 4
     }
   }
 

@@ -18,6 +18,9 @@ abstract graphic entity BoardObject {
   abstract transient UInt32 signatureForERCChecking ;
   
   abstract transient RastnetInfoArray netNameAndPadLocation ;
+  
+  abstract transient String componentName ;
+
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

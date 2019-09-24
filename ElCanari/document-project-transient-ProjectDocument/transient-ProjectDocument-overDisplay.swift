@@ -13,13 +13,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_overDisplay (
-       _ self_rastnetShape : EBShape,   
-       _ self_boardIssues : CanariIssueArray
+func transient_ProjectDocument_overDisplay (
+       _ self_rastnetShape : EBShape,       
+       _ root_boardIssues : CanariIssueArray
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var shape = self_rastnetShape
-        for issue in self_boardIssues {
+        for issue in root_boardIssues {
           let color : NSColor
           switch issue.kind {
           case .warning : color = .myOrange

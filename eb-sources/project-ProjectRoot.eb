@@ -211,15 +211,6 @@ entity ProjectRoot {
   transient IntArray sheetIndexes dependsFrom self.mSheets ;
 
   transient Int netWarningCount dependsFrom self.mNetClasses.all.netWarningCount ;
-  
-  transient EBShape rastnetShape dependsFrom
-    self.mRastnetDisplay,
-    self.mRastnetDisplayedNetName,
-    self.mRastnetDisplayedComponentName,
-    self.mBoardObjects.all.netNameAndPadLocation
-  ;
-
-  transient EBShape overDisplay dependsFrom self.rastnetShape, self.boardIssues ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

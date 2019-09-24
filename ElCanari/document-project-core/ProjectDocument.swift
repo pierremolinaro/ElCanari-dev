@@ -365,6 +365,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: rastnetShape
+  //····················································································································
+
+  let rastnetShape_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var rastnetShape_property_selection : EBSelection <EBShape> {
+    return self.rastnetShape_property.prop
+  }
+
+  //····················································································································
+
+  var rastnetShape : EBShape? {
+    switch self.rastnetShape_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: rastnetDisplayOneNet
   //····················································································································
 
@@ -541,6 +564,29 @@ import Cocoa
 
   var unplacedPackagesCountString : String? {
     switch self.unplacedPackagesCountString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: overDisplay
+  //····················································································································
+
+  let overDisplay_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var overDisplay_property_selection : EBSelection <EBShape> {
+    return self.overDisplay_property.prop
+  }
+
+  //····················································································································
+
+  var overDisplay : EBShape? {
+    switch self.overDisplay_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1750,6 +1796,36 @@ import Cocoa
       }
     }
     self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property)
+  //--- Atomic property: rastnetShape
+    self.rastnetShape_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.rootObject.mRastnetDisplay_property_selection.kind ()
+        kind &= unwSelf.rootObject.mRastnetDisplayedNetName_property_selection.kind ()
+        kind &= unwSelf.rootObject.mRastnetDisplayedComponentName_property_selection.kind ()
+        kind &= unwSelf.rootObject.mBoardObjects_property_selection.kind ()
+        kind &= unwSelf.boardObjectsController.selectedArray_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.rootObject.mRastnetDisplay_property_selection, unwSelf.rootObject.mRastnetDisplayedNetName_property_selection, unwSelf.rootObject.mRastnetDisplayedComponentName_property_selection, unwSelf.rootObject.mBoardObjects_property_selection, unwSelf.boardObjectsController.selectedArray_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_ProjectDocument_rastnetShape (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetShape_property)
+    self.rootObject.mRastnetDisplayedNetName_property.addEBObserver (self.rastnetShape_property)
+    self.rootObject.mRastnetDisplayedComponentName_property.addEBObserver (self.rastnetShape_property)
+    self.rootObject.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
+    self.boardObjectsController.selectedArray_property.addEBObserverOf_componentName (self.rastnetShape_property)
   //--- Atomic property: rastnetDisplayOneNet
     self.rastnetDisplayOneNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1926,6 +2002,30 @@ import Cocoa
       }
     }
     self.unplacedPackageCount_property.addEBObserver (self.unplacedPackagesCountString_property)
+  //--- Atomic property: overDisplay
+    self.overDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.rastnetShape_property_selection.kind ()
+        kind &= unwSelf.rootObject.boardIssues_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.rastnetShape_property_selection, unwSelf.rootObject.boardIssues_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ProjectDocument_overDisplay (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rastnetShape_property.addEBObserver (self.overDisplay_property)
+    self.rootObject.boardIssues_property.addEBObserver (self.overDisplay_property)
   //--- Atomic property: canChangePackage
     self.canChangePackage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2062,7 +2162,7 @@ import Cocoa
     self.mUnplacedPackagesCountTextField?.bind_valueObserver (self.unplacedPackagesCountString_property, file: #file, line: #line)
     self.mBoardView?.bind_controlKeyHiliteDiameter (self.rootObject.mControlKeyHiliteDiameter_property, file: #file, line: #line)
     self.mBoardView?.bind_underObjectsDisplay (self.rootObject.borderOutlineBackground_property, file: #file, line: #line)
-    self.mBoardView?.bind_overObjectsDisplay (self.rootObject.overDisplay_property, file: #file, line: #line)
+    self.mBoardView?.bind_overObjectsDisplay (self.overDisplay_property, file: #file, line: #line)
     self.mBoardView?.bind_horizontalFlip (self.rootObject.mBoardHorizontalFlip_property, file: #file, line: #line)
     self.mBoardView?.bind_verticalFlip (self.rootObject.mBoardVerticalFlip_property, file: #file, line: #line)
     self.mBoardView?.bind_gridStyle (self.rootObject.mBoardGridStyle_property, file: #file, line: #line)
@@ -3125,6 +3225,11 @@ import Cocoa
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     self.rootObject.mSchematicSheetOrientation_property.removeEBObserver (self.schematicSheetOrientationIsCustom_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
+    self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetShape_property)
+    self.rootObject.mRastnetDisplayedNetName_property.removeEBObserver (self.rastnetShape_property)
+    self.rootObject.mRastnetDisplayedComponentName_property.removeEBObserver (self.rastnetShape_property)
+    self.rootObject.mBoardObjects_property.removeEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
+    self.boardObjectsController.selectedArray_property.removeEBObserverOf_componentName (self.rastnetShape_property)
     self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayOneNet_property)
     self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
     self.documentFilePath_property.removeEBObserver (self.documentFilePathOk_property)
@@ -3133,6 +3238,8 @@ import Cocoa
     self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
     self.rootObject.unplacedPackages_property.removeEBObserver (self.unplacedPackageCount_property)
     self.unplacedPackageCount_property.removeEBObserver (self.unplacedPackagesCountString_property)
+    self.rastnetShape_property.removeEBObserver (self.overDisplay_property)
+    self.rootObject.boardIssues_property.removeEBObserver (self.overDisplay_property)
     self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
   //--------------------------- Remove targets / actions
     self.mAddComponentButton?.target = nil
