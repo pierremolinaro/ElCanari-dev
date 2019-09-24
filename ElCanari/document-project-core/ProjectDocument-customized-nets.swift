@@ -136,6 +136,24 @@ extension CustomizedProjectDocument {
   }
 
   //····················································································································
+  // Update Selected Net for Rasnet net display
+  //····················································································································
+
+  internal func updateSelectedNetForRastnetDisplay () {
+    var netNameSet = Set <String> ()
+    for netClass in self.rootObject.mNetClasses {
+      for net in netClass.mNets {
+        netNameSet.insert (net.mNetName)
+      }
+    }
+    if netNameSet.count == 0 {
+      self.rootObject.mRastnetDisplayedNet = ""
+    }else if !netNameSet.contains (self.rootObject.mRastnetDisplayedNet) {
+      self.rootObject.mRastnetDisplayedNet = netNameSet.first!
+    }
+  }
+
+  //····················································································································
   //  Rename net dialog
   //····················································································································
 

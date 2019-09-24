@@ -342,6 +342,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: rastnetDisplayOneNet
+  //····················································································································
+
+  let rastnetDisplayOneNet_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var rastnetDisplayOneNet_property_selection : EBSelection <Bool> {
+    return self.rastnetDisplayOneNet_property.prop
+  }
+
+  //····················································································································
+
+  var rastnetDisplayOneNet : Bool? {
+    switch self.rastnetDisplayOneNet_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: artworlImportButtonTitle
   //····················································································································
 
@@ -798,6 +821,7 @@ import Cocoa
   @IBOutlet var mPinPadAssignmentTableView : ThreeStringArrayTableView? = nil
   @IBOutlet var mProductFileGenerationLogTextView : NSTextView? = nil
   @IBOutlet var mProductPageView : CanariViewWithKeyView? = nil
+  @IBOutlet var mRasnetNetNameSelectionPopUpButton : CanariSelectionPopUpButton? = nil
   @IBOutlet var mRastnetDisplayPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mRemoveDeviceButton : EBButton? = nil
   @IBOutlet var mRemoveEmbeddedDevicesButton : EBButton? = nil
@@ -955,6 +979,7 @@ import Cocoa
   var mController_mLimitCurveBezierControlPointsView_hidden : MultipleBindingController_hidden? = nil
   var mController_mFrontRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
   var mController_mBackRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
+  var mController_mRasnetNetNameSelectionPopUpButton_hidden : MultipleBindingController_hidden? = nil
   var mController_mNoArtworkMessageTextField_hidden : MultipleBindingController_hidden? = nil
   var mController_mArtworkTabView_hidden : MultipleBindingController_hidden? = nil
   var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil
@@ -1331,6 +1356,7 @@ import Cocoa
     checkOutletConnection (self.mPinPadAssignmentTableView, "mPinPadAssignmentTableView", ThreeStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mProductFileGenerationLogTextView, "mProductFileGenerationLogTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mRasnetNetNameSelectionPopUpButton, "mRasnetNetNameSelectionPopUpButton", CanariSelectionPopUpButton.self, #file, #line)
     checkOutletConnection (self.mRastnetDisplayPopUpButton, "mRastnetDisplayPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mRemoveDeviceButton, "mRemoveDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveEmbeddedDevicesButton, "mRemoveEmbeddedDevicesButton", EBButton.self, #file, #line)
@@ -1676,6 +1702,28 @@ import Cocoa
       }
     }
     self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property)
+  //--- Atomic property: rastnetDisplayOneNet
+    self.rastnetDisplayOneNet_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.mRastnetDisplay_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.rootObject.mRastnetDisplay_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_rastnetDisplayOneNet (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayOneNet_property)
   //--- Atomic property: artworlImportButtonTitle
     self.artworlImportButtonTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2078,6 +2126,7 @@ import Cocoa
     self.mErrorOrWarningIssueSlider?.bind_doubleValue (self.rootObject.mErrorOrWarningIssueSize_property, file: #file, line: #line, sendContinously:true)
     self.mControlKeyHiliteDiameterSlider?.bind_doubleValue (self.rootObject.mControlKeyHiliteDiameter_property, file: #file, line: #line, sendContinously:true)
     self.mRastnetDisplayPopUpButton?.bind_selectedIndex (self.rootObject.mRastnetDisplay_property, file: #file, line: #line)
+    self.mRasnetNetNameSelectionPopUpButton?.bind_selectedNameInArray (self.rootObject.mRastnetDisplayedNet_property, self.rootObject.netNamesArray_property, file: #file, line: #line)
     self.mArtworkNameTextField?.bind_valueObserver (self.rootObject.mArtworkName_property, file: #file, line: #line)
     self.mArtworlImportButton?.bind_title (self.artworlImportButtonTitle_property, file: #file, line: #line)
     self.mMinPPTPTTTWinEBUnitPopUp?.bind_selectedTag (self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
@@ -2489,6 +2538,16 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
+          return !self.rastnetDisplayOneNet_property_selection
+        },
+        outlet: self.mRasnetNetNameSelectionPopUpButton
+      )
+      self.rastnetDisplayOneNet_property.addEBObserver (controller)
+      self.mController_mRasnetNetNameSelectionPopUpButton_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
           return !self.rootObject.mArtwork_none_selection
         },
         outlet: self.mNoArtworkMessageTextField
@@ -2820,6 +2879,7 @@ import Cocoa
     self.mErrorOrWarningIssueSlider?.unbind_doubleValue ()
     self.mControlKeyHiliteDiameterSlider?.unbind_doubleValue ()
     self.mRastnetDisplayPopUpButton?.unbind_selectedIndex ()
+    self.mRasnetNetNameSelectionPopUpButton?.unbind_selectedNameInArray ()
     self.mArtworkNameTextField?.unbind_valueObserver ()
     self.mArtworlImportButton?.unbind_title ()
     self.mMinPPTPTTTWinEBUnitPopUp?.unbind_selectedTag ()
@@ -2932,6 +2992,8 @@ import Cocoa
     self.mController_mFrontRestrictRectangleSwitch_enabled = nil
     self.restrictRectangleSelectionController.mIsInFrontLayer_property.removeEBObserver (self.mController_mBackRestrictRectangleSwitch_enabled!)
     self.mController_mBackRestrictRectangleSwitch_enabled = nil
+    self.rastnetDisplayOneNet_property.removeEBObserver (self.mController_mRasnetNetNameSelectionPopUpButton_hidden!)
+    self.mController_mRasnetNetNameSelectionPopUpButton_hidden = nil
     self.rootObject.mArtwork_none.removeEBObserver (self.mController_mNoArtworkMessageTextField_hidden!)
     self.mController_mNoArtworkMessageTextField_hidden = nil
     self.rootObject.mArtwork_none.removeEBObserver (self.mController_mArtworkTabView_hidden!)
@@ -3000,6 +3062,7 @@ import Cocoa
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     self.rootObject.mSchematicSheetOrientation_property.removeEBObserver (self.schematicSheetOrientationIsCustom_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
+    self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayOneNet_property)
     self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
     self.documentFilePath_property.removeEBObserver (self.documentFilePathOk_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
@@ -3307,6 +3370,7 @@ import Cocoa
     self.mPinPadAssignmentTableView?.ebCleanUp ()
     self.mProductFileGenerationLogTextView?.ebCleanUp ()
     self.mProductPageView?.ebCleanUp ()
+    self.mRasnetNetNameSelectionPopUpButton?.ebCleanUp ()
     self.mRastnetDisplayPopUpButton?.ebCleanUp ()
     self.mRemoveDeviceButton?.ebCleanUp ()
     self.mRemoveEmbeddedDevicesButton?.ebCleanUp ()
@@ -3691,6 +3755,7 @@ import Cocoa
     self.mPinPadAssignmentTableView = nil
     self.mProductFileGenerationLogTextView = nil
     self.mProductPageView = nil
+    self.mRasnetNetNameSelectionPopUpButton = nil
     self.mRastnetDisplayPopUpButton = nil
     self.mRemoveDeviceButton = nil
     self.mRemoveEmbeddedDevicesButton = nil

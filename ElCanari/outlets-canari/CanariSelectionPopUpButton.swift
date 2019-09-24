@@ -1,79 +1,103 @@
 //
-//  CanariBoardBoardArchivePopUpButton.swift
+//  CanariSelectionPopUpButton.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 07/07/2018.
+//  Created by Pierre Molinaro on 24/09/2019.
 //
-//
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariBoardBoardArchivePopUpButton : EBPopUpButton {
+class CanariSelectionPopUpButton : EBPopUpButton {
 
   //····················································································································
   //  format binding
   //····················································································································
 
-  fileprivate func updateOutlet (_ object : EBReadOnlyProperty_BoardArchiveFormat) {
-    switch object.prop {
-    case .empty :
-      self.enableFromValueBinding (false)
-    case .single (let v) :
-      self.enableFromValueBinding (true)
-      let result = self.selectItem (withTag: v.rawValue)
-      if !result {
-        presentErrorWindow (#file, #line, "no item with tag: \(v.rawValue)")
+  fileprivate func updateOutlet (_ inSelectedName : EBReadOnlyProperty_String,
+                                 _ inNameArray : EBReadOnlyProperty_StringArray) {
+    switch (inSelectedName.prop, inNameArray.prop) {
+    case (.single (let selectedName), .single (let netArray)) :
+      self.removeAllItems ()
+      do{
+        self.addItem (withTitle: "—")
+        self.lastItem?.target = self
+        self.lastItem?.action = #selector (CanariSelectionPopUpButton.nameSelectionAction (_:))
+        self.lastItem?.isEnabled = true
+        self.select (self.lastItem)
       }
-    case .multiple :
+      let sortedNetArray = netArray.sorted ()
+      for name in sortedNetArray {
+        self.addItem (withTitle: name)
+        self.lastItem?.target = self
+        self.lastItem?.action = #selector (CanariSelectionPopUpButton.nameSelectionAction (_:))
+        self.lastItem?.isEnabled = true
+        if name == selectedName {
+          self.select (self.lastItem)
+        }
+      }
+      self.enableFromValueBinding (true)
+    default :
+      self.removeAllItems ()
       self.enableFromValueBinding (false)
     }
   }
 
   //····················································································································
 
-  private var mFormatController : Controller_CanariBoardBoardArchivePopUpButton_format?
+  @objc private func nameSelectionAction (_ inSender : NSMenuItem) {
+    self.mController?.updateModelAction (inSender)
+  }
+
+
+  //····················································································································
+  //   $selectedNameInArray Binding
+  //····················································································································
+
+  private var mController : Controller_CanariSelectionPopUpButton_selectedNameInArray? = nil
 
   //····················································································································
 
-  func bind_format (_ object : EBReadWriteProperty_BoardArchiveFormat, file : String, line : Int) {
-    self.mFormatController = Controller_CanariBoardBoardArchivePopUpButton_format (object: object, outlet: self)
+  func bind_selectedNameInArray (_ inSelectedName : EBReadWriteProperty_String, _ inNameArray : EBReadOnlyProperty_StringArray, file : String, line : Int) {
+    self.mController = Controller_CanariSelectionPopUpButton_selectedNameInArray (inSelectedName, inNameArray, outlet: self)
   }
 
   //····················································································································
 
-  func unbind_format () {
-    self.mFormatController?.unregister ()
-    self.mFormatController = nil
+  func unbind_selectedNameInArray () {
+    self.mController?.unregister ()
+    self.mController = nil
   }
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardBoardArchivePopUpButton_format
+//   Controller_CanariSelectionPopUpButton_selectedNameInArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariBoardBoardArchivePopUpButton_format : EBSimpleController {
+final class Controller_CanariSelectionPopUpButton_selectedNameInArray : EBSimpleController {
 
-  private let mObject : EBReadWriteProperty_BoardArchiveFormat
-  private let mOutlet : CanariBoardBoardArchivePopUpButton
+  private let mSelectedName : EBReadWriteProperty_String
+  private let mNameArray : EBReadOnlyProperty_StringArray
+  private let mOutlet : CanariSelectionPopUpButton
 
   //····················································································································
 
-  init (object : EBReadWriteProperty_BoardArchiveFormat, outlet : CanariBoardBoardArchivePopUpButton) {
-    mObject = object
+  init (_ inSelectedName : EBReadWriteProperty_String, _ inNameArray : EBReadOnlyProperty_StringArray, outlet : CanariSelectionPopUpButton) {
+    mSelectedName = inSelectedName
+    mNameArray = inNameArray
     mOutlet = outlet
-    super.init (observedObjects: [object], callBack: { outlet.updateOutlet (object) })
+    super.init (observedObjects: [inSelectedName, inNameArray], callBack: { outlet.updateOutlet (inSelectedName, inNameArray) })
     self.mOutlet.target = self
     self.mOutlet.action = #selector (Controller_CanariBoardBoardArchivePopUpButton_format.updateModel (_:))
   }
 
   //····················································································································
 
-  @objc func updateModel (_ sender : EBPopUpButton) {
-    if let v = BoardArchiveFormat (rawValue: self.mOutlet.selectedTag ()) {
-      _ = self.mObject.validateAndSetProp (v, windowForSheet:sender.window)
-    }
+  @objc func updateModelAction (_ inSender : NSMenuItem) {
+    _ = self.mSelectedName.validateAndSetProp (inSender.title, windowForSheet: nil)
   }
 
   //····················································································································

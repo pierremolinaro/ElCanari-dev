@@ -365,6 +365,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     self.rootObject.mSelectedSheet?.removeUnusedSchematicsPoints (&errorList)
     self.removeUnusedWires (&errorList)
     self.removeUnusedNets ()
+    self.updateSelectedNetForRastnetDisplay ()
     if errorList.count > 0,
        let dialog = self.mInconsistentSchematicErrorPanel,
        let window = self.windowForSheet {

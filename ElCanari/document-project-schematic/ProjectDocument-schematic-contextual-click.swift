@@ -229,6 +229,7 @@ extension CustomizedProjectDocument {
         self.disconnectInSchematic (points: [point])
       }
     }
+    self.updateSchematicsPointsAndNets ()
   }
 
   //····················································································································
@@ -301,6 +302,7 @@ extension CustomizedProjectDocument {
           _ = selectedSheet.connectWithoutDialog (points: allPoints)
         }
       }
+      self.updateSchematicsPointsAndNets ()
     }
   }
 

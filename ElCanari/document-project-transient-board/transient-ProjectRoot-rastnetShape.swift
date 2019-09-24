@@ -64,10 +64,15 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_rastnetShape (
-       _ self_mBoardObjects_netNameAndPadLocation : [BoardObject_netNameAndPadLocation],
-       _ self_mRastnetDisplay : RastnetDisplay
+       _ self_mRastnetDisplay : RastnetDisplay,
+       _ self_mRastnetDisplayedNet : String,
+       _ self_mBoardObjects_netNameAndPadLocation : [BoardObject_netNameAndPadLocation]
 ) -> EBShape {
 //--- START OF USER ZONE 2
+      switch self_mRastnetDisplay {
+      case .hidden :
+        return EBShape ()
+      case .allNets :
       //--- Build net dictionary
         var dictionary = [String : [CanariPoint]] ()
         for optionalArray in self_mBoardObjects_netNameAndPadLocation {
@@ -80,15 +85,31 @@ func transient_ProjectRoot_rastnetShape (
           }
         }
         var bp = EBBezierPath ()
-        if self_mRastnetDisplay == .allNets {
-          bp.lineWidth = 0.5
-          bp.lineJoinStyle = .round
-          bp.lineCapStyle = .round
-          for (_, locationArray) in dictionary {
-            computeRasnet (locationArray, &bp)
-          }
+        bp.lineWidth = 0.5
+        bp.lineJoinStyle = .round
+        bp.lineCapStyle = .round
+        for (_, locationArray) in dictionary {
+          computeRasnet (locationArray, &bp)
         }
         return EBShape (stroke: [bp], .yellow)
+      case .oneNet :
+        var locationArray = [CanariPoint] ()
+        for optionalArray in self_mBoardObjects_netNameAndPadLocation {
+          if let array = optionalArray.netNameAndPadLocation {
+            for p in array {
+              if self_mRastnetDisplayedNet == p.netName {
+                locationArray.append (p.location)
+              }
+            }
+          }
+        }
+        var bp = EBBezierPath ()
+        bp.lineWidth = 0.5
+        bp.lineJoinStyle = .round
+        bp.lineCapStyle = .round
+        computeRasnet (locationArray, &bp)
+        return EBShape (stroke: [bp], .yellow)
+      }
 //--- END OF USER ZONE 2
 }
 

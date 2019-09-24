@@ -898,8 +898,13 @@ document ProjectDocument root ProjectRoot {
   
   outlet EBSlider mControlKeyHiliteDiameterSlider $doubleValue root.mControlKeyHiliteDiameter {sendContinously : yes} ;
   
-  
   outlet EBPopUpButton mRastnetDisplayPopUpButton $selectedIndex root.mRastnetDisplay ;
+  transient Bool rastnetDisplayOneNet dependsFrom root.mRastnetDisplay ;
+  outlet CanariSelectionPopUpButton mRasnetNetNameSelectionPopUpButton
+    $selectedNameInArray root.mRastnetDisplayedNet, root.netNamesArray
+    $hidden !self.rastnetDisplayOneNet
+  ;
+
 //--- Artwork
   outlet EBTextObserverField mArtworkNameTextField $valueObserver root.mArtworkName ;
   outlet NSTextField mNoArtworkMessageTextField $hidden !root.mArtwork.none ;
