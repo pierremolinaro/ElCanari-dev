@@ -7798,7 +7798,7 @@
 				STRIP_PNG_TEXT = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "ElCanari/application/canari-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Debug;
 		};
@@ -7823,7 +7823,7 @@
 				STRIP_PNG_TEXT = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "ElCanari/application/canari-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 			};
 			name = Release;

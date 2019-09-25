@@ -24,11 +24,11 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.9"
-let NOTES : [String] = []
-let BUGFIXES : [String] = []
+let VERSION_CANARI = "1.0.10"
+let NOTES : [String] = ["Same as 1.0.9, but use optimize-for-speed, instead of optimize-for-size"]
+let BUGFIXES : [String] = ["Fixed crash when opening some project documents"]
 let CHANGES : [String] = []
-let NEWS : [String] = ["Project: added display rastnet in Board"]
+let NEWS : [String] = []
 let BUILD_KIND = ProductKind.release
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
