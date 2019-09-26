@@ -15,7 +15,7 @@ let COMPONENT_PACKAGE_ROTATION_KNOB  = 1
 let COMPONENT_PACKAGE_NAME_KNOB  = 2
 let COMPONENT_PACKAGE_VALUE_KNOB = 3
 
-let COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : CGFloat = 30.0
+let COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : CGFloat = 10.0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION ComponentInProject

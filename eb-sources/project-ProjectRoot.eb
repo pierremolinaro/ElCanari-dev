@@ -27,7 +27,7 @@ entity ProjectRoot {
   property proxy String comments : mArtwork.comments ;
 
 //--- ERC Status
-  property Bool mCheckClearanceBetweenPadsOfSameNets default yes ;
+  property Bool mCheckClearanceBetweenPadsOfSameNet default yes ;
   property Bool mLastERCCheckingIsSuccess default no ;
   property UInt32 mLastERCCheckingSignature default 1 ;
 

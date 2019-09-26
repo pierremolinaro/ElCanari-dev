@@ -173,69 +173,37 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   internal func performRenameComponent () {
-    if self.mComponentNewPrefix == self.mComponentCurrentPrefix {
-      if self.mComponentNewIndex > self.mComponentCurrentIndex { // Perform a roll down
-        self.renameComponentSamePrefixNewIndexRollDown ()
-      }else if self.mComponentNewIndex < self.mComponentCurrentIndex { // Perform a roll down
-        self.renameComponentSamePrefixNewIndexRollUp ()
-      }
-    }else{ // Prefix change
-      self.translateForMakingRoom ()
-      self.mSelectedComponentForRenaming?.mNameIndex = self.mComponentNewIndex
-      self.mSelectedComponentForRenaming?.mNamePrefix = self.mComponentNewPrefix
-      self.translateForFillingHole ()
+    for component in self.rootObject.mComponents {
+      component.mNameIndex *= 2 ;
     }
+    self.mSelectedComponentForRenaming?.mNameIndex = self.mComponentNewIndex * 2 - 1
+    self.mSelectedComponentForRenaming?.mNamePrefix = self.mComponentNewPrefix
     self.mSelectedComponentForRenaming = nil
+    self.performNormalizeComponentNames ()
   }
 
   //····················································································································
 
-  private func renameComponentSamePrefixNewIndexRollDown () {
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension ProjectDocument {
+
+  //····················································································································
+
+  func performNormalizeComponentNames () {
+    var allComponents = [String : [ComponentInProject]] ()
     for component in self.rootObject.mComponents {
-      if component.mNamePrefix == self.mComponentNewPrefix { // Same prefix
-        if component.mNameIndex == self.mComponentCurrentIndex {
-          component.mNameIndex = self.mComponentNewIndex
-        }else if (component.mNameIndex > self.mComponentCurrentIndex) && (component.mNameIndex <= self.mComponentNewIndex){
-          component.mNameIndex -= 1
-        }
-      }
+      let prefix = component.mNamePrefix
+      allComponents [prefix] = (allComponents [prefix] ?? []) + [component]
     }
-  }
-
-  //····················································································································
-
-  private func renameComponentSamePrefixNewIndexRollUp () {
-    for component in self.rootObject.mComponents {
-      if component.mNamePrefix == self.mComponentNewPrefix {
-        if component.mNameIndex == self.mComponentCurrentIndex {
-          component.mNameIndex = self.mComponentNewIndex
-        }else if (component.mNameIndex >= self.mComponentNewIndex) && (component.mNameIndex < self.mComponentCurrentIndex){
-          component.mNameIndex += 1
-        }
-      }
-    }
-  }
-
-  //····················································································································
-
-  private func translateForMakingRoom () {
-    for component in self.rootObject.mComponents {
-      if component.mNamePrefix == self.mComponentNewPrefix {
-        if component.mNameIndex >= self.mComponentNewIndex {
-          component.mNameIndex += 1
-        }
-      }
-    }
-  }
-
-  //····················································································································
-
-  private func translateForFillingHole () {
-    for component in self.rootObject.mComponents {
-      if component.mNamePrefix == self.mComponentCurrentPrefix {
-        if component.mNameIndex > self.mComponentCurrentIndex {
-          component.mNameIndex -= 1
-        }
+    for (_, components) in allComponents {
+      let sortedComponents = components.sorted { $0.mNameIndex < $1.mNameIndex }
+      var idx = 1
+      for component in sortedComponents {
+        component.mNameIndex = idx
+        idx += 1
       }
     }
   }

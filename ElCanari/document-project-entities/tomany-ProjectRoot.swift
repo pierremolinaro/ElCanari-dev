@@ -17,7 +17,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mArtworkName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mArtworkVersion_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mCheckClearanceBetweenPadsOfSameNets_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mCheckClearanceBetweenPadsOfSameNet_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mLastERCCheckingIsSuccess_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mLastERCCheckingSignature_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mAutoRouterPreferredDirections_fromElementsOfSet (inRemovedSet) // Stored property
@@ -112,7 +112,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //--- Add observers to added objects
     self.addEBObserversOf_mArtworkName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mArtworkVersion_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mCheckClearanceBetweenPadsOfSameNets_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mCheckClearanceBetweenPadsOfSameNet_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mLastERCCheckingIsSuccess_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mLastERCCheckingSignature_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mAutoRouterPreferredDirections_toElementsOfSet (inAddedSet) // Stored property
@@ -321,58 +321,58 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'mCheckClearanceBetweenPadsOfSameNets' stored property
+  //   Observers of 'mCheckClearanceBetweenPadsOfSameNet' stored property
   //····················································································································
 
-  private var mObserversOf_mCheckClearanceBetweenPadsOfSameNets = EBWeakEventSet ()
+  private var mObserversOf_mCheckClearanceBetweenPadsOfSameNet = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mCheckClearanceBetweenPadsOfSameNets (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mCheckClearanceBetweenPadsOfSameNet (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mCheckClearanceBetweenPadsOfSameNets.insert (inObserver)
+    self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mCheckClearanceBetweenPadsOfSameNets_property.addEBObserver (inObserver)
+        managedObject.mCheckClearanceBetweenPadsOfSameNet_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mCheckClearanceBetweenPadsOfSameNets (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mCheckClearanceBetweenPadsOfSameNet (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mCheckClearanceBetweenPadsOfSameNets.remove (inObserver)
+    self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mCheckClearanceBetweenPadsOfSameNets_property.removeEBObserver (inObserver)
+        managedObject.mCheckClearanceBetweenPadsOfSameNet_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mCheckClearanceBetweenPadsOfSameNets_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_mCheckClearanceBetweenPadsOfSameNet_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mCheckClearanceBetweenPadsOfSameNets.apply { (_ observer : EBEvent) in
-        managedObject.mCheckClearanceBetweenPadsOfSameNets_property.addEBObserver (observer)
+      self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet.apply { (_ observer : EBEvent) in
+        managedObject.mCheckClearanceBetweenPadsOfSameNet_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mCheckClearanceBetweenPadsOfSameNets_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mCheckClearanceBetweenPadsOfSameNets.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mCheckClearanceBetweenPadsOfSameNet_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mCheckClearanceBetweenPadsOfSameNets_property.removeEBObserver (observer)
+        managedObject.mCheckClearanceBetweenPadsOfSameNet_property.removeEBObserver (observer)
       }
     }
   }
@@ -6688,7 +6688,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     }
     self.addEBObserverOf_mArtworkName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mArtworkVersion (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCheckClearanceBetweenPadsOfSameNets (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mCheckClearanceBetweenPadsOfSameNet (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLastERCCheckingIsSuccess (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLastERCCheckingSignature (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAutoRouterPreferredDirections (self.mObserverForWritingPreferences)

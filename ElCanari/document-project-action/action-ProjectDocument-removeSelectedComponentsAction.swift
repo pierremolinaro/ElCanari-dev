@@ -4,6 +4,7 @@ extension ProjectDocument {
   private func performRemoveSelectedComponents () {
     for component in self.componentController.selectedArray {
       if let idx = self.rootObject.mComponents.firstIndex (of: component) {
+     //   let index = component.mNameIndex
       //--- Remove all symbols from schematics sheets
         for symbol in component.mSymbols {
           symbol.mSheet = nil
@@ -17,14 +18,14 @@ extension ProjectDocument {
       //--- Remove from component list
         self.rootObject.mComponents.remove (at: idx)
       //--- Adapt remaining component names
-        let prefix = component.mDevice!.mPrefix
+    //    let prefix = component.mDevice!.mPrefix
         component.mDevice = nil
-        let index = component.mNameIndex
-        for remainingComponent in self.rootObject.mComponents {
-          if (prefix == remainingComponent.mDevice!.mPrefix) && (remainingComponent.mNameIndex > index) {
-            remainingComponent.mNameIndex -= 1
-          }
-        }
+        self.performNormalizeComponentNames ()
+//        for remainingComponent in self.rootObject.mComponents {
+//          if (prefix == remainingComponent.mDevice!.mPrefix) && (remainingComponent.mNameIndex > index) {
+//            remainingComponent.mNameIndex -= 1
+//          }
+//        }
       }
     }
   }

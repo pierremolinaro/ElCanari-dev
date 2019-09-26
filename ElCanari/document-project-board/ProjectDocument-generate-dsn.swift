@@ -75,7 +75,9 @@ extension CustomizedProjectDocument {
     for netClass in self.rootObject.mNetClasses {
       var netNames = [String] ()
       for net in netClass.mNets {
-        netNames.append (net.mNetName)
+        if net.mPoints.count > 0 {
+          netNames.append (net.mNetName)
+        }
       }
       let nc = NetClassForDSNExport (
         name: netClass.mNetClassName,
@@ -682,7 +684,7 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
     }
     ioString += "    (component \"\(inPackageArrayForRouting [component.packageIndex].typeName)\"\n"
     ioString += "      (place\n"
-    ioString += "        \"\(component.componentName)\" \(x) \(y) \(side) \(component.rotation)\n"
+    ioString += "        \(component.componentName) \(x) \(y) \(side) \(component.rotation)\n"
     var idx = 1
     for padDescriptor in component.netList {
       ioString += "        (pin \(padDescriptor.padString) (clearance_class default))\n"

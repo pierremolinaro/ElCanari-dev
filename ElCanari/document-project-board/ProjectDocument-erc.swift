@@ -294,12 +294,12 @@ extension ProjectDocument {
       for idx in 0 ..< frontPadsArray.count {
         let netNameX = frontPadsArray [idx].0
         let frontPadX = frontPadsArray [idx].1
-        if self.rootObject.mCheckClearanceBetweenPadsOfSameNets || (netNameX == "") {
+        if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || (netNameX == "") {
           self.checkPadInsulation (inArray: frontPadX, &ioIssues, &collisionCount)
         }
         for idy in idx+1 ..< frontPadsArray.count {
           let frontPadY = frontPadsArray [idy].1
-          self.checkPadInsulation (betweenArraies: frontPadX, frontPadY, &ioIssues, &collisionCount)
+          self.checkPadInsulation (betweenArraies: (frontPadX, frontPadY), &ioIssues, &collisionCount)
         }
       }
     }
@@ -307,13 +307,13 @@ extension ProjectDocument {
       for idx in 0 ..< backPadsArray.count {
         let netNameX = backPadsArray [idx].0
         let frontPadX = backPadsArray [idx].1
-        if self.rootObject.mCheckClearanceBetweenPadsOfSameNets || (netNameX == "") {
+        if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || (netNameX == "") {
           self.checkPadInsulation (inArray: frontPadX, &ioIssues, &collisionCount)
         }
         for idy in 0 ..< backPadsArray.count {
           if idy != idx {
             let frontPadY = backPadsArray [idy].1
-            self.checkPadInsulation (betweenArraies: frontPadX, frontPadY, &ioIssues, &collisionCount)
+            self.checkPadInsulation (betweenArraies: (frontPadX, frontPadY), &ioIssues, &collisionCount)
           }
         }
       }
@@ -359,12 +359,11 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func checkPadInsulation (betweenArraies inPadArrayX : [PadGeometryForERC],
-                                   _ inPadArrayY : [PadGeometryForERC],
+  private func checkPadInsulation (betweenArraies inPadArray : ([PadGeometryForERC], [PadGeometryForERC]),
                                    _ ioIssues : inout [CanariIssue],
                                    _ ioCollisionCount : inout Int) {
-    for padX in inPadArrayX {
-      for padY in inPadArrayY {
+    for padX in inPadArray.0 {
+      for padY in inPadArray.1 {
         if padX.intersects (pad: padY) {
           ioCollisionCount += 1
           let bp = [padX.bezierPath, padY.bezierPath]

@@ -33,11 +33,10 @@ func transient_ComponentInProject_selectionDisplay (
        _ self_mValueFont_descriptor : BoardFontDescriptor?,
        _ self_mValueFontSize : Double,              
        _ self_mValueRotation : Int,                 
-       _ self_mComponentValue : String,             
-       _ prefs_packageDrawingWidthMultpliedByTenForBoard : Int
+       _ self_mComponentValue : String
 ) -> EBShape {
 //--- START OF USER ZONE 2
-      let lineWidth = CGFloat (prefs_packageDrawingWidthMultpliedByTenForBoard) / 20.0
+      let lineWidth : CGFloat = 0.25 // = CGFloat (prefs_packageDrawingWidthMultpliedByTenForBoard) / 20.0
       let rPadsCenter = self_packagePadDictionary.padsRect.center.cocoaPoint
       let absoluteCenter = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
       let knobDx = (self_mSide == .back) ? -COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE ;

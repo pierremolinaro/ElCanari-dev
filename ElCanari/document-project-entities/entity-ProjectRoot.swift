@@ -18,8 +18,8 @@ protocol ProjectRoot_mArtworkVersion : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mCheckClearanceBetweenPadsOfSameNets : class {
-  var mCheckClearanceBetweenPadsOfSameNets : Bool { get }
+protocol ProjectRoot_mCheckClearanceBetweenPadsOfSameNet : class {
+  var mCheckClearanceBetweenPadsOfSameNet : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -629,7 +629,7 @@ protocol ProjectRoot_schematicStatusImage : class {
 class ProjectRoot : EBManagedObject,
          ProjectRoot_mArtworkName,
          ProjectRoot_mArtworkVersion,
-         ProjectRoot_mCheckClearanceBetweenPadsOfSameNets,
+         ProjectRoot_mCheckClearanceBetweenPadsOfSameNet,
          ProjectRoot_mLastERCCheckingIsSuccess,
          ProjectRoot_mLastERCCheckingSignature,
          ProjectRoot_mAutoRouterPreferredDirections,
@@ -766,21 +766,21 @@ class ProjectRoot : EBManagedObject,
   var mArtworkVersion_property_selection : EBSelection <Int> { return self.mArtworkVersion_property.prop }
 
   //····················································································································
-  //   Atomic property: mCheckClearanceBetweenPadsOfSameNets
+  //   Atomic property: mCheckClearanceBetweenPadsOfSameNet
   //····················································································································
 
-  let mCheckClearanceBetweenPadsOfSameNets_property = EBStoredProperty_Bool (defaultValue: true)
+  let mCheckClearanceBetweenPadsOfSameNet_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
-  var mCheckClearanceBetweenPadsOfSameNets : Bool {
-    get { return self.mCheckClearanceBetweenPadsOfSameNets_property.propval }
-    set { self.mCheckClearanceBetweenPadsOfSameNets_property.setProp (newValue) }
+  var mCheckClearanceBetweenPadsOfSameNet : Bool {
+    get { return self.mCheckClearanceBetweenPadsOfSameNet_property.propval }
+    set { self.mCheckClearanceBetweenPadsOfSameNet_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCheckClearanceBetweenPadsOfSameNets_property_selection : EBSelection <Bool> { return self.mCheckClearanceBetweenPadsOfSameNets_property.prop }
+  var mCheckClearanceBetweenPadsOfSameNet_property_selection : EBSelection <Bool> { return self.mCheckClearanceBetweenPadsOfSameNet_property.prop }
 
   //····················································································································
   //   Atomic property: mLastERCCheckingIsSuccess
@@ -3116,8 +3116,8 @@ class ProjectRoot : EBManagedObject,
     self.mArtworkName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mArtworkVersion
     self.mArtworkVersion_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mCheckClearanceBetweenPadsOfSameNets
-    self.mCheckClearanceBetweenPadsOfSameNets_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
+    self.mCheckClearanceBetweenPadsOfSameNet_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mLastERCCheckingIsSuccess
     self.mLastERCCheckingIsSuccess_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mLastERCCheckingSignature
@@ -4580,12 +4580,12 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mArtworkVersion_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mCheckClearanceBetweenPadsOfSameNets",
-      idx: self.mCheckClearanceBetweenPadsOfSameNets_property.ebObjectIndex,
+      "mCheckClearanceBetweenPadsOfSameNet",
+      idx: self.mCheckClearanceBetweenPadsOfSameNet_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mCheckClearanceBetweenPadsOfSameNets_property.mObserverExplorer,
-      valueExplorer: &self.mCheckClearanceBetweenPadsOfSameNets_property.mValueExplorer
+      observerExplorer: &self.mCheckClearanceBetweenPadsOfSameNet_property.mObserverExplorer,
+      valueExplorer: &self.mCheckClearanceBetweenPadsOfSameNet_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mLastERCCheckingIsSuccess",
@@ -5379,9 +5379,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mArtworkVersion
     self.mArtworkVersion_property.mObserverExplorer = nil
     self.mArtworkVersion_property.mValueExplorer = nil
-  //--- Atomic property: mCheckClearanceBetweenPadsOfSameNets
-    self.mCheckClearanceBetweenPadsOfSameNets_property.mObserverExplorer = nil
-    self.mCheckClearanceBetweenPadsOfSameNets_property.mValueExplorer = nil
+  //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
+    self.mCheckClearanceBetweenPadsOfSameNet_property.mObserverExplorer = nil
+    self.mCheckClearanceBetweenPadsOfSameNet_property.mValueExplorer = nil
   //--- Atomic property: mLastERCCheckingIsSuccess
     self.mLastERCCheckingIsSuccess_property.mObserverExplorer = nil
     self.mLastERCCheckingIsSuccess_property.mValueExplorer = nil
@@ -5630,8 +5630,8 @@ class ProjectRoot : EBManagedObject,
     self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey:"mArtworkName")
   //--- Atomic property: mArtworkVersion
     self.mArtworkVersion_property.storeIn (dictionary: ioDictionary, forKey:"mArtworkVersion")
-  //--- Atomic property: mCheckClearanceBetweenPadsOfSameNets
-    self.mCheckClearanceBetweenPadsOfSameNets_property.storeIn (dictionary: ioDictionary, forKey:"mCheckClearanceBetweenPadsOfSameNets")
+  //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
+    self.mCheckClearanceBetweenPadsOfSameNet_property.storeIn (dictionary: ioDictionary, forKey:"mCheckClearanceBetweenPadsOfSameNet")
   //--- Atomic property: mLastERCCheckingIsSuccess
     self.mLastERCCheckingIsSuccess_property.storeIn (dictionary: ioDictionary, forKey:"mLastERCCheckingIsSuccess")
   //--- Atomic property: mLastERCCheckingSignature
@@ -5867,8 +5867,8 @@ class ProjectRoot : EBManagedObject,
     self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey:"mArtworkName")
   //--- Atomic property: mArtworkVersion
     self.mArtworkVersion_property.readFrom (dictionary: inDictionary, forKey:"mArtworkVersion")
-  //--- Atomic property: mCheckClearanceBetweenPadsOfSameNets
-    self.mCheckClearanceBetweenPadsOfSameNets_property.readFrom (dictionary: inDictionary, forKey:"mCheckClearanceBetweenPadsOfSameNets")
+  //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
+    self.mCheckClearanceBetweenPadsOfSameNet_property.readFrom (dictionary: inDictionary, forKey:"mCheckClearanceBetweenPadsOfSameNet")
   //--- Atomic property: mLastERCCheckingIsSuccess
     self.mLastERCCheckingIsSuccess_property.readFrom (dictionary: inDictionary, forKey:"mLastERCCheckingIsSuccess")
   //--- Atomic property: mLastERCCheckingSignature
