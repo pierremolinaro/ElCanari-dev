@@ -740,6 +740,7 @@ import Cocoa
   @IBOutlet var mChangeValueOfSelectedComponentsActionButton : EBButton? = nil
   @IBOutlet var mChangeValuePanel : NSPanel? = nil
   @IBOutlet var mChangeValueValidationButton : NSButton? = nil
+  @IBOutlet var mCheckClearanceBetweenPadsOfSameNetsSwitch : EBSwitch? = nil
   @IBOutlet var mCommentColorInSchematicsTextField : EBColorWell? = nil
   @IBOutlet var mCommentInSchematicsInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mCommentInSchematicsTextField : EBTextField? = nil
@@ -1277,6 +1278,7 @@ import Cocoa
     checkOutletConnection (self.mChangeValueOfSelectedComponentsActionButton, "mChangeValueOfSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mChangeValuePanel, "mChangeValuePanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mChangeValueValidationButton, "mChangeValueValidationButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mCheckClearanceBetweenPadsOfSameNetsSwitch, "mCheckClearanceBetweenPadsOfSameNetsSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mCommentColorInSchematicsTextField, "mCommentColorInSchematicsTextField", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mCommentInSchematicsInspectorView, "mCommentInSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mCommentInSchematicsTextField, "mCommentInSchematicsTextField", EBTextField.self, #file, #line)
@@ -2185,6 +2187,7 @@ import Cocoa
     self.mBoardGridTextField?.bind_dimensionAndUnit (self.rootObject.mBoardGridStep_property, self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
     self.mLayoutClearancePopUp?.bind_selectedTag (self.rootObject.mLayoutClearanceUnit_property, file: #file, line: #line)
     self.mLayoutClearanceTextField?.bind_dimensionAndUnit (self.rootObject.mLayoutClearance_property, self.rootObject.mLayoutClearanceUnit_property, file: #file, line: #line)
+    self.mCheckClearanceBetweenPadsOfSameNetsSwitch?.bind_value (self.rootObject.mCheckClearanceBetweenPadsOfSameNets_property, file: #file, line: #line)
     self.mAutoRouterPreferredDirectionPopUp?.bind_selectedIndex (self.rootObject.mAutoRouterPreferredDirections_property, file: #file, line: #line)
     self.mAutorouterSnapAnglePopUp?.bind_selectedIndex (self.rootObject.mAutorouterSnapAngle_property, file: #file, line: #line)
     self.mViaCountTextField?.bind_valueObserver (self.rootObject.viaCountString_property, file: #file, line: #line)
@@ -2949,6 +2952,7 @@ import Cocoa
     self.mBoardGridTextField?.unbind_dimensionAndUnit ()
     self.mLayoutClearancePopUp?.unbind_selectedTag ()
     self.mLayoutClearanceTextField?.unbind_dimensionAndUnit ()
+    self.mCheckClearanceBetweenPadsOfSameNetsSwitch?.unbind_value ()
     self.mAutoRouterPreferredDirectionPopUp?.unbind_selectedIndex ()
     self.mAutorouterSnapAnglePopUp?.unbind_selectedIndex ()
     self.mViaCountTextField?.unbind_valueObserver ()
@@ -3390,6 +3394,7 @@ import Cocoa
     self.mChangeValueOfSelectedComponentsActionButton?.ebCleanUp ()
     self.mChangeValuePanel?.ebCleanUp ()
     self.mChangeValueValidationButton?.ebCleanUp ()
+    self.mCheckClearanceBetweenPadsOfSameNetsSwitch?.ebCleanUp ()
     self.mCommentColorInSchematicsTextField?.ebCleanUp ()
     self.mCommentInSchematicsInspectorView?.ebCleanUp ()
     self.mCommentInSchematicsTextField?.ebCleanUp ()
@@ -3776,6 +3781,7 @@ import Cocoa
     self.mChangeValueOfSelectedComponentsActionButton = nil
     self.mChangeValuePanel = nil
     self.mChangeValueValidationButton = nil
+    self.mCheckClearanceBetweenPadsOfSameNetsSwitch = nil
     self.mCommentColorInSchematicsTextField = nil
     self.mCommentInSchematicsInspectorView = nil
     self.mCommentInSchematicsTextField = nil

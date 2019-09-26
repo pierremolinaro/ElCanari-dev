@@ -301,7 +301,9 @@ class PadGeometryForERC {
 
   //····················································································································
 
-  private init (_ inCircles : [GeometricCircle], _ inRectangles : [GeometricRect], _ inBezierPath : EBBezierPath) {
+  private init (_ inCircles : [GeometricCircle],
+                _ inRectangles : [GeometricRect],
+                _ inBezierPath : EBBezierPath) {
     self.circles = inCircles
     self.rectangles = inRectangles
     self.bezierPath = inBezierPath
@@ -442,28 +444,6 @@ class PadGeometryForERC {
       return false
     }
   }
-
-  //····················································································································
-
-//  var bezierPath : EBBezierPath {
-//    var result = EBBezierPath ()
-//    for circle in self.circles {
-//      let s = circle.radius * 2.0
-//      let r = NSRect (center: circle.center, size: NSSize (width: s, height: s))
-//      let bp = EBBezierPath (ovalIn: r)
-//      result.append (bp.reversed)
-//    }
-//    for r in self.rectangles {
-//      var bp = EBBezierPath ()
-//      bp.move (to: r.p1)
-//      bp.line (to: r.p2)
-//      bp.lineWidth = r.width
-//      bp.lineCapStyle = .butt
-//      let filledBp = bp.pathByStroking
-//      result.append (filledBp)
-//    }
-//    return result
-//  }
 
   //····················································································································
 

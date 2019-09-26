@@ -214,8 +214,6 @@ extension ProjectDocument {
                                        _ ioFrontPadNetDictionary : inout [String : [PadGeometryForERC]],
                                        _ ioBackPadNetDictionary : inout [String : [PadGeometryForERC]]) {
     let clearance = self.rootObject.mLayoutClearance
-    var frontPads = [PadGeometryForERC] ()
-    var backPads = [PadGeometryForERC] ()
     for component in self.rootObject.mComponents {
       if component.mRoot != nil { // Is on board
         let padNetDictionary : PadNetDictionary = component.padNetDictionary!
@@ -263,10 +261,8 @@ extension ProjectDocument {
             let componentSideTransformedGeometry = componentSidePadGeometry.transformed (by: af)
             switch component.mSide {
             case .front :
-              frontPads.append (componentSideTransformedGeometry)
               ioFrontPadNetDictionary [netName] = (ioFrontPadNetDictionary [netName] ?? []) + [componentSideTransformedGeometry]
             case .back :
-              backPads.append (componentSideTransformedGeometry)
               ioBackPadNetDictionary [netName] = (ioBackPadNetDictionary [netName] ?? []) + [componentSideTransformedGeometry]
             }
           }
@@ -274,53 +270,129 @@ extension ProjectDocument {
             let oppositeSideTransformedGeometry = oppositeSidePadGeometry.transformed (by: af)
             switch component.mSide {
             case .front :
-              backPads.append (oppositeSideTransformedGeometry)
               ioBackPadNetDictionary [netName] = (ioBackPadNetDictionary [netName] ?? []) + [oppositeSideTransformedGeometry]
             case .back :
-              frontPads.append (oppositeSideTransformedGeometry)
               ioFrontPadNetDictionary [netName] = (ioFrontPadNetDictionary [netName] ?? []) + [oppositeSideTransformedGeometry]
             }
           }
         }
       }
     }
+  //---
+    var frontPadsArray = [(String, [PadGeometryForERC])] ()
+    for (netName, pads) in ioFrontPadNetDictionary {
+      frontPadsArray.append ((netName, pads))
+    }
+    var backPadsArray = [(String, [PadGeometryForERC])] ()
+    for (netName, pads) in ioBackPadNetDictionary {
+      backPadsArray.append ((netName, pads))
+    }
   //--- Check insulation
     self.mERCLogTextView?.appendMessageString ("Pad insulation… ")
     var collisionCount = 0
-    if frontPads.count > 1 {
-      for idx in 1 ..< frontPads.count {
-        let padX = frontPads [idx]
-        for idy in 0 ..< idx {
-          let padY = frontPads [idy]
-          if padX.intersects (pad: padY) {
-            collisionCount += 1
-            let bp = [padX.bezierPath, padY.bezierPath]
-            let issue = CanariIssue (kind: .error, message: "Front side pad collision", pathes: bp)
-            ioIssues.append (issue)
+    if frontPadsArray.count > 0 {
+      for idx in 0 ..< frontPadsArray.count {
+        let netNameX = frontPadsArray [idx].0
+        let frontPadX = frontPadsArray [idx].1
+        if self.rootObject.mCheckClearanceBetweenPadsOfSameNets || (netNameX == "") {
+          self.checkPadInsulation (inArray: frontPadX, &ioIssues, &collisionCount)
+        }
+        for idy in idx+1 ..< frontPadsArray.count {
+          let frontPadY = frontPadsArray [idy].1
+          self.checkPadInsulation (betweenArraies: frontPadX, frontPadY, &ioIssues, &collisionCount)
+        }
+      }
+    }
+    if backPadsArray.count > 0 {
+      for idx in 0 ..< backPadsArray.count {
+        let netNameX = backPadsArray [idx].0
+        let frontPadX = backPadsArray [idx].1
+        if self.rootObject.mCheckClearanceBetweenPadsOfSameNets || (netNameX == "") {
+          self.checkPadInsulation (inArray: frontPadX, &ioIssues, &collisionCount)
+        }
+        for idy in 0 ..< backPadsArray.count {
+          if idy != idx {
+            let frontPadY = backPadsArray [idy].1
+            self.checkPadInsulation (betweenArraies: frontPadX, frontPadY, &ioIssues, &collisionCount)
           }
         }
       }
     }
-    if backPads.count > 1 {
-      for idx in 1 ..< backPads.count {
-        let padX = backPads [idx]
-        for idy in 0 ..< idx {
-          let padY = backPads [idy]
-          if padX.intersects (pad: padY) {
-            collisionCount += 1
-            let bp = [padX.bezierPath, padY.bezierPath]
-            let issue = CanariIssue (kind: .error, message: "Back side pad collision", pathes: bp)
-            ioIssues.append (issue)
-          }
-        }
-      }
-    }
+
+//    }
+//    if frontPads.count > 1 {
+//      for idx in 1 ..< frontPads.count {
+//        let padX = frontPads [idx]
+//        for idy in 0 ..< idx {
+//          let padY = frontPads [idy]
+//          if padX.intersects (pad: padY) {
+//            collisionCount += 1
+//            let bp = [padX.bezierPath, padY.bezierPath]
+//            let issue = CanariIssue (kind: .error, message: "Front side pad collision", pathes: bp)
+//            ioIssues.append (issue)
+//          }
+//        }
+//      }
+//    }
+//    if backPads.count > 1 {
+//      for idx in 1 ..< backPads.count {
+//        let padX = backPads [idx]
+//        for idy in 0 ..< idx {
+//          let padY = backPads [idy]
+//          if padX.intersects (pad: padY) {
+//            collisionCount += 1
+//            let bp = [padX.bezierPath, padY.bezierPath]
+//            let issue = CanariIssue (kind: .error, message: "Back side pad collision", pathes: bp)
+//            ioIssues.append (issue)
+//          }
+//        }
+//      }
+//    }
     if collisionCount == 0 {
       self.mERCLogTextView?.appendSuccessString ("ok\n")
     }else if collisionCount == 1 {
       self.mERCLogTextView?.appendErrorString ("1 error\n")
     }else{
       self.mERCLogTextView?.appendErrorString ("\(collisionCount) errors\n")
+    }
+  }
+
+  //····················································································································
+
+  private func checkPadInsulation (betweenArraies inPadArrayX : [PadGeometryForERC],
+                                   _ inPadArrayY : [PadGeometryForERC],
+                                   _ ioIssues : inout [CanariIssue],
+                                   _ ioCollisionCount : inout Int) {
+    for padX in inPadArrayX {
+      for padY in inPadArrayY {
+        if padX.intersects (pad: padY) {
+          ioCollisionCount += 1
+          let bp = [padX.bezierPath, padY.bezierPath]
+          let issue = CanariIssue (kind: .error, message: "Front side pad collision", pathes: bp)
+          ioIssues.append (issue)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  private func checkPadInsulation (inArray inPadArray : [PadGeometryForERC],
+                                   _ ioIssues : inout [CanariIssue],
+                                   _ ioCollisionCount : inout Int) {
+    if inPadArray.count > 1 {
+      for idx in 1 ..< inPadArray.count {
+        let padX = inPadArray [idx]
+        for idy in 0 ..< idx {
+          let padY = inPadArray [idy]
+          if padX.intersects (pad: padY) {
+            ioCollisionCount += 1
+            let bp = [padX.bezierPath, padY.bezierPath]
+            let issue = CanariIssue (kind: .error, message: "Front side pad collision", pathes: bp)
+            ioIssues.append (issue)
+          }
+        }
+      }
     }
   }
 

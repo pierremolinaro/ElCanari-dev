@@ -642,6 +642,8 @@ document ProjectDocument root ProjectRoot {
      $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit
   ;
 
+  outlet EBSwitch mCheckClearanceBetweenPadsOfSameNetsSwitch $value root.mCheckClearanceBetweenPadsOfSameNets ;
+
   outlet NSView mSaveDSNFileAuxiliaryView ;
   outlet EBSwitch mExportTrackAndViasToDSNSwitch ;
 
