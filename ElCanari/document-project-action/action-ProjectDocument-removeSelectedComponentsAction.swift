@@ -42,33 +42,37 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension ProjectDocument {
-  @objc func removeSelectedComponentsAction (_ sender : NSObject?) {
+  @objc func removeSelectedComponentsAction (_ inUnusedSender : Any?) {
 //--- START OF USER ZONE 2
-        var inSchematicsOrInBoard = false
-        for component in self.componentController.selectedArray {
-          for symbol in component.mSymbols {
-            if symbol.mSheet != nil {
+        if self.componentController.selectedArray.count == 0 {
+          __NSBeep ()
+        }else{
+          var inSchematicsOrInBoard = false
+          for component in self.componentController.selectedArray {
+            for symbol in component.mSymbols {
+              if symbol.mSheet != nil {
+                inSchematicsOrInBoard = true
+              }
+            }
+            if component.mRoot != nil {
               inSchematicsOrInBoard = true
             }
           }
-          if component.mRoot != nil {
-            inSchematicsOrInBoard = true
-          }
-        }
-        if !inSchematicsOrInBoard {
-          self.performRemoveSelectedComponents ()
-        }else{
-          let alert = NSAlert ()
-          if self.componentController.selectedArray.count > 1 {
-            alert.messageText = "Removed components have symbols in schematic and/or package in board."
+          if !inSchematicsOrInBoard {
+            self.performRemoveSelectedComponents ()
           }else{
-            alert.messageText = "Removed component has symbols in schematic and/or package in board."
-          }
-          alert.addButton (withTitle: "Remove")
-          alert.addButton (withTitle: "Cancel")
-          alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
-            if response == .alertFirstButtonReturn {
-              self.performRemoveSelectedComponents ()
+            let alert = NSAlert ()
+            if self.componentController.selectedArray.count > 1 {
+              alert.messageText = "Removed components have symbols in schematic and/or package in board."
+            }else{
+              alert.messageText = "Removed component has symbols in schematic and/or package in board."
+            }
+            alert.addButton (withTitle: "Remove")
+            alert.addButton (withTitle: "Cancel")
+            alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
+              if response == .alertFirstButtonReturn {
+                self.performRemoveSelectedComponents ()
+              }
             }
           }
         }

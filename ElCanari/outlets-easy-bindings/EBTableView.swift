@@ -29,6 +29,34 @@ class EBTableView : NSTableView, EBUserClassNameProtocol {
   deinit {
     noteObjectDeallocation (self)
   }
+
+  //····················································································································
+
+  private var mActionOnDeleteKey : Optional <() -> Void> = nil
+
+  //····················································································································
+
+  func set (actionOnDeleteKey inActionOnDeleteKey : Optional <() -> Void>) {
+    self.mActionOnDeleteKey = inActionOnDeleteKey
+  }
+
+  //····················································································································
+
+  final override func keyDown (with event: NSEvent) {
+    let unicodeScalars = event.charactersIgnoringModifiers!.unicodeScalars
+    let unicodeChar = unicodeScalars [unicodeScalars.startIndex].value
+    // Swift.print ("\(Int (unicodeChar))")
+    switch Int (unicodeChar) {
+    case NSEvent.SpecialKey.delete.rawValue :
+      self.mActionOnDeleteKey? ()
+    default :
+      super.keyDown (with: event)
+    }
+  }
+
+  //····················································································································
+
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

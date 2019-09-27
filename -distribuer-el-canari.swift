@@ -26,9 +26,12 @@ enum ProductKind {
 
 let VERSION_CANARI = "1.0.11"
 let NOTES : [String] = []
-let BUGFIXES : [String] = ["Component Renaming"]
+let BUGFIXES : [String] = ["Project: component renaming sometimes was leading to name collision"]
 let CHANGES : [String] = []
-let NEWS : [String] = ["Added conditional check Clearance between Pads of the same Net"]
+let NEWS : [String] = [
+  "Project: added conditional check Clearance between Pads of the same Net",
+  "Project: added delete key handling for removing component in component table view"
+]
 let BUILD_KIND = ProductKind.release
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
