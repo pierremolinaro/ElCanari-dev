@@ -176,9 +176,19 @@ extension CustomizedProjectDocument {
     for component in self.rootObject.mComponents {
       component.mNameIndex *= 2 ;
     }
-    self.mSelectedComponentForRenaming?.mNameIndex = self.mComponentNewIndex * 2 - 1
-    self.mSelectedComponentForRenaming?.mNamePrefix = self.mComponentNewPrefix
-    self.mSelectedComponentForRenaming = nil
+    if let selectedComponentForRenaming = self.mSelectedComponentForRenaming {
+      if selectedComponentForRenaming.mNamePrefix == self.mComponentNewPrefix {
+        if selectedComponentForRenaming.mNameIndex < (self.mComponentNewIndex * 2) {
+          selectedComponentForRenaming.mNameIndex = self.mComponentNewIndex * 2 + 1
+        }else{
+          selectedComponentForRenaming.mNameIndex = self.mComponentNewIndex * 2 - 1
+        }
+      }else{
+        selectedComponentForRenaming.mNameIndex = self.mComponentNewIndex * 2 - 1
+        selectedComponentForRenaming.mNamePrefix = self.mComponentNewPrefix
+      }
+      self.mSelectedComponentForRenaming = nil
+    }
     self.performNormalizeComponentNames ()
   }
 
