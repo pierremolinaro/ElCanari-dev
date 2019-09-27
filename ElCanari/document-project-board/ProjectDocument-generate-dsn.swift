@@ -135,7 +135,7 @@ extension CustomizedProjectDocument {
     s += "    (string_quote \")\n"
     s += "    (space_in_quoted_tokens on)\n"
     s += "  )\n"
-    s += "  (resolution mm 300)\n"
+    s += "  (resolution mm 1000)\n"
     s += "  (structure\n"
     addBoardBoundary (&s, boardBoundBox, signalPolygonVertices)
     addSnapAngle (&s, self.rootObject.mAutorouterSnapAngle)

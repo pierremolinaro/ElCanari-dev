@@ -116,7 +116,7 @@ extension CustomizedProjectDocument {
         viaComponents = Array (viaComponents [1 ..< viaComponents.count])
         for viaDescription in viaComponents {
           let scanner = Scanner (string: viaDescription)
-          var nsNetClassName : NSString? = ""
+          var nsNetClassName : NSString? = "" // NSString required for scanUpToCharacters
           var x = 0.0
           var y = 0.0
           let ok = scanner.scanUpToCharacters (from: stopSet, into: &nsNetClassName) && scanner.scanDouble (&x) && scanner.scanDouble (&y)
