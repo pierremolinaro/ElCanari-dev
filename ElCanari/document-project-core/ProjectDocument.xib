@@ -2698,7 +2698,7 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="qUB-uE-oeC" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="333.5" y="1" width="132" height="17"/>
+                                                <rect key="frame" x="334" y="1" width="132" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Oiu-eT-q5N" customClass="EBTextObserverField">
@@ -2731,7 +2731,7 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="144" height="17"/>
+                                                <rect key="frame" x="469" y="1" width="144" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd" customClass="EBTextObserverField">
@@ -2765,7 +2765,7 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="615.5" y="1" width="183" height="17"/>
+                                                <rect key="frame" x="616" y="1" width="183" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
@@ -4668,8 +4668,11 @@ Gw
                                         <action selector="selectAllTracksAction:" target="-2" id="TgO-tA-38K"/>
                                     </connections>
                                 </menuItem>
-                                <menuItem title="Select Tracks from Selected Track Net" enabled="NO" keyEquivalent="t" id="16605">
+                                <menuItem title="Select Tracks from Selected Track Net" keyEquivalent="t" id="16605">
                                     <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                    <connections>
+                                        <action selector="selectAllTracksOfSelectedTracksNetsAction:" target="-2" id="b0L-lE-sGH"/>
+                                    </connections>
                                 </menuItem>
                                 <menuItem title="Select Tracks of Net" id="16268" customClass="CanariNetsMenuItem" customModule="ElCanari" customModuleProvider="target">
                                     <modifierMask key="keyEquivalentModifierMask"/>

@@ -62,6 +62,24 @@ extension ProjectDocument {
 
   //····················································································································
 
+  @IBAction func selectAllTracksOfSelectedTracksNetsAction (_ inSender : Any?) {
+    var netSet = Set <NetInProject> ()
+    for object in self.boardObjectsController.selectedArray {
+      if let track = object as? BoardTrack, let net = track.mNet {
+        netSet.insert (net)
+      }
+    }
+    var newSelectedObjects = [BoardObject] ()
+    for object in self.rootObject.mBoardObjects {
+      if let track = object as? BoardTrack, let net = track.mNet, netSet.contains (net) {
+        newSelectedObjects.append (object)
+      }
+    }
+    self.boardObjectsController.addToSelection (objects: newSelectedObjects)
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
