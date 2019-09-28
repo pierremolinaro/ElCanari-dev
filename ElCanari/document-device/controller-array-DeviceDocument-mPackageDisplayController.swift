@@ -900,6 +900,19 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
   // MARK: -
   //····················································································································
 
+  func addToSelection (objects inObjects : [PackageInDevice]) {
+    let objectSet = self.mModel?.propset ?? Set ()
+    var newSelectedSet = self.selectedArray_property.propset
+    for object in inObjects {
+      if objectSet.contains (object) {
+        newSelectedSet.insert (object)
+      }
+    }
+    self.selectedSet = newSelectedSet
+  }
+
+  //····················································································································
+
   func addToSelection (objectsWithIndex inIndexes : [Int]) {
     let objects = self.mModel?.propval ?? []
     var newSelectedSet = self.selectedArray_property.propset

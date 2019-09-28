@@ -24,13 +24,12 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.11"
+let VERSION_CANARI = "1.0.12"
 let NOTES : [String] = []
-let BUGFIXES : [String] = ["Project: component renaming sometimes was leading to name collision"]
-let CHANGES : [String] = []
+let BUGFIXES : [String] = []
+let CHANGES : [String] = ["FreeRouting resolution: 1/300 mm -> 1/1000 mm"]
 let NEWS : [String] = [
-  "Project: added conditional check Clearance between Pads of the same Net",
-  "Project: added delete key handling for removing component in component table view"
+  "Project: added Board Objects menu items: select all Components, Tracks, Vias, RestrictRectangles"
 ]
 let BUILD_KIND = ProductKind.release
 

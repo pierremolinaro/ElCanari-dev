@@ -2,6 +2,9 @@
 //   Canari Outlets
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+extern outlet class CanariComponentsMenuItem ;
+binding CanariComponentsMenuItem $components : transient StringTagArray ; // Prefix, index
+
 extern outlet class CanariSelectionPopUpButton $hidden ;
 binding CanariSelectionPopUpButton $selectedNameInArray : property String, transient StringArray ;
 

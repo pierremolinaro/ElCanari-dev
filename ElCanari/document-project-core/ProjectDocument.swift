@@ -954,6 +954,7 @@ import Cocoa
   @IBOutlet var mSchematicsVerticalFlipSwitch : EBSwitch? = nil
   @IBOutlet var mSchematicsView : EBGraphicView? = nil
   @IBOutlet var mSchematicsWireInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet var mSelectComponentsMenuItem : CanariComponentsMenuItem? = nil
   @IBOutlet var mSelectNetClassInNetTabButton : EBButton? = nil
   @IBOutlet var mSelectNetClassPanel : NSPanel? = nil
   @IBOutlet var mSelectNetClassPopUpButton : EBPopUpButton? = nil
@@ -1492,6 +1493,7 @@ import Cocoa
     checkOutletConnection (self.mSchematicsVerticalFlipSwitch, "mSchematicsVerticalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSchematicsView, "mSchematicsView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mSchematicsWireInspectorView, "mSchematicsWireInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSelectComponentsMenuItem, "mSelectComponentsMenuItem", CanariComponentsMenuItem.self, #file, #line)
     checkOutletConnection (self.mSelectNetClassInNetTabButton, "mSelectNetClassInNetTabButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSelectNetClassPanel, "mSelectNetClassPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mSelectNetClassPopUpButton, "mSelectNetClassPopUpButton", EBPopUpButton.self, #file, #line)
@@ -2179,6 +2181,7 @@ import Cocoa
     self.mBoardView?.bind_shiftArrowKeyMagnitude (self.rootObject.boardGridStepMultipliedByDisplayFactor_property, file: #file, line: #line)
     self.mBoardView?.bind_xPlacardUnit (self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
     self.mBoardView?.bind_yPlacardUnit (self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
+    self.mSelectComponentsMenuItem?.bind_components (self.rootObject.componentsPlacedInBoard_property, file: #file, line: #line)
     self.mBoardHorizontalFlipSwitch?.bind_value (self.rootObject.mBoardHorizontalFlip_property, file: #file, line: #line)
     self.mBoardVerticalFlipSwitch?.bind_value (self.rootObject.mBoardVerticalFlip_property, file: #file, line: #line)
     self.mBoardGridStylePopUpButton?.bind_selectedIndex (self.rootObject.mBoardGridStyle_property, file: #file, line: #line)
@@ -2944,6 +2947,7 @@ import Cocoa
     self.mBoardView?.unbind_shiftArrowKeyMagnitude ()
     self.mBoardView?.unbind_xPlacardUnit ()
     self.mBoardView?.unbind_yPlacardUnit ()
+    self.mSelectComponentsMenuItem?.unbind_components ()
     self.mBoardHorizontalFlipSwitch?.unbind_value ()
     self.mBoardVerticalFlipSwitch?.unbind_value ()
     self.mBoardGridStylePopUpButton?.unbind_selectedIndex ()
@@ -3608,6 +3612,7 @@ import Cocoa
     self.mSchematicsVerticalFlipSwitch?.ebCleanUp ()
     self.mSchematicsView?.ebCleanUp ()
     self.mSchematicsWireInspectorView?.ebCleanUp ()
+    self.mSelectComponentsMenuItem?.ebCleanUp ()
     self.mSelectNetClassInNetTabButton?.ebCleanUp ()
     self.mSelectNetClassPanel?.ebCleanUp ()
     self.mSelectNetClassPopUpButton?.ebCleanUp ()
@@ -3995,6 +4000,7 @@ import Cocoa
     self.mSchematicsVerticalFlipSwitch = nil
     self.mSchematicsView = nil
     self.mSchematicsWireInspectorView = nil
+    self.mSelectComponentsMenuItem = nil
     self.mSelectNetClassInNetTabButton = nil
     self.mSelectNetClassPanel = nil
     self.mSelectNetClassPopUpButton = nil

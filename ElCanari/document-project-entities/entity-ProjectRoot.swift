@@ -606,6 +606,12 @@ protocol ProjectRoot_unplacedPackages : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_componentsPlacedInBoard : class {
+  var componentsPlacedInBoard : StringTagArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_placedComponentNameArray : class {
   var placedComponentNameArray : StringArray? { get }
 }
@@ -727,6 +733,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_netNamesArray,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_unplacedPackages,
+         ProjectRoot_componentsPlacedInBoard,
          ProjectRoot_placedComponentNameArray,
          ProjectRoot_schematicStatusMessage,
          ProjectRoot_schematicStatusImage {
@@ -3038,6 +3045,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: componentsPlacedInBoard
+  //····················································································································
+
+  let componentsPlacedInBoard_property = EBTransientProperty_StringTagArray ()
+
+  //····················································································································
+
+  var componentsPlacedInBoard_property_selection : EBSelection <StringTagArray> {
+    return self.componentsPlacedInBoard_property.prop
+  }
+
+  //····················································································································
+
+  var componentsPlacedInBoard : StringTagArray? {
+    switch self.componentsPlacedInBoard_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: placedComponentNameArray
   //····················································································································
 
@@ -4303,6 +4333,32 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.addEBObserverOf_componentName (self.unplacedPackages_property)
     self.mComponents_property.addEBObserverOf_mComponentValue (self.unplacedPackages_property)
     self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
+  //--- Atomic property: componentsPlacedInBoard
+    self.componentsPlacedInBoard_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mComponents_property_selection.kind ()
+        kind &= unwSelf.mComponents_property_selection.kind ()
+        kind &= unwSelf.mComponents_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection, unwSelf.mComponents_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ProjectRoot_componentsPlacedInBoard (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponents_property.addEBObserverOf_mNamePrefix (self.componentsPlacedInBoard_property)
+    self.mComponents_property.addEBObserverOf_mNameIndex (self.componentsPlacedInBoard_property)
+    self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.componentsPlacedInBoard_property)
   //--- Atomic property: placedComponentNameArray
     self.placedComponentNameArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4539,6 +4595,9 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.removeEBObserverOf_componentName (self.unplacedPackages_property)
     self.mComponents_property.removeEBObserverOf_mComponentValue (self.unplacedPackages_property)
     self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
+    self.mComponents_property.removeEBObserverOf_mNamePrefix (self.componentsPlacedInBoard_property)
+    self.mComponents_property.removeEBObserverOf_mNameIndex (self.componentsPlacedInBoard_property)
+    self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.componentsPlacedInBoard_property)
     self.mComponents_property.removeEBObserverOf_componentName (self.placedComponentNameArray_property)
     self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.placedComponentNameArray_property)
     self.unplacedSymbols_property.removeEBObserver (self.schematicStatusMessage_property)
@@ -5275,6 +5334,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.unplacedPackages_property.mObserverExplorer,
       valueExplorer: &self.unplacedPackages_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "componentsPlacedInBoard",
+      idx: self.componentsPlacedInBoard_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.componentsPlacedInBoard_property.mObserverExplorer,
+      valueExplorer: &self.componentsPlacedInBoard_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "placedComponentNameArray",

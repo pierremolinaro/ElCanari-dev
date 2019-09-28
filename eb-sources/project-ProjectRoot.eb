@@ -62,6 +62,12 @@ entity ProjectRoot {
     self.mBoardGridStep, self.mBoardGridDisplayFactor
   ;
 
+  transient StringTagArray componentsPlacedInBoard dependsFrom
+    self.mComponents.all.mNamePrefix,
+    self.mComponents.all.mNameIndex,
+    self.mComponents.all.componentIsPlacedInBoard
+  ;
+
   transient String viaCountString dependsFrom self.mBoardObjects.all.isVia ;
   transient String trackCountString dependsFrom self.mBoardObjects.all.trackLength ;
   transient String trackLengthString dependsFrom self.mBoardObjects.all.trackLength, self.mTrackLengthUnit ;

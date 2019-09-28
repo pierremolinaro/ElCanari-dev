@@ -340,6 +340,7 @@
                 <outlet property="mSchematicsVerticalFlipSwitch" destination="15253" id="T0g-kp-mW0"/>
                 <outlet property="mSchematicsView" destination="3013" id="JHC-ji-qbQ"/>
                 <outlet property="mSchematicsWireInspectorView" destination="15762" id="GWE-9G-fnI"/>
+                <outlet property="mSelectComponentsMenuItem" destination="15856" id="VNx-Bn-oBZ"/>
                 <outlet property="mSelectNetClassInNetTabButton" destination="nDf-F4-dfT" id="Kva-8Y-EEU"/>
                 <outlet property="mSelectNetClassPanel" destination="scs-de-Snm" id="Z4m-17-l2U"/>
                 <outlet property="mSelectNetClassPopUpButton" destination="idj-0G-w2U" id="FHY-Uo-Rfn"/>
@@ -4641,13 +4642,16 @@ Gw
                         <menu key="menu" title="OtherViews" autoenablesItems="NO" id="7048">
                             <items>
                                 <menuItem image="NSSmartBadgeTemplate" hidden="YES" id="7895"/>
-                                <menuItem title="Select all Components" enabled="NO" keyEquivalent="a" id="15137">
+                                <menuItem title="Select all Components" keyEquivalent="a" id="15137">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                    <connections>
+                                        <action selector="selectAllComponentsAction:" target="-2" id="FiS-oO-uUK"/>
+                                    </connections>
                                 </menuItem>
                                 <menuItem title="Select Components…" enabled="NO" id="16625">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                 </menuItem>
-                                <menuItem title="Select Component" enabled="NO" id="15856">
+                                <menuItem title="Select Component" id="15856" customClass="CanariComponentsMenuItem" customModule="ElCanari" customModuleProvider="target">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <menu key="submenu" title="Select Component" id="15857">
                                         <items>
@@ -4657,18 +4661,18 @@ Gw
                                         </items>
                                     </menu>
                                 </menuItem>
-                                <menuItem title="Select all Passing Points" enabled="NO" id="16105">
+                                <menuItem title="Select all Tracks" id="16204">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES"/>
-                                </menuItem>
-                                <menuItem title="Select all Tracks" enabled="NO" id="16204">
-                                    <modifierMask key="keyEquivalentModifierMask" control="YES"/>
+                                    <connections>
+                                        <action selector="selectAllTracksAction:" target="-2" id="TgO-tA-38K"/>
+                                    </connections>
                                 </menuItem>
                                 <menuItem title="Select Tracks from Selected Track Net" enabled="NO" keyEquivalent="t" id="16605">
                                     <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 </menuItem>
-                                <menuItem title="Select Track of Net" enabled="NO" id="16268">
+                                <menuItem title="Select Tracks of Net" enabled="NO" id="16268">
                                     <modifierMask key="keyEquivalentModifierMask"/>
-                                    <menu key="submenu" title="Select Track of Net" id="16269">
+                                    <menu key="submenu" title="Select Tracks of Net" id="16269">
                                         <items>
                                             <menuItem title="Item" enabled="NO" id="16270">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -4676,11 +4680,17 @@ Gw
                                         </items>
                                     </menu>
                                 </menuItem>
-                                <menuItem title="Select all Vias" enabled="NO" id="16207">
+                                <menuItem title="Select all Vias" id="16207">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES"/>
+                                    <connections>
+                                        <action selector="selectAllViasAction:" target="-2" id="Ulb-Ap-z8g"/>
+                                    </connections>
                                 </menuItem>
-                                <menuItem title="Select all Restrict Rectangles" enabled="NO" id="16210">
+                                <menuItem title="Select all Restrict Rectangles" id="16210">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES"/>
+                                    <connections>
+                                        <action selector="selectAllRestrictRectanglesAction:" target="-2" id="b47-Ww-5Ay"/>
+                                    </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="15539"/>
                                 <menuItem title="Rename all Components" id="16053">
@@ -4700,6 +4710,7 @@ Gw
                                         <action selector="removeAllViasAndTracksAction:" target="-2" id="Ygk-e6-f6Z"/>
                                     </connections>
                                 </menuItem>
+                                <menuItem isSeparatorItem="YES" id="cYE-Xv-cze"/>
                                 <menuItem title="Sort Objects following Layers" id="kfk-aR-WcB">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <connections>

@@ -42,7 +42,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension ProjectDocument {
-  @objc func removeSelectedComponentsAction (_ inUnusedSender : Any?) {
+  @objc func removeSelectedComponentsAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
         if self.componentController.selectedArray.count == 0 {
           __NSBeep ()

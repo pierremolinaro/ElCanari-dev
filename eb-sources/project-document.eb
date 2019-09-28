@@ -625,6 +625,9 @@ document ProjectDocument root ProjectRoot {
     $yPlacardUnit root.mBoardGridStepUnit
   ;
 
+//--- Menu items
+  outlet CanariComponentsMenuItem mSelectComponentsMenuItem $components root.componentsPlacedInBoard ;
+
 //--- Grid and Flip inspector
   outlet EBSwitch mBoardHorizontalFlipSwitch $value root.mBoardHorizontalFlip ;
   outlet EBSwitch mBoardVerticalFlipSwitch $value root.mBoardVerticalFlip ;

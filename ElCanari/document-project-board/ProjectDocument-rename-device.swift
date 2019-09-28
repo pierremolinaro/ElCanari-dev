@@ -4,11 +4,6 @@
 //
 //  Created by Pierre Molinaro on 14/08/2019.
 //
-
-//  outlet NSPanel mRenameDevicePanel ;
-//  outlet NSTextField mRenameDeviceNameTextField ;
-//  outlet NSTextField mRenameDeviceErrorMessageTextField ;
-//  outlet NSButton mRenameDeviceValidationButton ;
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
