@@ -91,14 +91,14 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
         viewToAttach.frame = masterView.bounds
         viewToAttach.autoresizingMask = [.width, .height]
         if let attachedView = self.mAttachedView {
-        //  attachedView.saveFirstResponder ()
+          attachedView.saveFirstResponder ()
           masterView.replaceSubview (attachedView, with: viewToAttach)
         }else{
           masterView.addSubview (viewToAttach, positioned: .below, relativeTo: nil)
         }
         self.mAttachedView = viewToAttach
       //--- Make First Responder
-        // viewToAttach.restoreFirstResponder ()
+        viewToAttach.restoreFirstResponder ()
       }
     }
   }

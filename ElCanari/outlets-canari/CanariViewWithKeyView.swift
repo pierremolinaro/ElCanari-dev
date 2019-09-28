@@ -29,6 +29,26 @@ class CanariViewWithKeyView : NSView, EBUserClassNameProtocol {
   override var mouseDownCanMoveWindow : Bool { return false }
 
   //····················································································································
+  // First responder
+  //····················································································································
+
+  private weak var mSavedFirstResponder : NSResponder? = nil
+
+  //····················································································································
+
+  func saveFirstResponder () {
+    self.mSavedFirstResponder = self.window?.firstResponder
+  }
+
+  //····················································································································
+
+  func restoreFirstResponder () {
+    if let savedFirstResponder = self.mSavedFirstResponder {
+      _ = self.window?.makeFirstResponder (savedFirstResponder)
+    }
+  }
+
+  //····················································································································
 
 }
 
