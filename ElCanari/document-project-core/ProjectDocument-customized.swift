@@ -38,20 +38,22 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     self.rootObject.mSheets.append (sheet)
     self.rootObject.mSelectedSheet = sheet
   //--- Add board limits
-    let boardWidth = millimeterToCanariUnit (100.0)
-    let boardHeight = millimeterToCanariUnit (100.0)
+    let boardCumulatedWidth = self.rootObject.mBoardClearance + self.rootObject.mBoardLimitsWidth
+    // Swift.print (boardCumulatedWidth)
+    let boardRight = millimeterToCanariUnit (100.0) - boardCumulatedWidth
+    let boardTop = millimeterToCanariUnit (100.0) - boardCumulatedWidth
     let bottom = BorderCurve (self.ebUndoManager)
-    bottom.mX = 0
-    bottom.mY = 0
+    bottom.mX = boardCumulatedWidth
+    bottom.mY = boardCumulatedWidth
     let right = BorderCurve (self.ebUndoManager)
-    right.mX = boardWidth
-    right.mY = 0
+    right.mX = boardRight
+    right.mY = boardCumulatedWidth
     let top = BorderCurve (self.ebUndoManager)
-    top.mX = boardWidth
-    top.mY = boardHeight
+    top.mX = boardRight
+    top.mY = boardTop
     let left = BorderCurve (self.ebUndoManager)
-    left.mX = 0
-    left.mY = boardHeight
+    left.mX = boardCumulatedWidth
+    left.mY = boardTop
     bottom.mNext = right
     right.mNext = top
     top.mNext = left
