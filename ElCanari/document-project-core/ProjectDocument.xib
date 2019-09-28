@@ -344,6 +344,7 @@
                 <outlet property="mSelectNetClassInNetTabButton" destination="nDf-F4-dfT" id="Kva-8Y-EEU"/>
                 <outlet property="mSelectNetClassPanel" destination="scs-de-Snm" id="Z4m-17-l2U"/>
                 <outlet property="mSelectNetClassPopUpButton" destination="idj-0G-w2U" id="FHY-Uo-Rfn"/>
+                <outlet property="mSelectNetsMenuItem" destination="16268" id="VK7-MQ-RS2"/>
                 <outlet property="mSelectedBoardLimitInspectorView" destination="m9b-ER-vMM" id="IhS-DS-Del"/>
                 <outlet property="mSelectedLimitDisplayUnitPopUp" destination="cVG-k1-9Re" id="ZjO-Zn-Dc5"/>
                 <outlet property="mSelectedLimitShapePopUpButton" destination="NhK-wf-daA" id="gRi-cf-5jV"/>
@@ -2697,7 +2698,7 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="qUB-uE-oeC" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="334" y="1" width="132" height="17"/>
+                                                <rect key="frame" x="333.5" y="1" width="132" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Oiu-eT-q5N" customClass="EBTextObserverField">
@@ -2716,7 +2717,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="143.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="144" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2730,11 +2731,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="469" y="1" width="143" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="144" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="143" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="144" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -2750,7 +2751,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="184" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="183.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2764,11 +2765,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="615" y="1" width="184" height="17"/>
+                                                <rect key="frame" x="615.5" y="1" width="183" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="184" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="183" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -4670,7 +4671,7 @@ Gw
                                 <menuItem title="Select Tracks from Selected Track Net" enabled="NO" keyEquivalent="t" id="16605">
                                     <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 </menuItem>
-                                <menuItem title="Select Tracks of Net" enabled="NO" id="16268">
+                                <menuItem title="Select Tracks of Net" id="16268" customClass="CanariNetsMenuItem" customModule="ElCanari" customModuleProvider="target">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <menu key="submenu" title="Select Tracks of Net" id="16269">
                                         <items>

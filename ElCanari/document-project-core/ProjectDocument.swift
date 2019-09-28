@@ -958,6 +958,7 @@ import Cocoa
   @IBOutlet var mSelectNetClassInNetTabButton : EBButton? = nil
   @IBOutlet var mSelectNetClassPanel : NSPanel? = nil
   @IBOutlet var mSelectNetClassPopUpButton : EBPopUpButton? = nil
+  @IBOutlet var mSelectNetsMenuItem : CanariNetsMenuItem? = nil
   @IBOutlet var mSelectedBoardLimitInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mSelectedLimitDisplayUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mSelectedLimitShapePopUpButton : EBPopUpButton? = nil
@@ -1497,6 +1498,7 @@ import Cocoa
     checkOutletConnection (self.mSelectNetClassInNetTabButton, "mSelectNetClassInNetTabButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSelectNetClassPanel, "mSelectNetClassPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mSelectNetClassPopUpButton, "mSelectNetClassPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSelectNetsMenuItem, "mSelectNetsMenuItem", CanariNetsMenuItem.self, #file, #line)
     checkOutletConnection (self.mSelectedBoardLimitInspectorView, "mSelectedBoardLimitInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedLimitDisplayUnitPopUp, "mSelectedLimitDisplayUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSelectedLimitShapePopUpButton, "mSelectedLimitShapePopUpButton", EBPopUpButton.self, #file, #line)
@@ -2182,6 +2184,7 @@ import Cocoa
     self.mBoardView?.bind_xPlacardUnit (self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
     self.mBoardView?.bind_yPlacardUnit (self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
     self.mSelectComponentsMenuItem?.bind_components (self.rootObject.componentsPlacedInBoard_property, file: #file, line: #line)
+    self.mSelectNetsMenuItem?.bind_nets (self.rootObject.netNamesArray_property, file: #file, line: #line)
     self.mBoardHorizontalFlipSwitch?.bind_value (self.rootObject.mBoardHorizontalFlip_property, file: #file, line: #line)
     self.mBoardVerticalFlipSwitch?.bind_value (self.rootObject.mBoardVerticalFlip_property, file: #file, line: #line)
     self.mBoardGridStylePopUpButton?.bind_selectedIndex (self.rootObject.mBoardGridStyle_property, file: #file, line: #line)
@@ -2948,6 +2951,7 @@ import Cocoa
     self.mBoardView?.unbind_xPlacardUnit ()
     self.mBoardView?.unbind_yPlacardUnit ()
     self.mSelectComponentsMenuItem?.unbind_components ()
+    self.mSelectNetsMenuItem?.unbind_nets ()
     self.mBoardHorizontalFlipSwitch?.unbind_value ()
     self.mBoardVerticalFlipSwitch?.unbind_value ()
     self.mBoardGridStylePopUpButton?.unbind_selectedIndex ()
@@ -3616,6 +3620,7 @@ import Cocoa
     self.mSelectNetClassInNetTabButton?.ebCleanUp ()
     self.mSelectNetClassPanel?.ebCleanUp ()
     self.mSelectNetClassPopUpButton?.ebCleanUp ()
+    self.mSelectNetsMenuItem?.ebCleanUp ()
     self.mSelectedBoardLimitInspectorView?.ebCleanUp ()
     self.mSelectedLimitDisplayUnitPopUp?.ebCleanUp ()
     self.mSelectedLimitShapePopUpButton?.ebCleanUp ()
@@ -4004,6 +4009,7 @@ import Cocoa
     self.mSelectNetClassInNetTabButton = nil
     self.mSelectNetClassPanel = nil
     self.mSelectNetClassPopUpButton = nil
+    self.mSelectNetsMenuItem = nil
     self.mSelectedBoardLimitInspectorView = nil
     self.mSelectedLimitDisplayUnitPopUp = nil
     self.mSelectedLimitShapePopUpButton = nil

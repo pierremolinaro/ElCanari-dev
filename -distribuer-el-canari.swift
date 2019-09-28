@@ -29,7 +29,7 @@ let NOTES : [String] = []
 let BUGFIXES : [String] = []
 let CHANGES : [String] = ["FreeRouting resolution: 1/300 mm -> 1/1000 mm"]
 let NEWS : [String] = [
-  "Project: added Board Objects menu items: select all Components, Tracks, Vias, RestrictRectangles"
+  "Project: populated Board Objects menu"
 ]
 let BUILD_KIND = ProductKind.release
 

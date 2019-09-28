@@ -627,6 +627,7 @@ document ProjectDocument root ProjectRoot {
 
 //--- Menu items
   outlet CanariComponentsMenuItem mSelectComponentsMenuItem $components root.componentsPlacedInBoard ;
+  outlet CanariNetsMenuItem mSelectNetsMenuItem $nets root.netNamesArray ;
 
 //--- Grid and Flip inspector
   outlet EBSwitch mBoardHorizontalFlipSwitch $value root.mBoardHorizontalFlip ;

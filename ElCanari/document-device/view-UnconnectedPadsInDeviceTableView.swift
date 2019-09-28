@@ -78,7 +78,7 @@ class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource, NST
     for s in self.sortDescriptors.reversed () {
       if let key = s.key {
         if key == "pad" {
-          self.mDataSource.sort { s.ascending ? numericCompare ($0, $1) :  numericCompare ($1, $0) }
+          self.mDataSource.sort { s.ascending ? String.numericCompare ($0, $1) : String.numericCompare ($1, $0) }
         }
       }
     }
@@ -153,13 +153,6 @@ class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource, NST
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func numericCompare (_ inLeft : String, _ inRight : String) -> Bool {
-  let comparisonResult = inLeft.compare (inRight, options: [.numeric])
-  return comparisonResult == .orderedAscending
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

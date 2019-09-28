@@ -1637,6 +1637,8 @@
 		CFCEE4792233C75500C397CE /* transient-DeviceRoot-unconnectedPads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCEE4772233C75500C397CE /* transient-DeviceRoot-unconnectedPads.swift */; };
 		CFCEE47B2233C86600C397CE /* view-UnconnectedPadsInDeviceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCEE47A2233C86600C397CE /* view-UnconnectedPadsInDeviceTableView.swift */; };
 		CFCEE47C2233C86600C397CE /* view-UnconnectedPadsInDeviceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCEE47A2233C86600C397CE /* view-UnconnectedPadsInDeviceTableView.swift */; };
+		CFCFDBEB233F87E7004119A3 /* CanariNetsMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFDBEA233F87E7004119A3 /* CanariNetsMenuItem.swift */; };
+		CFCFDBEC233F87E7004119A3 /* CanariNetsMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFDBEA233F87E7004119A3 /* CanariNetsMenuItem.swift */; };
 		CFD22D3F22D260FC004DFFDC /* action-ProjectDocument-removeEmbeddedDevicesAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD22D3E22D260FC004DFFDC /* action-ProjectDocument-removeEmbeddedDevicesAction.swift */; };
 		CFD22D4022D260FC004DFFDC /* action-ProjectDocument-removeEmbeddedDevicesAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD22D3E22D260FC004DFFDC /* action-ProjectDocument-removeEmbeddedDevicesAction.swift */; };
 		CFD22D4222D26241004DFFDC /* action-ProjectDocument-resetDevicesAndFontsVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD22D4122D26241004DFFDC /* action-ProjectDocument-resetDevicesAndFontsVersionAction.swift */; };
@@ -3144,6 +3146,7 @@
 		CFCEE4712233BE6F00C397CE /* entity-PadProxyInDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-PadProxyInDevice.swift"; sourceTree = "<group>"; };
 		CFCEE4772233C75500C397CE /* transient-DeviceRoot-unconnectedPads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceRoot-unconnectedPads.swift"; sourceTree = "<group>"; };
 		CFCEE47A2233C86600C397CE /* view-UnconnectedPadsInDeviceTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "view-UnconnectedPadsInDeviceTableView.swift"; sourceTree = "<group>"; };
+		CFCFDBEA233F87E7004119A3 /* CanariNetsMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariNetsMenuItem.swift; sourceTree = "<group>"; };
 		CFD22D3E22D260FC004DFFDC /* action-ProjectDocument-removeEmbeddedDevicesAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-removeEmbeddedDevicesAction.swift"; sourceTree = "<group>"; };
 		CFD22D4122D26241004DFFDC /* action-ProjectDocument-resetDevicesAndFontsVersionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-resetDevicesAndFontsVersionAction.swift"; sourceTree = "<group>"; };
 		CFD22D4422D26364004DFFDC /* action-ProjectDocument-updateDevicesAndFontsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-updateDevicesAndFontsAction.swift"; sourceTree = "<group>"; };
@@ -4162,6 +4165,7 @@
 				CFB4731A2274E36900694FCC /* CanariEnumSegmentedControl.swift */,
 				CF2ED48221ADAD830019114E /* CanariIssueTableView.swift */,
 				CF6BC0501DE1C53A002D935F /* CanariMenu.swift */,
+				CFCFDBEA233F87E7004119A3 /* CanariNetsMenuItem.swift */,
 				CF2A69A5226F4B8900261C47 /* CanariNewComponentFromDevicePullDownButton.swift */,
 				CF740E9522F3071B00C11B1C /* CanariObserverSwitch.swift */,
 				CFEF3D2A20F9FAF900DA6106 /* CanariOkButtonForSheet.swift */,
@@ -5622,6 +5626,7 @@
 				CFEB7B94233A267E0060A97A /* transient-DevicePackageInProject-packagePadDictionary.swift in Sources */,
 				CF7EF38522CA2C960043DF60 /* CanariBoardComponentPackagePopUpButton.swift in Sources */,
 				CFF0417720DD568700FB1C5B /* EBIntObserverField.swift in Sources */,
+				CFCFDBEB233F87E7004119A3 /* CanariNetsMenuItem.swift in Sources */,
 				CFEB7BE8233A28130060A97A /* transient-NetClassInProject-viaHoleDiameter.swift in Sources */,
 				CFA1AA1422325FA60023928C /* selectionController-DeviceDocument-mSymbolInstanceSelection.swift in Sources */,
 				CF2095B122F3437600DC9A17 /* transient-BoardModel-frontPackagesBezierPaths.swift in Sources */,
@@ -6733,6 +6738,7 @@
 				CFEB7B95233A267E0060A97A /* transient-DevicePackageInProject-packagePadDictionary.swift in Sources */,
 				CFB1DB3E2282D31F005F9811 /* entity-DeviceSymbolInstanceInProject.swift in Sources */,
 				CF7C30E721CCCA9E00EFFDCA /* PackageDocument-pad-numbering.swift in Sources */,
+				CFCFDBEC233F87E7004119A3 /* CanariNetsMenuItem.swift in Sources */,
 				CFEB7BE9233A28130060A97A /* transient-NetClassInProject-viaHoleDiameter.swift in Sources */,
 				CFDD885722340057008D3781 /* atomic-AssignedPadProxiesInDevice.swift in Sources */,
 				CF5C4CDE219F04D600EAC52A /* action-MergerDocument-updateBoardModelAction.swift in Sources */,
