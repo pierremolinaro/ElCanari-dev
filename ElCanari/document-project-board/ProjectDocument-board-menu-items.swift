@@ -80,6 +80,84 @@ extension ProjectDocument {
 
   //····················································································································
 
+  @IBAction func renameComponentsLeftToRightUpwardsAction (_ inSender : Any?) {
+    self.renameComponents (by: compareLefToRightUpwardsComponentLocation)
+  }
+
+  //····················································································································
+
+  @IBAction func renameComponentsLeftToRightDownwardsAction (_ inSender : Any?) {
+    self.renameComponents (by: compareLefToRightDownwardsComponentLocation)
+  }
+  //····················································································································
+
+  fileprivate func renameComponents (by inSortFunction : (CenterAndComponent, CenterAndComponent) -> Bool) {
+    var componentLocationArray = [CenterAndComponent] ()
+    for component in self.rootObject.mComponents {
+      if let inBoard = component.isPlacedInBoard, inBoard, let padDictionary = component.packagePadDictionary {
+         let af = component.packageToComponentAffineTransform ()
+         var padCenters = [NSPoint] ()
+         for (_, masterPad) in padDictionary {
+           padCenters.append (af.transform (masterPad.center.cocoaPoint))
+           for slavePad in masterPad.slavePads {
+             padCenters.append (af.transform (slavePad.center.cocoaPoint))
+           }
+         }
+         let r = NSRect (points: padCenters)
+         componentLocationArray.append (CenterAndComponent (center: r.center, component: component))
+      }else{
+        componentLocationArray.append (CenterAndComponent (center: NSPoint (), component: component))
+      }
+    }
+  //--- Sort
+    componentLocationArray.sort (by: inSortFunction)
+  //--- Rename
+    let countedSet = NSCountedSet ()
+    for object in componentLocationArray {
+      let prefix = object.component.mNamePrefix
+      countedSet.add (prefix)
+      object.component.mNameIndex = countedSet.count (for: prefix)
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct CenterAndComponent {
+  let center : NSPoint
+  let component : ComponentInProject
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func compareLefToRightUpwardsComponentLocation (_ inLeft : CenterAndComponent, inRight : CenterAndComponent) -> Bool {
+  if (inLeft.center.x < inRight.center.x) {
+    return true
+  }else if (inLeft.center.x > inRight.center.x) {
+    return false
+  }else if (inLeft.center.y < inRight.center.y) {
+    return true
+  }else{
+    return false
+  }
+}
+
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func compareLefToRightDownwardsComponentLocation (_ inLeft : CenterAndComponent, inRight : CenterAndComponent) -> Bool {
+  if (inLeft.center.x < inRight.center.x) {
+    return true
+  }else if (inLeft.center.x > inRight.center.x) {
+    return false
+  }else if (inLeft.center.y > inRight.center.y) {
+    return true
+  }else{
+    return false
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

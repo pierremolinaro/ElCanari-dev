@@ -4701,8 +4701,17 @@ Gw
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <menu key="submenu" title="Rename all Components" id="16054">
                                         <items>
-                                            <menuItem title="Left to Right, Upwards" enabled="NO" id="16055">
+                                            <menuItem title="Left to Right, Upwards" id="16055">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                                <connections>
+                                                    <action selector="renameComponentsLeftToRightUpwardsAction:" target="-2" id="Utd-IA-Lyb"/>
+                                                </connections>
+                                            </menuItem>
+                                            <menuItem title="Left to Right, Downwards" id="dZs-3P-dlJ">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                <connections>
+                                                    <action selector="renameComponentsLeftToRightDownwardsAction:" target="-2" id="YNA-T1-xLV"/>
+                                                </connections>
                                             </menuItem>
                                         </items>
                                     </menu>
