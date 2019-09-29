@@ -63,6 +63,12 @@ document ProjectDocument root ProjectRoot {
   outlet NSTextField mChangeValueComponentListTextField ;
   outlet NSButton mChangeValueValidationButton ;
 
+  action revealPackageOfSelectedComponentsAction ;
+  outlet EBButton mRevealPackageOfSelectedComponentsButton
+    $run revealPackageOfSelectedComponentsAction
+//    $enabled (#componentController.selectedArray.count > 0) & #componentController.selectedArray.all.isPlacedInBoard
+    $enabled #componentController.selectedArray.count > 0
+  ;
 
   outlet EBButton mRenameComponentButton $enabled #componentController.selectedArray.count == 1 ; // Action targeted in IB
   outlet NSPanel mRenameComponentPanel ;

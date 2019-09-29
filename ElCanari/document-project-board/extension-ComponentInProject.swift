@@ -147,6 +147,24 @@ extension ComponentInProject {
 
   //····················································································································
 
+  func selectedPackagePadsRect () -> NSRect? {
+    if let inBoard = self.isPlacedInBoard, inBoard, let padDictionary = self.packagePadDictionary {
+      let af = self.packageToComponentAffineTransform ()
+      var padCenters = [NSPoint] ()
+      for (_, masterPad) in padDictionary {
+        padCenters.append (af.transform (masterPad.center.cocoaPoint))
+        for slavePad in masterPad.slavePads {
+          padCenters.append (af.transform (slavePad.center.cocoaPoint))
+        }
+      }
+      return NSRect (points: padCenters)
+    }else{
+      return nil
+    }
+  }
+  
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -924,6 +924,7 @@ import Cocoa
   @IBOutlet var mResetFontVersionButton : EBButton? = nil
   @IBOutlet var mResetSelectedDeviceVersionButton : EBButton? = nil
   @IBOutlet var mRestrictRectangleInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet var mRevealPackageOfSelectedComponentsButton : EBButton? = nil
   @IBOutlet var mRouterBoardInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mSaveDSNFileAuxiliaryView : NSView? = nil
   @IBOutlet var mSchematicCustomHeightTextField : CanariDimensionTextField? = nil
@@ -1021,6 +1022,7 @@ import Cocoa
   var mController_mRemoveSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mChangePackageOfSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mChangeValueOfSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mRevealPackageOfSelectedComponentsButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRenameComponentButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveNetClassButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditNetClassButton_enabled : MultipleBindingController_enabled? = nil
@@ -1468,6 +1470,7 @@ import Cocoa
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetSelectedDeviceVersionButton, "mResetSelectedDeviceVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRestrictRectangleInspectorView, "mRestrictRectangleInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mRevealPackageOfSelectedComponentsButton, "mRevealPackageOfSelectedComponentsButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRouterBoardInspectorView, "mRouterBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSaveDSNFileAuxiliaryView, "mSaveDSNFileAuxiliaryView", NSView.self, #file, #line)
     checkOutletConnection (self.mSchematicCustomHeightTextField, "mSchematicCustomHeightTextField", CanariDimensionTextField.self, #file, #line)
@@ -2366,6 +2369,16 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
+          return (self.componentController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mRevealPackageOfSelectedComponentsButton
+      )
+      self.componentController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mRevealPackageOfSelectedComponentsButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
           return (self.componentController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mRenameComponentButton
@@ -2790,6 +2803,8 @@ import Cocoa
     self.mChangePackageOfSelectedComponentsActionButton?.action = #selector (ProjectDocument.changePackageOfSelectedComponentsAction (_:))
     self.mChangeValueOfSelectedComponentsActionButton?.target = self
     self.mChangeValueOfSelectedComponentsActionButton?.action = #selector (ProjectDocument.changeValueOfSelectedComponentsAction (_:))
+    self.mRevealPackageOfSelectedComponentsButton?.target = self
+    self.mRevealPackageOfSelectedComponentsButton?.action = #selector (ProjectDocument.revealPackageOfSelectedComponentsAction (_:))
     self.mAddNetClassButton?.target = self
     self.mAddNetClassButton?.action = #selector (ProjectDocument.addNetClassAction (_:))
     self.mRemoveNetClassButton?.target = self
@@ -3118,6 +3133,8 @@ import Cocoa
     self.mController_mChangePackageOfSelectedComponentsActionButton_enabled = nil
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mChangeValueOfSelectedComponentsActionButton_enabled!)
     self.mController_mChangeValueOfSelectedComponentsActionButton_enabled = nil
+    self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRevealPackageOfSelectedComponentsButton_enabled!)
+    self.mController_mRevealPackageOfSelectedComponentsButton_enabled = nil
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentButton_enabled!)
     self.mController_mRenameComponentButton_enabled = nil
     self.canRemoveNetClasses_property.removeEBObserver (self.mController_mRemoveNetClassButton_enabled!)
@@ -3289,6 +3306,7 @@ import Cocoa
     self.mRemoveSelectedComponentsActionButton?.target = nil
     self.mChangePackageOfSelectedComponentsActionButton?.target = nil
     self.mChangeValueOfSelectedComponentsActionButton?.target = nil
+    self.mRevealPackageOfSelectedComponentsButton?.target = nil
     self.mAddNetClassButton?.target = nil
     self.mRemoveNetClassButton?.target = nil
     self.mEditNetClassButton?.target = nil
@@ -3616,6 +3634,7 @@ import Cocoa
     self.mResetFontVersionButton?.ebCleanUp ()
     self.mResetSelectedDeviceVersionButton?.ebCleanUp ()
     self.mRestrictRectangleInspectorView?.ebCleanUp ()
+    self.mRevealPackageOfSelectedComponentsButton?.ebCleanUp ()
     self.mRouterBoardInspectorView?.ebCleanUp ()
     self.mSaveDSNFileAuxiliaryView?.ebCleanUp ()
     self.mSchematicCustomHeightTextField?.ebCleanUp ()
@@ -4007,6 +4026,7 @@ import Cocoa
     self.mResetFontVersionButton = nil
     self.mResetSelectedDeviceVersionButton = nil
     self.mRestrictRectangleInspectorView = nil
+    self.mRevealPackageOfSelectedComponentsButton = nil
     self.mRouterBoardInspectorView = nil
     self.mSaveDSNFileAuxiliaryView = nil
     self.mSchematicCustomHeightTextField = nil
