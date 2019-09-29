@@ -204,9 +204,15 @@ class FontCharacterSelectView : NSView, EBUserClassNameProtocol {
           NSBezierPath.stroke (NSInsetRect (charRect, 0.5, 0.5))
         }
         if let uniscalar = Unicode.Scalar (codePoint) {
+          let foreColor : NSColor
+          if self.mDefinedCharacterSet.contains (codePoint) {
+            foreColor = .blue
+          }else{
+            foreColor = .lightGray
+          }
           let attributes : [NSAttributedString.Key:AnyObject] = [
             NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize),
-            NSAttributedString.Key.foregroundColor : self.mDefinedCharacterSet.contains (codePoint) ? NSColor.blue : .lightGray
+            NSAttributedString.Key.foregroundColor : foreColor
           ]
           let s = String (uniscalar)
           let size = s.size (withAttributes: attributes)

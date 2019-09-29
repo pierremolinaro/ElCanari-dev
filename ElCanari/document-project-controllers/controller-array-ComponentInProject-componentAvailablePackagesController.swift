@@ -90,12 +90,22 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   override func notifyModelDidChange () {
     super.notifyModelDidChange ()
     let currentSelectedSet = self.selectedSet
-    let objectArray = self.mModel?.propval ?? []
+    let objectArray = self.objectArray
     let newSelectedSet = currentSelectedSet.intersection (objectArray)
     self.mInternalSelectedArrayProperty.setProp (Array (newSelectedSet))
   }
 
- //····················································································································
+   //····················································································································
+
+   var objectArray : [DevicePackageInProject] {
+     if let values = self.mModel?.propval {
+       return values
+     }else{
+       return []
+     }
+   }
+
+  //····················································································································
   //    Undo manager
   //····················································································································
 
@@ -110,7 +120,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   var selectedIndexesSet : Set <Int> {
     var result = Set <Int> ()
     var idx = 0
-    for object in self.mModel?.propval ?? [] {
+    for object in self.objectArray {
       if self.selectedArray_property.propset.contains (object) {
         result.insert (idx)
       }
@@ -135,7 +145,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   //····················································································································
 
   func selectedObjectIndexSet () -> NSIndexSet {
-    let modelObjects = self.mModel?.propval ?? []
+    let modelObjects = self.objectArray
     let selectedObjects = self.selectedArray_property.propset
     let indexSet = NSMutableIndexSet ()
     for object in selectedObjects {

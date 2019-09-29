@@ -24,13 +24,11 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.12"
-let NOTES : [String] = []
+let VERSION_CANARI = "1.0.13"
+let NOTES : [String] = ["First in Swift 5.1"]
 let BUGFIXES : [String] = []
-let CHANGES : [String] = ["FreeRouting resolution: 1/300 mm -> 1/1000 mm"]
-let NEWS : [String] = [
-  "Project: populated Board Objects menu"
-]
+let CHANGES : [String] = []
+let NEWS : [String] = []
 let BUILD_KIND = ProductKind.release
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

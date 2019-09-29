@@ -39,9 +39,22 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
 
   //····················································································································
 
+  var objects : [DeviceInProject] {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return []
+    }
+  }
+
+  //····················································································································
+
   var objectCount : Int {
-    let objects = self.mModel?.propval ?? []
-    return objects.count
+    if let objects = self.mModel?.propval {
+      return objects.count
+    }else{
+      return 0
+    }
   }
 
   //····················································································································
@@ -138,7 +151,7 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
   var selectedIndexesSet : Set <Int> {
     var result = Set <Int> ()
     var idx = 0
-    for object in self.mModel?.propval ?? [] {
+    for object in self.objects {
       if self.selectedSet.contains (object) {
         result.insert (idx)
       }

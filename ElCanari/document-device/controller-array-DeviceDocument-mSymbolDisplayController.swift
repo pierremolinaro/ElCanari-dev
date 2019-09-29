@@ -172,12 +172,22 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   override func notifyModelDidChange () {
     super.notifyModelDidChange ()
     let currentSelectedSet = self.selectedSet
-    let objectArray = self.mModel?.propval ?? []
+    let objectArray = self.objectArray
     let newSelectedSet = currentSelectedSet.intersection (objectArray)
     self.mInternalSelectedArrayProperty.setProp (Array (newSelectedSet))
   }
 
- //····················································································································
+   //····················································································································
+
+   var objectArray : [SymbolInstanceInDevice] {
+     if let values = self.mModel?.propval {
+       return values
+     }else{
+       return []
+     }
+   }
+
+  //····················································································································
   //    Undo manager
   //····················································································································
 
@@ -192,7 +202,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   var selectedIndexesSet : Set <Int> {
     var result = Set <Int> ()
     var idx = 0
-    for object in self.mModel?.propval ?? [] {
+    for object in self.objectArray {
       if self.selectedArray_property.propset.contains (object) {
         result.insert (idx)
       }
@@ -217,9 +227,13 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
 
    //····················································································································
 
-  var objectArray : [EBGraphicManagedObject] {
-    return self.mModel?.propval ?? []
-  }
+   var graphicObjectArray : [EBGraphicManagedObject] {
+     if let values = self.mModel?.propval {
+       return values
+     }else{
+       return []
+     }
+   }
 
   //····················································································································
   // MARK: -
@@ -239,7 +253,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
 
   private func computeSelectionShape () {
     var selectionDisplayArray = [EBShape] ()
-    for object in self.mModel?.propval ?? [] {
+    for object in self.objectArray {
       if !self.selectedArray_property.propset.contains (object) {
         selectionDisplayArray.append (EBShape ())
       }else if let shape = object.selectionDisplay {
@@ -285,7 +299,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
 
   func updateObjectDisplay () {
     var displayArray = [EBShape] ()
-    for object in self.mModel?.propval ?? [] {
+    for object in self.objectArray {
       if let shape = object.objectDisplay {
         displayArray.append (shape)
       }else{
@@ -303,7 +317,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
 
   func alignmentPointSetArray () -> [Set<CanariPoint>] {
     var result = [Set<CanariPoint>] ()
-    for object in self.mModel?.propval ?? [] {
+    for object in self.objectArray {
       result.append (object.alignmentPoints ().points)
     }
     return result
@@ -346,7 +360,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   func selectedObjectIndexSet () -> NSIndexSet {
-    let modelObjects = self.mModel?.propval ?? []
+    let modelObjects = self.objectArray
     let selectedObjects = self.selectedArray_property.propset
     let indexSet = NSMutableIndexSet ()
     for object in selectedObjects {
@@ -471,7 +485,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
 
   private func sortedIndexArrayOfSelectedObjects () -> [Int] {
     var result = [Int] ()
-    let objects = self.mModel?.propval ?? []
+    let objects = self.objectArray
     for object in self.selectedArray_property.propset {
       let idx = objects.firstIndex (of: object)!
       result.append (idx)
@@ -523,7 +537,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
       pb.declareTypes ([pasteboardType, .pdf], owner: self)
     //--- Build PDF representation
       let indexArray = self.sortedIndexArrayOfSelectedObjects ()
-      let objects = mModel?.propval ?? []
+      let objects = self.objectArray
       var shape = EBShape ()
       for idx in indexArray {
         let object = objects [idx]
@@ -583,7 +597,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
           newObjects.append (object)
         }
       }
-      var objects = self.mModel?.propval ?? []
+      var objects = self.objectArray
       objects += newObjects
       self.mModel?.setProp (objects)
       self.selectedSet = Set (newObjects)
@@ -635,7 +649,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   func selectAllObjects () {
-    let objects = self.mModel?.propval ?? []
+    let objects = self.objectArray
     self.selectedSet = Set (objects)
   }
 
@@ -649,7 +663,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   var canBringForward : Bool {
-    let objects = self.mModel?.propval ?? []
+    let objects = self.objectArray
     var result = (objects.count > 1) && (self.selectedArray_property.propset.count > 0)
     if result {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
@@ -661,7 +675,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   func bringForward () {
-    var objects = self.mModel?.propval ?? []
+    var objects = self.objectArray
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
     for idx in sortedIndexArray.reversed () {
        let object = objects [idx]
@@ -681,7 +695,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   var canBringToFront : Bool {
-    let objects = self.mModel?.propval ?? []
+    let objects = self.objectArray
     if (objects.count > 1) && (self.selectedArray_property.propset.count > 0) {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
       var top = objects.count - 1
@@ -698,7 +712,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   func bringToFront () {
-    var objects = self.mModel?.propval ?? []
+    var objects = self.objectArray
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
     for idx in sortedIndexArray {
       let object = objects [idx]
@@ -718,7 +732,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   var canSendBackward : Bool {
-    let objects = self.mModel?.propval ?? []
+    let objects = self.objectArray
     var result = (objects.count > 1) && (self.selectedArray_property.propset.count > 0)
     if result {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
@@ -730,7 +744,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   func sendBackward () {
-    var objects = self.mModel?.propval ?? []
+    var objects = self.objectArray
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
     for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
@@ -750,7 +764,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   func sendToBack () {
-    var objects = self.mModel?.propval ?? []
+    var objects = self.objectArray
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
     for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
@@ -763,7 +777,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   var canSendToBack : Bool {
-    let objects = self.mModel?.propval ?? []
+    let objects = self.objectArray
     if (objects.count > 1) && (self.selectedArray_property.propset.count > 0) {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
       var bottom = 0
@@ -914,7 +928,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   func addToSelection (objectsWithIndex inIndexes : [Int]) {
-    let objects = self.mModel?.propval ?? []
+    let objects = self.objectArray
     var newSelectedSet = self.selectedArray_property.propset
     for idx in inIndexes {
       let newSelectedObject = objects [idx]
@@ -926,7 +940,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   func removeFromSelection (objectWithIndex inIndex : Int) {
-    let objects = self.mModel?.propval ?? []
+    let objects = self.objectArray
     let object = objects [inIndex]
     var newSelectedSet = self.selectedArray_property.propset
     newSelectedSet.remove (object)
@@ -942,7 +956,7 @@ final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   func setSelection (objectsWithIndexes inIndexes : [Int]) {
-    let objects = self.mModel?.propval ?? []
+    let objects = self.objectArray
     var selectedObjects = [SymbolInstanceInDevice] ()
     for index in inIndexes {
       let newSelectedObject = objects [index]

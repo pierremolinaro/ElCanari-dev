@@ -235,7 +235,12 @@ final class MergerPadArray : EBObject {
         x += pad.y
         y += inModelWidth - pad.x
       }
-      let xmt : Int = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - x) : x)
+      let xmt : Int
+      if inHorizontalMirror {
+        xmt = canariUnitToMilTenth (inBoardWidth - x)
+      }else{
+        xmt = canariUnitToMilTenth (x)
+      }
       let ymt : Int = canariUnitToMilTenth (y)
       let widthTenthMil  : Int = canariUnitToMilTenth (pad.width)
       let heightTenthMil : Int = canariUnitToMilTenth (pad.height)

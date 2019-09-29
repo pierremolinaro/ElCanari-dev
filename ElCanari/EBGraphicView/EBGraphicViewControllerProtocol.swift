@@ -11,7 +11,7 @@ import Cocoa
 protocol EBGraphicViewControllerProtocol : class {
 
   var objectCount : Int { get }
-  var objectArray : [EBGraphicManagedObject] { get }
+  var graphicObjectArray : [EBGraphicManagedObject] { get }
 
   var ebUndoManager : EBUndoManager? { get }
 

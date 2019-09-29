@@ -1533,6 +1533,8 @@
 		CFB6AF581B43004500FC1B14 /* action-Preferences-checkLibraryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6AF571B43004500FC1B14 /* action-Preferences-checkLibraryAction.swift */; };
 		CFB79D9F22589C78003D530F /* ProjectDocument-customized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB79D9E22589C78003D530F /* ProjectDocument-customized.swift */; };
 		CFB79DA022589C78003D530F /* ProjectDocument-customized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB79D9E22589C78003D530F /* ProjectDocument-customized.swift */; };
+		CFB800A92340DBBA00BB3C87 /* ArrayDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB800A82340DBBA00BB3C87 /* ArrayDictionary.swift */; };
+		CFB800AA2340DBBA00BB3C87 /* ArrayDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB800A82340DBBA00BB3C87 /* ArrayDictionary.swift */; };
 		CFB8BADE214BBAB6006A1841 /* selectionController-FontRoot-mCharacterSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8BADD214BBAB6006A1841 /* selectionController-FontRoot-mCharacterSelection.swift */; };
 		CFB8E4571B4978FE00D4B8AD /* EBTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8E4561B4978FE00D4B8AD /* EBTextView.swift */; };
 		CFB9E20222D344EE00D681BF /* enum-TrackSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */; };
@@ -3082,6 +3084,7 @@
 		CFB6A6021BE29DB3005E10FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CFB6AF571B43004500FC1B14 /* action-Preferences-checkLibraryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-checkLibraryAction.swift"; sourceTree = "<group>"; };
 		CFB79D9E22589C78003D530F /* ProjectDocument-customized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-customized.swift"; sourceTree = "<group>"; };
+		CFB800A82340DBBA00BB3C87 /* ArrayDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayDictionary.swift; sourceTree = "<group>"; };
 		CFB8BADD214BBAB6006A1841 /* selectionController-FontRoot-mCharacterSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-FontRoot-mCharacterSelection.swift"; sourceTree = "<group>"; };
 		CFB8E4561B4978FE00D4B8AD /* EBTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBTextView.swift; sourceTree = "<group>"; };
 		CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-TrackSide.swift"; sourceTree = "<group>"; };
@@ -3988,6 +3991,7 @@
 		CF5CEFB81DD8C4E000A70419 /* utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CFB800A82340DBBA00BB3C87 /* ArrayDictionary.swift */,
 				CFBAB0B320DE786C00476FB7 /* canari-conversions.swift */,
 				CFE85A8B21A5C1C100991A66 /* CanariPoint.swift */,
 				CFE85A8E21A5C2EB00991A66 /* CanariRect.swift */,
@@ -6516,6 +6520,7 @@
 				CFEF3D2920F9F13E00DA6106 /* action-MergerDocument-showBoardHelpAction.swift in Sources */,
 				CF46523E2205CCE800E9E7E2 /* library-repository-perform-commit.swift in Sources */,
 				CF43A4792142F2FF00E2530F /* view-NewCharacterView.swift in Sources */,
+				CFB800A92340DBBA00BB3C87 /* ArrayDictionary.swift in Sources */,
 				CF7542D321B476F800F4CAA1 /* buildPDFimage.swift in Sources */,
 				CFE85A7521A5B37900991A66 /* transient-SymbolBezierCurve-objectDisplay.swift in Sources */,
 				CFA430A3229AEC41000AA8C8 /* toone-SymbolSolidOval.swift in Sources */,
@@ -7628,6 +7633,7 @@
 				CF2A8D1B22ABF11B0026CD16 /* ProjectDocument-schematic-move-selected.swift in Sources */,
 				CFE85A7621A5B37900991A66 /* transient-SymbolBezierCurve-objectDisplay.swift in Sources */,
 				CFE9B7E921A81533005990D1 /* transient-SymbolRoot-issues.swift in Sources */,
+				CFB800AA2340DBBA00BB3C87 /* ArrayDictionary.swift in Sources */,
 				CF22990622C770CB00AFD6F7 /* CanariDragSourceImageButton.swift in Sources */,
 				CF5C4DA0219F04D600EAC52A /* action-MergerDocument-insertBoardAction.swift in Sources */,
 				CF6B32F721C91FA100E3B985 /* transient-PackageDimension-objectDisplay.swift in Sources */,
@@ -7964,10 +7970,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LINKER_DISPLAYS_MANGLED_NAMES = YES;
 				OTHER_LDFLAGS = "";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_PNG_TEXT = YES;
+				STRIP_SWIFT_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ElCanari/application/canari-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -7995,12 +8004,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LINKER_DISPLAYS_MANGLED_NAMES = YES;
 				OTHER_LDFLAGS = "";
-				"OTHER_SWIFT_FLAGS[sdk=macosx10.14]" = "-Xfrontend -warn-long-function-bodies=250 -Xfrontend -warn-long-expression-type-checking=100";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_PNG_TEXT = YES;
+				STRIP_SWIFT_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ElCanari/application/canari-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

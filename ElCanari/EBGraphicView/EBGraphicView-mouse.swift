@@ -179,7 +179,7 @@ extension EBGraphicView {
                          objectIndex : Int,
                          _ inProposedTranslation: CanariPoint,
                          _ inLastMouseDraggedLocation : CanariPoint) {
-    let objects = self.viewController?.objectArray ?? []
+    let objects = self.viewController?.graphicObjectArray ?? []
     let p = objects [objectIndex].canMove (knob: knobIndex, xBy: inProposedTranslation.x, yBy: inProposedTranslation.y)
     if (p.x != 0) || (p.y != 0) {
       if !self.mPerformEndUndoGroupingOnMouseUp {
