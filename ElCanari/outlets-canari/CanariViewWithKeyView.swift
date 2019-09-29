@@ -32,21 +32,37 @@ class CanariViewWithKeyView : NSView, EBUserClassNameProtocol {
   // First responder
   //····················································································································
 
-  private weak var mSavedFirstResponder : NSResponder? = nil
+  private var mSavedFirstResponder : NSResponder? = nil
 
   //····················································································································
 
   func saveFirstResponder () {
     self.mSavedFirstResponder = self.window?.firstResponder
+    self.window?.makeFirstResponder (nil)
   }
 
   //····················································································································
 
   func restoreFirstResponder () {
-    if let savedFirstResponder = self.mSavedFirstResponder {
+    if let savedFirstResponder = self.mSavedFirstResponder as? NSView, savedFirstResponder.window == self.window {
+      // Swift.print ("Saved : \(savedFirstResponder)")
       _ = self.window?.makeFirstResponder (savedFirstResponder)
     }
   }
+
+  //····················································································································
+
+  func clearSavedFirstResponder () {
+    self.mSavedFirstResponder = nil
+  }
+
+  //····················································································································
+
+//  override func ebCleanUp () {
+//    // Swift.print ("ebCleanUp")
+//    self.mSavedFirstResponder = nil
+//    super.ebCleanUp ()
+//  }
 
   //····················································································································
 

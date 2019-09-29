@@ -847,7 +847,8 @@ document ProjectDocument root ProjectRoot {
   outlet EBDoubleField mComponentNameFontSizeField
     $value #componentInBoardSelectionController.mNameFontSize {sendContinously : no, autoFormatter : no}
   ;
-
+  outlet NSView mComponentNameDisplayParameterView $hidden !#componentInBoardSelectionController.mNameIsVisibleInBoard ;
+  
   outlet CanariAngleTextField mComponentNameRotationTextField $angle #componentInBoardSelectionController.mNameRotation ;
   outlet CanariAngleSlider mComponentNameRotationSlider $angle #componentInBoardSelectionController.mNameRotation ;
 
@@ -860,6 +861,7 @@ document ProjectDocument root ProjectRoot {
   outlet EBDoubleField mComponentValueFontSizeField
     $value #componentInBoardSelectionController.mValueFontSize {sendContinously : no, autoFormatter : no}
   ;
+  outlet NSView mComponentValueDisplayParameterView $hidden !#componentInBoardSelectionController.mValueIsVisibleInBoard ;
 
   outlet CanariAngleTextField mComponentValueRotationTextField $angle #componentInBoardSelectionController.mValueRotation ;
   outlet CanariAngleSlider mComponentValueRotationSlider $angle #componentInBoardSelectionController.mValueRotation ;

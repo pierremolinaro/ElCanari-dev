@@ -751,6 +751,7 @@ import Cocoa
   @IBOutlet var mComponentInBoardCenterYPopUp : EBPopUpButton? = nil
   @IBOutlet var mComponentInBoardCenterYTextField : CanariDimensionTextField? = nil
   @IBOutlet var mComponentInBoardInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet var mComponentNameDisplayParameterView : NSView? = nil
   @IBOutlet var mComponentNameFontSizeField : EBDoubleField? = nil
   @IBOutlet var mComponentNameRotationSlider : CanariAngleSlider? = nil
   @IBOutlet var mComponentNameRotationTextField : CanariAngleTextField? = nil
@@ -763,6 +764,7 @@ import Cocoa
   @IBOutlet var mComponentSymbolTypeNameTextField : EBTextObserverField? = nil
   @IBOutlet var mComponentSymbolValueTextField : EBTextField? = nil
   @IBOutlet var mComponentTableView : EBTableView? = nil
+  @IBOutlet var mComponentValueDisplayParameterView : NSView? = nil
   @IBOutlet var mComponentValueFontSizeField : EBDoubleField? = nil
   @IBOutlet var mComponentValueRotationSlider : CanariAngleSlider? = nil
   @IBOutlet var mComponentValueRotationTextField : CanariAngleTextField? = nil
@@ -1052,6 +1054,8 @@ import Cocoa
   var mController_mLimitCurveBezierControlPointsView_hidden : MultipleBindingController_hidden? = nil
   var mController_mFrontRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
   var mController_mBackRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
+  var mController_mComponentNameDisplayParameterView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mComponentValueDisplayParameterView_hidden : MultipleBindingController_hidden? = nil
   var mController_mRasnetNetNameSelectionPopUpButton_hidden : MultipleBindingController_hidden? = nil
   var mController_mRasnetComponentNameSelectionPopUpButton_hidden : MultipleBindingController_hidden? = nil
   var mController_mNoArtworkMessageTextField_hidden : MultipleBindingController_hidden? = nil
@@ -1291,6 +1295,7 @@ import Cocoa
     checkOutletConnection (self.mComponentInBoardCenterYPopUp, "mComponentInBoardCenterYPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mComponentInBoardCenterYTextField, "mComponentInBoardCenterYTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mComponentInBoardInspectorView, "mComponentInBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mComponentNameDisplayParameterView, "mComponentNameDisplayParameterView", NSView.self, #file, #line)
     checkOutletConnection (self.mComponentNameFontSizeField, "mComponentNameFontSizeField", EBDoubleField.self, #file, #line)
     checkOutletConnection (self.mComponentNameRotationSlider, "mComponentNameRotationSlider", CanariAngleSlider.self, #file, #line)
     checkOutletConnection (self.mComponentNameRotationTextField, "mComponentNameRotationTextField", CanariAngleTextField.self, #file, #line)
@@ -1303,6 +1308,7 @@ import Cocoa
     checkOutletConnection (self.mComponentSymbolTypeNameTextField, "mComponentSymbolTypeNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolValueTextField, "mComponentSymbolValueTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
+    checkOutletConnection (self.mComponentValueDisplayParameterView, "mComponentValueDisplayParameterView", NSView.self, #file, #line)
     checkOutletConnection (self.mComponentValueFontSizeField, "mComponentValueFontSizeField", EBDoubleField.self, #file, #line)
     checkOutletConnection (self.mComponentValueRotationSlider, "mComponentValueRotationSlider", CanariAngleSlider.self, #file, #line)
     checkOutletConnection (self.mComponentValueRotationTextField, "mComponentValueRotationTextField", CanariAngleTextField.self, #file, #line)
@@ -2696,6 +2702,26 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
+          return !self.componentInBoardSelectionController.mNameIsVisibleInBoard_property_selection
+        },
+        outlet: self.mComponentNameDisplayParameterView
+      )
+      self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.addEBObserver (controller)
+      self.mController_mComponentNameDisplayParameterView_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return !self.componentInBoardSelectionController.mValueIsVisibleInBoard_property_selection
+        },
+        outlet: self.mComponentValueDisplayParameterView
+      )
+      self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.addEBObserver (controller)
+      self.mController_mComponentValueDisplayParameterView_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
           return !self.rastnetDisplayOneNet_property_selection
         },
         outlet: self.mRasnetNetNameSelectionPopUpButton
@@ -3164,6 +3190,10 @@ import Cocoa
     self.mController_mFrontRestrictRectangleSwitch_enabled = nil
     self.restrictRectangleSelectionController.mIsInFrontLayer_property.removeEBObserver (self.mController_mBackRestrictRectangleSwitch_enabled!)
     self.mController_mBackRestrictRectangleSwitch_enabled = nil
+    self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentNameDisplayParameterView_hidden!)
+    self.mController_mComponentNameDisplayParameterView_hidden = nil
+    self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentValueDisplayParameterView_hidden!)
+    self.mController_mComponentValueDisplayParameterView_hidden = nil
     self.rastnetDisplayOneNet_property.removeEBObserver (self.mController_mRasnetNetNameSelectionPopUpButton_hidden!)
     self.mController_mRasnetNetNameSelectionPopUpButton_hidden = nil
     self.rastnetDisplayComponentNet_property.removeEBObserver (self.mController_mRasnetComponentNameSelectionPopUpButton_hidden!)
@@ -3413,6 +3443,7 @@ import Cocoa
     self.mComponentInBoardCenterYPopUp?.ebCleanUp ()
     self.mComponentInBoardCenterYTextField?.ebCleanUp ()
     self.mComponentInBoardInspectorView?.ebCleanUp ()
+    self.mComponentNameDisplayParameterView?.ebCleanUp ()
     self.mComponentNameFontSizeField?.ebCleanUp ()
     self.mComponentNameRotationSlider?.ebCleanUp ()
     self.mComponentNameRotationTextField?.ebCleanUp ()
@@ -3425,6 +3456,7 @@ import Cocoa
     self.mComponentSymbolTypeNameTextField?.ebCleanUp ()
     self.mComponentSymbolValueTextField?.ebCleanUp ()
     self.mComponentTableView?.ebCleanUp ()
+    self.mComponentValueDisplayParameterView?.ebCleanUp ()
     self.mComponentValueFontSizeField?.ebCleanUp ()
     self.mComponentValueRotationSlider?.ebCleanUp ()
     self.mComponentValueRotationTextField?.ebCleanUp ()
@@ -3802,6 +3834,7 @@ import Cocoa
     self.mComponentInBoardCenterYPopUp = nil
     self.mComponentInBoardCenterYTextField = nil
     self.mComponentInBoardInspectorView = nil
+    self.mComponentNameDisplayParameterView = nil
     self.mComponentNameFontSizeField = nil
     self.mComponentNameRotationSlider = nil
     self.mComponentNameRotationTextField = nil
@@ -3814,6 +3847,7 @@ import Cocoa
     self.mComponentSymbolTypeNameTextField = nil
     self.mComponentSymbolValueTextField = nil
     self.mComponentTableView = nil
+    self.mComponentValueDisplayParameterView = nil
     self.mComponentValueFontSizeField = nil
     self.mComponentValueRotationSlider = nil
     self.mComponentValueRotationTextField = nil
