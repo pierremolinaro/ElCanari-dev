@@ -255,7 +255,7 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
             if f.pathExtension == inFileExtension {
               let fullpath = baseDirectory + "/" + f
               let baseName = f.lastPathComponent.deletingPathExtension
-              let isDuplicated = (partCountDictionary [baseName] ?? 0) > 1
+              let isDuplicated : Bool = (partCountDictionary [baseName] ?? 0) > 1
               let pathAsArray = f.deletingPathExtension.components (separatedBy: "/")
               enterPart (&partArray, pathAsArray, fullpath, isDuplicated, inNames.contains (baseName), inBuildPreviewShapeFunction)
             }

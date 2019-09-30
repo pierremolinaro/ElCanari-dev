@@ -1562,13 +1562,8 @@ import Cocoa
    }
   
   //····················································································································
-  //    windowControllerDidLoadNib
-  //····················································································································
-
-  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-    super.windowControllerDidLoadNib (aController)
-  //--------------------------- Outlet checking
-    self.checkOutletConnections ()
+  
+  final private func configureProperties () {
   //--- Array controller property: netClassController
     self.netClassController.bind_model (self.rootObject.mNetClasses_property, self.ebUndoManager)
   //--- Array controller property: projectFontController
@@ -2063,11 +2058,18 @@ import Cocoa
       }
     }
     self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
+  }
+
+  //····················································································································
+  
+  final private func installBindings () {
+  //--------------------------- Install table view bindings
     self.componentController.bind_tableView (self.mComponentTableView, file: #file, line: #line)
     self.netClassController.bind_tableView (self.mNetClassTableView, file: #file, line: #line)
     self.projectFontController.bind_tableView (self.mFontLibraryTableView, file: #file, line: #line)
     self.projectDeviceController.bind_tableView (self.mDeviceLibraryTableView, file: #file, line: #line)
     self.mDataController.bind_tableView (self.mDataTableView, file: #file, line: #line)
+  //--------------------------- Install ebView bindings
     self.schematicObjectsController.bind_ebView (self.mSchematicsView)
     self.boardCurveObjectsController.bind_ebView (self.mBoardLimitsView)
     self.boardObjectsController.bind_ebView (self.mBoardView)
@@ -2792,7 +2794,12 @@ import Cocoa
       self.documentFilePathOk_property.addEBObserver (controller)
       self.mController_mIncorrectFileNameMessageView_hidden = controller
     }
-  //--------------------------- Set targets / actions
+  }
+
+  //····················································································································
+  
+  final private func setTargetsAndActions () {
+   //--------------------------- Set targets / actions
     self.mAddComponentButton?.target = self
     self.mAddComponentButton?.action = #selector (ProjectDocument.addComponentAction (_:))
     self.mDuplicateSelectedComponentsActionButton?.target = self
@@ -2853,6 +2860,18 @@ import Cocoa
     self.mArtworlImportButton?.action = #selector (ProjectDocument.importArtworkAction (_:))
     self.mGenerateProductFilesActionButton?.target = self
     self.mGenerateProductFilesActionButton?.action = #selector (ProjectDocument.generateProductFilesAction (_:))
+  }
+
+  //····················································································································
+  //    windowControllerDidLoadNib
+  //····················································································································
+
+  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
+    self.checkOutletConnections ()
+    self.configureProperties ()
+    self.installBindings ()
+    self.setTargetsAndActions ()
   //--------------------------- Read documentFilePath model 
     self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
@@ -2861,7 +2880,6 @@ import Cocoa
         return .empty
       }
     }
-
   }
 
   //····················································································································

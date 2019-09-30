@@ -585,10 +585,10 @@ fileprivate func polygon (_ inCenter : CanariPoint,
     return ProductPolygon (origin: p0, points: [p1, p2, p3])
   case .octo :
     let padSize = inPadSize.cocoaSize
-    let w = padSize.width / 2.0
-    let h = padSize.height / 2.0
+    let w : CGFloat = padSize.width / 2.0
+    let h : CGFloat = padSize.height / 2.0
     let p = inCenter.cocoaPoint
-    let lg = min (w, h) / (1.0 + 1.0 / sqrt (2.0))
+    let lg : CGFloat = min (w, h) / (1.0 + 1.0 / sqrt (2.0))
     let p0 = inAffineTransform.transform (NSPoint (x: p.x + w - lg, y: p.y + h))
     let p1 = inAffineTransform.transform (NSPoint (x: p.x + w,      y: p.y + h - lg))
     let p2 = inAffineTransform.transform (NSPoint (x: p.x + w,      y: p.y - h + lg))

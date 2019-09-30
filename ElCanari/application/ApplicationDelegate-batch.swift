@@ -59,13 +59,14 @@ extension ApplicationDelegate {
           let baseDirectory : String = op.urls [0].path
           let fm = FileManager ()
           let dc = NSDocumentController ()
-          let files = fm.subpaths (atPath: baseDirectory)
           var retainedFiles = [String] ()
-          for f in files ?? [] {
-            if f.first! != "." {
-              let fullPath = baseDirectory + "/" + f
-              if extensions.contains (fullPath.pathExtension) {
-                retainedFiles.append (fullPath)
+          if let files = fm.subpaths (atPath: baseDirectory) {
+            for f in files {
+              if f.first! != "." {
+                let fullPath = baseDirectory + "/" + f
+                if extensions.contains (fullPath.pathExtension) {
+                  retainedFiles.append (fullPath)
+                }
               }
             }
           }
@@ -131,13 +132,14 @@ extension ApplicationDelegate {
           let baseDirectory : String = op.urls [0].path
           let fm = FileManager ()
           let dc = NSDocumentController ()
-          let filesInCurrentDirectory = fm.subpaths (atPath: baseDirectory) ?? []
           var retainedFiles = [String] ()
-          for f in filesInCurrentDirectory {
-            if f.first! != "." { // No hidden file
-              let fullPath = baseDirectory + "/" + f
-              if fullPath.pathExtension == fileExtension {
-                retainedFiles.append (fullPath)
+          if let filesInCurrentDirectory = fm.subpaths (atPath: baseDirectory) {
+            for f in filesInCurrentDirectory {
+              if f.first! != "." { // No hidden file
+                let fullPath = baseDirectory + "/" + f
+                if fullPath.pathExtension == fileExtension {
+                  retainedFiles.append (fullPath)
+                }
               }
             }
           }
@@ -205,13 +207,14 @@ extension ApplicationDelegate {
           let baseDirectory : String = op.urls [0].path
           let fm = FileManager ()
           let dc = NSDocumentController ()
-          let subPathes = fm.subpaths (atPath: baseDirectory)
           var retainedFiles = [String] ()
-          for f in subPathes ?? [] {
-            if f.first! != "." {
-              let fullpath = baseDirectory + "/" + f
-              if fullpath.pathExtension == fileExtension {
-                retainedFiles.append (fullpath)
+          if let subPathes = fm.subpaths (atPath: baseDirectory) {
+            for f in subPathes {
+              if f.first! != "." {
+                let fullpath = baseDirectory + "/" + f
+                if fullpath.pathExtension == fileExtension {
+                  retainedFiles.append (fullpath)
+                }
               }
             }
           }

@@ -654,13 +654,8 @@ import Cocoa
    }
   
   //····················································································································
-  //    windowControllerDidLoadNib
-  //····················································································································
-
-  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-    super.windowControllerDidLoadNib (aController)
-  //--------------------------- Outlet checking
-    self.checkOutletConnections ()
+  
+  final private func configureProperties () {
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.bind_model (self.rootObject.packageObjects_property, self.ebUndoManager)
   //--- Selection controller property: mPackageBezierCurveSelectionController
@@ -747,6 +742,13 @@ import Cocoa
       }
     }
     self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
+  }
+
+  //····················································································································
+  
+  final private func installBindings () {
+  //--------------------------- Install table view bindings
+  //--------------------------- Install ebView bindings
     self.mPackageObjectsController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
@@ -992,7 +994,12 @@ import Cocoa
       self.rootObject.packagePads_property.count_property.addEBObserver (controller)
       self.mController_mAddSlavePadButton_enabled = controller
     }
-  //--------------------------- Set targets / actions
+  }
+
+  //····················································································································
+  
+  final private func setTargetsAndActions () {
+   //--------------------------- Set targets / actions
     self.mSetDimensionTextOriginAtMidX?.target = self
     self.mSetDimensionTextOriginAtMidX?.action = #selector (PackageDocument.setDimensionTextOriginAtMidXAction (_:))
     self.mSetDimensionTextOriginAtMidY?.target = self
@@ -1007,6 +1014,18 @@ import Cocoa
     self.mClearProgramErrorButton?.action = #selector (PackageDocument.clearProgramErrorAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (PackageDocument.resetVersionAction (_:))
+  }
+
+  //····················································································································
+  //    windowControllerDidLoadNib
+  //····················································································································
+
+  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
+    self.checkOutletConnections ()
+    self.configureProperties ()
+    self.installBindings ()
+    self.setTargetsAndActions ()
   //--------------------------- Read documentFilePath model 
     self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
@@ -1015,7 +1034,6 @@ import Cocoa
         return .empty
       }
     }
-
   }
 
   //····················································································································

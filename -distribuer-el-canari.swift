@@ -24,9 +24,9 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.13"
-let NOTES : [String] = ["First in Swift 5.1"]
-let BUGFIXES : [String] = []
+let VERSION_CANARI = "1.0.14"
+let NOTES : [String] = []
+let BUGFIXES : [String] = ["Fixed crash on ElCapitan"]
 let CHANGES : [String] = []
 let NEWS : [String] = []
 let BUILD_KIND = ProductKind.release

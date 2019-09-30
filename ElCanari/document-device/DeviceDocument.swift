@@ -478,13 +478,8 @@ import Cocoa
    }
   
   //····················································································································
-  //    windowControllerDidLoadNib
-  //····················································································································
-
-  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-    super.windowControllerDidLoadNib (aController)
-  //--------------------------- Outlet checking
-    self.checkOutletConnections ()
+  
+  final private func configureProperties () {
   //--- Array controller property: mPackageController
     self.mPackageController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
   //--- Array controller property: mDocumentationController
@@ -653,9 +648,16 @@ import Cocoa
       }
     }
     self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
+  }
+
+  //····················································································································
+  
+  final private func installBindings () {
+  //--------------------------- Install table view bindings
     self.mDocumentationController.bind_tableView (self.mDocumentationTableView, file: #file, line: #line)
     self.mSymbolController.bind_tableView (self.mSymbolTableView, file: #file, line: #line)
     self.mPackageController.bind_tableView (self.mPackageTableView, file: #file, line: #line)
+  //--------------------------- Install ebView bindings
     self.mSymbolDisplayController.bind_ebView (self.mComposedSymbolView)
     self.mPackageDisplayController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
@@ -953,7 +955,12 @@ import Cocoa
       self.hasAssignedPadProxies_property.addEBObserver (controller)
       self.mController_mUnbindAllButton_enabled = controller
     }
-  //--------------------------- Set targets / actions
+  }
+
+  //····················································································································
+  
+  final private func setTargetsAndActions () {
+   //--------------------------- Set targets / actions
     self.mPasteImageButton?.target = self
     self.mPasteImageButton?.action = #selector (DeviceDocument.pasteImageAction (_:))
     self.mCopyImageButton?.target = self
@@ -1000,6 +1007,18 @@ import Cocoa
     self.mUnbindAllButton?.action = #selector (DeviceDocument.performUnbindAllAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (DeviceDocument.resetVersionAction (_:))
+  }
+
+  //····················································································································
+  //    windowControllerDidLoadNib
+  //····················································································································
+
+  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
+    self.checkOutletConnections ()
+    self.configureProperties ()
+    self.installBindings ()
+    self.setTargetsAndActions ()
   //--------------------------- Read documentFilePath model 
     self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
@@ -1008,7 +1027,6 @@ import Cocoa
         return .empty
       }
     }
-
   }
 
   //····················································································································

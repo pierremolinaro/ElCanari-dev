@@ -291,13 +291,8 @@ import Cocoa
    }
   
   //····················································································································
-  //    windowControllerDidLoadNib
-  //····················································································································
-
-  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-    super.windowControllerDidLoadNib (aController)
-  //--------------------------- Outlet checking
-    self.checkOutletConnections ()
+  
+  final private func configureProperties () {
   //--- Array controller property: mDataController
     self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
   //--- Selection controller property: mDataSelection
@@ -372,7 +367,14 @@ import Cocoa
     }
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusMessage_property)
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusMessage_property)
+  }
+
+  //····················································································································
+  
+  final private func installBindings () {
+  //--------------------------- Install table view bindings
     self.mDataController.bind_tableView (self.mDataTableView, file: #file, line: #line)
+  //--------------------------- Install ebView bindings
   //--------------------------- Install regular bindings
     self.mSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab_property, file: #file, line: #line)
     self.mMinPPTPTTTWinEBUnitPopUp?.bind_selectedTag (self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
@@ -437,13 +439,30 @@ import Cocoa
       self.mDataSelection.drawPadHolesInPDF_property.addEBObserver (controller)
       self.mController_mPadHoleDefinitionView_hidden = controller
     }
-  //--------------------------- Set targets / actions
+  }
+
+  //····················································································································
+  
+  final private func setTargetsAndActions () {
+   //--------------------------- Set targets / actions
     self.mAddGenerationFileButton?.target = mDataController
     self.mAddGenerationFileButton?.action = #selector (Controller_ArtworkDocument_mDataController.add (_:))
     self.mRemoveGenerationFileButton?.target = mDataController
     self.mRemoveGenerationFileButton?.action = #selector (Controller_ArtworkDocument_mDataController.remove (_:))
     self.resetVersionAndSignatureButton?.target = self
     self.resetVersionAndSignatureButton?.action = #selector (ArtworkDocument.resetVersionAndSignatureAction (_:))
+  }
+
+  //····················································································································
+  //    windowControllerDidLoadNib
+  //····················································································································
+
+  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
+    self.checkOutletConnections ()
+    self.configureProperties ()
+    self.installBindings ()
+    self.setTargetsAndActions ()
   //--------------------------- Read documentFilePath model 
     self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
@@ -452,7 +471,6 @@ import Cocoa
         return .empty
       }
     }
-
   }
 
   //····················································································································

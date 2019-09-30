@@ -141,7 +141,11 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
   //····················································································································
 
   var objectCount : Int {
-    return self.mModel?.propval.count ?? 0
+    if let n = self.mModel?.propval.count {
+      return n
+    }else{
+      return 0
+    }
   }
 
   //····················································································································
@@ -915,14 +919,15 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
   //····················································································································
 
   func addToSelection (objects inObjects : [PackageInDevice]) {
-    let objectSet = self.mModel?.propset ?? Set ()
-    var newSelectedSet = self.selectedArray_property.propset
-    for object in inObjects {
-      if objectSet.contains (object) {
-        newSelectedSet.insert (object)
+    if let objectSet = self.mModel?.propset {
+      var newSelectedSet = self.selectedArray_property.propset
+      for object in inObjects {
+        if objectSet.contains (object) {
+          newSelectedSet.insert (object)
+        }
       }
+      self.selectedSet = newSelectedSet
     }
-    self.selectedSet = newSelectedSet
   }
 
   //····················································································································

@@ -323,13 +323,8 @@ import Cocoa
    }
   
   //····················································································································
-  //    windowControllerDidLoadNib
-  //····················································································································
-
-  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-    super.windowControllerDidLoadNib (aController)
-  //--------------------------- Outlet checking
-    self.checkOutletConnections ()
+  
+  final private func configureProperties () {
   //--- Array controller property: mSelectedCharacterController
     self.mSelectedCharacterController.bind_model (self.rootObject.characters_property, self.ebUndoManager)
   //--- Selection controller property: mCharacterSelection
@@ -444,6 +439,13 @@ import Cocoa
       }
     }
     self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
+  }
+
+  //····················································································································
+  
+  final private func installBindings () {
+  //--------------------------- Install table view bindings
+  //--------------------------- Install ebView bindings
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab_property, file: #file, line: #line)
     self.mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
@@ -502,7 +504,12 @@ import Cocoa
       self.noIssue_property.addEBObserver (controller)
       self.mController_mIssueTableView_hidden = controller
     }
-  //--------------------------- Set targets / actions
+  }
+
+  //····················································································································
+  
+  final private func setTargetsAndActions () {
+   //--------------------------- Set targets / actions
     self.mAddCharacterButton?.target = self
     self.mAddCharacterButton?.action = #selector (FontDocument.addCharacterAction (_:))
     self.mDeleteCurrentCharacterButton?.target = self
@@ -511,6 +518,18 @@ import Cocoa
     self.mAddSegmentButton?.action = #selector (FontDocument.addSegmentAction (_:))
     self.resetVersionAndSignatureButton?.target = self
     self.resetVersionAndSignatureButton?.action = #selector (FontDocument.resetVersionAndSignatureAction (_:))
+  }
+
+  //····················································································································
+  //    windowControllerDidLoadNib
+  //····················································································································
+
+  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
+    self.checkOutletConnections ()
+    self.configureProperties ()
+    self.installBindings ()
+    self.setTargetsAndActions ()
   //--------------------------- Read documentFilePath model 
     self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
@@ -519,7 +538,6 @@ import Cocoa
         return .empty
       }
     }
-
   }
 
   //····················································································································

@@ -65,7 +65,11 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   //····················································································································
 
   var objectCount : Int {
-    return self.mModel?.propval.count ?? 0
+    if let n = self.mModel?.propval.count {
+      return n
+    }else{
+      return 0
+    }
   }
 
   //····················································································································

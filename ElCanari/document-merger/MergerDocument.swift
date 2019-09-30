@@ -610,13 +610,8 @@ import Cocoa
    }
   
   //····················································································································
-  //    windowControllerDidLoadNib
-  //····················································································································
-
-  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-    super.windowControllerDidLoadNib (aController)
-  //--------------------------- Outlet checking
-    self.checkOutletConnections ()
+  
+  final private func configureProperties () {
   //--- Array controller property: mBoardModelController
     self.mBoardModelController.bind_model (self.rootObject.boardModels_property, self.ebUndoManager)
   //--- Selection controller property: mBoardModelSelection
@@ -787,7 +782,14 @@ import Cocoa
       }
     }
     self.documentFilePath_property.addEBObserver (self.documentFileNameOk_property)
+  }
+
+  //····················································································································
+  
+  final private func installBindings () {
+  //--------------------------- Install table view bindings
     self.mBoardModelController.bind_tableView (self.mBoardModelTableView, file: #file, line: #line)
+  //--------------------------- Install ebView bindings
     self.mBoardInstanceController.bind_ebView (self.mComposedBoardView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
@@ -1082,7 +1084,12 @@ import Cocoa
       self.rootObject.artwork_none.addEBObserver (controller)
       self.mController_mLogTextView_hidden = controller
     }
-  //--------------------------- Set targets / actions
+  }
+
+  //····················································································································
+  
+  final private func setTargetsAndActions () {
+   //--------------------------- Set targets / actions
     self.showPrefsForSettingMergerDisplayButton?.target = self
     self.showPrefsForSettingMergerDisplayButton?.action = #selector (MergerDocument.showPrefsForSettingMergerDisplayAction (_:))
     self.dismissPrefsForSettingMergerDisplayButton?.target = self
@@ -1107,6 +1114,18 @@ import Cocoa
     self.mGenerateProductFilesActionButton?.action = #selector (MergerDocument.generateProductFilesAction (_:))
     self.mImportArtworkButton?.target = self
     self.mImportArtworkButton?.action = #selector (MergerDocument.importArtworkAction (_:))
+  }
+
+  //····················································································································
+  //    windowControllerDidLoadNib
+  //····················································································································
+
+  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
+    self.checkOutletConnections ()
+    self.configureProperties ()
+    self.installBindings ()
+    self.setTargetsAndActions ()
   //--------------------------- Read documentFilePath model 
     self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
@@ -1115,7 +1134,6 @@ import Cocoa
         return .empty
       }
     }
-
   }
 
   //····················································································································
