@@ -126,6 +126,36 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
+  //--- Remove tracks with missing connectors
+    var trackWithMissingConnectorCount = 0
+    for object in self.rootObject.mBoardObjects {
+      if let track = object as? BoardTrack {
+        var suppress = false
+        if track.mConnectorP1 == nil {
+          Swift.print ("track \(track) without mConnectorP1")
+          suppress = true
+        }
+        if track.mConnectorP2 == nil {
+          Swift.print ("track \(track) without mConnectorP2")
+          suppress = true
+        }
+        if suppress {
+          trackWithMissingConnectorCount += 1
+          track.mConnectorP1 = nil
+          track.mConnectorP2 = nil
+          track.mNet = nil
+          track.mRoot = nil
+        }
+      }
+    }
+    if trackWithMissingConnectorCount > 0 {
+      let alert = NSAlert ()
+      alert.messageText = (trackWithMissingConnectorCount == 1)
+        ? "1 invalid track has been removed."
+        : "\(trackWithMissingConnectorCount) invalid tracks have been removed."
+      alert.informativeText = "Canari does not export properly board tracks to ElCanari, and some of them are invalid, and crash ERC. Theses tracks have been removed."
+      DispatchQueue.main.async { alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil) }
+    }
   //---
     self.mSelectComponentsMenuItem?.set (project: self)
     self.mSelectNetsMenuItem?.set (project: self)

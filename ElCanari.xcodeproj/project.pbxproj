@@ -1554,8 +1554,8 @@
 		CFBCE78322D3ACA300DC3505 /* extension-BoardTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE77C22D3ACA300DC3505 /* extension-BoardTrack.swift */; };
 		CFBCE78422D3ACA300DC3505 /* extension-BoardLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE77D22D3ACA300DC3505 /* extension-BoardLine.swift */; };
 		CFBCE78522D3ACA300DC3505 /* extension-BoardLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE77D22D3ACA300DC3505 /* extension-BoardLine.swift */; };
-		CFBCE78622D3ACA300DC3505 /* ProjectDocument-customized-connectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE77E22D3ACA300DC3505 /* ProjectDocument-customized-connectors.swift */; };
-		CFBCE78722D3ACA300DC3505 /* ProjectDocument-customized-connectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE77E22D3ACA300DC3505 /* ProjectDocument-customized-connectors.swift */; };
+		CFBCE78622D3ACA300DC3505 /* ProjectRoot-customized-connectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE77E22D3ACA300DC3505 /* ProjectRoot-customized-connectors.swift */; };
+		CFBCE78722D3ACA300DC3505 /* ProjectRoot-customized-connectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE77E22D3ACA300DC3505 /* ProjectRoot-customized-connectors.swift */; };
 		CFBCE78822D3ACA300DC3505 /* extension-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE77F22D3ACA300DC3505 /* extension-BoardText.swift */; };
 		CFBCE78922D3ACA300DC3505 /* extension-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE77F22D3ACA300DC3505 /* extension-BoardText.swift */; };
 		CFBCE79222D3ACC000DC3505 /* ProjectDocument-customized-wires.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE78A22D3ACBD00DC3505 /* ProjectDocument-customized-wires.swift */; };
@@ -3100,7 +3100,7 @@
 		CFBCE77B22D3ACA300DC3505 /* extension-BorderCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-BorderCurve.swift"; sourceTree = "<group>"; };
 		CFBCE77C22D3ACA300DC3505 /* extension-BoardTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-BoardTrack.swift"; sourceTree = "<group>"; };
 		CFBCE77D22D3ACA300DC3505 /* extension-BoardLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-BoardLine.swift"; sourceTree = "<group>"; };
-		CFBCE77E22D3ACA300DC3505 /* ProjectDocument-customized-connectors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-customized-connectors.swift"; sourceTree = "<group>"; };
+		CFBCE77E22D3ACA300DC3505 /* ProjectRoot-customized-connectors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProjectRoot-customized-connectors.swift"; sourceTree = "<group>"; };
 		CFBCE77F22D3ACA300DC3505 /* extension-BoardText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-BoardText.swift"; sourceTree = "<group>"; };
 		CFBCE78A22D3ACBD00DC3505 /* ProjectDocument-customized-wires.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-customized-wires.swift"; sourceTree = "<group>"; };
 		CFBCE78B22D3ACBE00DC3505 /* extension-ComponentSymbolInProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ComponentSymbolInProject.swift"; sourceTree = "<group>"; };
@@ -5241,7 +5241,7 @@
 				CFFBEEC422A55881001BF689 /* ProjectDocument-board-limits-contextual-click.swift */,
 				CFAA044722F1BA3300030A0C /* ProjectDocument-build-product-data.swift */,
 				CFC692602343433300CD448E /* ProjectDocument-change-component-package.swift */,
-				CFBCE77E22D3ACA300DC3505 /* ProjectDocument-customized-connectors.swift */,
+				CFBCE77E22D3ACA300DC3505 /* ProjectRoot-customized-connectors.swift */,
 				CF3414D922DFBDE800D0CEB6 /* ProjectDocument-erc.swift */,
 				CFD5C41F22F317D600E3DF0D /* ProjectDocument-generate-board-archive.swift */,
 				CF049BDB22E50180000B4845 /* ProjectDocument-generate-dsn.swift */,
@@ -6229,7 +6229,7 @@
 				CFA16304222821C400C07267 /* action-DeviceDocument-showDocAction.swift in Sources */,
 				CF968AEE21BBD2C10010175E /* EBGraphicView-binding-arrowKeyMagnitude.swift in Sources */,
 				CFEAAD672231807B00F69A12 /* controller-table-view-DeviceDocument-mSymbolController.swift in Sources */,
-				CFBCE78622D3ACA300DC3505 /* ProjectDocument-customized-connectors.swift in Sources */,
+				CFBCE78622D3ACA300DC3505 /* ProjectRoot-customized-connectors.swift in Sources */,
 				CF9D4B38227F796C006E2035 /* action-ProjectDocument-addNetClassAction.swift in Sources */,
 				CF7C5A5D1B46F6BF00213EA8 /* selectionController-ArtworkDocument-mDataSelection.swift in Sources */,
 				CFEB7AF0233A247F0060A97A /* transient-BoardRestrictRectangle-selectionDisplay.swift in Sources */,
@@ -7704,7 +7704,7 @@
 				CFA42F9A229AEACF000AA8C8 /* toone-SymbolPinTypeInDevice.swift in Sources */,
 				CFA4300C229AEB68000AA8C8 /* toone-PackageDimension.swift in Sources */,
 				CF5C4DA9219F04D600EAC52A /* transient-FontRoot-sampleStringBezierPath.swift in Sources */,
-				CFBCE78722D3ACA300DC3505 /* ProjectDocument-customized-connectors.swift in Sources */,
+				CFBCE78722D3ACA300DC3505 /* ProjectRoot-customized-connectors.swift in Sources */,
 				CFBCE7A122D3ACC000DC3505 /* extension-PointlInSchematic.swift in Sources */,
 				CF8A118321B1C72300A8030C /* ApplicationDelegate-batch.swift in Sources */,
 				CFB1DB202282D31F005F9811 /* entity-NetClassInProject.swift in Sources */,
