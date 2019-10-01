@@ -362,6 +362,7 @@ struct MasterPadDescriptor : Hashable {
     }
     switch self.style {
     case .traversing :
+      ioShape.add (filled: [bp], nil) // Append a transparent layer, but that intercepts clicks
       let holeSize = self.holeSize.cocoaSize
       let rHole = NSRect (x: center.x - holeSize.width / 2.0, y: center.y - holeSize.height / 2.0, width: holeSize.width, height: holeSize.height)
       bp.appendOblong (in: rHole)

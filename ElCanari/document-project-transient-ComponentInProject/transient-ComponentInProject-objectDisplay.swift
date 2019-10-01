@@ -77,8 +77,8 @@ func transient_ComponentInProject_objectDisplay (
           padNumberAffineTransform.scale (x: -1.0, y: 1.0)
         }
         padNumberAffineTransform.rotate (byDegrees: -CGFloat (self_mRotation) / 1000.0)
-        for (_, descriptor) in self_packagePadDictionary {
-          descriptor.accumulatePadBezierPathes (
+        for (_, padDescriptor) in self_packagePadDictionary {
+          padDescriptor.accumulatePadBezierPathes (
             into: &rotatedShape,
             side: self_mSide,
             padDisplayAttributes: padDisplayAttributes,
