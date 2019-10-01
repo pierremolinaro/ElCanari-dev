@@ -5241,7 +5241,6 @@
 				CFFBEEC422A55881001BF689 /* ProjectDocument-board-limits-contextual-click.swift */,
 				CFAA044722F1BA3300030A0C /* ProjectDocument-build-product-data.swift */,
 				CFC692602343433300CD448E /* ProjectDocument-change-component-package.swift */,
-				CFBCE77E22D3ACA300DC3505 /* ProjectRoot-customized-connectors.swift */,
 				CF3414D922DFBDE800D0CEB6 /* ProjectDocument-erc.swift */,
 				CFD5C41F22F317D600E3DF0D /* ProjectDocument-generate-board-archive.swift */,
 				CF049BDB22E50180000B4845 /* ProjectDocument-generate-dsn.swift */,
@@ -5250,6 +5249,7 @@
 				CFAA053422F1DF2D00030A0C /* ProjectDocument-generate-product-pdf-files.swift */,
 				CF94213C22E8C7980043D7DD /* ProjectDocument-import-ses.swift */,
 				CFB1BAD72304954C00D32F36 /* ProjectDocument-rename-device.swift */,
+				CFBCE77E22D3ACA300DC3505 /* ProjectRoot-customized-connectors.swift */,
 			);
 			name = "document — project — board";
 			path = "ElCanari/document-project-board";

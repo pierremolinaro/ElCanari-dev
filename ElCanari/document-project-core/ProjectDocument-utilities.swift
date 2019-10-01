@@ -134,6 +134,7 @@ struct NetInfo : Hashable {
 
 struct NetInfoPoint : Hashable {
   let pin : String?
+  let locationString : String
   let labels : StringArray
   let wires : Set <Int>
 }

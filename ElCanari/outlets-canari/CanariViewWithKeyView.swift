@@ -52,17 +52,17 @@ class CanariViewWithKeyView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func clearSavedFirstResponder () {
-    self.mSavedFirstResponder = nil
-  }
+//  func clearSavedFirstResponder () {
+//    self.mSavedFirstResponder = nil
+//  }
 
   //····················································································································
 
-//  override func ebCleanUp () {
-//    // Swift.print ("ebCleanUp")
-//    self.mSavedFirstResponder = nil
-//    super.ebCleanUp ()
-//  }
+  override func ebCleanUp () {
+    // Swift.print ("ebCleanUp")
+    self.mSavedFirstResponder = nil
+    super.ebCleanUp ()
+  }
 
   //····················································································································
 

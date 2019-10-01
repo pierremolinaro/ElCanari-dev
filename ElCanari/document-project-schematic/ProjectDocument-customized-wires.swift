@@ -19,6 +19,13 @@ extension CustomizedProjectDocument {
   internal func removeUnusedWires (_ ioErrorList : inout [String]) {
     for object in self.rootObject.mSelectedSheet!.mObjects {
       if let wire = object as? WireInSchematic {
+        if let p1 = wire.mP1, p1.mSheet == nil {
+          wire.mP1 = nil
+          wire.mP2 = nil
+        }else if let p2 = wire.mP2, p2.mSheet == nil {
+          wire.mP1 = nil
+          wire.mP2 = nil
+        }
         if (wire.mP1 == nil) && (wire.mP2 == nil) { // Useless wire, delete
           wire.mSheet = nil
         }else if (wire.mP1 == nil) != (wire.mP2 == nil) { // Invalid wire

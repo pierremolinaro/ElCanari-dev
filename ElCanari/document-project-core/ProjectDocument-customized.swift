@@ -156,6 +156,8 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
       alert.informativeText = "Canari does not export properly board tracks to ElCanari, and some of them are invalid, and crash ERC. Theses tracks have been removed."
       DispatchQueue.main.async { alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil) }
     }
+    // self.updateBoardConnectors ()
+  //  self.updateSchematicsPointsAndNets ()
   //---
     self.mSelectComponentsMenuItem?.set (project: self)
     self.mSelectNetsMenuItem?.set (project: self)
@@ -354,9 +356,6 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
 
     self.mERCIssueTableView?.register (issueDisplayView: self.mBoardView)
     self.mERCIssueTableView?.register (hideIssueButton: self.mHideERCIssueButton)
-
-    // self.updateBoardConnectors ()
-  //  self.updateSchematicsPointsAndNets ()
   }
 
   //····················································································································
@@ -374,7 +373,6 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     self.mBoardView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
     self.schematicObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
     self.boardObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
-//    self.mBoardView?.mObjectsDidChangeCallBack = nil  // Required for breaking strong reference cycle
   //--- Pop up button controllers
     self.mSelectedWireNetClassPopUpController.unbind_model ()
     self.mSelectedWireNetClassPopUpController.attachPopUpButton (nil)

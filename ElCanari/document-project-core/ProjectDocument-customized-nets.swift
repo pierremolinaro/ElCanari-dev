@@ -50,6 +50,7 @@ extension CustomizedProjectDocument {
      for net in netSet {
        net.mNetName = self.rootObject.findUniqueNetName ()
      }
+     self.updateSchematicsPointsAndNets ()
   }
 
   //····················································································································
@@ -58,6 +59,7 @@ extension CustomizedProjectDocument {
     let selectedWires = self.wireInSchematicSelectionController.selectedArray
     if selectedWires.count == 1, let point = selectedWires [0].mP1 {
       self.dialogForMergingSubnetFrom (point: point)
+      self.updateSchematicsPointsAndNets ()
     }
   }
 
@@ -69,6 +71,7 @@ extension CustomizedProjectDocument {
       let newNet = self.rootObject.createNetWithAutomaticName ()
       point.mNet = newNet
       point.propagateNetToAccessiblePointsThroughtWires ()
+      self.updateSchematicsPointsAndNets ()
     }
   }
 
@@ -80,6 +83,7 @@ extension CustomizedProjectDocument {
      let selectedLabels = self.schematicLabelSelectionController.selectedArray
      if selectedLabels.count == 1, let net = selectedLabels [0].mPoint?.mNet {
        self.dialogForRenaming (net: net)
+       self.updateSchematicsPointsAndNets ()
      }
   }
 
@@ -95,6 +99,7 @@ extension CustomizedProjectDocument {
      for net in netSet {
        net.mNetName = self.rootObject.findUniqueNetName ()
      }
+    self.updateSchematicsPointsAndNets ()
   }
 
   //····················································································································
@@ -105,6 +110,7 @@ extension CustomizedProjectDocument {
       let label = selectedLabels [0]
       let point = label.mPoint!
       self.dialogForMergingSubnetFrom (point: point)
+      self.updateSchematicsPointsAndNets ()
     }
   }
 
@@ -118,6 +124,7 @@ extension CustomizedProjectDocument {
       let newNet = self.rootObject.createNetWithAutomaticName ()
       point.mNet = newNet
       point.propagateNetToAccessiblePointsThroughtWires ()
+      self.updateSchematicsPointsAndNets ()
     }
   }
 
@@ -128,7 +135,25 @@ extension CustomizedProjectDocument {
   internal func removeUnusedNets () {
     for netClass in self.rootObject.mNetClasses {
       for net in netClass.mNets {
-        if net.mPoints.count == 0 {
+        var suppressNet = true
+        for point in net.mPoints {
+          if point.mSheet != nil {
+            suppressNet = false
+          }else{ // Suppress point
+            point.mNet = nil
+            point.mWiresP1s = []
+            point.mWiresP2s = []
+          }
+        }
+        for tracks in net.mTracks {
+          if tracks.mRoot != nil {
+            suppressNet = false
+            break
+          }
+        }
+        if suppressNet {
+          net.mPoints = []
+          net.mTracks = []
           net.mNetClass = nil
         }
       }

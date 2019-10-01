@@ -31,7 +31,7 @@ func transient_PointInSchematic_netInfoForPoint (
           wireIndexSet.insert (wire.ebObjectIndex)
         }
       //--- Location in sheet
-        var locationInSheetString = ""
+        var locationInSheetString : String
         if let sheetDescriptor = self_mSheet_sheetDescriptor {
           let gutterWidth = cocoaToCanariUnit (SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT)
           let gutterHeight = cocoaToCanariUnit (SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT)
@@ -44,6 +44,8 @@ func transient_PointInSchematic_netInfoForPoint (
             line = (self_location.y - gutterHeight) * sheetDescriptor.verticalDivisions / sheetDescriptor.size.height
           }
           locationInSheetString = "\(sheetDescriptor.sheetIndex)\(UnicodeScalar (0x41 + column)!)\(line)"
+        }else{
+          locationInSheetString = "(no sheet)"
         }
       //--- Labels
         var labelArray = StringArray ()
@@ -54,7 +56,7 @@ func transient_PointInSchematic_netInfoForPoint (
         if self_mSymbolPinName != "" {
           pin = locationInSheetString + ":" + self_mSymbolPinName
         }
-        return NetInfoPoint (pin: pin, labels: labelArray, wires: wireIndexSet)
+        return NetInfoPoint (pin: pin, locationString: locationInSheetString, labels: labelArray, wires: wireIndexSet)
 //--- END OF USER ZONE 2
 }
 

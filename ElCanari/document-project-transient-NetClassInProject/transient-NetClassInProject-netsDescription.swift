@@ -21,7 +21,7 @@ fileprivate func computeSubnets (_ inPointArray : NetInfoPointArray) -> (StatusS
   var unExploredPointSet = Set (inPointArray)
   while let aPoint = unExploredPointSet.first {
     unExploredPointSet.removeFirst ()
-    var currentPointSet = Set <NetInfoPoint> ([aPoint])
+    var currentPointSet = Set < NetInfoPoint > ([aPoint])
     var exploreArray = [aPoint]
     var exploreWireSet = Set <Int> ()
     while let p = exploreArray.last {
@@ -40,7 +40,6 @@ fileprivate func computeSubnets (_ inPointArray : NetInfoPointArray) -> (StatusS
           }
         }
       }
-
     }
   //--- Build subnet description string
     var pinArray = [String] ()
@@ -73,23 +72,30 @@ fileprivate func computeSubnets (_ inPointArray : NetInfoPointArray) -> (StatusS
       subnetDescription += "\(labelArray.count) labels: "
     }
     subnetDescription += labelArray.joined (separator: ", ")
+    if (pinArray.count == 0) && (labelArray.count == 0) {
+      subnetDescription += ", at"
+      for p in currentPointSet {
+        subnetDescription += " "
+        subnetDescription += p.locationString
+      }
+    }
     subnetDescriptionStrings.append ((labelArray.count > 0, subnetDescription))
   }
 //--- Several subnets ?
-  var harWarning = false
+  var hasWarning = false
   var statusStringArray = [StatusString] ()
   if subnetDescriptionStrings.count == 1 {
     statusStringArray.append (StatusString (status: .ok, string: subnetDescriptionStrings [0].1))
   }else if subnetDescriptionStrings.count > 1 {
     for (severalLabels, descriptionString) in subnetDescriptionStrings {
       if !severalLabels {
-        harWarning = true
+        hasWarning = true
       }
       statusStringArray.append (StatusString (status: severalLabels ? .ok : .warning, string: descriptionString))
     }
   }
 //---
-  return (statusStringArray, harWarning)
+  return (statusStringArray, hasWarning)
 }
 
 //--- END OF USER ZONE 1
@@ -115,7 +121,7 @@ func transient_NetClassInProject_netsDescription (
           var pinCount = 0
           var labelCount = 0
           for point in netPointInfo {
-           labelCount += point.labels.count
+            labelCount += point.labels.count
             if point.pin != nil {
               pinCount += 1
             }
