@@ -14,54 +14,7 @@ import Cocoa
 extension ProjectDocument {
   @objc func changePackageOfSelectedComponentsAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-         var possiblePackages = StringArray ()
-         var componentNames = [String] ()
-         var currentSelectedPackageSet = Set <String> ()
-         let selectedComponents = self.componentController.selectedArray_property.propval
-         if selectedComponents.count > 0 {
-           var intersectionOfPackageSet = Set (selectedComponents [0].availablePackages!)
-           for component in selectedComponents {
-             componentNames.append (component.componentName!)
-             currentSelectedPackageSet.insert (component.mSelectedPackage!.mPackageName)
-             if let availablePackages = component.availablePackages {
-               intersectionOfPackageSet.formIntersection (availablePackages)
-             }
-           }
-           possiblePackages = Array (intersectionOfPackageSet)
-         }
-         componentNames.sort ()
-      //---
-         if possiblePackages.count > 0, let window = self.windowForSheet, let panel = self.mChangePackagePanel {
-           self.mChangePackagePopUpButton?.removeAllItems ()
-           self.mChangePackageComponentListTextField?.stringValue = componentNames.joined (separator: ", ")
-           var itemToSelect : NSMenuItem? = nil
-           let stringAttributes : [NSAttributedString.Key : Any] = [
-             NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: 0.0)
-           ]
-           for packageName in possiblePackages.sorted () {
-             self.mChangePackagePopUpButton?.addItem (withTitle: packageName)
-             if let item = self.mChangePackagePopUpButton?.lastItem, currentSelectedPackageSet.contains (packageName) {
-               item.attributedTitle = NSAttributedString (string: packageName, attributes: stringAttributes)
-               itemToSelect = item
-             }
-           }
-           self.mChangePackagePopUpButton?.select (itemToSelect)
-           window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
-             if inResponse == .stop, let newPackageName = self.mChangePackagePopUpButton?.titleOfSelectedItem {
-               for component in selectedComponents {
-                 var newPossiblePackage : DevicePackageInProject? = nil
-                 for candidatePackage in component.mDevice?.mPackages ?? [] {
-                   if candidatePackage.mPackageName == newPackageName {
-                     newPossiblePackage = candidatePackage
-                   }
-                 }
-                 if let newPackage = newPossiblePackage {
-                   component.mSelectedPackage = newPackage
-                 }
-               }
-             }
-           }
-         }
+         self.changePackageOfSelectedComponents ()
 //--- END OF USER ZONE 2
   }
 }

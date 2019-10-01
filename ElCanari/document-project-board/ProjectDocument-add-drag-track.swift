@@ -18,8 +18,8 @@ extension CustomizedProjectDocument {
     let p1 = inDraggingLocationInDestinationView.canariPoint
     let side : TrackSide = ((self.mInsertedTrackSidePopUpButton?.indexOfSelectedItem ?? 0) == 0) ? .front : .back
     let p2 = CanariPoint (x: p1.x + TRACK_INITIAL_SIZE_CANARI_UNIT, y: p1.y + TRACK_INITIAL_SIZE_CANARI_UNIT)
-    let connectorsAt1 = self.connectors (at: p1, side: side)
-    let connectorsAt2 = self.connectors (at: p2, side: side)
+    let connectorsAt1 = self.rootObject.connectors (at: p1, trackSide: side)
+    let connectorsAt2 = self.rootObject.connectors (at: p2, trackSide: side)
   //--- Build connector 1
     let connector1 : BoardConnector
     if connectorsAt1.count == 1 {
@@ -64,7 +64,7 @@ extension CustomizedProjectDocument {
   internal func startTrackCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) {
     let p1 = inUnalignedMousePoint.canariPoint
     let side : TrackSide = ((self.mInsertedTrackSidePopUpButton?.indexOfSelectedItem ?? 0) == 0) ? .front : .back
-    let connectorsAt1 = self.connectors (at: p1, side: side)
+    let connectorsAt1 = self.rootObject.connectors (at: p1, trackSide: side)
   //--- Build connector at mouse click
     let connector1 : BoardConnector
     if connectorsAt1.count == 1 {
@@ -117,7 +117,7 @@ extension CustomizedProjectDocument {
        let p2 = track.mConnectorP2!.location!.cocoaPoint
        accepts =  NSPoint.distance (p1, p2) > (milsToCocoaUnit (CGFloat (self.rootObject.mControlKeyHiliteDiameter)) / 2.0)
        if accepts { // Try to connect at mouse up location
-         let connectorsAt2 = self.connectors (at: p2.canariPoint, side: track.mSide)
+         let connectorsAt2 = self.rootObject.connectors (at: p2.canariPoint, trackSide: track.mSide)
          self.tryToConnect (connectorsAt2)
        }
        self.mTrackCreatedByOptionClick = nil

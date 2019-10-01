@@ -31,8 +31,8 @@ extension CustomizedProjectDocument {
 
   private func appendConnectInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint) {
    // let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
-    let connectorsFrontSide = self.connectors (at: inUnalignedMouseDownPoint, side: .front)
-    let connectorsBackSide  = self.connectors (at: inUnalignedMouseDownPoint, side: .back)
+    let connectorsFrontSide = self.rootObject.connectors (at: inUnalignedMouseDownPoint, trackSide: .front)
+    let connectorsBackSide  = self.rootObject.connectors (at: inUnalignedMouseDownPoint, trackSide: .back)
     if connectorsFrontSide.count > 1 {
       let menuItem = NSMenuItem (title: "Connect in Front Side", action: #selector (CustomizedProjectDocument.connectInBoardAction (_:)), keyEquivalent: "")
       menuItem.target = self
@@ -168,7 +168,7 @@ extension CustomizedProjectDocument {
 
   private func appendDisconnectInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
     let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
-    let connectors = self.connectors (at: alignedMouseDownPoint, side: inSide)
+    let connectors = self.rootObject.connectors (at: alignedMouseDownPoint, trackSide: inSide)
     var connectedConnectors = [BoardConnector] ()
     for c in connectors {
       var isConnected = (c.mTracksP1.count + c.mTracksP2.count) >= 2

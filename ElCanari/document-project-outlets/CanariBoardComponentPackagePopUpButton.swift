@@ -117,7 +117,7 @@ class CanariBoardComponentPackagePopUpButton : NSPopUpButton, EBUserClassNamePro
   @objc private func changePackageAction (_ inSender : NSMenuItem) {
     if let selectedComponents = self.mSelectedObjects?.propval, let package = inSender.representedObject as? DevicePackageInProject {
       for component in selectedComponents {
-        component.mSelectedPackage = package
+        component.set (package: package)
       }
     }
   }

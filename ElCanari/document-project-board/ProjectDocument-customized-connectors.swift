@@ -10,15 +10,15 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension CustomizedProjectDocument {
+extension ProjectRoot {
 
   //····················································································································
 
-  internal func connectors (at inLocation : CanariPoint, side inSide : TrackSide) -> [BoardConnector] {
-    let distance = Double (milsToCanariUnit (Int (self.rootObject.mControlKeyHiliteDiameter))) / 2.0
+  internal func connectors (at inLocation : CanariPoint, trackSide inSide : TrackSide) -> [BoardConnector] {
+    let distance = Double (milsToCanariUnit (Int (self.mControlKeyHiliteDiameter))) / 2.0
     let squareOfDistance = distance * distance
     var result = [BoardConnector] ()
-    for object in self.rootObject.mBoardObjects {
+    for object in self.mBoardObjects {
       if let connector = object as? BoardConnector {
         var ok = CanariPoint.squareOfCanariDistance (connector.location!, inLocation) < squareOfDistance
         if ok {
@@ -31,6 +31,23 @@ extension CustomizedProjectDocument {
             ()
           }
         }
+        if ok {
+          result.append (connector)
+        }
+      }
+    }
+    return result
+  }
+
+  //····················································································································
+
+  internal func connectors (at inLocation : CanariPoint, connectorSide inSide : ConnectorSide) -> [BoardConnector] {
+    let distance = Double (milsToCanariUnit (Int (self.mControlKeyHiliteDiameter))) / 2.0
+    let squareOfDistance = distance * distance
+    var result = [BoardConnector] ()
+    for object in self.mBoardObjects {
+      if let connector = object as? BoardConnector {
+        let ok = (connector.side! == inSide) && CanariPoint.squareOfCanariDistance (connector.location!, inLocation) < squareOfDistance
         if ok {
           result.append (connector)
         }

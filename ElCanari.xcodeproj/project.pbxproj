@@ -1594,6 +1594,8 @@
 		CFC5FBC11FDF06220014A257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC5FBC01FDF06220014A257 /* Assets.xcassets */; };
 		CFC6325822F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC6325722F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift */; };
 		CFC6325922F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC6325722F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift */; };
+		CFC692612343433300CD448E /* ProjectDocument-change-component-package.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC692602343433300CD448E /* ProjectDocument-change-component-package.swift */; };
+		CFC692622343433300CD448E /* ProjectDocument-change-component-package.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC692602343433300CD448E /* ProjectDocument-change-component-package.swift */; };
 		CFC80AA520E6390500C1A156 /* transient-BoardModel-drillSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC80AA420E6390500C1A156 /* transient-BoardModel-drillSegments.swift */; };
 		CFC8547821E91817006ADB6C /* transient-DeviceDocument-mMetadataStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC8547421E91817006ADB6C /* transient-DeviceDocument-mMetadataStatus.swift */; };
 		CFC8547921E91817006ADB6C /* transient-DeviceDocument-mMetadataStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC8547421E91817006ADB6C /* transient-DeviceDocument-mMetadataStatus.swift */; };
@@ -3122,6 +3124,7 @@
 		CFC5BB612232DB4400E03849 /* view-UnconnectedSymbolPinsInDeviceTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "view-UnconnectedSymbolPinsInDeviceTableView.swift"; sourceTree = "<group>"; };
 		CFC5FBC01FDF06220014A257 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFC6325722F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ArtworkRoot-signatureForERCChecking.swift"; sourceTree = "<group>"; };
+		CFC692602343433300CD448E /* ProjectDocument-change-component-package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-change-component-package.swift"; sourceTree = "<group>"; };
 		CFC80AA420E6390500C1A156 /* transient-BoardModel-drillSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-drillSegments.swift"; sourceTree = "<group>"; };
 		CFC8547421E91817006ADB6C /* transient-DeviceDocument-mMetadataStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceDocument-mMetadataStatus.swift"; sourceTree = "<group>"; };
 		CFC8547521E91817006ADB6C /* transient-DeviceRoot-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceRoot-issues.swift"; sourceTree = "<group>"; };
@@ -5237,6 +5240,7 @@
 				CFBCE7A222D3AEAC00DC3505 /* ProjectDocument-board-contextual-click.swift */,
 				CFFBEEC422A55881001BF689 /* ProjectDocument-board-limits-contextual-click.swift */,
 				CFAA044722F1BA3300030A0C /* ProjectDocument-build-product-data.swift */,
+				CFC692602343433300CD448E /* ProjectDocument-change-component-package.swift */,
 				CFBCE77E22D3ACA300DC3505 /* ProjectDocument-customized-connectors.swift */,
 				CF3414D922DFBDE800D0CEB6 /* ProjectDocument-erc.swift */,
 				CFD5C41F22F317D600E3DF0D /* ProjectDocument-generate-board-archive.swift */,
@@ -5857,6 +5861,7 @@
 				CF15D7632273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift in Sources */,
 				CF001F7621F8B1940091518E /* func-getSystemProxy.swift in Sources */,
 				CF358EEC22296F5100EDE173 /* extension-DeviceDocument.swift in Sources */,
+				CFC692612343433300CD448E /* ProjectDocument-change-component-package.swift in Sources */,
 				CFD5654C233A027900CEB975 /* CanariSelectionPopUpButton.swift in Sources */,
 				CFB1BAD523048FA300D32F36 /* action-ProjectDocument-renameDeviceAction.swift in Sources */,
 				CFBCE79422D3ACC000DC3505 /* extension-ComponentSymbolInProject.swift in Sources */,
@@ -6970,6 +6975,7 @@
 				CFB1BAD623048FA300D32F36 /* action-ProjectDocument-renameDeviceAction.swift in Sources */,
 				CFDDD4E221BB1529007D2F14 /* EBGraphicView-magnify-and-zoom.swift in Sources */,
 				CFA1AA1E223271770023928C /* transient-SymbolTypeInDevice-pinNameShape.swift in Sources */,
+				CFC692622343433300CD448E /* ProjectDocument-change-component-package.swift in Sources */,
 				CF00845721C42B64003627E9 /* selectionController-PackageDocument-mPackageOvalSelectionController.swift in Sources */,
 				CF853E542249136400FA57CD /* transient-FontRoot-issues.swift in Sources */,
 				CFEAAD6222317E5D00F69A12 /* transient-SymbolSegment-strokeBezierPath.swift in Sources */,
