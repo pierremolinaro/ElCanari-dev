@@ -158,6 +158,10 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     }
     // self.updateBoardConnectors ()
   //  self.updateSchematicsPointsAndNets ()
+  //--- Define default net wire
+    if self.rootObject.mDefaultNetClassName == "" {
+      self.rootObject.mDefaultNetClassName = self.rootObject.mNetClasses [0].mNetClassName
+    }
   //---
     self.mSelectComponentsMenuItem?.set (project: self)
     self.mSelectNetsMenuItem?.set (project: self)

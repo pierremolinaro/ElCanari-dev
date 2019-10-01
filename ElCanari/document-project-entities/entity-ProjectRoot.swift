@@ -216,6 +216,12 @@ protocol ProjectRoot_mBoardClearanceUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mDefaultNetClassName : class {
+  var mDefaultNetClassName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mSelectedPageIndex : class {
   var mSelectedPageIndex : Int { get }
 }
@@ -576,6 +582,12 @@ protocol ProjectRoot_deviceNames : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_allClassNames : class {
+  var allClassNames : StringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_schematicBackgroundDisplay : class {
   var schematicBackgroundDisplay : EBShape? { get }
 }
@@ -668,6 +680,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardSelectedCurveDisplayUnit,
          ProjectRoot_mBoardClearance,
          ProjectRoot_mBoardClearanceUnit,
+         ProjectRoot_mDefaultNetClassName,
          ProjectRoot_mSelectedPageIndex,
          ProjectRoot_mSelectedSchematicInspector,
          ProjectRoot_mSchematicTitle,
@@ -728,6 +741,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_borderOutlineBackground,
          ProjectRoot_boarderViewBackground,
          ProjectRoot_deviceNames,
+         ProjectRoot_allClassNames,
          ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_netWarningCount,
          ProjectRoot_netNamesArray,
@@ -1351,6 +1365,23 @@ class ProjectRoot : EBManagedObject,
     get { return self.mSheets_property.propval }
     set { self.mSheets_property.setProp (newValue) }
   }
+
+  //····················································································································
+  //   Atomic property: mDefaultNetClassName
+  //····················································································································
+
+  let mDefaultNetClassName_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mDefaultNetClassName : String {
+    get { return self.mDefaultNetClassName_property.propval }
+    set { self.mDefaultNetClassName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDefaultNetClassName_property_selection : EBSelection <String> { return self.mDefaultNetClassName_property.prop }
 
   //····················································································································
   //   Atomic property: mSelectedPageIndex
@@ -2930,6 +2961,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: allClassNames
+  //····················································································································
+
+  let allClassNames_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  var allClassNames_property_selection : EBSelection <StringArray> {
+    return self.allClassNames_property.prop
+  }
+
+  //····················································································································
+
+  var allClassNames : StringArray? {
+    switch self.allClassNames_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: schematicBackgroundDisplay
   //····················································································································
 
@@ -3218,6 +3272,8 @@ class ProjectRoot : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
+  //--- Atomic property: mDefaultNetClassName
+    self.mDefaultNetClassName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSelectedSchematicInspector
@@ -4201,6 +4257,28 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mDevices_property.addEBObserverOf_mDeviceName (self.deviceNames_property)
+  //--- Atomic property: allClassNames
+    self.allClassNames_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNetClasses_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mNetClasses_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_allClassNames (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNetClasses_property.addEBObserverOf_mNetClassName (self.allClassNames_property)
   //--- Atomic property: schematicBackgroundDisplay
     self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4579,6 +4657,7 @@ class ProjectRoot : EBManagedObject,
     self.borderOutlineBackground_property.removeEBObserver (self.boarderViewBackground_property)
     self.mBoardObjects_property.removeEBObserverOf_objectDisplay (self.boarderViewBackground_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
+    self.mNetClasses_property.removeEBObserverOf_mNetClassName (self.allClassNames_property)
     self.mSchematicTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicVersion_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicSheetOrientation_property.removeEBObserver (self.schematicBackgroundDisplay_property)
@@ -4901,6 +4980,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.mBoardClearanceUnit_property.mObserverExplorer,
       valueExplorer: &self.mBoardClearanceUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDefaultNetClassName",
+      idx: self.mDefaultNetClassName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDefaultNetClassName_property.mObserverExplorer,
+      valueExplorer: &self.mDefaultNetClassName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSelectedPageIndex",
@@ -5296,6 +5383,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.deviceNames_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "allClassNames",
+      idx: self.allClassNames_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.allClassNames_property.mObserverExplorer,
+      valueExplorer: &self.allClassNames_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "schematicBackgroundDisplay",
       idx: self.schematicBackgroundDisplay_property.ebObjectIndex,
       y: &y,
@@ -5547,6 +5642,9 @@ class ProjectRoot : EBManagedObject,
     self.mBoardClearanceUnit_property.mValueExplorer = nil
   //--- To many property: mSheets
     self.mSheets_property.mValueExplorer = nil
+  //--- Atomic property: mDefaultNetClassName
+    self.mDefaultNetClassName_property.mObserverExplorer = nil
+    self.mDefaultNetClassName_property.mValueExplorer = nil
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.mObserverExplorer = nil
     self.mSelectedPageIndex_property.mValueExplorer = nil
@@ -5769,6 +5867,8 @@ class ProjectRoot : EBManagedObject,
       relationshipName: "mSheets",
       intoDictionary: ioDictionary
     )
+  //--- Atomic property: mDefaultNetClassName
+    self.mDefaultNetClassName_property.storeIn (dictionary: ioDictionary, forKey:"mDefaultNetClassName")
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedPageIndex")
   //--- Atomic property: mSelectedSchematicInspector
@@ -6000,6 +6100,8 @@ class ProjectRoot : EBManagedObject,
     self.mBoardClearance_property.readFrom (dictionary: inDictionary, forKey:"mBoardClearance")
   //--- Atomic property: mBoardClearanceUnit
     self.mBoardClearanceUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardClearanceUnit")
+  //--- Atomic property: mDefaultNetClassName
+    self.mDefaultNetClassName_property.readFrom (dictionary: inDictionary, forKey:"mDefaultNetClassName")
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"mSelectedPageIndex")
   //--- Atomic property: mSelectedSchematicInspector

@@ -1,9 +1,8 @@
 //
-//  CanariBoardBoardArchivePopUpButton.swift
+//  CanariDefaultNetClassPopUpButton.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 07/07/2018.
-//
+//  Created by Pierre Molinaro on 01/10/2019.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -11,74 +10,85 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariBoardBoardArchivePopUpButton : EBPopUpButton {
+class CanariDefaultNetClassPopUpButton : EBPopUpButton {
 
   //····················································································································
-  //  format binding
+
+  private var mController : Controller_CanariDefaultNetClassPopUpButton? = nil
+
   //····················································································································
 
-  fileprivate func updateOutlet (_ object : EBReadOnlyProperty_BoardArchiveFormat) {
-    switch object.prop {
-    case .empty :
-      self.enableFromValueBinding (false)
-    case .single (let v) :
-      self.enableFromValueBinding (true)
-      let result = self.selectItem (withTag: v.rawValue)
-      if !result {
-        presentErrorWindow (#file, #line, "no item with tag: \(v.rawValue)")
-      }
-    case .multiple :
-      self.enableFromValueBinding (false)
-    }
+  func bind_netClasses (_ inSelectedNetClassName : EBReadWriteProperty_String,
+                        _ inNetClassNames : EBReadOnlyProperty_StringArray,
+                        file : String,
+                        line : Int) {
+    self.mController = Controller_CanariDefaultNetClassPopUpButton (inSelectedNetClassName, inNetClassNames, self)
   }
 
   //····················································································································
 
-  private var mFormatController : Controller_CanariBoardBoardArchivePopUpButton_format? = nil
-
-  //····················································································································
-
-  func bind_format (_ object : EBReadWriteProperty_BoardArchiveFormat, file : String, line : Int) {
-    self.mFormatController = Controller_CanariBoardBoardArchivePopUpButton_format (object: object, outlet: self)
+  func unbind_netClasses () {
+    self.mController?.unregister ()
+    self.mController = nil
   }
 
   //····················································································································
-
-  func unbind_format () {
-    self.mFormatController?.unregister ()
-    self.mFormatController = nil
-  }
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardBoardArchivePopUpButton_format
+//   Controller_CanariDefaultNetClassPopUpButton
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariBoardBoardArchivePopUpButton_format : EBSimpleController {
+final class Controller_CanariDefaultNetClassPopUpButton : EBSimpleController {
 
-  private let mObject : EBReadWriteProperty_BoardArchiveFormat
-  private let mOutlet : CanariBoardBoardArchivePopUpButton
+  private let mObject : EBReadWriteProperty_String
+  private let mOutlet : EBPopUpButton
 
   //····················································································································
 
-  init (object : EBReadWriteProperty_BoardArchiveFormat, outlet : CanariBoardBoardArchivePopUpButton) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects: [object], callBack: { outlet.updateOutlet (object) })
-    self.mOutlet.target = self
-    self.mOutlet.action = #selector (Controller_CanariBoardBoardArchivePopUpButton_format.updateModel (_:))
+  init (_ inSelectedNetClassName : EBReadWriteProperty_String,
+        _ inNetClassNames : EBReadOnlyProperty_StringArray,
+        _ inOutlet : EBPopUpButton) {
+    mObject = inSelectedNetClassName
+    mOutlet = inOutlet
+    super.init (
+      observedObjects: [inSelectedNetClassName, inNetClassNames],
+      callBack: { } // self cannot be captured before init completed
+    )
+    self.mEventCallBack = { self.updateOutlet (inSelectedNetClassName, inNetClassNames) }
   }
 
   //····················································································································
 
-  @objc func updateModel (_ sender : EBPopUpButton) {
-    if let v = BoardArchiveFormat (rawValue: self.mOutlet.selectedTag ()) {
-      _ = self.mObject.validateAndSetProp (v, windowForSheet:sender.window)
+  fileprivate func updateOutlet (_ inSelectedNetClassName : EBReadWriteProperty_String,
+                                 _ inNetClassNames : EBReadOnlyProperty_StringArray) {
+    self.mOutlet.removeAllItems ()
+    switch (inSelectedNetClassName.prop, inNetClassNames.prop) {
+    case (.single (let selectedName), .single (let netClassNames)) :
+      for name in netClassNames.sorted () {
+        self.mOutlet.addItem (withTitle: name)
+        self.mOutlet.lastItem?.target = self
+        self.mOutlet.lastItem?.action = #selector (self.nameSelectionAction (_:))
+        self.mOutlet.lastItem?.isEnabled = true
+        if name == selectedName {
+          self.mOutlet.select (self.mOutlet.lastItem)
+        }
+      }
+      self.mOutlet.enableFromValueBinding (true)
+    default :
+      self.mOutlet.enableFromValueBinding (false)
     }
   }
 
+ //····················································································································
+
+  @objc private func nameSelectionAction (_ inSender : NSMenuItem) {
+    _ = self.mObject.validateAndSetProp (inSender.title, windowForSheet: self.mOutlet.window)
+  }
+
   //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

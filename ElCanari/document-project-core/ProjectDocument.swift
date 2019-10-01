@@ -731,6 +731,7 @@ import Cocoa
   @IBOutlet var mBoardTrackSidePopUpButton : EBPopUpButton? = nil
   @IBOutlet var mBoardVerticalFlipSwitch : EBSwitch? = nil
   @IBOutlet var mBoardView : EBGraphicView? = nil
+  @IBOutlet var mCanariDefaultNetClassPopUpButton : CanariDefaultNetClassPopUpButton? = nil
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox? = nil
   @IBOutlet var mChangePackageComponentListTextField : NSTextField? = nil
   @IBOutlet var mChangePackageOfSelectedComponentsActionButton : EBButton? = nil
@@ -1277,6 +1278,7 @@ import Cocoa
     checkOutletConnection (self.mBoardTrackSidePopUpButton, "mBoardTrackSidePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardVerticalFlipSwitch, "mBoardVerticalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardView, "mBoardView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mCanariDefaultNetClassPopUpButton, "mCanariDefaultNetClassPopUpButton", CanariDefaultNetClassPopUpButton.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mChangePackageComponentListTextField, "mChangePackageComponentListTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mChangePackageOfSelectedComponentsActionButton, "mChangePackageOfSelectedComponentsActionButton", EBButton.self, #file, #line)
@@ -2087,6 +2089,7 @@ import Cocoa
     self.mDeviceSymbolTableView?.bind_array (self.selectedDeviceSymbolNames_property, file: #file, line: #line)
     self.mPinPadAssignmentTableView?.bind_array (self.pinPadAssignments_property, file: #file, line: #line)
     self.mSchematicsInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedSchematicInspector_property, file: #file, line: #line)
+    self.mCanariDefaultNetClassPopUpButton?.bind_netClasses (self.rootObject.mDefaultNetClassName_property, self.rootObject.allClassNames_property, file: #file, line: #line)
     self.mUnplacedSymbolsTableView?.bind_models (self.rootObject.unplacedSymbols_property, file: #file, line: #line)
     self.mUnplacedSymbolsTextField?.bind_valueObserver (self.unplacedSymbolsCountString_property, file: #file, line: #line)
     self.mSchematicsHorizontalFlipSwitch?.bind_value (self.rootObject.mSchematicHorizontalFlip_property, file: #file, line: #line)
@@ -2902,6 +2905,7 @@ import Cocoa
     self.mDeviceSymbolTableView?.unbind_array ()
     self.mPinPadAssignmentTableView?.unbind_array ()
     self.mSchematicsInspectorSegmentedControl?.unbind_selectedPage ()
+    self.mCanariDefaultNetClassPopUpButton?.unbind_netClasses ()
     self.mUnplacedSymbolsTableView?.unbind_models ()
     self.mUnplacedSymbolsTextField?.unbind_valueObserver ()
     self.mSchematicsHorizontalFlipSwitch?.unbind_value ()
@@ -3459,6 +3463,7 @@ import Cocoa
     self.mBoardTrackSidePopUpButton?.ebCleanUp ()
     self.mBoardVerticalFlipSwitch?.ebCleanUp ()
     self.mBoardView?.ebCleanUp ()
+    self.mCanariDefaultNetClassPopUpButton?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
     self.mChangePackageComponentListTextField?.ebCleanUp ()
     self.mChangePackageOfSelectedComponentsActionButton?.ebCleanUp ()
@@ -3851,6 +3856,7 @@ import Cocoa
     self.mBoardTrackSidePopUpButton = nil
     self.mBoardVerticalFlipSwitch = nil
     self.mBoardView = nil
+    self.mCanariDefaultNetClassPopUpButton = nil
     self.mChangeComponentValueComboxBox = nil
     self.mChangePackageComponentListTextField = nil
     self.mChangePackageOfSelectedComponentsActionButton = nil

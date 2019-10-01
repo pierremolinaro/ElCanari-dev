@@ -241,6 +241,8 @@ document ProjectDocument root ProjectRoot {
 
   outlet CanariDragSourceButton mAddCommentButton ;
   outlet CanariDragSourceButton mAddWireButton ;
+  outlet CanariDefaultNetClassPopUpButton mCanariDefaultNetClassPopUpButton
+    $netClasses root.mDefaultNetClassName, root.allClassNames ;
 
   outlet NSPanel mMoveSelectedObjectsToSheetPanel ;
   outlet EBPopUpButton mMoveSelectedObjectsToSheetPopUpButton ;

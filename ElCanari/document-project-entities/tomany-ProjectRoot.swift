@@ -50,6 +50,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mBoardSelectedCurveDisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardClearance_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardClearanceUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mDefaultNetClassName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSelectedSchematicInspector_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSchematicTitle_fromElementsOfSet (inRemovedSet) // Stored property
@@ -99,6 +100,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_borderOutlineBackground_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boarderViewBackground_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceNames_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_allClassNames_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_schematicBackgroundDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netWarningCount_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netNamesArray_fromElementsOfSet (inRemovedSet) // Transient property
@@ -146,6 +148,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mBoardSelectedCurveDisplayUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardClearance_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardClearanceUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mDefaultNetClassName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSelectedSchematicInspector_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSchematicTitle_toElementsOfSet (inAddedSet) // Stored property
@@ -195,6 +198,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_borderOutlineBackground_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boarderViewBackground_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceNames_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_allClassNames_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_schematicBackgroundDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netWarningCount_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netNamesArray_toElementsOfSet (inAddedSet) // Transient property
@@ -2199,6 +2203,63 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mBoardClearanceUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDefaultNetClassName' stored property
+  //····················································································································
+
+  private var mObserversOf_mDefaultNetClassName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mDefaultNetClassName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDefaultNetClassName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDefaultNetClassName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDefaultNetClassName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDefaultNetClassName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDefaultNetClassName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDefaultNetClassName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDefaultNetClassName.apply { (_ observer : EBEvent) in
+        managedObject.mDefaultNetClassName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDefaultNetClassName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mDefaultNetClassName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDefaultNetClassName_property.removeEBObserver (observer)
       }
     }
   }
@@ -5707,6 +5768,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'allClassNames' transient property
+  //····················································································································
+
+  private var mObserversOf_allClassNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_allClassNames (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_allClassNames.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.allClassNames_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_allClassNames (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_allClassNames.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.allClassNames_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_allClassNames_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_allClassNames.apply { (_ observer : EBEvent) in
+        managedObject.allClassNames_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_allClassNames_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_allClassNames.apply { (_ observer : EBEvent) in
+        managedObject.allClassNames_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'schematicBackgroundDisplay' transient property
   //····················································································································
 
@@ -6779,6 +6896,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardClearance (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardClearanceUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mDefaultNetClassName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSelectedPageIndex (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSelectedSchematicInspector (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSchematicTitle (self.mObserverForWritingPreferences)

@@ -46,10 +46,21 @@ extension ProjectRoot {
   internal func createNetWithAutomaticName () -> NetInProject {
   //--- Find a new net name
     let newNetName = self.findUniqueNetName ()
-  //--- Create new
+  //--- Find net class
+    var selectedNetClass : NetClassInProject? = nil
+    for netClass in self.mNetClasses {
+      if netClass.mNetClassName == self.mDefaultNetClassName {
+        selectedNetClass = netClass
+      }
+    }
+  //--- Create new net
     let newNet = NetInProject (self.ebUndoManager)
     newNet.mNetName = newNetName
-    newNet.mNetClass = self.mNetClasses [0]
+    if let netClass = selectedNetClass {
+      newNet.mNetClass = netClass
+    }else{
+      newNet.mNetClass = self.mNetClasses [0]
+    }
   //---
     return newNet
   }

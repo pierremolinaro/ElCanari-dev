@@ -50,6 +50,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.mBoardSelectedCurveDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardSelectedCurveDisplayUnit) // Stored property
     inOldValue?.mBoardClearance_property.removeEBObserversFrom (&self.mObserversOf_mBoardClearance) // Stored property
     inOldValue?.mBoardClearanceUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardClearanceUnit) // Stored property
+    inOldValue?.mDefaultNetClassName_property.removeEBObserversFrom (&self.mObserversOf_mDefaultNetClassName) // Stored property
     inOldValue?.mSelectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
     inOldValue?.mSelectedSchematicInspector_property.removeEBObserversFrom (&self.mObserversOf_mSelectedSchematicInspector) // Stored property
     inOldValue?.mSchematicTitle_property.removeEBObserversFrom (&self.mObserversOf_mSchematicTitle) // Stored property
@@ -99,6 +100,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.borderOutlineBackground_property.removeEBObserversFrom (&self.mObserversOf_borderOutlineBackground) // Transient property
     inOldValue?.boarderViewBackground_property.removeEBObserversFrom (&self.mObserversOf_boarderViewBackground) // Transient property
     inOldValue?.deviceNames_property.removeEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
+    inOldValue?.allClassNames_property.removeEBObserversFrom (&self.mObserversOf_allClassNames) // Transient property
     inOldValue?.schematicBackgroundDisplay_property.removeEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
     inOldValue?.netWarningCount_property.removeEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
     inOldValue?.netNamesArray_property.removeEBObserversFrom (&self.mObserversOf_netNamesArray) // Transient property
@@ -144,6 +146,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.mBoardSelectedCurveDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardSelectedCurveDisplayUnit) // Stored property
     self.mInternalValue?.mBoardClearance_property.addEBObserversFrom (&self.mObserversOf_mBoardClearance) // Stored property
     self.mInternalValue?.mBoardClearanceUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardClearanceUnit) // Stored property
+    self.mInternalValue?.mDefaultNetClassName_property.addEBObserversFrom (&self.mObserversOf_mDefaultNetClassName) // Stored property
     self.mInternalValue?.mSelectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
     self.mInternalValue?.mSelectedSchematicInspector_property.addEBObserversFrom (&self.mObserversOf_mSelectedSchematicInspector) // Stored property
     self.mInternalValue?.mSchematicTitle_property.addEBObserversFrom (&self.mObserversOf_mSchematicTitle) // Stored property
@@ -193,6 +196,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.borderOutlineBackground_property.addEBObserversFrom (&self.mObserversOf_borderOutlineBackground) // Transient property
     self.mInternalValue?.boarderViewBackground_property.addEBObserversFrom (&self.mObserversOf_boarderViewBackground) // Transient property
     self.mInternalValue?.deviceNames_property.addEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
+    self.mInternalValue?.allClassNames_property.addEBObserversFrom (&self.mObserversOf_allClassNames) // Transient property
     self.mInternalValue?.schematicBackgroundDisplay_property.addEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
     self.mInternalValue?.netWarningCount_property.addEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
     self.mInternalValue?.netNamesArray_property.addEBObserversFrom (&self.mObserversOf_netNamesArray) // Transient property
@@ -2650,6 +2654,76 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mBoardClearanceUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDefaultNetClassName' stored property
+  //····················································································································
+
+  private var mObserversOf_mDefaultNetClassName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDefaultNetClassName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mDefaultNetClassName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDefaultNetClassName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDefaultNetClassName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDefaultNetClassName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDefaultNetClassName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDefaultNetClassName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDefaultNetClassName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDefaultNetClassName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDefaultNetClassName.apply { (_ observer : EBEvent) in
+        managedObject.mDefaultNetClassName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDefaultNetClassName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mDefaultNetClassName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDefaultNetClassName_property.removeEBObserver (observer)
       }
     }
   }
@@ -6819,6 +6893,75 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_deviceNames.apply { (_ observer : EBEvent) in
         managedObject.deviceNames_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'allClassNames' transient property
+  //····················································································································
+
+  private var mObserversOf_allClassNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  var allClassNames_property_selection : EBSelection <StringArray?> {
+    if let model = self.propval {
+      switch (model.allClassNames_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_allClassNames (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_allClassNames.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.allClassNames_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_allClassNames (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_allClassNames.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.allClassNames_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_allClassNames_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_allClassNames.apply { (_ observer : EBEvent) in
+        managedObject.allClassNames_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_allClassNames_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_allClassNames.apply { (_ observer : EBEvent) in
+        managedObject.allClassNames_property.removeEBObserver (observer)
       }
     }
   }

@@ -2,6 +2,9 @@
 //   Canari Outlets
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+extern outlet class CanariDefaultNetClassPopUpButton ;
+binding CanariDefaultNetClassPopUpButton $netClasses : property String, transient StringArray ; // Net class names
+
 extern outlet class CanariComponentsMenuItem ;
 binding CanariComponentsMenuItem $components : transient StringTagArray ; // Prefix, index
 

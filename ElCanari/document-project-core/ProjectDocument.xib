@@ -117,6 +117,7 @@
                 <outlet property="mBoardTrackSidePopUpButton" destination="2223" id="8Rr-9a-F2F"/>
                 <outlet property="mBoardVerticalFlipSwitch" destination="15404" id="BFc-8I-lC4"/>
                 <outlet property="mBoardView" destination="3082" id="Mst-ED-2Vk"/>
+                <outlet property="mCanariDefaultNetClassPopUpButton" destination="QjI-Bc-9oe" id="MWP-H5-t0K"/>
                 <outlet property="mChangeComponentValueComboxBox" destination="3xd-rQ-uBf" id="VhK-oZ-Qs4"/>
                 <outlet property="mChangePackageComponentListTextField" destination="592" id="CST-gg-8YF"/>
                 <outlet property="mChangePackageOfSelectedComponentsActionButton" destination="2925" id="9S2-El-evR"/>
@@ -3816,7 +3817,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="TJO-lq-ns5">
                         <rect key="frame" x="1" y="1" width="573" height="596"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3013" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="347" height="262"/>
@@ -3853,7 +3854,7 @@ Gw
                     </segmentedCell>
                 </segmentedControl>
                 <button toolTip="Add Segment" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ISn-xc-DLS" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="111" y="576" width="28" height="28"/>
+                    <rect key="frame" x="68" y="576" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" title="C" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="7UM-G5-8I7">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -3861,15 +3862,30 @@ Gw
                     </buttonCell>
                 </button>
                 <button toolTip="Add Wire; hint: option click starts a new wire." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15596" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="154" y="576" width="28" height="28"/>
+                    <rect key="frame" x="95" y="576" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="track-in-board" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="15597">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
+                <popUpButton toolTip="Default net Class when a Wire is added" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QjI-Bc-9oe" customClass="CanariDefaultNetClassPopUpButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="131" y="581" width="112" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="… default net class…" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" preferredEdge="maxX" selectedItem="SO7-Uk-XWU" id="jxz-OA-omA">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="aJY-f8-ZgL">
+                            <items>
+                                <menuItem title="… default net class…" state="on" id="SO7-Uk-XWU">
+                                    <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
                 <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15127">
-                    <rect key="frame" x="20" y="581" width="56" height="17"/>
+                    <rect key="frame" x="20" y="581" width="40" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" imagePosition="only" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" preferredEdge="maxX" selectedItem="15131" id="15128">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -3894,7 +3910,7 @@ Gw
                     </popUpButtonCell>
                 </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="-711" y="-341"/>
+            <point key="canvasLocation" x="-856" y="-418"/>
         </customView>
         <customView id="3048" userLabel="Page : Net Classes" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="775" height="445"/>

@@ -134,12 +134,13 @@ entity ProjectRoot {
     self.mBoardObjects.all.objectDisplay
   ;
 
-//---
+//--- Schematic
   toMany FontInProject mFonts ;
   toMany DeviceInProject mDevices ;
   toMany ComponentInProject mComponents ;
   toMany NetClassInProject mNetClasses ;
   toMany SheetInProject mSheets inverse toOne mRoot ;
+  property String mDefaultNetClassName default "" ;
 
   toOne SheetInProject mSelectedSheet ;
   property proxy String selectedSheetTitle : mSelectedSheet.mSheetTitle ;
@@ -166,6 +167,8 @@ entity ProjectRoot {
   property SchematicSheetOrientation mSchematicSheetOrientation default a4Horizontal ;
 
   transient StringArray deviceNames dependsFrom self.mDevices.all.mDeviceName ;
+
+  transient StringArray allClassNames dependsFrom self.mNetClasses.all.mNetClassName ;
 
   transient StringTagArray unplacedSymbols dependsFrom self.mComponents.all.unplacedSymbols ;
 
