@@ -51,6 +51,9 @@ extension ProjectDocument {
   internal func duplicate (component inComponent : ComponentInProject) -> ComponentInProject? {
     let optionalNewComponent = self.addComponent (fromPossibleDevice: inComponent.mDevice)
     optionalNewComponent?.mComponentValue = inComponent.mComponentValue
+    optionalNewComponent?.mNameIsVisibleInBoard = inComponent.mNameIsVisibleInBoard
+    optionalNewComponent?.mValueIsVisibleInBoard = inComponent.mValueIsVisibleInBoard
+    optionalNewComponent?.mSelectedPackage = inComponent.mSelectedPackage
     return optionalNewComponent
   }
 

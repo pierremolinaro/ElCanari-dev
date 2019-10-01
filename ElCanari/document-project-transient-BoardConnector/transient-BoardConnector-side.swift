@@ -35,7 +35,7 @@ func transient_BoardConnector_side (
           case .front : frontSide = true
           }
         }
-        if let descriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName]  {
+        if let descriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName] {
           switch descriptor.pads [self_mPadIndex].side {
           case .back  : backSide  = true
           case .front : frontSide = true

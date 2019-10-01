@@ -94,6 +94,31 @@ extension ComponentInProject {
   }
 
   //····················································································································
+  //  Rotate 90°
+  //····················································································································
+
+  override func canRotate90 (accumulatedPoints : OCCanariPointSet) -> Bool {
+    if let padRect = self.selectedPackagePadsRect () {
+      accumulatedPoints.insert (padRect.center.canariPoint)
+      return true
+    }else{
+      return false
+    }
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    self.mRotation = (self.mRotation + 270_000) % 360_000
+  }
+
+  //····················································································································
+
+  override func rotate90CounterClockwise (from inRotationCenter : OCCanariPoint, userSet ioSet : OCObjectSet) {
+    self.mRotation = (self.mRotation + 90_000) % 360_000
+  }
+
+  //····················································································································
   //  REMOVING
   //····················································································································
 
@@ -162,7 +187,7 @@ extension ComponentInProject {
       return nil
     }
   }
-  
+
   //····················································································································
 
 }
