@@ -28,7 +28,10 @@ let VERSION_CANARI = "1.0.15"
 let NOTES : [String] = []
 let BUGFIXES : [String] = ["Project: Fixed crash on changing component package"]
 let CHANGES : [String] = []
-let NEWS : [String] = ["Board in Project: F5 and F6 keys for rotating selected package"]
+let NEWS : [String] = [
+  "Board in Project: F5 and F6 keys for rotating selected package",
+  "Schematic in Project: popup button for selecting new wire default net class"
+]
 let BUILD_KIND = ProductKind.release
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
