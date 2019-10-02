@@ -38,7 +38,6 @@ class CanariViewWithKeyView : NSView, EBUserClassNameProtocol {
 
   func saveFirstResponder () {
     self.mSavedFirstResponder = self.window?.firstResponder
-    self.window?.makeFirstResponder (nil)
   }
 
   //····················································································································
@@ -49,12 +48,6 @@ class CanariViewWithKeyView : NSView, EBUserClassNameProtocol {
       _ = self.window?.makeFirstResponder (savedFirstResponder)
     }
   }
-
-  //····················································································································
-
-//  func clearSavedFirstResponder () {
-//    self.mSavedFirstResponder = nil
-//  }
 
   //····················································································································
 

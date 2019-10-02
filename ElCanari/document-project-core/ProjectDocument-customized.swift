@@ -523,6 +523,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
         let possibleNewWire = selectedSheet.performAddWireDragOperation (draggingLocationInDestinationView, newNetCreator: self.rootObject.createNetWithAutomaticName)
         if let newWire = possibleNewWire {
           self.schematicObjectsController.setSelection ([newWire])
+          self.updateSchematicsPointsAndNets ()
           ok = true
         }
       }else if let _ = pasteboard.availableType (from: [kDragAndDropRestrictRectangle]) {
@@ -609,6 +610,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
           }
         }
       }
+      self.windowForSheet?.makeFirstResponder (self.mBoardView)
     }
   }
 
@@ -623,6 +625,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     newLine.mY2 += p.y
     self.rootObject.mBoardObjects.append (newLine)
     self.boardObjectsController.setSelection ([newLine])
+    self.windowForSheet?.makeFirstResponder (self.mBoardView)
   }
 
   //····················································································································
@@ -635,6 +638,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     boardText.mFont = self.rootObject.mFonts.first!
     self.rootObject.mBoardObjects.append (boardText)
     self.boardObjectsController.setSelection ([boardText])
+    self.windowForSheet?.makeFirstResponder (self.mBoardView)
   }
 
   //····················································································································
@@ -646,6 +650,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     restrictRectangle.mY = p.y
     self.rootObject.mBoardObjects.append (restrictRectangle)
     self.boardObjectsController.setSelection ([restrictRectangle])
+    self.windowForSheet?.makeFirstResponder (self.mBoardView)
   }
 
   //····················································································································
@@ -657,6 +662,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     comment.mY = p.y
     self.rootObject.mSelectedSheet?.mObjects.append (comment)
     self.schematicObjectsController.setSelection ([comment])
+    self.windowForSheet?.makeFirstResponder (self.mSchematicsView)
   }
 
   //····················································································································
@@ -682,6 +688,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //--- Enter symbol
     self.rootObject.mSelectedSheet?.mObjects.append (inSymbol)
     self.schematicObjectsController.setSelection ([inSymbol])
+    self.windowForSheet?.makeFirstResponder (self.mSchematicsView)
   }
 
   //····················································································································
