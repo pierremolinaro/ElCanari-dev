@@ -125,8 +125,8 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
 
   //····················································································································
 
-  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-    super.windowControllerDidLoadNib (aController)
+  private final func performModelAdjustements () {
+    self.ebUndoManager.disableUndoRegistration ()
   //--- Remove tracks with missing connectors
     var trackWithMissingConnectorCount = 0
     for object in self.rootObject.mBoardObjects {
@@ -157,12 +157,20 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
       alert.informativeText = "Canari does not export properly board tracks to ElCanari, and some of them are invalid, and crash ERC. Theses tracks have been removed."
       DispatchQueue.main.async { alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil) }
     }
-    // self.updateBoardConnectors ()
-  //  self.updateSchematicsPointsAndNets ()
   //--- Define default net wire
     if self.rootObject.mDefaultNetClassName == "" {
       self.rootObject.mDefaultNetClassName = self.rootObject.mNetClasses [0].mNetClassName
     }
+    // self.updateBoardConnectors ()
+  //  self.updateSchematicsPointsAndNets ()
+    self.ebUndoManager.enableUndoRegistration ()
+  }
+
+  //····················································································································
+
+  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
+    self.performModelAdjustements ()
   //---
     self.mSelectComponentsMenuItem?.set (project: self)
     self.mSelectNetsMenuItem?.set (project: self)
