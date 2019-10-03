@@ -34,6 +34,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //--- Add default net class and first sheet
     let netClass = NetClassInProject (self.ebUndoManager)
     self.rootObject.mNetClasses.append (netClass)
+    self.rootObject.mDefaultNetClassName = self.rootObject.mNetClasses [0].mNetClassName
     let sheet = SheetInProject (self.ebUndoManager)
     self.rootObject.mSheets.append (sheet)
     self.rootObject.mSelectedSheet = sheet
