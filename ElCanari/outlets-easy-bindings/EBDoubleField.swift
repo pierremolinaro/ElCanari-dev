@@ -91,8 +91,8 @@ import Cocoa
       self.enableFromValueBinding (true)
       self.doubleValue = v
     case .multiple :
-      self.enableFromValueBinding (false)
-      self.stringValue = "—"
+      self.stringValue = "multiple"
+      self.enableFromValueBinding (true)
     }
   }
 

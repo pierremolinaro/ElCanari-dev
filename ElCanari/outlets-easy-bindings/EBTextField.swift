@@ -54,8 +54,8 @@ import Cocoa
       self.stringValue = "—"
       self.enableFromValueBinding (false)
     case .multiple :
-      self.stringValue = "—"
-      self.enableFromValueBinding (false)
+      self.stringValue = "multiple"
+      self.enableFromValueBinding (true)
     case .single (let propertyValue) :
       self.stringValue = propertyValue
       self.enableFromValueBinding (true)
