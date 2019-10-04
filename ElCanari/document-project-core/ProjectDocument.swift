@@ -660,6 +660,7 @@ import Cocoa
   @IBOutlet var mBoardClearanceUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBoardComponentNameFontPopUpButton : CanariBoardComponentNameFontPopUpButton? = nil
   @IBOutlet var mBoardComponentNameTextField : EBTextObserverField? = nil
+  @IBOutlet var mBoardComponentRotationSegmentedControl : CanariOrientationSegmentedControl? = nil
   @IBOutlet var mBoardComponentRotationSlider : CanariAngleSlider? = nil
   @IBOutlet var mBoardComponentRotationTextField : CanariAngleTextField? = nil
   @IBOutlet var mBoardComponentSidePopUpButton : EBPopUpButton? = nil
@@ -754,6 +755,7 @@ import Cocoa
   @IBOutlet var mComponentInBoardInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mComponentNameDisplayParameterView : NSView? = nil
   @IBOutlet var mComponentNameFontSizeField : EBDoubleField? = nil
+  @IBOutlet var mComponentNameRotationSegmentedControl : CanariOrientationSegmentedControl? = nil
   @IBOutlet var mComponentNameRotationSlider : CanariAngleSlider? = nil
   @IBOutlet var mComponentNameRotationTextField : CanariAngleTextField? = nil
   @IBOutlet var mComponentPackagePopUpButton : CanariBoardComponentPackagePopUpButton? = nil
@@ -767,6 +769,7 @@ import Cocoa
   @IBOutlet var mComponentTableView : EBTableView? = nil
   @IBOutlet var mComponentValueDisplayParameterView : NSView? = nil
   @IBOutlet var mComponentValueFontSizeField : EBDoubleField? = nil
+  @IBOutlet var mComponentValueRotationSegmentedControl : CanariOrientationSegmentedControl? = nil
   @IBOutlet var mComponentValueRotationSlider : CanariAngleSlider? = nil
   @IBOutlet var mComponentValueRotationTextField : CanariAngleTextField? = nil
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView? = nil
@@ -1207,6 +1210,7 @@ import Cocoa
     checkOutletConnection (self.mBoardClearanceUnitPopUp, "mBoardClearanceUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardComponentNameFontPopUpButton, "mBoardComponentNameFontPopUpButton", CanariBoardComponentNameFontPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardComponentNameTextField, "mBoardComponentNameTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardComponentRotationSegmentedControl, "mBoardComponentRotationSegmentedControl", CanariOrientationSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mBoardComponentRotationSlider, "mBoardComponentRotationSlider", CanariAngleSlider.self, #file, #line)
     checkOutletConnection (self.mBoardComponentRotationTextField, "mBoardComponentRotationTextField", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mBoardComponentSidePopUpButton, "mBoardComponentSidePopUpButton", EBPopUpButton.self, #file, #line)
@@ -1301,6 +1305,7 @@ import Cocoa
     checkOutletConnection (self.mComponentInBoardInspectorView, "mComponentInBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mComponentNameDisplayParameterView, "mComponentNameDisplayParameterView", NSView.self, #file, #line)
     checkOutletConnection (self.mComponentNameFontSizeField, "mComponentNameFontSizeField", EBDoubleField.self, #file, #line)
+    checkOutletConnection (self.mComponentNameRotationSegmentedControl, "mComponentNameRotationSegmentedControl", CanariOrientationSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mComponentNameRotationSlider, "mComponentNameRotationSlider", CanariAngleSlider.self, #file, #line)
     checkOutletConnection (self.mComponentNameRotationTextField, "mComponentNameRotationTextField", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mComponentPackagePopUpButton, "mComponentPackagePopUpButton", CanariBoardComponentPackagePopUpButton.self, #file, #line)
@@ -1314,6 +1319,7 @@ import Cocoa
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mComponentValueDisplayParameterView, "mComponentValueDisplayParameterView", NSView.self, #file, #line)
     checkOutletConnection (self.mComponentValueFontSizeField, "mComponentValueFontSizeField", EBDoubleField.self, #file, #line)
+    checkOutletConnection (self.mComponentValueRotationSegmentedControl, "mComponentValueRotationSegmentedControl", CanariOrientationSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mComponentValueRotationSlider, "mComponentValueRotationSlider", CanariAngleSlider.self, #file, #line)
     checkOutletConnection (self.mComponentValueRotationTextField, "mComponentValueRotationTextField", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
@@ -2262,16 +2268,19 @@ import Cocoa
     self.mComponentInBoardCenterYTextField?.bind_dimensionAndUnit (self.componentInBoardSelectionController.mY_property, self.componentInBoardSelectionController.mYUnit_property, file: #file, line: #line)
     self.mBoardComponentRotationTextField?.bind_angle (self.componentInBoardSelectionController.mRotation_property, file: #file, line: #line)
     self.mBoardComponentRotationSlider?.bind_angle (self.componentInBoardSelectionController.mRotation_property, file: #file, line: #line)
+    self.mBoardComponentRotationSegmentedControl?.bind_angle (self.componentInBoardSelectionController.mRotation_property, file: #file, line: #line)
     self.mBoardComponentSidePopUpButton?.bind_selectedIndex (self.componentInBoardSelectionController.mSide_property, file: #file, line: #line)
     self.mDisplayComponentNameSwitch?.bind_value (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property, file: #file, line: #line)
     self.mComponentNameFontSizeField?.bind_value (self.componentInBoardSelectionController.mNameFontSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.mComponentNameRotationTextField?.bind_angle (self.componentInBoardSelectionController.mNameRotation_property, file: #file, line: #line)
     self.mComponentNameRotationSlider?.bind_angle (self.componentInBoardSelectionController.mNameRotation_property, file: #file, line: #line)
+    self.mComponentNameRotationSegmentedControl?.bind_angle (self.componentInBoardSelectionController.mNameRotation_property, file: #file, line: #line)
     self.mBoardComponentNameTextField?.bind_valueObserver (self.componentInBoardSelectionController.componentName_property, file: #file, line: #line)
     self.mDisplayComponentValueSwitch?.bind_value (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property, file: #file, line: #line)
     self.mComponentValueFontSizeField?.bind_value (self.componentInBoardSelectionController.mValueFontSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.mComponentValueRotationTextField?.bind_angle (self.componentInBoardSelectionController.mValueRotation_property, file: #file, line: #line)
     self.mComponentValueRotationSlider?.bind_angle (self.componentInBoardSelectionController.mValueRotation_property, file: #file, line: #line)
+    self.mComponentValueRotationSegmentedControl?.bind_angle (self.componentInBoardSelectionController.mValueRotation_property, file: #file, line: #line)
     self.mBoardComponentValueTextField?.bind_value (self.componentInBoardSelectionController.mComponentValue_property, file: #file, line: #line, sendContinously:true)
     self.mDisplayFrontPadsSwitch?.bind_value (g_Preferences!.displayFrontPadsForBoard_property, file: #file, line: #line)
     self.mDisplayFrontPadsColorWell?.bind_color (g_Preferences!.frontSidePadColorForBoard_property, file: #file, line: #line, sendContinously:true)
@@ -3078,16 +3087,19 @@ import Cocoa
     self.mComponentInBoardCenterYTextField?.unbind_dimensionAndUnit ()
     self.mBoardComponentRotationTextField?.unbind_angle ()
     self.mBoardComponentRotationSlider?.unbind_angle ()
+    self.mBoardComponentRotationSegmentedControl?.unbind_angle ()
     self.mBoardComponentSidePopUpButton?.unbind_selectedIndex ()
     self.mDisplayComponentNameSwitch?.unbind_value ()
     self.mComponentNameFontSizeField?.unbind_value ()
     self.mComponentNameRotationTextField?.unbind_angle ()
     self.mComponentNameRotationSlider?.unbind_angle ()
+    self.mComponentNameRotationSegmentedControl?.unbind_angle ()
     self.mBoardComponentNameTextField?.unbind_valueObserver ()
     self.mDisplayComponentValueSwitch?.unbind_value ()
     self.mComponentValueFontSizeField?.unbind_value ()
     self.mComponentValueRotationTextField?.unbind_angle ()
     self.mComponentValueRotationSlider?.unbind_angle ()
+    self.mComponentValueRotationSegmentedControl?.unbind_angle ()
     self.mBoardComponentValueTextField?.unbind_value ()
     self.mDisplayFrontPadsSwitch?.unbind_value ()
     self.mDisplayFrontPadsColorWell?.unbind_color ()
@@ -3392,6 +3404,7 @@ import Cocoa
     self.mBoardClearanceUnitPopUp?.ebCleanUp ()
     self.mBoardComponentNameFontPopUpButton?.ebCleanUp ()
     self.mBoardComponentNameTextField?.ebCleanUp ()
+    self.mBoardComponentRotationSegmentedControl?.ebCleanUp ()
     self.mBoardComponentRotationSlider?.ebCleanUp ()
     self.mBoardComponentRotationTextField?.ebCleanUp ()
     self.mBoardComponentSidePopUpButton?.ebCleanUp ()
@@ -3486,6 +3499,7 @@ import Cocoa
     self.mComponentInBoardInspectorView?.ebCleanUp ()
     self.mComponentNameDisplayParameterView?.ebCleanUp ()
     self.mComponentNameFontSizeField?.ebCleanUp ()
+    self.mComponentNameRotationSegmentedControl?.ebCleanUp ()
     self.mComponentNameRotationSlider?.ebCleanUp ()
     self.mComponentNameRotationTextField?.ebCleanUp ()
     self.mComponentPackagePopUpButton?.ebCleanUp ()
@@ -3499,6 +3513,7 @@ import Cocoa
     self.mComponentTableView?.ebCleanUp ()
     self.mComponentValueDisplayParameterView?.ebCleanUp ()
     self.mComponentValueFontSizeField?.ebCleanUp ()
+    self.mComponentValueRotationSegmentedControl?.ebCleanUp ()
     self.mComponentValueRotationSlider?.ebCleanUp ()
     self.mComponentValueRotationTextField?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
@@ -3785,6 +3800,7 @@ import Cocoa
     self.mBoardClearanceUnitPopUp = nil
     self.mBoardComponentNameFontPopUpButton = nil
     self.mBoardComponentNameTextField = nil
+    self.mBoardComponentRotationSegmentedControl = nil
     self.mBoardComponentRotationSlider = nil
     self.mBoardComponentRotationTextField = nil
     self.mBoardComponentSidePopUpButton = nil
@@ -3879,6 +3895,7 @@ import Cocoa
     self.mComponentInBoardInspectorView = nil
     self.mComponentNameDisplayParameterView = nil
     self.mComponentNameFontSizeField = nil
+    self.mComponentNameRotationSegmentedControl = nil
     self.mComponentNameRotationSlider = nil
     self.mComponentNameRotationTextField = nil
     self.mComponentPackagePopUpButton = nil
@@ -3892,6 +3909,7 @@ import Cocoa
     self.mComponentTableView = nil
     self.mComponentValueDisplayParameterView = nil
     self.mComponentValueFontSizeField = nil
+    self.mComponentValueRotationSegmentedControl = nil
     self.mComponentValueRotationSlider = nil
     self.mComponentValueRotationTextField = nil
     self.mComponentsPageView = nil

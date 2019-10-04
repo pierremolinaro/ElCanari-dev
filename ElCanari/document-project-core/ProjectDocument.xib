@@ -46,6 +46,7 @@
                 <outlet property="mBoardClearanceUnitPopUp" destination="0mw-bN-gaV" id="oIZ-5Q-R8v"/>
                 <outlet property="mBoardComponentNameFontPopUpButton" destination="15432" id="2tx-HH-HOc"/>
                 <outlet property="mBoardComponentNameTextField" destination="2080" id="4Ch-q0-Jhg"/>
+                <outlet property="mBoardComponentRotationSegmentedControl" destination="BT8-I3-0WJ" id="eIa-1i-gAP"/>
                 <outlet property="mBoardComponentRotationSlider" destination="15448" id="DBX-sK-I4f"/>
                 <outlet property="mBoardComponentRotationTextField" destination="15450" id="rbt-rY-zRr"/>
                 <outlet property="mBoardComponentSidePopUpButton" destination="iWf-ep-X89" id="lzV-MS-0ZZ"/>
@@ -140,6 +141,7 @@
                 <outlet property="mComponentInBoardInspectorView" destination="2048" id="SxG-8l-ou3"/>
                 <outlet property="mComponentNameDisplayParameterView" destination="ceZ-40-vPt" id="jxZ-vo-utF"/>
                 <outlet property="mComponentNameFontSizeField" destination="15430" id="nSF-2F-d7G"/>
+                <outlet property="mComponentNameRotationSegmentedControl" destination="3p0-MF-wvI" id="5Xd-Ej-fU1"/>
                 <outlet property="mComponentNameRotationSlider" destination="amv-Qb-fCF" id="5lD-w3-a0s"/>
                 <outlet property="mComponentNameRotationTextField" destination="jBS-zi-fM7" id="bDB-o2-L2U"/>
                 <outlet property="mComponentPackagePopUpButton" destination="15451" id="QIX-Ql-D6I"/>
@@ -153,6 +155,7 @@
                 <outlet property="mComponentTableView" destination="2919" id="nfb-oR-9Fm"/>
                 <outlet property="mComponentValueDisplayParameterView" destination="9pa-hA-ufY" id="g0r-8F-GNW"/>
                 <outlet property="mComponentValueFontSizeField" destination="15468" id="ClD-cS-Vp9"/>
+                <outlet property="mComponentValueRotationSegmentedControl" destination="hGy-FH-lZs" id="7YC-sX-q2Y"/>
                 <outlet property="mComponentValueRotationSlider" destination="DxO-mj-h9S" id="AIN-YC-gJc"/>
                 <outlet property="mComponentValueRotationTextField" destination="Oyd-AC-qoT" id="a9O-HH-A9w"/>
                 <outlet property="mComponentsPageView" destination="2917" id="rQp-bd-etj"/>
@@ -2073,7 +2076,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2080" customClass="EBTextObserverField">
-                    <rect key="frame" x="86" y="405" width="146" height="14"/>
+                    <rect key="frame" x="63" y="405" width="169" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="left" title="Component name…" id="14625">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -2090,7 +2093,7 @@ Gw
                     </buttonCell>
                 </button>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15450" customClass="CanariAngleTextField" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="153" y="253" width="77" height="19"/>
+                    <rect key="frame" x="157" y="253" width="73" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,2" drawsBackground="YES" id="15459">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -2098,22 +2101,6 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="62" translatesAutoresizingMaskIntoConstraints="NO" id="15449">
-                    <rect key="frame" x="16" y="256" width="66" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Rotation" id="15461">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15448" customClass="CanariAngleSlider" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="108" y="248" width="28" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" allowsTickMarkValuesOnly="YES" sliderType="circular" id="15462">
-                        <font key="font" size="12" name="Helvetica"/>
-                    </sliderCell>
-                </slider>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16323" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="85" y="218" width="74" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -2168,15 +2155,6 @@ Gw
                     <rect key="frame" x="17" y="68" width="213" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="30" translatesAutoresizingMaskIntoConstraints="NO" id="15467">
-                            <rect key="frame" x="94" y="56" width="34" height="14"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Size" id="15483">
-                                <font key="font" metaFont="smallSystem"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="63" translatesAutoresizingMaskIntoConstraints="NO" id="15469">
                             <rect key="frame" x="-2" y="1" width="67" height="14"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -2195,28 +2173,12 @@ Gw
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DxO-mj-h9S" customClass="CanariAngleSlider" customModule="ElCanari" customModuleProvider="target">
-                            <rect key="frame" x="94" y="21" width="28" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" allowsTickMarkValuesOnly="YES" sliderType="circular" id="pW5-gO-esV">
-                                <font key="font" size="12" name="Helvetica"/>
-                            </sliderCell>
-                        </slider>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15468" customClass="EBDoubleField">
                             <rect key="frame" x="143" y="53" width="70" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="xxxx" drawsBackground="YES" id="15481">
                                 <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#,##0.0##" negativeFormat="#,##0.0##" numberStyle="decimal" alwaysShowsDecimalSeparator="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" minimumFractionDigits="1" maximumFractionDigits="3" id="15754"/>
                                 <font key="font" metaFont="smallSystemBold"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="63" translatesAutoresizingMaskIntoConstraints="NO" id="3o0-5B-txx">
-                            <rect key="frame" x="-2" y="29" width="67" height="14"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Rotation" id="yMg-Qc-4A6">
-                                <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -2234,6 +2196,35 @@ Gw
                                 </menu>
                             </popUpButtonCell>
                         </popUpButton>
+                        <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DxO-mj-h9S" customClass="CanariAngleSlider" customModule="ElCanari" customModuleProvider="target">
+                            <rect key="frame" x="106" y="21" width="28" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" allowsTickMarkValuesOnly="YES" sliderType="circular" id="pW5-gO-esV">
+                                <font key="font" size="12" name="Helvetica"/>
+                            </sliderCell>
+                        </slider>
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="30" translatesAutoresizingMaskIntoConstraints="NO" id="15467">
+                            <rect key="frame" x="103" y="56" width="34" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Size" id="15483">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hGy-FH-lZs" customClass="CanariOrientationSegmentedControl" customModule="ElCanari" customModuleProvider="target">
+                            <rect key="frame" x="-2" y="26" width="103" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectAny" id="5BZ-F7-h5c">
+                                <font key="font" metaFont="cellTitle"/>
+                                <segments>
+                                    <segment label="➡︎" width="24"/>
+                                    <segment label="⬆︎" width="24" selected="YES" tag="1"/>
+                                    <segment label="⬅︎" width="24"/>
+                                    <segment label="⬇︎" width="24"/>
+                                </segments>
+                            </segmentedCell>
+                        </segmentedControl>
                     </subviews>
                 </customView>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15471" customClass="EBSwitch">
@@ -2263,7 +2254,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ER-jW-zUp">
-                    <rect key="frame" x="18" y="286" width="64" height="14"/>
+                    <rect key="frame" x="18" y="286" width="52" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Package" id="oVd-FY-X94">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -2305,27 +2296,11 @@ Gw
                     <rect key="frame" x="17" y="326" width="213" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="amv-Qb-fCF" customClass="CanariAngleSlider" customModule="ElCanari" customModuleProvider="target">
-                            <rect key="frame" x="92" y="21" width="28" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" allowsTickMarkValuesOnly="YES" sliderType="circular" id="hdV-da-EmR">
-                                <font key="font" size="12" name="Helvetica"/>
-                            </sliderCell>
-                        </slider>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jBS-zi-fM7" customClass="CanariAngleTextField" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="141" y="26" width="72" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,2" drawsBackground="YES" id="izS-m6-Y4T">
                                 <font key="font" metaFont="smallSystemBold"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="30" translatesAutoresizingMaskIntoConstraints="NO" id="15429">
-                            <rect key="frame" x="88" y="56" width="34" height="14"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Size" id="15441">
-                                <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -2349,15 +2324,6 @@ Gw
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="59" translatesAutoresizingMaskIntoConstraints="NO" id="Ot1-GC-ADe">
-                            <rect key="frame" x="-2" y="29" width="63" height="14"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Rotation" id="lAN-HZ-8cV">
-                                <font key="font" metaFont="smallSystem"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
                         <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15432" customClass="CanariBoardComponentNameFontPopUpButton" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="71" y="-1" width="142" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -2371,6 +2337,35 @@ Gw
                                 </menu>
                             </popUpButtonCell>
                         </popUpButton>
+                        <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="amv-Qb-fCF" customClass="CanariAngleSlider" customModule="ElCanari" customModuleProvider="target">
+                            <rect key="frame" x="107" y="21" width="28" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" allowsTickMarkValuesOnly="YES" sliderType="circular" id="hdV-da-EmR">
+                                <font key="font" size="12" name="Helvetica"/>
+                            </sliderCell>
+                        </slider>
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="30" translatesAutoresizingMaskIntoConstraints="NO" id="15429">
+                            <rect key="frame" x="101" y="56" width="34" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Size" id="15441">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3p0-MF-wvI" customClass="CanariOrientationSegmentedControl" customModule="ElCanari" customModuleProvider="target">
+                            <rect key="frame" x="-1" y="26" width="103" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectAny" id="pCG-Uv-vQC">
+                                <font key="font" metaFont="cellTitle"/>
+                                <segments>
+                                    <segment label="➡︎" width="24"/>
+                                    <segment label="⬆︎" width="24" selected="YES" tag="1"/>
+                                    <segment label="⬅︎" width="24"/>
+                                    <segment label="⬇︎" width="24"/>
+                                </segments>
+                            </segmentedCell>
+                        </segmentedControl>
                     </subviews>
                 </customView>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="61" translatesAutoresizingMaskIntoConstraints="NO" id="16322">
@@ -2406,7 +2401,7 @@ Gw
                     </popUpButtonCell>
                 </popUpButton>
                 <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15451" customClass="CanariBoardComponentPackagePopUpButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="88" y="284" width="138" height="17"/>
+                    <rect key="frame" x="76" y="284" width="154" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Item1" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="15457" id="15454">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2420,8 +2415,28 @@ Gw
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
+                <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15448" customClass="CanariAngleSlider" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="123" y="248" width="28" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" allowsTickMarkValuesOnly="YES" sliderType="circular" id="15462">
+                        <font key="font" size="12" name="Helvetica"/>
+                    </sliderCell>
+                </slider>
+                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BT8-I3-0WJ" customClass="CanariOrientationSegmentedControl" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="16" y="253" width="103" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectAny" id="oH9-ew-FN3">
+                        <font key="font" metaFont="cellTitle"/>
+                        <segments>
+                            <segment label="➡︎" width="24"/>
+                            <segment label="⬆︎" width="24" selected="YES" tag="1"/>
+                            <segment label="⬅︎" width="24"/>
+                            <segment label="⬇︎" width="24"/>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
             </subviews>
-            <point key="canvasLocation" x="-1219" y="-690.5"/>
+            <point key="canvasLocation" x="-1397" y="-715"/>
         </customView>
         <customView id="2208" userLabel="Board Inspector : Track" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="240"/>
@@ -2736,7 +2751,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="148.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="149.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2750,11 +2765,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="148.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="149.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="148.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="149.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -2770,7 +2785,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="179" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="178" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2784,11 +2799,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="620" y="1" width="179" height="17"/>
+                                                <rect key="frame" x="621" y="1" width="178" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="179" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="178" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>

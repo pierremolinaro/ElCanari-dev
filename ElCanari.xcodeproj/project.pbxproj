@@ -2327,6 +2327,8 @@
 		CFFBEEC622A55881001BF689 /* ProjectDocument-board-limits-contextual-click.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFBEEC422A55881001BF689 /* ProjectDocument-board-limits-contextual-click.swift */; };
 		CFFCF49D2226E31700AF8318 /* controller-table-view-DeviceDocument-mDocumentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFCF49C2226E31700AF8318 /* controller-table-view-DeviceDocument-mDocumentationController.swift */; };
 		CFFCF49E2226E31700AF8318 /* controller-table-view-DeviceDocument-mDocumentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFCF49C2226E31700AF8318 /* controller-table-view-DeviceDocument-mDocumentationController.swift */; };
+		CFFD810E2347CE1C00BE23A7 /* CanariOrientationSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFD810D2347CE1C00BE23A7 /* CanariOrientationSegmentedControl.swift */; };
+		CFFD810F2347CE1C00BE23A7 /* CanariOrientationSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFD810D2347CE1C00BE23A7 /* CanariOrientationSegmentedControl.swift */; };
 		CFFDCEE221C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */; };
 		CFFDCEE321C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */; };
 		CFFF522721AEFE4E00E7D041 /* StatusImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF522621AEFE4E00E7D041 /* StatusImageNames.swift */; };
@@ -3526,6 +3528,7 @@
 		CFFA7B4A2274821A00E2D69A /* view-TwoStringArrayTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "view-TwoStringArrayTableView.swift"; sourceTree = "<group>"; };
 		CFFBEEC422A55881001BF689 /* ProjectDocument-board-limits-contextual-click.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-board-limits-contextual-click.swift"; sourceTree = "<group>"; };
 		CFFCF49C2226E31700AF8318 /* controller-table-view-DeviceDocument-mDocumentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-DeviceDocument-mDocumentationController.swift"; sourceTree = "<group>"; };
+		CFFD810D2347CE1C00BE23A7 /* CanariOrientationSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariOrientationSegmentedControl.swift; sourceTree = "<group>"; };
 		CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariPadRenumberingPullDownButton.swift; sourceTree = "<group>"; };
 		CFFF522621AEFE4E00E7D041 /* StatusImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusImageNames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -4183,6 +4186,7 @@
 				CF2A69A5226F4B8900261C47 /* CanariNewComponentFromDevicePullDownButton.swift */,
 				CF740E9522F3071B00C11B1C /* CanariObserverSwitch.swift */,
 				CFEF3D2A20F9FAF900DA6106 /* CanariOkButtonForSheet.swift */,
+				CFFD810D2347CE1C00BE23A7 /* CanariOrientationSegmentedControl.swift */,
 				CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */,
 				CF23C0ED2103500F0026E675 /* CanariQuadrantSegmentedControl.swift */,
 				CF6A65F81B468ACF00BA5135 /* CanariSegmentedControl.swift */,
@@ -5624,6 +5628,7 @@
 				CF570B66227DC673003A4E00 /* selectionController-FontDocument-mCharacterSelection.swift in Sources */,
 				CF2A8D1A22ABF11B0026CD16 /* ProjectDocument-schematic-move-selected.swift in Sources */,
 				CF00843D21C41B8D003627E9 /* transient-PackageBezier-selectionDisplay.swift in Sources */,
+				CFFD810E2347CE1C00BE23A7 /* CanariOrientationSegmentedControl.swift in Sources */,
 				CF85859221C5124300082CE3 /* entity-PackageArc.swift in Sources */,
 				CF0E9CFE2229A5FA00124F04 /* entity-PackageInDevice.swift in Sources */,
 				CF88969F21E13334007A0F1C /* open-in-library.swift in Sources */,
@@ -6740,6 +6745,7 @@
 				CFA430C0229AEC41000AA8C8 /* toone-SymbolSolidRect.swift in Sources */,
 				CFF63D1922B4117100032398 /* extension-BoardRestrictRectangle.swift.swift in Sources */,
 				CFEAAD5622317AB700F69A12 /* transient-SymbolSolidRect-filledBezierPath.swift in Sources */,
+				CFFD810F2347CE1C00BE23A7 /* CanariOrientationSegmentedControl.swift in Sources */,
 				CF0EE34522C8C478008CB4A7 /* enum-ComponentSide.swift in Sources */,
 				CF4B39B821D3F1C5001217C6 /* transient-PackageSlavePad-annularRing.swift in Sources */,
 				CF5C4CDC219F04D600EAC52A /* extension-MergerBoardInstance-graphic.swift in Sources */,

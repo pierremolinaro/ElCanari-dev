@@ -848,6 +848,9 @@ document ProjectDocument root ProjectRoot {
 
   outlet CanariAngleTextField mBoardComponentRotationTextField $angle #componentInBoardSelectionController.mRotation ;
   outlet CanariAngleSlider mBoardComponentRotationSlider $angle #componentInBoardSelectionController.mRotation ;
+  outlet CanariOrientationSegmentedControl mBoardComponentRotationSegmentedControl
+    $angle #componentInBoardSelectionController.mRotation
+  ;
 
   outlet EBPopUpButton mBoardComponentSidePopUpButton $selectedIndex #componentInBoardSelectionController.mSide ;
 
@@ -859,6 +862,9 @@ document ProjectDocument root ProjectRoot {
   
   outlet CanariAngleTextField mComponentNameRotationTextField $angle #componentInBoardSelectionController.mNameRotation ;
   outlet CanariAngleSlider mComponentNameRotationSlider $angle #componentInBoardSelectionController.mNameRotation ;
+  outlet CanariOrientationSegmentedControl mComponentNameRotationSegmentedControl
+    $angle #componentInBoardSelectionController.mNameRotation
+  ;
 
   outlet EBTextObserverField mBoardComponentNameTextField $valueObserver #componentInBoardSelectionController.componentName ;
 
@@ -873,6 +879,9 @@ document ProjectDocument root ProjectRoot {
 
   outlet CanariAngleTextField mComponentValueRotationTextField $angle #componentInBoardSelectionController.mValueRotation ;
   outlet CanariAngleSlider mComponentValueRotationSlider $angle #componentInBoardSelectionController.mValueRotation ;
+  outlet CanariOrientationSegmentedControl mComponentValueRotationSegmentedControl
+    $angle #componentInBoardSelectionController.mValueRotation
+  ;
 
   outlet EBTextField mBoardComponentValueTextField
      $value #componentInBoardSelectionController.mComponentValue {sendContinously : yes};

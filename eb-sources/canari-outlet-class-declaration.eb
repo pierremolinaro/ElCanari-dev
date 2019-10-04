@@ -2,6 +2,9 @@
 //   Canari Outlets
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+extern outlet class CanariOrientationSegmentedControl ;
+binding CanariOrientationSegmentedControl $angle : property Int ;
+
 extern outlet class CanariDefaultNetClassPopUpButton ;
 binding CanariDefaultNetClassPopUpButton $netClasses : property String, transient StringArray ; // Net class names
 
