@@ -8,7 +8,7 @@ import Cocoa
 
 @objc(EBSwitch) class EBSwitch : NSButton, EBUserClassNameProtocol {
 
-  //···················································································································· 
+  //····················································································································
 
   required init? (coder : NSCoder) {
     super.init (coder: coder)
@@ -16,40 +16,42 @@ import Cocoa
     self.setButtonType (.switch)
   }
 
-  //···················································································································· 
+  //····················································································································
 
   override init (frame : NSRect) {
     super.init (frame: frame)
     noteObjectAllocation (self)
     self.setButtonType (.switch)
   }
-  
-  //···················································································································· 
+
+  //····················································································································
 
   deinit {
     noteObjectDeallocation (self)
   }
-  
-  //···················································································································· 
+
+  //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mValueController?.updateModel ()
-    return super.sendAction (action, to:to)
+    return super.sendAction (action, to: to)
   }
 
-  //···················································································································· 
+  //····················································································································
   //  value binding
   //····················································································································
 
-  fileprivate func updateValue (_ object : EBReadOnlyProperty_Bool) {
-    switch object.prop {
+  fileprivate func updateValue (_ inObject : EBReadOnlyProperty_Bool) {
+    switch inObject.prop {
     case .empty :
       self.state = NSControl.StateValue.off
       self.enableFromValueBinding (false)
     case .multiple :
+      self.allowsMixedState = true
       self.state = NSControl.StateValue.mixed
-      self.enableFromValueBinding (false)
+      self.enableFromValueBinding (true)
     case .single (let v) :
+      self.allowsMixedState = false
       self.state = v ? NSControl.StateValue.on : NSControl.StateValue.off
       self.enableFromValueBinding (true)
     }
@@ -59,20 +61,26 @@ import Cocoa
 
   fileprivate var mValueController : Controller_EBSwitch_value? = nil
 
-  //···················································································································· 
+  //····················································································································
 
-  func bind_value (_ object : EBReadWriteProperty_Bool, file : String, line : Int) {
-    self.mValueController = Controller_EBSwitch_value (object: object, outlet: self)
+  func bind_value (_ inObject : EBReadWriteProperty_Bool, file : String, line : Int) {
+    self.mValueController = Controller_EBSwitch_value (object: inObject, outlet: self)
   }
 
-  //···················································································································· 
+  //····················································································································
 
   func unbind_value () {
     self.mValueController?.unregister ()
     self.mValueController = nil
   }
 
-  //···················································································································· 
+  //····················································································································
+
+  fileprivate func updateModel (_ inModel : EBReadWriteProperty_Bool) {
+    inModel.setProp (self.state == NSControl.StateValue.on)
+  }
+
+  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -84,7 +92,7 @@ final class Controller_EBSwitch_value : EBSimpleController {
   private let mOutlet : EBSwitch
   private let mObject : EBReadWriteProperty_Bool
 
-  //···················································································································· 
+  //····················································································································
 
   init (object : EBReadWriteProperty_Bool, outlet : EBSwitch) {
     mObject = object
@@ -98,7 +106,6 @@ final class Controller_EBSwitch_value : EBSimpleController {
     self.mObject.setProp (self.mOutlet.state == NSControl.StateValue.on)
   }
 }
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EBSwitch_TableViewCell
