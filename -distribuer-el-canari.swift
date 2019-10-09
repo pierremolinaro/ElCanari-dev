@@ -24,13 +24,13 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.15"
+let VERSION_CANARI = "1.0.16"
 let NOTES : [String] = []
-let BUGFIXES : [String] = ["Project: Fixed crash on changing component package"]
-let CHANGES : [String] = []
+let BUGFIXES : [String] = ["Schematic in project: arrows move selected objects"]
+let CHANGES : [String] = ["Uses Sparkle 1.22.0"]
 let NEWS : [String] = [
-  "Board in Project: F5 and F6 keys for rotating selected package",
-  "Schematic in Project: popup button for selecting new wire default net class"
+  "Board in Project, component inspector: added segmented controls for package, name and value display orientation",
+  "On project opening, all useless nets are removed"
 ]
 let BUILD_KIND = ProductKind.release
 
