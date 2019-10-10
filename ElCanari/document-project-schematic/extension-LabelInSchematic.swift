@@ -17,8 +17,7 @@ extension LabelInSchematic {
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    let possibleSymbol = self.mPoint?.mSymbol
-    return possibleSymbol == nil
+    return true
   }
 
   //····················································································································

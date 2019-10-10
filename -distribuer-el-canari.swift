@@ -28,14 +28,11 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.16"
+let VERSION_CANARI = "1.0.17"
 let NOTES : [String] = []
-let BUGFIXES : [String] = ["Schematic in project: arrows move selected objects"]
-let CHANGES : [String] = ["Uses Sparkle 1.22.0", "ElCanari is now built with \"Enable Hardened Runtime\" setting"]
-let NEWS : [String] = [
-  "Board in Project, component inspector: added segmented controls for package, name and value display orientation",
-  "On project opening, all useless nets are removed"
-]
+let BUGFIXES : [String] = ["Schematic in project: arrows move selected objects (not fixed in 1.0.16)"]
+let CHANGES : [String] = []
+let NEWS : [String] = []
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   FOR PRINTING IN COLOR
