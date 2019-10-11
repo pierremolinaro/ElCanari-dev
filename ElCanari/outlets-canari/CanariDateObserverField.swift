@@ -10,8 +10,8 @@ class CanariDateObserverField : NSTextField, EBUserClassNameProtocol, NSTextFiel
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     self.delegate = self
     self.isEditable = false
     self.drawsBackground = false
@@ -21,8 +21,8 @@ class CanariDateObserverField : NSTextField, EBUserClassNameProtocol, NSTextFiel
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     self.delegate = self
     self.isEditable = false
     self.drawsBackground = false
@@ -40,8 +40,8 @@ class CanariDateObserverField : NSTextField, EBUserClassNameProtocol, NSTextFiel
   //  valueObserver binding
   //····················································································································
 
-  private func updateOutlet (_ object : EBReadOnlyProperty_Date) {
-    switch object.prop {
+  private func updateOutlet (_ inObject : EBReadOnlyProperty_Date) {
+    switch inObject.prop {
     case .empty :
       self.enableFromValueBinding (false)
       self.stringValue = "—"

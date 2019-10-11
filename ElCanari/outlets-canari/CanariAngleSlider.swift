@@ -38,8 +38,8 @@ class CanariAngleSlider : NSSlider, EBUserClassNameProtocol {
   //  value binding
   //····················································································································
 
-  fileprivate func update (_ angle : EBReadOnlyProperty_Int) {
-    switch angle.prop {
+  fileprivate func update (_ inAngle : EBReadOnlyProperty_Int) {
+    switch inAngle.prop {
     case .empty :
       self.enableFromValueBinding (false)
     case .multiple :

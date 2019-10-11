@@ -10,13 +10,13 @@ import Cocoa
 
 struct EBDataScanner {
   private var mData : Data
-  private var mReadIndex : Int = 0
-  private var mReadOk : Bool = true
-  private var mExpectedBytes : Array<UInt8> = []
+  private var mReadIndex = 0
+  private var mReadOk = true
+  private var mExpectedBytes = [UInt8] ()
 
   //····················································································································
 
-  init (data: Data) {
+  init (data : Data) {
     mData = data
   }
 
