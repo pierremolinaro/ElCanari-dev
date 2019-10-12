@@ -406,6 +406,10 @@ document ProjectDocument root ProjectRoot {
     $color #commentInSchematicSelectionController.mColor {sendContinously : yes}
   ;
 
+  outlet CanariEnumSegmentedControl mCommentInSchematicsHorizontalAlignmentSegmentedControl
+      $selectedSegment #commentInSchematicSelectionController.mHorizontalAlignment
+  ;
+
 //--- Selected label in schematic inspector
   outlet CanariViewWithKeyView mSchematicsLabelInspectorView ;
   selectionController LabelInSchematic #schematicLabelSelectionController :

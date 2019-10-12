@@ -17,6 +17,7 @@ func transient_CommentInSchematic_objectDisplay (
        _ self_mComment : String,                 
        _ self_mColor : NSColor,                  
        _ self_mSize : Double,                    
+       _ self_mHorizontalAlignment : HorizontalAlignment,
        _ self_mX : Int,                          
        _ self_mY : Int
 ) -> EBShape {
@@ -33,7 +34,7 @@ func transient_CommentInSchematic_objectDisplay (
           text: (self_mComment == "") ? "Empty comment" : self_mComment,
           p,
           textAttributes,
-          .center,
+          self_mHorizontalAlignment.ebTextShapeHorizontalAlignment,
           .center
         )
 //--- END OF USER ZONE 2

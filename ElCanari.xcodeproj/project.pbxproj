@@ -1682,6 +1682,10 @@
 		CFBED92720F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED92620F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift */; };
 		CFBEE4DD20DD26E2000743A2 /* controller-table-view-MergerDocument-mBoardModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBEE4DC20DD26E2000743A2 /* controller-table-view-MergerDocument-mBoardModelController.swift */; };
 		CFC129231B44887700B1866D /* file-metadata-dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC129221B44887700B1866D /* file-metadata-dictionary.swift */; };
+		CFC2684F23524D18007C47F6 /* alignmentCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2684E23524D18007C47F6 /* alignmentCenter.png */; };
+		CFC2685023524D18007C47F6 /* alignmentCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2684E23524D18007C47F6 /* alignmentCenter.png */; };
+		CFC2685723524EB7007C47F6 /* alignmentRight.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2685523524EB7007C47F6 /* alignmentRight.png */; };
+		CFC2685823524EB7007C47F6 /* alignmentLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2685623524EB7007C47F6 /* alignmentLeft.png */; };
 		CFC2FEAD20EBEF6100C45CB3 /* extension-MergerDocument-arrange-move-selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2FEAC20EBEF6100C45CB3 /* extension-MergerDocument-arrange-move-selection.swift */; };
 		CFC35140213FEE6300EA504C /* kicad-class-KicadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC3513F213FEE6300EA504C /* kicad-class-KicadItem.swift */; };
 		CFC3EDBB1DE0C10900445A35 /* GeometricOblong.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */; };
@@ -3276,6 +3280,9 @@
 		CFBED92620F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-frontLegendLinesSegments.swift"; sourceTree = "<group>"; };
 		CFBEE4DC20DD26E2000743A2 /* controller-table-view-MergerDocument-mBoardModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-MergerDocument-mBoardModelController.swift"; sourceTree = "<group>"; };
 		CFC129221B44887700B1866D /* file-metadata-dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "file-metadata-dictionary.swift"; sourceTree = "<group>"; };
+		CFC2684E23524D18007C47F6 /* alignmentCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alignmentCenter.png; sourceTree = "<group>"; };
+		CFC2685523524EB7007C47F6 /* alignmentRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alignmentRight.png; sourceTree = "<group>"; };
+		CFC2685623524EB7007C47F6 /* alignmentLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alignmentLeft.png; sourceTree = "<group>"; };
 		CFC2FEAC20EBEF6100C45CB3 /* extension-MergerDocument-arrange-move-selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-MergerDocument-arrange-move-selection.swift"; sourceTree = "<group>"; };
 		CFC3513F213FEE6300EA504C /* kicad-class-KicadItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "kicad-class-KicadItem.swift"; sourceTree = "<group>"; };
 		CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometricOblong.swift; sourceTree = "<group>"; };
@@ -4328,6 +4335,9 @@
 			children = (
 				CF61726F1B3C4CD600F3CA82 /* A4horizontal.pdf */,
 				CF6172701B3C4CD600F3CA82 /* A4vertical.pdf */,
+				CFC2684E23524D18007C47F6 /* alignmentCenter.png */,
+				CFC2685623524EB7007C47F6 /* alignmentLeft.png */,
+				CFC2685523524EB7007C47F6 /* alignmentRight.png */,
 				CF6172761B3C4CD600F3CA82 /* arrow.gif */,
 				CF6172771B3C4CD600F3CA82 /* artwork.tif */,
 				CFC5FBC01FDF06220014A257 /* Assets.xcassets */,
@@ -5581,11 +5591,13 @@
 				CF6172E11B3C4CD600F3CA82 /* line-in-symbol.pdf in Resources */,
 				CFF7B4291FDF2E3400A5CF44 /* canari_merger.icns in Resources */,
 				CF6172D91B3C4CD600F3CA82 /* freeRoutingLogo.png in Resources */,
+				CFC2685823524EB7007C47F6 /* alignmentLeft.png in Resources */,
 				CF6172D11B3C4CD600F3CA82 /* circuit-imprime.png in Resources */,
 				CF6172CC1B3C4CD600F3CA82 /* canari_package.icns in Resources */,
 				CFDA579F1BFA524A00EEF3CB /* FontDocument.xib in Resources */,
 				CF6172C51B3C4CD600F3CA82 /* artwork.tif in Resources */,
 				CF7A9E3B21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */,
+				CFC2685723524EB7007C47F6 /* alignmentRight.png in Resources */,
 				CF2A42C321BE981D0023992F /* editorInspector.png in Resources */,
 				CFC5FBC11FDF06220014A257 /* Assets.xcassets in Resources */,
 				CF6172C41B3C4CD600F3CA82 /* arrow.gif in Resources */,
@@ -5599,6 +5611,7 @@
 				CF6172D81B3C4CD600F3CA82 /* font.png in Resources */,
 				CF5599531FDF364400ED5EE6 /* MergerDocument.xib in Resources */,
 				CF6172E41B3C4CD600F3CA82 /* nc.png in Resources */,
+				CFC2684F23524D18007C47F6 /* alignmentCenter.png in Resources */,
 				CF76EF302205ADA4005ECF32 /* how-to.rtf in Resources */,
 				CF6172F41B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff in Resources */,
 				CF6172D71B3C4CD600F3CA82 /* exclamation.tif in Resources */,
@@ -5657,6 +5670,7 @@
 				CF5C4C96219F04D600EAC52A /* font.png in Resources */,
 				CF5C4C97219F04D600EAC52A /* MergerDocument.xib in Resources */,
 				CF5C4C99219F04D600EAC52A /* nc.png in Resources */,
+				CFC2685023524D18007C47F6 /* alignmentCenter.png in Resources */,
 				CF76EF312205ADA4005ECF32 /* how-to.rtf in Resources */,
 				CF5C4C9B219F04D600EAC52A /* SaveAsToolbarImage.tiff in Resources */,
 				CF5C4C9C219F04D600EAC52A /* exclamation.tif in Resources */,

@@ -6,7 +6,7 @@ extension HorizontalAlignment {
 
   //····················································································································
 
-  func ebTextShapeHorizontalAlignment () -> EBTextHorizontalAlignment {
+  var ebTextShapeHorizontalAlignment : EBTextHorizontalAlignment {
     switch self {
       case .onTheRight :
         return EBTextHorizontalAlignment.onTheRight

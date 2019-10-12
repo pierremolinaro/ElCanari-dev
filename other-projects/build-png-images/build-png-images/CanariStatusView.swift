@@ -20,8 +20,6 @@ class CanariStatusView : NSView {
   //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
-//    NSColor.blue.setFill ()
-//    __NSRectFill (inDirtyRect)
     let s = min (self.frame.size.width / 4.0, self.frame.size.height / 10.0)
     let centerX = self.bounds.midX
     var r = NSRect (

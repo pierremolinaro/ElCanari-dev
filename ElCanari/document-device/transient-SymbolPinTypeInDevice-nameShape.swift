@@ -28,7 +28,7 @@ func transient_SymbolPinTypeInDevice_nameShape (
       NSAttributedString.Key.foregroundColor : self_mPinNameIsDisplayedInSchematics ? NSColor.black : .lightGray
     ]
     let labelOrigin = NSPoint (x: canariUnitToCocoa (self_mXName), y: canariUnitToCocoa (self_mYName))
-    shape.add (text: self_mName, labelOrigin, nameTextAttributes, self_mNameHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center)
+    shape.add (text: self_mName, labelOrigin, nameTextAttributes, self_mNameHorizontalAlignment.ebTextShapeHorizontalAlignment, .center)
     return shape
 //--- END OF USER ZONE 2
 }

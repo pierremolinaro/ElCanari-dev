@@ -29,7 +29,7 @@ func transient_SymbolPinInstanceInDevice_numberShape (
       ]
       let numberOrigin = NSPoint (x: canariUnitToCocoa (x), y: canariUnitToCocoa (y))
       let padName = self_mPadProxy_mPadName ?? "##"
-      shape.add (text: padName, numberOrigin, numberTextAttributes, alignment.ebTextShapeHorizontalAlignment (), .center)
+      shape.add (text: padName, numberOrigin, numberTextAttributes, alignment.ebTextShapeHorizontalAlignment, .center)
     }
     return shape
 //--- END OF USER ZONE 2

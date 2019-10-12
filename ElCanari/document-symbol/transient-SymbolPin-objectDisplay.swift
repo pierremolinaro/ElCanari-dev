@@ -45,14 +45,14 @@ func transient_SymbolPin_objectDisplay (
     ]
     let labelOrigin = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
     let label = (self_name == "") ? "?" : self_name
-    shape.add (text: label, labelOrigin, nameTextAttributes, self_nameHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center)
+    shape.add (text: label, labelOrigin, nameTextAttributes, self_nameHorizontalAlignment.ebTextShapeHorizontalAlignment, .center)
   //--- Number
     let numberTextAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont,
       NSAttributedString.Key.foregroundColor : NSColor.black
     ]
     let numberOrigin = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))
-    shape.add (text: "##", numberOrigin, numberTextAttributes, self_numberHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center)
+    shape.add (text: "##", numberOrigin, numberTextAttributes, self_numberHorizontalAlignment.ebTextShapeHorizontalAlignment, .center)
     return shape
 //--- END OF USER ZONE 2
 }

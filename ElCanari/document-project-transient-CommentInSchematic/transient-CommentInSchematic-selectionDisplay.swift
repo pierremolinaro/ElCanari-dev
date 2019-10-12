@@ -17,6 +17,7 @@ func transient_CommentInSchematic_selectionDisplay (
        _ self_mComment : String,                    
        _ self_mColor : NSColor,                     
        _ self_mSize : Double,                       
+       _ self_mHorizontalAlignment : HorizontalAlignment,
        _ self_mX : Int,                             
        _ self_mY : Int
 ) -> EBShape {
@@ -30,7 +31,7 @@ func transient_CommentInSchematic_selectionDisplay (
           p,
           font,
           self_mColor,
-          .center,
+          self_mHorizontalAlignment.ebTextShapeHorizontalAlignment,
           .center,
           knobIndex: 0
         )

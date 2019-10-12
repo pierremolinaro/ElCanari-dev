@@ -130,6 +130,7 @@
                 <outlet property="mChangeValueValidationButton" destination="8bg-gm-Ulo" id="saP-Lv-6iz"/>
                 <outlet property="mCheckClearanceBetweenPadsOfSameNetSwitch" destination="qLD-Jv-e0M" id="Bl6-ai-5bQ"/>
                 <outlet property="mCommentColorInSchematicsTextField" destination="whL-g9-wFe" id="LKs-va-mkb"/>
+                <outlet property="mCommentInSchematicsHorizontalAlignmentSegmentedControl" destination="ZUq-zE-DiN" id="uTD-kI-eUn"/>
                 <outlet property="mCommentInSchematicsInspectorView" destination="gb7-75-GoJ" id="fXa-0i-8og"/>
                 <outlet property="mCommentInSchematicsTextField" destination="f5f-Zs-HeU" id="JrX-Sc-54S"/>
                 <outlet property="mCommentSizeInSchematicsSlider" destination="38b-jw-m2H" id="roR-VL-U2l"/>
@@ -2753,7 +2754,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="152" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="153.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2767,11 +2768,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="152" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="153.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="152" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="153.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -2787,7 +2788,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="175.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="174" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2801,11 +2802,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="623.5" y="1" width="175.5" height="17"/>
+                                                <rect key="frame" x="625" y="1" width="174" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="175.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="174" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -7400,13 +7401,36 @@ Gw
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" controlSize="small" state="on" alignment="left" minValue="4" maxValue="20" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="33" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Ej0-pl-Vtg"/>
                 </slider>
+                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUq-zE-DiN" customClass="CanariEnumSegmentedControl" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="127" y="292" width="102" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="4AS-OB-QKR">
+                        <font key="font" metaFont="smallSystem"/>
+                        <segments>
+                            <segment image="alignmentLeft" width="32"/>
+                            <segment image="alignmentCenter" width="32" selected="YES" tag="1"/>
+                            <segment image="alignmentRight" width="32">
+                                <nil key="label"/>
+                            </segment>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="whL-g9-wFe" customClass="EBColorWell">
                     <rect key="frame" x="177" y="371" width="53" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m5H-kE-vnt">
+                    <rect key="frame" x="20" y="294" width="57" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Alignment" id="1F8-si-uP8">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="-7" y="-10"/>
+            <point key="canvasLocation" x="-253" y="-11"/>
         </customView>
         <customView id="ToC-Dv-JaV" userLabel="Schematics Inspector : nc" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="63"/>
@@ -8785,6 +8809,9 @@ Gw
         <image name="NSSmartBadgeTemplate" width="14" height="14"/>
         <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
         <image name="NSStatusUnavailable" width="16" height="16"/>
+        <image name="alignmentCenter" width="60" height="60"/>
+        <image name="alignmentLeft" width="60" height="60"/>
+        <image name="alignmentRight" width="60" height="60"/>
         <image name="artwork" width="278" height="146"/>
         <image name="autorouter" width="283" height="282"/>
         <image name="display" width="64" height="64"/>

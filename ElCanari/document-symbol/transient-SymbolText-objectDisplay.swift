@@ -28,7 +28,7 @@ func transient_SymbolText_objectDisplay (
     ]
     let origin = NSPoint (x: canariUnitToCocoa (self_x), y: canariUnitToCocoa (self_y))
     var shape = EBShape ()
-    shape.add (text: self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment(), .center)
+    shape.add (text: self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment, .center)
     return shape
 //--- END OF USER ZONE 2
 }

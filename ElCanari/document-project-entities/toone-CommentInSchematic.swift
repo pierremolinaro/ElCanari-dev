@@ -17,6 +17,7 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //--- Remove observers from removed objects
     inOldValue?.mColor_property.removeEBObserversFrom (&self.mObserversOf_mColor) // Stored property
     inOldValue?.mSize_property.removeEBObserversFrom (&self.mObserversOf_mSize) // Stored property
+    inOldValue?.mHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
     inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
     inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
     inOldValue?.mComment_property.removeEBObserversFrom (&self.mObserversOf_mComment) // Stored property
@@ -25,6 +26,7 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //--- Add observers to added objects
     self.mInternalValue?.mColor_property.addEBObserversFrom (&self.mObserversOf_mColor) // Stored property
     self.mInternalValue?.mSize_property.addEBObserversFrom (&self.mObserversOf_mSize) // Stored property
+    self.mInternalValue?.mHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
     self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
     self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
     self.mInternalValue?.mComment_property.addEBObserversFrom (&self.mObserversOf_mComment) // Stored property
@@ -168,6 +170,76 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSize_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mHorizontalAlignment' stored property
+  //····················································································································
+
+  private var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
+    if let model = self.propval {
+      switch (model.mHorizontalAlignment_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mHorizontalAlignment.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mHorizontalAlignment_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mHorizontalAlignment.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mHorizontalAlignment_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mHorizontalAlignment_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBEvent) in
+        managedObject.mHorizontalAlignment_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+    self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mHorizontalAlignment_property.removeEBObserver (observer)
       }
     }
   }
