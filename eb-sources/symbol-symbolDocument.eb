@@ -70,20 +70,20 @@ document SymbolDocument root SymbolRoot {
 
   outlet CanariViewWithKeyView mTextInspectorView ;
   selectionController SymbolText #mSymbolTextSelectionController : #mSymbolObjectsController.selectedArray ;
-  outlet EBPopUpButton mSymbolTextHorizontalAlignmentPopUpButton
-    $selectedIndex #mSymbolTextSelectionController.horizontalAlignment
-  ;
   outlet EBTextField mSymbolTextValueTextField
     $value #mSymbolTextSelectionController.text {sendContinously : yes}
+  ;
+  outlet CanariEnumSegmentedControl mSymbolTextHorizontalAlignmentSegmentedControl
+    $selectedSegment #mSymbolTextSelectionController.horizontalAlignment
   ;
 
   outlet CanariViewWithKeyView mPinInspectorView ;
   selectionController SymbolPin #mSymbolPinSelectionController : #mSymbolObjectsController.selectedArray ;
-  outlet EBPopUpButton mSymbolPinNumberHorizontalAlignmentPopUpButton
-    $selectedIndex #mSymbolPinSelectionController.numberHorizontalAlignment
+  outlet CanariEnumSegmentedControl mSymbolPinLabelHorizontalAlignmentSegmentedControl
+    $selectedSegment #mSymbolPinSelectionController.nameHorizontalAlignment
   ;
-  outlet EBPopUpButton mSymbolPinLabelHorizontalAlignmentPopUpButton
-    $selectedIndex #mSymbolPinSelectionController.nameHorizontalAlignment
+  outlet CanariEnumSegmentedControl mSymbolPinNumberHorizontalAlignmentSegmentedControl
+    $selectedSegment #mSymbolPinSelectionController.numberHorizontalAlignment
   ;
   outlet EBSwitch mSymbolPinNumberIsVisibleInSchematicsSwitch
     $value #mSymbolPinSelectionController.pinNameIsDisplayedInSchematics

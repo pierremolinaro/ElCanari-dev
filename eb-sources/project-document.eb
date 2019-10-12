@@ -407,7 +407,7 @@ document ProjectDocument root ProjectRoot {
   ;
 
   outlet CanariEnumSegmentedControl mCommentInSchematicsHorizontalAlignmentSegmentedControl
-      $selectedSegment #commentInSchematicSelectionController.mHorizontalAlignment
+    $selectedSegment #commentInSchematicSelectionController.mHorizontalAlignment
   ;
 
 //--- Selected label in schematic inspector

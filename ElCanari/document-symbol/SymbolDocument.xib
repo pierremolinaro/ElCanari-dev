@@ -42,12 +42,12 @@
                 <outlet property="mSymbolDrawingWidthMultipliedByTenPopupButton" destination="BEd-ma-h5W" id="VnO-WL-nJf"/>
                 <outlet property="mSymbolIssueInspectorView" destination="647" id="x3e-hs-nJX"/>
                 <outlet property="mSymbolPageView" destination="881" id="qul-5X-3Ua"/>
-                <outlet property="mSymbolPinLabelHorizontalAlignmentPopUpButton" destination="630" id="Q5y-kW-aXg"/>
+                <outlet property="mSymbolPinLabelHorizontalAlignmentSegmentedControl" destination="nEb-Vc-qKb" id="ACw-8S-nRO"/>
                 <outlet property="mSymbolPinLabelNameTextField" destination="530" id="Zep-5h-E0b"/>
-                <outlet property="mSymbolPinNumberHorizontalAlignmentPopUpButton" destination="623" id="NSJ-U0-ZJF"/>
+                <outlet property="mSymbolPinNumberHorizontalAlignmentSegmentedControl" destination="YQD-eO-cob" id="PBb-lf-aNj"/>
                 <outlet property="mSymbolPinNumberIsVisibleInSchematicsSwitch" destination="531" id="Tyo-OW-RTf"/>
                 <outlet property="mSymbolRootInspectorView" destination="1114" id="asG-EO-ZiP"/>
-                <outlet property="mSymbolTextHorizontalAlignmentPopUpButton" destination="846" id="RiX-fQ-K4l"/>
+                <outlet property="mSymbolTextHorizontalAlignmentSegmentedControl" destination="yTd-xy-nGh" id="c1Z-L8-SVp"/>
                 <outlet property="mSymbolTextValueTextField" destination="860" id="u0W-9X-ZyT"/>
                 <outlet property="mSymbolZoomFlipInspectorView" destination="580" id="SBV-hi-K1j"/>
                 <outlet property="mTextInspectorView" destination="844" id="mcY-O6-cWK"/>
@@ -675,24 +675,24 @@ Cg
             <point key="canvasLocation" x="-331" y="-268"/>
         </customView>
         <customView id="844" userLabel="Object Inspector : Text" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="126"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="858">
-                    <rect key="frame" x="20" y="432" width="210" height="5"/>
+                    <rect key="frame" x="20" y="63" width="210" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="857">
-                    <rect key="frame" x="17" y="443" width="129" height="14"/>
+                    <rect key="frame" x="18" y="43" width="60" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Text Alignment:" id="1049">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Alignment" id="1049">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="860" customClass="EBTextField">
-                    <rect key="frame" x="66" y="407" width="164" height="19"/>
+                    <rect key="frame" x="69" y="75" width="161" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="name…" drawsBackground="YES" id="1050">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -701,16 +701,16 @@ Cg
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="845">
-                    <rect key="frame" x="17" y="409" width="44" height="14"/>
+                    <rect key="frame" x="19" y="78" width="44" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Value:" id="1047">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Value" id="1047">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1179">
-                    <rect key="frame" x="54" y="481" width="141" height="14"/>
+                    <rect key="frame" x="55" y="112" width="141" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Text Inspector" id="1180">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -718,67 +718,51 @@ Cg
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="846" customClass="EBPopUpButton">
-                    <rect key="frame" x="151" y="441" width="79" height="17"/>
+                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yTd-xy-nGh" customClass="CanariEnumSegmentedControl" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="19" y="19" width="212" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="848" id="1048">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="oa6-9p-pNV">
                         <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="847">
-                            <items>
-                                <menuItem title="Left" state="on" id="848"/>
-                                <menuItem title="Center" id="849"/>
-                                <menuItem title="Right" id="850"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
+                        <segments>
+                            <segment toolTip="Aligment Left" image="alignmentLeft" width="69"/>
+                            <segment toolTip="Alignment Center" image="alignmentCenter" width="69" selected="YES" tag="1"/>
+                            <segment toolTip="Alignment Right" image="alignmentRight" width="68">
+                                <nil key="label"/>
+                            </segment>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
             </subviews>
-            <point key="canvasLocation" x="-452" y="154"/>
+            <point key="canvasLocation" x="-452" y="-33"/>
         </customView>
         <customView id="528" userLabel="Object inspector : pin" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="207"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="637">
-                    <rect key="frame" x="20" y="437" width="210" height="5"/>
+                    <rect key="frame" x="20" y="115" width="210" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="635">
-                    <rect key="frame" x="17" y="366" width="129" height="14"/>
+                    <rect key="frame" x="17" y="44" width="129" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Pin Name Alignment:" id="1030">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Pin Name Alignment" id="1030">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="630" customClass="EBPopUpButton">
-                    <rect key="frame" x="154" y="364" width="79" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="632" id="1029">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="631">
-                            <items>
-                                <menuItem title="Left" state="on" id="632"/>
-                                <menuItem title="Center" id="633"/>
-                                <menuItem title="Right" id="634"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="628">
-                    <rect key="frame" x="17" y="448" width="129" height="14"/>
+                    <rect key="frame" x="17" y="155" width="129" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Pin Number Alignment:" id="1028">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Pin Number Alignment" id="1028">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="531" customClass="EBSwitch">
-                    <rect key="frame" x="17" y="388" width="215" height="18"/>
+                    <rect key="frame" x="17" y="66" width="215" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Pin Name Is Visible In Schematics" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="1026">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -786,7 +770,7 @@ Cg
                     </buttonCell>
                 </button>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="530" customClass="EBTextField">
-                    <rect key="frame" x="83" y="412" width="147" height="19"/>
+                    <rect key="frame" x="83" y="90" width="147" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="name…" drawsBackground="YES" id="1025">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -795,7 +779,7 @@ Cg
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="529">
-                    <rect key="frame" x="17" y="414" width="61" height="14"/>
+                    <rect key="frame" x="17" y="92" width="61" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Pin Name:" id="1024">
                         <font key="font" metaFont="smallSystem"/>
@@ -804,7 +788,7 @@ Cg
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1129">
-                    <rect key="frame" x="79" y="481" width="92" height="14"/>
+                    <rect key="frame" x="79" y="188" width="92" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Pin Inspector" id="1130">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -812,23 +796,36 @@ Cg
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="623" customClass="EBPopUpButton">
-                    <rect key="frame" x="154" y="446" width="79" height="17"/>
+                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YQD-eO-cob" customClass="CanariEnumSegmentedControl" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="18" y="130" width="216" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="626" id="1027">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="KiH-ih-cGD">
                         <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="624">
-                            <items>
-                                <menuItem title="Left" state="on" id="626"/>
-                                <menuItem title="Center" id="627"/>
-                                <menuItem title="Right" id="625"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
+                        <segments>
+                            <segment toolTip="Aligment Left" image="alignmentLeft" width="70"/>
+                            <segment toolTip="Alignment Center" image="alignmentCenter" width="70" selected="YES" tag="1"/>
+                            <segment toolTip="Alignment Right" image="alignmentRight" width="70">
+                                <nil key="label"/>
+                            </segment>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
+                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nEb-Vc-qKb" customClass="CanariEnumSegmentedControl" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="18" y="19" width="213" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="N49-b3-ZOu">
+                        <font key="font" metaFont="smallSystem"/>
+                        <segments>
+                            <segment toolTip="Aligment Left" image="alignmentLeft" width="69"/>
+                            <segment toolTip="Alignment Center" image="alignmentCenter" width="69" selected="YES" tag="1"/>
+                            <segment toolTip="Alignment Right" image="alignmentRight" width="69">
+                                <nil key="label"/>
+                            </segment>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
             </subviews>
-            <point key="canvasLocation" x="203" y="95"/>
+            <point key="canvasLocation" x="203" y="-51.5"/>
         </customView>
         <customView id="gB9-36-zn7" userLabel="Object inspector Base View" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
@@ -838,6 +835,9 @@ Cg
     </objects>
     <resources>
         <image name="NSStatusAvailable" width="16" height="16"/>
+        <image name="alignmentCenter" width="60" height="60"/>
+        <image name="alignmentLeft" width="60" height="60"/>
+        <image name="alignmentRight" width="60" height="60"/>
         <image name="editorInspector" width="60" height="60"/>
         <image name="magnifyingGlass" width="40" height="40"/>
     </resources>

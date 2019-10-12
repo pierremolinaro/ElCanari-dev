@@ -157,12 +157,12 @@ import Cocoa
   @IBOutlet var mSymbolDrawingWidthMultipliedByTenPopupButton : EBPopUpButton? = nil
   @IBOutlet var mSymbolIssueInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mSymbolPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mSymbolPinLabelHorizontalAlignmentPopUpButton : EBPopUpButton? = nil
+  @IBOutlet var mSymbolPinLabelHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
   @IBOutlet var mSymbolPinLabelNameTextField : EBTextField? = nil
-  @IBOutlet var mSymbolPinNumberHorizontalAlignmentPopUpButton : EBPopUpButton? = nil
+  @IBOutlet var mSymbolPinNumberHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
   @IBOutlet var mSymbolPinNumberIsVisibleInSchematicsSwitch : EBSwitch? = nil
   @IBOutlet var mSymbolRootInspectorView : NSView? = nil
-  @IBOutlet var mSymbolTextHorizontalAlignmentPopUpButton : EBPopUpButton? = nil
+  @IBOutlet var mSymbolTextHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
   @IBOutlet var mSymbolTextValueTextField : EBTextField? = nil
   @IBOutlet var mSymbolZoomFlipInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mTextInspectorView : CanariViewWithKeyView? = nil
@@ -279,12 +279,12 @@ import Cocoa
     checkOutletConnection (self.mSymbolDrawingWidthMultipliedByTenPopupButton, "mSymbolDrawingWidthMultipliedByTenPopupButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSymbolIssueInspectorView, "mSymbolIssueInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSymbolPageView, "mSymbolPageView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mSymbolPinLabelHorizontalAlignmentPopUpButton, "mSymbolPinLabelHorizontalAlignmentPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSymbolPinLabelHorizontalAlignmentSegmentedControl, "mSymbolPinLabelHorizontalAlignmentSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSymbolPinLabelNameTextField, "mSymbolPinLabelNameTextField", EBTextField.self, #file, #line)
-    checkOutletConnection (self.mSymbolPinNumberHorizontalAlignmentPopUpButton, "mSymbolPinNumberHorizontalAlignmentPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSymbolPinNumberHorizontalAlignmentSegmentedControl, "mSymbolPinNumberHorizontalAlignmentSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSymbolPinNumberIsVisibleInSchematicsSwitch, "mSymbolPinNumberIsVisibleInSchematicsSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolRootInspectorView, "mSymbolRootInspectorView", NSView.self, #file, #line)
-    checkOutletConnection (self.mSymbolTextHorizontalAlignmentPopUpButton, "mSymbolTextHorizontalAlignmentPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSymbolTextHorizontalAlignmentSegmentedControl, "mSymbolTextHorizontalAlignmentSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSymbolTextValueTextField, "mSymbolTextValueTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSymbolZoomFlipInspectorView, "mSymbolZoomFlipInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mTextInspectorView, "mTextInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -405,10 +405,10 @@ import Cocoa
     self.mComposedSymbolView?.bind_backColor (g_Preferences!.symbolBackgroundColor_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_xPlacardUnit (self.rootObject.xPlacardUnit_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_yPlacardUnit (self.rootObject.yPlacardUnit_property, file: #file, line: #line)
-    self.mSymbolTextHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.mSymbolTextSelectionController.horizontalAlignment_property, file: #file, line: #line)
     self.mSymbolTextValueTextField?.bind_value (self.mSymbolTextSelectionController.text_property, file: #file, line: #line, sendContinously:true)
-    self.mSymbolPinNumberHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.mSymbolPinSelectionController.numberHorizontalAlignment_property, file: #file, line: #line)
-    self.mSymbolPinLabelHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.mSymbolPinSelectionController.nameHorizontalAlignment_property, file: #file, line: #line)
+    self.mSymbolTextHorizontalAlignmentSegmentedControl?.bind_selectedSegment (self.mSymbolTextSelectionController.horizontalAlignment_property, file: #file, line: #line)
+    self.mSymbolPinLabelHorizontalAlignmentSegmentedControl?.bind_selectedSegment (self.mSymbolPinSelectionController.nameHorizontalAlignment_property, file: #file, line: #line)
+    self.mSymbolPinNumberHorizontalAlignmentSegmentedControl?.bind_selectedSegment (self.mSymbolPinSelectionController.numberHorizontalAlignment_property, file: #file, line: #line)
     self.mSymbolPinNumberIsVisibleInSchematicsSwitch?.bind_value (self.mSymbolPinSelectionController.pinNameIsDisplayedInSchematics_property, file: #file, line: #line)
     self.mSymbolPinLabelNameTextField?.bind_value (self.mSymbolPinSelectionController.name_property, file: #file, line: #line, sendContinously:true)
     self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
@@ -501,10 +501,10 @@ import Cocoa
     self.mComposedSymbolView?.unbind_backColor ()
     self.mComposedSymbolView?.unbind_xPlacardUnit ()
     self.mComposedSymbolView?.unbind_yPlacardUnit ()
-    self.mSymbolTextHorizontalAlignmentPopUpButton?.unbind_selectedIndex ()
     self.mSymbolTextValueTextField?.unbind_value ()
-    self.mSymbolPinNumberHorizontalAlignmentPopUpButton?.unbind_selectedIndex ()
-    self.mSymbolPinLabelHorizontalAlignmentPopUpButton?.unbind_selectedIndex ()
+    self.mSymbolTextHorizontalAlignmentSegmentedControl?.unbind_selectedSegment ()
+    self.mSymbolPinLabelHorizontalAlignmentSegmentedControl?.unbind_selectedSegment ()
+    self.mSymbolPinNumberHorizontalAlignmentSegmentedControl?.unbind_selectedSegment ()
     self.mSymbolPinNumberIsVisibleInSchematicsSwitch?.unbind_value ()
     self.mSymbolPinLabelNameTextField?.unbind_value ()
     self.mStatusImageViewInToolbar?.unbind_image ()
@@ -565,12 +565,12 @@ import Cocoa
     self.mSymbolDrawingWidthMultipliedByTenPopupButton?.ebCleanUp ()
     self.mSymbolIssueInspectorView?.ebCleanUp ()
     self.mSymbolPageView?.ebCleanUp ()
-    self.mSymbolPinLabelHorizontalAlignmentPopUpButton?.ebCleanUp ()
+    self.mSymbolPinLabelHorizontalAlignmentSegmentedControl?.ebCleanUp ()
     self.mSymbolPinLabelNameTextField?.ebCleanUp ()
-    self.mSymbolPinNumberHorizontalAlignmentPopUpButton?.ebCleanUp ()
+    self.mSymbolPinNumberHorizontalAlignmentSegmentedControl?.ebCleanUp ()
     self.mSymbolPinNumberIsVisibleInSchematicsSwitch?.ebCleanUp ()
     self.mSymbolRootInspectorView?.ebCleanUp ()
-    self.mSymbolTextHorizontalAlignmentPopUpButton?.ebCleanUp ()
+    self.mSymbolTextHorizontalAlignmentSegmentedControl?.ebCleanUp ()
     self.mSymbolTextValueTextField?.ebCleanUp ()
     self.mSymbolZoomFlipInspectorView?.ebCleanUp ()
     self.mTextInspectorView?.ebCleanUp ()
@@ -613,12 +613,12 @@ import Cocoa
     self.mSymbolDrawingWidthMultipliedByTenPopupButton = nil
     self.mSymbolIssueInspectorView = nil
     self.mSymbolPageView = nil
-    self.mSymbolPinLabelHorizontalAlignmentPopUpButton = nil
+    self.mSymbolPinLabelHorizontalAlignmentSegmentedControl = nil
     self.mSymbolPinLabelNameTextField = nil
-    self.mSymbolPinNumberHorizontalAlignmentPopUpButton = nil
+    self.mSymbolPinNumberHorizontalAlignmentSegmentedControl = nil
     self.mSymbolPinNumberIsVisibleInSchematicsSwitch = nil
     self.mSymbolRootInspectorView = nil
-    self.mSymbolTextHorizontalAlignmentPopUpButton = nil
+    self.mSymbolTextHorizontalAlignmentSegmentedControl = nil
     self.mSymbolTextValueTextField = nil
     self.mSymbolZoomFlipInspectorView = nil
     self.mTextInspectorView = nil
