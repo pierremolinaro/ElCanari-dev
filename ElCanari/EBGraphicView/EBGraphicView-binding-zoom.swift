@@ -15,10 +15,11 @@ extension EBGraphicView {
   fileprivate func updateOutlet (_ zoom : EBReadOnlyProperty_Int) {
     switch zoom.prop {
     case .empty, .multiple :
-      self.applyZoom (100)
+      self.mZoomPropertyCache = 100
     case .single (let v) :
-      self.applyZoom (v)
+      self.mZoomPropertyCache = v
     }
+    self.applyZoom ()
   }
 
   //····················································································································

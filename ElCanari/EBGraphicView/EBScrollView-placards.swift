@@ -20,23 +20,15 @@ extension EBScrollView {
   }
 
   //····················································································································
-
-//  func removePlacard (_ inPlacardView : NSView?) {
-//    if let view = inPlacardView, self.mPlacardArray.contains (view) {
-//      view.removeFromSuperview ()
-//      if let index = self.mPlacardArray.firstIndex (of: view) {
-//        self.mPlacardArray.remove (at: index)
-//      }
-//    }
-//  }
-
-  //····················································································································
   // MARK: -
   //····················································································································
 
   override func tile () { // tile is called during live resizing
     super.tile ()
     self.updatePlacardsLocation ()
+    if let graphicView = self.documentView as? EBGraphicView {
+      graphicView.scrollViewResizeDidEnd ()
+    }
   }
 
   //····················································································································

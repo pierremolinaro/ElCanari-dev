@@ -21,11 +21,10 @@ extension EBGraphicView {
   //····················································································································
 
   @objc fileprivate func setZoomFromPopUpButton (_ inSender : NSMenuItem) {
-    if let scrollView = self.enclosingScrollView {
-      self.applyZoom (inSender.tag)
-      let actualZoom = Int ((scrollView.magnification * 100.0).rounded (.toNearestOrEven))
-      self.mZoomController?.updateModel (self, actualZoom)
-    }
+    let actualZoom = inSender.tag
+    self.mZoomController?.updateModel (self, actualZoom)
+    self.mZoomPropertyCache = actualZoom
+    self.applyZoom ()
   }
 
   //····················································································································
@@ -57,7 +56,6 @@ extension EBGraphicView {
         action:nil,
         keyEquivalent:""
       )
-    //  self.addPopupButtonItemForZoom (50)
       self.addPopupButtonItemForZoom (100)
       self.addPopupButtonItemForZoom (150)
       self.addPopupButtonItemForZoom (200)
@@ -122,19 +120,6 @@ extension EBGraphicView {
     self.mXPlacard?.stringValue = ""
     self.mYPlacard?.stringValue = ""
   }
-
-  //····················································································································
-
-//  internal func removePlacards () {
-//    if let scrollView = self.enclosingScrollView as? EBScrollView {
-//      scrollView.removePlacard (self.mZoomPopUpButton)
-//      self.mZoomPopUpButton = nil
-//      scrollView.removePlacard (self.mXPlacard)
-//      self.mXPlacard = nil ;
-//      scrollView.removePlacard (self.mYPlacard)
-//      self.mYPlacard = nil
-//    }
-//  }
 
   //····················································································································
   // Live scrolling notification is used for updating XY placards

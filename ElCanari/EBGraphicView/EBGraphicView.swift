@@ -72,6 +72,10 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
+  internal var mZoomPropertyCache = 0 // Used in EBGraphicView-magnify-and-zoom.swift
+
+  //····················································································································
+
   var mDrawFrameIssue = true
 
   //····················································································································
@@ -442,11 +446,10 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     newBounds = newBounds.union (self.mMinimumRectangle)
     let currentBounds = self.bounds
     if currentBounds != newBounds {
-      let scale = self.actualScale
       self.frame.size = newBounds.size
       self.bounds = newBounds
       self.setNeedsDisplay (self.frame)
-      self.applyZoom (Int (scale * 100.0))
+      self.applyZoom ()
     }
   }
 
