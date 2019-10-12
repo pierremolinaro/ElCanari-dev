@@ -16,6 +16,7 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     inOldValue?.mColor_property.removeEBObserversFrom (&self.mObserversOf_mColor) // Stored property
+    inOldValue?.mSize_property.removeEBObserversFrom (&self.mObserversOf_mSize) // Stored property
     inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
     inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
     inOldValue?.mComment_property.removeEBObserversFrom (&self.mObserversOf_mComment) // Stored property
@@ -23,6 +24,7 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mColor_property.addEBObserversFrom (&self.mObserversOf_mColor) // Stored property
+    self.mInternalValue?.mSize_property.addEBObserversFrom (&self.mObserversOf_mSize) // Stored property
     self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
     self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
     self.mInternalValue?.mComment_property.addEBObserversFrom (&self.mObserversOf_mComment) // Stored property
@@ -96,6 +98,76 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mColor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSize' stored property
+  //····················································································································
+
+  private var mObserversOf_mSize = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSize_property_selection : EBSelection <Double?> {
+    if let model = self.propval {
+      switch (model.mSize_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSize (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSize.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mSize_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSize (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSize.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mSize_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSize_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSize.apply { (_ observer : EBEvent) in
+        managedObject.mSize_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSize_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+    self.mObserversOf_mSize.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSize_property.removeEBObserver (observer)
       }
     }
   }

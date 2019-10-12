@@ -132,6 +132,8 @@
                 <outlet property="mCommentColorInSchematicsTextField" destination="whL-g9-wFe" id="LKs-va-mkb"/>
                 <outlet property="mCommentInSchematicsInspectorView" destination="gb7-75-GoJ" id="fXa-0i-8og"/>
                 <outlet property="mCommentInSchematicsTextField" destination="f5f-Zs-HeU" id="JrX-Sc-54S"/>
+                <outlet property="mCommentSizeInSchematicsSlider" destination="38b-jw-m2H" id="roR-VL-U2l"/>
+                <outlet property="mCommentSizeInSchematicsTextField" destination="uBv-IH-gOc" id="dIO-ZH-xWy"/>
                 <outlet property="mCommentTextView" destination="3407" id="YIl-Mp-h4a"/>
                 <outlet property="mComponentCountTextField" destination="2928" id="x07-iM-BS2"/>
                 <outlet property="mComponentInBoardCenterXPopUp" destination="16324" id="82b-v1-veH"/>
@@ -2751,7 +2753,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="151.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="152" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2765,11 +2767,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="151.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="152" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="151.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="152" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -2785,7 +2787,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="176" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="175.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2799,11 +2801,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="623" y="1" width="176" height="17"/>
+                                                <rect key="frame" x="623.5" y="1" width="175.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="176" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="175.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -7362,8 +7364,44 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uBv-IH-gOc" customClass="EBDoubleField">
+                    <rect key="frame" x="177" y="347" width="53" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="PBs-Ph-NbR">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="79N-xY-0wY">
+                            <real key="minimum" value="1"/>
+                            <real key="maximum" value="30"/>
+                        </numberFormatter>
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qI4-3V-ihb">
+                    <rect key="frame" x="20" y="376" width="37" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Color" id="BAv-ER-9We">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NuX-Vd-Sm3">
+                    <rect key="frame" x="18" y="350" width="37" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Size" id="Hyg-SY-YDc">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38b-jw-m2H" customClass="EBSlider">
+                    <rect key="frame" x="20" y="321" width="210" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <sliderCell key="cell" controlSize="small" state="on" alignment="left" minValue="4" maxValue="20" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="33" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Ej0-pl-Vtg"/>
+                </slider>
                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="whL-g9-wFe" customClass="EBColorWell">
-                    <rect key="frame" x="186" y="371" width="44" height="23"/>
+                    <rect key="frame" x="177" y="371" width="53" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>

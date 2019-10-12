@@ -21,6 +21,16 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   }
 
   //····················································································································
+  //   Selection observable property: mSize
+  //····················································································································
+
+  let mSize_property = EBPropertyProxy_Double ()
+
+  var mSize_property_selection : EBSelection <Double> {
+    return self.mSize_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: mX
   //····················································································································
 
@@ -87,6 +97,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
   func bind_selection (model : ReadOnlyArrayOf_SchematicObject, file : String, line : Int) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mColor ()
+    self.bind_property_mSize ()
     self.bind_property_mX ()
     self.bind_property_mY ()
     self.bind_property_mComment ()
@@ -105,6 +116,11 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
     self.mColor_property.mWriteModelFunction = nil 
     self.mColor_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mColor (self.mColor_property)
+  //--- mSize
+    self.mSize_property.mReadModelFunction = nil 
+    self.mSize_property.mWriteModelFunction = nil 
+    self.mSize_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mSize (self.mSize_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
@@ -172,6 +188,14 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
       view: view,
       observerExplorer: &self.mColor_property.mObserverExplorer,
       valueExplorer: &self.mColor_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSize",
+      idx: self.mSize_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSize_property.mObserverExplorer,
+      valueExplorer: &self.mSize_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mX",
@@ -307,6 +331,75 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
         case .single (let v) :
           for object in v {
             let result = object.mColor_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mSize () {
+    self.selectedArray_property.addEBObserverOf_mSize (self.mSize_property)
+    self.mSize_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Double> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mSize_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSize_property.mWriteModelFunction = { [weak self] (inValue : Double) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mSize_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mSize_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Double, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mSize_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

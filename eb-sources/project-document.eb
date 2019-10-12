@@ -394,6 +394,14 @@ document ProjectDocument root ProjectRoot {
     $value #commentInSchematicSelectionController.mComment {sendContinously : yes}
   ;
 
+  outlet EBDoubleField mCommentSizeInSchematicsTextField
+    $value #commentInSchematicSelectionController.mSize {sendContinously : no, autoFormatter : no}
+  ;
+
+  outlet EBSlider mCommentSizeInSchematicsSlider
+    $doubleValue #commentInSchematicSelectionController.mSize {sendContinously : yes}
+  ;
+
   outlet EBColorWell mCommentColorInSchematicsTextField
     $color #commentInSchematicSelectionController.mColor {sendContinously : yes}
   ;

@@ -15,6 +15,15 @@ private var gDebugMenuItemsAdded = false
 private let kLogReadFileDuration = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//  EBManagedDocumentFileFormat
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum EBManagedDocumentFileFormat {
+  case binary
+  case textual
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //  EBManagedDocument
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -22,10 +31,11 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
-  var mRootObject : EBManagedObject?
+  internal var mRootObject : EBManagedObject?
   private var mReadMetadataStatus : UInt8 = 0
   private var mMetadataDictionary = [String : Any] ()
   private var mUndoManager = EBUndoManager ()
+  private var mManagedDocumentFileFormat : EBManagedDocumentFileFormat = .binary
 
   //····················································································································
   //    init
@@ -94,7 +104,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     }
   //--- Save metadata dictionary
     self.saveMetadataDictionary (version: version, metadataDictionary : &self.mMetadataDictionary)
-  //--- Add the witdth and the height of main window to metadata dictionary
+  //--- Add the width and the height of main window to metadata dictionary
     if let unwrappedWindowForSheet = windowForSheet { // Document has been opened in the user interface
       if unwrappedWindowForSheet.styleMask.contains(.resizable) { // Only if window is resizable
         let windowSize = unwrappedWindowForSheet.frame.size ;
@@ -103,28 +113,46 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       }
     }
   //---
-    var fileData = Data ()
-  //--- Append signature
-    fileData.appendSignature ()
-  //--- Write status
-    fileData.append (metadataStatusForSaving ())
-  //--- Append metadata dictionary
-    let metaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary, format: .binary, options: 0)
-    fileData.append (1)
-    fileData.appendAutosizedData (metaData)
-  //--- Append document data
-    let documentData = try dataForSavingFromRootObject ()
-    fileData.append (6)
-    fileData.appendAutosizedData (documentData)
-  //--- Append final byte
-    fileData.append (0)
+    let fileData : Data
+    switch self.mManagedDocumentFileFormat {
+    case .binary :
+      var fileBinaryData = Data ()
+    //--- Append signature
+      fileBinaryData.appendBinarySignature ()
+    //--- Write status
+      fileBinaryData.append (self.metadataStatusForSaving ())
+    //--- Append metadata dictionary
+      let metaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary, format: .binary, options: 0)
+      fileBinaryData.append (1)
+      fileBinaryData.appendAutosizedData (metaData)
+    //--- Append document data
+      let dataArray = self.dataForSavingFromRootObject ()
+      let documentData = try PropertyListSerialization.data (fromPropertyList: dataArray, format: .binary, options: 0)
+      fileBinaryData.append (6)
+      fileBinaryData.appendAutosizedData (documentData)
+    //--- Append final byte
+      fileBinaryData.append (0)
+      fileData = fileBinaryData
+    case .textual :
+      var fileStringData = "PM-TEXT-FORMAT \(self.metadataStatusForSaving ())\n".data (using: .utf8)!
+    //--- Append metadata dictionary
+      let textMetaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary, format: .xml, options: 0)
+    //  let textMetaData = try JSONSerialization.data (withJSONObject: self.mMetadataDictionary, options: [])
+      fileStringData += textMetaData
+      fileStringData += "-----\n".data (using: .utf8)!
+      let dataArray = self.dataForSavingFromRootObject ()
+      let documentData = try PropertyListSerialization.data (fromPropertyList: dataArray, format: .xml, options: 0)
+    //  let documentData = try JSONSerialization.data (withJSONObject: dataArray, options: [])
+      fileStringData += documentData
+      fileData = fileStringData
+    }
   //---
     return fileData
   }
 
   //····················································································································
 
-  private func dataForSavingFromRootObject () throws -> Data {
+  private func dataForSavingFromRootObject () -> [NSDictionary] {
   //--- Get objectsto save from root object
     let rootObject = self.mRootObject!
     var reachableObjectArray = [rootObject]
@@ -155,10 +183,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       object.saveIntoDictionary (d)
       saveDataArray.append (d)
     }
-    return try PropertyListSerialization.data (fromPropertyList: saveDataArray,
-      format:PropertyListSerialization.PropertyListFormat.binary,
-      options:0
-    )
+    return saveDataArray
   }
 
   //····················································································································

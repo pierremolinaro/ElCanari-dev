@@ -16,6 +16,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mColor_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSize_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mComment_fromElementsOfSet (inRemovedSet) // Stored property
@@ -23,6 +24,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_mColor_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSize_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mComment_toElementsOfSet (inAddedSet) // Stored property
@@ -83,6 +85,63 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mColor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSize' stored property
+  //····················································································································
+
+  private var mObserversOf_mSize = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSize (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSize.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSize_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSize (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSize.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSize_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSize_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSize.apply { (_ observer : EBEvent) in
+        managedObject.mSize_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSize_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+    self.mObserversOf_mSize.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSize_property.removeEBObserver (observer)
       }
     }
   }
@@ -905,6 +964,7 @@ final class PreferencesArrayOf_CommentInSchematic : StoredArrayOf_CommentInSchem
       self.setProp (objectArray)
     }
     self.addEBObserverOf_mColor (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSize (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mComment (self.mObserverForWritingPreferences)

@@ -16,7 +16,7 @@ extension Data {
 
   //····················································································································
 
-  mutating func appendSignature () {
+  mutating func appendBinarySignature () {
     for c in PM_BINARY_FORMAT_SIGNATURE.utf8 {
       self.append (c)
     }

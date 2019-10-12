@@ -746,6 +746,8 @@ import Cocoa
   @IBOutlet var mCommentColorInSchematicsTextField : EBColorWell? = nil
   @IBOutlet var mCommentInSchematicsInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mCommentInSchematicsTextField : EBTextField? = nil
+  @IBOutlet var mCommentSizeInSchematicsSlider : EBSlider? = nil
+  @IBOutlet var mCommentSizeInSchematicsTextField : EBDoubleField? = nil
   @IBOutlet var mCommentTextView : EBTextObserverView? = nil
   @IBOutlet var mComponentCountTextField : EBTextObserverField? = nil
   @IBOutlet var mComponentInBoardCenterXPopUp : EBPopUpButton? = nil
@@ -1296,6 +1298,8 @@ import Cocoa
     checkOutletConnection (self.mCommentColorInSchematicsTextField, "mCommentColorInSchematicsTextField", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mCommentInSchematicsInspectorView, "mCommentInSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mCommentInSchematicsTextField, "mCommentInSchematicsTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mCommentSizeInSchematicsSlider, "mCommentSizeInSchematicsSlider", EBSlider.self, #file, #line)
+    checkOutletConnection (self.mCommentSizeInSchematicsTextField, "mCommentSizeInSchematicsTextField", EBDoubleField.self, #file, #line)
     checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextObserverView.self, #file, #line)
     checkOutletConnection (self.mComponentCountTextField, "mComponentCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentInBoardCenterXPopUp, "mComponentInBoardCenterXPopUp", EBPopUpButton.self, #file, #line)
@@ -2122,6 +2126,8 @@ import Cocoa
     self.mWireNetNameTextField?.bind_valueObserver (self.wireInSchematicSelectionController.netName_property, file: #file, line: #line)
     self.mNCRotationSegmentedControl?.bind_quadrant (self.ncInSchematicSelectionController.mOrientation_property, file: #file, line: #line)
     self.mCommentInSchematicsTextField?.bind_value (self.commentInSchematicSelectionController.mComment_property, file: #file, line: #line, sendContinously:true)
+    self.mCommentSizeInSchematicsTextField?.bind_value (self.commentInSchematicSelectionController.mSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
+    self.mCommentSizeInSchematicsSlider?.bind_doubleValue (self.commentInSchematicSelectionController.mSize_property, file: #file, line: #line, sendContinously:true)
     self.mCommentColorInSchematicsTextField?.bind_color (self.commentInSchematicSelectionController.mColor_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsLabelRotationSegmentedControl?.bind_quadrant (self.schematicLabelSelectionController.mOrientation_property, file: #file, line: #line)
     self.mSchematicsLabelNetNameTextField?.bind_valueObserver (self.schematicLabelSelectionController.netName_property, file: #file, line: #line)
@@ -2941,6 +2947,8 @@ import Cocoa
     self.mWireNetNameTextField?.unbind_valueObserver ()
     self.mNCRotationSegmentedControl?.unbind_quadrant ()
     self.mCommentInSchematicsTextField?.unbind_value ()
+    self.mCommentSizeInSchematicsTextField?.unbind_value ()
+    self.mCommentSizeInSchematicsSlider?.unbind_doubleValue ()
     self.mCommentColorInSchematicsTextField?.unbind_color ()
     self.mSchematicsLabelRotationSegmentedControl?.unbind_quadrant ()
     self.mSchematicsLabelNetNameTextField?.unbind_valueObserver ()
@@ -3490,6 +3498,8 @@ import Cocoa
     self.mCommentColorInSchematicsTextField?.ebCleanUp ()
     self.mCommentInSchematicsInspectorView?.ebCleanUp ()
     self.mCommentInSchematicsTextField?.ebCleanUp ()
+    self.mCommentSizeInSchematicsSlider?.ebCleanUp ()
+    self.mCommentSizeInSchematicsTextField?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
     self.mComponentCountTextField?.ebCleanUp ()
     self.mComponentInBoardCenterXPopUp?.ebCleanUp ()
@@ -3886,6 +3896,8 @@ import Cocoa
     self.mCommentColorInSchematicsTextField = nil
     self.mCommentInSchematicsInspectorView = nil
     self.mCommentInSchematicsTextField = nil
+    self.mCommentSizeInSchematicsSlider = nil
+    self.mCommentSizeInSchematicsTextField = nil
     self.mCommentTextView = nil
     self.mComponentCountTextField = nil
     self.mComponentInBoardCenterXPopUp = nil

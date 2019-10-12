@@ -5,6 +5,7 @@
 graphic entity CommentInSchematic : SchematicObject {
   property String mComment default "" ;
   property NSColor mColor default black ;
+  property Double mSize default 11.0 ;
 
   property Int mX default 0 ;
   property Int mY default 0 ;
@@ -12,6 +13,7 @@ graphic entity CommentInSchematic : SchematicObject {
   override transient EBShape objectDisplay dependsFrom
     self.mComment,
     self.mColor,
+    self.mSize,
     self.mX,
     self.mY
   ;
@@ -19,6 +21,7 @@ graphic entity CommentInSchematic : SchematicObject {
   override transient EBShape selectionDisplay dependsFrom
     self.mComment,
     self.mColor,
+    self.mSize,
     self.mX,
     self.mY
   ;
