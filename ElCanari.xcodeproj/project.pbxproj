@@ -1876,6 +1876,8 @@
 		CFDEC6DE21D5467900857F9C /* action-PackageDocument-runProgramAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDEC6DA21D5467900857F9C /* action-PackageDocument-runProgramAction.swift */; };
 		CFDEC77720E0CD170065FBCE /* transient-BoardModel-viaShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDEC77620E0CD170065FBCE /* transient-BoardModel-viaShapes.swift */; };
 		CFE1F0031BDBC14600DC51E1 /* ApplicationDelegate-CanariWebSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE1F0021BDBC14600DC51E1 /* ApplicationDelegate-CanariWebSite.swift */; };
+		CFE25A9A23525884007232F7 /* alignmentLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2685623524EB7007C47F6 /* alignmentLeft.png */; };
+		CFE25A9B23525888007232F7 /* alignmentRight.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2685523524EB7007C47F6 /* alignmentRight.png */; };
 		CFE3CF152103793C00085921 /* transient-MergerBoardInstance-modelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE3CF142103793C00085921 /* transient-MergerBoardInstance-modelName.swift */; };
 		CFE533C01B4307BA00F2E13A /* check-libraries.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE533BF1B4307BA00F2E13A /* check-libraries.swift */; };
 		CFE538C322A01890001150B2 /* ProjectDocument-schematic-hot-keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE538C222A01890001150B2 /* ProjectDocument-schematic-hot-keys.swift */; };
@@ -5656,9 +5658,11 @@
 				CF5C4C77219F04D600EAC52A /* canari_package.icns in Resources */,
 				CF5C4C7A219F04D600EAC52A /* FontDocument.xib in Resources */,
 				CF5C4C7D219F04D600EAC52A /* artwork.tif in Resources */,
+				CFE25A9B23525888007232F7 /* alignmentRight.png in Resources */,
 				CF7A9E3C21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */,
 				CF2A42C421BE981D0023992F /* editorInspector.png in Resources */,
 				CF5C4C7E219F04D600EAC52A /* Assets.xcassets in Resources */,
+				CFE25A9A23525884007232F7 /* alignmentLeft.png in Resources */,
 				CF5C4C7F219F04D600EAC52A /* arrow.gif in Resources */,
 				CF5C4C80219F04D600EAC52A /* ZoomOutToolbarImage.tiff in Resources */,
 				CF5C4C83219F04D600EAC52A /* restrict-rect-in-board.png in Resources */,
