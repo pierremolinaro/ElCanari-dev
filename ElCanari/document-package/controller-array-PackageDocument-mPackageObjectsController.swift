@@ -249,7 +249,7 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
   //····················································································································
 
   private func startObservingSelectionShape () {
-    self.mModel?.addEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
+    self.mModel?.addEBObserverOf_selectionDisplay (self.mObjectSelectionObserver, postEvent: true)
     self.mObjectSelectionObserver.mEventCallBack = { self.computeSelectionShape () }
   }
 
@@ -288,7 +288,7 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
   //····················································································································
 
   private func startObservingObjectShape () {
-    self.mModel?.addEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
+    self.mModel?.addEBObserverOf_objectDisplay (self.mObjectDisplayObserver, postEvent: true)
     self.mObjectDisplayObserver.mEventCallBack = { [weak self] in self?.updateObjectDisplay () }
   }
 

@@ -126,6 +126,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: x1
     self.x1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y1
@@ -158,10 +159,11 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.x1_property.addEBObserver (self.selectionDisplay_property)
-    self.y1_property.addEBObserver (self.selectionDisplay_property)
-    self.x2_property.addEBObserver (self.selectionDisplay_property)
-    self.y2_property.addEBObserver (self.selectionDisplay_property)
+    self.x1_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.y1_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.x2_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.y2_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -186,10 +188,11 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.x1_property.addEBObserver (self.objectDisplay_property)
-    self.y1_property.addEBObserver (self.objectDisplay_property)
-    self.x2_property.addEBObserver (self.objectDisplay_property)
-    self.y2_property.addEBObserver (self.objectDisplay_property)
+    self.x1_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.y1_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.x2_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.y2_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.x1_property.setSignatureObserver (observer: self)
@@ -197,6 +200,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     self.y1_property.setSignatureObserver (observer: self)
     self.y2_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

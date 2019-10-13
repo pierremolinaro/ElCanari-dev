@@ -60,7 +60,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mCenterX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mCenterX (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterX.insert (inObserver)
     switch prop {
@@ -68,7 +68,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mCenterX_property.addEBObserver (inObserver)
+        managedObject.mCenterX_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -117,7 +117,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mCenterY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mCenterY (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterY.insert (inObserver)
     switch prop {
@@ -125,7 +125,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mCenterY_property.addEBObserver (inObserver)
+        managedObject.mCenterY_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -174,7 +174,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mRotation (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mRotation.insert (inObserver)
     switch prop {
@@ -182,7 +182,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mRotation_property.addEBObserver (inObserver)
+        managedObject.mRotation_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -231,7 +231,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mMirror (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mMirror (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mMirror.insert (inObserver)
     switch prop {
@@ -239,7 +239,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mMirror_property.addEBObserver (inObserver)
+        managedObject.mMirror_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolInstanceName.insert (inObserver)
     switch prop {
@@ -296,7 +296,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSymbolInstanceName_property.addEBObserver (inObserver)
+        managedObject.mSymbolInstanceName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -345,7 +345,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolTypeName.insert (inObserver)
     switch prop {
@@ -353,7 +353,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSymbolTypeName_property.addEBObserver (inObserver)
+        managedObject.mSymbolTypeName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -402,7 +402,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mDisplayComponentNameOffsetX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDisplayComponentNameOffsetX (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentNameOffsetX.insert (inObserver)
     switch prop {
@@ -410,7 +410,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mDisplayComponentNameOffsetX_property.addEBObserver (inObserver)
+        managedObject.mDisplayComponentNameOffsetX_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -459,7 +459,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mDisplayComponentNameOffsetY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDisplayComponentNameOffsetY (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentNameOffsetY.insert (inObserver)
     switch prop {
@@ -467,7 +467,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mDisplayComponentNameOffsetY_property.addEBObserver (inObserver)
+        managedObject.mDisplayComponentNameOffsetY_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -516,7 +516,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mDisplayComponentValue (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDisplayComponentValue (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentValue.insert (inObserver)
     switch prop {
@@ -524,7 +524,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mDisplayComponentValue_property.addEBObserver (inObserver)
+        managedObject.mDisplayComponentValue_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -573,7 +573,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mDisplayComponentValueOffsetX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDisplayComponentValueOffsetX (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentValueOffsetX.insert (inObserver)
     switch prop {
@@ -581,7 +581,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mDisplayComponentValueOffsetX_property.addEBObserver (inObserver)
+        managedObject.mDisplayComponentValueOffsetX_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -630,7 +630,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mDisplayComponentValueOffsetY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDisplayComponentValueOffsetY (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentValueOffsetY.insert (inObserver)
     switch prop {
@@ -638,7 +638,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mDisplayComponentValueOffsetY_property.addEBObserver (inObserver)
+        managedObject.mDisplayComponentValueOffsetY_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -687,7 +687,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_componentValueProxy (_ inObserver : EBEvent) {
+  final func addEBObserverOf_componentValueProxy (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentValueProxy.insert (inObserver)
     switch prop {
@@ -695,7 +695,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.componentValueProxy_property.addEBObserver (inObserver)
+        managedObject.componentValueProxy_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -744,7 +744,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_componentName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_componentName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentName.insert (inObserver)
     switch prop {
@@ -752,7 +752,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.componentName_property.addEBObserver (inObserver)
+        managedObject.componentName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -800,7 +800,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_deviceName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_deviceName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_deviceName.insert (inObserver)
     switch prop {
@@ -808,7 +808,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.deviceName_property.addEBObserver (inObserver)
+        managedObject.deviceName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -856,7 +856,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_symbolInfo (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolInfo (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolInfo.insert (inObserver)
     switch prop {
@@ -864,7 +864,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolInfo_property.addEBObserver (inObserver)
+        managedObject.symbolInfo_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -912,7 +912,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
@@ -920,7 +920,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver)
+        managedObject.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -968,7 +968,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
@@ -976,7 +976,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1024,7 +1024,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_symbolInSchematic (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolInSchematic (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolInSchematic.insert (inObserver)
     switch prop {
@@ -1032,7 +1032,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolInSchematic_property.addEBObserver (inObserver)
+        managedObject.symbolInSchematic_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1606,17 +1606,17 @@ final class PreferencesArrayOf_ComponentSymbolInProject : StoredArrayOf_Componen
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mCenterX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCenterY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mRotation (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mMirror (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSymbolInstanceName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSymbolTypeName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDisplayComponentNameOffsetX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDisplayComponentNameOffsetY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDisplayComponentValue (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDisplayComponentValueOffsetX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDisplayComponentValueOffsetY (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mCenterX (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mCenterY (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mRotation (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mMirror (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSymbolInstanceName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSymbolTypeName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mDisplayComponentNameOffsetX (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mDisplayComponentNameOffsetY (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mDisplayComponentValue (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mDisplayComponentValueOffsetX (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mDisplayComponentValueOffsetY (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

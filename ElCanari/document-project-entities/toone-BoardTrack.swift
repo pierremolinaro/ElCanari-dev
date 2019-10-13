@@ -75,14 +75,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_mSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mSide_property.addEBObserver (inObserver)
+       v?.mSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -145,14 +145,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_mDefaultTrackWidthUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mDefaultTrackWidthUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mDefaultTrackWidthUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mDefaultTrackWidthUnit_property.addEBObserver (inObserver)
+       v?.mDefaultTrackWidthUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -215,14 +215,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_mCustomTrackWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mCustomTrackWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mCustomTrackWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mCustomTrackWidth_property.addEBObserver (inObserver)
+       v?.mCustomTrackWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -285,14 +285,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_mCustomTrackWidthUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mCustomTrackWidthUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mCustomTrackWidthUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mCustomTrackWidthUnit_property.addEBObserver (inObserver)
+       v?.mCustomTrackWidthUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -355,14 +355,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_mUsesCustomTrackWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mUsesCustomTrackWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mUsesCustomTrackWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mUsesCustomTrackWidth_property.addEBObserver (inObserver)
+       v?.mUsesCustomTrackWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -425,14 +425,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_actualTrackWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_actualTrackWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_actualTrackWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.actualTrackWidth_property.addEBObserver (inObserver)
+      v?.actualTrackWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -494,14 +494,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -563,14 +563,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_netName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_netName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netName_property.addEBObserver (inObserver)
+      v?.netName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -632,14 +632,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_netClassName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_netClassName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netClassName_property.addEBObserver (inObserver)
+      v?.netClassName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -701,14 +701,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_netClassTrackWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_netClassTrackWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_netClassTrackWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netClassTrackWidth_property.addEBObserver (inObserver)
+      v?.netClassTrackWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -770,14 +770,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_netClassViaHoleDiameter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netClassViaHoleDiameter_property.addEBObserver (inObserver)
+      v?.netClassViaHoleDiameter_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -839,14 +839,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_netClassViaPadDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_netClassViaPadDiameter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_netClassViaPadDiameter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netClassViaPadDiameter_property.addEBObserver (inObserver)
+      v?.netClassViaPadDiameter_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -908,14 +908,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_trackLength (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_trackLength (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_trackLength.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.trackLength_property.addEBObserver (inObserver)
+      v?.trackLength_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -977,14 +977,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_endPointsLocation (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_endPointsLocation (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_endPointsLocation.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.endPointsLocation_property.addEBObserver (inObserver)
+      v?.endPointsLocation_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1046,14 +1046,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.signatureForERCChecking_property.addEBObserver (inObserver)
+      v?.signatureForERCChecking_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1115,14 +1115,14 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 

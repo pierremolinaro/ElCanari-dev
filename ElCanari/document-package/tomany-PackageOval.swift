@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
     switch prop {
@@ -58,7 +58,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y_property.addEBObserver (inObserver)
+        managedObject.y_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   //····················································································································
 
-  final func addEBObserverOf_width (_ inObserver : EBEvent) {
+  final func addEBObserverOf_width (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_width.insert (inObserver)
     switch prop {
@@ -115,7 +115,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.width_property.addEBObserver (inObserver)
+        managedObject.width_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   //····················································································································
 
-  final func addEBObserverOf_height (_ inObserver : EBEvent) {
+  final func addEBObserverOf_height (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_height.insert (inObserver)
     switch prop {
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.height_property.addEBObserver (inObserver)
+        managedObject.height_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   //····················································································································
 
-  final func addEBObserverOf_xUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_xUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xUnit.insert (inObserver)
     switch prop {
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xUnit_property.addEBObserver (inObserver)
+        managedObject.xUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   //····················································································································
 
-  final func addEBObserverOf_yUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_yUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yUnit.insert (inObserver)
     switch prop {
@@ -286,7 +286,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yUnit_property.addEBObserver (inObserver)
+        managedObject.yUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   //····················································································································
 
-  final func addEBObserverOf_widthUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_widthUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_widthUnit.insert (inObserver)
     switch prop {
@@ -343,7 +343,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.widthUnit_property.addEBObserver (inObserver)
+        managedObject.widthUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -392,7 +392,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   //····················································································································
 
-  final func addEBObserverOf_heightUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_heightUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_heightUnit.insert (inObserver)
     switch prop {
@@ -400,7 +400,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.heightUnit_property.addEBObserver (inObserver)
+        managedObject.heightUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -449,7 +449,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   //····················································································································
 
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
     switch prop {
@@ -457,7 +457,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x_property.addEBObserver (inObserver)
+        managedObject.x_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -506,7 +506,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   //····················································································································
 
-  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
+  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
     switch prop {
@@ -514,7 +514,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.strokeBezierPath_property.addEBObserver (inObserver)
+        managedObject.strokeBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -562,7 +562,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
@@ -570,7 +570,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver)
+        managedObject.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -618,7 +618,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
@@ -626,7 +626,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -674,7 +674,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
@@ -682,7 +682,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver)
+        managedObject.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1256,14 +1256,14 @@ final class PreferencesArrayOf_PackageOval : StoredArrayOf_PackageOval {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_y (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_width (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_height (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_xUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_yUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_widthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_heightUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_x (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_y (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_width (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_height (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_xUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_yUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_widthUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_heightUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_x (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

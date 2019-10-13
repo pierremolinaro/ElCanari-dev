@@ -329,6 +329,7 @@ class ArtworkRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: selectedTab
     self.selectedTab_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: comments
@@ -377,10 +378,11 @@ class ArtworkRoot : EBManagedObject,
         return .empty
       }
     }
-    self.minPPTPTTTW_property.addEBObserver (self.signatureForERCChecking_property)
-    self.minValueForOARinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
-    self.minValueForBoardLimitWidth_property.addEBObserver (self.signatureForERCChecking_property)
-    self.minValueForPHDinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
+    self.minPPTPTTTW_property.addEBObserver (self.signatureForERCChecking_property, postEvent: false)
+    self.minValueForOARinEBUnit_property.addEBObserver (self.signatureForERCChecking_property, postEvent: false)
+    self.minValueForBoardLimitWidth_property.addEBObserver (self.signatureForERCChecking_property, postEvent: false)
+    self.minValueForPHDinEBUnit_property.addEBObserver (self.signatureForERCChecking_property, postEvent: false)
+    self.signatureForERCChecking_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.comments_property.setSignatureObserver (observer: self)
@@ -391,6 +393,7 @@ class ArtworkRoot : EBManagedObject,
     self.minValueForOARinEBUnit_property.setSignatureObserver (observer: self)
     self.minValueForPHDinEBUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

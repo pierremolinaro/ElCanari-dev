@@ -305,6 +305,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: mPinX
     self.mPinX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPinY
@@ -357,12 +358,13 @@ class SymbolPinTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mXName_property.addEBObserver (self.nameShape_property)
-    self.mYName_property.addEBObserver (self.nameShape_property)
-    self.mName_property.addEBObserver (self.nameShape_property)
-    self.mNameHorizontalAlignment_property.addEBObserver (self.nameShape_property)
-    self.mPinNameIsDisplayedInSchematics_property.addEBObserver (self.nameShape_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.nameShape_property)
+    self.mXName_property.addEBObserver (self.nameShape_property, postEvent: false)
+    self.mYName_property.addEBObserver (self.nameShape_property, postEvent: false)
+    self.mName_property.addEBObserver (self.nameShape_property, postEvent: false)
+    self.mNameHorizontalAlignment_property.addEBObserver (self.nameShape_property, postEvent: false)
+    self.mPinNameIsDisplayedInSchematics_property.addEBObserver (self.nameShape_property, postEvent: false)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.nameShape_property, postEvent: false)
+    self.nameShape_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
     self.mInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
@@ -380,6 +382,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
     self.mYName_property.setSignatureObserver (observer: self)
     self.mYNumber_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

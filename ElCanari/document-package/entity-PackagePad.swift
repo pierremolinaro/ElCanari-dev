@@ -718,6 +718,7 @@ class PackagePad : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: xCenter
     self.xCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yCenter
@@ -783,11 +784,12 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.selectionDisplay_property)
-    self.yCenter_property.addEBObserver (self.selectionDisplay_property)
-    self.width_property.addEBObserver (self.selectionDisplay_property)
-    self.height_property.addEBObserver (self.selectionDisplay_property)
-    self.padShape_property.addEBObserver (self.selectionDisplay_property)
+    self.xCenter_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.yCenter_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.width_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.height_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.padShape_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Atomic property: padName
     self.padName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -810,8 +812,9 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.padNumber_property.addEBObserver (self.padName_property)
-    self.zone_property.addEBObserverOf_zoneName (self.padName_property)
+    self.padNumber_property.addEBObserver (self.padName_property, postEvent: false)
+    self.zone_property.addEBObserverOf_zoneName (self.padName_property, postEvent: false)
+    self.padName_property.postEvent ()
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -838,12 +841,13 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.issues_property)
-    self.yCenter_property.addEBObserver (self.issues_property)
-    self.width_property.addEBObserver (self.issues_property)
-    self.height_property.addEBObserver (self.issues_property)
-    self.holeWidth_property.addEBObserver (self.issues_property)
-    self.holeHeight_property.addEBObserver (self.issues_property)
+    self.xCenter_property.addEBObserver (self.issues_property, postEvent: false)
+    self.yCenter_property.addEBObserver (self.issues_property, postEvent: false)
+    self.width_property.addEBObserver (self.issues_property, postEvent: false)
+    self.height_property.addEBObserver (self.issues_property, postEvent: false)
+    self.holeWidth_property.addEBObserver (self.issues_property, postEvent: false)
+    self.holeHeight_property.addEBObserver (self.issues_property, postEvent: false)
+    self.issues_property.postEvent ()
   //--- Atomic property: padIsTraversing
     self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -865,7 +869,8 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.padStyle_property.addEBObserver (self.padIsTraversing_property)
+    self.padStyle_property.addEBObserver (self.padIsTraversing_property, postEvent: false)
+    self.padIsTraversing_property.postEvent ()
   //--- Atomic property: annularRing
     self.annularRing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -890,10 +895,11 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.width_property.addEBObserver (self.annularRing_property)
-    self.height_property.addEBObserver (self.annularRing_property)
-    self.holeWidth_property.addEBObserver (self.annularRing_property)
-    self.holeHeight_property.addEBObserver (self.annularRing_property)
+    self.width_property.addEBObserver (self.annularRing_property, postEvent: false)
+    self.height_property.addEBObserver (self.annularRing_property, postEvent: false)
+    self.holeWidth_property.addEBObserver (self.annularRing_property, postEvent: false)
+    self.holeHeight_property.addEBObserver (self.annularRing_property, postEvent: false)
+    self.annularRing_property.postEvent ()
   //--- Atomic property: zoneName
     self.zoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -915,7 +921,8 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.zone_property.addEBObserverOf_zoneName (self.zoneName_property)
+    self.zone_property.addEBObserverOf_zoneName (self.zoneName_property, postEvent: false)
+    self.zoneName_property.postEvent ()
   //--- Atomic property: noZone
     self.noZone_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -937,7 +944,8 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.zone_property.addEBObserver (self.noZone_property)
+    self.zone_property.addEBObserver (self.noZone_property, postEvent: false)
+    self.noZone_property.postEvent ()
   //--- Atomic property: zoneAllowsManualRenumbering
     self.zoneAllowsManualRenumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -959,7 +967,8 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.zone_property.addEBObserverOf_zoneNumbering (self.zoneAllowsManualRenumbering_property)
+    self.zone_property.addEBObserverOf_zoneNumbering (self.zoneAllowsManualRenumbering_property, postEvent: false)
+    self.zoneAllowsManualRenumbering_property.postEvent ()
   //--- Atomic property: slavePadCount
     self.slavePadCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -981,7 +990,8 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.slaves_property.addEBObserver (self.slavePadCount_property)
+    self.slaves_property.addEBObserver (self.slavePadCount_property, postEvent: false)
+    self.slavePadCount_property.postEvent ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1014,18 +1024,19 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.objectDisplay_property)
-    self.yCenter_property.addEBObserver (self.objectDisplay_property)
-    self.width_property.addEBObserver (self.objectDisplay_property)
-    self.height_property.addEBObserver (self.objectDisplay_property)
-    self.holeWidth_property.addEBObserver (self.objectDisplay_property)
-    self.holeHeight_property.addEBObserver (self.objectDisplay_property)
-    self.padShape_property.addEBObserver (self.objectDisplay_property)
-    self.padStyle_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.frontSidePadColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.displayPackageFrontSidePads_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.backSidePadColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.displayPackageBackSidePads_property.addEBObserver (self.objectDisplay_property)
+    self.xCenter_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.yCenter_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.width_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.height_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.holeWidth_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.holeHeight_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.padShape_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.padStyle_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.frontSidePadColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.displayPackageFrontSidePads_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.backSidePadColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.displayPackageBackSidePads_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1051,11 +1062,12 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.padNumberDisplay_property)
-    self.yCenter_property.addEBObserver (self.padNumberDisplay_property)
-    g_Preferences?.padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
-    g_Preferences?.padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
-    self.padName_property.addEBObserver (self.padNumberDisplay_property)
+    self.xCenter_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
+    self.yCenter_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
+    g_Preferences?.padNumberFont_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
+    g_Preferences?.padNumberColor_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
+    self.padName_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
+    self.padNumberDisplay_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
     self.slaves_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.master_property.setProp (me) } },
@@ -1080,6 +1092,7 @@ class PackagePad : PackageObject,
     self.yCenter_property.setSignatureObserver (observer: self)
     self.yCenterUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

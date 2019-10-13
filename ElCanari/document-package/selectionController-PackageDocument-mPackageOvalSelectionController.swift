@@ -376,7 +376,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   private final func bind_property_y () {
-    self.selectedArray_property.addEBObserverOf_y (self.y_property)
+    self.selectedArray_property.addEBObserverOf_y (self.y_property, postEvent: true)
     self.y_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -445,7 +445,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   private final func bind_property_width () {
-    self.selectedArray_property.addEBObserverOf_width (self.width_property)
+    self.selectedArray_property.addEBObserverOf_width (self.width_property, postEvent: true)
     self.width_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -514,7 +514,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   private final func bind_property_height () {
-    self.selectedArray_property.addEBObserverOf_height (self.height_property)
+    self.selectedArray_property.addEBObserverOf_height (self.height_property, postEvent: true)
     self.height_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -583,7 +583,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   private final func bind_property_xUnit () {
-    self.selectedArray_property.addEBObserverOf_xUnit (self.xUnit_property)
+    self.selectedArray_property.addEBObserverOf_xUnit (self.xUnit_property, postEvent: true)
     self.xUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -652,7 +652,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   private final func bind_property_yUnit () {
-    self.selectedArray_property.addEBObserverOf_yUnit (self.yUnit_property)
+    self.selectedArray_property.addEBObserverOf_yUnit (self.yUnit_property, postEvent: true)
     self.yUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -721,7 +721,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   private final func bind_property_widthUnit () {
-    self.selectedArray_property.addEBObserverOf_widthUnit (self.widthUnit_property)
+    self.selectedArray_property.addEBObserverOf_widthUnit (self.widthUnit_property, postEvent: true)
     self.widthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -790,7 +790,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   private final func bind_property_heightUnit () {
-    self.selectedArray_property.addEBObserverOf_heightUnit (self.heightUnit_property)
+    self.selectedArray_property.addEBObserverOf_heightUnit (self.heightUnit_property, postEvent: true)
     self.heightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -859,7 +859,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   private final func bind_property_x () {
-    self.selectedArray_property.addEBObserverOf_x (self.x_property)
+    self.selectedArray_property.addEBObserverOf_x (self.x_property, postEvent: true)
     self.x_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -928,7 +928,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   private final func bind_property_strokeBezierPath () {
-    self.selectedArray_property.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
+    self.selectedArray_property.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property, postEvent: true)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -967,7 +967,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property, postEvent: true)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1006,7 +1006,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property, postEvent: true)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1045,7 +1045,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //····················································································································
 
   private final func bind_property_issues () {
-    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.addEBObserverOf_issues (self.issues_property, postEvent: true)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

@@ -406,6 +406,7 @@ import Cocoa
   //····················································································································
 
   private func checkOutletConnections () {
+    let start = Date ()
     checkOutletConnection (self.mAddPackageFromLibraryButton, "mAddPackageFromLibraryButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAddSymbolFromLibraryButton, "mAddSymbolFromLibraryButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAddSymbolInstancePullDownButton, "mAddSymbolInstancePullDownButton", AddSymbolInstancePullDownButton.self, #file, #line)
@@ -475,23 +476,44 @@ import Cocoa
     checkOutletConnection (self.mUpdateSelectedSymbolsButton, "mUpdateSelectedSymbolsButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpdateSymbolAndPackagesButton, "mUpdateSymbolAndPackagesButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mVersionField, "mVersionField", CanariVersionField.self, #file, #line)
-   }
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Check outlet connections \(durationMS) ms")
+    }
+  }
   
   //····················································································································
   
   final private func configureProperties () {
+    let start = Date ()
+ //   let operationQueue = OperationQueue ()
+    var opIdx = 0
   //--- Array controller property: mPackageController
     self.mPackageController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Array controller property: mDocumentationController
     self.mDocumentationController.bind_model (self.rootObject.mDocs_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Array controller property: mSymbolDisplayController
     self.mSymbolDisplayController.bind_model (self.rootObject.mSymbolInstances_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mSymbolInstanceSelection
     self.mSymbolInstanceSelection.bind_selection (model: self.mSymbolDisplayController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Array controller property: mPackageDisplayController
     self.mPackageDisplayController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Array controller property: mSymbolController
     self.mSymbolController.bind_model (self.rootObject.mSymbolTypes_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: assignmentInhibitionMessage
     self.assignmentInhibitionMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -514,8 +536,11 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
-    self.rootObject.inconsistentSymbolNameSetMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
+    self.rootObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.assignmentInhibitionMessage_property, postEvent: false)
+    self.rootObject.inconsistentSymbolNameSetMessage_property.addEBObserver (self.assignmentInhibitionMessage_property, postEvent: false)
+    self.assignmentInhibitionMessage_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: hasUnconnectedPin
     self.hasUnconnectedPin_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -537,7 +562,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.unconnectedPins_property.addEBObserver (self.hasUnconnectedPin_property)
+    self.rootObject.unconnectedPins_property.addEBObserver (self.hasUnconnectedPin_property, postEvent: false)
+    self.hasUnconnectedPin_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -559,7 +587,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
+    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property, postEvent: false)
+    self.mStatusMessage_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mMetadataStatus
     self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -581,7 +612,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
+    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property, postEvent: false)
+    self.mMetadataStatus_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: hasUnconnectedPad
     self.hasUnconnectedPad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -603,7 +637,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.unconnectedPads_property.addEBObserver (self.hasUnconnectedPad_property)
+    self.rootObject.unconnectedPads_property.addEBObserver (self.hasUnconnectedPad_property, postEvent: false)
+    self.hasUnconnectedPad_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: hasAssignedPadProxies
     self.hasAssignedPadProxies_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -625,7 +662,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.assignedPadProxies_property.addEBObserver (self.hasAssignedPadProxies_property)
+    self.rootObject.assignedPadProxies_property.addEBObserver (self.hasAssignedPadProxies_property, postEvent: false)
+    self.hasAssignedPadProxies_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -647,12 +687,21 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
+    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property, postEvent: false)
+    self.mStatusImage_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
+//    operationQueue.waitUntilAllOperationsAreFinished ()
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Configure properties \(durationMS) ms")
+    }
   }
 
   //····················································································································
   
   final private func installBindings () {
+    let start = Date ()
   //--------------------------- Install table view bindings
     self.mDocumentationController.bind_tableView (self.mDocumentationTableView, file: #file, line: #line)
     self.mSymbolController.bind_tableView (self.mSymbolTableView, file: #file, line: #line)
@@ -955,11 +1004,16 @@ import Cocoa
       self.hasAssignedPadProxies_property.addEBObserver (controller)
       self.mController_mUnbindAllButton_enabled = controller
     }
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Install bindings \(durationMS) ms")
+    }
   }
 
   //····················································································································
   
   final private func setTargetsAndActions () {
+     let start = Date ()
    //--------------------------- Set targets / actions
     self.mPasteImageButton?.target = self
     self.mPasteImageButton?.action = #selector (DeviceDocument.pasteImageAction (_:))
@@ -1007,6 +1061,10 @@ import Cocoa
     self.mUnbindAllButton?.action = #selector (DeviceDocument.performUnbindAllAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (DeviceDocument.resetVersionAction (_:))
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Set target and actions \(durationMS) ms")
+    }
   }
 
   //····················································································································

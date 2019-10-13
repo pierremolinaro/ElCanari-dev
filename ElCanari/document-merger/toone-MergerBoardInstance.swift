@@ -59,14 +59,14 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_x (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_x.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.x_property.addEBObserver (inObserver)
+       v?.x_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -129,14 +129,14 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_y (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_y.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.y_property.addEBObserver (inObserver)
+       v?.y_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -199,14 +199,14 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_instanceRotation (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_instanceRotation (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_instanceRotation.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.instanceRotation_property.addEBObserver (inObserver)
+       v?.instanceRotation_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -269,14 +269,14 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_instanceRect (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_instanceRect (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_instanceRect.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.instanceRect_property.addEBObserver (inObserver)
+      v?.instanceRect_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -338,14 +338,14 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_modelName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_modelName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_modelName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.modelName_property.addEBObserver (inObserver)
+      v?.modelName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -407,14 +407,14 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_boardLimitWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.boardLimitWidth_property.addEBObserver (inObserver)
+      v?.boardLimitWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -476,14 +476,14 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -545,14 +545,14 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 

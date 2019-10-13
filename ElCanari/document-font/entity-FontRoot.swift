@@ -371,6 +371,7 @@ class FontRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: comments
     self.comments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: nominalSize
@@ -407,7 +408,8 @@ class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePointString_property)
+    self.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePointString_property, postEvent: false)
+    self.currentCharacterCodePointString_property.postEvent ()
   //--- Atomic property: sampleStringBezierPath
     self.sampleStringBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -433,11 +435,12 @@ class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.nominalSize_property.addEBObserver (self.sampleStringBezierPath_property)
-    self.characters_property.addEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
-    self.characters_property.addEBObserverOf_advance (self.sampleStringBezierPath_property)
-    g_Preferences?.sampleString_property.addEBObserver (self.sampleStringBezierPath_property)
-    g_Preferences?.sampleStringSize_property.addEBObserver (self.sampleStringBezierPath_property)
+    self.nominalSize_property.addEBObserver (self.sampleStringBezierPath_property, postEvent: false)
+    self.characters_property.addEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property, postEvent: false)
+    self.characters_property.addEBObserverOf_advance (self.sampleStringBezierPath_property, postEvent: false)
+    g_Preferences?.sampleString_property.addEBObserver (self.sampleStringBezierPath_property, postEvent: false)
+    g_Preferences?.sampleStringSize_property.addEBObserver (self.sampleStringBezierPath_property, postEvent: false)
+    self.sampleStringBezierPath_property.postEvent ()
   //--- Atomic property: sampleStringBezierPathWidth
     self.sampleStringBezierPathWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -459,7 +462,8 @@ class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathWidth_property)
+    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathWidth_property, postEvent: false)
+    self.sampleStringBezierPathWidth_property.postEvent ()
   //--- Atomic property: sampleStringBezierPathAscent
     self.sampleStringBezierPathAscent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -481,7 +485,8 @@ class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathAscent_property)
+    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathAscent_property, postEvent: false)
+    self.sampleStringBezierPathAscent_property.postEvent ()
   //--- Atomic property: sampleStringBezierPathDescent
     self.sampleStringBezierPathDescent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -503,7 +508,8 @@ class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property)
+    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property, postEvent: false)
+    self.sampleStringBezierPathDescent_property.postEvent ()
   //--- Atomic property: definedCharacters
     self.definedCharacters_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -525,7 +531,8 @@ class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.characters_property.addEBObserverOf_codePoint (self.definedCharacters_property)
+    self.characters_property.addEBObserverOf_codePoint (self.definedCharacters_property, postEvent: false)
+    self.definedCharacters_property.postEvent ()
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -547,13 +554,15 @@ class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.characters_property.addEBObserverOf_issues (self.issues_property)
+    self.characters_property.addEBObserverOf_issues (self.issues_property, postEvent: false)
+    self.issues_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.characters_property.setSignatureObserver (observer: self)
     self.comments_property.setSignatureObserver (observer: self)
     self.nominalSize_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

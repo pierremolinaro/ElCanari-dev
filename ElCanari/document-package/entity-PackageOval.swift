@@ -259,6 +259,7 @@ class PackageOval : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: y
     self.y_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: width
@@ -299,10 +300,11 @@ class PackageOval : PackageObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.strokeBezierPath_property)
-    self.y_property.addEBObserver (self.strokeBezierPath_property)
-    self.width_property.addEBObserver (self.strokeBezierPath_property)
-    self.height_property.addEBObserver (self.strokeBezierPath_property)
+    self.x_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
+    self.y_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
+    self.width_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
+    self.height_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
+    self.strokeBezierPath_property.postEvent ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -326,9 +328,10 @@ class PackageOval : PackageObject,
         return .empty
       }
     }
-    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -353,10 +356,11 @@ class PackageOval : PackageObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.selectionDisplay_property)
-    self.y_property.addEBObserver (self.selectionDisplay_property)
-    self.width_property.addEBObserver (self.selectionDisplay_property)
-    self.height_property.addEBObserver (self.selectionDisplay_property)
+    self.x_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.y_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.width_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.height_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -381,10 +385,11 @@ class PackageOval : PackageObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.issues_property)
-    self.y_property.addEBObserver (self.issues_property)
-    self.width_property.addEBObserver (self.issues_property)
-    self.height_property.addEBObserver (self.issues_property)
+    self.x_property.addEBObserver (self.issues_property, postEvent: false)
+    self.y_property.addEBObserver (self.issues_property, postEvent: false)
+    self.width_property.addEBObserver (self.issues_property, postEvent: false)
+    self.height_property.addEBObserver (self.issues_property, postEvent: false)
+    self.issues_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.height_property.setSignatureObserver (observer: self)
@@ -396,6 +401,7 @@ class PackageOval : PackageObject,
     self.y_property.setSignatureObserver (observer: self)
     self.yUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mDeviceName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDeviceName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDeviceName.insert (inObserver)
     switch prop {
@@ -58,7 +58,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mDeviceName_property.addEBObserver (inObserver)
+        managedObject.mDeviceName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mPrefix (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPrefix (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPrefix.insert (inObserver)
     switch prop {
@@ -115,7 +115,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPrefix_property.addEBObserver (inObserver)
+        managedObject.mPrefix_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mDeviceVersion (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDeviceVersion (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDeviceVersion.insert (inObserver)
     switch prop {
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mDeviceVersion_property.addEBObserver (inObserver)
+        managedObject.mDeviceVersion_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mDeviceFileData (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDeviceFileData (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDeviceFileData.insert (inObserver)
     switch prop {
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mDeviceFileData_property.addEBObserver (inObserver)
+        managedObject.mDeviceFileData_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
+  final func addEBObserverOf_versionString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_versionString.insert (inObserver)
     switch prop {
@@ -286,7 +286,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.versionString_property.addEBObserver (inObserver)
+        managedObject.versionString_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -334,7 +334,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
+  final func addEBObserverOf_sizeString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sizeString.insert (inObserver)
     switch prop {
@@ -342,7 +342,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.sizeString_property.addEBObserver (inObserver)
+        managedObject.sizeString_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -390,7 +390,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_canExport (_ inObserver : EBEvent) {
+  final func addEBObserverOf_canExport (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_canExport.insert (inObserver)
     switch prop {
@@ -398,7 +398,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.canExport_property.addEBObserver (inObserver)
+        managedObject.canExport_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -446,7 +446,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_packageNames (_ inObserver : EBEvent) {
+  final func addEBObserverOf_packageNames (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_packageNames.insert (inObserver)
     switch prop {
@@ -454,7 +454,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.packageNames_property.addEBObserver (inObserver)
+        managedObject.packageNames_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -502,7 +502,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
+  final func addEBObserverOf_canRemove (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_canRemove.insert (inObserver)
     switch prop {
@@ -510,7 +510,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.canRemove_property.addEBObserver (inObserver)
+        managedObject.canRemove_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -558,7 +558,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_symbolAndTypesNames (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolAndTypesNames (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolAndTypesNames.insert (inObserver)
     switch prop {
@@ -566,7 +566,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolAndTypesNames_property.addEBObserver (inObserver)
+        managedObject.symbolAndTypesNames_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -614,7 +614,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_pinPadAssignments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinPadAssignments.insert (inObserver)
     switch prop {
@@ -622,7 +622,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinPadAssignments_property.addEBObserver (inObserver)
+        managedObject.pinPadAssignments_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -670,7 +670,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
+  final func addEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_deviceSymbolDictionary.insert (inObserver)
     switch prop {
@@ -678,7 +678,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.deviceSymbolDictionary_property.addEBObserver (inObserver)
+        managedObject.deviceSymbolDictionary_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1252,10 +1252,10 @@ final class PreferencesArrayOf_DeviceInProject : StoredArrayOf_DeviceInProject {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mDeviceName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mPrefix (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDeviceVersion (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDeviceFileData (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mDeviceName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mPrefix (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mDeviceVersion (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mDeviceFileData (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

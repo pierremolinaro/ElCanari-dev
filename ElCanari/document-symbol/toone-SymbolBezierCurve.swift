@@ -67,14 +67,14 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_y1 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_y1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.y1_property.addEBObserver (inObserver)
+       v?.y1_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -137,14 +137,14 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_x2 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_x2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.x2_property.addEBObserver (inObserver)
+       v?.x2_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -207,14 +207,14 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_y2 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_y2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.y2_property.addEBObserver (inObserver)
+       v?.y2_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -277,14 +277,14 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_cpx1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_cpx1 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_cpx1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.cpx1_property.addEBObserver (inObserver)
+       v?.cpx1_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -347,14 +347,14 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_cpy1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_cpy1 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_cpy1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.cpy1_property.addEBObserver (inObserver)
+       v?.cpy1_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -417,14 +417,14 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_cpx2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_cpx2 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_cpx2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.cpx2_property.addEBObserver (inObserver)
+       v?.cpx2_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -487,14 +487,14 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_cpy2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_cpy2 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_cpy2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.cpy2_property.addEBObserver (inObserver)
+       v?.cpy2_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -557,14 +557,14 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_x1 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_x1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.x1_property.addEBObserver (inObserver)
+       v?.x1_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -627,14 +627,14 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.strokeBezierPath_property.addEBObserver (inObserver)
+      v?.strokeBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -696,14 +696,14 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -765,14 +765,14 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -834,14 +834,14 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver)
+      v?.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 

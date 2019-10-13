@@ -88,6 +88,7 @@ class BoardModelVia : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: y
     self.y_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padDiameter
@@ -97,6 +98,7 @@ class BoardModelVia : EBManagedObject,
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

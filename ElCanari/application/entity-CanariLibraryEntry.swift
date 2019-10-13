@@ -142,6 +142,7 @@ class CanariLibraryEntry : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: mPath
     self.mPath_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mUses
@@ -171,11 +172,13 @@ class CanariLibraryEntry : EBManagedObject,
         return .empty
       }
     }
-    self.mPath_property.addEBObserver (self.mStatusImage_property)
+    self.mPath_property.addEBObserver (self.mStatusImage_property, postEvent: false)
+    self.mStatusImage_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
     self.mExternDelegate0 = CanariLibraryEntryDelegate (object: self)
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

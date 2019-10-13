@@ -640,7 +640,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_mComponentPadName () {
-    self.selectedArray_property.addEBObserverOf_mComponentPadName (self.mComponentPadName_property)
+    self.selectedArray_property.addEBObserverOf_mComponentPadName (self.mComponentPadName_property, postEvent: true)
     self.mComponentPadName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -709,7 +709,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_mPadIndex () {
-    self.selectedArray_property.addEBObserverOf_mPadIndex (self.mPadIndex_property)
+    self.selectedArray_property.addEBObserverOf_mPadIndex (self.mPadIndex_property, postEvent: true)
     self.mPadIndex_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -778,7 +778,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_mX () {
-    self.selectedArray_property.addEBObserverOf_mX (self.mX_property)
+    self.selectedArray_property.addEBObserverOf_mX (self.mX_property, postEvent: true)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -847,7 +847,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_mY () {
-    self.selectedArray_property.addEBObserverOf_mY (self.mY_property)
+    self.selectedArray_property.addEBObserverOf_mY (self.mY_property, postEvent: true)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -916,7 +916,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_mDefaultHoleDiameterUnit () {
-    self.selectedArray_property.addEBObserverOf_mDefaultHoleDiameterUnit (self.mDefaultHoleDiameterUnit_property)
+    self.selectedArray_property.addEBObserverOf_mDefaultHoleDiameterUnit (self.mDefaultHoleDiameterUnit_property, postEvent: true)
     self.mDefaultHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -985,7 +985,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_mCustomHoleDiameter () {
-    self.selectedArray_property.addEBObserverOf_mCustomHoleDiameter (self.mCustomHoleDiameter_property)
+    self.selectedArray_property.addEBObserverOf_mCustomHoleDiameter (self.mCustomHoleDiameter_property, postEvent: true)
     self.mCustomHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1054,7 +1054,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_mCustomHoleDiameterUnit () {
-    self.selectedArray_property.addEBObserverOf_mCustomHoleDiameterUnit (self.mCustomHoleDiameterUnit_property)
+    self.selectedArray_property.addEBObserverOf_mCustomHoleDiameterUnit (self.mCustomHoleDiameterUnit_property, postEvent: true)
     self.mCustomHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1123,7 +1123,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_mUsesCustomHoleDiameter () {
-    self.selectedArray_property.addEBObserverOf_mUsesCustomHoleDiameter (self.mUsesCustomHoleDiameter_property)
+    self.selectedArray_property.addEBObserverOf_mUsesCustomHoleDiameter (self.mUsesCustomHoleDiameter_property, postEvent: true)
     self.mUsesCustomHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1192,7 +1192,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_mDefaultPadDiameterUnit () {
-    self.selectedArray_property.addEBObserverOf_mDefaultPadDiameterUnit (self.mDefaultPadDiameterUnit_property)
+    self.selectedArray_property.addEBObserverOf_mDefaultPadDiameterUnit (self.mDefaultPadDiameterUnit_property, postEvent: true)
     self.mDefaultPadDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1261,7 +1261,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_mCustomPadDiameter () {
-    self.selectedArray_property.addEBObserverOf_mCustomPadDiameter (self.mCustomPadDiameter_property)
+    self.selectedArray_property.addEBObserverOf_mCustomPadDiameter (self.mCustomPadDiameter_property, postEvent: true)
     self.mCustomPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1330,7 +1330,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_mCustomPadDiameterUnit () {
-    self.selectedArray_property.addEBObserverOf_mCustomPadDiameterUnit (self.mCustomPadDiameterUnit_property)
+    self.selectedArray_property.addEBObserverOf_mCustomPadDiameterUnit (self.mCustomPadDiameterUnit_property, postEvent: true)
     self.mCustomPadDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1399,7 +1399,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_mUsesCustomPadDiameter () {
-    self.selectedArray_property.addEBObserverOf_mUsesCustomPadDiameter (self.mUsesCustomPadDiameter_property)
+    self.selectedArray_property.addEBObserverOf_mUsesCustomPadDiameter (self.mUsesCustomPadDiameter_property, postEvent: true)
     self.mUsesCustomPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1468,7 +1468,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_location () {
-    self.selectedArray_property.addEBObserverOf_location (self.location_property)
+    self.selectedArray_property.addEBObserverOf_location (self.location_property, postEvent: true)
     self.location_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1507,7 +1507,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_netNameFromComponentPad () {
-    self.selectedArray_property.addEBObserverOf_netNameFromComponentPad (self.netNameFromComponentPad_property)
+    self.selectedArray_property.addEBObserverOf_netNameFromComponentPad (self.netNameFromComponentPad_property, postEvent: true)
     self.netNameFromComponentPad_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1546,7 +1546,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_netNameAndPadLocation () {
-    self.selectedArray_property.addEBObserverOf_netNameAndPadLocation (self.netNameAndPadLocation_property)
+    self.selectedArray_property.addEBObserverOf_netNameAndPadLocation (self.netNameAndPadLocation_property, postEvent: true)
     self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1585,7 +1585,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_side () {
-    self.selectedArray_property.addEBObserverOf_side (self.side_property)
+    self.selectedArray_property.addEBObserverOf_side (self.side_property, postEvent: true)
     self.side_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1624,7 +1624,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_isVia () {
-    self.selectedArray_property.addEBObserverOf_isVia (self.isVia_property)
+    self.selectedArray_property.addEBObserverOf_isVia (self.isVia_property, postEvent: true)
     self.isVia_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1663,7 +1663,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_issues () {
-    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.addEBObserverOf_issues (self.issues_property, postEvent: true)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1702,7 +1702,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_viaDefaultHoleDiameter () {
-    self.selectedArray_property.addEBObserverOf_viaDefaultHoleDiameter (self.viaDefaultHoleDiameter_property)
+    self.selectedArray_property.addEBObserverOf_viaDefaultHoleDiameter (self.viaDefaultHoleDiameter_property, postEvent: true)
     self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1741,7 +1741,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_viaDefaultPadDiameter () {
-    self.selectedArray_property.addEBObserverOf_viaDefaultPadDiameter (self.viaDefaultPadDiameter_property)
+    self.selectedArray_property.addEBObserverOf_viaDefaultPadDiameter (self.viaDefaultPadDiameter_property, postEvent: true)
     self.viaDefaultPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1780,7 +1780,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_netNameFromTracks () {
-    self.selectedArray_property.addEBObserverOf_netNameFromTracks (self.netNameFromTracks_property)
+    self.selectedArray_property.addEBObserverOf_netNameFromTracks (self.netNameFromTracks_property, postEvent: true)
     self.netNameFromTracks_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1819,7 +1819,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_netClassName () {
-    self.selectedArray_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.selectedArray_property.addEBObserverOf_netClassName (self.netClassName_property, postEvent: true)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1858,7 +1858,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_connectedToComponent () {
-    self.selectedArray_property.addEBObserverOf_connectedToComponent (self.connectedToComponent_property)
+    self.selectedArray_property.addEBObserverOf_connectedToComponent (self.connectedToComponent_property, postEvent: true)
     self.connectedToComponent_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1897,7 +1897,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_actualHoleDiameter () {
-    self.selectedArray_property.addEBObserverOf_actualHoleDiameter (self.actualHoleDiameter_property)
+    self.selectedArray_property.addEBObserverOf_actualHoleDiameter (self.actualHoleDiameter_property, postEvent: true)
     self.actualHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1936,7 +1936,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_actualPadDiameter () {
-    self.selectedArray_property.addEBObserverOf_actualPadDiameter (self.actualPadDiameter_property)
+    self.selectedArray_property.addEBObserverOf_actualPadDiameter (self.actualPadDiameter_property, postEvent: true)
     self.actualPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1975,7 +1975,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property, postEvent: true)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2014,7 +2014,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property, postEvent: true)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2053,7 +2053,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   private final func bind_property_signatureForERCChecking () {
-    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property, postEvent: true)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

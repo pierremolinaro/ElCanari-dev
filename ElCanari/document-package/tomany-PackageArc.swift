@@ -60,7 +60,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_yCenter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_yCenter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yCenter.insert (inObserver)
     switch prop {
@@ -68,7 +68,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yCenter_property.addEBObserver (inObserver)
+        managedObject.yCenter_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -117,7 +117,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_radius (_ inObserver : EBEvent) {
+  final func addEBObserverOf_radius (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_radius.insert (inObserver)
     switch prop {
@@ -125,7 +125,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.radius_property.addEBObserver (inObserver)
+        managedObject.radius_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -174,7 +174,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_startAngle (_ inObserver : EBEvent) {
+  final func addEBObserverOf_startAngle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_startAngle.insert (inObserver)
     switch prop {
@@ -182,7 +182,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.startAngle_property.addEBObserver (inObserver)
+        managedObject.startAngle_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -231,7 +231,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_arcAngle (_ inObserver : EBEvent) {
+  final func addEBObserverOf_arcAngle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_arcAngle.insert (inObserver)
     switch prop {
@@ -239,7 +239,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.arcAngle_property.addEBObserver (inObserver)
+        managedObject.arcAngle_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_startTangent (_ inObserver : EBEvent) {
+  final func addEBObserverOf_startTangent (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_startTangent.insert (inObserver)
     switch prop {
@@ -296,7 +296,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.startTangent_property.addEBObserver (inObserver)
+        managedObject.startTangent_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -345,7 +345,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_endTangent (_ inObserver : EBEvent) {
+  final func addEBObserverOf_endTangent (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_endTangent.insert (inObserver)
     switch prop {
@@ -353,7 +353,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.endTangent_property.addEBObserver (inObserver)
+        managedObject.endTangent_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -402,7 +402,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_pathIsClosed (_ inObserver : EBEvent) {
+  final func addEBObserverOf_pathIsClosed (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pathIsClosed.insert (inObserver)
     switch prop {
@@ -410,7 +410,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pathIsClosed_property.addEBObserver (inObserver)
+        managedObject.pathIsClosed_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -459,7 +459,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_xCenterUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_xCenterUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xCenterUnit.insert (inObserver)
     switch prop {
@@ -467,7 +467,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xCenterUnit_property.addEBObserver (inObserver)
+        managedObject.xCenterUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -516,7 +516,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_yCenterUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_yCenterUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yCenterUnit.insert (inObserver)
     switch prop {
@@ -524,7 +524,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yCenterUnit_property.addEBObserver (inObserver)
+        managedObject.yCenterUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -573,7 +573,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_radiusUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_radiusUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_radiusUnit.insert (inObserver)
     switch prop {
@@ -581,7 +581,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.radiusUnit_property.addEBObserver (inObserver)
+        managedObject.radiusUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -630,7 +630,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_startTangentUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_startTangentUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_startTangentUnit.insert (inObserver)
     switch prop {
@@ -638,7 +638,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.startTangentUnit_property.addEBObserver (inObserver)
+        managedObject.startTangentUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -687,7 +687,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_endTangentUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_endTangentUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_endTangentUnit.insert (inObserver)
     switch prop {
@@ -695,7 +695,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.endTangentUnit_property.addEBObserver (inObserver)
+        managedObject.endTangentUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -744,7 +744,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_xCenter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_xCenter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xCenter.insert (inObserver)
     switch prop {
@@ -752,7 +752,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xCenter_property.addEBObserver (inObserver)
+        managedObject.xCenter_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -801,7 +801,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
+  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
     switch prop {
@@ -809,7 +809,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.strokeBezierPath_property.addEBObserver (inObserver)
+        managedObject.strokeBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -857,7 +857,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
@@ -865,7 +865,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver)
+        managedObject.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -913,7 +913,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
@@ -921,7 +921,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -969,7 +969,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
@@ -977,7 +977,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver)
+        managedObject.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1551,19 +1551,19 @@ final class PreferencesArrayOf_PackageArc : StoredArrayOf_PackageArc {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_yCenter (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_radius (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_startAngle (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_arcAngle (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_startTangent (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_endTangent (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_pathIsClosed (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_xCenterUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_yCenterUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_radiusUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_startTangentUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_endTangentUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_xCenter (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_yCenter (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_radius (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_startAngle (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_arcAngle (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_startTangent (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_endTangent (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_pathIsClosed (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_xCenterUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_yCenterUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_radiusUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_startTangentUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_endTangentUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_xCenter (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

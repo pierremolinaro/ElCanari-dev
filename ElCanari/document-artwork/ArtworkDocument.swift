@@ -239,6 +239,7 @@ import Cocoa
   //····················································································································
 
   private func checkOutletConnections () {
+    let start = Date ()
     checkOutletConnection (self.mAddGenerationFileButton, "mAddGenerationFileButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
     checkOutletConnection (self.mDataPageView, "mDataPageView", CanariViewWithKeyView.self, #file, #line)
@@ -288,15 +289,28 @@ import Cocoa
     checkOutletConnection (self.minValueForBoardLimitTextField, "minValueForBoardLimitTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.minValueForBoardLimitUnitPopUp, "minValueForBoardLimitUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.resetVersionAndSignatureButton, "resetVersionAndSignatureButton", EBButton.self, #file, #line)
-   }
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Check outlet connections \(durationMS) ms")
+    }
+  }
   
   //····················································································································
   
   final private func configureProperties () {
+    let start = Date ()
+ //   let operationQueue = OperationQueue ()
+    var opIdx = 0
   //--- Array controller property: mDataController
     self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mDataSelection
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mGeneratedFileCountString
     self.mGeneratedFileCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -318,7 +332,10 @@ import Cocoa
         return .empty
       }
     }
-    self.mDataController.sortedArray_property.count_property.addEBObserver (self.mGeneratedFileCountString_property)
+    self.mDataController.sortedArray_property.count_property.addEBObserver (self.mGeneratedFileCountString_property, postEvent: false)
+    self.mGeneratedFileCountString_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -341,8 +358,11 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusImage_property)
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusImage_property, postEvent: false)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusImage_property, postEvent: false)
+    self.mStatusImage_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -365,13 +385,22 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusMessage_property)
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusMessage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusMessage_property, postEvent: false)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusMessage_property, postEvent: false)
+    self.mStatusMessage_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
+//    operationQueue.waitUntilAllOperationsAreFinished ()
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Configure properties \(durationMS) ms")
+    }
   }
 
   //····················································································································
   
   final private func installBindings () {
+    let start = Date ()
   //--------------------------- Install table view bindings
     self.mDataController.bind_tableView (self.mDataTableView, file: #file, line: #line)
   //--------------------------- Install ebView bindings
@@ -439,11 +468,16 @@ import Cocoa
       self.mDataSelection.drawPadHolesInPDF_property.addEBObserver (controller)
       self.mController_mPadHoleDefinitionView_hidden = controller
     }
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Install bindings \(durationMS) ms")
+    }
   }
 
   //····················································································································
   
   final private func setTargetsAndActions () {
+     let start = Date ()
    //--------------------------- Set targets / actions
     self.mAddGenerationFileButton?.target = mDataController
     self.mAddGenerationFileButton?.action = #selector (Controller_ArtworkDocument_mDataController.add (_:))
@@ -451,6 +485,10 @@ import Cocoa
     self.mRemoveGenerationFileButton?.action = #selector (Controller_ArtworkDocument_mDataController.remove (_:))
     self.resetVersionAndSignatureButton?.target = self
     self.resetVersionAndSignatureButton?.action = #selector (ArtworkDocument.resetVersionAndSignatureAction (_:))
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Set target and actions \(durationMS) ms")
+    }
   }
 
   //····················································································································

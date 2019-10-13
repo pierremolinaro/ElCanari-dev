@@ -1574,56 +1574,102 @@ import Cocoa
     checkOutletConnection (self.mWireRenameNetWithUniqueNewNameButton, "mWireRenameNetWithUniqueNewNameButton", EBButton.self, #file, #line)
     checkOutletConnection (self.minValueForBoardLimitTextField, "minValueForBoardLimitTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.minValueForBoardLimitUnitPopUp, "minValueForBoardLimitUnitPopUp", EBPopUpButton.self, #file, #line)
-     let durationMS = Date ().timeIntervalSince (start) * 1000.0
-     Swift.print ("Check outlet connections \(durationMS) ms")
-   }
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Check outlet connections \(durationMS) ms")
+    }
+  }
   
   //····················································································································
   
   final private func configureProperties () {
     let start = Date ()
+ //   let operationQueue = OperationQueue ()
+    var opIdx = 0
   //--- Array controller property: netClassController
     self.netClassController.bind_model (self.rootObject.mNetClasses_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Array controller property: projectFontController
     self.projectFontController.bind_model (self.rootObject.mFonts_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Array controller property: projectDeviceController
     self.projectDeviceController.bind_model (self.rootObject.mDevices_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Array controller property: schematicObjectsController
     self.schematicObjectsController.bind_model (self.rootObject.selectedSheetObjects_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: wireInSchematicSelectionController
     self.wireInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: ncInSchematicSelectionController
     self.ncInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: commentInSchematicSelectionController
     self.commentInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: schematicLabelSelectionController
     self.schematicLabelSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: componentSymbolSelectionController
     self.componentSymbolSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Array controller property: boardCurveObjectsController
     self.boardCurveObjectsController.bind_model (self.rootObject.mBorderCurves_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: boardCurveSelectionController
     self.boardCurveSelectionController.bind_selection (model: self.boardCurveObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Array controller property: boardObjectsController
     self.boardObjectsController.bind_model (self.rootObject.mBoardObjects_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: boardTrackSelectionController
     self.boardTrackSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: boardConnectorSelectionController
     self.boardConnectorSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: boardLineSelectionController
     self.boardLineSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: restrictRectangleSelectionController
     self.restrictRectangleSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: boardTextSelectionController
     self.boardTextSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: componentInBoardSelectionController
     self.componentInBoardSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Array controller property: mDataController
     self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Array controller property: componentController
     self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mDataSelection
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: netCount
     self.netCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1645,7 +1691,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.netsDescription_property.addEBObserver (self.netCount_property)
+    self.rootObject.netsDescription_property.addEBObserver (self.netCount_property, postEvent: false)
+    self.netCount_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: rastnetDisplayComponentNet
     self.rastnetDisplayComponentNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1667,7 +1716,12 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayComponentNet_property)
+    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayComponentNet_property, postEvent: false)
+    self.rastnetDisplayComponentNet_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1689,7 +1743,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property)
+    self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property, postEvent: false)
+    self.componentCount_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: canRemoveNetClasses
     self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1712,8 +1769,11 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mNetClasses_property.count_property.addEBObserver (self.canRemoveNetClasses_property)
-    self.netClassController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveNetClasses_property)
+    self.rootObject.mNetClasses_property.count_property.addEBObserver (self.canRemoveNetClasses_property, postEvent: false)
+    self.netClassController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveNetClasses_property, postEvent: false)
+    self.canRemoveNetClasses_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: selectedDevicePackageNames
     self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1735,7 +1795,10 @@ import Cocoa
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_packageNames (self.selectedDevicePackageNames_property, postEvent: false)
+    self.selectedDevicePackageNames_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: selectedDeviceSymbolNames
     self.selectedDeviceSymbolNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1757,7 +1820,10 @@ import Cocoa
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property, postEvent: false)
+    self.selectedDeviceSymbolNames_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1779,7 +1845,10 @@ import Cocoa
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property, postEvent: false)
+    self.pinPadAssignments_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: schematicSheetOrientationIsCustom
     self.schematicSheetOrientationIsCustom_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1801,7 +1870,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mSchematicSheetOrientation_property.addEBObserver (self.schematicSheetOrientationIsCustom_property)
+    self.rootObject.mSchematicSheetOrientation_property.addEBObserver (self.schematicSheetOrientationIsCustom_property, postEvent: false)
+    self.schematicSheetOrientationIsCustom_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: netCountString
     self.netCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1823,7 +1895,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property)
+    self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property, postEvent: false)
+    self.netCountString_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: rastnetShape
     self.rastnetShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1849,11 +1924,14 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetShape_property)
-    self.rootObject.mRastnetDisplayedNetName_property.addEBObserver (self.rastnetShape_property)
-    self.rootObject.mRastnetDisplayedComponentName_property.addEBObserver (self.rastnetShape_property)
-    self.rootObject.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
-    self.boardObjectsController.selectedArray_property.addEBObserverOf_componentName (self.rastnetShape_property)
+    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetShape_property, postEvent: false)
+    self.rootObject.mRastnetDisplayedNetName_property.addEBObserver (self.rastnetShape_property, postEvent: false)
+    self.rootObject.mRastnetDisplayedComponentName_property.addEBObserver (self.rastnetShape_property, postEvent: false)
+    self.rootObject.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation (self.rastnetShape_property, postEvent: false)
+    self.boardObjectsController.selectedArray_property.addEBObserverOf_componentName (self.rastnetShape_property, postEvent: false)
+    self.rastnetShape_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: rastnetDisplayOneNet
     self.rastnetDisplayOneNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1875,7 +1953,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayOneNet_property)
+    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayOneNet_property, postEvent: false)
+    self.rastnetDisplayOneNet_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: artworlImportButtonTitle
     self.artworlImportButtonTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1897,7 +1978,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mArtwork_property.addEBObserver (self.artworlImportButtonTitle_property)
+    self.rootObject.mArtwork_property.addEBObserver (self.artworlImportButtonTitle_property, postEvent: false)
+    self.artworlImportButtonTitle_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: documentFilePathOk
     self.documentFilePathOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1919,7 +2003,10 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.documentFilePathOk_property)
+    self.documentFilePath_property.addEBObserver (self.documentFilePathOk_property, postEvent: false)
+    self.documentFilePathOk_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: canRemoveSelectedDevices
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1941,7 +2028,10 @@ import Cocoa
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property, postEvent: false)
+    self.canRemoveSelectedDevices_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: unplacedSymbolsCount
     self.unplacedSymbolsCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1963,7 +2053,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.unplacedSymbols_property.addEBObserver (self.unplacedSymbolsCount_property)
+    self.rootObject.unplacedSymbols_property.addEBObserver (self.unplacedSymbolsCount_property, postEvent: false)
+    self.unplacedSymbolsCount_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: unplacedSymbolsCountString
     self.unplacedSymbolsCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1985,7 +2078,10 @@ import Cocoa
         return .empty
       }
     }
-    self.unplacedSymbolsCount_property.addEBObserver (self.unplacedSymbolsCountString_property)
+    self.unplacedSymbolsCount_property.addEBObserver (self.unplacedSymbolsCountString_property, postEvent: false)
+    self.unplacedSymbolsCountString_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: unplacedPackageCount
     self.unplacedPackageCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2007,7 +2103,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.unplacedPackages_property.addEBObserver (self.unplacedPackageCount_property)
+    self.rootObject.unplacedPackages_property.addEBObserver (self.unplacedPackageCount_property, postEvent: false)
+    self.unplacedPackageCount_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: unplacedPackagesCountString
     self.unplacedPackagesCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2029,7 +2128,10 @@ import Cocoa
         return .empty
       }
     }
-    self.unplacedPackageCount_property.addEBObserver (self.unplacedPackagesCountString_property)
+    self.unplacedPackageCount_property.addEBObserver (self.unplacedPackagesCountString_property, postEvent: false)
+    self.unplacedPackagesCountString_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: overDisplay
     self.overDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2052,8 +2154,11 @@ import Cocoa
         return .empty
       }
     }
-    self.rastnetShape_property.addEBObserver (self.overDisplay_property)
-    self.rootObject.boardIssues_property.addEBObserver (self.overDisplay_property)
+    self.rastnetShape_property.addEBObserver (self.overDisplay_property, postEvent: false)
+    self.rootObject.boardIssues_property.addEBObserver (self.overDisplay_property, postEvent: false)
+    self.overDisplay_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: canChangePackage
     self.canChangePackage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2075,15 +2180,21 @@ import Cocoa
         return .empty
       }
     }
-    self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
-    let durationMS = Date ().timeIntervalSince (start) * 1000.0
-    Swift.print ("Configure properties \(durationMS) ms")
+    self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property, postEvent: false)
+    self.canChangePackage_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
+//    operationQueue.waitUntilAllOperationsAreFinished ()
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Configure properties \(durationMS) ms")
+    }
   }
 
   //····················································································································
   
   final private func installBindings () {
-  let start = Date ()
+    let start = Date ()
   //--------------------------- Install table view bindings
     self.componentController.bind_tableView (self.mComponentTableView, file: #file, line: #line)
     self.netClassController.bind_tableView (self.mNetClassTableView, file: #file, line: #line)
@@ -2822,15 +2933,16 @@ import Cocoa
       self.documentFilePathOk_property.addEBObserver (controller)
       self.mController_mIncorrectFileNameMessageView_hidden = controller
     }
-    let durationMS = Date ().timeIntervalSince (start) * 1000.0
-    Swift.print ("Install bindings \(durationMS) ms")
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Install bindings \(durationMS) ms")
+    }
   }
 
   //····················································································································
   
   final private func setTargetsAndActions () {
-   let start = Date ()
-
+     let start = Date ()
    //--------------------------- Set targets / actions
     self.mAddComponentButton?.target = self
     self.mAddComponentButton?.action = #selector (ProjectDocument.addComponentAction (_:))
@@ -2892,8 +3004,10 @@ import Cocoa
     self.mArtworlImportButton?.action = #selector (ProjectDocument.importArtworkAction (_:))
     self.mGenerateProductFilesActionButton?.target = self
     self.mGenerateProductFilesActionButton?.action = #selector (ProjectDocument.generateProductFilesAction (_:))
-    let durationMS = Date ().timeIntervalSince (start) * 1000.0
-    Swift.print ("Set targets and actions \(durationMS) ms")
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Set target and actions \(durationMS) ms")
+    }
   }
 
   //····················································································································

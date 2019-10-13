@@ -469,7 +469,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_cp1Xstring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_cp1Xstring (self.cp1Xstring_property)
+    model.addEBObserverOf_cp1Xstring (self.cp1Xstring_property, postEvent: true)
     self.cp1Xstring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -509,7 +509,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_cp1Ystring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_cp1Ystring (self.cp1Ystring_property)
+    model.addEBObserverOf_cp1Ystring (self.cp1Ystring_property, postEvent: true)
     self.cp1Ystring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -549,7 +549,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_cp2Xstring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_cp2Xstring (self.cp2Xstring_property)
+    model.addEBObserverOf_cp2Xstring (self.cp2Xstring_property, postEvent: true)
     self.cp2Xstring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -589,7 +589,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_cp2Ystring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_cp2Ystring (self.cp2Ystring_property)
+    model.addEBObserverOf_cp2Ystring (self.cp2Ystring_property, postEvent: true)
     self.cp2Ystring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -629,7 +629,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_descriptor (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_descriptor (self.descriptor_property)
+    model.addEBObserverOf_descriptor (self.descriptor_property, postEvent: true)
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -669,7 +669,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_isLine (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_isLine (self.isLine_property)
+    model.addEBObserverOf_isLine (self.isLine_property, postEvent: true)
     self.isLine_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -709,7 +709,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_mCPX1 (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mCPX1 (self.mCPX1_property)
+    model.addEBObserverOf_mCPX1 (self.mCPX1_property, postEvent: true)
     self.mCPX1_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -779,7 +779,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_mCPX2 (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mCPX2 (self.mCPX2_property)
+    model.addEBObserverOf_mCPX2 (self.mCPX2_property, postEvent: true)
     self.mCPX2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -849,7 +849,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_mCPY1 (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mCPY1 (self.mCPY1_property)
+    model.addEBObserverOf_mCPY1 (self.mCPY1_property, postEvent: true)
     self.mCPY1_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -919,7 +919,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_mCPY2 (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mCPY2 (self.mCPY2_property)
+    model.addEBObserverOf_mCPY2 (self.mCPY2_property, postEvent: true)
     self.mCPY2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -989,7 +989,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_mShape (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mShape (self.mShape_property)
+    model.addEBObserverOf_mShape (self.mShape_property, postEvent: true)
     self.mShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1059,7 +1059,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_mX (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mX (self.mX_property)
+    model.addEBObserverOf_mX (self.mX_property, postEvent: true)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1129,7 +1129,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_mY (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mY (self.mY_property)
+    model.addEBObserverOf_mY (self.mY_property, postEvent: true)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1199,7 +1199,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    model.addEBObserverOf_objectDisplay (self.objectDisplay_property, postEvent: true)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1239,7 +1239,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_p1Xstring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_p1Xstring (self.p1Xstring_property)
+    model.addEBObserverOf_p1Xstring (self.p1Xstring_property, postEvent: true)
     self.p1Xstring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1279,7 +1279,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_p1Ystring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_p1Ystring (self.p1Ystring_property)
+    model.addEBObserverOf_p1Ystring (self.p1Ystring_property, postEvent: true)
     self.p1Ystring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1319,7 +1319,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_p2Xstring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_p2Xstring (self.p2Xstring_property)
+    model.addEBObserverOf_p2Xstring (self.p2Xstring_property, postEvent: true)
     self.p2Xstring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1359,7 +1359,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_p2Ystring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_p2Ystring (self.p2Ystring_property)
+    model.addEBObserverOf_p2Ystring (self.p2Ystring_property, postEvent: true)
     self.p2Ystring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1399,7 +1399,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //···················································································································*
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property, postEvent: true)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {

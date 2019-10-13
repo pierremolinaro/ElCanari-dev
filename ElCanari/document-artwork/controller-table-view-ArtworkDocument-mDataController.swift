@@ -77,8 +77,9 @@ final class Controller_ArtworkDocument_mDataController : ReadOnlyAbstractGeneric
     self.sortedArray_property.setDataProvider (
       inModel,
       sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
-      addSortObserversCallback: {(observer) in
-        inModel.addEBObserverOf_name (observer)
+      addSortObserversCallback: { (observer) in
+        inModel.addEBObserverOf_name (observer, postEvent: false)
+        observer.postEvent ()
       },
       removeSortObserversCallback: {(observer) in
         inModel.removeEBObserverOf_name (observer)

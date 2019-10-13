@@ -280,6 +280,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- To one property: mSymbolInstance (has opposite to many relationship: mPinInstances)
     self.mSymbolInstance_property.ebUndoManager = self.ebUndoManager
     self.mSymbolInstance_property.setOppositeRelationShipFunctions (
@@ -319,7 +320,8 @@ class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mType_property.addEBObserverOf_mName (self.pinName_property)
+    self.mType_property.addEBObserverOf_mName (self.pinName_property, postEvent: false)
+    self.pinName_property.postEvent ()
   //--- Atomic property: symbolName
     self.symbolName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -341,7 +343,8 @@ class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolInstance_property.addEBObserverOf_mInstanceName (self.symbolName_property)
+    self.mSymbolInstance_property.addEBObserverOf_mInstanceName (self.symbolName_property, postEvent: false)
+    self.symbolName_property.postEvent ()
   //--- Atomic property: pinQualifiedName
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -364,8 +367,9 @@ class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.symbolName_property.addEBObserver (self.pinQualifiedName_property)
-    self.pinName_property.addEBObserver (self.pinQualifiedName_property)
+    self.symbolName_property.addEBObserver (self.pinQualifiedName_property, postEvent: false)
+    self.pinName_property.addEBObserver (self.pinQualifiedName_property, postEvent: false)
+    self.pinQualifiedName_property.postEvent ()
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -387,7 +391,8 @@ class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mPadProxy_property.addEBObserver (self.isConnected_property)
+    self.mPadProxy_property.addEBObserver (self.isConnected_property, postEvent: false)
+    self.isConnected_property.postEvent ()
   //--- Atomic property: numberShape
     self.numberShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -413,14 +418,16 @@ class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mType_property.addEBObserverOf_mXNumber (self.numberShape_property)
-    self.mType_property.addEBObserverOf_mYNumber (self.numberShape_property)
-    self.mType_property.addEBObserverOf_mNumberHorizontalAlignment (self.numberShape_property)
-    self.mPadProxy_property.addEBObserverOf_mPadName (self.numberShape_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.numberShape_property)
+    self.mType_property.addEBObserverOf_mXNumber (self.numberShape_property, postEvent: false)
+    self.mType_property.addEBObserverOf_mYNumber (self.numberShape_property, postEvent: false)
+    self.mType_property.addEBObserverOf_mNumberHorizontalAlignment (self.numberShape_property, postEvent: false)
+    self.mPadProxy_property.addEBObserverOf_mPadName (self.numberShape_property, postEvent: false)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.numberShape_property, postEvent: false)
+    self.numberShape_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

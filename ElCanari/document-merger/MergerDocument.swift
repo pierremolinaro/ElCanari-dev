@@ -460,6 +460,7 @@ import Cocoa
   //····················································································································
 
   private func checkOutletConnections () {
+    let start = Date ()
     checkOutletConnection (self.addBoardModelButton, "addBoardModelButton", EBButton.self, #file, #line)
     checkOutletConnection (self.boardHelpPanel, "boardHelpPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.dismissPrefsForSettingMergerDisplayButton, "dismissPrefsForSettingMergerDisplayButton", EBButton.self, #file, #line)
@@ -607,19 +608,36 @@ import Cocoa
     checkOutletConnection (self.showBoardHelpButton, "showBoardHelpButton", EBButton.self, #file, #line)
     checkOutletConnection (self.showPrefsForSettingMergerDisplayButton, "showPrefsForSettingMergerDisplayButton", EBButton.self, #file, #line)
     checkOutletConnection (self.updateBoardModelButton, "updateBoardModelButton", EBButton.self, #file, #line)
-   }
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Check outlet connections \(durationMS) ms")
+    }
+  }
   
   //····················································································································
   
   final private func configureProperties () {
+    let start = Date ()
+ //   let operationQueue = OperationQueue ()
+    var opIdx = 0
   //--- Array controller property: mBoardModelController
     self.mBoardModelController.bind_model (self.rootObject.boardModels_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mBoardModelSelection
     self.mBoardModelSelection.bind_selection (model: self.mBoardModelController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Array controller property: mBoardInstanceController
     self.mBoardInstanceController.bind_model (self.rootObject.boardInstances_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mBoardInstanceSelection
     self.mBoardInstanceSelection.bind_selection (model: self.mBoardInstanceController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: incorrectDocumentFileErrorMessage
     self.incorrectDocumentFileErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -641,7 +659,10 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property)
+    self.documentFilePath_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property, postEvent: false)
+    self.incorrectDocumentFileErrorMessage_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: documentIsUnnamed
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -663,7 +684,10 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.documentIsUnnamed_property)
+    self.documentFilePath_property.addEBObserver (self.documentIsUnnamed_property, postEvent: false)
+    self.documentIsUnnamed_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: importArtworkButtonTitle
     self.importArtworkButtonTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -685,7 +709,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.artworkName_property.addEBObserver (self.importArtworkButtonTitle_property)
+    self.rootObject.artworkName_property.addEBObserver (self.importArtworkButtonTitle_property, postEvent: false)
+    self.importArtworkButtonTitle_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -711,11 +738,14 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.overlapingArrangment_property.addEBObserver (self.issues_property)
-    self.rootObject.boardRect_property.addEBObserver (self.issues_property)
-    self.rootObject.boardDisplayRect_property.addEBObserver (self.issues_property)
-    self.rootObject.boardInstances_property.addEBObserverOf_instanceRect (self.issues_property)
-    self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth (self.issues_property)
+    self.rootObject.overlapingArrangment_property.addEBObserver (self.issues_property, postEvent: false)
+    self.rootObject.boardRect_property.addEBObserver (self.issues_property, postEvent: false)
+    self.rootObject.boardDisplayRect_property.addEBObserver (self.issues_property, postEvent: false)
+    self.rootObject.boardInstances_property.addEBObserverOf_instanceRect (self.issues_property, postEvent: false)
+    self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth (self.issues_property, postEvent: false)
+    self.issues_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -737,7 +767,10 @@ import Cocoa
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.mStatusImage_property)
+    self.issues_property.addEBObserver (self.mStatusImage_property, postEvent: false)
+    self.mStatusImage_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -759,7 +792,10 @@ import Cocoa
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.mStatusMessage_property)
+    self.issues_property.addEBObserver (self.mStatusMessage_property, postEvent: false)
+    self.mStatusMessage_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: documentFileNameOk
     self.documentFileNameOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -781,12 +817,21 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.documentFileNameOk_property)
+    self.documentFilePath_property.addEBObserver (self.documentFileNameOk_property, postEvent: false)
+    self.documentFileNameOk_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
+//    operationQueue.waitUntilAllOperationsAreFinished ()
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Configure properties \(durationMS) ms")
+    }
   }
 
   //····················································································································
   
   final private func installBindings () {
+    let start = Date ()
   //--------------------------- Install table view bindings
     self.mBoardModelController.bind_tableView (self.mBoardModelTableView, file: #file, line: #line)
   //--------------------------- Install ebView bindings
@@ -1084,11 +1129,16 @@ import Cocoa
       self.rootObject.artwork_none.addEBObserver (controller)
       self.mController_mLogTextView_hidden = controller
     }
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Install bindings \(durationMS) ms")
+    }
   }
 
   //····················································································································
   
   final private func setTargetsAndActions () {
+     let start = Date ()
    //--------------------------- Set targets / actions
     self.showPrefsForSettingMergerDisplayButton?.target = self
     self.showPrefsForSettingMergerDisplayButton?.action = #selector (MergerDocument.showPrefsForSettingMergerDisplayAction (_:))
@@ -1114,6 +1164,10 @@ import Cocoa
     self.mGenerateProductFilesActionButton?.action = #selector (MergerDocument.generateProductFilesAction (_:))
     self.mImportArtworkButton?.target = self
     self.mImportArtworkButton?.action = #selector (MergerDocument.importArtworkAction (_:))
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Set target and actions \(durationMS) ms")
+    }
   }
 
   //····················································································································

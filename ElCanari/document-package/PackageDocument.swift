@@ -455,6 +455,7 @@ import Cocoa
   //····················································································································
 
   private func checkOutletConnections () {
+    let start = Date ()
     checkOutletConnection (self.mAddArcButton, "mAddArcButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddBezierButton, "mAddBezierButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddDimensionButton, "mAddDimensionButton", CanariDragSourceButton.self, #file, #line)
@@ -651,31 +652,60 @@ import Cocoa
     checkOutletConnection (self.mZoneYLabelUnitPopUp, "mZoneYLabelUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mZoneYTextField, "mZoneYTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mZoneYUnitPopUp, "mZoneYUnitPopUp", EBPopUpButton.self, #file, #line)
-   }
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Check outlet connections \(durationMS) ms")
+    }
+  }
   
   //····················································································································
   
   final private func configureProperties () {
+    let start = Date ()
+ //   let operationQueue = OperationQueue ()
+    var opIdx = 0
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.bind_model (self.rootObject.packageObjects_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mPackageBezierCurveSelectionController
     self.mPackageBezierCurveSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mPackageOvalSelectionController
     self.mPackageOvalSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mPackageArcSelectionController
     self.mPackageArcSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mPackagePadSelectionController
     self.mPackagePadSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mPackageSlavePadSelectionController
     self.mPackageSlavePadSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mPackageGuideSelectionController
     self.mPackageGuideSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mPackageDimensionSelectionController
     self.mPackageDimensionSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mPackageZoneSelectionController
     self.mPackageZoneSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -697,7 +727,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
+    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property, postEvent: false)
+    self.mStatusMessage_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mMetadataStatus
     self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -719,7 +752,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
+    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property, postEvent: false)
+    self.mMetadataStatus_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -741,12 +777,21 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
+    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property, postEvent: false)
+    self.mStatusImage_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
+//    operationQueue.waitUntilAllOperationsAreFinished ()
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Configure properties \(durationMS) ms")
+    }
   }
 
   //····················································································································
   
   final private func installBindings () {
+    let start = Date ()
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
     self.mPackageObjectsController.bind_ebView (self.mComposedPackageView)
@@ -994,11 +1039,16 @@ import Cocoa
       self.rootObject.packagePads_property.count_property.addEBObserver (controller)
       self.mController_mAddSlavePadButton_enabled = controller
     }
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Install bindings \(durationMS) ms")
+    }
   }
 
   //····················································································································
   
   final private func setTargetsAndActions () {
+     let start = Date ()
    //--------------------------- Set targets / actions
     self.mSetDimensionTextOriginAtMidX?.target = self
     self.mSetDimensionTextOriginAtMidX?.action = #selector (PackageDocument.setDimensionTextOriginAtMidXAction (_:))
@@ -1014,6 +1064,10 @@ import Cocoa
     self.mClearProgramErrorButton?.action = #selector (PackageDocument.clearProgramErrorAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (PackageDocument.resetVersionAction (_:))
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Set target and actions \(durationMS) ms")
+    }
   }
 
   //····················································································································

@@ -49,14 +49,14 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mSymbolTypeName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mSymbolTypeName_property.addEBObserver (inObserver)
+       v?.mSymbolTypeName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -119,14 +119,14 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mStrokeBezierPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mStrokeBezierPath_property.addEBObserver (inObserver)
+       v?.mStrokeBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -189,14 +189,14 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mFilledBezierPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mFilledBezierPath_property.addEBObserver (inObserver)
+       v?.mFilledBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 

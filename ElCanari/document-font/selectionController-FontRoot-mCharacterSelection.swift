@@ -171,7 +171,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_advance (model : TransientArrayOf_FontCharacter) {
-    model.addEBObserverOf_advance (self.advance_property)
+    model.addEBObserverOf_advance (self.advance_property, postEvent: true)
     self.advance_property.mReadModelFunction = {
       if let model = self.mModel {
         switch model.prop {
@@ -241,7 +241,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_codePoint (model : TransientArrayOf_FontCharacter) {
-    model.addEBObserverOf_codePoint (self.codePoint_property)
+    model.addEBObserverOf_codePoint (self.codePoint_property, postEvent: false)
     self.codePoint_property.mReadModelFunction = {
       if let model = self.mModel {
         switch model.prop {
@@ -311,7 +311,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_gerberCode (model : TransientArrayOf_FontCharacter) {
-    model.addEBObserverOf_gerberCode (self.gerberCode_property)
+    model.addEBObserverOf_gerberCode (self.gerberCode_property, postEvent: false)
     self.gerberCode_property.mReadModelFunction = {
       if let model = self.mModel {
         switch model.prop {
@@ -351,7 +351,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_gerberCodeInstructionCountMessage (model : TransientArrayOf_FontCharacter) {
-    model.addEBObserverOf_gerberCodeInstructionCountMessage (self.gerberCodeInstructionCountMessage_property)
+    model.addEBObserverOf_gerberCodeInstructionCountMessage (self.gerberCodeInstructionCountMessage_property, postEvent: false)
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = {
       if let model = self.mModel {
         switch model.prop {
@@ -391,7 +391,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_segmentArrayForDrawing (model : TransientArrayOf_FontCharacter) {
-    model.addEBObserverOf_segmentArrayForDrawing (self.segmentArrayForDrawing_property)
+    model.addEBObserverOf_segmentArrayForDrawing (self.segmentArrayForDrawing_property, postEvent: false)
     self.segmentArrayForDrawing_property.mReadModelFunction = {
       if let model = self.mModel {
         switch model.prop {

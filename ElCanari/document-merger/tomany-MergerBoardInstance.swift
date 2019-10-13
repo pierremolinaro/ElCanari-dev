@@ -42,7 +42,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
     switch prop {
@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x_property.addEBObserver (inObserver)
+        managedObject.x_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -99,7 +99,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
     switch prop {
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y_property.addEBObserver (inObserver)
+        managedObject.y_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -156,7 +156,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_instanceRotation (_ inObserver : EBEvent) {
+  final func addEBObserverOf_instanceRotation (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_instanceRotation.insert (inObserver)
     switch prop {
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.instanceRotation_property.addEBObserver (inObserver)
+        managedObject.instanceRotation_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -213,7 +213,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_instanceRect (_ inObserver : EBEvent) {
+  final func addEBObserverOf_instanceRect (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_instanceRect.insert (inObserver)
     switch prop {
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.instanceRect_property.addEBObserver (inObserver)
+        managedObject.instanceRect_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -269,7 +269,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_modelName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_modelName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_modelName.insert (inObserver)
     switch prop {
@@ -277,7 +277,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.modelName_property.addEBObserver (inObserver)
+        managedObject.modelName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -325,7 +325,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardLimitWidth.insert (inObserver)
     switch prop {
@@ -333,7 +333,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitWidth_property.addEBObserver (inObserver)
+        managedObject.boardLimitWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -381,7 +381,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
@@ -389,7 +389,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -437,7 +437,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
@@ -445,7 +445,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver)
+        managedObject.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1019,9 +1019,9 @@ final class PreferencesArrayOf_MergerBoardInstance : StoredArrayOf_MergerBoardIn
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_x (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_y (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_instanceRotation (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_x (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_y (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_instanceRotation (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

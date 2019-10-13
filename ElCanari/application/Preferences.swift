@@ -3100,6 +3100,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   override init () {
     super.init ()
     g_Preferences = self ;
+    let operationQueue = OperationQueue ()
   //--- Read from preferences
   //--- Atomic property: warningMessageColor
     self.warningMessageColor_property.ebUndoManager = self.ebUndoManager
@@ -3438,9 +3439,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         return .empty
       }
     }
-    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_packages_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_packages_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_packages_property)
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_packages_property, postEvent: false)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_packages_property, postEvent: false)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_packages_property, postEvent: false)
+    self.mValueRevealInFinder_packages_property.postEvent ()
   //--- Atomic property: mValueRevealInFinder_devices
     self.mValueRevealInFinder_devices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3464,9 +3466,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         return .empty
       }
     }
-    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_devices_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_devices_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_devices_property)
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_devices_property, postEvent: false)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_devices_property, postEvent: false)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_devices_property, postEvent: false)
+    self.mValueRevealInFinder_devices_property.postEvent ()
   //--- Atomic property: mValueRevealInFinder_fonts
     self.mValueRevealInFinder_fonts_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3490,9 +3493,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         return .empty
       }
     }
-    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_fonts_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_fonts_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_fonts_property)
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_fonts_property, postEvent: false)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_fonts_property, postEvent: false)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_fonts_property, postEvent: false)
+    self.mValueRevealInFinder_fonts_property.postEvent ()
   //--- Atomic property: mValueRevealInFinder_artworks
     self.mValueRevealInFinder_artworks_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3516,9 +3520,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         return .empty
       }
     }
-    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_artworks_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_artworks_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_artworks_property)
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_artworks_property, postEvent: false)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_artworks_property, postEvent: false)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_artworks_property, postEvent: false)
+    self.mValueRevealInFinder_artworks_property.postEvent ()
   //--- Atomic property: mValueRevealInFinder_symbols
     self.mValueRevealInFinder_symbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3542,9 +3547,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         return .empty
       }
     }
-    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_symbols_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_symbols_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_symbols_property)
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_symbols_property, postEvent: false)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_symbols_property, postEvent: false)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_symbols_property, postEvent: false)
+    self.mValueRevealInFinder_symbols_property.postEvent ()
   //--- Notify application will terminate
     NotificationCenter.default.addObserver (self,
       selector:#selector(Preferences.applicationWillTerminateAction(_:)),
@@ -3552,6 +3558,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
       object:nil
     )
   //--- Extern functions
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

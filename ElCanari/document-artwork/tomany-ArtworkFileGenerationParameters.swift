@@ -72,7 +72,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawBoardLimits (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawBoardLimits (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawBoardLimits.insert (inObserver)
     switch prop {
@@ -80,7 +80,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawBoardLimits_property.addEBObserver (inObserver)
+        managedObject.drawBoardLimits_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -129,7 +129,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawInternalBoardLimits.insert (inObserver)
     switch prop {
@@ -137,7 +137,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawInternalBoardLimits_property.addEBObserver (inObserver)
+        managedObject.drawInternalBoardLimits_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -186,7 +186,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentNamesTopSide.insert (inObserver)
     switch prop {
@@ -194,7 +194,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawComponentNamesTopSide_property.addEBObserver (inObserver)
+        managedObject.drawComponentNamesTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -243,7 +243,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentNamesBottomSide.insert (inObserver)
     switch prop {
@@ -251,7 +251,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawComponentNamesBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawComponentNamesBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -300,7 +300,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentValuesTopSide.insert (inObserver)
     switch prop {
@@ -308,7 +308,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawComponentValuesTopSide_property.addEBObserver (inObserver)
+        managedObject.drawComponentValuesTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -357,7 +357,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentValuesBottomSide.insert (inObserver)
     switch prop {
@@ -365,7 +365,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawComponentValuesBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawComponentValuesBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -414,7 +414,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPackageLegendTopSide.insert (inObserver)
     switch prop {
@@ -422,7 +422,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPackageLegendTopSide_property.addEBObserver (inObserver)
+        managedObject.drawPackageLegendTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -471,7 +471,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPackageLegendBottomSide.insert (inObserver)
     switch prop {
@@ -479,7 +479,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPackageLegendBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawPackageLegendBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -528,7 +528,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPadHolesInPDF.insert (inObserver)
     switch prop {
@@ -536,7 +536,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPadHolesInPDF_property.addEBObserver (inObserver)
+        managedObject.drawPadHolesInPDF_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -585,7 +585,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPadsTopSide.insert (inObserver)
     switch prop {
@@ -593,7 +593,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPadsTopSide_property.addEBObserver (inObserver)
+        managedObject.drawPadsTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -642,7 +642,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPadsBottomSide.insert (inObserver)
     switch prop {
@@ -650,7 +650,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPadsBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawPadsBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -699,7 +699,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLayoutTopSide.insert (inObserver)
     switch prop {
@@ -707,7 +707,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTextsLayoutTopSide_property.addEBObserver (inObserver)
+        managedObject.drawTextsLayoutTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -756,7 +756,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLayoutBottomSide.insert (inObserver)
     switch prop {
@@ -764,7 +764,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTextsLayoutBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawTextsLayoutBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -813,7 +813,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLegendTopSide.insert (inObserver)
     switch prop {
@@ -821,7 +821,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTextsLegendTopSide_property.addEBObserver (inObserver)
+        managedObject.drawTextsLegendTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -870,7 +870,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLegendBottomSide.insert (inObserver)
     switch prop {
@@ -878,7 +878,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTextsLegendBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawTextsLegendBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -927,7 +927,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTracksTopSide.insert (inObserver)
     switch prop {
@@ -935,7 +935,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksTopSide_property.addEBObserver (inObserver)
+        managedObject.drawTracksTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -984,7 +984,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTracksBottomSide.insert (inObserver)
     switch prop {
@@ -992,7 +992,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawTracksBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1041,7 +1041,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawVias (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drawVias (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawVias.insert (inObserver)
     switch prop {
@@ -1049,7 +1049,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawVias_property.addEBObserver (inObserver)
+        managedObject.drawVias_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1098,7 +1098,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_fileExtension (_ inObserver : EBEvent) {
+  final func addEBObserverOf_fileExtension (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_fileExtension.insert (inObserver)
     switch prop {
@@ -1106,7 +1106,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.fileExtension_property.addEBObserver (inObserver)
+        managedObject.fileExtension_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1155,7 +1155,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
+  final func addEBObserverOf_horizontalMirror (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_horizontalMirror.insert (inObserver)
     switch prop {
@@ -1163,7 +1163,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.horizontalMirror_property.addEBObserver (inObserver)
+        managedObject.horizontalMirror_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1212,7 +1212,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_name (_ inObserver : EBEvent) {
+  final func addEBObserverOf_name (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_name.insert (inObserver)
     switch prop {
@@ -1220,7 +1220,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.name_property.addEBObserver (inObserver)
+        managedObject.name_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1269,7 +1269,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
+  final func addEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_measurementUnitForPadHoleInPDF.insert (inObserver)
     switch prop {
@@ -1277,7 +1277,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.measurementUnitForPadHoleInPDF_property.addEBObserver (inObserver)
+        managedObject.measurementUnitForPadHoleInPDF_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1326,7 +1326,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent) {
+  final func addEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padHoleDiameterInPDF.insert (inObserver)
     switch prop {
@@ -1334,7 +1334,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.padHoleDiameterInPDF_property.addEBObserver (inObserver)
+        managedObject.padHoleDiameterInPDF_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1909,29 +1909,29 @@ final class PreferencesArrayOf_ArtworkFileGenerationParameters : StoredArrayOf_A
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_drawBoardLimits (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawInternalBoardLimits (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawComponentNamesTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawComponentNamesBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawComponentValuesTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawComponentValuesBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawPackageLegendTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawPackageLegendBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawPadHolesInPDF (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawPadsTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawPadsBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTextsLayoutTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTextsLayoutBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTextsLegendTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTextsLegendBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTracksTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTracksBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawVias (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_fileExtension (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_horizontalMirror (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_name (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_measurementUnitForPadHoleInPDF (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_padHoleDiameterInPDF (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_drawBoardLimits (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawInternalBoardLimits (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawComponentNamesTopSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawComponentNamesBottomSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawComponentValuesTopSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawComponentValuesBottomSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawPackageLegendTopSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawPackageLegendBottomSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawPadHolesInPDF (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawPadsTopSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawPadsBottomSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawTextsLayoutTopSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawTextsLayoutBottomSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawTextsLegendTopSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawTextsLegendBottomSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawTracksTopSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawTracksBottomSide (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_drawVias (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_fileExtension (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_horizontalMirror (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_name (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_measurementUnitForPadHoleInPDF (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_padHoleDiameterInPDF (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

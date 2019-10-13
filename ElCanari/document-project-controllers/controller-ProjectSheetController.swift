@@ -35,9 +35,9 @@ class ProjectSheetController : EBOutletEvent {
     self.mSheetDownButton = inSheetDownButton
   //--- Add sheet titles observer
     self.mEventCallBack = { [weak self] in self?.updatePopUpButton () }
-    inDocument.rootObject.mSheets_property.addEBObserverOf_connexionWarnings (self)
-    inDocument.rootObject.mSheets_property.addEBObserverOf_connexionErrors (self)
-    inDocument.rootObject.mSheets_property.addEBObserverOf_mSheetTitle (self)
+    inDocument.rootObject.mSheets_property.addEBObserverOf_connexionWarnings (self, postEvent: true)
+    inDocument.rootObject.mSheets_property.addEBObserverOf_connexionErrors (self, postEvent: true)
+    inDocument.rootObject.mSheets_property.addEBObserverOf_mSheetTitle (self, postEvent: true)
     inDocument.rootObject.mSelectedSheet_property.addEBObserver (self)
     self.mSheetUpButton?.target = self
     self.mSheetUpButton?.action = #selector (ProjectSheetController.sheetUpAction (_:))

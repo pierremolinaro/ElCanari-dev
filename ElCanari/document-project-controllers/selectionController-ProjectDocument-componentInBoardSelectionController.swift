@@ -846,7 +846,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mX () {
-    self.selectedArray_property.addEBObserverOf_mX (self.mX_property)
+    self.selectedArray_property.addEBObserverOf_mX (self.mX_property, postEvent: true)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -915,7 +915,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mY () {
-    self.selectedArray_property.addEBObserverOf_mY (self.mY_property)
+    self.selectedArray_property.addEBObserverOf_mY (self.mY_property, postEvent: true)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -984,7 +984,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mRotation () {
-    self.selectedArray_property.addEBObserverOf_mRotation (self.mRotation_property)
+    self.selectedArray_property.addEBObserverOf_mRotation (self.mRotation_property, postEvent: true)
     self.mRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1053,7 +1053,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mSide () {
-    self.selectedArray_property.addEBObserverOf_mSide (self.mSide_property)
+    self.selectedArray_property.addEBObserverOf_mSide (self.mSide_property, postEvent: true)
     self.mSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1122,7 +1122,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mNameIsVisibleInBoard () {
-    self.selectedArray_property.addEBObserverOf_mNameIsVisibleInBoard (self.mNameIsVisibleInBoard_property)
+    self.selectedArray_property.addEBObserverOf_mNameIsVisibleInBoard (self.mNameIsVisibleInBoard_property, postEvent: true)
     self.mNameIsVisibleInBoard_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1191,7 +1191,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mXName () {
-    self.selectedArray_property.addEBObserverOf_mXName (self.mXName_property)
+    self.selectedArray_property.addEBObserverOf_mXName (self.mXName_property, postEvent: true)
     self.mXName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1260,7 +1260,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mYName () {
-    self.selectedArray_property.addEBObserverOf_mYName (self.mYName_property)
+    self.selectedArray_property.addEBObserverOf_mYName (self.mYName_property, postEvent: true)
     self.mYName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1329,7 +1329,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mNameFontSize () {
-    self.selectedArray_property.addEBObserverOf_mNameFontSize (self.mNameFontSize_property)
+    self.selectedArray_property.addEBObserverOf_mNameFontSize (self.mNameFontSize_property, postEvent: true)
     self.mNameFontSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1398,7 +1398,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mNameRotation () {
-    self.selectedArray_property.addEBObserverOf_mNameRotation (self.mNameRotation_property)
+    self.selectedArray_property.addEBObserverOf_mNameRotation (self.mNameRotation_property, postEvent: true)
     self.mNameRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1467,7 +1467,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mValueIsVisibleInBoard () {
-    self.selectedArray_property.addEBObserverOf_mValueIsVisibleInBoard (self.mValueIsVisibleInBoard_property)
+    self.selectedArray_property.addEBObserverOf_mValueIsVisibleInBoard (self.mValueIsVisibleInBoard_property, postEvent: true)
     self.mValueIsVisibleInBoard_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1536,7 +1536,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mXValue () {
-    self.selectedArray_property.addEBObserverOf_mXValue (self.mXValue_property)
+    self.selectedArray_property.addEBObserverOf_mXValue (self.mXValue_property, postEvent: true)
     self.mXValue_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1605,7 +1605,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mYValue () {
-    self.selectedArray_property.addEBObserverOf_mYValue (self.mYValue_property)
+    self.selectedArray_property.addEBObserverOf_mYValue (self.mYValue_property, postEvent: true)
     self.mYValue_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1674,7 +1674,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mValueFontSize () {
-    self.selectedArray_property.addEBObserverOf_mValueFontSize (self.mValueFontSize_property)
+    self.selectedArray_property.addEBObserverOf_mValueFontSize (self.mValueFontSize_property, postEvent: true)
     self.mValueFontSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1743,7 +1743,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mValueRotation () {
-    self.selectedArray_property.addEBObserverOf_mValueRotation (self.mValueRotation_property)
+    self.selectedArray_property.addEBObserverOf_mValueRotation (self.mValueRotation_property, postEvent: true)
     self.mValueRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1812,7 +1812,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mComponentValue () {
-    self.selectedArray_property.addEBObserverOf_mComponentValue (self.mComponentValue_property)
+    self.selectedArray_property.addEBObserverOf_mComponentValue (self.mComponentValue_property, postEvent: true)
     self.mComponentValue_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1881,7 +1881,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mNamePrefix () {
-    self.selectedArray_property.addEBObserverOf_mNamePrefix (self.mNamePrefix_property)
+    self.selectedArray_property.addEBObserverOf_mNamePrefix (self.mNamePrefix_property, postEvent: true)
     self.mNamePrefix_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1950,7 +1950,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mNameIndex () {
-    self.selectedArray_property.addEBObserverOf_mNameIndex (self.mNameIndex_property)
+    self.selectedArray_property.addEBObserverOf_mNameIndex (self.mNameIndex_property, postEvent: true)
     self.mNameIndex_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2019,7 +2019,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mXUnit () {
-    self.selectedArray_property.addEBObserverOf_mXUnit (self.mXUnit_property)
+    self.selectedArray_property.addEBObserverOf_mXUnit (self.mXUnit_property, postEvent: true)
     self.mXUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2088,7 +2088,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_mYUnit () {
-    self.selectedArray_property.addEBObserverOf_mYUnit (self.mYUnit_property)
+    self.selectedArray_property.addEBObserverOf_mYUnit (self.mYUnit_property, postEvent: true)
     self.mYUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2157,7 +2157,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_deviceName () {
-    self.selectedArray_property.addEBObserverOf_deviceName (self.deviceName_property)
+    self.selectedArray_property.addEBObserverOf_deviceName (self.deviceName_property, postEvent: true)
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2196,7 +2196,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_packagePadDictionary () {
-    self.selectedArray_property.addEBObserverOf_packagePadDictionary (self.packagePadDictionary_property)
+    self.selectedArray_property.addEBObserverOf_packagePadDictionary (self.packagePadDictionary_property, postEvent: true)
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2235,7 +2235,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_selectedPackageName () {
-    self.selectedArray_property.addEBObserverOf_selectedPackageName (self.selectedPackageName_property)
+    self.selectedArray_property.addEBObserverOf_selectedPackageName (self.selectedPackageName_property, postEvent: true)
     self.selectedPackageName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2274,7 +2274,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_availablePackages () {
-    self.selectedArray_property.addEBObserverOf_availablePackages (self.availablePackages_property)
+    self.selectedArray_property.addEBObserverOf_availablePackages (self.availablePackages_property, postEvent: true)
     self.availablePackages_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2313,7 +2313,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_issues () {
-    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.addEBObserverOf_issues (self.issues_property, postEvent: true)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2352,7 +2352,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_componentIsPlacedInBoard () {
-    self.selectedArray_property.addEBObserverOf_componentIsPlacedInBoard (self.componentIsPlacedInBoard_property)
+    self.selectedArray_property.addEBObserverOf_componentIsPlacedInBoard (self.componentIsPlacedInBoard_property, postEvent: true)
     self.componentIsPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2391,7 +2391,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_componentIsPlacedInBoardString () {
-    self.selectedArray_property.addEBObserverOf_componentIsPlacedInBoardString (self.componentIsPlacedInBoardString_property)
+    self.selectedArray_property.addEBObserverOf_componentIsPlacedInBoardString (self.componentIsPlacedInBoardString_property, postEvent: true)
     self.componentIsPlacedInBoardString_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2430,7 +2430,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_strokeBezierPath () {
-    self.selectedArray_property.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
+    self.selectedArray_property.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property, postEvent: true)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2469,7 +2469,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_placementInSchematic () {
-    self.selectedArray_property.addEBObserverOf_placementInSchematic (self.placementInSchematic_property)
+    self.selectedArray_property.addEBObserverOf_placementInSchematic (self.placementInSchematic_property, postEvent: true)
     self.placementInSchematic_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2508,7 +2508,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_deviceSymbolDictionary () {
-    self.selectedArray_property.addEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
+    self.selectedArray_property.addEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property, postEvent: true)
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2547,7 +2547,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_componentNameFontName () {
-    self.selectedArray_property.addEBObserverOf_componentNameFontName (self.componentNameFontName_property)
+    self.selectedArray_property.addEBObserverOf_componentNameFontName (self.componentNameFontName_property, postEvent: true)
     self.componentNameFontName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2586,7 +2586,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_componentValueFontName () {
-    self.selectedArray_property.addEBObserverOf_componentValueFontName (self.componentValueFontName_property)
+    self.selectedArray_property.addEBObserverOf_componentValueFontName (self.componentValueFontName_property, postEvent: true)
     self.componentValueFontName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2625,7 +2625,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_componentPadDictionary () {
-    self.selectedArray_property.addEBObserverOf_componentPadDictionary (self.componentPadDictionary_property)
+    self.selectedArray_property.addEBObserverOf_componentPadDictionary (self.componentPadDictionary_property, postEvent: true)
     self.componentPadDictionary_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2664,7 +2664,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_padNetDictionary () {
-    self.selectedArray_property.addEBObserverOf_padNetDictionary (self.padNetDictionary_property)
+    self.selectedArray_property.addEBObserverOf_padNetDictionary (self.padNetDictionary_property, postEvent: true)
     self.padNetDictionary_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2703,7 +2703,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_componentName () {
-    self.selectedArray_property.addEBObserverOf_componentName (self.componentName_property)
+    self.selectedArray_property.addEBObserverOf_componentName (self.componentName_property, postEvent: true)
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2742,7 +2742,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property, postEvent: true)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2781,7 +2781,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_unplacedSymbols () {
-    self.selectedArray_property.addEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
+    self.selectedArray_property.addEBObserverOf_unplacedSymbols (self.unplacedSymbols_property, postEvent: true)
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -2820,7 +2820,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property, postEvent: true)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

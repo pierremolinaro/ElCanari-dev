@@ -38,7 +38,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
     switch prop {
@@ -46,7 +46,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y_property.addEBObserver (inObserver)
+        managedObject.y_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_width (_ inObserver : EBEvent) {
+  final func addEBObserverOf_width (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_width.insert (inObserver)
     switch prop {
@@ -103,7 +103,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.width_property.addEBObserver (inObserver)
+        managedObject.width_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_height (_ inObserver : EBEvent) {
+  final func addEBObserverOf_height (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_height.insert (inObserver)
     switch prop {
@@ -160,7 +160,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.height_property.addEBObserver (inObserver)
+        managedObject.height_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -209,7 +209,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_shape (_ inObserver : EBEvent) {
+  final func addEBObserverOf_shape (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_shape.insert (inObserver)
     switch prop {
@@ -217,7 +217,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.shape_property.addEBObserver (inObserver)
+        managedObject.shape_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_rotation (_ inObserver : EBEvent) {
+  final func addEBObserverOf_rotation (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_rotation.insert (inObserver)
     switch prop {
@@ -274,7 +274,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.rotation_property.addEBObserver (inObserver)
+        managedObject.rotation_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -323,7 +323,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
     switch prop {
@@ -331,7 +331,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x_property.addEBObserver (inObserver)
+        managedObject.x_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -906,12 +906,12 @@ final class PreferencesArrayOf_BoardModelPad : StoredArrayOf_BoardModelPad {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_y (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_width (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_height (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_shape (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_rotation (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_x (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_y (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_width (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_height (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_shape (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_rotation (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_x (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

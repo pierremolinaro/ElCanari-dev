@@ -545,6 +545,7 @@ class NetClassInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: mNetClassName
     self.mNetClassName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mNetClassColor
@@ -593,8 +594,9 @@ class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mTrackWidth_property.addEBObserver (self.trackWidthString_property)
-    self.mTrackWidthUnit_property.addEBObserver (self.trackWidthString_property)
+    self.mTrackWidth_property.addEBObserver (self.trackWidthString_property, postEvent: false)
+    self.mTrackWidthUnit_property.addEBObserver (self.trackWidthString_property, postEvent: false)
+    self.trackWidthString_property.postEvent ()
   //--- Atomic property: viaHoleDiameter
     self.viaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -617,8 +619,9 @@ class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mViaHoleDiameter_property.addEBObserver (self.viaHoleDiameter_property)
-    self.mViaHoleDiameterUnit_property.addEBObserver (self.viaHoleDiameter_property)
+    self.mViaHoleDiameter_property.addEBObserver (self.viaHoleDiameter_property, postEvent: false)
+    self.mViaHoleDiameterUnit_property.addEBObserver (self.viaHoleDiameter_property, postEvent: false)
+    self.viaHoleDiameter_property.postEvent ()
   //--- Atomic property: viaPadDiameter
     self.viaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -641,8 +644,9 @@ class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mViaPadDiameter_property.addEBObserver (self.viaPadDiameter_property)
-    self.mViaPadDiameterUnit_property.addEBObserver (self.viaPadDiameter_property)
+    self.mViaPadDiameter_property.addEBObserver (self.viaPadDiameter_property, postEvent: false)
+    self.mViaPadDiameterUnit_property.addEBObserver (self.viaPadDiameter_property, postEvent: false)
+    self.viaPadDiameter_property.postEvent ()
   //--- Atomic property: allowTracksOnFrontSideString
     self.allowTracksOnFrontSideString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -664,7 +668,8 @@ class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mAllowTracksOnFrontSide_property.addEBObserver (self.allowTracksOnFrontSideString_property)
+    self.mAllowTracksOnFrontSide_property.addEBObserver (self.allowTracksOnFrontSideString_property, postEvent: false)
+    self.allowTracksOnFrontSideString_property.postEvent ()
   //--- Atomic property: allowTracksOnBackSideString
     self.allowTracksOnBackSideString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -686,7 +691,8 @@ class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mAllowTracksOnBackSide_property.addEBObserver (self.allowTracksOnBackSideString_property)
+    self.mAllowTracksOnBackSide_property.addEBObserver (self.allowTracksOnBackSideString_property, postEvent: false)
+    self.allowTracksOnBackSideString_property.postEvent ()
   //--- Atomic property: canRemove
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -708,7 +714,8 @@ class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNets_property.addEBObserver (self.canRemove_property)
+    self.mNets_property.addEBObserver (self.canRemove_property, postEvent: false)
+    self.canRemove_property.postEvent ()
   //--- Atomic property: netUsage
     self.netUsage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -730,7 +737,8 @@ class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNets_property.addEBObserver (self.netUsage_property)
+    self.mNets_property.addEBObserver (self.netUsage_property, postEvent: false)
+    self.netUsage_property.postEvent ()
   //--- Atomic property: netsDescription
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -755,10 +763,11 @@ class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNets_property.addEBObserver (self.netsDescription_property)
-    self.mNets_property.addEBObserverOf_mNetName (self.netsDescription_property)
-    self.mNets_property.addEBObserverOf_netSchematicPointsInfo (self.netsDescription_property)
-    self.mNetClassName_property.addEBObserver (self.netsDescription_property)
+    self.mNets_property.addEBObserver (self.netsDescription_property, postEvent: false)
+    self.mNets_property.addEBObserverOf_mNetName (self.netsDescription_property, postEvent: false)
+    self.mNets_property.addEBObserverOf_netSchematicPointsInfo (self.netsDescription_property, postEvent: false)
+    self.mNetClassName_property.addEBObserver (self.netsDescription_property, postEvent: false)
+    self.netsDescription_property.postEvent ()
   //--- Atomic property: netWarningCount
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -780,7 +789,8 @@ class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.netsDescription_property.addEBObserver (self.netWarningCount_property)
+    self.netsDescription_property.addEBObserver (self.netWarningCount_property, postEvent: false)
+    self.netWarningCount_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
     self.mNets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNetClass_property.setProp (me) } },
@@ -788,6 +798,7 @@ class NetClassInProject : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

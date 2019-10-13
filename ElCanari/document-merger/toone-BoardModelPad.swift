@@ -55,14 +55,14 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_y (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_y.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.y_property.addEBObserver (inObserver)
+       v?.y_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -125,14 +125,14 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_width (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_width (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_width.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.width_property.addEBObserver (inObserver)
+       v?.width_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -195,14 +195,14 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_height (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_height (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_height.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.height_property.addEBObserver (inObserver)
+       v?.height_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -265,14 +265,14 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_shape (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_shape (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_shape.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.shape_property.addEBObserver (inObserver)
+       v?.shape_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -335,14 +335,14 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_rotation (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_rotation (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_rotation.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.rotation_property.addEBObserver (inObserver)
+       v?.rotation_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -405,14 +405,14 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_x (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_x.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.x_property.addEBObserver (inObserver)
+       v?.x_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 

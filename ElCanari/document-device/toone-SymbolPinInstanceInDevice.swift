@@ -53,14 +53,14 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_pinName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_pinName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_pinName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.pinName_property.addEBObserver (inObserver)
+      v?.pinName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -122,14 +122,14 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_symbolName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_symbolName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.symbolName_property.addEBObserver (inObserver)
+      v?.symbolName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -191,14 +191,14 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_pinQualifiedName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_pinQualifiedName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_pinQualifiedName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.pinQualifiedName_property.addEBObserver (inObserver)
+      v?.pinQualifiedName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -260,14 +260,14 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_isConnected (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_isConnected.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.isConnected_property.addEBObserver (inObserver)
+      v?.isConnected_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -329,14 +329,14 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_numberShape (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_numberShape (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_numberShape.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.numberShape_property.addEBObserver (inObserver)
+      v?.numberShape_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 

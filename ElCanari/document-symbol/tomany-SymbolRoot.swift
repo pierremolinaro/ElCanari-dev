@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedInspector.insert (inObserver)
     switch prop {
@@ -58,7 +58,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedInspector_property.addEBObserver (inObserver)
+        managedObject.selectedInspector_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_comments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_comments.insert (inObserver)
     switch prop {
@@ -115,7 +115,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.comments_property.addEBObserver (inObserver)
+        managedObject.comments_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
+  final func addEBObserverOf_horizontalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_horizontalFlip.insert (inObserver)
     switch prop {
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.horizontalFlip_property.addEBObserver (inObserver)
+        managedObject.horizontalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
+  final func addEBObserverOf_verticalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_verticalFlip.insert (inObserver)
     switch prop {
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.verticalFlip_property.addEBObserver (inObserver)
+        managedObject.verticalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_gridStyle (_ inObserver : EBEvent) {
+  final func addEBObserverOf_gridStyle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gridStyle.insert (inObserver)
     switch prop {
@@ -286,7 +286,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStyle_property.addEBObserver (inObserver)
+        managedObject.gridStyle_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_gridDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_gridDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gridDisplay.insert (inObserver)
     switch prop {
@@ -343,7 +343,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridDisplay_property.addEBObserver (inObserver)
+        managedObject.gridDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -392,7 +392,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
+  final func addEBObserverOf_zoom (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_zoom.insert (inObserver)
     switch prop {
@@ -400,7 +400,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.zoom_property.addEBObserver (inObserver)
+        managedObject.zoom_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -449,7 +449,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_xPlacardUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_xPlacardUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xPlacardUnit.insert (inObserver)
     switch prop {
@@ -457,7 +457,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xPlacardUnit_property.addEBObserver (inObserver)
+        managedObject.xPlacardUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -506,7 +506,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_yPlacardUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_yPlacardUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yPlacardUnit.insert (inObserver)
     switch prop {
@@ -514,7 +514,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yPlacardUnit_property.addEBObserver (inObserver)
+        managedObject.yPlacardUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -563,7 +563,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedPageIndex.insert (inObserver)
     switch prop {
@@ -571,7 +571,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedPageIndex_property.addEBObserver (inObserver)
+        managedObject.selectedPageIndex_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -620,7 +620,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
@@ -628,7 +628,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver)
+        managedObject.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -676,7 +676,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_noIssue (_ inObserver : EBEvent) {
+  final func addEBObserverOf_noIssue (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_noIssue.insert (inObserver)
     switch prop {
@@ -684,7 +684,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.noIssue_property.addEBObserver (inObserver)
+        managedObject.noIssue_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1258,16 +1258,16 @@ final class PreferencesArrayOf_SymbolRoot : StoredArrayOf_SymbolRoot {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_selectedInspector (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_comments (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_horizontalFlip (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_verticalFlip (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_gridStyle (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_gridDisplay (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_zoom (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_xPlacardUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_yPlacardUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_selectedPageIndex (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_selectedInspector (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_comments (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_horizontalFlip (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_verticalFlip (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_gridStyle (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_gridDisplay (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_zoom (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_xPlacardUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_yPlacardUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_selectedPageIndex (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

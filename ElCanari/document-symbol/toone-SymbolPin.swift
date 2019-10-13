@@ -73,14 +73,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_yPin (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_yPin (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_yPin.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.yPin_property.addEBObserver (inObserver)
+       v?.yPin_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -143,14 +143,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_xName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_xName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_xName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.xName_property.addEBObserver (inObserver)
+       v?.xName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -213,14 +213,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_yName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_yName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_yName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.yName_property.addEBObserver (inObserver)
+       v?.yName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -283,14 +283,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_xNumber (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_xNumber (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_xNumber.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.xNumber_property.addEBObserver (inObserver)
+       v?.xNumber_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -353,14 +353,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_yNumber (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_yNumber (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_yNumber.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.yNumber_property.addEBObserver (inObserver)
+       v?.yNumber_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -423,14 +423,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_name (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_name (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_name.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.name_property.addEBObserver (inObserver)
+       v?.name_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -493,14 +493,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_nameHorizontalAlignment (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_nameHorizontalAlignment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_nameHorizontalAlignment.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.nameHorizontalAlignment_property.addEBObserver (inObserver)
+       v?.nameHorizontalAlignment_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -563,14 +563,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_numberHorizontalAlignment (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_numberHorizontalAlignment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_numberHorizontalAlignment.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.numberHorizontalAlignment_property.addEBObserver (inObserver)
+       v?.numberHorizontalAlignment_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -633,14 +633,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_pinNameIsDisplayedInSchematics (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_pinNameIsDisplayedInSchematics (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_pinNameIsDisplayedInSchematics.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.pinNameIsDisplayedInSchematics_property.addEBObserver (inObserver)
+       v?.pinNameIsDisplayedInSchematics_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -703,14 +703,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_xPin (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_xPin (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_xPin.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.xPin_property.addEBObserver (inObserver)
+       v?.xPin_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -773,14 +773,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_filledBezierPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.filledBezierPath_property.addEBObserver (inObserver)
+      v?.filledBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -842,14 +842,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -911,14 +911,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -980,14 +980,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver)
+      v?.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1049,14 +1049,14 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_nameRect (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_nameRect (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_nameRect.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.nameRect_property.addEBObserver (inObserver)
+      v?.nameRect_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 

@@ -89,14 +89,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawBoardLimits (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawBoardLimits (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawBoardLimits.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawBoardLimits_property.addEBObserver (inObserver)
+       v?.drawBoardLimits_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -159,14 +159,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawInternalBoardLimits.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawInternalBoardLimits_property.addEBObserver (inObserver)
+       v?.drawInternalBoardLimits_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -229,14 +229,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawComponentNamesTopSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawComponentNamesTopSide_property.addEBObserver (inObserver)
+       v?.drawComponentNamesTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -299,14 +299,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawComponentNamesBottomSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawComponentNamesBottomSide_property.addEBObserver (inObserver)
+       v?.drawComponentNamesBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -369,14 +369,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawComponentValuesTopSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawComponentValuesTopSide_property.addEBObserver (inObserver)
+       v?.drawComponentValuesTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -439,14 +439,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawComponentValuesBottomSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawComponentValuesBottomSide_property.addEBObserver (inObserver)
+       v?.drawComponentValuesBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -509,14 +509,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawPackageLegendTopSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawPackageLegendTopSide_property.addEBObserver (inObserver)
+       v?.drawPackageLegendTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -579,14 +579,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawPackageLegendBottomSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawPackageLegendBottomSide_property.addEBObserver (inObserver)
+       v?.drawPackageLegendBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -649,14 +649,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawPadHolesInPDF.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawPadHolesInPDF_property.addEBObserver (inObserver)
+       v?.drawPadHolesInPDF_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -719,14 +719,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawPadsTopSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawPadsTopSide_property.addEBObserver (inObserver)
+       v?.drawPadsTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -789,14 +789,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawPadsBottomSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawPadsBottomSide_property.addEBObserver (inObserver)
+       v?.drawPadsBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -859,14 +859,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawTextsLayoutTopSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawTextsLayoutTopSide_property.addEBObserver (inObserver)
+       v?.drawTextsLayoutTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -929,14 +929,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawTextsLayoutBottomSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawTextsLayoutBottomSide_property.addEBObserver (inObserver)
+       v?.drawTextsLayoutBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -999,14 +999,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawTextsLegendTopSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawTextsLegendTopSide_property.addEBObserver (inObserver)
+       v?.drawTextsLegendTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1069,14 +1069,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawTextsLegendBottomSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawTextsLegendBottomSide_property.addEBObserver (inObserver)
+       v?.drawTextsLegendBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1139,14 +1139,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawTracksTopSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawTracksTopSide_property.addEBObserver (inObserver)
+       v?.drawTracksTopSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1209,14 +1209,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawTracksBottomSide.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawTracksBottomSide_property.addEBObserver (inObserver)
+       v?.drawTracksBottomSide_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1279,14 +1279,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawVias (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drawVias (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drawVias.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.drawVias_property.addEBObserver (inObserver)
+       v?.drawVias_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1349,14 +1349,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_fileExtension (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_fileExtension (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_fileExtension.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.fileExtension_property.addEBObserver (inObserver)
+       v?.fileExtension_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1419,14 +1419,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_horizontalMirror (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_horizontalMirror.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.horizontalMirror_property.addEBObserver (inObserver)
+       v?.horizontalMirror_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1489,14 +1489,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_name (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_name (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_name.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.name_property.addEBObserver (inObserver)
+       v?.name_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1559,14 +1559,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_measurementUnitForPadHoleInPDF.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.measurementUnitForPadHoleInPDF_property.addEBObserver (inObserver)
+       v?.measurementUnitForPadHoleInPDF_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1629,14 +1629,14 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_padHoleDiameterInPDF.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.padHoleDiameterInPDF_property.addEBObserver (inObserver)
+       v?.padHoleDiameterInPDF_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 

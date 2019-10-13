@@ -92,6 +92,7 @@ class NCInSchematic : SchematicObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: mOrientation
     self.mOrientation_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPoint (has opposite to one relationship: mNC)
@@ -124,10 +125,11 @@ class NCInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property)
-    self.mOrientation_property.addEBObserver (self.objectDisplay_property)
-    self.mPoint_property.addEBObserverOf_symbolRotation (self.objectDisplay_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property, postEvent: false)
+    self.mOrientation_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.mPoint_property.addEBObserverOf_symbolRotation (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -152,13 +154,15 @@ class NCInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
-    self.mPoint_property.addEBObserverOf_symbolRotation (self.selectionDisplay_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
+    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property, postEvent: false)
+    self.mOrientation_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.mPoint_property.addEBObserverOf_symbolRotation (self.selectionDisplay_property, postEvent: false)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -278,6 +278,7 @@ import Cocoa
   //····················································································································
 
   private func checkOutletConnections () {
+    let start = Date ()
     checkOutletConnection (self.advancementSlider, "advancementSlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.advancementTextField, "advancementTextField", EBIntField.self, #file, #line)
     checkOutletConnection (self.commentTextView, "commentTextView", EBTextView.self, #file, #line)
@@ -320,15 +321,28 @@ import Cocoa
     checkOutletConnection (self.resetVersionAndSignatureButton, "resetVersionAndSignatureButton", EBButton.self, #file, #line)
     checkOutletConnection (self.transparencySlider, "transparencySlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.transparencyTextField, "transparencyTextField", EBDoubleField.self, #file, #line)
-   }
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Check outlet connections \(durationMS) ms")
+    }
+  }
   
   //····················································································································
   
   final private func configureProperties () {
+    let start = Date ()
+ //   let operationQueue = OperationQueue ()
+    var opIdx = 0
   //--- Array controller property: mSelectedCharacterController
     self.mSelectedCharacterController.bind_model (self.rootObject.characters_property, self.ebUndoManager)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Selection controller property: mCharacterSelection
     self.mCharacterSelection.bind_selection (model: self.mSelectedCharacterController.selectedArray_property, file: #file, line: #line)
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: canDeleteCurrentCharacter
     self.canDeleteCurrentCharacter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -350,7 +364,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.definedCharacters_property.addEBObserver (self.canDeleteCurrentCharacter_property)
+    self.rootObject.definedCharacters_property.addEBObserver (self.canDeleteCurrentCharacter_property, postEvent: false)
+    self.canDeleteCurrentCharacter_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -372,7 +389,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.noIssue_property)
+    self.rootObject.issues_property.addEBObserver (self.noIssue_property, postEvent: false)
+    self.noIssue_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -394,7 +414,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
+    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property, postEvent: false)
+    self.mStatusImage_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -416,7 +439,10 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
+    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property, postEvent: false)
+    self.mStatusMessage_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
   //--- Atomic property: mMetadataStatus
     self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -438,12 +464,21 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
+    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property, postEvent: false)
+    self.mMetadataStatus_property.postEvent ()
+    Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+     opIdx += 1
+//    operationQueue.waitUntilAllOperationsAreFinished ()
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Configure properties \(durationMS) ms")
+    }
   }
 
   //····················································································································
   
   final private func installBindings () {
+    let start = Date ()
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
   //--------------------------- Install regular bindings
@@ -504,11 +539,16 @@ import Cocoa
       self.noIssue_property.addEBObserver (controller)
       self.mController_mIssueTableView_hidden = controller
     }
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Install bindings \(durationMS) ms")
+    }
   }
 
   //····················································································································
   
   final private func setTargetsAndActions () {
+     let start = Date ()
    //--------------------------- Set targets / actions
     self.mAddCharacterButton?.target = self
     self.mAddCharacterButton?.action = #selector (FontDocument.addCharacterAction (_:))
@@ -518,6 +558,10 @@ import Cocoa
     self.mAddSegmentButton?.action = #selector (FontDocument.addSegmentAction (_:))
     self.resetVersionAndSignatureButton?.target = self
     self.resetVersionAndSignatureButton?.action = #selector (FontDocument.resetVersionAndSignatureAction (_:))
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+      Swift.print ("Set target and actions \(durationMS) ms")
+    }
   }
 
   //····················································································································

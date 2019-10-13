@@ -673,7 +673,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawBoardLimits (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawBoardLimits (self.drawBoardLimits_property)
+    model.addEBObserverOf_drawBoardLimits (self.drawBoardLimits_property, postEvent: true)
     self.drawBoardLimits_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -743,7 +743,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawComponentNamesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawComponentNamesBottomSide (self.drawComponentNamesBottomSide_property)
+    model.addEBObserverOf_drawComponentNamesBottomSide (self.drawComponentNamesBottomSide_property, postEvent: true)
     self.drawComponentNamesBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -813,7 +813,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawComponentNamesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawComponentNamesTopSide (self.drawComponentNamesTopSide_property)
+    model.addEBObserverOf_drawComponentNamesTopSide (self.drawComponentNamesTopSide_property, postEvent: true)
     self.drawComponentNamesTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -883,7 +883,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawComponentValuesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawComponentValuesBottomSide (self.drawComponentValuesBottomSide_property)
+    model.addEBObserverOf_drawComponentValuesBottomSide (self.drawComponentValuesBottomSide_property, postEvent: true)
     self.drawComponentValuesBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -953,7 +953,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawComponentValuesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawComponentValuesTopSide (self.drawComponentValuesTopSide_property)
+    model.addEBObserverOf_drawComponentValuesTopSide (self.drawComponentValuesTopSide_property, postEvent: true)
     self.drawComponentValuesTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1023,7 +1023,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawInternalBoardLimits (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawInternalBoardLimits (self.drawInternalBoardLimits_property)
+    model.addEBObserverOf_drawInternalBoardLimits (self.drawInternalBoardLimits_property, postEvent: true)
     self.drawInternalBoardLimits_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1093,7 +1093,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawPackageLegendBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPackageLegendBottomSide (self.drawPackageLegendBottomSide_property)
+    model.addEBObserverOf_drawPackageLegendBottomSide (self.drawPackageLegendBottomSide_property, postEvent: true)
     self.drawPackageLegendBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1163,7 +1163,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawPackageLegendTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPackageLegendTopSide (self.drawPackageLegendTopSide_property)
+    model.addEBObserverOf_drawPackageLegendTopSide (self.drawPackageLegendTopSide_property, postEvent: true)
     self.drawPackageLegendTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1233,7 +1233,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawPadHolesInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPadHolesInPDF (self.drawPadHolesInPDF_property)
+    model.addEBObserverOf_drawPadHolesInPDF (self.drawPadHolesInPDF_property, postEvent: true)
     self.drawPadHolesInPDF_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1303,7 +1303,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawPadsBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPadsBottomSide (self.drawPadsBottomSide_property)
+    model.addEBObserverOf_drawPadsBottomSide (self.drawPadsBottomSide_property, postEvent: true)
     self.drawPadsBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1373,7 +1373,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawPadsTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPadsTopSide (self.drawPadsTopSide_property)
+    model.addEBObserverOf_drawPadsTopSide (self.drawPadsTopSide_property, postEvent: true)
     self.drawPadsTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1443,7 +1443,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawTextsLayoutBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTextsLayoutBottomSide (self.drawTextsLayoutBottomSide_property)
+    model.addEBObserverOf_drawTextsLayoutBottomSide (self.drawTextsLayoutBottomSide_property, postEvent: true)
     self.drawTextsLayoutBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1513,7 +1513,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawTextsLayoutTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTextsLayoutTopSide (self.drawTextsLayoutTopSide_property)
+    model.addEBObserverOf_drawTextsLayoutTopSide (self.drawTextsLayoutTopSide_property, postEvent: true)
     self.drawTextsLayoutTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1583,7 +1583,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawTextsLegendBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTextsLegendBottomSide (self.drawTextsLegendBottomSide_property)
+    model.addEBObserverOf_drawTextsLegendBottomSide (self.drawTextsLegendBottomSide_property, postEvent: true)
     self.drawTextsLegendBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1653,7 +1653,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawTextsLegendTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTextsLegendTopSide (self.drawTextsLegendTopSide_property)
+    model.addEBObserverOf_drawTextsLegendTopSide (self.drawTextsLegendTopSide_property, postEvent: true)
     self.drawTextsLegendTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1723,7 +1723,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawTracksBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTracksBottomSide (self.drawTracksBottomSide_property)
+    model.addEBObserverOf_drawTracksBottomSide (self.drawTracksBottomSide_property, postEvent: true)
     self.drawTracksBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1793,7 +1793,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawTracksTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTracksTopSide (self.drawTracksTopSide_property)
+    model.addEBObserverOf_drawTracksTopSide (self.drawTracksTopSide_property, postEvent: true)
     self.drawTracksTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1863,7 +1863,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawVias (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawVias (self.drawVias_property)
+    model.addEBObserverOf_drawVias (self.drawVias_property, postEvent: true)
     self.drawVias_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1933,7 +1933,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_fileExtension (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_fileExtension (self.fileExtension_property)
+    model.addEBObserverOf_fileExtension (self.fileExtension_property, postEvent: true)
     self.fileExtension_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2003,7 +2003,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_horizontalMirror (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_horizontalMirror (self.horizontalMirror_property)
+    model.addEBObserverOf_horizontalMirror (self.horizontalMirror_property, postEvent: true)
     self.horizontalMirror_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2073,7 +2073,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_measurementUnitForPadHoleInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_measurementUnitForPadHoleInPDF (self.measurementUnitForPadHoleInPDF_property)
+    model.addEBObserverOf_measurementUnitForPadHoleInPDF (self.measurementUnitForPadHoleInPDF_property, postEvent: true)
     self.measurementUnitForPadHoleInPDF_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2143,7 +2143,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_name (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_name (self.name_property)
+    model.addEBObserverOf_name (self.name_property, postEvent: true)
     self.name_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2213,7 +2213,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_padHoleDiameterInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_padHoleDiameterInPDF (self.padHoleDiameterInPDF_property)
+    model.addEBObserverOf_padHoleDiameterInPDF (self.padHoleDiameterInPDF_property, postEvent: true)
     self.padHoleDiameterInPDF_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {

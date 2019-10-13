@@ -249,6 +249,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- To many property: mPinInstances (has opposite relationship)
     self.mPinInstances_property.ebUndoManager = self.ebUndoManager
     self.mPinInstances_property.setOppositeRelationShipFunctions (
@@ -289,8 +290,9 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mInstanceName_property.addEBObserver (self.symbolQualifiedName_property)
-    self.mType_property.addEBObserverOf_mTypeName (self.symbolQualifiedName_property)
+    self.mInstanceName_property.addEBObserver (self.symbolQualifiedName_property, postEvent: false)
+    self.mType_property.addEBObserverOf_mTypeName (self.symbolQualifiedName_property, postEvent: false)
+    self.symbolQualifiedName_property.postEvent ()
   //--- Atomic property: symbolTypeName
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -312,7 +314,8 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mType_property.addEBObserverOf_mTypeName (self.symbolTypeName_property)
+    self.mType_property.addEBObserverOf_mTypeName (self.symbolTypeName_property, postEvent: false)
+    self.symbolTypeName_property.postEvent ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -341,14 +344,15 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mType_property.addEBObserverOf_mStrokeBezierPath (self.selectionDisplay_property)
-    self.mType_property.addEBObserverOf_mFilledBezierPath (self.selectionDisplay_property)
-    self.mType_property.addEBObserverOf_pinNameShape (self.selectionDisplay_property)
-    self.mPinInstances_property.addEBObserverOf_numberShape (self.selectionDisplay_property)
-    self.symbolQualifiedName_property.addEBObserver (self.selectionDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
-    self.mX_property.addEBObserver (self.selectionDisplay_property)
-    self.mY_property.addEBObserver (self.selectionDisplay_property)
+    self.mType_property.addEBObserverOf_mStrokeBezierPath (self.selectionDisplay_property, postEvent: false)
+    self.mType_property.addEBObserverOf_mFilledBezierPath (self.selectionDisplay_property, postEvent: false)
+    self.mType_property.addEBObserverOf_pinNameShape (self.selectionDisplay_property, postEvent: false)
+    self.mPinInstances_property.addEBObserverOf_numberShape (self.selectionDisplay_property, postEvent: false)
+    self.symbolQualifiedName_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.mX_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.mY_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Atomic property: unconnectedPins
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -372,9 +376,10 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mPinInstances_property.addEBObserverOf_pinName (self.unconnectedPins_property)
-    self.mPinInstances_property.addEBObserverOf_isConnected (self.unconnectedPins_property)
-    self.mInstanceName_property.addEBObserver (self.unconnectedPins_property)
+    self.mPinInstances_property.addEBObserverOf_pinName (self.unconnectedPins_property, postEvent: false)
+    self.mPinInstances_property.addEBObserverOf_isConnected (self.unconnectedPins_property, postEvent: false)
+    self.mInstanceName_property.addEBObserver (self.unconnectedPins_property, postEvent: false)
+    self.unconnectedPins_property.postEvent ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -404,15 +409,16 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mType_property.addEBObserverOf_mStrokeBezierPath (self.objectDisplay_property)
-    self.mType_property.addEBObserverOf_mFilledBezierPath (self.objectDisplay_property)
-    self.mType_property.addEBObserverOf_pinNameShape (self.objectDisplay_property)
-    self.mPinInstances_property.addEBObserverOf_numberShape (self.objectDisplay_property)
-    self.symbolQualifiedName_property.addEBObserver (self.objectDisplay_property)
-    self.mX_property.addEBObserver (self.objectDisplay_property)
-    self.mY_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
+    self.mType_property.addEBObserverOf_mStrokeBezierPath (self.objectDisplay_property, postEvent: false)
+    self.mType_property.addEBObserverOf_mFilledBezierPath (self.objectDisplay_property, postEvent: false)
+    self.mType_property.addEBObserverOf_pinNameShape (self.objectDisplay_property, postEvent: false)
+    self.mPinInstances_property.addEBObserverOf_numberShape (self.objectDisplay_property, postEvent: false)
+    self.symbolQualifiedName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.mX_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.mY_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
     self.mPinInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstance_property.setProp (me) } },
@@ -422,6 +428,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mInstanceName_property.setSignatureObserver (observer: self)
     self.mPinInstances_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

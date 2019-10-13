@@ -32,7 +32,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func addEBObserverOf_mFileName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFileName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFileName.insert (inObserver)
     switch prop {
@@ -40,7 +40,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFileName_property.addEBObserver (inObserver)
+        managedObject.mFileName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFileData (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFileData.insert (inObserver)
     switch prop {
@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFileData_property.addEBObserver (inObserver)
+        managedObject.mFileData_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -146,7 +146,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func addEBObserverOf_fileSize (_ inObserver : EBEvent) {
+  final func addEBObserverOf_fileSize (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_fileSize.insert (inObserver)
     switch prop {
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.fileSize_property.addEBObserver (inObserver)
+        managedObject.fileSize_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -728,8 +728,8 @@ final class PreferencesArrayOf_DeviceDocumentation : StoredArrayOf_DeviceDocumen
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mFileName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mFileData (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mFileName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mFileData (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

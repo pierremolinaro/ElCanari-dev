@@ -113,6 +113,7 @@ class DevicePackageInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPackageName
@@ -140,10 +141,12 @@ class DevicePackageInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.addEBObserverOf_descriptor (self.packagePadDictionary_property)
+    self.mMasterPads_property.addEBObserverOf_descriptor (self.packagePadDictionary_property, postEvent: false)
+    self.packagePadDictionary_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

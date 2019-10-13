@@ -186,6 +186,7 @@ class PadProxyInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: mPinInstanceName
     self.mPinInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPadName
@@ -220,8 +221,9 @@ class PadProxyInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mIsNC_property.addEBObserver (self.isConnected_property)
-    self.mPinInstance_property.addEBObserver (self.isConnected_property)
+    self.mIsNC_property.addEBObserver (self.isConnected_property, postEvent: false)
+    self.mPinInstance_property.addEBObserver (self.isConnected_property, postEvent: false)
+    self.isConnected_property.postEvent ()
   //--- Atomic property: symbolName
     self.symbolName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -243,13 +245,15 @@ class PadProxyInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mPinInstance_property.addEBObserverOf_symbolName (self.symbolName_property)
+    self.mPinInstance_property.addEBObserverOf_symbolName (self.symbolName_property, postEvent: false)
+    self.symbolName_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: self)
     self.mPadName_property.setSignatureObserver (observer: self)
     self.mPinInstanceName_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

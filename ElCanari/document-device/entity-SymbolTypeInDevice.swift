@@ -294,6 +294,7 @@ class SymbolTypeInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- To many property: mInstances (has opposite relationship)
     self.mInstances_property.ebUndoManager = self.ebUndoManager
     self.mInstances_property.setOppositeRelationShipFunctions (
@@ -333,7 +334,8 @@ class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mVersion_property.addEBObserver (self.versionString_property)
+    self.mVersion_property.addEBObserver (self.versionString_property, postEvent: false)
+    self.versionString_property.postEvent ()
   //--- Atomic property: instanceCount
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -355,7 +357,8 @@ class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mInstances_property.addEBObserver (self.instanceCount_property)
+    self.mInstances_property.addEBObserver (self.instanceCount_property, postEvent: false)
+    self.instanceCount_property.postEvent ()
   //--- Atomic property: documentSizeString
     self.documentSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -377,7 +380,8 @@ class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mFileData_property.addEBObserver (self.documentSizeString_property)
+    self.mFileData_property.addEBObserver (self.documentSizeString_property, postEvent: false)
+    self.documentSizeString_property.postEvent ()
   //--- Atomic property: pinNameShape
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -399,7 +403,8 @@ class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mPinTypes_property.addEBObserverOf_nameShape (self.pinNameShape_property)
+    self.mPinTypes_property.addEBObserverOf_nameShape (self.pinNameShape_property, postEvent: false)
+    self.pinNameShape_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
     self.mInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
@@ -413,6 +418,7 @@ class SymbolTypeInDevice : EBManagedObject,
     self.mTypeName_property.setSignatureObserver (observer: self)
     self.mVersion_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -40,7 +40,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
     switch prop {
@@ -48,7 +48,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y_property.addEBObserver (inObserver)
+        managedObject.y_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   //····················································································································
 
-  final func addEBObserverOf_text (_ inObserver : EBEvent) {
+  final func addEBObserverOf_text (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_text.insert (inObserver)
     switch prop {
@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.text_property.addEBObserver (inObserver)
+        managedObject.text_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   //····················································································································
 
-  final func addEBObserverOf_horizontalAlignment (_ inObserver : EBEvent) {
+  final func addEBObserverOf_horizontalAlignment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_horizontalAlignment.insert (inObserver)
     switch prop {
@@ -162,7 +162,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.horizontalAlignment_property.addEBObserver (inObserver)
+        managedObject.horizontalAlignment_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -211,7 +211,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   //····················································································································
 
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
     switch prop {
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x_property.addEBObserver (inObserver)
+        managedObject.x_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -268,7 +268,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver)
+        managedObject.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -324,7 +324,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
@@ -332,7 +332,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -380,7 +380,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
@@ -388,7 +388,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver)
+        managedObject.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -962,10 +962,10 @@ final class PreferencesArrayOf_SymbolText : StoredArrayOf_SymbolText {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_y (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_text (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_horizontalAlignment (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_x (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_y (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_text (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_horizontalAlignment (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_x (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

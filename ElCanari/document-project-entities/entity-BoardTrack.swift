@@ -488,6 +488,7 @@ class BoardTrack : BoardObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: mSide
     self.mSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDefaultTrackWidthUnit
@@ -539,9 +540,10 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassTrackWidth (self.actualTrackWidth_property)
-    self.mUsesCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
-    self.mCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
+    self.mNet_property.addEBObserverOf_netClassTrackWidth (self.actualTrackWidth_property, postEvent: false)
+    self.mUsesCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property, postEvent: false)
+    self.mCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property, postEvent: false)
+    self.actualTrackWidth_property.postEvent ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -566,10 +568,11 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.mConnectorP1_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.mConnectorP2_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property)
+    self.mConnectorP1_property.addEBObserverOf_location (self.selectionDisplay_property, postEvent: false)
+    self.mConnectorP1_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property, postEvent: false)
+    self.mConnectorP2_property.addEBObserverOf_location (self.selectionDisplay_property, postEvent: false)
+    self.mConnectorP2_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -591,7 +594,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_mNetName (self.netName_property)
+    self.mNet_property.addEBObserverOf_mNetName (self.netName_property, postEvent: false)
+    self.netName_property.postEvent ()
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -613,7 +617,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.mNet_property.addEBObserverOf_netClassName (self.netClassName_property, postEvent: false)
+    self.netClassName_property.postEvent ()
   //--- Atomic property: netClassTrackWidth
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -635,7 +640,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
+    self.mNet_property.addEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property, postEvent: false)
+    self.netClassTrackWidth_property.postEvent ()
   //--- Atomic property: netClassViaHoleDiameter
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -657,7 +663,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property)
+    self.mNet_property.addEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property, postEvent: false)
+    self.netClassViaHoleDiameter_property.postEvent ()
   //--- Atomic property: netClassViaPadDiameter
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -679,7 +686,8 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
+    self.mNet_property.addEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property, postEvent: false)
+    self.netClassViaPadDiameter_property.postEvent ()
   //--- Atomic property: trackLength
     self.trackLength_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -702,8 +710,9 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_location (self.trackLength_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.trackLength_property)
+    self.mConnectorP1_property.addEBObserverOf_location (self.trackLength_property, postEvent: false)
+    self.mConnectorP2_property.addEBObserverOf_location (self.trackLength_property, postEvent: false)
+    self.trackLength_property.postEvent ()
   //--- Atomic property: endPointsLocation
     self.endPointsLocation_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -726,8 +735,9 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_location (self.endPointsLocation_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.endPointsLocation_property)
+    self.mConnectorP1_property.addEBObserverOf_location (self.endPointsLocation_property, postEvent: false)
+    self.mConnectorP2_property.addEBObserverOf_location (self.endPointsLocation_property, postEvent: false)
+    self.endPointsLocation_property.postEvent ()
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -750,8 +760,9 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mSide_property.addEBObserver (self.signatureForERCChecking_property)
-    self.actualTrackWidth_property.addEBObserver (self.signatureForERCChecking_property)
+    self.mSide_property.addEBObserver (self.signatureForERCChecking_property, postEvent: false)
+    self.actualTrackWidth_property.addEBObserver (self.signatureForERCChecking_property, postEvent: false)
+    self.signatureForERCChecking_property.postEvent ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -780,17 +791,19 @@ class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_location (self.objectDisplay_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.objectDisplay_property)
-    g_Preferences?.displayFrontLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.displayBackLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
-    self.actualTrackWidth_property.addEBObserver (self.objectDisplay_property)
-    self.mSide_property.addEBObserver (self.objectDisplay_property)
+    self.mConnectorP1_property.addEBObserverOf_location (self.objectDisplay_property, postEvent: false)
+    self.mConnectorP2_property.addEBObserverOf_location (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.displayFrontLayoutForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.displayBackLayoutForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.actualTrackWidth_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.mSide_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

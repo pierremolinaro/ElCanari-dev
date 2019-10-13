@@ -36,7 +36,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y1 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1.insert (inObserver)
     switch prop {
@@ -44,7 +44,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y1_property.addEBObserver (inObserver)
+        managedObject.y1_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -93,7 +93,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x2 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2.insert (inObserver)
     switch prop {
@@ -101,7 +101,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x2_property.addEBObserver (inObserver)
+        managedObject.x2_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -150,7 +150,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y2 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2.insert (inObserver)
     switch prop {
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y2_property.addEBObserver (inObserver)
+        managedObject.y2_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -207,7 +207,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func addEBObserverOf_width (_ inObserver : EBEvent) {
+  final func addEBObserverOf_width (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_width.insert (inObserver)
     switch prop {
@@ -215,7 +215,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.width_property.addEBObserver (inObserver)
+        managedObject.width_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -264,7 +264,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   //····················································································································
 
-  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x1 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1.insert (inObserver)
     switch prop {
@@ -272,7 +272,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x1_property.addEBObserver (inObserver)
+        managedObject.x1_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -847,11 +847,11 @@ final class PreferencesArrayOf_SegmentEntity : StoredArrayOf_SegmentEntity {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_y1 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_x2 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_y2 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_width (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_x1 (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_y1 (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_x2 (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_y2 (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_width (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_x1 (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

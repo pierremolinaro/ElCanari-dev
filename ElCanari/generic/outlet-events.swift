@@ -84,8 +84,10 @@ func flushOutletEvents () {
       event.computeAsynchronously (operationQueue)
     }
     operationQueue.waitUntilAllOperationsAreFinished ()
-    let durationMS = Date ().timeIntervalSince (startOperationQueue) * 1000.0
-    Swift.print ("OperationQueue \(durationMS) ms")
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (startOperationQueue) * 1000.0)
+      Swift.print ("Compute transient properties \(durationMS) ms")
+    }
     let startFlushOutletEvent = Date ()
     while gPendingOutletEvents.count > 0 {
       let pendingOutletEvents = gPendingOutletEvents
@@ -105,8 +107,10 @@ func flushOutletEvents () {
         appendMessageString (message, color: NSColor.red)
       }
     }
-    let durationFlushMS = Date ().timeIntervalSince (startFlushOutletEvent) * 1000.0
-    Swift.print ("Flush Outlet Events \(durationFlushMS) ms")
+    if LOG_OPERATION_DURATION {
+      let durationFlushMS = Int (Date ().timeIntervalSince (startFlushOutletEvent) * 1000.0)
+      Swift.print ("Flush Outlet Events \(durationFlushMS) ms")
+    }
     if logEvents () {
       appendMessageString ("——————————————————————————————————————\n", color: NSColor.blue)
     }

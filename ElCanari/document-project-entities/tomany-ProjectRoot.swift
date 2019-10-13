@@ -220,7 +220,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mArtworkName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mArtworkName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mArtworkName.insert (inObserver)
     switch prop {
@@ -228,7 +228,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mArtworkName_property.addEBObserver (inObserver)
+        managedObject.mArtworkName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -277,7 +277,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mArtworkVersion (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mArtworkVersion (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mArtworkVersion.insert (inObserver)
     switch prop {
@@ -285,7 +285,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mArtworkVersion_property.addEBObserver (inObserver)
+        managedObject.mArtworkVersion_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -334,7 +334,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mCheckClearanceBetweenPadsOfSameNet (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mCheckClearanceBetweenPadsOfSameNet (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet.insert (inObserver)
     switch prop {
@@ -342,7 +342,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mCheckClearanceBetweenPadsOfSameNet_property.addEBObserver (inObserver)
+        managedObject.mCheckClearanceBetweenPadsOfSameNet_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -391,7 +391,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mLastERCCheckingIsSuccess (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mLastERCCheckingIsSuccess (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mLastERCCheckingIsSuccess.insert (inObserver)
     switch prop {
@@ -399,7 +399,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mLastERCCheckingIsSuccess_property.addEBObserver (inObserver)
+        managedObject.mLastERCCheckingIsSuccess_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -448,7 +448,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mLastERCCheckingSignature (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mLastERCCheckingSignature (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mLastERCCheckingSignature.insert (inObserver)
     switch prop {
@@ -456,7 +456,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mLastERCCheckingSignature_property.addEBObserver (inObserver)
+        managedObject.mLastERCCheckingSignature_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -505,7 +505,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mAutoRouterPreferredDirections (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mAutoRouterPreferredDirections (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mAutoRouterPreferredDirections.insert (inObserver)
     switch prop {
@@ -513,7 +513,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAutoRouterPreferredDirections_property.addEBObserver (inObserver)
+        managedObject.mAutoRouterPreferredDirections_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -562,7 +562,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mAutorouterSnapAngle (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mAutorouterSnapAngle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mAutorouterSnapAngle.insert (inObserver)
     switch prop {
@@ -570,7 +570,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAutorouterSnapAngle_property.addEBObserver (inObserver)
+        managedObject.mAutorouterSnapAngle_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -619,7 +619,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mTrackLengthUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mTrackLengthUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mTrackLengthUnit.insert (inObserver)
     switch prop {
@@ -627,7 +627,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mTrackLengthUnit_property.addEBObserver (inObserver)
+        managedObject.mTrackLengthUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -676,7 +676,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mLayoutClearance (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mLayoutClearance (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mLayoutClearance.insert (inObserver)
     switch prop {
@@ -684,7 +684,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mLayoutClearance_property.addEBObserver (inObserver)
+        managedObject.mLayoutClearance_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -733,7 +733,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mLayoutClearanceUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mLayoutClearanceUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mLayoutClearanceUnit.insert (inObserver)
     switch prop {
@@ -741,7 +741,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mLayoutClearanceUnit_property.addEBObserver (inObserver)
+        managedObject.mLayoutClearanceUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -790,7 +790,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardSelectedInspector (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardSelectedInspector (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardSelectedInspector.insert (inObserver)
     switch prop {
@@ -798,7 +798,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardSelectedInspector_property.addEBObserver (inObserver)
+        managedObject.mBoardSelectedInspector_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -847,7 +847,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardHorizontalFlip (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardHorizontalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardHorizontalFlip.insert (inObserver)
     switch prop {
@@ -855,7 +855,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardHorizontalFlip_property.addEBObserver (inObserver)
+        managedObject.mBoardHorizontalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -904,7 +904,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardVerticalFlip (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardVerticalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardVerticalFlip.insert (inObserver)
     switch prop {
@@ -912,7 +912,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardVerticalFlip_property.addEBObserver (inObserver)
+        managedObject.mBoardVerticalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -961,7 +961,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardGridStyle (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardGridStyle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardGridStyle.insert (inObserver)
     switch prop {
@@ -969,7 +969,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardGridStyle_property.addEBObserver (inObserver)
+        managedObject.mBoardGridStyle_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1018,7 +1018,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardGridDisplayFactor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardGridDisplayFactor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardGridDisplayFactor.insert (inObserver)
     switch prop {
@@ -1026,7 +1026,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardGridDisplayFactor_property.addEBObserver (inObserver)
+        managedObject.mBoardGridDisplayFactor_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1075,7 +1075,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardZoom (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardZoom (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardZoom.insert (inObserver)
     switch prop {
@@ -1083,7 +1083,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardZoom_property.addEBObserver (inObserver)
+        managedObject.mBoardZoom_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1132,7 +1132,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardGridStep (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardGridStep (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardGridStep.insert (inObserver)
     switch prop {
@@ -1140,7 +1140,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardGridStep_property.addEBObserver (inObserver)
+        managedObject.mBoardGridStep_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1189,7 +1189,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardGridStepUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardGridStepUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardGridStepUnit.insert (inObserver)
     switch prop {
@@ -1197,7 +1197,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardGridStepUnit_property.addEBObserver (inObserver)
+        managedObject.mBoardGridStepUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1246,7 +1246,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mErrorOrWarningIssueSize (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mErrorOrWarningIssueSize (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mErrorOrWarningIssueSize.insert (inObserver)
     switch prop {
@@ -1254,7 +1254,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mErrorOrWarningIssueSize_property.addEBObserver (inObserver)
+        managedObject.mErrorOrWarningIssueSize_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1303,7 +1303,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mControlKeyHiliteDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mControlKeyHiliteDiameter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mControlKeyHiliteDiameter.insert (inObserver)
     switch prop {
@@ -1311,7 +1311,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mControlKeyHiliteDiameter_property.addEBObserver (inObserver)
+        managedObject.mControlKeyHiliteDiameter_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1360,7 +1360,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsWidth (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardLimitsWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardLimitsWidth.insert (inObserver)
     switch prop {
@@ -1368,7 +1368,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardLimitsWidth_property.addEBObserver (inObserver)
+        managedObject.mBoardLimitsWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1417,7 +1417,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsWidthUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardLimitsWidthUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardLimitsWidthUnit.insert (inObserver)
     switch prop {
@@ -1425,7 +1425,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardLimitsWidthUnit_property.addEBObserver (inObserver)
+        managedObject.mBoardLimitsWidthUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1474,7 +1474,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsSelectedInspector (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardLimitsSelectedInspector (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardLimitsSelectedInspector.insert (inObserver)
     switch prop {
@@ -1482,7 +1482,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardLimitsSelectedInspector_property.addEBObserver (inObserver)
+        managedObject.mBoardLimitsSelectedInspector_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1531,7 +1531,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsHorizontalFlip (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardLimitsHorizontalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardLimitsHorizontalFlip.insert (inObserver)
     switch prop {
@@ -1539,7 +1539,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardLimitsHorizontalFlip_property.addEBObserver (inObserver)
+        managedObject.mBoardLimitsHorizontalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1588,7 +1588,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsVerticalFlip (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardLimitsVerticalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardLimitsVerticalFlip.insert (inObserver)
     switch prop {
@@ -1596,7 +1596,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardLimitsVerticalFlip_property.addEBObserver (inObserver)
+        managedObject.mBoardLimitsVerticalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1645,7 +1645,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsGridStyle (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardLimitsGridStyle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardLimitsGridStyle.insert (inObserver)
     switch prop {
@@ -1653,7 +1653,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardLimitsGridStyle_property.addEBObserver (inObserver)
+        managedObject.mBoardLimitsGridStyle_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1702,7 +1702,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsGridDisplayFactor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardLimitsGridDisplayFactor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardLimitsGridDisplayFactor.insert (inObserver)
     switch prop {
@@ -1710,7 +1710,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardLimitsGridDisplayFactor_property.addEBObserver (inObserver)
+        managedObject.mBoardLimitsGridDisplayFactor_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1759,7 +1759,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsZoom (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardLimitsZoom (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardLimitsZoom.insert (inObserver)
     switch prop {
@@ -1767,7 +1767,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardLimitsZoom_property.addEBObserver (inObserver)
+        managedObject.mBoardLimitsZoom_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1816,7 +1816,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsGridStep (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardLimitsGridStep (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardLimitsGridStep.insert (inObserver)
     switch prop {
@@ -1824,7 +1824,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardLimitsGridStep_property.addEBObserver (inObserver)
+        managedObject.mBoardLimitsGridStep_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1873,7 +1873,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsGridStepUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardLimitsGridStepUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardLimitsGridStepUnit.insert (inObserver)
     switch prop {
@@ -1881,7 +1881,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardLimitsGridStepUnit_property.addEBObserver (inObserver)
+        managedObject.mBoardLimitsGridStepUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1930,7 +1930,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsBoundingBoxUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardLimitsBoundingBoxUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardLimitsBoundingBoxUnit.insert (inObserver)
     switch prop {
@@ -1938,7 +1938,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardLimitsBoundingBoxUnit_property.addEBObserver (inObserver)
+        managedObject.mBoardLimitsBoundingBoxUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1987,7 +1987,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardPointsBoundingBoxUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardPointsBoundingBoxUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardPointsBoundingBoxUnit.insert (inObserver)
     switch prop {
@@ -1995,7 +1995,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardPointsBoundingBoxUnit_property.addEBObserver (inObserver)
+        managedObject.mBoardPointsBoundingBoxUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2044,7 +2044,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardSelectedCurveDisplayUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardSelectedCurveDisplayUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardSelectedCurveDisplayUnit.insert (inObserver)
     switch prop {
@@ -2052,7 +2052,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardSelectedCurveDisplayUnit_property.addEBObserver (inObserver)
+        managedObject.mBoardSelectedCurveDisplayUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2101,7 +2101,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardClearance (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardClearance (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardClearance.insert (inObserver)
     switch prop {
@@ -2109,7 +2109,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardClearance_property.addEBObserver (inObserver)
+        managedObject.mBoardClearance_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2158,7 +2158,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardClearanceUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mBoardClearanceUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mBoardClearanceUnit.insert (inObserver)
     switch prop {
@@ -2166,7 +2166,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mBoardClearanceUnit_property.addEBObserver (inObserver)
+        managedObject.mBoardClearanceUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2215,7 +2215,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mDefaultNetClassName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDefaultNetClassName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDefaultNetClassName.insert (inObserver)
     switch prop {
@@ -2223,7 +2223,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mDefaultNetClassName_property.addEBObserver (inObserver)
+        managedObject.mDefaultNetClassName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2272,7 +2272,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSelectedPageIndex.insert (inObserver)
     switch prop {
@@ -2280,7 +2280,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSelectedPageIndex_property.addEBObserver (inObserver)
+        managedObject.mSelectedPageIndex_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2329,7 +2329,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSelectedSchematicInspector (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSelectedSchematicInspector (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSelectedSchematicInspector.insert (inObserver)
     switch prop {
@@ -2337,7 +2337,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSelectedSchematicInspector_property.addEBObserver (inObserver)
+        managedObject.mSelectedSchematicInspector_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2386,7 +2386,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicTitle (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSchematicTitle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSchematicTitle.insert (inObserver)
     switch prop {
@@ -2394,7 +2394,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSchematicTitle_property.addEBObserver (inObserver)
+        managedObject.mSchematicTitle_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2443,7 +2443,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicVersion (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSchematicVersion (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSchematicVersion.insert (inObserver)
     switch prop {
@@ -2451,7 +2451,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSchematicVersion_property.addEBObserver (inObserver)
+        managedObject.mSchematicVersion_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2500,7 +2500,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicDate (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSchematicDate (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSchematicDate.insert (inObserver)
     switch prop {
@@ -2508,7 +2508,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSchematicDate_property.addEBObserver (inObserver)
+        managedObject.mSchematicDate_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2557,7 +2557,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicHorizontalFlip (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSchematicHorizontalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSchematicHorizontalFlip.insert (inObserver)
     switch prop {
@@ -2565,7 +2565,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSchematicHorizontalFlip_property.addEBObserver (inObserver)
+        managedObject.mSchematicHorizontalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2614,7 +2614,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicVerticalFlip (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSchematicVerticalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSchematicVerticalFlip.insert (inObserver)
     switch prop {
@@ -2622,7 +2622,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSchematicVerticalFlip_property.addEBObserver (inObserver)
+        managedObject.mSchematicVerticalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2671,7 +2671,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicZoom (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSchematicZoom (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSchematicZoom.insert (inObserver)
     switch prop {
@@ -2679,7 +2679,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSchematicZoom_property.addEBObserver (inObserver)
+        managedObject.mSchematicZoom_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2728,7 +2728,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicGridStyle (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSchematicGridStyle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSchematicGridStyle.insert (inObserver)
     switch prop {
@@ -2736,7 +2736,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSchematicGridStyle_property.addEBObserver (inObserver)
+        managedObject.mSchematicGridStyle_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2785,7 +2785,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicGridDisplayFactor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSchematicGridDisplayFactor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSchematicGridDisplayFactor.insert (inObserver)
     switch prop {
@@ -2793,7 +2793,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSchematicGridDisplayFactor_property.addEBObserver (inObserver)
+        managedObject.mSchematicGridDisplayFactor_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2842,7 +2842,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicCustomWidth (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSchematicCustomWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSchematicCustomWidth.insert (inObserver)
     switch prop {
@@ -2850,7 +2850,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSchematicCustomWidth_property.addEBObserver (inObserver)
+        managedObject.mSchematicCustomWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2899,7 +2899,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicCustomWidthUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSchematicCustomWidthUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSchematicCustomWidthUnit.insert (inObserver)
     switch prop {
@@ -2907,7 +2907,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSchematicCustomWidthUnit_property.addEBObserver (inObserver)
+        managedObject.mSchematicCustomWidthUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -2956,7 +2956,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicCustomHeight (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSchematicCustomHeight (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSchematicCustomHeight.insert (inObserver)
     switch prop {
@@ -2964,7 +2964,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSchematicCustomHeight_property.addEBObserver (inObserver)
+        managedObject.mSchematicCustomHeight_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3013,7 +3013,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicCustomHeightUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSchematicCustomHeightUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSchematicCustomHeightUnit.insert (inObserver)
     switch prop {
@@ -3021,7 +3021,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSchematicCustomHeightUnit_property.addEBObserver (inObserver)
+        managedObject.mSchematicCustomHeightUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3070,7 +3070,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicSheetOrientation (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSchematicSheetOrientation (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSchematicSheetOrientation.insert (inObserver)
     switch prop {
@@ -3078,7 +3078,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSchematicSheetOrientation_property.addEBObserver (inObserver)
+        managedObject.mSchematicSheetOrientation_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3127,7 +3127,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mRastnetDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mRastnetDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mRastnetDisplay.insert (inObserver)
     switch prop {
@@ -3135,7 +3135,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mRastnetDisplay_property.addEBObserver (inObserver)
+        managedObject.mRastnetDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3184,7 +3184,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mRastnetDisplayedNetName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mRastnetDisplayedNetName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mRastnetDisplayedNetName.insert (inObserver)
     switch prop {
@@ -3192,7 +3192,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mRastnetDisplayedNetName_property.addEBObserver (inObserver)
+        managedObject.mRastnetDisplayedNetName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3241,7 +3241,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mRastnetDisplayedComponentName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mRastnetDisplayedComponentName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mRastnetDisplayedComponentName.insert (inObserver)
     switch prop {
@@ -3249,7 +3249,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mRastnetDisplayedComponentName_property.addEBObserver (inObserver)
+        managedObject.mRastnetDisplayedComponentName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3298,7 +3298,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_selectedSheetObjects (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectedSheetObjects (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedSheetObjects.insert (inObserver)
     switch prop {
@@ -3306,7 +3306,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedSheetObjects_property.addEBObserver (inObserver)
+        managedObject.selectedSheetObjects_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3355,7 +3355,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_fileGenerationParameterArray (_ inObserver : EBEvent) {
+  final func addEBObserverOf_fileGenerationParameterArray (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_fileGenerationParameterArray.insert (inObserver)
     switch prop {
@@ -3363,7 +3363,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.fileGenerationParameterArray_property.addEBObserver (inObserver)
+        managedObject.fileGenerationParameterArray_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3412,7 +3412,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
     switch prop {
@@ -3420,7 +3420,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minPPTPTTTWdisplayUnit_property.addEBObserver (inObserver)
+        managedObject.minPPTPTTTWdisplayUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3469,7 +3469,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minPPTPTTTW.insert (inObserver)
     switch prop {
@@ -3477,7 +3477,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minPPTPTTTW_property.addEBObserver (inObserver)
+        managedObject.minPPTPTTTW_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3526,7 +3526,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
     switch prop {
@@ -3534,7 +3534,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minValueForOARdisplayUnit_property.addEBObserver (inObserver)
+        managedObject.minValueForOARdisplayUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3583,7 +3583,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForOARinEBUnit.insert (inObserver)
     switch prop {
@@ -3591,7 +3591,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minValueForOARinEBUnit_property.addEBObserver (inObserver)
+        managedObject.minValueForOARinEBUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3640,7 +3640,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
     switch prop {
@@ -3648,7 +3648,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minValueForPHDdisplayUnit_property.addEBObserver (inObserver)
+        managedObject.minValueForPHDdisplayUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3697,7 +3697,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
     switch prop {
@@ -3705,7 +3705,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minValueForPHDinEBUnit_property.addEBObserver (inObserver)
+        managedObject.minValueForPHDinEBUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3754,7 +3754,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
     switch prop {
@@ -3762,7 +3762,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minValueForBoardLimitWidth_property.addEBObserver (inObserver)
+        managedObject.minValueForBoardLimitWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3811,7 +3811,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
     switch prop {
@@ -3819,7 +3819,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (inObserver)
+        managedObject.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3868,7 +3868,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drillDataFileExtension.insert (inObserver)
     switch prop {
@@ -3876,7 +3876,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drillDataFileExtension_property.addEBObserver (inObserver)
+        managedObject.drillDataFileExtension_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3925,7 +3925,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_comments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_comments.insert (inObserver)
     switch prop {
@@ -3933,7 +3933,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.comments_property.addEBObserver (inObserver)
+        managedObject.comments_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -3982,7 +3982,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_selectedSheetTitle (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectedSheetTitle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedSheetTitle.insert (inObserver)
     switch prop {
@@ -3990,7 +3990,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedSheetTitle_property.addEBObserver (inObserver)
+        managedObject.selectedSheetTitle_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4039,7 +4039,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardGridStepMultipliedByDisplayFactor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardGridStepMultipliedByDisplayFactor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardGridStepMultipliedByDisplayFactor.insert (inObserver)
     switch prop {
@@ -4047,7 +4047,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardGridStepMultipliedByDisplayFactor_property.addEBObserver (inObserver)
+        managedObject.boardGridStepMultipliedByDisplayFactor_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4095,7 +4095,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitsGridStepMultipliedByDisplayFactor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardLimitsGridStepMultipliedByDisplayFactor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor.insert (inObserver)
     switch prop {
@@ -4103,7 +4103,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserver (inObserver)
+        managedObject.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4151,7 +4151,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_selectedSheetIssues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectedSheetIssues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedSheetIssues.insert (inObserver)
     switch prop {
@@ -4159,7 +4159,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedSheetIssues_property.addEBObserver (inObserver)
+        managedObject.selectedSheetIssues_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4207,7 +4207,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connectedPoints.insert (inObserver)
     switch prop {
@@ -4215,7 +4215,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.connectedPoints_property.addEBObserver (inObserver)
+        managedObject.connectedPoints_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4263,7 +4263,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_connexionWarningString (_ inObserver : EBEvent) {
+  final func addEBObserverOf_connexionWarningString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connexionWarningString.insert (inObserver)
     switch prop {
@@ -4271,7 +4271,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.connexionWarningString_property.addEBObserver (inObserver)
+        managedObject.connexionWarningString_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4319,7 +4319,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_connexionErrorString (_ inObserver : EBEvent) {
+  final func addEBObserverOf_connexionErrorString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connexionErrorString.insert (inObserver)
     switch prop {
@@ -4327,7 +4327,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.connexionErrorString_property.addEBObserver (inObserver)
+        managedObject.connexionErrorString_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4375,7 +4375,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_sheetIndexes (_ inObserver : EBEvent) {
+  final func addEBObserverOf_sheetIndexes (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sheetIndexes.insert (inObserver)
     switch prop {
@@ -4383,7 +4383,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.sheetIndexes_property.addEBObserver (inObserver)
+        managedObject.sheetIndexes_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4431,7 +4431,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_netsDescription (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netsDescription (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netsDescription.insert (inObserver)
     switch prop {
@@ -4439,7 +4439,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netsDescription_property.addEBObserver (inObserver)
+        managedObject.netsDescription_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4487,7 +4487,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardIssues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardIssues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardIssues.insert (inObserver)
     switch prop {
@@ -4495,7 +4495,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardIssues_property.addEBObserver (inObserver)
+        managedObject.boardIssues_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4543,7 +4543,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
     switch prop {
@@ -4551,7 +4551,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.signatureForERCChecking_property.addEBObserver (inObserver)
+        managedObject.signatureForERCChecking_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4599,7 +4599,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_ercStatusImage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_ercStatusImage (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_ercStatusImage.insert (inObserver)
     switch prop {
@@ -4607,7 +4607,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.ercStatusImage_property.addEBObserver (inObserver)
+        managedObject.ercStatusImage_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4655,7 +4655,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_ercStatusMessage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_ercStatusMessage (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_ercStatusMessage.insert (inObserver)
     switch prop {
@@ -4663,7 +4663,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.ercStatusMessage_property.addEBObserver (inObserver)
+        managedObject.ercStatusMessage_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4711,7 +4711,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_viaCountString (_ inObserver : EBEvent) {
+  final func addEBObserverOf_viaCountString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_viaCountString.insert (inObserver)
     switch prop {
@@ -4719,7 +4719,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.viaCountString_property.addEBObserver (inObserver)
+        managedObject.viaCountString_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4767,7 +4767,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_trackCountString (_ inObserver : EBEvent) {
+  final func addEBObserverOf_trackCountString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_trackCountString.insert (inObserver)
     switch prop {
@@ -4775,7 +4775,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.trackCountString_property.addEBObserver (inObserver)
+        managedObject.trackCountString_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4823,7 +4823,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_trackLengthString (_ inObserver : EBEvent) {
+  final func addEBObserverOf_trackLengthString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_trackLengthString.insert (inObserver)
     switch prop {
@@ -4831,7 +4831,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.trackLengthString_property.addEBObserver (inObserver)
+        managedObject.trackLengthString_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4879,7 +4879,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardStatusImage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardStatusImage (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardStatusImage.insert (inObserver)
     switch prop {
@@ -4887,7 +4887,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardStatusImage_property.addEBObserver (inObserver)
+        managedObject.boardStatusImage_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4935,7 +4935,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardStatusMessage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardStatusMessage (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardStatusMessage.insert (inObserver)
     switch prop {
@@ -4943,7 +4943,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardStatusMessage_property.addEBObserver (inObserver)
+        managedObject.boardStatusMessage_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -4991,7 +4991,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_interiorBoundBox (_ inObserver : EBEvent) {
+  final func addEBObserverOf_interiorBoundBox (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_interiorBoundBox.insert (inObserver)
     switch prop {
@@ -4999,7 +4999,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.interiorBoundBox_property.addEBObserver (inObserver)
+        managedObject.interiorBoundBox_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5047,7 +5047,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardBoundBox (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardBoundBox (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardBoundBox.insert (inObserver)
     switch prop {
@@ -5055,7 +5055,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardBoundBox_property.addEBObserver (inObserver)
+        managedObject.boardBoundBox_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5103,7 +5103,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardInteriorTop (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardInteriorTop (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardInteriorTop.insert (inObserver)
     switch prop {
@@ -5111,7 +5111,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardInteriorTop_property.addEBObserver (inObserver)
+        managedObject.boardInteriorTop_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5159,7 +5159,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardInteriorBottom (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardInteriorBottom (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardInteriorBottom.insert (inObserver)
     switch prop {
@@ -5167,7 +5167,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardInteriorBottom_property.addEBObserver (inObserver)
+        managedObject.boardInteriorBottom_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5215,7 +5215,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardInteriorLeft (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardInteriorLeft (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardInteriorLeft.insert (inObserver)
     switch prop {
@@ -5223,7 +5223,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardInteriorLeft_property.addEBObserver (inObserver)
+        managedObject.boardInteriorLeft_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5271,7 +5271,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardInteriorRight (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardInteriorRight (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardInteriorRight.insert (inObserver)
     switch prop {
@@ -5279,7 +5279,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardInteriorRight_property.addEBObserver (inObserver)
+        managedObject.boardInteriorRight_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5327,7 +5327,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitBorderTop (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardLimitBorderTop (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardLimitBorderTop.insert (inObserver)
     switch prop {
@@ -5335,7 +5335,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitBorderTop_property.addEBObserver (inObserver)
+        managedObject.boardLimitBorderTop_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5383,7 +5383,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitBorderBottom (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardLimitBorderBottom (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardLimitBorderBottom.insert (inObserver)
     switch prop {
@@ -5391,7 +5391,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitBorderBottom_property.addEBObserver (inObserver)
+        managedObject.boardLimitBorderBottom_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5439,7 +5439,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitBorderLeft (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardLimitBorderLeft (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardLimitBorderLeft.insert (inObserver)
     switch prop {
@@ -5447,7 +5447,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitBorderLeft_property.addEBObserver (inObserver)
+        managedObject.boardLimitBorderLeft_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5495,7 +5495,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitBorderRight (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardLimitBorderRight (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardLimitBorderRight.insert (inObserver)
     switch prop {
@@ -5503,7 +5503,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitBorderRight_property.addEBObserver (inObserver)
+        managedObject.boardLimitBorderRight_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5551,7 +5551,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_borderElementCountString (_ inObserver : EBEvent) {
+  final func addEBObserverOf_borderElementCountString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_borderElementCountString.insert (inObserver)
     switch prop {
@@ -5559,7 +5559,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.borderElementCountString_property.addEBObserver (inObserver)
+        managedObject.borderElementCountString_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5607,7 +5607,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_borderOutlineBackground (_ inObserver : EBEvent) {
+  final func addEBObserverOf_borderOutlineBackground (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_borderOutlineBackground.insert (inObserver)
     switch prop {
@@ -5615,7 +5615,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.borderOutlineBackground_property.addEBObserver (inObserver)
+        managedObject.borderOutlineBackground_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5663,7 +5663,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boarderViewBackground (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boarderViewBackground (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boarderViewBackground.insert (inObserver)
     switch prop {
@@ -5671,7 +5671,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boarderViewBackground_property.addEBObserver (inObserver)
+        managedObject.boarderViewBackground_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5719,7 +5719,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_deviceNames (_ inObserver : EBEvent) {
+  final func addEBObserverOf_deviceNames (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_deviceNames.insert (inObserver)
     switch prop {
@@ -5727,7 +5727,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.deviceNames_property.addEBObserver (inObserver)
+        managedObject.deviceNames_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5775,7 +5775,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_allClassNames (_ inObserver : EBEvent) {
+  final func addEBObserverOf_allClassNames (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_allClassNames.insert (inObserver)
     switch prop {
@@ -5783,7 +5783,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.allClassNames_property.addEBObserver (inObserver)
+        managedObject.allClassNames_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5831,7 +5831,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_schematicBackgroundDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_schematicBackgroundDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_schematicBackgroundDisplay.insert (inObserver)
     switch prop {
@@ -5839,7 +5839,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.schematicBackgroundDisplay_property.addEBObserver (inObserver)
+        managedObject.schematicBackgroundDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5887,7 +5887,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_netWarningCount (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netWarningCount (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netWarningCount.insert (inObserver)
     switch prop {
@@ -5895,7 +5895,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netWarningCount_property.addEBObserver (inObserver)
+        managedObject.netWarningCount_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5943,7 +5943,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_netNamesArray (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netNamesArray (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netNamesArray.insert (inObserver)
     switch prop {
@@ -5951,7 +5951,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netNamesArray_property.addEBObserver (inObserver)
+        managedObject.netNamesArray_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -5999,7 +5999,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
+  final func addEBObserverOf_unplacedSymbols (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_unplacedSymbols.insert (inObserver)
     switch prop {
@@ -6007,7 +6007,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.unplacedSymbols_property.addEBObserver (inObserver)
+        managedObject.unplacedSymbols_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -6055,7 +6055,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_unplacedPackages (_ inObserver : EBEvent) {
+  final func addEBObserverOf_unplacedPackages (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_unplacedPackages.insert (inObserver)
     switch prop {
@@ -6063,7 +6063,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.unplacedPackages_property.addEBObserver (inObserver)
+        managedObject.unplacedPackages_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -6111,7 +6111,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_componentsPlacedInBoard (_ inObserver : EBEvent) {
+  final func addEBObserverOf_componentsPlacedInBoard (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentsPlacedInBoard.insert (inObserver)
     switch prop {
@@ -6119,7 +6119,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.componentsPlacedInBoard_property.addEBObserver (inObserver)
+        managedObject.componentsPlacedInBoard_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -6167,7 +6167,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_placedComponentNameArray (_ inObserver : EBEvent) {
+  final func addEBObserverOf_placedComponentNameArray (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_placedComponentNameArray.insert (inObserver)
     switch prop {
@@ -6175,7 +6175,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.placedComponentNameArray_property.addEBObserver (inObserver)
+        managedObject.placedComponentNameArray_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -6223,7 +6223,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_schematicStatusMessage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_schematicStatusMessage (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_schematicStatusMessage.insert (inObserver)
     switch prop {
@@ -6231,7 +6231,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.schematicStatusMessage_property.addEBObserver (inObserver)
+        managedObject.schematicStatusMessage_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -6279,7 +6279,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_schematicStatusImage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_schematicStatusImage (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_schematicStatusImage.insert (inObserver)
     switch prop {
@@ -6287,7 +6287,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.schematicStatusImage_property.addEBObserver (inObserver)
+        managedObject.schematicStatusImage_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -6861,60 +6861,60 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mArtworkName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mArtworkVersion (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCheckClearanceBetweenPadsOfSameNet (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mLastERCCheckingIsSuccess (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mLastERCCheckingSignature (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mAutoRouterPreferredDirections (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mAutorouterSnapAngle (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mTrackLengthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mLayoutClearance (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mLayoutClearanceUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardSelectedInspector (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardHorizontalFlip (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardVerticalFlip (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardGridStyle (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardGridDisplayFactor (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardZoom (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardGridStep (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardGridStepUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mErrorOrWarningIssueSize (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mControlKeyHiliteDiameter (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardLimitsWidth (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardLimitsWidthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardLimitsSelectedInspector (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardLimitsHorizontalFlip (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardLimitsVerticalFlip (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardLimitsGridStyle (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardLimitsGridDisplayFactor (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardLimitsZoom (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardLimitsGridStep (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardLimitsGridStepUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardLimitsBoundingBoxUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardPointsBoundingBoxUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardClearance (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mBoardClearanceUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDefaultNetClassName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSelectedPageIndex (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSelectedSchematicInspector (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSchematicTitle (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSchematicVersion (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSchematicDate (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSchematicHorizontalFlip (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSchematicVerticalFlip (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSchematicZoom (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSchematicGridStyle (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSchematicGridDisplayFactor (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSchematicCustomWidth (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSchematicCustomWidthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSchematicCustomHeight (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSchematicCustomHeightUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSchematicSheetOrientation (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mRastnetDisplay (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mRastnetDisplayedNetName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mRastnetDisplayedComponentName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mArtworkName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mArtworkVersion (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mCheckClearanceBetweenPadsOfSameNet (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mLastERCCheckingIsSuccess (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mLastERCCheckingSignature (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mAutoRouterPreferredDirections (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mAutorouterSnapAngle (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mTrackLengthUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mLayoutClearance (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mLayoutClearanceUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardSelectedInspector (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardHorizontalFlip (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardVerticalFlip (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardGridStyle (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardGridDisplayFactor (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardZoom (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardGridStep (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardGridStepUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mErrorOrWarningIssueSize (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mControlKeyHiliteDiameter (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardLimitsWidth (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardLimitsWidthUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardLimitsSelectedInspector (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardLimitsHorizontalFlip (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardLimitsVerticalFlip (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardLimitsGridStyle (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardLimitsGridDisplayFactor (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardLimitsZoom (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardLimitsGridStep (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardLimitsGridStepUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardLimitsBoundingBoxUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardPointsBoundingBoxUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardClearance (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mBoardClearanceUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mDefaultNetClassName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSelectedPageIndex (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSelectedSchematicInspector (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSchematicTitle (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSchematicVersion (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSchematicDate (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSchematicHorizontalFlip (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSchematicVerticalFlip (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSchematicZoom (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSchematicGridStyle (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSchematicGridDisplayFactor (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSchematicCustomWidth (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSchematicCustomWidthUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSchematicCustomHeight (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSchematicCustomHeightUnit (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSchematicSheetOrientation (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mRastnetDisplay (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mRastnetDisplayedNetName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mRastnetDisplayedComponentName (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

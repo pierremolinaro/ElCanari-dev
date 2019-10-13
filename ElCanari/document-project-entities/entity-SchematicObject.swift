@@ -188,6 +188,7 @@ class SchematicObject : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- To one property: mSheet (has opposite to many relationship: mObjects)
     self.mSheet_property.ebUndoManager = self.ebUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
@@ -215,7 +216,8 @@ class SchematicObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mSheet_property.addEBObserverOf_sheetDescriptor (self.sheetDescriptor_property)
+    self.mSheet_property.addEBObserverOf_sheetDescriptor (self.sheetDescriptor_property, postEvent: false)
+    self.sheetDescriptor_property.postEvent ()
   //--- Atomic property: isPlacedInSchematic
     self.isPlacedInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -237,10 +239,12 @@ class SchematicObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mSheet_property.addEBObserver (self.isPlacedInSchematic_property)
+    self.mSheet_property.addEBObserver (self.isPlacedInSchematic_property, postEvent: false)
+    self.isPlacedInSchematic_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

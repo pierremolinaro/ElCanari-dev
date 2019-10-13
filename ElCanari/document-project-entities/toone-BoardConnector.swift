@@ -99,14 +99,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mComponentPadName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mComponentPadName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mComponentPadName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mComponentPadName_property.addEBObserver (inObserver)
+       v?.mComponentPadName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -169,14 +169,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mPadIndex (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mPadIndex (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mPadIndex.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mPadIndex_property.addEBObserver (inObserver)
+       v?.mPadIndex_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -239,14 +239,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mX (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mX.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mX_property.addEBObserver (inObserver)
+       v?.mX_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -309,14 +309,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mY (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mY.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mY_property.addEBObserver (inObserver)
+       v?.mY_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -379,14 +379,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mDefaultHoleDiameterUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mDefaultHoleDiameterUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mDefaultHoleDiameterUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mDefaultHoleDiameterUnit_property.addEBObserver (inObserver)
+       v?.mDefaultHoleDiameterUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -449,14 +449,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mCustomHoleDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mCustomHoleDiameter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mCustomHoleDiameter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mCustomHoleDiameter_property.addEBObserver (inObserver)
+       v?.mCustomHoleDiameter_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -519,14 +519,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mCustomHoleDiameterUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mCustomHoleDiameterUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mCustomHoleDiameterUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mCustomHoleDiameterUnit_property.addEBObserver (inObserver)
+       v?.mCustomHoleDiameterUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -589,14 +589,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mUsesCustomHoleDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mUsesCustomHoleDiameter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mUsesCustomHoleDiameter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mUsesCustomHoleDiameter_property.addEBObserver (inObserver)
+       v?.mUsesCustomHoleDiameter_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -659,14 +659,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mDefaultPadDiameterUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mDefaultPadDiameterUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mDefaultPadDiameterUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mDefaultPadDiameterUnit_property.addEBObserver (inObserver)
+       v?.mDefaultPadDiameterUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -729,14 +729,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mCustomPadDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mCustomPadDiameter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mCustomPadDiameter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mCustomPadDiameter_property.addEBObserver (inObserver)
+       v?.mCustomPadDiameter_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -799,14 +799,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mCustomPadDiameterUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mCustomPadDiameterUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mCustomPadDiameterUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mCustomPadDiameterUnit_property.addEBObserver (inObserver)
+       v?.mCustomPadDiameterUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -869,14 +869,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mUsesCustomPadDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mUsesCustomPadDiameter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mUsesCustomPadDiameter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mUsesCustomPadDiameter_property.addEBObserver (inObserver)
+       v?.mUsesCustomPadDiameter_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -939,14 +939,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_location (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_location (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_location.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.location_property.addEBObserver (inObserver)
+      v?.location_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1008,14 +1008,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_netNameFromComponentPad (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_netNameFromComponentPad (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_netNameFromComponentPad.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netNameFromComponentPad_property.addEBObserver (inObserver)
+      v?.netNameFromComponentPad_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1077,14 +1077,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_netNameAndPadLocation.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netNameAndPadLocation_property.addEBObserver (inObserver)
+      v?.netNameAndPadLocation_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1146,14 +1146,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_side (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_side (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_side.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.side_property.addEBObserver (inObserver)
+      v?.side_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1215,14 +1215,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_isVia (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_isVia (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_isVia.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.isVia_property.addEBObserver (inObserver)
+      v?.isVia_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1284,14 +1284,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver)
+      v?.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1353,14 +1353,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_viaDefaultHoleDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_viaDefaultHoleDiameter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_viaDefaultHoleDiameter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.viaDefaultHoleDiameter_property.addEBObserver (inObserver)
+      v?.viaDefaultHoleDiameter_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1422,14 +1422,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_viaDefaultPadDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_viaDefaultPadDiameter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_viaDefaultPadDiameter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.viaDefaultPadDiameter_property.addEBObserver (inObserver)
+      v?.viaDefaultPadDiameter_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1491,14 +1491,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_netNameFromTracks (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_netNameFromTracks (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_netNameFromTracks.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netNameFromTracks_property.addEBObserver (inObserver)
+      v?.netNameFromTracks_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1560,14 +1560,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_netClassName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_netClassName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netClassName_property.addEBObserver (inObserver)
+      v?.netClassName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1629,14 +1629,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_connectedToComponent (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_connectedToComponent (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_connectedToComponent.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.connectedToComponent_property.addEBObserver (inObserver)
+      v?.connectedToComponent_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1698,14 +1698,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_actualHoleDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_actualHoleDiameter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_actualHoleDiameter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.actualHoleDiameter_property.addEBObserver (inObserver)
+      v?.actualHoleDiameter_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1767,14 +1767,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_actualPadDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_actualPadDiameter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_actualPadDiameter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.actualPadDiameter_property.addEBObserver (inObserver)
+      v?.actualPadDiameter_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1836,14 +1836,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1905,14 +1905,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1974,14 +1974,14 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.signatureForERCChecking_property.addEBObserver (inObserver)
+      v?.signatureForERCChecking_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2043,10 +2043,10 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mTracksP2 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mTracksP2 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_mTracksP2.insert (inObserver)
     if let object = self.propval {
-      object.mTracksP2_property.addEBObserver (inObserver)
+      object.mTracksP2_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2084,10 +2084,10 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func addEBObserverOf_mTracksP1 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mTracksP1 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_mTracksP1.insert (inObserver)
     if let object = self.propval {
-      object.mTracksP1_property.addEBObserver (inObserver)
+      object.mTracksP1_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 

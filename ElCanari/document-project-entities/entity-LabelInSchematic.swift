@@ -182,6 +182,7 @@ class LabelInSchematic : SchematicObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: mOrientation
     self.mOrientation_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPoint (has opposite to many relationship: mLabels)
@@ -211,7 +212,8 @@ class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_location (self.location_property)
+    self.mPoint_property.addEBObserverOf_location (self.location_property, postEvent: false)
+    self.location_property.postEvent ()
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -233,7 +235,8 @@ class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_netName (self.netName_property)
+    self.mPoint_property.addEBObserverOf_netName (self.netName_property, postEvent: false)
+    self.netName_property.postEvent ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -258,10 +261,11 @@ class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.netName_property.addEBObserver (self.selectionDisplay_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
-    self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
+    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property, postEvent: false)
+    self.netName_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.mOrientation_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -283,7 +287,8 @@ class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.mPoint_property.addEBObserverOf_netClassName (self.netClassName_property, postEvent: false)
+    self.netClassName_property.postEvent ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -310,15 +315,17 @@ class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    g_Preferences?.symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property)
-    self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property)
-    self.netName_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
-    self.mOrientation_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property, postEvent: false)
+    self.netName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.mOrientation_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -6,6 +6,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let LOG_OPERATION_DURATION = true
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 private let WINDOW_HEIGHT_METADATADICTIONARY_KEY = "WindowHeight"
 private let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 
@@ -219,8 +223,10 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Load file
     let startLoadFile = Date ()
     let (metadataStatus, metadataDictionary, possibleRootObject) = try loadEasyBindingFile (self.ebUndoManager, from: data)
-    let durationMS = Date ().timeIntervalSince (startLoadFile) * 1000.0
-    Swift.print ("Load File \(durationMS) ms")
+    if LOG_OPERATION_DURATION {
+      let durationMS = Int (Date ().timeIntervalSince (startLoadFile) * 1000.0)
+      Swift.print ("Load File \(durationMS) ms")
+    }
   //--- Store Status
     self.mReadMetadataStatus = metadataStatus
   //--- Store metadata dictionary

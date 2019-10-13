@@ -94,6 +94,7 @@ class DeviceDocumentation : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: mFileName
     self.mFileName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mFileData
@@ -119,12 +120,14 @@ class DeviceDocumentation : EBManagedObject,
         return .empty
       }
     }
-    self.mFileData_property.addEBObserver (self.fileSize_property)
+    self.mFileData_property.addEBObserver (self.fileSize_property, postEvent: false)
+    self.fileSize_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
     self.mFileName_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

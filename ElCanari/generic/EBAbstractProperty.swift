@@ -14,10 +14,12 @@ class EBAbstractProperty : EBEvent {
 
   //····················································································································
 
-  final func addEBObserver (_ inObserver : EBEvent) {
+  final func addEBObserver (_ inObserver : EBEvent, postEvent inPostEvent : Bool = true) {
     self.mObservers.insert (inObserver)
     self.updateObserverExplorer ()
-    inObserver.postEvent ()
+    if inPostEvent {
+      inObserver.postEvent ()
+    }
   }
 
   //····················································································································

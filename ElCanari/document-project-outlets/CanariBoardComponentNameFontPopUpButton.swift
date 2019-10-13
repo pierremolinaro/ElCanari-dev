@@ -51,8 +51,8 @@ class CanariBoardComponentNameFontPopUpButton : NSPopUpButton, EBUserClassNamePr
     let observer = EBOutletEvent ()
     self.mObserver = observer
     observer.mEventCallBack = { self.buildPopUpButton () }
-    inFontsModel.addEBObserverOf_mFontName (observer)
-    inSelectedObjects.addEBObserverOf_componentNameFontName (observer)
+    inFontsModel.addEBObserverOf_mFontName (observer, postEvent: true)
+    inSelectedObjects.addEBObserverOf_componentNameFontName (observer, postEvent: true)
   }
 
   //····················································································································

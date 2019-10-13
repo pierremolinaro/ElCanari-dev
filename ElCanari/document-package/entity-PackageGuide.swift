@@ -229,6 +229,7 @@ class PackageGuide : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: y1
     self.y1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x2
@@ -269,10 +270,11 @@ class PackageGuide : PackageObject,
         return .empty
       }
     }
-    self.x1_property.addEBObserver (self.objectDisplay_property)
-    self.y1_property.addEBObserver (self.objectDisplay_property)
-    self.x2_property.addEBObserver (self.objectDisplay_property)
-    self.y2_property.addEBObserver (self.objectDisplay_property)
+    self.x1_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.y1_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.x2_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.y2_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -297,10 +299,11 @@ class PackageGuide : PackageObject,
         return .empty
       }
     }
-    self.x1_property.addEBObserver (self.selectionDisplay_property)
-    self.y1_property.addEBObserver (self.selectionDisplay_property)
-    self.x2_property.addEBObserver (self.selectionDisplay_property)
-    self.y2_property.addEBObserver (self.selectionDisplay_property)
+    self.x1_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.y1_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.x2_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.y2_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -325,10 +328,11 @@ class PackageGuide : PackageObject,
         return .empty
       }
     }
-    self.x1_property.addEBObserver (self.issues_property)
-    self.y1_property.addEBObserver (self.issues_property)
-    self.x2_property.addEBObserver (self.issues_property)
-    self.y2_property.addEBObserver (self.issues_property)
+    self.x1_property.addEBObserver (self.issues_property, postEvent: false)
+    self.y1_property.addEBObserver (self.issues_property, postEvent: false)
+    self.x2_property.addEBObserver (self.issues_property, postEvent: false)
+    self.y2_property.addEBObserver (self.issues_property, postEvent: false)
+    self.issues_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.x1_property.setSignatureObserver (observer: self)
@@ -340,6 +344,7 @@ class PackageGuide : PackageObject,
     self.y2_property.setSignatureObserver (observer: self)
     self.y2Unit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -49,14 +49,14 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
 
   //····················································································································
 
-  final func addEBObserverOf_mPackageName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mPackageName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mPackageName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mPackageName_property.addEBObserver (inObserver)
+       v?.mPackageName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -119,14 +119,14 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
 
   //····················································································································
 
-  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mStrokeBezierPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mStrokeBezierPath_property.addEBObserver (inObserver)
+       v?.mStrokeBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -189,14 +189,14 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
 
   //····················································································································
 
-  final func addEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_packagePadDictionary (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_packagePadDictionary.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.packagePadDictionary_property.addEBObserver (inObserver)
+      v?.packagePadDictionary_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -258,10 +258,10 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
 
   //····················································································································
 
-  final func addEBObserverOf_mMasterPads (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mMasterPads (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_mMasterPads.insert (inObserver)
     if let object = self.propval {
-      object.mMasterPads_property.addEBObserver (inObserver)
+      object.mMasterPads_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 

@@ -337,6 +337,7 @@ class SymbolPin : SymbolObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: yPin
     self.yPin_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: xName
@@ -379,8 +380,9 @@ class SymbolPin : SymbolObject,
         return .empty
       }
     }
-    self.xPin_property.addEBObserver (self.filledBezierPath_property)
-    self.yPin_property.addEBObserver (self.filledBezierPath_property)
+    self.xPin_property.addEBObserver (self.filledBezierPath_property, postEvent: false)
+    self.yPin_property.addEBObserver (self.filledBezierPath_property, postEvent: false)
+    self.filledBezierPath_property.postEvent ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -413,18 +415,19 @@ class SymbolPin : SymbolObject,
         return .empty
       }
     }
-    self.xPin_property.addEBObserver (self.objectDisplay_property)
-    self.yPin_property.addEBObserver (self.objectDisplay_property)
-    self.xName_property.addEBObserver (self.objectDisplay_property)
-    self.yName_property.addEBObserver (self.objectDisplay_property)
-    self.xNumber_property.addEBObserver (self.objectDisplay_property)
-    self.yNumber_property.addEBObserver (self.objectDisplay_property)
-    self.name_property.addEBObserver (self.objectDisplay_property)
-    self.pinNameIsDisplayedInSchematics_property.addEBObserver (self.objectDisplay_property)
-    self.nameHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
-    self.numberHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    self.xPin_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.yPin_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.xName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.yName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.xNumber_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.yNumber_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.name_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.pinNameIsDisplayedInSchematics_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.nameHorizontalAlignment_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.numberHorizontalAlignment_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -453,14 +456,15 @@ class SymbolPin : SymbolObject,
         return .empty
       }
     }
-    self.xPin_property.addEBObserver (self.selectionDisplay_property)
-    self.yPin_property.addEBObserver (self.selectionDisplay_property)
-    self.xName_property.addEBObserver (self.selectionDisplay_property)
-    self.yName_property.addEBObserver (self.selectionDisplay_property)
-    self.xNumber_property.addEBObserver (self.selectionDisplay_property)
-    self.yNumber_property.addEBObserver (self.selectionDisplay_property)
-    self.nameHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
-    self.numberHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
+    self.xPin_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.yPin_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.xName_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.yName_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.xNumber_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.yNumber_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.nameHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.numberHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -488,13 +492,14 @@ class SymbolPin : SymbolObject,
         return .empty
       }
     }
-    self.xPin_property.addEBObserver (self.issues_property)
-    self.yPin_property.addEBObserver (self.issues_property)
-    self.xName_property.addEBObserver (self.issues_property)
-    self.yName_property.addEBObserver (self.issues_property)
-    self.xNumber_property.addEBObserver (self.issues_property)
-    self.yNumber_property.addEBObserver (self.issues_property)
-    self.name_property.addEBObserver (self.issues_property)
+    self.xPin_property.addEBObserver (self.issues_property, postEvent: false)
+    self.yPin_property.addEBObserver (self.issues_property, postEvent: false)
+    self.xName_property.addEBObserver (self.issues_property, postEvent: false)
+    self.yName_property.addEBObserver (self.issues_property, postEvent: false)
+    self.xNumber_property.addEBObserver (self.issues_property, postEvent: false)
+    self.yNumber_property.addEBObserver (self.issues_property, postEvent: false)
+    self.name_property.addEBObserver (self.issues_property, postEvent: false)
+    self.issues_property.postEvent ()
   //--- Atomic property: nameRect
     self.nameRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -520,11 +525,12 @@ class SymbolPin : SymbolObject,
         return .empty
       }
     }
-    self.xName_property.addEBObserver (self.nameRect_property)
-    self.yName_property.addEBObserver (self.nameRect_property)
-    self.name_property.addEBObserver (self.nameRect_property)
-    self.nameHorizontalAlignment_property.addEBObserver (self.nameRect_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.nameRect_property)
+    self.xName_property.addEBObserver (self.nameRect_property, postEvent: false)
+    self.yName_property.addEBObserver (self.nameRect_property, postEvent: false)
+    self.name_property.addEBObserver (self.nameRect_property, postEvent: false)
+    self.nameHorizontalAlignment_property.addEBObserver (self.nameRect_property, postEvent: false)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.nameRect_property, postEvent: false)
+    self.nameRect_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.name_property.setSignatureObserver (observer: self)
@@ -538,6 +544,7 @@ class SymbolPin : SymbolObject,
     self.yNumber_property.setSignatureObserver (observer: self)
     self.yPin_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

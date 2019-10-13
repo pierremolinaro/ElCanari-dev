@@ -379,6 +379,7 @@ class PackageArc : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: yCenter
     self.yCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: radius
@@ -433,14 +434,15 @@ class PackageArc : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.strokeBezierPath_property)
-    self.yCenter_property.addEBObserver (self.strokeBezierPath_property)
-    self.radius_property.addEBObserver (self.strokeBezierPath_property)
-    self.startAngle_property.addEBObserver (self.strokeBezierPath_property)
-    self.arcAngle_property.addEBObserver (self.strokeBezierPath_property)
-    self.pathIsClosed_property.addEBObserver (self.strokeBezierPath_property)
-    self.startTangent_property.addEBObserver (self.strokeBezierPath_property)
-    self.endTangent_property.addEBObserver (self.strokeBezierPath_property)
+    self.xCenter_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
+    self.yCenter_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
+    self.radius_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
+    self.startAngle_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
+    self.arcAngle_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
+    self.pathIsClosed_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
+    self.startTangent_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
+    self.endTangent_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
+    self.strokeBezierPath_property.postEvent ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -464,9 +466,10 @@ class PackageArc : PackageObject,
         return .empty
       }
     }
-    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -495,14 +498,15 @@ class PackageArc : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.selectionDisplay_property)
-    self.yCenter_property.addEBObserver (self.selectionDisplay_property)
-    self.radius_property.addEBObserver (self.selectionDisplay_property)
-    self.startAngle_property.addEBObserver (self.selectionDisplay_property)
-    self.arcAngle_property.addEBObserver (self.selectionDisplay_property)
-    self.startTangent_property.addEBObserver (self.selectionDisplay_property)
-    self.endTangent_property.addEBObserver (self.selectionDisplay_property)
-    self.pathIsClosed_property.addEBObserver (self.selectionDisplay_property)
+    self.xCenter_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.yCenter_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.radius_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.startAngle_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.arcAngle_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.startTangent_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.endTangent_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.pathIsClosed_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -529,12 +533,13 @@ class PackageArc : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.issues_property)
-    self.yCenter_property.addEBObserver (self.issues_property)
-    self.radius_property.addEBObserver (self.issues_property)
-    self.startAngle_property.addEBObserver (self.issues_property)
-    self.arcAngle_property.addEBObserver (self.issues_property)
-    self.pathIsClosed_property.addEBObserver (self.issues_property)
+    self.xCenter_property.addEBObserver (self.issues_property, postEvent: false)
+    self.yCenter_property.addEBObserver (self.issues_property, postEvent: false)
+    self.radius_property.addEBObserver (self.issues_property, postEvent: false)
+    self.startAngle_property.addEBObserver (self.issues_property, postEvent: false)
+    self.arcAngle_property.addEBObserver (self.issues_property, postEvent: false)
+    self.pathIsClosed_property.addEBObserver (self.issues_property, postEvent: false)
+    self.issues_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.arcAngle_property.setSignatureObserver (observer: self)
@@ -551,6 +556,7 @@ class PackageArc : PackageObject,
     self.yCenter_property.setSignatureObserver (observer: self)
     self.yCenterUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

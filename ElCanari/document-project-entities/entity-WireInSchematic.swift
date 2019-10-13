@@ -196,6 +196,7 @@ class WireInSchematic : SchematicObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- To one property: mP1 (has opposite to many relationship: mWiresP1s)
     self.mP1_property.ebUndoManager = self.ebUndoManager
     self.mP1_property.setOppositeRelationShipFunctions (
@@ -232,10 +233,11 @@ class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.addEBObserverOf_wireColor (self.objectDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property)
-    self.mP1_property.addEBObserverOf_location (self.objectDisplay_property)
-    self.mP2_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.mP1_property.addEBObserverOf_wireColor (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.mP1_property.addEBObserverOf_location (self.objectDisplay_property, postEvent: false)
+    self.mP2_property.addEBObserverOf_location (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -260,10 +262,11 @@ class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.mP1_property.addEBObserverOf_canMove (self.selectionDisplay_property)
-    self.mP2_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.mP2_property.addEBObserverOf_canMove (self.selectionDisplay_property)
+    self.mP1_property.addEBObserverOf_location (self.selectionDisplay_property, postEvent: false)
+    self.mP1_property.addEBObserverOf_canMove (self.selectionDisplay_property, postEvent: false)
+    self.mP2_property.addEBObserverOf_location (self.selectionDisplay_property, postEvent: false)
+    self.mP2_property.addEBObserverOf_canMove (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -285,7 +288,8 @@ class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.addEBObserverOf_netName (self.netName_property)
+    self.mP1_property.addEBObserverOf_netName (self.netName_property, postEvent: false)
+    self.netName_property.postEvent ()
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -307,7 +311,8 @@ class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.mP1_property.addEBObserverOf_netClassName (self.netClassName_property, postEvent: false)
+    self.netClassName_property.postEvent ()
   //--- Atomic property: hasNet
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -329,10 +334,12 @@ class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.addEBObserverOf_hasNet (self.hasNet_property)
+    self.mP1_property.addEBObserverOf_hasNet (self.hasNet_property, postEvent: false)
+    self.hasNet_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -657,6 +657,7 @@ class PointInSchematic : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: mSymbolPinName
     self.mSymbolPinName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mLabels (has opposite relationship)
@@ -724,11 +725,12 @@ class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mX_property.addEBObserver (self.location_property)
-    self.mY_property.addEBObserver (self.location_property)
-    self.mSymbolPinName_property.addEBObserver (self.location_property)
-    self.mSymbol_property.addEBObserverOf_symbolInfo (self.location_property)
-    self.mSymbol_property.addEBObserverOf_mSymbolInstanceName (self.location_property)
+    self.mX_property.addEBObserver (self.location_property, postEvent: false)
+    self.mY_property.addEBObserver (self.location_property, postEvent: false)
+    self.mSymbolPinName_property.addEBObserver (self.location_property, postEvent: false)
+    self.mSymbol_property.addEBObserverOf_symbolInfo (self.location_property, postEvent: false)
+    self.mSymbol_property.addEBObserverOf_mSymbolInstanceName (self.location_property, postEvent: false)
+    self.location_property.postEvent ()
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -750,7 +752,8 @@ class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_mNetName (self.netName_property)
+    self.mNet_property.addEBObserverOf_mNetName (self.netName_property, postEvent: false)
+    self.netName_property.postEvent ()
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -772,7 +775,8 @@ class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.mNet_property.addEBObserverOf_netClassName (self.netClassName_property, postEvent: false)
+    self.netClassName_property.postEvent ()
   //--- Atomic property: hasNet
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -794,7 +798,8 @@ class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserver (self.hasNet_property)
+    self.mNet_property.addEBObserver (self.hasNet_property, postEvent: false)
+    self.hasNet_property.postEvent ()
   //--- Atomic property: canMove
     self.canMove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -816,7 +821,8 @@ class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbol_property.addEBObserver (self.canMove_property)
+    self.mSymbol_property.addEBObserver (self.canMove_property, postEvent: false)
+    self.canMove_property.postEvent ()
   //--- Atomic property: wireColor
     self.wireColor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -838,7 +844,8 @@ class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_wireColor (self.wireColor_property)
+    self.mNet_property.addEBObserverOf_wireColor (self.wireColor_property, postEvent: false)
+    self.wireColor_property.postEvent ()
   //--- Atomic property: symbolRotation
     self.symbolRotation_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -861,8 +868,9 @@ class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbol_property.addEBObserverOf_mRotation (self.symbolRotation_property)
-    self.mSymbol_property.addEBObserverOf_mMirror (self.symbolRotation_property)
+    self.mSymbol_property.addEBObserverOf_mRotation (self.symbolRotation_property, postEvent: false)
+    self.mSymbol_property.addEBObserverOf_mMirror (self.symbolRotation_property, postEvent: false)
+    self.symbolRotation_property.postEvent ()
   //--- To one property: mSheet (has opposite to many relationship: mPoints)
     self.mSheet_property.ebUndoManager = self.ebUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
@@ -891,8 +899,9 @@ class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolPinName_property.addEBObserver (self.symbolNameNetName_property)
-    self.netName_property.addEBObserver (self.symbolNameNetName_property)
+    self.mSymbolPinName_property.addEBObserver (self.symbolNameNetName_property, postEvent: false)
+    self.netName_property.addEBObserver (self.symbolNameNetName_property, postEvent: false)
+    self.symbolNameNetName_property.postEvent ()
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -918,11 +927,12 @@ class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNC_property.addEBObserver (self.isConnected_property)
-    self.mSymbol_property.addEBObserver (self.isConnected_property)
-    self.mWiresP1s_property.addEBObserver (self.isConnected_property)
-    self.mWiresP2s_property.addEBObserver (self.isConnected_property)
-    self.mLabels_property.addEBObserver (self.isConnected_property)
+    self.mNC_property.addEBObserver (self.isConnected_property, postEvent: false)
+    self.mSymbol_property.addEBObserver (self.isConnected_property, postEvent: false)
+    self.mWiresP1s_property.addEBObserver (self.isConnected_property, postEvent: false)
+    self.mWiresP2s_property.addEBObserver (self.isConnected_property, postEvent: false)
+    self.mLabels_property.addEBObserver (self.isConnected_property, postEvent: false)
+    self.isConnected_property.postEvent ()
   //--- Atomic property: status
     self.status_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -945,8 +955,9 @@ class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.location_property.addEBObserver (self.status_property)
-    self.isConnected_property.addEBObserver (self.status_property)
+    self.location_property.addEBObserver (self.status_property, postEvent: false)
+    self.isConnected_property.addEBObserver (self.status_property, postEvent: false)
+    self.status_property.postEvent ()
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -969,8 +980,9 @@ class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.location_property.addEBObserver (self.connectedPoints_property)
-    self.isConnected_property.addEBObserver (self.connectedPoints_property)
+    self.location_property.addEBObserver (self.connectedPoints_property, postEvent: false)
+    self.isConnected_property.addEBObserver (self.connectedPoints_property, postEvent: false)
+    self.connectedPoints_property.postEvent ()
   //--- Atomic property: netInfoForPoint
     self.netInfoForPoint_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -997,12 +1009,13 @@ class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mLabels_property.addEBObserver (self.netInfoForPoint_property)
-    self.mSymbolPinName_property.addEBObserver (self.netInfoForPoint_property)
-    self.mWiresP1s_property.addEBObserver (self.netInfoForPoint_property)
-    self.mWiresP2s_property.addEBObserver (self.netInfoForPoint_property)
-    self.location_property.addEBObserver (self.netInfoForPoint_property)
-    self.mSheet_property.addEBObserverOf_sheetDescriptor (self.netInfoForPoint_property)
+    self.mLabels_property.addEBObserver (self.netInfoForPoint_property, postEvent: false)
+    self.mSymbolPinName_property.addEBObserver (self.netInfoForPoint_property, postEvent: false)
+    self.mWiresP1s_property.addEBObserver (self.netInfoForPoint_property, postEvent: false)
+    self.mWiresP2s_property.addEBObserver (self.netInfoForPoint_property, postEvent: false)
+    self.location_property.addEBObserver (self.netInfoForPoint_property, postEvent: false)
+    self.mSheet_property.addEBObserverOf_sheetDescriptor (self.netInfoForPoint_property, postEvent: false)
+    self.netInfoForPoint_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
@@ -1018,6 +1031,7 @@ class PointInSchematic : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -353,6 +353,7 @@ class SymbolRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: comments
@@ -400,11 +401,12 @@ class SymbolRoot : EBManagedObject,
         return .empty
       }
     }
-    self.symbolObjects_property.addEBObserverOf_issues (self.issues_property)
-    self.symbolPins_property.addEBObserverOf_name (self.issues_property)
-    self.symbolPins_property.addEBObserverOf_nameRect (self.issues_property)
-    self.symbolPins_property.addEBObserverOf_xPin (self.issues_property)
-    self.symbolPins_property.addEBObserverOf_yPin (self.issues_property)
+    self.symbolObjects_property.addEBObserverOf_issues (self.issues_property, postEvent: false)
+    self.symbolPins_property.addEBObserverOf_name (self.issues_property, postEvent: false)
+    self.symbolPins_property.addEBObserverOf_nameRect (self.issues_property, postEvent: false)
+    self.symbolPins_property.addEBObserverOf_xPin (self.issues_property, postEvent: false)
+    self.symbolPins_property.addEBObserverOf_yPin (self.issues_property, postEvent: false)
+    self.issues_property.postEvent ()
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -426,7 +428,8 @@ class SymbolRoot : EBManagedObject,
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.noIssue_property)
+    self.issues_property.addEBObserver (self.noIssue_property, postEvent: false)
+    self.noIssue_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
     self.symbolPins_property.setDataProvider (self.symbolObjects_property)
   //--- Register properties for handling signature
@@ -435,6 +438,7 @@ class SymbolRoot : EBManagedObject,
     self.xPlacardUnit_property.setSignatureObserver (observer: self)
     self.yPlacardUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

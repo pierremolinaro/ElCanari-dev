@@ -36,7 +36,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserverOf_mPinInstanceName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPinInstanceName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinInstanceName.insert (inObserver)
     switch prop {
@@ -44,7 +44,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPinInstanceName_property.addEBObserver (inObserver)
+        managedObject.mPinInstanceName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -93,7 +93,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPadName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPadName.insert (inObserver)
     switch prop {
@@ -101,7 +101,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPadName_property.addEBObserver (inObserver)
+        managedObject.mPadName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -150,7 +150,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserverOf_mIsNC (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mIsNC (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mIsNC.insert (inObserver)
     switch prop {
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mIsNC_property.addEBObserver (inObserver)
+        managedObject.mIsNC_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -207,7 +207,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
+  final func addEBObserverOf_isConnected (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isConnected.insert (inObserver)
     switch prop {
@@ -215,7 +215,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.isConnected_property.addEBObserver (inObserver)
+        managedObject.isConnected_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -263,7 +263,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolName.insert (inObserver)
     switch prop {
@@ -271,7 +271,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolName_property.addEBObserver (inObserver)
+        managedObject.symbolName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -845,9 +845,9 @@ final class PreferencesArrayOf_PadProxyInDevice : StoredArrayOf_PadProxyInDevice
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mPinInstanceName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mPadName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mIsNC (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mPinInstanceName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mPadName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mIsNC (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

@@ -314,7 +314,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   //····················································································································
 
   private final func bind_property_mY () {
-    self.selectedArray_property.addEBObserverOf_mY (self.mY_property)
+    self.selectedArray_property.addEBObserverOf_mY (self.mY_property, postEvent: true)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -383,7 +383,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   //····················································································································
 
   private final func bind_property_mWidth () {
-    self.selectedArray_property.addEBObserverOf_mWidth (self.mWidth_property)
+    self.selectedArray_property.addEBObserverOf_mWidth (self.mWidth_property, postEvent: true)
     self.mWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -452,7 +452,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   //····················································································································
 
   private final func bind_property_mHeight () {
-    self.selectedArray_property.addEBObserverOf_mHeight (self.mHeight_property)
+    self.selectedArray_property.addEBObserverOf_mHeight (self.mHeight_property, postEvent: true)
     self.mHeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -521,7 +521,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   //····················································································································
 
   private final func bind_property_mIsInFrontLayer () {
-    self.selectedArray_property.addEBObserverOf_mIsInFrontLayer (self.mIsInFrontLayer_property)
+    self.selectedArray_property.addEBObserverOf_mIsInFrontLayer (self.mIsInFrontLayer_property, postEvent: true)
     self.mIsInFrontLayer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -590,7 +590,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   //····················································································································
 
   private final func bind_property_mIsInBackLayer () {
-    self.selectedArray_property.addEBObserverOf_mIsInBackLayer (self.mIsInBackLayer_property)
+    self.selectedArray_property.addEBObserverOf_mIsInBackLayer (self.mIsInBackLayer_property, postEvent: true)
     self.mIsInBackLayer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -659,7 +659,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   //····················································································································
 
   private final func bind_property_mX () {
-    self.selectedArray_property.addEBObserverOf_mX (self.mX_property)
+    self.selectedArray_property.addEBObserverOf_mX (self.mX_property, postEvent: true)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -728,7 +728,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property, postEvent: true)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -767,7 +767,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property, postEvent: true)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -806,7 +806,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   //····················································································································
 
   private final func bind_property_signatureForERCChecking () {
-    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property, postEvent: true)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

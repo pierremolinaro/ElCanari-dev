@@ -163,6 +163,7 @@ class SymbolSolidRect : SymbolObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: y
     self.y_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: width
@@ -195,10 +196,11 @@ class SymbolSolidRect : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.filledBezierPath_property)
-    self.y_property.addEBObserver (self.filledBezierPath_property)
-    self.width_property.addEBObserver (self.filledBezierPath_property)
-    self.height_property.addEBObserver (self.filledBezierPath_property)
+    self.x_property.addEBObserver (self.filledBezierPath_property, postEvent: false)
+    self.y_property.addEBObserver (self.filledBezierPath_property, postEvent: false)
+    self.width_property.addEBObserver (self.filledBezierPath_property, postEvent: false)
+    self.height_property.addEBObserver (self.filledBezierPath_property, postEvent: false)
+    self.filledBezierPath_property.postEvent ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -225,12 +227,13 @@ class SymbolSolidRect : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.objectDisplay_property)
-    self.y_property.addEBObserver (self.objectDisplay_property)
-    self.width_property.addEBObserver (self.objectDisplay_property)
-    self.height_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    self.x_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.y_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.width_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.height_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -255,10 +258,11 @@ class SymbolSolidRect : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.selectionDisplay_property)
-    self.y_property.addEBObserver (self.selectionDisplay_property)
-    self.width_property.addEBObserver (self.selectionDisplay_property)
-    self.height_property.addEBObserver (self.selectionDisplay_property)
+    self.x_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.y_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.width_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.height_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -283,10 +287,11 @@ class SymbolSolidRect : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.issues_property)
-    self.y_property.addEBObserver (self.issues_property)
-    self.width_property.addEBObserver (self.issues_property)
-    self.height_property.addEBObserver (self.issues_property)
+    self.x_property.addEBObserver (self.issues_property, postEvent: false)
+    self.y_property.addEBObserver (self.issues_property, postEvent: false)
+    self.width_property.addEBObserver (self.issues_property, postEvent: false)
+    self.height_property.addEBObserver (self.issues_property, postEvent: false)
+    self.issues_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.height_property.setSignatureObserver (observer: self)
@@ -294,6 +299,7 @@ class SymbolSolidRect : SymbolObject,
     self.x_property.setSignatureObserver (observer: self)
     self.y_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

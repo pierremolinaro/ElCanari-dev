@@ -403,6 +403,7 @@ class PackageZone : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: x
     self.x_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y
@@ -460,15 +461,16 @@ class PackageZone : PackageObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.objectDisplay_property)
-    self.y_property.addEBObserver (self.objectDisplay_property)
-    self.width_property.addEBObserver (self.objectDisplay_property)
-    self.height_property.addEBObserver (self.objectDisplay_property)
-    self.xName_property.addEBObserver (self.objectDisplay_property)
-    self.yName_property.addEBObserver (self.objectDisplay_property)
-    self.zoneName_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.padZoneFont_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.padZoneColor_property.addEBObserver (self.objectDisplay_property)
+    self.x_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.y_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.width_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.height_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.xName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.yName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.zoneName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.padZoneFont_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.padZoneColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -498,15 +500,16 @@ class PackageZone : PackageObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.selectionDisplay_property)
-    self.y_property.addEBObserver (self.selectionDisplay_property)
-    self.width_property.addEBObserver (self.selectionDisplay_property)
-    self.height_property.addEBObserver (self.selectionDisplay_property)
-    self.xName_property.addEBObserver (self.selectionDisplay_property)
-    self.yName_property.addEBObserver (self.selectionDisplay_property)
-    self.zoneName_property.addEBObserver (self.selectionDisplay_property)
-    g_Preferences?.padZoneFont_property.addEBObserver (self.selectionDisplay_property)
-    g_Preferences?.padZoneColor_property.addEBObserver (self.selectionDisplay_property)
+    self.x_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.y_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.width_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.height_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.xName_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.yName_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.zoneName_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    g_Preferences?.padZoneFont_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    g_Preferences?.padZoneColor_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -534,13 +537,14 @@ class PackageZone : PackageObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.issues_property)
-    self.y_property.addEBObserver (self.issues_property)
-    self.width_property.addEBObserver (self.issues_property)
-    self.height_property.addEBObserver (self.issues_property)
-    self.xName_property.addEBObserver (self.issues_property)
-    self.yName_property.addEBObserver (self.issues_property)
-    self.zoneName_property.addEBObserver (self.issues_property)
+    self.x_property.addEBObserver (self.issues_property, postEvent: false)
+    self.y_property.addEBObserver (self.issues_property, postEvent: false)
+    self.width_property.addEBObserver (self.issues_property, postEvent: false)
+    self.height_property.addEBObserver (self.issues_property, postEvent: false)
+    self.xName_property.addEBObserver (self.issues_property, postEvent: false)
+    self.yName_property.addEBObserver (self.issues_property, postEvent: false)
+    self.zoneName_property.addEBObserver (self.issues_property, postEvent: false)
+    self.issues_property.postEvent ()
   //--- Atomic property: rect
     self.rect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -565,10 +569,11 @@ class PackageZone : PackageObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.rect_property)
-    self.y_property.addEBObserver (self.rect_property)
-    self.width_property.addEBObserver (self.rect_property)
-    self.height_property.addEBObserver (self.rect_property)
+    self.x_property.addEBObserver (self.rect_property, postEvent: false)
+    self.y_property.addEBObserver (self.rect_property, postEvent: false)
+    self.width_property.addEBObserver (self.rect_property, postEvent: false)
+    self.height_property.addEBObserver (self.rect_property, postEvent: false)
+    self.rect_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.height_property.setSignatureObserver (observer: self)
@@ -586,6 +591,7 @@ class PackageZone : PackageObject,
     self.zoneName_property.setSignatureObserver (observer: self)
     self.zoneNumbering_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

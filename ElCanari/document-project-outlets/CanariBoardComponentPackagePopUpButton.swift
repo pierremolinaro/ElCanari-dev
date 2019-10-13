@@ -49,8 +49,9 @@ class CanariBoardComponentPackagePopUpButton : NSPopUpButton, EBUserClassNamePro
     self.mObserver = observer
     observer.mEventCallBack = { self.buildPopUpButton () }
     inSelectedObjects.addEBObserver (observer)
-    inSelectedObjects.addEBObserverOf_selectedPackageName (observer)
-    inSelectedObjects.addEBObserverOf_mPackages (observer)
+    inSelectedObjects.addEBObserverOf_selectedPackageName (observer, postEvent: false)
+    inSelectedObjects.addEBObserverOf_mPackages (observer, postEvent: false)
+    observer.postEvent ()
   }
 
   //····················································································································

@@ -138,6 +138,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: mPadName
     self.mPadName_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPin
@@ -165,9 +166,10 @@ class DevicePadAssignmentInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPadName_property.addEBObserver (self.pinPadAssignment_property)
-    self.mPin_property.addEBObserverOf_mSymbolInstanceName (self.pinPadAssignment_property)
-    self.mPin_property.addEBObserverOf_mPinName (self.pinPadAssignment_property)
+    self.mPadName_property.addEBObserver (self.pinPadAssignment_property, postEvent: false)
+    self.mPin_property.addEBObserverOf_mSymbolInstanceName (self.pinPadAssignment_property, postEvent: false)
+    self.mPin_property.addEBObserverOf_mPinName (self.pinPadAssignment_property, postEvent: false)
+    self.pinPadAssignment_property.postEvent ()
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -190,11 +192,13 @@ class DevicePadAssignmentInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPadName_property.addEBObserver (self.descriptor_property)
-    self.mPin_property.addEBObserverOf_descriptor (self.descriptor_property)
+    self.mPadName_property.addEBObserver (self.descriptor_property, postEvent: false)
+    self.mPin_property.addEBObserverOf_descriptor (self.descriptor_property, postEvent: false)
+    self.descriptor_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

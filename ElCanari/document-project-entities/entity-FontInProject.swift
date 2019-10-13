@@ -259,6 +259,7 @@ class FontInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- To many property: mTexts (has opposite relationship)
     self.mTexts_property.ebUndoManager = self.ebUndoManager
     self.mTexts_property.setOppositeRelationShipFunctions (
@@ -306,7 +307,8 @@ class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mFontVersion_property.addEBObserver (self.versionString_property)
+    self.mFontVersion_property.addEBObserver (self.versionString_property, postEvent: false)
+    self.versionString_property.postEvent ()
   //--- Atomic property: sizeString
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -328,7 +330,8 @@ class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mDescriptiveString_property.addEBObserver (self.sizeString_property)
+    self.mDescriptiveString_property.addEBObserver (self.sizeString_property, postEvent: false)
+    self.sizeString_property.postEvent ()
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -351,8 +354,9 @@ class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNominalSize_property.addEBObserver (self.descriptor_property)
-    self.mDescriptiveString_property.addEBObserver (self.descriptor_property)
+    self.mNominalSize_property.addEBObserver (self.descriptor_property, postEvent: false)
+    self.mDescriptiveString_property.addEBObserver (self.descriptor_property, postEvent: false)
+    self.descriptor_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
     self.mTexts_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
@@ -368,6 +372,7 @@ class FontInProject : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

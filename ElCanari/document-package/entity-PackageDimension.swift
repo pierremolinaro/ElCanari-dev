@@ -379,6 +379,7 @@ class PackageDimension : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: y1
     self.y1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x2
@@ -429,10 +430,11 @@ class PackageDimension : PackageObject,
         return .empty
       }
     }
-    self.x1_property.addEBObserver (self.distanceInCanariUnit_property)
-    self.y1_property.addEBObserver (self.distanceInCanariUnit_property)
-    self.x2_property.addEBObserver (self.distanceInCanariUnit_property)
-    self.y2_property.addEBObserver (self.distanceInCanariUnit_property)
+    self.x1_property.addEBObserver (self.distanceInCanariUnit_property, postEvent: false)
+    self.y1_property.addEBObserver (self.distanceInCanariUnit_property, postEvent: false)
+    self.x2_property.addEBObserver (self.distanceInCanariUnit_property, postEvent: false)
+    self.y2_property.addEBObserver (self.distanceInCanariUnit_property, postEvent: false)
+    self.distanceInCanariUnit_property.postEvent ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -464,17 +466,18 @@ class PackageDimension : PackageObject,
         return .empty
       }
     }
-    self.x1_property.addEBObserver (self.objectDisplay_property)
-    self.y1_property.addEBObserver (self.objectDisplay_property)
-    self.x2_property.addEBObserver (self.objectDisplay_property)
-    self.y2_property.addEBObserver (self.objectDisplay_property)
-    self.xDimension_property.addEBObserver (self.objectDisplay_property)
-    self.yDimension_property.addEBObserver (self.objectDisplay_property)
-    self.distanceInCanariUnit_property.addEBObserver (self.objectDisplay_property)
-    self.distanceUnit_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.dimensionFont_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageBackgroundColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.packageDimensionColor_property.addEBObserver (self.objectDisplay_property)
+    self.x1_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.y1_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.x2_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.y2_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.xDimension_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.yDimension_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.distanceInCanariUnit_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.distanceUnit_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.dimensionFont_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.packageBackgroundColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.packageDimensionColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -504,15 +507,16 @@ class PackageDimension : PackageObject,
         return .empty
       }
     }
-    self.x1_property.addEBObserver (self.selectionDisplay_property)
-    self.y1_property.addEBObserver (self.selectionDisplay_property)
-    self.x2_property.addEBObserver (self.selectionDisplay_property)
-    self.y2_property.addEBObserver (self.selectionDisplay_property)
-    self.xDimension_property.addEBObserver (self.selectionDisplay_property)
-    self.yDimension_property.addEBObserver (self.selectionDisplay_property)
-    self.distanceInCanariUnit_property.addEBObserver (self.selectionDisplay_property)
-    self.distanceUnit_property.addEBObserver (self.selectionDisplay_property)
-    g_Preferences?.dimensionFont_property.addEBObserver (self.selectionDisplay_property)
+    self.x1_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.y1_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.x2_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.y2_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.xDimension_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.yDimension_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.distanceInCanariUnit_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.distanceUnit_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    g_Preferences?.dimensionFont_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -537,10 +541,11 @@ class PackageDimension : PackageObject,
         return .empty
       }
     }
-    self.x1_property.addEBObserver (self.issues_property)
-    self.y1_property.addEBObserver (self.issues_property)
-    self.x2_property.addEBObserver (self.issues_property)
-    self.y2_property.addEBObserver (self.issues_property)
+    self.x1_property.addEBObserver (self.issues_property, postEvent: false)
+    self.y1_property.addEBObserver (self.issues_property, postEvent: false)
+    self.x2_property.addEBObserver (self.issues_property, postEvent: false)
+    self.y2_property.addEBObserver (self.issues_property, postEvent: false)
+    self.issues_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.distanceUnit_property.setSignatureObserver (observer: self)
@@ -557,6 +562,7 @@ class PackageDimension : PackageObject,
     self.yDimension_property.setSignatureObserver (observer: self)
     self.yDimensionUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

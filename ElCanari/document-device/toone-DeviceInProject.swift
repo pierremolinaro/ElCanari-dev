@@ -67,14 +67,14 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mDeviceName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mDeviceName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mDeviceName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mDeviceName_property.addEBObserver (inObserver)
+       v?.mDeviceName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -137,14 +137,14 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mPrefix (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mPrefix (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mPrefix.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mPrefix_property.addEBObserver (inObserver)
+       v?.mPrefix_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -207,14 +207,14 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mDeviceVersion (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mDeviceVersion (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mDeviceVersion.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mDeviceVersion_property.addEBObserver (inObserver)
+       v?.mDeviceVersion_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -277,14 +277,14 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mDeviceFileData (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mDeviceFileData (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mDeviceFileData.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mDeviceFileData_property.addEBObserver (inObserver)
+       v?.mDeviceFileData_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -347,14 +347,14 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_versionString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_versionString.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.versionString_property.addEBObserver (inObserver)
+      v?.versionString_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -416,14 +416,14 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_sizeString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_sizeString.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.sizeString_property.addEBObserver (inObserver)
+      v?.sizeString_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -485,14 +485,14 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_canExport (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_canExport (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_canExport.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.canExport_property.addEBObserver (inObserver)
+      v?.canExport_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -554,14 +554,14 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_packageNames (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_packageNames (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_packageNames.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.packageNames_property.addEBObserver (inObserver)
+      v?.packageNames_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -623,14 +623,14 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_canRemove (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_canRemove.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.canRemove_property.addEBObserver (inObserver)
+      v?.canRemove_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -692,14 +692,14 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_symbolAndTypesNames (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_symbolAndTypesNames (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_symbolAndTypesNames.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.symbolAndTypesNames_property.addEBObserver (inObserver)
+      v?.symbolAndTypesNames_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -761,14 +761,14 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_pinPadAssignments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_pinPadAssignments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.pinPadAssignments_property.addEBObserver (inObserver)
+      v?.pinPadAssignments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -830,14 +830,14 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_deviceSymbolDictionary.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.deviceSymbolDictionary_property.addEBObserver (inObserver)
+      v?.deviceSymbolDictionary_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -899,10 +899,10 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mPackages (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPackages (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_mPackages.insert (inObserver)
     if let object = self.propval {
-      object.mPackages_property.addEBObserver (inObserver)
+      object.mPackages_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -940,10 +940,10 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbols (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSymbols (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_mSymbols.insert (inObserver)
     if let object = self.propval {
-      object.mSymbols_property.addEBObserver (inObserver)
+      object.mSymbols_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -981,10 +981,10 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mComponents (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mComponents (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_mComponents.insert (inObserver)
     if let object = self.propval {
-      object.mComponents_property.addEBObserver (inObserver)
+      object.mComponents_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1022,10 +1022,10 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mPadAssignments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPadAssignments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_mPadAssignments.insert (inObserver)
     if let object = self.propval {
-      object.mPadAssignments_property.addEBObserver (inObserver)
+      object.mPadAssignments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 

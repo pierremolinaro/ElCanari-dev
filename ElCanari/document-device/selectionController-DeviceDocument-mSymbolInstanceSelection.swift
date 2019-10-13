@@ -271,7 +271,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   //···················································································································*
 
   private final func bind_property_mInstanceName (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.addEBObserverOf_mInstanceName (self.mInstanceName_property)
+    model.addEBObserverOf_mInstanceName (self.mInstanceName_property, postEvent: true)
     self.mInstanceName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -341,7 +341,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   //···················································································································*
 
   private final func bind_property_mX (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.addEBObserverOf_mX (self.mX_property)
+    model.addEBObserverOf_mX (self.mX_property, postEvent: true)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -411,7 +411,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   //···················································································································*
 
   private final func bind_property_mY (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.addEBObserverOf_mY (self.mY_property)
+    model.addEBObserverOf_mY (self.mY_property, postEvent: true)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -481,7 +481,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   //···················································································································*
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    model.addEBObserverOf_objectDisplay (self.objectDisplay_property, postEvent: true)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -521,7 +521,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   //···················································································································*
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property, postEvent: true)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -561,7 +561,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   //···················································································································*
 
   private final func bind_property_symbolQualifiedName (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.addEBObserverOf_symbolQualifiedName (self.symbolQualifiedName_property)
+    model.addEBObserverOf_symbolQualifiedName (self.symbolQualifiedName_property, postEvent: true)
     self.symbolQualifiedName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -601,7 +601,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   //···················································································································*
 
   private final func bind_property_symbolTypeName (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.addEBObserverOf_symbolTypeName (self.symbolTypeName_property)
+    model.addEBObserverOf_symbolTypeName (self.symbolTypeName_property, postEvent: true)
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -641,7 +641,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   //···················································································································*
 
   private final func bind_property_unconnectedPins (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.addEBObserverOf_unconnectedPins (self.unconnectedPins_property)
+    model.addEBObserverOf_unconnectedPins (self.unconnectedPins_property, postEvent: true)
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {

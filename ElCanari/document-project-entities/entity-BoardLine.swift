@@ -294,6 +294,7 @@ class BoardLine : BoardObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: mWidthUnit
     self.mWidthUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mX1
@@ -344,14 +345,15 @@ class BoardLine : BoardObject,
         return .empty
       }
     }
-    self.mX1_property.addEBObserver (self.objectDisplay_property)
-    self.mY1_property.addEBObserver (self.objectDisplay_property)
-    self.mX2_property.addEBObserver (self.objectDisplay_property)
-    self.mY2_property.addEBObserver (self.objectDisplay_property)
-    self.mWidth_property.addEBObserver (self.objectDisplay_property)
-    self.mLayer_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    self.mX1_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.mY1_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.mX2_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.mY2_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.mWidth_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.mLayer_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    g_Preferences?.backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
+    self.objectDisplay_property.postEvent ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -378,15 +380,17 @@ class BoardLine : BoardObject,
         return .empty
       }
     }
-    self.mX1_property.addEBObserver (self.selectionDisplay_property)
-    self.mY1_property.addEBObserver (self.selectionDisplay_property)
-    self.mX2_property.addEBObserver (self.selectionDisplay_property)
-    self.mY2_property.addEBObserver (self.selectionDisplay_property)
-    self.mWidth_property.addEBObserver (self.selectionDisplay_property)
-    self.mLayer_property.addEBObserver (self.selectionDisplay_property)
+    self.mX1_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.mY1_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.mX2_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.mY2_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.mWidth_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.mLayer_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
+    self.selectionDisplay_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -32,7 +32,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
@@ -40,7 +40,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -88,7 +88,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver)
+        managedObject.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -144,7 +144,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver)
+        managedObject.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }

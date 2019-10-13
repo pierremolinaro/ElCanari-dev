@@ -36,7 +36,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
@@ -44,7 +44,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver)
+        managedObject.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -92,7 +92,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
@@ -100,7 +100,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -148,7 +148,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netName.insert (inObserver)
     switch prop {
@@ -156,7 +156,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netName_property.addEBObserver (inObserver)
+        managedObject.netName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -204,7 +204,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netClassName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassName.insert (inObserver)
     switch prop {
@@ -212,7 +212,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netClassName_property.addEBObserver (inObserver)
+        managedObject.netClassName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -260,7 +260,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserverOf_hasNet (_ inObserver : EBEvent) {
+  final func addEBObserverOf_hasNet (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_hasNet.insert (inObserver)
     switch prop {
@@ -268,7 +268,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.hasNet_property.addEBObserver (inObserver)
+        managedObject.hasNet_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }

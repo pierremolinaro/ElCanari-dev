@@ -48,7 +48,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mPinX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPinX (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinX.insert (inObserver)
     switch prop {
@@ -56,7 +56,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPinX_property.addEBObserver (inObserver)
+        managedObject.mPinX_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mPinY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPinY (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinY.insert (inObserver)
     switch prop {
@@ -113,7 +113,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPinY_property.addEBObserver (inObserver)
+        managedObject.mPinY_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -162,7 +162,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mXName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mXName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mXName.insert (inObserver)
     switch prop {
@@ -170,7 +170,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mXName_property.addEBObserver (inObserver)
+        managedObject.mXName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mYName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mYName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mYName.insert (inObserver)
     switch prop {
@@ -227,7 +227,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mYName_property.addEBObserver (inObserver)
+        managedObject.mYName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mName.insert (inObserver)
     switch prop {
@@ -284,7 +284,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mName_property.addEBObserver (inObserver)
+        managedObject.mName_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -333,7 +333,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mNameHorizontalAlignment (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mNameHorizontalAlignment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNameHorizontalAlignment.insert (inObserver)
     switch prop {
@@ -341,7 +341,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mNameHorizontalAlignment_property.addEBObserver (inObserver)
+        managedObject.mNameHorizontalAlignment_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -390,7 +390,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mPinNameIsDisplayedInSchematics (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPinNameIsDisplayedInSchematics (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinNameIsDisplayedInSchematics.insert (inObserver)
     switch prop {
@@ -398,7 +398,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPinNameIsDisplayedInSchematics_property.addEBObserver (inObserver)
+        managedObject.mPinNameIsDisplayedInSchematics_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -447,7 +447,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mXNumber (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mXNumber (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mXNumber.insert (inObserver)
     switch prop {
@@ -455,7 +455,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mXNumber_property.addEBObserver (inObserver)
+        managedObject.mXNumber_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -504,7 +504,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mYNumber (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mYNumber (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mYNumber.insert (inObserver)
     switch prop {
@@ -512,7 +512,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mYNumber_property.addEBObserver (inObserver)
+        managedObject.mYNumber_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -561,7 +561,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mNumberHorizontalAlignment (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mNumberHorizontalAlignment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNumberHorizontalAlignment.insert (inObserver)
     switch prop {
@@ -569,7 +569,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mNumberHorizontalAlignment_property.addEBObserver (inObserver)
+        managedObject.mNumberHorizontalAlignment_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -618,7 +618,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_nameShape (_ inObserver : EBEvent) {
+  final func addEBObserverOf_nameShape (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.addEBObserver (inObserver)
     self.mObserversOf_nameShape.insert (inObserver)
     switch prop {
@@ -626,7 +626,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.nameShape_property.addEBObserver (inObserver)
+        managedObject.nameShape_property.addEBObserver (inObserver, postEvent: inPostEvent)
       }
     }
   }
@@ -1200,16 +1200,16 @@ final class PreferencesArrayOf_SymbolPinTypeInDevice : StoredArrayOf_SymbolPinTy
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mPinX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mPinY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mXName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mYName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mNameHorizontalAlignment (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mPinNameIsDisplayedInSchematics (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mXNumber (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mYNumber (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mNumberHorizontalAlignment (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mPinX (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mPinY (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mXName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mYName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mNameHorizontalAlignment (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mPinNameIsDisplayedInSchematics (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mXNumber (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mYNumber (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mNumberHorizontalAlignment (self.mObserverForWritingPreferences, postEvent: true)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

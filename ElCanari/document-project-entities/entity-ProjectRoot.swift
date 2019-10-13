@@ -3196,6 +3196,7 @@ class ProjectRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mArtworkVersion
@@ -3344,7 +3345,7 @@ class ProjectRoot : EBManagedObject,
     self.minPPTPTTTWdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minPPTPTTTWdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minPPTPTTTWdisplayUnit (self.minPPTPTTTWdisplayUnit_property)
+    self.mArtwork_property.addEBObserverOf_minPPTPTTTWdisplayUnit (self.minPPTPTTTWdisplayUnit_property, postEvent: true)
   //--- Atomic proxy property: minPPTPTTTW
     self.minPPTPTTTW_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3359,7 +3360,7 @@ class ProjectRoot : EBManagedObject,
     self.minPPTPTTTW_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minPPTPTTTW_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minPPTPTTTW (self.minPPTPTTTW_property)
+    self.mArtwork_property.addEBObserverOf_minPPTPTTTW (self.minPPTPTTTW_property, postEvent: true)
   //--- Atomic proxy property: minValueForOARdisplayUnit
     self.minValueForOARdisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3374,7 +3375,7 @@ class ProjectRoot : EBManagedObject,
     self.minValueForOARdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForOARdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minValueForOARdisplayUnit (self.minValueForOARdisplayUnit_property)
+    self.mArtwork_property.addEBObserverOf_minValueForOARdisplayUnit (self.minValueForOARdisplayUnit_property, postEvent: true)
   //--- Atomic proxy property: minValueForOARinEBUnit
     self.minValueForOARinEBUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3389,7 +3390,7 @@ class ProjectRoot : EBManagedObject,
     self.minValueForOARinEBUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForOARinEBUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minValueForOARinEBUnit (self.minValueForOARinEBUnit_property)
+    self.mArtwork_property.addEBObserverOf_minValueForOARinEBUnit (self.minValueForOARinEBUnit_property, postEvent: true)
   //--- Atomic proxy property: minValueForPHDdisplayUnit
     self.minValueForPHDdisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3404,7 +3405,7 @@ class ProjectRoot : EBManagedObject,
     self.minValueForPHDdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForPHDdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minValueForPHDdisplayUnit (self.minValueForPHDdisplayUnit_property)
+    self.mArtwork_property.addEBObserverOf_minValueForPHDdisplayUnit (self.minValueForPHDdisplayUnit_property, postEvent: true)
   //--- Atomic proxy property: minValueForPHDinEBUnit
     self.minValueForPHDinEBUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3419,7 +3420,7 @@ class ProjectRoot : EBManagedObject,
     self.minValueForPHDinEBUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForPHDinEBUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minValueForPHDinEBUnit (self.minValueForPHDinEBUnit_property)
+    self.mArtwork_property.addEBObserverOf_minValueForPHDinEBUnit (self.minValueForPHDinEBUnit_property, postEvent: true)
   //--- Atomic proxy property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3434,7 +3435,7 @@ class ProjectRoot : EBManagedObject,
     self.minValueForBoardLimitWidth_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForBoardLimitWidth_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minValueForBoardLimitWidth (self.minValueForBoardLimitWidth_property)
+    self.mArtwork_property.addEBObserverOf_minValueForBoardLimitWidth (self.minValueForBoardLimitWidth_property, postEvent: true)
   //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
     self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3449,7 +3450,7 @@ class ProjectRoot : EBManagedObject,
     self.minValueForBoardLimitWidthDisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (self.minValueForBoardLimitWidthDisplayUnit_property)
+    self.mArtwork_property.addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (self.minValueForBoardLimitWidthDisplayUnit_property, postEvent: true)
   //--- Atomic proxy property: drillDataFileExtension
     self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3464,7 +3465,7 @@ class ProjectRoot : EBManagedObject,
     self.drillDataFileExtension_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.drillDataFileExtension_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_drillDataFileExtension (self.drillDataFileExtension_property)
+    self.mArtwork_property.addEBObserverOf_drillDataFileExtension (self.drillDataFileExtension_property, postEvent: true)
   //--- Atomic proxy property: comments
     self.comments_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3479,7 +3480,7 @@ class ProjectRoot : EBManagedObject,
     self.comments_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.comments_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_comments (self.comments_property)
+    self.mArtwork_property.addEBObserverOf_comments (self.comments_property, postEvent: true)
   //--- Atomic proxy property: selectedSheetTitle
     self.selectedSheetTitle_property.mReadModelFunction = { [weak self] in
       if let object = self?.mSelectedSheet {
@@ -3494,7 +3495,7 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetTitle_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
       return self?.mSelectedSheet?.mSheetTitle_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.selectedSheetTitle_property)
+    self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.selectedSheetTitle_property, postEvent: true)
   //--- ToMany proxy: selectedSheetObjects
     do{
       let controller = EBSimpleController (
@@ -3505,7 +3506,7 @@ class ProjectRoot : EBManagedObject,
           }
         }
       )
-      self.mSelectedSheet_property.addEBObserverOf_mObjects (controller)
+      self.mSelectedSheet_property.addEBObserverOf_mObjects (controller, postEvent: true)
       self.selectedSheetObjects_modelDidChangeController = controller
     }
   //--- ToMany proxy: fileGenerationParameterArray
@@ -3518,7 +3519,7 @@ class ProjectRoot : EBManagedObject,
           }
         }
       )
-      self.mArtwork_property.addEBObserverOf_fileGenerationParameterArray (controller)
+      self.mArtwork_property.addEBObserverOf_fileGenerationParameterArray (controller, postEvent: true)
       self.fileGenerationParameterArray_modelDidChangeController = controller
     }
   //--- Atomic property: boardGridStepMultipliedByDisplayFactor
@@ -3543,8 +3544,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBoardGridStep_property.addEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
-    self.mBoardGridDisplayFactor_property.addEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
+    self.mBoardGridStep_property.addEBObserver (self.boardGridStepMultipliedByDisplayFactor_property, postEvent: false)
+    self.mBoardGridDisplayFactor_property.addEBObserver (self.boardGridStepMultipliedByDisplayFactor_property, postEvent: false)
+    self.boardGridStepMultipliedByDisplayFactor_property.postEvent ()
   //--- Atomic property: boardLimitsGridStepMultipliedByDisplayFactor
     self.boardLimitsGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3567,8 +3569,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBoardLimitsGridStep_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
-    self.mBoardLimitsGridDisplayFactor_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
+    self.mBoardLimitsGridStep_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property, postEvent: false)
+    self.mBoardLimitsGridDisplayFactor_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property, postEvent: false)
+    self.boardLimitsGridStepMultipliedByDisplayFactor_property.postEvent ()
   //--- To one property: mSelectedSheet
     self.mSelectedSheet_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedSheetIssues
@@ -3592,7 +3595,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSelectedSheet_property.addEBObserverOf_issues (self.selectedSheetIssues_property)
+    self.mSelectedSheet_property.addEBObserverOf_issues (self.selectedSheetIssues_property, postEvent: false)
+    self.selectedSheetIssues_property.postEvent ()
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3615,8 +3619,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSelectedSheet_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
-    self.selectedSheetIssues_property.addEBObserver (self.connectedPoints_property)
+    self.mSelectedSheet_property.addEBObserverOf_connectedPoints (self.connectedPoints_property, postEvent: false)
+    self.selectedSheetIssues_property.addEBObserver (self.connectedPoints_property, postEvent: false)
+    self.connectedPoints_property.postEvent ()
   //--- Atomic property: connexionWarningString
     self.connexionWarningString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3638,7 +3643,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSheets_property.addEBObserverOf_connexionWarnings (self.connexionWarningString_property)
+    self.mSheets_property.addEBObserverOf_connexionWarnings (self.connexionWarningString_property, postEvent: false)
+    self.connexionWarningString_property.postEvent ()
   //--- Atomic property: connexionErrorString
     self.connexionErrorString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3660,7 +3666,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSheets_property.addEBObserverOf_connexionErrors (self.connexionErrorString_property)
+    self.mSheets_property.addEBObserverOf_connexionErrors (self.connexionErrorString_property, postEvent: false)
+    self.connexionErrorString_property.postEvent ()
   //--- Atomic property: sheetIndexes
     self.sheetIndexes_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3682,7 +3689,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSheets_property.addEBObserver (self.sheetIndexes_property)
+    self.mSheets_property.addEBObserver (self.sheetIndexes_property, postEvent: false)
+    self.sheetIndexes_property.postEvent ()
   //--- Atomic property: netsDescription
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3704,7 +3712,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClasses_property.addEBObserverOf_netsDescription (self.netsDescription_property)
+    self.mNetClasses_property.addEBObserverOf_netsDescription (self.netsDescription_property, postEvent: false)
+    self.netsDescription_property.postEvent ()
   //--- Atomic property: boardIssues
     self.boardIssues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3726,7 +3735,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBoardObjects_property.addEBObserverOf_issues (self.boardIssues_property)
+    self.mBoardObjects_property.addEBObserverOf_issues (self.boardIssues_property, postEvent: false)
+    self.boardIssues_property.postEvent ()
   //--- To one property: mArtwork
     self.mArtwork_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: signatureForERCChecking
@@ -3751,8 +3761,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBoardObjects_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
-    self.mArtwork_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.mBoardObjects_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property, postEvent: false)
+    self.mArtwork_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property, postEvent: false)
+    self.signatureForERCChecking_property.postEvent ()
   //--- Atomic property: ercStatusImage
     self.ercStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3776,9 +3787,10 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mLastERCCheckingIsSuccess_property.addEBObserver (self.ercStatusImage_property)
-    self.mLastERCCheckingSignature_property.addEBObserver (self.ercStatusImage_property)
-    self.signatureForERCChecking_property.addEBObserver (self.ercStatusImage_property)
+    self.mLastERCCheckingIsSuccess_property.addEBObserver (self.ercStatusImage_property, postEvent: false)
+    self.mLastERCCheckingSignature_property.addEBObserver (self.ercStatusImage_property, postEvent: false)
+    self.signatureForERCChecking_property.addEBObserver (self.ercStatusImage_property, postEvent: false)
+    self.ercStatusImage_property.postEvent ()
   //--- Atomic property: ercStatusMessage
     self.ercStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3802,9 +3814,10 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mLastERCCheckingIsSuccess_property.addEBObserver (self.ercStatusMessage_property)
-    self.mLastERCCheckingSignature_property.addEBObserver (self.ercStatusMessage_property)
-    self.signatureForERCChecking_property.addEBObserver (self.ercStatusMessage_property)
+    self.mLastERCCheckingIsSuccess_property.addEBObserver (self.ercStatusMessage_property, postEvent: false)
+    self.mLastERCCheckingSignature_property.addEBObserver (self.ercStatusMessage_property, postEvent: false)
+    self.signatureForERCChecking_property.addEBObserver (self.ercStatusMessage_property, postEvent: false)
+    self.ercStatusMessage_property.postEvent ()
   //--- Atomic property: viaCountString
     self.viaCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3826,7 +3839,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBoardObjects_property.addEBObserverOf_isVia (self.viaCountString_property)
+    self.mBoardObjects_property.addEBObserverOf_isVia (self.viaCountString_property, postEvent: false)
+    self.viaCountString_property.postEvent ()
   //--- Atomic property: trackCountString
     self.trackCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3848,7 +3862,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBoardObjects_property.addEBObserverOf_trackLength (self.trackCountString_property)
+    self.mBoardObjects_property.addEBObserverOf_trackLength (self.trackCountString_property, postEvent: false)
+    self.trackCountString_property.postEvent ()
   //--- Atomic property: trackLengthString
     self.trackLengthString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3871,8 +3886,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBoardObjects_property.addEBObserverOf_trackLength (self.trackLengthString_property)
-    self.mTrackLengthUnit_property.addEBObserver (self.trackLengthString_property)
+    self.mBoardObjects_property.addEBObserverOf_trackLength (self.trackLengthString_property, postEvent: false)
+    self.mTrackLengthUnit_property.addEBObserver (self.trackLengthString_property, postEvent: false)
+    self.trackLengthString_property.postEvent ()
   //--- Atomic property: boardStatusImage
     self.boardStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3894,7 +3910,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardIssues_property.addEBObserver (self.boardStatusImage_property)
+    self.boardIssues_property.addEBObserver (self.boardStatusImage_property, postEvent: false)
+    self.boardStatusImage_property.postEvent ()
   //--- Atomic property: boardStatusMessage
     self.boardStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3916,7 +3933,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardIssues_property.addEBObserver (self.boardStatusMessage_property)
+    self.boardIssues_property.addEBObserver (self.boardStatusMessage_property, postEvent: false)
+    self.boardStatusMessage_property.postEvent ()
   //--- Atomic property: interiorBoundBox
     self.interiorBoundBox_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3938,7 +3956,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBorderCurves_property.addEBObserverOf_descriptor (self.interiorBoundBox_property)
+    self.mBorderCurves_property.addEBObserverOf_descriptor (self.interiorBoundBox_property, postEvent: false)
+    self.interiorBoundBox_property.postEvent ()
   //--- Atomic property: boardBoundBox
     self.boardBoundBox_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3962,9 +3981,10 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.interiorBoundBox_property.addEBObserver (self.boardBoundBox_property)
-    self.mBoardLimitsWidth_property.addEBObserver (self.boardBoundBox_property)
-    self.mBoardClearance_property.addEBObserver (self.boardBoundBox_property)
+    self.interiorBoundBox_property.addEBObserver (self.boardBoundBox_property, postEvent: false)
+    self.mBoardLimitsWidth_property.addEBObserver (self.boardBoundBox_property, postEvent: false)
+    self.mBoardClearance_property.addEBObserver (self.boardBoundBox_property, postEvent: false)
+    self.boardBoundBox_property.postEvent ()
   //--- Atomic property: boardInteriorTop
     self.boardInteriorTop_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3987,8 +4007,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.interiorBoundBox_property.addEBObserver (self.boardInteriorTop_property)
-    self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardInteriorTop_property)
+    self.interiorBoundBox_property.addEBObserver (self.boardInteriorTop_property, postEvent: false)
+    self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardInteriorTop_property, postEvent: false)
+    self.boardInteriorTop_property.postEvent ()
   //--- Atomic property: boardInteriorBottom
     self.boardInteriorBottom_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4011,8 +4032,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.interiorBoundBox_property.addEBObserver (self.boardInteriorBottom_property)
-    self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardInteriorBottom_property)
+    self.interiorBoundBox_property.addEBObserver (self.boardInteriorBottom_property, postEvent: false)
+    self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardInteriorBottom_property, postEvent: false)
+    self.boardInteriorBottom_property.postEvent ()
   //--- Atomic property: boardInteriorLeft
     self.boardInteriorLeft_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4035,8 +4057,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.interiorBoundBox_property.addEBObserver (self.boardInteriorLeft_property)
-    self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardInteriorLeft_property)
+    self.interiorBoundBox_property.addEBObserver (self.boardInteriorLeft_property, postEvent: false)
+    self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardInteriorLeft_property, postEvent: false)
+    self.boardInteriorLeft_property.postEvent ()
   //--- Atomic property: boardInteriorRight
     self.boardInteriorRight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4059,8 +4082,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.interiorBoundBox_property.addEBObserver (self.boardInteriorRight_property)
-    self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardInteriorRight_property)
+    self.interiorBoundBox_property.addEBObserver (self.boardInteriorRight_property, postEvent: false)
+    self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardInteriorRight_property, postEvent: false)
+    self.boardInteriorRight_property.postEvent ()
   //--- Atomic property: boardLimitBorderTop
     self.boardLimitBorderTop_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4083,8 +4107,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardBoundBox_property.addEBObserver (self.boardLimitBorderTop_property)
-    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderTop_property)
+    self.boardBoundBox_property.addEBObserver (self.boardLimitBorderTop_property, postEvent: false)
+    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderTop_property, postEvent: false)
+    self.boardLimitBorderTop_property.postEvent ()
   //--- Atomic property: boardLimitBorderBottom
     self.boardLimitBorderBottom_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4107,8 +4132,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardBoundBox_property.addEBObserver (self.boardLimitBorderBottom_property)
-    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderBottom_property)
+    self.boardBoundBox_property.addEBObserver (self.boardLimitBorderBottom_property, postEvent: false)
+    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderBottom_property, postEvent: false)
+    self.boardLimitBorderBottom_property.postEvent ()
   //--- Atomic property: boardLimitBorderLeft
     self.boardLimitBorderLeft_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4131,8 +4157,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardBoundBox_property.addEBObserver (self.boardLimitBorderLeft_property)
-    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderLeft_property)
+    self.boardBoundBox_property.addEBObserver (self.boardLimitBorderLeft_property, postEvent: false)
+    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderLeft_property, postEvent: false)
+    self.boardLimitBorderLeft_property.postEvent ()
   //--- Atomic property: boardLimitBorderRight
     self.boardLimitBorderRight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4155,8 +4182,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardBoundBox_property.addEBObserver (self.boardLimitBorderRight_property)
-    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderRight_property)
+    self.boardBoundBox_property.addEBObserver (self.boardLimitBorderRight_property, postEvent: false)
+    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderRight_property, postEvent: false)
+    self.boardLimitBorderRight_property.postEvent ()
   //--- Atomic property: borderElementCountString
     self.borderElementCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4178,7 +4206,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBorderCurves_property.addEBObserver (self.borderElementCountString_property)
+    self.mBorderCurves_property.addEBObserver (self.borderElementCountString_property, postEvent: false)
+    self.borderElementCountString_property.postEvent ()
   //--- Atomic property: borderOutlineBackground
     self.borderOutlineBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4204,11 +4233,12 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBorderCurves_property.addEBObserverOf_descriptor (self.borderOutlineBackground_property)
-    self.mBoardLimitsWidth_property.addEBObserver (self.borderOutlineBackground_property)
-    g_Preferences?.boardLimitsColorForBoard_property.addEBObserver (self.borderOutlineBackground_property)
-    self.mBoardClearance_property.addEBObserver (self.borderOutlineBackground_property)
-    g_Preferences?.boardClearanceColorForBoard_property.addEBObserver (self.borderOutlineBackground_property)
+    self.mBorderCurves_property.addEBObserverOf_descriptor (self.borderOutlineBackground_property, postEvent: false)
+    self.mBoardLimitsWidth_property.addEBObserver (self.borderOutlineBackground_property, postEvent: false)
+    g_Preferences?.boardLimitsColorForBoard_property.addEBObserver (self.borderOutlineBackground_property, postEvent: false)
+    self.mBoardClearance_property.addEBObserver (self.borderOutlineBackground_property, postEvent: false)
+    g_Preferences?.boardClearanceColorForBoard_property.addEBObserver (self.borderOutlineBackground_property, postEvent: false)
+    self.borderOutlineBackground_property.postEvent ()
   //--- Atomic property: boarderViewBackground
     self.boarderViewBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4232,9 +4262,10 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    g_Preferences?.boardBackgroundColorForBoard_property.addEBObserver (self.boarderViewBackground_property)
-    self.borderOutlineBackground_property.addEBObserver (self.boarderViewBackground_property)
-    self.mBoardObjects_property.addEBObserverOf_objectDisplay (self.boarderViewBackground_property)
+    g_Preferences?.boardBackgroundColorForBoard_property.addEBObserver (self.boarderViewBackground_property, postEvent: false)
+    self.borderOutlineBackground_property.addEBObserver (self.boarderViewBackground_property, postEvent: false)
+    self.mBoardObjects_property.addEBObserverOf_objectDisplay (self.boarderViewBackground_property, postEvent: false)
+    self.boarderViewBackground_property.postEvent ()
   //--- Atomic property: deviceNames
     self.deviceNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4256,7 +4287,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mDevices_property.addEBObserverOf_mDeviceName (self.deviceNames_property)
+    self.mDevices_property.addEBObserverOf_mDeviceName (self.deviceNames_property, postEvent: false)
+    self.deviceNames_property.postEvent ()
   //--- Atomic property: allClassNames
     self.allClassNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4278,7 +4310,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClasses_property.addEBObserverOf_mNetClassName (self.allClassNames_property)
+    self.mNetClasses_property.addEBObserverOf_mNetClassName (self.allClassNames_property, postEvent: false)
+    self.allClassNames_property.postEvent ()
   //--- Atomic property: schematicBackgroundDisplay
     self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4308,15 +4341,16 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSchematicTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicVersion_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicSheetOrientation_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.schematicBackgroundDisplay_property)
-    self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicCustomWidth_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicCustomHeight_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicTitle_property.addEBObserver (self.schematicBackgroundDisplay_property, postEvent: false)
+    self.mSchematicVersion_property.addEBObserver (self.schematicBackgroundDisplay_property, postEvent: false)
+    self.mSchematicSheetOrientation_property.addEBObserver (self.schematicBackgroundDisplay_property, postEvent: false)
+    self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.schematicBackgroundDisplay_property, postEvent: false)
+    self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property, postEvent: false)
+    self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property, postEvent: false)
+    self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property, postEvent: false)
+    self.mSchematicCustomWidth_property.addEBObserver (self.schematicBackgroundDisplay_property, postEvent: false)
+    self.mSchematicCustomHeight_property.addEBObserver (self.schematicBackgroundDisplay_property, postEvent: false)
+    self.schematicBackgroundDisplay_property.postEvent ()
   //--- Atomic property: netWarningCount
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4338,7 +4372,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClasses_property.addEBObserverOf_netWarningCount (self.netWarningCount_property)
+    self.mNetClasses_property.addEBObserverOf_netWarningCount (self.netWarningCount_property, postEvent: false)
+    self.netWarningCount_property.postEvent ()
   //--- Atomic property: netNamesArray
     self.netNamesArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4360,7 +4395,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClasses_property.addEBObserverOf_netsDescription (self.netNamesArray_property)
+    self.mNetClasses_property.addEBObserverOf_netsDescription (self.netNamesArray_property, postEvent: false)
+    self.netNamesArray_property.postEvent ()
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4382,7 +4418,8 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mComponents_property.addEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
+    self.mComponents_property.addEBObserverOf_unplacedSymbols (self.unplacedSymbols_property, postEvent: false)
+    self.unplacedSymbols_property.postEvent ()
   //--- Atomic property: unplacedPackages
     self.unplacedPackages_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4407,10 +4444,11 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mComponents_property.addEBObserver (self.unplacedPackages_property)
-    self.mComponents_property.addEBObserverOf_componentName (self.unplacedPackages_property)
-    self.mComponents_property.addEBObserverOf_mComponentValue (self.unplacedPackages_property)
-    self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property)
+    self.mComponents_property.addEBObserver (self.unplacedPackages_property, postEvent: false)
+    self.mComponents_property.addEBObserverOf_componentName (self.unplacedPackages_property, postEvent: false)
+    self.mComponents_property.addEBObserverOf_mComponentValue (self.unplacedPackages_property, postEvent: false)
+    self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.unplacedPackages_property, postEvent: false)
+    self.unplacedPackages_property.postEvent ()
   //--- Atomic property: componentsPlacedInBoard
     self.componentsPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4434,9 +4472,10 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mComponents_property.addEBObserverOf_mNamePrefix (self.componentsPlacedInBoard_property)
-    self.mComponents_property.addEBObserverOf_mNameIndex (self.componentsPlacedInBoard_property)
-    self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.componentsPlacedInBoard_property)
+    self.mComponents_property.addEBObserverOf_mNamePrefix (self.componentsPlacedInBoard_property, postEvent: false)
+    self.mComponents_property.addEBObserverOf_mNameIndex (self.componentsPlacedInBoard_property, postEvent: false)
+    self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.componentsPlacedInBoard_property, postEvent: false)
+    self.componentsPlacedInBoard_property.postEvent ()
   //--- Atomic property: placedComponentNameArray
     self.placedComponentNameArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4459,8 +4498,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mComponents_property.addEBObserverOf_componentName (self.placedComponentNameArray_property)
-    self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.placedComponentNameArray_property)
+    self.mComponents_property.addEBObserverOf_componentName (self.placedComponentNameArray_property, postEvent: false)
+    self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.placedComponentNameArray_property, postEvent: false)
+    self.placedComponentNameArray_property.postEvent ()
   //--- Atomic property: schematicStatusMessage
     self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4485,10 +4525,11 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.unplacedSymbols_property.addEBObserver (self.schematicStatusMessage_property)
-    self.netWarningCount_property.addEBObserver (self.schematicStatusMessage_property)
-    self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusMessage_property)
-    self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusMessage_property)
+    self.unplacedSymbols_property.addEBObserver (self.schematicStatusMessage_property, postEvent: false)
+    self.netWarningCount_property.addEBObserver (self.schematicStatusMessage_property, postEvent: false)
+    self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusMessage_property, postEvent: false)
+    self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusMessage_property, postEvent: false)
+    self.schematicStatusMessage_property.postEvent ()
   //--- Atomic property: schematicStatusImage
     self.schematicStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4513,10 +4554,11 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.unplacedSymbols_property.addEBObserver (self.schematicStatusImage_property)
-    self.netWarningCount_property.addEBObserver (self.schematicStatusImage_property)
-    self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusImage_property)
-    self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusImage_property)
+    self.unplacedSymbols_property.addEBObserver (self.schematicStatusImage_property, postEvent: false)
+    self.netWarningCount_property.addEBObserver (self.schematicStatusImage_property, postEvent: false)
+    self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusImage_property, postEvent: false)
+    self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusImage_property, postEvent: false)
+    self.schematicStatusImage_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
     self.mSheets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -4532,6 +4574,7 @@ class ProjectRoot : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

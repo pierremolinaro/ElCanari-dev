@@ -266,6 +266,7 @@ class SheetInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    let operationQueue = OperationQueue ()
   //--- To many property: mObjects (has opposite relationship)
     self.mObjects_property.ebUndoManager = self.ebUndoManager
     self.mObjects_property.setOppositeRelationShipFunctions (
@@ -307,7 +308,8 @@ class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPoints_property.addEBObserverOf_status (self.issues_property)
+    self.mPoints_property.addEBObserverOf_status (self.issues_property, postEvent: false)
+    self.issues_property.postEvent ()
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -329,7 +331,8 @@ class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPoints_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
+    self.mPoints_property.addEBObserverOf_connectedPoints (self.connectedPoints_property, postEvent: false)
+    self.connectedPoints_property.postEvent ()
   //--- Atomic property: connexionWarnings
     self.connexionWarnings_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -351,7 +354,8 @@ class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.connexionWarnings_property)
+    self.issues_property.addEBObserver (self.connexionWarnings_property, postEvent: false)
+    self.connexionWarnings_property.postEvent ()
   //--- Atomic property: connexionErrors
     self.connexionErrors_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -373,7 +377,8 @@ class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.connexionErrors_property)
+    self.issues_property.addEBObserver (self.connexionErrors_property, postEvent: false)
+    self.connexionErrors_property.postEvent ()
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -399,10 +404,11 @@ class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.addEBObserverOf_mSchematicSheetOrientation (self.sheetDescriptor_property)
-    self.mRoot_property.addEBObserverOf_sheetIndexes (self.sheetDescriptor_property)
-    self.mRoot_property.addEBObserverOf_mSchematicCustomWidth (self.sheetDescriptor_property)
-    self.mRoot_property.addEBObserverOf_mSchematicCustomHeight (self.sheetDescriptor_property)
+    self.mRoot_property.addEBObserverOf_mSchematicSheetOrientation (self.sheetDescriptor_property, postEvent: false)
+    self.mRoot_property.addEBObserverOf_sheetIndexes (self.sheetDescriptor_property, postEvent: false)
+    self.mRoot_property.addEBObserverOf_mSchematicCustomWidth (self.sheetDescriptor_property, postEvent: false)
+    self.mRoot_property.addEBObserverOf_mSchematicCustomHeight (self.sheetDescriptor_property, postEvent: false)
+    self.sheetDescriptor_property.postEvent ()
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
@@ -414,6 +420,7 @@ class SheetInProject : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
+    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

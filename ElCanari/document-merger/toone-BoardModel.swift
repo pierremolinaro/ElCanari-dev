@@ -147,14 +147,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_name (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_name (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_name.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.name_property.addEBObserver (inObserver)
+       v?.name_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -217,14 +217,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_modelWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_modelWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_modelWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.modelWidth_property.addEBObserver (inObserver)
+       v?.modelWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -287,14 +287,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_modelWidthUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_modelWidthUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_modelWidthUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.modelWidthUnit_property.addEBObserver (inObserver)
+       v?.modelWidthUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -357,14 +357,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_modelHeight (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_modelHeight (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_modelHeight.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.modelHeight_property.addEBObserver (inObserver)
+       v?.modelHeight_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -427,14 +427,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_modelHeightUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_modelHeightUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_modelHeightUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.modelHeightUnit_property.addEBObserver (inObserver)
+       v?.modelHeightUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -497,14 +497,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_zoom (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_zoom.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.zoom_property.addEBObserver (inObserver)
+       v?.zoom_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -567,14 +567,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_modelLimitWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_modelLimitWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_modelLimitWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.modelLimitWidth_property.addEBObserver (inObserver)
+       v?.modelLimitWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -637,14 +637,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_modelLimitWidthUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_modelLimitWidthUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_modelLimitWidthUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.modelLimitWidthUnit_property.addEBObserver (inObserver)
+       v?.modelLimitWidthUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -707,14 +707,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_artworkName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_artworkName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.artworkName_property.addEBObserver (inObserver)
+       v?.artworkName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -777,14 +777,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendLinesSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontLegendLinesSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontLegendLinesSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontLegendLinesSegments_property.addEBObserver (inObserver)
+      v?.frontLegendLinesSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -846,14 +846,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendLinesSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backLegendLinesSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backLegendLinesSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backLegendLinesSegments_property.addEBObserver (inObserver)
+      v?.backLegendLinesSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -915,14 +915,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendLinesBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backLegendLinesBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backLegendLinesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backLegendLinesBezierPaths_property.addEBObserver (inObserver)
+      v?.backLegendLinesBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -984,14 +984,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendTextsSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontLegendTextsSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontLegendTextsSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontLegendTextsSegments_property.addEBObserver (inObserver)
+      v?.frontLegendTextsSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1053,14 +1053,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendTextsBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontLegendTextsBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontLegendTextsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontLegendTextsBezierPaths_property.addEBObserver (inObserver)
+      v?.frontLegendTextsBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1122,14 +1122,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLayoutTextsSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontLayoutTextsSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontLayoutTextsSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontLayoutTextsSegments_property.addEBObserver (inObserver)
+      v?.frontLayoutTextsSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1191,14 +1191,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLayoutTextsBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontLayoutTextsBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontLayoutTextsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontLayoutTextsBezierPaths_property.addEBObserver (inObserver)
+      v?.frontLayoutTextsBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1260,14 +1260,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendTextsSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backLegendTextsSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backLegendTextsSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backLegendTextsSegments_property.addEBObserver (inObserver)
+      v?.backLegendTextsSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1329,14 +1329,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendTextsBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backLegendTextsBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backLegendTextsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backLegendTextsBezierPaths_property.addEBObserver (inObserver)
+      v?.backLegendTextsBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1398,14 +1398,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLayoutTextsSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backLayoutTextsSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backLayoutTextsSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backLayoutTextsSegments_property.addEBObserver (inObserver)
+      v?.backLayoutTextsSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1467,14 +1467,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLayoutTextsBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backLayoutTextsBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backLayoutTextsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backLayoutTextsBezierPaths_property.addEBObserver (inObserver)
+      v?.backLayoutTextsBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1536,14 +1536,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_internalBoardsLimitsSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.internalBoardsLimitsSegments_property.addEBObserver (inObserver)
+      v?.internalBoardsLimitsSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1605,14 +1605,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_internalBoardsLimitsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.internalBoardsLimitsBezierPaths_property.addEBObserver (inObserver)
+      v?.internalBoardsLimitsBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1674,14 +1674,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_drillSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_drillSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_drillSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.drillSegments_property.addEBObserver (inObserver)
+      v?.drillSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1743,14 +1743,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_holesBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_holesBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_holesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.holesBezierPaths_property.addEBObserver (inObserver)
+      v?.holesBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1812,14 +1812,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_viaShapes (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_viaShapes (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_viaShapes.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.viaShapes_property.addEBObserver (inObserver)
+      v?.viaShapes_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1881,14 +1881,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_viasBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_viasBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_viasBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.viasBezierPaths_property.addEBObserver (inObserver)
+      v?.viasBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -1950,14 +1950,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontPadArray (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontPadArray.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontPadArray_property.addEBObserver (inObserver)
+      v?.frontPadArray_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2019,14 +2019,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPadsBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontPadsBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontPadsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontPadsBezierPaths_property.addEBObserver (inObserver)
+      v?.frontPadsBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2088,14 +2088,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPadArray (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backPadArray (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backPadArray.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backPadArray_property.addEBObserver (inObserver)
+      v?.backPadArray_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2157,14 +2157,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPadsBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backPadsBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backPadsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backPadsBezierPaths_property.addEBObserver (inObserver)
+      v?.backPadsBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2226,14 +2226,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimits (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_boardLimits (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_boardLimits.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.boardLimits_property.addEBObserver (inObserver)
+      v?.boardLimits_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2295,14 +2295,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_boardLimitsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.boardLimitsBezierPaths_property.addEBObserver (inObserver)
+      v?.boardLimitsBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2364,14 +2364,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentNameSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backComponentNameSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backComponentNameSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backComponentNameSegments_property.addEBObserver (inObserver)
+      v?.backComponentNameSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2433,14 +2433,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentNamesBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backComponentNamesBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backComponentNamesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backComponentNamesBezierPaths_property.addEBObserver (inObserver)
+      v?.backComponentNamesBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2502,14 +2502,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentNameSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontComponentNameSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontComponentNameSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontComponentNameSegments_property.addEBObserver (inObserver)
+      v?.frontComponentNameSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2571,14 +2571,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentNamesBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontComponentNamesBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontComponentNamesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontComponentNamesBezierPaths_property.addEBObserver (inObserver)
+      v?.frontComponentNamesBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2640,14 +2640,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentValueSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontComponentValueSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontComponentValueSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontComponentValueSegments_property.addEBObserver (inObserver)
+      v?.frontComponentValueSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2709,14 +2709,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentValuesBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontComponentValuesBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontComponentValuesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontComponentValuesBezierPaths_property.addEBObserver (inObserver)
+      v?.frontComponentValuesBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2778,14 +2778,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentValueSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backComponentValueSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backComponentValueSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backComponentValueSegments_property.addEBObserver (inObserver)
+      v?.backComponentValueSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2847,14 +2847,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentValuesBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backComponentValuesBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backComponentValuesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backComponentValuesBezierPaths_property.addEBObserver (inObserver)
+      v?.backComponentValuesBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2916,14 +2916,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backTrackSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backTrackSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backTrackSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backTrackSegments_property.addEBObserver (inObserver)
+      v?.backTrackSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -2985,14 +2985,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backTracksBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backTracksBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backTracksBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backTracksBezierPaths_property.addEBObserver (inObserver)
+      v?.backTracksBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3054,14 +3054,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontTrackSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontTrackSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontTrackSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontTrackSegments_property.addEBObserver (inObserver)
+      v?.frontTrackSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3123,14 +3123,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontTracksBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontTracksBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontTracksBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontTracksBezierPaths_property.addEBObserver (inObserver)
+      v?.frontTracksBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3192,14 +3192,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPackagesSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontPackagesSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontPackagesSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontPackagesSegments_property.addEBObserver (inObserver)
+      v?.frontPackagesSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3261,14 +3261,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPackagesBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontPackagesBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontPackagesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontPackagesBezierPaths_property.addEBObserver (inObserver)
+      v?.frontPackagesBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3330,14 +3330,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPackagesSegments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backPackagesSegments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backPackagesSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backPackagesSegments_property.addEBObserver (inObserver)
+      v?.backPackagesSegments_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3399,14 +3399,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPackagesBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_backPackagesBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_backPackagesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.backPackagesBezierPaths_property.addEBObserver (inObserver)
+      v?.backPackagesBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3468,14 +3468,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_instanceCount (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_instanceCount.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.instanceCount_property.addEBObserver (inObserver)
+      v?.instanceCount_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3537,14 +3537,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_frontLegendLinesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.frontLegendLinesBezierPaths_property.addEBObserver (inObserver)
+      v?.frontLegendLinesBezierPaths_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3606,14 +3606,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_imageForModel (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_imageForModel (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_imageForModel.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.imageForModel_property.addEBObserver (inObserver)
+      v?.imageForModel_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3675,14 +3675,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_imageForInstances (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_imageForInstances (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_imageForInstances.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.imageForInstances_property.addEBObserver (inObserver)
+      v?.imageForInstances_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3744,10 +3744,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendLines (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontLegendLines (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_frontLegendLines.insert (inObserver)
     if let object = self.propval {
-      object.frontLegendLines_property.addEBObserver (inObserver)
+      object.frontLegendLines_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3785,10 +3785,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendLines (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backLegendLines (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_backLegendLines.insert (inObserver)
     if let object = self.propval {
-      object.backLegendLines_property.addEBObserver (inObserver)
+      object.backLegendLines_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3826,10 +3826,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendTexts (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontLegendTexts (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_frontLegendTexts.insert (inObserver)
     if let object = self.propval {
-      object.frontLegendTexts_property.addEBObserver (inObserver)
+      object.frontLegendTexts_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3867,10 +3867,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLayoutTexts (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontLayoutTexts (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_frontLayoutTexts.insert (inObserver)
     if let object = self.propval {
-      object.frontLayoutTexts_property.addEBObserver (inObserver)
+      object.frontLayoutTexts_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3908,10 +3908,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendTexts (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backLegendTexts (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_backLegendTexts.insert (inObserver)
     if let object = self.propval {
-      object.backLegendTexts_property.addEBObserver (inObserver)
+      object.backLegendTexts_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3949,10 +3949,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLayoutTexts (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backLayoutTexts (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_backLayoutTexts.insert (inObserver)
     if let object = self.propval {
-      object.backLayoutTexts_property.addEBObserver (inObserver)
+      object.backLayoutTexts_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -3990,10 +3990,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_internalBoardsLimits (_ inObserver : EBEvent) {
+  final func addEBObserverOf_internalBoardsLimits (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_internalBoardsLimits.insert (inObserver)
     if let object = self.propval {
-      object.internalBoardsLimits_property.addEBObserver (inObserver)
+      object.internalBoardsLimits_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -4031,10 +4031,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_drills (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drills (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_drills.insert (inObserver)
     if let object = self.propval {
-      object.drills_property.addEBObserver (inObserver)
+      object.drills_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -4072,10 +4072,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_vias (_ inObserver : EBEvent) {
+  final func addEBObserverOf_vias (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_vias.insert (inObserver)
     if let object = self.propval {
-      object.vias_property.addEBObserver (inObserver)
+      object.vias_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -4113,10 +4113,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPads (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontPads (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_frontPads.insert (inObserver)
     if let object = self.propval {
-      object.frontPads_property.addEBObserver (inObserver)
+      object.frontPads_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -4154,10 +4154,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPads (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backPads (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_backPads.insert (inObserver)
     if let object = self.propval {
-      object.backPads_property.addEBObserver (inObserver)
+      object.backPads_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -4195,10 +4195,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentNames (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backComponentNames (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_backComponentNames.insert (inObserver)
     if let object = self.propval {
-      object.backComponentNames_property.addEBObserver (inObserver)
+      object.backComponentNames_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -4236,10 +4236,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentNames (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontComponentNames (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_frontComponentNames.insert (inObserver)
     if let object = self.propval {
-      object.frontComponentNames_property.addEBObserver (inObserver)
+      object.frontComponentNames_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -4277,10 +4277,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentValues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontComponentValues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_frontComponentValues.insert (inObserver)
     if let object = self.propval {
-      object.frontComponentValues_property.addEBObserver (inObserver)
+      object.frontComponentValues_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -4318,10 +4318,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentValues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backComponentValues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_backComponentValues.insert (inObserver)
     if let object = self.propval {
-      object.backComponentValues_property.addEBObserver (inObserver)
+      object.backComponentValues_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -4359,10 +4359,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backTracks (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backTracks (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_backTracks.insert (inObserver)
     if let object = self.propval {
-      object.backTracks_property.addEBObserver (inObserver)
+      object.backTracks_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -4400,10 +4400,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontTracks (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontTracks (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_frontTracks.insert (inObserver)
     if let object = self.propval {
-      object.frontTracks_property.addEBObserver (inObserver)
+      object.frontTracks_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -4441,10 +4441,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPackages (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontPackages (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_frontPackages.insert (inObserver)
     if let object = self.propval {
-      object.frontPackages_property.addEBObserver (inObserver)
+      object.frontPackages_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -4482,10 +4482,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPackages (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backPackages (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_backPackages.insert (inObserver)
     if let object = self.propval {
-      object.backPackages_property.addEBObserver (inObserver)
+      object.backPackages_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -4523,10 +4523,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_myInstances (_ inObserver : EBEvent) {
+  final func addEBObserverOf_myInstances (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
     self.mObserversOf_myInstances.insert (inObserver)
     if let object = self.propval {
-      object.myInstances_property.addEBObserver (inObserver)
+      object.myInstances_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 

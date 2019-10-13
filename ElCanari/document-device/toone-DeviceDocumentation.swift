@@ -49,14 +49,14 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
 
   //····················································································································
 
-  final func addEBObserverOf_mFileName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mFileName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mFileName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mFileName_property.addEBObserver (inObserver)
+       v?.mFileName_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -119,14 +119,14 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
 
   //····················································································································
 
-  final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_mFileData (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_mFileData.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mFileData_property.addEBObserver (inObserver)
+       v?.mFileData_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
@@ -189,14 +189,14 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
 
   //····················································································································
 
-  final func addEBObserverOf_fileSize (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
+  final func addEBObserverOf_fileSize (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+    self.addEBObserver (inObserver, postEvent: inPostEvent)
     self.mObserversOf_fileSize.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.fileSize_property.addEBObserver (inObserver)
+      v?.fileSize_property.addEBObserver (inObserver, postEvent: inPostEvent)
     }
   }
 
