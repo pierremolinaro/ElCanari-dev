@@ -657,7 +657,6 @@ class PointInSchematic : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mSymbolPinName
     self.mSymbolPinName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mLabels (has opposite relationship)
@@ -1031,7 +1030,6 @@ class PointInSchematic : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -403,7 +403,6 @@ class PackageZone : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: x
     self.x_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y
@@ -591,7 +590,6 @@ class PackageZone : PackageObject,
     self.zoneName_property.setSignatureObserver (observer: self)
     self.zoneNumbering_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -266,7 +266,6 @@ class SheetInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- To many property: mObjects (has opposite relationship)
     self.mObjects_property.ebUndoManager = self.ebUndoManager
     self.mObjects_property.setOppositeRelationShipFunctions (
@@ -420,7 +419,6 @@ class SheetInProject : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

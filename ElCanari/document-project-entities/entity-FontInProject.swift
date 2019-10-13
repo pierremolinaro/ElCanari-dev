@@ -259,7 +259,6 @@ class FontInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- To many property: mTexts (has opposite relationship)
     self.mTexts_property.ebUndoManager = self.ebUndoManager
     self.mTexts_property.setOppositeRelationShipFunctions (
@@ -372,7 +371,6 @@ class FontInProject : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

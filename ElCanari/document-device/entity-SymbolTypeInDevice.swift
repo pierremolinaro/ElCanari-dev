@@ -294,7 +294,6 @@ class SymbolTypeInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- To many property: mInstances (has opposite relationship)
     self.mInstances_property.ebUndoManager = self.ebUndoManager
     self.mInstances_property.setOppositeRelationShipFunctions (
@@ -418,7 +417,6 @@ class SymbolTypeInDevice : EBManagedObject,
     self.mTypeName_property.setSignatureObserver (observer: self)
     self.mVersion_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

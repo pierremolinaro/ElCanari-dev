@@ -249,7 +249,6 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- To many property: mPinInstances (has opposite relationship)
     self.mPinInstances_property.ebUndoManager = self.ebUndoManager
     self.mPinInstances_property.setOppositeRelationShipFunctions (
@@ -428,7 +427,6 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mInstanceName_property.setSignatureObserver (observer: self)
     self.mPinInstances_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

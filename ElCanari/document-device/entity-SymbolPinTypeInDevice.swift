@@ -305,7 +305,6 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mPinX
     self.mPinX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPinY
@@ -382,7 +381,6 @@ class SymbolPinTypeInDevice : EBManagedObject,
     self.mYName_property.setSignatureObserver (observer: self)
     self.mYNumber_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

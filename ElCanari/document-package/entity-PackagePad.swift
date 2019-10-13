@@ -718,7 +718,6 @@ class PackagePad : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: xCenter
     self.xCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yCenter
@@ -1092,7 +1091,6 @@ class PackagePad : PackageObject,
     self.yCenter_property.setSignatureObserver (observer: self)
     self.yCenterUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

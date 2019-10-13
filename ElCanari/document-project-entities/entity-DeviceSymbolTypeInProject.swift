@@ -88,7 +88,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mSymbolTypeName
     self.mSymbolTypeName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mStrokeBezierPath
@@ -98,7 +97,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

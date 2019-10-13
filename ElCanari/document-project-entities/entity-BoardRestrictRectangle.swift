@@ -181,7 +181,6 @@ class BoardRestrictRectangle : BoardObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mY
     self.mY_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mWidth
@@ -304,7 +303,6 @@ class BoardRestrictRectangle : BoardObject,
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

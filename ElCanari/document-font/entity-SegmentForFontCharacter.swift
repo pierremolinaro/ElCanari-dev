@@ -126,7 +126,6 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: x1
     self.x1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y1
@@ -200,7 +199,6 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     self.y1_property.setSignatureObserver (observer: self)
     self.y2_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

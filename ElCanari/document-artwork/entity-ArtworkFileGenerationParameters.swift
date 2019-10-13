@@ -568,7 +568,6 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: drawBoardLimits
     self.drawBoardLimits_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawInternalBoardLimits
@@ -641,7 +640,6 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     self.name_property.setSignatureObserver (observer: self)
     self.padHoleDiameterInPDF_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

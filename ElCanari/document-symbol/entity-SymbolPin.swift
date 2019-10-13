@@ -337,7 +337,6 @@ class SymbolPin : SymbolObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: yPin
     self.yPin_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: xName
@@ -544,7 +543,6 @@ class SymbolPin : SymbolObject,
     self.yNumber_property.setSignatureObserver (observer: self)
     self.yPin_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

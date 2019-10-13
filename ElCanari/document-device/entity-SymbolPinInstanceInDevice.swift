@@ -280,7 +280,6 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- To one property: mSymbolInstance (has opposite to many relationship: mPinInstances)
     self.mSymbolInstance_property.ebUndoManager = self.ebUndoManager
     self.mSymbolInstance_property.setOppositeRelationShipFunctions (
@@ -427,7 +426,6 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

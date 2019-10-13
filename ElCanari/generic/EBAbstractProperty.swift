@@ -17,9 +17,9 @@ class EBAbstractProperty : EBEvent {
   final func addEBObserver (_ inObserver : EBEvent, postEvent inPostEvent : Bool = true) {
     self.mObservers.insert (inObserver)
     self.updateObserverExplorer ()
-    if inPostEvent {
+ //   if inPostEvent {
       inObserver.postEvent ()
-    }
+//    }
   }
 
   //····················································································································

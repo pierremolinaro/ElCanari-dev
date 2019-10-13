@@ -1902,7 +1902,6 @@ class BoardModel : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: name
     self.name_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: modelWidth
@@ -3367,7 +3366,6 @@ class BoardModel : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -488,7 +488,6 @@ class BoardTrack : BoardObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mSide
     self.mSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDefaultTrackWidthUnit
@@ -803,7 +802,6 @@ class BoardTrack : BoardObject,
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

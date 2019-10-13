@@ -379,7 +379,6 @@ class PackageDimension : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: y1
     self.y1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x2
@@ -562,7 +561,6 @@ class PackageDimension : PackageObject,
     self.yDimension_property.setSignatureObserver (observer: self)
     self.yDimensionUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

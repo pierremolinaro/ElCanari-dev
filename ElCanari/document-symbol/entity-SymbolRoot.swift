@@ -353,7 +353,6 @@ class SymbolRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: comments
@@ -438,7 +437,6 @@ class SymbolRoot : EBManagedObject,
     self.xPlacardUnit_property.setSignatureObserver (observer: self)
     self.yPlacardUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

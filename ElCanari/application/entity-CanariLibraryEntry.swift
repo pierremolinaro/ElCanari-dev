@@ -142,7 +142,6 @@ class CanariLibraryEntry : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mPath
     self.mPath_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mUses
@@ -178,7 +177,6 @@ class CanariLibraryEntry : EBManagedObject,
   //--- Register properties for handling signature
   //--- Extern delegates
     self.mExternDelegate0 = CanariLibraryEntryDelegate (object: self)
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

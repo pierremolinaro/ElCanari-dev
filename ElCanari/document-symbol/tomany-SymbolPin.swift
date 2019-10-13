@@ -914,6 +914,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
 
   private var mIsOrderedBefore : Optional < (_ left : SymbolPin, _ right : SymbolPin) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
+  private var mModelDidChange = true
 
   //····················································································································
   //   Data provider
@@ -960,34 +961,44 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newArray : [SymbolPin] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    self.mModelDidChange = true
+    super.notifyModelDidChange ()
+  }
+ 
+  //····················································································································
+
+  private func computeModelArray() {
+   if self.mModelDidChange {
+     self.mModelDidChange = false
+     let newArray : [SymbolPin] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          if let sortFunction = self.mIsOrderedBefore {
+            newArray = v.sorted { sortFunction ($0, $1) }
+          }else{
+            newArray = v
+          }
+          self.mTransientKind = .single
+        case .multiple :
+          newArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        if let sortFunction = self.mIsOrderedBefore {
-          newArray = v.sorted { sortFunction ($0, $1) }
-        }else{
-          newArray = v
-        }
-        self.mTransientKind = .single
-       case .multiple :
-        newArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newArray = []
-      self.mTransientKind = .empty
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
-    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolPin] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1000,7 +1011,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
 
   //····················································································································
 
-  override var propval : [SymbolPin] { return self.mInternalArrayValue }
+  override var propval : [SymbolPin] { self.computeModelArray() ; return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1018,6 +1029,7 @@ class TransientArrayOfSuperOf_SymbolPin <SUPER : EBManagedObject> : ReadOnlyArra
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelDidChange = true
 
   //····················································································································
 
@@ -1032,36 +1044,46 @@ class TransientArrayOfSuperOf_SymbolPin <SUPER : EBManagedObject> : ReadOnlyArra
   //····················································································································
 
   override func notifyModelDidChange () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+     self.mModelDidChange = true
+    super.notifyModelDidChange ()
+  }
+ 
+  //····················································································································
+
+  private func computeModelArray() {
+   if self.mModelDidChange {
+     self.mModelDidChange = false
+     var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [SymbolPin] ()
-    for superObject in newModelArray {
-      if let object = superObject as? SymbolPin {
-        newArray.append (object)
+      var newArray = [SymbolPin] ()
+      for superObject in newModelArray {
+        if let object = superObject as? SymbolPin {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
-    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolPin] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1074,7 +1096,7 @@ class TransientArrayOfSuperOf_SymbolPin <SUPER : EBManagedObject> : ReadOnlyArra
 
   //····················································································································
 
-  override var propval : [SymbolPin] { return self.mInternalArrayValue }
+  override var propval : [SymbolPin] { self.computeModelArray () ; return self.mInternalArrayValue }
 
   //····················································································································
 

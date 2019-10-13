@@ -186,7 +186,6 @@ class PadProxyInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mPinInstanceName
     self.mPinInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPadName
@@ -253,7 +252,6 @@ class PadProxyInDevice : EBManagedObject,
     self.mPadName_property.setSignatureObserver (observer: self)
     self.mPinInstanceName_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

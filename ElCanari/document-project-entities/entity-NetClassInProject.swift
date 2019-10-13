@@ -545,7 +545,6 @@ class NetClassInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mNetClassName
     self.mNetClassName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mNetClassColor
@@ -798,7 +797,6 @@ class NetClassInProject : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -381,7 +381,6 @@ class PackageInDevice : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mFileData
     self.mFileData_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mName
@@ -621,7 +620,6 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mStrokeBezierPath_property.setSignatureObserver (observer: self)
     self.mVersion_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

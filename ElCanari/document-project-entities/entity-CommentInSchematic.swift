@@ -174,7 +174,6 @@ class CommentInSchematic : SchematicObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mColor
     self.mColor_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSize
@@ -256,7 +255,6 @@ class CommentInSchematic : SchematicObject,
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

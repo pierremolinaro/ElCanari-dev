@@ -371,7 +371,6 @@ class FontRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: comments
     self.comments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: nominalSize
@@ -562,7 +561,6 @@ class FontRoot : EBManagedObject,
     self.comments_property.setSignatureObserver (observer: self)
     self.nominalSize_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -341,7 +341,6 @@ class MasterPadInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mCenterX
     self.mCenterX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mCenterY
@@ -492,7 +491,6 @@ class MasterPadInDevice : EBManagedObject,
     self.mStyle_property.setSignatureObserver (observer: self)
     self.mWidth_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

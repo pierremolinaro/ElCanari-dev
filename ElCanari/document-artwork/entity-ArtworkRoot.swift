@@ -329,7 +329,6 @@ class ArtworkRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: selectedTab
     self.selectedTab_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: comments
@@ -393,7 +392,6 @@ class ArtworkRoot : EBManagedObject,
     self.minValueForOARinEBUnit_property.setSignatureObserver (observer: self)
     self.minValueForPHDinEBUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

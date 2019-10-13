@@ -451,7 +451,6 @@ class PackageBezier : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: y1
     self.y1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x2
@@ -641,7 +640,6 @@ class PackageBezier : PackageObject,
     self.y2_property.setSignatureObserver (observer: self)
     self.y2Unit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

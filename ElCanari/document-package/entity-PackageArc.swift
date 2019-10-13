@@ -379,7 +379,6 @@ class PackageArc : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: yCenter
     self.yCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: radius
@@ -556,7 +555,6 @@ class PackageArc : PackageObject,
     self.yCenter_property.setSignatureObserver (observer: self)
     self.yCenterUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

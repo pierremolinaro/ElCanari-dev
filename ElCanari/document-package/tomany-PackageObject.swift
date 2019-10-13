@@ -208,6 +208,7 @@ class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
 
   private var mIsOrderedBefore : Optional < (_ left : PackageObject, _ right : PackageObject) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
+  private var mModelDidChange = true
 
   //····················································································································
   //   Data provider
@@ -254,34 +255,44 @@ class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newArray : [PackageObject] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    self.mModelDidChange = true
+    super.notifyModelDidChange ()
+  }
+ 
+  //····················································································································
+
+  private func computeModelArray() {
+   if self.mModelDidChange {
+     self.mModelDidChange = false
+     let newArray : [PackageObject] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          if let sortFunction = self.mIsOrderedBefore {
+            newArray = v.sorted { sortFunction ($0, $1) }
+          }else{
+            newArray = v
+          }
+          self.mTransientKind = .single
+        case .multiple :
+          newArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        if let sortFunction = self.mIsOrderedBefore {
-          newArray = v.sorted { sortFunction ($0, $1) }
-        }else{
-          newArray = v
-        }
-        self.mTransientKind = .single
-       case .multiple :
-        newArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newArray = []
-      self.mTransientKind = .empty
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
-    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [PackageObject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -294,7 +305,7 @@ class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
 
   //····················································································································
 
-  override var propval : [PackageObject] { return self.mInternalArrayValue }
+  override var propval : [PackageObject] { self.computeModelArray() ; return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -312,6 +323,7 @@ class TransientArrayOfSuperOf_PackageObject <SUPER : EBManagedObject> : ReadOnly
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelDidChange = true
 
   //····················································································································
 
@@ -326,36 +338,46 @@ class TransientArrayOfSuperOf_PackageObject <SUPER : EBManagedObject> : ReadOnly
   //····················································································································
 
   override func notifyModelDidChange () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+     self.mModelDidChange = true
+    super.notifyModelDidChange ()
+  }
+ 
+  //····················································································································
+
+  private func computeModelArray() {
+   if self.mModelDidChange {
+     self.mModelDidChange = false
+     var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [PackageObject] ()
-    for superObject in newModelArray {
-      if let object = superObject as? PackageObject {
-        newArray.append (object)
+      var newArray = [PackageObject] ()
+      for superObject in newModelArray {
+        if let object = superObject as? PackageObject {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
-    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [PackageObject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -368,7 +390,7 @@ class TransientArrayOfSuperOf_PackageObject <SUPER : EBManagedObject> : ReadOnly
 
   //····················································································································
 
-  override var propval : [PackageObject] { return self.mInternalArrayValue }
+  override var propval : [PackageObject] { self.computeModelArray () ; return self.mInternalArrayValue }
 
   //····················································································································
 

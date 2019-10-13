@@ -251,7 +251,6 @@ class FontCharacter : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: codePoint
     self.codePoint_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: advance
@@ -376,7 +375,6 @@ class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property.setSignatureObserver (observer: self)
     self.segments_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

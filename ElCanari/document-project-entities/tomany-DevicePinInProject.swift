@@ -858,6 +858,7 @@ class TransientArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInProject {
 
   private var mIsOrderedBefore : Optional < (_ left : DevicePinInProject, _ right : DevicePinInProject) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
+  private var mModelDidChange = true
 
   //····················································································································
   //   Data provider
@@ -904,34 +905,44 @@ class TransientArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInProject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newArray : [DevicePinInProject] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    self.mModelDidChange = true
+    super.notifyModelDidChange ()
+  }
+ 
+  //····················································································································
+
+  private func computeModelArray() {
+   if self.mModelDidChange {
+     self.mModelDidChange = false
+     let newArray : [DevicePinInProject] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          if let sortFunction = self.mIsOrderedBefore {
+            newArray = v.sorted { sortFunction ($0, $1) }
+          }else{
+            newArray = v
+          }
+          self.mTransientKind = .single
+        case .multiple :
+          newArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        if let sortFunction = self.mIsOrderedBefore {
-          newArray = v.sorted { sortFunction ($0, $1) }
-        }else{
-          newArray = v
-        }
-        self.mTransientKind = .single
-       case .multiple :
-        newArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newArray = []
-      self.mTransientKind = .empty
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
-    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DevicePinInProject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -944,7 +955,7 @@ class TransientArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInProject {
 
   //····················································································································
 
-  override var propval : [DevicePinInProject] { return self.mInternalArrayValue }
+  override var propval : [DevicePinInProject] { self.computeModelArray() ; return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -962,6 +973,7 @@ class TransientArrayOfSuperOf_DevicePinInProject <SUPER : EBManagedObject> : Rea
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelDidChange = true
 
   //····················································································································
 
@@ -976,36 +988,46 @@ class TransientArrayOfSuperOf_DevicePinInProject <SUPER : EBManagedObject> : Rea
   //····················································································································
 
   override func notifyModelDidChange () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+     self.mModelDidChange = true
+    super.notifyModelDidChange ()
+  }
+ 
+  //····················································································································
+
+  private func computeModelArray() {
+   if self.mModelDidChange {
+     self.mModelDidChange = false
+     var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [DevicePinInProject] ()
-    for superObject in newModelArray {
-      if let object = superObject as? DevicePinInProject {
-        newArray.append (object)
+      var newArray = [DevicePinInProject] ()
+      for superObject in newModelArray {
+        if let object = superObject as? DevicePinInProject {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
-    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DevicePinInProject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1018,7 +1040,7 @@ class TransientArrayOfSuperOf_DevicePinInProject <SUPER : EBManagedObject> : Rea
 
   //····················································································································
 
-  override var propval : [DevicePinInProject] { return self.mInternalArrayValue }
+  override var propval : [DevicePinInProject] { self.computeModelArray () ; return self.mInternalArrayValue }
 
   //····················································································································
 

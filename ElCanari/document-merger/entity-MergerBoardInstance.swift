@@ -268,7 +268,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: x
     self.x_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y
@@ -423,7 +422,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -771,7 +771,6 @@ class DeviceRoot : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mTitle
@@ -1090,7 +1089,6 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSymbolTypes_property.setSignatureObserver (observer: self)
     self.mTitle_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

@@ -856,6 +856,7 @@ class TransientArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
 
   private var mIsOrderedBefore : Optional < (_ left : BoardText, _ right : BoardText) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
+  private var mModelDidChange = true
 
   //····················································································································
   //   Data provider
@@ -902,34 +903,44 @@ class TransientArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newArray : [BoardText] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    self.mModelDidChange = true
+    super.notifyModelDidChange ()
+  }
+ 
+  //····················································································································
+
+  private func computeModelArray() {
+   if self.mModelDidChange {
+     self.mModelDidChange = false
+     let newArray : [BoardText] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          if let sortFunction = self.mIsOrderedBefore {
+            newArray = v.sorted { sortFunction ($0, $1) }
+          }else{
+            newArray = v
+          }
+          self.mTransientKind = .single
+        case .multiple :
+          newArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        if let sortFunction = self.mIsOrderedBefore {
-          newArray = v.sorted { sortFunction ($0, $1) }
-        }else{
-          newArray = v
-        }
-        self.mTransientKind = .single
-       case .multiple :
-        newArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newArray = []
-      self.mTransientKind = .empty
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
-    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [BoardText] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -942,7 +953,7 @@ class TransientArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
 
   //····················································································································
 
-  override var propval : [BoardText] { return self.mInternalArrayValue }
+  override var propval : [BoardText] { self.computeModelArray() ; return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -960,6 +971,7 @@ class TransientArrayOfSuperOf_BoardText <SUPER : EBManagedObject> : ReadOnlyArra
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelDidChange = true
 
   //····················································································································
 
@@ -974,36 +986,46 @@ class TransientArrayOfSuperOf_BoardText <SUPER : EBManagedObject> : ReadOnlyArra
   //····················································································································
 
   override func notifyModelDidChange () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+     self.mModelDidChange = true
+    super.notifyModelDidChange ()
+  }
+ 
+  //····················································································································
+
+  private func computeModelArray() {
+   if self.mModelDidChange {
+     self.mModelDidChange = false
+     var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [BoardText] ()
-    for superObject in newModelArray {
-      if let object = superObject as? BoardText {
-        newArray.append (object)
+      var newArray = [BoardText] ()
+      for superObject in newModelArray {
+        if let object = superObject as? BoardText {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
-    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [BoardText] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1016,7 +1038,7 @@ class TransientArrayOfSuperOf_BoardText <SUPER : EBManagedObject> : ReadOnlyArra
 
   //····················································································································
 
-  override var propval : [BoardText] { return self.mInternalArrayValue }
+  override var propval : [BoardText] { self.computeModelArray () ; return self.mInternalArrayValue }
 
   //····················································································································
 

@@ -3100,7 +3100,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   override init () {
     super.init ()
     g_Preferences = self ;
-    let operationQueue = OperationQueue ()
   //--- Read from preferences
   //--- Atomic property: warningMessageColor
     self.warningMessageColor_property.ebUndoManager = self.ebUndoManager
@@ -3558,7 +3557,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
       object:nil
     )
   //--- Extern functions
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

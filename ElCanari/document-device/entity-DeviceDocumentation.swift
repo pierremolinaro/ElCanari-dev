@@ -94,7 +94,6 @@ class DeviceDocumentation : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mFileName
     self.mFileName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mFileData
@@ -127,7 +126,6 @@ class DeviceDocumentation : EBManagedObject,
     self.mFileData_property.setSignatureObserver (observer: self)
     self.mFileName_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

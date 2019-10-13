@@ -299,7 +299,6 @@ import Cocoa
   
   final private func configureProperties () {
     let start = Date ()
- //   let operationQueue = OperationQueue ()
     var opIdx = 0
   //--- Array controller property: mDataController
     self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
@@ -390,7 +389,6 @@ import Cocoa
     self.mStatusMessage_property.postEvent ()
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
-//    operationQueue.waitUntilAllOperationsAreFinished ()
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Configure properties \(durationMS) ms")

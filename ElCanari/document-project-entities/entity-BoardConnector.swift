@@ -722,7 +722,6 @@ class BoardConnector : BoardObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mComponentPadName
     self.mComponentPadName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPadIndex
@@ -1218,7 +1217,6 @@ class BoardConnector : BoardObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

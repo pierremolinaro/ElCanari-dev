@@ -629,7 +629,6 @@ class PackageRoot : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedInspector
@@ -828,7 +827,6 @@ class PackageRoot : EBGraphicManagedObject,
     self.xPlacardUnit_property.setSignatureObserver (observer: self)
     self.yPlacardUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

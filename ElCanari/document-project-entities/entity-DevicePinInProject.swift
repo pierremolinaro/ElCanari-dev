@@ -364,7 +364,6 @@ class DevicePinInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mPinName
     self.mPinName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSymbolInstanceName
@@ -462,7 +461,6 @@ class DevicePinInProject : EBManagedObject,
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

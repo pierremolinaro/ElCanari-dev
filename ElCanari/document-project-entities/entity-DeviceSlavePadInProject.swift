@@ -238,7 +238,6 @@ class DeviceSlavePadInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mCenterX
     self.mCenterX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mCenterY
@@ -295,7 +294,6 @@ class DeviceSlavePadInProject : EBManagedObject,
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

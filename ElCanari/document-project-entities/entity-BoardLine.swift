@@ -294,7 +294,6 @@ class BoardLine : BoardObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mWidthUnit
     self.mWidthUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mX1
@@ -390,7 +389,6 @@ class BoardLine : BoardObject,
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································

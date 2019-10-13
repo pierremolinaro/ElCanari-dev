@@ -428,7 +428,6 @@ class DeviceInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    let operationQueue = OperationQueue ()
   //--- Atomic property: mDeviceName
     self.mDeviceName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPrefix
@@ -646,7 +645,6 @@ class DeviceInProject : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-    operationQueue.waitUntilAllOperationsAreFinished ()
   }
 
   //····················································································································
