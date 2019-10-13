@@ -487,7 +487,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_mCenterX () {
-    self.selectedArray_property.addEBObserverOf_mCenterX (self.mCenterX_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mCenterX (self.mCenterX_property)
     self.mCenterX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -556,7 +556,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_mCenterY () {
-    self.selectedArray_property.addEBObserverOf_mCenterY (self.mCenterY_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mCenterY (self.mCenterY_property)
     self.mCenterY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -625,7 +625,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_mRotation () {
-    self.selectedArray_property.addEBObserverOf_mRotation (self.mRotation_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mRotation (self.mRotation_property)
     self.mRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -694,7 +694,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_mMirror () {
-    self.selectedArray_property.addEBObserverOf_mMirror (self.mMirror_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mMirror (self.mMirror_property)
     self.mMirror_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -763,7 +763,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_mSymbolInstanceName () {
-    self.selectedArray_property.addEBObserverOf_mSymbolInstanceName (self.mSymbolInstanceName_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mSymbolInstanceName (self.mSymbolInstanceName_property)
     self.mSymbolInstanceName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -832,7 +832,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_mSymbolTypeName () {
-    self.selectedArray_property.addEBObserverOf_mSymbolTypeName (self.mSymbolTypeName_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mSymbolTypeName (self.mSymbolTypeName_property)
     self.mSymbolTypeName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -901,7 +901,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_mDisplayComponentNameOffsetX () {
-    self.selectedArray_property.addEBObserverOf_mDisplayComponentNameOffsetX (self.mDisplayComponentNameOffsetX_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mDisplayComponentNameOffsetX (self.mDisplayComponentNameOffsetX_property)
     self.mDisplayComponentNameOffsetX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -970,7 +970,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_mDisplayComponentNameOffsetY () {
-    self.selectedArray_property.addEBObserverOf_mDisplayComponentNameOffsetY (self.mDisplayComponentNameOffsetY_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mDisplayComponentNameOffsetY (self.mDisplayComponentNameOffsetY_property)
     self.mDisplayComponentNameOffsetY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1039,7 +1039,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_mDisplayComponentValue () {
-    self.selectedArray_property.addEBObserverOf_mDisplayComponentValue (self.mDisplayComponentValue_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mDisplayComponentValue (self.mDisplayComponentValue_property)
     self.mDisplayComponentValue_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1108,7 +1108,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_mDisplayComponentValueOffsetX () {
-    self.selectedArray_property.addEBObserverOf_mDisplayComponentValueOffsetX (self.mDisplayComponentValueOffsetX_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mDisplayComponentValueOffsetX (self.mDisplayComponentValueOffsetX_property)
     self.mDisplayComponentValueOffsetX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1177,7 +1177,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_mDisplayComponentValueOffsetY () {
-    self.selectedArray_property.addEBObserverOf_mDisplayComponentValueOffsetY (self.mDisplayComponentValueOffsetY_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mDisplayComponentValueOffsetY (self.mDisplayComponentValueOffsetY_property)
     self.mDisplayComponentValueOffsetY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1246,7 +1246,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_componentValueProxy () {
-    self.selectedArray_property.addEBObserverOf_componentValueProxy (self.componentValueProxy_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_componentValueProxy (self.componentValueProxy_property)
     self.componentValueProxy_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1315,7 +1315,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_componentName () {
-    self.selectedArray_property.addEBObserverOf_componentName (self.componentName_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_componentName (self.componentName_property)
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1354,7 +1354,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_deviceName () {
-    self.selectedArray_property.addEBObserverOf_deviceName (self.deviceName_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_deviceName (self.deviceName_property)
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1393,7 +1393,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_symbolInfo () {
-    self.selectedArray_property.addEBObserverOf_symbolInfo (self.symbolInfo_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_symbolInfo (self.symbolInfo_property)
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1432,7 +1432,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1471,7 +1471,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1510,7 +1510,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //····················································································································
 
   private final func bind_property_symbolInSchematic () {
-    self.selectedArray_property.addEBObserverOf_symbolInSchematic (self.symbolInSchematic_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_symbolInSchematic (self.symbolInSchematic_property)
     self.symbolInSchematic_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

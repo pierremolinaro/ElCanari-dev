@@ -249,7 +249,7 @@ final class Controller_ProjectDocument_boardCurveObjectsController : ReadOnlyAbs
   //····················································································································
 
   private func startObservingSelectionShape () {
-    self.mModel?.addEBObserverOf_selectionDisplay (self.mObjectSelectionObserver, postEvent: true)
+    self.mModel?.addEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
     self.mObjectSelectionObserver.mEventCallBack = { self.computeSelectionShape () }
   }
 
@@ -288,7 +288,7 @@ final class Controller_ProjectDocument_boardCurveObjectsController : ReadOnlyAbs
   //····················································································································
 
   private func startObservingObjectShape () {
-    self.mModel?.addEBObserverOf_objectDisplay (self.mObjectDisplayObserver, postEvent: true)
+    self.mModel?.addEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
     self.mObjectDisplayObserver.mEventCallBack = { [weak self] in self?.updateObjectDisplay () }
   }
 

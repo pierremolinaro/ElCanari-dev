@@ -331,8 +331,7 @@ import Cocoa
         return .empty
       }
     }
-    self.mDataController.sortedArray_property.count_property.addEBObserver (self.mGeneratedFileCountString_property, postEvent: false)
-    self.mGeneratedFileCountString_property.postEvent ()
+    self.mDataController.sortedArray_property.count_property.addEBObserver (self.mGeneratedFileCountString_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: mStatusImage
@@ -357,9 +356,8 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusImage_property, postEvent: false)
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusImage_property, postEvent: false)
-    self.mStatusImage_property.postEvent ()
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusImage_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: mStatusMessage
@@ -384,9 +382,8 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusMessage_property, postEvent: false)
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusMessage_property, postEvent: false)
-    self.mStatusMessage_property.postEvent ()
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusMessage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusMessage_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
     if LOG_OPERATION_DURATION {

@@ -682,8 +682,7 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.padNumbering_property.addEBObserver (self.freePadNumbering_property, postEvent: false)
-    self.freePadNumbering_property.postEvent ()
+    self.padNumbering_property.addEBObserver (self.freePadNumbering_property)
   //--- Atomic property: counterClockNumbering
     self.counterClockNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -705,8 +704,7 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.padNumbering_property.addEBObserver (self.counterClockNumbering_property, postEvent: false)
-    self.counterClockNumbering_property.postEvent ()
+    self.padNumbering_property.addEBObserver (self.counterClockNumbering_property)
   //--- Atomic property: gridStepMultipliedByDisplayFactor
     self.gridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -729,9 +727,8 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.gridStep_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property, postEvent: false)
-    self.gridDisplayFactor_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property, postEvent: false)
-    self.gridStepMultipliedByDisplayFactor_property.postEvent ()
+    self.gridStep_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
+    self.gridDisplayFactor_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -755,10 +752,9 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    g_Preferences?.showPadNumber_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
-    self.packagePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property, postEvent: false)
-    self.packageSlavePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property, postEvent: false)
-    self.padNumberDisplay_property.postEvent ()
+    g_Preferences?.showPadNumber_property.addEBObserver (self.padNumberDisplay_property)
+    self.packagePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
+    self.packageSlavePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -785,13 +781,12 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.packageObjects_property.addEBObserverOf_issues (self.issues_property, postEvent: false)
-    self.packageZones_property.addEBObserverOf_rect (self.issues_property, postEvent: false)
-    self.packageZones_property.addEBObserverOf_zoneName (self.issues_property, postEvent: false)
-    self.packageZones_property.addEBObserverOf_xName (self.issues_property, postEvent: false)
-    self.packageZones_property.addEBObserverOf_yName (self.issues_property, postEvent: false)
-    g_Preferences?.padZoneFont_property.addEBObserver (self.issues_property, postEvent: false)
-    self.issues_property.postEvent ()
+    self.packageObjects_property.addEBObserverOf_issues (self.issues_property)
+    self.packageZones_property.addEBObserverOf_rect (self.issues_property)
+    self.packageZones_property.addEBObserverOf_zoneName (self.issues_property)
+    self.packageZones_property.addEBObserverOf_xName (self.issues_property)
+    self.packageZones_property.addEBObserverOf_yName (self.issues_property)
+    g_Preferences?.padZoneFont_property.addEBObserver (self.issues_property)
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -813,8 +808,7 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.noIssue_property, postEvent: false)
-    self.noIssue_property.postEvent ()
+    self.issues_property.addEBObserver (self.noIssue_property)
   //--- Install undoers and opposite setter for relationships
     self.packagePads_property.setDataProvider (self.packageObjects_property)
     self.packageSlavePads_property.setDataProvider (self.packageObjects_property)

@@ -180,7 +180,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
   //····················································································································
 
   private final func bind_property_mOrientation () {
-    self.selectedArray_property.addEBObserverOf_mOrientation (self.mOrientation_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mOrientation (self.mOrientation_property)
     self.mOrientation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -249,7 +249,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -288,7 +288,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

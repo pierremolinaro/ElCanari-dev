@@ -85,14 +85,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_selectedPageIndex.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.selectedPageIndex_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.selectedPageIndex_property.addEBObserver (inObserver)
     }
   }
 
@@ -155,14 +155,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_selectedInspector.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.selectedInspector_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.selectedInspector_property.addEBObserver (inObserver)
     }
   }
 
@@ -225,14 +225,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_comments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_comments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.comments_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.comments_property.addEBObserver (inObserver)
     }
   }
 
@@ -295,14 +295,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_program (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_program (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_program.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.program_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.program_property.addEBObserver (inObserver)
     }
   }
 
@@ -365,14 +365,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_horizontalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_horizontalFlip.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.horizontalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.horizontalFlip_property.addEBObserver (inObserver)
     }
   }
 
@@ -435,14 +435,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_verticalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_verticalFlip.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.verticalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.verticalFlip_property.addEBObserver (inObserver)
     }
   }
 
@@ -505,14 +505,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_gridStyle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_gridStyle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_gridStyle.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.gridStyle_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.gridStyle_property.addEBObserver (inObserver)
     }
   }
 
@@ -575,14 +575,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_gridStep (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_gridStep (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_gridStep.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.gridStep_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.gridStep_property.addEBObserver (inObserver)
     }
   }
 
@@ -645,14 +645,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_gridStepUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_gridStepUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_gridStepUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.gridStepUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.gridStepUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -715,14 +715,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_gridDisplayFactor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_gridDisplayFactor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_gridDisplayFactor.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.gridDisplayFactor_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.gridDisplayFactor_property.addEBObserver (inObserver)
     }
   }
 
@@ -785,14 +785,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_zoom (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_zoom.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.zoom_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.zoom_property.addEBObserver (inObserver)
     }
   }
 
@@ -855,14 +855,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_padNumbering (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_padNumbering (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_padNumbering.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.padNumbering_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.padNumbering_property.addEBObserver (inObserver)
     }
   }
 
@@ -925,14 +925,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_counterClockNumberingStartAngle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_counterClockNumberingStartAngle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_counterClockNumberingStartAngle.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.counterClockNumberingStartAngle_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.counterClockNumberingStartAngle_property.addEBObserver (inObserver)
     }
   }
 
@@ -995,14 +995,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_xPlacardUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_xPlacardUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_xPlacardUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.xPlacardUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.xPlacardUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -1065,14 +1065,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_yPlacardUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_yPlacardUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_yPlacardUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.yPlacardUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.yPlacardUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -1135,14 +1135,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_freePadNumbering (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_freePadNumbering (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_freePadNumbering.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.freePadNumbering_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.freePadNumbering_property.addEBObserver (inObserver)
     }
   }
 
@@ -1204,14 +1204,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_counterClockNumbering (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_counterClockNumbering (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_counterClockNumbering.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.counterClockNumbering_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.counterClockNumbering_property.addEBObserver (inObserver)
     }
   }
 
@@ -1273,14 +1273,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_gridStepMultipliedByDisplayFactor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_gridStepMultipliedByDisplayFactor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_gridStepMultipliedByDisplayFactor.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.gridStepMultipliedByDisplayFactor_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.gridStepMultipliedByDisplayFactor_property.addEBObserver (inObserver)
     }
   }
 
@@ -1342,14 +1342,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_padNumberDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_padNumberDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.padNumberDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.padNumberDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1411,14 +1411,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 
@@ -1480,14 +1480,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_noIssue (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_noIssue (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_noIssue.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.noIssue_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.noIssue_property.addEBObserver (inObserver)
     }
   }
 
@@ -1549,10 +1549,10 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_packageObjects (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_packageObjects (_ inObserver : EBEvent) {
     self.mObserversOf_packageObjects.insert (inObserver)
     if let object = self.propval {
-      object.packageObjects_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      object.packageObjects_property.addEBObserver (inObserver)
     }
   }
 
@@ -1590,10 +1590,10 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_packagePads (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_packagePads (_ inObserver : EBEvent) {
     self.mObserversOf_packagePads.insert (inObserver)
     if let object = self.propval {
-      object.packagePads_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      object.packagePads_property.addEBObserver (inObserver)
     }
   }
 
@@ -1631,10 +1631,10 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_packageSlavePads (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_packageSlavePads (_ inObserver : EBEvent) {
     self.mObserversOf_packageSlavePads.insert (inObserver)
     if let object = self.propval {
-      object.packageSlavePads_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      object.packageSlavePads_property.addEBObserver (inObserver)
     }
   }
 
@@ -1672,10 +1672,10 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_packageZones (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_packageZones (_ inObserver : EBEvent) {
     self.mObserversOf_packageZones.insert (inObserver)
     if let object = self.propval {
-      object.packageZones_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      object.packageZones_property.addEBObserver (inObserver)
     }
   }
 

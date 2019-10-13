@@ -77,7 +77,6 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
       inModel,
       sortCallback: nil,
       addSortObserversCallback: { (observer) in
-        observer.postEvent ()
       },
       removeSortObserversCallback: {(observer) in
       }

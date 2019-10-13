@@ -44,7 +44,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
 
   //····················································································································
 
-  final func addEBObserverOf_mCenterX (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mCenterX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterX.insert (inObserver)
     switch prop {
@@ -52,7 +52,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mCenterX_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mCenterX_property.addEBObserver (inObserver)
       }
     }
   }
@@ -101,7 +101,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
 
   //····················································································································
 
-  final func addEBObserverOf_mCenterY (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mCenterY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterY.insert (inObserver)
     switch prop {
@@ -109,7 +109,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mCenterY_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mCenterY_property.addEBObserver (inObserver)
       }
     }
   }
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
 
   //····················································································································
 
-  final func addEBObserverOf_mWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWidth.insert (inObserver)
     switch prop {
@@ -166,7 +166,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mWidth_property.addEBObserver (inObserver)
       }
     }
   }
@@ -215,7 +215,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
 
   //····················································································································
 
-  final func addEBObserverOf_mHeight (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHeight.insert (inObserver)
     switch prop {
@@ -223,7 +223,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mHeight_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mHeight_property.addEBObserver (inObserver)
       }
     }
   }
@@ -272,7 +272,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
 
   //····················································································································
 
-  final func addEBObserverOf_mHoleWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mHoleWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHoleWidth.insert (inObserver)
     switch prop {
@@ -280,7 +280,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mHoleWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mHoleWidth_property.addEBObserver (inObserver)
       }
     }
   }
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
 
   //····················································································································
 
-  final func addEBObserverOf_mHoleHeight (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mHoleHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHoleHeight.insert (inObserver)
     switch prop {
@@ -337,7 +337,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mHoleHeight_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mHoleHeight_property.addEBObserver (inObserver)
       }
     }
   }
@@ -386,7 +386,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
 
   //····················································································································
 
-  final func addEBObserverOf_mShape (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShape.insert (inObserver)
     switch prop {
@@ -394,7 +394,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mShape_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mShape_property.addEBObserver (inObserver)
       }
     }
   }
@@ -443,7 +443,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
 
   //····················································································································
 
-  final func addEBObserverOf_mStyle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mStyle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mStyle.insert (inObserver)
     switch prop {
@@ -451,7 +451,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mStyle_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mStyle_property.addEBObserver (inObserver)
       }
     }
   }
@@ -500,7 +500,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
 
   //····················································································································
 
-  final func addEBObserverOf_descriptor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
     switch prop {
@@ -508,7 +508,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.descriptor_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.descriptor_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1104,14 +1104,14 @@ final class PreferencesArrayOf_DeviceSlavePadInProject : StoredArrayOf_DeviceSla
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mCenterX (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mCenterY (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mWidth (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mHeight (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mHoleWidth (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mHoleHeight (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mShape (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mStyle (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mCenterX (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mCenterY (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mWidth (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mHeight (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mHoleWidth (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mHoleHeight (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mShape (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mStyle (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

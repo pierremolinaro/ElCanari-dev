@@ -220,9 +220,8 @@ class PadProxyInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mIsNC_property.addEBObserver (self.isConnected_property, postEvent: false)
-    self.mPinInstance_property.addEBObserver (self.isConnected_property, postEvent: false)
-    self.isConnected_property.postEvent ()
+    self.mIsNC_property.addEBObserver (self.isConnected_property)
+    self.mPinInstance_property.addEBObserver (self.isConnected_property)
   //--- Atomic property: symbolName
     self.symbolName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -244,8 +243,7 @@ class PadProxyInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mPinInstance_property.addEBObserverOf_symbolName (self.symbolName_property, postEvent: false)
-    self.symbolName_property.postEvent ()
+    self.mPinInstance_property.addEBObserverOf_symbolName (self.symbolName_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: self)

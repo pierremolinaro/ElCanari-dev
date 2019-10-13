@@ -32,7 +32,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_y (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
     switch prop {
@@ -40,7 +40,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.y_property.addEBObserver (inObserver)
       }
     }
   }
@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   //····················································································································
 
-  final func addEBObserverOf_padDiameter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_padDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padDiameter.insert (inObserver)
     switch prop {
@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.padDiameter_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.padDiameter_property.addEBObserver (inObserver)
       }
     }
   }
@@ -146,7 +146,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   //····················································································································
 
-  final func addEBObserverOf_x (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_x (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
     switch prop {
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.x_property.addEBObserver (inObserver)
       }
     }
   }
@@ -751,9 +751,9 @@ final class PreferencesArrayOf_BoardModelVia : StoredArrayOf_BoardModelVia {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_y (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_padDiameter (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_x (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_y (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_padDiameter (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_x (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

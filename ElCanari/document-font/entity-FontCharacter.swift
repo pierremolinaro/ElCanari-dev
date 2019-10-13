@@ -285,11 +285,10 @@ class FontCharacter : EBManagedObject,
         return .empty
       }
     }
-    self.segments_property.addEBObserverOf_x1 (self.segmentArrayForDrawing_property, postEvent: false)
-    self.segments_property.addEBObserverOf_y1 (self.segmentArrayForDrawing_property, postEvent: false)
-    self.segments_property.addEBObserverOf_x2 (self.segmentArrayForDrawing_property, postEvent: false)
-    self.segments_property.addEBObserverOf_y2 (self.segmentArrayForDrawing_property, postEvent: false)
-    self.segmentArrayForDrawing_property.postEvent ()
+    self.segments_property.addEBObserverOf_x1 (self.segmentArrayForDrawing_property)
+    self.segments_property.addEBObserverOf_y1 (self.segmentArrayForDrawing_property)
+    self.segments_property.addEBObserverOf_x2 (self.segmentArrayForDrawing_property)
+    self.segments_property.addEBObserverOf_y2 (self.segmentArrayForDrawing_property)
   //--- Atomic property: gerberCode
     self.gerberCode_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -311,8 +310,7 @@ class FontCharacter : EBManagedObject,
         return .empty
       }
     }
-    self.segmentArrayForDrawing_property.addEBObserver (self.gerberCode_property, postEvent: false)
-    self.gerberCode_property.postEvent ()
+    self.segmentArrayForDrawing_property.addEBObserver (self.gerberCode_property)
   //--- Atomic property: gerberCodeInstructionCountMessage
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -334,8 +332,7 @@ class FontCharacter : EBManagedObject,
         return .empty
       }
     }
-    self.gerberCode_property.addEBObserver (self.gerberCodeInstructionCountMessage_property, postEvent: false)
-    self.gerberCodeInstructionCountMessage_property.postEvent ()
+    self.gerberCode_property.addEBObserver (self.gerberCodeInstructionCountMessage_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -361,12 +358,11 @@ class FontCharacter : EBManagedObject,
         return .empty
       }
     }
-    self.codePoint_property.addEBObserver (self.issues_property, postEvent: false)
-    self.advance_property.addEBObserver (self.issues_property, postEvent: false)
-    self.mWarnsWhenNoSegment_property.addEBObserver (self.issues_property, postEvent: false)
-    self.mWarnsWhenAdvanceIsZero_property.addEBObserver (self.issues_property, postEvent: false)
-    self.segments_property.addEBObserver (self.issues_property, postEvent: false)
-    self.issues_property.postEvent ()
+    self.codePoint_property.addEBObserver (self.issues_property)
+    self.advance_property.addEBObserver (self.issues_property)
+    self.mWarnsWhenNoSegment_property.addEBObserver (self.issues_property)
+    self.mWarnsWhenAdvanceIsZero_property.addEBObserver (self.issues_property)
+    self.segments_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.advance_property.setSignatureObserver (observer: self)

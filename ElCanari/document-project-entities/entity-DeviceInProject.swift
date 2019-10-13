@@ -469,8 +469,7 @@ class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mDeviceVersion_property.addEBObserver (self.versionString_property, postEvent: false)
-    self.versionString_property.postEvent ()
+    self.mDeviceVersion_property.addEBObserver (self.versionString_property)
   //--- Atomic property: sizeString
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -492,8 +491,7 @@ class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mDeviceFileData_property.addEBObserver (self.sizeString_property, postEvent: false)
-    self.sizeString_property.postEvent ()
+    self.mDeviceFileData_property.addEBObserver (self.sizeString_property)
   //--- Atomic property: canExport
     self.canExport_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -515,8 +513,7 @@ class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mDeviceFileData_property.addEBObserver (self.canExport_property, postEvent: false)
-    self.canExport_property.postEvent ()
+    self.mDeviceFileData_property.addEBObserver (self.canExport_property)
   //--- Atomic property: packageNames
     self.packageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -538,8 +535,7 @@ class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPackages_property.addEBObserverOf_mPackageName (self.packageNames_property, postEvent: false)
-    self.packageNames_property.postEvent ()
+    self.mPackages_property.addEBObserverOf_mPackageName (self.packageNames_property)
   //--- Atomic property: canRemove
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -561,8 +557,7 @@ class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mComponents_property.addEBObserver (self.canRemove_property, postEvent: false)
-    self.canRemove_property.postEvent ()
+    self.mComponents_property.addEBObserver (self.canRemove_property)
   //--- Atomic property: symbolAndTypesNames
     self.symbolAndTypesNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -584,8 +579,7 @@ class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property, postEvent: false)
-    self.symbolAndTypesNames_property.postEvent ()
+    self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property)
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -607,8 +601,7 @@ class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPadAssignments_property.addEBObserverOf_pinPadAssignment (self.pinPadAssignments_property, postEvent: false)
-    self.pinPadAssignments_property.postEvent ()
+    self.mPadAssignments_property.addEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
   //--- Atomic property: deviceSymbolDictionary
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -633,11 +626,10 @@ class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPadAssignments_property.addEBObserverOf_descriptor (self.deviceSymbolDictionary_property, postEvent: false)
-    self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property, postEvent: false)
-    self.mSymbols_property.addEBObserverOf_filledBezierPath (self.deviceSymbolDictionary_property, postEvent: false)
-    self.mSymbols_property.addEBObserverOf_strokeBezierPath (self.deviceSymbolDictionary_property, postEvent: false)
-    self.deviceSymbolDictionary_property.postEvent ()
+    self.mPadAssignments_property.addEBObserverOf_descriptor (self.deviceSymbolDictionary_property)
+    self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
+    self.mSymbols_property.addEBObserverOf_filledBezierPath (self.deviceSymbolDictionary_property)
+    self.mSymbols_property.addEBObserverOf_strokeBezierPath (self.deviceSymbolDictionary_property)
   //--- Install undoers and opposite setter for relationships
     self.mComponents_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mDevice_property.setProp (me) } },

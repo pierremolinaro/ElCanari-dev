@@ -271,7 +271,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //···················································································································*
 
   private final func bind_property_boardLimitWidth (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_boardLimitWidth (self.boardLimitWidth_property, postEvent: true)
+    model.addEBObserverOf_boardLimitWidth (self.boardLimitWidth_property)
     self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -311,7 +311,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //···················································································································*
 
   private final func bind_property_instanceRect (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_instanceRect (self.instanceRect_property, postEvent: true)
+    model.addEBObserverOf_instanceRect (self.instanceRect_property)
     self.instanceRect_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -351,7 +351,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //···················································································································*
 
   private final func bind_property_instanceRotation (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_instanceRotation (self.instanceRotation_property, postEvent: true)
+    model.addEBObserverOf_instanceRotation (self.instanceRotation_property)
     self.instanceRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -421,7 +421,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //···················································································································*
 
   private final func bind_property_modelName (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_modelName (self.modelName_property, postEvent: true)
+    model.addEBObserverOf_modelName (self.modelName_property)
     self.modelName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -461,7 +461,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //···················································································································*
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property, postEvent: true)
+    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -501,7 +501,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //···················································································································*
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property, postEvent: true)
+    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -541,7 +541,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //···················································································································*
 
   private final func bind_property_x (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_x (self.x_property, postEvent: true)
+    model.addEBObserverOf_x (self.x_property)
     self.x_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -611,7 +611,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //···················································································································*
 
   private final func bind_property_y (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_y (self.y_property, postEvent: true)
+    model.addEBObserverOf_y (self.y_property)
     self.y_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {

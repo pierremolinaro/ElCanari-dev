@@ -511,15 +511,14 @@ class PackageBezier : PackageObject,
         return .empty
       }
     }
-    self.x1_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
-    self.y1_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
-    self.x2_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
-    self.y2_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
-    self.cpx1_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
-    self.cpy1_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
-    self.cpx2_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
-    self.cpy2_property.addEBObserver (self.strokeBezierPath_property, postEvent: false)
-    self.strokeBezierPath_property.postEvent ()
+    self.x1_property.addEBObserver (self.strokeBezierPath_property)
+    self.y1_property.addEBObserver (self.strokeBezierPath_property)
+    self.x2_property.addEBObserver (self.strokeBezierPath_property)
+    self.y2_property.addEBObserver (self.strokeBezierPath_property)
+    self.cpx1_property.addEBObserver (self.strokeBezierPath_property)
+    self.cpy1_property.addEBObserver (self.strokeBezierPath_property)
+    self.cpx2_property.addEBObserver (self.strokeBezierPath_property)
+    self.cpy2_property.addEBObserver (self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -543,10 +542,9 @@ class PackageBezier : PackageObject,
         return .empty
       }
     }
-    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.objectDisplay_property.postEvent ()
+    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -575,15 +573,14 @@ class PackageBezier : PackageObject,
         return .empty
       }
     }
-    self.x1_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.y1_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.x2_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.y2_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.cpx1_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.cpy1_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.cpx2_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.cpy2_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.selectionDisplay_property.postEvent ()
+    self.x1_property.addEBObserver (self.selectionDisplay_property)
+    self.y1_property.addEBObserver (self.selectionDisplay_property)
+    self.x2_property.addEBObserver (self.selectionDisplay_property)
+    self.y2_property.addEBObserver (self.selectionDisplay_property)
+    self.cpx1_property.addEBObserver (self.selectionDisplay_property)
+    self.cpy1_property.addEBObserver (self.selectionDisplay_property)
+    self.cpx2_property.addEBObserver (self.selectionDisplay_property)
+    self.cpy2_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -612,15 +609,14 @@ class PackageBezier : PackageObject,
         return .empty
       }
     }
-    self.x1_property.addEBObserver (self.issues_property, postEvent: false)
-    self.y1_property.addEBObserver (self.issues_property, postEvent: false)
-    self.x2_property.addEBObserver (self.issues_property, postEvent: false)
-    self.y2_property.addEBObserver (self.issues_property, postEvent: false)
-    self.cpx1_property.addEBObserver (self.issues_property, postEvent: false)
-    self.cpy1_property.addEBObserver (self.issues_property, postEvent: false)
-    self.cpx2_property.addEBObserver (self.issues_property, postEvent: false)
-    self.cpy2_property.addEBObserver (self.issues_property, postEvent: false)
-    self.issues_property.postEvent ()
+    self.x1_property.addEBObserver (self.issues_property)
+    self.y1_property.addEBObserver (self.issues_property)
+    self.x2_property.addEBObserver (self.issues_property)
+    self.y2_property.addEBObserver (self.issues_property)
+    self.cpx1_property.addEBObserver (self.issues_property)
+    self.cpy1_property.addEBObserver (self.issues_property)
+    self.cpx2_property.addEBObserver (self.issues_property)
+    self.cpy2_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.cpx1_property.setSignatureObserver (observer: self)

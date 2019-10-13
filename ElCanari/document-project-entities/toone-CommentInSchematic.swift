@@ -59,14 +59,14 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mColor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mColor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mColor.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mColor_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mColor_property.addEBObserver (inObserver)
     }
   }
 
@@ -129,14 +129,14 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mSize (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mSize (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mSize.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mSize_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mSize_property.addEBObserver (inObserver)
     }
   }
 
@@ -199,14 +199,14 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mHorizontalAlignment.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mHorizontalAlignment_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mHorizontalAlignment_property.addEBObserver (inObserver)
     }
   }
 
@@ -269,14 +269,14 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mX_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mX_property.addEBObserver (inObserver)
     }
   }
 
@@ -339,14 +339,14 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mY_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mY_property.addEBObserver (inObserver)
     }
   }
 
@@ -409,14 +409,14 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mComment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mComment (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mComment.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mComment_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mComment_property.addEBObserver (inObserver)
     }
   }
 
@@ -479,14 +479,14 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -548,14 +548,14 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 

@@ -55,14 +55,14 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 
@@ -124,14 +124,14 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
 
   //····················································································································
 
-  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_connectedPoints.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.connectedPoints_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.connectedPoints_property.addEBObserver (inObserver)
     }
   }
 
@@ -193,14 +193,14 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
 
   //····················································································································
 
-  final func addEBObserverOf_sheetDescriptor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_sheetDescriptor.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.sheetDescriptor_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.sheetDescriptor_property.addEBObserver (inObserver)
     }
   }
 
@@ -262,14 +262,14 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -331,14 +331,14 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -400,14 +400,14 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
 
   //····················································································································
 
-  final func addEBObserverOf_isPlacedInSchematic (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_isPlacedInSchematic (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_isPlacedInSchematic.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.isPlacedInSchematic_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.isPlacedInSchematic_property.addEBObserver (inObserver)
     }
   }
 

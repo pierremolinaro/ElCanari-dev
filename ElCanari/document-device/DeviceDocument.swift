@@ -535,9 +535,8 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.assignmentInhibitionMessage_property, postEvent: false)
-    self.rootObject.inconsistentSymbolNameSetMessage_property.addEBObserver (self.assignmentInhibitionMessage_property, postEvent: false)
-    self.assignmentInhibitionMessage_property.postEvent ()
+    self.rootObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
+    self.rootObject.inconsistentSymbolNameSetMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: hasUnconnectedPin
@@ -561,8 +560,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.unconnectedPins_property.addEBObserver (self.hasUnconnectedPin_property, postEvent: false)
-    self.hasUnconnectedPin_property.postEvent ()
+    self.rootObject.unconnectedPins_property.addEBObserver (self.hasUnconnectedPin_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: mStatusMessage
@@ -586,8 +584,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property, postEvent: false)
-    self.mStatusMessage_property.postEvent ()
+    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: mMetadataStatus
@@ -611,8 +608,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property, postEvent: false)
-    self.mMetadataStatus_property.postEvent ()
+    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: hasUnconnectedPad
@@ -636,8 +632,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.unconnectedPads_property.addEBObserver (self.hasUnconnectedPad_property, postEvent: false)
-    self.hasUnconnectedPad_property.postEvent ()
+    self.rootObject.unconnectedPads_property.addEBObserver (self.hasUnconnectedPad_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: hasAssignedPadProxies
@@ -661,8 +656,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.assignedPadProxies_property.addEBObserver (self.hasAssignedPadProxies_property, postEvent: false)
-    self.hasAssignedPadProxies_property.postEvent ()
+    self.rootObject.assignedPadProxies_property.addEBObserver (self.hasAssignedPadProxies_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: mStatusImage
@@ -686,8 +680,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property, postEvent: false)
-    self.mStatusImage_property.postEvent ()
+    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
     if LOG_OPERATION_DURATION {

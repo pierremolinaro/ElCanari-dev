@@ -212,13 +212,12 @@ class CommentInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mComment_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mSize_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mHorizontalAlignment_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mX_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mY_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.objectDisplay_property.postEvent ()
+    self.mComment_property.addEBObserver (self.objectDisplay_property)
+    self.mColor_property.addEBObserver (self.objectDisplay_property)
+    self.mSize_property.addEBObserver (self.objectDisplay_property)
+    self.mHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
+    self.mX_property.addEBObserver (self.objectDisplay_property)
+    self.mY_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -245,13 +244,12 @@ class CommentInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mComment_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mColor_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mSize_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mX_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mY_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.selectionDisplay_property.postEvent ()
+    self.mComment_property.addEBObserver (self.selectionDisplay_property)
+    self.mColor_property.addEBObserver (self.selectionDisplay_property)
+    self.mSize_property.addEBObserver (self.selectionDisplay_property)
+    self.mHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
+    self.mX_property.addEBObserver (self.selectionDisplay_property)
+    self.mY_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

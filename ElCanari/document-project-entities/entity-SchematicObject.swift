@@ -215,8 +215,7 @@ class SchematicObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mSheet_property.addEBObserverOf_sheetDescriptor (self.sheetDescriptor_property, postEvent: false)
-    self.sheetDescriptor_property.postEvent ()
+    self.mSheet_property.addEBObserverOf_sheetDescriptor (self.sheetDescriptor_property)
   //--- Atomic property: isPlacedInSchematic
     self.isPlacedInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -238,8 +237,7 @@ class SchematicObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mSheet_property.addEBObserver (self.isPlacedInSchematic_property, postEvent: false)
-    self.isPlacedInSchematic_property.postEvent ()
+    self.mSheet_property.addEBObserver (self.isPlacedInSchematic_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

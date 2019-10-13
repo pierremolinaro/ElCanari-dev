@@ -42,7 +42,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_codePoint (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_codePoint (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_codePoint.insert (inObserver)
     switch prop {
@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.codePoint_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.codePoint_property.addEBObserver (inObserver)
       }
     }
   }
@@ -99,7 +99,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_advance (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_advance (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_advance.insert (inObserver)
     switch prop {
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.advance_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.advance_property.addEBObserver (inObserver)
       }
     }
   }
@@ -156,7 +156,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWarnsWhenNoSegment.insert (inObserver)
     switch prop {
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mWarnsWhenNoSegment_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mWarnsWhenNoSegment_property.addEBObserver (inObserver)
       }
     }
   }
@@ -213,7 +213,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWarnsWhenAdvanceIsZero.insert (inObserver)
     switch prop {
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mWarnsWhenAdvanceIsZero_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mWarnsWhenAdvanceIsZero_property.addEBObserver (inObserver)
       }
     }
   }
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_segmentArrayForDrawing.insert (inObserver)
     switch prop {
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.segmentArrayForDrawing_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.segmentArrayForDrawing_property.addEBObserver (inObserver)
       }
     }
   }
@@ -326,7 +326,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_gerberCode (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_gerberCode (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gerberCode.insert (inObserver)
     switch prop {
@@ -334,7 +334,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gerberCode_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.gerberCode_property.addEBObserver (inObserver)
       }
     }
   }
@@ -382,7 +382,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gerberCodeInstructionCountMessage.insert (inObserver)
     switch prop {
@@ -390,7 +390,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gerberCodeInstructionCountMessage_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.gerberCodeInstructionCountMessage_property.addEBObserver (inObserver)
       }
     }
   }
@@ -438,7 +438,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
@@ -446,7 +446,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.issues_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1042,10 +1042,10 @@ final class PreferencesArrayOf_FontCharacter : StoredArrayOf_FontCharacter {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_codePoint (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_advance (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mWarnsWhenNoSegment (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mWarnsWhenAdvanceIsZero (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_codePoint (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_advance (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mWarnsWhenNoSegment (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mWarnsWhenAdvanceIsZero (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

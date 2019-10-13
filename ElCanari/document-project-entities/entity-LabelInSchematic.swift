@@ -211,8 +211,7 @@ class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_location (self.location_property, postEvent: false)
-    self.location_property.postEvent ()
+    self.mPoint_property.addEBObserverOf_location (self.location_property)
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -234,8 +233,7 @@ class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_netName (self.netName_property, postEvent: false)
-    self.netName_property.postEvent ()
+    self.mPoint_property.addEBObserverOf_netName (self.netName_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -260,11 +258,10 @@ class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property, postEvent: false)
-    self.netName_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mOrientation_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.selectionDisplay_property.postEvent ()
+    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.netName_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
+    self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -286,8 +283,7 @@ class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_netClassName (self.netClassName_property, postEvent: false)
-    self.netClassName_property.postEvent ()
+    self.mPoint_property.addEBObserverOf_netClassName (self.netClassName_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -314,13 +310,12 @@ class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    g_Preferences?.symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property, postEvent: false)
-    self.netName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mOrientation_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.objectDisplay_property.postEvent ()
+    g_Preferences?.symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property)
+    self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.netName_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    self.mOrientation_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

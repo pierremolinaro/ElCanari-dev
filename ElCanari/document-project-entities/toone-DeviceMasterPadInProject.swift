@@ -63,14 +63,14 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mCenterX (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mCenterX (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mCenterX.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mCenterX_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mCenterX_property.addEBObserver (inObserver)
     }
   }
 
@@ -133,14 +133,14 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mCenterY (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mCenterY (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mCenterY.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mCenterY_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mCenterY_property.addEBObserver (inObserver)
     }
   }
 
@@ -203,14 +203,14 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mWidth_property.addEBObserver (inObserver)
     }
   }
 
@@ -273,14 +273,14 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mHeight (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mHeight (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mHeight.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mHeight_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mHeight_property.addEBObserver (inObserver)
     }
   }
 
@@ -343,14 +343,14 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mHoleWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mHoleWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mHoleWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mHoleWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mHoleWidth_property.addEBObserver (inObserver)
     }
   }
 
@@ -413,14 +413,14 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mHoleHeight (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mHoleHeight (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mHoleHeight.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mHoleHeight_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mHoleHeight_property.addEBObserver (inObserver)
     }
   }
 
@@ -483,14 +483,14 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mShape (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mShape (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mShape.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mShape_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mShape_property.addEBObserver (inObserver)
     }
   }
 
@@ -553,14 +553,14 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mStyle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mStyle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mStyle.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mStyle_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mStyle_property.addEBObserver (inObserver)
     }
   }
 
@@ -623,14 +623,14 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mName_property.addEBObserver (inObserver)
     }
   }
 
@@ -693,14 +693,14 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_descriptor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.descriptor_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.descriptor_property.addEBObserver (inObserver)
     }
   }
 
@@ -762,10 +762,10 @@ class ReadOnlyObject_DeviceMasterPadInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mSlavePads (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mSlavePads (_ inObserver : EBEvent) {
     self.mObserversOf_mSlavePads.insert (inObserver)
     if let object = self.propval {
-      object.mSlavePads_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      object.mSlavePads_property.addEBObserver (inObserver)
     }
   }
 

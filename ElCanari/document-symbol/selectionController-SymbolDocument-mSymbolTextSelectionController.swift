@@ -266,7 +266,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //····················································································································
 
   private final func bind_property_y () {
-    self.selectedArray_property.addEBObserverOf_y (self.y_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_y (self.y_property)
     self.y_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -335,7 +335,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //····················································································································
 
   private final func bind_property_text () {
-    self.selectedArray_property.addEBObserverOf_text (self.text_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_text (self.text_property)
     self.text_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -404,7 +404,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //····················································································································
 
   private final func bind_property_horizontalAlignment () {
-    self.selectedArray_property.addEBObserverOf_horizontalAlignment (self.horizontalAlignment_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_horizontalAlignment (self.horizontalAlignment_property)
     self.horizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -473,7 +473,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //····················································································································
 
   private final func bind_property_x () {
-    self.selectedArray_property.addEBObserverOf_x (self.x_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_x (self.x_property)
     self.x_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -542,7 +542,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -581,7 +581,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -620,7 +620,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //····················································································································
 
   private final func bind_property_issues () {
-    self.selectedArray_property.addEBObserverOf_issues (self.issues_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

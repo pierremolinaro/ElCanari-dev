@@ -337,8 +337,7 @@ class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClass_property.addEBObserverOf_mNetClassName (self.netClassName_property, postEvent: false)
-    self.netClassName_property.postEvent ()
+    self.mNetClass_property.addEBObserverOf_mNetClassName (self.netClassName_property)
   //--- Atomic property: netClassTrackWidth
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -360,8 +359,7 @@ class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClass_property.addEBObserverOf_mTrackWidth (self.netClassTrackWidth_property, postEvent: false)
-    self.netClassTrackWidth_property.postEvent ()
+    self.mNetClass_property.addEBObserverOf_mTrackWidth (self.netClassTrackWidth_property)
   //--- Atomic property: netClassViaHoleDiameter
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -383,8 +381,7 @@ class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClass_property.addEBObserverOf_mViaHoleDiameter (self.netClassViaHoleDiameter_property, postEvent: false)
-    self.netClassViaHoleDiameter_property.postEvent ()
+    self.mNetClass_property.addEBObserverOf_mViaHoleDiameter (self.netClassViaHoleDiameter_property)
   //--- Atomic property: netClassViaPadDiameter
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -406,8 +403,7 @@ class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClass_property.addEBObserverOf_mViaPadDiameter (self.netClassViaPadDiameter_property, postEvent: false)
-    self.netClassViaPadDiameter_property.postEvent ()
+    self.mNetClass_property.addEBObserverOf_mViaPadDiameter (self.netClassViaPadDiameter_property)
   //--- Atomic property: wireColor
     self.wireColor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -429,8 +425,7 @@ class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClass_property.addEBObserverOf_mNetClassColor (self.wireColor_property, postEvent: false)
-    self.wireColor_property.postEvent ()
+    self.mNetClass_property.addEBObserverOf_mNetClassColor (self.wireColor_property)
   //--- Atomic property: netSchematicPointsInfo
     self.netSchematicPointsInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -452,8 +447,7 @@ class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPoints_property.addEBObserverOf_netInfoForPoint (self.netSchematicPointsInfo_property, postEvent: false)
-    self.netSchematicPointsInfo_property.postEvent ()
+    self.mPoints_property.addEBObserverOf_netInfoForPoint (self.netSchematicPointsInfo_property)
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },

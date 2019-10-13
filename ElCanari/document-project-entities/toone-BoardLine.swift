@@ -69,14 +69,14 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mWidthUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mWidthUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mWidthUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mWidthUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mWidthUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -139,14 +139,14 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mX1 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mX1 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mX1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mX1_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mX1_property.addEBObserver (inObserver)
     }
   }
 
@@ -209,14 +209,14 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mX1Unit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mX1Unit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mX1Unit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mX1Unit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mX1Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -279,14 +279,14 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mY1 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mY1 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mY1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mY1_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mY1_property.addEBObserver (inObserver)
     }
   }
 
@@ -349,14 +349,14 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mY1Unit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mY1Unit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mY1Unit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mY1Unit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mY1Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -419,14 +419,14 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mX2 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mX2 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mX2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mX2_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mX2_property.addEBObserver (inObserver)
     }
   }
 
@@ -489,14 +489,14 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mX2Unit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mX2Unit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mX2Unit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mX2Unit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mX2Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -559,14 +559,14 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mY2 (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mY2 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mY2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mY2_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mY2_property.addEBObserver (inObserver)
     }
   }
 
@@ -629,14 +629,14 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mY2Unit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mY2Unit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mY2Unit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mY2Unit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mY2Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -699,14 +699,14 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mLayer (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mLayer (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mLayer.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mLayer_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mLayer_property.addEBObserver (inObserver)
     }
   }
 
@@ -769,14 +769,14 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_mWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mWidth_property.addEBObserver (inObserver)
     }
   }
 
@@ -839,14 +839,14 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -908,14 +908,14 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 

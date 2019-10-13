@@ -77,7 +77,6 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
       inModel,
       sortCallback: nil,
       addSortObserversCallback: { (observer) in
-        observer.postEvent ()
       },
       removeSortObserversCallback: {(observer) in
       }

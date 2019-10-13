@@ -76,7 +76,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSelectedPageIndex.insert (inObserver)
     switch prop {
@@ -84,7 +84,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSelectedPageIndex_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mSelectedPageIndex_property.addEBObserver (inObserver)
       }
     }
   }
@@ -133,7 +133,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mTitle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mTitle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mTitle.insert (inObserver)
     switch prop {
@@ -141,7 +141,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mTitle_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mTitle_property.addEBObserver (inObserver)
       }
     }
   }
@@ -190,7 +190,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mPrefix (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mPrefix (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPrefix.insert (inObserver)
     switch prop {
@@ -198,7 +198,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPrefix_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mPrefix_property.addEBObserver (inObserver)
       }
     }
   }
@@ -247,7 +247,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mComments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mComments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mComments.insert (inObserver)
     switch prop {
@@ -255,7 +255,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mComments_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mComments_property.addEBObserver (inObserver)
       }
     }
   }
@@ -304,7 +304,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mPackageDisplayZoom (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mPackageDisplayZoom (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPackageDisplayZoom.insert (inObserver)
     switch prop {
@@ -312,7 +312,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPackageDisplayZoom_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mPackageDisplayZoom_property.addEBObserver (inObserver)
       }
     }
   }
@@ -361,7 +361,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mPackageDisplayHorizontalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mPackageDisplayHorizontalFlip (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPackageDisplayHorizontalFlip.insert (inObserver)
     switch prop {
@@ -369,7 +369,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPackageDisplayHorizontalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mPackageDisplayHorizontalFlip_property.addEBObserver (inObserver)
       }
     }
   }
@@ -418,7 +418,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mPackageDisplayVerticalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mPackageDisplayVerticalFlip (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPackageDisplayVerticalFlip.insert (inObserver)
     switch prop {
@@ -426,7 +426,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPackageDisplayVerticalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mPackageDisplayVerticalFlip_property.addEBObserver (inObserver)
       }
     }
   }
@@ -475,7 +475,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mShowPackages (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mShowPackages (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShowPackages.insert (inObserver)
     switch prop {
@@ -483,7 +483,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mShowPackages_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mShowPackages_property.addEBObserver (inObserver)
       }
     }
   }
@@ -532,7 +532,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mShowPackagePadNumbers (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mShowPackagePadNumbers (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShowPackagePadNumbers.insert (inObserver)
     switch prop {
@@ -540,7 +540,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mShowPackagePadNumbers_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mShowPackagePadNumbers_property.addEBObserver (inObserver)
       }
     }
   }
@@ -589,7 +589,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mShowPackageFrontPads (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mShowPackageFrontPads (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShowPackageFrontPads.insert (inObserver)
     switch prop {
@@ -597,7 +597,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mShowPackageFrontPads_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mShowPackageFrontPads_property.addEBObserver (inObserver)
       }
     }
   }
@@ -646,7 +646,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mShowPackageBackPads (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mShowPackageBackPads (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShowPackageBackPads.insert (inObserver)
     switch prop {
@@ -654,7 +654,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mShowPackageBackPads_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mShowPackageBackPads_property.addEBObserver (inObserver)
       }
     }
   }
@@ -703,7 +703,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolDisplayZoom (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mSymbolDisplayZoom (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolDisplayZoom.insert (inObserver)
     switch prop {
@@ -711,7 +711,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSymbolDisplayZoom_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mSymbolDisplayZoom_property.addEBObserver (inObserver)
       }
     }
   }
@@ -760,7 +760,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolDisplayHorizontalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mSymbolDisplayHorizontalFlip (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolDisplayHorizontalFlip.insert (inObserver)
     switch prop {
@@ -768,7 +768,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSymbolDisplayHorizontalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mSymbolDisplayHorizontalFlip_property.addEBObserver (inObserver)
       }
     }
   }
@@ -817,7 +817,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolDisplayVerticalFlip (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mSymbolDisplayVerticalFlip (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolDisplayVerticalFlip.insert (inObserver)
     switch prop {
@@ -825,7 +825,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSymbolDisplayVerticalFlip_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mSymbolDisplayVerticalFlip_property.addEBObserver (inObserver)
       }
     }
   }
@@ -874,7 +874,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mImageData (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mImageData (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mImageData.insert (inObserver)
     switch prop {
@@ -882,7 +882,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mImageData_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mImageData_property.addEBObserver (inObserver)
       }
     }
   }
@@ -931,7 +931,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_inconsistentPackagePadNameSetsMessage (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_inconsistentPackagePadNameSetsMessage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_inconsistentPackagePadNameSetsMessage.insert (inObserver)
     switch prop {
@@ -939,7 +939,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (inObserver)
       }
     }
   }
@@ -987,7 +987,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_inconsistentSymbolNameSetMessage (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_inconsistentSymbolNameSetMessage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_inconsistentSymbolNameSetMessage.insert (inObserver)
     switch prop {
@@ -995,7 +995,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.inconsistentSymbolNameSetMessage_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.inconsistentSymbolNameSetMessage_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1043,7 +1043,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_unconnectedPins (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_unconnectedPins.insert (inObserver)
     switch prop {
@@ -1051,7 +1051,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.unconnectedPins_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.unconnectedPins_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1099,7 +1099,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_imageIsValid (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_imageIsValid.insert (inObserver)
     switch prop {
@@ -1107,7 +1107,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.imageIsValid_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.imageIsValid_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1155,7 +1155,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_packagePadNameSetsAreConsistent (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_packagePadNameSetsAreConsistent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_packagePadNameSetsAreConsistent.insert (inObserver)
     switch prop {
@@ -1163,7 +1163,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.packagePadNameSetsAreConsistent_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.packagePadNameSetsAreConsistent_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1211,7 +1211,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_symbolNameAreConsistent (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_symbolNameAreConsistent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolNameAreConsistent.insert (inObserver)
     switch prop {
@@ -1219,7 +1219,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolNameAreConsistent_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.symbolNameAreConsistent_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1267,7 +1267,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_symbolTypeNames (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_symbolTypeNames (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolTypeNames.insert (inObserver)
     switch prop {
@@ -1275,7 +1275,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolTypeNames_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.symbolTypeNames_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1323,7 +1323,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_unconnectedPads (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_unconnectedPads (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_unconnectedPads.insert (inObserver)
     switch prop {
@@ -1331,7 +1331,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.unconnectedPads_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.unconnectedPads_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1379,7 +1379,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_assignedPadProxies (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_assignedPadProxies (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_assignedPadProxies.insert (inObserver)
     switch prop {
@@ -1387,7 +1387,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.assignedPadProxies_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.assignedPadProxies_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1435,7 +1435,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
@@ -1443,7 +1443,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.issues_property.addEBObserver (inObserver)
       }
     }
   }
@@ -2039,21 +2039,21 @@ final class PreferencesArrayOf_DeviceRoot : StoredArrayOf_DeviceRoot {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mSelectedPageIndex (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mTitle (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mPrefix (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mComments (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mPackageDisplayZoom (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mPackageDisplayHorizontalFlip (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mPackageDisplayVerticalFlip (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mShowPackages (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mShowPackagePadNumbers (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mShowPackageFrontPads (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mShowPackageBackPads (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mSymbolDisplayZoom (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mSymbolDisplayHorizontalFlip (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mSymbolDisplayVerticalFlip (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mImageData (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSelectedPageIndex (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mTitle (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mPrefix (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mComments (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mPackageDisplayZoom (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mPackageDisplayHorizontalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mPackageDisplayVerticalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mShowPackages (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mShowPackagePadNumbers (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mShowPackageFrontPads (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mShowPackageBackPads (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSymbolDisplayZoom (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSymbolDisplayHorizontalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSymbolDisplayVerticalFlip (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mImageData (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

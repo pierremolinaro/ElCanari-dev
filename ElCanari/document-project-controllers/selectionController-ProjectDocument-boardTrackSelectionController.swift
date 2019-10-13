@@ -402,7 +402,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_mSide () {
-    self.selectedArray_property.addEBObserverOf_mSide (self.mSide_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mSide (self.mSide_property)
     self.mSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -471,7 +471,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_mDefaultTrackWidthUnit () {
-    self.selectedArray_property.addEBObserverOf_mDefaultTrackWidthUnit (self.mDefaultTrackWidthUnit_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mDefaultTrackWidthUnit (self.mDefaultTrackWidthUnit_property)
     self.mDefaultTrackWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -540,7 +540,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_mCustomTrackWidth () {
-    self.selectedArray_property.addEBObserverOf_mCustomTrackWidth (self.mCustomTrackWidth_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mCustomTrackWidth (self.mCustomTrackWidth_property)
     self.mCustomTrackWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -609,7 +609,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_mCustomTrackWidthUnit () {
-    self.selectedArray_property.addEBObserverOf_mCustomTrackWidthUnit (self.mCustomTrackWidthUnit_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mCustomTrackWidthUnit (self.mCustomTrackWidthUnit_property)
     self.mCustomTrackWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -678,7 +678,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_mUsesCustomTrackWidth () {
-    self.selectedArray_property.addEBObserverOf_mUsesCustomTrackWidth (self.mUsesCustomTrackWidth_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mUsesCustomTrackWidth (self.mUsesCustomTrackWidth_property)
     self.mUsesCustomTrackWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -747,7 +747,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_actualTrackWidth () {
-    self.selectedArray_property.addEBObserverOf_actualTrackWidth (self.actualTrackWidth_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_actualTrackWidth (self.actualTrackWidth_property)
     self.actualTrackWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -786,7 +786,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -825,7 +825,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_netName () {
-    self.selectedArray_property.addEBObserverOf_netName (self.netName_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_netName (self.netName_property)
     self.netName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -864,7 +864,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_netClassName () {
-    self.selectedArray_property.addEBObserverOf_netClassName (self.netClassName_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_netClassName (self.netClassName_property)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -903,7 +903,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_netClassTrackWidth () {
-    self.selectedArray_property.addEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -942,7 +942,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_netClassViaHoleDiameter () {
-    self.selectedArray_property.addEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property)
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -981,7 +981,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_netClassViaPadDiameter () {
-    self.selectedArray_property.addEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1020,7 +1020,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_trackLength () {
-    self.selectedArray_property.addEBObserverOf_trackLength (self.trackLength_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_trackLength (self.trackLength_property)
     self.trackLength_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1059,7 +1059,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_endPointsLocation () {
-    self.selectedArray_property.addEBObserverOf_endPointsLocation (self.endPointsLocation_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_endPointsLocation (self.endPointsLocation_property)
     self.endPointsLocation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1098,7 +1098,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_signatureForERCChecking () {
-    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1137,7 +1137,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

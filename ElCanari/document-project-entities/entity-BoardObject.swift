@@ -335,8 +335,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.addEBObserver (self.isPlacedInBoard_property, postEvent: false)
-    self.isPlacedInBoard_property.postEvent ()
+    self.mRoot_property.addEBObserver (self.isPlacedInBoard_property)
   //--- Atomic property: errorOrWarningIssueSize
     self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -358,8 +357,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.addEBObserverOf_mErrorOrWarningIssueSize (self.errorOrWarningIssueSize_property, postEvent: false)
-    self.errorOrWarningIssueSize_property.postEvent ()
+    self.mRoot_property.addEBObserverOf_mErrorOrWarningIssueSize (self.errorOrWarningIssueSize_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

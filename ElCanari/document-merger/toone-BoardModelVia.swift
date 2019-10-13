@@ -49,14 +49,14 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_y (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.y_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.y_property.addEBObserver (inObserver)
     }
   }
 
@@ -119,14 +119,14 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
 
   //····················································································································
 
-  final func addEBObserverOf_padDiameter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_padDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_padDiameter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.padDiameter_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.padDiameter_property.addEBObserver (inObserver)
     }
   }
 
@@ -189,14 +189,14 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
 
   //····················································································································
 
-  final func addEBObserverOf_x (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_x (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.x_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.x_property.addEBObserver (inObserver)
     }
   }
 

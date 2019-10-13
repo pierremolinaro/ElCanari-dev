@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_comments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_comments.insert (inObserver)
     switch prop {
@@ -58,7 +58,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.comments_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.comments_property.addEBObserver (inObserver)
       }
     }
   }
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_nominalSize (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_nominalSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_nominalSize.insert (inObserver)
     switch prop {
@@ -115,7 +115,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.nominalSize_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.nominalSize_property.addEBObserver (inObserver)
       }
     }
   }
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectedTab (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedTab.insert (inObserver)
     switch prop {
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedTab_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.selectedTab_property.addEBObserver (inObserver)
       }
     }
   }
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedInspector.insert (inObserver)
     switch prop {
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedInspector_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.selectedInspector_property.addEBObserver (inObserver)
       }
     }
   }
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_currentCharacterCodePoint (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_currentCharacterCodePoint (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_currentCharacterCodePoint.insert (inObserver)
     switch prop {
@@ -286,7 +286,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.currentCharacterCodePoint_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.currentCharacterCodePoint_property.addEBObserver (inObserver)
       }
     }
   }
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_currentCharacterCodePointString.insert (inObserver)
     switch prop {
@@ -343,7 +343,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.currentCharacterCodePointString_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.currentCharacterCodePointString_property.addEBObserver (inObserver)
       }
     }
   }
@@ -391,7 +391,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_sampleStringBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_sampleStringBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPath.insert (inObserver)
     switch prop {
@@ -399,7 +399,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.sampleStringBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.sampleStringBezierPath_property.addEBObserver (inObserver)
       }
     }
   }
@@ -447,7 +447,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPathWidth.insert (inObserver)
     switch prop {
@@ -455,7 +455,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.sampleStringBezierPathWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.sampleStringBezierPathWidth_property.addEBObserver (inObserver)
       }
     }
   }
@@ -503,7 +503,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_sampleStringBezierPathAscent (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_sampleStringBezierPathAscent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPathAscent.insert (inObserver)
     switch prop {
@@ -511,7 +511,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.sampleStringBezierPathAscent_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.sampleStringBezierPathAscent_property.addEBObserver (inObserver)
       }
     }
   }
@@ -559,7 +559,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPathDescent.insert (inObserver)
     switch prop {
@@ -567,7 +567,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.sampleStringBezierPathDescent_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.sampleStringBezierPathDescent_property.addEBObserver (inObserver)
       }
     }
   }
@@ -615,7 +615,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_definedCharacters (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_definedCharacters (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_definedCharacters.insert (inObserver)
     switch prop {
@@ -623,7 +623,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.definedCharacters_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.definedCharacters_property.addEBObserver (inObserver)
       }
     }
   }
@@ -671,7 +671,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
@@ -679,7 +679,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.issues_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1275,11 +1275,11 @@ final class PreferencesArrayOf_FontRoot : StoredArrayOf_FontRoot {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_comments (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_nominalSize (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_selectedTab (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_selectedInspector (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_currentCharacterCodePoint (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_comments (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_nominalSize (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_selectedTab (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_selectedInspector (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_currentCharacterCodePoint (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

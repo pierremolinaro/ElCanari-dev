@@ -52,7 +52,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   //····················································································································
 
-  final func addEBObserverOf_mFileData (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFileData.insert (inObserver)
     switch prop {
@@ -60,7 +60,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFileData_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mFileData_property.addEBObserver (inObserver)
       }
     }
   }
@@ -109,7 +109,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   //····················································································································
 
-  final func addEBObserverOf_mName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mName.insert (inObserver)
     switch prop {
@@ -117,7 +117,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mName_property.addEBObserver (inObserver)
       }
     }
   }
@@ -166,7 +166,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   //····················································································································
 
-  final func addEBObserverOf_mVersion (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mVersion (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mVersion.insert (inObserver)
     switch prop {
@@ -174,7 +174,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mVersion_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mVersion_property.addEBObserver (inObserver)
       }
     }
   }
@@ -223,7 +223,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   //····················································································································
 
-  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mStrokeBezierPath.insert (inObserver)
     switch prop {
@@ -231,7 +231,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mStrokeBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mStrokeBezierPath_property.addEBObserver (inObserver)
       }
     }
   }
@@ -280,7 +280,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
     switch prop {
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mX_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mX_property.addEBObserver (inObserver)
       }
     }
   }
@@ -337,7 +337,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
     switch prop {
@@ -345,7 +345,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mY_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mY_property.addEBObserver (inObserver)
       }
     }
   }
@@ -394,7 +394,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   //····················································································································
 
-  final func addEBObserverOf_versionString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_versionString.insert (inObserver)
     switch prop {
@@ -402,7 +402,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.versionString_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.versionString_property.addEBObserver (inObserver)
       }
     }
   }
@@ -450,7 +450,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   //····················································································································
 
-  final func addEBObserverOf_documentSizeString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_documentSizeString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_documentSizeString.insert (inObserver)
     switch prop {
@@ -458,7 +458,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.documentSizeString_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.documentSizeString_property.addEBObserver (inObserver)
       }
     }
   }
@@ -506,7 +506,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   //····················································································································
 
-  final func addEBObserverOf_frontSidePadFilledBezierPathArray (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_frontSidePadFilledBezierPathArray (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_frontSidePadFilledBezierPathArray.insert (inObserver)
     switch prop {
@@ -514,7 +514,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.frontSidePadFilledBezierPathArray_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.frontSidePadFilledBezierPathArray_property.addEBObserver (inObserver)
       }
     }
   }
@@ -562,7 +562,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   //····················································································································
 
-  final func addEBObserverOf_backSidePadFilledBezierPathArray (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_backSidePadFilledBezierPathArray (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_backSidePadFilledBezierPathArray.insert (inObserver)
     switch prop {
@@ -570,7 +570,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.backSidePadFilledBezierPathArray_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.backSidePadFilledBezierPathArray_property.addEBObserver (inObserver)
       }
     }
   }
@@ -618,7 +618,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
@@ -626,7 +626,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
       }
     }
   }
@@ -674,7 +674,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
@@ -682,7 +682,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
       }
     }
   }
@@ -730,7 +730,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   //····················································································································
 
-  final func addEBObserverOf_padNameSet (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_padNameSet (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padNameSet.insert (inObserver)
     switch prop {
@@ -738,7 +738,7 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.padNameSet_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.padNameSet_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1334,12 +1334,12 @@ final class PreferencesArrayOf_PackageInDevice : StoredArrayOf_PackageInDevice {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mFileData (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mName (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mVersion (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mStrokeBezierPath (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mX (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mY (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mFileData (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mVersion (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mStrokeBezierPath (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

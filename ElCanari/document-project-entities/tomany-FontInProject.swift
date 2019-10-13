@@ -40,7 +40,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mNominalSize (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mNominalSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNominalSize.insert (inObserver)
     switch prop {
@@ -48,7 +48,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mNominalSize_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mNominalSize_property.addEBObserver (inObserver)
       }
     }
   }
@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mFontName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mFontName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFontName.insert (inObserver)
     switch prop {
@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFontName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mFontName_property.addEBObserver (inObserver)
       }
     }
   }
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mFontVersion (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFontVersion.insert (inObserver)
     switch prop {
@@ -162,7 +162,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFontVersion_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mFontVersion_property.addEBObserver (inObserver)
       }
     }
   }
@@ -211,7 +211,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mDescriptiveString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDescriptiveString.insert (inObserver)
     switch prop {
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mDescriptiveString_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mDescriptiveString_property.addEBObserver (inObserver)
       }
     }
   }
@@ -268,7 +268,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_versionString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_versionString.insert (inObserver)
     switch prop {
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.versionString_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.versionString_property.addEBObserver (inObserver)
       }
     }
   }
@@ -324,7 +324,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_sizeString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sizeString.insert (inObserver)
     switch prop {
@@ -332,7 +332,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.sizeString_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.sizeString_property.addEBObserver (inObserver)
       }
     }
   }
@@ -380,7 +380,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_descriptor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
     switch prop {
@@ -388,7 +388,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.descriptor_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.descriptor_property.addEBObserver (inObserver)
       }
     }
   }
@@ -984,10 +984,10 @@ final class PreferencesArrayOf_FontInProject : StoredArrayOf_FontInProject {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mNominalSize (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mFontName (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mFontVersion (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mDescriptiveString (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mNominalSize (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mFontName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mFontVersion (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mDescriptiveString (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

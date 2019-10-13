@@ -363,8 +363,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.definedCharacters_property.addEBObserver (self.canDeleteCurrentCharacter_property, postEvent: false)
-    self.canDeleteCurrentCharacter_property.postEvent ()
+    self.rootObject.definedCharacters_property.addEBObserver (self.canDeleteCurrentCharacter_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: noIssue
@@ -388,8 +387,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.noIssue_property, postEvent: false)
-    self.noIssue_property.postEvent ()
+    self.rootObject.issues_property.addEBObserver (self.noIssue_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: mStatusImage
@@ -413,8 +411,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property, postEvent: false)
-    self.mStatusImage_property.postEvent ()
+    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: mStatusMessage
@@ -438,8 +435,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property, postEvent: false)
-    self.mStatusMessage_property.postEvent ()
+    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: mMetadataStatus
@@ -463,8 +459,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property, postEvent: false)
-    self.mMetadataStatus_property.postEvent ()
+    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
     if LOG_OPERATION_DURATION {

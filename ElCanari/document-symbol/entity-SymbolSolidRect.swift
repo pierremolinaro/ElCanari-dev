@@ -195,11 +195,10 @@ class SymbolSolidRect : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.filledBezierPath_property, postEvent: false)
-    self.y_property.addEBObserver (self.filledBezierPath_property, postEvent: false)
-    self.width_property.addEBObserver (self.filledBezierPath_property, postEvent: false)
-    self.height_property.addEBObserver (self.filledBezierPath_property, postEvent: false)
-    self.filledBezierPath_property.postEvent ()
+    self.x_property.addEBObserver (self.filledBezierPath_property)
+    self.y_property.addEBObserver (self.filledBezierPath_property)
+    self.width_property.addEBObserver (self.filledBezierPath_property)
+    self.height_property.addEBObserver (self.filledBezierPath_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -226,13 +225,12 @@ class SymbolSolidRect : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.y_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.width_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.height_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.objectDisplay_property.postEvent ()
+    self.x_property.addEBObserver (self.objectDisplay_property)
+    self.y_property.addEBObserver (self.objectDisplay_property)
+    self.width_property.addEBObserver (self.objectDisplay_property)
+    self.height_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -257,11 +255,10 @@ class SymbolSolidRect : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.y_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.width_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.height_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.selectionDisplay_property.postEvent ()
+    self.x_property.addEBObserver (self.selectionDisplay_property)
+    self.y_property.addEBObserver (self.selectionDisplay_property)
+    self.width_property.addEBObserver (self.selectionDisplay_property)
+    self.height_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -286,11 +283,10 @@ class SymbolSolidRect : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.issues_property, postEvent: false)
-    self.y_property.addEBObserver (self.issues_property, postEvent: false)
-    self.width_property.addEBObserver (self.issues_property, postEvent: false)
-    self.height_property.addEBObserver (self.issues_property, postEvent: false)
-    self.issues_property.postEvent ()
+    self.x_property.addEBObserver (self.issues_property)
+    self.y_property.addEBObserver (self.issues_property)
+    self.width_property.addEBObserver (self.issues_property)
+    self.height_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.height_property.setSignatureObserver (observer: self)

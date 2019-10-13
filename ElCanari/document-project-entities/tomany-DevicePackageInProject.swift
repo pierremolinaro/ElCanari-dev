@@ -32,7 +32,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
 
   //····················································································································
 
-  final func addEBObserverOf_mPackageName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mPackageName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPackageName.insert (inObserver)
     switch prop {
@@ -40,7 +40,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPackageName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mPackageName_property.addEBObserver (inObserver)
       }
     }
   }
@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
 
   //····················································································································
 
-  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mStrokeBezierPath.insert (inObserver)
     switch prop {
@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mStrokeBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mStrokeBezierPath_property.addEBObserver (inObserver)
       }
     }
   }
@@ -146,7 +146,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
 
   //····················································································································
 
-  final func addEBObserverOf_packagePadDictionary (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_packagePadDictionary.insert (inObserver)
     switch prop {
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.packagePadDictionary_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.packagePadDictionary_property.addEBObserver (inObserver)
       }
     }
   }
@@ -750,8 +750,8 @@ final class PreferencesArrayOf_DevicePackageInProject : StoredArrayOf_DevicePack
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mPackageName (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mStrokeBezierPath (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mPackageName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mStrokeBezierPath (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

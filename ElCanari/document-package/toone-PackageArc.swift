@@ -77,14 +77,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_yCenter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_yCenter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_yCenter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.yCenter_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.yCenter_property.addEBObserver (inObserver)
     }
   }
 
@@ -147,14 +147,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_radius (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_radius (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_radius.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.radius_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.radius_property.addEBObserver (inObserver)
     }
   }
 
@@ -217,14 +217,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_startAngle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_startAngle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_startAngle.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.startAngle_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.startAngle_property.addEBObserver (inObserver)
     }
   }
 
@@ -287,14 +287,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_arcAngle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_arcAngle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_arcAngle.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.arcAngle_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.arcAngle_property.addEBObserver (inObserver)
     }
   }
 
@@ -357,14 +357,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_startTangent (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_startTangent (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_startTangent.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.startTangent_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.startTangent_property.addEBObserver (inObserver)
     }
   }
 
@@ -427,14 +427,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_endTangent (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_endTangent (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_endTangent.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.endTangent_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.endTangent_property.addEBObserver (inObserver)
     }
   }
 
@@ -497,14 +497,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_pathIsClosed (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_pathIsClosed (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_pathIsClosed.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.pathIsClosed_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.pathIsClosed_property.addEBObserver (inObserver)
     }
   }
 
@@ -567,14 +567,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_xCenterUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_xCenterUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_xCenterUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.xCenterUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.xCenterUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -637,14 +637,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_yCenterUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_yCenterUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_yCenterUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.yCenterUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.yCenterUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -707,14 +707,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_radiusUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_radiusUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_radiusUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.radiusUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.radiusUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -777,14 +777,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_startTangentUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_startTangentUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_startTangentUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.startTangentUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.startTangentUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -847,14 +847,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_endTangentUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_endTangentUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_endTangentUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.endTangentUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.endTangentUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -917,14 +917,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_xCenter (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_xCenter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_xCenter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.xCenter_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.xCenter_property.addEBObserver (inObserver)
     }
   }
 
@@ -987,14 +987,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.strokeBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.strokeBezierPath_property.addEBObserver (inObserver)
     }
   }
 
@@ -1056,14 +1056,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1125,14 +1125,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1194,14 +1194,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 

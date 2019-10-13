@@ -55,14 +55,14 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_mSheetTitle (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mSheetTitle.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mSheetTitle_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mSheetTitle_property.addEBObserver (inObserver)
     }
   }
 
@@ -125,14 +125,14 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 
@@ -194,14 +194,14 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_connectedPoints.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.connectedPoints_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.connectedPoints_property.addEBObserver (inObserver)
     }
   }
 
@@ -263,14 +263,14 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_connexionWarnings (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_connexionWarnings.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.connexionWarnings_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.connexionWarnings_property.addEBObserver (inObserver)
     }
   }
 
@@ -332,14 +332,14 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_connexionErrors (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_connexionErrors.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.connexionErrors_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.connexionErrors_property.addEBObserver (inObserver)
     }
   }
 
@@ -401,14 +401,14 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_sheetDescriptor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_sheetDescriptor.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.sheetDescriptor_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.sheetDescriptor_property.addEBObserver (inObserver)
     }
   }
 
@@ -470,10 +470,10 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_mObjects (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mObjects (_ inObserver : EBEvent) {
     self.mObserversOf_mObjects.insert (inObserver)
     if let object = self.propval {
-      object.mObjects_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      object.mObjects_property.addEBObserver (inObserver)
     }
   }
 
@@ -511,10 +511,10 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_mPoints (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mPoints (_ inObserver : EBEvent) {
     self.mObserversOf_mPoints.insert (inObserver)
     if let object = self.propval {
-      object.mPoints_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      object.mPoints_property.addEBObserver (inObserver)
     }
   }
 

@@ -77,7 +77,6 @@ final class Controller_DeviceDocument_mPackageController : ReadOnlyAbstractGener
       inModel,
       sortCallback: nil,
       addSortObserversCallback: { (observer) in
-        observer.postEvent ()
       },
       removeSortObserversCallback: {(observer) in
       }

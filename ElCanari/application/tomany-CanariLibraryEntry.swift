@@ -36,7 +36,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPath.insert (inObserver)
     switch prop {
@@ -44,7 +44,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mPath_property.addEBObserver (inObserver)
       }
     }
   }
@@ -93,7 +93,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mUses (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mUses (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mUses.insert (inObserver)
     switch prop {
@@ -101,7 +101,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mUses_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mUses_property.addEBObserver (inObserver)
       }
     }
   }
@@ -150,7 +150,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mLibraryRepositoryURL.insert (inObserver)
     switch prop {
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mLibraryRepositoryURL_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mLibraryRepositoryURL_property.addEBObserver (inObserver)
       }
     }
   }
@@ -207,7 +207,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mUserAndPasswordTag.insert (inObserver)
     switch prop {
@@ -215,7 +215,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mUserAndPasswordTag_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mUserAndPasswordTag_property.addEBObserver (inObserver)
       }
     }
   }
@@ -264,7 +264,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mStatusImage (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mStatusImage.insert (inObserver)
     switch prop {
@@ -272,7 +272,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mStatusImage_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mStatusImage_property.addEBObserver (inObserver)
       }
     }
   }
@@ -868,10 +868,10 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mPath (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mUses (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mLibraryRepositoryURL (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mUserAndPasswordTag (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mPath (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mUses (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mLibraryRepositoryURL (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mUserAndPasswordTag (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

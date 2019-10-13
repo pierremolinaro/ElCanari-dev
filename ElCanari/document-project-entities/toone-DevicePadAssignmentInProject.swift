@@ -49,14 +49,14 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
 
   //····················································································································
 
-  final func addEBObserverOf_mPadName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mPadName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mPadName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mPadName_property.addEBObserver (inObserver)
     }
   }
 
@@ -119,14 +119,14 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
 
   //····················································································································
 
-  final func addEBObserverOf_pinPadAssignment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_pinPadAssignment (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_pinPadAssignment.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.pinPadAssignment_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.pinPadAssignment_property.addEBObserver (inObserver)
     }
   }
 
@@ -188,14 +188,14 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
 
   //····················································································································
 
-  final func addEBObserverOf_descriptor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.descriptor_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.descriptor_property.addEBObserver (inObserver)
     }
   }
 

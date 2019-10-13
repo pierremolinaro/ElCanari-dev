@@ -73,14 +73,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolPinName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mSymbolPinName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolPinName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mSymbolPinName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mSymbolPinName_property.addEBObserver (inObserver)
     }
   }
 
@@ -143,14 +143,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mX_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mX_property.addEBObserver (inObserver)
     }
   }
 
@@ -213,14 +213,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mY_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mY_property.addEBObserver (inObserver)
     }
   }
 
@@ -283,14 +283,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_location (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_location (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_location.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.location_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.location_property.addEBObserver (inObserver)
     }
   }
 
@@ -352,14 +352,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_netName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_netName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.netName_property.addEBObserver (inObserver)
     }
   }
 
@@ -421,14 +421,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_netClassName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_netClassName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netClassName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.netClassName_property.addEBObserver (inObserver)
     }
   }
 
@@ -490,14 +490,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_hasNet (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_hasNet (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_hasNet.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.hasNet_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.hasNet_property.addEBObserver (inObserver)
     }
   }
 
@@ -559,14 +559,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_canMove (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_canMove (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_canMove.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.canMove_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.canMove_property.addEBObserver (inObserver)
     }
   }
 
@@ -628,14 +628,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_wireColor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_wireColor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_wireColor.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.wireColor_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.wireColor_property.addEBObserver (inObserver)
     }
   }
 
@@ -697,14 +697,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_symbolRotation (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_symbolRotation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_symbolRotation.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.symbolRotation_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.symbolRotation_property.addEBObserver (inObserver)
     }
   }
 
@@ -766,14 +766,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_symbolNameNetName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_symbolNameNetName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_symbolNameNetName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.symbolNameNetName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.symbolNameNetName_property.addEBObserver (inObserver)
     }
   }
 
@@ -835,14 +835,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_isConnected (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_isConnected.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.isConnected_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.isConnected_property.addEBObserver (inObserver)
     }
   }
 
@@ -904,14 +904,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_status (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_status (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_status.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.status_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.status_property.addEBObserver (inObserver)
     }
   }
 
@@ -973,14 +973,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_connectedPoints.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.connectedPoints_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.connectedPoints_property.addEBObserver (inObserver)
     }
   }
 
@@ -1042,14 +1042,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_netInfoForPoint (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_netInfoForPoint (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_netInfoForPoint.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netInfoForPoint_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.netInfoForPoint_property.addEBObserver (inObserver)
     }
   }
 
@@ -1111,10 +1111,10 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mLabels (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mLabels (_ inObserver : EBEvent) {
     self.mObserversOf_mLabels.insert (inObserver)
     if let object = self.propval {
-      object.mLabels_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      object.mLabels_property.addEBObserver (inObserver)
     }
   }
 
@@ -1152,10 +1152,10 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mWiresP2s (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mWiresP2s (_ inObserver : EBEvent) {
     self.mObserversOf_mWiresP2s.insert (inObserver)
     if let object = self.propval {
-      object.mWiresP2s_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      object.mWiresP2s_property.addEBObserver (inObserver)
     }
   }
 
@@ -1193,10 +1193,10 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mWiresP1s (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mWiresP1s (_ inObserver : EBEvent) {
     self.mObserversOf_mWiresP1s.insert (inObserver)
     if let object = self.propval {
-      object.mWiresP1s_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      object.mWiresP1s_property.addEBObserver (inObserver)
     }
   }
 

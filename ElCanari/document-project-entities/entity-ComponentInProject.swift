@@ -1208,7 +1208,7 @@ class ComponentInProject : BoardObject,
           }
         }
       )
-      self.mDevice_property.addEBObserverOf_mPackages (controller, postEvent: true)
+      self.mDevice_property.addEBObserverOf_mPackages (controller)
       self.mPackages_modelDidChangeController = controller
     }
   //--- To one property: mDevice (has opposite to many relationship: mComponents)
@@ -1238,8 +1238,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mDevice_property.addEBObserverOf_mDeviceName (self.deviceName_property, postEvent: false)
-    self.deviceName_property.postEvent ()
+    self.mDevice_property.addEBObserverOf_mDeviceName (self.deviceName_property)
   //--- To one property: mSelectedPackage
     self.mSelectedPackage_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: packagePadDictionary
@@ -1263,8 +1262,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mSelectedPackage_property.addEBObserverOf_packagePadDictionary (self.packagePadDictionary_property, postEvent: false)
-    self.packagePadDictionary_property.postEvent ()
+    self.mSelectedPackage_property.addEBObserverOf_packagePadDictionary (self.packagePadDictionary_property)
   //--- Atomic property: selectedPackageName
     self.selectedPackageName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1286,8 +1284,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mSelectedPackage_property.addEBObserverOf_mPackageName (self.selectedPackageName_property, postEvent: false)
-    self.selectedPackageName_property.postEvent ()
+    self.mSelectedPackage_property.addEBObserverOf_mPackageName (self.selectedPackageName_property)
   //--- Atomic property: availablePackages
     self.availablePackages_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1309,8 +1306,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mDevice_property.addEBObserverOf_packageNames (self.availablePackages_property, postEvent: false)
-    self.availablePackages_property.postEvent ()
+    self.mDevice_property.addEBObserverOf_packageNames (self.availablePackages_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1332,8 +1328,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mConnectors_property.addEBObserverOf_issues (self.issues_property, postEvent: false)
-    self.issues_property.postEvent ()
+    self.mConnectors_property.addEBObserverOf_issues (self.issues_property)
   //--- Atomic property: componentIsPlacedInBoard
     self.componentIsPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1355,8 +1350,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.isPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoard_property, postEvent: false)
-    self.componentIsPlacedInBoard_property.postEvent ()
+    self.isPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoard_property)
   //--- Atomic property: componentIsPlacedInBoardString
     self.componentIsPlacedInBoardString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1378,8 +1372,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.componentIsPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoardString_property, postEvent: false)
-    self.componentIsPlacedInBoardString_property.postEvent ()
+    self.componentIsPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoardString_property)
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1401,8 +1394,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mSelectedPackage_property.addEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property, postEvent: false)
-    self.strokeBezierPath_property.postEvent ()
+    self.mSelectedPackage_property.addEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
   //--- To one property: mNameFont (has opposite to many relationship: mComponentNames)
     self.mNameFont_property.ebUndoManager = self.ebUndoManager
     self.mNameFont_property.setOppositeRelationShipFunctions (
@@ -1436,8 +1428,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mSymbols_property.addEBObserverOf_symbolInSchematic (self.placementInSchematic_property, postEvent: false)
-    self.placementInSchematic_property.postEvent ()
+    self.mSymbols_property.addEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
   //--- Atomic property: deviceSymbolDictionary
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1459,8 +1450,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mDevice_property.addEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property, postEvent: false)
-    self.deviceSymbolDictionary_property.postEvent ()
+    self.mDevice_property.addEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
   //--- Atomic property: componentNameFontName
     self.componentNameFontName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1482,8 +1472,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mNameFont_property.addEBObserverOf_mFontName (self.componentNameFontName_property, postEvent: false)
-    self.componentNameFontName_property.postEvent ()
+    self.mNameFont_property.addEBObserverOf_mFontName (self.componentNameFontName_property)
   //--- Atomic property: componentValueFontName
     self.componentValueFontName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1505,8 +1494,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mValueFont_property.addEBObserverOf_mFontName (self.componentValueFontName_property, postEvent: false)
-    self.componentValueFontName_property.postEvent ()
+    self.mValueFont_property.addEBObserverOf_mFontName (self.componentValueFontName_property)
   //--- Atomic property: componentPadDictionary
     self.componentPadDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1532,12 +1520,11 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mX_property.addEBObserver (self.componentPadDictionary_property, postEvent: false)
-    self.mY_property.addEBObserver (self.componentPadDictionary_property, postEvent: false)
-    self.mRotation_property.addEBObserver (self.componentPadDictionary_property, postEvent: false)
-    self.mSide_property.addEBObserver (self.componentPadDictionary_property, postEvent: false)
-    self.packagePadDictionary_property.addEBObserver (self.componentPadDictionary_property, postEvent: false)
-    self.componentPadDictionary_property.postEvent ()
+    self.mX_property.addEBObserver (self.componentPadDictionary_property)
+    self.mY_property.addEBObserver (self.componentPadDictionary_property)
+    self.mRotation_property.addEBObserver (self.componentPadDictionary_property)
+    self.mSide_property.addEBObserver (self.componentPadDictionary_property)
+    self.packagePadDictionary_property.addEBObserver (self.componentPadDictionary_property)
   //--- Atomic property: padNetDictionary
     self.padNetDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1559,8 +1546,7 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mSymbols_property.addEBObserverOf_symbolInfo (self.padNetDictionary_property, postEvent: false)
-    self.padNetDictionary_property.postEvent ()
+    self.mSymbols_property.addEBObserverOf_symbolInfo (self.padNetDictionary_property)
   //--- Atomic property: componentName
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1583,9 +1569,8 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mNamePrefix_property.addEBObserver (self.componentName_property, postEvent: false)
-    self.mNameIndex_property.addEBObserver (self.componentName_property, postEvent: false)
-    self.componentName_property.postEvent ()
+    self.mNamePrefix_property.addEBObserver (self.componentName_property)
+    self.mNameIndex_property.addEBObserver (self.componentName_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1626,27 +1611,26 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mX_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mY_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mRotation_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mSide_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.strokeBezierPath_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mNameIsVisibleInBoard_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mXName_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mYName_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mNameFont_property.addEBObserverOf_descriptor (self.selectionDisplay_property, postEvent: false)
-    self.mNameFontSize_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mNameRotation_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.componentName_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.packagePadDictionary_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mValueIsVisibleInBoard_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mXValue_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mYValue_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mValueFont_property.addEBObserverOf_descriptor (self.selectionDisplay_property, postEvent: false)
-    self.mValueFontSize_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mValueRotation_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mComponentValue_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.selectionDisplay_property.postEvent ()
+    self.mX_property.addEBObserver (self.selectionDisplay_property)
+    self.mY_property.addEBObserver (self.selectionDisplay_property)
+    self.mRotation_property.addEBObserver (self.selectionDisplay_property)
+    self.mSide_property.addEBObserver (self.selectionDisplay_property)
+    self.strokeBezierPath_property.addEBObserver (self.selectionDisplay_property)
+    self.mNameIsVisibleInBoard_property.addEBObserver (self.selectionDisplay_property)
+    self.mXName_property.addEBObserver (self.selectionDisplay_property)
+    self.mYName_property.addEBObserver (self.selectionDisplay_property)
+    self.mNameFont_property.addEBObserverOf_descriptor (self.selectionDisplay_property)
+    self.mNameFontSize_property.addEBObserver (self.selectionDisplay_property)
+    self.mNameRotation_property.addEBObserver (self.selectionDisplay_property)
+    self.componentName_property.addEBObserver (self.selectionDisplay_property)
+    self.packagePadDictionary_property.addEBObserver (self.selectionDisplay_property)
+    self.mValueIsVisibleInBoard_property.addEBObserver (self.selectionDisplay_property)
+    self.mXValue_property.addEBObserver (self.selectionDisplay_property)
+    self.mYValue_property.addEBObserver (self.selectionDisplay_property)
+    self.mValueFont_property.addEBObserverOf_descriptor (self.selectionDisplay_property)
+    self.mValueFontSize_property.addEBObserver (self.selectionDisplay_property)
+    self.mValueRotation_property.addEBObserver (self.selectionDisplay_property)
+    self.mComponentValue_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1672,12 +1656,11 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.componentName_property.addEBObserver (self.unplacedSymbols_property, postEvent: false)
-    self.mSymbols_property.addEBObserver (self.unplacedSymbols_property, postEvent: false)
-    self.mSymbols_property.addEBObserverOf_symbolInSchematic (self.unplacedSymbols_property, postEvent: false)
-    self.mSymbols_property.addEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property, postEvent: false)
-    self.mSymbols_property.addEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property, postEvent: false)
-    self.unplacedSymbols_property.postEvent ()
+    self.componentName_property.addEBObserver (self.unplacedSymbols_property)
+    self.mSymbols_property.addEBObserver (self.unplacedSymbols_property)
+    self.mSymbols_property.addEBObserverOf_symbolInSchematic (self.unplacedSymbols_property)
+    self.mSymbols_property.addEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
+    self.mSymbols_property.addEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1730,39 +1713,38 @@ class ComponentInProject : BoardObject,
         return .empty
       }
     }
-    self.mX_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mY_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mRotation_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mSide_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.packagePadDictionary_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.packageDrawingWidthMultpliedByTenForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.frontSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.displayFrontPadsForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.backSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.displayBackPadsForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.padNumberFontForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.padNumberColorForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.displayPadNumbersForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mNameIsVisibleInBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mXName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mYName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mNameFont_property.addEBObserverOf_descriptor (self.objectDisplay_property, postEvent: false)
-    self.mNameFontSize_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mNameRotation_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.componentName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mValueIsVisibleInBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mXValue_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mYValue_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mValueFont_property.addEBObserverOf_descriptor (self.objectDisplay_property, postEvent: false)
-    self.mValueFontSize_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mValueRotation_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mComponentValue_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mDevice_property.addEBObserverOf_pinPadAssignments (self.objectDisplay_property, postEvent: false)
-    self.padNetDictionary_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.objectDisplay_property.postEvent ()
+    self.mX_property.addEBObserver (self.objectDisplay_property)
+    self.mY_property.addEBObserver (self.objectDisplay_property)
+    self.mRotation_property.addEBObserver (self.objectDisplay_property)
+    self.mSide_property.addEBObserver (self.objectDisplay_property)
+    self.packagePadDictionary_property.addEBObserver (self.objectDisplay_property)
+    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSideLegendColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.packageDrawingWidthMultpliedByTenForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.displayFrontPadsForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.displayBackPadsForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.padNumberFontForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.padNumberColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.displayPadNumbersForBoard_property.addEBObserver (self.objectDisplay_property)
+    self.mNameIsVisibleInBoard_property.addEBObserver (self.objectDisplay_property)
+    self.mXName_property.addEBObserver (self.objectDisplay_property)
+    self.mYName_property.addEBObserver (self.objectDisplay_property)
+    self.mNameFont_property.addEBObserverOf_descriptor (self.objectDisplay_property)
+    self.mNameFontSize_property.addEBObserver (self.objectDisplay_property)
+    self.mNameRotation_property.addEBObserver (self.objectDisplay_property)
+    self.componentName_property.addEBObserver (self.objectDisplay_property)
+    self.mValueIsVisibleInBoard_property.addEBObserver (self.objectDisplay_property)
+    self.mXValue_property.addEBObserver (self.objectDisplay_property)
+    self.mYValue_property.addEBObserver (self.objectDisplay_property)
+    self.mValueFont_property.addEBObserverOf_descriptor (self.objectDisplay_property)
+    self.mValueFontSize_property.addEBObserver (self.objectDisplay_property)
+    self.mValueRotation_property.addEBObserver (self.objectDisplay_property)
+    self.mComponentValue_property.addEBObserver (self.objectDisplay_property)
+    self.mDevice_property.addEBObserverOf_pinPadAssignments (self.objectDisplay_property)
+    self.padNetDictionary_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
     self.mConnectors_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },

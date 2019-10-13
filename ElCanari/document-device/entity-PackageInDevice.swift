@@ -422,8 +422,7 @@ class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mVersion_property.addEBObserver (self.versionString_property, postEvent: false)
-    self.versionString_property.postEvent ()
+    self.mVersion_property.addEBObserver (self.versionString_property)
   //--- Atomic property: documentSizeString
     self.documentSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -445,8 +444,7 @@ class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mFileData_property.addEBObserver (self.documentSizeString_property, postEvent: false)
-    self.documentSizeString_property.postEvent ()
+    self.mFileData_property.addEBObserver (self.documentSizeString_property)
   //--- Atomic property: frontSidePadFilledBezierPathArray
     self.frontSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -468,8 +466,7 @@ class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.addEBObserverOf_frontSideFilledBezierPathArray (self.frontSidePadFilledBezierPathArray_property, postEvent: false)
-    self.frontSidePadFilledBezierPathArray_property.postEvent ()
+    self.mMasterPads_property.addEBObserverOf_frontSideFilledBezierPathArray (self.frontSidePadFilledBezierPathArray_property)
   //--- Atomic property: backSidePadFilledBezierPathArray
     self.backSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -491,8 +488,7 @@ class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.addEBObserverOf_backSideFilledBezierPathArray (self.backSidePadFilledBezierPathArray_property, postEvent: false)
-    self.backSidePadFilledBezierPathArray_property.postEvent ()
+    self.mMasterPads_property.addEBObserverOf_backSideFilledBezierPathArray (self.backSidePadFilledBezierPathArray_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -528,22 +524,21 @@ class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.addEBObserverOf_padNumberDisplay (self.objectDisplay_property, postEvent: false)
-    self.mRoot_property.addEBObserverOf_mShowPackagePadNumbers (self.objectDisplay_property, postEvent: false)
-    self.mRoot_property.addEBObserverOf_mShowPackages (self.objectDisplay_property, postEvent: false)
-    self.mRoot_property.addEBObserverOf_mShowPackageFrontPads (self.objectDisplay_property, postEvent: false)
-    self.mRoot_property.addEBObserverOf_mShowPackageBackPads (self.objectDisplay_property, postEvent: false)
-    self.mStrokeBezierPath_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.frontSidePadFilledBezierPathArray_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.frontSidePadColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.backSidePadFilledBezierPathArray_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.backSidePadColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mX_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mY_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.objectDisplay_property.postEvent ()
+    self.mMasterPads_property.addEBObserverOf_padNumberDisplay (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackagePadNumbers (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackages (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackageFrontPads (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackageBackPads (self.objectDisplay_property)
+    self.mStrokeBezierPath_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    self.frontSidePadFilledBezierPathArray_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSidePadColor_property.addEBObserver (self.objectDisplay_property)
+    self.backSidePadFilledBezierPathArray_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSidePadColor_property.addEBObserver (self.objectDisplay_property)
+    self.mName_property.addEBObserver (self.objectDisplay_property)
+    self.mX_property.addEBObserver (self.objectDisplay_property)
+    self.mY_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -576,19 +571,18 @@ class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.addEBObserverOf_padNumberDisplay (self.selectionDisplay_property, postEvent: false)
-    self.mRoot_property.addEBObserverOf_mShowPackagePadNumbers (self.selectionDisplay_property, postEvent: false)
-    self.mRoot_property.addEBObserverOf_mShowPackages (self.selectionDisplay_property, postEvent: false)
-    self.mRoot_property.addEBObserverOf_mShowPackageFrontPads (self.selectionDisplay_property, postEvent: false)
-    self.mRoot_property.addEBObserverOf_mShowPackageBackPads (self.selectionDisplay_property, postEvent: false)
-    self.mStrokeBezierPath_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.frontSidePadFilledBezierPathArray_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.backSidePadFilledBezierPathArray_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mName_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mX_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mY_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.selectionDisplay_property.postEvent ()
+    self.mMasterPads_property.addEBObserverOf_padNumberDisplay (self.selectionDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackagePadNumbers (self.selectionDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackages (self.selectionDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackageFrontPads (self.selectionDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackageBackPads (self.selectionDisplay_property)
+    self.mStrokeBezierPath_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
+    self.frontSidePadFilledBezierPathArray_property.addEBObserver (self.selectionDisplay_property)
+    self.backSidePadFilledBezierPathArray_property.addEBObserver (self.selectionDisplay_property)
+    self.mName_property.addEBObserver (self.selectionDisplay_property)
+    self.mX_property.addEBObserver (self.selectionDisplay_property)
+    self.mY_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: padNameSet
     self.padNameSet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -610,8 +604,7 @@ class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.addEBObserverOf_mName (self.padNameSet_property, postEvent: false)
-    self.padNameSet_property.postEvent ()
+    self.mMasterPads_property.addEBObserverOf_mName (self.padNameSet_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)

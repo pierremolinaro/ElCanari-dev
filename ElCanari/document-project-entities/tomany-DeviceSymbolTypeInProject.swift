@@ -32,7 +32,7 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolTypeName.insert (inObserver)
     switch prop {
@@ -40,7 +40,7 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSymbolTypeName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mSymbolTypeName_property.addEBObserver (inObserver)
       }
     }
   }
@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mStrokeBezierPath.insert (inObserver)
     switch prop {
@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mStrokeBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mStrokeBezierPath_property.addEBObserver (inObserver)
       }
     }
   }
@@ -146,7 +146,7 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFilledBezierPath.insert (inObserver)
     switch prop {
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFilledBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mFilledBezierPath_property.addEBObserver (inObserver)
       }
     }
   }
@@ -751,9 +751,9 @@ final class PreferencesArrayOf_DeviceSymbolTypeInProject : StoredArrayOf_DeviceS
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mSymbolTypeName (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mStrokeBezierPath (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mFilledBezierPath (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSymbolTypeName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mStrokeBezierPath (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mFilledBezierPath (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

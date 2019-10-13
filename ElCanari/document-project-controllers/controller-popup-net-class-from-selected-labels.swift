@@ -38,9 +38,9 @@ final class EBPopUpButtonControllerForNetClassFromSelectedLabels : EBOutletEvent
   func bind_model (_ inArrayModel : ReadWriteArrayOf_NetClassInProject,
                    _ inSelection : SelectionController_ProjectDocument_schematicLabelSelectionController) {
     self.mArrayModel = inArrayModel
-    inArrayModel.addEBObserverOf_mNetClassName (self, postEvent: true)
+    inArrayModel.addEBObserverOf_mNetClassName (self)
     self.mSelection = inSelection
-    inSelection.selectedArray_property.addEBObserverOf_netClassName (self, postEvent: true)
+    inSelection.selectedArray_property.addEBObserverOf_netClassName (self)
     self.modelDidChange ()
   }
 

@@ -57,14 +57,14 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mNominalSize (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mNominalSize (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mNominalSize.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mNominalSize_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mNominalSize_property.addEBObserver (inObserver)
     }
   }
 
@@ -127,14 +127,14 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mFontName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mFontName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mFontName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mFontName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mFontName_property.addEBObserver (inObserver)
     }
   }
 
@@ -197,14 +197,14 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mFontVersion (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mFontVersion.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mFontVersion_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mFontVersion_property.addEBObserver (inObserver)
     }
   }
 
@@ -267,14 +267,14 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mDescriptiveString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mDescriptiveString.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mDescriptiveString_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mDescriptiveString_property.addEBObserver (inObserver)
     }
   }
 
@@ -337,14 +337,14 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_versionString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_versionString.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.versionString_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.versionString_property.addEBObserver (inObserver)
     }
   }
 
@@ -406,14 +406,14 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_sizeString (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_sizeString.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.sizeString_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.sizeString_property.addEBObserver (inObserver)
     }
   }
 
@@ -475,14 +475,14 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_descriptor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.descriptor_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.descriptor_property.addEBObserver (inObserver)
     }
   }
 
@@ -544,10 +544,10 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mTexts (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mTexts (_ inObserver : EBEvent) {
     self.mObserversOf_mTexts.insert (inObserver)
     if let object = self.propval {
-      object.mTexts_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      object.mTexts_property.addEBObserver (inObserver)
     }
   }
 
@@ -585,10 +585,10 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mComponentNames (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mComponentNames (_ inObserver : EBEvent) {
     self.mObserversOf_mComponentNames.insert (inObserver)
     if let object = self.propval {
-      object.mComponentNames_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      object.mComponentNames_property.addEBObserver (inObserver)
     }
   }
 
@@ -626,10 +626,10 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mComponentValues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mComponentValues (_ inObserver : EBEvent) {
     self.mObserversOf_mComponentValues.insert (inObserver)
     if let object = self.propval {
-      object.mComponentValues_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      object.mComponentValues_property.addEBObserver (inObserver)
     }
   }
 

@@ -333,8 +333,7 @@ class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mVersion_property.addEBObserver (self.versionString_property, postEvent: false)
-    self.versionString_property.postEvent ()
+    self.mVersion_property.addEBObserver (self.versionString_property)
   //--- Atomic property: instanceCount
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -356,8 +355,7 @@ class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mInstances_property.addEBObserver (self.instanceCount_property, postEvent: false)
-    self.instanceCount_property.postEvent ()
+    self.mInstances_property.addEBObserver (self.instanceCount_property)
   //--- Atomic property: documentSizeString
     self.documentSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -379,8 +377,7 @@ class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mFileData_property.addEBObserver (self.documentSizeString_property, postEvent: false)
-    self.documentSizeString_property.postEvent ()
+    self.mFileData_property.addEBObserver (self.documentSizeString_property)
   //--- Atomic property: pinNameShape
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -402,8 +399,7 @@ class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mPinTypes_property.addEBObserverOf_nameShape (self.pinNameShape_property, postEvent: false)
-    self.pinNameShape_property.postEvent ()
+    self.mPinTypes_property.addEBObserverOf_nameShape (self.pinNameShape_property)
   //--- Install undoers and opposite setter for relationships
     self.mInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },

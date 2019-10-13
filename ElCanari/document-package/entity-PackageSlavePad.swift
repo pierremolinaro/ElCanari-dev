@@ -616,12 +616,11 @@ class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.yCenter_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.width_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.height_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.padShape_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.selectionDisplay_property.postEvent ()
+    self.xCenter_property.addEBObserver (self.selectionDisplay_property)
+    self.yCenter_property.addEBObserver (self.selectionDisplay_property)
+    self.width_property.addEBObserver (self.selectionDisplay_property)
+    self.height_property.addEBObserver (self.selectionDisplay_property)
+    self.padShape_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -648,13 +647,12 @@ class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.issues_property, postEvent: false)
-    self.yCenter_property.addEBObserver (self.issues_property, postEvent: false)
-    self.width_property.addEBObserver (self.issues_property, postEvent: false)
-    self.height_property.addEBObserver (self.issues_property, postEvent: false)
-    self.holeWidth_property.addEBObserver (self.issues_property, postEvent: false)
-    self.holeHeight_property.addEBObserver (self.issues_property, postEvent: false)
-    self.issues_property.postEvent ()
+    self.xCenter_property.addEBObserver (self.issues_property)
+    self.yCenter_property.addEBObserver (self.issues_property)
+    self.width_property.addEBObserver (self.issues_property)
+    self.height_property.addEBObserver (self.issues_property)
+    self.holeWidth_property.addEBObserver (self.issues_property)
+    self.holeHeight_property.addEBObserver (self.issues_property)
   //--- Atomic property: padIsTraversing
     self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -676,8 +674,7 @@ class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.padStyle_property.addEBObserver (self.padIsTraversing_property, postEvent: false)
-    self.padIsTraversing_property.postEvent ()
+    self.padStyle_property.addEBObserver (self.padIsTraversing_property)
   //--- Atomic property: annularRing
     self.annularRing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -702,11 +699,10 @@ class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.width_property.addEBObserver (self.annularRing_property, postEvent: false)
-    self.height_property.addEBObserver (self.annularRing_property, postEvent: false)
-    self.holeWidth_property.addEBObserver (self.annularRing_property, postEvent: false)
-    self.holeHeight_property.addEBObserver (self.annularRing_property, postEvent: false)
-    self.annularRing_property.postEvent ()
+    self.width_property.addEBObserver (self.annularRing_property)
+    self.height_property.addEBObserver (self.annularRing_property)
+    self.holeWidth_property.addEBObserver (self.annularRing_property)
+    self.holeHeight_property.addEBObserver (self.annularRing_property)
   //--- Atomic property: padName
     self.padName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -728,8 +724,7 @@ class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.master_property.addEBObserverOf_padName (self.padName_property, postEvent: false)
-    self.padName_property.postEvent ()
+    self.master_property.addEBObserverOf_padName (self.padName_property)
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -755,12 +750,11 @@ class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
-    self.yCenter_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
-    g_Preferences?.padNumberFont_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
-    g_Preferences?.padNumberColor_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
-    self.padName_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
-    self.padNumberDisplay_property.postEvent ()
+    self.xCenter_property.addEBObserver (self.padNumberDisplay_property)
+    self.yCenter_property.addEBObserver (self.padNumberDisplay_property)
+    g_Preferences?.padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
+    g_Preferences?.padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
+    self.padName_property.addEBObserver (self.padNumberDisplay_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -793,19 +787,18 @@ class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.yCenter_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.width_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.height_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.holeWidth_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.holeHeight_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.padShape_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.padStyle_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.frontSidePadColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.displayPackageFrontSidePads_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.backSidePadColor_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.displayPackageBackSidePads_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.objectDisplay_property.postEvent ()
+    self.xCenter_property.addEBObserver (self.objectDisplay_property)
+    self.yCenter_property.addEBObserver (self.objectDisplay_property)
+    self.width_property.addEBObserver (self.objectDisplay_property)
+    self.height_property.addEBObserver (self.objectDisplay_property)
+    self.holeWidth_property.addEBObserver (self.objectDisplay_property)
+    self.holeHeight_property.addEBObserver (self.objectDisplay_property)
+    self.padShape_property.addEBObserver (self.objectDisplay_property)
+    self.padStyle_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSidePadColor_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.displayPackageFrontSidePads_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSidePadColor_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.displayPackageBackSidePads_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer: self)

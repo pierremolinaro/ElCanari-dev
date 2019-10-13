@@ -78,8 +78,7 @@ final class Controller_ProjectDocument_mDataController : ReadOnlyAbstractGeneric
       inModel,
       sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
       addSortObserversCallback: { (observer) in
-        inModel.addEBObserverOf_name (observer, postEvent: false)
-        observer.postEvent ()
+        inModel.addEBObserverOf_name (observer)
       },
       removeSortObserversCallback: {(observer) in
         inModel.removeEBObserverOf_name (observer)

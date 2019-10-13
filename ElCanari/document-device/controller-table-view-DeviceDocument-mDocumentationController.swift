@@ -77,7 +77,6 @@ final class Controller_DeviceDocument_mDocumentationController : ReadOnlyAbstrac
       inModel,
       sortCallback: nil,
       addSortObserversCallback: { (observer) in
-        observer.postEvent ()
       },
       removeSortObserversCallback: {(observer) in
       }

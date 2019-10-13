@@ -822,9 +822,8 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardModels_property.addEBObserverOf_name (self.modelNames_property, postEvent: false)
-    self.boardModels_property.addEBObserver (self.modelNames_property, postEvent: false)
-    self.modelNames_property.postEvent ()
+    self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
+    self.boardModels_property.addEBObserver (self.modelNames_property)
   //--- Atomic property: boardRect
     self.boardRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -849,11 +848,10 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
-    self.automaticBoardSize_property.addEBObserver (self.boardRect_property, postEvent: false)
-    self.boardManualWidth_property.addEBObserver (self.boardRect_property, postEvent: false)
-    self.boardManualHeight_property.addEBObserver (self.boardRect_property, postEvent: false)
-    self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property, postEvent: false)
-    self.boardRect_property.postEvent ()
+    self.automaticBoardSize_property.addEBObserver (self.boardRect_property)
+    self.boardManualWidth_property.addEBObserver (self.boardRect_property)
+    self.boardManualHeight_property.addEBObserver (self.boardRect_property)
+    self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
   //--- Atomic property: boardDisplayRect
     self.boardDisplayRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -877,10 +875,9 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardManualWidth_property.addEBObserver (self.boardDisplayRect_property, postEvent: false)
-    self.boardManualHeight_property.addEBObserver (self.boardDisplayRect_property, postEvent: false)
-    self.boardInstances_property.addEBObserverOf_instanceRect (self.boardDisplayRect_property, postEvent: false)
-    self.boardDisplayRect_property.postEvent ()
+    self.boardManualWidth_property.addEBObserver (self.boardDisplayRect_property)
+    self.boardManualHeight_property.addEBObserver (self.boardDisplayRect_property)
+    self.boardInstances_property.addEBObserverOf_instanceRect (self.boardDisplayRect_property)
   //--- Atomic property: boardWidth
     self.boardWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -902,8 +899,7 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardRect_property.addEBObserver (self.boardWidth_property, postEvent: false)
-    self.boardWidth_property.postEvent ()
+    self.boardRect_property.addEBObserver (self.boardWidth_property)
   //--- Atomic property: boardHeight
     self.boardHeight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -925,8 +921,7 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardRect_property.addEBObserver (self.boardHeight_property, postEvent: false)
-    self.boardHeight_property.postEvent ()
+    self.boardRect_property.addEBObserver (self.boardHeight_property)
   //--- To one property: artwork
     self.artwork_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardOutlineRectDisplay
@@ -953,11 +948,10 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardRect_property.addEBObserver (self.boardOutlineRectDisplay_property, postEvent: false)
-    self.boardLimitWidth_property.addEBObserver (self.boardOutlineRectDisplay_property, postEvent: false)
-    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property, postEvent: false)
-    g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property, postEvent: false)
-    self.boardOutlineRectDisplay_property.postEvent ()
+    self.boardRect_property.addEBObserver (self.boardOutlineRectDisplay_property)
+    self.boardLimitWidth_property.addEBObserver (self.boardOutlineRectDisplay_property)
+    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
+    g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
   //--- Install undoers and opposite setter for relationships
     self.boardInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myRoot_property.setProp (me) } },

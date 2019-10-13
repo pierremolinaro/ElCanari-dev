@@ -59,14 +59,14 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_y (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.y_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.y_property.addEBObserver (inObserver)
     }
   }
 
@@ -129,14 +129,14 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserverOf_width (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_width (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_width.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.width_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.width_property.addEBObserver (inObserver)
     }
   }
 
@@ -199,14 +199,14 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserverOf_height (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_height (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_height.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.height_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.height_property.addEBObserver (inObserver)
     }
   }
 
@@ -269,14 +269,14 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserverOf_x (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_x (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.x_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.x_property.addEBObserver (inObserver)
     }
   }
 
@@ -339,14 +339,14 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.strokeBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.strokeBezierPath_property.addEBObserver (inObserver)
     }
   }
 
@@ -408,14 +408,14 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -477,14 +477,14 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -546,14 +546,14 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 

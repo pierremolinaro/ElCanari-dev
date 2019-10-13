@@ -496,7 +496,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_y1 () {
-    self.selectedArray_property.addEBObserverOf_y1 (self.y1_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_y1 (self.y1_property)
     self.y1_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -565,7 +565,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_x2 () {
-    self.selectedArray_property.addEBObserverOf_x2 (self.x2_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_x2 (self.x2_property)
     self.x2_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -634,7 +634,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_y2 () {
-    self.selectedArray_property.addEBObserverOf_y2 (self.y2_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_y2 (self.y2_property)
     self.y2_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -703,7 +703,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_xDimension () {
-    self.selectedArray_property.addEBObserverOf_xDimension (self.xDimension_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_xDimension (self.xDimension_property)
     self.xDimension_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -772,7 +772,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_yDimension () {
-    self.selectedArray_property.addEBObserverOf_yDimension (self.yDimension_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_yDimension (self.yDimension_property)
     self.yDimension_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -841,7 +841,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_x1Unit () {
-    self.selectedArray_property.addEBObserverOf_x1Unit (self.x1Unit_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_x1Unit (self.x1Unit_property)
     self.x1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -910,7 +910,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_y1Unit () {
-    self.selectedArray_property.addEBObserverOf_y1Unit (self.y1Unit_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_y1Unit (self.y1Unit_property)
     self.y1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -979,7 +979,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_x2Unit () {
-    self.selectedArray_property.addEBObserverOf_x2Unit (self.x2Unit_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_x2Unit (self.x2Unit_property)
     self.x2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1048,7 +1048,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_y2Unit () {
-    self.selectedArray_property.addEBObserverOf_y2Unit (self.y2Unit_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_y2Unit (self.y2Unit_property)
     self.y2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1117,7 +1117,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_xDimensionUnit () {
-    self.selectedArray_property.addEBObserverOf_xDimensionUnit (self.xDimensionUnit_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_xDimensionUnit (self.xDimensionUnit_property)
     self.xDimensionUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1186,7 +1186,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_yDimensionUnit () {
-    self.selectedArray_property.addEBObserverOf_yDimensionUnit (self.yDimensionUnit_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_yDimensionUnit (self.yDimensionUnit_property)
     self.yDimensionUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1255,7 +1255,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_distanceUnit () {
-    self.selectedArray_property.addEBObserverOf_distanceUnit (self.distanceUnit_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_distanceUnit (self.distanceUnit_property)
     self.distanceUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1324,7 +1324,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_x1 () {
-    self.selectedArray_property.addEBObserverOf_x1 (self.x1_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_x1 (self.x1_property)
     self.x1_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1393,7 +1393,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_distanceInCanariUnit () {
-    self.selectedArray_property.addEBObserverOf_distanceInCanariUnit (self.distanceInCanariUnit_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_distanceInCanariUnit (self.distanceInCanariUnit_property)
     self.distanceInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1432,7 +1432,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1471,7 +1471,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1510,7 +1510,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //····················································································································
 
   private final func bind_property_issues () {
-    self.selectedArray_property.addEBObserverOf_issues (self.issues_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

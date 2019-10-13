@@ -1019,7 +1019,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_artworkName (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_artworkName (self.artworkName_property, postEvent: true)
+    model.addEBObserverOf_artworkName (self.artworkName_property)
     self.artworkName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1089,7 +1089,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backComponentNameSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backComponentNameSegments (self.backComponentNameSegments_property, postEvent: true)
+    model.addEBObserverOf_backComponentNameSegments (self.backComponentNameSegments_property)
     self.backComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1129,7 +1129,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backComponentNamesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backComponentNamesBezierPaths (self.backComponentNamesBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_backComponentNamesBezierPaths (self.backComponentNamesBezierPaths_property)
     self.backComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1169,7 +1169,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backComponentValueSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backComponentValueSegments (self.backComponentValueSegments_property, postEvent: true)
+    model.addEBObserverOf_backComponentValueSegments (self.backComponentValueSegments_property)
     self.backComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1209,7 +1209,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backComponentValuesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backComponentValuesBezierPaths (self.backComponentValuesBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_backComponentValuesBezierPaths (self.backComponentValuesBezierPaths_property)
     self.backComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1249,7 +1249,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backLayoutTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backLayoutTextsBezierPaths (self.backLayoutTextsBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_backLayoutTextsBezierPaths (self.backLayoutTextsBezierPaths_property)
     self.backLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1289,7 +1289,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsSegments_property, postEvent: true)
+    model.addEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsSegments_property)
     self.backLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1329,7 +1329,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backLegendLinesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backLegendLinesBezierPaths (self.backLegendLinesBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_backLegendLinesBezierPaths (self.backLegendLinesBezierPaths_property)
     self.backLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1369,7 +1369,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backLegendLinesSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backLegendLinesSegments (self.backLegendLinesSegments_property, postEvent: true)
+    model.addEBObserverOf_backLegendLinesSegments (self.backLegendLinesSegments_property)
     self.backLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1409,7 +1409,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backLegendTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backLegendTextsBezierPaths (self.backLegendTextsBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_backLegendTextsBezierPaths (self.backLegendTextsBezierPaths_property)
     self.backLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1449,7 +1449,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backLegendTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backLegendTextsSegments (self.backLegendTextsSegments_property, postEvent: true)
+    model.addEBObserverOf_backLegendTextsSegments (self.backLegendTextsSegments_property)
     self.backLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1489,7 +1489,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backPackagesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backPackagesBezierPaths (self.backPackagesBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_backPackagesBezierPaths (self.backPackagesBezierPaths_property)
     self.backPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1529,7 +1529,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backPackagesSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backPackagesSegments (self.backPackagesSegments_property, postEvent: true)
+    model.addEBObserverOf_backPackagesSegments (self.backPackagesSegments_property)
     self.backPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1569,7 +1569,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backPadArray (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backPadArray (self.backPadArray_property, postEvent: true)
+    model.addEBObserverOf_backPadArray (self.backPadArray_property)
     self.backPadArray_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1609,7 +1609,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backPadsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backPadsBezierPaths (self.backPadsBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_backPadsBezierPaths (self.backPadsBezierPaths_property)
     self.backPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1649,7 +1649,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backTrackSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backTrackSegments (self.backTrackSegments_property, postEvent: true)
+    model.addEBObserverOf_backTrackSegments (self.backTrackSegments_property)
     self.backTrackSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1689,7 +1689,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_backTracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backTracksBezierPaths (self.backTracksBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_backTracksBezierPaths (self.backTracksBezierPaths_property)
     self.backTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1729,7 +1729,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_boardLimits (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_boardLimits (self.boardLimits_property, postEvent: true)
+    model.addEBObserverOf_boardLimits (self.boardLimits_property)
     self.boardLimits_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1769,7 +1769,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_boardLimitsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_boardLimitsBezierPaths (self.boardLimitsBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_boardLimitsBezierPaths (self.boardLimitsBezierPaths_property)
     self.boardLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1809,7 +1809,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drillSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_drillSegments (self.drillSegments_property, postEvent: true)
+    model.addEBObserverOf_drillSegments (self.drillSegments_property)
     self.drillSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1849,7 +1849,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontComponentNameSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments_property, postEvent: true)
+    model.addEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments_property)
     self.frontComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1889,7 +1889,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontComponentNamesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontComponentNamesBezierPaths (self.frontComponentNamesBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_frontComponentNamesBezierPaths (self.frontComponentNamesBezierPaths_property)
     self.frontComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1929,7 +1929,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontComponentValueSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontComponentValueSegments (self.frontComponentValueSegments_property, postEvent: true)
+    model.addEBObserverOf_frontComponentValueSegments (self.frontComponentValueSegments_property)
     self.frontComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -1969,7 +1969,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontComponentValuesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontComponentValuesBezierPaths (self.frontComponentValuesBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_frontComponentValuesBezierPaths (self.frontComponentValuesBezierPaths_property)
     self.frontComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2009,7 +2009,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontLayoutTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontLayoutTextsBezierPaths (self.frontLayoutTextsBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_frontLayoutTextsBezierPaths (self.frontLayoutTextsBezierPaths_property)
     self.frontLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2049,7 +2049,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsSegments_property, postEvent: true)
+    model.addEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsSegments_property)
     self.frontLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2089,7 +2089,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontLegendLinesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontLegendLinesBezierPaths (self.frontLegendLinesBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_frontLegendLinesBezierPaths (self.frontLegendLinesBezierPaths_property)
     self.frontLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2129,7 +2129,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontLegendLinesSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontLegendLinesSegments (self.frontLegendLinesSegments_property, postEvent: true)
+    model.addEBObserverOf_frontLegendLinesSegments (self.frontLegendLinesSegments_property)
     self.frontLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2169,7 +2169,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontLegendTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontLegendTextsBezierPaths (self.frontLegendTextsBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_frontLegendTextsBezierPaths (self.frontLegendTextsBezierPaths_property)
     self.frontLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2209,7 +2209,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontLegendTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsSegments_property, postEvent: true)
+    model.addEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsSegments_property)
     self.frontLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2249,7 +2249,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontPackagesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontPackagesBezierPaths (self.frontPackagesBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_frontPackagesBezierPaths (self.frontPackagesBezierPaths_property)
     self.frontPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2289,7 +2289,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontPackagesSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontPackagesSegments (self.frontPackagesSegments_property, postEvent: true)
+    model.addEBObserverOf_frontPackagesSegments (self.frontPackagesSegments_property)
     self.frontPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2329,7 +2329,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontPadArray (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontPadArray (self.frontPadArray_property, postEvent: true)
+    model.addEBObserverOf_frontPadArray (self.frontPadArray_property)
     self.frontPadArray_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2369,7 +2369,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontPadsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontPadsBezierPaths (self.frontPadsBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_frontPadsBezierPaths (self.frontPadsBezierPaths_property)
     self.frontPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2409,7 +2409,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontTrackSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontTrackSegments (self.frontTrackSegments_property, postEvent: true)
+    model.addEBObserverOf_frontTrackSegments (self.frontTrackSegments_property)
     self.frontTrackSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2449,7 +2449,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_frontTracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontTracksBezierPaths (self.frontTracksBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_frontTracksBezierPaths (self.frontTracksBezierPaths_property)
     self.frontTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2489,7 +2489,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_holesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_holesBezierPaths (self.holesBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_holesBezierPaths (self.holesBezierPaths_property)
     self.holesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2529,7 +2529,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_imageForInstances (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_imageForInstances (self.imageForInstances_property, postEvent: true)
+    model.addEBObserverOf_imageForInstances (self.imageForInstances_property)
     self.imageForInstances_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2569,7 +2569,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_imageForModel (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_imageForModel (self.imageForModel_property, postEvent: true)
+    model.addEBObserverOf_imageForModel (self.imageForModel_property)
     self.imageForModel_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2609,7 +2609,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_instanceCount (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_instanceCount (self.instanceCount_property, postEvent: true)
+    model.addEBObserverOf_instanceCount (self.instanceCount_property)
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2649,7 +2649,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_internalBoardsLimitsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_internalBoardsLimitsBezierPaths (self.internalBoardsLimitsBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_internalBoardsLimitsBezierPaths (self.internalBoardsLimitsBezierPaths_property)
     self.internalBoardsLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2689,7 +2689,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_internalBoardsLimitsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_internalBoardsLimitsSegments (self.internalBoardsLimitsSegments_property, postEvent: true)
+    model.addEBObserverOf_internalBoardsLimitsSegments (self.internalBoardsLimitsSegments_property)
     self.internalBoardsLimitsSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2729,7 +2729,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_modelHeight (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelHeight (self.modelHeight_property, postEvent: true)
+    model.addEBObserverOf_modelHeight (self.modelHeight_property)
     self.modelHeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2799,7 +2799,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_modelHeightUnit (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelHeightUnit (self.modelHeightUnit_property, postEvent: true)
+    model.addEBObserverOf_modelHeightUnit (self.modelHeightUnit_property)
     self.modelHeightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2869,7 +2869,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_modelLimitWidth (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelLimitWidth (self.modelLimitWidth_property, postEvent: true)
+    model.addEBObserverOf_modelLimitWidth (self.modelLimitWidth_property)
     self.modelLimitWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -2939,7 +2939,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_modelLimitWidthUnit (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelLimitWidthUnit (self.modelLimitWidthUnit_property, postEvent: true)
+    model.addEBObserverOf_modelLimitWidthUnit (self.modelLimitWidthUnit_property)
     self.modelLimitWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -3009,7 +3009,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_modelWidth (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelWidth (self.modelWidth_property, postEvent: true)
+    model.addEBObserverOf_modelWidth (self.modelWidth_property)
     self.modelWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -3079,7 +3079,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_modelWidthUnit (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelWidthUnit (self.modelWidthUnit_property, postEvent: true)
+    model.addEBObserverOf_modelWidthUnit (self.modelWidthUnit_property)
     self.modelWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -3149,7 +3149,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_name (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_name (self.name_property, postEvent: true)
+    model.addEBObserverOf_name (self.name_property)
     self.name_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -3219,7 +3219,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_viaShapes (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_viaShapes (self.viaShapes_property, postEvent: true)
+    model.addEBObserverOf_viaShapes (self.viaShapes_property)
     self.viaShapes_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -3259,7 +3259,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_viasBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_viasBezierPaths (self.viasBezierPaths_property, postEvent: true)
+    model.addEBObserverOf_viasBezierPaths (self.viasBezierPaths_property)
     self.viasBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -3299,7 +3299,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_zoom (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_zoom (self.zoom_property, postEvent: true)
+    model.addEBObserverOf_zoom (self.zoom_property)
     self.zoom_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {

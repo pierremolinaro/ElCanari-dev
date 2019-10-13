@@ -10,11 +10,11 @@ extension CustomizedPackageDocument {
 
   internal func addPadNumberingObservers () {
     self.mPadNumberingObserver.mEventCallBack = { [weak self] in self?.handlePadNumbering () }
-    self.rootObject.packagePads_property.addEBObserverOf_xCenter (self.mPadNumberingObserver, postEvent: true)
-    self.rootObject.packagePads_property.addEBObserverOf_yCenter (self.mPadNumberingObserver, postEvent: true)
+    self.rootObject.packagePads_property.addEBObserverOf_xCenter (self.mPadNumberingObserver)
+    self.rootObject.packagePads_property.addEBObserverOf_yCenter (self.mPadNumberingObserver)
     self.rootObject.padNumbering_property.addEBObserver (self.mPadNumberingObserver)
-    self.rootObject.packageZones_property.addEBObserverOf_rect (self.mPadNumberingObserver, postEvent: true)
-    self.rootObject.packageZones_property.addEBObserverOf_zoneNumbering (self.mPadNumberingObserver, postEvent: true)
+    self.rootObject.packageZones_property.addEBObserverOf_rect (self.mPadNumberingObserver)
+    self.rootObject.packageZones_property.addEBObserverOf_zoneNumbering (self.mPadNumberingObserver)
     self.rootObject.packageZones_property.addEBObserver (self.mPadNumberingObserver)
     self.rootObject.counterClockNumberingStartAngle_property.addEBObserver (self.mPadNumberingObserver)
   }

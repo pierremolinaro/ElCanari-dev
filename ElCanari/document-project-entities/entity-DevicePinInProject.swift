@@ -410,9 +410,8 @@ class DevicePinInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolInstanceName_property.addEBObserver (self.pinQualifiedName_property, postEvent: false)
-    self.mPinName_property.addEBObserver (self.pinQualifiedName_property, postEvent: false)
-    self.pinQualifiedName_property.postEvent ()
+    self.mSymbolInstanceName_property.addEBObserver (self.pinQualifiedName_property)
+    self.mPinName_property.addEBObserver (self.pinQualifiedName_property)
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -445,19 +444,18 @@ class DevicePinInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPinName_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.mSymbolInstanceName_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.mSymbolTypeName_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.mPinX_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.mPinY_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.mXName_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.mYName_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.mNameHorizontalAlignment_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.mPinNameIsDisplayedInSchematic_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.mXNumber_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.mYNumber_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.mNumberHorizontalAlignment_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.descriptor_property.postEvent ()
+    self.mPinName_property.addEBObserver (self.descriptor_property)
+    self.mSymbolInstanceName_property.addEBObserver (self.descriptor_property)
+    self.mSymbolTypeName_property.addEBObserver (self.descriptor_property)
+    self.mPinX_property.addEBObserver (self.descriptor_property)
+    self.mPinY_property.addEBObserver (self.descriptor_property)
+    self.mXName_property.addEBObserver (self.descriptor_property)
+    self.mYName_property.addEBObserver (self.descriptor_property)
+    self.mNameHorizontalAlignment_property.addEBObserver (self.descriptor_property)
+    self.mPinNameIsDisplayedInSchematic_property.addEBObserver (self.descriptor_property)
+    self.mXNumber_property.addEBObserver (self.descriptor_property)
+    self.mYNumber_property.addEBObserver (self.descriptor_property)
+    self.mNumberHorizontalAlignment_property.addEBObserver (self.descriptor_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

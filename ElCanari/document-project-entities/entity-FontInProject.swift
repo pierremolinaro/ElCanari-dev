@@ -306,8 +306,7 @@ class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mFontVersion_property.addEBObserver (self.versionString_property, postEvent: false)
-    self.versionString_property.postEvent ()
+    self.mFontVersion_property.addEBObserver (self.versionString_property)
   //--- Atomic property: sizeString
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -329,8 +328,7 @@ class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mDescriptiveString_property.addEBObserver (self.sizeString_property, postEvent: false)
-    self.sizeString_property.postEvent ()
+    self.mDescriptiveString_property.addEBObserver (self.sizeString_property)
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -353,9 +351,8 @@ class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNominalSize_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.mDescriptiveString_property.addEBObserver (self.descriptor_property, postEvent: false)
-    self.descriptor_property.postEvent ()
+    self.mNominalSize_property.addEBObserver (self.descriptor_property)
+    self.mDescriptiveString_property.addEBObserver (self.descriptor_property)
   //--- Install undoers and opposite setter for relationships
     self.mTexts_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },

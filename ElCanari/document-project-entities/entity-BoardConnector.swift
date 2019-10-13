@@ -789,12 +789,11 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.addEBObserverOf_componentPadDictionary (self.location_property, postEvent: false)
-    self.mComponentPadName_property.addEBObserver (self.location_property, postEvent: false)
-    self.mPadIndex_property.addEBObserver (self.location_property, postEvent: false)
-    self.mX_property.addEBObserver (self.location_property, postEvent: false)
-    self.mY_property.addEBObserver (self.location_property, postEvent: false)
-    self.location_property.postEvent ()
+    self.mComponent_property.addEBObserverOf_componentPadDictionary (self.location_property)
+    self.mComponentPadName_property.addEBObserver (self.location_property)
+    self.mPadIndex_property.addEBObserver (self.location_property)
+    self.mX_property.addEBObserver (self.location_property)
+    self.mY_property.addEBObserver (self.location_property)
   //--- Atomic property: netNameFromComponentPad
     self.netNameFromComponentPad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -817,9 +816,8 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.addEBObserverOf_padNetDictionary (self.netNameFromComponentPad_property, postEvent: false)
-    self.mComponentPadName_property.addEBObserver (self.netNameFromComponentPad_property, postEvent: false)
-    self.netNameFromComponentPad_property.postEvent ()
+    self.mComponent_property.addEBObserverOf_padNetDictionary (self.netNameFromComponentPad_property)
+    self.mComponentPadName_property.addEBObserver (self.netNameFromComponentPad_property)
   //--- Atomic property: netNameAndPadLocation
     self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -844,11 +842,10 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.addEBObserverOf_padNetDictionary (self.netNameAndPadLocation_property, postEvent: false)
-    self.mComponentPadName_property.addEBObserver (self.netNameAndPadLocation_property, postEvent: false)
-    self.location_property.addEBObserver (self.netNameAndPadLocation_property, postEvent: false)
-    self.mComponent_property.addEBObserverOf_componentName (self.netNameAndPadLocation_property, postEvent: false)
-    self.netNameAndPadLocation_property.postEvent ()
+    self.mComponent_property.addEBObserverOf_padNetDictionary (self.netNameAndPadLocation_property)
+    self.mComponentPadName_property.addEBObserver (self.netNameAndPadLocation_property)
+    self.location_property.addEBObserver (self.netNameAndPadLocation_property)
+    self.mComponent_property.addEBObserverOf_componentName (self.netNameAndPadLocation_property)
   //--- Atomic property: side
     self.side_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -874,12 +871,11 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.addEBObserverOf_componentPadDictionary (self.side_property, postEvent: false)
-    self.mComponentPadName_property.addEBObserver (self.side_property, postEvent: false)
-    self.mPadIndex_property.addEBObserver (self.side_property, postEvent: false)
-    self.mTracksP1_property.addEBObserverOf_mSide (self.side_property, postEvent: false)
-    self.mTracksP2_property.addEBObserverOf_mSide (self.side_property, postEvent: false)
-    self.side_property.postEvent ()
+    self.mComponent_property.addEBObserverOf_componentPadDictionary (self.side_property)
+    self.mComponentPadName_property.addEBObserver (self.side_property)
+    self.mPadIndex_property.addEBObserver (self.side_property)
+    self.mTracksP1_property.addEBObserverOf_mSide (self.side_property)
+    self.mTracksP2_property.addEBObserverOf_mSide (self.side_property)
   //--- Atomic property: isVia
     self.isVia_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -903,10 +899,9 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mTracksP1_property.addEBObserverOf_mSide (self.isVia_property, postEvent: false)
-    self.mTracksP2_property.addEBObserverOf_mSide (self.isVia_property, postEvent: false)
-    self.mComponent_property.addEBObserver (self.isVia_property, postEvent: false)
-    self.isVia_property.postEvent ()
+    self.mTracksP1_property.addEBObserverOf_mSide (self.isVia_property)
+    self.mTracksP2_property.addEBObserverOf_mSide (self.isVia_property)
+    self.mComponent_property.addEBObserver (self.isVia_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -934,14 +929,13 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.location_property.addEBObserver (self.issues_property, postEvent: false)
-    self.mComponent_property.addEBObserver (self.issues_property, postEvent: false)
-    self.mComponentPadName_property.addEBObserver (self.issues_property, postEvent: false)
-    self.mTracksP1_property.addEBObserver (self.issues_property, postEvent: false)
-    self.mTracksP2_property.addEBObserver (self.issues_property, postEvent: false)
-    self.errorOrWarningIssueSize_property.addEBObserver (self.issues_property, postEvent: false)
-    self.mComponent_property.addEBObserverOf_padNetDictionary (self.issues_property, postEvent: false)
-    self.issues_property.postEvent ()
+    self.location_property.addEBObserver (self.issues_property)
+    self.mComponent_property.addEBObserver (self.issues_property)
+    self.mComponentPadName_property.addEBObserver (self.issues_property)
+    self.mTracksP1_property.addEBObserver (self.issues_property)
+    self.mTracksP2_property.addEBObserver (self.issues_property)
+    self.errorOrWarningIssueSize_property.addEBObserver (self.issues_property)
+    self.mComponent_property.addEBObserverOf_padNetDictionary (self.issues_property)
   //--- Atomic property: viaDefaultHoleDiameter
     self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -964,9 +958,8 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mTracksP1_property.addEBObserverOf_netClassViaHoleDiameter (self.viaDefaultHoleDiameter_property, postEvent: false)
-    self.mTracksP2_property.addEBObserverOf_netClassViaHoleDiameter (self.viaDefaultHoleDiameter_property, postEvent: false)
-    self.viaDefaultHoleDiameter_property.postEvent ()
+    self.mTracksP1_property.addEBObserverOf_netClassViaHoleDiameter (self.viaDefaultHoleDiameter_property)
+    self.mTracksP2_property.addEBObserverOf_netClassViaHoleDiameter (self.viaDefaultHoleDiameter_property)
   //--- Atomic property: viaDefaultPadDiameter
     self.viaDefaultPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -989,9 +982,8 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mTracksP1_property.addEBObserverOf_netClassViaPadDiameter (self.viaDefaultPadDiameter_property, postEvent: false)
-    self.mTracksP2_property.addEBObserverOf_netClassViaPadDiameter (self.viaDefaultPadDiameter_property, postEvent: false)
-    self.viaDefaultPadDiameter_property.postEvent ()
+    self.mTracksP1_property.addEBObserverOf_netClassViaPadDiameter (self.viaDefaultPadDiameter_property)
+    self.mTracksP2_property.addEBObserverOf_netClassViaPadDiameter (self.viaDefaultPadDiameter_property)
   //--- Atomic property: netNameFromTracks
     self.netNameFromTracks_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1014,9 +1006,8 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mTracksP1_property.addEBObserverOf_netName (self.netNameFromTracks_property, postEvent: false)
-    self.mTracksP2_property.addEBObserverOf_netName (self.netNameFromTracks_property, postEvent: false)
-    self.netNameFromTracks_property.postEvent ()
+    self.mTracksP1_property.addEBObserverOf_netName (self.netNameFromTracks_property)
+    self.mTracksP2_property.addEBObserverOf_netName (self.netNameFromTracks_property)
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1039,9 +1030,8 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mTracksP1_property.addEBObserverOf_netClassName (self.netClassName_property, postEvent: false)
-    self.mTracksP2_property.addEBObserverOf_netClassName (self.netClassName_property, postEvent: false)
-    self.netClassName_property.postEvent ()
+    self.mTracksP1_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.mTracksP2_property.addEBObserverOf_netClassName (self.netClassName_property)
   //--- Atomic property: connectedToComponent
     self.connectedToComponent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1063,8 +1053,7 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.addEBObserver (self.connectedToComponent_property, postEvent: false)
-    self.connectedToComponent_property.postEvent ()
+    self.mComponent_property.addEBObserver (self.connectedToComponent_property)
   //--- Atomic property: actualHoleDiameter
     self.actualHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1088,10 +1077,9 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.viaDefaultHoleDiameter_property.addEBObserver (self.actualHoleDiameter_property, postEvent: false)
-    self.mUsesCustomHoleDiameter_property.addEBObserver (self.actualHoleDiameter_property, postEvent: false)
-    self.mCustomHoleDiameter_property.addEBObserver (self.actualHoleDiameter_property, postEvent: false)
-    self.actualHoleDiameter_property.postEvent ()
+    self.viaDefaultHoleDiameter_property.addEBObserver (self.actualHoleDiameter_property)
+    self.mUsesCustomHoleDiameter_property.addEBObserver (self.actualHoleDiameter_property)
+    self.mCustomHoleDiameter_property.addEBObserver (self.actualHoleDiameter_property)
   //--- Atomic property: actualPadDiameter
     self.actualPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1115,10 +1103,9 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.viaDefaultPadDiameter_property.addEBObserver (self.actualPadDiameter_property, postEvent: false)
-    self.mUsesCustomPadDiameter_property.addEBObserver (self.actualPadDiameter_property, postEvent: false)
-    self.mCustomPadDiameter_property.addEBObserver (self.actualPadDiameter_property, postEvent: false)
-    self.actualPadDiameter_property.postEvent ()
+    self.viaDefaultPadDiameter_property.addEBObserver (self.actualPadDiameter_property)
+    self.mUsesCustomPadDiameter_property.addEBObserver (self.actualPadDiameter_property)
+    self.mCustomPadDiameter_property.addEBObserver (self.actualPadDiameter_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1145,13 +1132,12 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.connectedToComponent_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.side_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.location_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.actualHoleDiameter_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.actualPadDiameter_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.frontSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.objectDisplay_property.postEvent ()
+    self.connectedToComponent_property.addEBObserver (self.objectDisplay_property)
+    self.side_property.addEBObserver (self.objectDisplay_property)
+    self.location_property.addEBObserver (self.objectDisplay_property)
+    self.actualHoleDiameter_property.addEBObserver (self.objectDisplay_property)
+    self.actualPadDiameter_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSidePadColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1175,10 +1161,9 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.connectedToComponent_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.side_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.location_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.selectionDisplay_property.postEvent ()
+    self.connectedToComponent_property.addEBObserver (self.selectionDisplay_property)
+    self.side_property.addEBObserver (self.selectionDisplay_property)
+    self.location_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1202,10 +1187,9 @@ class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.location_property.addEBObserver (self.signatureForERCChecking_property, postEvent: false)
-    self.isVia_property.addEBObserver (self.signatureForERCChecking_property, postEvent: false)
-    self.actualPadDiameter_property.addEBObserver (self.signatureForERCChecking_property, postEvent: false)
-    self.signatureForERCChecking_property.postEvent ()
+    self.location_property.addEBObserver (self.signatureForERCChecking_property)
+    self.isVia_property.addEBObserver (self.signatureForERCChecking_property)
+    self.actualPadDiameter_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
     self.mTracksP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },

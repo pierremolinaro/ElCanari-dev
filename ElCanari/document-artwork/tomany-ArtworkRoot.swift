@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_selectedTab (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedTab.insert (inObserver)
     switch prop {
@@ -58,7 +58,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedTab_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.selectedTab_property.addEBObserver (inObserver)
       }
     }
   }
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_comments (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_comments.insert (inObserver)
     switch prop {
@@ -115,7 +115,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.comments_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.comments_property.addEBObserver (inObserver)
       }
     }
   }
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
     switch prop {
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minPPTPTTTWdisplayUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.minPPTPTTTWdisplayUnit_property.addEBObserver (inObserver)
       }
     }
   }
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minPPTPTTTW.insert (inObserver)
     switch prop {
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minPPTPTTTW_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.minPPTPTTTW_property.addEBObserver (inObserver)
       }
     }
   }
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
     switch prop {
@@ -286,7 +286,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minValueForOARdisplayUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.minValueForOARdisplayUnit_property.addEBObserver (inObserver)
       }
     }
   }
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForOARinEBUnit.insert (inObserver)
     switch prop {
@@ -343,7 +343,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minValueForOARinEBUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.minValueForOARinEBUnit_property.addEBObserver (inObserver)
       }
     }
   }
@@ -392,7 +392,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
     switch prop {
@@ -400,7 +400,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minValueForPHDdisplayUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.minValueForPHDdisplayUnit_property.addEBObserver (inObserver)
       }
     }
   }
@@ -449,7 +449,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
     switch prop {
@@ -457,7 +457,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minValueForPHDinEBUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.minValueForPHDinEBUnit_property.addEBObserver (inObserver)
       }
     }
   }
@@ -506,7 +506,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
     switch prop {
@@ -514,7 +514,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (inObserver)
       }
     }
   }
@@ -563,7 +563,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
     switch prop {
@@ -571,7 +571,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minValueForBoardLimitWidth_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.minValueForBoardLimitWidth_property.addEBObserver (inObserver)
       }
     }
   }
@@ -620,7 +620,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drillDataFileExtension.insert (inObserver)
     switch prop {
@@ -628,7 +628,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drillDataFileExtension_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.drillDataFileExtension_property.addEBObserver (inObserver)
       }
     }
   }
@@ -677,7 +677,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
     switch prop {
@@ -685,7 +685,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.signatureForERCChecking_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.signatureForERCChecking_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1281,17 +1281,17 @@ final class PreferencesArrayOf_ArtworkRoot : StoredArrayOf_ArtworkRoot {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_selectedTab (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_comments (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_minPPTPTTTWdisplayUnit (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_minPPTPTTTW (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_minValueForOARdisplayUnit (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_minValueForOARinEBUnit (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_minValueForPHDdisplayUnit (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_minValueForPHDinEBUnit (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_minValueForBoardLimitWidth (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_drillDataFileExtension (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_selectedTab (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_comments (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_minPPTPTTTWdisplayUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_minPPTPTTTW (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_minValueForOARdisplayUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_minValueForOARinEBUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_minValueForPHDdisplayUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_minValueForPHDinEBUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_minValueForBoardLimitWidth (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_drillDataFileExtension (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

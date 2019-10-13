@@ -140,8 +140,7 @@ class DevicePackageInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.addEBObserverOf_descriptor (self.packagePadDictionary_property, postEvent: false)
-    self.packagePadDictionary_property.postEvent ()
+    self.mMasterPads_property.addEBObserverOf_descriptor (self.packagePadDictionary_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

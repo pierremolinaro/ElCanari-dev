@@ -83,13 +83,12 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
       inModel,
       sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
       addSortObserversCallback: { (observer) in
-        inModel.addEBObserverOf_componentIsPlacedInBoardString (observer, postEvent: false)
-        inModel.addEBObserverOf_componentName (observer, postEvent: false)
-        inModel.addEBObserverOf_deviceName (observer, postEvent: false)
-        inModel.addEBObserverOf_mComponentValue (observer, postEvent: false)
-        inModel.addEBObserverOf_placementInSchematic (observer, postEvent: false)
-        inModel.addEBObserverOf_selectedPackageName (observer, postEvent: false)
-        observer.postEvent ()
+        inModel.addEBObserverOf_componentIsPlacedInBoardString (observer)
+        inModel.addEBObserverOf_componentName (observer)
+        inModel.addEBObserverOf_deviceName (observer)
+        inModel.addEBObserverOf_mComponentValue (observer)
+        inModel.addEBObserverOf_placementInSchematic (observer)
+        inModel.addEBObserverOf_selectedPackageName (observer)
       },
       removeSortObserversCallback: {(observer) in
         inModel.removeEBObserverOf_componentIsPlacedInBoardString (observer)

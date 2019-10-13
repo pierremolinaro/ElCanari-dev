@@ -658,8 +658,7 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property, postEvent: false)
-    self.incorrectDocumentFileErrorMessage_property.postEvent ()
+    self.documentFilePath_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: documentIsUnnamed
@@ -683,8 +682,7 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.documentIsUnnamed_property, postEvent: false)
-    self.documentIsUnnamed_property.postEvent ()
+    self.documentFilePath_property.addEBObserver (self.documentIsUnnamed_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: importArtworkButtonTitle
@@ -708,8 +706,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.artworkName_property.addEBObserver (self.importArtworkButtonTitle_property, postEvent: false)
-    self.importArtworkButtonTitle_property.postEvent ()
+    self.rootObject.artworkName_property.addEBObserver (self.importArtworkButtonTitle_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: issues
@@ -737,12 +734,11 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.overlapingArrangment_property.addEBObserver (self.issues_property, postEvent: false)
-    self.rootObject.boardRect_property.addEBObserver (self.issues_property, postEvent: false)
-    self.rootObject.boardDisplayRect_property.addEBObserver (self.issues_property, postEvent: false)
-    self.rootObject.boardInstances_property.addEBObserverOf_instanceRect (self.issues_property, postEvent: false)
-    self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth (self.issues_property, postEvent: false)
-    self.issues_property.postEvent ()
+    self.rootObject.overlapingArrangment_property.addEBObserver (self.issues_property)
+    self.rootObject.boardRect_property.addEBObserver (self.issues_property)
+    self.rootObject.boardDisplayRect_property.addEBObserver (self.issues_property)
+    self.rootObject.boardInstances_property.addEBObserverOf_instanceRect (self.issues_property)
+    self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth (self.issues_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: mStatusImage
@@ -766,8 +762,7 @@ import Cocoa
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.mStatusImage_property, postEvent: false)
-    self.mStatusImage_property.postEvent ()
+    self.issues_property.addEBObserver (self.mStatusImage_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: mStatusMessage
@@ -791,8 +786,7 @@ import Cocoa
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.mStatusMessage_property, postEvent: false)
-    self.mStatusMessage_property.postEvent ()
+    self.issues_property.addEBObserver (self.mStatusMessage_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: documentFileNameOk
@@ -816,8 +810,7 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.documentFileNameOk_property, postEvent: false)
-    self.documentFileNameOk_property.postEvent ()
+    self.documentFilePath_property.addEBObserver (self.documentFileNameOk_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
     if LOG_OPERATION_DURATION {

@@ -377,11 +377,10 @@ class ArtworkRoot : EBManagedObject,
         return .empty
       }
     }
-    self.minPPTPTTTW_property.addEBObserver (self.signatureForERCChecking_property, postEvent: false)
-    self.minValueForOARinEBUnit_property.addEBObserver (self.signatureForERCChecking_property, postEvent: false)
-    self.minValueForBoardLimitWidth_property.addEBObserver (self.signatureForERCChecking_property, postEvent: false)
-    self.minValueForPHDinEBUnit_property.addEBObserver (self.signatureForERCChecking_property, postEvent: false)
-    self.signatureForERCChecking_property.postEvent ()
+    self.minPPTPTTTW_property.addEBObserver (self.signatureForERCChecking_property)
+    self.minValueForOARinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
+    self.minValueForBoardLimitWidth_property.addEBObserver (self.signatureForERCChecking_property)
+    self.minValueForPHDinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.comments_property.setSignatureObserver (observer: self)

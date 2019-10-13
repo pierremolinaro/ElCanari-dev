@@ -53,14 +53,14 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolInstanceName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mSymbolInstanceName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mSymbolInstanceName_property.addEBObserver (inObserver)
     }
   }
 
@@ -123,14 +123,14 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
 
   //····················································································································
 
-  final func addEBObserverOf_symbolAndTypeName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_symbolAndTypeName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_symbolAndTypeName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.symbolAndTypeName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.symbolAndTypeName_property.addEBObserver (inObserver)
     }
   }
 
@@ -192,14 +192,14 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
 
   //····················································································································
 
-  final func addEBObserverOf_symbolTypeName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_symbolTypeName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.symbolTypeName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.symbolTypeName_property.addEBObserver (inObserver)
     }
   }
 
@@ -261,14 +261,14 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
 
   //····················································································································
 
-  final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_filledBezierPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.filledBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.filledBezierPath_property.addEBObserver (inObserver)
     }
   }
 
@@ -330,14 +330,14 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
 
   //····················································································································
 
-  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.strokeBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.strokeBezierPath_property.addEBObserver (inObserver)
     }
   }
 

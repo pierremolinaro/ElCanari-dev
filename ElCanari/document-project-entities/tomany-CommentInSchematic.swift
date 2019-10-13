@@ -42,7 +42,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mColor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mColor.insert (inObserver)
     switch prop {
@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mColor_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mColor_property.addEBObserver (inObserver)
       }
     }
   }
@@ -99,7 +99,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mSize (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSize.insert (inObserver)
     switch prop {
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSize_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mSize_property.addEBObserver (inObserver)
       }
     }
   }
@@ -156,7 +156,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHorizontalAlignment.insert (inObserver)
     switch prop {
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mHorizontalAlignment_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mHorizontalAlignment_property.addEBObserver (inObserver)
       }
     }
   }
@@ -213,7 +213,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
     switch prop {
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mX_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mX_property.addEBObserver (inObserver)
       }
     }
   }
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
     switch prop {
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mY_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mY_property.addEBObserver (inObserver)
       }
     }
   }
@@ -327,7 +327,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mComment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mComment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mComment.insert (inObserver)
     switch prop {
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mComment_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mComment_property.addEBObserver (inObserver)
       }
     }
   }
@@ -384,7 +384,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
@@ -392,7 +392,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
       }
     }
   }
@@ -440,7 +440,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
@@ -448,7 +448,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1044,12 +1044,12 @@ final class PreferencesArrayOf_CommentInSchematic : StoredArrayOf_CommentInSchem
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mColor (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mSize (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mHorizontalAlignment (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mX (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mY (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mComment (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mColor (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mSize (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mHorizontalAlignment (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mComment (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

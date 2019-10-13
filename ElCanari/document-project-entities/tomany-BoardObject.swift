@@ -46,7 +46,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_isPlacedInBoard (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_isPlacedInBoard (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isPlacedInBoard.insert (inObserver)
     switch prop {
@@ -54,7 +54,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.isPlacedInBoard_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.isPlacedInBoard_property.addEBObserver (inObserver)
       }
     }
   }
@@ -102,7 +102,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch prop {
@@ -110,7 +110,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.issues_property.addEBObserver (inObserver)
       }
     }
   }
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_isVia (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_isVia (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isVia.insert (inObserver)
     switch prop {
@@ -166,7 +166,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.isVia_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.isVia_property.addEBObserver (inObserver)
       }
     }
   }
@@ -214,7 +214,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_trackLength (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_trackLength (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_trackLength.insert (inObserver)
     switch prop {
@@ -222,7 +222,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.trackLength_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.trackLength_property.addEBObserver (inObserver)
       }
     }
   }
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
     switch prop {
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.signatureForERCChecking_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.signatureForERCChecking_property.addEBObserver (inObserver)
       }
     }
   }
@@ -326,7 +326,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netNameAndPadLocation.insert (inObserver)
     switch prop {
@@ -334,7 +334,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netNameAndPadLocation_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.netNameAndPadLocation_property.addEBObserver (inObserver)
       }
     }
   }
@@ -382,7 +382,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_componentName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_componentName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentName.insert (inObserver)
     switch prop {
@@ -390,7 +390,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.componentName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.componentName_property.addEBObserver (inObserver)
       }
     }
   }
@@ -438,7 +438,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
@@ -446,7 +446,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
       }
     }
   }
@@ -494,7 +494,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
@@ -502,7 +502,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
       }
     }
   }
@@ -550,7 +550,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_errorOrWarningIssueSize (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_errorOrWarningIssueSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_errorOrWarningIssueSize.insert (inObserver)
     switch prop {
@@ -558,7 +558,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.errorOrWarningIssueSize_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.errorOrWarningIssueSize_property.addEBObserver (inObserver)
       }
     }
   }

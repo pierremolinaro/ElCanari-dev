@@ -54,7 +54,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
     switch prop {
@@ -62,7 +62,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mX_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mX_property.addEBObserver (inObserver)
       }
     }
   }
@@ -111,7 +111,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
     switch prop {
@@ -119,7 +119,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mY_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mY_property.addEBObserver (inObserver)
       }
     }
   }
@@ -168,7 +168,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mFontSize (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mFontSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFontSize.insert (inObserver)
     switch prop {
@@ -176,7 +176,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFontSize_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mFontSize_property.addEBObserver (inObserver)
       }
     }
   }
@@ -225,7 +225,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mLayer (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mLayer (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mLayer.insert (inObserver)
     switch prop {
@@ -233,7 +233,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mLayer_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mLayer_property.addEBObserver (inObserver)
       }
     }
   }
@@ -282,7 +282,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mText (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mText (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mText.insert (inObserver)
     switch prop {
@@ -290,7 +290,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mText_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mText_property.addEBObserver (inObserver)
       }
     }
   }
@@ -339,7 +339,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHorizontalAlignment.insert (inObserver)
     switch prop {
@@ -347,7 +347,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mHorizontalAlignment_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mHorizontalAlignment_property.addEBObserver (inObserver)
       }
     }
   }
@@ -396,7 +396,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mVerticalAlignment.insert (inObserver)
     switch prop {
@@ -404,7 +404,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mVerticalAlignment_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mVerticalAlignment_property.addEBObserver (inObserver)
       }
     }
   }
@@ -453,7 +453,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mRotation (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mRotation.insert (inObserver)
     switch prop {
@@ -461,7 +461,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mRotation_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mRotation_property.addEBObserver (inObserver)
       }
     }
   }
@@ -510,7 +510,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mWeight (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mWeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWeight.insert (inObserver)
     switch prop {
@@ -518,7 +518,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mWeight_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mWeight_property.addEBObserver (inObserver)
       }
     }
   }
@@ -567,7 +567,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mOblique (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mOblique (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mOblique.insert (inObserver)
     switch prop {
@@ -575,7 +575,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mOblique_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mOblique_property.addEBObserver (inObserver)
       }
     }
   }
@@ -624,7 +624,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
@@ -632,7 +632,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
       }
     }
   }
@@ -680,7 +680,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
@@ -688,7 +688,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
       }
     }
   }
@@ -736,7 +736,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_fontName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_fontName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_fontName.insert (inObserver)
     switch prop {
@@ -744,7 +744,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.fontName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.fontName_property.addEBObserver (inObserver)
       }
     }
   }
@@ -792,7 +792,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
     switch prop {
@@ -800,7 +800,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.signatureForERCChecking_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.signatureForERCChecking_property.addEBObserver (inObserver)
       }
     }
   }
@@ -1396,16 +1396,16 @@ final class PreferencesArrayOf_BoardText : StoredArrayOf_BoardText {
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mX (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mY (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mFontSize (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mLayer (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mText (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mHorizontalAlignment (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mVerticalAlignment (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mRotation (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mWeight (self.mObserverForWritingPreferences, postEvent: true)
-    self.addEBObserverOf_mOblique (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mFontSize (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mLayer (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mText (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mHorizontalAlignment (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mVerticalAlignment (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mRotation (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mWeight (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mOblique (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

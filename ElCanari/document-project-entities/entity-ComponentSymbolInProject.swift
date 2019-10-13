@@ -548,7 +548,7 @@ class ComponentSymbolInProject : SchematicObject,
     self.componentValueProxy_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
       return self?.mComponent?.mComponentValue_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mComponent_property.addEBObserverOf_mComponentValue (self.componentValueProxy_property, postEvent: true)
+    self.mComponent_property.addEBObserverOf_mComponentValue (self.componentValueProxy_property)
   //--- To one property: mComponent (has opposite to many relationship: mSymbols)
     self.mComponent_property.ebUndoManager = self.ebUndoManager
     self.mComponent_property.setOppositeRelationShipFunctions (
@@ -576,8 +576,7 @@ class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.mComponent_property.addEBObserverOf_componentName (self.componentName_property, postEvent: false)
-    self.componentName_property.postEvent ()
+    self.mComponent_property.addEBObserverOf_componentName (self.componentName_property)
   //--- Atomic property: deviceName
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -599,8 +598,7 @@ class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.mComponent_property.addEBObserverOf_deviceName (self.deviceName_property, postEvent: false)
-    self.deviceName_property.postEvent ()
+    self.mComponent_property.addEBObserverOf_deviceName (self.deviceName_property)
   //--- Atomic property: symbolInfo
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -632,18 +630,17 @@ class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.mRotation_property.addEBObserver (self.symbolInfo_property, postEvent: false)
-    self.mMirror_property.addEBObserver (self.symbolInfo_property, postEvent: false)
-    self.componentName_property.addEBObserver (self.symbolInfo_property, postEvent: false)
-    self.mComponent_property.addEBObserverOf_mComponentValue (self.symbolInfo_property, postEvent: false)
-    self.mComponent_property.addEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property, postEvent: false)
-    self.mSymbolInstanceName_property.addEBObserver (self.symbolInfo_property, postEvent: false)
-    self.mSymbolTypeName_property.addEBObserver (self.symbolInfo_property, postEvent: false)
-    self.mCenterX_property.addEBObserver (self.symbolInfo_property, postEvent: false)
-    self.mCenterY_property.addEBObserver (self.symbolInfo_property, postEvent: false)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.symbolInfo_property, postEvent: false)
-    self.mPoints_property.addEBObserverOf_symbolNameNetName (self.symbolInfo_property, postEvent: false)
-    self.symbolInfo_property.postEvent ()
+    self.mRotation_property.addEBObserver (self.symbolInfo_property)
+    self.mMirror_property.addEBObserver (self.symbolInfo_property)
+    self.componentName_property.addEBObserver (self.symbolInfo_property)
+    self.mComponent_property.addEBObserverOf_mComponentValue (self.symbolInfo_property)
+    self.mComponent_property.addEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
+    self.mSymbolInstanceName_property.addEBObserver (self.symbolInfo_property)
+    self.mSymbolTypeName_property.addEBObserver (self.symbolInfo_property)
+    self.mCenterX_property.addEBObserver (self.symbolInfo_property)
+    self.mCenterY_property.addEBObserver (self.symbolInfo_property)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.symbolInfo_property)
+    self.mPoints_property.addEBObserverOf_symbolNameNetName (self.symbolInfo_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -674,17 +671,16 @@ class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mDisplayComponentNameOffsetX_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mDisplayComponentNameOffsetY_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mDisplayComponentValue_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mDisplayComponentValueOffsetX_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mDisplayComponentValueOffsetY_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.symbolInfo_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    g_Preferences?.symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mSymbolInstanceName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.mSymbolTypeName_property.addEBObserver (self.objectDisplay_property, postEvent: false)
-    self.objectDisplay_property.postEvent ()
+    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentNameOffsetX_property.addEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentNameOffsetY_property.addEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentValue_property.addEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentValueOffsetX_property.addEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentValueOffsetY_property.addEBObserver (self.objectDisplay_property)
+    self.symbolInfo_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
+    self.mSymbolInstanceName_property.addEBObserver (self.objectDisplay_property)
+    self.mSymbolTypeName_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -712,14 +708,13 @@ class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mDisplayComponentNameOffsetX_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mDisplayComponentNameOffsetY_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mDisplayComponentValue_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mDisplayComponentValueOffsetX_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.mDisplayComponentValueOffsetY_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.symbolInfo_property.addEBObserver (self.selectionDisplay_property, postEvent: false)
-    self.selectionDisplay_property.postEvent ()
+    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentNameOffsetX_property.addEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentNameOffsetY_property.addEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentValue_property.addEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentValueOffsetX_property.addEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentValueOffsetY_property.addEBObserver (self.selectionDisplay_property)
+    self.symbolInfo_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: symbolInSchematic
     self.symbolInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -741,8 +736,7 @@ class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.isPlacedInSchematic_property.addEBObserver (self.symbolInSchematic_property, postEvent: false)
-    self.symbolInSchematic_property.postEvent ()
+    self.isPlacedInSchematic_property.addEBObserver (self.symbolInSchematic_property)
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbol_property.setProp (me) } },

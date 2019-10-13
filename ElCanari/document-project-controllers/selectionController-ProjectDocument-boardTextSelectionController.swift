@@ -424,7 +424,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_mX () {
-    self.selectedArray_property.addEBObserverOf_mX (self.mX_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mX (self.mX_property)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -493,7 +493,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_mY () {
-    self.selectedArray_property.addEBObserverOf_mY (self.mY_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mY (self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -562,7 +562,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_mFontSize () {
-    self.selectedArray_property.addEBObserverOf_mFontSize (self.mFontSize_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mFontSize (self.mFontSize_property)
     self.mFontSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -631,7 +631,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_mLayer () {
-    self.selectedArray_property.addEBObserverOf_mLayer (self.mLayer_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mLayer (self.mLayer_property)
     self.mLayer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -700,7 +700,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_mText () {
-    self.selectedArray_property.addEBObserverOf_mText (self.mText_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mText (self.mText_property)
     self.mText_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -769,7 +769,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_mHorizontalAlignment () {
-    self.selectedArray_property.addEBObserverOf_mHorizontalAlignment (self.mHorizontalAlignment_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mHorizontalAlignment (self.mHorizontalAlignment_property)
     self.mHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -838,7 +838,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_mVerticalAlignment () {
-    self.selectedArray_property.addEBObserverOf_mVerticalAlignment (self.mVerticalAlignment_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mVerticalAlignment (self.mVerticalAlignment_property)
     self.mVerticalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -907,7 +907,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_mRotation () {
-    self.selectedArray_property.addEBObserverOf_mRotation (self.mRotation_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mRotation (self.mRotation_property)
     self.mRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -976,7 +976,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_mWeight () {
-    self.selectedArray_property.addEBObserverOf_mWeight (self.mWeight_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mWeight (self.mWeight_property)
     self.mWeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1045,7 +1045,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_mOblique () {
-    self.selectedArray_property.addEBObserverOf_mOblique (self.mOblique_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_mOblique (self.mOblique_property)
     self.mOblique_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1114,7 +1114,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1153,7 +1153,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1192,7 +1192,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_fontName () {
-    self.selectedArray_property.addEBObserverOf_fontName (self.fontName_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_fontName (self.fontName_property)
     self.fontName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1231,7 +1231,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   private final func bind_property_signatureForERCChecking () {
-    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property, postEvent: true)
+    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

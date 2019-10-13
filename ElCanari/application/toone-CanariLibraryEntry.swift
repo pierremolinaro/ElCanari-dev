@@ -53,14 +53,14 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mPath_property.addEBObserver (inObserver)
     }
   }
 
@@ -123,14 +123,14 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mUses (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mUses (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mUses.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mUses_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mUses_property.addEBObserver (inObserver)
     }
   }
 
@@ -193,14 +193,14 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mLibraryRepositoryURL.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mLibraryRepositoryURL_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mLibraryRepositoryURL_property.addEBObserver (inObserver)
     }
   }
 
@@ -263,14 +263,14 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mUserAndPasswordTag.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mUserAndPasswordTag_property.addEBObserver (inObserver, postEvent: inPostEvent)
+       v?.mUserAndPasswordTag_property.addEBObserver (inObserver)
     }
   }
 
@@ -333,14 +333,14 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mStatusImage (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
-    self.addEBObserver (inObserver, postEvent: inPostEvent)
+  final func addEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     self.mObserversOf_mStatusImage.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mStatusImage_property.addEBObserver (inObserver, postEvent: inPostEvent)
+      v?.mStatusImage_property.addEBObserver (inObserver)
     }
   }
 

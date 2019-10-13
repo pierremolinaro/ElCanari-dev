@@ -77,7 +77,6 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
       inModel,
       sortCallback: nil,
       addSortObserversCallback: { (observer) in
-        observer.postEvent ()
       },
       removeSortObserversCallback: {(observer) in
       }

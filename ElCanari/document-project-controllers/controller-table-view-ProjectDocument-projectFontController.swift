@@ -77,7 +77,6 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
       inModel,
       sortCallback: nil,
       addSortObserversCallback: { (observer) in
-        observer.postEvent ()
       },
       removeSortObserversCallback: {(observer) in
       }

@@ -1690,8 +1690,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.netsDescription_property.addEBObserver (self.netCount_property, postEvent: false)
-    self.netCount_property.postEvent ()
+    self.rootObject.netsDescription_property.addEBObserver (self.netCount_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: rastnetDisplayComponentNet
@@ -1715,8 +1714,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayComponentNet_property, postEvent: false)
-    self.rastnetDisplayComponentNet_property.postEvent ()
+    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayComponentNet_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
@@ -1742,8 +1740,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property, postEvent: false)
-    self.componentCount_property.postEvent ()
+    self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: canRemoveNetClasses
@@ -1768,9 +1765,8 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mNetClasses_property.count_property.addEBObserver (self.canRemoveNetClasses_property, postEvent: false)
-    self.netClassController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveNetClasses_property, postEvent: false)
-    self.canRemoveNetClasses_property.postEvent ()
+    self.rootObject.mNetClasses_property.count_property.addEBObserver (self.canRemoveNetClasses_property)
+    self.netClassController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: selectedDevicePackageNames
@@ -1794,8 +1790,7 @@ import Cocoa
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_packageNames (self.selectedDevicePackageNames_property, postEvent: false)
-    self.selectedDevicePackageNames_property.postEvent ()
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: selectedDeviceSymbolNames
@@ -1819,8 +1814,7 @@ import Cocoa
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property, postEvent: false)
-    self.selectedDeviceSymbolNames_property.postEvent ()
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: pinPadAssignments
@@ -1844,8 +1838,7 @@ import Cocoa
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property, postEvent: false)
-    self.pinPadAssignments_property.postEvent ()
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: schematicSheetOrientationIsCustom
@@ -1869,8 +1862,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mSchematicSheetOrientation_property.addEBObserver (self.schematicSheetOrientationIsCustom_property, postEvent: false)
-    self.schematicSheetOrientationIsCustom_property.postEvent ()
+    self.rootObject.mSchematicSheetOrientation_property.addEBObserver (self.schematicSheetOrientationIsCustom_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: netCountString
@@ -1894,8 +1886,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property, postEvent: false)
-    self.netCountString_property.postEvent ()
+    self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: rastnetShape
@@ -1923,12 +1914,11 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetShape_property, postEvent: false)
-    self.rootObject.mRastnetDisplayedNetName_property.addEBObserver (self.rastnetShape_property, postEvent: false)
-    self.rootObject.mRastnetDisplayedComponentName_property.addEBObserver (self.rastnetShape_property, postEvent: false)
-    self.rootObject.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation (self.rastnetShape_property, postEvent: false)
-    self.boardObjectsController.selectedArray_property.addEBObserverOf_componentName (self.rastnetShape_property, postEvent: false)
-    self.rastnetShape_property.postEvent ()
+    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetShape_property)
+    self.rootObject.mRastnetDisplayedNetName_property.addEBObserver (self.rastnetShape_property)
+    self.rootObject.mRastnetDisplayedComponentName_property.addEBObserver (self.rastnetShape_property)
+    self.rootObject.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
+    self.boardObjectsController.selectedArray_property.addEBObserverOf_componentName (self.rastnetShape_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: rastnetDisplayOneNet
@@ -1952,8 +1942,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayOneNet_property, postEvent: false)
-    self.rastnetDisplayOneNet_property.postEvent ()
+    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayOneNet_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: artworlImportButtonTitle
@@ -1977,8 +1966,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.mArtwork_property.addEBObserver (self.artworlImportButtonTitle_property, postEvent: false)
-    self.artworlImportButtonTitle_property.postEvent ()
+    self.rootObject.mArtwork_property.addEBObserver (self.artworlImportButtonTitle_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: documentFilePathOk
@@ -2002,8 +1990,7 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.documentFilePathOk_property, postEvent: false)
-    self.documentFilePathOk_property.postEvent ()
+    self.documentFilePath_property.addEBObserver (self.documentFilePathOk_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: canRemoveSelectedDevices
@@ -2027,8 +2014,7 @@ import Cocoa
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property, postEvent: false)
-    self.canRemoveSelectedDevices_property.postEvent ()
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: unplacedSymbolsCount
@@ -2052,8 +2038,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.unplacedSymbols_property.addEBObserver (self.unplacedSymbolsCount_property, postEvent: false)
-    self.unplacedSymbolsCount_property.postEvent ()
+    self.rootObject.unplacedSymbols_property.addEBObserver (self.unplacedSymbolsCount_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: unplacedSymbolsCountString
@@ -2077,8 +2062,7 @@ import Cocoa
         return .empty
       }
     }
-    self.unplacedSymbolsCount_property.addEBObserver (self.unplacedSymbolsCountString_property, postEvent: false)
-    self.unplacedSymbolsCountString_property.postEvent ()
+    self.unplacedSymbolsCount_property.addEBObserver (self.unplacedSymbolsCountString_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: unplacedPackageCount
@@ -2102,8 +2086,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.unplacedPackages_property.addEBObserver (self.unplacedPackageCount_property, postEvent: false)
-    self.unplacedPackageCount_property.postEvent ()
+    self.rootObject.unplacedPackages_property.addEBObserver (self.unplacedPackageCount_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: unplacedPackagesCountString
@@ -2127,8 +2110,7 @@ import Cocoa
         return .empty
       }
     }
-    self.unplacedPackageCount_property.addEBObserver (self.unplacedPackagesCountString_property, postEvent: false)
-    self.unplacedPackagesCountString_property.postEvent ()
+    self.unplacedPackageCount_property.addEBObserver (self.unplacedPackagesCountString_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: overDisplay
@@ -2153,9 +2135,8 @@ import Cocoa
         return .empty
       }
     }
-    self.rastnetShape_property.addEBObserver (self.overDisplay_property, postEvent: false)
-    self.rootObject.boardIssues_property.addEBObserver (self.overDisplay_property, postEvent: false)
-    self.overDisplay_property.postEvent ()
+    self.rastnetShape_property.addEBObserver (self.overDisplay_property)
+    self.rootObject.boardIssues_property.addEBObserver (self.overDisplay_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
   //--- Atomic property: canChangePackage
@@ -2179,8 +2160,7 @@ import Cocoa
         return .empty
       }
     }
-    self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property, postEvent: false)
-    self.canChangePackage_property.postEvent ()
+    self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
     Swift.print (" op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
      opIdx += 1
     if LOG_OPERATION_DURATION {

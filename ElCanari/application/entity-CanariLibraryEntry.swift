@@ -171,8 +171,7 @@ class CanariLibraryEntry : EBManagedObject,
         return .empty
       }
     }
-    self.mPath_property.addEBObserver (self.mStatusImage_property, postEvent: false)
-    self.mStatusImage_property.postEvent ()
+    self.mPath_property.addEBObserver (self.mStatusImage_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

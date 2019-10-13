@@ -77,7 +77,6 @@ final class Controller_DeviceDocument_mSymbolController : ReadOnlyAbstractGeneri
       inModel,
       sortCallback: nil,
       addSortObserversCallback: { (observer) in
-        observer.postEvent ()
       },
       removeSortObserversCallback: {(observer) in
       }

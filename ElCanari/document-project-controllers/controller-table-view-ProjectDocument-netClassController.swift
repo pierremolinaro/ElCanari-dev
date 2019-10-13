@@ -77,7 +77,6 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
       inModel,
       sortCallback: nil,
       addSortObserversCallback: { (observer) in
-        observer.postEvent ()
       },
       removeSortObserversCallback: {(observer) in
       }

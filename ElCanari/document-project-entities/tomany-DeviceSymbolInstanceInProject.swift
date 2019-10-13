@@ -36,7 +36,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolInstanceName.insert (inObserver)
     switch prop {
@@ -44,7 +44,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSymbolInstanceName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mSymbolInstanceName_property.addEBObserver (inObserver)
       }
     }
   }
@@ -93,7 +93,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserverOf_symbolAndTypeName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_symbolAndTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolAndTypeName.insert (inObserver)
     switch prop {
@@ -101,7 +101,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolAndTypeName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.symbolAndTypeName_property.addEBObserver (inObserver)
       }
     }
   }
@@ -149,7 +149,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserverOf_symbolTypeName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolTypeName.insert (inObserver)
     switch prop {
@@ -157,7 +157,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolTypeName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.symbolTypeName_property.addEBObserver (inObserver)
       }
     }
   }
@@ -205,7 +205,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_filledBezierPath.insert (inObserver)
     switch prop {
@@ -213,7 +213,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.filledBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.filledBezierPath_property.addEBObserver (inObserver)
       }
     }
   }
@@ -261,7 +261,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
     switch prop {
@@ -269,7 +269,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.strokeBezierPath_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.strokeBezierPath_property.addEBObserver (inObserver)
       }
     }
   }
@@ -865,7 +865,7 @@ final class PreferencesArrayOf_DeviceSymbolInstanceInProject : StoredArrayOf_Dev
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mSymbolInstanceName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mSymbolInstanceName (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

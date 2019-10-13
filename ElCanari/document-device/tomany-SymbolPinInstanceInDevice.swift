@@ -36,7 +36,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_pinName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_pinName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinName.insert (inObserver)
     switch prop {
@@ -44,7 +44,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.pinName_property.addEBObserver (inObserver)
       }
     }
   }
@@ -92,7 +92,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_symbolName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolName.insert (inObserver)
     switch prop {
@@ -100,7 +100,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.symbolName_property.addEBObserver (inObserver)
       }
     }
   }
@@ -148,7 +148,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_pinQualifiedName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_pinQualifiedName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinQualifiedName.insert (inObserver)
     switch prop {
@@ -156,7 +156,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinQualifiedName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.pinQualifiedName_property.addEBObserver (inObserver)
       }
     }
   }
@@ -204,7 +204,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_isConnected (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isConnected.insert (inObserver)
     switch prop {
@@ -212,7 +212,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.isConnected_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.isConnected_property.addEBObserver (inObserver)
       }
     }
   }
@@ -260,7 +260,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_numberShape (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_numberShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_numberShape.insert (inObserver)
     switch prop {
@@ -268,7 +268,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.numberShape_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.numberShape_property.addEBObserver (inObserver)
       }
     }
   }

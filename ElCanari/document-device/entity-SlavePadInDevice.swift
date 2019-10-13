@@ -386,15 +386,14 @@ class SlavePadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mCenterX_property.addEBObserver (self.frontSideFilledBezierPath_property, postEvent: false)
-    self.mCenterY_property.addEBObserver (self.frontSideFilledBezierPath_property, postEvent: false)
-    self.mWidth_property.addEBObserver (self.frontSideFilledBezierPath_property, postEvent: false)
-    self.mHeight_property.addEBObserver (self.frontSideFilledBezierPath_property, postEvent: false)
-    self.mHoleWidth_property.addEBObserver (self.frontSideFilledBezierPath_property, postEvent: false)
-    self.mHoleHeight_property.addEBObserver (self.frontSideFilledBezierPath_property, postEvent: false)
-    self.mShape_property.addEBObserver (self.frontSideFilledBezierPath_property, postEvent: false)
-    self.mStyle_property.addEBObserver (self.frontSideFilledBezierPath_property, postEvent: false)
-    self.frontSideFilledBezierPath_property.postEvent ()
+    self.mCenterX_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.mCenterY_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.mWidth_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.mHeight_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.mHoleWidth_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.mHoleHeight_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.mShape_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.mStyle_property.addEBObserver (self.frontSideFilledBezierPath_property)
   //--- Atomic property: backSideFilledBezierPath
     self.backSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -423,15 +422,14 @@ class SlavePadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mCenterX_property.addEBObserver (self.backSideFilledBezierPath_property, postEvent: false)
-    self.mCenterY_property.addEBObserver (self.backSideFilledBezierPath_property, postEvent: false)
-    self.mWidth_property.addEBObserver (self.backSideFilledBezierPath_property, postEvent: false)
-    self.mHeight_property.addEBObserver (self.backSideFilledBezierPath_property, postEvent: false)
-    self.mHoleWidth_property.addEBObserver (self.backSideFilledBezierPath_property, postEvent: false)
-    self.mHoleHeight_property.addEBObserver (self.backSideFilledBezierPath_property, postEvent: false)
-    self.mShape_property.addEBObserver (self.backSideFilledBezierPath_property, postEvent: false)
-    self.mStyle_property.addEBObserver (self.backSideFilledBezierPath_property, postEvent: false)
-    self.backSideFilledBezierPath_property.postEvent ()
+    self.mCenterX_property.addEBObserver (self.backSideFilledBezierPath_property)
+    self.mCenterY_property.addEBObserver (self.backSideFilledBezierPath_property)
+    self.mWidth_property.addEBObserver (self.backSideFilledBezierPath_property)
+    self.mHeight_property.addEBObserver (self.backSideFilledBezierPath_property)
+    self.mHoleWidth_property.addEBObserver (self.backSideFilledBezierPath_property)
+    self.mHoleHeight_property.addEBObserver (self.backSideFilledBezierPath_property)
+    self.mShape_property.addEBObserver (self.backSideFilledBezierPath_property)
+    self.mStyle_property.addEBObserver (self.backSideFilledBezierPath_property)
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -457,12 +455,11 @@ class SlavePadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mCenterX_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
-    self.mCenterY_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
-    g_Preferences?.padNumberFont_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
-    g_Preferences?.padNumberColor_property.addEBObserver (self.padNumberDisplay_property, postEvent: false)
-    self.mMasterPad_property.addEBObserverOf_mName (self.padNumberDisplay_property, postEvent: false)
-    self.padNumberDisplay_property.postEvent ()
+    self.mCenterX_property.addEBObserver (self.padNumberDisplay_property)
+    self.mCenterY_property.addEBObserver (self.padNumberDisplay_property)
+    g_Preferences?.padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
+    g_Preferences?.padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
+    self.mMasterPad_property.addEBObserverOf_mName (self.padNumberDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: self)

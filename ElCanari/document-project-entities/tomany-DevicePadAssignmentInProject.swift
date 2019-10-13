@@ -32,7 +32,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_mPadName (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPadName.insert (inObserver)
     switch prop {
@@ -40,7 +40,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPadName_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.mPadName_property.addEBObserver (inObserver)
       }
     }
   }
@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_pinPadAssignment (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_pinPadAssignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinPadAssignment.insert (inObserver)
     switch prop {
@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinPadAssignment_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.pinPadAssignment_property.addEBObserver (inObserver)
       }
     }
   }
@@ -145,7 +145,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_descriptor (_ inObserver : EBEvent, postEvent inPostEvent : Bool) {
+  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
     switch prop {
@@ -153,7 +153,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.descriptor_property.addEBObserver (inObserver, postEvent: inPostEvent)
+        managedObject.descriptor_property.addEBObserver (inObserver)
       }
     }
   }
@@ -749,7 +749,7 @@ final class PreferencesArrayOf_DevicePadAssignmentInProject : StoredArrayOf_Devi
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mPadName (self.mObserverForWritingPreferences, postEvent: true)
+    self.addEBObserverOf_mPadName (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
