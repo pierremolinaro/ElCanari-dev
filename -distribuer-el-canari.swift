@@ -28,11 +28,11 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.17"
+let VERSION_CANARI = "1.0.18"
 let NOTES : [String] = []
-let BUGFIXES : [String] = ["Schematic in project: arrows move selected objects (not fixed in 1.0.16)"]
-let CHANGES : [String] = []
-let NEWS : [String] = []
+let BUGFIXES : [String] = ["\"Fit in Window\" zoom selection"]
+let CHANGES : [String] = ["Speed up document opening and closing"]
+let NEWS : [String] = ["Comment in Schematic: added size and alignment"]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   FOR PRINTING IN COLOR

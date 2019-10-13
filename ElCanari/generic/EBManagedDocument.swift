@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let LOG_OPERATION_DURATION = true
+let LOG_OPERATION_DURATION = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -434,9 +434,25 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Remove user interface
     self.removeUserInterface ()
   //--- Remove all entities
+    let start = Date ()
     let allEntities = self.reachableObjectsFromRootObject ()
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  Reachable objects \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+    }
     for entity in allEntities {
-      entity.cleanUpRelationshipsAndRemoveAllObservers ()
+      entity.clearObjectExplorer ()
+    }
+    for entity in allEntities {
+      entity.removeAllObservers ()
+    }
+    for entity in allEntities {
+      entity.cleanUpToManyRelationships ()
+    }
+    for entity in allEntities {
+      entity.cleanUpToOneRelationships ()
+    }
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  Clean objects \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
     }
   //---
     super.removeWindowController (inWindowController)
