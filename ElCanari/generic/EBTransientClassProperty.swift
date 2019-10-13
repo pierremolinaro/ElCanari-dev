@@ -26,16 +26,18 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> where T : Equat
 
   //····················································································································
 
+  private var mMutex = DispatchSemaphore (value: 1)
+
   override var prop : EBSelection <T> {
+    self.mMutex.wait ()
     if self.mValueCache == nil {
-      if let unwrappedComputeFunction = self.mReadModelFunction {
-        self.mValueCache = unwrappedComputeFunction ()
-      }
+      self.mValueCache = self.mReadModelFunction? ()
       if self.mValueCache == nil {
         self.mValueCache = .empty
       }
       self.mValueExplorer?.stringValue = "\(mValueCache!)"
     }
+    self.mMutex.signal ()
     return self.mValueCache!
   }
 
@@ -58,5 +60,12 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> where T : Equat
 
   //····················································································································
 
+  override func computePropertyAsynchronously (_ inOperationQueue : OperationQueue) {
+    inOperationQueue.addOperation { _ = self.prop }
+  }
+
+  //····················································································································
+
 }
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

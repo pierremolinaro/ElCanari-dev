@@ -217,7 +217,10 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   override func read (from data : Data, ofType typeName : String) throws {
     self.ebUndoManager.disableUndoRegistration ()
   //--- Load file
+    let startLoadFile = Date ()
     let (metadataStatus, metadataDictionary, possibleRootObject) = try loadEasyBindingFile (self.ebUndoManager, from: data)
+    let durationMS = Date ().timeIntervalSince (startLoadFile) * 1000.0
+    Swift.print ("Load File \(durationMS) ms")
   //--- Store Status
     self.mReadMetadataStatus = metadataStatus
   //--- Store metadata dictionary

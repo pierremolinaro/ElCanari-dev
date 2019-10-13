@@ -1175,6 +1175,7 @@ import Cocoa
   //····················································································································
 
   private func checkOutletConnections () {
+    let start = Date ()
     checkOutletConnection (self.mAddBottomSchematicHotKeyTextField, "mAddBottomSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddCommentButton, "mAddCommentButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddComponentButton, "mAddComponentButton", EBButton.self, #file, #line)
@@ -1573,11 +1574,14 @@ import Cocoa
     checkOutletConnection (self.mWireRenameNetWithUniqueNewNameButton, "mWireRenameNetWithUniqueNewNameButton", EBButton.self, #file, #line)
     checkOutletConnection (self.minValueForBoardLimitTextField, "minValueForBoardLimitTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.minValueForBoardLimitUnitPopUp, "minValueForBoardLimitUnitPopUp", EBPopUpButton.self, #file, #line)
+     let durationMS = Date ().timeIntervalSince (start) * 1000.0
+     Swift.print ("Check outlet connections \(durationMS) ms")
    }
   
   //····················································································································
   
   final private func configureProperties () {
+    let start = Date ()
   //--- Array controller property: netClassController
     self.netClassController.bind_model (self.rootObject.mNetClasses_property, self.ebUndoManager)
   //--- Array controller property: projectFontController
@@ -2072,11 +2076,14 @@ import Cocoa
       }
     }
     self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
+    let durationMS = Date ().timeIntervalSince (start) * 1000.0
+    Swift.print ("Configure properties \(durationMS) ms")
   }
 
   //····················································································································
   
   final private func installBindings () {
+  let start = Date ()
   //--------------------------- Install table view bindings
     self.componentController.bind_tableView (self.mComponentTableView, file: #file, line: #line)
     self.netClassController.bind_tableView (self.mNetClassTableView, file: #file, line: #line)
@@ -2815,11 +2822,15 @@ import Cocoa
       self.documentFilePathOk_property.addEBObserver (controller)
       self.mController_mIncorrectFileNameMessageView_hidden = controller
     }
+    let durationMS = Date ().timeIntervalSince (start) * 1000.0
+    Swift.print ("Install bindings \(durationMS) ms")
   }
 
   //····················································································································
   
   final private func setTargetsAndActions () {
+   let start = Date ()
+
    //--------------------------- Set targets / actions
     self.mAddComponentButton?.target = self
     self.mAddComponentButton?.action = #selector (ProjectDocument.addComponentAction (_:))
@@ -2881,6 +2892,8 @@ import Cocoa
     self.mArtworlImportButton?.action = #selector (ProjectDocument.importArtworkAction (_:))
     self.mGenerateProductFilesActionButton?.target = self
     self.mGenerateProductFilesActionButton?.action = #selector (ProjectDocument.generateProductFilesAction (_:))
+    let durationMS = Date ().timeIntervalSince (start) * 1000.0
+    Swift.print ("Set targets and actions \(durationMS) ms")
   }
 
   //····················································································································

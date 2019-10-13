@@ -26,14 +26,10 @@ class EBOutletEvent : EBEvent {
   //····················································································································
 
   override func postEvent () {
-    if gPendingOutletEvents.count == 0 {
-      // DispatchQueue.main.async (execute: { flushOutletEvents () } )
-      if logEvents () {
+    if logEvents () {
+      if gPendingOutletEvents.count == 0 {
         appendMessageString ("Post events\n")
       }
-    }
-
-    if logEvents () {
       let str = "  " +  explorerIndexString (self.ebObjectIndex) + self.className + "\n"
       if !self.mEventIsPosted {
         appendMessageString (str)
@@ -66,6 +62,11 @@ class EBOutletEvent : EBEvent {
 
   //····················································································································
 
+  func computeAsynchronously (_ inOperationQueue : OperationQueue) {
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -77,6 +78,15 @@ func flushOutletEvents () {
     if logEvents () {
       appendMessageString ("Flush outlet events\n", color: NSColor.blue)
     }
+    let startOperationQueue = Date ()
+    let operationQueue = OperationQueue ()
+    for event in gPendingOutletEvents {
+      event.computeAsynchronously (operationQueue)
+    }
+    operationQueue.waitUntilAllOperationsAreFinished ()
+    let durationMS = Date ().timeIntervalSince (startOperationQueue) * 1000.0
+    Swift.print ("OperationQueue \(durationMS) ms")
+    let startFlushOutletEvent = Date ()
     while gPendingOutletEvents.count > 0 {
       let pendingOutletEvents = gPendingOutletEvents
       gPendingOutletEvents.removeAll ()
@@ -95,6 +105,8 @@ func flushOutletEvents () {
         appendMessageString (message, color: NSColor.red)
       }
     }
+    let durationFlushMS = Date ().timeIntervalSince (startFlushOutletEvent) * 1000.0
+    Swift.print ("Flush Outlet Events \(durationFlushMS) ms")
     if logEvents () {
       appendMessageString ("——————————————————————————————————————\n", color: NSColor.blue)
     }
@@ -126,7 +138,7 @@ func appendMessageString (_ message : String) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func appendMessageString (_ message : String, color:NSColor) {
+func appendMessageString (_ message : String, color : NSColor) {
   let theApp = NSApp as! EBApplication
   theApp.mTransientEventExplorerTextView?.appendMessageString (message, color:color)
 }

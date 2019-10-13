@@ -36,6 +36,14 @@ class EBSimpleController : EBOutletEvent {
 
   //····················································································································
 
+  override func computeAsynchronously (_ inOperationQueue : OperationQueue) {
+    for object in self.mPrivateObservedObjects {
+      object.computePropertyAsynchronously (inOperationQueue)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
