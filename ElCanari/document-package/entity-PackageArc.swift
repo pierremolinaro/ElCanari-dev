@@ -379,6 +379,12 @@ class PackageArc : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: yCenter
     self.yCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: radius

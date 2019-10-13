@@ -259,6 +259,12 @@ class FontInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- To many property: mTexts (has opposite relationship)
     self.mTexts_property.ebUndoManager = self.ebUndoManager
     self.mTexts_property.setOppositeRelationShipFunctions (

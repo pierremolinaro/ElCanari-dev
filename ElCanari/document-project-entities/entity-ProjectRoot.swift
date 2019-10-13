@@ -3196,6 +3196,12 @@ class ProjectRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mArtworkVersion

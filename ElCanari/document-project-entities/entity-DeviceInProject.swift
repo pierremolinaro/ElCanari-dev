@@ -428,6 +428,12 @@ class DeviceInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mDeviceName
     self.mDeviceName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPrefix

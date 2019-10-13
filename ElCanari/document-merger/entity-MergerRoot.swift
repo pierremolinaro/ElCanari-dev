@@ -752,6 +752,12 @@ class MergerRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- To many property: boardModels (no option)
     self.boardModels_property.ebUndoManager = self.ebUndoManager
   //--- To many property: boardInstances (has opposite relationship)

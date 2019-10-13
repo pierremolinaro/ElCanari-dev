@@ -126,6 +126,12 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: x1
     self.x1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y1

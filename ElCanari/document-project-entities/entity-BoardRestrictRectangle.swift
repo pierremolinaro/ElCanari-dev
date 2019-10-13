@@ -181,6 +181,12 @@ class BoardRestrictRectangle : BoardObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mY
     self.mY_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mWidth

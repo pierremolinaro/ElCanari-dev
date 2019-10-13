@@ -371,6 +371,12 @@ class FontRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: comments
     self.comments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: nominalSize

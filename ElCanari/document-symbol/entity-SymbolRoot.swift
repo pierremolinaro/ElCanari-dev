@@ -353,6 +353,12 @@ class SymbolRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: comments

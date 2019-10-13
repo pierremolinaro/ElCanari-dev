@@ -163,6 +163,12 @@ class SymbolSolidOval : SymbolObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: y
     self.y_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: width

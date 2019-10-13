@@ -629,6 +629,12 @@ class PackageRoot : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedInspector

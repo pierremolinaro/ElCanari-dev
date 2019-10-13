@@ -142,6 +142,12 @@ class CanariLibraryEntry : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mPath
     self.mPath_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mUses

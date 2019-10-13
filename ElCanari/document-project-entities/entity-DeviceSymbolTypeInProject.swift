@@ -88,6 +88,12 @@ class DeviceSymbolTypeInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mSymbolTypeName
     self.mSymbolTypeName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mStrokeBezierPath

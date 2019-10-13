@@ -329,6 +329,12 @@ class ArtworkRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: selectedTab
     self.selectedTab_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: comments

@@ -294,6 +294,12 @@ class BoardLine : BoardObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mWidthUnit
     self.mWidthUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mX1

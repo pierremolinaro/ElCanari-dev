@@ -657,6 +657,12 @@ class PointInSchematic : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mSymbolPinName
     self.mSymbolPinName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mLabels (has opposite relationship)

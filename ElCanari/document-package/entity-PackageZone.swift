@@ -403,6 +403,12 @@ class PackageZone : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: x
     self.x_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y

@@ -1902,6 +1902,12 @@ class BoardModel : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: name
     self.name_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: modelWidth

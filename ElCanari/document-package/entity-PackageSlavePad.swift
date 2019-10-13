@@ -555,6 +555,12 @@ class PackageSlavePad : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: xCenter
     self.xCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yCenter

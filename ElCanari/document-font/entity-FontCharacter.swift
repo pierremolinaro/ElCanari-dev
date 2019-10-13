@@ -251,6 +251,12 @@ class FontCharacter : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: codePoint
     self.codePoint_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: advance

@@ -305,6 +305,12 @@ class SymbolPinTypeInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mPinX
     self.mPinX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPinY

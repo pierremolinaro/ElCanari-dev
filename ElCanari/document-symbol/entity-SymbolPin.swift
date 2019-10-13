@@ -337,6 +337,12 @@ class SymbolPin : SymbolObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: yPin
     self.yPin_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: xName

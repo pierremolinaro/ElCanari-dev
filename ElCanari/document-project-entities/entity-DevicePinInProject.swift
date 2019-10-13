@@ -364,6 +364,12 @@ class DevicePinInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mPinName
     self.mPinName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSymbolInstanceName

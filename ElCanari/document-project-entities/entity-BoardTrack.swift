@@ -488,6 +488,12 @@ class BoardTrack : BoardObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mSide
     self.mSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDefaultTrackWidthUnit

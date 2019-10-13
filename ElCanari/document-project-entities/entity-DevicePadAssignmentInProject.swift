@@ -138,6 +138,12 @@ class DevicePadAssignmentInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mPadName
     self.mPadName_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPin

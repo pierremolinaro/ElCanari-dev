@@ -381,6 +381,12 @@ class PackageInDevice : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mFileData
     self.mFileData_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mName

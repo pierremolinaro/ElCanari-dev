@@ -229,6 +229,12 @@ class PackageGuide : PackageObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: y1
     self.y1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x2

@@ -568,6 +568,12 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: drawBoardLimits
     self.drawBoardLimits_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawInternalBoardLimits

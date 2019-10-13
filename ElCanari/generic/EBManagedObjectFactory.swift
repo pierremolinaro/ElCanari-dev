@@ -87,7 +87,8 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
 //  newInstanceOfEntityNamed
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func newInstanceOfEntityNamed (_ ebUndoManager : EBUndoManager?, _ inEntityTypeName : String) -> EBManagedObject? {
+func newInstanceOfEntityNamed (_ ebUndoManager : EBUndoManager?,
+                               _ inEntityTypeName : String) -> EBManagedObject? {
   if let T = kEntityDictionary [inEntityTypeName] {
     return T.init (ebUndoManager)
   }else{
@@ -99,7 +100,8 @@ func newInstanceOfEntityNamed (_ ebUndoManager : EBUndoManager?, _ inEntityTypeN
 //   makeManagedObjectFromDictionary
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func makeManagedObjectFromDictionary (_ inUndoManager : EBUndoManager?, _ inDictionary : NSDictionary) -> EBManagedObject? {
+func makeManagedObjectFromDictionary (_ inUndoManager : EBUndoManager?,
+                                      _ inDictionary : NSDictionary) -> EBManagedObject? {
   let entityName = inDictionary.value (forKey: ENTITY_KEY) as! String
   if let object = newInstanceOfEntityNamed (inUndoManager, entityName) {
     object.setUpAtomicPropertiesWithDictionary (inDictionary) 
@@ -167,6 +169,7 @@ func loadEasyBindingFile (_ inUndoManager : EBUndoManager?, from data: Data) thr
 fileprivate func readManagedObjectsFromData (_ inUndoManager : EBUndoManager?, inData : Data) throws -> EBManagedObject? {
   var resultRootObject : EBManagedObject? = nil
   if let dictionaryArray = try PropertyListSerialization.propertyList (from: inData as Data, options: [], format: nil) as? [NSDictionary] {
+    let creationStart = Date ()
     var objectArray = [EBManagedObject] ()
     for d in dictionaryArray {
       let className = d.object (forKey: ENTITY_KEY) as! String
@@ -180,6 +183,10 @@ fileprivate func readManagedObjectsFromData (_ inUndoManager : EBUndoManager?, i
         throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo:dictionary)
       }
     }
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  Object Creation \(Int (Date ().timeIntervalSince (creationStart) * 1000.0)) ms")
+    }
+    let setupStart = Date ()
     var idx = 0
     for d in dictionaryArray {
       let object = objectArray [idx]
@@ -187,6 +194,9 @@ fileprivate func readManagedObjectsFromData (_ inUndoManager : EBUndoManager?, i
       idx += 1
     }
     resultRootObject = objectArray [0] //--- Set root object
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  Object Setup \(Int (Date ().timeIntervalSince (setupStart) * 1000.0)) ms")
+    }
   }
   return resultRootObject
 }

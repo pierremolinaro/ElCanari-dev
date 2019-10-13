@@ -174,6 +174,12 @@ class CommentInSchematic : SchematicObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mColor
     self.mColor_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSize

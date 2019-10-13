@@ -94,6 +94,12 @@ class DeviceDocumentation : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.configureObject ()
+  }
+  
+  //····················································································································
+
+  private final func configureObject () {
   //--- Atomic property: mFileName
     self.mFileName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mFileData
