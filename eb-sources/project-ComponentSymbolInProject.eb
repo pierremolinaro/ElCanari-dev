@@ -57,6 +57,7 @@ graphic entity ComponentSymbolInProject : SchematicObject {
 
   override transient EBShape selectionDisplay dependsFrom
     prefs.pinNameFont,
+    prefs.schematicBackColor,
     self.mDisplayComponentNameOffsetX,
     self.mDisplayComponentNameOffsetY,
     self.mDisplayComponentValue,

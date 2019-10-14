@@ -28,6 +28,7 @@ graphic entity CommentInSchematic : SchematicObject {
     self.mSize,
     self.mHorizontalAlignment,
     self.mVerticalAlignment,
+    prefs.schematicBackColor,
     self.mX,
     self.mY
   ;

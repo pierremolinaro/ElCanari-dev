@@ -18,6 +18,8 @@ func transient_PackageDimension_selectionDisplay (
        _ self_y1 : Int,                           
        _ self_x2 : Int,                           
        _ self_y2 : Int,                           
+       _ prefs_packageBackgroundColor : NSColor,  
+       _ prefs_packageDimensionColor : NSColor,   
        _ self_xDimension : Int,                   
        _ self_yDimension : Int,                   
        _ self_distanceInCanariUnit : Int,         
@@ -39,9 +41,18 @@ func transient_PackageDimension_selectionDisplay (
   let dimensionText = stringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
   var shape = EBShape ()
   shape.add (stroke: [bp], NSColor.cyan)
-  shape.add (knobAt:  p1, knobIndex: PACKAGE_DIMENSION_ENDPOINT_1, .circ, 2.0)
-  shape.add (knobAt:  p2, knobIndex: PACKAGE_DIMENSION_ENDPOINT_2, .circ, 2.0)
-  shape.add (textKnob: dimensionText, pText, prefs_dimensionFont, .black, .center, .center, knobIndex: PACKAGE_DIMENSION_TEXT)
+  shape.add (knobAt: p1, knobIndex: PACKAGE_DIMENSION_ENDPOINT_1, .circ, 2.0)
+  shape.add (knobAt: p2, knobIndex: PACKAGE_DIMENSION_ENDPOINT_2, .circ, 2.0)
+  shape.add (
+    textKnob: dimensionText,
+    pText,
+    prefs_dimensionFont,
+    foreColor: prefs_packageDimensionColor,
+    backColor: prefs_packageBackgroundColor,
+    .center,
+    .center,
+    knobIndex: PACKAGE_DIMENSION_TEXT
+  )
 //---
   return shape
 //--- END OF USER ZONE 2

@@ -371,6 +371,8 @@ graphic entity PackageDimension : PackageObject {
 
   override transient EBShape selectionDisplay dependsFrom
     self.x1, self.y1, self.x2, self.y2,
+    prefs.packageBackgroundColor,
+    prefs.packageDimensionColor,
     self.xDimension, self.yDimension, self.distanceInCanariUnit, self.distanceUnit, prefs.dimensionFont
   ;
 
@@ -406,7 +408,9 @@ graphic entity PackageZone : PackageObject {
 
   override transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height,
-     self.xName, self.yName, self.zoneName, prefs.padZoneFont, prefs.padZoneColor
+     self.xName, self.yName, self.zoneName, prefs.padZoneFont,
+     prefs.packageBackgroundColor,
+     prefs.padZoneColor
   ;
 
   override transient CanariIssueArray issues dependsFrom

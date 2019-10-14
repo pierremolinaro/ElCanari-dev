@@ -15,6 +15,7 @@ import Cocoa
 
 func transient_ComponentSymbolInProject_selectionDisplay (
        _ prefs_pinNameFont : NSFont,                      
+       _ prefs_schematicBackColor : NSColor,              
        _ self_mDisplayComponentNameOffsetX : Int,         
        _ self_mDisplayComponentNameOffsetY : Int,         
        _ self_mDisplayComponentValue : Bool,              
@@ -64,6 +65,8 @@ func transient_ComponentSymbolInProject_selectionDisplay (
             textKnob: value,
             componentValueCenter.cocoaPoint,
             prefs_pinNameFont,
+            foreColor: .black,
+            backColor: prefs_schematicBackColor,
             .center,
             .center,
             knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB
@@ -76,7 +79,8 @@ func transient_ComponentSymbolInProject_selectionDisplay (
             self_symbolInfo.componentName,
             componentNameCenter.cocoaPoint,
             prefs_pinNameFont,
-            .black,
+            foreColor: .black,
+            backColor: prefs_schematicBackColor,
             .center,
             .center,
             knobIndex: SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB

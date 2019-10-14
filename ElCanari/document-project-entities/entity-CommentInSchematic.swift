@@ -260,6 +260,7 @@ class CommentInSchematic : SchematicObject,
         kind &= unwSelf.mSize_property_selection.kind ()
         kind &= unwSelf.mHorizontalAlignment_property_selection.kind ()
         kind &= unwSelf.mVerticalAlignment_property_selection.kind ()
+        kind &= g_Preferences!.schematicBackColor_property_selection.kind ()
         kind &= unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
         switch kind {
@@ -268,9 +269,9 @@ class CommentInSchematic : SchematicObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComment_property_selection, unwSelf.mColor_property_selection, unwSelf.mSize_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-            return .single (transient_CommentInSchematic_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
+          switch (unwSelf.mComment_property_selection, unwSelf.mColor_property_selection, unwSelf.mSize_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, g_Preferences!.schematicBackColor_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+            return .single (transient_CommentInSchematic_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -284,6 +285,7 @@ class CommentInSchematic : SchematicObject,
     self.mSize_property.addEBObserver (self.selectionDisplay_property)
     self.mHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.mVerticalAlignment_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.schematicBackColor_property.addEBObserver (self.selectionDisplay_property)
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
@@ -307,6 +309,7 @@ class CommentInSchematic : SchematicObject,
     self.mSize_property.removeEBObserver (self.selectionDisplay_property)
     self.mHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
     self.mVerticalAlignment_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.schematicBackColor_property.removeEBObserver (self.selectionDisplay_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature

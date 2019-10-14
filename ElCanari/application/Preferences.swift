@@ -48,6 +48,7 @@ let Preferences_mSymbolNameFontForDevice = "Preferences:mSymbolNameFontForDevice
 let Preferences_mPinNameFontForDevice = "Preferences:mPinNameFontForDevice"
 let Preferences_symbolDrawingWidthForDeviceMultipliedByTen = "Preferences:symbolDrawingWidthForDeviceMultipliedByTen"
 let Preferences_packageDrawingWidthForDeviceMultipliedByTen = "Preferences:packageDrawingWidthForDeviceMultipliedByTen"
+let Preferences_schematicBackColor = "Preferences:schematicBackColor"
 let Preferences_dotColorGridForSchematic = "Preferences:dotColorGridForSchematic"
 let Preferences_lineColorGridForSchematic = "Preferences:lineColorGridForSchematic"
 let Preferences_symbolColorForUnplacedComponentsForSchematic = "Preferences:symbolColorForUnplacedComponentsForSchematic"
@@ -64,7 +65,7 @@ let Preferences_boardBackgroundColorForBoard = "Preferences:boardBackgroundColor
 let Preferences_errorBackgroundColorForBoard = "Preferences:errorBackgroundColorForBoard"
 let Preferences_drawErrorBackgroundForBoard = "Preferences:drawErrorBackgroundForBoard"
 let Preferences_warningBackgroundColorForBoard = "Preferences:warningBackgroundColorForBoard"
-let Preferences_drawEWarningBackgroundForBoard = "Preferences:drawEWarningBackgroundForBoard"
+let Preferences_drawWarningBackgroundForBoard = "Preferences:drawWarningBackgroundForBoard"
 let Preferences_boardLimitsColorForBoard = "Preferences:boardLimitsColorForBoard"
 let Preferences_boardClearanceColorForBoard = "Preferences:boardClearanceColorForBoard"
 let Preferences_displayFrontRestrictRectangles = "Preferences:displayFrontRestrictRectangles"
@@ -818,6 +819,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var packageDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> { return self.packageDrawingWidthForDeviceMultipliedByTen_property.prop }
 
   //····················································································································
+  //   Atomic property: schematicBackColor
+  //····················································································································
+
+  let schematicBackColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_schematicBackColor)
+
+  //····················································································································
+
+  var schematicBackColor : NSColor {
+    get { return self.schematicBackColor_property.propval }
+    set { self.schematicBackColor_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var schematicBackColor_property_selection : EBSelection <NSColor> { return self.schematicBackColor_property.prop }
+
+  //····················································································································
   //   Atomic property: dotColorGridForSchematic
   //····················································································································
 
@@ -1090,21 +1108,21 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var warningBackgroundColorForBoard_property_selection : EBSelection <NSColor> { return self.warningBackgroundColorForBoard_property.prop }
 
   //····················································································································
-  //   Atomic property: drawEWarningBackgroundForBoard
+  //   Atomic property: drawWarningBackgroundForBoard
   //····················································································································
 
-  let drawEWarningBackgroundForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_drawEWarningBackgroundForBoard)
+  let drawWarningBackgroundForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_drawWarningBackgroundForBoard)
 
   //····················································································································
 
-  var drawEWarningBackgroundForBoard : Bool {
-    get { return self.drawEWarningBackgroundForBoard_property.propval }
-    set { self.drawEWarningBackgroundForBoard_property.setProp (newValue) }
+  var drawWarningBackgroundForBoard : Bool {
+    get { return self.drawWarningBackgroundForBoard_property.propval }
+    set { self.drawWarningBackgroundForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drawEWarningBackgroundForBoard_property_selection : EBSelection <Bool> { return self.drawEWarningBackgroundForBoard_property.prop }
+  var drawWarningBackgroundForBoard_property_selection : EBSelection <Bool> { return self.drawWarningBackgroundForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: boardLimitsColorForBoard
@@ -3177,6 +3195,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.symbolDrawingWidthForDeviceMultipliedByTen_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: packageDrawingWidthForDeviceMultipliedByTen
     self.packageDrawingWidthForDeviceMultipliedByTen_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: schematicBackColor
+    self.schematicBackColor_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: dotColorGridForSchematic
     self.dotColorGridForSchematic_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: lineColorGridForSchematic
@@ -3209,8 +3229,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.drawErrorBackgroundForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: warningBackgroundColorForBoard
     self.warningBackgroundColorForBoard_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: drawEWarningBackgroundForBoard
-    self.drawEWarningBackgroundForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: drawWarningBackgroundForBoard
+    self.drawWarningBackgroundForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardLimitsColorForBoard
     self.boardLimitsColorForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardClearanceColorForBoard
@@ -3735,7 +3755,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mBoardErrorBackgroundColorWell?.bind_color (self.errorBackgroundColorForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardDrawErrorBackgroundCheckbox?.bind_value (self.drawErrorBackgroundForBoard_property, file: #file, line: #line)
     mBoardWarningBackgroundColorWell?.bind_color (self.warningBackgroundColorForBoard_property, file: #file, line: #line, sendContinously:false)
-    mBoardDrawWarningBackgroundCheckbox?.bind_value (self.drawEWarningBackgroundForBoard_property, file: #file, line: #line)
+    mBoardDrawWarningBackgroundCheckbox?.bind_value (self.drawWarningBackgroundForBoard_property, file: #file, line: #line)
     mBoardLimitsColorWell?.bind_color (self.boardLimitsColorForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardClearanceColorWell?.bind_color (self.boardClearanceColorForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardTopSideRestrictRectangleColorWell?.bind_color (self.frontSideRestrictRectangleColorForBoard_property, file: #file, line: #line, sendContinously:false)

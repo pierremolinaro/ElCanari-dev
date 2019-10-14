@@ -58,10 +58,21 @@ struct EBShape : Hashable {
   init (textKnob inString : String,
         _ inOrigin : NSPoint,
         _ inFont : NSFont,
+        foreColor inForeColor : NSColor,
+        backColor inBackColor : NSColor,
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment,
         knobIndex inKnobIndex : Int) {
-    self.add (textKnob: inString, inOrigin, inFont, .black, inHorizontalAlignment, inVerticalAlignment, knobIndex: inKnobIndex)
+    self.add (
+      textKnob: inString,
+      inOrigin,
+      inFont,
+      foreColor: inForeColor,
+      backColor: inBackColor,
+      inHorizontalAlignment,
+      inVerticalAlignment,
+      knobIndex: inKnobIndex
+    )
   }
 
   //····················································································································
@@ -182,7 +193,8 @@ struct EBShape : Hashable {
   mutating func add (textKnob inString : String,
                      _ inOrigin : NSPoint,
                      _ inFont : NSFont,
-                     _ inColor : NSColor,
+                     foreColor inForeColor : NSColor,
+                     backColor inBackColor : NSColor,
                      _ inHorizontalAlignment : EBTextHorizontalAlignment,
                      _ inVerticalAlignment : EBTextVerticalAlignment,
                      knobIndex inKnobIndex : Int) {
@@ -204,23 +216,23 @@ struct EBShape : Hashable {
       bp.lineWidth = 0.5
       bp.lineJoinStyle = .round
       bp.lineCapStyle = .round
-      let rgbColor = inColor.usingColorSpace (.sRGB)
-      var red : CGFloat = 0.0
-      var green : CGFloat = 0.0
-      var blue : CGFloat = 0.0
-      rgbColor?.getRed (&red, green: &green, blue: &blue, alpha: nil)
-      red += 0.5 ; if red > 1.0 { red -= 1.0 }
-      green += 0.5 ; if green > 1.0 { green -= 1.0 }
-      blue += 0.5 ; if blue > 1.0 { blue -= 1.0 }
-      let backgroundColor = NSColor (red: red, green: green, blue: blue, alpha: 1.0)
-      let e1 = EBShapeElement ([bp], backgroundColor, inKnobIndex, .none)
+//      let rgbColor = inForeColor.usingColorSpace (.sRGB)
+//      var red : CGFloat = 0.0
+//      var green : CGFloat = 0.0
+//      var blue : CGFloat = 0.0
+//      rgbColor?.getRed (&red, green: &green, blue: &blue, alpha: nil)
+//      red += 0.5 ; if red > 1.0 { red -= 1.0 }
+//      green += 0.5 ; if green > 1.0 { green -= 1.0 }
+//      blue += 0.5 ; if blue > 1.0 { blue -= 1.0 }
+//      let backgroundColor = NSColor (red: red, green: green, blue: blue, alpha: 1.0)
+      let e1 = EBShapeElement ([bp], inBackColor, inKnobIndex, .none)
       self.mElements.append (e1)
       let e2 = EBShapeElement ([bp.pathByStroking], .cyan, inKnobIndex, .none)
       self.mElements.append (e2)
       self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
     }
   //--- Append text
-    let e = EBShapeElement ([filledBezierPath], inColor, nil, .none)
+    let e = EBShapeElement ([filledBezierPath], inForeColor, nil, .none)
     self.mElements.append (e)
     self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
   }

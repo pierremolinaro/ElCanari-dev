@@ -6,7 +6,7 @@ abstract graphic entity BoardObject {
   toOne ProjectRoot mRoot inverse toMany mBoardObjects ;
 
   transient Bool isPlacedInBoard dependsFrom self.mRoot.none ;
-      
+     
   transient Double errorOrWarningIssueSize dependsFrom self.mRoot.one.mErrorOrWarningIssueSize ;
   
   abstract transient CanariIssueArray issues ;

@@ -340,7 +340,7 @@ document ProjectDocument root ProjectRoot {
     $gridLineColor prefs.lineColorOfSymbolGrid
     $gridCrossColor prefs.crossColorOfSymbolGrid
     $zoom root.mSchematicZoom
-//    $backColor prefs.symbolBackgroundColor
+    $backColor prefs.schematicBackColor
 //    $xPlacardUnit root.xPlacardUnit
 //    $yPlacardUnit root.yPlacardUnit
   ;

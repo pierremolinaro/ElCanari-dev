@@ -196,6 +196,8 @@ prefs {
 //! Schematic pane
 
 prefs {
+  property NSColor schematicBackColor default white ;
+
 //--- Schematic Grid Colors
   property NSColor dotColorGridForSchematic  default black;
   outlet EBColorWell mDotColorGridForSchematicColorWell $color self.dotColorGridForSchematic {sendContinously:no} ;
@@ -248,8 +250,8 @@ prefs {
 //--- Board Warning Background Color
   property NSColor warningBackgroundColorForBoard default orange;
   outlet EBColorWell mBoardWarningBackgroundColorWell $color self.warningBackgroundColorForBoard {sendContinously:no};
-  property Bool drawEWarningBackgroundForBoard default yes ;
-  outlet EBSwitch mBoardDrawWarningBackgroundCheckbox $value self.drawEWarningBackgroundForBoard;
+  property Bool drawWarningBackgroundForBoard default yes ;
+  outlet EBSwitch mBoardDrawWarningBackgroundCheckbox $value self.drawWarningBackgroundForBoard;
 //--- Board Limits Color
   property NSColor boardLimitsColorForBoard default brown;
   outlet EBColorWell mBoardLimitsColorWell $color self.boardLimitsColorForBoard {sendContinously:no} ;

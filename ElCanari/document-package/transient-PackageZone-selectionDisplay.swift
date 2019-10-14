@@ -22,6 +22,7 @@ func transient_PackageZone_selectionDisplay (
        _ self_yName : Int,                   
        _ self_zoneName : String,             
        _ prefs_padZoneFont : NSFont,         
+       _ prefs_packageBackgroundColor : NSColor,
        _ prefs_padZoneColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -56,7 +57,16 @@ func transient_PackageZone_selectionDisplay (
   //--- Zone
     let text = (self_zoneName == "") ? "?" : self_zoneName
     let pText = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
-    shape.add (textKnob: text, pText, prefs_padZoneFont, .black, .center, .center, knobIndex: PACKAGE_ZONE_NAME)
+    shape.add (
+      textKnob: text,
+      pText,
+      prefs_padZoneFont,
+      foreColor: prefs_padZoneColor,
+      backColor: prefs_packageBackgroundColor,
+      .center,
+      .center,
+      knobIndex: PACKAGE_ZONE_NAME
+    )
   //---
     return shape
 //--- END OF USER ZONE 2

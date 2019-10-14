@@ -19,6 +19,7 @@ func transient_CommentInSchematic_selectionDisplay (
        _ self_mSize : Double,                       
        _ self_mHorizontalAlignment : HorizontalAlignment,
        _ self_mVerticalAlignment : VerticalAlignment,
+       _ prefs_schematicBackColor : NSColor,        
        _ self_mX : Int,                             
        _ self_mY : Int
 ) -> EBShape {
@@ -31,7 +32,8 @@ func transient_CommentInSchematic_selectionDisplay (
           textKnob: (self_mComment == "") ? "Empty comment" : self_mComment,
           p,
           font,
-          self_mColor,
+          foreColor: self_mColor,
+          backColor: prefs_schematicBackColor,
           self_mHorizontalAlignment.ebTextShapeHorizontalAlignment,
           self_mVerticalAlignment.ebTextShapeVerticalAlignment,
           knobIndex: 0
