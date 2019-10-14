@@ -16,8 +16,8 @@ extension VerticalAlignment {
         return EBTextVerticalAlignment.above
       case .center :
         return EBTextVerticalAlignment.center
-//      case .base :
-//        return EBTextVerticalAlignment.below
+      case .base :
+        return EBTextVerticalAlignment.baseline
       case .below :
         return EBTextVerticalAlignment.below
     }

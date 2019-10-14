@@ -22,6 +22,7 @@ enum EBTextHorizontalAlignment {
 enum EBTextVerticalAlignment {
   case above
   case center
+  case baseline
   case below
 }
 
@@ -136,6 +137,8 @@ struct EBBezierPath : Hashable {
         ()
       case .center :
         deltaY -= height / 2.0
+      case .baseline :
+        deltaY = 2.0 * font.descender
       case .below :
         deltaY -= height
       }

@@ -719,14 +719,14 @@ import Cocoa
   @IBOutlet var mBoardStatusImageViewInToolbar : EBImageObserverView? = nil
   @IBOutlet var mBoardTextFontPopUpButton : CanariBoardTextFontPopUpButton? = nil
   @IBOutlet var mBoardTextFontSizeField : EBDoubleField? = nil
-  @IBOutlet var mBoardTextHorizontalAlignmentPopUpButton : EBPopUpButton? = nil
+  @IBOutlet var mBoardTextHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
   @IBOutlet var mBoardTextInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mBoardTextLayerPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mBoardTextObliqueSwitch : EBSwitch? = nil
   @IBOutlet var mBoardTextRotationSlider : CanariAngleSlider? = nil
   @IBOutlet var mBoardTextRotationTextField : CanariAngleTextField? = nil
   @IBOutlet var mBoardTextTextField : EBTextField? = nil
-  @IBOutlet var mBoardTextVerticalAlignmentPopUpButton : EBPopUpButton? = nil
+  @IBOutlet var mBoardTextVerticalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
   @IBOutlet var mBoardTextWeightTextField : EBDoubleField? = nil
   @IBOutlet var mBoardTrackInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mBoardTrackSidePopUpButton : EBPopUpButton? = nil
@@ -1274,14 +1274,14 @@ import Cocoa
     checkOutletConnection (self.mBoardStatusImageViewInToolbar, "mBoardStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
     checkOutletConnection (self.mBoardTextFontPopUpButton, "mBoardTextFontPopUpButton", CanariBoardTextFontPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardTextFontSizeField, "mBoardTextFontSizeField", EBDoubleField.self, #file, #line)
-    checkOutletConnection (self.mBoardTextHorizontalAlignmentPopUpButton, "mBoardTextHorizontalAlignmentPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardTextHorizontalAlignmentSegmentedControl, "mBoardTextHorizontalAlignmentSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mBoardTextInspectorView, "mBoardTextInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardTextLayerPopUpButton, "mBoardTextLayerPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardTextObliqueSwitch, "mBoardTextObliqueSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardTextRotationSlider, "mBoardTextRotationSlider", CanariAngleSlider.self, #file, #line)
     checkOutletConnection (self.mBoardTextRotationTextField, "mBoardTextRotationTextField", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mBoardTextTextField, "mBoardTextTextField", EBTextField.self, #file, #line)
-    checkOutletConnection (self.mBoardTextVerticalAlignmentPopUpButton, "mBoardTextVerticalAlignmentPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardTextVerticalAlignmentSegmentedControl, "mBoardTextVerticalAlignmentSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mBoardTextWeightTextField, "mBoardTextWeightTextField", EBDoubleField.self, #file, #line)
     checkOutletConnection (self.mBoardTrackInspectorView, "mBoardTrackInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardTrackSidePopUpButton, "mBoardTrackSidePopUpButton", EBPopUpButton.self, #file, #line)
@@ -2448,8 +2448,8 @@ import Cocoa
     self.mBoardTextTextField?.bind_value (self.boardTextSelectionController.mText_property, file: #file, line: #line, sendContinously:true)
     self.mBoardTextFontSizeField?.bind_value (self.boardTextSelectionController.mFontSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.mBoardTextLayerPopUpButton?.bind_selectedIndex (self.boardTextSelectionController.mLayer_property, file: #file, line: #line)
-    self.mBoardTextHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.boardTextSelectionController.mHorizontalAlignment_property, file: #file, line: #line)
-    self.mBoardTextVerticalAlignmentPopUpButton?.bind_selectedIndex (self.boardTextSelectionController.mVerticalAlignment_property, file: #file, line: #line)
+    self.mBoardTextHorizontalAlignmentSegmentedControl?.bind_selectedSegment (self.boardTextSelectionController.mHorizontalAlignment_property, file: #file, line: #line)
+    self.mBoardTextVerticalAlignmentSegmentedControl?.bind_selectedSegment (self.boardTextSelectionController.mVerticalAlignment_property, file: #file, line: #line)
     self.mBoardTextRotationTextField?.bind_angle (self.boardTextSelectionController.mRotation_property, file: #file, line: #line)
     self.mBoardTextRotationSlider?.bind_angle (self.boardTextSelectionController.mRotation_property, file: #file, line: #line)
     self.mBoardTextWeightTextField?.bind_value (self.boardTextSelectionController.mWeight_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
@@ -3280,8 +3280,8 @@ import Cocoa
     self.mBoardTextTextField?.unbind_value ()
     self.mBoardTextFontSizeField?.unbind_value ()
     self.mBoardTextLayerPopUpButton?.unbind_selectedIndex ()
-    self.mBoardTextHorizontalAlignmentPopUpButton?.unbind_selectedIndex ()
-    self.mBoardTextVerticalAlignmentPopUpButton?.unbind_selectedIndex ()
+    self.mBoardTextHorizontalAlignmentSegmentedControl?.unbind_selectedSegment ()
+    self.mBoardTextVerticalAlignmentSegmentedControl?.unbind_selectedSegment ()
     self.mBoardTextRotationTextField?.unbind_angle ()
     self.mBoardTextRotationSlider?.unbind_angle ()
     self.mBoardTextWeightTextField?.unbind_value ()
@@ -3668,14 +3668,14 @@ import Cocoa
     self.mBoardStatusImageViewInToolbar?.ebCleanUp ()
     self.mBoardTextFontPopUpButton?.ebCleanUp ()
     self.mBoardTextFontSizeField?.ebCleanUp ()
-    self.mBoardTextHorizontalAlignmentPopUpButton?.ebCleanUp ()
+    self.mBoardTextHorizontalAlignmentSegmentedControl?.ebCleanUp ()
     self.mBoardTextInspectorView?.ebCleanUp ()
     self.mBoardTextLayerPopUpButton?.ebCleanUp ()
     self.mBoardTextObliqueSwitch?.ebCleanUp ()
     self.mBoardTextRotationSlider?.ebCleanUp ()
     self.mBoardTextRotationTextField?.ebCleanUp ()
     self.mBoardTextTextField?.ebCleanUp ()
-    self.mBoardTextVerticalAlignmentPopUpButton?.ebCleanUp ()
+    self.mBoardTextVerticalAlignmentSegmentedControl?.ebCleanUp ()
     self.mBoardTextWeightTextField?.ebCleanUp ()
     self.mBoardTrackInspectorView?.ebCleanUp ()
     self.mBoardTrackSidePopUpButton?.ebCleanUp ()
@@ -4068,14 +4068,14 @@ import Cocoa
     self.mBoardStatusImageViewInToolbar = nil
     self.mBoardTextFontPopUpButton = nil
     self.mBoardTextFontSizeField = nil
-    self.mBoardTextHorizontalAlignmentPopUpButton = nil
+    self.mBoardTextHorizontalAlignmentSegmentedControl = nil
     self.mBoardTextInspectorView = nil
     self.mBoardTextLayerPopUpButton = nil
     self.mBoardTextObliqueSwitch = nil
     self.mBoardTextRotationSlider = nil
     self.mBoardTextRotationTextField = nil
     self.mBoardTextTextField = nil
-    self.mBoardTextVerticalAlignmentPopUpButton = nil
+    self.mBoardTextVerticalAlignmentSegmentedControl = nil
     self.mBoardTextWeightTextField = nil
     self.mBoardTrackInspectorView = nil
     self.mBoardTrackSidePopUpButton = nil

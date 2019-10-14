@@ -2,18 +2,6 @@
 //   BoardText
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardTextLayer {
-  legendFront, layoutFront, layoutBack, legendBack
-}
-
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum BoardTextVerticalAlignment {
-  above, base, center, below
-}
-
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 graphic entity BoardText : BoardObject {
   toOne FontInProject mFont inverse toMany mTexts ;
 

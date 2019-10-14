@@ -105,14 +105,14 @@
                 <outlet property="mBoardStatusImageViewInToolbar" destination="14959" id="ljv-sC-5LP"/>
                 <outlet property="mBoardTextFontPopUpButton" destination="1532" id="Ppv-kd-jra"/>
                 <outlet property="mBoardTextFontSizeField" destination="1517" id="Vfi-98-ton"/>
-                <outlet property="mBoardTextHorizontalAlignmentPopUpButton" destination="Mxs-aJ-mOU" id="g8w-XX-Wqd"/>
+                <outlet property="mBoardTextHorizontalAlignmentSegmentedControl" destination="01a-aI-h9t" id="Qq3-kz-FxT"/>
                 <outlet property="mBoardTextInspectorView" destination="1483" id="Lpj-aE-eVe"/>
                 <outlet property="mBoardTextLayerPopUpButton" destination="1521" id="4tr-sc-38n"/>
                 <outlet property="mBoardTextObliqueSwitch" destination="xMA-MG-dBT" id="WoR-lP-4M9"/>
                 <outlet property="mBoardTextRotationSlider" destination="1969" id="Or2-ky-X5V"/>
                 <outlet property="mBoardTextRotationTextField" destination="1971" id="nNl-d7-0NR"/>
                 <outlet property="mBoardTextTextField" destination="1515" id="gPa-xS-GoB"/>
-                <outlet property="mBoardTextVerticalAlignmentPopUpButton" destination="Fz6-LS-NiQ" id="x0D-HB-9CO"/>
+                <outlet property="mBoardTextVerticalAlignmentSegmentedControl" destination="FI9-rg-9Lq" id="Rit-aW-nBX"/>
                 <outlet property="mBoardTextWeightTextField" destination="VfR-R5-TCS" id="PDZ-y2-p0G"/>
                 <outlet property="mBoardTrackInspectorView" destination="2208" id="kcv-GA-iNh"/>
                 <outlet property="mBoardTrackSidePopUpButton" destination="2223" id="8Rr-9a-F2F"/>
@@ -133,7 +133,7 @@
                 <outlet property="mCommentInSchematicsHorizontalAlignmentSegmentedControl" destination="ZUq-zE-DiN" id="uTD-kI-eUn"/>
                 <outlet property="mCommentInSchematicsInspectorView" destination="gb7-75-GoJ" id="fXa-0i-8og"/>
                 <outlet property="mCommentInSchematicsTextField" destination="f5f-Zs-HeU" id="JrX-Sc-54S"/>
-                <outlet property="mCommentInSchematicsVerticalAlignmentSegmentedControl" destination="Y6u-4h-rRJ" id="gBa-2h-lDY"/>
+                <outlet property="mCommentInSchematicsVerticalAlignmentSegmentedControl" destination="8Ia-HF-nmd" id="IuQ-ih-Mz6"/>
                 <outlet property="mCommentSizeInSchematicsSlider" destination="38b-jw-m2H" id="roR-VL-U2l"/>
                 <outlet property="mCommentSizeInSchematicsTextField" destination="uBv-IH-gOc" id="dIO-ZH-xWy"/>
                 <outlet property="mCommentTextView" destination="3407" id="YIl-Mp-h4a"/>
@@ -1601,11 +1601,11 @@ Gw
             <point key="canvasLocation" x="29" y="2005"/>
         </customView>
         <customView id="1483" userLabel="Board Inspector : Selected Text" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="296"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="383"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="30" translatesAutoresizingMaskIntoConstraints="NO" id="1529">
-                    <rect key="frame" x="18" y="197" width="34" height="14"/>
+                    <rect key="frame" x="18" y="284" width="34" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Font" id="14589">
                         <font key="font" metaFont="smallSystem"/>
@@ -1614,7 +1614,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="30" translatesAutoresizingMaskIntoConstraints="NO" id="1524">
-                    <rect key="frame" x="18" y="21" width="34" height="14"/>
+                    <rect key="frame" x="18" y="80" width="34" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Side" id="14588">
                         <font key="font" metaFont="smallSystem"/>
@@ -1623,7 +1623,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1521" customClass="EBPopUpButton">
-                    <rect key="frame" x="72" y="19" width="158" height="17"/>
+                    <rect key="frame" x="72" y="78" width="158" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Legend Back Side" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="1976" id="14587">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1639,7 +1639,7 @@ Gw
                     </popUpButtonCell>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1517" customClass="EBDoubleField">
-                    <rect key="frame" x="72" y="168" width="62" height="19"/>
+                    <rect key="frame" x="72" y="255" width="62" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-0.2" drawsBackground="YES" id="14586">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" alwaysShowsDecimalSeparator="YES" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="1" maximumFractionDigits="2" id="GjM-Og-PjI">
@@ -1652,7 +1652,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="30" translatesAutoresizingMaskIntoConstraints="NO" id="1516">
-                    <rect key="frame" x="18" y="171" width="34" height="14"/>
+                    <rect key="frame" x="18" y="258" width="34" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Size" id="14585">
                         <font key="font" metaFont="smallSystem"/>
@@ -1661,7 +1661,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1515" customClass="EBTextField">
-                    <rect key="frame" x="72" y="220" width="158" height="40"/>
+                    <rect key="frame" x="72" y="307" width="158" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="…text…" drawsBackground="YES" id="14584">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -1670,7 +1670,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="30" translatesAutoresizingMaskIntoConstraints="NO" id="1478">
-                    <rect key="frame" x="17" y="233" width="34" height="14"/>
+                    <rect key="frame" x="17" y="320" width="34" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Text" id="14583">
                         <font key="font" metaFont="smallSystem"/>
@@ -1679,7 +1679,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15387">
-                    <rect key="frame" x="62" y="277" width="126" height="14"/>
+                    <rect key="frame" x="62" y="364" width="126" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Text Inspector" id="15388">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -1688,56 +1688,16 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="125" translatesAutoresizingMaskIntoConstraints="NO" id="H4T-Kq-xDo">
-                    <rect key="frame" x="18" y="100" width="129" height="14"/>
+                    <rect key="frame" x="18" y="187" width="129" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Horizontal Alignment" id="3Da-Dn-mv2">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Alignment" id="3Da-Dn-mv2">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mxs-aJ-mOU" customClass="EBPopUpButton">
-                    <rect key="frame" x="151" y="98" width="79" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="xCL-QQ-ZrU" id="sW6-oN-eci">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="ARx-ny-Xh6">
-                            <items>
-                                <menuItem title="Left" state="on" id="xCL-QQ-ZrU"/>
-                                <menuItem title="Center" id="xK9-pk-C2w"/>
-                                <menuItem title="Right" id="cX3-dH-XWg"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="125" translatesAutoresizingMaskIntoConstraints="NO" id="Czz-QP-GZw">
-                    <rect key="frame" x="18" y="78" width="129" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Vertical Alignment" id="Lqf-8x-88K">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fz6-LS-NiQ" customClass="EBPopUpButton">
-                    <rect key="frame" x="151" y="75" width="79" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Above" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="cPu-qd-Hmb" id="h3c-g9-v7c">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="1XS-Aw-91H">
-                            <items>
-                                <menuItem title="Above" state="on" id="cPu-qd-Hmb"/>
-                                <menuItem title="Baseline" id="GTT-LB-2TU"/>
-                                <menuItem title="Center" id="Kgj-S0-5j8"/>
-                                <menuItem title="Below" id="aS6-mI-kLK"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1532" customClass="CanariBoardTextFontPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="72" y="195" width="158" height="17"/>
+                    <rect key="frame" x="72" y="282" width="158" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="…fonts…" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="1530" id="14590">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1750,7 +1710,7 @@ Gw
                     </popUpButtonCell>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VfR-R5-TCS" customClass="EBDoubleField">
-                    <rect key="frame" x="72" y="144" width="62" height="19"/>
+                    <rect key="frame" x="72" y="231" width="62" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100.2" drawsBackground="YES" id="iwa-e9-zLW">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" alwaysShowsDecimalSeparator="YES" lenient="YES" secondaryGroupingSize="2" minimumIntegerDigits="1" maximumIntegerDigits="9" maximumFractionDigits="2" id="6Qu-D9-QwH">
@@ -1763,7 +1723,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="WLK-xT-TXP">
-                    <rect key="frame" x="18" y="147" width="48" height="14"/>
+                    <rect key="frame" x="18" y="234" width="48" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Weight" id="De9-gF-DmA">
                         <font key="font" metaFont="smallSystem"/>
@@ -1772,7 +1732,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1971" customClass="CanariAngleTextField" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="151" y="47" width="70" height="19"/>
+                    <rect key="frame" x="151" y="106" width="70" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,2" drawsBackground="YES" id="14593">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -1781,7 +1741,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="51" translatesAutoresizingMaskIntoConstraints="NO" id="1970">
-                    <rect key="frame" x="18" y="50" width="55" height="14"/>
+                    <rect key="frame" x="18" y="109" width="55" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Rotation" id="14592">
                         <font key="font" metaFont="smallSystem"/>
@@ -1790,7 +1750,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xMA-MG-dBT" customClass="EBSwitch">
-                    <rect key="frame" x="16" y="119" width="63" height="20"/>
+                    <rect key="frame" x="16" y="206" width="63" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Oblique" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="HLO-6h-3HX">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1798,14 +1758,45 @@ Gw
                     </buttonCell>
                 </button>
                 <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1969" customClass="CanariAngleSlider" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="89" y="42" width="28" height="30"/>
+                    <rect key="frame" x="89" y="101" width="28" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" sliderType="circular" id="14591">
                         <font key="font" size="12" name="Helvetica"/>
                     </sliderCell>
                 </slider>
+                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="01a-aI-h9t" customClass="CanariEnumSegmentedControl" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="17" y="163" width="214" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="0TX-vi-xTG">
+                        <font key="font" metaFont="smallSystem"/>
+                        <segments>
+                            <segment toolTip="Aligment Left" image="alignmentLeft" width="70"/>
+                            <segment toolTip="Alignment Center" image="alignmentCenter" width="70" selected="YES" tag="1"/>
+                            <segment toolTip="Alignment Right" image="alignmentRight" width="68">
+                                <nil key="label"/>
+                            </segment>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
+                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FI9-rg-9Lq" customClass="CanariEnumSegmentedControl" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="17" y="139" width="212" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="y1d-qL-uwd">
+                        <font key="font" metaFont="smallSystem"/>
+                        <segments>
+                            <segment toolTip="Aligment Bottom" image="alignmentBottom" width="45"/>
+                            <segment toolTip="Alignment Base Line" image="alignmentBaseline" width="45" selected="YES" tag="1"/>
+                            <segment toolTip="Alignment Middle" image="alignmentMiddle" width="43">
+                                <nil key="label"/>
+                            </segment>
+                            <segment toolTip="Alignment Top" image="alignmentTop">
+                                <nil key="label"/>
+                            </segment>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
             </subviews>
-            <point key="canvasLocation" x="9" y="-100"/>
+            <point key="canvasLocation" x="9" y="-94.5"/>
         </customView>
         <customView id="1775" userLabel="Board Inspector : Display" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="248" height="486"/>
@@ -2755,7 +2746,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="155.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="156.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2769,11 +2760,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="155.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="156.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="155.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="156.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -2789,7 +2780,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="172" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="171" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2803,11 +2794,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="627" y="1" width="172" height="17"/>
+                                                <rect key="frame" x="628" y="1" width="171" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="172" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="171" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -7430,15 +7421,18 @@ Gw
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
-                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y6u-4h-rRJ" customClass="CanariEnumSegmentedControl" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="19" y="261" width="212" height="18"/>
+                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Ia-HF-nmd" customClass="CanariEnumSegmentedControl" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="19" y="262" width="212" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="tRz-AK-f46">
+                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="SWE-VB-l7d">
                         <font key="font" metaFont="smallSystem"/>
                         <segments>
-                            <segment toolTip="Aligment Top" image="alignmentTop" width="69"/>
-                            <segment toolTip="Alignment Middle" image="alignmentMiddle" width="69" selected="YES" tag="1"/>
-                            <segment toolTip="Alignment Bottom" image="alignmentBottom" width="68">
+                            <segment toolTip="Aligment Bottom" image="alignmentBottom" width="45"/>
+                            <segment toolTip="Alignment Base Line" image="alignmentBaseline" width="45" selected="YES" tag="1"/>
+                            <segment toolTip="Alignment Middle" image="alignmentMiddle" width="43">
+                                <nil key="label"/>
+                            </segment>
+                            <segment toolTip="Alignment Top" image="alignmentTop">
                                 <nil key="label"/>
                             </segment>
                         </segments>
@@ -8824,6 +8818,7 @@ Gw
         <image name="NSSmartBadgeTemplate" width="14" height="14"/>
         <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
         <image name="NSStatusUnavailable" width="16" height="16"/>
+        <image name="alignmentBaseline" width="60" height="60"/>
         <image name="alignmentBottom" width="60" height="60"/>
         <image name="alignmentCenter" width="60" height="60"/>
         <image name="alignmentLeft" width="60" height="60"/>

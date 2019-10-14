@@ -825,12 +825,12 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBPopUpButton mBoardTextLayerPopUpButton $selectedIndex #boardTextSelectionController.mLayer ;
 
-  outlet EBPopUpButton mBoardTextHorizontalAlignmentPopUpButton
-    $selectedIndex #boardTextSelectionController.mHorizontalAlignment
+  outlet CanariEnumSegmentedControl mBoardTextHorizontalAlignmentSegmentedControl
+    $selectedSegment #boardTextSelectionController.mHorizontalAlignment
   ;
 
-  outlet EBPopUpButton mBoardTextVerticalAlignmentPopUpButton
-    $selectedIndex #boardTextSelectionController.mVerticalAlignment
+  outlet CanariEnumSegmentedControl mBoardTextVerticalAlignmentSegmentedControl
+    $selectedSegment #boardTextSelectionController.mVerticalAlignment
   ;
   
   outlet CanariAngleTextField mBoardTextRotationTextField $angle #boardTextSelectionController.mRotation ;

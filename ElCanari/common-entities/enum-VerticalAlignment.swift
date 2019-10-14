@@ -7,18 +7,20 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum VerticalAlignment : Int, EnumPropertyProtocol {
-  case below = 0
-  case center = 1
-  case above = 2
+  case above = 0
+  case base = 1
+  case center = 2
+  case below = 3
 
 
   //····················································································································
 
   init? (string : String) {
     switch string {
-      case "below" : self = .below // 0
-      case "center" : self = .center // 1
-      case "above" : self = .above // 2
+      case "above" : self = .above // 0
+      case "base" : self = .base // 1
+      case "center" : self = .center // 2
+      case "below" : self = .below // 3
       case _ : return nil
     }
   }
@@ -27,9 +29,10 @@ enum VerticalAlignment : Int, EnumPropertyProtocol {
 
   func descriptionForExplorer () -> String {
     switch self {
-      case .below : return "below" // 0
-      case .center : return "center" // 1
-      case .above : return "above" // 2
+      case .above : return "above" // 0
+      case .base : return "base" // 1
+      case .center : return "center" // 2
+      case .below : return "below" // 3
     }
   }
 
@@ -69,7 +72,7 @@ enum VerticalAlignment : Int, EnumPropertyProtocol {
   }
 
   static func convertFromNSObject (object : NSObject) -> VerticalAlignment {
-    var result = VerticalAlignment.below
+    var result = VerticalAlignment.above
     if let number = object as? NSNumber, let v = VerticalAlignment (rawValue: number.intValue) {
       result = v
     }
