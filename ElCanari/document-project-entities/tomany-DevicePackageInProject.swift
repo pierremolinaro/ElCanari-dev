@@ -202,7 +202,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
 //    TransientArrayOf DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInProject {
+final class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInProject {
 
   //····················································································································
   //   Sort
@@ -210,7 +210,14 @@ class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInP
 
   private var mIsOrderedBefore : Optional < (_ left : DevicePackageInProject, _ right : DevicePackageInProject) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -219,7 +226,8 @@ class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInP
   private var mDataProvider : ReadOnlyArrayOf_DevicePackageInProject? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_DevicePackageInProject,
                         sortCallback inSortCallBack : Optional < (_ left : DevicePackageInProject, _ right : DevicePackageInProject) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -257,44 +265,40 @@ class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInP
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [DevicePackageInProject] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [DevicePackageInProject] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DevicePackageInProject] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -307,7 +311,7 @@ class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInP
 
   //····················································································································
 
-  override var propval : [DevicePackageInProject] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [DevicePackageInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -317,7 +321,7 @@ class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInP
 //    TransientArrayOfSuperOf DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_DevicePackageInProject <SUPER : EBManagedObject> : ReadOnlyArrayOf_DevicePackageInProject {
+final class TransientArrayOfSuperOf_DevicePackageInProject <SUPER : EBManagedObject> : ReadOnlyArrayOf_DevicePackageInProject {
 
   //····················································································································
   //   Data provider
@@ -325,7 +329,14 @@ class TransientArrayOfSuperOf_DevicePackageInProject <SUPER : EBManagedObject> :
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -340,46 +351,42 @@ class TransientArrayOfSuperOf_DevicePackageInProject <SUPER : EBManagedObject> :
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [DevicePackageInProject] ()
-      for superObject in newModelArray {
-        if let object = superObject as? DevicePackageInProject {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [DevicePackageInProject] ()
+    for superObject in newModelArray {
+      if let object = superObject as? DevicePackageInProject {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DevicePackageInProject] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -392,7 +399,7 @@ class TransientArrayOfSuperOf_DevicePackageInProject <SUPER : EBManagedObject> :
 
   //····················································································································
 
-  override var propval : [DevicePackageInProject] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [DevicePackageInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 

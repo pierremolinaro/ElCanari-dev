@@ -730,7 +730,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 //    TransientArrayOf SymbolBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
+final class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 
   //····················································································································
   //   Sort
@@ -738,7 +738,14 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 
   private var mIsOrderedBefore : Optional < (_ left : SymbolBezierCurve, _ right : SymbolBezierCurve) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -747,7 +754,8 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
   private var mDataProvider : ReadOnlyArrayOf_SymbolBezierCurve? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_SymbolBezierCurve,
                         sortCallback inSortCallBack : Optional < (_ left : SymbolBezierCurve, _ right : SymbolBezierCurve) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -785,44 +793,40 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [SymbolBezierCurve] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [SymbolBezierCurve] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolBezierCurve] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -835,7 +839,7 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 
   //····················································································································
 
-  override var propval : [SymbolBezierCurve] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [SymbolBezierCurve] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -845,7 +849,7 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 //    TransientArrayOfSuperOf SymbolBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_SymbolBezierCurve <SUPER : EBManagedObject> : ReadOnlyArrayOf_SymbolBezierCurve {
+final class TransientArrayOfSuperOf_SymbolBezierCurve <SUPER : EBManagedObject> : ReadOnlyArrayOf_SymbolBezierCurve {
 
   //····················································································································
   //   Data provider
@@ -853,7 +857,14 @@ class TransientArrayOfSuperOf_SymbolBezierCurve <SUPER : EBManagedObject> : Read
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -868,46 +879,42 @@ class TransientArrayOfSuperOf_SymbolBezierCurve <SUPER : EBManagedObject> : Read
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [SymbolBezierCurve] ()
-      for superObject in newModelArray {
-        if let object = superObject as? SymbolBezierCurve {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [SymbolBezierCurve] ()
+    for superObject in newModelArray {
+      if let object = superObject as? SymbolBezierCurve {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolBezierCurve] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -920,7 +927,7 @@ class TransientArrayOfSuperOf_SymbolBezierCurve <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var propval : [SymbolBezierCurve] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [SymbolBezierCurve] { return self.mInternalArrayValue }
 
   //····················································································································
 

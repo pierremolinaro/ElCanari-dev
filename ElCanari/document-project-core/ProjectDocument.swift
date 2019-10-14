@@ -747,6 +747,7 @@ import Cocoa
   @IBOutlet var mCommentInSchematicsHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
   @IBOutlet var mCommentInSchematicsInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mCommentInSchematicsTextField : EBTextField? = nil
+  @IBOutlet var mCommentInSchematicsVerticalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
   @IBOutlet var mCommentSizeInSchematicsSlider : EBSlider? = nil
   @IBOutlet var mCommentSizeInSchematicsTextField : EBDoubleField? = nil
   @IBOutlet var mCommentTextView : EBTextObserverView? = nil
@@ -1301,6 +1302,7 @@ import Cocoa
     checkOutletConnection (self.mCommentInSchematicsHorizontalAlignmentSegmentedControl, "mCommentInSchematicsHorizontalAlignmentSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mCommentInSchematicsInspectorView, "mCommentInSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mCommentInSchematicsTextField, "mCommentInSchematicsTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mCommentInSchematicsVerticalAlignmentSegmentedControl, "mCommentInSchematicsVerticalAlignmentSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mCommentSizeInSchematicsSlider, "mCommentSizeInSchematicsSlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mCommentSizeInSchematicsTextField, "mCommentSizeInSchematicsTextField", EBDoubleField.self, #file, #line)
     checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextObserverView.self, #file, #line)
@@ -2312,6 +2314,7 @@ import Cocoa
     self.mCommentSizeInSchematicsSlider?.bind_doubleValue (self.commentInSchematicSelectionController.mSize_property, file: #file, line: #line, sendContinously:true)
     self.mCommentColorInSchematicsTextField?.bind_color (self.commentInSchematicSelectionController.mColor_property, file: #file, line: #line, sendContinously:true)
     self.mCommentInSchematicsHorizontalAlignmentSegmentedControl?.bind_selectedSegment (self.commentInSchematicSelectionController.mHorizontalAlignment_property, file: #file, line: #line)
+    self.mCommentInSchematicsVerticalAlignmentSegmentedControl?.bind_selectedSegment (self.commentInSchematicSelectionController.mVerticalAlignment_property, file: #file, line: #line)
     self.mSchematicsLabelRotationSegmentedControl?.bind_quadrant (self.schematicLabelSelectionController.mOrientation_property, file: #file, line: #line)
     self.mSchematicsLabelNetNameTextField?.bind_valueObserver (self.schematicLabelSelectionController.netName_property, file: #file, line: #line)
     self.mComponentSymbolShowComponentValueSwitch?.bind_value (self.componentSymbolSelectionController.mDisplayComponentValue_property, file: #file, line: #line)
@@ -3143,6 +3146,7 @@ import Cocoa
     self.mCommentSizeInSchematicsSlider?.unbind_doubleValue ()
     self.mCommentColorInSchematicsTextField?.unbind_color ()
     self.mCommentInSchematicsHorizontalAlignmentSegmentedControl?.unbind_selectedSegment ()
+    self.mCommentInSchematicsVerticalAlignmentSegmentedControl?.unbind_selectedSegment ()
     self.mSchematicsLabelRotationSegmentedControl?.unbind_quadrant ()
     self.mSchematicsLabelNetNameTextField?.unbind_valueObserver ()
     self.mComponentSymbolShowComponentValueSwitch?.unbind_value ()
@@ -3692,6 +3696,7 @@ import Cocoa
     self.mCommentInSchematicsHorizontalAlignmentSegmentedControl?.ebCleanUp ()
     self.mCommentInSchematicsInspectorView?.ebCleanUp ()
     self.mCommentInSchematicsTextField?.ebCleanUp ()
+    self.mCommentInSchematicsVerticalAlignmentSegmentedControl?.ebCleanUp ()
     self.mCommentSizeInSchematicsSlider?.ebCleanUp ()
     self.mCommentSizeInSchematicsTextField?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
@@ -4091,6 +4096,7 @@ import Cocoa
     self.mCommentInSchematicsHorizontalAlignmentSegmentedControl = nil
     self.mCommentInSchematicsInspectorView = nil
     self.mCommentInSchematicsTextField = nil
+    self.mCommentInSchematicsVerticalAlignmentSegmentedControl = nil
     self.mCommentSizeInSchematicsSlider = nil
     self.mCommentSizeInSchematicsTextField = nil
     self.mCommentTextView = nil

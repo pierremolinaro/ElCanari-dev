@@ -7,6 +7,7 @@ graphic entity CommentInSchematic : SchematicObject {
   property NSColor mColor default black ;
   property Double mSize default 11.0 ;
   property HorizontalAlignment mHorizontalAlignment default center ;
+  property VerticalAlignment mVerticalAlignment default center ;
 
   property Int mX default 0 ;
   property Int mY default 0 ;
@@ -16,6 +17,7 @@ graphic entity CommentInSchematic : SchematicObject {
     self.mColor,
     self.mSize,
     self.mHorizontalAlignment,
+    self.mVerticalAlignment,
     self.mX,
     self.mY
   ;
@@ -25,6 +27,7 @@ graphic entity CommentInSchematic : SchematicObject {
     self.mColor,
     self.mSize,
     self.mHorizontalAlignment,
+    self.mVerticalAlignment,
     self.mX,
     self.mY
   ;

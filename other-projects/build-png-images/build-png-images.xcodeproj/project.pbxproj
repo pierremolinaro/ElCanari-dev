@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		CF2A42C121BE93D70023992F /* EditorInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A42C021BE93D70023992F /* EditorInspectorView.swift */; };
 		CF31B52821BD842500BF3E89 /* MagnifyingGlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF31B52721BD842500BF3E89 /* MagnifyingGlassView.swift */; };
+		CF7034B42353A7CF00F4D2C7 /* AlignmentBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7034B32353A7CF00F4D2C7 /* AlignmentBottom.swift */; };
+		CF7034B62353A9B800F4D2C7 /* AlignmentTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7034B52353A9B800F4D2C7 /* AlignmentTop.swift */; };
+		CF7034B82353AA5A00F4D2C7 /* AlignmentMiddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7034B72353AA5A00F4D2C7 /* AlignmentMiddle.swift */; };
+		CF7034BA2353AAD400F4D2C7 /* AlignmentBaseline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7034B92353AAD400F4D2C7 /* AlignmentBaseline.swift */; };
 		CFC2684D235240F4007C47F6 /* AlignmentCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2684C235240F4007C47F6 /* AlignmentCenter.swift */; };
 		CFC2685223524D6B007C47F6 /* AlignmentLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2685123524D6B007C47F6 /* AlignmentLeft.swift */; };
 		CFC2685423524D86007C47F6 /* AlignmentRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2685323524D86007C47F6 /* AlignmentRight.swift */; };
@@ -31,6 +35,10 @@
 /* Begin PBXFileReference section */
 		CF2A42C021BE93D70023992F /* EditorInspectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorInspectorView.swift; sourceTree = "<group>"; };
 		CF31B52721BD842500BF3E89 /* MagnifyingGlassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagnifyingGlassView.swift; sourceTree = "<group>"; };
+		CF7034B32353A7CF00F4D2C7 /* AlignmentBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentBottom.swift; sourceTree = "<group>"; };
+		CF7034B52353A9B800F4D2C7 /* AlignmentTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentTop.swift; sourceTree = "<group>"; };
+		CF7034B72353AA5A00F4D2C7 /* AlignmentMiddle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentMiddle.swift; sourceTree = "<group>"; };
+		CF7034B92353AAD400F4D2C7 /* AlignmentBaseline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentBaseline.swift; sourceTree = "<group>"; };
 		CFC2684C235240F4007C47F6 /* AlignmentCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentCenter.swift; sourceTree = "<group>"; };
 		CFC2685123524D6B007C47F6 /* AlignmentLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentLeft.swift; sourceTree = "<group>"; };
 		CFC2685323524D86007C47F6 /* AlignmentRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentRight.swift; sourceTree = "<group>"; };
@@ -69,9 +77,13 @@
 		CFD336B321AEAD3E0085D2AB /* build-png-images */ = {
 			isa = PBXGroup;
 			children = (
+				CF7034B92353AAD400F4D2C7 /* AlignmentBaseline.swift */,
+				CF7034B32353A7CF00F4D2C7 /* AlignmentBottom.swift */,
 				CFC2684C235240F4007C47F6 /* AlignmentCenter.swift */,
 				CFC2685123524D6B007C47F6 /* AlignmentLeft.swift */,
+				CF7034B72353AA5A00F4D2C7 /* AlignmentMiddle.swift */,
 				CFC2685323524D86007C47F6 /* AlignmentRight.swift */,
+				CF7034B52353A9B800F4D2C7 /* AlignmentTop.swift */,
 				CFD336BB21AEAD6B0085D2AB /* CanariStatusView.swift */,
 				CF2A42C021BE93D70023992F /* EditorInspectorView.swift */,
 				CF31B52721BD842500BF3E89 /* MagnifyingGlassView.swift */,
@@ -112,6 +124,7 @@
 				TargetAttributes = {
 					CFD336B021AEAD3E0085D2AB = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -121,6 +134,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CFD336A821AEAD3E0085D2AB;
 			productRefGroup = CFD336B221AEAD3E0085D2AB /* Products */;
@@ -141,9 +155,13 @@
 				CFC2684D235240F4007C47F6 /* AlignmentCenter.swift in Sources */,
 				CFC2685223524D6B007C47F6 /* AlignmentLeft.swift in Sources */,
 				CF2A42C121BE93D70023992F /* EditorInspectorView.swift in Sources */,
+				CF7034B42353A7CF00F4D2C7 /* AlignmentBottom.swift in Sources */,
 				CFD336B521AEAD3E0085D2AB /* main.swift in Sources */,
+				CF7034B62353A9B800F4D2C7 /* AlignmentTop.swift in Sources */,
 				CF31B52821BD842500BF3E89 /* MagnifyingGlassView.swift in Sources */,
+				CF7034B82353AA5A00F4D2C7 /* AlignmentMiddle.swift in Sources */,
 				CFC2685423524D86007C47F6 /* AlignmentRight.swift in Sources */,
+				CF7034BA2353AAD400F4D2C7 /* AlignmentBaseline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +288,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -279,7 +297,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

@@ -18,6 +18,7 @@ func transient_CommentInSchematic_objectDisplay (
        _ self_mColor : NSColor,                  
        _ self_mSize : Double,                    
        _ self_mHorizontalAlignment : HorizontalAlignment,
+       _ self_mVerticalAlignment : VerticalAlignment,
        _ self_mX : Int,                          
        _ self_mY : Int
 ) -> EBShape {
@@ -35,7 +36,7 @@ func transient_CommentInSchematic_objectDisplay (
           p,
           textAttributes,
           self_mHorizontalAlignment.ebTextShapeHorizontalAlignment,
-          .center
+          self_mVerticalAlignment.ebTextShapeVerticalAlignment
         )
 //--- END OF USER ZONE 2
 }

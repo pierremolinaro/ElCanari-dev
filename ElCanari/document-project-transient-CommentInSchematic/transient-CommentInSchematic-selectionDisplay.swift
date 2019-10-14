@@ -18,6 +18,7 @@ func transient_CommentInSchematic_selectionDisplay (
        _ self_mColor : NSColor,                     
        _ self_mSize : Double,                       
        _ self_mHorizontalAlignment : HorizontalAlignment,
+       _ self_mVerticalAlignment : VerticalAlignment,
        _ self_mX : Int,                             
        _ self_mY : Int
 ) -> EBShape {
@@ -26,15 +27,16 @@ func transient_CommentInSchematic_selectionDisplay (
         let font = NSFont (name: "LucidaGrande", size: s)!
         let p = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
         var shape = EBShape ()
-        shape.add (textKnob: 
-          (self_mComment == "") ? "Empty comment" : self_mComment,
+        shape.add (
+          textKnob: (self_mComment == "") ? "Empty comment" : self_mComment,
           p,
           font,
           self_mColor,
           self_mHorizontalAlignment.ebTextShapeHorizontalAlignment,
-          .center,
+          self_mVerticalAlignment.ebTextShapeVerticalAlignment,
           knobIndex: 0
         )
+        shape.add (knobAt: p, knobIndex: 0, .rect, SCHEMATIC_KNOB_SIZE)
         return shape
 //--- END OF USER ZONE 2
 }

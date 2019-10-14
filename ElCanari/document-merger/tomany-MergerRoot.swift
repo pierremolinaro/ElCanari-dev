@@ -1554,7 +1554,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 //    TransientArrayOf MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
+final class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   //····················································································································
   //   Sort
@@ -1562,7 +1562,14 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   private var mIsOrderedBefore : Optional < (_ left : MergerRoot, _ right : MergerRoot) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -1571,7 +1578,8 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
   private var mDataProvider : ReadOnlyArrayOf_MergerRoot? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_MergerRoot,
                         sortCallback inSortCallBack : Optional < (_ left : MergerRoot, _ right : MergerRoot) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -1609,44 +1617,40 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [MergerRoot] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [MergerRoot] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [MergerRoot] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1659,7 +1663,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   //····················································································································
 
-  override var propval : [MergerRoot] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [MergerRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1669,7 +1673,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 //    TransientArrayOfSuperOf MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_MergerRoot <SUPER : EBManagedObject> : ReadOnlyArrayOf_MergerRoot {
+final class TransientArrayOfSuperOf_MergerRoot <SUPER : EBManagedObject> : ReadOnlyArrayOf_MergerRoot {
 
   //····················································································································
   //   Data provider
@@ -1677,7 +1681,14 @@ class TransientArrayOfSuperOf_MergerRoot <SUPER : EBManagedObject> : ReadOnlyArr
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -1692,46 +1703,42 @@ class TransientArrayOfSuperOf_MergerRoot <SUPER : EBManagedObject> : ReadOnlyArr
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [MergerRoot] ()
-      for superObject in newModelArray {
-        if let object = superObject as? MergerRoot {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [MergerRoot] ()
+    for superObject in newModelArray {
+      if let object = superObject as? MergerRoot {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [MergerRoot] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1744,7 +1751,7 @@ class TransientArrayOfSuperOf_MergerRoot <SUPER : EBManagedObject> : ReadOnlyArr
 
   //····················································································································
 
-  override var propval : [MergerRoot] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [MergerRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 

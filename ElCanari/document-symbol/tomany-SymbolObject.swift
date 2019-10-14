@@ -200,7 +200,7 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 //    TransientArrayOf SymbolObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
+final class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
 
   //····················································································································
   //   Sort
@@ -208,7 +208,14 @@ class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
 
   private var mIsOrderedBefore : Optional < (_ left : SymbolObject, _ right : SymbolObject) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -217,7 +224,8 @@ class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
   private var mDataProvider : ReadOnlyArrayOf_SymbolObject? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_SymbolObject,
                         sortCallback inSortCallBack : Optional < (_ left : SymbolObject, _ right : SymbolObject) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -255,44 +263,40 @@ class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [SymbolObject] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [SymbolObject] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolObject] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -305,7 +309,7 @@ class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
 
   //····················································································································
 
-  override var propval : [SymbolObject] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [SymbolObject] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -315,7 +319,7 @@ class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
 //    TransientArrayOfSuperOf SymbolObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_SymbolObject <SUPER : EBManagedObject> : ReadOnlyArrayOf_SymbolObject {
+final class TransientArrayOfSuperOf_SymbolObject <SUPER : EBManagedObject> : ReadOnlyArrayOf_SymbolObject {
 
   //····················································································································
   //   Data provider
@@ -323,7 +327,14 @@ class TransientArrayOfSuperOf_SymbolObject <SUPER : EBManagedObject> : ReadOnlyA
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -338,46 +349,42 @@ class TransientArrayOfSuperOf_SymbolObject <SUPER : EBManagedObject> : ReadOnlyA
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [SymbolObject] ()
-      for superObject in newModelArray {
-        if let object = superObject as? SymbolObject {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [SymbolObject] ()
+    for superObject in newModelArray {
+      if let object = superObject as? SymbolObject {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolObject] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -390,7 +397,7 @@ class TransientArrayOfSuperOf_SymbolObject <SUPER : EBManagedObject> : ReadOnlyA
 
   //····················································································································
 
-  override var propval : [SymbolObject] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [SymbolObject] { return self.mInternalArrayValue }
 
   //····················································································································
 

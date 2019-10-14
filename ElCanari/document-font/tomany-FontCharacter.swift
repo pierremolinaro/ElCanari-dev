@@ -494,7 +494,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 //    TransientArrayOf FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
+final class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
   //   Sort
@@ -502,7 +502,14 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   private var mIsOrderedBefore : Optional < (_ left : FontCharacter, _ right : FontCharacter) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -511,7 +518,8 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
   private var mDataProvider : ReadOnlyArrayOf_FontCharacter? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_FontCharacter,
                         sortCallback inSortCallBack : Optional < (_ left : FontCharacter, _ right : FontCharacter) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -549,44 +557,40 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [FontCharacter] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [FontCharacter] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [FontCharacter] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -599,7 +603,7 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
 
-  override var propval : [FontCharacter] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [FontCharacter] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -609,7 +613,7 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 //    TransientArrayOfSuperOf FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_FontCharacter <SUPER : EBManagedObject> : ReadOnlyArrayOf_FontCharacter {
+final class TransientArrayOfSuperOf_FontCharacter <SUPER : EBManagedObject> : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
   //   Data provider
@@ -617,7 +621,14 @@ class TransientArrayOfSuperOf_FontCharacter <SUPER : EBManagedObject> : ReadOnly
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -632,46 +643,42 @@ class TransientArrayOfSuperOf_FontCharacter <SUPER : EBManagedObject> : ReadOnly
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [FontCharacter] ()
-      for superObject in newModelArray {
-        if let object = superObject as? FontCharacter {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [FontCharacter] ()
+    for superObject in newModelArray {
+      if let object = superObject as? FontCharacter {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [FontCharacter] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -684,7 +691,7 @@ class TransientArrayOfSuperOf_FontCharacter <SUPER : EBManagedObject> : ReadOnly
 
   //····················································································································
 
-  override var propval : [FontCharacter] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [FontCharacter] { return self.mInternalArrayValue }
 
   //····················································································································
 

@@ -493,7 +493,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 //    TransientArrayOf MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance {
+final class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance {
 
   //····················································································································
   //   Sort
@@ -501,7 +501,14 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
 
   private var mIsOrderedBefore : Optional < (_ left : MergerBoardInstance, _ right : MergerBoardInstance) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -510,7 +517,8 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
   private var mDataProvider : ReadOnlyArrayOf_MergerBoardInstance? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_MergerBoardInstance,
                         sortCallback inSortCallBack : Optional < (_ left : MergerBoardInstance, _ right : MergerBoardInstance) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -548,44 +556,40 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [MergerBoardInstance] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [MergerBoardInstance] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [MergerBoardInstance] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -598,7 +602,7 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
 
   //····················································································································
 
-  override var propval : [MergerBoardInstance] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [MergerBoardInstance] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -608,7 +612,7 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
 //    TransientArrayOfSuperOf MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_MergerBoardInstance <SUPER : EBManagedObject> : ReadOnlyArrayOf_MergerBoardInstance {
+final class TransientArrayOfSuperOf_MergerBoardInstance <SUPER : EBManagedObject> : ReadOnlyArrayOf_MergerBoardInstance {
 
   //····················································································································
   //   Data provider
@@ -616,7 +620,14 @@ class TransientArrayOfSuperOf_MergerBoardInstance <SUPER : EBManagedObject> : Re
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -631,46 +642,42 @@ class TransientArrayOfSuperOf_MergerBoardInstance <SUPER : EBManagedObject> : Re
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [MergerBoardInstance] ()
-      for superObject in newModelArray {
-        if let object = superObject as? MergerBoardInstance {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [MergerBoardInstance] ()
+    for superObject in newModelArray {
+      if let object = superObject as? MergerBoardInstance {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [MergerBoardInstance] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -683,7 +690,7 @@ class TransientArrayOfSuperOf_MergerBoardInstance <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var propval : [MergerBoardInstance] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [MergerBoardInstance] { return self.mInternalArrayValue }
 
   //····················································································································
 

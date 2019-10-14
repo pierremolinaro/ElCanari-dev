@@ -1135,7 +1135,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 //    TransientArrayOf BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
+final class TransientArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
 
   //····················································································································
   //   Sort
@@ -1143,7 +1143,14 @@ class TransientArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
 
   private var mIsOrderedBefore : Optional < (_ left : BorderCurve, _ right : BorderCurve) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -1152,7 +1159,8 @@ class TransientArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
   private var mDataProvider : ReadOnlyArrayOf_BorderCurve? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_BorderCurve,
                         sortCallback inSortCallBack : Optional < (_ left : BorderCurve, _ right : BorderCurve) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -1190,44 +1198,40 @@ class TransientArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [BorderCurve] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [BorderCurve] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [BorderCurve] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1240,7 +1244,7 @@ class TransientArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
 
   //····················································································································
 
-  override var propval : [BorderCurve] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [BorderCurve] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1250,7 +1254,7 @@ class TransientArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
 //    TransientArrayOfSuperOf BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_BorderCurve <SUPER : EBManagedObject> : ReadOnlyArrayOf_BorderCurve {
+final class TransientArrayOfSuperOf_BorderCurve <SUPER : EBManagedObject> : ReadOnlyArrayOf_BorderCurve {
 
   //····················································································································
   //   Data provider
@@ -1258,7 +1262,14 @@ class TransientArrayOfSuperOf_BorderCurve <SUPER : EBManagedObject> : ReadOnlyAr
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -1273,46 +1284,42 @@ class TransientArrayOfSuperOf_BorderCurve <SUPER : EBManagedObject> : ReadOnlyAr
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [BorderCurve] ()
-      for superObject in newModelArray {
-        if let object = superObject as? BorderCurve {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [BorderCurve] ()
+    for superObject in newModelArray {
+      if let object = superObject as? BorderCurve {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [BorderCurve] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1325,7 +1332,7 @@ class TransientArrayOfSuperOf_BorderCurve <SUPER : EBManagedObject> : ReadOnlyAr
 
   //····················································································································
 
-  override var propval : [BorderCurve] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [BorderCurve] { return self.mInternalArrayValue }
 
   //····················································································································
 

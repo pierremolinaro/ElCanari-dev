@@ -375,7 +375,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 //    TransientArrayOf LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
+final class TransientArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
 
   //····················································································································
   //   Sort
@@ -383,7 +383,14 @@ class TransientArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
 
   private var mIsOrderedBefore : Optional < (_ left : LabelInSchematic, _ right : LabelInSchematic) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -392,7 +399,8 @@ class TransientArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
   private var mDataProvider : ReadOnlyArrayOf_LabelInSchematic? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_LabelInSchematic,
                         sortCallback inSortCallBack : Optional < (_ left : LabelInSchematic, _ right : LabelInSchematic) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -430,44 +438,40 @@ class TransientArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [LabelInSchematic] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [LabelInSchematic] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [LabelInSchematic] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -480,7 +484,7 @@ class TransientArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
 
   //····················································································································
 
-  override var propval : [LabelInSchematic] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [LabelInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -490,7 +494,7 @@ class TransientArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
 //    TransientArrayOfSuperOf LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> : ReadOnlyArrayOf_LabelInSchematic {
+final class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> : ReadOnlyArrayOf_LabelInSchematic {
 
   //····················································································································
   //   Data provider
@@ -498,7 +502,14 @@ class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> : ReadO
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -513,46 +524,42 @@ class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> : ReadO
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [LabelInSchematic] ()
-      for superObject in newModelArray {
-        if let object = superObject as? LabelInSchematic {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [LabelInSchematic] ()
+    for superObject in newModelArray {
+      if let object = superObject as? LabelInSchematic {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [LabelInSchematic] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -565,7 +572,7 @@ class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> : ReadO
 
   //····················································································································
 
-  override var propval : [LabelInSchematic] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [LabelInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 

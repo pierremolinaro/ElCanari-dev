@@ -18,6 +18,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
     self.removeEBObserversOf_mColor_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSize_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mComment_fromElementsOfSet (inRemovedSet) // Stored property
@@ -27,6 +28,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
     self.addEBObserversOf_mColor_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSize_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mVerticalAlignment_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mComment_toElementsOfSet (inAddedSet) // Stored property
@@ -201,6 +203,63 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mHorizontalAlignment_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mVerticalAlignment' stored property
+  //····················································································································
+
+  private var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mVerticalAlignment.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mVerticalAlignment_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mVerticalAlignment.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mVerticalAlignment_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mVerticalAlignment_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBEvent) in
+        managedObject.mVerticalAlignment_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+    self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mVerticalAlignment_property.removeEBObserver (observer)
       }
     }
   }
@@ -496,7 +555,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 //    TransientArrayOf CommentInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_CommentInSchematic : ReadOnlyArrayOf_CommentInSchematic {
+final class TransientArrayOf_CommentInSchematic : ReadOnlyArrayOf_CommentInSchematic {
 
   //····················································································································
   //   Sort
@@ -504,7 +563,14 @@ class TransientArrayOf_CommentInSchematic : ReadOnlyArrayOf_CommentInSchematic {
 
   private var mIsOrderedBefore : Optional < (_ left : CommentInSchematic, _ right : CommentInSchematic) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -513,7 +579,8 @@ class TransientArrayOf_CommentInSchematic : ReadOnlyArrayOf_CommentInSchematic {
   private var mDataProvider : ReadOnlyArrayOf_CommentInSchematic? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_CommentInSchematic,
                         sortCallback inSortCallBack : Optional < (_ left : CommentInSchematic, _ right : CommentInSchematic) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -551,44 +618,40 @@ class TransientArrayOf_CommentInSchematic : ReadOnlyArrayOf_CommentInSchematic {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [CommentInSchematic] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [CommentInSchematic] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [CommentInSchematic] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -601,7 +664,7 @@ class TransientArrayOf_CommentInSchematic : ReadOnlyArrayOf_CommentInSchematic {
 
   //····················································································································
 
-  override var propval : [CommentInSchematic] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [CommentInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -611,7 +674,7 @@ class TransientArrayOf_CommentInSchematic : ReadOnlyArrayOf_CommentInSchematic {
 //    TransientArrayOfSuperOf CommentInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject> : ReadOnlyArrayOf_CommentInSchematic {
+final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject> : ReadOnlyArrayOf_CommentInSchematic {
 
   //····················································································································
   //   Data provider
@@ -619,7 +682,14 @@ class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject> : Rea
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -634,46 +704,42 @@ class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject> : Rea
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [CommentInSchematic] ()
-      for superObject in newModelArray {
-        if let object = superObject as? CommentInSchematic {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [CommentInSchematic] ()
+    for superObject in newModelArray {
+      if let object = superObject as? CommentInSchematic {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [CommentInSchematic] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -686,7 +752,7 @@ class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject> : Rea
 
   //····················································································································
 
-  override var propval : [CommentInSchematic] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [CommentInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1047,6 +1113,7 @@ final class PreferencesArrayOf_CommentInSchematic : StoredArrayOf_CommentInSchem
     self.addEBObserverOf_mColor (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSize (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mHorizontalAlignment (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mVerticalAlignment (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mComment (self.mObserverForWritingPreferences)

@@ -410,6 +410,10 @@ document ProjectDocument root ProjectRoot {
     $selectedSegment #commentInSchematicSelectionController.mHorizontalAlignment
   ;
 
+  outlet CanariEnumSegmentedControl mCommentInSchematicsVerticalAlignmentSegmentedControl
+    $selectedSegment #commentInSchematicSelectionController.mVerticalAlignment
+  ;
+
 //--- Selected label in schematic inspector
   outlet CanariViewWithKeyView mSchematicsLabelInspectorView ;
   selectionController LabelInSchematic #schematicLabelSelectionController :

@@ -201,7 +201,7 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
 //    TransientArrayOf NCInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_NCInSchematic : ReadOnlyArrayOf_NCInSchematic {
+final class TransientArrayOf_NCInSchematic : ReadOnlyArrayOf_NCInSchematic {
 
   //····················································································································
   //   Sort
@@ -209,7 +209,14 @@ class TransientArrayOf_NCInSchematic : ReadOnlyArrayOf_NCInSchematic {
 
   private var mIsOrderedBefore : Optional < (_ left : NCInSchematic, _ right : NCInSchematic) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -218,7 +225,8 @@ class TransientArrayOf_NCInSchematic : ReadOnlyArrayOf_NCInSchematic {
   private var mDataProvider : ReadOnlyArrayOf_NCInSchematic? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_NCInSchematic,
                         sortCallback inSortCallBack : Optional < (_ left : NCInSchematic, _ right : NCInSchematic) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -256,44 +264,40 @@ class TransientArrayOf_NCInSchematic : ReadOnlyArrayOf_NCInSchematic {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [NCInSchematic] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [NCInSchematic] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [NCInSchematic] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -306,7 +310,7 @@ class TransientArrayOf_NCInSchematic : ReadOnlyArrayOf_NCInSchematic {
 
   //····················································································································
 
-  override var propval : [NCInSchematic] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [NCInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -316,7 +320,7 @@ class TransientArrayOf_NCInSchematic : ReadOnlyArrayOf_NCInSchematic {
 //    TransientArrayOfSuperOf NCInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : ReadOnlyArrayOf_NCInSchematic {
+final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : ReadOnlyArrayOf_NCInSchematic {
 
   //····················································································································
   //   Data provider
@@ -324,7 +328,14 @@ class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : ReadOnly
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -339,46 +350,42 @@ class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : ReadOnly
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [NCInSchematic] ()
-      for superObject in newModelArray {
-        if let object = superObject as? NCInSchematic {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [NCInSchematic] ()
+    for superObject in newModelArray {
+      if let object = superObject as? NCInSchematic {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [NCInSchematic] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -391,7 +398,7 @@ class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : ReadOnly
 
   //····················································································································
 
-  override var propval : [NCInSchematic] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [NCInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 

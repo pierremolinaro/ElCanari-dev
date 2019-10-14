@@ -672,7 +672,7 @@ class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide
 //    TransientArrayOf PackageGuide
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
+final class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
 
   //····················································································································
   //   Sort
@@ -680,7 +680,14 @@ class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
 
   private var mIsOrderedBefore : Optional < (_ left : PackageGuide, _ right : PackageGuide) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -689,7 +696,8 @@ class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
   private var mDataProvider : ReadOnlyArrayOf_PackageGuide? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_PackageGuide,
                         sortCallback inSortCallBack : Optional < (_ left : PackageGuide, _ right : PackageGuide) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -727,44 +735,40 @@ class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [PackageGuide] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [PackageGuide] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [PackageGuide] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -777,7 +781,7 @@ class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
 
   //····················································································································
 
-  override var propval : [PackageGuide] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [PackageGuide] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -787,7 +791,7 @@ class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
 //    TransientArrayOfSuperOf PackageGuide
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : ReadOnlyArrayOf_PackageGuide {
+final class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : ReadOnlyArrayOf_PackageGuide {
 
   //····················································································································
   //   Data provider
@@ -795,7 +799,14 @@ class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : ReadOnlyA
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -810,46 +821,42 @@ class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : ReadOnlyA
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [PackageGuide] ()
-      for superObject in newModelArray {
-        if let object = superObject as? PackageGuide {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [PackageGuide] ()
+    for superObject in newModelArray {
+      if let object = superObject as? PackageGuide {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [PackageGuide] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -862,7 +869,7 @@ class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : ReadOnlyA
 
   //····················································································································
 
-  override var propval : [PackageGuide] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [PackageGuide] { return self.mInternalArrayValue }
 
   //····················································································································
 

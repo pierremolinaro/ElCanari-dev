@@ -674,7 +674,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 //    TransientArrayOf SymbolPinTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyArrayOf_SymbolPinTypeInDevice {
+final class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyArrayOf_SymbolPinTypeInDevice {
 
   //····················································································································
   //   Sort
@@ -682,7 +682,14 @@ class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyArrayOf_SymbolPinTypeInDe
 
   private var mIsOrderedBefore : Optional < (_ left : SymbolPinTypeInDevice, _ right : SymbolPinTypeInDevice) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -691,7 +698,8 @@ class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyArrayOf_SymbolPinTypeInDe
   private var mDataProvider : ReadOnlyArrayOf_SymbolPinTypeInDevice? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_SymbolPinTypeInDevice,
                         sortCallback inSortCallBack : Optional < (_ left : SymbolPinTypeInDevice, _ right : SymbolPinTypeInDevice) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -729,44 +737,40 @@ class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyArrayOf_SymbolPinTypeInDe
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [SymbolPinTypeInDevice] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [SymbolPinTypeInDevice] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolPinTypeInDevice] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -779,7 +783,7 @@ class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyArrayOf_SymbolPinTypeInDe
 
   //····················································································································
 
-  override var propval : [SymbolPinTypeInDevice] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [SymbolPinTypeInDevice] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -789,7 +793,7 @@ class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyArrayOf_SymbolPinTypeInDe
 //    TransientArrayOfSuperOf SymbolPinTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_SymbolPinTypeInDevice <SUPER : EBManagedObject> : ReadOnlyArrayOf_SymbolPinTypeInDevice {
+final class TransientArrayOfSuperOf_SymbolPinTypeInDevice <SUPER : EBManagedObject> : ReadOnlyArrayOf_SymbolPinTypeInDevice {
 
   //····················································································································
   //   Data provider
@@ -797,7 +801,14 @@ class TransientArrayOfSuperOf_SymbolPinTypeInDevice <SUPER : EBManagedObject> : 
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -812,46 +823,42 @@ class TransientArrayOfSuperOf_SymbolPinTypeInDevice <SUPER : EBManagedObject> : 
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [SymbolPinTypeInDevice] ()
-      for superObject in newModelArray {
-        if let object = superObject as? SymbolPinTypeInDevice {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [SymbolPinTypeInDevice] ()
+    for superObject in newModelArray {
+      if let object = superObject as? SymbolPinTypeInDevice {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolPinTypeInDevice] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -864,7 +871,7 @@ class TransientArrayOfSuperOf_SymbolPinTypeInDevice <SUPER : EBManagedObject> : 
 
   //····················································································································
 
-  override var propval : [SymbolPinTypeInDevice] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [SymbolPinTypeInDevice] { return self.mInternalArrayValue }
 
   //····················································································································
 

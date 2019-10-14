@@ -24,6 +24,12 @@ protocol CommentInSchematic_mHorizontalAlignment : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol CommentInSchematic_mVerticalAlignment : class {
+  var mVerticalAlignment : VerticalAlignment { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol CommentInSchematic_mX : class {
   var mX : Int { get }
 }
@@ -60,6 +66,7 @@ class CommentInSchematic : SchematicObject,
          CommentInSchematic_mColor,
          CommentInSchematic_mSize,
          CommentInSchematic_mHorizontalAlignment,
+         CommentInSchematic_mVerticalAlignment,
          CommentInSchematic_mX,
          CommentInSchematic_mY,
          CommentInSchematic_mComment,
@@ -116,6 +123,23 @@ class CommentInSchematic : SchematicObject,
   //····················································································································
 
   var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mHorizontalAlignment_property.prop }
+
+  //····················································································································
+  //   Atomic property: mVerticalAlignment
+  //····················································································································
+
+  let mVerticalAlignment_property = EBStoredProperty_VerticalAlignment (defaultValue: VerticalAlignment.center)
+
+  //····················································································································
+
+  var mVerticalAlignment : VerticalAlignment {
+    get { return self.mVerticalAlignment_property.propval }
+    set { self.mVerticalAlignment_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mVerticalAlignment_property_selection : EBSelection <VerticalAlignment> { return self.mVerticalAlignment_property.prop }
 
   //····················································································································
   //   Atomic property: mX
@@ -186,6 +210,8 @@ class CommentInSchematic : SchematicObject,
     self.mSize_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mHorizontalAlignment
     self.mHorizontalAlignment_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mVerticalAlignment
+    self.mVerticalAlignment_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mX
     self.mX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mY
@@ -199,6 +225,7 @@ class CommentInSchematic : SchematicObject,
         kind &= unwSelf.mColor_property_selection.kind ()
         kind &= unwSelf.mSize_property_selection.kind ()
         kind &= unwSelf.mHorizontalAlignment_property_selection.kind ()
+        kind &= unwSelf.mVerticalAlignment_property_selection.kind ()
         kind &= unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
         switch kind {
@@ -207,9 +234,9 @@ class CommentInSchematic : SchematicObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComment_property_selection, unwSelf.mColor_property_selection, unwSelf.mSize_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_CommentInSchematic_objectDisplay (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.mComment_property_selection, unwSelf.mColor_property_selection, unwSelf.mSize_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+            return .single (transient_CommentInSchematic_objectDisplay (v0, v1, v2, v3, v4, v5, v6))
           default :
             return .empty
           }
@@ -222,6 +249,7 @@ class CommentInSchematic : SchematicObject,
     self.mColor_property.addEBObserver (self.objectDisplay_property)
     self.mSize_property.addEBObserver (self.objectDisplay_property)
     self.mHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
+    self.mVerticalAlignment_property.addEBObserver (self.objectDisplay_property)
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
@@ -231,6 +259,7 @@ class CommentInSchematic : SchematicObject,
         kind &= unwSelf.mColor_property_selection.kind ()
         kind &= unwSelf.mSize_property_selection.kind ()
         kind &= unwSelf.mHorizontalAlignment_property_selection.kind ()
+        kind &= unwSelf.mVerticalAlignment_property_selection.kind ()
         kind &= unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
         switch kind {
@@ -239,9 +268,9 @@ class CommentInSchematic : SchematicObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComment_property_selection, unwSelf.mColor_property_selection, unwSelf.mSize_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_CommentInSchematic_selectionDisplay (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.mComment_property_selection, unwSelf.mColor_property_selection, unwSelf.mSize_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+            return .single (transient_CommentInSchematic_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
           default :
             return .empty
           }
@@ -254,6 +283,7 @@ class CommentInSchematic : SchematicObject,
     self.mColor_property.addEBObserver (self.selectionDisplay_property)
     self.mSize_property.addEBObserver (self.selectionDisplay_property)
     self.mHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
+    self.mVerticalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
@@ -269,12 +299,14 @@ class CommentInSchematic : SchematicObject,
     self.mColor_property.removeEBObserver (self.objectDisplay_property)
     self.mSize_property.removeEBObserver (self.objectDisplay_property)
     self.mHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
+    self.mVerticalAlignment_property.removeEBObserver (self.objectDisplay_property)
     self.mX_property.removeEBObserver (self.objectDisplay_property)
     self.mY_property.removeEBObserver (self.objectDisplay_property)
     self.mComment_property.removeEBObserver (self.selectionDisplay_property)
     self.mColor_property.removeEBObserver (self.selectionDisplay_property)
     self.mSize_property.removeEBObserver (self.selectionDisplay_property)
     self.mHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
+    self.mVerticalAlignment_property.removeEBObserver (self.selectionDisplay_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
@@ -314,6 +346,14 @@ class CommentInSchematic : SchematicObject,
       view: view,
       observerExplorer: &self.mHorizontalAlignment_property.mObserverExplorer,
       valueExplorer: &self.mHorizontalAlignment_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mVerticalAlignment",
+      idx: self.mVerticalAlignment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mVerticalAlignment_property.mObserverExplorer,
+      valueExplorer: &self.mVerticalAlignment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mX",
@@ -375,6 +415,9 @@ class CommentInSchematic : SchematicObject,
   //--- Atomic property: mHorizontalAlignment
     self.mHorizontalAlignment_property.mObserverExplorer = nil
     self.mHorizontalAlignment_property.mValueExplorer = nil
+  //--- Atomic property: mVerticalAlignment
+    self.mVerticalAlignment_property.mObserverExplorer = nil
+    self.mVerticalAlignment_property.mValueExplorer = nil
   //--- Atomic property: mX
     self.mX_property.mObserverExplorer = nil
     self.mX_property.mValueExplorer = nil
@@ -418,6 +461,8 @@ class CommentInSchematic : SchematicObject,
     self.mSize_property.storeIn (dictionary: ioDictionary, forKey:"mSize")
   //--- Atomic property: mHorizontalAlignment
     self.mHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mHorizontalAlignment")
+  //--- Atomic property: mVerticalAlignment
+    self.mVerticalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mVerticalAlignment")
   //--- Atomic property: mX
     self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
   //--- Atomic property: mY
@@ -447,6 +492,8 @@ class CommentInSchematic : SchematicObject,
     self.mSize_property.readFrom (dictionary: inDictionary, forKey:"mSize")
   //--- Atomic property: mHorizontalAlignment
     self.mHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mHorizontalAlignment")
+  //--- Atomic property: mVerticalAlignment
+    self.mVerticalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mVerticalAlignment")
   //--- Atomic property: mX
     self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
   //--- Atomic property: mY

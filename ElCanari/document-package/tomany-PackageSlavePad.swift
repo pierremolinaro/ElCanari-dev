@@ -1317,7 +1317,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 //    TransientArrayOf PackageSlavePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
+final class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
 
   //····················································································································
   //   Sort
@@ -1325,7 +1325,14 @@ class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
 
   private var mIsOrderedBefore : Optional < (_ left : PackageSlavePad, _ right : PackageSlavePad) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -1334,7 +1341,8 @@ class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
   private var mDataProvider : ReadOnlyArrayOf_PackageSlavePad? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_PackageSlavePad,
                         sortCallback inSortCallBack : Optional < (_ left : PackageSlavePad, _ right : PackageSlavePad) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -1372,44 +1380,40 @@ class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [PackageSlavePad] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [PackageSlavePad] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [PackageSlavePad] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1422,7 +1426,7 @@ class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
 
   //····················································································································
 
-  override var propval : [PackageSlavePad] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [PackageSlavePad] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1432,7 +1436,7 @@ class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
 //    TransientArrayOfSuperOf PackageSlavePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_PackageSlavePad <SUPER : EBManagedObject> : ReadOnlyArrayOf_PackageSlavePad {
+final class TransientArrayOfSuperOf_PackageSlavePad <SUPER : EBManagedObject> : ReadOnlyArrayOf_PackageSlavePad {
 
   //····················································································································
   //   Data provider
@@ -1440,7 +1444,14 @@ class TransientArrayOfSuperOf_PackageSlavePad <SUPER : EBManagedObject> : ReadOn
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -1455,46 +1466,42 @@ class TransientArrayOfSuperOf_PackageSlavePad <SUPER : EBManagedObject> : ReadOn
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [PackageSlavePad] ()
-      for superObject in newModelArray {
-        if let object = superObject as? PackageSlavePad {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [PackageSlavePad] ()
+    for superObject in newModelArray {
+      if let object = superObject as? PackageSlavePad {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [PackageSlavePad] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1507,7 +1514,7 @@ class TransientArrayOfSuperOf_PackageSlavePad <SUPER : EBManagedObject> : ReadOn
 
   //····················································································································
 
-  override var propval : [PackageSlavePad] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [PackageSlavePad] { return self.mInternalArrayValue }
 
   //····················································································································
 

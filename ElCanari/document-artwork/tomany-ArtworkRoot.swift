@@ -733,7 +733,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 //    TransientArrayOf ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
+final class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
   //····················································································································
   //   Sort
@@ -741,7 +741,14 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
   private var mIsOrderedBefore : Optional < (_ left : ArtworkRoot, _ right : ArtworkRoot) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -750,7 +757,8 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
   private var mDataProvider : ReadOnlyArrayOf_ArtworkRoot? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_ArtworkRoot,
                         sortCallback inSortCallBack : Optional < (_ left : ArtworkRoot, _ right : ArtworkRoot) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -788,44 +796,40 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [ArtworkRoot] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [ArtworkRoot] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [ArtworkRoot] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -838,7 +842,7 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
   //····················································································································
 
-  override var propval : [ArtworkRoot] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [ArtworkRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -848,7 +852,7 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 //    TransientArrayOfSuperOf ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_ArtworkRoot <SUPER : EBManagedObject> : ReadOnlyArrayOf_ArtworkRoot {
+final class TransientArrayOfSuperOf_ArtworkRoot <SUPER : EBManagedObject> : ReadOnlyArrayOf_ArtworkRoot {
 
   //····················································································································
   //   Data provider
@@ -856,7 +860,14 @@ class TransientArrayOfSuperOf_ArtworkRoot <SUPER : EBManagedObject> : ReadOnlyAr
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -871,46 +882,42 @@ class TransientArrayOfSuperOf_ArtworkRoot <SUPER : EBManagedObject> : ReadOnlyAr
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [ArtworkRoot] ()
-      for superObject in newModelArray {
-        if let object = superObject as? ArtworkRoot {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [ArtworkRoot] ()
+    for superObject in newModelArray {
+      if let object = superObject as? ArtworkRoot {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [ArtworkRoot] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -923,7 +930,7 @@ class TransientArrayOfSuperOf_ArtworkRoot <SUPER : EBManagedObject> : ReadOnlyAr
 
   //····················································································································
 
-  override var propval : [ArtworkRoot] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [ArtworkRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 

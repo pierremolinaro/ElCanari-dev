@@ -726,7 +726,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 //    TransientArrayOf DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
+final class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
 
   //····················································································································
   //   Sort
@@ -734,7 +734,14 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
 
   private var mIsOrderedBefore : Optional < (_ left : DeviceInProject, _ right : DeviceInProject) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -743,7 +750,8 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
   private var mDataProvider : ReadOnlyArrayOf_DeviceInProject? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_DeviceInProject,
                         sortCallback inSortCallBack : Optional < (_ left : DeviceInProject, _ right : DeviceInProject) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -781,44 +789,40 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [DeviceInProject] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [DeviceInProject] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DeviceInProject] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -831,7 +835,7 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
 
   //····················································································································
 
-  override var propval : [DeviceInProject] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [DeviceInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -841,7 +845,7 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
 //    TransientArrayOfSuperOf DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_DeviceInProject <SUPER : EBManagedObject> : ReadOnlyArrayOf_DeviceInProject {
+final class TransientArrayOfSuperOf_DeviceInProject <SUPER : EBManagedObject> : ReadOnlyArrayOf_DeviceInProject {
 
   //····················································································································
   //   Data provider
@@ -849,7 +853,14 @@ class TransientArrayOfSuperOf_DeviceInProject <SUPER : EBManagedObject> : ReadOn
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -864,46 +875,42 @@ class TransientArrayOfSuperOf_DeviceInProject <SUPER : EBManagedObject> : ReadOn
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [DeviceInProject] ()
-      for superObject in newModelArray {
-        if let object = superObject as? DeviceInProject {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [DeviceInProject] ()
+    for superObject in newModelArray {
+      if let object = superObject as? DeviceInProject {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DeviceInProject] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -916,7 +923,7 @@ class TransientArrayOfSuperOf_DeviceInProject <SUPER : EBManagedObject> : ReadOn
 
   //····················································································································
 
-  override var propval : [DeviceInProject] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [DeviceInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 

@@ -848,7 +848,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 //    TransientArrayOf BoardText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
+final class TransientArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
 
   //····················································································································
   //   Sort
@@ -856,7 +856,14 @@ class TransientArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
 
   private var mIsOrderedBefore : Optional < (_ left : BoardText, _ right : BoardText) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
   //   Data provider
@@ -865,7 +872,8 @@ class TransientArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
   private var mDataProvider : ReadOnlyArrayOf_BoardText? = nil
   private var mTransientKind : PropertyKind = .empty
 
- 
+   //····················································································································
+
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_BoardText,
                         sortCallback inSortCallBack : Optional < (_ left : BoardText, _ right : BoardText) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -903,44 +911,40 @@ class TransientArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     let newArray : [BoardText] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = v.sorted { sortFunction ($0, $1) }
-          }else{
-            newArray = v
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    let newArray : [BoardText] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
+        self.mTransientKind = .single
+      case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
       }
-      self.mInternalArrayValue = newArray
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
     }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [BoardText] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -953,7 +957,7 @@ class TransientArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
 
   //····················································································································
 
-  override var propval : [BoardText] { self.computeModelArray() ; return self.mInternalArrayValue }
+  override var propval : [BoardText] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -963,7 +967,7 @@ class TransientArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
 //    TransientArrayOfSuperOf BoardText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_BoardText <SUPER : EBManagedObject> : ReadOnlyArrayOf_BoardText {
+final class TransientArrayOfSuperOf_BoardText <SUPER : EBManagedObject> : ReadOnlyArrayOf_BoardText {
 
   //····················································································································
   //   Data provider
@@ -971,7 +975,14 @@ class TransientArrayOfSuperOf_BoardText <SUPER : EBManagedObject> : ReadOnlyArra
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
-  private var mModelDidChange = true
+  private var mModelEvent = EBModelEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
+  }
 
   //····················································································································
 
@@ -986,46 +997,42 @@ class TransientArrayOfSuperOf_BoardText <SUPER : EBManagedObject> : ReadOnlyArra
   //····················································································································
 
   override func notifyModelDidChange () {
-     self.mModelDidChange = true
+    self.mModelEvent.postEvent ()
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
-  private func computeModelArray() {
-   if self.mModelDidChange {
-     self.mModelDidChange = false
-     var newModelArray : [SUPER] 
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.prop {
-        case .empty :
-          newModelArray = []
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = v
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = []
-          self.mTransientKind = .multiple
-        }
-      }else{
+  private final func computeModelArray () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
         newModelArray = []
         self.mTransientKind = .empty
+      case .single (let v) :
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
-      var newArray = [BoardText] ()
-      for superObject in newModelArray {
-        if let object = superObject as? BoardText {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
+    }else{
+      newModelArray = []
+      self.mTransientKind = .empty
     }
+    var newArray = [BoardText] ()
+    for superObject in newModelArray {
+      if let object = superObject as? BoardText {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [BoardText] > {
-    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1038,7 +1045,7 @@ class TransientArrayOfSuperOf_BoardText <SUPER : EBManagedObject> : ReadOnlyArra
 
   //····················································································································
 
-  override var propval : [BoardText] { self.computeModelArray () ; return self.mInternalArrayValue }
+  override var propval : [BoardText] { return self.mInternalArrayValue }
 
   //····················································································································
 
