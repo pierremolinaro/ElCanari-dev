@@ -23,7 +23,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
   //····················································································································
 
   override func metadataStatusForSaving () -> UInt8 {
-    return UInt8 (self.mMetadataStatus!.rawValue)
+    return UInt8 (self.mMetadataStatus?.rawValue ?? 0)
   }
 
   //····················································································································
