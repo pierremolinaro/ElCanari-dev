@@ -76,49 +76,59 @@ extension ProjectDocument {
 
   //····················································································································
 
-  internal func testAndUpdateDevice (_ inDeviceInProject : DeviceInProject,
-                                     from inDeviceRoot : DeviceRoot,
+  internal func testAndUpdateDevice (_ inCurrentDeviceInProject : DeviceInProject,
+                                     from inCandidateDeviceRoot : DeviceRoot,
                                      _ inVersion : Int,
                                      _ inData : Data) -> Bool { // Return true if new device is compatible
   //--- Compute current master pad set
     var currentMasterPadSet = Set <String> ()
-    for masterPad in inDeviceInProject.mPackages [0].mMasterPads {
+    for masterPad in inCurrentDeviceInProject.mPackages [0].mMasterPads {
       currentMasterPadSet.insert (masterPad.mName)
     }
   //--- Compute new master pad set
     var newMasterPadSet = Set <String> ()
-    for masterPad in inDeviceRoot.mPackages [0].mMasterPads {
+    for masterPad in inCandidateDeviceRoot.mPackages [0].mMasterPads {
       newMasterPadSet.insert (masterPad.mName)
     }
+  //--- Compute current symbol set
+    var currentSymbolDictionary = [String : String] () // Symbol name, symbol type
+    for symbol in inCurrentDeviceInProject.mSymbols {
+      currentSymbolDictionary [symbol.mSymbolInstanceName] = symbol.mSymbolType!.mSymbolTypeName
+    }
+  //--- Compute new symbol set
+    var newSymbolDictionary = [String : String] () // Symbol name, symbol type
+    for symbol in inCandidateDeviceRoot.mSymbolInstances {
+      newSymbolDictionary [symbol.mInstanceName] = symbol.symbolTypeName!
+    }
   //--- Perform update ?
-    let ok = currentMasterPadSet == newMasterPadSet
+    let ok = (currentMasterPadSet == newMasterPadSet) && (currentSymbolDictionary == newSymbolDictionary)
     if ok {
-      self.performUpdateDevice (inDeviceInProject, from: inDeviceRoot, inVersion, inData)
+      self.performUpdateDevice (inCurrentDeviceInProject, from: inCandidateDeviceRoot, inVersion, inData)
     }
     return ok
   }
 
   //····················································································································
 
-  internal func performUpdateDevice (_ inDeviceInProject : DeviceInProject,
-                                     from inDeviceRoot : DeviceRoot,
+  internal func performUpdateDevice (_ inCurrentDeviceInProject : DeviceInProject,
+                                     from inCandidateDeviceRoot : DeviceRoot,
                                      _ inVersion : Int,
                                      _ inData : Data) {
-    inDeviceInProject.mDeviceVersion = inVersion
-    inDeviceInProject.mDeviceFileData = inData
-    inDeviceInProject.mPrefix = inDeviceRoot.mPrefix
+    inCurrentDeviceInProject.mDeviceVersion = inVersion
+    inCurrentDeviceInProject.mDeviceFileData = inData
+    inCurrentDeviceInProject.mPrefix = inCandidateDeviceRoot.mPrefix
   //--- Remove current packages
-    let currentPackages = inDeviceInProject.mPackages
-    inDeviceInProject.mPackages = []
+    let currentPackages = inCurrentDeviceInProject.mPackages
+    inCurrentDeviceInProject.mPackages = []
     for p in currentPackages {
       p.removeRecursivelyAllRelationsShips ()
     }
   //--- Build package dictionary
     var packageDictionary = [String : DevicePackageInProject] ()
   //--- Append packages
-    for packageInDevice in inDeviceRoot.mPackages {
+    for packageInDevice in inCandidateDeviceRoot.mPackages {
       let packageInProject = DevicePackageInProject (self.ebUndoManager)
-      inDeviceInProject.mPackages.append (packageInProject)
+      inCurrentDeviceInProject.mPackages.append (packageInProject)
       packageInProject.mPackageName = packageInDevice.mName
       packageInProject.mStrokeBezierPath = packageInDevice.mStrokeBezierPath
       packageDictionary [packageInProject.mPackageName] = packageInProject
@@ -149,22 +159,22 @@ extension ProjectDocument {
       }
     }
   //--- For all components, update selected package
-    for component in inDeviceInProject.mComponents {
+    for component in inCurrentDeviceInProject.mComponents {
       if let newPackage = packageDictionary [component.mSelectedPackage!.mPackageName] {
         component.mSelectedPackage = newPackage
       }else{
-        component.mSelectedPackage = inDeviceInProject.mPackages [0]
+        component.mSelectedPackage = inCurrentDeviceInProject.mPackages [0]
       }
     }
   //--- Remove current symbols
-    let currentSymbols = inDeviceInProject.mSymbols
-    inDeviceInProject.mSymbols = []
+    let currentSymbols = inCurrentDeviceInProject.mSymbols
+    inCurrentDeviceInProject.mSymbols = []
     for s in currentSymbols {
       s.removeRecursivelyAllRelationsShips ()
     }
   //--- Append symbols
     var devicePinDictionary = [PinQualifiedNameStruct : DevicePinInProject] ()
-    for symbolTypeInDevice in inDeviceRoot.mSymbolTypes {
+    for symbolTypeInDevice in inCandidateDeviceRoot.mSymbolTypes {
       let symbolTypeInProject = DeviceSymbolTypeInProject (self.ebUndoManager)
       symbolTypeInProject.mFilledBezierPath = symbolTypeInDevice.mFilledBezierPath
       symbolTypeInProject.mStrokeBezierPath = symbolTypeInDevice.mStrokeBezierPath
@@ -173,7 +183,7 @@ extension ProjectDocument {
         let symbolInstanceInProject = DeviceSymbolInstanceInProject (self.ebUndoManager)
         symbolInstanceInProject.mSymbolInstanceName = symbolInstanceInDevice.mInstanceName
         symbolInstanceInProject.mSymbolType = symbolTypeInProject
-        inDeviceInProject.mSymbols.append (symbolInstanceInProject)
+        inCurrentDeviceInProject.mSymbols.append (symbolInstanceInProject)
         for pinInDevice in symbolTypeInDevice.mPinTypes {
           let pinInProject = DevicePinInProject (self.ebUndoManager)
 //          if pinInDevice.mName == "" {
@@ -204,8 +214,8 @@ extension ProjectDocument {
       }
     }
   //--- Append pin/pad assignments
-    inDeviceInProject.mPadAssignments = []
-    for pinPadAssignmentInDevice in inDeviceRoot.mPadProxies {
+    inCurrentDeviceInProject.mPadAssignments = []
+    for pinPadAssignmentInDevice in inCandidateDeviceRoot.mPadProxies {
       let assignment = DevicePadAssignmentInProject (self.ebUndoManager)
       let padName = pinPadAssignmentInDevice.mPadName
       assignment.mPadName = padName
@@ -214,7 +224,7 @@ extension ProjectDocument {
         let pinInProject = devicePinDictionary [qualifiedPinName]!
         assignment.mPin = pinInProject
       }
-      inDeviceInProject.mPadAssignments.append (assignment)
+      inCurrentDeviceInProject.mPadAssignments.append (assignment)
     }
   }
 

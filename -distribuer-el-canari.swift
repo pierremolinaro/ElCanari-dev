@@ -30,7 +30,10 @@ let BUILD_KIND = ProductKind.release
 
 let VERSION_CANARI = "1.0.18"
 let NOTES : [String] = []
-let BUGFIXES : [String] = ["\"Fit in Window\" zoom selection"]
+let BUGFIXES : [String] = [
+  "\"Fit in Window\" zoom selection",
+  "Device update in project now detects incompatible symbols"
+]
 let CHANGES : [String] = ["Speed up document opening and closing"]
 let NEWS : [String] = ["Comment in Schematic: added size and alignment"]
 
