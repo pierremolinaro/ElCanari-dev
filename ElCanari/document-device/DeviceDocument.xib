@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -87,13 +87,13 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="10" y="357" width="720" height="460"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="720" height="460"/>
             <view key="contentView" id="6">
                 <rect key="frame" x="0.0" y="0.0" width="720" height="460"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <customView id="1198">
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1198">
                         <rect key="frame" x="0.0" y="0.0" width="720" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </customView>
@@ -178,20 +178,20 @@
             <rect key="frame" x="0.0" y="0.0" width="697" height="426"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <splitView dividerStyle="paneSplitter" vertical="YES" id="1039">
+                <splitView fixedFrame="YES" dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1039">
                     <rect key="frame" x="0.0" y="20" width="677" height="356"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <customView id="1040">
+                        <customView fixedFrame="YES" id="1040">
                             <rect key="frame" x="0.0" y="0.0" width="260" height="356"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <imageView id="1043" customClass="DeviceDroppableImageView" customModule="ElCanari" customModuleProvider="target">
+                                <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1043" customClass="DeviceDroppableImageView" customModule="ElCanari" customModuleProvider="target">
                                     <rect key="frame" x="17" y="32" width="235" height="311"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" id="1523"/>
                                 </imageView>
-                                <button toolTip="Delete Image" verticalHuggingPriority="750" imageHugsTitle="YES" id="1041" customClass="EBButton">
+                                <button toolTip="Delete Image" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1041" customClass="EBButton">
                                     <rect key="frame" x="20" y="-1" width="28" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="-" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="1521">
@@ -199,7 +199,7 @@
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button toolTip="Paste Image from Pasteboard" verticalHuggingPriority="750" imageHugsTitle="YES" id="2106" customClass="EBButton">
+                                <button toolTip="Paste Image from Pasteboard" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2106" customClass="EBButton">
                                     <rect key="frame" x="56" y="-1" width="89" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="Paste Image" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="2107">
@@ -207,7 +207,7 @@
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button toolTip="Copy Image to Pasteboard" verticalHuggingPriority="750" imageHugsTitle="YES" id="2176" customClass="EBButton">
+                                <button toolTip="Copy Image to Pasteboard" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2176" customClass="EBButton">
                                     <rect key="frame" x="153" y="-1" width="89" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="Copy Image" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="2177">
@@ -217,11 +217,11 @@
                                 </button>
                             </subviews>
                         </customView>
-                        <customView id="1045">
+                        <customView fixedFrame="YES" id="1045">
                             <rect key="frame" x="270" y="0.0" width="407" height="356"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1047" customClass="EBButton">
+                                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1047" customClass="EBButton">
                                     <rect key="frame" x="52" y="-1" width="82" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="Show Doc" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1526">
@@ -229,14 +229,14 @@
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <scrollView horizontalLineScroll="19" horizontalPageScroll="0.0" verticalLineScroll="19" verticalPageScroll="0.0" usesPredominantAxisScrolling="NO" id="1048">
+                                <scrollView fixedFrame="YES" horizontalLineScroll="19" horizontalPageScroll="0.0" verticalLineScroll="19" verticalPageScroll="0.0" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1048">
                                     <rect key="frame" x="20" y="30" width="387" height="288"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <clipView key="contentView" id="1O2-0d-QnO">
+                                    <clipView key="contentView" ambiguous="YES" id="1O2-0d-QnO">
                                         <rect key="frame" x="1" y="0.0" width="370" height="272"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="zWp-7R-su4" viewBased="YES" id="1049" customClass="DeviceDocumentationTableView" customModule="ElCanari" customModuleProvider="target">
+                                            <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="zWp-7R-su4" viewBased="YES" id="1049" customClass="DeviceDocumentationTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="370" height="249"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -261,7 +261,7 @@
                                                                 <rect key="frame" x="1" y="1" width="85" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
-                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="LQy-wb-rPt" customClass="EBIntObserverField">
+                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQy-wb-rPt" customClass="EBIntObserverField">
                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="17"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="size..." id="fPc-Zt-AXc">
@@ -295,7 +295,7 @@
                                                                 <rect key="frame" x="89" y="1" width="279" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
-                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="9bu-Dk-vug" customClass="EBTextObserverField">
+                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9bu-Dk-vug" customClass="EBTextObserverField">
                                                                         <rect key="frame" x="0.0" y="0.0" width="279" height="17"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="4Sd-Je-giF">
@@ -329,7 +329,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </tableHeaderView>
                                 </scrollView>
-                                <textField verticalHuggingPriority="750" id="1053">
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1053">
                                     <rect key="frame" x="17" y="326" width="373" height="17"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Documentation in PDF:" id="1529">
@@ -338,7 +338,7 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1046" customClass="EBButton">
+                                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1046" customClass="EBButton">
                                     <rect key="frame" x="20" y="0.0" width="24" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="-" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1525">
@@ -346,7 +346,7 @@
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1051" customClass="EBButton">
+                                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1051" customClass="EBButton">
                                     <rect key="frame" x="142" y="0.0" width="82" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="Save As…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1527">
@@ -362,7 +362,7 @@
                         <real value="250"/>
                     </holdingPriorities>
                 </splitView>
-                <textField verticalHuggingPriority="750" id="1038" customClass="EBTextField">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1038" customClass="EBTextField">
                     <rect key="frame" x="20" y="384" width="657" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="the description…" drawsBackground="YES" id="1520">
@@ -372,12 +372,13 @@
                     </textFieldCell>
                 </textField>
             </subviews>
+            <point key="canvasLocation" x="122" y="154"/>
         </customView>
         <customView id="1055" userLabel="Page : Symbols" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button toolTip="Add a Symbol to Device" verticalHuggingPriority="750" imageHugsTitle="YES" id="1070" customClass="EBButton">
+                <button toolTip="Add a Symbol to Device" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1070" customClass="EBButton">
                     <rect key="frame" x="14" y="341" width="100" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="File Library…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1530">
@@ -385,14 +386,14 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" id="1068" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1068" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="252" y="-1" width="349" height="401"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" id="Ixa-Rs-kYV">
+                    <clipView key="contentView" ambiguous="YES" id="Ixa-Rs-kYV">
                         <rect key="frame" x="1" y="1" width="332" height="384"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView id="1069" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1069" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </customView>
@@ -408,7 +409,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <textField verticalHuggingPriority="750" id="1952">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1952">
                     <rect key="frame" x="12" y="366" width="71" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Add Symbol" id="1953">
@@ -417,7 +418,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="gtc-qu-hK2" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gtc-qu-hK2" customClass="EBSwitch">
                     <rect key="frame" x="11" y="292" width="110" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Horizontal Flip" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="pfg-Ij-hvB">
@@ -425,14 +426,14 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" id="Icd-Dy-9Bc">
+                <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icd-Dy-9Bc">
                     <rect key="frame" x="14" y="20" width="230" height="134"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
-                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="5OJ-Hr-ua2">
+                    <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="5OJ-Hr-ua2">
                         <rect key="frame" x="0.0" y="0.0" width="215" height="134"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" spellingCorrection="YES" id="PmD-YT-0cS" customClass="EBTextObserverView">
+                            <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" spellingCorrection="YES" id="PmD-YT-0cS" customClass="EBTextObserverView">
                                 <rect key="frame" x="0.0" y="0.0" width="215" height="134"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -442,12 +443,16 @@
                             </textView>
                         </subviews>
                     </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="FkV-Ak-3th">
+                        <rect key="frame" x="-100" y="-100" width="215" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="osS-oc-88I">
                         <rect key="frame" x="215" y="0.0" width="15" height="134"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <textField verticalHuggingPriority="750" id="WIH-Kr-CAO">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WIH-Kr-CAO">
                     <rect key="frame" x="12" y="315" width="25" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Flip" id="Y9r-Om-Oak">
@@ -456,7 +461,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="gxS-GS-l7o" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gxS-GS-l7o" customClass="EBSwitch">
                     <rect key="frame" x="131" y="292" width="110" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Vertical Flip" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="A2w-KV-74W">
@@ -464,7 +469,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <textField verticalHuggingPriority="750" id="Asb-LE-K1Q">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Asb-LE-K1Q">
                     <rect key="frame" x="12" y="217" width="81" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Symbol Name" id="MbO-tA-omh">
@@ -473,7 +478,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="tRe-Ta-RQL" customClass="EBTextField">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRe-Ta-RQL" customClass="EBTextField">
                     <rect key="frame" x="14" y="190" width="225" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="ZB6-o0-wmY">
@@ -482,7 +487,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="3jN-09-CoA">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3jN-09-CoA">
                     <rect key="frame" x="12" y="268" width="77" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Symbol Type" id="tBa-uc-KIb">
@@ -491,7 +496,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="Akw-oS-SaC">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Akw-oS-SaC">
                     <rect key="frame" x="12" y="162" width="85" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Error Message" id="LSY-bB-D5f">
@@ -500,7 +505,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wzz-dY-cEX" customClass="EBTextObserverField">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wzz-dY-cEX" customClass="EBTextObserverField">
                     <rect key="frame" x="12" y="246" width="229" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" selectable="YES" alignment="center" title="··· symbol type ···" id="NLL-P8-gY5">
@@ -509,7 +514,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="1955" customClass="AddSymbolInstancePullDownButton" customModule="ElCanari" customModuleProvider="target">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1955" customClass="AddSymbolInstancePullDownButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="124" y="341" width="120" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Imported Library" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" pullsDown="YES" selectedItem="1960" id="1956">
@@ -534,14 +539,14 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" id="1081" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1081" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="258" y="-1" width="343" height="402"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" id="IMs-PA-jTt">
+                    <clipView key="contentView" ambiguous="YES" id="IMs-PA-jTt">
                         <rect key="frame" x="1" y="1" width="326" height="385"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView id="1082" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1082" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </customView>
@@ -557,7 +562,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <button toolTip="Add a Package to Device" verticalHuggingPriority="750" imageHugsTitle="YES" id="1084" customClass="EBButton">
+                <button toolTip="Add a Package to Device" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1084" customClass="EBButton">
                     <rect key="frame" x="20" y="363" width="230" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Add Package from File Library…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1531">
@@ -565,7 +570,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="Ev9-QZ-LcM" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ev9-QZ-LcM" customClass="EBSwitch">
                     <rect key="frame" x="17" y="310" width="235" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Vertical Flip" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="4OD-VJ-CKy">
@@ -573,7 +578,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="zYp-cL-5jj" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zYp-cL-5jj" customClass="EBSwitch">
                     <rect key="frame" x="17" y="335" width="235" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Horizontal Flip" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="dIM-BY-koj">
@@ -581,12 +586,12 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell id="1sD-hv-ODc" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sD-hv-ODc" customClass="EBColorWell">
                     <rect key="frame" x="20" y="225" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button id="h7x-2V-t5V" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h7x-2V-t5V" customClass="EBSwitch">
                     <rect key="frame" x="65" y="226" width="187" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show Front Side Pads" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="x0t-cV-vjG">
@@ -594,17 +599,17 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell id="c4g-Jr-krY" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c4g-Jr-krY" customClass="EBColorWell">
                     <rect key="frame" x="20" y="198" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <colorWell id="YyN-tZ-4oZ" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YyN-tZ-4oZ" customClass="EBColorWell">
                     <rect key="frame" x="20" y="279" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button id="8jk-KC-1pv" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jk-KC-1pv" customClass="EBSwitch">
                     <rect key="frame" x="65" y="280" width="187" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show Packages" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="0Z1-ps-Zxz">
@@ -612,12 +617,12 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell id="M70-7R-iem" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M70-7R-iem" customClass="EBColorWell">
                     <rect key="frame" x="20" y="252" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button id="nOd-Kf-0lm" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOd-Kf-0lm" customClass="EBSwitch">
                     <rect key="frame" x="65" y="253" width="187" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show Pad Numbers" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="SaU-fk-PRa">
@@ -625,7 +630,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="895-zd-2Rh" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="895-zd-2Rh" customClass="EBSwitch">
                     <rect key="frame" x="65" y="199" width="187" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show Back Side Pads" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="zhU-Cd-7jb">
@@ -633,14 +638,14 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" id="VWY-YO-VmV">
+                <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWY-YO-VmV">
                     <rect key="frame" x="20" y="20" width="230" height="162"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
-                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="qYJ-4j-LDi">
+                    <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="qYJ-4j-LDi">
                         <rect key="frame" x="0.0" y="0.0" width="215" height="162"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="d26-at-nSF" customClass="EBTextObserverView">
+                            <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="d26-at-nSF" customClass="EBTextObserverView">
                                 <rect key="frame" x="0.0" y="0.0" width="216" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -651,6 +656,10 @@
                             </textView>
                         </subviews>
                     </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="HJ2-QZ-7VI">
+                        <rect key="frame" x="-100" y="-100" width="215" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="URW-Px-mQn">
                         <rect key="frame" x="215" y="0.0" width="15" height="162"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -663,20 +672,20 @@
             <rect key="frame" x="0.0" y="0.0" width="681" height="428"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <splitView dividerStyle="paneSplitter" vertical="YES" id="1092">
+                <splitView fixedFrame="YES" dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1092">
                     <rect key="frame" x="0.0" y="0.0" width="681" height="428"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <splitView dividerStyle="paneSplitter" vertical="YES" id="1105">
+                        <splitView fixedFrame="YES" dividerStyle="paneSplitter" vertical="YES" id="1105">
                             <rect key="frame" x="0.0" y="0.0" width="258" height="428"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <scrollView horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1110">
+                                <scrollView fixedFrame="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1110">
                                     <rect key="frame" x="0.0" y="0.0" width="98" height="428"/>
                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                    <clipView key="contentView" id="qBT-QX-e8k">
+                                    <clipView key="contentView" ambiguous="YES" id="qBT-QX-e8k">
                                         <rect key="frame" x="1" y="0.0" width="81" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="UnassignedPadsTableView" rowSizeStyle="automatic" headerView="1586" viewBased="YES" id="1111" customClass="UnconnectedPadsInDeviceTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="81" height="389"/>
@@ -728,12 +737,12 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </tableHeaderView>
                                 </scrollView>
-                                <scrollView horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1106">
+                                <scrollView fixedFrame="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1106">
                                     <rect key="frame" x="108" y="0.0" width="150" height="428"/>
                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                    <clipView key="contentView" id="KcB-BC-NNU">
+                                    <clipView key="contentView" ambiguous="YES" id="KcB-BC-NNU">
                                         <rect key="frame" x="1" y="0.0" width="133" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="unconnectedPinsTableView" rowSizeStyle="automatic" headerView="1583" viewBased="YES" id="1107" customClass="UnconnectedSymbolPinsInDeviceTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="133" height="389"/>
@@ -816,15 +825,15 @@
                                 <real value="250"/>
                             </holdingPriorities>
                         </splitView>
-                        <splitView dividerStyle="paneSplitter" vertical="YES" id="1093">
+                        <splitView fixedFrame="YES" dividerStyle="paneSplitter" vertical="YES" id="1093">
                             <rect key="frame" x="268" y="0.0" width="413" height="428"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <customView id="1099">
+                                <customView fixedFrame="YES" id="1099">
                                     <rect key="frame" x="0.0" y="0.0" width="132" height="428"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1100" customClass="EBButton">
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1100" customClass="EBButton">
                                             <rect key="frame" x="6" y="375" width="120" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="bind" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1532">
@@ -832,7 +841,7 @@
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
                                         </button>
-                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1102" customClass="EBButton">
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1102" customClass="EBButton">
                                             <rect key="frame" x="6" y="99" width="120" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="unbind_all" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1534">
@@ -840,7 +849,7 @@
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
                                         </button>
-                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1101" customClass="EBButton">
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1101" customClass="EBButton">
                                             <rect key="frame" x="7" y="332" width="118" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="nc" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1533">
@@ -848,7 +857,7 @@
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
                                         </button>
-                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1104" customClass="EBButton">
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1104" customClass="EBButton">
                                             <rect key="frame" x="4" y="197" width="122" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="unbind" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1535">
@@ -858,12 +867,12 @@
                                         </button>
                                     </subviews>
                                 </customView>
-                                <scrollView horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1094">
+                                <scrollView fixedFrame="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1094">
                                     <rect key="frame" x="142" y="0.0" width="271" height="428"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <clipView key="contentView" id="6o1-5h-Fzw">
+                                    <clipView key="contentView" ambiguous="YES" id="6o1-5h-Fzw">
                                         <rect key="frame" x="1" y="0.0" width="254" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="AssignedPadTableView" rowSizeStyle="automatic" headerView="1580" viewBased="YES" id="1095" customClass="AssignedPadProxysInDeviceTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="254.5" height="389"/>
@@ -888,7 +897,7 @@
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                         <prototypeCellViews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="3Gh-Fz-6Rr">
-                                                                <rect key="frame" x="1" y="1" width="117.5" height="17"/>
+                                                                <rect key="frame" x="1" y="1" width="118" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="Z6u-kX-PFD">
                                                                     <font key="font" metaFont="system"/>
@@ -913,7 +922,7 @@
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                         <prototypeCellViews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="jPA-mC-MCv">
-                                                                <rect key="frame" x="121.5" y="1" width="59.5" height="17"/>
+                                                                <rect key="frame" x="122" y="1" width="59" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="1Mk-q2-YMn">
                                                                     <font key="font" metaFont="system"/>
@@ -938,7 +947,7 @@
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                         <prototypeCellViews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="YKX-gq-3ZF">
-                                                                <rect key="frame" x="184" y="1" width="68.5" height="17"/>
+                                                                <rect key="frame" x="184" y="1" width="69" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="0OU-Mf-XgJ">
                                                                     <font key="font" metaFont="system"/>
@@ -977,7 +986,7 @@
                         <real value="250"/>
                     </holdingPriorities>
                 </splitView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="JKV-he-pIq" customClass="EBTextObserverField">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKV-he-pIq" customClass="EBTextObserverField">
                     <rect key="frame" x="24" y="205" width="632" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" alignment="center" title="Cannot perform assignments: there are several packages, and their pad names are not the same." id="rG6-Uk-KFz">
@@ -993,7 +1002,7 @@
             <rect key="frame" x="0.0" y="0.0" width="704" height="516"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="2116" customClass="EBButton">
+                <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2116" customClass="EBButton">
                     <rect key="frame" x="20" y="479" width="250" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Reset Symbols and Packages Version" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2119">
@@ -1001,38 +1010,38 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <splitView dividerStyle="paneSplitter" id="iGu-ZS-Jgl">
+                <splitView fixedFrame="YES" dividerStyle="paneSplitter" translatesAutoresizingMaskIntoConstraints="NO" id="iGu-ZS-Jgl">
                     <rect key="frame" x="20" y="20" width="659" height="452"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <customView id="3n1-SW-69y">
+                        <customView fixedFrame="YES" id="3n1-SW-69y">
                             <rect key="frame" x="0.0" y="0.0" width="659" height="220"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <box title="Imported Symbols" id="r6A-r4-Azd">
+                                <box fixedFrame="YES" title="Imported Symbols" translatesAutoresizingMaskIntoConstraints="NO" id="r6A-r4-Azd">
                                     <rect key="frame" x="-3" y="-2" width="665" height="222"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <view key="contentView" id="EvV-Ks-4Xm">
-                                        <rect key="frame" x="2" y="2" width="661" height="205"/>
+                                        <rect key="frame" x="3" y="3" width="659" height="204"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="1129" customClass="EBButton">
-                                                <rect key="frame" x="541" y="140" width="100" height="19"/>
+                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1129" customClass="EBButton">
+                                                <rect key="frame" x="539" y="139" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Update" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="1538">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
-                                            <scrollView horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1131">
-                                                <rect key="frame" x="18" y="20" width="509" height="165"/>
+                                            <scrollView fixedFrame="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1131">
+                                                <rect key="frame" x="18" y="20" width="507" height="164"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <clipView key="contentView" id="U38-Nl-hUZ">
-                                                    <rect key="frame" x="1" y="0.0" width="496" height="153"/>
+                                                <clipView key="contentView" ambiguous="YES" id="U38-Nl-hUZ">
+                                                    <rect key="frame" x="1" y="0.0" width="494" height="152"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="DeviceSymbolTableView" rowSizeStyle="automatic" headerView="1589" viewBased="YES" id="1132" customClass="EBTableView" customModule="ElCanari" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="496" height="130"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="494" height="129"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1056,7 +1065,7 @@
                                                                             <rect key="frame" x="1" y="1" width="71" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Zo3-aw-NB5" customClass="EBTextObserverField">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zo3-aw-NB5" customClass="EBTextObserverField">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="71" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="version" id="fmc-uH-l4M">
@@ -1090,7 +1099,7 @@
                                                                             <rect key="frame" x="75" y="1" width="68" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="2pk-yk-9Tu" customClass="EBIntObserverField">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2pk-yk-9Tu" customClass="EBIntObserverField">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="68" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="instances" id="HPb-I9-U3p">
@@ -1124,7 +1133,7 @@
                                                                             <rect key="frame" x="146" y="1" width="225" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="aDb-7M-9Yo" customClass="EBTextObserverField">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aDb-7M-9Yo" customClass="EBTextObserverField">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="225" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="B9a-bI-pNE">
@@ -1141,7 +1150,7 @@
                                                                         </tableCellView>
                                                                     </prototypeCellViews>
                                                                 </tableColumn>
-                                                                <tableColumn identifier="size" editable="NO" width="120" minWidth="10" maxWidth="3.4028234663852886e+38" id="XSm-2M-oUX">
+                                                                <tableColumn identifier="size" editable="NO" width="118" minWidth="10" maxWidth="3.4028234663852886e+38" id="XSm-2M-oUX">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Size">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1155,11 +1164,11 @@
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                     <prototypeCellViews>
                                                                         <tableCellView id="L4O-dR-yEe" customClass="EBTextObserverField_TableViewCell">
-                                                                            <rect key="frame" x="374" y="1" width="120" height="17"/>
+                                                                            <rect key="frame" x="374" y="1" width="118" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="55b-s0-K1Q" customClass="EBTextObserverField">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="17"/>
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55b-s0-K1Q" customClass="EBTextObserverField">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="118" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="UXU-6z-Glt">
                                                                                         <font key="font" metaFont="system"/>
@@ -1180,36 +1189,36 @@
                                                     </subviews>
                                                 </clipView>
                                                 <scroller key="horizontalScroller" verticalHuggingPriority="750" controlSize="small" horizontal="YES" id="1588">
-                                                    <rect key="frame" x="1" y="153" width="496" height="11"/>
+                                                    <rect key="frame" x="1" y="152" width="494" height="11"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" verticalHuggingPriority="750" controlSize="small" horizontal="NO" id="1587">
-                                                    <rect key="frame" x="497" y="23" width="11" height="130"/>
+                                                    <rect key="frame" x="495" y="23" width="11" height="129"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <tableHeaderView key="headerView" id="1589">
-                                                    <rect key="frame" x="0.0" y="0.0" width="496" height="23"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="494" height="23"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableHeaderView>
                                             </scrollView>
-                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="1128" customClass="EBButton">
-                                                <rect key="frame" x="541" y="166" width="100" height="19"/>
+                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1128" customClass="EBButton">
+                                                <rect key="frame" x="539" y="165" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Reset Version" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="1537">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
-                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="2200" customClass="EBButton">
-                                                <rect key="frame" x="541" y="101" width="100" height="19"/>
+                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2200" customClass="EBButton">
+                                                <rect key="frame" x="539" y="100" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Export…" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="2201">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
-                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="1136" customClass="EBButton">
-                                                <rect key="frame" x="541" y="75" width="100" height="19"/>
+                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1136" customClass="EBButton">
+                                                <rect key="frame" x="539" y="74" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Edit" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" inset="2" id="1540">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1221,26 +1230,26 @@
                                 </box>
                             </subviews>
                         </customView>
-                        <customView id="C70-0W-wWL">
+                        <customView fixedFrame="YES" id="C70-0W-wWL">
                             <rect key="frame" x="0.0" y="230" width="659" height="222"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <box title="Imported Packages" id="3jd-7G-tf1">
+                                <box fixedFrame="YES" title="Imported Packages" translatesAutoresizingMaskIntoConstraints="NO" id="3jd-7G-tf1">
                                     <rect key="frame" x="-3" y="-1" width="665" height="223"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <view key="contentView" id="s1e-h0-A7b">
-                                        <rect key="frame" x="2" y="2" width="661" height="206"/>
+                                        <rect key="frame" x="3" y="3" width="659" height="205"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <scrollView horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1604">
-                                                <rect key="frame" x="19" y="20" width="509" height="166"/>
+                                            <scrollView fixedFrame="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1604">
+                                                <rect key="frame" x="19" y="20" width="507" height="165"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <clipView key="contentView" id="mSf-qk-Njd">
-                                                    <rect key="frame" x="1" y="0.0" width="496" height="154"/>
+                                                <clipView key="contentView" ambiguous="YES" id="mSf-qk-Njd">
+                                                    <rect key="frame" x="1" y="0.0" width="494" height="153"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" autosaveName="DevicePackageTableView" rowSizeStyle="automatic" headerView="1613" viewBased="YES" id="1616" customClass="EBTableView" customModule="ElCanari" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="496" height="131"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="494" height="130"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1264,7 +1273,7 @@
                                                                             <rect key="frame" x="1" y="1" width="73" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="lZF-ot-qsm" customClass="EBTextObserverField">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZF-ot-qsm" customClass="EBTextObserverField">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="73" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="version" id="zSg-jK-VDE">
@@ -1298,7 +1307,7 @@
                                                                             <rect key="frame" x="77" y="1" width="300" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="fBL-VG-mXI" customClass="EBTextObserverField">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBL-VG-mXI" customClass="EBTextObserverField">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="iks-n7-Z89">
@@ -1315,7 +1324,7 @@
                                                                         </tableCellView>
                                                                     </prototypeCellViews>
                                                                 </tableColumn>
-                                                                <tableColumn identifier="size" editable="NO" width="114" minWidth="10" maxWidth="3.4028234663852886e+38" id="7a5-hm-dxu">
+                                                                <tableColumn identifier="size" editable="NO" width="112" minWidth="10" maxWidth="3.4028234663852886e+38" id="7a5-hm-dxu">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Size">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1329,11 +1338,11 @@
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                     <prototypeCellViews>
                                                                         <tableCellView id="gJ6-EK-Pce" customClass="EBTextObserverField_TableViewCell">
-                                                                            <rect key="frame" x="380" y="1" width="114" height="17"/>
+                                                                            <rect key="frame" x="380" y="1" width="112" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="wx7-5b-HdK" customClass="EBTextObserverField">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="114" height="17"/>
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wx7-5b-HdK" customClass="EBTextObserverField">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="112" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="cG6-jd-oiy">
                                                                                         <font key="font" metaFont="system"/>
@@ -1354,44 +1363,44 @@
                                                     </subviews>
                                                 </clipView>
                                                 <scroller key="horizontalScroller" verticalHuggingPriority="750" controlSize="small" horizontal="YES" id="1614">
-                                                    <rect key="frame" x="1" y="154" width="496" height="11"/>
+                                                    <rect key="frame" x="1" y="153" width="494" height="11"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" verticalHuggingPriority="750" controlSize="small" horizontal="NO" id="1615">
-                                                    <rect key="frame" x="497" y="23" width="11" height="131"/>
+                                                    <rect key="frame" x="495" y="23" width="11" height="130"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <tableHeaderView key="headerView" id="1613">
-                                                    <rect key="frame" x="0.0" y="0.0" width="496" height="23"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="494" height="23"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableHeaderView>
                                             </scrollView>
-                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="1606" customClass="EBButton">
-                                                <rect key="frame" x="541" y="167" width="100" height="19"/>
+                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1606" customClass="EBButton">
+                                                <rect key="frame" x="539" y="166" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Reset Version" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="1611">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
-                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="1607" customClass="EBButton">
-                                                <rect key="frame" x="541" y="141" width="100" height="19"/>
+                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1607" customClass="EBButton">
+                                                <rect key="frame" x="539" y="140" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Update" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="1610">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
-                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="1608" customClass="EBButton">
-                                                <rect key="frame" x="541" y="96" width="100" height="19"/>
+                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1608" customClass="EBButton">
+                                                <rect key="frame" x="539" y="95" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Edit" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="1609">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
-                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="2195" customClass="EBButton">
-                                                <rect key="frame" x="541" y="70" width="100" height="19"/>
+                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2195" customClass="EBButton">
+                                                <rect key="frame" x="539" y="69" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Export…" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="2196">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1409,7 +1418,7 @@
                         <real value="250"/>
                     </holdingPriorities>
                 </splitView>
-                <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="2117" customClass="EBButton">
+                <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2117" customClass="EBButton">
                     <rect key="frame" x="278" y="479" width="250" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Update Symbols and Packages…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2118">
@@ -1424,7 +1433,7 @@
             <rect key="frame" x="0.0" y="0.0" width="688" height="408"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button toolTip="Resets version to 0." verticalHuggingPriority="750" imageHugsTitle="YES" id="1189" customClass="EBButton">
+                <button toolTip="Resets version to 0." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1189" customClass="EBButton">
                     <rect key="frame" x="499" y="371" width="169" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Reset Version and Signature" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1553">
@@ -1432,7 +1441,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <textField verticalHuggingPriority="750" id="1171" customClass="EBTextField">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1171" customClass="EBTextField">
                     <rect key="frame" x="103" y="369" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="…" drawsBackground="YES" id="1547">
@@ -1441,7 +1450,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="1170">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1170">
                     <rect key="frame" x="17" y="371" width="80" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Device Prefix" id="1546">
@@ -1450,14 +1459,14 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="1179">
+                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1179">
                     <rect key="frame" x="103" y="20" width="565" height="235"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" id="IrZ-A4-tug">
+                    <clipView key="contentView" ambiguous="YES" id="IrZ-A4-tug">
                         <rect key="frame" x="1" y="1" width="548" height="233"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1180" customClass="EBTextView">
+                            <textView ambiguous="YES" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1180" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="548" height="233"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1478,14 +1487,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="1167">
+                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1167">
                     <rect key="frame" x="103" y="263" width="565" height="95"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <clipView key="contentView" id="cxS-7T-S4H">
+                    <clipView key="contentView" ambiguous="YES" id="cxS-7T-S4H">
                         <rect key="frame" x="1" y="1" width="548" height="93"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1168" customClass="EBTextObserverView">
+                            <textView ambiguous="YES" editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1168" customClass="EBTextObserverView">
                                 <rect key="frame" x="0.0" y="0.0" width="548" height="93"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1506,7 +1515,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <textField verticalHuggingPriority="750" id="2112">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2112">
                     <rect key="frame" x="17" y="341" width="80" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Status" id="2113">
@@ -1515,7 +1524,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="2179">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2179">
                     <rect key="frame" x="170" y="371" width="336" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="This fields only accepts lowercase and uppercase ASCII letters." id="2180">
@@ -1524,7 +1533,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="2110">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2110">
                     <rect key="frame" x="17" y="238" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Comment" id="2111">
@@ -1534,6 +1543,7 @@
                     </textFieldCell>
                 </textField>
             </subviews>
+            <point key="canvasLocation" x="246" y="-328"/>
         </customView>
     </objects>
     <resources>

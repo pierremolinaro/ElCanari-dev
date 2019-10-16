@@ -42,9 +42,9 @@ extension ProjectDocument {
            let version = metadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int,
            let deviceRoot = rootObject as? DeviceRoot {
           if deviceInProject.mDeviceVersion < version {
-            let ok = self.testAndUpdateDevice (deviceInProject, from: deviceRoot, version, data)
-            if !ok {
-              ioMessages.append ("Cannot update '\(deviceInProject.mDeviceName)': new device is incompatible.")
+            let errorMessage = self.testAndUpdateDevice (deviceInProject, from: deviceRoot, version, data)
+            if errorMessage != "" {
+              ioMessages.append ("Cannot update '\(deviceInProject.mDeviceName)'; new device is incompatible: \(errorMessage)\n")
             }
           }
           deviceRoot.removeRecursivelyAllRelationsShips ()
@@ -79,7 +79,61 @@ extension ProjectDocument {
   internal func testAndUpdateDevice (_ inCurrentDeviceInProject : DeviceInProject,
                                      from inCandidateDeviceRoot : DeviceRoot,
                                      _ inVersion : Int,
-                                     _ inData : Data) -> Bool { // Return true if new device is compatible
+                                     _ inData : Data) -> String { // Return "" if new device is compatible
+   var errorMessage = self.checkCandidateDevicePads (inCurrentDeviceInProject, inCandidateDeviceRoot)
+   errorMessage += self.checkCandidateDeviceSymbolInstances (inCurrentDeviceInProject, inCandidateDeviceRoot)
+   errorMessage += self.checkCandidateDeviceSymbolTypes (inCurrentDeviceInProject, inCandidateDeviceRoot)
+   if errorMessage == "" {
+      self.performUpdateDevice (inCurrentDeviceInProject, from: inCandidateDeviceRoot, inVersion, inData)
+    }
+    return errorMessage
+  }
+
+  //····················································································································
+
+  private func checkCandidateDeviceSymbolInstances (_ inCurrentDeviceInProject : DeviceInProject,
+                                                    _ inCandidateDeviceRoot : DeviceRoot) -> String {
+    var result = ""
+  //--- Compute current symbol instance set
+    var currentSymbolInstanceDictionary = [String : String] () // Symbol name, symbol type
+    for symbol in inCurrentDeviceInProject.mSymbols {
+      currentSymbolInstanceDictionary [symbol.mSymbolInstanceName] = symbol.mSymbolType!.mSymbolTypeName
+    }
+  //--- Compute new symbol instance set
+    var candidateSymbolInstanceDictionary = [String : String] () // Symbol name, symbol type
+    for symbol in inCandidateDeviceRoot.mSymbolInstances {
+      candidateSymbolInstanceDictionary [symbol.mInstanceName] = symbol.symbolTypeName!
+    }
+  //---
+    let currentSymbolSet = Set (currentSymbolInstanceDictionary.keys)
+    let candidateSymbolSet = Set (candidateSymbolInstanceDictionary.keys)
+    let missingSymbols = currentSymbolSet.subtracting (candidateSymbolSet)
+    let unknownSymbols = candidateSymbolSet.subtracting (currentSymbolSet)
+    for p in missingSymbols {
+      result += "\n  - the candidate device has no '\(p)' symbol"
+    }
+    for p in unknownSymbols {
+      result += "\n  - the candidate device has unknown '\(p)' symbol"
+    }
+    if result == "" {
+      for symbolInstanceName in currentSymbolSet {
+        let currentSymbolTypeName = currentSymbolInstanceDictionary [symbolInstanceName]!
+        let candidateSymbolTypeName = candidateSymbolInstanceDictionary [symbolInstanceName]!
+        if currentSymbolTypeName != candidateSymbolTypeName {
+          result += "\n  - the '\(symbolInstanceName)' symbol has currently '\(currentSymbolTypeName) type, and \(candidateSymbolTypeName) type in candidate device"
+        }
+      }
+
+    }
+  //---
+    return result
+  }
+
+  //····················································································································
+
+  private func checkCandidateDevicePads (_ inCurrentDeviceInProject : DeviceInProject,
+                                         _ inCandidateDeviceRoot : DeviceRoot) -> String {
+    var result = ""
   //--- Compute current master pad set
     var currentMasterPadSet = Set <String> ()
     for masterPad in inCurrentDeviceInProject.mPackages [0].mMasterPads {
@@ -90,22 +144,72 @@ extension ProjectDocument {
     for masterPad in inCandidateDeviceRoot.mPackages [0].mMasterPads {
       newMasterPadSet.insert (masterPad.mName)
     }
-  //--- Compute current symbol set
-    var currentSymbolDictionary = [String : String] () // Symbol name, symbol type
-    for symbol in inCurrentDeviceInProject.mSymbols {
-      currentSymbolDictionary [symbol.mSymbolInstanceName] = symbol.mSymbolType!.mSymbolTypeName
+  //---
+    let missingPads = currentMasterPadSet.subtracting (newMasterPadSet)
+    let unknownPads = newMasterPadSet.subtracting (currentMasterPadSet)
+    for p in missingPads {
+      result += "\n  - the candidate device has no '\(p)' pad"
     }
-  //--- Compute new symbol set
-    var newSymbolDictionary = [String : String] () // Symbol name, symbol type
-    for symbol in inCandidateDeviceRoot.mSymbolInstances {
-      newSymbolDictionary [symbol.mInstanceName] = symbol.symbolTypeName!
+    for p in unknownPads {
+      result += "\n  - the candidate device has unknown '\(p)' pad"
     }
-  //--- Perform update ?
-    let ok = (currentMasterPadSet == newMasterPadSet) && (currentSymbolDictionary == newSymbolDictionary)
-    if ok {
-      self.performUpdateDevice (inCurrentDeviceInProject, from: inCandidateDeviceRoot, inVersion, inData)
+  //---
+    return result
+  }
+
+  //····················································································································
+
+  private func checkCandidateDeviceSymbolTypes (_ inCurrentDeviceInProject : DeviceInProject,
+                                                _ inCandidateDeviceRoot : DeviceRoot) -> String {
+    var result = ""
+  //--- Compute current symbol type dictionary
+    var currentSymbolTypeDictionary = [String : Set <String>] () // Symbol type name, set of pin names
+    for padAssignment in inCurrentDeviceInProject.mPadAssignments {
+      if let pin = padAssignment.mPin {
+        let pinName = pin.mPinName
+        let symbolTypeName = pin.mSymbolTypeName
+        var pinNameSet = currentSymbolTypeDictionary [symbolTypeName] ?? Set ()
+        pinNameSet.insert (pinName)
+        currentSymbolTypeDictionary [symbolTypeName] = pinNameSet
+      }
     }
-    return ok
+  //--- Compute candidate symbol type dictionary
+    var candidateSymbolTypeDictionary = [String : Set <String>] () // Symbol type name, set of pin names
+    for symbolType in inCandidateDeviceRoot.mSymbolTypes {
+      let symbolTypeName = symbolType.mTypeName
+      var pinNameSet = Set <String> ()
+      for pin in symbolType.mPinTypes {
+        pinNameSet.insert (pin.mName)
+      }
+      candidateSymbolTypeDictionary [symbolTypeName] = pinNameSet
+    }
+  //---
+    let currentSymbolTypeSet = Set (currentSymbolTypeDictionary.keys)
+    let candidateSymbolTypeSet = Set (candidateSymbolTypeDictionary.keys)
+    let missingSymbols = currentSymbolTypeSet.subtracting (candidateSymbolTypeSet)
+    let unknownSymbols = candidateSymbolTypeSet.subtracting (currentSymbolTypeSet)
+    for p in missingSymbols {
+      result += "\n  - the candidate device has no '\(p)' symbol type"
+    }
+    for p in unknownSymbols {
+      result += "\n  - the candidate device has unknown '\(p)' symbol type"
+    }
+    if result == "" {
+      for symbolTypeName in currentSymbolTypeSet {
+        let currentPinSet = currentSymbolTypeDictionary [symbolTypeName]!
+        let candidatePinSet = candidateSymbolTypeDictionary [symbolTypeName]!
+        let missingPins = currentPinSet.subtracting (candidatePinSet)
+        let unknownPins = candidatePinSet.subtracting (currentPinSet)
+        for p in missingPins {
+          result += "\n  - the '\(symbolTypeName)' symbol type of the candidate device has no '\(p)' pin"
+        }
+        for p in unknownPins {
+          result += "\n  - the '\(symbolTypeName)' symbol type of the candidate device has a new '\(p)' pin"
+        }
+      }
+    }
+  //---
+    return result
   }
 
   //····················································································································
@@ -186,18 +290,9 @@ extension ProjectDocument {
         inCurrentDeviceInProject.mSymbols.append (symbolInstanceInProject)
         for pinInDevice in symbolTypeInDevice.mPinTypes {
           let pinInProject = DevicePinInProject (self.ebUndoManager)
-//          if pinInDevice.mName == "" {
-//            Swift.print ("ERROR pinInDevice.mName")
-//          }
           pinInProject.mPinName = pinInDevice.mName
           pinInProject.mSymbolInstanceName = symbolInstanceInDevice.mInstanceName
-//          if symbolInstanceInDevice.mInstanceName == "" {
-//            Swift.print ("ERROR symbolInstanceInDevice.mInstanceName")
-//          }
           pinInProject.mSymbolTypeName = symbolTypeInProject.mSymbolTypeName
-//          if pinInProject.mSymbolTypeName == "" {
-//            Swift.print ("ERROR pinInProject.mSymbolTypeName")
-//          }
           pinInProject.mNameHorizontalAlignment = pinInDevice.mNameHorizontalAlignment
           pinInProject.mNumberHorizontalAlignment = pinInDevice.mNumberHorizontalAlignment
           pinInProject.mPinNameIsDisplayedInSchematic = pinInDevice.mPinNameIsDisplayedInSchematics
@@ -227,9 +322,6 @@ extension ProjectDocument {
       inCurrentDeviceInProject.mPadAssignments.append (assignment)
     }
   }
-
-  //····················································································································
-
 
   //····················································································································
 
