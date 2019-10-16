@@ -2746,7 +2746,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="157" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="158.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2760,11 +2760,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="157" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="158.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="157" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="158.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -2780,7 +2780,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="170.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="169" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2794,11 +2794,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="628.5" y="1" width="170.5" height="17"/>
+                                                <rect key="frame" x="630" y="1" width="169" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="170.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="169" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -3823,11 +3823,11 @@ Gw
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3012" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="251" y="-1" width="590" height="613"/>
+                    <rect key="frame" x="251" y="-1" width="590" height="574"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="TJO-lq-ns5">
-                        <rect key="frame" x="1" y="1" width="573" height="596"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="1" y="1" width="573" height="557"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3013" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="347" height="262"/>
@@ -3837,65 +3837,28 @@ Gw
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="14843">
-                        <rect key="frame" x="1" y="597" width="573" height="15"/>
+                        <rect key="frame" x="1" y="558" width="573" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="14842">
-                        <rect key="frame" x="574" y="1" width="15" height="596"/>
+                        <rect key="frame" x="574" y="1" width="15" height="557"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15192">
-                    <rect key="frame" x="0.0" y="0.0" width="251" height="547"/>
+                    <rect key="frame" x="0.0" y="0.0" width="251" height="573"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                 </customView>
-                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15593" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="-1" y="549" width="253" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <segmentedCell key="cell" state="on" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="15594">
-                        <font key="font" metaFont="cellTitle"/>
-                        <segments>
-                            <segment toolTip="Selected Object Inspector" image="editorInspector" width="50"/>
-                            <segment label="🄰" toolTip="Insert Symbol Inspector" width="49" tag="1"/>
-                            <segment label="+ ?" toolTip="Zoom and Grid Inspector" width="49" selected="YES"/>
-                            <segment toolTip="Sheet Inspector" image="magnifyingGlass" width="49"/>
-                            <segment image="sheet" width="49"/>
-                        </segments>
-                    </segmentedCell>
-                </segmentedControl>
                 <button toolTip="Add Segment" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ISn-xc-DLS" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="68" y="576" width="28" height="28"/>
+                    <rect key="frame" x="307" y="577" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" title="C" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="7UM-G5-8I7">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system" size="22"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Wire; hint: option click starts a new wire." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15596" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="95" y="576" width="28" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="track-in-board" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="15597">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="miniSystem"/>
-                    </buttonCell>
-                </button>
-                <popUpButton toolTip="Default net Class when a Wire is added" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QjI-Bc-9oe" customClass="CanariDefaultNetClassPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="131" y="581" width="112" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="… default net class…" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" preferredEdge="maxX" selectedItem="SO7-Uk-XWU" id="jxz-OA-omA">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="aJY-f8-ZgL">
-                            <items>
-                                <menuItem title="… default net class…" state="on" id="SO7-Uk-XWU">
-                                    <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
-                                </menuItem>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15127">
-                    <rect key="frame" x="20" y="581" width="40" height="17"/>
+                    <rect key="frame" x="259" y="581" width="40" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" imagePosition="only" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" preferredEdge="maxX" selectedItem="15131" id="15128">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -3919,6 +3882,52 @@ Gw
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KWF-Cj-MC5">
+                    <rect key="frame" x="379" y="582" width="82" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="With Net Class" id="42h-hU-ukL">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton toolTip="Default net Class when a Wire is added" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QjI-Bc-9oe" customClass="CanariDefaultNetClassPopUpButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="467" y="582" width="104" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="… default net class…" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" preferredEdge="maxX" selectedItem="SO7-Uk-XWU" id="jxz-OA-omA">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="aJY-f8-ZgL">
+                            <items>
+                                <menuItem title="… default net class…" state="on" id="SO7-Uk-XWU">
+                                    <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <button toolTip="Add Wire; hint: option click starts a new wire." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15596" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="345" y="576" width="28" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="track-in-board" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="15597">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="miniSystem"/>
+                    </buttonCell>
+                </button>
+                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15593" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="8" y="586" width="235" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" state="on" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="15594">
+                        <font key="font" metaFont="cellTitle"/>
+                        <segments>
+                            <segment toolTip="Selected Object Inspector" image="editorInspector" width="47"/>
+                            <segment label="🄰" toolTip="Insert Symbol Inspector" width="45" tag="1"/>
+                            <segment label="+ ?" toolTip="Zoom and Grid Inspector" width="45" selected="YES"/>
+                            <segment toolTip="Sheet Inspector" image="magnifyingGlass" width="45"/>
+                            <segment image="sheet" width="45"/>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
             </subviews>
             <point key="canvasLocation" x="-856" y="-418"/>
         </customView>

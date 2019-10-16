@@ -127,6 +127,22 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
 
   private final func performModelAdjustements () {
     self.ebUndoManager.disableUndoRegistration ()
+  //--- Remove components
+    let componentSet = Set (self.rootObject.mComponents)
+    for font in self.rootObject.mFonts {
+      for component in font.mComponentNames {
+        if !componentSet.contains (component) {
+          component.mNameFont = nil
+          component.mValueFont = nil
+        }
+      }
+      for component in font.mComponentValues {
+        if !componentSet.contains (component) {
+          component.mNameFont = nil
+          component.mValueFont = nil
+        }
+      }
+    }
   //--- Remove tracks with missing connectors
     var trackWithMissingConnectorCount = 0
     for object in self.rootObject.mBoardObjects {
@@ -161,8 +177,6 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     if self.rootObject.mDefaultNetClassName == "" {
       self.rootObject.mDefaultNetClassName = self.rootObject.mNetClasses [0].mNetClassName
     }
-    // self.updateBoardConnectors ()
-  //  self.updateSchematicsPointsAndNets ()
     self.ebUndoManager.enableUndoRegistration ()
   }
 

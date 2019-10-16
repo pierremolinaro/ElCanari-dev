@@ -15,17 +15,13 @@ extension ProjectDocument {
         component.operationBeforeRemoving ()
         component.mSelectedPackage = nil
         component.mRoot = nil
+        component.mValueFont = nil
+        component.mNameFont = nil
       //--- Remove from component list
         self.rootObject.mComponents.remove (at: idx)
       //--- Adapt remaining component names
-    //    let prefix = component.mDevice!.mPrefix
         component.mDevice = nil
         self.performNormalizeComponentNames ()
-//        for remainingComponent in self.rootObject.mComponents {
-//          if (prefix == remainingComponent.mDevice!.mPrefix) && (remainingComponent.mNameIndex > index) {
-//            remainingComponent.mNameIndex -= 1
-//          }
-//        }
       }
     }
   }
