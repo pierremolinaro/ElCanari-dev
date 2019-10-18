@@ -83,7 +83,6 @@ extension CustomizedProjectDocument {
      let selectedLabels = self.schematicLabelSelectionController.selectedArray
      if selectedLabels.count == 1, let net = selectedLabels [0].mPoint?.mNet {
        self.dialogForRenaming (net: net)
-       self.updateSchematicsPointsAndNets ()
      }
   }
 
@@ -110,7 +109,6 @@ extension CustomizedProjectDocument {
       let label = selectedLabels [0]
       let point = label.mPoint!
       self.dialogForMergingSubnetFrom (point: point)
-      self.updateSchematicsPointsAndNets ()
     }
   }
 
@@ -289,6 +287,7 @@ extension CustomizedProjectDocument {
           if let net = popup.selectedItem?.representedObject as? NetInProject {
             inPoint.mNet = net
             inPoint.propagateNetToAccessiblePointsThroughtWires ()
+            self.updateSchematicsPointsAndNets ()
           }
         }
       }

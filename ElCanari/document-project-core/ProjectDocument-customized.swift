@@ -177,6 +177,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     if self.rootObject.mDefaultNetClassName == "" {
       self.rootObject.mDefaultNetClassName = self.rootObject.mNetClasses [0].mNetClassName
     }
+    self.removeUnusedNets ()
     self.ebUndoManager.enableUndoRegistration ()
   }
 

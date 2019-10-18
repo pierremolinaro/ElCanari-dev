@@ -1636,6 +1636,8 @@
 		CFB1DB492282D8DC005F9811 /* view-CanariNetInfoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1DB472282D8DC005F9811 /* view-CanariNetInfoTableView.swift */; };
 		CFB1DB5A22830B16005F9811 /* selectionController-ProjectDocument-schematicLabelSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1DB5922830B16005F9811 /* selectionController-ProjectDocument-schematicLabelSelectionController.swift */; };
 		CFB1DB5B22830B16005F9811 /* selectionController-ProjectDocument-schematicLabelSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1DB5922830B16005F9811 /* selectionController-ProjectDocument-schematicLabelSelectionController.swift */; };
+		CFB1FDAB2359A5AF00135A00 /* extension-NSView-layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1FDAA2359A5AF00135A00 /* extension-NSView-layout.swift */; };
+		CFB1FDAC2359A5AF00135A00 /* extension-NSView-layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1FDAA2359A5AF00135A00 /* extension-NSView-layout.swift */; };
 		CFB29B1122999EB300E35790 /* extension-SheetInProject-disconnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB29B1022999EB300E35790 /* extension-SheetInProject-disconnect.swift */; };
 		CFB29B1222999EB300E35790 /* extension-SheetInProject-disconnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB29B1022999EB300E35790 /* extension-SheetInProject-disconnect.swift */; };
 		CFB4731B2274E36900694FCC /* CanariEnumSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB4731A2274E36900694FCC /* CanariEnumSegmentedControl.swift */; };
@@ -2699,7 +2701,6 @@
 		CF3CF2072232A39800B6D0AC /* action-DeviceDocument-updateSymbolsAndPackagesAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-DeviceDocument-updateSymbolsAndPackagesAction.swift"; sourceTree = "<group>"; };
 		CF3D744F21A8026D004F6C43 /* enum-HorizontalAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-HorizontalAlignment.swift"; sourceTree = "<group>"; };
 		CF3D745221A802F9004F6C43 /* extension-HorizontalAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-HorizontalAlignment.swift"; sourceTree = "<group>"; };
-		CF3DB11F1B4EF22300DB418E /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = ../../../../usr/lib/libbz2.1.0.dylib; sourceTree = "<group>"; };
 		CF3DEFB81BFF92B5002ECBDE /* action-FontDocument-addSegmentAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-FontDocument-addSegmentAction.swift"; sourceTree = "<group>"; };
 		CF3E2DEF20EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerDocument-importArtworkButtonTitle.swift"; sourceTree = "<group>"; };
 		CF3E658921BECB7A0041FA2A /* EBGraphicView-issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-issue.swift"; sourceTree = "<group>"; };
@@ -3263,6 +3264,7 @@
 		CFB1DB142282D31F005F9811 /* entity-ProjectRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-ProjectRoot.swift"; sourceTree = "<group>"; };
 		CFB1DB472282D8DC005F9811 /* view-CanariNetInfoTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "view-CanariNetInfoTableView.swift"; sourceTree = "<group>"; };
 		CFB1DB5922830B16005F9811 /* selectionController-ProjectDocument-schematicLabelSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ProjectDocument-schematicLabelSelectionController.swift"; sourceTree = "<group>"; };
+		CFB1FDAA2359A5AF00135A00 /* extension-NSView-layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-NSView-layout.swift"; sourceTree = "<group>"; };
 		CFB29B1022999EB300E35790 /* extension-SheetInProject-disconnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-SheetInProject-disconnect.swift"; sourceTree = "<group>"; };
 		CFB4731A2274E36900694FCC /* CanariEnumSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariEnumSegmentedControl.swift; sourceTree = "<group>"; };
 		CFB4801720DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-addBoardModelAction.swift"; sourceTree = "<group>"; };
@@ -3793,6 +3795,7 @@
 				CF747FC81B3C41BB00140C49 /* Frameworks */,
 				CF61725D1B3C4B8A00F3CA82 /* Generic */,
 				CF61726E1B3C4CB600F3CA82 /* Images */,
+				CFB1FDA92359A57300135A00 /* layout-constraints */,
 				CF61FA911B3EBF21000E0257 /* Outlets Canari */,
 				CF6172681B3C4BE000F3CA82 /* Outlets Easy Bindings */,
 				CFAA756022E77D31002F7F36 /* Plugin — Free Router */,
@@ -4484,7 +4487,6 @@
 			isa = PBXGroup;
 			children = (
 				CFB6A6021BE29DB3005E10FD /* Foundation.framework */,
-				CF3DB11F1B4EF22300DB418E /* libbz2.1.0.dylib */,
 				CF747FC61B3C419D00140C49 /* WebKit.framework */,
 			);
 			name = Frameworks;
@@ -4825,6 +4827,15 @@
 			);
 			name = "document — project — entities";
 			path = "ElCanari/document-project-entities";
+			sourceTree = "<group>";
+		};
+		CFB1FDA92359A57300135A00 /* layout-constraints */ = {
+			isa = PBXGroup;
+			children = (
+				CFB1FDAA2359A5AF00135A00 /* extension-NSView-layout.swift */,
+			);
+			name = "layout-constraints";
+			path = "ElCanari/layout-constraints";
 			sourceTree = "<group>";
 		};
 		CFCD1F5E21A1CBB200A8297B /* document — symbol */ = {
@@ -6328,6 +6339,7 @@
 				CF1D9C8A21BBFD7900FFF459 /* EBGraphicView-mouse.swift in Sources */,
 				CF3E658A21BECB7A0041FA2A /* EBGraphicView-issue.swift in Sources */,
 				CFD3B2BC21B04977007D3361 /* transient-SymbolPin-nameRect.swift in Sources */,
+				CFB1FDAB2359A5AF00135A00 /* extension-NSView-layout.swift in Sources */,
 				CFEB7C99233A28860060A97A /* transient-ProjectRoot-boardLimitBorderLeft.swift in Sources */,
 				CFF5C19522DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift in Sources */,
 				CF518E132282CFAE002BCEE5 /* controller-table-view-ProjectDocument-componentController.swift in Sources */,
@@ -7499,6 +7511,7 @@
 				CF5632BB21A2C2550026B7B7 /* transient-SymbolSegment-objectDisplay.swift in Sources */,
 				CF5C4D25219F04D600EAC52A /* transient-BoardModel-backLegendTextsSegments.swift in Sources */,
 				CFA430C2229AEC41000AA8C8 /* tomany-SymbolSolidRect.swift in Sources */,
+				CFB1FDAC2359A5AF00135A00 /* extension-NSView-layout.swift in Sources */,
 				CFEB7C9A233A28860060A97A /* transient-ProjectRoot-boardLimitBorderLeft.swift in Sources */,
 				CFF5C19622DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift in Sources */,
 				CFA430A6229AEC41000AA8C8 /* toone-SymbolRoot.swift in Sources */,
@@ -8238,11 +8251,11 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = YW8QY74J2A;
 				ENABLE_HARDENED_RUNTIME = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = z;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
@@ -8357,10 +8370,10 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = YW8QY74J2A;
 				ENABLE_HARDENED_RUNTIME = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
@@ -8369,7 +8382,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LINKER_DISPLAYS_MANGLED_NAMES = YES;
 				OTHER_LDFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -8404,7 +8417,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LINKER_DISPLAYS_MANGLED_NAMES = YES;
 				OTHER_LDFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";

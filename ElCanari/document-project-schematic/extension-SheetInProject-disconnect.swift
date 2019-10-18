@@ -27,7 +27,6 @@ extension SheetInProject {
     if let root = self.mRoot {
     //--- Find subnets
       let subnets : [Set <PointInSchematic>] = self.buildSubnetsFrom (inPointSet)
-      // Swift.print ("subnets \(subnets.count)")
     //--- Classify subnets
       var subnetsWithSymbolPin = [Set <PointInSchematic>] ()
       var subnetsWithLabelsNoSymbolPin = [Set <PointInSchematic>] ()
@@ -45,7 +44,6 @@ extension SheetInProject {
           }
         }
       }
-      // Swift.print ("with pin \(subnetsWithSymbolPin.count), with labels \(subnetsWithLabelsNoSymbolPin.count), others \(subnetsWithNoLabelNoSymbolPin.count)")
     //--- Reassign nets
       var usedNets = Set <NetInProject> ()
       for subnet in subnetsWithSymbolPin {
