@@ -37,7 +37,8 @@ graphic entity BoardText : BoardObject {
     prefs.frontSideLegendColorForBoard,
     prefs.frontSideLayoutColorForBoard,
     prefs.backSideLayoutColorForBoard,
-    prefs.backSideLegendColorForBoard
+    prefs.backSideLegendColorForBoard,
+    prefs.hiliteWidthMultipliedByTen
   ;
   
   transient String fontName dependsFrom self.mFont.one.mFontName ;

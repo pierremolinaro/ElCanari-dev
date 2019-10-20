@@ -30,7 +30,7 @@ let BUILD_KIND = ProductKind.release
 
 let VERSION_CANARI = "1.0.19"
 let NOTES : [String] = []
-let BUGFIXES : [String] = []
+let BUGFIXES : [String] = ["Hilite Width in Board"]
 let CHANGES : [String] = []
 let NEWS : [String] = ["Autorouter: added route from/to ..."]
 

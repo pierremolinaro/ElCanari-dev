@@ -33,7 +33,8 @@ graphic entity BoardLine : BoardObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
-    self.mX1, self.mY1, self.mX2, self.mY2, self.mWidth, self.mLayer
+    self.mX1, self.mY1, self.mX2, self.mY2, self.mWidth, self.mLayer,
+    prefs.hiliteWidthMultipliedByTen
   ;
 }
 

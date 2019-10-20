@@ -19,11 +19,12 @@ func transient_BoardLine_selectionDisplay (
        _ self_mX2 : Int,                   
        _ self_mY2 : Int,                   
        _ self_mWidth : Int,                
-       _ self_mLayer : BoardLineLayer
+       _ self_mLayer : BoardLineLayer,     
+       _ prefs_hiliteWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
       var bp = EBBezierPath ()
-      bp.lineWidth = canariUnitToCocoa (self_mWidth) / 3.0
+      bp.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round
       let p1 = CanariPoint (x: self_mX1, y: self_mY1).cocoaPoint

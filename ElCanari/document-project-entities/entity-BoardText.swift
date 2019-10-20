@@ -453,15 +453,16 @@ class BoardText : BoardObject,
         kind &= g_Preferences!.frontSideLayoutColorForBoard_property_selection.kind ()
         kind &= g_Preferences!.backSideLayoutColorForBoard_property_selection.kind ()
         kind &= g_Preferences!.backSideLegendColorForBoard_property_selection.kind ()
+        kind &= g_Preferences!.hiliteWidthMultipliedByTen_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mLayer_property_selection, unwSelf.mRotation_property_selection, unwSelf.mWeight_property_selection, unwSelf.mOblique_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14)) :
-            return .single (transient_BoardText_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mLayer_property_selection, unwSelf.mRotation_property_selection, unwSelf.mWeight_property_selection, unwSelf.mOblique_property_selection, g_Preferences!.frontSideLegendColorForBoard_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLegendColorForBoard_property_selection, g_Preferences!.hiliteWidthMultipliedByTen_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15)) :
+            return .single (transient_BoardText_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15))
           default :
             return .empty
           }
@@ -485,6 +486,7 @@ class BoardText : BoardObject,
     g_Preferences?.frontSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.backSideLegendColorForBoard_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: fontName
     self.fontName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -592,6 +594,7 @@ class BoardText : BoardObject,
     g_Preferences?.frontSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.backSideLegendColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
     self.mFont_property.removeEBObserverOf_mFontName (self.fontName_property)
     self.mLayer_property.removeEBObserver (self.signatureForERCChecking_property)
     self.mX_property.removeEBObserver (self.signatureForERCChecking_property)

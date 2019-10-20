@@ -248,15 +248,16 @@ class BoardRestrictRectangle : BoardObject,
         kind &= unwSelf.mHeight_property_selection.kind ()
         kind &= unwSelf.mIsInFrontLayer_property_selection.kind ()
         kind &= unwSelf.mIsInBackLayer_property_selection.kind ()
+        kind &= g_Preferences!.hiliteWidthMultipliedByTen_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mIsInFrontLayer_property_selection, unwSelf.mIsInBackLayer_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_BoardRestrictRectangle_selectionDisplay (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mIsInFrontLayer_property_selection, unwSelf.mIsInBackLayer_property_selection, g_Preferences!.hiliteWidthMultipliedByTen_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+            return .single (transient_BoardRestrictRectangle_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
           default :
             return .empty
           }
@@ -271,6 +272,7 @@ class BoardRestrictRectangle : BoardObject,
     self.mHeight_property.addEBObserver (self.selectionDisplay_property)
     self.mIsInFrontLayer_property.addEBObserver (self.selectionDisplay_property)
     self.mIsInBackLayer_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -328,6 +330,7 @@ class BoardRestrictRectangle : BoardObject,
     self.mHeight_property.removeEBObserver (self.selectionDisplay_property)
     self.mIsInFrontLayer_property.removeEBObserver (self.selectionDisplay_property)
     self.mIsInBackLayer_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
     self.mX_property.removeEBObserver (self.signatureForERCChecking_property)
     self.mY_property.removeEBObserver (self.signatureForERCChecking_property)
     self.mWidth_property.removeEBObserver (self.signatureForERCChecking_property)

@@ -22,7 +22,8 @@ graphic entity BoardRestrictRectangle : BoardObject {
 
   override transient EBShape selectionDisplay dependsFrom
     self.mX, self.mY, self.mWidth, self.mHeight,
-    self.mIsInFrontLayer, self.mIsInBackLayer
+    self.mIsInFrontLayer, self.mIsInBackLayer,
+    prefs.hiliteWidthMultipliedByTen
   ;
 
   override transient UInt32 signatureForERCChecking dependsFrom

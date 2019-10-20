@@ -17,13 +17,14 @@ func transient_BoardTrack_selectionDisplay (
        _ self_mConnectorP1_location : CanariPoint?,
        _ self_mConnectorP1_connectedToComponent : Bool?,
        _ self_mConnectorP2_location : CanariPoint?,
-       _ self_mConnectorP2_connectedToComponent : Bool?
+       _ self_mConnectorP2_connectedToComponent : Bool?,
+       _ prefs_hiliteWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
       var shape = EBShape ()
       if let p1 = self_mConnectorP1_location?.cocoaPoint, let p2 = self_mConnectorP2_location?.cocoaPoint {
         var bp = EBBezierPath ()
-        bp.lineWidth = 0.2
+        bp.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         bp.move (to: p1)

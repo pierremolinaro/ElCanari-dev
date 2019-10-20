@@ -555,15 +555,16 @@ class BoardTrack : BoardObject,
         kind &= unwSelf.mConnectorP1_property.connectedToComponent_property_selection.kind ()
         kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
         kind &= unwSelf.mConnectorP2_property.connectedToComponent_property_selection.kind ()
+        kind &= g_Preferences!.hiliteWidthMultipliedByTen_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP1_property.connectedToComponent_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.mConnectorP2_property.connectedToComponent_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3))
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP1_property.connectedToComponent_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.mConnectorP2_property.connectedToComponent_property_selection, g_Preferences!.hiliteWidthMultipliedByTen_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -576,6 +577,7 @@ class BoardTrack : BoardObject,
     self.mConnectorP1_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property)
     self.mConnectorP2_property.addEBObserverOf_location (self.selectionDisplay_property)
     self.mConnectorP2_property.addEBObserverOf_connectedToComponent (self.selectionDisplay_property)
+    g_Preferences?.hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -810,6 +812,7 @@ class BoardTrack : BoardObject,
     self.mConnectorP1_property.removeEBObserverOf_connectedToComponent (self.selectionDisplay_property)
     self.mConnectorP2_property.removeEBObserverOf_location (self.selectionDisplay_property)
     self.mConnectorP2_property.removeEBObserverOf_connectedToComponent (self.selectionDisplay_property)
+    g_Preferences?.hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
     self.mNet_property.removeEBObserverOf_mNetName (self.netName_property)
     self.mNet_property.removeEBObserverOf_netClassName (self.netClassName_property)
     self.mNet_property.removeEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)

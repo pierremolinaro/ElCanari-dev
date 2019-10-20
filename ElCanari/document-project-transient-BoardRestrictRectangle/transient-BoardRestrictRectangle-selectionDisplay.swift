@@ -19,7 +19,8 @@ func transient_BoardRestrictRectangle_selectionDisplay (
        _ self_mWidth : Int,                             
        _ self_mHeight : Int,                            
        _ self_mIsInFrontLayer : Bool,                   
-       _ self_mIsInBackLayer : Bool
+       _ self_mIsInBackLayer : Bool,                    
+       _ prefs_hiliteWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let x = canariUnitToCocoa (self_mX)
@@ -28,7 +29,7 @@ func transient_BoardRestrictRectangle_selectionDisplay (
         let height = canariUnitToCocoa (self_mHeight)
         let r = NSRect (x: x, y: y, width: width, height: height)
         var bp = EBBezierPath (rect: r)
-        bp.lineWidth = BOARD_HILITE_WIDTH
+        bp.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         var shape = EBShape ()

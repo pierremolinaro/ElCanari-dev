@@ -28,7 +28,8 @@ func transient_BoardText_selectionDisplay (
        _ prefs_frontSideLegendColorForBoard : NSColor,
        _ prefs_frontSideLayoutColorForBoard : NSColor,
        _ prefs_backSideLayoutColorForBoard : NSColor,
-       _ prefs_backSideLegendColorForBoard : NSColor
+       _ prefs_backSideLegendColorForBoard : NSColor,
+       _ prefs_hiliteWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let (textBP, frameBP, origin, rotationKnob, _) = boardText_displayInfos (
@@ -56,7 +57,6 @@ func transient_BoardText_selectionDisplay (
         case .legendBack :
           textColor = prefs_backSideLegendColorForBoard
         }
-   //     let textShape = EBStrokeBezierPathShape ([textBP], textColor)
       //--- Background
         var shape = EBShape ()
         shape.add (filled: [frameBP], (textColor == .white) ? .lightGray : .white)
@@ -66,7 +66,7 @@ func transient_BoardText_selectionDisplay (
         var knobLine = EBBezierPath ()
         knobLine.move (to : origin)
         knobLine.line (to : rotationKnob)
-        knobLine.lineWidth = 0.5
+        knobLine.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
         knobLine.lineCapStyle = .round
         knobLine.lineJoinStyle = .round
         shape.add (stroke: [knobLine], .cyan)
