@@ -680,6 +680,8 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBPopUpButton mAutoRouterPreferredDirectionPopUp $selectedIndex root.mAutoRouterPreferredDirections ;
   outlet EBPopUpButton mAutorouterSnapAnglePopUp $selectedIndex root.mAutorouterSnapAngle ;
+  outlet EBPopUpButton mAutoRouterRouteDirectionPopUp $selectedIndex root.mRouteDirection ;
+  outlet EBPopUpButton mAutoRouterRouteOriginPopUp $selectedIndex root.mRouteOrigin ;
   
   action launchFreeRouterAction ;
   outlet EBButton mLaunchFreeRouterButton $run launchFreeRouterAction ;

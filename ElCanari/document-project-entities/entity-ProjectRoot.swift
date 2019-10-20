@@ -48,6 +48,18 @@ protocol ProjectRoot_mAutorouterSnapAngle : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mRouteDirection : class {
+  var mRouteDirection : RouteDirection { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mRouteOrigin : class {
+  var mRouteOrigin : RouteOrigin { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mTrackLengthUnit : class {
   var mTrackLengthUnit : Int { get }
 }
@@ -652,6 +664,8 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mLastERCCheckingSignature,
          ProjectRoot_mAutoRouterPreferredDirections,
          ProjectRoot_mAutorouterSnapAngle,
+         ProjectRoot_mRouteDirection,
+         ProjectRoot_mRouteOrigin,
          ProjectRoot_mTrackLengthUnit,
          ProjectRoot_mLayoutClearance,
          ProjectRoot_mLayoutClearanceUnit,
@@ -870,6 +884,40 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mAutorouterSnapAngle_property_selection : EBSelection <AutorouterSnapAngle> { return self.mAutorouterSnapAngle_property.prop }
+
+  //····················································································································
+  //   Atomic property: mRouteDirection
+  //····················································································································
+
+  let mRouteDirection_property = EBStoredProperty_RouteDirection (defaultValue: RouteDirection.from)
+
+  //····················································································································
+
+  var mRouteDirection : RouteDirection {
+    get { return self.mRouteDirection_property.propval }
+    set { self.mRouteDirection_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mRouteDirection_property_selection : EBSelection <RouteDirection> { return self.mRouteDirection_property.prop }
+
+  //····················································································································
+  //   Atomic property: mRouteOrigin
+  //····················································································································
+
+  let mRouteOrigin_property = EBStoredProperty_RouteOrigin (defaultValue: RouteOrigin.center)
+
+  //····················································································································
+
+  var mRouteOrigin : RouteOrigin {
+    get { return self.mRouteOrigin_property.propval }
+    set { self.mRouteOrigin_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mRouteOrigin_property_selection : EBSelection <RouteOrigin> { return self.mRouteOrigin_property.prop }
 
   //····················································································································
   //   Atomic property: mTrackLengthUnit
@@ -3216,6 +3264,10 @@ class ProjectRoot : EBManagedObject,
     self.mAutoRouterPreferredDirections_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mAutorouterSnapAngle
     self.mAutorouterSnapAngle_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mRouteDirection
+    self.mRouteDirection_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mRouteOrigin
+    self.mRouteOrigin_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mTrackLengthUnit
     self.mTrackLengthUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mLayoutClearance
@@ -4764,6 +4816,22 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mAutorouterSnapAngle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mRouteDirection",
+      idx: self.mRouteDirection_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mRouteDirection_property.mObserverExplorer,
+      valueExplorer: &self.mRouteDirection_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mRouteOrigin",
+      idx: self.mRouteOrigin_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mRouteOrigin_property.mObserverExplorer,
+      valueExplorer: &self.mRouteOrigin_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mTrackLengthUnit",
       idx: self.mTrackLengthUnit_property.ebObjectIndex,
       y: &y,
@@ -5562,6 +5630,12 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mAutorouterSnapAngle
     self.mAutorouterSnapAngle_property.mObserverExplorer = nil
     self.mAutorouterSnapAngle_property.mValueExplorer = nil
+  //--- Atomic property: mRouteDirection
+    self.mRouteDirection_property.mObserverExplorer = nil
+    self.mRouteDirection_property.mValueExplorer = nil
+  //--- Atomic property: mRouteOrigin
+    self.mRouteOrigin_property.mObserverExplorer = nil
+    self.mRouteOrigin_property.mValueExplorer = nil
   //--- Atomic property: mTrackLengthUnit
     self.mTrackLengthUnit_property.mObserverExplorer = nil
     self.mTrackLengthUnit_property.mValueExplorer = nil
@@ -5811,6 +5885,10 @@ class ProjectRoot : EBManagedObject,
     self.mAutoRouterPreferredDirections_property.storeIn (dictionary: ioDictionary, forKey:"mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle
     self.mAutorouterSnapAngle_property.storeIn (dictionary: ioDictionary, forKey:"mAutorouterSnapAngle")
+  //--- Atomic property: mRouteDirection
+    self.mRouteDirection_property.storeIn (dictionary: ioDictionary, forKey:"mRouteDirection")
+  //--- Atomic property: mRouteOrigin
+    self.mRouteOrigin_property.storeIn (dictionary: ioDictionary, forKey:"mRouteOrigin")
   //--- Atomic property: mTrackLengthUnit
     self.mTrackLengthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mTrackLengthUnit")
   //--- Atomic property: mLayoutClearance
@@ -6050,6 +6128,10 @@ class ProjectRoot : EBManagedObject,
     self.mAutoRouterPreferredDirections_property.readFrom (dictionary: inDictionary, forKey:"mAutoRouterPreferredDirections")
   //--- Atomic property: mAutorouterSnapAngle
     self.mAutorouterSnapAngle_property.readFrom (dictionary: inDictionary, forKey:"mAutorouterSnapAngle")
+  //--- Atomic property: mRouteDirection
+    self.mRouteDirection_property.readFrom (dictionary: inDictionary, forKey:"mRouteDirection")
+  //--- Atomic property: mRouteOrigin
+    self.mRouteOrigin_property.readFrom (dictionary: inDictionary, forKey:"mRouteOrigin")
   //--- Atomic property: mTrackLengthUnit
     self.mTrackLengthUnit_property.readFrom (dictionary: inDictionary, forKey:"mTrackLengthUnit")
   //--- Atomic property: mLayoutClearance

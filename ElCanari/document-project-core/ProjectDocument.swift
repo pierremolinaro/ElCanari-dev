@@ -649,6 +649,8 @@ import Cocoa
   @IBOutlet var mArtworkVersionTextField : EBIntObserverField? = nil
   @IBOutlet var mArtworlImportButton : EBButton? = nil
   @IBOutlet var mAutoRouterPreferredDirectionPopUp : EBPopUpButton? = nil
+  @IBOutlet var mAutoRouterRouteDirectionPopUp : EBPopUpButton? = nil
+  @IBOutlet var mAutoRouterRouteOriginPopUp : EBPopUpButton? = nil
   @IBOutlet var mAutorouterSnapAnglePopUp : EBPopUpButton? = nil
   @IBOutlet var mBackRestrictRectangleSwitch : EBSwitch? = nil
   @IBOutlet var mBaseBoardInspectorView : NSView? = nil
@@ -1204,6 +1206,8 @@ import Cocoa
     checkOutletConnection (self.mArtworkVersionTextField, "mArtworkVersionTextField", EBIntObserverField.self, #file, #line)
     checkOutletConnection (self.mArtworlImportButton, "mArtworlImportButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAutoRouterPreferredDirectionPopUp, "mAutoRouterPreferredDirectionPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mAutoRouterRouteDirectionPopUp, "mAutoRouterRouteDirectionPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mAutoRouterRouteOriginPopUp, "mAutoRouterRouteOriginPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mAutorouterSnapAnglePopUp, "mAutorouterSnapAnglePopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBackRestrictRectangleSwitch, "mBackRestrictRectangleSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBaseBoardInspectorView, "mBaseBoardInspectorView", NSView.self, #file, #line)
@@ -2409,6 +2413,8 @@ import Cocoa
     self.mCheckClearanceBetweenPadsOfSameNetSwitch?.bind_value (self.rootObject.mCheckClearanceBetweenPadsOfSameNet_property, file: #file, line: #line)
     self.mAutoRouterPreferredDirectionPopUp?.bind_selectedIndex (self.rootObject.mAutoRouterPreferredDirections_property, file: #file, line: #line)
     self.mAutorouterSnapAnglePopUp?.bind_selectedIndex (self.rootObject.mAutorouterSnapAngle_property, file: #file, line: #line)
+    self.mAutoRouterRouteDirectionPopUp?.bind_selectedIndex (self.rootObject.mRouteDirection_property, file: #file, line: #line)
+    self.mAutoRouterRouteOriginPopUp?.bind_selectedIndex (self.rootObject.mRouteOrigin_property, file: #file, line: #line)
     self.mViaCountTextField?.bind_valueObserver (self.rootObject.viaCountString_property, file: #file, line: #line)
     self.mTrackCountTextField?.bind_valueObserver (self.rootObject.trackCountString_property, file: #file, line: #line)
     self.mTrackLengthTextField?.bind_valueObserver (self.rootObject.trackLengthString_property, file: #file, line: #line)
@@ -3242,6 +3248,8 @@ import Cocoa
     self.mCheckClearanceBetweenPadsOfSameNetSwitch?.unbind_value ()
     self.mAutoRouterPreferredDirectionPopUp?.unbind_selectedIndex ()
     self.mAutorouterSnapAnglePopUp?.unbind_selectedIndex ()
+    self.mAutoRouterRouteDirectionPopUp?.unbind_selectedIndex ()
+    self.mAutoRouterRouteOriginPopUp?.unbind_selectedIndex ()
     self.mViaCountTextField?.unbind_valueObserver ()
     self.mTrackCountTextField?.unbind_valueObserver ()
     self.mTrackLengthTextField?.unbind_valueObserver ()
@@ -3600,6 +3608,8 @@ import Cocoa
     self.mArtworkVersionTextField?.ebCleanUp ()
     self.mArtworlImportButton?.ebCleanUp ()
     self.mAutoRouterPreferredDirectionPopUp?.ebCleanUp ()
+    self.mAutoRouterRouteDirectionPopUp?.ebCleanUp ()
+    self.mAutoRouterRouteOriginPopUp?.ebCleanUp ()
     self.mAutorouterSnapAnglePopUp?.ebCleanUp ()
     self.mBackRestrictRectangleSwitch?.ebCleanUp ()
     self.mBaseBoardInspectorView?.ebCleanUp ()
@@ -4000,6 +4010,8 @@ import Cocoa
     self.mArtworkVersionTextField = nil
     self.mArtworlImportButton = nil
     self.mAutoRouterPreferredDirectionPopUp = nil
+    self.mAutoRouterRouteDirectionPopUp = nil
+    self.mAutoRouterRouteOriginPopUp = nil
     self.mAutorouterSnapAnglePopUp = nil
     self.mBackRestrictRectangleSwitch = nil
     self.mBaseBoardInspectorView = nil

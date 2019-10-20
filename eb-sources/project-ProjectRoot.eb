@@ -44,6 +44,9 @@ entity ProjectRoot {
 
   property AutorouterPreferredDirections mAutoRouterPreferredDirections default vFrontHback ;
   property AutorouterSnapAngle mAutorouterSnapAngle default octolinear ;
+  property RouteDirection mRouteDirection default from ;
+  property RouteOrigin mRouteOrigin default center ;
+  
   property Int mTrackLengthUnit default 90_000_000 ; // meter
   
   property Int mLayoutClearance default 45_720 ; // 20 mil

@@ -28,14 +28,11 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.18"
+let VERSION_CANARI = "1.0.19"
 let NOTES : [String] = []
-let BUGFIXES : [String] = [
-  "\"Fit in Window\" zoom selection",
-  "Device update in project now detects incompatible symbols"
-]
-let CHANGES : [String] = ["Speed up document opening and closing"]
-let NEWS : [String] = ["Comment in Schematic: added size and alignment"]
+let BUGFIXES : [String] = []
+let CHANGES : [String] = []
+let NEWS : [String] = ["Autorouter: added route from/to ..."]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   FOR PRINTING IN COLOR

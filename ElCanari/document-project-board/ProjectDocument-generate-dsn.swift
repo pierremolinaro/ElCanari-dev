@@ -145,7 +145,14 @@ extension CustomizedProjectDocument {
     autorouteSettings (&s, self.rootObject.mAutoRouterPreferredDirections)
     addRestrictRectangles (&s, restrictRectangles)
     s += "  )\n"
-    addComponentsPlacement (&s, componentArrayForRouting, packageArrayForRouting)
+    addComponentsPlacement (
+      &s,
+      componentArrayForRouting,
+      packageArrayForRouting,
+      self.rootObject.mRouteDirection,
+      self.rootObject.mRouteOrigin,
+      boardBoundBox
+    )
     s += "  (library\n"
     addDeviceLibrary (&s, packageArrayForRouting)
     addViaPadStackLibrary (&s, netClasses)
@@ -670,11 +677,59 @@ fileprivate func addRuleClearance (_ ioString : inout String, clearanceInMM inCl
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+fileprivate func componentComparison (_ inLeft : ComponentForDSNExport,
+                                      _ inOrigin : CanariPoint,
+                                      _ inRight : ComponentForDSNExport) -> Bool {
+  let leftDx = inOrigin.x - inLeft.originX
+  let leftDy = inOrigin.y - inLeft.originY
+  let squareDistanceLeft = leftDx * leftDx + leftDy * leftDy
+  let rightDx = inOrigin.x - inRight.originX
+  let rightDy = inOrigin.y - inRight.originY
+  let squareDistanceRight = rightDx * rightDx + rightDy * rightDy
+  return squareDistanceLeft < squareDistanceRight
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 fileprivate func addComponentsPlacement (_ ioString : inout String,
                                          _ inComponents : [ComponentForDSNExport],
-                                         _ inPackageArrayForRouting : [PackageTypeForDSNExport]) {
+                                         _ inPackageArrayForRouting : [PackageTypeForDSNExport],
+                                         _ inRouteDirection : RouteDirection,
+                                         _ inRouteOrigin : RouteOrigin,
+                                         _ inBoardRect : CanariRect) {
+//--- Sort components
+
+  let origin : CanariPoint
+  switch inRouteOrigin {
+  case .center:
+    origin = inBoardRect.center
+  case .bottomLeft:
+    origin = inBoardRect.bottomLeft
+  case .middleBottom:
+    origin = inBoardRect.bottomCenter
+  case .bottomRight:
+    origin = inBoardRect.bottomRight
+  case .middleRight:
+    origin = inBoardRect.middleRight
+  case .topRight:
+    origin = inBoardRect.topRight
+  case .middleTop:
+    origin = inBoardRect.topCenter
+  case .topLeft:
+    origin = inBoardRect.topLeft
+  case .middleLeft:
+    origin = inBoardRect.middleLeft
+  }
+  let components : [ComponentForDSNExport]
+  switch inRouteDirection {
+  case .from :
+    components = inComponents.sorted { componentComparison ($1, origin, $0) }
+  case .to :
+    components = inComponents.sorted { componentComparison ($0, origin, $1) }
+  }
+//--- Write components
   ioString += "  (placement\n"
-  for component in inComponents {
+  for component in components {
     let x = canariUnitToMillimeter (component.originX)
     let y = canariUnitToMillimeter (component.originY)
     let side : String

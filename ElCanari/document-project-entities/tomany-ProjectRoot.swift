@@ -22,6 +22,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mLastERCCheckingSignature_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mAutoRouterPreferredDirections_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mAutorouterSnapAngle_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mRouteDirection_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mRouteOrigin_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mTrackLengthUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mLayoutClearance_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mLayoutClearanceUnit_fromElementsOfSet (inRemovedSet) // Stored property
@@ -120,6 +122,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mLastERCCheckingSignature_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mAutoRouterPreferredDirections_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mAutorouterSnapAngle_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mRouteDirection_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mRouteOrigin_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mTrackLengthUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mLayoutClearance_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mLayoutClearanceUnit_toElementsOfSet (inAddedSet) // Stored property
@@ -607,6 +611,120 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mAutorouterSnapAngle_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mRouteDirection' stored property
+  //····················································································································
+
+  private var mObserversOf_mRouteDirection = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mRouteDirection (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mRouteDirection.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mRouteDirection_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mRouteDirection (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mRouteDirection.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mRouteDirection_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mRouteDirection_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mRouteDirection.apply { (_ observer : EBEvent) in
+        managedObject.mRouteDirection_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mRouteDirection_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mRouteDirection.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mRouteDirection_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mRouteOrigin' stored property
+  //····················································································································
+
+  private var mObserversOf_mRouteOrigin = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mRouteOrigin (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mRouteOrigin.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mRouteOrigin_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mRouteOrigin (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mRouteOrigin.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mRouteOrigin_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mRouteOrigin_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mRouteOrigin.apply { (_ observer : EBEvent) in
+        managedObject.mRouteOrigin_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mRouteOrigin_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mRouteOrigin.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mRouteOrigin_property.removeEBObserver (observer)
       }
     }
   }
@@ -6897,6 +7015,8 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mLastERCCheckingSignature (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAutoRouterPreferredDirections (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAutorouterSnapAngle (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mRouteDirection (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mRouteOrigin (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mTrackLengthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLayoutClearance (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLayoutClearanceUnit (self.mObserverForWritingPreferences)

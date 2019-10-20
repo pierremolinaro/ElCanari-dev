@@ -101,15 +101,33 @@ struct CanariRect : Equatable, Hashable {
   //····················································································································
 
   var left    : Int { return self.origin.x }
+  var midX    : Int { return self.origin.x + self.size.width / 2 }
   var right   : Int { return self.origin.x + self.size.width }
 
   var bottom  : Int { return self.origin.y }
+  var midY    : Int { return self.origin.y + self.size.height / 2 }
   var top     : Int { return self.origin.y + self.size.height }
 
   var height  : Int { return self.size.height }
   var width   : Int { return self.size.width }
 
   var center  : CanariPoint { return CanariPoint (x: self.left + self.width / 2, y: self.bottom + self.height / 2) }
+
+  var bottomLeft  : CanariPoint { return CanariPoint (x: self.left, y: self.bottom ) }
+
+  var bottomCenter  : CanariPoint { return CanariPoint (x: self.midX, y: self.bottom ) }
+
+  var bottomRight  : CanariPoint { return CanariPoint (x: self.right, y: self.bottom ) }
+
+  var topLeft  : CanariPoint { return CanariPoint (x: self.left, y: self.top ) }
+
+  var topCenter  : CanariPoint { return CanariPoint (x: self.midX, y: self.top ) }
+
+  var topRight  : CanariPoint { return CanariPoint (x: self.right, y: self.top ) }
+
+  var middleRight  : CanariPoint { return CanariPoint (x: self.right, y: self.midY ) }
+
+  var middleLeft  : CanariPoint { return CanariPoint (x: self.left, y: self.midY ) }
 
   var isEmpty : Bool { return (self.size.width <= 0) || (self.size.height <= 0) }
 
