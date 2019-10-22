@@ -1596,6 +1596,93 @@ class PackagePad : PackageObject,
     self.annularRingUnit_property.readFrom (dictionary: inDictionary, forKey:"annularRingUnit")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "xCenter\n"
+    ioString += "yCenter\n"
+    ioString += "width\n"
+    ioString += "height\n"
+    ioString += "holeWidth\n"
+    ioString += "holeHeight\n"
+    ioString += "padShape\n"
+    ioString += "padStyle\n"
+    ioString += "padNumber\n"
+    ioString += "xCenterUnit\n"
+    ioString += "yCenterUnit\n"
+    ioString += "widthUnit\n"
+    ioString += "heightUnit\n"
+    ioString += "holeWidthUnit\n"
+    ioString += "holeHeightUnit\n"
+    ioString += "annularRingUnit\n"
+  //--- To one relationships
+    ioString += "zone\n"
+  //--- To many relationships
+    ioString += "slaves\n"
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.xCenter.stringPropertyValue ()
+    ioString += self.yCenter.stringPropertyValue ()
+    ioString += self.width.stringPropertyValue ()
+    ioString += self.height.stringPropertyValue ()
+    ioString += self.holeWidth.stringPropertyValue ()
+    ioString += self.holeHeight.stringPropertyValue ()
+    ioString += self.padShape.stringPropertyValue ()
+    ioString += self.padStyle.stringPropertyValue ()
+    ioString += self.padNumber.stringPropertyValue ()
+    ioString += self.xCenterUnit.stringPropertyValue ()
+    ioString += self.yCenterUnit.stringPropertyValue ()
+    ioString += self.widthUnit.stringPropertyValue ()
+    ioString += self.heightUnit.stringPropertyValue ()
+    ioString += self.holeWidthUnit.stringPropertyValue ()
+    ioString += self.holeHeightUnit.stringPropertyValue ()
+    ioString += self.annularRingUnit.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.zone {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.slaves {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

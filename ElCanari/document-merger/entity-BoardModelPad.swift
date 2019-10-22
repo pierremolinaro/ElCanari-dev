@@ -349,6 +349,41 @@ class BoardModelPad : EBManagedObject,
     self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "y\n"
+    ioString += "width\n"
+    ioString += "height\n"
+    ioString += "shape\n"
+    ioString += "rotation\n"
+    ioString += "x\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.y.stringPropertyValue ()
+    ioString += self.width.stringPropertyValue ()
+    ioString += self.height.stringPropertyValue ()
+    ioString += self.shape.stringPropertyValue ()
+    ioString += self.rotation.stringPropertyValue ()
+    ioString += self.x.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

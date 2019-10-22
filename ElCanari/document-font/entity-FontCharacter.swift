@@ -585,6 +585,64 @@ class FontCharacter : EBManagedObject,
     self.mWarnsWhenAdvanceIsZero_property.readFrom (dictionary: inDictionary, forKey:"mWarnsWhenAdvanceIsZero")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "codePoint\n"
+    ioString += "advance\n"
+    ioString += "mWarnsWhenNoSegment\n"
+    ioString += "mWarnsWhenAdvanceIsZero\n"
+  //--- To one relationships
+  //--- To many relationships
+    ioString += "segments\n"
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.codePoint.stringPropertyValue ()
+    ioString += self.advance.stringPropertyValue ()
+    ioString += self.mWarnsWhenNoSegment.stringPropertyValue ()
+    ioString += self.mWarnsWhenAdvanceIsZero.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.segments {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

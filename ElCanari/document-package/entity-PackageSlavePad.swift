@@ -1253,6 +1253,64 @@ class PackageSlavePad : PackageObject,
     self.annularRingUnit_property.readFrom (dictionary: inDictionary, forKey:"annularRingUnit")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "xCenter\n"
+    ioString += "yCenter\n"
+    ioString += "width\n"
+    ioString += "height\n"
+    ioString += "holeWidth\n"
+    ioString += "holeHeight\n"
+    ioString += "padShape\n"
+    ioString += "padStyle\n"
+    ioString += "xCenterUnit\n"
+    ioString += "yCenterUnit\n"
+    ioString += "widthUnit\n"
+    ioString += "heightUnit\n"
+    ioString += "holeWidthUnit\n"
+    ioString += "holeHeightUnit\n"
+    ioString += "annularRingUnit\n"
+  //--- To one relationships
+    ioString += "master\n"
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.xCenter.stringPropertyValue ()
+    ioString += self.yCenter.stringPropertyValue ()
+    ioString += self.width.stringPropertyValue ()
+    ioString += self.height.stringPropertyValue ()
+    ioString += self.holeWidth.stringPropertyValue ()
+    ioString += self.holeHeight.stringPropertyValue ()
+    ioString += self.padShape.stringPropertyValue ()
+    ioString += self.padStyle.stringPropertyValue ()
+    ioString += self.xCenterUnit.stringPropertyValue ()
+    ioString += self.yCenterUnit.stringPropertyValue ()
+    ioString += self.widthUnit.stringPropertyValue ()
+    ioString += self.heightUnit.stringPropertyValue ()
+    ioString += self.holeWidthUnit.stringPropertyValue ()
+    ioString += self.holeHeightUnit.stringPropertyValue ()
+    ioString += self.annularRingUnit.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.master {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

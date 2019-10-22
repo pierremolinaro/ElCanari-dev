@@ -958,6 +958,57 @@ class PackageZone : PackageObject,
     self.zoneNumbering_property.readFrom (dictionary: inDictionary, forKey:"zoneNumbering")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "x\n"
+    ioString += "y\n"
+    ioString += "width\n"
+    ioString += "height\n"
+    ioString += "xUnit\n"
+    ioString += "yUnit\n"
+    ioString += "widthUnit\n"
+    ioString += "heightUnit\n"
+    ioString += "zoneName\n"
+    ioString += "xName\n"
+    ioString += "yName\n"
+    ioString += "xNameUnit\n"
+    ioString += "yNameUnit\n"
+    ioString += "zoneNumbering\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.x.stringPropertyValue ()
+    ioString += self.y.stringPropertyValue ()
+    ioString += self.width.stringPropertyValue ()
+    ioString += self.height.stringPropertyValue ()
+    ioString += self.xUnit.stringPropertyValue ()
+    ioString += self.yUnit.stringPropertyValue ()
+    ioString += self.widthUnit.stringPropertyValue ()
+    ioString += self.heightUnit.stringPropertyValue ()
+    ioString += self.zoneName.stringPropertyValue ()
+    ioString += self.xName.stringPropertyValue ()
+    ioString += self.yName.stringPropertyValue ()
+    ioString += self.xNameUnit.stringPropertyValue ()
+    ioString += self.yNameUnit.stringPropertyValue ()
+    ioString += self.zoneNumbering.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

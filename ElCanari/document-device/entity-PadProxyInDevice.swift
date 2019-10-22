@@ -427,6 +427,40 @@ class PadProxyInDevice : EBManagedObject,
     self.mIsNC_property.readFrom (dictionary: inDictionary, forKey:"mIsNC")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mPinInstanceName\n"
+    ioString += "mPadName\n"
+    ioString += "mIsNC\n"
+  //--- To one relationships
+    ioString += "mPinInstance\n"
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mPinInstanceName.stringPropertyValue ()
+    ioString += self.mPadName.stringPropertyValue ()
+    ioString += self.mIsNC.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.mPinInstance {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

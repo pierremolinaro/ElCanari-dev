@@ -644,6 +644,45 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.instanceRotation_property.readFrom (dictionary: inDictionary, forKey:"instanceRotation")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "x\n"
+    ioString += "y\n"
+    ioString += "instanceRotation\n"
+  //--- To one relationships
+    ioString += "myModel\n"
+    ioString += "myRoot\n"
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.x.stringPropertyValue ()
+    ioString += self.y.stringPropertyValue ()
+    ioString += self.instanceRotation.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.myModel {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+    if let object = self.myRoot {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

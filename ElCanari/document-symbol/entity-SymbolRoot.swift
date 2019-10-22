@@ -720,6 +720,103 @@ class SymbolRoot : EBManagedObject,
     self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "selectedInspector\n"
+    ioString += "comments\n"
+    ioString += "horizontalFlip\n"
+    ioString += "verticalFlip\n"
+    ioString += "gridStyle\n"
+    ioString += "gridDisplay\n"
+    ioString += "zoom\n"
+    ioString += "xPlacardUnit\n"
+    ioString += "yPlacardUnit\n"
+    ioString += "selectedPageIndex\n"
+  //--- To one relationships
+  //--- To many relationships
+    ioString += "symbolObjects\n"
+    ioString += "symbolPins\n"
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.selectedInspector.stringPropertyValue ()
+    ioString += self.comments.stringPropertyValue ()
+    ioString += self.horizontalFlip.stringPropertyValue ()
+    ioString += self.verticalFlip.stringPropertyValue ()
+    ioString += self.gridStyle.stringPropertyValue ()
+    ioString += self.gridDisplay.stringPropertyValue ()
+    ioString += self.zoom.stringPropertyValue ()
+    ioString += self.xPlacardUnit.stringPropertyValue ()
+    ioString += self.yPlacardUnit.stringPropertyValue ()
+    ioString += self.selectedPageIndex.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.symbolObjects {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.symbolPins {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

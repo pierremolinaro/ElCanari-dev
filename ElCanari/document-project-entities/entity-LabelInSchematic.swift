@@ -493,6 +493,36 @@ class LabelInSchematic : SchematicObject,
     self.mOrientation_property.readFrom (dictionary: inDictionary, forKey:"mOrientation")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mOrientation\n"
+  //--- To one relationships
+    ioString += "mPoint\n"
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mOrientation.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.mPoint {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

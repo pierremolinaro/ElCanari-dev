@@ -1092,6 +1092,75 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     self.padHoleDiameterInPDF_property.readFrom (dictionary: inDictionary, forKey:"padHoleDiameterInPDF")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "drawBoardLimits\n"
+    ioString += "drawInternalBoardLimits\n"
+    ioString += "drawComponentNamesTopSide\n"
+    ioString += "drawComponentNamesBottomSide\n"
+    ioString += "drawComponentValuesTopSide\n"
+    ioString += "drawComponentValuesBottomSide\n"
+    ioString += "drawPackageLegendTopSide\n"
+    ioString += "drawPackageLegendBottomSide\n"
+    ioString += "drawPadHolesInPDF\n"
+    ioString += "drawPadsTopSide\n"
+    ioString += "drawPadsBottomSide\n"
+    ioString += "drawTextsLayoutTopSide\n"
+    ioString += "drawTextsLayoutBottomSide\n"
+    ioString += "drawTextsLegendTopSide\n"
+    ioString += "drawTextsLegendBottomSide\n"
+    ioString += "drawTracksTopSide\n"
+    ioString += "drawTracksBottomSide\n"
+    ioString += "drawVias\n"
+    ioString += "fileExtension\n"
+    ioString += "horizontalMirror\n"
+    ioString += "name\n"
+    ioString += "measurementUnitForPadHoleInPDF\n"
+    ioString += "padHoleDiameterInPDF\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.drawBoardLimits.stringPropertyValue ()
+    ioString += self.drawInternalBoardLimits.stringPropertyValue ()
+    ioString += self.drawComponentNamesTopSide.stringPropertyValue ()
+    ioString += self.drawComponentNamesBottomSide.stringPropertyValue ()
+    ioString += self.drawComponentValuesTopSide.stringPropertyValue ()
+    ioString += self.drawComponentValuesBottomSide.stringPropertyValue ()
+    ioString += self.drawPackageLegendTopSide.stringPropertyValue ()
+    ioString += self.drawPackageLegendBottomSide.stringPropertyValue ()
+    ioString += self.drawPadHolesInPDF.stringPropertyValue ()
+    ioString += self.drawPadsTopSide.stringPropertyValue ()
+    ioString += self.drawPadsBottomSide.stringPropertyValue ()
+    ioString += self.drawTextsLayoutTopSide.stringPropertyValue ()
+    ioString += self.drawTextsLayoutBottomSide.stringPropertyValue ()
+    ioString += self.drawTextsLegendTopSide.stringPropertyValue ()
+    ioString += self.drawTextsLegendBottomSide.stringPropertyValue ()
+    ioString += self.drawTracksTopSide.stringPropertyValue ()
+    ioString += self.drawTracksBottomSide.stringPropertyValue ()
+    ioString += self.drawVias.stringPropertyValue ()
+    ioString += self.fileExtension.stringPropertyValue ()
+    ioString += self.horizontalMirror.stringPropertyValue ()
+    ioString += self.name.stringPropertyValue ()
+    ioString += self.measurementUnitForPadHoleInPDF.stringPropertyValue ()
+    ioString += self.padHoleDiameterInPDF.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

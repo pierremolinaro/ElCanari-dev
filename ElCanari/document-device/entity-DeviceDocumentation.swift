@@ -250,6 +250,33 @@ class DeviceDocumentation : EBManagedObject,
     self.mFileData_property.readFrom (dictionary: inDictionary, forKey:"mFileData")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mFileName\n"
+    ioString += "mFileData\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mFileName.stringPropertyValue ()
+    ioString += self.mFileData.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

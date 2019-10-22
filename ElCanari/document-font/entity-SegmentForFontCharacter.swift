@@ -369,6 +369,37 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "x1\n"
+    ioString += "y1\n"
+    ioString += "x2\n"
+    ioString += "y2\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.x1.stringPropertyValue ()
+    ioString += self.y1.stringPropertyValue ()
+    ioString += self.x2.stringPropertyValue ()
+    ioString += self.y2.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

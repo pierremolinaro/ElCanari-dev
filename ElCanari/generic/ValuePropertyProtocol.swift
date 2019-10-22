@@ -12,6 +12,7 @@ protocol ValuePropertyProtocol : Equatable {
   func ebHashValue () -> UInt32
   func convertToNSObject () -> NSObject
   static func convertFromNSObject (object : NSObject) -> Self
+  func stringPropertyValue () -> String
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1476,6 +1476,128 @@ class MergerRoot : EBManagedObject,
     self.generatedBoardArchiveFormat_property.readFrom (dictionary: inDictionary, forKey:"generatedBoardArchiveFormat")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "selectedPageIndex\n"
+    ioString += "zoom\n"
+    ioString += "automaticBoardSize\n"
+    ioString += "boardManualWidth\n"
+    ioString += "boardManualHeight\n"
+    ioString += "boardWidthUnit\n"
+    ioString += "boardHeightUnit\n"
+    ioString += "overlapingArrangment\n"
+    ioString += "selectedBoardXUnit\n"
+    ioString += "selectedBoardYUnit\n"
+    ioString += "boardLimitWidth\n"
+    ioString += "boardLimitWidthUnit\n"
+    ioString += "arrowMagnitude\n"
+    ioString += "arrowMagnitudeUnit\n"
+    ioString += "shiftArrowMagnitude\n"
+    ioString += "shiftArrowMagnitudeUnit\n"
+    ioString += "artworkName\n"
+    ioString += "generateGerberProductFile\n"
+    ioString += "generatePDFProductFile\n"
+    ioString += "generatedBoardArchiveFormat\n"
+  //--- To one relationships
+    ioString += "artwork\n"
+  //--- To many relationships
+    ioString += "boardModels\n"
+    ioString += "boardInstances\n"
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.selectedPageIndex.stringPropertyValue ()
+    ioString += self.zoom.stringPropertyValue ()
+    ioString += self.automaticBoardSize.stringPropertyValue ()
+    ioString += self.boardManualWidth.stringPropertyValue ()
+    ioString += self.boardManualHeight.stringPropertyValue ()
+    ioString += self.boardWidthUnit.stringPropertyValue ()
+    ioString += self.boardHeightUnit.stringPropertyValue ()
+    ioString += self.overlapingArrangment.stringPropertyValue ()
+    ioString += self.selectedBoardXUnit.stringPropertyValue ()
+    ioString += self.selectedBoardYUnit.stringPropertyValue ()
+    ioString += self.boardLimitWidth.stringPropertyValue ()
+    ioString += self.boardLimitWidthUnit.stringPropertyValue ()
+    ioString += self.arrowMagnitude.stringPropertyValue ()
+    ioString += self.arrowMagnitudeUnit.stringPropertyValue ()
+    ioString += self.shiftArrowMagnitude.stringPropertyValue ()
+    ioString += self.shiftArrowMagnitudeUnit.stringPropertyValue ()
+    ioString += self.artworkName.stringPropertyValue ()
+    ioString += self.generateGerberProductFile.stringPropertyValue ()
+    ioString += self.generatePDFProductFile.stringPropertyValue ()
+    ioString += self.generatedBoardArchiveFormat.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.artwork {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.boardModels {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.boardInstances {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

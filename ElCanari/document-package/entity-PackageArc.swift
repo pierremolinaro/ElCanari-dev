@@ -900,6 +900,55 @@ class PackageArc : PackageObject,
     self.xCenter_property.readFrom (dictionary: inDictionary, forKey:"xCenter")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "yCenter\n"
+    ioString += "radius\n"
+    ioString += "startAngle\n"
+    ioString += "arcAngle\n"
+    ioString += "startTangent\n"
+    ioString += "endTangent\n"
+    ioString += "pathIsClosed\n"
+    ioString += "xCenterUnit\n"
+    ioString += "yCenterUnit\n"
+    ioString += "radiusUnit\n"
+    ioString += "startTangentUnit\n"
+    ioString += "endTangentUnit\n"
+    ioString += "xCenter\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.yCenter.stringPropertyValue ()
+    ioString += self.radius.stringPropertyValue ()
+    ioString += self.startAngle.stringPropertyValue ()
+    ioString += self.arcAngle.stringPropertyValue ()
+    ioString += self.startTangent.stringPropertyValue ()
+    ioString += self.endTangent.stringPropertyValue ()
+    ioString += self.pathIsClosed.stringPropertyValue ()
+    ioString += self.xCenterUnit.stringPropertyValue ()
+    ioString += self.yCenterUnit.stringPropertyValue ()
+    ioString += self.radiusUnit.stringPropertyValue ()
+    ioString += self.startTangentUnit.stringPropertyValue ()
+    ioString += self.endTangentUnit.stringPropertyValue ()
+    ioString += self.xCenter.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

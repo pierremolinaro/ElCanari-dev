@@ -1384,6 +1384,58 @@ class BorderCurve : EBGraphicManagedObject,
     self.mShape_property.readFrom (dictionary: inDictionary, forKey:"mShape")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mX\n"
+    ioString += "mY\n"
+    ioString += "mCPX1\n"
+    ioString += "mCPY1\n"
+    ioString += "mCPX2\n"
+    ioString += "mCPY2\n"
+    ioString += "mShape\n"
+  //--- To one relationships
+    ioString += "mRoot\n"
+    ioString += "mNext\n"
+    ioString += "mPrevious\n"
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mX.stringPropertyValue ()
+    ioString += self.mY.stringPropertyValue ()
+    ioString += self.mCPX1.stringPropertyValue ()
+    ioString += self.mCPY1.stringPropertyValue ()
+    ioString += self.mCPX2.stringPropertyValue ()
+    ioString += self.mCPY2.stringPropertyValue ()
+    ioString += self.mShape.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.mRoot {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+    if let object = self.mNext {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+    if let object = self.mPrevious {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

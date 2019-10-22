@@ -1127,6 +1127,83 @@ class ComponentSymbolInProject : SchematicObject,
     self.mDisplayComponentValueOffsetY_property.readFrom (dictionary: inDictionary, forKey:"mDisplayComponentValueOffsetY")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mCenterX\n"
+    ioString += "mCenterY\n"
+    ioString += "mRotation\n"
+    ioString += "mMirror\n"
+    ioString += "mSymbolInstanceName\n"
+    ioString += "mSymbolTypeName\n"
+    ioString += "mDisplayComponentNameOffsetX\n"
+    ioString += "mDisplayComponentNameOffsetY\n"
+    ioString += "mDisplayComponentValue\n"
+    ioString += "mDisplayComponentValueOffsetX\n"
+    ioString += "mDisplayComponentValueOffsetY\n"
+  //--- To one relationships
+    ioString += "mComponent\n"
+  //--- To many relationships
+    ioString += "mPoints\n"
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mCenterX.stringPropertyValue ()
+    ioString += self.mCenterY.stringPropertyValue ()
+    ioString += self.mRotation.stringPropertyValue ()
+    ioString += self.mMirror.stringPropertyValue ()
+    ioString += self.mSymbolInstanceName.stringPropertyValue ()
+    ioString += self.mSymbolTypeName.stringPropertyValue ()
+    ioString += self.mDisplayComponentNameOffsetX.stringPropertyValue ()
+    ioString += self.mDisplayComponentNameOffsetY.stringPropertyValue ()
+    ioString += self.mDisplayComponentValue.stringPropertyValue ()
+    ioString += self.mDisplayComponentValueOffsetX.stringPropertyValue ()
+    ioString += self.mDisplayComponentValueOffsetY.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.mComponent {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mPoints {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

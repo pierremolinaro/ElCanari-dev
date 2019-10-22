@@ -768,6 +768,47 @@ class PackageSegment : PackageObject,
     self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "y1\n"
+    ioString += "x2\n"
+    ioString += "y2\n"
+    ioString += "x1Unit\n"
+    ioString += "y1Unit\n"
+    ioString += "x2Unit\n"
+    ioString += "y2Unit\n"
+    ioString += "lengthUnit\n"
+    ioString += "x1\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.y1.stringPropertyValue ()
+    ioString += self.x2.stringPropertyValue ()
+    ioString += self.y2.stringPropertyValue ()
+    ioString += self.x1Unit.stringPropertyValue ()
+    ioString += self.y1Unit.stringPropertyValue ()
+    ioString += self.x2Unit.stringPropertyValue ()
+    ioString += self.y2Unit.stringPropertyValue ()
+    ioString += self.lengthUnit.stringPropertyValue ()
+    ioString += self.x1.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

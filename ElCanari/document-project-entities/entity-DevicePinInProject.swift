@@ -753,6 +753,53 @@ class DevicePinInProject : EBManagedObject,
     self.mNumberHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mNumberHorizontalAlignment")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mPinName\n"
+    ioString += "mSymbolInstanceName\n"
+    ioString += "mSymbolTypeName\n"
+    ioString += "mPinX\n"
+    ioString += "mPinY\n"
+    ioString += "mXName\n"
+    ioString += "mYName\n"
+    ioString += "mNameHorizontalAlignment\n"
+    ioString += "mPinNameIsDisplayedInSchematic\n"
+    ioString += "mXNumber\n"
+    ioString += "mYNumber\n"
+    ioString += "mNumberHorizontalAlignment\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mPinName.stringPropertyValue ()
+    ioString += self.mSymbolInstanceName.stringPropertyValue ()
+    ioString += self.mSymbolTypeName.stringPropertyValue ()
+    ioString += self.mPinX.stringPropertyValue ()
+    ioString += self.mPinY.stringPropertyValue ()
+    ioString += self.mXName.stringPropertyValue ()
+    ioString += self.mYName.stringPropertyValue ()
+    ioString += self.mNameHorizontalAlignment.stringPropertyValue ()
+    ioString += self.mPinNameIsDisplayedInSchematic.stringPropertyValue ()
+    ioString += self.mXNumber.stringPropertyValue ()
+    ioString += self.mYNumber.stringPropertyValue ()
+    ioString += self.mNumberHorizontalAlignment.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

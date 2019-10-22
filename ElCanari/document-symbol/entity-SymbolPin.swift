@@ -856,6 +856,49 @@ class SymbolPin : SymbolObject,
     self.xPin_property.readFrom (dictionary: inDictionary, forKey:"xPin")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "yPin\n"
+    ioString += "xName\n"
+    ioString += "yName\n"
+    ioString += "xNumber\n"
+    ioString += "yNumber\n"
+    ioString += "name\n"
+    ioString += "nameHorizontalAlignment\n"
+    ioString += "numberHorizontalAlignment\n"
+    ioString += "pinNameIsDisplayedInSchematics\n"
+    ioString += "xPin\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.yPin.stringPropertyValue ()
+    ioString += self.xName.stringPropertyValue ()
+    ioString += self.yName.stringPropertyValue ()
+    ioString += self.xNumber.stringPropertyValue ()
+    ioString += self.yNumber.stringPropertyValue ()
+    ioString += self.name.stringPropertyValue ()
+    ioString += self.nameHorizontalAlignment.stringPropertyValue ()
+    ioString += self.numberHorizontalAlignment.stringPropertyValue ()
+    ioString += self.pinNameIsDisplayedInSchematics.stringPropertyValue ()
+    ioString += self.xPin.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

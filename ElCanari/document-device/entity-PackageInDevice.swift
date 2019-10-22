@@ -924,6 +924,73 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mFileData\n"
+    ioString += "mName\n"
+    ioString += "mVersion\n"
+    ioString += "mStrokeBezierPath\n"
+    ioString += "mX\n"
+    ioString += "mY\n"
+  //--- To one relationships
+    ioString += "mRoot\n"
+  //--- To many relationships
+    ioString += "mMasterPads\n"
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mFileData.stringPropertyValue ()
+    ioString += self.mName.stringPropertyValue ()
+    ioString += self.mVersion.stringPropertyValue ()
+    ioString += self.mStrokeBezierPath.stringPropertyValue ()
+    ioString += self.mX.stringPropertyValue ()
+    ioString += self.mY.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.mRoot {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mMasterPads {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

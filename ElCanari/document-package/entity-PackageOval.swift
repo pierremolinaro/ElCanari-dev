@@ -655,6 +655,45 @@ class PackageOval : PackageObject,
     self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "y\n"
+    ioString += "width\n"
+    ioString += "height\n"
+    ioString += "xUnit\n"
+    ioString += "yUnit\n"
+    ioString += "widthUnit\n"
+    ioString += "heightUnit\n"
+    ioString += "x\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.y.stringPropertyValue ()
+    ioString += self.width.stringPropertyValue ()
+    ioString += self.height.stringPropertyValue ()
+    ioString += self.xUnit.stringPropertyValue ()
+    ioString += self.yUnit.stringPropertyValue ()
+    ioString += self.widthUnit.stringPropertyValue ()
+    ioString += self.heightUnit.stringPropertyValue ()
+    ioString += self.x.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

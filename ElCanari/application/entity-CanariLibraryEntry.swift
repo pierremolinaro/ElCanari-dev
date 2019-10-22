@@ -330,6 +330,37 @@ class CanariLibraryEntry : EBManagedObject,
     self.mUserAndPasswordTag_property.readFrom (dictionary: inDictionary, forKey:"mUserAndPasswordTag")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mPath\n"
+    ioString += "mUses\n"
+    ioString += "mLibraryRepositoryURL\n"
+    ioString += "mUserAndPasswordTag\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mPath.stringPropertyValue ()
+    ioString += self.mUses.stringPropertyValue ()
+    ioString += self.mLibraryRepositoryURL.stringPropertyValue ()
+    ioString += self.mUserAndPasswordTag.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

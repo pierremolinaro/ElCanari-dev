@@ -669,6 +669,51 @@ class BoardLine : BoardObject,
     self.mWidth_property.readFrom (dictionary: inDictionary, forKey:"mWidth")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mWidthUnit\n"
+    ioString += "mX1\n"
+    ioString += "mX1Unit\n"
+    ioString += "mY1\n"
+    ioString += "mY1Unit\n"
+    ioString += "mX2\n"
+    ioString += "mX2Unit\n"
+    ioString += "mY2\n"
+    ioString += "mY2Unit\n"
+    ioString += "mLayer\n"
+    ioString += "mWidth\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mWidthUnit.stringPropertyValue ()
+    ioString += self.mX1.stringPropertyValue ()
+    ioString += self.mX1Unit.stringPropertyValue ()
+    ioString += self.mY1.stringPropertyValue ()
+    ioString += self.mY1Unit.stringPropertyValue ()
+    ioString += self.mX2.stringPropertyValue ()
+    ioString += self.mX2Unit.stringPropertyValue ()
+    ioString += self.mY2.stringPropertyValue ()
+    ioString += self.mY2Unit.stringPropertyValue ()
+    ioString += self.mLayer.stringPropertyValue ()
+    ioString += self.mWidth.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

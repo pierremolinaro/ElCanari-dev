@@ -2493,6 +2493,141 @@ class ComponentInProject : BoardObject,
     self.mYUnit_property.readFrom (dictionary: inDictionary, forKey:"mYUnit")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mX\n"
+    ioString += "mY\n"
+    ioString += "mRotation\n"
+    ioString += "mSide\n"
+    ioString += "mNameIsVisibleInBoard\n"
+    ioString += "mXName\n"
+    ioString += "mYName\n"
+    ioString += "mNameFontSize\n"
+    ioString += "mNameRotation\n"
+    ioString += "mValueIsVisibleInBoard\n"
+    ioString += "mXValue\n"
+    ioString += "mYValue\n"
+    ioString += "mValueFontSize\n"
+    ioString += "mValueRotation\n"
+    ioString += "mComponentValue\n"
+    ioString += "mNamePrefix\n"
+    ioString += "mNameIndex\n"
+    ioString += "mXUnit\n"
+    ioString += "mYUnit\n"
+  //--- To one relationships
+    ioString += "mDevice\n"
+    ioString += "mSelectedPackage\n"
+    ioString += "mNameFont\n"
+    ioString += "mValueFont\n"
+  //--- To many relationships
+    ioString += "mConnectors\n"
+    ioString += "mSymbols\n"
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mX.stringPropertyValue ()
+    ioString += self.mY.stringPropertyValue ()
+    ioString += self.mRotation.stringPropertyValue ()
+    ioString += self.mSide.stringPropertyValue ()
+    ioString += self.mNameIsVisibleInBoard.stringPropertyValue ()
+    ioString += self.mXName.stringPropertyValue ()
+    ioString += self.mYName.stringPropertyValue ()
+    ioString += self.mNameFontSize.stringPropertyValue ()
+    ioString += self.mNameRotation.stringPropertyValue ()
+    ioString += self.mValueIsVisibleInBoard.stringPropertyValue ()
+    ioString += self.mXValue.stringPropertyValue ()
+    ioString += self.mYValue.stringPropertyValue ()
+    ioString += self.mValueFontSize.stringPropertyValue ()
+    ioString += self.mValueRotation.stringPropertyValue ()
+    ioString += self.mComponentValue.stringPropertyValue ()
+    ioString += self.mNamePrefix.stringPropertyValue ()
+    ioString += self.mNameIndex.stringPropertyValue ()
+    ioString += self.mXUnit.stringPropertyValue ()
+    ioString += self.mYUnit.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.mDevice {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+    if let object = self.mSelectedPackage {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+    if let object = self.mNameFont {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+    if let object = self.mValueFont {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mConnectors {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mSymbols {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

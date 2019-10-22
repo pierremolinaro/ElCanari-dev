@@ -660,6 +660,76 @@ class SymbolPinTypeInDevice : EBManagedObject,
     self.mNumberHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mNumberHorizontalAlignment")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mPinX\n"
+    ioString += "mPinY\n"
+    ioString += "mXName\n"
+    ioString += "mYName\n"
+    ioString += "mName\n"
+    ioString += "mNameHorizontalAlignment\n"
+    ioString += "mPinNameIsDisplayedInSchematics\n"
+    ioString += "mXNumber\n"
+    ioString += "mYNumber\n"
+    ioString += "mNumberHorizontalAlignment\n"
+  //--- To one relationships
+  //--- To many relationships
+    ioString += "mInstances\n"
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mPinX.stringPropertyValue ()
+    ioString += self.mPinY.stringPropertyValue ()
+    ioString += self.mXName.stringPropertyValue ()
+    ioString += self.mYName.stringPropertyValue ()
+    ioString += self.mName.stringPropertyValue ()
+    ioString += self.mNameHorizontalAlignment.stringPropertyValue ()
+    ioString += self.mPinNameIsDisplayedInSchematics.stringPropertyValue ()
+    ioString += self.mXNumber.stringPropertyValue ()
+    ioString += self.mYNumber.stringPropertyValue ()
+    ioString += self.mNumberHorizontalAlignment.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mInstances {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

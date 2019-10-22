@@ -505,6 +505,43 @@ class CommentInSchematic : SchematicObject,
     self.mComment_property.readFrom (dictionary: inDictionary, forKey:"mComment")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mColor\n"
+    ioString += "mSize\n"
+    ioString += "mHorizontalAlignment\n"
+    ioString += "mVerticalAlignment\n"
+    ioString += "mX\n"
+    ioString += "mY\n"
+    ioString += "mComment\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mColor.stringPropertyValue ()
+    ioString += self.mSize.stringPropertyValue ()
+    ioString += self.mHorizontalAlignment.stringPropertyValue ()
+    ioString += self.mVerticalAlignment.stringPropertyValue ()
+    ioString += self.mX.stringPropertyValue ()
+    ioString += self.mY.stringPropertyValue ()
+    ioString += self.mComment.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

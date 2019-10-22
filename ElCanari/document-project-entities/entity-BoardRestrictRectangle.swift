@@ -523,6 +523,41 @@ class BoardRestrictRectangle : BoardObject,
     self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mY\n"
+    ioString += "mWidth\n"
+    ioString += "mHeight\n"
+    ioString += "mIsInFrontLayer\n"
+    ioString += "mIsInBackLayer\n"
+    ioString += "mX\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mY.stringPropertyValue ()
+    ioString += self.mWidth.stringPropertyValue ()
+    ioString += self.mHeight.stringPropertyValue ()
+    ioString += self.mIsInFrontLayer.stringPropertyValue ()
+    ioString += self.mIsInBackLayer.stringPropertyValue ()
+    ioString += self.mX.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

@@ -681,6 +681,78 @@ class ArtworkRoot : EBManagedObject,
     self.drillDataFileExtension_property.readFrom (dictionary: inDictionary, forKey:"drillDataFileExtension")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "selectedTab\n"
+    ioString += "comments\n"
+    ioString += "minPPTPTTTWdisplayUnit\n"
+    ioString += "minPPTPTTTW\n"
+    ioString += "minValueForOARdisplayUnit\n"
+    ioString += "minValueForOARinEBUnit\n"
+    ioString += "minValueForPHDdisplayUnit\n"
+    ioString += "minValueForPHDinEBUnit\n"
+    ioString += "minValueForBoardLimitWidthDisplayUnit\n"
+    ioString += "minValueForBoardLimitWidth\n"
+    ioString += "drillDataFileExtension\n"
+  //--- To one relationships
+  //--- To many relationships
+    ioString += "fileGenerationParameterArray\n"
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.selectedTab.stringPropertyValue ()
+    ioString += self.comments.stringPropertyValue ()
+    ioString += self.minPPTPTTTWdisplayUnit.stringPropertyValue ()
+    ioString += self.minPPTPTTTW.stringPropertyValue ()
+    ioString += self.minValueForOARdisplayUnit.stringPropertyValue ()
+    ioString += self.minValueForOARinEBUnit.stringPropertyValue ()
+    ioString += self.minValueForPHDdisplayUnit.stringPropertyValue ()
+    ioString += self.minValueForPHDinEBUnit.stringPropertyValue ()
+    ioString += self.minValueForBoardLimitWidthDisplayUnit.stringPropertyValue ()
+    ioString += self.minValueForBoardLimitWidth.stringPropertyValue ()
+    ioString += self.drillDataFileExtension.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.fileGenerationParameterArray {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

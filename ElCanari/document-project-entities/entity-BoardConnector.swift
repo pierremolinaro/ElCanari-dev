@@ -1712,6 +1712,112 @@ class BoardConnector : BoardObject,
     self.mUsesCustomPadDiameter_property.readFrom (dictionary: inDictionary, forKey:"mUsesCustomPadDiameter")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mComponentPadName\n"
+    ioString += "mPadIndex\n"
+    ioString += "mX\n"
+    ioString += "mY\n"
+    ioString += "mDefaultHoleDiameterUnit\n"
+    ioString += "mCustomHoleDiameter\n"
+    ioString += "mCustomHoleDiameterUnit\n"
+    ioString += "mUsesCustomHoleDiameter\n"
+    ioString += "mDefaultPadDiameterUnit\n"
+    ioString += "mCustomPadDiameter\n"
+    ioString += "mCustomPadDiameterUnit\n"
+    ioString += "mUsesCustomPadDiameter\n"
+  //--- To one relationships
+    ioString += "mComponent\n"
+  //--- To many relationships
+    ioString += "mTracksP2\n"
+    ioString += "mTracksP1\n"
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mComponentPadName.stringPropertyValue ()
+    ioString += self.mPadIndex.stringPropertyValue ()
+    ioString += self.mX.stringPropertyValue ()
+    ioString += self.mY.stringPropertyValue ()
+    ioString += self.mDefaultHoleDiameterUnit.stringPropertyValue ()
+    ioString += self.mCustomHoleDiameter.stringPropertyValue ()
+    ioString += self.mCustomHoleDiameterUnit.stringPropertyValue ()
+    ioString += self.mUsesCustomHoleDiameter.stringPropertyValue ()
+    ioString += self.mDefaultPadDiameterUnit.stringPropertyValue ()
+    ioString += self.mCustomPadDiameter.stringPropertyValue ()
+    ioString += self.mCustomPadDiameterUnit.stringPropertyValue ()
+    ioString += self.mUsesCustomPadDiameter.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.mComponent {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mTracksP2 {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mTracksP1 {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

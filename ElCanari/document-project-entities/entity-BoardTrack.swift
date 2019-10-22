@@ -1133,6 +1133,54 @@ class BoardTrack : BoardObject,
     self.mUsesCustomTrackWidth_property.readFrom (dictionary: inDictionary, forKey:"mUsesCustomTrackWidth")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mSide\n"
+    ioString += "mDefaultTrackWidthUnit\n"
+    ioString += "mCustomTrackWidth\n"
+    ioString += "mCustomTrackWidthUnit\n"
+    ioString += "mUsesCustomTrackWidth\n"
+  //--- To one relationships
+    ioString += "mConnectorP1\n"
+    ioString += "mConnectorP2\n"
+    ioString += "mNet\n"
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mSide.stringPropertyValue ()
+    ioString += self.mDefaultTrackWidthUnit.stringPropertyValue ()
+    ioString += self.mCustomTrackWidth.stringPropertyValue ()
+    ioString += self.mCustomTrackWidthUnit.stringPropertyValue ()
+    ioString += self.mUsesCustomTrackWidth.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.mConnectorP1 {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+    if let object = self.mConnectorP2 {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+    if let object = self.mNet {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

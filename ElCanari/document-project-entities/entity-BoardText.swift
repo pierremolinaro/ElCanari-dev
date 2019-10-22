@@ -883,6 +883,54 @@ class BoardText : BoardObject,
     self.mOblique_property.readFrom (dictionary: inDictionary, forKey:"mOblique")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mX\n"
+    ioString += "mY\n"
+    ioString += "mFontSize\n"
+    ioString += "mLayer\n"
+    ioString += "mText\n"
+    ioString += "mHorizontalAlignment\n"
+    ioString += "mVerticalAlignment\n"
+    ioString += "mRotation\n"
+    ioString += "mWeight\n"
+    ioString += "mOblique\n"
+  //--- To one relationships
+    ioString += "mFont\n"
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mX.stringPropertyValue ()
+    ioString += self.mY.stringPropertyValue ()
+    ioString += self.mFontSize.stringPropertyValue ()
+    ioString += self.mLayer.stringPropertyValue ()
+    ioString += self.mText.stringPropertyValue ()
+    ioString += self.mHorizontalAlignment.stringPropertyValue ()
+    ioString += self.mVerticalAlignment.stringPropertyValue ()
+    ioString += self.mRotation.stringPropertyValue ()
+    ioString += self.mWeight.stringPropertyValue ()
+    ioString += self.mOblique.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.mFont {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

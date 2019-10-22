@@ -750,6 +750,50 @@ class SlavePadInDevice : EBManagedObject,
     self.mStyle_property.readFrom (dictionary: inDictionary, forKey:"mStyle")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mCenterX\n"
+    ioString += "mCenterY\n"
+    ioString += "mWidth\n"
+    ioString += "mHeight\n"
+    ioString += "mHoleWidth\n"
+    ioString += "mHoleHeight\n"
+    ioString += "mShape\n"
+    ioString += "mStyle\n"
+  //--- To one relationships
+    ioString += "mMasterPad\n"
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mCenterX.stringPropertyValue ()
+    ioString += self.mCenterY.stringPropertyValue ()
+    ioString += self.mWidth.stringPropertyValue ()
+    ioString += self.mHeight.stringPropertyValue ()
+    ioString += self.mHoleWidth.stringPropertyValue ()
+    ioString += self.mHoleHeight.stringPropertyValue ()
+    ioString += self.mShape.stringPropertyValue ()
+    ioString += self.mStyle.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.mMasterPad {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

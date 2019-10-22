@@ -460,6 +460,36 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
     self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolInstanceName")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mSymbolInstanceName\n"
+  //--- To one relationships
+    ioString += "mSymbolType\n"
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mSymbolInstanceName.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.mSymbolType {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

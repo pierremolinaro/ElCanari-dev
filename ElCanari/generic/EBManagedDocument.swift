@@ -116,42 +116,80 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
         self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] = windowSize.height
       }
     }
+  //--- Temp
+    let textualData = try self.textualDataForSaving ()
+    let s = self.fileURL!.lastPathComponent
+    let tempFile = NSHomeDirectory() + "/desktop/" + s + ".txt"
+    try textualData.write (to: URL (fileURLWithPath: tempFile))
   //---
-    let fileData : Data
     switch self.mManagedDocumentFileFormat {
     case .binary :
-      var fileBinaryData = Data ()
-    //--- Append signature
-      fileBinaryData.appendBinarySignature ()
-    //--- Write status
-      fileBinaryData.append (self.metadataStatusForSaving ())
-    //--- Append metadata dictionary
-      let metaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary, format: .binary, options: 0)
-      fileBinaryData.append (1)
-      fileBinaryData.appendAutosizedData (metaData)
-    //--- Append document data
-      let dataArray = self.dataForSavingFromRootObject ()
-      let documentData = try PropertyListSerialization.data (fromPropertyList: dataArray, format: .binary, options: 0)
-      fileBinaryData.append (6)
-      fileBinaryData.appendAutosizedData (documentData)
-    //--- Append final byte
-      fileBinaryData.append (0)
-      fileData = fileBinaryData
+      return try self.binaryDataForSaving ()
     case .textual :
-      var fileStringData = "PM-TEXT-FORMAT \(self.metadataStatusForSaving ())\n".data (using: .utf8)!
-    //--- Append metadata dictionary
-      let textMetaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary, format: .xml, options: 0)
-    //  let textMetaData = try JSONSerialization.data (withJSONObject: self.mMetadataDictionary, options: [])
-      fileStringData += textMetaData
-      fileStringData += "-----\n".data (using: .utf8)!
-      let dataArray = self.dataForSavingFromRootObject ()
-      let documentData = try PropertyListSerialization.data (fromPropertyList: dataArray, format: .xml, options: 0)
-    //  let documentData = try JSONSerialization.data (withJSONObject: dataArray, options: [])
-      fileStringData += documentData
-      fileData = fileStringData
+      return try self.textualDataForSaving ()
     }
+  }
+
+  //····················································································································
+
+  private func binaryDataForSaving () throws -> Data {
+    let start = Date ()
+    var fileBinaryData = Data ()
+  //--- Append signature
+    fileBinaryData.appendBinarySignature ()
+  //--- Write status
+    fileBinaryData.append (self.metadataStatusForSaving ())
+  //--- Append metadata dictionary
+    let metaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary, format: .binary, options: 0)
+    fileBinaryData.append (1)
+    fileBinaryData.appendAutosizedData (metaData)
+  //--- Append document data
+    let dataArray = self.dataForSavingFromRootObject ()
+    let documentData = try PropertyListSerialization.data (fromPropertyList: dataArray, format: .binary, options: 0)
+    fileBinaryData.append (6)
+    fileBinaryData.appendAutosizedData (documentData)
+  //--- Append final byte
+    fileBinaryData.append (0)
   //---
-    return fileData
+    Swift.print ("Binary Saving \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+    return fileBinaryData
+  }
+
+  //····················································································································
+
+  private func textualDataForSaving () throws -> Data {
+    let start = Date ()
+    var fileStringData = "PM-TEXT-FORMAT \(self.metadataStatusForSaving ())\n".data (using: .utf8)!
+  //--- Append metadata dictionary
+   // let textMetaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary, format: .xml, options: 0)
+    let textMetaData = try JSONSerialization.data (withJSONObject: self.mMetadataDictionary, options: [])
+    fileStringData += textMetaData
+    fileStringData += "\n".data (using: .utf8)!
+  //--- Build class index dictionary
+    let objectArray = self.reachableObjectsFromRootObject ()
+    var classDictionary = [String : Int] ()
+    var classDescriptionString = ""
+    for object in objectArray {
+      let key = String (describing: type (of: object as Any))
+      if classDictionary [key] == nil {
+        classDictionary [key] = classDictionary.count
+        classDescriptionString += "$" + key + "\n"
+        object.appendPropertyNamesTo (&classDescriptionString)
+      }
+    }
+    fileStringData += classDescriptionString.data (using: .utf8)!
+  //--- Save data
+    var dataString = ""
+    for object in objectArray {
+      let key = String (describing: type (of: object as Any))
+      let classIndex = classDictionary [key]!
+      dataString += "@\(classIndex)\n"
+      object.appendPropertyValuesTo (&dataString)
+    }
+    fileStringData += dataString.data (using: .utf8)!
+  //---
+    Swift.print ("Text Saving \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+    return fileStringData
   }
 
   //····················································································································
@@ -210,6 +248,12 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
           objectsToExploreArray.append (managedObject)
         }
       }
+    }
+  //--- Set savingIndex for each object
+    var idx = 0
+    for object in reachableObjectArray {
+      object.savingIndex = idx
+      idx += 1
     }
     return reachableObjectArray
   }

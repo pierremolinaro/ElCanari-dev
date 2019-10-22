@@ -162,8 +162,13 @@ extension NSBezierPath : ClassPropertyProtocol {
         bp.miterLimit = CGFloat (miterLimit)
       }
     }
-    // print ("ok: \(ok)")
     return bp
+  }
+
+  //····················································································································
+
+  func stringPropertyValue () -> String {
+    return "\(self.archiveToString ())\n"
   }
 
   //····················································································································

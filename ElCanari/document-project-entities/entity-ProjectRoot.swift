@@ -6228,6 +6228,340 @@ class ProjectRoot : EBManagedObject,
     self.mRastnetDisplayedComponentName_property.readFrom (dictionary: inDictionary, forKey:"mRastnetDisplayedComponentName")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mArtworkName\n"
+    ioString += "mArtworkVersion\n"
+    ioString += "mCheckClearanceBetweenPadsOfSameNet\n"
+    ioString += "mLastERCCheckingIsSuccess\n"
+    ioString += "mLastERCCheckingSignature\n"
+    ioString += "mAutoRouterPreferredDirections\n"
+    ioString += "mAutorouterSnapAngle\n"
+    ioString += "mRouteDirection\n"
+    ioString += "mRouteOrigin\n"
+    ioString += "mTrackLengthUnit\n"
+    ioString += "mLayoutClearance\n"
+    ioString += "mLayoutClearanceUnit\n"
+    ioString += "mBoardSelectedInspector\n"
+    ioString += "mBoardHorizontalFlip\n"
+    ioString += "mBoardVerticalFlip\n"
+    ioString += "mBoardGridStyle\n"
+    ioString += "mBoardGridDisplayFactor\n"
+    ioString += "mBoardZoom\n"
+    ioString += "mBoardGridStep\n"
+    ioString += "mBoardGridStepUnit\n"
+    ioString += "mErrorOrWarningIssueSize\n"
+    ioString += "mControlKeyHiliteDiameter\n"
+    ioString += "mBoardLimitsWidth\n"
+    ioString += "mBoardLimitsWidthUnit\n"
+    ioString += "mBoardLimitsSelectedInspector\n"
+    ioString += "mBoardLimitsHorizontalFlip\n"
+    ioString += "mBoardLimitsVerticalFlip\n"
+    ioString += "mBoardLimitsGridStyle\n"
+    ioString += "mBoardLimitsGridDisplayFactor\n"
+    ioString += "mBoardLimitsZoom\n"
+    ioString += "mBoardLimitsGridStep\n"
+    ioString += "mBoardLimitsGridStepUnit\n"
+    ioString += "mBoardLimitsBoundingBoxUnit\n"
+    ioString += "mBoardPointsBoundingBoxUnit\n"
+    ioString += "mBoardSelectedCurveDisplayUnit\n"
+    ioString += "mBoardClearance\n"
+    ioString += "mBoardClearanceUnit\n"
+    ioString += "mDefaultNetClassName\n"
+    ioString += "mSelectedPageIndex\n"
+    ioString += "mSelectedSchematicInspector\n"
+    ioString += "mSchematicTitle\n"
+    ioString += "mSchematicVersion\n"
+    ioString += "mSchematicDate\n"
+    ioString += "mSchematicHorizontalFlip\n"
+    ioString += "mSchematicVerticalFlip\n"
+    ioString += "mSchematicZoom\n"
+    ioString += "mSchematicGridStyle\n"
+    ioString += "mSchematicGridDisplayFactor\n"
+    ioString += "mSchematicCustomWidth\n"
+    ioString += "mSchematicCustomWidthUnit\n"
+    ioString += "mSchematicCustomHeight\n"
+    ioString += "mSchematicCustomHeightUnit\n"
+    ioString += "mSchematicSheetOrientation\n"
+    ioString += "mRastnetDisplay\n"
+    ioString += "mRastnetDisplayedNetName\n"
+    ioString += "mRastnetDisplayedComponentName\n"
+  //--- To one relationships
+    ioString += "mSelectedSheet\n"
+    ioString += "mArtwork\n"
+  //--- To many relationships
+    ioString += "mSheets\n"
+    ioString += "mNetClasses\n"
+    ioString += "mFonts\n"
+    ioString += "mDevices\n"
+    ioString += "mBorderCurves\n"
+    ioString += "mBoardObjects\n"
+    ioString += "mComponents\n"
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mArtworkName.stringPropertyValue ()
+    ioString += self.mArtworkVersion.stringPropertyValue ()
+    ioString += self.mCheckClearanceBetweenPadsOfSameNet.stringPropertyValue ()
+    ioString += self.mLastERCCheckingIsSuccess.stringPropertyValue ()
+    ioString += self.mLastERCCheckingSignature.stringPropertyValue ()
+    ioString += self.mAutoRouterPreferredDirections.stringPropertyValue ()
+    ioString += self.mAutorouterSnapAngle.stringPropertyValue ()
+    ioString += self.mRouteDirection.stringPropertyValue ()
+    ioString += self.mRouteOrigin.stringPropertyValue ()
+    ioString += self.mTrackLengthUnit.stringPropertyValue ()
+    ioString += self.mLayoutClearance.stringPropertyValue ()
+    ioString += self.mLayoutClearanceUnit.stringPropertyValue ()
+    ioString += self.mBoardSelectedInspector.stringPropertyValue ()
+    ioString += self.mBoardHorizontalFlip.stringPropertyValue ()
+    ioString += self.mBoardVerticalFlip.stringPropertyValue ()
+    ioString += self.mBoardGridStyle.stringPropertyValue ()
+    ioString += self.mBoardGridDisplayFactor.stringPropertyValue ()
+    ioString += self.mBoardZoom.stringPropertyValue ()
+    ioString += self.mBoardGridStep.stringPropertyValue ()
+    ioString += self.mBoardGridStepUnit.stringPropertyValue ()
+    ioString += self.mErrorOrWarningIssueSize.stringPropertyValue ()
+    ioString += self.mControlKeyHiliteDiameter.stringPropertyValue ()
+    ioString += self.mBoardLimitsWidth.stringPropertyValue ()
+    ioString += self.mBoardLimitsWidthUnit.stringPropertyValue ()
+    ioString += self.mBoardLimitsSelectedInspector.stringPropertyValue ()
+    ioString += self.mBoardLimitsHorizontalFlip.stringPropertyValue ()
+    ioString += self.mBoardLimitsVerticalFlip.stringPropertyValue ()
+    ioString += self.mBoardLimitsGridStyle.stringPropertyValue ()
+    ioString += self.mBoardLimitsGridDisplayFactor.stringPropertyValue ()
+    ioString += self.mBoardLimitsZoom.stringPropertyValue ()
+    ioString += self.mBoardLimitsGridStep.stringPropertyValue ()
+    ioString += self.mBoardLimitsGridStepUnit.stringPropertyValue ()
+    ioString += self.mBoardLimitsBoundingBoxUnit.stringPropertyValue ()
+    ioString += self.mBoardPointsBoundingBoxUnit.stringPropertyValue ()
+    ioString += self.mBoardSelectedCurveDisplayUnit.stringPropertyValue ()
+    ioString += self.mBoardClearance.stringPropertyValue ()
+    ioString += self.mBoardClearanceUnit.stringPropertyValue ()
+    ioString += self.mDefaultNetClassName.stringPropertyValue ()
+    ioString += self.mSelectedPageIndex.stringPropertyValue ()
+    ioString += self.mSelectedSchematicInspector.stringPropertyValue ()
+    ioString += self.mSchematicTitle.stringPropertyValue ()
+    ioString += self.mSchematicVersion.stringPropertyValue ()
+    ioString += self.mSchematicDate.stringPropertyValue ()
+    ioString += self.mSchematicHorizontalFlip.stringPropertyValue ()
+    ioString += self.mSchematicVerticalFlip.stringPropertyValue ()
+    ioString += self.mSchematicZoom.stringPropertyValue ()
+    ioString += self.mSchematicGridStyle.stringPropertyValue ()
+    ioString += self.mSchematicGridDisplayFactor.stringPropertyValue ()
+    ioString += self.mSchematicCustomWidth.stringPropertyValue ()
+    ioString += self.mSchematicCustomWidthUnit.stringPropertyValue ()
+    ioString += self.mSchematicCustomHeight.stringPropertyValue ()
+    ioString += self.mSchematicCustomHeightUnit.stringPropertyValue ()
+    ioString += self.mSchematicSheetOrientation.stringPropertyValue ()
+    ioString += self.mRastnetDisplay.stringPropertyValue ()
+    ioString += self.mRastnetDisplayedNetName.stringPropertyValue ()
+    ioString += self.mRastnetDisplayedComponentName.stringPropertyValue ()
+  //--- To one relationships
+    if let object = self.mSelectedSheet {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+    if let object = self.mArtwork {
+      ioString += "\(String (object.savingIndex, radix: 36))"
+    }
+    ioString += "\n"
+  //--- To many relationships
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mSheets {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mNetClasses {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mFonts {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mDevices {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mBorderCurves {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mBoardObjects {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.mComponents {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioString += ":\(rangeCount.baseXXEncodedString ())"
+      }
+      ioString += "\n"
+    }
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································

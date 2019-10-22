@@ -226,6 +226,35 @@ class DeviceSymbolTypeInProject : EBManagedObject,
     self.mFilledBezierPath_property.readFrom (dictionary: inDictionary, forKey:"mFilledBezierPath")
   }
 
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  override func appendPropertyNamesTo (_ ioString : inout String) {
+    super.appendPropertyNamesTo (&ioString)
+  //--- Atomic properties
+    ioString += "mSymbolTypeName\n"
+    ioString += "mStrokeBezierPath\n"
+    ioString += "mFilledBezierPath\n"
+  //--- To one relationships
+  //--- To many relationships
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  override func appendPropertyValuesTo (_ ioString : inout String) {
+    super.appendPropertyValuesTo (&ioString)
+  //--- Atomic properties
+    ioString += self.mSymbolTypeName.stringPropertyValue ()
+    ioString += self.mStrokeBezierPath.stringPropertyValue ()
+    ioString += self.mFilledBezierPath.stringPropertyValue ()
+  //--- To one relationships
+  //--- To many relationships
+  }
+
   //····················································································································
   //   accessibleObjects
   //····················································································································
