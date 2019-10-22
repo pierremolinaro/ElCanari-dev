@@ -117,10 +117,10 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       }
     }
   //--- Temp
-    let textualData = try self.textualDataForSaving ()
-    let s = self.fileURL!.lastPathComponent
-    let tempFile = NSHomeDirectory() + "/desktop/" + s + ".txt"
-    try textualData.write (to: URL (fileURLWithPath: tempFile))
+//    let textualData = try self.textualDataForSaving ()
+//    let s = self.fileURL!.lastPathComponent
+//    let tempFile = NSHomeDirectory() + "/desktop/" + s + ".txt"
+//    try textualData.write (to: URL (fileURLWithPath: tempFile))
   //---
     switch self.mManagedDocumentFileFormat {
     case .binary :
@@ -133,7 +133,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   private func binaryDataForSaving () throws -> Data {
-    let start = Date ()
+ //   let start = Date ()
     var fileBinaryData = Data ()
   //--- Append signature
     fileBinaryData.appendBinarySignature ()
@@ -151,7 +151,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Append final byte
     fileBinaryData.append (0)
   //---
-    Swift.print ("Binary Saving \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+//    Swift.print ("Binary Saving \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
     return fileBinaryData
   }
 
