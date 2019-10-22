@@ -102,8 +102,11 @@ struct EBBezierPath : Hashable {
       }else{
         font = NSFont ()
       }
+    //--- Disable ligatures
+      var t = inTextAttributes
+      t [NSAttributedString.Key.ligature] = 0
     //--- Build text infrastructure
-      let textStore = NSTextStorage (string: inString, attributes: inTextAttributes)
+      let textStore = NSTextStorage (string: inString, attributes: t)
       let textContainer = NSTextContainer ()
       let myLayout = NSLayoutManager ()
       myLayout.addTextContainer (textContainer)
