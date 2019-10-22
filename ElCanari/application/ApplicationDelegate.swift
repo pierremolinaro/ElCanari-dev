@@ -4,10 +4,13 @@
 //
 //  Created by Pierre Molinaro on 03/07/2015.
 //
-//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+var gApplicationDelegate : ApplicationDelegate? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -17,12 +20,23 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
 
 @objc (ApplicationDelegate) class ApplicationDelegate : NSObject, NSApplicationDelegate {
 
+  //····················································································································
+  //  init
+  //····················································································································
+
+  override init () {
+    super.init ()
+    gApplicationDelegate = self
+  }
+
+  //····················································································································
+
   @IBOutlet private var mCanariAppUpdaterSettings : CanariAppUpdaterSettings? = nil // Only for retaining object
 
   @IBOutlet internal var mOpenAllDialogAccessoryCheckBox : NSButton? = nil
 
   //····················································································································
-  //  Theses outlet are used in ApplicationDelegate-maintenance.swift
+  //  Theses outlets are used in ApplicationDelegate-maintenance.swift
   //····················································································································
 
   @IBOutlet internal var mMaintenanceLogTextView : NSTextView? = nil

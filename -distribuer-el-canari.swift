@@ -28,11 +28,11 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.19"
+let VERSION_CANARI = "1.0.20"
 let NOTES : [String] = []
-let BUGFIXES : [String] = ["Hilite Width in Board"]
+let BUGFIXES : [String] = ["On ElCapitan, device PDF docs could not be opened"]
 let CHANGES : [String] = []
-let NEWS : [String] = ["Autorouter: added route from/to ..."]
+let NEWS : [String] = []
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   FOR PRINTING IN COLOR

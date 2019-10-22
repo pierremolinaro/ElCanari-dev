@@ -1,5 +1,18 @@
 //--- START OF USER ZONE 1
 
+fileprivate var gDocWindowSet = Set <CanariPDFWindow> ()
+
+extension ApplicationDelegate {
+
+  @objc func closeDocumentWindow (_ inNotification : Notification) {
+    if let window = inNotification.object as? CanariPDFWindow {
+      gDocWindowSet.remove (window)
+      Swift.print ("Object \(window)")
+    }
+  }
+
+}
+
 
 //--- END OF USER ZONE 1
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -13,21 +26,19 @@ import Cocoa
 extension DeviceDocument {
   @objc func showDocAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let selectedDocArray = self.mDocumentationController.selectedArray_property.propval
+    let selectedDocArray = self.mDocumentationController.selectedArray
     if selectedDocArray.count == 1 {
       let selectedDoc = selectedDocArray [0]
       let window = CanariPDFWindow (fileName: selectedDoc.mFileName, pdfData: selectedDoc.mFileData)
-//        contentRect: NSRect (x:0, y:0, width:800, height: 600),
-//        styleMask: [.titled, .closable, .resizable],
-//        backing: .buffered,
-//        defer: false
-//      )
-//      window.title = selectedDoc.mFileName
-//      window.isReleasedWhenClosed = false
-//      let pdfView = PDFView (frame: window.contentView!.frame)
-//      pdfView.document = PDFDocument (data: selectedDoc.mFileData)
-//      window.contentView = pdfView
       window.makeKeyAndOrderFront (nil)
+      Swift.print ("Object \(window)")
+      gDocWindowSet.insert (window)
+      NotificationCenter.default.addObserver (
+        gApplicationDelegate!,
+        selector: #selector (ApplicationDelegate.closeDocumentWindow(_:)),
+        name: NSWindow.willCloseNotification,
+        object: window
+      )
     }
 //--- END OF USER ZONE 2
   }
