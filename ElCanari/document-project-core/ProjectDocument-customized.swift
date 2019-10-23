@@ -407,13 +407,9 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     self.mSelectedLabelNetClassPopUpController.unbind_model ()
     self.mSelectedLabelNetClassPopUpController.attachPopUpButton (nil)
     self.mBoardTextFontPopUpButton?.unregister ()
-    self.mBoardTextFontPopUpButton = nil
     self.mBoardComponentNameFontPopUpButton?.unregister ()
-    self.mBoardComponentNameFontPopUpButton = nil
     self.mBoardComponentValueFontPopUpButton?.unregister ()
-    self.mBoardComponentValueFontPopUpButton = nil
     self.mComponentPackagePopUpButton?.unregister ()
-    self.mComponentPackagePopUpButton = nil
   //---
     super.removeUserInterface ()
   }
