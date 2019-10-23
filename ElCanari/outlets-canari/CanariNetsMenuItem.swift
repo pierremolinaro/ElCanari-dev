@@ -101,15 +101,16 @@ class CanariNetsMenuItem : NSMenuItem, EBUserClassNameProtocol {
   //····················································································································
 
   @objc private func addTracksToSelection (_ inSender : NSMenuItem) {
-     if let project = self.mProject {
-       var objectsToSelect = [BoardObject] ()
-       for object in project.rootObject.mBoardObjects {
-         if let track = object as? BoardTrack, let net = track.mNet, net.mNetName == inSender.title {
-           objectsToSelect.append (object)
-         }
-       }
-       project.boardObjectsController.addToSelection (objects: objectsToSelect)
-     }
+    if let project = self.mProject {
+      var objectsToSelect = [BoardObject] ()
+      for object in project.rootObject.mBoardObjects {
+        if let track = object as? BoardTrack, let net = track.mNet, net.mNetName == inSender.title {
+          objectsToSelect.append (object)
+        }
+      }
+      project.boardObjectsController.addToSelection (objects: objectsToSelect)
+      project.windowForSheet?.makeFirstResponder (project.mBoardView)
+    }
   }
 
   //····················································································································

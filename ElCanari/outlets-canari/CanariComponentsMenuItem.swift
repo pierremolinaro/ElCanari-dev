@@ -54,7 +54,7 @@ class CanariComponentsMenuItem : NSMenuItem, EBUserClassNameProtocol {
     self.mComponentsController = EBSimpleController (
       observedObjects: [model],
       callBack: { self.update (from: model) }
-     )
+    )
   }
 
   //····················································································································
@@ -105,6 +105,7 @@ class CanariComponentsMenuItem : NSMenuItem, EBUserClassNameProtocol {
          }
        }
        project.boardObjectsController.addToSelection (objects: objectsToSelect)
+       project.windowForSheet?.makeFirstResponder (project.mBoardView)
      }
   }
 

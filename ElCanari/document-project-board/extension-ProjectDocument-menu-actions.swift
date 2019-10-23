@@ -99,6 +99,7 @@ extension ProjectDocument {
       }
     }
     self.boardObjectsController.setSelection (newSelection)
+    self.windowForSheet?.makeFirstResponder (self.mBoardView)
   }
 
   //····················································································································
@@ -111,6 +112,7 @@ extension ProjectDocument {
       }
     }
     self.boardObjectsController.setSelection (newSelection)
+    self.windowForSheet?.makeFirstResponder (self.mBoardView)
   }
 
   //····················································································································
@@ -123,6 +125,7 @@ extension ProjectDocument {
       }
     }
     self.boardObjectsController.setSelection (newSelection)
+    self.windowForSheet?.makeFirstResponder (self.mBoardView)
   }
 
   //····················································································································
@@ -135,6 +138,7 @@ extension ProjectDocument {
       }
     }
     self.boardObjectsController.setSelection (newSelection)
+    self.windowForSheet?.makeFirstResponder (self.mBoardView)
   }
 
   //····················································································································
@@ -153,6 +157,7 @@ extension ProjectDocument {
       }
     }
     self.boardObjectsController.addToSelection (objects: newSelectedObjects)
+    self.windowForSheet?.makeFirstResponder (self.mBoardView)
   }
 
   //····················································································································

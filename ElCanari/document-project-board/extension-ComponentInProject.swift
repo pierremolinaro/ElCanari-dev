@@ -134,7 +134,7 @@ extension ComponentInProject {
       connector.mComponentPadName = ""
     //--- Delete connector ?
       if (connector.mComponent == nil) && (connector.mTracksP1.count == 0) && (connector.mTracksP2.count == 0) {
-          connector.mRoot = nil // Remove from board objects
+        connector.mRoot = nil // Remove from board objects
       }
     }
   }

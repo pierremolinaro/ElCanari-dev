@@ -31,7 +31,9 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.0.20"
 let NOTES : [String] = []
 let BUGFIXES : [String] = ["On ElCapitan, device PDF docs could not be opened"]
-let CHANGES : [String] = []
+let CHANGES : [String] = [
+  "Project: ERC is only performed if an artwork is set"
+]
 let NEWS : [String] = []
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
