@@ -29,25 +29,27 @@ extension ProjectDocument {
   //····················································································································
 
   internal func performERCChecking () -> Bool {
-    let start = Date ()
+//    let start = Date ()
     self.mERCLogTextView?.clear ()
     var issues = [CanariIssue] ()
   //--- Checkings
     self.checkVersusArtwork (&issues)
-    var frontPadNetDictionary = [String : [PadGeometryForERC]] ()
-    var backPadNetDictionary = [String : [PadGeometryForERC]] ()
-    self.checkPadInsulation (&issues, &frontPadNetDictionary, &backPadNetDictionary)
-    var netConnectorsDictionary = [String : [(BoardConnector, EBBezierPath)]] ()
-    self.checkPadConnectivity (&issues, &netConnectorsDictionary)
-    self.checkNetConnectivity (&issues, netConnectorsDictionary)
-    self.checkTrackInsulation (&issues, frontPadNetDictionary, backPadNetDictionary)
-  //--- Set issues
-    self.mERCIssueTableView?.setIssues (issues)
-    let durationMS = Date ().timeIntervalSince (start) * 1000.0
-    self.mERCLogTextView?.appendMessageString ("Duration \(durationMS.rounded ()) ms")
+    if let artwork = self.rootObject.mArtwork {
+      var frontPadNetDictionary = [String : [PadGeometryForERC]] ()
+      var backPadNetDictionary = [String : [PadGeometryForERC]] ()
+      self.checkPadInsulation (&issues, &frontPadNetDictionary, &backPadNetDictionary, artworkClearance: artwork.minPPTPTTTW)
+      var netConnectorsDictionary = [String : [(BoardConnector, EBBezierPath)]] ()
+      self.checkPadConnectivity (&issues, &netConnectorsDictionary, artworkClearance: artwork.minPPTPTTTW)
+      self.checkNetConnectivity (&issues, netConnectorsDictionary)
+      self.checkTrackInsulation (&issues, frontPadNetDictionary, backPadNetDictionary, artworkClearance: artwork.minPPTPTTTW)
+    }
   //--- Update status
     self.rootObject.mLastERCCheckingIsSuccess = issues.isEmpty
     self.rootObject.mLastERCCheckingSignature = self.rootObject.signatureForERCChecking ?? 0
+  //--- Set issues
+    self.mERCIssueTableView?.setIssues (issues)
+//    let durationMS = Date ().timeIntervalSince (start) * 1000.0
+//    self.mERCLogTextView?.appendMessageString ("Duration \(durationMS.rounded ()) ms")
   //---
     return issues.isEmpty
   }
@@ -75,18 +77,22 @@ extension ProjectDocument {
         ioIssues.append (issue)
       }
     //--- Board OAR and PHD of vias
-      self.checkViasOARAndPHD (&ioIssues, artwork.minValueForOARinEBUnit, artwork.minValueForPHDinEBUnit)
+      self.checkViasOARAndPHD (&ioIssues, OAR: artwork.minValueForOARinEBUnit, PHD: artwork.minValueForPHDinEBUnit, artworkClearance: artwork.minPPTPTTTW)
     //--- Board OAR and PHD of pads
-      self.checkPadsOARAndPHD (&ioIssues, artwork.minValueForOARinEBUnit, artwork.minValueForPHDinEBUnit)
-
+      self.checkPadsOARAndPHD (&ioIssues, OAR: artwork.minValueForOARinEBUnit, PHD: artwork.minValueForPHDinEBUnit, artworkClearance: artwork.minPPTPTTTW)
     }else{
-      self.mERCLogTextView?.appendMessageString ("No artwork checking: artwork is not set.\n")
+      self.mERCLogTextView?.appendWarningString ("No checking: artwork is not set.\n")
+      let issue = CanariIssue (kind: .warning, message: "No checking: artwork is not set.", pathes: [])
+      ioIssues.append (issue)
     }
   }
 
   //····················································································································
 
-  fileprivate func checkViasOARAndPHD (_ ioIssues : inout [CanariIssue], _ inOAR : Int, _ inPHD : Int) {
+  fileprivate func checkViasOARAndPHD (_ ioIssues : inout [CanariIssue],
+                                       OAR inOAR : Int,
+                                       PHD inPHD : Int,
+                                       artworkClearance inArtworkClearance : Int) {
     self.mERCLogTextView?.appendMessageString ("Check vias OAR and PHD… ")
     var errorCount = 0
     for object in self.rootObject.mBoardObjects {
@@ -95,7 +101,7 @@ extension ProjectDocument {
         let viaOAR = (connector.actualPadDiameter! - viaHoleDiameter) / 2
         if viaHoleDiameter < inPHD {
           let center = connector.location!.cocoaPoint
-          let w = canariUnitToCocoa (connector.actualPadDiameter! + self.rootObject.mLayoutClearance)
+          let w = canariUnitToCocoa (connector.actualPadDiameter! + inArtworkClearance)
           let r = NSRect (center: center, size: NSSize (width: w, height: w))
           let bp = EBBezierPath (ovalIn: r)
           let issue = CanariIssue (kind: .error, message: "Hole diameter should be greater or equal to artwork PHD", pathes: [bp])
@@ -104,7 +110,7 @@ extension ProjectDocument {
         }
         if viaOAR < inOAR {
           let center = connector.location!.cocoaPoint
-          let w = canariUnitToCocoa (connector.actualPadDiameter! + self.rootObject.mLayoutClearance)
+          let w = canariUnitToCocoa (connector.actualPadDiameter! + inArtworkClearance)
           let r = NSRect (center: center, size: NSSize (width: w, height: w))
           let bp = EBBezierPath (ovalIn: r)
           let issue = CanariIssue (kind: .error, message: "Annular ring should be greater or equal to artwork OAR", pathes: [bp])
@@ -124,9 +130,11 @@ extension ProjectDocument {
 
   //····················································································································
 
-  fileprivate func checkPadsOARAndPHD (_ ioIssues : inout [CanariIssue], _ inOAR : Int, _ inPHD : Int) {
+  fileprivate func checkPadsOARAndPHD (_ ioIssues : inout [CanariIssue],
+                                       OAR inOAR : Int,
+                                       PHD inPHD : Int,
+                                       artworkClearance inArtworkClearance : Int) {
     self.mERCLogTextView?.appendMessageString ("Check pads OAR and PHD… ")
-    let clearance = self.rootObject.mLayoutClearance
     var errorCount = 0
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject {
@@ -141,8 +149,8 @@ extension ProjectDocument {
               let bp = EBBezierPath.pad (
                 centerX: padDescriptor.center.x,
                 centerY: padDescriptor.center.y,
-                width: padDescriptor.padSize.width + clearance,
-                height: padDescriptor.padSize.height + clearance,
+                width: padDescriptor.padSize.width + inArtworkClearance,
+                height: padDescriptor.padSize.height + inArtworkClearance,
                 shape: padDescriptor.shape
               ).transformed (by: af)
               let issue = CanariIssue (kind: .error, message: "Pad hole diameter should be greater or equal to artwork PHD", pathes: [bp])
@@ -154,8 +162,8 @@ extension ProjectDocument {
               let bp = EBBezierPath.pad (
                 centerX: padDescriptor.center.x,
                 centerY: padDescriptor.center.y,
-                width: padDescriptor.padSize.width + clearance,
-                height: padDescriptor.padSize.height + clearance,
+                width: padDescriptor.padSize.width + inArtworkClearance,
+                height: padDescriptor.padSize.height + inArtworkClearance,
                 shape: padDescriptor.shape
               ).transformed (by: af)
               let issue = CanariIssue (kind: .error, message: "Pad OAR should be greater or equal to artwork OAR", pathes: [bp])
@@ -173,8 +181,8 @@ extension ProjectDocument {
                 let bp = EBBezierPath.pad (
                   centerX: slavePad.center.x,
                   centerY: slavePad.center.y,
-                  width: slavePad.padSize.width + clearance,
-                  height: slavePad.padSize.height + clearance,
+                  width: slavePad.padSize.width + inArtworkClearance,
+                  height: slavePad.padSize.height + inArtworkClearance,
                   shape: slavePad.shape
                 ).transformed (by: af)
                 let issue = CanariIssue (kind: .error, message: "Pad hole diameter should be greater or equal to artwork PHD", pathes: [bp])
@@ -186,8 +194,8 @@ extension ProjectDocument {
                 let bp = EBBezierPath.pad (
                   centerX: slavePad.center.x,
                   centerY: slavePad.center.y,
-                  width: slavePad.padSize.width + clearance,
-                  height: slavePad.padSize.height + clearance,
+                  width: slavePad.padSize.width + inArtworkClearance,
+                  height: slavePad.padSize.height + inArtworkClearance,
                   shape: slavePad.shape
                 ).transformed (by: af)
                 let issue = CanariIssue (kind: .error, message: "Pad OAR should be greater or equal to artwork OAR", pathes: [bp])
@@ -212,8 +220,8 @@ extension ProjectDocument {
 
   fileprivate func checkPadInsulation (_ ioIssues : inout [CanariIssue],
                                        _ ioFrontPadNetDictionary : inout [String : [PadGeometryForERC]],
-                                       _ ioBackPadNetDictionary : inout [String : [PadGeometryForERC]]) {
-    let clearance = self.rootObject.mLayoutClearance
+                                       _ ioBackPadNetDictionary : inout [String : [PadGeometryForERC]],
+                                       artworkClearance inArtworkClearance : Int) {
     for component in self.rootObject.mComponents {
       if component.mRoot != nil { // Is on board
         let padNetDictionary : PadNetDictionary = component.padNetDictionary!
@@ -224,7 +232,7 @@ extension ProjectDocument {
             centerY: padDescriptor.center.y,
             width: padDescriptor.padSize.width,
             height: padDescriptor.padSize.height,
-            clearance: clearance,
+            clearance: inArtworkClearance,
             shape: padDescriptor.shape
           )
           var componentSidePadGeometry : PadGeometryForERC
@@ -243,7 +251,7 @@ extension ProjectDocument {
               centerY: slavePad.center.y,
               width: slavePad.padSize.width,
               height: slavePad.padSize.height,
-              clearance: clearance,
+              clearance: inArtworkClearance,
               shape: slavePad.shape
             )
             switch slavePad.style {
@@ -318,36 +326,6 @@ extension ProjectDocument {
         }
       }
     }
-
-//    }
-//    if frontPads.count > 1 {
-//      for idx in 1 ..< frontPads.count {
-//        let padX = frontPads [idx]
-//        for idy in 0 ..< idx {
-//          let padY = frontPads [idy]
-//          if padX.intersects (pad: padY) {
-//            collisionCount += 1
-//            let bp = [padX.bezierPath, padY.bezierPath]
-//            let issue = CanariIssue (kind: .error, message: "Front side pad collision", pathes: bp)
-//            ioIssues.append (issue)
-//          }
-//        }
-//      }
-//    }
-//    if backPads.count > 1 {
-//      for idx in 1 ..< backPads.count {
-//        let padX = backPads [idx]
-//        for idy in 0 ..< idx {
-//          let padY = backPads [idy]
-//          if padX.intersects (pad: padY) {
-//            collisionCount += 1
-//            let bp = [padX.bezierPath, padY.bezierPath]
-//            let issue = CanariIssue (kind: .error, message: "Back side pad collision", pathes: bp)
-//            ioIssues.append (issue)
-//          }
-//        }
-//      }
-//    }
     if collisionCount == 0 {
       self.mERCLogTextView?.appendSuccessString ("ok\n")
     }else if collisionCount == 1 {
@@ -398,7 +376,8 @@ extension ProjectDocument {
   //····················································································································
 
   private func checkPadConnectivity (_ ioIssues : inout [CanariIssue],
-                                     _ ioNetConnectorsDictionary : inout [String : [(BoardConnector, EBBezierPath)]]) {
+                                     _ ioNetConnectorsDictionary : inout [String : [(BoardConnector, EBBezierPath)]],
+                                     artworkClearance inArtworkClearance : Int) {
     self.mERCLogTextView?.appendMessageString ("Pad connection… ")
     var connectionErrorCount = 0
     for component in self.rootObject.mComponents {
@@ -416,7 +395,7 @@ extension ProjectDocument {
               connectionErrorCount += 1
             }else{
               ioNetConnectorsDictionary [netName] = (ioNetConnectorsDictionary [netName] ?? []) + [(connector, bp)]
-              self.checkPadSizeVersusConnectedTracksSide (&ioIssues, connector, af, &connectionErrorCount)
+              self.checkPadSizeVersusConnectedTracksSide (&ioIssues, connector, af, &connectionErrorCount, artworkClearance: inArtworkClearance)
             }
           }else if (connector.mTracksP1.count + connector.mTracksP2.count) != 0 { // Pad without connection
             let bp = padDescriptor.bezierPath (index: connector.mPadIndex).transformed (by: af)
@@ -441,9 +420,9 @@ extension ProjectDocument {
   private func checkPadSizeVersusConnectedTracksSide (_ ioIssues : inout [CanariIssue],
                                                       _ inConnector : BoardConnector,
                                                       _ inAffineTransform : AffineTransform,
-                                                      _ ioConnectionErrorCount : inout Int) {
+                                                      _ ioConnectionErrorCount : inout Int,
+                                                      artworkClearance inArtworkClearance : Int) {
     if let component = inConnector.mComponent {
-      let clearance = self.rootObject.mLayoutClearance
       let masterPadName = inConnector.mComponentPadName
       let padDescriptor = component.packagePadDictionary! [masterPadName]!
       if inConnector.mPadIndex == 0 { // Master pad
@@ -465,16 +444,16 @@ extension ProjectDocument {
           switch track.mSide {
           case .front :
             if !connectorOnFrontSide {
-              let bp = padDescriptor.bezierPath (index: 0, extraWidth: clearance).transformed (by: inAffineTransform)
-              let bp2 = track.bezierPath (extraWidth: clearance)
+              let bp = padDescriptor.bezierPath (index: 0, extraWidth: inArtworkClearance).transformed (by: inAffineTransform)
+              let bp2 = track.bezierPath (extraWidth: inArtworkClearance)
               let issue = CanariIssue (kind: .error, message: "Pad in back side, track in front side", pathes: [bp, bp2])
               ioIssues.append (issue)
               ioConnectionErrorCount += 1
             }
           case .back :
             if !connectorOnBackSide {
-              let bp = padDescriptor.bezierPath (index: 0, extraWidth: clearance).transformed (by: inAffineTransform)
-              let bp2 = track.bezierPath (extraWidth: clearance)
+              let bp = padDescriptor.bezierPath (index: 0, extraWidth: inArtworkClearance).transformed (by: inAffineTransform)
+              let bp2 = track.bezierPath (extraWidth: inArtworkClearance)
               let issue = CanariIssue (kind: .error, message: "Pad in front side, track in back side", pathes: [bp, bp2])
               ioIssues.append (issue)
               ioConnectionErrorCount += 1
@@ -508,16 +487,16 @@ extension ProjectDocument {
           switch track.mSide {
           case .front :
             if !connectorOnFrontSide {
-              let bp = padDescriptor.bezierPath (index: inConnector.mPadIndex, extraWidth: clearance).transformed (by: inAffineTransform)
-              let bp2 = track.bezierPath (extraWidth: clearance)
+              let bp = padDescriptor.bezierPath (index: inConnector.mPadIndex, extraWidth: inArtworkClearance).transformed (by: inAffineTransform)
+              let bp2 = track.bezierPath (extraWidth: inArtworkClearance)
               let issue = CanariIssue (kind: .error, message: "Pad in back side, track in front side", pathes: [bp, bp2])
               ioIssues.append (issue)
               ioConnectionErrorCount += 1
             }
           case .back :
             if !connectorOnBackSide {
-              let bp = padDescriptor.bezierPath (index: inConnector.mPadIndex, extraWidth: clearance).transformed (by: inAffineTransform)
-              let bp2 = track.bezierPath (extraWidth: clearance)
+              let bp = padDescriptor.bezierPath (index: inConnector.mPadIndex, extraWidth: inArtworkClearance).transformed (by: inAffineTransform)
+              let bp2 = track.bezierPath (extraWidth: inArtworkClearance)
               let issue = CanariIssue (kind: .error, message: "Pad in front side, track in back side", pathes: [bp, bp2])
               ioIssues.append (issue)
               ioConnectionErrorCount += 1
@@ -583,8 +562,9 @@ extension ProjectDocument {
 
   private func checkTrackInsulation (_ ioIssues : inout [CanariIssue],
                                      _ inFrontPadNetDictionary : [String : [PadGeometryForERC]],
-                                     _ inBackPadNetDictionary  : [String : [PadGeometryForERC]]) {
-    let clearance = canariUnitToCocoa (self.rootObject.mLayoutClearance)
+                                     _ inBackPadNetDictionary  : [String : [PadGeometryForERC]],
+                                     artworkClearance inArtworkClearance : Int) {
+    let clearance = canariUnitToCocoa (inArtworkClearance)
   //--- Track inventory
     var frontTrackNetDictionary = [String : [GeometricOblong]] ()
     var backTrackNetDictionary = [String : [GeometricOblong]] ()

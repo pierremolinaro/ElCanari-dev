@@ -88,7 +88,7 @@ class CanariBoardComponentNameFontPopUpButton : NSPopUpButton, EBUserClassNamePr
         self.addItem (withTitle: font.mFontName)
         self.lastItem?.representedObject = font
         self.lastItem?.target = self
-        self.lastItem?.action = #selector (CanariBoardComponentNameFontPopUpButton.changeFontAction (_:))
+        self.lastItem?.action = #selector (self.changeFontAction (_:))
         self.lastItem?.isEnabled = true
         if fontNameSet.contains (font.mFontName) {
           self.select (self.lastItem)
