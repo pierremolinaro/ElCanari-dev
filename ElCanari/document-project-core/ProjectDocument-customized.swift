@@ -359,7 +359,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
       scaleProvider: self.mBoardView
     )
   //---
-    self.schematicObjectsController.mAfterObjectRemovingCallback = self.updateSchematicsPointsAndNets
+    self.schematicObjectsController.mAfterObjectRemovingCallback = self.updateSchematicPointsAndNets
     self.mSchematicsView?.setMouseMovedCallback { [weak self] (mouseLocation) in self?.mouseMovedInSchematic (mouseLocation) }
     self.mSchematicsView?.setMouseExitCallback { [weak self] in self?.mouseExitInSchematic () }
     self.mouseExitInSchematic ()
@@ -418,7 +418,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
   //    Update points and net
   //····················································································································
 
-  internal func updateSchematicsPointsAndNets () {
+  internal func updateSchematicPointsAndNets () {
     var errorList = [String] ()
     self.rootObject.mSelectedSheet?.removeUnusedSchematicsPoints (&errorList)
     self.removeUnusedWires (&errorList)
@@ -432,6 +432,30 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
       window.beginSheet (dialog) { (inModalResponse) in }
     }
   }
+
+  //····················································································································
+  // Remove unused wires
+  //····················································································································
+
+  internal func removeUnusedWires (_ ioErrorList : inout [String]) {
+    for object in self.rootObject.mSelectedSheet!.mObjects {
+      if let wire = object as? WireInSchematic {
+        if let p1 = wire.mP1, p1.mSheet == nil {
+          wire.mP1 = nil
+          wire.mP2 = nil
+        }else if let p2 = wire.mP2, p2.mSheet == nil {
+          wire.mP1 = nil
+          wire.mP2 = nil
+        }
+        if (wire.mP1 == nil) && (wire.mP2 == nil) { // Useless wire, delete
+          wire.mSheet = nil
+        }else if (wire.mP1 == nil) != (wire.mP2 == nil) { // Invalid wire
+          ioErrorList.append ("Invalid wire: mP1 \(string (wire.mP1)), mP2 \(string (wire.mP2))")
+        }
+      }
+    }
+  }
+
 
   //····················································································································
   //    Update board connectors after object removing in board
@@ -543,7 +567,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
         let possibleNewWire = selectedSheet.performAddWireDragOperation (draggingLocationInDestinationView, newNetCreator: self.rootObject.createNetWithAutomaticName)
         if let newWire = possibleNewWire {
           self.schematicObjectsController.setSelection ([newWire])
-          self.updateSchematicsPointsAndNets ()
+          self.updateSchematicPointsAndNets ()
           ok = true
         }
       }else if let _ = pasteboard.availableType (from: [kDragAndDropRestrictRectangle]) {

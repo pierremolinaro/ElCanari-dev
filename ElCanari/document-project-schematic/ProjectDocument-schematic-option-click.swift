@@ -78,7 +78,7 @@ extension CustomizedProjectDocument {
          wire.mP1 = nil
          wire.mP2 = nil
          wire.mSheet = nil
-         self.updateSchematicsPointsAndNets ()
+         self.updateSchematicPointsAndNets ()
        }else{
          let points = selectedSheet.pointsInSchematics (at: p2)
          self.connectInSchematic (points: points)

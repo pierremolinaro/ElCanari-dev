@@ -50,7 +50,7 @@ extension CustomizedProjectDocument {
      for net in netSet {
        net.mNetName = self.rootObject.findUniqueNetName ()
      }
-     self.updateSchematicsPointsAndNets ()
+     self.updateSchematicPointsAndNets ()
   }
 
   //····················································································································
@@ -59,7 +59,7 @@ extension CustomizedProjectDocument {
     let selectedWires = self.wireInSchematicSelectionController.selectedArray
     if selectedWires.count == 1, let point = selectedWires [0].mP1 {
       self.dialogForMergingSubnetFrom (point: point)
-      self.updateSchematicsPointsAndNets ()
+      self.updateSchematicPointsAndNets ()
     }
   }
 
@@ -71,7 +71,7 @@ extension CustomizedProjectDocument {
       let newNet = self.rootObject.createNetWithAutomaticName ()
       point.mNet = newNet
       point.propagateNetToAccessiblePointsThroughtWires ()
-      self.updateSchematicsPointsAndNets ()
+      self.updateSchematicPointsAndNets ()
     }
   }
 
@@ -98,7 +98,7 @@ extension CustomizedProjectDocument {
      for net in netSet {
        net.mNetName = self.rootObject.findUniqueNetName ()
      }
-    self.updateSchematicsPointsAndNets ()
+    self.updateSchematicPointsAndNets ()
   }
 
   //····················································································································
@@ -122,7 +122,7 @@ extension CustomizedProjectDocument {
       let newNet = self.rootObject.createNetWithAutomaticName ()
       point.mNet = newNet
       point.propagateNetToAccessiblePointsThroughtWires ()
-      self.updateSchematicsPointsAndNets ()
+      self.updateSchematicPointsAndNets ()
     }
   }
 
@@ -287,7 +287,7 @@ extension CustomizedProjectDocument {
           if let net = popup.selectedItem?.representedObject as? NetInProject {
             inPoint.mNet = net
             inPoint.propagateNetToAccessiblePointsThroughtWires ()
-            self.updateSchematicsPointsAndNets ()
+            self.updateSchematicPointsAndNets ()
           }
         }
       }

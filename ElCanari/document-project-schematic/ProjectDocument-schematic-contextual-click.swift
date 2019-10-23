@@ -229,7 +229,7 @@ extension CustomizedProjectDocument {
         self.disconnectInSchematic (points: [point])
       }
     }
-    self.updateSchematicsPointsAndNets ()
+    self.updateSchematicPointsAndNets ()
   }
 
   //····················································································································
@@ -299,10 +299,13 @@ extension CustomizedProjectDocument {
       for symbol in inSymbols {
         for point in symbol.mPoints {
           let allPoints = selectedSheet.pointsInSchematics (at: point.location!)
-          _ = selectedSheet.connectWithoutDialog (points: allPoints)
+          _ = selectedSheet.tryToConnectWithoutDialog (
+            points: allPoints,
+            updateSchematicPointsAndNets: { self.updateSchematicPointsAndNets () }
+          )
         }
       }
-      self.updateSchematicsPointsAndNets ()
+      self.updateSchematicPointsAndNets ()
     }
   }
 
@@ -361,9 +364,10 @@ extension CustomizedProjectDocument {
         points: inPoints,
         window: window,
         panelForMergingSeveralSubnet: mergeSeveralSubnetsPanel,
-        popUpButtonForMergingSeveralSubnet: mergeSeveralSubnetsPopUpButton
+        popUpButtonForMergingSeveralSubnet: mergeSeveralSubnetsPopUpButton,
+        updateSchematicPointsAndNets: { self.updateSchematicPointsAndNets () }
       )
-      self.updateSchematicsPointsAndNets ()
+ //     self.updateSchematicPointsAndNets ()
     }
   }
 
@@ -418,7 +422,7 @@ extension CustomizedProjectDocument {
   internal func disconnectInSchematic (points inPoints : [PointInSchematic]) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       selectedSheet.disconnect (points: inPoints)
-      self.updateSchematicsPointsAndNets ()
+      self.updateSchematicPointsAndNets ()
     }
   }
 
@@ -466,7 +470,7 @@ extension CustomizedProjectDocument {
        let window = self.windowForSheet,
        inPoints.count == 1 {
       selectedSheet.removeFromWire (point: inPoints [0], window)
-      self.updateSchematicsPointsAndNets ()
+      self.updateSchematicPointsAndNets ()
     }
   }
 

@@ -62,7 +62,8 @@ extension SheetInProject {
 
   //····················································································································
 
-  func connectWithoutDialog (points inPoints : [PointInSchematic]) -> ([PointInSchematic], [NetInProject]) {
+  func tryToConnectWithoutDialog (points inPoints : [PointInSchematic],
+         updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping () -> Void) -> ([PointInSchematic], [NetInProject]) {
     let optionalPoint = self.addPointToWire (at: inPoints [0].location!)
     var points = inPoints
     if let newPoint = optionalPoint {
@@ -88,10 +89,10 @@ extension SheetInProject {
           }
         }
         let newNet : NetInProject? = hasPinOrLabel ? self.mRoot?.createNetWithAutomaticName () : nil
-        self.propagateAndMerge (net: newNet, to: points)
+        self.propagateAndMerge (net: newNet, to: points, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
         return ([], []) // For indicating no connection should be done by the caller
       }else if netArray.count == 1 {
-        self.propagateAndMerge (net: netArray [0], to: points)
+        self.propagateAndMerge (net: netArray [0], to: points, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
         return ([], []) // For indicating no connection should be done by the caller
       }else{
         return (points, netArray)
@@ -104,8 +105,12 @@ extension SheetInProject {
   func connect (points inPoints : [PointInSchematic],
                 window inWindow : NSWindow,
                 panelForMergingSeveralSubnet inPanel : NSPanel,
-                popUpButtonForMergingSeveralSubnet inPopUp : EBPopUpButton) {
-    let (points, netArray) = self.connectWithoutDialog (points: inPoints)
+                popUpButtonForMergingSeveralSubnet inPopUp : EBPopUpButton,
+                updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping () -> Void) {
+    let (points, netArray) = self.tryToConnectWithoutDialog (
+       points: inPoints,
+       updateSchematicPointsAndNets:inUpdateSchematicPointsAndNetsCallBack
+    )
     if netArray.count == 2 {
       let alert = NSAlert ()
       alert.messageText = "Performing connection will merge two nets."
@@ -114,7 +119,8 @@ extension SheetInProject {
       }
       alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: inWindow) { (response : NSApplication.ModalResponse) in
-        self.handleAlertResponseForMergingNets (response, points, netArray)
+        self.handleAlertResponseForMergingNets (response, points, netArray, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
+        inUpdateSchematicPointsAndNetsCallBack ()
       }
     }else if netArray.count == 3 {
       let alert = NSAlert ()
@@ -124,10 +130,10 @@ extension SheetInProject {
       }
       alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: inWindow) { (response : NSApplication.ModalResponse) in
-        self.handleAlertResponseForMergingNets (response, points, netArray)
+        self.handleAlertResponseForMergingNets (response, points, netArray, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
       }
     }else if netArray.count > 3 {
-      self.connectionWillMergeSeveralSubnets (points: points, netArray, inWindow, inPanel, inPopUp)
+      self.connectionWillMergeSeveralSubnets (points: points, netArray, inWindow, inPanel, inPopUp, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
     }
   }
 
@@ -137,7 +143,8 @@ extension SheetInProject {
                                                   _ netArray : [NetInProject],
                                                   _ inWindow : NSWindow,
                                                   _ inPanel : NSPanel,
-                                                  _ inPopUp : EBPopUpButton) {
+                                                  _ inPopUp : EBPopUpButton,
+                                                  updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping () -> Void) {
     inPopUp.removeAllItems ()
     for net in netArray {
       inPopUp.addItem (withTitle: net.mNetName)
@@ -145,7 +152,7 @@ extension SheetInProject {
     }
     inWindow.beginSheet (inPanel) { (_ inModalResponse : NSApplication.ModalResponse) in
       if inModalResponse == .stop, let net = inPopUp.selectedItem?.representedObject as? NetInProject {
-        self.propagateAndMerge (net: net, to: inPoints)
+        self.propagateAndMerge (net: net, to: inPoints, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
       }
     }
   }
@@ -154,11 +161,12 @@ extension SheetInProject {
 
   private func handleAlertResponseForMergingNets (_ inResponse : NSApplication.ModalResponse,
                                                    _ inPoints : [PointInSchematic],
-                                                   _ inNetArray : [NetInProject]) {
+                                                   _ inNetArray : [NetInProject],
+                                                   updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping () -> Void) {
     let responseIndex = inResponse.rawValue - NSApplication.ModalResponse.alertFirstButtonReturn.rawValue
     if responseIndex < inNetArray.count {
       let newNet = inNetArray [responseIndex]
-      self.propagateAndMerge (net: newNet, to: inPoints)
+      self.propagateAndMerge (net: newNet, to: inPoints, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
     }
   }
 
@@ -166,7 +174,9 @@ extension SheetInProject {
   //  Propagate and merge net
   //····················································································································
 
-  private func propagateAndMerge (net inNet : NetInProject?, to inPoints : [PointInSchematic]) {
+  private func propagateAndMerge (net inNet : NetInProject?,
+                                  to inPoints : [PointInSchematic],
+                                  updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping () -> Void) {
   //--- All points should be at the same location
   //    Only one point should be bound to a symbol pin
     if inPoints.count == 1 {
@@ -218,6 +228,7 @@ extension SheetInProject {
         newPoint.propagateNetToAccessiblePointsThroughtWires ()
       }
     }
+    inUpdateSchematicPointsAndNetsCallBack ()
   }
 
   //····················································································································
