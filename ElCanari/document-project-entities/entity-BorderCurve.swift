@@ -956,15 +956,16 @@ class BorderCurve : EBGraphicManagedObject,
         kind &= unwSelf.mCPX2_property_selection.kind ()
         kind &= unwSelf.mCPY2_property_selection.kind ()
         kind &= unwSelf.mShape_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mBoardShape_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mNext_property.mX_property_selection, unwSelf.mNext_property.mY_property_selection, unwSelf.mCPX1_property_selection, unwSelf.mCPY1_property_selection, unwSelf.mCPX2_property_selection, unwSelf.mCPY2_property_selection, unwSelf.mShape_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
-            return .single (transient_BorderCurve_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mNext_property.mX_property_selection, unwSelf.mNext_property.mY_property_selection, unwSelf.mCPX1_property_selection, unwSelf.mCPY1_property_selection, unwSelf.mCPX2_property_selection, unwSelf.mCPY2_property_selection, unwSelf.mShape_property_selection, unwSelf.mRoot_property.mBoardShape_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+            return .single (transient_BorderCurve_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
           default :
             return .empty
           }
@@ -982,6 +983,7 @@ class BorderCurve : EBGraphicManagedObject,
     self.mCPX2_property.addEBObserver (self.selectionDisplay_property)
     self.mCPY2_property.addEBObserver (self.selectionDisplay_property)
     self.mShape_property.addEBObserver (self.selectionDisplay_property)
+    self.mRoot_property.addEBObserverOf_mBoardShape (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -1037,6 +1039,7 @@ class BorderCurve : EBGraphicManagedObject,
     self.mCPX2_property.removeEBObserver (self.selectionDisplay_property)
     self.mCPY2_property.removeEBObserver (self.selectionDisplay_property)
     self.mShape_property.removeEBObserver (self.selectionDisplay_property)
+    self.mRoot_property.removeEBObserverOf_mBoardShape (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 

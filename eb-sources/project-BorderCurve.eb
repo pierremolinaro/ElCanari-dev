@@ -37,7 +37,8 @@ graphic entity BorderCurve {
   override transient EBShape selectionDisplay dependsFrom
     self.mX, self.mY, self.mNext.one.mX, self.mNext.one.mY,
     self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
-    self.mShape
+    self.mShape,
+    self.mRoot.one.mBoardShape
   ;
   
   transient String p1Xstring dependsFrom self.mX, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;

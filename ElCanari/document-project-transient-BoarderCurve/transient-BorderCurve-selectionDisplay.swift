@@ -22,11 +22,15 @@ func transient_BorderCurve_selectionDisplay (
        _ self_mCPY1 : Int,                   
        _ self_mCPX2 : Int,                   
        _ self_mCPY2 : Int,                   
-       _ self_mShape : BorderCurveShape
+       _ self_mShape : BorderCurveShape,     
+       _ self_mRoot_mBoardShape : BoardShape?
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var shape = EBShape ()
-        if let x2 = self_mNext_mX, let y2 = self_mNext_mY {
+        if let x2 = self_mNext_mX,
+        let y2 = self_mNext_mY,
+        let boardShape = self_mRoot_mBoardShape,
+        boardShape == .bezierPathes {
           let p1 = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
           let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
           let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1).cocoaPoint

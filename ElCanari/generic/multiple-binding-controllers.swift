@@ -5,18 +5,29 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol HiddenEBProtocol : class {
+  var isHidden : Bool { get set }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension NSView : HiddenEBProtocol {
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   MultipleBindingController_hidden
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class MultipleBindingController_hidden : EBOutletEvent {
 
   private let mGetPropertyValueCallBack : () -> EBSelection <Bool>
-  private let mOutlet : NSView?
-  
+  private let mOutlet : HiddenEBProtocol?
+
   //····················································································································
 
   init (computeFunction inGetPropertyValueCallBack : @escaping () -> EBSelection <Bool>,
-        outlet inOutlet : NSView?) {
+        outlet inOutlet : HiddenEBProtocol?) {
     mGetPropertyValueCallBack = inGetPropertyValueCallBack
     mOutlet = inOutlet
     super.init ()
@@ -47,7 +58,7 @@ class MultipleBindingController_enabled : EBOutletEvent {
 
   private let mGetPropertyValueCallBack : () -> EBSelection <Bool>
   private let mOutlet : NSControl?
-  
+
   //····················································································································
 
   init (computeFunction inGetPropertyValueCallBack : @escaping () -> EBSelection <Bool>,

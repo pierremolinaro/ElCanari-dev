@@ -27,7 +27,7 @@ extension BorderCurve {
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     var accept = false
-    if let next = self.mNext {
+    if let next = self.mNext, let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       accept = true
       if (self.mX + inDx) < 0 {
         accept = false
@@ -46,7 +46,7 @@ extension BorderCurve {
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
-    if let next = self.mNext, let previous = self.mPrevious {
+    if let next = self.mNext, let previous = self.mPrevious, let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       let dx = max (inDx, -self.mX, -next.mX)
       let dy = max (inDy, -self.mY, -next.mY)
       if !ioSet.objects.contains (self) {
@@ -72,26 +72,30 @@ extension BorderCurve {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-    if inKnobIndex == BOARD_LIMIT_P1_KNOB, let next = self.mNext {
-      let dx = max (inDx, -self.mX)
-      let dy = max (inDy, -self.mY)
-      if ((self.mX + dx) == next.mX) && ((self.mY + dy) == next.mY) {
-        return OCCanariPoint (x: 0, y: 0)
+    if let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
+      if inKnobIndex == BOARD_LIMIT_P1_KNOB, let next = self.mNext {
+        let dx = max (inDx, -self.mX)
+        let dy = max (inDy, -self.mY)
+        if ((self.mX + dx) == next.mX) && ((self.mY + dy) == next.mY) {
+          return OCCanariPoint (x: 0, y: 0)
+        }else{
+          return OCCanariPoint (x: dx, y: dy)
+        }
+      }else if inKnobIndex == BOARD_LIMIT_P2_KNOB, let next = self.mNext {
+        let dx = max (inDx, -next.mX)
+        let dy = max (inDy, -next.mY)
+        if ((next.mX + dx) == self.mX) && ((next.mY + dy) == self.mY) {
+          return OCCanariPoint (x: 0, y: 0)
+        }else{
+          return OCCanariPoint (x: dx, y: dy)
+        }
+      }else if inKnobIndex == BOARD_LIMIT_CP1_KNOB {
+        return OCCanariPoint (x: inDx, y: inDy)
+      }else if inKnobIndex == BOARD_LIMIT_CP2_KNOB {
+        return OCCanariPoint (x: inDx, y: inDy)
       }else{
-        return OCCanariPoint (x: dx, y: dy)
-      }
-    }else if inKnobIndex == BOARD_LIMIT_P2_KNOB, let next = self.mNext {
-      let dx = max (inDx, -next.mX)
-      let dy = max (inDy, -next.mY)
-      if ((next.mX + dx) == self.mX) && ((next.mY + dy) == self.mY) {
         return OCCanariPoint (x: 0, y: 0)
-      }else{
-        return OCCanariPoint (x: dx, y: dy)
       }
-    }else if inKnobIndex == BOARD_LIMIT_CP1_KNOB {
-      return OCCanariPoint (x: inDx, y: inDy)
-    }else if inKnobIndex == BOARD_LIMIT_CP2_KNOB {
-      return OCCanariPoint (x: inDx, y: inDy)
     }else{
       return OCCanariPoint (x: 0, y: 0)
     }
@@ -124,30 +128,34 @@ extension BorderCurve {
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    let grid = self.mRoot!.mBoardLimitsGridStep
-    var isAligned = self.mCPX1.isAlignedOnGrid (grid)
-    if isAligned {
-      isAligned = self.mCPY1.isAlignedOnGrid (grid)
+    if let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
+      let grid = self.mRoot!.mBoardLimitsGridStep
+      var isAligned = self.mCPX1.isAlignedOnGrid (grid)
+      if isAligned {
+        isAligned = self.mCPY1.isAlignedOnGrid (grid)
+      }
+      if isAligned {
+        isAligned = self.mCPX2.isAlignedOnGrid (grid)
+      }
+      if isAligned {
+        isAligned = self.mCPY2.isAlignedOnGrid (grid)
+      }
+      if isAligned {
+        isAligned = self.mX.isAlignedOnGrid (grid)
+      }
+      if isAligned {
+        isAligned = self.mY.isAlignedOnGrid (grid)
+      }
+      if isAligned {
+        isAligned = self.mNext!.mX.isAlignedOnGrid (grid)
+      }
+      if isAligned {
+        isAligned = self.mNext!.mY.isAlignedOnGrid (grid)
+      }
+      return !isAligned
+    }else{
+      return false
     }
-    if isAligned {
-      isAligned = self.mCPX2.isAlignedOnGrid (grid)
-    }
-    if isAligned {
-      isAligned = self.mCPY2.isAlignedOnGrid (grid)
-    }
-    if isAligned {
-      isAligned = self.mX.isAlignedOnGrid (grid)
-    }
-    if isAligned {
-      isAligned = self.mY.isAlignedOnGrid (grid)
-    }
-    if isAligned {
-      isAligned = self.mNext!.mX.isAlignedOnGrid (grid)
-    }
-    if isAligned {
-      isAligned = self.mNext!.mY.isAlignedOnGrid (grid)
-    }
-    return !isAligned
   }
 
   //····················································································································

@@ -125,7 +125,7 @@ binding CanariVersionField $version : transient Int ;
 
 binding CanariVersionField $versionShouldChange : transient Bool ;
 
-extern outlet class CanariViewWithKeyView ;
+extern outlet class CanariViewWithKeyView : NSView ;
 
 extern outlet class NSSplitView : NSView ;
 

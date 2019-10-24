@@ -509,7 +509,7 @@ document ProjectDocument root ProjectRoot {
   ;
 
 //----------------- Board limits tab
-  arrayController #boardCurveObjectsController : root.mBorderCurves ;
+  arrayController #boardCurveObjectsController : root.mBorderCurves $hidden root.boardShapeIsRectangular ;
 
   outlet EBGraphicView mBoardLimitsView
     $underObjectsDisplay root.boarderViewBackground
@@ -558,6 +558,8 @@ document ProjectDocument root ProjectRoot {
 
   outlet NSView mLimitCurveBezierControlPointsView $hidden #boardCurveSelectionController.isLine ;
   
+  outlet NSView mMessageBoardIsRectangularView $hidden !root.boardShapeIsRectangular ;
+  
 //--- Grid and Flip inspector
   outlet EBSwitch mBoardLimitsHorizontalFlipSwitch $value root.mBoardLimitsHorizontalFlip ;
   outlet EBSwitch mBoardLimitsVerticalFlipSwitch $value root.mBoardLimitsVerticalFlip ;
@@ -571,8 +573,6 @@ document ProjectDocument root ProjectRoot {
   
 //--- Operation Inspector
   outlet EBTextObserverField mBoardLimitsElementCountTextField $valueObserver root.borderElementCountString ; 
-  action showBoardLimitInspectorAction ; 
-  outlet EBButton mShowBoardLimitInspectorButton $run showBoardLimitInspectorAction ;  
 
   outlet EBTextObserverField mBoardLimitPointsTopTextField $valueObserver root.boardInteriorTop ;
   outlet EBTextObserverField mBoardLimitPointsBottomTextField $valueObserver root.boardInteriorBottom ;

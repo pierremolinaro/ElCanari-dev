@@ -8,7 +8,7 @@ import Cocoa
 //    Array controller ProjectDocument schematicObjectsController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol {
+final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
  
   //····················································································································
   // Model
@@ -222,7 +222,7 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
   }
 
   //····················································································································
-  //  EBView interface
+  //  Graphic view interface
   //····················································································································
 
   var selectedGraphicObjectSet : Set <EBGraphicManagedObject> {
@@ -1015,13 +1015,15 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
     //--- Remove current attached view
       self.mCurrentAttachedView?.removeFromSuperview ()
     //--- Add the new attached view
-      if self.selectedArray_property.propset.count == 0 {
+      if self.mViewIsHidden {
+        self.mCurrentAttachedView = nil
+      }else if self.selectedArray.count == 0 {
         let tf = self.textField ("Empty Selection", inspectorView.frame)
         inspectorView.addSubview (tf)
         self.mCurrentAttachedView = tf
       }else{
         var selectionTypes = Set <ObjectIdentifier> ()
-        for object in self.selectedArray_property.propset {
+        for object in self.selectedArray {
           let T = ObjectIdentifier (type (of: object))
           selectionTypes.insert (T)
         }
@@ -1065,6 +1067,19 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
     tf.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize * 1.25)
     tf.textColor = NSColor.lightGray
     return tf
+  }
+
+  //····················································································································
+
+  private var mViewIsHidden = false {
+    didSet { self.updateInspectorViews () }
+  }
+
+  //····················································································································
+
+  var isHidden : Bool {
+    get { return self.mViewIsHidden }
+    set { self.mViewIsHidden = newValue }
   }
 
   //····················································································································

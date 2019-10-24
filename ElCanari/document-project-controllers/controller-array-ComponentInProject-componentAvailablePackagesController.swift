@@ -8,7 +8,7 @@ import Cocoa
 //    Array controller ComponentInProject componentAvailablePackagesController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ComponentInProject_componentAvailablePackagesController : ReadOnlyAbstractGenericRelationshipProperty {
+final class Controller_ComponentInProject_componentAvailablePackagesController : ReadOnlyAbstractGenericRelationshipProperty, HiddenEBProtocol {
  
   //····················································································································
   // Model
@@ -313,13 +313,15 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
     //--- Remove current attached view
       self.mCurrentAttachedView?.removeFromSuperview ()
     //--- Add the new attached view
-      if self.selectedArray_property.propset.count == 0 {
+      if self.mViewIsHidden {
+        self.mCurrentAttachedView = nil
+      }else if self.selectedArray.count == 0 {
         let tf = self.textField ("Empty Selection", inspectorView.frame)
         inspectorView.addSubview (tf)
         self.mCurrentAttachedView = tf
       }else{
         var selectionTypes = Set <ObjectIdentifier> ()
-        for object in self.selectedArray_property.propset {
+        for object in self.selectedArray {
           let T = ObjectIdentifier (type (of: object))
           selectionTypes.insert (T)
         }
@@ -363,6 +365,19 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
     tf.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize * 1.25)
     tf.textColor = NSColor.lightGray
     return tf
+  }
+
+  //····················································································································
+
+  private var mViewIsHidden = false {
+    didSet { self.updateInspectorViews () }
+  }
+
+  //····················································································································
+
+  var isHidden : Bool {
+    get { return self.mViewIsHidden }
+    set { self.mViewIsHidden = newValue }
   }
 
   //····················································································································

@@ -870,6 +870,7 @@ import Cocoa
   @IBOutlet var mMergeNetPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mMergeSeveralSubnetsPanel : NSPanel? = nil
   @IBOutlet var mMergeSeveralSubnetsPopUpButton : EBPopUpButton? = nil
+  @IBOutlet var mMessageBoardIsRectangularView : NSView? = nil
   @IBOutlet var mMinPPTPTTTWdisplayUnitTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mMoveSelectedObjectsToSheetPanel : NSPanel? = nil
@@ -989,7 +990,6 @@ import Cocoa
   @IBOutlet var mSheetDownButton : EBButton? = nil
   @IBOutlet var mSheetPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mSheetUpButton : EBButton? = nil
-  @IBOutlet var mShowBoardLimitInspectorButton : EBButton? = nil
   @IBOutlet var mSymbolMirrorSwitch : EBSwitch? = nil
   @IBOutlet var mSymbolRotationSegmentedControl : CanariQuadrantSegmentedControl? = nil
   @IBOutlet var mTrackCountTextField : EBTextObserverField? = nil
@@ -1070,6 +1070,7 @@ import Cocoa
   var mController_mNetWarningImageView_hidden : MultipleBindingController_hidden? = nil
   var mController_mNetWarningTextField_hidden : MultipleBindingController_hidden? = nil
   var mController_mLimitCurveBezierControlPointsView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mMessageBoardIsRectangularView_hidden : MultipleBindingController_hidden? = nil
   var mController_mRectangularBoardWidthHeighView_hidden : MultipleBindingController_hidden? = nil
   var mController_mBezierPathBoardHelperView_hidden : MultipleBindingController_hidden? = nil
   var mController_mFrontRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
@@ -1092,6 +1093,7 @@ import Cocoa
   var mController_mArtworkTabView_hidden : MultipleBindingController_hidden? = nil
   var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mIncorrectFileNameMessageView_hidden : MultipleBindingController_hidden? = nil
+  var mController_boardCurveObjectsController_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
@@ -1445,6 +1447,7 @@ import Cocoa
     checkOutletConnection (self.mMergeNetPopUpButton, "mMergeNetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mMergeSeveralSubnetsPanel, "mMergeSeveralSubnetsPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mMergeSeveralSubnetsPopUpButton, "mMergeSeveralSubnetsPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mMessageBoardIsRectangularView, "mMessageBoardIsRectangularView", NSView.self, #file, #line)
     checkOutletConnection (self.mMinPPTPTTTWdisplayUnitTextField, "mMinPPTPTTTWdisplayUnitTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mMinPPTPTTTWinEBUnitPopUp, "mMinPPTPTTTWinEBUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mMoveSelectedObjectsToSheetPanel, "mMoveSelectedObjectsToSheetPanel", NSPanel.self, #file, #line)
@@ -1564,7 +1567,6 @@ import Cocoa
     checkOutletConnection (self.mSheetDownButton, "mSheetDownButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSheetPopUpButton, "mSheetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSheetUpButton, "mSheetUpButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mShowBoardLimitInspectorButton, "mShowBoardLimitInspectorButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSymbolMirrorSwitch, "mSymbolMirrorSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolRotationSegmentedControl, "mSymbolRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mTrackCountTextField, "mTrackCountTextField", EBTextObserverField.self, #file, #line)
@@ -2939,6 +2941,16 @@ import Cocoa
         computeFunction: {
           return !self.rootObject.boardShapeIsRectangular_property_selection
         },
+        outlet: self.mMessageBoardIsRectangularView
+      )
+      self.rootObject.boardShapeIsRectangular_property.addEBObserver (controller)
+      self.mController_mMessageBoardIsRectangularView_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return !self.rootObject.boardShapeIsRectangular_property_selection
+        },
         outlet: self.mRectangularBoardWidthHeighView
       )
       self.rootObject.boardShapeIsRectangular_property.addEBObserver (controller)
@@ -3154,6 +3166,16 @@ import Cocoa
       self.documentFilePathOk_property.addEBObserver (controller)
       self.mController_mIncorrectFileNameMessageView_hidden = controller
     }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return self.rootObject.boardShapeIsRectangular_property_selection
+        },
+        outlet: self.boardCurveObjectsController
+      )
+      self.rootObject.boardShapeIsRectangular_property.addEBObserver (controller)
+      self.mController_boardCurveObjectsController_hidden = controller
+    }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Install bindings \(durationMS) ms")
@@ -3219,8 +3241,6 @@ import Cocoa
     self.mSetDateToNowButton?.action = #selector (ProjectDocument.setDateToNowAction (_:))
     self.mOpenSetDateDialogButton?.target = self
     self.mOpenSetDateDialogButton?.action = #selector (ProjectDocument.openSetDateDialogAction (_:))
-    self.mShowBoardLimitInspectorButton?.target = self
-    self.mShowBoardLimitInspectorButton?.action = #selector (ProjectDocument.showBoardLimitInspectorAction (_:))
     self.mLaunchFreeRouterButton?.target = self
     self.mLaunchFreeRouterButton?.action = #selector (ProjectDocument.launchFreeRouterAction (_:))
     self.mArtworlImportButton?.target = self
@@ -3608,6 +3628,8 @@ import Cocoa
     self.mController_mNetWarningTextField_hidden = nil
     self.boardCurveSelectionController.isLine_property.removeEBObserver (self.mController_mLimitCurveBezierControlPointsView_hidden!)
     self.mController_mLimitCurveBezierControlPointsView_hidden = nil
+    self.rootObject.boardShapeIsRectangular_property.removeEBObserver (self.mController_mMessageBoardIsRectangularView_hidden!)
+    self.mController_mMessageBoardIsRectangularView_hidden = nil
     self.rootObject.boardShapeIsRectangular_property.removeEBObserver (self.mController_mRectangularBoardWidthHeighView_hidden!)
     self.mController_mRectangularBoardWidthHeighView_hidden = nil
     self.rootObject.boardShapeIsRectangular_property.removeEBObserver (self.mController_mBezierPathBoardHelperView_hidden!)
@@ -3652,6 +3674,8 @@ import Cocoa
     self.mController_mGenerateProductFilesActionButton_enabled = nil
     self.documentFilePathOk_property.removeEBObserver (self.mController_mIncorrectFileNameMessageView_hidden!)
     self.mController_mIncorrectFileNameMessageView_hidden = nil
+    self.rootObject.boardShapeIsRectangular_property.removeEBObserver (self.mController_boardCurveObjectsController_hidden!)
+    self.mController_boardCurveObjectsController_hidden = nil
   //--------------------------- Unbind array controllers
     self.componentController.unbind_tableView (self.mComponentTableView)
     self.netClassController.unbind_tableView (self.mNetClassTableView)
@@ -3757,7 +3781,6 @@ import Cocoa
     self.mRemoveSheetButton?.target = nil
     self.mSetDateToNowButton?.target = nil
     self.mOpenSetDateDialogButton?.target = nil
-    self.mShowBoardLimitInspectorButton?.target = nil
     self.mLaunchFreeRouterButton?.target = nil
     self.mArtworlImportButton?.target = nil
     self.mGenerateProductFilesActionButton?.target = nil
@@ -4010,6 +4033,7 @@ import Cocoa
     self.mMergeNetPopUpButton?.ebCleanUp ()
     self.mMergeSeveralSubnetsPanel?.ebCleanUp ()
     self.mMergeSeveralSubnetsPopUpButton?.ebCleanUp ()
+    self.mMessageBoardIsRectangularView?.ebCleanUp ()
     self.mMinPPTPTTTWdisplayUnitTextField?.ebCleanUp ()
     self.mMinPPTPTTTWinEBUnitPopUp?.ebCleanUp ()
     self.mMoveSelectedObjectsToSheetPanel?.ebCleanUp ()
@@ -4129,7 +4153,6 @@ import Cocoa
     self.mSheetDownButton?.ebCleanUp ()
     self.mSheetPopUpButton?.ebCleanUp ()
     self.mSheetUpButton?.ebCleanUp ()
-    self.mShowBoardLimitInspectorButton?.ebCleanUp ()
     self.mSymbolMirrorSwitch?.ebCleanUp ()
     self.mSymbolRotationSegmentedControl?.ebCleanUp ()
     self.mTrackCountTextField?.ebCleanUp ()
@@ -4418,6 +4441,7 @@ import Cocoa
     self.mMergeNetPopUpButton = nil
     self.mMergeSeveralSubnetsPanel = nil
     self.mMergeSeveralSubnetsPopUpButton = nil
+    self.mMessageBoardIsRectangularView = nil
     self.mMinPPTPTTTWdisplayUnitTextField = nil
     self.mMinPPTPTTTWinEBUnitPopUp = nil
     self.mMoveSelectedObjectsToSheetPanel = nil
@@ -4537,7 +4561,6 @@ import Cocoa
     self.mSheetDownButton = nil
     self.mSheetPopUpButton = nil
     self.mSheetUpButton = nil
-    self.mShowBoardLimitInspectorButton = nil
     self.mSymbolMirrorSwitch = nil
     self.mSymbolRotationSegmentedControl = nil
     self.mTrackCountTextField = nil
