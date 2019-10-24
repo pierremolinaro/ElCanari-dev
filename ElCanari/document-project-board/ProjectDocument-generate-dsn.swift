@@ -173,29 +173,41 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   private func buildSignalPolygon () -> EBLinePath { // Points in millimeters
-    var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
-    for curve in self.rootObject.mBorderCurves {
-      let descriptor = curve.descriptor!
-      curveDictionary [descriptor.p1] = descriptor
-    }
-    var clearanceBP = EBBezierPath ()
-    var descriptor = self.rootObject.mBorderCurves [0].descriptor!
-    let p = descriptor.p1
-    clearanceBP.move (to: p.millimeterPoint)
-    var loop = true
-    while loop {
-      switch descriptor.shape {
-      case .line :
-        clearanceBP.line (to: descriptor.p2.millimeterPoint)
-      case .bezier :
-        let cp1 = descriptor.cp1.millimeterPoint
-        let cp2 = descriptor.cp2.millimeterPoint
-        clearanceBP.curve (to: descriptor.p2.millimeterPoint, controlPoint1: cp1, controlPoint2: cp2)
+    switch self.rootObject.mBoardShape {
+    case .bezierPathes :
+      var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
+      for curve in self.rootObject.mBorderCurves {
+        let descriptor = curve.descriptor!
+        curveDictionary [descriptor.p1] = descriptor
       }
-      descriptor = curveDictionary [descriptor.p2]!
-      loop = p != descriptor.p1
+      var clearanceBP = EBBezierPath ()
+      var descriptor = self.rootObject.mBorderCurves [0].descriptor!
+      let p = descriptor.p1
+      clearanceBP.move (to: p.millimeterPoint)
+      var loop = true
+      while loop {
+        switch descriptor.shape {
+        case .line :
+          clearanceBP.line (to: descriptor.p2.millimeterPoint)
+        case .bezier :
+          let cp1 = descriptor.cp1.millimeterPoint
+          let cp2 = descriptor.cp2.millimeterPoint
+          clearanceBP.curve (to: descriptor.p2.millimeterPoint, controlPoint1: cp1, controlPoint2: cp2)
+        }
+        descriptor = curveDictionary [descriptor.p2]!
+        loop = p != descriptor.p1
+      }
+      return clearanceBP.pointsByFlattening (withFlatness: 0.1) [0]
+    case .rectangular :
+      let d = self.rootObject.mBoardClearance + self.rootObject.mBoardLimitsWidth
+      let r = CanariRect (
+        left: d,
+        bottom: d,
+        width: self.rootObject.mRectangularBoardWidth - 2 * d,
+        height: self.rootObject.mRectangularBoardHeight - 2 * d
+      )
+      return EBBezierPath (rect: r.millimeterRect).pointsByFlattening (withFlatness: 0.1) [0]
     }
-    return clearanceBP.pointsByFlattening (withFlatness: 0.1) [0]
   }
 
   //····················································································································

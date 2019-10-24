@@ -163,6 +163,17 @@ struct CanariRect : Equatable, Hashable {
   }
 
   //····················································································································
+
+  var millimeterRect : NSRect {
+    return NSRect (
+      x: canariUnitToMillimeter (self.origin.x),
+      y: canariUnitToMillimeter (self.origin.y),
+      width: canariUnitToMillimeter (self.size.width),
+      height: canariUnitToMillimeter (self.size.height)
+    )
+  }
+
+  //····················································································································
   //   Union
   //····················································································································
 

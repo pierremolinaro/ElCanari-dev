@@ -39,6 +39,8 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.mControlKeyHiliteDiameter_property.removeEBObserversFrom (&self.mObserversOf_mControlKeyHiliteDiameter) // Stored property
     inOldValue?.mBoardLimitsWidth_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsWidth) // Stored property
     inOldValue?.mBoardLimitsWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsWidthUnit) // Stored property
+    inOldValue?.mBoardClearance_property.removeEBObserversFrom (&self.mObserversOf_mBoardClearance) // Stored property
+    inOldValue?.mBoardClearanceUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardClearanceUnit) // Stored property
     inOldValue?.mBoardLimitsSelectedInspector_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsSelectedInspector) // Stored property
     inOldValue?.mBoardLimitsHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsHorizontalFlip) // Stored property
     inOldValue?.mBoardLimitsVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsVerticalFlip) // Stored property
@@ -50,8 +52,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.mBoardLimitsBoundingBoxUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsBoundingBoxUnit) // Stored property
     inOldValue?.mBoardPointsBoundingBoxUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardPointsBoundingBoxUnit) // Stored property
     inOldValue?.mBoardSelectedCurveDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardSelectedCurveDisplayUnit) // Stored property
-    inOldValue?.mBoardClearance_property.removeEBObserversFrom (&self.mObserversOf_mBoardClearance) // Stored property
-    inOldValue?.mBoardClearanceUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardClearanceUnit) // Stored property
     inOldValue?.mBoardShape_property.removeEBObserversFrom (&self.mObserversOf_mBoardShape) // Stored property
     inOldValue?.mRectangularBoardWidth_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardWidth) // Stored property
     inOldValue?.mRectangularBoardWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardWidthUnit) // Stored property
@@ -143,6 +143,8 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.mControlKeyHiliteDiameter_property.addEBObserversFrom (&self.mObserversOf_mControlKeyHiliteDiameter) // Stored property
     self.mInternalValue?.mBoardLimitsWidth_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsWidth) // Stored property
     self.mInternalValue?.mBoardLimitsWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsWidthUnit) // Stored property
+    self.mInternalValue?.mBoardClearance_property.addEBObserversFrom (&self.mObserversOf_mBoardClearance) // Stored property
+    self.mInternalValue?.mBoardClearanceUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardClearanceUnit) // Stored property
     self.mInternalValue?.mBoardLimitsSelectedInspector_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsSelectedInspector) // Stored property
     self.mInternalValue?.mBoardLimitsHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsHorizontalFlip) // Stored property
     self.mInternalValue?.mBoardLimitsVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsVerticalFlip) // Stored property
@@ -154,8 +156,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.mBoardLimitsBoundingBoxUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsBoundingBoxUnit) // Stored property
     self.mInternalValue?.mBoardPointsBoundingBoxUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardPointsBoundingBoxUnit) // Stored property
     self.mInternalValue?.mBoardSelectedCurveDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardSelectedCurveDisplayUnit) // Stored property
-    self.mInternalValue?.mBoardClearance_property.addEBObserversFrom (&self.mObserversOf_mBoardClearance) // Stored property
-    self.mInternalValue?.mBoardClearanceUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardClearanceUnit) // Stored property
     self.mInternalValue?.mBoardShape_property.addEBObserversFrom (&self.mObserversOf_mBoardShape) // Stored property
     self.mInternalValue?.mRectangularBoardWidth_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardWidth) // Stored property
     self.mInternalValue?.mRectangularBoardWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardWidthUnit) // Stored property
@@ -1905,6 +1905,146 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'mBoardClearance' stored property
+  //····················································································································
+
+  private var mObserversOf_mBoardClearance = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mBoardClearance_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mBoardClearance_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mBoardClearance (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mBoardClearance.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mBoardClearance_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mBoardClearance (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mBoardClearance.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mBoardClearance_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mBoardClearance_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mBoardClearance.apply { (_ observer : EBEvent) in
+        managedObject.mBoardClearance_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mBoardClearance_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mBoardClearance.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mBoardClearance_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mBoardClearanceUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mBoardClearanceUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mBoardClearanceUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mBoardClearanceUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mBoardClearanceUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mBoardClearanceUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mBoardClearanceUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mBoardClearanceUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mBoardClearanceUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mBoardClearanceUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mBoardClearanceUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mBoardClearanceUnit.apply { (_ observer : EBEvent) in
+        managedObject.mBoardClearanceUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mBoardClearanceUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mBoardClearanceUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mBoardClearanceUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'mBoardLimitsSelectedInspector' stored property
   //····················································································································
 
@@ -2670,146 +2810,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mBoardClearance' stored property
-  //····················································································································
-
-  private var mObserversOf_mBoardClearance = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mBoardClearance_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mBoardClearance_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardClearance (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mBoardClearance.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mBoardClearance_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mBoardClearance (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mBoardClearance.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mBoardClearance_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mBoardClearance_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardClearance.apply { (_ observer : EBEvent) in
-        managedObject.mBoardClearance_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardClearance_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardClearance.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardClearance_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mBoardClearanceUnit' stored property
-  //····················································································································
-
-  private var mObserversOf_mBoardClearanceUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mBoardClearanceUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mBoardClearanceUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardClearanceUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mBoardClearanceUnit.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mBoardClearanceUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mBoardClearanceUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mBoardClearanceUnit.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mBoardClearanceUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mBoardClearanceUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardClearanceUnit.apply { (_ observer : EBEvent) in
-        managedObject.mBoardClearanceUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardClearanceUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardClearanceUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardClearanceUnit_property.removeEBObserver (observer)
       }
     }
   }

@@ -15,33 +15,48 @@ import Cocoa
 
 func transient_ProjectRoot_borderOutlineBackground (
        _ self_mBorderCurves_descriptor : [BorderCurve_descriptor],
+       _ self_mBoardShape : BoardShape,             
+       _ self_mRectangularBoardWidth : Int,         
+       _ self_mRectangularBoardHeight : Int,        
        _ self_mBoardLimitsWidth : Int,              
        _ prefs_boardLimitsColorForBoard : NSColor,  
        _ self_mBoardClearance : Int,                
        _ prefs_boardClearanceColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
-        for curve in self_mBorderCurves_descriptor {
-          let descriptor = curve.descriptor!
-          curveDictionary [descriptor.p1] = descriptor
-        }
         var bp = EBBezierPath ()
-        var descriptor = self_mBorderCurves_descriptor [0].descriptor!
-        let p = descriptor.p1
-        bp.move (to: p.cocoaPoint)
-        var loop = true
-        while loop {
-          switch descriptor.shape {
-          case .line :
-            bp.line (to: descriptor.p2.cocoaPoint)
-          case .bezier :
-            let cp1 = descriptor.cp1.cocoaPoint
-            let cp2 = descriptor.cp2.cocoaPoint
-            bp.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
+        switch self_mBoardShape {
+        case .rectangular :
+          let d = self_mBoardClearance + self_mBoardLimitsWidth
+          let r = CanariRect (
+            left: d,
+            bottom: d,
+            width: self_mRectangularBoardWidth - 2 * d,
+            height: self_mRectangularBoardHeight - 2 * d
+          )
+          bp.appendRect (r.cocoaRect)
+        case .bezierPathes :
+          var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
+          for curve in self_mBorderCurves_descriptor {
+            let descriptor = curve.descriptor!
+            curveDictionary [descriptor.p1] = descriptor
           }
-          descriptor = curveDictionary [descriptor.p2]!
-          loop = p != descriptor.p1
+          var descriptor = self_mBorderCurves_descriptor [0].descriptor!
+          let p = descriptor.p1
+          bp.move (to: p.cocoaPoint)
+          var loop = true
+          while loop {
+            switch descriptor.shape {
+            case .line :
+              bp.line (to: descriptor.p2.cocoaPoint)
+            case .bezier :
+              let cp1 = descriptor.cp1.cocoaPoint
+              let cp2 = descriptor.cp2.cocoaPoint
+              bp.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
+            }
+            descriptor = curveDictionary [descriptor.p2]!
+            loop = p != descriptor.p1
+          }
         }
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
