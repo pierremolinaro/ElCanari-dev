@@ -656,6 +656,7 @@ import Cocoa
   @IBOutlet var mBaseBoardInspectorView : NSView? = nil
   @IBOutlet var mBaseBoardLimitsInspectorView : NSView? = nil
   @IBOutlet var mBaseSchematicsInspectorView : NSView? = nil
+  @IBOutlet var mBezierPathBoardHelperView : NSView? = nil
   @IBOutlet var mBoardBackgroundColorWell : EBColorWell? = nil
   @IBOutlet var mBoardBorderPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mBoardClearanceTextField : CanariDimensionTextField? = nil
@@ -718,6 +719,7 @@ import Cocoa
   @IBOutlet var mBoardObjectsPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mBoardPointsBoundingBoxUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mBoardScrollView : EBScrollView? = nil
+  @IBOutlet var mBoardShapePopUp : CanariEnumSegmentedControl? = nil
   @IBOutlet var mBoardStatusImageViewInToolbar : EBImageObserverView? = nil
   @IBOutlet var mBoardTextFontPopUpButton : CanariBoardTextFontPopUpButton? = nil
   @IBOutlet var mBoardTextFontSizeField : EBDoubleField? = nil
@@ -904,6 +906,11 @@ import Cocoa
   @IBOutlet var mRasnetComponentNameSelectionPopUpButton : CanariSelectionPopUpButton? = nil
   @IBOutlet var mRasnetNetNameSelectionPopUpButton : CanariSelectionPopUpButton? = nil
   @IBOutlet var mRastnetDisplayPopUpButton : EBPopUpButton? = nil
+  @IBOutlet var mRectangularBoardHeightTextField : CanariDimensionTextField? = nil
+  @IBOutlet var mRectangularBoardHeightUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet var mRectangularBoardWidthHeighView : NSView? = nil
+  @IBOutlet var mRectangularBoardWidthTextField : CanariDimensionTextField? = nil
+  @IBOutlet var mRectangularBoardWidthUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mRemoveDeviceButton : EBButton? = nil
   @IBOutlet var mRemoveEmbeddedDevicesButton : EBButton? = nil
   @IBOutlet var mRemoveFontButton : EBButton? = nil
@@ -982,6 +989,7 @@ import Cocoa
   @IBOutlet var mSheetDownButton : EBButton? = nil
   @IBOutlet var mSheetPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mSheetUpButton : EBButton? = nil
+  @IBOutlet var mShowBoardLimitInspectorButton : EBButton? = nil
   @IBOutlet var mSymbolMirrorSwitch : EBSwitch? = nil
   @IBOutlet var mSymbolRotationSegmentedControl : CanariQuadrantSegmentedControl? = nil
   @IBOutlet var mTrackCountTextField : EBTextObserverField? = nil
@@ -1062,6 +1070,8 @@ import Cocoa
   var mController_mNetWarningImageView_hidden : MultipleBindingController_hidden? = nil
   var mController_mNetWarningTextField_hidden : MultipleBindingController_hidden? = nil
   var mController_mLimitCurveBezierControlPointsView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mRectangularBoardWidthHeighView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mBezierPathBoardHelperView_hidden : MultipleBindingController_hidden? = nil
   var mController_mFrontRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
   var mController_mBackRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
   var mController_mComponentNameFontSizeField_enabled : MultipleBindingController_enabled? = nil
@@ -1221,6 +1231,7 @@ import Cocoa
     checkOutletConnection (self.mBaseBoardInspectorView, "mBaseBoardInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBaseBoardLimitsInspectorView, "mBaseBoardLimitsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
+    checkOutletConnection (self.mBezierPathBoardHelperView, "mBezierPathBoardHelperView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardBackgroundColorWell, "mBoardBackgroundColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mBoardBorderPageView, "mBoardBorderPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardClearanceTextField, "mBoardClearanceTextField", CanariDimensionTextField.self, #file, #line)
@@ -1283,6 +1294,7 @@ import Cocoa
     checkOutletConnection (self.mBoardObjectsPageView, "mBoardObjectsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardPointsBoundingBoxUnitPopUp, "mBoardPointsBoundingBoxUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardScrollView, "mBoardScrollView", EBScrollView.self, #file, #line)
+    checkOutletConnection (self.mBoardShapePopUp, "mBoardShapePopUp", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mBoardStatusImageViewInToolbar, "mBoardStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
     checkOutletConnection (self.mBoardTextFontPopUpButton, "mBoardTextFontPopUpButton", CanariBoardTextFontPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardTextFontSizeField, "mBoardTextFontSizeField", EBDoubleField.self, #file, #line)
@@ -1469,6 +1481,11 @@ import Cocoa
     checkOutletConnection (self.mRasnetComponentNameSelectionPopUpButton, "mRasnetComponentNameSelectionPopUpButton", CanariSelectionPopUpButton.self, #file, #line)
     checkOutletConnection (self.mRasnetNetNameSelectionPopUpButton, "mRasnetNetNameSelectionPopUpButton", CanariSelectionPopUpButton.self, #file, #line)
     checkOutletConnection (self.mRastnetDisplayPopUpButton, "mRastnetDisplayPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mRectangularBoardHeightTextField, "mRectangularBoardHeightTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mRectangularBoardHeightUnitPopUp, "mRectangularBoardHeightUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mRectangularBoardWidthHeighView, "mRectangularBoardWidthHeighView", NSView.self, #file, #line)
+    checkOutletConnection (self.mRectangularBoardWidthTextField, "mRectangularBoardWidthTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mRectangularBoardWidthUnitPopUp, "mRectangularBoardWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mRemoveDeviceButton, "mRemoveDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveEmbeddedDevicesButton, "mRemoveEmbeddedDevicesButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveFontButton, "mRemoveFontButton", EBButton.self, #file, #line)
@@ -1547,6 +1564,7 @@ import Cocoa
     checkOutletConnection (self.mSheetDownButton, "mSheetDownButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSheetPopUpButton, "mSheetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSheetUpButton, "mSheetUpButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mShowBoardLimitInspectorButton, "mShowBoardLimitInspectorButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSymbolMirrorSwitch, "mSymbolMirrorSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolRotationSegmentedControl, "mSymbolRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mTrackCountTextField, "mTrackCountTextField", EBTextObserverField.self, #file, #line)
@@ -2386,6 +2404,11 @@ import Cocoa
     self.mBoardLimitsWidthTextField?.bind_dimensionAndUnit (self.rootObject.mBoardLimitsWidth_property, self.rootObject.mBoardLimitsWidthUnit_property, file: #file, line: #line)
     self.mBoardClearanceUnitPopUp?.bind_selectedTag (self.rootObject.mBoardClearanceUnit_property, file: #file, line: #line)
     self.mBoardClearanceTextField?.bind_dimensionAndUnit (self.rootObject.mBoardClearance_property, self.rootObject.mBoardClearanceUnit_property, file: #file, line: #line)
+    self.mRectangularBoardWidthUnitPopUp?.bind_selectedTag (self.rootObject.mRectangularBoardWidthUnit_property, file: #file, line: #line)
+    self.mRectangularBoardWidthTextField?.bind_dimensionAndUnit (self.rootObject.mRectangularBoardWidth_property, self.rootObject.mRectangularBoardWidthUnit_property, file: #file, line: #line)
+    self.mRectangularBoardHeightUnitPopUp?.bind_selectedTag (self.rootObject.mRectangularBoardHeightUnit_property, file: #file, line: #line)
+    self.mRectangularBoardHeightTextField?.bind_dimensionAndUnit (self.rootObject.mRectangularBoardHeight_property, self.rootObject.mRectangularBoardHeightUnit_property, file: #file, line: #line)
+    self.mBoardShapePopUp?.bind_selectedSegment (self.rootObject.mBoardShape_property, file: #file, line: #line)
     self.mBoardInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mBoardSelectedInspector_property, file: #file, line: #line)
     self.mUnplacedPackageTableView?.bind_models (self.rootObject.unplacedPackages_property, file: #file, line: #line)
     self.mUnplacedPackagesCountTextField?.bind_valueObserver (self.unplacedPackagesCountString_property, file: #file, line: #line)
@@ -2912,6 +2935,26 @@ import Cocoa
       self.mController_mLimitCurveBezierControlPointsView_hidden = controller
     }
     do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return !self.rootObject.boardShapeIsRectangular_property_selection
+        },
+        outlet: self.mRectangularBoardWidthHeighView
+      )
+      self.rootObject.boardShapeIsRectangular_property.addEBObserver (controller)
+      self.mController_mRectangularBoardWidthHeighView_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return self.rootObject.boardShapeIsRectangular_property_selection
+        },
+        outlet: self.mBezierPathBoardHelperView
+      )
+      self.rootObject.boardShapeIsRectangular_property.addEBObserver (controller)
+      self.mController_mBezierPathBoardHelperView_hidden = controller
+    }
+    do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
           return self.restrictRectangleSelectionController.mIsInBackLayer_property_selection
@@ -3176,6 +3219,8 @@ import Cocoa
     self.mSetDateToNowButton?.action = #selector (ProjectDocument.setDateToNowAction (_:))
     self.mOpenSetDateDialogButton?.target = self
     self.mOpenSetDateDialogButton?.action = #selector (ProjectDocument.openSetDateDialogAction (_:))
+    self.mShowBoardLimitInspectorButton?.target = self
+    self.mShowBoardLimitInspectorButton?.action = #selector (ProjectDocument.showBoardLimitInspectorAction (_:))
     self.mLaunchFreeRouterButton?.target = self
     self.mLaunchFreeRouterButton?.action = #selector (ProjectDocument.launchFreeRouterAction (_:))
     self.mArtworlImportButton?.target = self
@@ -3321,6 +3366,11 @@ import Cocoa
     self.mBoardLimitsWidthTextField?.unbind_dimensionAndUnit ()
     self.mBoardClearanceUnitPopUp?.unbind_selectedTag ()
     self.mBoardClearanceTextField?.unbind_dimensionAndUnit ()
+    self.mRectangularBoardWidthUnitPopUp?.unbind_selectedTag ()
+    self.mRectangularBoardWidthTextField?.unbind_dimensionAndUnit ()
+    self.mRectangularBoardHeightUnitPopUp?.unbind_selectedTag ()
+    self.mRectangularBoardHeightTextField?.unbind_dimensionAndUnit ()
+    self.mBoardShapePopUp?.unbind_selectedSegment ()
     self.mBoardInspectorSegmentedControl?.unbind_selectedPage ()
     self.mUnplacedPackageTableView?.unbind_models ()
     self.mUnplacedPackagesCountTextField?.unbind_valueObserver ()
@@ -3558,6 +3608,10 @@ import Cocoa
     self.mController_mNetWarningTextField_hidden = nil
     self.boardCurveSelectionController.isLine_property.removeEBObserver (self.mController_mLimitCurveBezierControlPointsView_hidden!)
     self.mController_mLimitCurveBezierControlPointsView_hidden = nil
+    self.rootObject.boardShapeIsRectangular_property.removeEBObserver (self.mController_mRectangularBoardWidthHeighView_hidden!)
+    self.mController_mRectangularBoardWidthHeighView_hidden = nil
+    self.rootObject.boardShapeIsRectangular_property.removeEBObserver (self.mController_mBezierPathBoardHelperView_hidden!)
+    self.mController_mBezierPathBoardHelperView_hidden = nil
     self.restrictRectangleSelectionController.mIsInBackLayer_property.removeEBObserver (self.mController_mFrontRestrictRectangleSwitch_enabled!)
     self.mController_mFrontRestrictRectangleSwitch_enabled = nil
     self.restrictRectangleSelectionController.mIsInFrontLayer_property.removeEBObserver (self.mController_mBackRestrictRectangleSwitch_enabled!)
@@ -3703,6 +3757,7 @@ import Cocoa
     self.mRemoveSheetButton?.target = nil
     self.mSetDateToNowButton?.target = nil
     self.mOpenSetDateDialogButton?.target = nil
+    self.mShowBoardLimitInspectorButton?.target = nil
     self.mLaunchFreeRouterButton?.target = nil
     self.mArtworlImportButton?.target = nil
     self.mGenerateProductFilesActionButton?.target = nil
@@ -3741,6 +3796,7 @@ import Cocoa
     self.mBaseBoardInspectorView?.ebCleanUp ()
     self.mBaseBoardLimitsInspectorView?.ebCleanUp ()
     self.mBaseSchematicsInspectorView?.ebCleanUp ()
+    self.mBezierPathBoardHelperView?.ebCleanUp ()
     self.mBoardBackgroundColorWell?.ebCleanUp ()
     self.mBoardBorderPageView?.ebCleanUp ()
     self.mBoardClearanceTextField?.ebCleanUp ()
@@ -3803,6 +3859,7 @@ import Cocoa
     self.mBoardObjectsPageView?.ebCleanUp ()
     self.mBoardPointsBoundingBoxUnitPopUp?.ebCleanUp ()
     self.mBoardScrollView?.ebCleanUp ()
+    self.mBoardShapePopUp?.ebCleanUp ()
     self.mBoardStatusImageViewInToolbar?.ebCleanUp ()
     self.mBoardTextFontPopUpButton?.ebCleanUp ()
     self.mBoardTextFontSizeField?.ebCleanUp ()
@@ -3989,6 +4046,11 @@ import Cocoa
     self.mRasnetComponentNameSelectionPopUpButton?.ebCleanUp ()
     self.mRasnetNetNameSelectionPopUpButton?.ebCleanUp ()
     self.mRastnetDisplayPopUpButton?.ebCleanUp ()
+    self.mRectangularBoardHeightTextField?.ebCleanUp ()
+    self.mRectangularBoardHeightUnitPopUp?.ebCleanUp ()
+    self.mRectangularBoardWidthHeighView?.ebCleanUp ()
+    self.mRectangularBoardWidthTextField?.ebCleanUp ()
+    self.mRectangularBoardWidthUnitPopUp?.ebCleanUp ()
     self.mRemoveDeviceButton?.ebCleanUp ()
     self.mRemoveEmbeddedDevicesButton?.ebCleanUp ()
     self.mRemoveFontButton?.ebCleanUp ()
@@ -4067,6 +4129,7 @@ import Cocoa
     self.mSheetDownButton?.ebCleanUp ()
     self.mSheetPopUpButton?.ebCleanUp ()
     self.mSheetUpButton?.ebCleanUp ()
+    self.mShowBoardLimitInspectorButton?.ebCleanUp ()
     self.mSymbolMirrorSwitch?.ebCleanUp ()
     self.mSymbolRotationSegmentedControl?.ebCleanUp ()
     self.mTrackCountTextField?.ebCleanUp ()
@@ -4141,6 +4204,7 @@ import Cocoa
     self.mBaseBoardInspectorView = nil
     self.mBaseBoardLimitsInspectorView = nil
     self.mBaseSchematicsInspectorView = nil
+    self.mBezierPathBoardHelperView = nil
     self.mBoardBackgroundColorWell = nil
     self.mBoardBorderPageView = nil
     self.mBoardClearanceTextField = nil
@@ -4203,6 +4267,7 @@ import Cocoa
     self.mBoardObjectsPageView = nil
     self.mBoardPointsBoundingBoxUnitPopUp = nil
     self.mBoardScrollView = nil
+    self.mBoardShapePopUp = nil
     self.mBoardStatusImageViewInToolbar = nil
     self.mBoardTextFontPopUpButton = nil
     self.mBoardTextFontSizeField = nil
@@ -4389,6 +4454,11 @@ import Cocoa
     self.mRasnetComponentNameSelectionPopUpButton = nil
     self.mRasnetNetNameSelectionPopUpButton = nil
     self.mRastnetDisplayPopUpButton = nil
+    self.mRectangularBoardHeightTextField = nil
+    self.mRectangularBoardHeightUnitPopUp = nil
+    self.mRectangularBoardWidthHeighView = nil
+    self.mRectangularBoardWidthTextField = nil
+    self.mRectangularBoardWidthUnitPopUp = nil
     self.mRemoveDeviceButton = nil
     self.mRemoveEmbeddedDevicesButton = nil
     self.mRemoveFontButton = nil
@@ -4467,6 +4537,7 @@ import Cocoa
     self.mSheetDownButton = nil
     self.mSheetPopUpButton = nil
     self.mSheetUpButton = nil
+    self.mShowBoardLimitInspectorButton = nil
     self.mSymbolMirrorSwitch = nil
     self.mSymbolRotationSegmentedControl = nil
     self.mTrackCountTextField = nil

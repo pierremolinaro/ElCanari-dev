@@ -570,7 +570,9 @@ document ProjectDocument root ProjectRoot {
   ;
   
 //--- Operation Inspector
-  outlet EBTextObserverField mBoardLimitsElementCountTextField $valueObserver root.borderElementCountString ;  
+  outlet EBTextObserverField mBoardLimitsElementCountTextField $valueObserver root.borderElementCountString ; 
+  action showBoardLimitInspectorAction ; 
+  outlet EBButton mShowBoardLimitInspectorButton $run showBoardLimitInspectorAction ;  
 
   outlet EBTextObserverField mBoardLimitPointsTopTextField $valueObserver root.boardInteriorTop ;
   outlet EBTextObserverField mBoardLimitPointsBottomTextField $valueObserver root.boardInteriorBottom ;
@@ -595,6 +597,21 @@ document ProjectDocument root ProjectRoot {
   outlet CanariDimensionTextField mBoardClearanceTextField
      $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
   ;
+
+  outlet NSView mRectangularBoardWidthHeighView $hidden !root.boardShapeIsRectangular ;
+  outlet NSView mBezierPathBoardHelperView $hidden root.boardShapeIsRectangular ;
+  
+  outlet EBPopUpButton mRectangularBoardWidthUnitPopUp $selectedTag root.mRectangularBoardWidthUnit ;
+  outlet CanariDimensionTextField mRectangularBoardWidthTextField
+     $dimensionAndUnit root.mRectangularBoardWidth, root.mRectangularBoardWidthUnit
+  ;
+
+  outlet EBPopUpButton mRectangularBoardHeightUnitPopUp $selectedTag root.mRectangularBoardHeightUnit ;
+  outlet CanariDimensionTextField mRectangularBoardHeightTextField
+     $dimensionAndUnit root.mRectangularBoardHeight, root.mRectangularBoardHeightUnit
+  ;
+
+  outlet CanariEnumSegmentedControl mBoardShapePopUp $selectedSegment root.mBoardShape ;
 
 //----------------- Board Objects tab
   outlet CanariSegmentedControl mBoardInspectorSegmentedControl $selectedPage root.mBoardSelectedInspector ;

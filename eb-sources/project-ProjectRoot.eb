@@ -98,11 +98,13 @@ entity ProjectRoot {
   property GridStyle mBoardLimitsGridStyle default line ;
   property Int mBoardLimitsGridDisplayFactor default 5 ;
   property Int mBoardLimitsZoom default 200 ;
+
   property Int mBoardLimitsGridStep default 90_000 ; // mm
   property Int mBoardLimitsGridStepUnit default 90_000 ; // mm
   property Int mBoardLimitsBoundingBoxUnit default 90_000 ; // mm
   property Int mBoardPointsBoundingBoxUnit default 90_000 ; // mm
   property Int mBoardSelectedCurveDisplayUnit default 90_000 ; // mm
+
   property Int mBoardClearance default 90_000 ; // 1 mm
   property Int mBoardClearanceUnit default 90_000 ; // mm
 
@@ -110,6 +112,16 @@ entity ProjectRoot {
     self.mBoardLimitsGridStep, self.mBoardLimitsGridDisplayFactor
   ;
 
+  property BoardShape mBoardShape default rectangular ;
+  
+  property Int mRectangularBoardWidth default 90_000_00 ; // 100 mm
+  property Int mRectangularBoardWidthUnit default 90_000 ; // mm
+
+  property Int mRectangularBoardHeight default 90_000_00 ; // 100 mm
+  property Int mRectangularBoardHeightUnit default 90_000 ; // mm
+
+  transient Bool boardShapeIsRectangular dependsFrom self.mBoardShape ;
+  
   transient CanariRect interiorBoundBox dependsFrom self.mBorderCurves.all.descriptor ;
     
   transient CanariRect boardBoundBox dependsFrom self.interiorBoundBox, self.mBoardLimitsWidth, self.mBoardClearance ;

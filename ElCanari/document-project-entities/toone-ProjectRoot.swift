@@ -52,6 +52,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.mBoardSelectedCurveDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardSelectedCurveDisplayUnit) // Stored property
     inOldValue?.mBoardClearance_property.removeEBObserversFrom (&self.mObserversOf_mBoardClearance) // Stored property
     inOldValue?.mBoardClearanceUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardClearanceUnit) // Stored property
+    inOldValue?.mBoardShape_property.removeEBObserversFrom (&self.mObserversOf_mBoardShape) // Stored property
+    inOldValue?.mRectangularBoardWidth_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardWidth) // Stored property
+    inOldValue?.mRectangularBoardWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardWidthUnit) // Stored property
+    inOldValue?.mRectangularBoardHeight_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardHeight) // Stored property
+    inOldValue?.mRectangularBoardHeightUnit_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardHeightUnit) // Stored property
     inOldValue?.mDefaultNetClassName_property.removeEBObserversFrom (&self.mObserversOf_mDefaultNetClassName) // Stored property
     inOldValue?.mSelectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
     inOldValue?.mSelectedSchematicInspector_property.removeEBObserversFrom (&self.mObserversOf_mSelectedSchematicInspector) // Stored property
@@ -73,6 +78,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.mRastnetDisplayedComponentName_property.removeEBObserversFrom (&self.mObserversOf_mRastnetDisplayedComponentName) // Stored property
     inOldValue?.boardGridStepMultipliedByDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_boardGridStepMultipliedByDisplayFactor) // Transient property
     inOldValue?.boardLimitsGridStepMultipliedByDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor) // Transient property
+    inOldValue?.boardShapeIsRectangular_property.removeEBObserversFrom (&self.mObserversOf_boardShapeIsRectangular) // Transient property
     inOldValue?.selectedSheetIssues_property.removeEBObserversFrom (&self.mObserversOf_selectedSheetIssues) // Transient property
     inOldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
     inOldValue?.connexionWarningString_property.removeEBObserversFrom (&self.mObserversOf_connexionWarningString) // Transient property
@@ -150,6 +156,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.mBoardSelectedCurveDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardSelectedCurveDisplayUnit) // Stored property
     self.mInternalValue?.mBoardClearance_property.addEBObserversFrom (&self.mObserversOf_mBoardClearance) // Stored property
     self.mInternalValue?.mBoardClearanceUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardClearanceUnit) // Stored property
+    self.mInternalValue?.mBoardShape_property.addEBObserversFrom (&self.mObserversOf_mBoardShape) // Stored property
+    self.mInternalValue?.mRectangularBoardWidth_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardWidth) // Stored property
+    self.mInternalValue?.mRectangularBoardWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardWidthUnit) // Stored property
+    self.mInternalValue?.mRectangularBoardHeight_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardHeight) // Stored property
+    self.mInternalValue?.mRectangularBoardHeightUnit_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardHeightUnit) // Stored property
     self.mInternalValue?.mDefaultNetClassName_property.addEBObserversFrom (&self.mObserversOf_mDefaultNetClassName) // Stored property
     self.mInternalValue?.mSelectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
     self.mInternalValue?.mSelectedSchematicInspector_property.addEBObserversFrom (&self.mObserversOf_mSelectedSchematicInspector) // Stored property
@@ -171,6 +182,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.mRastnetDisplayedComponentName_property.addEBObserversFrom (&self.mObserversOf_mRastnetDisplayedComponentName) // Stored property
     self.mInternalValue?.boardGridStepMultipliedByDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_boardGridStepMultipliedByDisplayFactor) // Transient property
     self.mInternalValue?.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor) // Transient property
+    self.mInternalValue?.boardShapeIsRectangular_property.addEBObserversFrom (&self.mObserversOf_boardShapeIsRectangular) // Transient property
     self.mInternalValue?.selectedSheetIssues_property.addEBObserversFrom (&self.mObserversOf_selectedSheetIssues) // Transient property
     self.mInternalValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
     self.mInternalValue?.connexionWarningString_property.addEBObserversFrom (&self.mObserversOf_connexionWarningString) // Transient property
@@ -2803,6 +2815,356 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'mBoardShape' stored property
+  //····················································································································
+
+  private var mObserversOf_mBoardShape = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mBoardShape_property_selection : EBSelection <BoardShape?> {
+    if let model = self.propval {
+      switch (model.mBoardShape_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mBoardShape (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mBoardShape.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mBoardShape_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mBoardShape (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mBoardShape.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mBoardShape_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mBoardShape_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mBoardShape.apply { (_ observer : EBEvent) in
+        managedObject.mBoardShape_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mBoardShape_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mBoardShape.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mBoardShape_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mRectangularBoardWidth' stored property
+  //····················································································································
+
+  private var mObserversOf_mRectangularBoardWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mRectangularBoardWidth_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mRectangularBoardWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mRectangularBoardWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mRectangularBoardWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mRectangularBoardWidth_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mRectangularBoardWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mRectangularBoardWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mRectangularBoardWidth_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mRectangularBoardWidth_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mRectangularBoardWidth.apply { (_ observer : EBEvent) in
+        managedObject.mRectangularBoardWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mRectangularBoardWidth_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mRectangularBoardWidth.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mRectangularBoardWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mRectangularBoardWidthUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mRectangularBoardWidthUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mRectangularBoardWidthUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mRectangularBoardWidthUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mRectangularBoardWidthUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mRectangularBoardWidthUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mRectangularBoardWidthUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mRectangularBoardWidthUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mRectangularBoardWidthUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mRectangularBoardWidthUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mRectangularBoardWidthUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mRectangularBoardWidthUnit.apply { (_ observer : EBEvent) in
+        managedObject.mRectangularBoardWidthUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mRectangularBoardWidthUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mRectangularBoardWidthUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mRectangularBoardWidthUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mRectangularBoardHeight' stored property
+  //····················································································································
+
+  private var mObserversOf_mRectangularBoardHeight = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mRectangularBoardHeight_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mRectangularBoardHeight_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mRectangularBoardHeight (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mRectangularBoardHeight.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mRectangularBoardHeight_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mRectangularBoardHeight (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mRectangularBoardHeight.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mRectangularBoardHeight_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mRectangularBoardHeight_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mRectangularBoardHeight.apply { (_ observer : EBEvent) in
+        managedObject.mRectangularBoardHeight_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mRectangularBoardHeight_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mRectangularBoardHeight.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mRectangularBoardHeight_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mRectangularBoardHeightUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mRectangularBoardHeightUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mRectangularBoardHeightUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mRectangularBoardHeightUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mRectangularBoardHeightUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mRectangularBoardHeightUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mRectangularBoardHeightUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mRectangularBoardHeightUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mRectangularBoardHeightUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mRectangularBoardHeightUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mRectangularBoardHeightUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mRectangularBoardHeightUnit.apply { (_ observer : EBEvent) in
+        managedObject.mRectangularBoardHeightUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mRectangularBoardHeightUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mRectangularBoardHeightUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mRectangularBoardHeightUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'mDefaultNetClassName' stored property
   //····················································································································
 
@@ -5036,6 +5398,75 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor.apply { (_ observer : EBEvent) in
         managedObject.boardLimitsGridStepMultipliedByDisplayFactor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardShapeIsRectangular' transient property
+  //····················································································································
+
+  private var mObserversOf_boardShapeIsRectangular = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardShapeIsRectangular_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.boardShapeIsRectangular_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardShapeIsRectangular (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_boardShapeIsRectangular.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.boardShapeIsRectangular_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardShapeIsRectangular (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_boardShapeIsRectangular.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.boardShapeIsRectangular_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardShapeIsRectangular_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boardShapeIsRectangular.apply { (_ observer : EBEvent) in
+        managedObject.boardShapeIsRectangular_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardShapeIsRectangular_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boardShapeIsRectangular.apply { (_ observer : EBEvent) in
+        managedObject.boardShapeIsRectangular_property.removeEBObserver (observer)
       }
     }
   }

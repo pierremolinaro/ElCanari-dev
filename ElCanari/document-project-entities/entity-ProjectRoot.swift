@@ -228,6 +228,36 @@ protocol ProjectRoot_mBoardClearanceUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mBoardShape : class {
+  var mBoardShape : BoardShape { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mRectangularBoardWidth : class {
+  var mRectangularBoardWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mRectangularBoardWidthUnit : class {
+  var mRectangularBoardWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mRectangularBoardHeight : class {
+  var mRectangularBoardHeight : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mRectangularBoardHeightUnit : class {
+  var mRectangularBoardHeightUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mDefaultNetClassName : class {
   var mDefaultNetClassName : String { get }
 }
@@ -416,6 +446,12 @@ protocol ProjectRoot_boardGridStepMultipliedByDisplayFactor : class {
 
 protocol ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor : class {
   var boardLimitsGridStepMultipliedByDisplayFactor : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardShapeIsRectangular : class {
+  var boardShapeIsRectangular : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -694,6 +730,11 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardSelectedCurveDisplayUnit,
          ProjectRoot_mBoardClearance,
          ProjectRoot_mBoardClearanceUnit,
+         ProjectRoot_mBoardShape,
+         ProjectRoot_mRectangularBoardWidth,
+         ProjectRoot_mRectangularBoardWidthUnit,
+         ProjectRoot_mRectangularBoardHeight,
+         ProjectRoot_mRectangularBoardHeightUnit,
          ProjectRoot_mDefaultNetClassName,
          ProjectRoot_mSelectedPageIndex,
          ProjectRoot_mSelectedSchematicInspector,
@@ -726,6 +767,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_selectedSheetTitle,
          ProjectRoot_boardGridStepMultipliedByDisplayFactor,
          ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor,
+         ProjectRoot_boardShapeIsRectangular,
          ProjectRoot_selectedSheetIssues,
          ProjectRoot_connectedPoints,
          ProjectRoot_connexionWarningString,
@@ -1394,6 +1436,91 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mBoardClearanceUnit_property_selection : EBSelection <Int> { return self.mBoardClearanceUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardShape
+  //····················································································································
+
+  let mBoardShape_property = EBStoredProperty_BoardShape (defaultValue: BoardShape.rectangular)
+
+  //····················································································································
+
+  var mBoardShape : BoardShape {
+    get { return self.mBoardShape_property.propval }
+    set { self.mBoardShape_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardShape_property_selection : EBSelection <BoardShape> { return self.mBoardShape_property.prop }
+
+  //····················································································································
+  //   Atomic property: mRectangularBoardWidth
+  //····················································································································
+
+  let mRectangularBoardWidth_property = EBStoredProperty_Int (defaultValue: 9000000)
+
+  //····················································································································
+
+  var mRectangularBoardWidth : Int {
+    get { return self.mRectangularBoardWidth_property.propval }
+    set { self.mRectangularBoardWidth_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mRectangularBoardWidth_property_selection : EBSelection <Int> { return self.mRectangularBoardWidth_property.prop }
+
+  //····················································································································
+  //   Atomic property: mRectangularBoardWidthUnit
+  //····················································································································
+
+  let mRectangularBoardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  //····················································································································
+
+  var mRectangularBoardWidthUnit : Int {
+    get { return self.mRectangularBoardWidthUnit_property.propval }
+    set { self.mRectangularBoardWidthUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mRectangularBoardWidthUnit_property_selection : EBSelection <Int> { return self.mRectangularBoardWidthUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mRectangularBoardHeight
+  //····················································································································
+
+  let mRectangularBoardHeight_property = EBStoredProperty_Int (defaultValue: 9000000)
+
+  //····················································································································
+
+  var mRectangularBoardHeight : Int {
+    get { return self.mRectangularBoardHeight_property.propval }
+    set { self.mRectangularBoardHeight_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mRectangularBoardHeight_property_selection : EBSelection <Int> { return self.mRectangularBoardHeight_property.prop }
+
+  //····················································································································
+  //   Atomic property: mRectangularBoardHeightUnit
+  //····················································································································
+
+  let mRectangularBoardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  //····················································································································
+
+  var mRectangularBoardHeightUnit : Int {
+    get { return self.mRectangularBoardHeightUnit_property.propval }
+    set { self.mRectangularBoardHeightUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mRectangularBoardHeightUnit_property_selection : EBSelection <Int> { return self.mRectangularBoardHeightUnit_property.prop }
 
   //····················································································································
   //   To many property: mSheets
@@ -2258,6 +2385,29 @@ class ProjectRoot : EBManagedObject,
 
   var boardLimitsGridStepMultipliedByDisplayFactor : Int? {
     switch self.boardLimitsGridStepMultipliedByDisplayFactor_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardShapeIsRectangular
+  //····················································································································
+
+  let boardShapeIsRectangular_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var boardShapeIsRectangular_property_selection : EBSelection <Bool> {
+    return self.boardShapeIsRectangular_property.prop
+  }
+
+  //····················································································································
+
+  var boardShapeIsRectangular : Bool? {
+    switch self.boardShapeIsRectangular_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -3324,6 +3474,16 @@ class ProjectRoot : EBManagedObject,
     self.mBoardClearance_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardClearanceUnit
     self.mBoardClearanceUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardShape
+    self.mBoardShape_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mRectangularBoardWidth
+    self.mRectangularBoardWidth_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mRectangularBoardWidthUnit
+    self.mRectangularBoardWidthUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mRectangularBoardHeight
+    self.mRectangularBoardHeight_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mRectangularBoardHeightUnit
+    self.mRectangularBoardHeightUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.ebUndoManager = self.ebUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (
@@ -3627,6 +3787,28 @@ class ProjectRoot : EBManagedObject,
     }
     self.mBoardLimitsGridStep_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
     self.mBoardLimitsGridDisplayFactor_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
+  //--- Atomic property: boardShapeIsRectangular
+    self.boardShapeIsRectangular_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mBoardShape_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBoardShape_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_boardShapeIsRectangular (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardShape_property.addEBObserver (self.boardShapeIsRectangular_property)
   //--- To one property: mSelectedSheet
     self.mSelectedSheet_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedSheetIssues
@@ -4663,6 +4845,7 @@ class ProjectRoot : EBManagedObject,
     self.mBoardGridDisplayFactor_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
     self.mBoardLimitsGridStep_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
     self.mBoardLimitsGridDisplayFactor_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
+    self.mBoardShape_property.removeEBObserver (self.boardShapeIsRectangular_property)
     self.mSelectedSheet_property.removeEBObserverOf_issues (self.selectedSheetIssues_property)
     self.mSelectedSheet_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
     self.selectedSheetIssues_property.removeEBObserver (self.connectedPoints_property)
@@ -5056,6 +5239,46 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mBoardClearanceUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mBoardShape",
+      idx: self.mBoardShape_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardShape_property.mObserverExplorer,
+      valueExplorer: &self.mBoardShape_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mRectangularBoardWidth",
+      idx: self.mRectangularBoardWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mRectangularBoardWidth_property.mObserverExplorer,
+      valueExplorer: &self.mRectangularBoardWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mRectangularBoardWidthUnit",
+      idx: self.mRectangularBoardWidthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mRectangularBoardWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.mRectangularBoardWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mRectangularBoardHeight",
+      idx: self.mRectangularBoardHeight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mRectangularBoardHeight_property.mObserverExplorer,
+      valueExplorer: &self.mRectangularBoardHeight_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mRectangularBoardHeightUnit",
+      idx: self.mRectangularBoardHeightUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mRectangularBoardHeightUnit_property.mObserverExplorer,
+      valueExplorer: &self.mRectangularBoardHeightUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mDefaultNetClassName",
       idx: self.mDefaultNetClassName_property.ebObjectIndex,
       y: &y,
@@ -5223,6 +5446,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.boardLimitsGridStepMultipliedByDisplayFactor_property.mObserverExplorer,
       valueExplorer: &self.boardLimitsGridStepMultipliedByDisplayFactor_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardShapeIsRectangular",
+      idx: self.boardShapeIsRectangular_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardShapeIsRectangular_property.mObserverExplorer,
+      valueExplorer: &self.boardShapeIsRectangular_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectedSheetIssues",
@@ -5720,6 +5951,21 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mBoardClearanceUnit
     self.mBoardClearanceUnit_property.mObserverExplorer = nil
     self.mBoardClearanceUnit_property.mValueExplorer = nil
+  //--- Atomic property: mBoardShape
+    self.mBoardShape_property.mObserverExplorer = nil
+    self.mBoardShape_property.mValueExplorer = nil
+  //--- Atomic property: mRectangularBoardWidth
+    self.mRectangularBoardWidth_property.mObserverExplorer = nil
+    self.mRectangularBoardWidth_property.mValueExplorer = nil
+  //--- Atomic property: mRectangularBoardWidthUnit
+    self.mRectangularBoardWidthUnit_property.mObserverExplorer = nil
+    self.mRectangularBoardWidthUnit_property.mValueExplorer = nil
+  //--- Atomic property: mRectangularBoardHeight
+    self.mRectangularBoardHeight_property.mObserverExplorer = nil
+    self.mRectangularBoardHeight_property.mValueExplorer = nil
+  //--- Atomic property: mRectangularBoardHeightUnit
+    self.mRectangularBoardHeightUnit_property.mObserverExplorer = nil
+    self.mRectangularBoardHeightUnit_property.mValueExplorer = nil
   //--- To many property: mSheets
     self.mSheets_property.mValueExplorer = nil
   //--- Atomic property: mDefaultNetClassName
@@ -5945,6 +6191,16 @@ class ProjectRoot : EBManagedObject,
     self.mBoardClearance_property.storeIn (dictionary: ioDictionary, forKey:"mBoardClearance")
   //--- Atomic property: mBoardClearanceUnit
     self.mBoardClearanceUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardClearanceUnit")
+  //--- Atomic property: mBoardShape
+    self.mBoardShape_property.storeIn (dictionary: ioDictionary, forKey:"mBoardShape")
+  //--- Atomic property: mRectangularBoardWidth
+    self.mRectangularBoardWidth_property.storeIn (dictionary: ioDictionary, forKey:"mRectangularBoardWidth")
+  //--- Atomic property: mRectangularBoardWidthUnit
+    self.mRectangularBoardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mRectangularBoardWidthUnit")
+  //--- Atomic property: mRectangularBoardHeight
+    self.mRectangularBoardHeight_property.storeIn (dictionary: ioDictionary, forKey:"mRectangularBoardHeight")
+  //--- Atomic property: mRectangularBoardHeightUnit
+    self.mRectangularBoardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey:"mRectangularBoardHeightUnit")
   //--- To many property: mSheets
     self.store (
       managedObjectArray: self.mSheets_property.propval,
@@ -6188,6 +6444,16 @@ class ProjectRoot : EBManagedObject,
     self.mBoardClearance_property.readFrom (dictionary: inDictionary, forKey:"mBoardClearance")
   //--- Atomic property: mBoardClearanceUnit
     self.mBoardClearanceUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardClearanceUnit")
+  //--- Atomic property: mBoardShape
+    self.mBoardShape_property.readFrom (dictionary: inDictionary, forKey:"mBoardShape")
+  //--- Atomic property: mRectangularBoardWidth
+    self.mRectangularBoardWidth_property.readFrom (dictionary: inDictionary, forKey:"mRectangularBoardWidth")
+  //--- Atomic property: mRectangularBoardWidthUnit
+    self.mRectangularBoardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mRectangularBoardWidthUnit")
+  //--- Atomic property: mRectangularBoardHeight
+    self.mRectangularBoardHeight_property.readFrom (dictionary: inDictionary, forKey:"mRectangularBoardHeight")
+  //--- Atomic property: mRectangularBoardHeightUnit
+    self.mRectangularBoardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"mRectangularBoardHeightUnit")
   //--- Atomic property: mDefaultNetClassName
     self.mDefaultNetClassName_property.readFrom (dictionary: inDictionary, forKey:"mDefaultNetClassName")
   //--- Atomic property: mSelectedPageIndex
@@ -6273,6 +6539,11 @@ class ProjectRoot : EBManagedObject,
     ioString += "mBoardSelectedCurveDisplayUnit\n"
     ioString += "mBoardClearance\n"
     ioString += "mBoardClearanceUnit\n"
+    ioString += "mBoardShape\n"
+    ioString += "mRectangularBoardWidth\n"
+    ioString += "mRectangularBoardWidthUnit\n"
+    ioString += "mRectangularBoardHeight\n"
+    ioString += "mRectangularBoardHeightUnit\n"
     ioString += "mDefaultNetClassName\n"
     ioString += "mSelectedPageIndex\n"
     ioString += "mSelectedSchematicInspector\n"
@@ -6349,6 +6620,11 @@ class ProjectRoot : EBManagedObject,
     ioString += self.mBoardSelectedCurveDisplayUnit.stringPropertyValue ()
     ioString += self.mBoardClearance.stringPropertyValue ()
     ioString += self.mBoardClearanceUnit.stringPropertyValue ()
+    ioString += self.mBoardShape.stringPropertyValue ()
+    ioString += self.mRectangularBoardWidth.stringPropertyValue ()
+    ioString += self.mRectangularBoardWidthUnit.stringPropertyValue ()
+    ioString += self.mRectangularBoardHeight.stringPropertyValue ()
+    ioString += self.mRectangularBoardHeightUnit.stringPropertyValue ()
     ioString += self.mDefaultNetClassName.stringPropertyValue ()
     ioString += self.mSelectedPageIndex.stringPropertyValue ()
     ioString += self.mSelectedSchematicInspector.stringPropertyValue ()
