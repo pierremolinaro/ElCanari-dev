@@ -27,7 +27,10 @@ extension EBScrollView {
     super.tile ()
     self.updatePlacardsLocation ()
     if let graphicView = self.documentView as? EBGraphicView {
-      graphicView.scrollViewResizeDidEnd ()
+      graphicView.scrollViewIsLiveResizing ()
+    }
+    if let focusView = self.superview as? EBFocusRingView {
+      focusView.viewIsLiveResing ()
     }
   }
 

@@ -155,29 +155,35 @@
             <rect key="frame" x="0.0" y="0.0" width="656" height="385"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="894" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8l-pn-xAQ" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="251" y="-1" width="405" height="387"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" ambiguous="YES" id="xCD-Dw-CrS">
-                        <rect key="frame" x="1" y="1" width="388" height="370"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="895" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                    <subviews>
+                        <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="894" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="405" height="387"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <clipView key="contentView" ambiguous="YES" id="xCD-Dw-CrS">
+                                <rect key="frame" x="1" y="1" width="388" height="370"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="895" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </customView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </clipView>
+                            <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="1068">
+                                <rect key="frame" x="1" y="371" width="388" height="15"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                            </customView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </clipView>
-                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="1068">
-                        <rect key="frame" x="1" y="371" width="388" height="15"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.76119409999999998" horizontal="NO" id="1067">
-                        <rect key="frame" x="389" y="1" width="15" height="370"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                </scrollView>
+                            </scroller>
+                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.76119409999999998" horizontal="NO" id="1067">
+                                <rect key="frame" x="389" y="1" width="15" height="370"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </scroller>
+                        </scrollView>
+                    </subviews>
+                </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1114">
                     <rect key="frame" x="0.0" y="0.0" width="250" height="314"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>

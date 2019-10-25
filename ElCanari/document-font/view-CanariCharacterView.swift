@@ -82,7 +82,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //  Focus ring (https://developer.apple.com/library/content/qa/qa1785/_index.html)
   //····················································································································
 
-  override var focusRingMaskBounds: NSRect { return self.bounds }
+  override var focusRingMaskBounds : NSRect { return self.bounds }
 
   //····················································································································
 

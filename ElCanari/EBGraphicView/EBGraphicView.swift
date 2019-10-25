@@ -20,7 +20,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     self.postsFrameChangedNotifications = true
     NotificationCenter.default.addObserver (
       self,
-      selector: #selector (EBGraphicView.ebFrameChanged (_:)),
+      selector: #selector (self.ebFrameChanged (_:)),
       name: NSView.frameDidChangeNotification,
       object: self
     )
@@ -34,7 +34,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     self.postsFrameChangedNotifications = true
     NotificationCenter.default.addObserver (
       self,
-      selector: #selector (EBGraphicView.ebFrameChanged (_:)),
+      selector: #selector (self.ebFrameChanged (_:)),
       name: NSView.frameDidChangeNotification,
       object: self
     )
@@ -302,6 +302,9 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   final var mBackColor : NSColor = NSColor.white {
     didSet {
       self.needsDisplay = true
+      if let scrollView = self.superview?.superview as? NSScrollView {
+        scrollView.backgroundColor = self.mBackColor
+      }
     }
   }
 
@@ -512,32 +515,6 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  override var acceptsFirstResponder : Bool { return true }
-
-  //····················································································································
-
-  override func becomeFirstResponder () -> Bool { return true }
-
-  //····················································································································
-
-  override func resignFirstResponder () -> Bool { return true }
-
-  //····················································································································
-  //  Focus ring (https://developer.apple.com/library/content/qa/qa1785/_index.html)
-  //····················································································································
-
-  override var focusRingMaskBounds : NSRect { return self.bounds }
-
-  //····················································································································
-
-  override func drawFocusRingMask () {
-    NSBezierPath.fill (self.bounds)
-  }
-
-  //····················································································································
-  // MARK: -
-  //····················································································································
-
   internal var mIssueBezierPathes = [EBBezierPath] ()
   internal var mIssueKind : CanariIssueKind = .error // Any value, not used if mIssueBezierPath is nil
 
@@ -692,6 +669,37 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   var mPopulateContextualMenuClosure : Optional < (_ inPoint : CanariPoint) -> NSMenu > = nil
 
   //····················································································································
+  // FIRST RESPONDER
+  //····················································································································
+
+  override var acceptsFirstResponder : Bool { return true }
+
+  //····················································································································
+
+  private var mIsFirstResponder = false {
+    didSet {
+       if self.mIsFirstResponder != oldValue, let scrollView = self.superview?.superview as? EBScrollView {
+         scrollView.setFocusRing (self.mIsFirstResponder)
+       }
+    }
+  }
+
+  //····················································································································
+
+  override func becomeFirstResponder () -> Bool {
+    self.mIsFirstResponder = true
+    return true
+  }
+
+  //····················································································································
+
+  override func resignFirstResponder () -> Bool {
+    self.mIsFirstResponder = false
+    return true
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

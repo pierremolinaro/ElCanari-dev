@@ -44,7 +44,7 @@ extension EBGraphicView {
       let r = NSRect (x: 0.0, y: 0.0, width: 70.0, height: 20.0)
       let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
       self.mZoomPopUpButton = zoomPopUpButton
-      zoomPopUpButton.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize)
+      zoomPopUpButton.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
       zoomPopUpButton.autoenablesItems = false
       zoomPopUpButton.bezelStyle = .shadowlessSquare
       if let popUpButtonCell = zoomPopUpButton.cell as? NSPopUpButtonCell {

@@ -906,8 +906,6 @@
 		CF61BA3921CCEA66000CC5EF /* action-PackageDocument-programHelpAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61BA3721CCEA66000CC5EF /* action-PackageDocument-programHelpAction.swift */; };
 		CF64331A23620D8B00FD8D93 /* NSControl-extension-enable-binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64331823620D8A00FD8D93 /* NSControl-extension-enable-binding.swift */; };
 		CF64331B23620D8B00FD8D93 /* NSControl-extension-enable-binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64331823620D8A00FD8D93 /* NSControl-extension-enable-binding.swift */; };
-		CF64331C23620D8B00FD8D93 /* NSView-extension-ebCleanUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64331923620D8B00FD8D93 /* NSView-extension-ebCleanUp.swift */; };
-		CF64331D23620D8B00FD8D93 /* NSView-extension-ebCleanUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64331923620D8B00FD8D93 /* NSView-extension-ebCleanUp.swift */; };
 		CF6436162104ED960020988A /* transient-BoardModel-imageForModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6436152104ED950020988A /* transient-BoardModel-imageForModel.swift */; };
 		CF644E1122E7560C004B7ED3 /* enum-AutorouterPreferredDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF644E1022E7560B004B7ED3 /* enum-AutorouterPreferredDirections.swift */; };
 		CF644E1222E7560C004B7ED3 /* enum-AutorouterPreferredDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF644E1022E7560B004B7ED3 /* enum-AutorouterPreferredDirections.swift */; };
@@ -1058,6 +1056,8 @@
 		CF7AA01721BDB72900AC0FC7 /* extension-UInt32.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AA01421BDB72900AC0FC7 /* extension-UInt32.swift */; };
 		CF7AA01821BDB72900AC0FC7 /* extension-NSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AA01521BDB72900AC0FC7 /* extension-NSTextView.swift */; };
 		CF7AA01921BDB72900AC0FC7 /* extension-NSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AA01521BDB72900AC0FC7 /* extension-NSTextView.swift */; };
+		CF7AB0D02362E0F800A93F2F /* EBFocusRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB0CF2362E0F800A93F2F /* EBFocusRingView.swift */; };
+		CF7AB0D12362E0F800A93F2F /* EBFocusRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB0CF2362E0F800A93F2F /* EBFocusRingView.swift */; };
 		CF7C09FE21E4BA8C00FFB7A2 /* open-symbol-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C09FD21E4BA8C00FFB7A2 /* open-symbol-in-library.swift */; };
 		CF7C09FF21E4BA8C00FFB7A2 /* open-symbol-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C09FD21E4BA8C00FFB7A2 /* open-symbol-in-library.swift */; };
 		CF7C0A0121E4DAC900FFB7A2 /* open-package-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C0A0021E4DAC900FFB7A2 /* open-package-in-library.swift */; };
@@ -2879,7 +2879,6 @@
 		CF619DFE20ED0DB40024F387 /* transient-BoardModel-instanceCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-instanceCount.swift"; sourceTree = "<group>"; };
 		CF61BA3721CCEA66000CC5EF /* action-PackageDocument-programHelpAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-PackageDocument-programHelpAction.swift"; sourceTree = "<group>"; };
 		CF64331823620D8A00FD8D93 /* NSControl-extension-enable-binding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSControl-extension-enable-binding.swift"; sourceTree = "<group>"; };
-		CF64331923620D8B00FD8D93 /* NSView-extension-ebCleanUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView-extension-ebCleanUp.swift"; sourceTree = "<group>"; };
 		CF6436152104ED950020988A /* transient-BoardModel-imageForModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-imageForModel.swift"; sourceTree = "<group>"; };
 		CF644E1022E7560B004B7ED3 /* enum-AutorouterPreferredDirections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-AutorouterPreferredDirections.swift"; sourceTree = "<group>"; };
 		CF644E1322E75744004B7ED3 /* enum-AutorouterSnapAngle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-AutorouterSnapAngle.swift"; sourceTree = "<group>"; };
@@ -2965,6 +2964,7 @@
 		CF7A9F2A21BDB2B000AC0FC7 /* extension-NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-NSObject.swift"; sourceTree = "<group>"; };
 		CF7AA01421BDB72900AC0FC7 /* extension-UInt32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-UInt32.swift"; sourceTree = "<group>"; };
 		CF7AA01521BDB72900AC0FC7 /* extension-NSTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-NSTextView.swift"; sourceTree = "<group>"; };
+		CF7AB0CF2362E0F800A93F2F /* EBFocusRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBFocusRingView.swift; sourceTree = "<group>"; };
 		CF7C09FD21E4BA8C00FFB7A2 /* open-symbol-in-library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "open-symbol-in-library.swift"; sourceTree = "<group>"; };
 		CF7C0A0021E4DAC900FFB7A2 /* open-package-in-library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "open-package-in-library.swift"; sourceTree = "<group>"; };
 		CF7C30E521CCCA9D00EFFDCA /* PackageDocument-pad-numbering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PackageDocument-pad-numbering.swift"; sourceTree = "<group>"; };
@@ -4361,7 +4361,6 @@
 				CFB8E4561B4978FE00D4B8AD /* EBTextView.swift */,
 				CFB0F5EC1BDBC9F700939954 /* EBWindow.swift */,
 				CF64331823620D8A00FD8D93 /* NSControl-extension-enable-binding.swift */,
-				CF64331923620D8B00FD8D93 /* NSView-extension-ebCleanUp.swift */,
 			);
 			name = "Outlets Easy Bindings";
 			path = "ElCanari/outlets-easy-bindings";
@@ -5044,6 +5043,7 @@
 				CF3EA65F21C29EB80059392B /* EBScrollView-dragging-destination.swift */,
 				CF3EA65C21C29D300059392B /* EBScrollView-placards.swift */,
 				CF604DC621BC1BC1004F2311 /* EBScrollView.swift */,
+				CF7AB0CF2362E0F800A93F2F /* EBFocusRingView.swift */,
 			);
 			name = EBGraphicView;
 			path = ElCanari/EBGraphicView;
@@ -6429,7 +6429,6 @@
 				CF3817A2225CA79400E75A96 /* transient-SymbolPinInstanceInDevice-pinQualifiedName.swift in Sources */,
 				CF4A463721C2FF8D005F722D /* controller-array-PackageDocument-mPackageObjectsController.swift in Sources */,
 				CFB671DA20FB71E600C94777 /* selectionController-MergerDocument-mBoardInstanceSelection.swift in Sources */,
-				CF64331C23620D8B00FD8D93 /* NSView-extension-ebCleanUp.swift in Sources */,
 				CFA42F7B229AEACF000AA8C8 /* tomany-MasterPadInDevice.swift in Sources */,
 				CFEB7B4A233A25EC0060A97A /* transient-ComponentInProject-deviceSymbolDictionary.swift in Sources */,
 				CF1D9C8721BBFBB100FFF459 /* EBGraphicView-key-down.swift in Sources */,
@@ -6629,6 +6628,7 @@
 				CF8BE749235112CC00F95B3A /* func-checkOutletConnection.swift in Sources */,
 				CFB29B1122999EB300E35790 /* extension-SheetInProject-disconnect.swift in Sources */,
 				CFBCE79822D3ACC000DC3505 /* extension-CommentInSchematics.swift in Sources */,
+				CF7AB0D02362E0F800A93F2F /* EBFocusRingView.swift in Sources */,
 				CF518E212282CFAE002BCEE5 /* controller-array-ProjectDocument-schematicObjectsController.swift in Sources */,
 				CFEB7CAF233A28860060A97A /* transient-ProjectRoot-deviceNames.swift in Sources */,
 				CFA43055229AEB96000AA8C8 /* toone-DeviceSymbolTypeInProject.swift in Sources */,
@@ -7605,7 +7605,6 @@
 				CF5C4D33219F04D600EAC52A /* transient-BoardModel-backLegendLinesSegments.swift in Sources */,
 				CF5C4D34219F04D600EAC52A /* transient-BoardModel-backPackagesSegments.swift in Sources */,
 				CF049BDD22E50180000B4845 /* ProjectDocument-generate-dsn.swift in Sources */,
-				CF64331D23620D8B00FD8D93 /* NSView-extension-ebCleanUp.swift in Sources */,
 				CF05C9BC21A809AC0021652C /* transient-SymbolPin-issues.swift in Sources */,
 				CFEB7B4B233A25EC0060A97A /* transient-ComponentInProject-deviceSymbolDictionary.swift in Sources */,
 				CF5C4D35219F04D600EAC52A /* action-Preferences-createUserLibraryAction.swift in Sources */,
@@ -7805,6 +7804,7 @@
 				CF8BE74A235112CC00F95B3A /* func-checkOutletConnection.swift in Sources */,
 				CFB1DB402282D31F005F9811 /* entity-ProjectRoot.swift in Sources */,
 				CF9D4B3F227F796C006E2035 /* action-ProjectDocument-setDateToNowAction.swift in Sources */,
+				CF7AB0D12362E0F800A93F2F /* EBFocusRingView.swift in Sources */,
 				CF78DE8C222D609200E89DCA /* transient-MasterPadInDevice-padNumberDisplay.swift in Sources */,
 				CFEB7CB0233A28860060A97A /* transient-ProjectRoot-deviceNames.swift in Sources */,
 				CFA43008229AEB68000AA8C8 /* toone-PackageSlavePad.swift in Sources */,
