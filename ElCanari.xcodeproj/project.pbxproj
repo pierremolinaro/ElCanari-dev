@@ -2441,8 +2441,8 @@
 		CFF63C2922B3EF3100032398 /* toone-BoardRestrictRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF63C2522B3EF3100032398 /* toone-BoardRestrictRectangle.swift */; };
 		CFF63D1522B40E4100032398 /* selectionController-ProjectDocument-restrictRectangleSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF63D1422B40E4100032398 /* selectionController-ProjectDocument-restrictRectangleSelectionController.swift */; };
 		CFF63D1622B40E4100032398 /* selectionController-ProjectDocument-restrictRectangleSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF63D1422B40E4100032398 /* selectionController-ProjectDocument-restrictRectangleSelectionController.swift */; };
-		CFF63D1822B4117100032398 /* extension-BoardRestrictRectangle.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF63D1722B4117100032398 /* extension-BoardRestrictRectangle.swift.swift */; };
-		CFF63D1922B4117100032398 /* extension-BoardRestrictRectangle.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF63D1722B4117100032398 /* extension-BoardRestrictRectangle.swift.swift */; };
+		CFF63D1822B4117100032398 /* extension-BoardRestrictRectanglet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF63D1722B4117100032398 /* extension-BoardRestrictRectanglet.swift */; };
+		CFF63D1922B4117100032398 /* extension-BoardRestrictRectanglet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF63D1722B4117100032398 /* extension-BoardRestrictRectanglet.swift */; };
 		CFF7B4271FDF28C800A5CF44 /* canari_artwork.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */; };
 		CFF7B4291FDF2E3400A5CF44 /* canari_merger.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */; };
 		CFF83D4321ADAA310084BDA9 /* transient-SymbolDocument-mStatusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4021ADAA300084BDA9 /* transient-SymbolDocument-mStatusImage.swift */; };
@@ -3717,7 +3717,7 @@
 		CFF63C2422B3EF3100032398 /* tomany-BoardRestrictRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "tomany-BoardRestrictRectangle.swift"; sourceTree = "<group>"; };
 		CFF63C2522B3EF3100032398 /* toone-BoardRestrictRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-BoardRestrictRectangle.swift"; sourceTree = "<group>"; };
 		CFF63D1422B40E4100032398 /* selectionController-ProjectDocument-restrictRectangleSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ProjectDocument-restrictRectangleSelectionController.swift"; sourceTree = "<group>"; };
-		CFF63D1722B4117100032398 /* extension-BoardRestrictRectangle.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-BoardRestrictRectangle.swift.swift"; sourceTree = "<group>"; };
+		CFF63D1722B4117100032398 /* extension-BoardRestrictRectanglet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-BoardRestrictRectanglet.swift"; sourceTree = "<group>"; };
 		CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_artwork.icns; sourceTree = "<group>"; };
 		CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_merger.icns; sourceTree = "<group>"; };
 		CFF83D4021ADAA300084BDA9 /* transient-SymbolDocument-mStatusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolDocument-mStatusImage.swift"; sourceTree = "<group>"; };
@@ -5508,7 +5508,7 @@
 			children = (
 				CF45E84A22DC659C008F0916 /* extension-BoardConnector.swift */,
 				CFBCE77D22D3ACA300DC3505 /* extension-BoardLine.swift */,
-				CFF63D1722B4117100032398 /* extension-BoardRestrictRectangle.swift.swift */,
+				CFF63D1722B4117100032398 /* extension-BoardRestrictRectanglet.swift */,
 				CFBCE77F22D3ACA300DC3505 /* extension-BoardText.swift */,
 				CFBCE77C22D3ACA300DC3505 /* extension-BoardTrack.swift */,
 				CFBCE77B22D3ACA300DC3505 /* extension-BorderCurve.swift */,
@@ -5989,7 +5989,7 @@
 				CFD7FFF922A7BA840039DB80 /* enum-BorderCurveShape.swift in Sources */,
 				CF4EC7412284A36E00902FBB /* extension-SheetInProject-drag-add-wire.swift in Sources */,
 				CFC8547C21E91817006ADB6C /* transient-DeviceDocument-mStatusMessage.swift in Sources */,
-				CFF63D1822B4117100032398 /* extension-BoardRestrictRectangle.swift.swift in Sources */,
+				CFF63D1822B4117100032398 /* extension-BoardRestrictRectanglet.swift in Sources */,
 				CF372C491C033DBE00FFC17A /* CharacterGerberCodeClass.swift in Sources */,
 				CFEB7AD6233A235F0060A97A /* transient-BorderCurve-objectDisplay.swift in Sources */,
 				CF9D4B22227F796C006E2035 /* action-ProjectDocument-removeSelectedComponentsAction.swift in Sources */,
@@ -7086,7 +7086,7 @@
 				CF0777C52352100F00F56EAB /* extension-NSColor-ClassPropertyProtocol.swift in Sources */,
 				CFA42F62229AEAAF000AA8C8 /* toone-ArtworkRoot.swift in Sources */,
 				CFA430C0229AEC41000AA8C8 /* toone-SymbolSolidRect.swift in Sources */,
-				CFF63D1922B4117100032398 /* extension-BoardRestrictRectangle.swift.swift in Sources */,
+				CFF63D1922B4117100032398 /* extension-BoardRestrictRectanglet.swift in Sources */,
 				CFEAAD5622317AB700F69A12 /* transient-SymbolSolidRect-filledBezierPath.swift in Sources */,
 				CFFD810F2347CE1C00BE23A7 /* CanariOrientationSegmentedControl.swift in Sources */,
 				CF0EE34522C8C478008CB4A7 /* enum-ComponentSide.swift in Sources */,

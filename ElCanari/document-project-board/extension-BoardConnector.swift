@@ -21,7 +21,7 @@ extension BoardConnector {
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return !(self.connectedToComponent ?? true)
+    return true
   }
 
   //····················································································································

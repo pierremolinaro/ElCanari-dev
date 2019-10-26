@@ -38,9 +38,9 @@ extension BoardRestrictRectangle {
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    let newX = self.mX + inDx
-    let newY = self.mY + inDy
-    return (newX >= 0) && (newY >= 0)
+//    let newX = self.mX + inDx
+//    let newY = self.mY + inDy
+    return true
   }
 
   //····················································································································
