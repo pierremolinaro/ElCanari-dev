@@ -15,7 +15,20 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @IBAction internal func performERCCheckingAction (_ inUnusedSender : Any?) {
-    _ = self.performERCChecking ()
+  //--- ERC Checking
+    let ok = self.performERCChecking ()
+    if !ok {
+      let alert = NSAlert ()
+      alert.messageText =  "ERC Checking error."
+      alert.addButton (withTitle: "Close")
+      alert.addButton (withTitle: "Select ERC Inspector")
+      alert.informativeText = "The ses file has been successfully imported, but ERC checking has detected error(s)."
+      alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
+        if response == .alertSecondButtonReturn {
+          self.rootObject.mBoardSelectedInspector = 5
+        }
+      }
+    }
   }
 
   //····················································································································

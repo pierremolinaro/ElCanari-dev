@@ -153,32 +153,13 @@ extension CustomizedProjectDocument {
     self.windowForSheet?.endSheet (inPanel)
   //---
     if errorMessage == "" {
-      self.afterImportSESSuccess ()
+      self.performERCCheckingAction (nil)
     }else{
       let alert = NSAlert ()
       alert.messageText =  "Cannot Import the .ses File"
       alert.addButton (withTitle: "Ok")
       alert.informativeText = "Cannot Import the .ses File, due to the following errors:\(errorMessage)"
       alert.beginSheetModal (for: self.windowForSheet!) { (response) in }
-    }
-  }
-
-  //····················································································································
-
-  private func afterImportSESSuccess () {
-  //--- ERC Checking
-    let ok = self.performERCChecking ()
-    if !ok {
-      let alert = NSAlert ()
-      alert.messageText =  "ERC Checking error."
-      alert.addButton (withTitle: "Close")
-      alert.addButton (withTitle: "Select ERC Inspector")
-      alert.informativeText = "The ses file has been successfully imported, but ERC checking has detected error(s)."
-      alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
-        if response == .alertSecondButtonReturn {
-          self.rootObject.mBoardSelectedInspector = 5
-        }
-      }
     }
   }
 
