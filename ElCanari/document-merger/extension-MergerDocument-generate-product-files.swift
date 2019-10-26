@@ -5,6 +5,8 @@
 //  Created by Pierre Molinaro on 07/07/2018.
 //
 //
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -16,32 +18,43 @@ extension MergerDocument {
   final internal func generateProductFiles () {
     do{
     //--- Create product directory
-      if let productDirectory = self.fileURL?.path.deletingPathExtension {
+      if let f = self.fileURL?.path.deletingPathExtension {
         self.mLogTextView?.clear ()
-        let baseName = productDirectory.lastPathComponent
+        let baseName = f.lastPathComponent
+        let productDirectory = f.deletingLastPathComponent
         let fm = FileManager ()
-      //--- Library directory
-        if !fm.fileExists (atPath: productDirectory) {
-          self.mLogTextView?.appendMessageString("Creating \(productDirectory) directory…")
-          try fm.createDirectory (atPath: productDirectory, withIntermediateDirectories:true, attributes:nil)
-          self.mLogTextView?.appendSuccessString (" Ok\n")
-        }
       //--- Generate board archive
         if self.rootObject.generatedBoardArchiveFormat != .noGeneration {
           let boardArchivePath = productDirectory + "/" + baseName + "." + EL_CANARI_MERGER_ARCHIVE
           self.mLogTextView?.appendMessageString("Generating \(boardArchivePath.lastPathComponent)…")
-          try generateBoardArchive (atPath:boardArchivePath)
+          try generateBoardArchive (atPath: boardArchivePath)
           self.mLogTextView?.appendSuccessString (" Ok\n")
         }
-      //--- Generate Gerber files
+      //--- Gerber
         if self.rootObject.generateGerberProductFile {
-          let filePath = productDirectory + "/" + baseName
-          try generateGerberFiles (atPath:filePath)
+          let gerberDirectory = productDirectory + "/" + baseName + "-gerber"
+          if !fm.fileExists (atPath: gerberDirectory) {
+            self.mLogTextView?.appendMessageString("Creating \(gerberDirectory) directory…")
+            try fm.createDirectory (atPath: gerberDirectory, withIntermediateDirectories: true, attributes: nil)
+            self.mLogTextView?.appendSuccessString (" Ok\n")
+          }
+          if self.rootObject.generateGerberProductFile {
+            let filePath = gerberDirectory + "/" + baseName
+            try generateGerberFiles (atPath: filePath)
+          }
         }
-      //--- Generate PDF files
+      //--- PDF
         if self.rootObject.generatePDFProductFile {
-          let filePath = productDirectory + "/" + baseName
-          try generatePDFfiles (atPath:filePath)
+          let pdfDirectory = productDirectory + "/" + baseName + "-pdf"
+          if !fm.fileExists (atPath: pdfDirectory) {
+            self.mLogTextView?.appendMessageString("Creating \(pdfDirectory) directory…")
+            try fm.createDirectory (atPath: pdfDirectory, withIntermediateDirectories: true, attributes: nil)
+            self.mLogTextView?.appendSuccessString (" Ok\n")
+          }
+          if self.rootObject.generatePDFProductFile {
+            let filePath = pdfDirectory + "/" + baseName
+            try generatePDFfiles (atPath: filePath)
+          }
         }
       //--- Done !
         self.mLogTextView?.appendMessageString ("Done.")
