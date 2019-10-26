@@ -28,13 +28,13 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.0.20"
+let VERSION_CANARI = "1.1.0"
 let NOTES : [String] = []
-let BUGFIXES : [String] = ["On ElCapitan, device PDF docs could not be opened"]
+let BUGFIXES : [String] = []
 let CHANGES : [String] = [
-  "Project: ERC is only performed if an artwork is set"
+  "Project: new board outline settings"
 ]
-let NEWS : [String] = []
+let NEWS : [String] = ["Adding focus ring around first responder views"]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   FOR PRINTING IN COLOR

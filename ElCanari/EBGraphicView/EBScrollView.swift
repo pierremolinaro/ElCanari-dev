@@ -23,7 +23,7 @@ class EBScrollView : NSScrollView, EBUserClassNameProtocol {
     super.init (frame: frame)
     noteObjectAllocation (self)
   }
-  
+
   //····················································································································
 
   deinit {

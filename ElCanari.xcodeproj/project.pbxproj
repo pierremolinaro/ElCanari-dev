@@ -5008,6 +5008,7 @@
 		CFDDD4D321BB14FF007D2F14 /* EBGraphicView */ = {
 			isa = PBXGroup;
 			children = (
+				CF7AB0CF2362E0F800A93F2F /* EBFocusRingView.swift */,
 				CF968AED21BBD2C10010175E /* EBGraphicView-binding-arrowKeyMagnitude.swift */,
 				CF968AF321BBD40B0010175E /* EBGraphicView-binding-backColor.swift */,
 				CF3A3E1122DE5E3E009643E5 /* EBGraphicView-binding-control-key-hilite-diameter.swift */,
@@ -5043,7 +5044,6 @@
 				CF3EA65F21C29EB80059392B /* EBScrollView-dragging-destination.swift */,
 				CF3EA65C21C29D300059392B /* EBScrollView-placards.swift */,
 				CF604DC621BC1BC1004F2311 /* EBScrollView.swift */,
-				CF7AB0CF2362E0F800A93F2F /* EBFocusRingView.swift */,
 			);
 			name = EBGraphicView;
 			path = ElCanari/EBGraphicView;

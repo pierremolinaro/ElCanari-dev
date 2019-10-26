@@ -81,6 +81,20 @@ class EBFocusRingView : NSView, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  //  MOUSE UP
+  //····················································································································
+
+  override func mouseUp (with inEvent : NSEvent) {
+    let locationInView = self.convert (inEvent.locationInWindow, from: nil)
+    if self.bounds.contains (locationInView),
+    self.subviews.count == 1,
+    let scrollView = self.subviews [0] as? NSScrollView,
+    let graphicView = scrollView.documentView as? EBGraphicView {
+      self.window?.makeFirstResponder (graphicView)
+    }
+  }
+
+  //····················································································································
 
 }
 
