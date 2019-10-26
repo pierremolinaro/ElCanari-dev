@@ -1264,24 +1264,39 @@ class PackageRoot : EBGraphicManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.selectedPageIndex.stringPropertyValue ()
-    ioString += self.selectedInspector.stringPropertyValue ()
-    ioString += self.comments.stringPropertyValue ()
-    ioString += self.program.stringPropertyValue ()
-    ioString += self.horizontalFlip.stringPropertyValue ()
-    ioString += self.verticalFlip.stringPropertyValue ()
-    ioString += self.gridStyle.stringPropertyValue ()
-    ioString += self.gridStep.stringPropertyValue ()
-    ioString += self.gridStepUnit.stringPropertyValue ()
-    ioString += self.gridDisplayFactor.stringPropertyValue ()
-    ioString += self.zoom.stringPropertyValue ()
-    ioString += self.padNumbering.stringPropertyValue ()
-    ioString += self.counterClockNumberingStartAngle.stringPropertyValue ()
-    ioString += self.xPlacardUnit.stringPropertyValue ()
-    ioString += self.yPlacardUnit.stringPropertyValue ()
+    self.selectedPageIndex.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.selectedInspector.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.comments.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.program.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.horizontalFlip.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.verticalFlip.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.gridStyle.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.gridStep.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.gridStepUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.gridDisplayFactor.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.zoom.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.padNumbering.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.counterClockNumberingStartAngle.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.xPlacardUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.yPlacardUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
     do{
@@ -1293,22 +1308,27 @@ class PackageRoot : EBGraphicManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -1319,22 +1339,27 @@ class PackageRoot : EBGraphicManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -1345,22 +1370,27 @@ class PackageRoot : EBGraphicManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -1371,22 +1401,27 @@ class PackageRoot : EBGraphicManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
   }
 

@@ -167,8 +167,8 @@ extension NSBezierPath : ClassPropertyProtocol {
 
   //····················································································································
 
-  func stringPropertyValue () -> String {
-    return "\(self.archiveToString ())\n"
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    ioData.append (self.archiveToString ().data (using: .utf8)!)
   }
 
   //····················································································································

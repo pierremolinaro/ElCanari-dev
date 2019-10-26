@@ -948,20 +948,26 @@ class PackageInDevice : EBGraphicManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mFileData.stringPropertyValue ()
-    ioString += self.mName.stringPropertyValue ()
-    ioString += self.mVersion.stringPropertyValue ()
-    ioString += self.mStrokeBezierPath.stringPropertyValue ()
-    ioString += self.mX.stringPropertyValue ()
-    ioString += self.mY.stringPropertyValue ()
+    self.mFileData.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mVersion.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mStrokeBezierPath.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mX.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mY.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.mRoot {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
   //--- To many relationships
     do{
       var optionalFirstIndex : Int? = nil
@@ -972,22 +978,27 @@ class PackageInDevice : EBGraphicManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
   }
 

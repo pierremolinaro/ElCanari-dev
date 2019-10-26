@@ -371,15 +371,21 @@ class BoardModelPad : EBManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.y.stringPropertyValue ()
-    ioString += self.width.stringPropertyValue ()
-    ioString += self.height.stringPropertyValue ()
-    ioString += self.shape.stringPropertyValue ()
-    ioString += self.rotation.stringPropertyValue ()
-    ioString += self.x.stringPropertyValue ()
+    self.y.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.width.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.height.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.shape.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.rotation.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.x.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }

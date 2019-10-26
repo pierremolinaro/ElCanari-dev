@@ -709,20 +709,31 @@ class ArtworkRoot : EBManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.selectedTab.stringPropertyValue ()
-    ioString += self.comments.stringPropertyValue ()
-    ioString += self.minPPTPTTTWdisplayUnit.stringPropertyValue ()
-    ioString += self.minPPTPTTTW.stringPropertyValue ()
-    ioString += self.minValueForOARdisplayUnit.stringPropertyValue ()
-    ioString += self.minValueForOARinEBUnit.stringPropertyValue ()
-    ioString += self.minValueForPHDdisplayUnit.stringPropertyValue ()
-    ioString += self.minValueForPHDinEBUnit.stringPropertyValue ()
-    ioString += self.minValueForBoardLimitWidthDisplayUnit.stringPropertyValue ()
-    ioString += self.minValueForBoardLimitWidth.stringPropertyValue ()
-    ioString += self.drillDataFileExtension.stringPropertyValue ()
+    self.selectedTab.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.comments.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.minPPTPTTTWdisplayUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.minPPTPTTTW.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.minValueForOARdisplayUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.minValueForOARinEBUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.minValueForPHDdisplayUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.minValueForPHDinEBUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.minValueForBoardLimitWidthDisplayUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.minValueForBoardLimitWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.drillDataFileExtension.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
     do{
@@ -734,22 +745,27 @@ class ArtworkRoot : EBManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
   }
 

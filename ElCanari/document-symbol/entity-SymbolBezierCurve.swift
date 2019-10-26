@@ -736,17 +736,25 @@ class SymbolBezierCurve : SymbolObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.y1.stringPropertyValue ()
-    ioString += self.x2.stringPropertyValue ()
-    ioString += self.y2.stringPropertyValue ()
-    ioString += self.cpx1.stringPropertyValue ()
-    ioString += self.cpy1.stringPropertyValue ()
-    ioString += self.cpx2.stringPropertyValue ()
-    ioString += self.cpy2.stringPropertyValue ()
-    ioString += self.x1.stringPropertyValue ()
+    self.y1.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.x2.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.y2.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.cpx1.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.cpy1.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.cpx2.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.cpy2.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.x1.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }

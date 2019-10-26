@@ -34,8 +34,8 @@ extension Date : ValuePropertyProtocol {
 
   //····················································································································
 
-  func stringPropertyValue () -> String {
-    return "\(self.timeIntervalSince1970)\n"
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    self.timeIntervalSince1970.appendPropertyValueTo (&ioData)
   }
 
   //····················································································································

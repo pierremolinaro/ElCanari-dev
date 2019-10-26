@@ -1515,34 +1515,54 @@ class MergerRoot : EBManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.selectedPageIndex.stringPropertyValue ()
-    ioString += self.zoom.stringPropertyValue ()
-    ioString += self.automaticBoardSize.stringPropertyValue ()
-    ioString += self.boardManualWidth.stringPropertyValue ()
-    ioString += self.boardManualHeight.stringPropertyValue ()
-    ioString += self.boardWidthUnit.stringPropertyValue ()
-    ioString += self.boardHeightUnit.stringPropertyValue ()
-    ioString += self.overlapingArrangment.stringPropertyValue ()
-    ioString += self.selectedBoardXUnit.stringPropertyValue ()
-    ioString += self.selectedBoardYUnit.stringPropertyValue ()
-    ioString += self.boardLimitWidth.stringPropertyValue ()
-    ioString += self.boardLimitWidthUnit.stringPropertyValue ()
-    ioString += self.arrowMagnitude.stringPropertyValue ()
-    ioString += self.arrowMagnitudeUnit.stringPropertyValue ()
-    ioString += self.shiftArrowMagnitude.stringPropertyValue ()
-    ioString += self.shiftArrowMagnitudeUnit.stringPropertyValue ()
-    ioString += self.artworkName.stringPropertyValue ()
-    ioString += self.generateGerberProductFile.stringPropertyValue ()
-    ioString += self.generatePDFProductFile.stringPropertyValue ()
-    ioString += self.generatedBoardArchiveFormat.stringPropertyValue ()
+    self.selectedPageIndex.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.zoom.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.automaticBoardSize.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.boardManualWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.boardManualHeight.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.boardWidthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.boardHeightUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.overlapingArrangment.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.selectedBoardXUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.selectedBoardYUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.boardLimitWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.boardLimitWidthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.arrowMagnitude.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.arrowMagnitudeUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.shiftArrowMagnitude.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.shiftArrowMagnitudeUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.artworkName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.generateGerberProductFile.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.generatePDFProductFile.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.generatedBoardArchiveFormat.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.artwork {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
   //--- To many relationships
     do{
       var optionalFirstIndex : Int? = nil
@@ -1553,22 +1573,27 @@ class MergerRoot : EBManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -1579,22 +1604,27 @@ class MergerRoot : EBManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
   }
 

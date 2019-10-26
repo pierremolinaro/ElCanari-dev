@@ -910,24 +910,34 @@ class BoardText : BoardObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mX.stringPropertyValue ()
-    ioString += self.mY.stringPropertyValue ()
-    ioString += self.mFontSize.stringPropertyValue ()
-    ioString += self.mLayer.stringPropertyValue ()
-    ioString += self.mText.stringPropertyValue ()
-    ioString += self.mHorizontalAlignment.stringPropertyValue ()
-    ioString += self.mVerticalAlignment.stringPropertyValue ()
-    ioString += self.mRotation.stringPropertyValue ()
-    ioString += self.mWeight.stringPropertyValue ()
-    ioString += self.mOblique.stringPropertyValue ()
+    self.mX.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mY.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mFontSize.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mLayer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mText.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mHorizontalAlignment.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mVerticalAlignment.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRotation.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mWeight.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mOblique.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.mFont {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
   //--- To many relationships
   }
 

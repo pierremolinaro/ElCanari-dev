@@ -882,19 +882,29 @@ class SymbolPin : SymbolObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.yPin.stringPropertyValue ()
-    ioString += self.xName.stringPropertyValue ()
-    ioString += self.yName.stringPropertyValue ()
-    ioString += self.xNumber.stringPropertyValue ()
-    ioString += self.yNumber.stringPropertyValue ()
-    ioString += self.name.stringPropertyValue ()
-    ioString += self.nameHorizontalAlignment.stringPropertyValue ()
-    ioString += self.numberHorizontalAlignment.stringPropertyValue ()
-    ioString += self.pinNameIsDisplayedInSchematics.stringPropertyValue ()
-    ioString += self.xPin.stringPropertyValue ()
+    self.yPin.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.xName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.yName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.xNumber.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.yNumber.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.name.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.nameHorizontalAlignment.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.numberHorizontalAlignment.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.pinNameIsDisplayedInSchematics.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.xPin.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }

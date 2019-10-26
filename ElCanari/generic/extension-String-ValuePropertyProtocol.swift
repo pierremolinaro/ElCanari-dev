@@ -35,7 +35,7 @@ extension String : ValuePropertyProtocol {
 
   //····················································································································
 
-  func stringPropertyValue () -> String {
+  func appendPropertyValueTo (_ ioData : inout Data) {
     var s = ""
     for character in self {
       if character == "\"" {
@@ -46,8 +46,7 @@ extension String : ValuePropertyProtocol {
         s.append (character)
       }
     }
-    s += "\n"
-    return s
+    ioData.append (s.data (using: .utf8)!)
   }
 
   //····················································································································

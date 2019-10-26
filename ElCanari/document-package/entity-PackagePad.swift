@@ -1630,30 +1630,46 @@ class PackagePad : PackageObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.xCenter.stringPropertyValue ()
-    ioString += self.yCenter.stringPropertyValue ()
-    ioString += self.width.stringPropertyValue ()
-    ioString += self.height.stringPropertyValue ()
-    ioString += self.holeWidth.stringPropertyValue ()
-    ioString += self.holeHeight.stringPropertyValue ()
-    ioString += self.padShape.stringPropertyValue ()
-    ioString += self.padStyle.stringPropertyValue ()
-    ioString += self.padNumber.stringPropertyValue ()
-    ioString += self.xCenterUnit.stringPropertyValue ()
-    ioString += self.yCenterUnit.stringPropertyValue ()
-    ioString += self.widthUnit.stringPropertyValue ()
-    ioString += self.heightUnit.stringPropertyValue ()
-    ioString += self.holeWidthUnit.stringPropertyValue ()
-    ioString += self.holeHeightUnit.stringPropertyValue ()
-    ioString += self.annularRingUnit.stringPropertyValue ()
+    self.xCenter.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.yCenter.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.width.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.height.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.holeWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.holeHeight.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.padShape.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.padStyle.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.padNumber.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.xCenterUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.yCenterUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.widthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.heightUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.holeWidthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.holeHeightUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.annularRingUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.zone {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
   //--- To many relationships
     do{
       var optionalFirstIndex : Int? = nil
@@ -1664,22 +1680,27 @@ class PackagePad : PackageObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
   }
 

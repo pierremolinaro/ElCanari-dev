@@ -245,12 +245,15 @@ class BoardModelVia : EBManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.y.stringPropertyValue ()
-    ioString += self.padDiameter.stringPropertyValue ()
-    ioString += self.x.stringPropertyValue ()
+    self.y.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.padDiameter.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.x.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }

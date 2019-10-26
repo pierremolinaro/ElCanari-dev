@@ -245,12 +245,15 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mSymbolTypeName.stringPropertyValue ()
-    ioString += self.mStrokeBezierPath.stringPropertyValue ()
-    ioString += self.mFilledBezierPath.stringPropertyValue ()
+    self.mSymbolTypeName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mStrokeBezierPath.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mFilledBezierPath.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }

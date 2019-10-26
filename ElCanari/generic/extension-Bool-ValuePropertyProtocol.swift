@@ -33,8 +33,8 @@ extension Bool : ValuePropertyProtocol {
 
   //····················································································································
 
-  func stringPropertyValue () -> String {
-    return self ? "T\n" : "F\n"
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    ioData.append (ascii: self ? .T : .F)
   }
 
   //····················································································································

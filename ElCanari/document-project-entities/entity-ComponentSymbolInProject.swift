@@ -1156,25 +1156,36 @@ class ComponentSymbolInProject : SchematicObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mCenterX.stringPropertyValue ()
-    ioString += self.mCenterY.stringPropertyValue ()
-    ioString += self.mRotation.stringPropertyValue ()
-    ioString += self.mMirror.stringPropertyValue ()
-    ioString += self.mSymbolInstanceName.stringPropertyValue ()
-    ioString += self.mSymbolTypeName.stringPropertyValue ()
-    ioString += self.mDisplayComponentNameOffsetX.stringPropertyValue ()
-    ioString += self.mDisplayComponentNameOffsetY.stringPropertyValue ()
-    ioString += self.mDisplayComponentValue.stringPropertyValue ()
-    ioString += self.mDisplayComponentValueOffsetX.stringPropertyValue ()
-    ioString += self.mDisplayComponentValueOffsetY.stringPropertyValue ()
+    self.mCenterX.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mCenterY.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRotation.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mMirror.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSymbolInstanceName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSymbolTypeName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mDisplayComponentNameOffsetX.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mDisplayComponentNameOffsetY.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mDisplayComponentValue.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mDisplayComponentValueOffsetX.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mDisplayComponentValueOffsetY.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.mComponent {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
   //--- To many relationships
     do{
       var optionalFirstIndex : Int? = nil
@@ -1185,22 +1196,27 @@ class ComponentSymbolInProject : SchematicObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
   }
 

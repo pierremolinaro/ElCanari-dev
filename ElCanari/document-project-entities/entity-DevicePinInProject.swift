@@ -781,21 +781,33 @@ class DevicePinInProject : EBManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mPinName.stringPropertyValue ()
-    ioString += self.mSymbolInstanceName.stringPropertyValue ()
-    ioString += self.mSymbolTypeName.stringPropertyValue ()
-    ioString += self.mPinX.stringPropertyValue ()
-    ioString += self.mPinY.stringPropertyValue ()
-    ioString += self.mXName.stringPropertyValue ()
-    ioString += self.mYName.stringPropertyValue ()
-    ioString += self.mNameHorizontalAlignment.stringPropertyValue ()
-    ioString += self.mPinNameIsDisplayedInSchematic.stringPropertyValue ()
-    ioString += self.mXNumber.stringPropertyValue ()
-    ioString += self.mYNumber.stringPropertyValue ()
-    ioString += self.mNumberHorizontalAlignment.stringPropertyValue ()
+    self.mPinName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSymbolInstanceName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSymbolTypeName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mPinX.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mPinY.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mXName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mYName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mNameHorizontalAlignment.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mPinNameIsDisplayedInSchematic.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mXNumber.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mYNumber.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mNumberHorizontalAlignment.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }

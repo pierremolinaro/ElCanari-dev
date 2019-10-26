@@ -33,8 +33,9 @@ extension Double : ValuePropertyProtocol {
 
   //····················································································································
 
-  func stringPropertyValue () -> String {
-    return "\(String (self.bitPattern, radix:16))\n"
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    let s = String (self.bitPattern, radix: 16)
+    ioData.append (s.data (using: .utf8)!)
   }
 
   //····················································································································

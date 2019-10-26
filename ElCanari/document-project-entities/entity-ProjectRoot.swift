@@ -6604,79 +6604,140 @@ class ProjectRoot : EBManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mArtworkName.stringPropertyValue ()
-    ioString += self.mArtworkVersion.stringPropertyValue ()
-    ioString += self.mCheckClearanceBetweenPadsOfSameNet.stringPropertyValue ()
-    ioString += self.mLastERCCheckingIsSuccess.stringPropertyValue ()
-    ioString += self.mLastERCCheckingSignature.stringPropertyValue ()
-    ioString += self.mAutoRouterPreferredDirections.stringPropertyValue ()
-    ioString += self.mAutorouterSnapAngle.stringPropertyValue ()
-    ioString += self.mRouteDirection.stringPropertyValue ()
-    ioString += self.mRouteOrigin.stringPropertyValue ()
-    ioString += self.mTrackLengthUnit.stringPropertyValue ()
-    ioString += self.mLayoutClearance.stringPropertyValue ()
-    ioString += self.mLayoutClearanceUnit.stringPropertyValue ()
-    ioString += self.mBoardSelectedInspector.stringPropertyValue ()
-    ioString += self.mBoardHorizontalFlip.stringPropertyValue ()
-    ioString += self.mBoardVerticalFlip.stringPropertyValue ()
-    ioString += self.mBoardGridStyle.stringPropertyValue ()
-    ioString += self.mBoardGridDisplayFactor.stringPropertyValue ()
-    ioString += self.mBoardZoom.stringPropertyValue ()
-    ioString += self.mBoardGridStep.stringPropertyValue ()
-    ioString += self.mBoardGridStepUnit.stringPropertyValue ()
-    ioString += self.mErrorOrWarningIssueSize.stringPropertyValue ()
-    ioString += self.mControlKeyHiliteDiameter.stringPropertyValue ()
-    ioString += self.mBoardLimitsWidth.stringPropertyValue ()
-    ioString += self.mBoardLimitsWidthUnit.stringPropertyValue ()
-    ioString += self.mBoardClearance.stringPropertyValue ()
-    ioString += self.mBoardClearanceUnit.stringPropertyValue ()
-    ioString += self.mBoardLimitsSelectedInspector.stringPropertyValue ()
-    ioString += self.mBoardLimitsHorizontalFlip.stringPropertyValue ()
-    ioString += self.mBoardLimitsVerticalFlip.stringPropertyValue ()
-    ioString += self.mBoardLimitsGridStyle.stringPropertyValue ()
-    ioString += self.mBoardLimitsGridDisplayFactor.stringPropertyValue ()
-    ioString += self.mBoardLimitsZoom.stringPropertyValue ()
-    ioString += self.mBoardLimitsGridStep.stringPropertyValue ()
-    ioString += self.mBoardLimitsGridStepUnit.stringPropertyValue ()
-    ioString += self.mBoardLimitsBoundingBoxUnit.stringPropertyValue ()
-    ioString += self.mBoardPointsBoundingBoxUnit.stringPropertyValue ()
-    ioString += self.mBoardSelectedCurveDisplayUnit.stringPropertyValue ()
-    ioString += self.mBoardShape.stringPropertyValue ()
-    ioString += self.mRectangularBoardWidth.stringPropertyValue ()
-    ioString += self.mRectangularBoardWidthUnit.stringPropertyValue ()
-    ioString += self.mRectangularBoardHeight.stringPropertyValue ()
-    ioString += self.mRectangularBoardHeightUnit.stringPropertyValue ()
-    ioString += self.mDefaultNetClassName.stringPropertyValue ()
-    ioString += self.mSelectedPageIndex.stringPropertyValue ()
-    ioString += self.mSelectedSchematicInspector.stringPropertyValue ()
-    ioString += self.mSchematicTitle.stringPropertyValue ()
-    ioString += self.mSchematicVersion.stringPropertyValue ()
-    ioString += self.mSchematicDate.stringPropertyValue ()
-    ioString += self.mSchematicHorizontalFlip.stringPropertyValue ()
-    ioString += self.mSchematicVerticalFlip.stringPropertyValue ()
-    ioString += self.mSchematicZoom.stringPropertyValue ()
-    ioString += self.mSchematicGridStyle.stringPropertyValue ()
-    ioString += self.mSchematicGridDisplayFactor.stringPropertyValue ()
-    ioString += self.mSchematicCustomWidth.stringPropertyValue ()
-    ioString += self.mSchematicCustomWidthUnit.stringPropertyValue ()
-    ioString += self.mSchematicCustomHeight.stringPropertyValue ()
-    ioString += self.mSchematicCustomHeightUnit.stringPropertyValue ()
-    ioString += self.mSchematicSheetOrientation.stringPropertyValue ()
-    ioString += self.mRastnetDisplay.stringPropertyValue ()
-    ioString += self.mRastnetDisplayedNetName.stringPropertyValue ()
-    ioString += self.mRastnetDisplayedComponentName.stringPropertyValue ()
+    self.mArtworkName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mArtworkVersion.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mCheckClearanceBetweenPadsOfSameNet.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mLastERCCheckingIsSuccess.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mLastERCCheckingSignature.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mAutoRouterPreferredDirections.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mAutorouterSnapAngle.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRouteDirection.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRouteOrigin.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mTrackLengthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mLayoutClearance.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mLayoutClearanceUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardSelectedInspector.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardHorizontalFlip.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardVerticalFlip.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardGridStyle.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardGridDisplayFactor.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardZoom.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardGridStep.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardGridStepUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mErrorOrWarningIssueSize.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mControlKeyHiliteDiameter.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardLimitsWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardLimitsWidthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardClearance.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardClearanceUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardLimitsSelectedInspector.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardLimitsHorizontalFlip.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardLimitsVerticalFlip.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardLimitsGridStyle.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardLimitsGridDisplayFactor.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardLimitsZoom.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardLimitsGridStep.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardLimitsGridStepUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardLimitsBoundingBoxUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardPointsBoundingBoxUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardSelectedCurveDisplayUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mBoardShape.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRectangularBoardWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRectangularBoardWidthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRectangularBoardHeight.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRectangularBoardHeightUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mDefaultNetClassName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSelectedPageIndex.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSelectedSchematicInspector.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicTitle.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicVersion.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicDate.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicHorizontalFlip.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicVerticalFlip.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicZoom.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicGridStyle.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicGridDisplayFactor.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicCustomWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicCustomWidthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicCustomHeight.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicCustomHeightUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSchematicSheetOrientation.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRastnetDisplay.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRastnetDisplayedNetName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRastnetDisplayedComponentName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.mSelectedSheet {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
     if let object = self.mArtwork {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
   //--- To many relationships
     do{
       var optionalFirstIndex : Int? = nil
@@ -6687,22 +6748,27 @@ class ProjectRoot : EBManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -6713,22 +6779,27 @@ class ProjectRoot : EBManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -6739,22 +6810,27 @@ class ProjectRoot : EBManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -6765,22 +6841,27 @@ class ProjectRoot : EBManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -6791,22 +6872,27 @@ class ProjectRoot : EBManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -6817,22 +6903,27 @@ class ProjectRoot : EBManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -6843,22 +6934,27 @@ class ProjectRoot : EBManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
   }
 

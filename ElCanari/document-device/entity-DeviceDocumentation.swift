@@ -268,11 +268,13 @@ class DeviceDocumentation : EBManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mFileName.stringPropertyValue ()
-    ioString += self.mFileData.stringPropertyValue ()
+    self.mFileName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mFileData.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }

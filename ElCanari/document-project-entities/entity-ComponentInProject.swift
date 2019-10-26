@@ -2534,45 +2534,64 @@ class ComponentInProject : BoardObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mX.stringPropertyValue ()
-    ioString += self.mY.stringPropertyValue ()
-    ioString += self.mRotation.stringPropertyValue ()
-    ioString += self.mSide.stringPropertyValue ()
-    ioString += self.mNameIsVisibleInBoard.stringPropertyValue ()
-    ioString += self.mXName.stringPropertyValue ()
-    ioString += self.mYName.stringPropertyValue ()
-    ioString += self.mNameFontSize.stringPropertyValue ()
-    ioString += self.mNameRotation.stringPropertyValue ()
-    ioString += self.mValueIsVisibleInBoard.stringPropertyValue ()
-    ioString += self.mXValue.stringPropertyValue ()
-    ioString += self.mYValue.stringPropertyValue ()
-    ioString += self.mValueFontSize.stringPropertyValue ()
-    ioString += self.mValueRotation.stringPropertyValue ()
-    ioString += self.mComponentValue.stringPropertyValue ()
-    ioString += self.mNamePrefix.stringPropertyValue ()
-    ioString += self.mNameIndex.stringPropertyValue ()
-    ioString += self.mXUnit.stringPropertyValue ()
-    ioString += self.mYUnit.stringPropertyValue ()
+    self.mX.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mY.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mRotation.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSide.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mNameIsVisibleInBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mXName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mYName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mNameFontSize.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mNameRotation.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mValueIsVisibleInBoard.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mXValue.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mYValue.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mValueFontSize.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mValueRotation.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mComponentValue.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mNamePrefix.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mNameIndex.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mXUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mYUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.mDevice {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
     if let object = self.mSelectedPackage {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
     if let object = self.mNameFont {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
     if let object = self.mValueFont {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
   //--- To many relationships
     do{
       var optionalFirstIndex : Int? = nil
@@ -2583,22 +2602,27 @@ class ComponentInProject : BoardObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -2609,22 +2633,27 @@ class ComponentInProject : BoardObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
   }
 

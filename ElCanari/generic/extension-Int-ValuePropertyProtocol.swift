@@ -33,38 +33,48 @@ extension Int : ValuePropertyProtocol {
 
   //····················································································································
 
-  func stringPropertyValue () -> String {
-    return "\(self.baseXXEncodedString ())\n"
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    ioData.append (base62Encoded: self)
   }
 
   //····················································································································
 
-  func baseXXEncodedString () -> String {
-    let chars : [ASCII] = [
-      .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine,
-      .A, .B, .C, .D, .E, .F, .G, .H, .I, .J, .K, .L, .M,
-      .N, .O, .P, .Q, .R, .S, .T, .U, .V, .W, .X, .Y, .Z,
-      .a, .b, .c, .d, .e, .f, .g, .h, .i, .j, .k, .l, .m,
-      .n, .o, .p, .q, .r, .s, .t, .u, .v, .w, .x, .y, .z
-    ]
-    var data = Data ()
-    if self > 0 {
-      var v = self
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate let base62EncodedChars : [ASCII] = [
+  .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine,
+  .A, .B, .C, .D, .E, .F, .G, .H, .I, .J, .K, .L, .M,
+  .N, .O, .P, .Q, .R, .S, .T, .U, .V, .W, .X, .Y, .Z,
+  .a, .b, .c, .d, .e, .f, .g, .h, .i, .j, .k, .l, .m,
+  .n, .o, .p, .q, .r, .s, .t, .u, .v, .w, .x, .y, .z
+]
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension Data {
+
+  //····················································································································
+
+  mutating func append (base62Encoded inValue : Int) {
+    let insertionIndex = self.count
+    if inValue > 0 {
+      var v = inValue
       while v > 0 {
-        data.insert (chars [v % chars.count].rawValue, at: 0)
-        v /= chars.count
+        self.insert (base62EncodedChars [v % base62EncodedChars.count].rawValue, at: insertionIndex)
+        v /= base62EncodedChars.count
       }
-    }else if self < 0 {
-      var v = -self
+    }else if inValue < 0 {
+      var v = -inValue
       while v > 0 {
-        data.insert (chars [v % chars.count].rawValue, at: 0)
-        v /= chars.count
+        self.insert (base62EncodedChars [v % base62EncodedChars.count].rawValue, at: insertionIndex)
+        v /= base62EncodedChars.count
       }
-      data.insert (ASCII.minus.rawValue, at: 0) // Minus sign
+      self.insert (ASCII.minus.rawValue, at: insertionIndex) // Minus sign
     }else{
-      data.append (chars [0].rawValue)
+      self.append (base62EncodedChars [0].rawValue)
     }
-    return String (data: data, encoding: .utf8)!
   }
 
   //····················································································································
@@ -175,6 +185,20 @@ enum ASCII : UInt8 {
   case verticalBar = 0x7C // |
   case righttBrace = 0x7D // }
   case tilde = 0x7E // ~
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension Data {
+
+  //····················································································································
+
+  mutating func append (ascii inValue : ASCII) {
+    self.append (inValue.rawValue)
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

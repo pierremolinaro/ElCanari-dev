@@ -687,19 +687,29 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mPinX.stringPropertyValue ()
-    ioString += self.mPinY.stringPropertyValue ()
-    ioString += self.mXName.stringPropertyValue ()
-    ioString += self.mYName.stringPropertyValue ()
-    ioString += self.mName.stringPropertyValue ()
-    ioString += self.mNameHorizontalAlignment.stringPropertyValue ()
-    ioString += self.mPinNameIsDisplayedInSchematics.stringPropertyValue ()
-    ioString += self.mXNumber.stringPropertyValue ()
-    ioString += self.mYNumber.stringPropertyValue ()
-    ioString += self.mNumberHorizontalAlignment.stringPropertyValue ()
+    self.mPinX.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mPinY.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mXName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mYName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mNameHorizontalAlignment.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mPinNameIsDisplayedInSchematics.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mXNumber.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mYNumber.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mNumberHorizontalAlignment.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
     do{
@@ -711,22 +721,27 @@ class SymbolPinTypeInDevice : EBManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
   }
 

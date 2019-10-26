@@ -696,20 +696,31 @@ class BoardLine : BoardObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mWidthUnit.stringPropertyValue ()
-    ioString += self.mX1.stringPropertyValue ()
-    ioString += self.mX1Unit.stringPropertyValue ()
-    ioString += self.mY1.stringPropertyValue ()
-    ioString += self.mY1Unit.stringPropertyValue ()
-    ioString += self.mX2.stringPropertyValue ()
-    ioString += self.mX2Unit.stringPropertyValue ()
-    ioString += self.mY2.stringPropertyValue ()
-    ioString += self.mY2Unit.stringPropertyValue ()
-    ioString += self.mLayer.stringPropertyValue ()
-    ioString += self.mWidth.stringPropertyValue ()
+    self.mWidthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mX1.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mX1Unit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mY1.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mY1Unit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mX2.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mX2Unit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mY2.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mY2Unit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mLayer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }

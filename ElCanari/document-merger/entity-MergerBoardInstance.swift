@@ -665,21 +665,24 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.x.stringPropertyValue ()
-    ioString += self.y.stringPropertyValue ()
-    ioString += self.instanceRotation.stringPropertyValue ()
+    self.x.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.y.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.instanceRotation.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.myModel {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
     if let object = self.myRoot {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
   //--- To many relationships
   }
 

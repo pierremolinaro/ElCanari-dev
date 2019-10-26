@@ -528,16 +528,23 @@ class CommentInSchematic : SchematicObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mColor.stringPropertyValue ()
-    ioString += self.mSize.stringPropertyValue ()
-    ioString += self.mHorizontalAlignment.stringPropertyValue ()
-    ioString += self.mVerticalAlignment.stringPropertyValue ()
-    ioString += self.mX.stringPropertyValue ()
-    ioString += self.mY.stringPropertyValue ()
-    ioString += self.mComment.stringPropertyValue ()
+    self.mColor.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSize.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mHorizontalAlignment.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mVerticalAlignment.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mX.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mY.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mComment.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }

@@ -350,13 +350,17 @@ class CanariLibraryEntry : EBManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mPath.stringPropertyValue ()
-    ioString += self.mUses.stringPropertyValue ()
-    ioString += self.mLibraryRepositoryURL.stringPropertyValue ()
-    ioString += self.mUserAndPasswordTag.stringPropertyValue ()
+    self.mPath.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mUses.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mLibraryRepositoryURL.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mUserAndPasswordTag.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }

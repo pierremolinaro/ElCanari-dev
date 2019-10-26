@@ -1158,19 +1158,29 @@ class NetClassInProject : EBManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mNetClassName.stringPropertyValue ()
-    ioString += self.mNetClassColor.stringPropertyValue ()
-    ioString += self.mTrackWidth.stringPropertyValue ()
-    ioString += self.mTrackWidthUnit.stringPropertyValue ()
-    ioString += self.mViaHoleDiameter.stringPropertyValue ()
-    ioString += self.mViaHoleDiameterUnit.stringPropertyValue ()
-    ioString += self.mViaPadDiameter.stringPropertyValue ()
-    ioString += self.mViaPadDiameterUnit.stringPropertyValue ()
-    ioString += self.mAllowTracksOnFrontSide.stringPropertyValue ()
-    ioString += self.mAllowTracksOnBackSide.stringPropertyValue ()
+    self.mNetClassName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mNetClassColor.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mTrackWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mTrackWidthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mViaHoleDiameter.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mViaHoleDiameterUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mViaPadDiameter.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mViaPadDiameterUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mAllowTracksOnFrontSide.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mAllowTracksOnBackSide.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
     do{
@@ -1182,22 +1192,27 @@ class NetClassInProject : EBManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
   }
 

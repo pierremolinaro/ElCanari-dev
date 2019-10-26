@@ -126,19 +126,16 @@ struct BezierPathArray : Hashable, Comparable, ValuePropertyProtocol {
 
   //····················································································································
 
-  func stringPropertyValue () -> String {
-    var s = ""
+  func appendPropertyValueTo (_ ioData : inout Data) {
     var first = true
     for bp in array {
       if first {
         first = false
       }else{
-        s += "|"
+        ioData.append (ascii: .verticalBar)
       }
-      s += bp.nsBezierPath.archiveToString ()
+      bp.nsBezierPath.appendPropertyValueTo (&ioData)
     }
-    s += "\n"
-    return s
   }
 
   //····················································································································

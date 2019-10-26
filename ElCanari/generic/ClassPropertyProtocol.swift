@@ -13,7 +13,7 @@ protocol ClassPropertyProtocol : class, Equatable {
   func archiveToString () -> String
   static func unarchiveFromData (data : Data) -> NSObject?
   static func unarchiveFromString (string : String) -> NSObject?
-  func stringPropertyValue () -> String
+  func appendPropertyValueTo (_ ioData : inout Data)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

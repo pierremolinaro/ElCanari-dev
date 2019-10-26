@@ -281,7 +281,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   //   appendPropertyValuesTo
   //····················································································································
 
-  func appendPropertyValuesTo (_ ioString : inout String) {
+  func appendPropertyValuesTo (_ ioString : inout Data) {
   }
 
   //····················································································································

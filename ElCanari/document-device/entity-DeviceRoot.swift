@@ -1647,24 +1647,39 @@ class DeviceRoot : EBGraphicManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mSelectedPageIndex.stringPropertyValue ()
-    ioString += self.mTitle.stringPropertyValue ()
-    ioString += self.mPrefix.stringPropertyValue ()
-    ioString += self.mComments.stringPropertyValue ()
-    ioString += self.mPackageDisplayZoom.stringPropertyValue ()
-    ioString += self.mPackageDisplayHorizontalFlip.stringPropertyValue ()
-    ioString += self.mPackageDisplayVerticalFlip.stringPropertyValue ()
-    ioString += self.mShowPackages.stringPropertyValue ()
-    ioString += self.mShowPackagePadNumbers.stringPropertyValue ()
-    ioString += self.mShowPackageFrontPads.stringPropertyValue ()
-    ioString += self.mShowPackageBackPads.stringPropertyValue ()
-    ioString += self.mSymbolDisplayZoom.stringPropertyValue ()
-    ioString += self.mSymbolDisplayHorizontalFlip.stringPropertyValue ()
-    ioString += self.mSymbolDisplayVerticalFlip.stringPropertyValue ()
-    ioString += self.mImageData.stringPropertyValue ()
+    self.mSelectedPageIndex.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mTitle.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mPrefix.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mComments.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mPackageDisplayZoom.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mPackageDisplayHorizontalFlip.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mPackageDisplayVerticalFlip.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mShowPackages.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mShowPackagePadNumbers.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mShowPackageFrontPads.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mShowPackageBackPads.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSymbolDisplayZoom.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSymbolDisplayHorizontalFlip.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSymbolDisplayVerticalFlip.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mImageData.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
     do{
@@ -1676,22 +1691,27 @@ class DeviceRoot : EBGraphicManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -1702,22 +1722,27 @@ class DeviceRoot : EBGraphicManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -1728,22 +1753,27 @@ class DeviceRoot : EBGraphicManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -1754,22 +1784,27 @@ class DeviceRoot : EBGraphicManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
     do{
       var optionalFirstIndex : Int? = nil
@@ -1780,22 +1815,27 @@ class DeviceRoot : EBGraphicManagedObject,
             rangeCount += 1
             optionalFirstIndex = object.savingIndex
           }else if rangeCount > 0 {
-            ioString += ":\(rangeCount.baseXXEncodedString ()) \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             rangeCount = 0
             optionalFirstIndex = object.savingIndex
           }else{
-            ioString += " \(object.savingIndex.baseXXEncodedString ())"
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
             optionalFirstIndex = object.savingIndex
           }
         }else{
-          ioString += "\(object.savingIndex.baseXXEncodedString ())"
+          ioData.append (base62Encoded: object.savingIndex)
           optionalFirstIndex = object.savingIndex
         }
       }
       if optionalFirstIndex != nil, rangeCount > 0 {
-        ioString += ":\(rangeCount.baseXXEncodedString ())"
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
       }
-      ioString += "\n"
+      ioData.append (ascii: .lineFeed)
     }
   }
 

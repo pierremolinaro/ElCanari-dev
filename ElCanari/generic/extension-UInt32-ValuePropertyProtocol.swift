@@ -31,8 +31,8 @@ extension UInt32 : ValuePropertyProtocol {
 
   //····················································································································
 
-  func stringPropertyValue () -> String {
-    return "\(String (self, radix: 36))\n"
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    ioData.append (base62Encoded: Int (self))
   }
 
   //····················································································································

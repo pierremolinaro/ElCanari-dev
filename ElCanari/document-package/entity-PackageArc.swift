@@ -929,22 +929,35 @@ class PackageArc : PackageObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.yCenter.stringPropertyValue ()
-    ioString += self.radius.stringPropertyValue ()
-    ioString += self.startAngle.stringPropertyValue ()
-    ioString += self.arcAngle.stringPropertyValue ()
-    ioString += self.startTangent.stringPropertyValue ()
-    ioString += self.endTangent.stringPropertyValue ()
-    ioString += self.pathIsClosed.stringPropertyValue ()
-    ioString += self.xCenterUnit.stringPropertyValue ()
-    ioString += self.yCenterUnit.stringPropertyValue ()
-    ioString += self.radiusUnit.stringPropertyValue ()
-    ioString += self.startTangentUnit.stringPropertyValue ()
-    ioString += self.endTangentUnit.stringPropertyValue ()
-    ioString += self.xCenter.stringPropertyValue ()
+    self.yCenter.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.radius.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.startAngle.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.arcAngle.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.startTangent.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.endTangent.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.pathIsClosed.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.xCenterUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.yCenterUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.radiusUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.startTangentUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.endTangentUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.xCenter.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }

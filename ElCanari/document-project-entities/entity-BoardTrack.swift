@@ -1157,27 +1157,32 @@ class BoardTrack : BoardObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mSide.stringPropertyValue ()
-    ioString += self.mDefaultTrackWidthUnit.stringPropertyValue ()
-    ioString += self.mCustomTrackWidth.stringPropertyValue ()
-    ioString += self.mCustomTrackWidthUnit.stringPropertyValue ()
-    ioString += self.mUsesCustomTrackWidth.stringPropertyValue ()
+    self.mSide.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mDefaultTrackWidthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mCustomTrackWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mCustomTrackWidthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mUsesCustomTrackWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.mConnectorP1 {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
     if let object = self.mConnectorP2 {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
     if let object = self.mNet {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
   //--- To many relationships
   }
 

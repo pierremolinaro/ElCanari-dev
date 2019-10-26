@@ -133,7 +133,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   private func binaryDataForSaving () throws -> Data {
- //   let start = Date ()
+    // let start = Date ()
     var fileBinaryData = Data ()
   //--- Append signature
     fileBinaryData.appendBinarySignature ()
@@ -151,7 +151,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Append final byte
     fileBinaryData.append (0)
   //---
-//    Swift.print ("Binary Saving \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+    // Swift.print ("Binary Saving \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
     return fileBinaryData
   }
 
@@ -159,12 +159,30 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   private func textualDataForSaving () throws -> Data {
     let start = Date ()
-    var fileStringData = "PM-TEXT-FORMAT \(self.metadataStatusForSaving ())\n".data (using: .utf8)!
+    var fileStringData = Data ()
+    fileStringData.append (ascii: .P)
+    fileStringData.append (ascii: .M)
+    fileStringData.append (ascii: .minus)
+    fileStringData.append (ascii: .T)
+    fileStringData.append (ascii: .E)
+    fileStringData.append (ascii: .X)
+    fileStringData.append (ascii: .T)
+    fileStringData.append (ascii: .minus)
+    fileStringData.append (ascii: .F)
+    fileStringData.append (ascii: .O)
+    fileStringData.append (ascii: .R)
+    fileStringData.append (ascii: .M)
+    fileStringData.append (ascii: .A)
+    fileStringData.append (ascii: .T)
+    fileStringData.append (ascii: .lineFeed)
+  //--- Append status
+    fileStringData.append (base62Encoded: Int (self.metadataStatusForSaving ()))
+    fileStringData.append (ascii: .lineFeed)
   //--- Append metadata dictionary
    // let textMetaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary, format: .xml, options: 0)
     let textMetaData = try JSONSerialization.data (withJSONObject: self.mMetadataDictionary, options: [])
     fileStringData += textMetaData
-    fileStringData += "\n".data (using: .utf8)!
+    fileStringData.append (ascii: .lineFeed)
   //--- Build class index dictionary
     let objectArray = self.reachableObjectsFromRootObject ()
     var classDictionary = [String : Int] ()
@@ -179,14 +197,14 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     }
     fileStringData += classDescriptionString.data (using: .utf8)!
   //--- Save data
-    var dataString = ""
     for object in objectArray {
       let key = String (describing: type (of: object as Any))
       let classIndex = classDictionary [key]!
-      dataString += "@\(classIndex)\n"
-      object.appendPropertyValuesTo (&dataString)
+      fileStringData.append (ascii: .at)
+      fileStringData.append (base62Encoded: classIndex)
+      fileStringData.append (ascii: .lineFeed)
+      object.appendPropertyValuesTo (&fileStringData)
     }
-    fileStringData += dataString.data (using: .utf8)!
   //---
     Swift.print ("Text Saving \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
     return fileStringData

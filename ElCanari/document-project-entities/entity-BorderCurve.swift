@@ -1413,29 +1413,36 @@ class BorderCurve : EBGraphicManagedObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mX.stringPropertyValue ()
-    ioString += self.mY.stringPropertyValue ()
-    ioString += self.mCPX1.stringPropertyValue ()
-    ioString += self.mCPY1.stringPropertyValue ()
-    ioString += self.mCPX2.stringPropertyValue ()
-    ioString += self.mCPY2.stringPropertyValue ()
-    ioString += self.mShape.stringPropertyValue ()
+    self.mX.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mY.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mCPX1.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mCPY1.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mCPX2.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mCPY2.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mShape.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.mRoot {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
     if let object = self.mNext {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
     if let object = self.mPrevious {
-      ioString += "\(String (object.savingIndex, radix: 36))"
+      ioData.append (base62Encoded: object.savingIndex)
     }
-    ioString += "\n"
+    ioData.append (ascii: .lineFeed)
   //--- To many relationships
   }
 

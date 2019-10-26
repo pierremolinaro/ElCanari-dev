@@ -96,8 +96,8 @@ enum RouteOrigin : Int, EnumPropertyProtocol {
 
   //····················································································································
 
-  func stringPropertyValue () -> String {
-    return "\(self.rawValue)\n"
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    ioData.append (base62Encoded: self.rawValue)
   }
   
   //····················································································································

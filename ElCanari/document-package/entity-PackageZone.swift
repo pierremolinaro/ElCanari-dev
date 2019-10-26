@@ -988,23 +988,37 @@ class PackageZone : PackageObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.x.stringPropertyValue ()
-    ioString += self.y.stringPropertyValue ()
-    ioString += self.width.stringPropertyValue ()
-    ioString += self.height.stringPropertyValue ()
-    ioString += self.xUnit.stringPropertyValue ()
-    ioString += self.yUnit.stringPropertyValue ()
-    ioString += self.widthUnit.stringPropertyValue ()
-    ioString += self.heightUnit.stringPropertyValue ()
-    ioString += self.zoneName.stringPropertyValue ()
-    ioString += self.xName.stringPropertyValue ()
-    ioString += self.yName.stringPropertyValue ()
-    ioString += self.xNameUnit.stringPropertyValue ()
-    ioString += self.yNameUnit.stringPropertyValue ()
-    ioString += self.zoneNumbering.stringPropertyValue ()
+    self.x.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.y.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.width.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.height.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.xUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.yUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.widthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.heightUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.zoneName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.xName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.yName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.xNameUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.yNameUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.zoneNumbering.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }

@@ -793,18 +793,27 @@ class PackageSegment : PackageObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.y1.stringPropertyValue ()
-    ioString += self.x2.stringPropertyValue ()
-    ioString += self.y2.stringPropertyValue ()
-    ioString += self.x1Unit.stringPropertyValue ()
-    ioString += self.y1Unit.stringPropertyValue ()
-    ioString += self.x2Unit.stringPropertyValue ()
-    ioString += self.y2Unit.stringPropertyValue ()
-    ioString += self.lengthUnit.stringPropertyValue ()
-    ioString += self.x1.stringPropertyValue ()
+    self.y1.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.x2.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.y2.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.x1Unit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.y1Unit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.x2Unit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.y2Unit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.lengthUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.x1.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }

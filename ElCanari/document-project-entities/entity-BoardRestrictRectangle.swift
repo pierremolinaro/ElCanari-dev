@@ -545,15 +545,21 @@ class BoardRestrictRectangle : BoardObject,
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioString : inout String) {
-    super.appendPropertyValuesTo (&ioString)
+  override func appendPropertyValuesTo (_ ioData : inout Data) {
+    super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
-    ioString += self.mY.stringPropertyValue ()
-    ioString += self.mWidth.stringPropertyValue ()
-    ioString += self.mHeight.stringPropertyValue ()
-    ioString += self.mIsInFrontLayer.stringPropertyValue ()
-    ioString += self.mIsInBackLayer.stringPropertyValue ()
-    ioString += self.mX.stringPropertyValue ()
+    self.mY.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mHeight.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mIsInFrontLayer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mIsInBackLayer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mX.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
   }
