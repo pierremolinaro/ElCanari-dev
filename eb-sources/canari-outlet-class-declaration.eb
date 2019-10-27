@@ -22,6 +22,9 @@ binding CanariObserverSwitch $valueObserver : transient Bool ;
 
 extern outlet class NSDatePicker ;
 
+extern outlet class DeviceSymbolTypesTableView : EBTableView ;
+binding DeviceSymbolTypesTableView $symbolDictionary : transient DeviceSymbolDictionary ;
+
 extern outlet class StringArrayTableView : EBTableView ;
 binding StringArrayTableView $array : transient StringArray ;
 

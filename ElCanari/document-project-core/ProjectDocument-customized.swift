@@ -191,6 +191,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     self.mDevicePackageTableView?.set (actionOnDoubleClick: { [weak self] in self?.renameDevicePackageDialog () })
     self.mDeviceSymbolTypeTableView?.set (actionOnDoubleClick: { [weak self] in self?.renameDeviceSymbolTypeDialog () })
     self.mDeviceSymbolTableView?.set (actionOnDoubleClick: { [weak self] in self?.renameDeviceSymbolInstanceDialog () })
+    self.mDeviceSymbolTypePinsTableView?.set (actionOnDoubleClick: { [weak self] in self?.renameDeviceSymbolTypePinDialog () })
   //---
     self.mSelectComponentsMenuItem?.set (project: self)
     self.mSelectNetsMenuItem?.set (project: self)

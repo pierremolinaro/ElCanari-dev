@@ -219,10 +219,12 @@ document ProjectDocument root ProjectRoot {
   transient StringArray selectedDevicePackageNames dependsFrom #projectDeviceController.selectedArray.all.packageNames ;
   outlet StringArrayTableView mDevicePackageTableView $array self.selectedDevicePackageNames ;
 
-  transient StringArray selectedDeviceSymbolTypeNames
+  transient DeviceSymbolDictionary selectedDeviceSymbols
     dependsFrom #projectDeviceController.selectedArray.all.deviceSymbolDictionary
   ;
-  outlet StringArrayTableView mDeviceSymbolTypeTableView $array self.selectedDeviceSymbolTypeNames ;
+  outlet DeviceSymbolTypesTableView mDeviceSymbolTypeTableView $symbolDictionary self.selectedDeviceSymbols ;
+
+  outlet StringArrayTableView mDeviceSymbolTypePinsTableView ; // Binding by mDeviceSymbolTypeTableView
 
   transient TwoStringArray selectedDeviceSymbolNames dependsFrom
     #projectDeviceController.selectedArray.all.symbolAndTypesNames ;

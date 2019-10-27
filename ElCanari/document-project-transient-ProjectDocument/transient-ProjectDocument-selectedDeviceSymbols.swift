@@ -13,18 +13,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectDocument_selectedDeviceSymbolTypeNames (
+func transient_ProjectDocument_selectedDeviceSymbols (
        _ self_projectDeviceController_selectedArray_all_deviceSymbolDictionary : [DeviceInProject_deviceSymbolDictionary]
-) -> StringArray {
+) -> DeviceSymbolDictionary {
 //--- START OF USER ZONE 2
-      var symbolTypeNameSet = Set <String> ()
       if self_projectDeviceController_selectedArray_all_deviceSymbolDictionary.count == 1,
       let deviceSymbolDictionary = self_projectDeviceController_selectedArray_all_deviceSymbolDictionary [0].deviceSymbolDictionary {
-        for (symbolIdentifier, _) in deviceSymbolDictionary {
-          symbolTypeNameSet.insert (symbolIdentifier.symbolTypeName)
-        }
+        return deviceSymbolDictionary
+      }else{
+        return DeviceSymbolDictionary ()
       }
-      return Array (symbolTypeNameSet)
 //--- END OF USER ZONE 2
 }
 

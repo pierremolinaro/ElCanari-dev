@@ -14,6 +14,48 @@ extension ProjectDocument {
 
   //····················································································································
 
+  internal func renameDeviceSymbolTypePinDialog () {
+    if self.projectDeviceController.selectedArray.count == 1,
+    let selectedSymbolTypeName = self.mDeviceSymbolTableView?.selectedItemRightTitle,
+    let selectedPinName = self.mDeviceSymbolTypePinsTableView?.selectedItemTitle,
+    let panel = self.mRenameDevicePanel {
+      let selectedDevice = self.projectDeviceController.selectedArray [0]
+      var deviceSymbolPinNameSet = Set <String> ()
+      let deviceSymbolDictionary = selectedDevice.deviceSymbolDictionary!
+      for (symbolIdentifier, info) in deviceSymbolDictionary {
+        if symbolIdentifier.symbolTypeName == selectedSymbolTypeName  {
+          for assignment in info.assignments {
+            if let pin = assignment.pin, pin.symbol == symbolIdentifier {
+              deviceSymbolPinNameSet.insert (pin.pinName)
+            }
+          }
+        }
+      }
+      deviceSymbolPinNameSet.remove (selectedPinName)
+      self.mRenameDeviceTitleTextField?.stringValue = "Rename Symbol Type Pin"
+      self.mRenameDeviceNameTextField?.stringValue = selectedPinName
+      self.mRenameDeviceNameTextField?.mControlTextDidChangeCallBack = self.proposedNameDidChange
+      self.mRenameDeviceNameTextField?.isContinuous = true
+      self.mRenameDeviceNameTextField?.mUserInfo = (selectedPinName, deviceSymbolPinNameSet, false)
+      self.mRenameDeviceErrorMessageTextField?.stringValue = ""
+      self.mRenameDeviceValidationButton?.title = "Keep \"\(selectedPinName)\" name"
+      self.mRenameDeviceValidationButton?.isEnabled = true
+      self.windowForSheet?.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
+        if inResponse == .stop, let newName = self.mRenameDeviceNameTextField?.stringValue {
+          for padAssignment in selectedDevice.mPadAssignments {
+            if let pin = padAssignment.mPin,
+            pin.mSymbolTypeName == selectedSymbolTypeName,
+            pin.mPinName == selectedPinName {
+              pin.mPinName = newName
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
   internal func renameDeviceSymbolInstanceDialog () {
     if self.projectDeviceController.selectedArray.count == 1,
     let selectedSymbolInstanceName = self.mDeviceSymbolTableView?.selectedItemLeftTitle,
