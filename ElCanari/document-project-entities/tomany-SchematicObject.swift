@@ -397,8 +397,9 @@ final class TransientArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
 
   private var mDataProvider : ReadOnlyArrayOf_SchematicObject? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
 
-   //····················································································································
+  //····················································································································
 
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_SchematicObject,
                         sortCallback inSortCallBack : Optional < (_ left : SchematicObject, _ right : SchematicObject) -> Bool >,
@@ -438,39 +439,44 @@ final class TransientArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    let newArray : [SchematicObject] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      let newArray : [SchematicObject] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          if let sortFunction = self.mIsOrderedBefore {
+            newArray = v.sorted { sortFunction ($0, $1) }
+          }else{
+            newArray = v
+          }
+          self.mTransientKind = .single
+        case .multiple :
+          newArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        if let sortFunction = self.mIsOrderedBefore {
-          newArray = v.sorted { sortFunction ($0, $1) }
-        }else{
-          newArray = v
-        }
-        self.mTransientKind = .single
-      case .multiple :
-        newArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newArray = []
-      self.mTransientKind = .empty
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SchematicObject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

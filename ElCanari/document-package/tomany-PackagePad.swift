@@ -1631,8 +1631,9 @@ final class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
 
   private var mDataProvider : ReadOnlyArrayOf_PackagePad? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
 
-   //····················································································································
+  //····················································································································
 
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_PackagePad,
                         sortCallback inSortCallBack : Optional < (_ left : PackagePad, _ right : PackagePad) -> Bool >,
@@ -1672,39 +1673,44 @@ final class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    let newArray : [PackagePad] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      let newArray : [PackagePad] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          if let sortFunction = self.mIsOrderedBefore {
+            newArray = v.sorted { sortFunction ($0, $1) }
+          }else{
+            newArray = v
+          }
+          self.mTransientKind = .single
+        case .multiple :
+          newArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        if let sortFunction = self.mIsOrderedBefore {
-          newArray = v.sorted { sortFunction ($0, $1) }
-        }else{
-          newArray = v
-        }
-        self.mTransientKind = .single
-      case .multiple :
-        newArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newArray = []
-      self.mTransientKind = .empty
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [PackagePad] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

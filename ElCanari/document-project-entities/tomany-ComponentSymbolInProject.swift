@@ -1103,8 +1103,9 @@ final class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_Componen
 
   private var mDataProvider : ReadOnlyArrayOf_ComponentSymbolInProject? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
 
-   //····················································································································
+  //····················································································································
 
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_ComponentSymbolInProject,
                         sortCallback inSortCallBack : Optional < (_ left : ComponentSymbolInProject, _ right : ComponentSymbolInProject) -> Bool >,
@@ -1144,39 +1145,44 @@ final class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_Componen
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    let newArray : [ComponentSymbolInProject] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      let newArray : [ComponentSymbolInProject] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          if let sortFunction = self.mIsOrderedBefore {
+            newArray = v.sorted { sortFunction ($0, $1) }
+          }else{
+            newArray = v
+          }
+          self.mTransientKind = .single
+        case .multiple :
+          newArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        if let sortFunction = self.mIsOrderedBefore {
-          newArray = v.sorted { sortFunction ($0, $1) }
-        }else{
-          newArray = v
-        }
-        self.mTransientKind = .single
-      case .multiple :
-        newArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newArray = []
-      self.mTransientKind = .empty
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [ComponentSymbolInProject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

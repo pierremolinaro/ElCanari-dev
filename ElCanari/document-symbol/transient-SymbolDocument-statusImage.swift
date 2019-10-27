@@ -17,7 +17,6 @@ func transient_SymbolDocument_statusImage (
        _ root_issues : CanariIssueArray
 ) -> NSImage {
 //--- START OF USER ZONE 2
-  Swift.print ("STATUS IMAGE root_issues.count \(root_issues.count )")
   if root_issues.errorCount != 0 {
     return NSImage (named: errorStatusImageName)!
   }else if root_issues.warningCount != 0 {

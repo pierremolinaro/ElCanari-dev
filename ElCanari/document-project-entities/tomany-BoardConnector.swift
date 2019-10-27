@@ -1685,8 +1685,9 @@ final class TransientArrayOf_BoardConnector : ReadOnlyArrayOf_BoardConnector {
 
   private var mDataProvider : ReadOnlyArrayOf_BoardConnector? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
 
-   //····················································································································
+  //····················································································································
 
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_BoardConnector,
                         sortCallback inSortCallBack : Optional < (_ left : BoardConnector, _ right : BoardConnector) -> Bool >,
@@ -1726,39 +1727,44 @@ final class TransientArrayOf_BoardConnector : ReadOnlyArrayOf_BoardConnector {
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    let newArray : [BoardConnector] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      let newArray : [BoardConnector] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          if let sortFunction = self.mIsOrderedBefore {
+            newArray = v.sorted { sortFunction ($0, $1) }
+          }else{
+            newArray = v
+          }
+          self.mTransientKind = .single
+        case .multiple :
+          newArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        if let sortFunction = self.mIsOrderedBefore {
-          newArray = v.sorted { sortFunction ($0, $1) }
-        }else{
-          newArray = v
-        }
-        self.mTransientKind = .single
-      case .multiple :
-        newArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newArray = []
-      self.mTransientKind = .empty
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [BoardConnector] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

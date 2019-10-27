@@ -166,6 +166,28 @@ class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewD
   }
 
   //····················································································································
+  //  SELECTED TITLE
+  //····················································································································
+
+  var selectedItemLeftTitle : String? {
+    if self.selectedRow >= 0 {
+      return self.mDataSource [self.selectedRow].mLeft
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
+  var selectedItemRightTitle : String? {
+    if self.selectedRow >= 0 {
+      return self.mDataSource [self.selectedRow].mRight
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
 
 }
 
