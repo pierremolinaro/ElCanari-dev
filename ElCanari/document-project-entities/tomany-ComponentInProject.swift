@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -162,7 +162,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mRotation.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -333,7 +333,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mNameIsVisibleInBoard (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNameIsVisibleInBoard.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -390,7 +390,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mXName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mXName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -447,7 +447,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mYName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mYName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -504,7 +504,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mNameFontSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNameFontSize.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -561,7 +561,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mNameRotation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNameRotation.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -618,7 +618,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mValueIsVisibleInBoard (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mValueIsVisibleInBoard.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -675,7 +675,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mXValue (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mXValue.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -732,7 +732,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mYValue (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mYValue.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -789,7 +789,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mValueFontSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mValueFontSize.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -846,7 +846,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mValueRotation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mValueRotation.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -903,7 +903,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mComponentValue (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mComponentValue.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -960,7 +960,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mNamePrefix (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNamePrefix.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1017,7 +1017,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mNameIndex (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNameIndex.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1074,7 +1074,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mXUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mXUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1131,7 +1131,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mYUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mYUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1188,7 +1188,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_mPackages (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPackages.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1245,7 +1245,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_deviceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_deviceName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1301,7 +1301,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_packagePadDictionary.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1357,7 +1357,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_selectedPackageName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedPackageName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1413,7 +1413,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_availablePackages (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_availablePackages.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1469,7 +1469,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1525,7 +1525,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_componentIsPlacedInBoard (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentIsPlacedInBoard.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1581,7 +1581,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_componentIsPlacedInBoardString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentIsPlacedInBoardString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1637,7 +1637,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1693,7 +1693,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_placementInSchematic (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_placementInSchematic.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1749,7 +1749,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_deviceSymbolDictionary.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1805,7 +1805,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_componentNameFontName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentNameFontName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1861,7 +1861,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_componentValueFontName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentValueFontName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1917,7 +1917,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_componentPadDictionary (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentPadDictionary.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1973,7 +1973,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_padNetDictionary (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padNetDictionary.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2029,7 +2029,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_componentName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2085,7 +2085,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2141,7 +2141,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_unplacedSymbols.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2197,7 +2197,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -2377,6 +2377,7 @@ final class TransientArrayOfSuperOf_ComponentInProject <SUPER : EBManagedObject>
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -2400,41 +2401,46 @@ final class TransientArrayOfSuperOf_ComponentInProject <SUPER : EBManagedObject>
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [ComponentInProject] ()
-    for superObject in newModelArray {
-      if let object = superObject as? ComponentInProject {
-        newArray.append (object)
+      var newArray = [ComponentInProject] ()
+      for superObject in newModelArray {
+        if let object = superObject as? ComponentInProject {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [ComponentInProject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

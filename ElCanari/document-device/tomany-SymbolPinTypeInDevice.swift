@@ -51,7 +51,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   final func addEBObserverOf_mPinX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinX.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -108,7 +108,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   final func addEBObserverOf_mPinY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinY.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -165,7 +165,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   final func addEBObserverOf_mXName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mXName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -222,7 +222,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   final func addEBObserverOf_mYName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mYName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -279,7 +279,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   final func addEBObserverOf_mName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -336,7 +336,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   final func addEBObserverOf_mNameHorizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNameHorizontalAlignment.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -393,7 +393,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   final func addEBObserverOf_mPinNameIsDisplayedInSchematics (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPinNameIsDisplayedInSchematics.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -450,7 +450,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   final func addEBObserverOf_mXNumber (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mXNumber.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -507,7 +507,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   final func addEBObserverOf_mYNumber (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mYNumber.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -564,7 +564,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   final func addEBObserverOf_mNumberHorizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNumberHorizontalAlignment.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -621,7 +621,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   final func addEBObserverOf_nameShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_nameShape.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -801,6 +801,7 @@ final class TransientArrayOfSuperOf_SymbolPinTypeInDevice <SUPER : EBManagedObje
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -824,41 +825,46 @@ final class TransientArrayOfSuperOf_SymbolPinTypeInDevice <SUPER : EBManagedObje
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [SymbolPinTypeInDevice] ()
-    for superObject in newModelArray {
-      if let object = superObject as? SymbolPinTypeInDevice {
-        newArray.append (object)
+      var newArray = [SymbolPinTypeInDevice] ()
+      for superObject in newModelArray {
+        if let object = superObject as? SymbolPinTypeInDevice {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolPinTypeInDevice] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

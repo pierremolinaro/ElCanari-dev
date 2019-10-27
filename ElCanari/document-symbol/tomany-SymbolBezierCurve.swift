@@ -53,7 +53,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
   final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -110,7 +110,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
   final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -167,7 +167,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
   final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -224,7 +224,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
   final func addEBObserverOf_cpx1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpx1.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -281,7 +281,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
   final func addEBObserverOf_cpy1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpy1.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -338,7 +338,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
   final func addEBObserverOf_cpx2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpx2.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -395,7 +395,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
   final func addEBObserverOf_cpy2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpy2.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -452,7 +452,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
   final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -509,7 +509,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
   final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -565,7 +565,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -621,7 +621,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -677,7 +677,7 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -857,6 +857,7 @@ final class TransientArrayOfSuperOf_SymbolBezierCurve <SUPER : EBManagedObject> 
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -880,41 +881,46 @@ final class TransientArrayOfSuperOf_SymbolBezierCurve <SUPER : EBManagedObject> 
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [SymbolBezierCurve] ()
-    for superObject in newModelArray {
-      if let object = superObject as? SymbolBezierCurve {
-        newArray.append (object)
+      var newArray = [SymbolBezierCurve] ()
+      for superObject in newModelArray {
+        if let object = superObject as? SymbolBezierCurve {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolBezierCurve] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

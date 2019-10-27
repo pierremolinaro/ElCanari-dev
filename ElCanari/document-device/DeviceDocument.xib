@@ -48,6 +48,7 @@
                 <outlet property="mPrefixTextField" destination="1171" id="AA5-NL-TvD"/>
                 <outlet property="mRemoveImageButton" destination="1041" id="Jjp-9P-8An"/>
                 <outlet property="mRemoveSelectedDocButton" destination="1046" id="FAd-DZ-gZS"/>
+                <outlet property="mRemoveUselessSymbolTypeButton" destination="w7A-DY-W4R" id="BCc-Oi-Rbr"/>
                 <outlet property="mRepresentationImageView" destination="1043" id="SCe-aC-7xm"/>
                 <outlet property="mResetSelectedPackageVersionButton" destination="1606" id="Xl2-Ou-fCB"/>
                 <outlet property="mResetSelectedSymbolVersionButton" destination="1128" id="pwx-ne-KG3"/>
@@ -1220,6 +1221,14 @@
                                                 <rect key="frame" x="539" y="74" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Edit" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" inset="2" id="1540">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="cellTitle"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7A-DY-W4R" customClass="EBButton">
+                                                <rect key="frame" x="539" y="40" width="100" height="19"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="roundRect" title="Remove" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" inset="2" id="XjR-h6-WHr">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>

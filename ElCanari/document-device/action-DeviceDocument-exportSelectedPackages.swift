@@ -13,7 +13,7 @@ import Cocoa
 extension DeviceDocument {
   @objc func exportSelectedPackages (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let selectedPackages = self.mPackageController.selectedArray
+    let selectedPackages = self.packageController.selectedArray
     for package in selectedPackages {
       let savePanel = NSSavePanel ()
       savePanel.allowedFileTypes = ["ElCanariPackage"]

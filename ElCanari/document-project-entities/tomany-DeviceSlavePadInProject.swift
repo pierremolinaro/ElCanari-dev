@@ -47,7 +47,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func addEBObserverOf_mCenterX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterX.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -104,7 +104,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func addEBObserverOf_mCenterY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterY.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -161,7 +161,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func addEBObserverOf_mWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWidth.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -218,7 +218,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func addEBObserverOf_mHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHeight.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -275,7 +275,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func addEBObserverOf_mHoleWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHoleWidth.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -332,7 +332,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func addEBObserverOf_mHoleHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHoleHeight.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -389,7 +389,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func addEBObserverOf_mShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShape.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -446,7 +446,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func addEBObserverOf_mStyle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mStyle.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -503,7 +503,7 @@ class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <D
   final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -683,6 +683,7 @@ final class TransientArrayOfSuperOf_DeviceSlavePadInProject <SUPER : EBManagedOb
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -706,41 +707,46 @@ final class TransientArrayOfSuperOf_DeviceSlavePadInProject <SUPER : EBManagedOb
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [DeviceSlavePadInProject] ()
-    for superObject in newModelArray {
-      if let object = superObject as? DeviceSlavePadInProject {
-        newArray.append (object)
+      var newArray = [DeviceSlavePadInProject] ()
+      for superObject in newModelArray {
+        if let object = superObject as? DeviceSlavePadInProject {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DeviceSlavePadInProject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

@@ -13,7 +13,7 @@ import Cocoa
 extension DeviceDocument {
   @objc func saveDocAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let selectedDocArray = self.mDocumentationController.selectedArray_property.propval
+    let selectedDocArray = self.documentationController.selectedArray_property.propval
     if selectedDocArray.count == 1 {
       let selectedDoc = selectedDocArray [0]
       let savePanel = NSSavePanel ()

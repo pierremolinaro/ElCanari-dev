@@ -53,7 +53,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedTab.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -110,7 +110,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   final func addEBObserverOf_comments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_comments.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -167,7 +167,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -224,7 +224,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minPPTPTTTW.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -281,7 +281,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -338,7 +338,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForOARinEBUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -395,7 +395,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -452,7 +452,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -509,7 +509,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -566,7 +566,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -623,7 +623,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drillDataFileExtension.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -680,7 +680,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -860,6 +860,7 @@ final class TransientArrayOfSuperOf_ArtworkRoot <SUPER : EBManagedObject> : Read
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -883,41 +884,46 @@ final class TransientArrayOfSuperOf_ArtworkRoot <SUPER : EBManagedObject> : Read
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [ArtworkRoot] ()
-    for superObject in newModelArray {
-      if let object = superObject as? ArtworkRoot {
-        newArray.append (object)
+      var newArray = [ArtworkRoot] ()
+      for superObject in newModelArray {
+        if let object = superObject as? ArtworkRoot {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [ArtworkRoot] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

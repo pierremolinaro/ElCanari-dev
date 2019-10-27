@@ -13,16 +13,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolDocument_mMetadataStatus (
+func transient_PackageDocument_statusImage (
        _ root_issues : CanariIssueArray
-) -> MetadataStatus {
+) -> NSImage {
 //--- START OF USER ZONE 2
   if root_issues.count == 0 {
-    return .ok
+    return NSImage (named: okStatusImageName)!
   }else if root_issues.errorCount != 0 {
-    return .warning
+    return NSImage (named: errorStatusImageName)!
   }else{
-    return .error
+    return NSImage (named: warningStatusImageName)!
   }
 //--- END OF USER ZONE 2
 }

@@ -83,7 +83,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_xCenter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xCenter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -140,7 +140,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_yCenter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yCenter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -197,7 +197,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_width (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_width.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -254,7 +254,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_height (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_height.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -311,7 +311,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_holeWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_holeWidth.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -368,7 +368,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_holeHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_holeHeight.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -425,7 +425,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_padShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padShape.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -482,7 +482,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_padStyle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padStyle.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -539,7 +539,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_padNumber (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padNumber.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -596,7 +596,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_xCenterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xCenterUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -653,7 +653,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_yCenterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yCenterUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -710,7 +710,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_widthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_widthUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -767,7 +767,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_heightUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_heightUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -824,7 +824,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_holeWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_holeWidthUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -881,7 +881,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_holeHeightUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_holeHeightUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -938,7 +938,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_annularRingUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_annularRingUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -995,7 +995,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1051,7 +1051,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_padName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1107,7 +1107,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1163,7 +1163,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_padIsTraversing (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padIsTraversing.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1219,7 +1219,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_annularRing (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_annularRing.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1275,7 +1275,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_zoneName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_zoneName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1331,7 +1331,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_noZone (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_noZone.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1387,7 +1387,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_zoneAllowsManualRenumbering (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_zoneAllowsManualRenumbering.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1443,7 +1443,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_slavePadCount (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_slavePadCount.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1499,7 +1499,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1555,7 +1555,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   final func addEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padNumberDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1735,6 +1735,7 @@ final class TransientArrayOfSuperOf_PackagePad <SUPER : EBManagedObject> : ReadO
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -1758,41 +1759,46 @@ final class TransientArrayOfSuperOf_PackagePad <SUPER : EBManagedObject> : ReadO
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [PackagePad] ()
-    for superObject in newModelArray {
-      if let object = superObject as? PackagePad {
-        newArray.append (object)
+      var newArray = [PackagePad] ()
+      for superObject in newModelArray {
+        if let object = superObject as? PackagePad {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [PackagePad] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

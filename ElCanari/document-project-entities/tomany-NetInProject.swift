@@ -43,7 +43,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func addEBObserverOf_mNetName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNetName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -100,7 +100,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -156,7 +156,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func addEBObserverOf_netClassTrackWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassTrackWidth.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -212,7 +212,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func addEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassViaHoleDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -268,7 +268,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func addEBObserverOf_netClassViaPadDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassViaPadDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -324,7 +324,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func addEBObserverOf_wireColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_wireColor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -380,7 +380,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func addEBObserverOf_netSchematicPointsInfo (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netSchematicPointsInfo.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -560,6 +560,7 @@ final class TransientArrayOfSuperOf_NetInProject <SUPER : EBManagedObject> : Rea
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -583,41 +584,46 @@ final class TransientArrayOfSuperOf_NetInProject <SUPER : EBManagedObject> : Rea
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [NetInProject] ()
-    for superObject in newModelArray {
-      if let object = superObject as? NetInProject {
-        newArray.append (object)
+      var newArray = [NetInProject] ()
+      for superObject in newModelArray {
+        if let object = superObject as? NetInProject {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [NetInProject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

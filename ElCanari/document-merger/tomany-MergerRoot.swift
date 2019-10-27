@@ -81,7 +81,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedPageIndex.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -138,7 +138,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_zoom.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -195,7 +195,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_automaticBoardSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_automaticBoardSize.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -252,7 +252,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardManualWidth.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -309,7 +309,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_boardManualHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardManualHeight.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -366,7 +366,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardWidthUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -423,7 +423,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardHeightUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -480,7 +480,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_overlapingArrangment.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -537,7 +537,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_selectedBoardXUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedBoardXUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -594,7 +594,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedBoardYUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -651,7 +651,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardLimitWidth.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -708,7 +708,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardLimitWidthUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -765,7 +765,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_arrowMagnitude.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -822,7 +822,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_arrowMagnitudeUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -879,7 +879,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_shiftArrowMagnitude.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -936,7 +936,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_shiftArrowMagnitudeUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -993,7 +993,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_artworkName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1050,7 +1050,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_generateGerberProductFile (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_generateGerberProductFile.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1107,7 +1107,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_generatePDFProductFile (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_generatePDFProductFile.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1164,7 +1164,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_generatedBoardArchiveFormat (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_generatedBoardArchiveFormat.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1221,7 +1221,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_modelNames (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_modelNames.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1277,7 +1277,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_boardRect (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardRect.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1333,7 +1333,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardDisplayRect.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1389,7 +1389,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_boardWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardWidth.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1445,7 +1445,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_boardHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardHeight.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1501,7 +1501,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   final func addEBObserverOf_boardOutlineRectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardOutlineRectDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1681,6 +1681,7 @@ final class TransientArrayOfSuperOf_MergerRoot <SUPER : EBManagedObject> : ReadO
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -1704,41 +1705,46 @@ final class TransientArrayOfSuperOf_MergerRoot <SUPER : EBManagedObject> : ReadO
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [MergerRoot] ()
-    for superObject in newModelArray {
-      if let object = superObject as? MergerRoot {
-        newArray.append (object)
+      var newArray = [MergerRoot] ()
+      for superObject in newModelArray {
+        if let object = superObject as? MergerRoot {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [MergerRoot] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

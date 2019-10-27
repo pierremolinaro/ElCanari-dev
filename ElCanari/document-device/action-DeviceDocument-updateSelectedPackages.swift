@@ -13,7 +13,7 @@ import Cocoa
 extension DeviceDocument {
   @objc func updateSelectedPackages (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let selectedPackages = self.mPackageController.selectedArray_property.propval
+    let selectedPackages = self.packageController.selectedArray_property.propval
     var okMessages = [String] ()
     var errorMessages = [String] ()
     self.performPackagesUpdate (selectedPackages, &okMessages, &errorMessages)

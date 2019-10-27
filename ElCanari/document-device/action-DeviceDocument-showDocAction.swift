@@ -26,7 +26,7 @@ import Cocoa
 extension DeviceDocument {
   @objc func showDocAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let selectedDocArray = self.mDocumentationController.selectedArray
+    let selectedDocArray = self.documentationController.selectedArray
     if selectedDocArray.count == 1 {
       let selectedDoc = selectedDocArray [0]
       let window = CanariPDFWindow (fileName: selectedDoc.mFileName, pdfData: selectedDoc.mFileData)

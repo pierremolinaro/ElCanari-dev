@@ -53,7 +53,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedInspector.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -110,7 +110,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   final func addEBObserverOf_comments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_comments.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -167,7 +167,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   final func addEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_horizontalFlip.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -224,7 +224,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   final func addEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_verticalFlip.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -281,7 +281,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   final func addEBObserverOf_gridStyle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gridStyle.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -338,7 +338,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   final func addEBObserverOf_gridDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gridDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -395,7 +395,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_zoom.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -452,7 +452,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   final func addEBObserverOf_xPlacardUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xPlacardUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -509,7 +509,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   final func addEBObserverOf_yPlacardUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yPlacardUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -566,7 +566,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedPageIndex.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -623,7 +623,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -679,7 +679,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   final func addEBObserverOf_noIssue (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_noIssue.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -859,6 +859,7 @@ final class TransientArrayOfSuperOf_SymbolRoot <SUPER : EBManagedObject> : ReadO
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -882,41 +883,46 @@ final class TransientArrayOfSuperOf_SymbolRoot <SUPER : EBManagedObject> : ReadO
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [SymbolRoot] ()
-    for superObject in newModelArray {
-      if let object = superObject as? SymbolRoot {
-        newArray.append (object)
+      var newArray = [SymbolRoot] ()
+      for superObject in newModelArray {
+        if let object = superObject as? SymbolRoot {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolRoot] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

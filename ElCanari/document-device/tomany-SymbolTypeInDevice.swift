@@ -47,7 +47,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func addEBObserverOf_mTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mTypeName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -104,7 +104,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func addEBObserverOf_mVersion (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mVersion.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -161,7 +161,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFileData.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -218,7 +218,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mStrokeBezierPath.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -275,7 +275,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func addEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFilledBezierPath.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -332,7 +332,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_versionString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -388,7 +388,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_instanceCount.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -444,7 +444,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func addEBObserverOf_documentSizeString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_documentSizeString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -500,7 +500,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func addEBObserverOf_pinNameShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinNameShape.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -680,6 +680,7 @@ final class TransientArrayOfSuperOf_SymbolTypeInDevice <SUPER : EBManagedObject>
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -703,41 +704,46 @@ final class TransientArrayOfSuperOf_SymbolTypeInDevice <SUPER : EBManagedObject>
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [SymbolTypeInDevice] ()
-    for superObject in newModelArray {
-      if let object = superObject as? SymbolTypeInDevice {
-        newArray.append (object)
+      var newArray = [SymbolTypeInDevice] ()
+      for superObject in newModelArray {
+        if let object = superObject as? SymbolTypeInDevice {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolTypeInDevice] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

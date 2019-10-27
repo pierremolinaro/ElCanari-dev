@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Base Selection Controller DeviceDocument mSymbolInstanceSelection
+//    Base Selection Controller DeviceDocument symbolInstanceSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObject {
+final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObject {
 
   //····················································································································
   //   Selection observable property: mInstanceName
@@ -178,7 +178,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
     valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_DeviceDocument_mSymbolInstanceSelection.showObjectWindowFromExplorerButton(_:))
+    valueExplorer.action = #selector(SelectionController_DeviceDocument_symbolInstanceSelection.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
     mValueExplorer = valueExplorer
     y += EXPLORER_ROW_HEIGHT
@@ -226,7 +226,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_DeviceDocument_mSymbolInstanceSelection.deleteSelectionControllerWindowAction(_:))
+    closeButton?.action = #selector(SelectionController_DeviceDocument_symbolInstanceSelection.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
     mExplorerWindow!.title = windowTitle

@@ -18,7 +18,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //····················································································································
 
   override func metadataStatusForSaving () -> UInt8 {
-    return UInt8 (self.mMetadataStatus?.rawValue ?? 0)
+    return UInt8 (self.metadataStatus!.rawValue)
   }
 
   //····················································································································

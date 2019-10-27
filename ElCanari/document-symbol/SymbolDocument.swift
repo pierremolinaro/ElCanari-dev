@@ -27,21 +27,21 @@ import Cocoa
   var mSymbolPinSelectionController = SelectionController_SymbolDocument_mSymbolPinSelectionController ()
 
   //····················································································································
-  //   Transient property: mStatusImage
+  //   Transient property: statusImage
   //····················································································································
 
-  let mStatusImage_property = EBTransientProperty_NSImage ()
+  let statusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
 
-  var mStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mStatusImage_property.prop
+  var statusImage_property_selection : EBSelection <NSImage> {
+    return self.statusImage_property.prop
   }
 
   //····················································································································
 
-  var mStatusImage : NSImage? {
-    switch self.mStatusImage_property_selection {
+  var statusImage : NSImage? {
+    switch self.statusImage_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -50,21 +50,21 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: mStatusMessage
+  //   Transient property: statusMessage
   //····················································································································
 
-  let mStatusMessage_property = EBTransientProperty_String ()
+  let statusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var mStatusMessage_property_selection : EBSelection <String> {
-    return self.mStatusMessage_property.prop
+  var statusMessage_property_selection : EBSelection <String> {
+    return self.statusMessage_property.prop
   }
 
   //····················································································································
 
-  var mStatusMessage : String? {
-    switch self.mStatusMessage_property_selection {
+  var statusMessage : String? {
+    switch self.statusMessage_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -73,21 +73,21 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: mMetadataStatus
+  //   Transient property: metadataStatus
   //····················································································································
 
-  let mMetadataStatus_property = EBTransientProperty_MetadataStatus ()
+  let metadataStatus_property = EBTransientProperty_MetadataStatus ()
 
   //····················································································································
 
-  var mMetadataStatus_property_selection : EBSelection <MetadataStatus> {
-    return self.mMetadataStatus_property.prop
+  var metadataStatus_property_selection : EBSelection <MetadataStatus> {
+    return self.metadataStatus_property.prop
   }
 
   //····················································································································
 
-  var mMetadataStatus : MetadataStatus? {
-    switch self.mMetadataStatus_property_selection {
+  var metadataStatus : MetadataStatus? {
+    switch self.metadataStatus_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -322,8 +322,8 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: mStatusImage
-    self.mStatusImage_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: statusImage
+    self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
@@ -334,7 +334,7 @@ import Cocoa
         case .single :
           switch (unwSelf.rootObject.issues_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_SymbolDocument_mStatusImage (v0))
+            return .single (transient_SymbolDocument_statusImage (v0))
           default :
             return .empty
           }
@@ -343,13 +343,13 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
+    self.rootObject.issues_property.addEBObserver (self.statusImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: mStatusMessage
-    self.mStatusMessage_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: statusMessage
+    self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
@@ -360,7 +360,7 @@ import Cocoa
         case .single :
           switch (unwSelf.rootObject.issues_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_SymbolDocument_mStatusMessage (v0))
+            return .single (transient_SymbolDocument_statusMessage (v0))
           default :
             return .empty
           }
@@ -369,13 +369,13 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
+    self.rootObject.issues_property.addEBObserver (self.statusMessage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: mMetadataStatus
-    self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: metadataStatus
+    self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
@@ -386,7 +386,7 @@ import Cocoa
         case .single :
           switch (unwSelf.rootObject.issues_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_SymbolDocument_mMetadataStatus (v0))
+            return .single (transient_SymbolDocument_metadataStatus (v0))
           default :
             return .empty
           }
@@ -395,7 +395,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
+    self.rootObject.issues_property.addEBObserver (self.metadataStatus_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -451,9 +451,9 @@ import Cocoa
     self.mSymbolPinNumberHorizontalAlignmentSegmentedControl?.bind_selectedSegment (self.mSymbolPinSelectionController.numberHorizontalAlignment_property, file: #file, line: #line)
     self.mSymbolPinNumberIsVisibleInSchematicsSwitch?.bind_value (self.mSymbolPinSelectionController.pinNameIsDisplayedInSchematics_property, file: #file, line: #line)
     self.mSymbolPinLabelNameTextField?.bind_value (self.mSymbolPinSelectionController.name_property, file: #file, line: #line, sendContinously:true)
-    self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
-    self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
-    self.mIssueTextField?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
+    self.mStatusImageViewInToolbar?.bind_image (self.statusImage_property, file: #file, line: #line)
+    self.mStatusImageViewInToolbar?.bind_tooltip (self.statusMessage_property, file: #file, line: #line)
+    self.mIssueTextField?.bind_valueObserver (self.statusMessage_property, file: #file, line: #line)
     self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
@@ -574,9 +574,9 @@ import Cocoa
     self.mSymbolTextSelectionController.unbind_selection ()
   //--- Selection controller property: mSymbolPinSelectionController
     self.mSymbolPinSelectionController.unbind_selection ()
-    self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
-    self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
-    self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
+    self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
+    self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
+    self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)
   //--------------------------- Remove targets / actions
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets

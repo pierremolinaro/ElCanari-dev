@@ -43,7 +43,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func addEBObserverOf_mNominalSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNominalSize.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -100,7 +100,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func addEBObserverOf_mFontName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFontName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -157,7 +157,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func addEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFontVersion.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -214,7 +214,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func addEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDescriptiveString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -271,7 +271,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_versionString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -327,7 +327,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sizeString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -383,7 +383,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -563,6 +563,7 @@ final class TransientArrayOfSuperOf_FontInProject <SUPER : EBManagedObject> : Re
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -586,41 +587,46 @@ final class TransientArrayOfSuperOf_FontInProject <SUPER : EBManagedObject> : Re
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [FontInProject] ()
-    for superObject in newModelArray {
-      if let object = superObject as? FontInProject {
-        newArray.append (object)
+      var newArray = [FontInProject] ()
+      for superObject in newModelArray {
+        if let object = superObject as? FontInProject {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [FontInProject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

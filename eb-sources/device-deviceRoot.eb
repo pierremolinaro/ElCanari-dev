@@ -30,7 +30,8 @@ graphic entity DeviceRoot {
     self.mPackages.all.mVersion,
     self.mPackages.all.mName,
     self.mSymbolTypes.all.mVersion,
-    self.mSymbolTypes.all.mTypeName
+    self.mSymbolTypes.all.mTypeName,
+    self.mSymbolTypes.all.instanceCount
   ;
 
   transient String inconsistentPackagePadNameSetsMessage dependsFrom self.mPackages.all.padNameSet, self.mPackages.all.mName ;

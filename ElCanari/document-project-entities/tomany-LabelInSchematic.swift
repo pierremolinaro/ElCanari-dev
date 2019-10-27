@@ -41,7 +41,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   final func addEBObserverOf_mOrientation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mOrientation.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -98,7 +98,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   final func addEBObserverOf_location (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_location.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   final func addEBObserverOf_netName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -210,7 +210,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -322,7 +322,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -502,6 +502,7 @@ final class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> :
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -525,41 +526,46 @@ final class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> :
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [LabelInSchematic] ()
-    for superObject in newModelArray {
-      if let object = superObject as? LabelInSchematic {
-        newArray.append (object)
+      var newArray = [LabelInSchematic] ()
+      for superObject in newModelArray {
+        if let object = superObject as? LabelInSchematic {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [LabelInSchematic] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

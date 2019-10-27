@@ -13,7 +13,7 @@ import Cocoa
 extension DeviceDocument {
   @objc func resetSelectedSymbolVersion (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let selectedSymbolTypes = self.mSymbolController.selectedArray_property.propval
+    let selectedSymbolTypes = self.symbolTypeController.selectedArray
     for symbolType in selectedSymbolTypes {
       symbolType.mVersion = 0
     }

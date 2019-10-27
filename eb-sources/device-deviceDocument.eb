@@ -41,29 +41,29 @@ document DeviceDocument root DeviceRoot {
   action removeImageAction ;
   outlet EBButton mRemoveImageButton $run removeImageAction $enabled root.imageIsValid ;
 
-  tableViewController #mDocumentationController {allowsEmptySelection:no, allowsMultipleSelection:no} root.mDocs {
+  tableViewController #documentationController {allowsEmptySelection:no, allowsMultipleSelection:no} root.mDocs {
      column "name" EBTextObserverField $valueObserver self.mFileName
      column "size" EBIntObserverField $valueObserver self.fileSize {autoFormatter : yes}
   }
 
 
-  outlet DeviceDocumentationTableView mDocumentationTableView $tableValue #mDocumentationController ;
+  outlet DeviceDocumentationTableView mDocumentationTableView $tableValue #documentationController ;
 
   outlet EBButton mRemoveSelectedDocButton
-    $run #mDocumentationController.remove
-    $enabled #mDocumentationController.selectedArray.count > 0
+    $run #documentationController.remove
+    $enabled #documentationController.selectedArray.count > 0
   ;
 
   action showDocAction ;
   outlet EBButton mShowDocButton
     $run showDocAction
-    $enabled #mDocumentationController.selectedArray.count > 0
+    $enabled #documentationController.selectedArray.count > 0
   ;
 
   action saveDocAction ;
   outlet EBButton mSaveDocButton
     $run saveDocAction
-    $enabled #mDocumentationController.selectedArray.count > 0
+    $enabled #documentationController.selectedArray.count > 0
   ;
 
 
@@ -71,13 +71,13 @@ document DeviceDocument root DeviceRoot {
   action addSymbolFromLibraryAction ;
   outlet EBButton mAddSymbolFromLibraryButton $run addSymbolFromLibraryAction ;
 
-  arrayController #mSymbolDisplayController : root.mSymbolInstances ;
-  selectionController SymbolInstanceInDevice #mSymbolInstanceSelection : #mSymbolDisplayController.selectedArray ;
+  arrayController #symbolDisplayController : root.mSymbolInstances ;
+  selectionController SymbolInstanceInDevice #symbolInstanceSelection : #symbolDisplayController.selectedArray ;
 
   outlet EBGraphicView mComposedSymbolView
     $horizontalFlip root.mSymbolDisplayHorizontalFlip
     $verticalFlip root.mSymbolDisplayVerticalFlip
-    $graphicController #mSymbolDisplayController
+    $graphicController #symbolDisplayController
     $zoom root.mSymbolDisplayZoom
   ;
 
@@ -103,21 +103,21 @@ document DeviceDocument root DeviceRoot {
 
   outlet EBTextObserverField mSymbolTypeTextField
 //     $tooltip mSymbolInstanceSelection.symbolTypeName
-     $valueObserver #mSymbolInstanceSelection.symbolTypeName
+     $valueObserver #symbolInstanceSelection.symbolTypeName
    ;
 
-  outlet EBTextField mSymbolNameTextField $value #mSymbolInstanceSelection.mInstanceName  {sendContinously : yes} ;
+  outlet EBTextField mSymbolNameTextField $value #symbolInstanceSelection.mInstanceName  {sendContinously : yes} ;
 
 //-------------------------- Page : Packages
   action addPackageFromLibraryAction ;
   outlet EBButton mAddPackageFromLibraryButton $run addPackageFromLibraryAction ;
 
-  arrayController #mPackageDisplayController : root.mPackages ;
+  arrayController #packageDisplayController : root.mPackages ;
 
   outlet EBGraphicView mComposedPackageView
     $horizontalFlip root.mPackageDisplayHorizontalFlip
     $verticalFlip root.mPackageDisplayVerticalFlip
-    $graphicController #mPackageDisplayController
+    $graphicController #packageDisplayController
     $zoom root.mPackageDisplayZoom
   ;
 
@@ -158,68 +158,75 @@ document DeviceDocument root DeviceRoot {
   ;
 
 //--- Symbols
-  tableViewController #mSymbolController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mSymbolTypes {
+  tableViewController #symbolTypeController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mSymbolTypes {
      column "symbol" EBTextObserverField $valueObserver self.mTypeName
      column "version" EBTextObserverField $valueObserver self.versionString
      column "count" EBIntObserverField $valueObserver self.instanceCount {autoFormatter : yes}
      column "size" EBTextObserverField $valueObserver self.documentSizeString
   }
-  outlet EBTableView mSymbolTableView $tableValue #mSymbolController ;
+  outlet EBTableView mSymbolTableView $tableValue #symbolTypeController ;
+  selectionController SymbolTypeInDevice #symbolTypeSelection : #symbolTypeController.selectedArray ;
 
   action resetSelectedSymbolVersion ;
   outlet EBButton mResetSelectedSymbolVersionButton
     $run resetSelectedSymbolVersion
-    $enabled #mSymbolController.selectedArray.count > 0
+    $enabled #symbolTypeController.selectedArray.count > 0
   ;
 
   action editSelectedSymbols ;
   outlet EBButton mEditSelectedSymbolsButton
     $run editSelectedSymbols
-    $enabled #mSymbolController.selectedArray.count > 0
+    $enabled #symbolTypeController.selectedArray.count > 0
   ;
 
   action exportSelectedSymbols ;
   outlet EBButton mExportSelectedSymbolsButton
     $run exportSelectedSymbols
-    $enabled #mSymbolController.selectedArray.count > 0
+    $enabled #symbolTypeController.selectedArray.count > 0
   ;
 
   action updateSelectedSymbols ;
   outlet EBButton mUpdateSelectedSymbolsButton
     $run updateSelectedSymbols
-    $enabled #mSymbolController.selectedArray.count > 0
+    $enabled #symbolTypeController.selectedArray.count > 0
+  ;
+
+  action removeUselessSymbolTypeAction ;
+  outlet EBButton mRemoveUselessSymbolTypeButton
+    $run removeUselessSymbolTypeAction
+    $enabled (#symbolTypeController.selectedArray.count == 1) & (#symbolTypeSelection.instanceCount == 0)
   ;
 
 //--- Packages
-  tableViewController #mPackageController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mPackages {
+  tableViewController #packageController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mPackages {
      column "package" EBTextObserverField $valueObserver self.mName
      column "version" EBTextObserverField $valueObserver self.versionString
      column "size" EBTextObserverField $valueObserver self.documentSizeString
   }
-  outlet EBTableView mPackageTableView $tableValue #mPackageController ;
+  outlet EBTableView mPackageTableView $tableValue #packageController ;
 
   action resetSelectedPackageVersion ;
   outlet EBButton mResetSelectedPackageVersionButton
     $run resetSelectedPackageVersion
-    $enabled #mPackageController.selectedArray.count > 0
+    $enabled #packageController.selectedArray.count > 0
   ;
 
   action editSelectedPackages ;
   outlet EBButton mEditSelectedPackagesButton
     $run editSelectedPackages
-    $enabled #mPackageController.selectedArray.count > 0
+    $enabled #packageController.selectedArray.count > 0
   ;
 
   action exportSelectedPackages ;
   outlet EBButton mExportSelectedPackagesButton
     $run exportSelectedPackages
-    $enabled #mPackageController.selectedArray.count > 0
+    $enabled #packageController.selectedArray.count > 0
   ;
 
   action updateSelectedPackages ;
   outlet EBButton mUpdateSelectedPackagesButton
     $run updateSelectedPackages
-    $enabled #mPackageController.selectedArray.count > 0
+    $enabled #packageController.selectedArray.count > 0
   ;
 
 //--------------- Page : assignments

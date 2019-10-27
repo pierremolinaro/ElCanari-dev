@@ -187,8 +187,9 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // # 500 mils
     super.windowControllerDidLoadNib (aController)
     self.performModelAdjustements ()
   //---
-    self.mDeviceLibraryTableView?.set (actionOnDoubleClick: { [weak self] in self?.renameDeviceNameDialog () })
-    self.mDevicePackageTableView?.set (actionOnDoubleClick: { [weak self] in self?.renameDevicePackageNameDialog () })
+    self.mDeviceLibraryTableView?.set (actionOnDoubleClick: { [weak self] in self?.renameDeviceDialog () })
+    self.mDevicePackageTableView?.set (actionOnDoubleClick: { [weak self] in self?.renameDevicePackageDialog () })
+    self.mDeviceSymbolTypeTableView?.set (actionOnDoubleClick: { [weak self] in self?.renameDeviceSymbolTypeDialog () })
   //---
     self.mSelectComponentsMenuItem?.set (project: self)
     self.mSelectNetsMenuItem?.set (project: self)

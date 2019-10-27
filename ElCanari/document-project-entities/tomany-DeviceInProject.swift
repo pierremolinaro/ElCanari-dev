@@ -53,7 +53,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserverOf_mDeviceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDeviceName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -110,7 +110,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserverOf_mPrefix (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPrefix.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -167,7 +167,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserverOf_mDeviceVersion (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDeviceVersion.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -224,7 +224,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserverOf_mDeviceFileData (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDeviceFileData.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -281,7 +281,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_versionString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -337,7 +337,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sizeString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -393,7 +393,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserverOf_canExport (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_canExport.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -449,7 +449,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserverOf_packageNames (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_packageNames.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -505,7 +505,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_canRemove.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -561,7 +561,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserverOf_symbolAndTypesNames (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolAndTypesNames.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -617,7 +617,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinPadAssignments.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -673,7 +673,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_deviceSymbolDictionary.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -853,6 +853,7 @@ final class TransientArrayOfSuperOf_DeviceInProject <SUPER : EBManagedObject> : 
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -876,41 +877,46 @@ final class TransientArrayOfSuperOf_DeviceInProject <SUPER : EBManagedObject> : 
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [DeviceInProject] ()
-    for superObject in newModelArray {
-      if let object = superObject as? DeviceInProject {
-        newArray.append (object)
+      var newArray = [DeviceInProject] ()
+      for superObject in newModelArray {
+        if let object = superObject as? DeviceInProject {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DeviceInProject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

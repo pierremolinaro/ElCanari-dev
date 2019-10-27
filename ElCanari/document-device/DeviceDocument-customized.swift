@@ -82,8 +82,8 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
   //---
     self.mAddSymbolInstancePullDownButton?.register (document: self)
   //---
-    self.mPackageDisplayController.mAfterObjectRemovingCallback = { [weak self] in self?.updatePadProxies () }
-    self.mSymbolDisplayController.mAfterObjectRemovingCallback = { [weak self] in self?.removeUnusedSymbolTypes () }
+    self.packageDisplayController.mAfterObjectRemovingCallback = { [weak self] in self?.updatePadProxies () }
+    self.symbolDisplayController.mAfterObjectRemovingCallback = { [weak self] in self?.removeUnusedSymbolTypes () }
   }
 
   //····················································································································

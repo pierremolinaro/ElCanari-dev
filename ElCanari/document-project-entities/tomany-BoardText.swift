@@ -57,7 +57,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -114,7 +114,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -171,7 +171,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_mFontSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFontSize.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -228,7 +228,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_mLayer (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mLayer.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -285,7 +285,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_mText (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mText.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -342,7 +342,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mHorizontalAlignment.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -399,7 +399,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mVerticalAlignment.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -456,7 +456,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mRotation.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -513,7 +513,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_mWeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mWeight.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -570,7 +570,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_mOblique (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mOblique.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -627,7 +627,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -683,7 +683,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -739,7 +739,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_fontName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_fontName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -795,7 +795,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -975,6 +975,7 @@ final class TransientArrayOfSuperOf_BoardText <SUPER : EBManagedObject> : ReadOn
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -998,41 +999,46 @@ final class TransientArrayOfSuperOf_BoardText <SUPER : EBManagedObject> : ReadOn
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [BoardText] ()
-    for superObject in newModelArray {
-      if let object = superObject as? BoardText {
-        newArray.append (object)
+      var newArray = [BoardText] ()
+      for superObject in newModelArray {
+        if let object = superObject as? BoardText {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [BoardText] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

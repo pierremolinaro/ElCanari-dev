@@ -41,7 +41,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func addEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSheetTitle.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -98,7 +98,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connectedPoints.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -210,7 +210,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func addEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connexionWarnings.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func addEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connexionErrors.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -322,7 +322,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func addEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sheetDescriptor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -502,6 +502,7 @@ final class TransientArrayOfSuperOf_SheetInProject <SUPER : EBManagedObject> : R
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -525,41 +526,46 @@ final class TransientArrayOfSuperOf_SheetInProject <SUPER : EBManagedObject> : R
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [SheetInProject] ()
-    for superObject in newModelArray {
-      if let object = superObject as? SheetInProject {
-        newArray.append (object)
+      var newArray = [SheetInProject] ()
+      for superObject in newModelArray {
+        if let object = superObject as? SheetInProject {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SheetInProject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

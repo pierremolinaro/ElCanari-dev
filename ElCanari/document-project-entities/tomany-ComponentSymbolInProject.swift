@@ -63,7 +63,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_mCenterX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterX.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -120,7 +120,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_mCenterY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterY.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -177,7 +177,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mRotation.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -234,7 +234,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_mMirror (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mMirror.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -291,7 +291,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolInstanceName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -348,7 +348,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolTypeName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -405,7 +405,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_mDisplayComponentNameOffsetX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentNameOffsetX.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -462,7 +462,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_mDisplayComponentNameOffsetY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentNameOffsetY.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -519,7 +519,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_mDisplayComponentValue (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentValue.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -576,7 +576,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_mDisplayComponentValueOffsetX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentValueOffsetX.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -633,7 +633,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_mDisplayComponentValueOffsetY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentValueOffsetY.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -690,7 +690,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_componentValueProxy (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentValueProxy.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -747,7 +747,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_componentName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -803,7 +803,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_deviceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_deviceName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -859,7 +859,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_symbolInfo (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolInfo.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -915,7 +915,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -971,7 +971,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1027,7 +1027,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   final func addEBObserverOf_symbolInSchematic (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolInSchematic.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1207,6 +1207,7 @@ final class TransientArrayOfSuperOf_ComponentSymbolInProject <SUPER : EBManagedO
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -1230,41 +1231,46 @@ final class TransientArrayOfSuperOf_ComponentSymbolInProject <SUPER : EBManagedO
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [ComponentSymbolInProject] ()
-    for superObject in newModelArray {
-      if let object = superObject as? ComponentSymbolInProject {
-        newArray.append (object)
+      var newArray = [ComponentSymbolInProject] ()
+      for superObject in newModelArray {
+        if let object = superObject as? ComponentSymbolInProject {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [ComponentSymbolInProject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

@@ -9,40 +9,46 @@ import Cocoa
 @objc(DeviceDocument) class DeviceDocument : EBManagedDocument {
 
   //····················································································································
-  //   Array controller: mPackageController
+  //   Array controller: packageController
   //····················································································································
 
-  var mPackageController = Controller_DeviceDocument_mPackageController ()
+  var packageController = Controller_DeviceDocument_packageController ()
 
   //····················································································································
-  //   Array controller: mDocumentationController
+  //   Array controller: documentationController
   //····················································································································
 
-  var mDocumentationController = Controller_DeviceDocument_mDocumentationController ()
+  var documentationController = Controller_DeviceDocument_documentationController ()
 
   //····················································································································
-  //   Array controller: mSymbolDisplayController
+  //   Array controller: symbolDisplayController
   //····················································································································
 
-  var mSymbolDisplayController = Controller_DeviceDocument_mSymbolDisplayController ()
+  var symbolDisplayController = Controller_DeviceDocument_symbolDisplayController ()
 
   //····················································································································
-  //   Selection controller: mSymbolInstanceSelection
+  //   Selection controller: symbolInstanceSelection
   //····················································································································
 
-  var mSymbolInstanceSelection = SelectionController_DeviceDocument_mSymbolInstanceSelection ()
+  var symbolInstanceSelection = SelectionController_DeviceDocument_symbolInstanceSelection ()
 
   //····················································································································
-  //   Array controller: mPackageDisplayController
+  //   Array controller: packageDisplayController
   //····················································································································
 
-  var mPackageDisplayController = Controller_DeviceDocument_mPackageDisplayController ()
+  var packageDisplayController = Controller_DeviceDocument_packageDisplayController ()
 
   //····················································································································
-  //   Array controller: mSymbolController
+  //   Array controller: symbolTypeController
   //····················································································································
 
-  var mSymbolController = Controller_DeviceDocument_mSymbolController ()
+  var symbolTypeController = Controller_DeviceDocument_symbolTypeController ()
+
+  //····················································································································
+  //   Selection controller: symbolTypeSelection
+  //····················································································································
+
+  var symbolTypeSelection = SelectionController_DeviceDocument_symbolTypeSelection ()
 
   //····················································································································
   //   Transient property: documentFilePath
@@ -273,6 +279,7 @@ import Cocoa
   @IBOutlet var mPrefixTextField : EBTextField? = nil
   @IBOutlet var mRemoveImageButton : EBButton? = nil
   @IBOutlet var mRemoveSelectedDocButton : EBButton? = nil
+  @IBOutlet var mRemoveUselessSymbolTypeButton : EBButton? = nil
   @IBOutlet var mRepresentationImageView : DeviceDroppableImageView? = nil
   @IBOutlet var mResetSelectedPackageVersionButton : EBButton? = nil
   @IBOutlet var mResetSelectedSymbolVersionButton : EBButton? = nil
@@ -322,6 +329,7 @@ import Cocoa
   var mController_mEditSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mExportSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mRemoveUselessSymbolTypeButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mResetSelectedPackageVersionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mExportSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
@@ -363,18 +371,20 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-  //--- Array controller property: mPackageController
-    self.mPackageController.addExplorer (name: "mPackageController", y:&y, view:view)
-  //--- Array controller property: mDocumentationController
-    self.mDocumentationController.addExplorer (name: "mDocumentationController", y:&y, view:view)
-  //--- Array controller property: mSymbolDisplayController
-    self.mSymbolDisplayController.addExplorer (name: "mSymbolDisplayController", y:&y, view:view)
-  //--- Selection controller property: mSymbolInstanceSelection
-    self.mSymbolInstanceSelection.addExplorer (name: "mSymbolInstanceSelection", y:&y, view:view)
-  //--- Array controller property: mPackageDisplayController
-    self.mPackageDisplayController.addExplorer (name: "mPackageDisplayController", y:&y, view:view)
-  //--- Array controller property: mSymbolController
-    self.mSymbolController.addExplorer (name: "mSymbolController", y:&y, view:view)
+  //--- Array controller property: packageController
+    self.packageController.addExplorer (name: "packageController", y:&y, view:view)
+  //--- Array controller property: documentationController
+    self.documentationController.addExplorer (name: "documentationController", y:&y, view:view)
+  //--- Array controller property: symbolDisplayController
+    self.symbolDisplayController.addExplorer (name: "symbolDisplayController", y:&y, view:view)
+  //--- Selection controller property: symbolInstanceSelection
+    self.symbolInstanceSelection.addExplorer (name: "symbolInstanceSelection", y:&y, view:view)
+  //--- Array controller property: packageDisplayController
+    self.packageDisplayController.addExplorer (name: "packageDisplayController", y:&y, view:view)
+  //--- Array controller property: symbolTypeController
+    self.symbolTypeController.addExplorer (name: "symbolTypeController", y:&y, view:view)
+  //--- Selection controller property: symbolTypeSelection
+    self.symbolTypeSelection.addExplorer (name: "symbolTypeSelection", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -447,6 +457,7 @@ import Cocoa
     checkOutletConnection (self.mPrefixTextField, "mPrefixTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mRemoveImageButton, "mRemoveImageButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveSelectedDocButton, "mRemoveSelectedDocButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRemoveUselessSymbolTypeButton, "mRemoveUselessSymbolTypeButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRepresentationImageView, "mRepresentationImageView", DeviceDroppableImageView.self, #file, #line)
     checkOutletConnection (self.mResetSelectedPackageVersionButton, "mResetSelectedPackageVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetSelectedSymbolVersionButton, "mResetSelectedSymbolVersionButton", EBButton.self, #file, #line)
@@ -487,38 +498,44 @@ import Cocoa
   final private func configureProperties () {
     let start = Date ()
     var opIdx = 0
-  //--- Array controller property: mPackageController
-    self.mPackageController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
+  //--- Array controller property: packageController
+    self.packageController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Array controller property: mDocumentationController
-    self.mDocumentationController.bind_model (self.rootObject.mDocs_property, self.ebUndoManager)
+  //--- Array controller property: documentationController
+    self.documentationController.bind_model (self.rootObject.mDocs_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Array controller property: mSymbolDisplayController
-    self.mSymbolDisplayController.bind_model (self.rootObject.mSymbolInstances_property, self.ebUndoManager)
+  //--- Array controller property: symbolDisplayController
+    self.symbolDisplayController.bind_model (self.rootObject.mSymbolInstances_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Selection controller property: mSymbolInstanceSelection
-    self.mSymbolInstanceSelection.bind_selection (model: self.mSymbolDisplayController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: symbolInstanceSelection
+    self.symbolInstanceSelection.bind_selection (model: self.symbolDisplayController.selectedArray_property, file: #file, line: #line)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Array controller property: mPackageDisplayController
-    self.mPackageDisplayController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
+  //--- Array controller property: packageDisplayController
+    self.packageDisplayController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Array controller property: mSymbolController
-    self.mSymbolController.bind_model (self.rootObject.mSymbolTypes_property, self.ebUndoManager)
+  //--- Array controller property: symbolTypeController
+    self.symbolTypeController.bind_model (self.rootObject.mSymbolTypes_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Selection controller property: symbolTypeSelection
+    self.symbolTypeSelection.bind_selection (model: self.symbolTypeController.selectedArray_property, file: #file, line: #line)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -722,12 +739,12 @@ import Cocoa
   final private func installBindings () {
     let start = Date ()
   //--------------------------- Install table view bindings
-    self.mDocumentationController.bind_tableView (self.mDocumentationTableView, file: #file, line: #line)
-    self.mSymbolController.bind_tableView (self.mSymbolTableView, file: #file, line: #line)
-    self.mPackageController.bind_tableView (self.mPackageTableView, file: #file, line: #line)
+    self.documentationController.bind_tableView (self.mDocumentationTableView, file: #file, line: #line)
+    self.symbolTypeController.bind_tableView (self.mSymbolTableView, file: #file, line: #line)
+    self.packageController.bind_tableView (self.mPackageTableView, file: #file, line: #line)
   //--------------------------- Install ebView bindings
-    self.mSymbolDisplayController.bind_ebView (self.mComposedSymbolView)
-    self.mPackageDisplayController.bind_ebView (self.mComposedPackageView)
+    self.symbolDisplayController.bind_ebView (self.mComposedSymbolView)
+    self.packageDisplayController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
     self.mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
@@ -745,8 +762,8 @@ import Cocoa
     self.mSymbolDisplayVerticalFlipSwitch?.bind_value (self.rootObject.mSymbolDisplayVerticalFlip_property, file: #file, line: #line)
     self.mAddSymbolInstancePullDownButton?.bind_symbolTypeNames (self.rootObject.symbolTypeNames_property, file: #file, line: #line)
     self.mInconsistentSymbolNameMessageTextView?.bind_valueObserver (self.rootObject.inconsistentSymbolNameSetMessage_property, file: #file, line: #line)
-    self.mSymbolTypeTextField?.bind_valueObserver (self.mSymbolInstanceSelection.symbolTypeName_property, file: #file, line: #line)
-    self.mSymbolNameTextField?.bind_value (self.mSymbolInstanceSelection.mInstanceName_property, file: #file, line: #line, sendContinously:true)
+    self.mSymbolTypeTextField?.bind_valueObserver (self.symbolInstanceSelection.symbolTypeName_property, file: #file, line: #line)
+    self.mSymbolNameTextField?.bind_value (self.symbolInstanceSelection.mInstanceName_property, file: #file, line: #line, sendContinously:true)
     self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property, file: #file, line: #line)
@@ -791,31 +808,31 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mDocumentationController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.documentationController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mRemoveSelectedDocButton
       )
-      self.mDocumentationController.selectedArray_property.count_property.addEBObserver (controller)
+      self.documentationController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRemoveSelectedDocButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mDocumentationController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.documentationController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mShowDocButton
       )
-      self.mDocumentationController.selectedArray_property.count_property.addEBObserver (controller)
+      self.documentationController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mShowDocButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mDocumentationController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.documentationController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mSaveDocButton
       )
-      self.mDocumentationController.selectedArray_property.count_property.addEBObserver (controller)
+      self.documentationController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSaveDocButton_enabled = controller
     }
     do{
@@ -883,81 +900,92 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mSymbolController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.symbolTypeController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mResetSelectedSymbolVersionButton
       )
-      self.mSymbolController.selectedArray_property.count_property.addEBObserver (controller)
+      self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mResetSelectedSymbolVersionButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mSymbolController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.symbolTypeController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mEditSelectedSymbolsButton
       )
-      self.mSymbolController.selectedArray_property.count_property.addEBObserver (controller)
+      self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mEditSelectedSymbolsButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mSymbolController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.symbolTypeController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mExportSelectedSymbolsButton
       )
-      self.mSymbolController.selectedArray_property.count_property.addEBObserver (controller)
+      self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mExportSelectedSymbolsButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mSymbolController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.symbolTypeController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mUpdateSelectedSymbolsButton
       )
-      self.mSymbolController.selectedArray_property.count_property.addEBObserver (controller)
+      self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mUpdateSelectedSymbolsButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mPackageController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return ((self.symbolTypeController.selectedArray_property.count_property_selection == EBSelection.single (1)) && (self.symbolTypeSelection.instanceCount_property_selection == EBSelection.single (0)))
+        },
+        outlet: self.mRemoveUselessSymbolTypeButton
+      )
+      self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
+      self.symbolTypeSelection.instanceCount_property.addEBObserver (controller)
+      self.mController_mRemoveUselessSymbolTypeButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.packageController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mResetSelectedPackageVersionButton
       )
-      self.mPackageController.selectedArray_property.count_property.addEBObserver (controller)
+      self.packageController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mResetSelectedPackageVersionButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mPackageController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.packageController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mEditSelectedPackagesButton
       )
-      self.mPackageController.selectedArray_property.count_property.addEBObserver (controller)
+      self.packageController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mEditSelectedPackagesButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mPackageController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.packageController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mExportSelectedPackagesButton
       )
-      self.mPackageController.selectedArray_property.count_property.addEBObserver (controller)
+      self.packageController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mExportSelectedPackagesButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mPackageController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.packageController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mUpdateSelectedPackagesButton
       )
-      self.mPackageController.selectedArray_property.count_property.addEBObserver (controller)
+      self.packageController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mUpdateSelectedPackagesButton_enabled = controller
     }
     do{
@@ -1040,8 +1068,8 @@ import Cocoa
     self.mCopyImageButton?.action = #selector (DeviceDocument.copyImageAction (_:))
     self.mRemoveImageButton?.target = self
     self.mRemoveImageButton?.action = #selector (DeviceDocument.removeImageAction (_:))
-    self.mRemoveSelectedDocButton?.target = mDocumentationController
-    self.mRemoveSelectedDocButton?.action = #selector (Controller_DeviceDocument_mDocumentationController.remove (_:))
+    self.mRemoveSelectedDocButton?.target = documentationController
+    self.mRemoveSelectedDocButton?.action = #selector (Controller_DeviceDocument_documentationController.remove (_:))
     self.mShowDocButton?.target = self
     self.mShowDocButton?.action = #selector (DeviceDocument.showDocAction (_:))
     self.mSaveDocButton?.target = self
@@ -1062,6 +1090,8 @@ import Cocoa
     self.mExportSelectedSymbolsButton?.action = #selector (DeviceDocument.exportSelectedSymbols (_:))
     self.mUpdateSelectedSymbolsButton?.target = self
     self.mUpdateSelectedSymbolsButton?.action = #selector (DeviceDocument.updateSelectedSymbols (_:))
+    self.mRemoveUselessSymbolTypeButton?.target = self
+    self.mRemoveUselessSymbolTypeButton?.action = #selector (DeviceDocument.removeUselessSymbolTypeAction (_:))
     self.mResetSelectedPackageVersionButton?.target = self
     self.mResetSelectedPackageVersionButton?.action = #selector (DeviceDocument.resetSelectedPackageVersion (_:))
     self.mEditSelectedPackagesButton?.target = self
@@ -1156,11 +1186,11 @@ import Cocoa
     self.mController_mCopyImageButton_enabled = nil
     self.rootObject.imageIsValid_property.removeEBObserver (self.mController_mRemoveImageButton_enabled!)
     self.mController_mRemoveImageButton_enabled = nil
-    self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedDocButton_enabled!)
+    self.documentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedDocButton_enabled!)
     self.mController_mRemoveSelectedDocButton_enabled = nil
-    self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mShowDocButton_enabled!)
+    self.documentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mShowDocButton_enabled!)
     self.mController_mShowDocButton_enabled = nil
-    self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mSaveDocButton_enabled!)
+    self.documentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mSaveDocButton_enabled!)
     self.mController_mSaveDocButton_enabled = nil
     self.rootObject.mSymbolTypes_property.count_property.removeEBObserver (self.mController_mAddSymbolInstancePullDownButton_enabled!)
     self.mController_mAddSymbolInstancePullDownButton_enabled = nil
@@ -1176,21 +1206,24 @@ import Cocoa
     self.rootObject.mPackages_property.count_property.removeEBObserver (self.mController_mUpdateSymbolAndPackagesButton_enabled!)
     self.rootObject.mSymbolTypes_property.count_property.removeEBObserver (self.mController_mUpdateSymbolAndPackagesButton_enabled!)
     self.mController_mUpdateSymbolAndPackagesButton_enabled = nil
-    self.mSymbolController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedSymbolVersionButton_enabled!)
+    self.symbolTypeController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedSymbolVersionButton_enabled!)
     self.mController_mResetSelectedSymbolVersionButton_enabled = nil
-    self.mSymbolController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditSelectedSymbolsButton_enabled!)
+    self.symbolTypeController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditSelectedSymbolsButton_enabled!)
     self.mController_mEditSelectedSymbolsButton_enabled = nil
-    self.mSymbolController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportSelectedSymbolsButton_enabled!)
+    self.symbolTypeController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportSelectedSymbolsButton_enabled!)
     self.mController_mExportSelectedSymbolsButton_enabled = nil
-    self.mSymbolController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateSelectedSymbolsButton_enabled!)
+    self.symbolTypeController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateSelectedSymbolsButton_enabled!)
     self.mController_mUpdateSelectedSymbolsButton_enabled = nil
-    self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedPackageVersionButton_enabled!)
+    self.symbolTypeController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveUselessSymbolTypeButton_enabled!)
+    self.symbolTypeSelection.instanceCount_property.removeEBObserver (self.mController_mRemoveUselessSymbolTypeButton_enabled!)
+    self.mController_mRemoveUselessSymbolTypeButton_enabled = nil
+    self.packageController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedPackageVersionButton_enabled!)
     self.mController_mResetSelectedPackageVersionButton_enabled = nil
-    self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditSelectedPackagesButton_enabled!)
+    self.packageController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditSelectedPackagesButton_enabled!)
     self.mController_mEditSelectedPackagesButton_enabled = nil
-    self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportSelectedPackagesButton_enabled!)
+    self.packageController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportSelectedPackagesButton_enabled!)
     self.mController_mExportSelectedPackagesButton_enabled = nil
-    self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateSelectedPackagesButton_enabled!)
+    self.packageController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateSelectedPackagesButton_enabled!)
     self.mController_mUpdateSelectedPackagesButton_enabled = nil
     self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPadNameSetTextField_hidden!)
     self.rootObject.symbolNameAreConsistent_property.removeEBObserver (self.mController_mInconsistentPadNameSetTextField_hidden!)
@@ -1208,23 +1241,25 @@ import Cocoa
     self.hasAssignedPadProxies_property.removeEBObserver (self.mController_mUnbindAllButton_enabled!)
     self.mController_mUnbindAllButton_enabled = nil
   //--------------------------- Unbind array controllers
-    self.mDocumentationController.unbind_tableView (self.mDocumentationTableView)
-    self.mSymbolController.unbind_tableView (self.mSymbolTableView)
-    self.mPackageController.unbind_tableView (self.mPackageTableView)
-    self.mSymbolDisplayController.unbind_ebView (self.mComposedSymbolView)
-    self.mPackageDisplayController.unbind_ebView (self.mComposedPackageView)
-  //--- Array controller property: mPackageController
-    self.mPackageController.unbind_model ()
-  //--- Array controller property: mDocumentationController
-    self.mDocumentationController.unbind_model ()
-  //--- Array controller property: mSymbolDisplayController
-    self.mSymbolDisplayController.unbind_model ()
-  //--- Selection controller property: mSymbolInstanceSelection
-    self.mSymbolInstanceSelection.unbind_selection ()
-  //--- Array controller property: mPackageDisplayController
-    self.mPackageDisplayController.unbind_model ()
-  //--- Array controller property: mSymbolController
-    self.mSymbolController.unbind_model ()
+    self.documentationController.unbind_tableView (self.mDocumentationTableView)
+    self.symbolTypeController.unbind_tableView (self.mSymbolTableView)
+    self.packageController.unbind_tableView (self.mPackageTableView)
+    self.symbolDisplayController.unbind_ebView (self.mComposedSymbolView)
+    self.packageDisplayController.unbind_ebView (self.mComposedPackageView)
+  //--- Array controller property: packageController
+    self.packageController.unbind_model ()
+  //--- Array controller property: documentationController
+    self.documentationController.unbind_model ()
+  //--- Array controller property: symbolDisplayController
+    self.symbolDisplayController.unbind_model ()
+  //--- Selection controller property: symbolInstanceSelection
+    self.symbolInstanceSelection.unbind_selection ()
+  //--- Array controller property: packageDisplayController
+    self.packageDisplayController.unbind_model ()
+  //--- Array controller property: symbolTypeController
+    self.symbolTypeController.unbind_model ()
+  //--- Selection controller property: symbolTypeSelection
+    self.symbolTypeSelection.unbind_selection ()
     self.rootObject.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
     self.rootObject.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
     self.rootObject.unconnectedPins_property.removeEBObserver (self.hasUnconnectedPin_property)
@@ -1248,6 +1283,7 @@ import Cocoa
     self.mEditSelectedSymbolsButton?.target = nil
     self.mExportSelectedSymbolsButton?.target = nil
     self.mUpdateSelectedSymbolsButton?.target = nil
+    self.mRemoveUselessSymbolTypeButton?.target = nil
     self.mResetSelectedPackageVersionButton?.target = nil
     self.mEditSelectedPackagesButton?.target = nil
     self.mExportSelectedPackagesButton?.target = nil
@@ -1298,6 +1334,7 @@ import Cocoa
     self.mPrefixTextField?.ebCleanUp ()
     self.mRemoveImageButton?.ebCleanUp ()
     self.mRemoveSelectedDocButton?.ebCleanUp ()
+    self.mRemoveUselessSymbolTypeButton?.ebCleanUp ()
     self.mRepresentationImageView?.ebCleanUp ()
     self.mResetSelectedPackageVersionButton?.ebCleanUp ()
     self.mResetSelectedSymbolVersionButton?.ebCleanUp ()
@@ -1368,6 +1405,7 @@ import Cocoa
     self.mPrefixTextField = nil
     self.mRemoveImageButton = nil
     self.mRemoveSelectedDocButton = nil
+    self.mRemoveUselessSymbolTypeButton = nil
     self.mRepresentationImageView = nil
     self.mResetSelectedPackageVersionButton = nil
     self.mResetSelectedSymbolVersionButton = nil

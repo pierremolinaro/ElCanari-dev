@@ -11,11 +11,21 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension DeviceDocument {
-  @objc func resetSelectedPackageVersion (_ sender : NSObject?) {
+  @objc func removeUselessSymbolTypeAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let selectedPackages = self.packageController.selectedArray_property.propval
-    for package in selectedPackages {
-      package.mVersion = 0
+    if self.symbolTypeController.selectedArray.count == 1 {
+      let selectedSymbolType = self.symbolTypeController.selectedArray [0]
+      if let instanceCount = selectedSymbolType.instanceCount, instanceCount == 0 {
+        var newSymbolTypes = [SymbolTypeInDevice] ()
+        for symbolType in self.rootObject.mSymbolTypes {
+          if symbolType === selectedSymbolType {
+            selectedSymbolType.mPinTypes = []
+          }else{
+            newSymbolTypes.append (symbolType)
+          }
+        }
+        self.rootObject.mSymbolTypes = newSymbolTypes
+      }
     }
 //--- END OF USER ZONE 2
   }

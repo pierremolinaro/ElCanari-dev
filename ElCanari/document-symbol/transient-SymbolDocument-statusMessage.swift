@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolDocument_mStatusMessage (
+func transient_SymbolDocument_statusMessage (
        _ root_issues : CanariIssueArray
 ) -> String {
 //--- START OF USER ZONE 2

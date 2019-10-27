@@ -75,7 +75,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawBoardLimits (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawBoardLimits.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -132,7 +132,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawInternalBoardLimits.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -189,7 +189,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentNamesTopSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -246,7 +246,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentNamesBottomSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -303,7 +303,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentValuesTopSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -360,7 +360,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentValuesBottomSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -417,7 +417,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPackageLegendTopSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -474,7 +474,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPackageLegendBottomSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -531,7 +531,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPadHolesInPDF.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -588,7 +588,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPadsTopSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -645,7 +645,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPadsBottomSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -702,7 +702,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLayoutTopSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -759,7 +759,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLayoutBottomSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -816,7 +816,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLegendTopSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -873,7 +873,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLegendBottomSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -930,7 +930,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTracksTopSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -987,7 +987,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTracksBottomSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1044,7 +1044,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_drawVias (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawVias.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1101,7 +1101,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_fileExtension (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_fileExtension.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1158,7 +1158,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_horizontalMirror.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1215,7 +1215,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_name (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_name.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1272,7 +1272,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_measurementUnitForPadHoleInPDF.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1329,7 +1329,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padHoleDiameterInPDF.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1510,6 +1510,7 @@ final class TransientArrayOfSuperOf_ArtworkFileGenerationParameters <SUPER : EBM
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -1533,41 +1534,46 @@ final class TransientArrayOfSuperOf_ArtworkFileGenerationParameters <SUPER : EBM
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [ArtworkFileGenerationParameters] ()
-    for superObject in newModelArray {
-      if let object = superObject as? ArtworkFileGenerationParameters {
-        newArray.append (object)
+      var newArray = [ArtworkFileGenerationParameters] ()
+      for superObject in newModelArray {
+        if let object = superObject as? ArtworkFileGenerationParameters {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [ArtworkFileGenerationParameters] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

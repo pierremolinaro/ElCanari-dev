@@ -394,14 +394,14 @@ document PackageDocument root PackageRoot {
   outlet NSView mCounterClockNumberingStartAngleView $hidden !root.counterClockNumbering ;
 
 //------- Issues
-  outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
-  transient NSImage mStatusImage dependsFrom root.issues ;
-  transient String mStatusMessage dependsFrom root.issues ;
-  transient MetadataStatus mMetadataStatus dependsFrom root.issues ;
+  outlet EBImageObserverView mStatusImageViewInToolbar $image self.statusImage $tooltip self.statusMessage ;
+  transient NSImage statusImage dependsFrom root.issues ;
+  transient String statusMessage dependsFrom root.issues ;
+  transient MetadataStatus metadataStatus dependsFrom root.issues ;
 
   outlet CanariViewWithKeyView mIssueInspectorView ;
 
-  outlet EBTextObserverField mIssueTextField $valueObserver self.mStatusMessage ;
+  outlet EBTextObserverField mIssueTextField $valueObserver self.statusMessage ;
 
   outlet EBButton mDeselectIssueButton $hidden root.noIssue ;
   outlet CanariIssueTableView mIssueTableView $issues root.issues ;

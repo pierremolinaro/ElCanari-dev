@@ -13,16 +13,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageDocument_mStatusImage (
+func transient_SymbolDocument_statusImage (
        _ root_issues : CanariIssueArray
 ) -> NSImage {
 //--- START OF USER ZONE 2
-  if root_issues.count == 0 {
-    return NSImage (named: okStatusImageName)!
-  }else if root_issues.errorCount != 0 {
+  Swift.print ("STATUS IMAGE root_issues.count \(root_issues.count )")
+  if root_issues.errorCount != 0 {
     return NSImage (named: errorStatusImageName)!
-  }else{
+  }else if root_issues.warningCount != 0 {
     return NSImage (named: warningStatusImageName)!
+  }else{
+    return NSImage (named: okStatusImageName)!
   }
 //--- END OF USER ZONE 2
 }

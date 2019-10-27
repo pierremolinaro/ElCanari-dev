@@ -13,7 +13,7 @@ import Cocoa
 extension DeviceDocument {
   @objc func editSelectedPackages (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let selectedPackages = self.mPackageController.selectedArray
+    let selectedPackages = self.packageController.selectedArray
     let dc = NSDocumentController.shared
     var messages = [String] ()
     for package in selectedPackages {

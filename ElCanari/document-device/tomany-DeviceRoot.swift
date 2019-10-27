@@ -79,7 +79,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSelectedPageIndex.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -136,7 +136,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mTitle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mTitle.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -193,7 +193,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mPrefix (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPrefix.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -250,7 +250,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mComments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mComments.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -307,7 +307,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mPackageDisplayZoom (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPackageDisplayZoom.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -364,7 +364,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mPackageDisplayHorizontalFlip (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPackageDisplayHorizontalFlip.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -421,7 +421,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mPackageDisplayVerticalFlip (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPackageDisplayVerticalFlip.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -478,7 +478,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mShowPackages (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShowPackages.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -535,7 +535,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mShowPackagePadNumbers (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShowPackagePadNumbers.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -592,7 +592,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mShowPackageFrontPads (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShowPackageFrontPads.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -649,7 +649,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mShowPackageBackPads (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mShowPackageBackPads.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -706,7 +706,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mSymbolDisplayZoom (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolDisplayZoom.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -763,7 +763,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mSymbolDisplayHorizontalFlip (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolDisplayHorizontalFlip.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -820,7 +820,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mSymbolDisplayVerticalFlip (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolDisplayVerticalFlip.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -877,7 +877,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_mImageData (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mImageData.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -934,7 +934,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_inconsistentPackagePadNameSetsMessage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_inconsistentPackagePadNameSetsMessage.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -990,7 +990,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_inconsistentSymbolNameSetMessage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_inconsistentSymbolNameSetMessage.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1046,7 +1046,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_unconnectedPins.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1102,7 +1102,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_imageIsValid.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1158,7 +1158,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_packagePadNameSetsAreConsistent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_packagePadNameSetsAreConsistent.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1214,7 +1214,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_symbolNameAreConsistent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolNameAreConsistent.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1270,7 +1270,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_symbolTypeNames (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolTypeNames.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1326,7 +1326,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_unconnectedPads (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_unconnectedPads.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1382,7 +1382,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_assignedPadProxies (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_assignedPadProxies.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1438,7 +1438,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1618,6 +1618,7 @@ final class TransientArrayOfSuperOf_DeviceRoot <SUPER : EBManagedObject> : ReadO
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -1641,41 +1642,46 @@ final class TransientArrayOfSuperOf_DeviceRoot <SUPER : EBManagedObject> : ReadO
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [DeviceRoot] ()
-    for superObject in newModelArray {
-      if let object = superObject as? DeviceRoot {
-        newArray.append (object)
+      var newArray = [DeviceRoot] ()
+      for superObject in newModelArray {
+        if let object = superObject as? DeviceRoot {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DeviceRoot] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

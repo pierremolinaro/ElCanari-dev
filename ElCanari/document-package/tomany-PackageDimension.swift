@@ -63,7 +63,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -120,7 +120,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -177,7 +177,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -234,7 +234,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_xDimension (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xDimension.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -291,7 +291,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_yDimension (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yDimension.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -348,7 +348,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_x1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1Unit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -405,7 +405,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_y1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1Unit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -462,7 +462,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_x2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2Unit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -519,7 +519,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_y2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2Unit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -576,7 +576,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_xDimensionUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xDimensionUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -633,7 +633,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_yDimensionUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yDimensionUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -690,7 +690,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_distanceUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_distanceUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -747,7 +747,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -804,7 +804,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_distanceInCanariUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_distanceInCanariUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -860,7 +860,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -916,7 +916,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -972,7 +972,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1152,6 +1152,7 @@ final class TransientArrayOfSuperOf_PackageDimension <SUPER : EBManagedObject> :
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -1175,41 +1176,46 @@ final class TransientArrayOfSuperOf_PackageDimension <SUPER : EBManagedObject> :
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [PackageDimension] ()
-    for superObject in newModelArray {
-      if let object = superObject as? PackageDimension {
-        newArray.append (object)
+      var newArray = [PackageDimension] ()
+      for superObject in newModelArray {
+        if let object = superObject as? PackageDimension {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [PackageDimension] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

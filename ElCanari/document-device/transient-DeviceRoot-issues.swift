@@ -23,7 +23,8 @@ func transient_DeviceRoot_issues (
        _ self_mPackages_mVersion : [PackageInDevice_mVersion],
        _ self_mPackages_mName : [PackageInDevice_mName],
        _ self_mSymbolTypes_mVersion : [SymbolTypeInDevice_mVersion],
-       _ self_mSymbolTypes_mTypeName : [SymbolTypeInDevice_mTypeName]
+       _ self_mSymbolTypes_mTypeName : [SymbolTypeInDevice_mTypeName],
+       _ self_mSymbolTypes_instanceCount : [SymbolTypeInDevice_instanceCount]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
        var issues = [CanariIssue] ()
@@ -72,7 +73,16 @@ func transient_DeviceRoot_issues (
          }
          idx += 1
        }
-   //--- Check symbol version
+     //--- Check symbol type instance count
+       idx = 0
+       while idx < self_mSymbolTypes_mVersion.count {
+         if let instanceCount = self_mSymbolTypes_instanceCount [idx].instanceCount, instanceCount == 0 {
+           let typeName = self_mSymbolTypes_mTypeName [idx].mTypeName
+           issues.append (CanariIssue (kind: .warning, message: "Symbol \(typeName) has no instance."))
+         }
+         idx += 1
+       }
+     //--- Check symbol version
        idx = 0
        while idx < self_mSymbolTypes_mVersion.count {
          if self_mSymbolTypes_mVersion [idx].mVersion == 0 {

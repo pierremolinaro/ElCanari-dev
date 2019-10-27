@@ -39,7 +39,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolInstanceName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserverOf_symbolAndTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolAndTypeName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolTypeName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -208,7 +208,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_filledBezierPath.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -264,7 +264,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -444,6 +444,7 @@ final class TransientArrayOfSuperOf_DeviceSymbolInstanceInProject <SUPER : EBMan
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -467,41 +468,46 @@ final class TransientArrayOfSuperOf_DeviceSymbolInstanceInProject <SUPER : EBMan
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [DeviceSymbolInstanceInProject] ()
-    for superObject in newModelArray {
-      if let object = superObject as? DeviceSymbolInstanceInProject {
-        newArray.append (object)
+      var newArray = [DeviceSymbolInstanceInProject] ()
+      for superObject in newModelArray {
+        if let object = superObject as? DeviceSymbolInstanceInProject {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DeviceSymbolInstanceInProject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

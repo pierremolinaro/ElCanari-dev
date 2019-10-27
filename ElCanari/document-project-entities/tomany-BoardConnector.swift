@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_mComponentPadName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mComponentPadName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -142,7 +142,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_mPadIndex (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPadIndex.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -199,7 +199,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -256,7 +256,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -313,7 +313,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_mDefaultHoleDiameterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDefaultHoleDiameterUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -370,7 +370,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_mCustomHoleDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCustomHoleDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -427,7 +427,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_mCustomHoleDiameterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCustomHoleDiameterUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -484,7 +484,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_mUsesCustomHoleDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mUsesCustomHoleDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -541,7 +541,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_mDefaultPadDiameterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDefaultPadDiameterUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -598,7 +598,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_mCustomPadDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCustomPadDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -655,7 +655,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_mCustomPadDiameterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCustomPadDiameterUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -712,7 +712,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_mUsesCustomPadDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mUsesCustomPadDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -769,7 +769,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_location (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_location.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -825,7 +825,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_netNameFromComponentPad (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netNameFromComponentPad.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -881,7 +881,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netNameAndPadLocation.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -937,7 +937,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_side (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_side.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -993,7 +993,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_isVia (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isVia.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1049,7 +1049,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1105,7 +1105,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_viaDefaultHoleDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_viaDefaultHoleDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1161,7 +1161,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_viaDefaultPadDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_viaDefaultPadDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1217,7 +1217,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_netNameFromTracks (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netNameFromTracks.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1273,7 +1273,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netClassName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1329,7 +1329,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_connectedToComponent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connectedToComponent.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1385,7 +1385,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_actualHoleDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_actualHoleDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1441,7 +1441,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_actualPadDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_actualPadDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1497,7 +1497,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1553,7 +1553,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1609,7 +1609,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1789,6 +1789,7 @@ final class TransientArrayOfSuperOf_BoardConnector <SUPER : EBManagedObject> : R
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -1812,41 +1813,46 @@ final class TransientArrayOfSuperOf_BoardConnector <SUPER : EBManagedObject> : R
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [BoardConnector] ()
-    for superObject in newModelArray {
-      if let object = superObject as? BoardConnector {
-        newArray.append (object)
+      var newArray = [BoardConnector] ()
+      for superObject in newModelArray {
+        if let object = superObject as? BoardConnector {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [BoardConnector] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

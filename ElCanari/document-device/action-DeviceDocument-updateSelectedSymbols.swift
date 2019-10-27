@@ -13,7 +13,7 @@ import Cocoa
 extension DeviceDocument {
   @objc func updateSelectedSymbols (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let selectedSymbols = self.mSymbolController.selectedArray_property.propval
+    let selectedSymbols = self.symbolTypeController.selectedArray
     let fm = FileManager ()
     var messages = [String] ()
     for symbolType in selectedSymbols {

@@ -96,24 +96,39 @@ extension ProjectDocument {
     var result = ""
   //--- Compute current symbol instance set
     var currentSymbolInstanceDictionary = [String : String] () // Symbol name, symbol type
+    var currentSymbolTypeNameSet = Set <String> ()
     for symbol in inCurrentDeviceInProject.mSymbols {
       currentSymbolInstanceDictionary [symbol.mSymbolInstanceName] = symbol.mSymbolType!.mSymbolTypeName
+      currentSymbolTypeNameSet.insert (symbol.mSymbolType!.mSymbolTypeName)
     }
   //--- Compute new symbol instance set
     var candidateSymbolInstanceDictionary = [String : String] () // Symbol name, symbol type
+    var candidateSymbolTypeNameSet = Set <String> ()
     for symbol in inCandidateDeviceRoot.mSymbolInstances {
       candidateSymbolInstanceDictionary [symbol.mInstanceName] = symbol.symbolTypeName!
+      candidateSymbolTypeNameSet.insert (symbol.symbolTypeName!)
+    }
+  //---
+    let missingSymbolTypes = currentSymbolTypeNameSet.subtracting (candidateSymbolTypeNameSet)
+    let unknownSymbolTypes = candidateSymbolTypeNameSet.subtracting (currentSymbolTypeNameSet)
+    for p in missingSymbolTypes {
+      result += "\n  - the candidate device has no '\(p)' symbol type"
+    }
+    for p in unknownSymbolTypes {
+      result += "\n  - the candidate device defines '\(p)' symbol type, but current device does not"
     }
   //---
     let currentSymbolSet = Set (currentSymbolInstanceDictionary.keys)
     let candidateSymbolSet = Set (candidateSymbolInstanceDictionary.keys)
-    let missingSymbols = currentSymbolSet.subtracting (candidateSymbolSet)
-    let unknownSymbols = candidateSymbolSet.subtracting (currentSymbolSet)
-    for p in missingSymbols {
-      result += "\n  - the candidate device has no '\(p)' symbol"
-    }
-    for p in unknownSymbols {
-      result += "\n  - the candidate device has unknown '\(p)' symbol"
+    if result == "" {
+      let missingSymbols = currentSymbolSet.subtracting (candidateSymbolSet)
+      let unknownSymbols = candidateSymbolSet.subtracting (currentSymbolSet)
+      for p in missingSymbols {
+        result += "\n  - the candidate device has no '\(p)' symbol instance"
+      }
+      for p in unknownSymbols {
+        result += "\n  - the candidate device defines '\(p)' symbolinstance, but current device does not"
+      }
     }
     if result == "" {
       for symbolInstanceName in currentSymbolSet {

@@ -67,7 +67,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNetClassName.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -124,7 +124,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNetClassColor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -181,7 +181,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_mTrackWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mTrackWidth.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -238,7 +238,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_mTrackWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mTrackWidthUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -295,7 +295,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_mViaHoleDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mViaHoleDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -352,7 +352,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mViaHoleDiameterUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -409,7 +409,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_mViaPadDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mViaPadDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -466,7 +466,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mViaPadDiameterUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -523,7 +523,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_mAllowTracksOnFrontSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mAllowTracksOnFrontSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -580,7 +580,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_mAllowTracksOnBackSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mAllowTracksOnBackSide.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -637,7 +637,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_trackWidthString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_trackWidthString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -693,7 +693,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_viaHoleDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_viaHoleDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -749,7 +749,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_viaPadDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_viaPadDiameter.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -805,7 +805,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_allowTracksOnFrontSideString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_allowTracksOnFrontSideString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -861,7 +861,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_allowTracksOnBackSideString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_allowTracksOnBackSideString.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -917,7 +917,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_canRemove.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -973,7 +973,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_netUsage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netUsage.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1029,7 +1029,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_netsDescription (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netsDescription.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1085,7 +1085,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   final func addEBObserverOf_netWarningCount (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netWarningCount.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1265,6 +1265,7 @@ final class TransientArrayOfSuperOf_NetClassInProject <SUPER : EBManagedObject> 
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -1288,41 +1289,46 @@ final class TransientArrayOfSuperOf_NetClassInProject <SUPER : EBManagedObject> 
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [NetClassInProject] ()
-    for superObject in newModelArray {
-      if let object = superObject as? NetClassInProject {
-        newArray.append (object)
+      var newArray = [NetClassInProject] ()
+      for superObject in newModelArray {
+        if let object = superObject as? NetClassInProject {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [NetClassInProject] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

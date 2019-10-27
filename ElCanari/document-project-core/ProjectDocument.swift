@@ -273,6 +273,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: selectedDeviceSymbolTypeNames
+  //····················································································································
+
+  let selectedDeviceSymbolTypeNames_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  var selectedDeviceSymbolTypeNames_property_selection : EBSelection <StringArray> {
+    return self.selectedDeviceSymbolTypeNames_property.prop
+  }
+
+  //····················································································································
+
+  var selectedDeviceSymbolTypeNames : StringArray? {
+    switch self.selectedDeviceSymbolTypeNames_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: selectedDeviceSymbolNames
   //····················································································································
 
@@ -787,6 +810,7 @@ import Cocoa
   @IBOutlet var mDeviceLibraryTableView : EBTableView? = nil
   @IBOutlet var mDevicePackageTableView : StringArrayTableView? = nil
   @IBOutlet var mDeviceSymbolTableView : TwoStringArrayTableView? = nil
+  @IBOutlet var mDeviceSymbolTypeTableView : StringArrayTableView? = nil
   @IBOutlet var mDisconnectAllSymbolPinsSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet var mDisconnectSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet var mDisplayBackLayoutColorWell : EBColorWell? = nil
@@ -1363,6 +1387,7 @@ import Cocoa
     checkOutletConnection (self.mDeviceLibraryTableView, "mDeviceLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDevicePackageTableView, "mDevicePackageTableView", StringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mDeviceSymbolTableView, "mDeviceSymbolTableView", TwoStringArrayTableView.self, #file, #line)
+    checkOutletConnection (self.mDeviceSymbolTypeTableView, "mDeviceSymbolTypeTableView", StringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mDisconnectAllSymbolPinsSchematicHotKeyTextField, "mDisconnectAllSymbolPinsSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDisconnectSchematicHotKeyTextField, "mDisconnectSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDisplayBackLayoutColorWell, "mDisplayBackLayoutColorWell", EBColorWell.self, #file, #line)
@@ -1878,6 +1903,32 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: selectedDeviceSymbolTypeNames
+    self.selectedDeviceSymbolTypeNames_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_selectedDeviceSymbolTypeNames (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_deviceSymbolDictionary (self.selectedDeviceSymbolTypeNames_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Atomic property: selectedDeviceSymbolNames
     self.selectedDeviceSymbolNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2309,6 +2360,7 @@ import Cocoa
     self.mNewComponentFromDevicePullDownButton?.bind_deviceNames (self.rootObject.deviceNames_property, file: #file, line: #line)
     self.mComponentCountTextField?.bind_valueObserver (self.componentCount_property, file: #file, line: #line)
     self.mDevicePackageTableView?.bind_array (self.selectedDevicePackageNames_property, file: #file, line: #line)
+    self.mDeviceSymbolTypeTableView?.bind_array (self.selectedDeviceSymbolTypeNames_property, file: #file, line: #line)
     self.mDeviceSymbolTableView?.bind_array (self.selectedDeviceSymbolNames_property, file: #file, line: #line)
     self.mPinPadAssignmentTableView?.bind_array (self.pinPadAssignments_property, file: #file, line: #line)
     self.mSchematicsInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedSchematicInspector_property, file: #file, line: #line)
@@ -3277,6 +3329,7 @@ import Cocoa
     self.mNewComponentFromDevicePullDownButton?.unbind_deviceNames ()
     self.mComponentCountTextField?.unbind_valueObserver ()
     self.mDevicePackageTableView?.unbind_array ()
+    self.mDeviceSymbolTypeTableView?.unbind_array ()
     self.mDeviceSymbolTableView?.unbind_array ()
     self.mPinPadAssignmentTableView?.unbind_array ()
     self.mSchematicsInspectorSegmentedControl?.unbind_selectedPage ()
@@ -3718,6 +3771,7 @@ import Cocoa
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
     self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
+    self.projectDeviceController.selectedArray_property.removeEBObserverOf_deviceSymbolDictionary (self.selectedDeviceSymbolTypeNames_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
     self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     self.rootObject.mSchematicSheetOrientation_property.removeEBObserver (self.schematicSheetOrientationIsCustom_property)
@@ -3934,6 +3988,7 @@ import Cocoa
     self.mDeviceLibraryTableView?.ebCleanUp ()
     self.mDevicePackageTableView?.ebCleanUp ()
     self.mDeviceSymbolTableView?.ebCleanUp ()
+    self.mDeviceSymbolTypeTableView?.ebCleanUp ()
     self.mDisconnectAllSymbolPinsSchematicHotKeyTextField?.ebCleanUp ()
     self.mDisconnectSchematicHotKeyTextField?.ebCleanUp ()
     self.mDisplayBackLayoutColorWell?.ebCleanUp ()
@@ -4342,6 +4397,7 @@ import Cocoa
     self.mDeviceLibraryTableView = nil
     self.mDevicePackageTableView = nil
     self.mDeviceSymbolTableView = nil
+    self.mDeviceSymbolTypeTableView = nil
     self.mDisconnectAllSymbolPinsSchematicHotKeyTextField = nil
     self.mDisconnectSchematicHotKeyTextField = nil
     self.mDisplayBackLayoutColorWell = nil

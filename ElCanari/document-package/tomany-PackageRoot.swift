@@ -71,7 +71,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedPageIndex.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -128,7 +128,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedInspector.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -185,7 +185,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_comments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_comments.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -242,7 +242,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_program (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_program.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -299,7 +299,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_horizontalFlip.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -356,7 +356,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_verticalFlip.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -413,7 +413,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_gridStyle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gridStyle.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -470,7 +470,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_gridStep (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gridStep.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -527,7 +527,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_gridStepUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gridStepUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -584,7 +584,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_gridDisplayFactor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gridDisplayFactor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -641,7 +641,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_zoom.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -698,7 +698,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_padNumbering (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padNumbering.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -755,7 +755,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_counterClockNumberingStartAngle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_counterClockNumberingStartAngle.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -812,7 +812,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_xPlacardUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xPlacardUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -869,7 +869,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_yPlacardUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yPlacardUnit.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -926,7 +926,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_freePadNumbering (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_freePadNumbering.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -982,7 +982,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_counterClockNumbering (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_counterClockNumbering.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1038,7 +1038,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_gridStepMultipliedByDisplayFactor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_gridStepMultipliedByDisplayFactor.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1094,7 +1094,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padNumberDisplay.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1150,7 +1150,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1206,7 +1206,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   final func addEBObserverOf_noIssue (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_noIssue.insert (inObserver)
-    switch prop {
+    switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -1386,6 +1386,7 @@ final class TransientArrayOfSuperOf_PackageRoot <SUPER : EBManagedObject> : Read
 
   private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
   private var mTransientKind : PropertyKind = .empty
+  private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
 
   //····················································································································
@@ -1409,41 +1410,46 @@ final class TransientArrayOfSuperOf_PackageRoot <SUPER : EBManagedObject> : Read
 
   override func notifyModelDidChange () {
     self.mModelEvent.postEvent ()
+    self.mModelArrayShouldBeComputed = true
     super.notifyModelDidChange ()
   }
  
   //····················································································································
 
   private final func computeModelArray () {
-    var newModelArray : [SUPER] 
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.prop {
-      case .empty :
+    if self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = false
+      var newModelArray : [SUPER] 
+      if let dataProvider = self.mDataProvider {
+        switch dataProvider.prop {
+        case .empty :
+          newModelArray = []
+          self.mTransientKind = .empty
+        case .single (let v) :
+          newModelArray = v
+          self.mTransientKind = .single
+         case .multiple :
+          newModelArray = []
+          self.mTransientKind = .multiple
+        }
+      }else{
         newModelArray = []
         self.mTransientKind = .empty
-      case .single (let v) :
-        newModelArray = v
-        self.mTransientKind = .single
-       case .multiple :
-        newModelArray = []
-        self.mTransientKind = .multiple
       }
-    }else{
-      newModelArray = []
-      self.mTransientKind = .empty
-    }
-    var newArray = [PackageRoot] ()
-    for superObject in newModelArray {
-      if let object = superObject as? PackageRoot {
-        newArray.append (object)
+      var newArray = [PackageRoot] ()
+      for superObject in newModelArray {
+        if let object = superObject as? PackageRoot {
+          newArray.append (object)
+        }
       }
+      self.mInternalArrayValue = newArray
     }
-    self.mInternalArrayValue = newArray
   }
 
   //····················································································································
 
   override var prop : EBSelection < [PackageRoot] > {
+    self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
       return .empty

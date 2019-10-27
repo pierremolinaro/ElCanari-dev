@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Array controller DeviceDocument mPackageDisplayController
+//    Array controller DeviceDocument packageDisplayController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
+final class Controller_DeviceDocument_packageDisplayController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
  
   //····················································································································
   // Model
