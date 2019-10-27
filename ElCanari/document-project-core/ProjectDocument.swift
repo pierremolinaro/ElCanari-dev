@@ -926,10 +926,10 @@ import Cocoa
   @IBOutlet var mRenameComponentPanel : NSPanel? = nil
   @IBOutlet var mRenameComponentPrefixComboxBox : CanariComboBox? = nil
   @IBOutlet var mRenameComponentValidationButton : NSButton? = nil
-  @IBOutlet var mRenameDeviceButton : EBButton? = nil
   @IBOutlet var mRenameDeviceErrorMessageTextField : NSTextField? = nil
   @IBOutlet var mRenameDeviceNameTextField : EBTextField? = nil
   @IBOutlet var mRenameDevicePanel : NSPanel? = nil
+  @IBOutlet var mRenameDeviceTitleTextField : NSTextField? = nil
   @IBOutlet var mRenameDeviceValidationButton : NSButton? = nil
   @IBOutlet var mRenameNetErrorTextField : EBTextField? = nil
   @IBOutlet var mRenameNetInNetTabButton : EBButton? = nil
@@ -1052,7 +1052,6 @@ import Cocoa
   var mController_mResetSelectedDeviceVersionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditDeviceButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mRenameDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mExportDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSchematicCustomSizeView_hidden : MultipleBindingController_hidden? = nil
@@ -1503,10 +1502,10 @@ import Cocoa
     checkOutletConnection (self.mRenameComponentPanel, "mRenameComponentPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mRenameComponentPrefixComboxBox, "mRenameComponentPrefixComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mRenameComponentValidationButton, "mRenameComponentValidationButton", NSButton.self, #file, #line)
-    checkOutletConnection (self.mRenameDeviceButton, "mRenameDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRenameDeviceErrorMessageTextField, "mRenameDeviceErrorMessageTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mRenameDeviceNameTextField, "mRenameDeviceNameTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mRenameDevicePanel, "mRenameDevicePanel", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mRenameDeviceTitleTextField, "mRenameDeviceTitleTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mRenameDeviceValidationButton, "mRenameDeviceValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mRenameNetErrorTextField, "mRenameNetErrorTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mRenameNetInNetTabButton, "mRenameNetInNetTabButton", EBButton.self, #file, #line)
@@ -2755,16 +2754,6 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.projectDeviceController.selectedArray_property.count_property_selection == EBSelection.single (1))
-        },
-        outlet: self.mRenameDeviceButton
-      )
-      self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
-      self.mController_mRenameDeviceButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
           return (self.projectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mExportDeviceButton
@@ -3227,8 +3216,6 @@ import Cocoa
     self.mRemoveDeviceButton?.action = #selector (ProjectDocument.removeDeviceAction (_:))
     self.mEditDeviceButton?.target = self
     self.mEditDeviceButton?.action = #selector (ProjectDocument.editDeviceAction (_:))
-    self.mRenameDeviceButton?.target = self
-    self.mRenameDeviceButton?.action = #selector (ProjectDocument.renameDeviceAction (_:))
     self.mExportDeviceButton?.target = self
     self.mExportDeviceButton?.action = #selector (ProjectDocument.exportDeviceAction (_:))
     self.mUpdateDeviceButton?.target = self
@@ -3588,8 +3575,6 @@ import Cocoa
     self.mController_mRemoveDeviceButton_enabled = nil
     self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditDeviceButton_enabled!)
     self.mController_mEditDeviceButton_enabled = nil
-    self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameDeviceButton_enabled!)
-    self.mController_mRenameDeviceButton_enabled = nil
     self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportDeviceButton_enabled!)
     self.mController_mExportDeviceButton_enabled = nil
     self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateDeviceButton_enabled!)
@@ -3774,7 +3759,6 @@ import Cocoa
     self.mResetSelectedDeviceVersionButton?.target = nil
     self.mRemoveDeviceButton?.target = nil
     self.mEditDeviceButton?.target = nil
-    self.mRenameDeviceButton?.target = nil
     self.mExportDeviceButton?.target = nil
     self.mUpdateDeviceButton?.target = nil
     self.mNewSheetButton?.target = nil
@@ -4089,10 +4073,10 @@ import Cocoa
     self.mRenameComponentPanel?.ebCleanUp ()
     self.mRenameComponentPrefixComboxBox?.ebCleanUp ()
     self.mRenameComponentValidationButton?.ebCleanUp ()
-    self.mRenameDeviceButton?.ebCleanUp ()
     self.mRenameDeviceErrorMessageTextField?.ebCleanUp ()
     self.mRenameDeviceNameTextField?.ebCleanUp ()
     self.mRenameDevicePanel?.ebCleanUp ()
+    self.mRenameDeviceTitleTextField?.ebCleanUp ()
     self.mRenameDeviceValidationButton?.ebCleanUp ()
     self.mRenameNetErrorTextField?.ebCleanUp ()
     self.mRenameNetInNetTabButton?.ebCleanUp ()
@@ -4497,10 +4481,10 @@ import Cocoa
     self.mRenameComponentPanel = nil
     self.mRenameComponentPrefixComboxBox = nil
     self.mRenameComponentValidationButton = nil
-    self.mRenameDeviceButton = nil
     self.mRenameDeviceErrorMessageTextField = nil
     self.mRenameDeviceNameTextField = nil
     self.mRenameDevicePanel = nil
+    self.mRenameDeviceTitleTextField = nil
     self.mRenameDeviceValidationButton = nil
     self.mRenameNetErrorTextField = nil
     self.mRenameNetInNetTabButton = nil

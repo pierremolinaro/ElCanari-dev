@@ -82,15 +82,10 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
   //--- Sort
     self.mDataSource = inDataSource
     for s in self.sortDescriptors.reversed () {
-      if let key = s.key {
-        if key == "value" {
-          self.mDataSource.sort (by: { $0.localizedStandardCompare ($1) == .orderedAscending } )
-          if !s.ascending {
-            self.mDataSource.reverse ()
-          }
-        }else{
-          NSLog ("Key '\(key)' unknown in \(#file):\(#line)")
-        }
+      if let key = s.key, key == "value" {
+        self.mDataSource.sort () { String.numericCompare ($0, s.ascending, $1) }
+      }else{
+        NSLog ("Key '\(String (describing: s.key))' unknown in \(#file):\(#line)")
       }
     }
     self.reloadData ()
@@ -148,6 +143,18 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
   func unbind_array () {
     self.mController?.unregister ()
     self.mController = nil
+  }
+
+  //····················································································································
+  //  SELECTED TITLE
+  //····················································································································
+
+  var selectedItemTitle : String? {
+    if self.selectedRow >= 0 {
+      return self.mDataSource [self.selectedRow]
+    }else{
+      return nil
+    }
   }
 
   //····················································································································

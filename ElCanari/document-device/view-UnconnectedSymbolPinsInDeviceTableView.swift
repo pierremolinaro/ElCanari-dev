@@ -78,17 +78,9 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
     for s in self.sortDescriptors.reversed () {
       if let key = s.key {
         if key == "symbol" {
-          if s.ascending {
-            self.mDataSource.sort { String.numericCompare ($0.symbolInstanceName, $1.symbolInstanceName) }
-          }else{
-            self.mDataSource.sort { String.numericCompare ($1.symbolInstanceName, $0.symbolInstanceName) }
-          }
+          self.mDataSource.sort { String.numericCompare ($0.symbolInstanceName, s.ascending, $1.symbolInstanceName) }
         }else if key == "pin" {
-          if s.ascending {
-            self.mDataSource.sort { String.numericCompare ($0.pinName, $1.pinName) }
-          }else{
-            self.mDataSource.sort { String.numericCompare ($1.pinName, $0.pinName) }
-          }
+          self.mDataSource.sort { String.numericCompare ($0.pinName, s.ascending, $1.pinName) }
         }
       }
     }

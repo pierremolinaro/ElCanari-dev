@@ -110,11 +110,11 @@ class AssignedPadProxysInDeviceTableView : EBTableView, NSTableViewDataSource, N
     for s in self.sortDescriptors.reversed () {
       if let key = s.key {
         if key == "pad" {
-          self.mDataSource.sort { s.ascending ? String.numericCompare ($0.padName, $1.padName) : String.numericCompare ($1.padName, $0.padName) }
+          self.mDataSource.sort { String.numericCompare ($0.padName, s.ascending, $1.padName)}
         }else if key == "symbol" {
-          self.mDataSource.sort { s.ascending ? String.numericCompare ($0.symbolInstanceName, $1.symbolInstanceName) : String.numericCompare ($1.symbolInstanceName, $0.symbolInstanceName) }
+          self.mDataSource.sort { String.numericCompare ($0.symbolInstanceName, s.ascending, $1.symbolInstanceName) }
         }else if key == "pin" {
-          self.mDataSource.sort { s.ascending ? String.numericCompare ($0.pinName, $1.pinName) : String.numericCompare ($1.pinName, $0.pinName) }
+          self.mDataSource.sort { String.numericCompare ($0.pinName, s.ascending, $1.pinName) }
         }
       }
     }

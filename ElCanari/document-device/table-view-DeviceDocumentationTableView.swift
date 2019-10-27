@@ -8,21 +8,6 @@
 
 import Cocoa
 
-//extension ArrayController_DeviceDocument_mDocumentationController {
-//
-//  func tableView(tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
-//
-//      if dropOperation == .above {
-//          return .move
-//      }
-//      return .all
-//  }
-//
-//  func tableView(tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
-//    return true
-//  }
-//}
-
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //  NSPasteboard.PasteboardType.fileURL is available from 10.13
 

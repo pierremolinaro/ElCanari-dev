@@ -102,9 +102,15 @@ extension String {
 
   //····················································································································
 
-  static func numericCompare (_ inLeft : String, _ inRight : String) -> Bool {
+  static func numericCompare (_ inLeft : String, _ inAscending : Bool,  _ inRight : String) -> Bool {
     let comparisonResult = inLeft.compare (inRight, options: [.numeric])
-    return comparisonResult == .orderedAscending
+    return inAscending ? (comparisonResult == .orderedAscending) : (comparisonResult == .orderedDescending)
+  }
+
+  //····················································································································
+
+  static func numericCompare (_ inLeft : String,  _ inRight : String) -> Bool {
+    return numericCompare (inLeft, true, inRight)
   }
 
   //····················································································································

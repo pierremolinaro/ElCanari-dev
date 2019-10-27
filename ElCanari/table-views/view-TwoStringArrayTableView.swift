@@ -100,9 +100,9 @@ class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewD
     for s in self.sortDescriptors.reversed () {
       if let key = s.key {
         if key == "left" {
-          self.mDataSource.sort () { s.ascending ? ($0.mLeft < $1.mLeft) : ($0.mLeft > $1.mLeft) }
+          self.mDataSource.sort () { String.numericCompare ($0.mLeft, s.ascending, $1.mLeft) }
         }else if key == "right" {
-          self.mDataSource.sort () { s.ascending ? ($0.mRight < $1.mRight) : ($0.mRight > $1.mRight) }
+          self.mDataSource.sort () { String.numericCompare ($0.mRight, s.ascending, $1.mRight) }
         }else{
           NSLog ("Key '\(key)' unknown in \(#file):\(#line)")
         }

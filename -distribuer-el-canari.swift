@@ -32,7 +32,8 @@ let VERSION_CANARI = "1.1.0"
 let NOTES : [String] = []
 let BUGFIXES : [String] = []
 let CHANGES : [String] = [
-  "Project: new board outline settings"
+  "Project: new board outline settings",
+  "Merger: gerber and PDF files are generated within dedicaced directories"
 ]
 let NEWS : [String] = ["Adding focus ring around first responder views"]
 

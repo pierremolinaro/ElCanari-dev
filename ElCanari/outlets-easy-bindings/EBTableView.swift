@@ -14,14 +14,22 @@ class EBTableView : NSTableView, EBUserClassNameProtocol {
 
   required init? (coder : NSCoder) {
     super.init (coder: coder)
-    noteObjectAllocation (self)
+    self.customInit ()
   }
 
   //····················································································································
 
   override init (frame : NSRect) {
     super.init (frame: frame)
+    self.customInit ()
+  }
+
+  //····················································································································
+
+  private final func customInit () {
     noteObjectAllocation (self)
+    self.target = self
+    self.doubleAction = #selector (self.doubleClickAction (_:))
   }
 
   //····················································································································
@@ -30,6 +38,8 @@ class EBTableView : NSTableView, EBUserClassNameProtocol {
     noteObjectDeallocation (self)
   }
 
+  //····················································································································
+  //   DELETE KEY
   //····················································································································
 
   private var mActionOnDeleteKey : Optional <() -> Void> = nil
@@ -55,7 +65,24 @@ class EBTableView : NSTableView, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  //   DOUBLE CLICK
+  //····················································································································
 
+  private var mActionOnDoubleClick : Optional <() -> Void> = nil
+
+  //····················································································································
+
+  func set (actionOnDoubleClick inActionOnDoubleClik : Optional <() -> Void>) {
+    self.mActionOnDoubleClick = inActionOnDoubleClik
+  }
+
+  //····················································································································
+
+  @objc private func doubleClickAction (_ inUnusedSender : Any?) {
+    self.mActionOnDoubleClick? ()
+  }
+
+  //····················································································································
 
 }
 
