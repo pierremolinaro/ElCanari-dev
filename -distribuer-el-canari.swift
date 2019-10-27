@@ -30,7 +30,7 @@ let BUILD_KIND = ProductKind.release
 
 let VERSION_CANARI = "1.1.0"
 let NOTES : [String] = []
-let BUGFIXES : [String] = []
+let BUGFIXES : [String] = ["Package, Symbol Documents: Fixed Document Status"]
 let CHANGES : [String] = [
   "Project: new board outline settings",
   "Merger: gerber and PDF files are generated within dedicaced directories"
@@ -75,7 +75,7 @@ func runCommand (_ cmd : String, _ args : [String]) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   runHiddenCommand                                                                                                   *
+//   runHiddenCommand
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func runHiddenCommand (_ cmd : String, _ args : [String]) -> String {
@@ -111,7 +111,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> String {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   dictionaryFromJsonFile                                                                                             *
+//   dictionaryFromJsonFile
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct VersionDescriptor : Codable {
