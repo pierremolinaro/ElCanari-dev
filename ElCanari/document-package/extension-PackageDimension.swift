@@ -25,8 +25,6 @@ extension PackageDimension {
     self.y1 += inDy
     self.x2 += inDx
     self.y2 += inDy
-    self.xDimension += inDx
-    self.yDimension += inDy
   }
 
   //····················································································································
