@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -429,22 +429,6 @@
                                 <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                 <connections>
                                     <action selector="snapToGrid:" target="-1" id="pjS-27-iCS"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="Toolbar" id="6035">
-                    <menu key="submenu" title="Toolbar" id="6036">
-                        <items>
-                            <menuItem title="Show Text" id="6043">
-                                <connections>
-                                    <action selector="setToolbarDisplayModeAction:" target="-1" id="6045"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Use Small Size" id="6044">
-                                <connections>
-                                    <action selector="setToolbarDisplaySizeAction:" target="-1" id="6046"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -1933,7 +1917,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="PcB-tf-SfN">
                         <rect key="frame" x="1" y="0.0" width="398" height="92"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="UserLibraryTableView" rowSizeStyle="automatic" headerView="5743" viewBased="YES" id="5740" customClass="EBTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="398" height="75"/>
@@ -2275,7 +2259,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="BPs-Uj-CKs">
                             <rect key="frame" x="1" y="0.0" width="667" height="282"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveName="PMPerformLibraryUpdateTableViewInfo" headerView="6242" id="6241" customClass="EBTableView" customModule="ElCanari" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="667" height="265"/>

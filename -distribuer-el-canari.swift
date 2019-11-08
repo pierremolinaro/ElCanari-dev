@@ -31,7 +31,10 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.1.1"
 let NOTES : [String] = []
 let BUGFIXES : [String] = ["Project: Fixed Rectangular Board limits on Gerber and PDF generation"]
-let CHANGES : [String] = []
+let CHANGES : [String] = [
+   "Removed unused 'Toolbar' menu",
+   "ElCanari is compiled with -O2 flag"
+]
 let NEWS : [String] = []
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
