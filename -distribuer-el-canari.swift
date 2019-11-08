@@ -28,14 +28,11 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.1.0"
+let VERSION_CANARI = "1.1.1"
 let NOTES : [String] = []
-let BUGFIXES : [String] = ["Package, Symbol Documents: Fixed Document Status"]
-let CHANGES : [String] = [
-  "Project: new board outline settings",
-  "Merger: gerber and PDF files are generated within dedicaced directories"
-]
-let NEWS : [String] = ["Adding focus ring around first responder views"]
+let BUGFIXES : [String] = ["Project: Fixed Rectangular Board limits on Gerber and PDF generation"]
+let CHANGES : [String] = []
+let NEWS : [String] = []
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   FOR PRINTING IN COLOR

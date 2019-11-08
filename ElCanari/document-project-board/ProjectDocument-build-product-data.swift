@@ -58,69 +58,79 @@ extension ProjectDocument {
   //····················································································································
 
   private func buildBoardLimitPath () -> EBLinePath {
-    var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
-    for curve in self.rootObject.mBorderCurves {
-      let descriptor = curve.descriptor!
-      curveDictionary [descriptor.p1] = descriptor
-    }
-    var bp = EBBezierPath ()
-    var descriptor = self.rootObject.mBorderCurves [0].descriptor!
-    let p = descriptor.p1
-    bp.move (to: p.cocoaPoint)
-    var loop = true
-    while loop {
-      switch descriptor.shape {
-      case .line :
-        bp.line (to: descriptor.p2.cocoaPoint)
-      case .bezier :
-        let cp1 = descriptor.cp1.cocoaPoint
-        let cp2 = descriptor.cp2.cocoaPoint
-        bp.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
-      }
-      descriptor = curveDictionary [descriptor.p2]!
-      loop = p != descriptor.p1
-    }
-    bp.close ()
-  //---
-    bp.lineJoinStyle = .round
-    bp.lineCapStyle = .round
-    bp.lineWidth = canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance * 2)
-    let strokeBP = bp.pathByStroking
-    // Swift.print ("BezierPath BEGIN")
-    var closedPathCount = 0
-    let retainedClosedPath = 2
     var retainedBP = EBBezierPath ()
-    var points = [NSPoint] (repeating: .zero, count: 3)
-    for i in 0 ..< strokeBP.nsBezierPath.elementCount {
-      let type = strokeBP.nsBezierPath.element (at: i, associatedPoints: &points)
-      switch type {
-      case .moveTo:
-        // Swift.print ("  moveTo: \(points[0].x) \(points[0].y)")
-        closedPathCount += 1
-        if closedPathCount == retainedClosedPath {
-          retainedBP.move (to: points[0])
-        }
-      case .lineTo:
-        // Swift.print ("  lineTo: \(points[0].x) \(points[0].y)")
-        if closedPathCount == retainedClosedPath {
-          retainedBP.line (to: points[0])
-        }
-      case .curveTo:
-        // Swift.print ("  curveTo")
-        if closedPathCount == retainedClosedPath {
-          retainedBP.curve (to: points[2], controlPoint1: points[0], controlPoint2: points[1])
-        }
-      case .closePath:
-        // Swift.print ("  closePath")
-        if closedPathCount == retainedClosedPath {
-          retainedBP.close ()
-        }
-      @unknown default :
-        ()
+    switch self.rootObject.mBoardShape {
+    case .bezierPathes :
+      var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
+      for curve in self.rootObject.mBorderCurves {
+        let descriptor = curve.descriptor!
+        curveDictionary [descriptor.p1] = descriptor
       }
+      var descriptor = self.rootObject.mBorderCurves [0].descriptor!
+      let p = descriptor.p1
+      var bp = EBBezierPath ()
+      bp.move (to: p.cocoaPoint)
+      var loop = true
+      while loop {
+        switch descriptor.shape {
+        case .line :
+          bp.line (to: descriptor.p2.cocoaPoint)
+        case .bezier :
+          let cp1 = descriptor.cp1.cocoaPoint
+          let cp2 = descriptor.cp2.cocoaPoint
+          bp.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
+        }
+        descriptor = curveDictionary [descriptor.p2]!
+        loop = p != descriptor.p1
+      }
+      bp.close ()
+    //---
+      bp.lineJoinStyle = .round
+      bp.lineCapStyle = .round
+      bp.lineWidth = canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance * 2)
+      let strokeBP = bp.pathByStroking
+      // Swift.print ("BezierPath BEGIN")
+      var closedPathCount = 0
+      let retainedClosedPath = 2
+      var points = [NSPoint] (repeating: .zero, count: 3)
+      for i in 0 ..< strokeBP.nsBezierPath.elementCount {
+        let type = strokeBP.nsBezierPath.element (at: i, associatedPoints: &points)
+        switch type {
+        case .moveTo:
+          // Swift.print ("  moveTo: \(points[0].x) \(points[0].y)")
+          closedPathCount += 1
+          if closedPathCount == retainedClosedPath {
+            retainedBP.move (to: points[0])
+          }
+        case .lineTo:
+          // Swift.print ("  lineTo: \(points[0].x) \(points[0].y)")
+          if closedPathCount == retainedClosedPath {
+            retainedBP.line (to: points[0])
+          }
+        case .curveTo:
+          // Swift.print ("  curveTo")
+          if closedPathCount == retainedClosedPath {
+            retainedBP.curve (to: points[2], controlPoint1: points[0], controlPoint2: points[1])
+          }
+        case .closePath:
+          // Swift.print ("  closePath")
+          if closedPathCount == retainedClosedPath {
+            retainedBP.close ()
+          }
+        @unknown default :
+          ()
+        }
+      }
+      //Swift.print ("BezierPath END")
+    case .rectangular :
+      let width = canariUnitToCocoa (self.rootObject.mRectangularBoardWidth)
+      let height = canariUnitToCocoa (self.rootObject.mRectangularBoardHeight)
+      retainedBP.move (to : NSPoint (x: 0.0, y: 0.0))
+      retainedBP.line (to : NSPoint (x: 0.0, y: height))
+      retainedBP.line (to : NSPoint (x: width, y: height))
+      retainedBP.line (to : NSPoint (x: width, y: 0.0))
+      retainedBP.close ()
     }
-    //Swift.print ("BezierPath END")
-  //---
     return retainedBP.pointsByFlattening (withFlatness: 0.1) [0]
   }
 

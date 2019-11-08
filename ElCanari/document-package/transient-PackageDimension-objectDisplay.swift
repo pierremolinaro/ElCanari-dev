@@ -27,7 +27,7 @@ func transient_PackageDimension_objectDisplay (
        _ prefs_packageDimensionColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let arrowSize : CGFloat = 1.5
+  let arrowSize : CGFloat = 0.5
   let p1 = NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
   let p2 = NSPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2))
   let length = NSPoint.distance (p1, p2)
@@ -52,7 +52,8 @@ func transient_PackageDimension_objectDisplay (
     bp.transform(using: tr)
     bp.lineCapStyle = .butt
   }
-  bp.lineWidth = 0.5
+  bp.lineCapStyle = .round
+  bp.lineWidth = 0.05
   shape.add (stroke: [bp], NSColor.orange)
   let rotationIfSmall : CGFloat = (length <= (4.0 * arrowSize)) ? .pi : 0.0 ;
 //------- Arrow at first point
@@ -61,8 +62,8 @@ func transient_PackageDimension_objectDisplay (
   tr.rotate (byRadians: angle + rotationIfSmall)
   var path1 = EBBezierPath ()
   path1.move (to: NSPoint (x: 0.0, y: 0.0))
-  path1.line (to:NSPoint (x: 2.0 * arrowSize, y:  arrowSize))
-  path1.curve (to:NSPoint (x: 2.0 * arrowSize, y: -arrowSize),
+  path1.line (to: NSPoint (x: 2.0 * arrowSize, y:  arrowSize))
+  path1.curve (to: NSPoint (x: 2.0 * arrowSize, y: -arrowSize),
                controlPoint1: NSPoint (x: arrowSize, y: 0.0),
                controlPoint2: NSPoint (x: arrowSize, y: 0.0))
   path1.close ()
