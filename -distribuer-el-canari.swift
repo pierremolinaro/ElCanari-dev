@@ -32,7 +32,8 @@ let VERSION_CANARI = "1.1.2"
 let NOTES : [String] = []
 let BUGFIXES : [String] = []
 let CHANGES : [String] = [
-   "Package: guides and dimensions are drawn by the thinnest line"
+   "Package: guides and dimensions are drawn by the thinnest line",
+   "Package: zoom up to 500%"
 ]
 let NEWS : [String] = []
 

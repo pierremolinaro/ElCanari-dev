@@ -10,11 +10,16 @@ extension EBGraphicView {
 
  //····················································································································
 
-  fileprivate func addPopupButtonItemForZoom (_ inZoom : Int) {
+  fileprivate func addPopupButtonItemForZoom (_ inZoom : Int, _ inScrollView : NSScrollView) {
     if let zoomPopUpButton = self.mZoomPopUpButton {
-      zoomPopUpButton.menu?.addItem (withTitle: ("\(inZoom) %"), action:#selector (EBGraphicView.setZoomFromPopUpButton(_:)), keyEquivalent: "")
-      zoomPopUpButton.lastItem?.target = self
-      zoomPopUpButton.lastItem?.tag = inZoom
+      let minMagnification = inScrollView.minMagnification
+      let maxMagnification = inScrollView.maxMagnification
+      let proposedMagnification = CGFloat (inZoom) / 100.0
+      if (proposedMagnification >= minMagnification) && (proposedMagnification <= maxMagnification) {
+        zoomPopUpButton.menu?.addItem (withTitle: ("\(inZoom) %"), action:#selector (EBGraphicView.setZoomFromPopUpButton(_:)), keyEquivalent: "")
+        zoomPopUpButton.lastItem?.target = self
+        zoomPopUpButton.lastItem?.tag = inZoom
+      }
     }
   }
 
@@ -56,19 +61,27 @@ extension EBGraphicView {
         action:nil,
         keyEquivalent:""
       )
-      self.addPopupButtonItemForZoom (100)
-      self.addPopupButtonItemForZoom (150)
-      self.addPopupButtonItemForZoom (200)
-      self.addPopupButtonItemForZoom (250)
-      self.addPopupButtonItemForZoom (400)
-      self.addPopupButtonItemForZoom (500)
-      self.addPopupButtonItemForZoom (600)
-      self.addPopupButtonItemForZoom (800)
-      self.addPopupButtonItemForZoom (1000)
-      self.addPopupButtonItemForZoom (1200)
-      self.addPopupButtonItemForZoom (1500)
-      self.addPopupButtonItemForZoom (1700)
-      self.addPopupButtonItemForZoom (2000)
+      self.addPopupButtonItemForZoom (50, inScrollView)
+      self.addPopupButtonItemForZoom (75, inScrollView)
+      self.addPopupButtonItemForZoom (100, inScrollView)
+      self.addPopupButtonItemForZoom (150, inScrollView)
+      self.addPopupButtonItemForZoom (200, inScrollView)
+      self.addPopupButtonItemForZoom (250, inScrollView)
+      self.addPopupButtonItemForZoom (400, inScrollView)
+      self.addPopupButtonItemForZoom (500, inScrollView)
+      self.addPopupButtonItemForZoom (600, inScrollView)
+      self.addPopupButtonItemForZoom (800, inScrollView)
+      self.addPopupButtonItemForZoom (1000, inScrollView)
+      self.addPopupButtonItemForZoom (1200, inScrollView)
+      self.addPopupButtonItemForZoom (1500, inScrollView)
+      self.addPopupButtonItemForZoom (1700, inScrollView)
+      self.addPopupButtonItemForZoom (2000, inScrollView)
+      self.addPopupButtonItemForZoom (2500, inScrollView)
+      self.addPopupButtonItemForZoom (3000, inScrollView)
+      self.addPopupButtonItemForZoom (3500, inScrollView)
+      self.addPopupButtonItemForZoom (4000, inScrollView)
+      self.addPopupButtonItemForZoom (4500, inScrollView)
+      self.addPopupButtonItemForZoom (5000, inScrollView)
       zoomPopUpButton.menu?.addItem (withTitle:"Fit to Window", action:#selector (EBGraphicView.setZoomFromPopUpButton(_:)), keyEquivalent:"")
       zoomPopUpButton.lastItem?.target = self
       zoomPopUpButton.lastItem?.tag = 0
