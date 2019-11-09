@@ -458,6 +458,7 @@ fileprivate final class EBShapeElement : Hashable {
     }
     return result
   }
+
   //····················································································································
   //  Draw Rect
   //····················································································································
@@ -476,18 +477,18 @@ fileprivate final class EBShapeElement : Hashable {
         clip.append (clipBezierPath.reversed.nsBezierPath)
         clip.setClip ()
       }
-      switch mKind {
+      switch self.mKind {
       case .fill :
         color.setFill ()
         for bp in self.mPathes {
-          if inView.needsToDraw (bp.bounds) { // !bp.isEmpty &&
+          if inView.needsToDraw (bp.bounds) {
             bp.fill ()
           }
         }
       case .strokeThinnestLine :
         color.setStroke ()
         for bp in self.mPathes {
-          if inView.needsToDraw (bp.bounds) { // !bp.isEmpty &&
+          if inView.needsToDraw (bp.bounds.insetBy (dx: -1.0, dy: -1.0)) {
             bp.stroke ()
           }
         }
@@ -510,7 +511,12 @@ fileprivate final class EBShapeElement : Hashable {
   var boundingBox : NSRect {
     var r = NSRect.null
     for bp in self.mPathes {
-      r = r.union (bp.bounds)
+      switch self.mKind {
+      case .fill :
+        r = r.union (bp.bounds)
+      case .strokeThinnestLine :
+        r = r.union (bp.bounds.insetBy (dx: -1.0, dy: -1.0))
+      }
     }
     switch self.mClipRule {
     case .none :
