@@ -10,47 +10,49 @@ extension EBGraphicView {
 
   //····················································································································
 
-  override func keyDown (with inEvent: NSEvent) {
+  override func keyDown (with inEvent : NSEvent) {
     let amount : Int = inEvent.modifierFlags.contains (.shift)
       ? self.shiftArrowKeyMagnitude
       : self.arrowKeyMagnitude
-    ;
-    for character in (inEvent.characters ?? "").unicodeScalars {
-      switch (character) {
-      case NSEvent.SpecialKey (rawValue: 27).unicodeScalar : // Escape
-        if self.mPerformEndUndoGroupingOnMouseUp {
-          self.mPerformEndUndoGroupingOnMouseUp = false
-          self.viewController?.ebUndoManager?.endUndoGrouping ()
+    if let characters = inEvent.characters, let myWindow = self.window {
+      for character in characters.unicodeScalars {
+        switch (character) {
+        case NSEvent.SpecialKey (rawValue: 27).unicodeScalar : // Escape
+          if self.mPerformEndUndoGroupingOnMouseUp {
+            self.mPerformEndUndoGroupingOnMouseUp = false
+            self.viewController?.ebUndoManager?.endUndoGrouping ()
+          }
+          if self.mOptionClickOperationInProgress {
+            self.mOptionClickOperationInProgress = false
+            self.mAbortOptionMouseOperationCallback? ()
+            self.viewController?.ebUndoManager?.undo ()
+          }
+        case NSEvent.SpecialKey.upArrow.unicodeScalar :
+          _ = self.wantsToTranslateSelection (byX: 0, byY: amount)
+        case NSEvent.SpecialKey.downArrow.unicodeScalar :
+          _ = self.wantsToTranslateSelection (byX: 0, byY: -amount)
+        case NSEvent.SpecialKey.leftArrow.unicodeScalar :
+          _ = self.wantsToTranslateSelection (byX: -amount, byY: 0)
+        case NSEvent.SpecialKey.rightArrow.unicodeScalar :
+          _ = self.wantsToTranslateSelection (byX: amount, byY: 0)
+        case NSEvent.SpecialKey.deleteForward.unicodeScalar, NSEvent.SpecialKey.delete.unicodeScalar :
+          self.deleteSelection ()
+        default :  // Note: inEvent.locationInWindow undefined on non-mouse event
+       //   let mouseDownLocation = self.convert (inEvent.locationInWindow, from: nil)
+          let mouseDownLocation = self.convert (myWindow.mouseLocationOutsideOfEventStream, from: nil)
+          self.mKeyDownCallback? (mouseDownLocation, character)
+          break
         }
-        if self.mOptionClickOperationInProgress {
-          self.mOptionClickOperationInProgress = false
-          self.mAbortOptionMouseOperationCallback? ()
-          self.viewController?.ebUndoManager?.undo ()
-        }
-      case NSEvent.SpecialKey.upArrow.unicodeScalar :
-        _ = self.wantsToTranslateSelection (byX: 0, byY:amount)
-      case NSEvent.SpecialKey.downArrow.unicodeScalar :
-        _ = self.wantsToTranslateSelection (byX: 0, byY:-amount)
-      case NSEvent.SpecialKey.leftArrow.unicodeScalar :
-        _ = self.wantsToTranslateSelection (byX: -amount, byY: 0)
-      case NSEvent.SpecialKey.rightArrow.unicodeScalar :
-        _ = self.wantsToTranslateSelection (byX: amount, byY: 0)
-      case NSEvent.SpecialKey.deleteForward.unicodeScalar, NSEvent.SpecialKey.delete.unicodeScalar :
-        self.deleteSelection ()
-      default :
-        let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-        self.mKeyDownCallback? (mouseDownLocation, character)
-        break
       }
     }
   }
 
   //····················································································································
 
-  private func wantsToTranslateSelection (byX inDx: Int, byY inDy: Int) -> Bool {
+  private func wantsToTranslateSelection (byX inDx : Int, byY inDy : Int) -> Bool {
     var accepted = true
     for object in self.viewController?.selectedGraphicObjectSet ?? [] {
-      if !object.acceptToTranslate (xBy: inDx, yBy:inDy) {
+      if !object.acceptToTranslate (xBy: inDx, yBy: inDy) {
         accepted = false
         break
       }

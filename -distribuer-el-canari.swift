@@ -30,7 +30,7 @@ let BUILD_KIND = ProductKind.release
 
 let VERSION_CANARI = "1.1.2"
 let NOTES : [String] = []
-let BUGFIXES : [String] = []
+let BUGFIXES : [String] = ["Incorrect handling of hot keys on ElCapitan (and older systems?)"]
 let CHANGES : [String] = [
    "Package: guides and dimensions are drawn by the thinnest line",
    "Package: zoom up to 500%"
