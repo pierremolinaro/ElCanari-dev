@@ -1,7 +1,10 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract graphic entity PackageObject {
+  toOne PackageRoot mRoot inverse toMany packageObjects ;
   abstract transient CanariIssueArray issues ;
+  
+  transient Double knobSize dependsFrom self.mRoot.one.knobSizeMultpliedByTen ;
 }
 
 //----------------------------------------------------------------------------*
@@ -34,7 +37,7 @@ graphic entity PackageRoot {
   property @signature String program default "" ;
 
 //--- Package definition
-  toMany @signature PackageObject packageObjects ;
+  toMany @signature PackageObject packageObjects inverse toOne mRoot ;
   toMany PackagePad packagePads dependsFrom self.packageObjects ;
   toMany PackageSlavePad packageSlavePads dependsFrom self.packageObjects ;
   toMany PackageZone packageZones dependsFrom self.packageObjects ;
@@ -47,6 +50,9 @@ graphic entity PackageRoot {
   property Int gridStepUnit default 2_286 ; // mil
   property Int gridDisplayFactor default 4 ;
   property Int zoom default 600 ;
+
+//--- Knob size
+  property Int knobSizeMultpliedByTen default 20 ;
 
 //--- Pad numbering
   property PadNumbering padNumbering default noNumbering ;
@@ -96,7 +102,7 @@ graphic entity PackageSegment : PackageObject {
      self.strokeBezierPath, prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
   ;
 
-  override transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  override transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2, super.PackageObject.knobSize ;
 
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
@@ -136,7 +142,8 @@ graphic entity PackageBezier : PackageObject {
 
   override transient EBShape selectionDisplay dependsFrom
     self.x1, self.y1, self.x2, self.y2,
-    self.cpx1, self.cpy1, self.cpx2, self.cpy2
+    self.cpx1, self.cpy1, self.cpx2, self.cpy2,
+    super.PackageObject.knobSize
   ;
 
   override transient CanariIssueArray issues dependsFrom
@@ -168,7 +175,7 @@ graphic entity PackageOval : PackageObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
-     self.x, self.y, self.width, self.height
+     self.x, self.y, self.width, self.height, super.PackageObject.knobSize
   ;
 
   override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
@@ -204,7 +211,8 @@ graphic entity PackageArc : PackageObject {
 
   override transient EBShape selectionDisplay dependsFrom
      self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle,
-     self.startTangent, self.endTangent, self.pathIsClosed
+     self.startTangent, self.endTangent, self.pathIsClosed,
+     super.PackageObject.knobSize
   ;
 
   override transient CanariIssueArray issues dependsFrom
@@ -334,7 +342,7 @@ graphic entity PackageGuide : PackageObject {
 
   override transient EBShape objectDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
-  override transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  override transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2, super.PackageObject.knobSize ;
 
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
@@ -373,7 +381,8 @@ graphic entity PackageDimension : PackageObject {
     self.x1, self.y1, self.x2, self.y2,
     prefs.packageBackgroundColor,
     prefs.packageDimensionColor,
-    self.xDimension, self.yDimension, self.distanceInCanariUnit, self.distanceUnit, prefs.dimensionFont
+    self.xDimension, self.yDimension, self.distanceInCanariUnit, self.distanceUnit, prefs.dimensionFont,
+    super.PackageObject.knobSize
   ;
 
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
@@ -410,7 +419,8 @@ graphic entity PackageZone : PackageObject {
      self.x, self.y, self.width, self.height,
      self.xName, self.yName, self.zoneName, prefs.padZoneFont,
      prefs.packageBackgroundColor,
-     prefs.padZoneColor
+     prefs.padZoneColor,
+     super.PackageObject.knobSize
   ;
 
   override transient CanariIssueArray issues dependsFrom

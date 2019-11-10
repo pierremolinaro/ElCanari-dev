@@ -161,16 +161,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   }
 
   //····················································································································
-  //   Selection observable property: selectionDisplay
-  //····················································································································
-
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
@@ -188,6 +178,16 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   var rect_property_selection : EBSelection <CanariRect> {
     return self.rect_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: selectionDisplay
+  //····················································································································
+
+  let selectionDisplay_property = EBTransientProperty_EBShape ()
+
+  var selectionDisplay_property_selection : EBSelection <EBShape> {
+    return self.selectionDisplay_property.prop
   }
 
   //····················································································································
@@ -221,9 +221,9 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
     self.bind_property_yNameUnit ()
     self.bind_property_zoneNumbering ()
     self.bind_property_objectDisplay ()
-    self.bind_property_selectionDisplay ()
     self.bind_property_issues ()
     self.bind_property_rect ()
+    self.bind_property_selectionDisplay ()
   }
 
   //····················································································································
@@ -305,15 +305,15 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
-  //--- selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //--- issues
     self.issues_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
   //--- rect
     self.rect_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_rect (self.rect_property)
+  //--- selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //---
   }
 
@@ -1524,45 +1524,6 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   }
   //····················································································································
 
-  private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.selectionDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-  //····················································································································
-
   private final func bind_property_issues () {
     self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
@@ -1616,6 +1577,45 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
           var isMultipleSelection = false
           for object in v {
             switch object.rect_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_selectionDisplay () {
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.selectionDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :

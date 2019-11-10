@@ -72,6 +72,12 @@ protocol PackageRoot_zoom : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageRoot_knobSizeMultpliedByTen : class {
+  var knobSizeMultpliedByTen : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageRoot_padNumbering : class {
   var padNumbering : PadNumbering { get }
 }
@@ -146,6 +152,7 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_gridStepUnit,
          PackageRoot_gridDisplayFactor,
          PackageRoot_zoom,
+         PackageRoot_knobSizeMultpliedByTen,
          PackageRoot_padNumbering,
          PackageRoot_counterClockNumberingStartAngle,
          PackageRoot_xPlacardUnit,
@@ -343,6 +350,23 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
+
+  //····················································································································
+  //   Atomic property: knobSizeMultpliedByTen
+  //····················································································································
+
+  let knobSizeMultpliedByTen_property = EBStoredProperty_Int (defaultValue: 20)
+
+  //····················································································································
+
+  var knobSizeMultpliedByTen : Int {
+    get { return self.knobSizeMultpliedByTen_property.propval }
+    set { self.knobSizeMultpliedByTen_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var knobSizeMultpliedByTen_property_selection : EBSelection <Int> { return self.knobSizeMultpliedByTen_property.prop }
 
   //····················································································································
   //   Atomic property: padNumbering
@@ -657,6 +681,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridDisplayFactor_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: zoom
     self.zoom_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: knobSizeMultpliedByTen
+    self.knobSizeMultpliedByTen_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumbering
     self.padNumbering_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: counterClockNumberingStartAngle
@@ -665,8 +691,12 @@ class PackageRoot : EBGraphicManagedObject,
     self.xPlacardUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yPlacardUnit
     self.yPlacardUnit_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: packageObjects (no option)
+  //--- To many property: packageObjects (has opposite relationship)
     self.packageObjects_property.ebUndoManager = self.ebUndoManager
+    self.packageObjects_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
+    )
   //--- Atomic property: freePadNumbering
     self.freePadNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -816,6 +846,10 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.issues_property.addEBObserver (self.noIssue_property)
   //--- Install undoers and opposite setter for relationships
+    self.packageObjects_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
+    )
     self.packagePads_property.setDataProvider (self.packageObjects_property)
     self.packageSlavePads_property.setDataProvider (self.packageObjects_property)
     self.packageZones_property.setDataProvider (self.packageObjects_property)
@@ -965,6 +999,14 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer: &self.zoom_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "knobSizeMultpliedByTen",
+      idx: self.knobSizeMultpliedByTen_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.knobSizeMultpliedByTen_property.mObserverExplorer,
+      valueExplorer: &self.knobSizeMultpliedByTen_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "padNumbering",
       idx: self.padNumbering_property.ebObjectIndex,
       y: &y,
@@ -1095,6 +1137,9 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: zoom
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
+  //--- Atomic property: knobSizeMultpliedByTen
+    self.knobSizeMultpliedByTen_property.mObserverExplorer = nil
+    self.knobSizeMultpliedByTen_property.mValueExplorer = nil
   //--- Atomic property: padNumbering
     self.padNumbering_property.mObserverExplorer = nil
     self.padNumbering_property.mValueExplorer = nil
@@ -1160,6 +1205,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"gridDisplayFactor")
   //--- Atomic property: zoom
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
+  //--- Atomic property: knobSizeMultpliedByTen
+    self.knobSizeMultpliedByTen_property.storeIn (dictionary: ioDictionary, forKey:"knobSizeMultpliedByTen")
   //--- Atomic property: padNumbering
     self.padNumbering_property.storeIn (dictionary: ioDictionary, forKey:"padNumbering")
   //--- Atomic property: counterClockNumberingStartAngle
@@ -1219,6 +1266,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey:"gridDisplayFactor")
   //--- Atomic property: zoom
     self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+  //--- Atomic property: knobSizeMultpliedByTen
+    self.knobSizeMultpliedByTen_property.readFrom (dictionary: inDictionary, forKey:"knobSizeMultpliedByTen")
   //--- Atomic property: padNumbering
     self.padNumbering_property.readFrom (dictionary: inDictionary, forKey:"padNumbering")
   //--- Atomic property: counterClockNumberingStartAngle
@@ -1248,6 +1297,7 @@ class PackageRoot : EBGraphicManagedObject,
     ioString += "gridStepUnit\n"
     ioString += "gridDisplayFactor\n"
     ioString += "zoom\n"
+    ioString += "knobSizeMultpliedByTen\n"
     ioString += "padNumbering\n"
     ioString += "counterClockNumberingStartAngle\n"
     ioString += "xPlacardUnit\n"
@@ -1288,6 +1338,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridDisplayFactor.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.zoom.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.knobSizeMultpliedByTen.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.padNumbering.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)

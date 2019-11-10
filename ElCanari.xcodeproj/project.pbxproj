@@ -1586,6 +1586,8 @@
 		CFAA756322E77D68002F7F36 /* freerouter-pm.app in Resources */ = {isa = PBXBuildFile; fileRef = CFAA756122E77D68002F7F36 /* freerouter-pm.app */; };
 		CFAA756522E78199002F7F36 /* action-ProjectDocument-launchFreeRouterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA756422E78199002F7F36 /* action-ProjectDocument-launchFreeRouterAction.swift */; };
 		CFAA756622E78199002F7F36 /* action-ProjectDocument-launchFreeRouterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA756422E78199002F7F36 /* action-ProjectDocument-launchFreeRouterAction.swift */; };
+		CFAB36A523786D69000C9954 /* transient-PackageObject-knobSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB36A423786D68000C9954 /* transient-PackageObject-knobSize.swift */; };
+		CFAB36A623786D69000C9954 /* transient-PackageObject-knobSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB36A423786D68000C9954 /* transient-PackageObject-knobSize.swift */; };
 		CFACBA241BEA157D0074F5B7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */; };
 		CFAEAED022A16DB900ECDB77 /* ProjectDocument-schematic-option-click.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAEAECF22A16DB900ECDB77 /* ProjectDocument-schematic-option-click.swift */; };
 		CFAEAED122A16DB900ECDB77 /* ProjectDocument-schematic-option-click.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAEAECF22A16DB900ECDB77 /* ProjectDocument-schematic-option-click.swift */; };
@@ -3252,6 +3254,7 @@
 		CFAA741C1B46AE1100327BAE /* CanariViewWithKeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariViewWithKeyView.swift; sourceTree = "<group>"; };
 		CFAA756122E77D68002F7F36 /* freerouter-pm.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = "freerouter-pm.app"; sourceTree = "<group>"; };
 		CFAA756422E78199002F7F36 /* action-ProjectDocument-launchFreeRouterAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-launchFreeRouterAction.swift"; sourceTree = "<group>"; };
+		CFAB36A423786D68000C9954 /* transient-PackageObject-knobSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageObject-knobSize.swift"; sourceTree = "<group>"; };
 		CFAEAECF22A16DB900ECDB77 /* ProjectDocument-schematic-option-click.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-schematic-option-click.swift"; sourceTree = "<group>"; };
 		CFB0D1E61B46FBC000006BD2 /* CanariDimensionTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariDimensionTextField.swift; sourceTree = "<group>"; };
 		CFB0F5EB1BDBC9F700939954 /* EBProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBProgressIndicator.swift; sourceTree = "<group>"; };
@@ -3841,6 +3844,7 @@
 		CF2B9CDE21C2A89200EE5683 /* document — package */ = {
 			isa = PBXGroup;
 			children = (
+				CFAB36A423786D68000C9954 /* transient-PackageObject-knobSize.swift */,
 				CFDEC6D921D5467900857F9C /* action-PackageDocument-clearProgramErrorAction.swift */,
 				CF4B3AC221D50F0A001217C6 /* action-PackageDocument-loadFromDesignAction.swift */,
 				CF61BA3721CCEA66000CC5EF /* action-PackageDocument-programHelpAction.swift */,
@@ -6208,6 +6212,7 @@
 				CFEB7AE4233A24570060A97A /* transient-BoardObject-isPlacedInBoard.swift in Sources */,
 				CFEB7CD1233A28860060A97A /* transient-ProjectRoot-signatureForERCChecking.swift in Sources */,
 				CF2A01F721DE7C4200F3A379 /* transient-PackageSlavePad-padNumberDisplay.swift in Sources */,
+				CFAB36A523786D69000C9954 /* transient-PackageObject-knobSize.swift in Sources */,
 				CF740E9022F2FFA200C11B1C /* controller-table-view-ProjectDocument-mDataController.swift in Sources */,
 				CF4B39CD21D40F8F001217C6 /* transient-PackageSlavePad-padName.swift in Sources */,
 				CFEB7BBB233A27940060A97A /* transient-DeviceSymbolInstanceInProject-filledBezierPath.swift in Sources */,
@@ -7386,6 +7391,7 @@
 				CF6E148221CD151C008E2180 /* selectionController-PackageDocument-mPackageZoneSelectionController.swift in Sources */,
 				CFEB7AE5233A24570060A97A /* transient-BoardObject-isPlacedInBoard.swift in Sources */,
 				CFEB7CD2233A28860060A97A /* transient-ProjectRoot-signatureForERCChecking.swift in Sources */,
+				CFAB36A623786D69000C9954 /* transient-PackageObject-knobSize.swift in Sources */,
 				CF001F7721F8B1940091518E /* func-getSystemProxy.swift in Sources */,
 				CF644E1522E75744004B7ED3 /* enum-AutorouterSnapAngle.swift in Sources */,
 				CF358EED22296F5100EDE173 /* extension-DeviceDocument.swift in Sources */,

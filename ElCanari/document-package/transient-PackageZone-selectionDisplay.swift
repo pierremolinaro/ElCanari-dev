@@ -23,7 +23,8 @@ func transient_PackageZone_selectionDisplay (
        _ self_zoneName : String,             
        _ prefs_padZoneFont : NSFont,         
        _ prefs_packageBackgroundColor : NSColor,
-       _ prefs_padZoneColor : NSColor
+       _ prefs_padZoneColor : NSColor,       
+       _ self_PackageObject_knobSize : Double
 ) -> EBShape {
 //--- START OF USER ZONE 2
     var shape = EBShape ()
@@ -50,10 +51,10 @@ func transient_PackageZone_selectionDisplay (
     }
     bp.lineWidth = 0.25
     shape.add (stroke: [bp], NSColor.cyan)
-    shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y), knobIndex: PACKAGE_ZONE_BOTTOM, .circ, 2.0)
-    shape.add (knobAt:  NSPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_ZONE_LEFT, .circ, 2.0)
-    shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y + height), knobIndex: PACKAGE_ZONE_TOP, .circ, 2.0)
-    shape.add (knobAt:  NSPoint (x: x + width, y: y + height / 2.0), knobIndex: PACKAGE_ZONE_RIGHT, .circ, 2.0)
+    shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y), knobIndex: PACKAGE_ZONE_BOTTOM, .circ, CGFloat (self_PackageObject_knobSize))
+    shape.add (knobAt:  NSPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_ZONE_LEFT, .circ, CGFloat (self_PackageObject_knobSize))
+    shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y + height), knobIndex: PACKAGE_ZONE_TOP, .circ, CGFloat (self_PackageObject_knobSize))
+    shape.add (knobAt:  NSPoint (x: x + width, y: y + height / 2.0), knobIndex: PACKAGE_ZONE_RIGHT, .circ, CGFloat (self_PackageObject_knobSize))
   //--- Zone
     let text = (self_zoneName == "") ? "?" : self_zoneName
     let pText = CanariPoint (x: self_xName, y: self_yName).cocoaPoint

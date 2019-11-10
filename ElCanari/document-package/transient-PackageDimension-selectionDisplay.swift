@@ -24,7 +24,8 @@ func transient_PackageDimension_selectionDisplay (
        _ self_yDimension : Int,                   
        _ self_distanceInCanariUnit : Int,         
        _ self_distanceUnit : Int,                 
-       _ prefs_dimensionFont : NSFont
+       _ prefs_dimensionFont : NSFont,            
+       _ self_PackageObject_knobSize : Double
 ) -> EBShape {
 //--- START OF USER ZONE 2
   let p1 = NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
@@ -41,8 +42,8 @@ func transient_PackageDimension_selectionDisplay (
   let dimensionText = stringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
   var shape = EBShape ()
   shape.add (stroke: [bp], NSColor.cyan)
-  shape.add (knobAt: p1, knobIndex: PACKAGE_DIMENSION_ENDPOINT_1, .circ, 2.0)
-  shape.add (knobAt: p2, knobIndex: PACKAGE_DIMENSION_ENDPOINT_2, .circ, 2.0)
+  shape.add (knobAt: p1, knobIndex: PACKAGE_DIMENSION_ENDPOINT_1, .circ, CGFloat (self_PackageObject_knobSize))
+  shape.add (knobAt: p2, knobIndex: PACKAGE_DIMENSION_ENDPOINT_2, .circ, CGFloat (self_PackageObject_knobSize))
   shape.add (
     textKnob: dimensionText,
     pText,

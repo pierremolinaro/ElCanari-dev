@@ -256,6 +256,7 @@ import Cocoa
   @IBOutlet var mIssueTableView : CanariIssueTableView? = nil
   @IBOutlet var mIssueTextField : EBTextObserverField? = nil
   @IBOutlet var mIssuesInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet var mKnobSizeSlider : EBSlider? = nil
   @IBOutlet var mLineColorOfPackageGridColorWell : EBColorWell? = nil
   @IBOutlet var mLoadFromDesignButton : EBButton? = nil
   @IBOutlet var mMasterView : NSView? = nil
@@ -547,6 +548,7 @@ import Cocoa
     checkOutletConnection (self.mIssueTableView, "mIssueTableView", CanariIssueTableView.self, #file, #line)
     checkOutletConnection (self.mIssueTextField, "mIssueTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mIssuesInspectorView, "mIssuesInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mKnobSizeSlider, "mKnobSizeSlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mLineColorOfPackageGridColorWell, "mLineColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mLoadFromDesignButton, "mLoadFromDesignButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
@@ -974,6 +976,7 @@ import Cocoa
     self.mGridDisplayPopUpButton?.bind_selectedTag (self.rootObject.gridDisplayFactor_property, file: #file, line: #line)
     self.mXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.xPlacardUnit_property, file: #file, line: #line)
     self.mYPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.yPlacardUnit_property, file: #file, line: #line)
+    self.mKnobSizeSlider?.bind_intValue (self.rootObject.knobSizeMultpliedByTen_property, file: #file, line: #line, sendContinously:true)
     self.mCrossColorOfPackageGridColorWell?.bind_color (g_Preferences!.crossColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
     self.mLineColorOfPackageGridColorWell?.bind_color (g_Preferences!.lineColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
     self.mPackageColorColorWell?.bind_color (g_Preferences!.packageColor_property, file: #file, line: #line, sendContinously:false)
@@ -1275,6 +1278,7 @@ import Cocoa
     self.mGridDisplayPopUpButton?.unbind_selectedTag ()
     self.mXPlacardUnitPopUpButton?.unbind_selectedTag ()
     self.mYPlacardUnitPopUpButton?.unbind_selectedTag ()
+    self.mKnobSizeSlider?.unbind_intValue ()
     self.mCrossColorOfPackageGridColorWell?.unbind_color ()
     self.mLineColorOfPackageGridColorWell?.unbind_color ()
     self.mPackageColorColorWell?.unbind_color ()
@@ -1432,6 +1436,7 @@ import Cocoa
     self.mIssueTableView?.ebCleanUp ()
     self.mIssueTextField?.ebCleanUp ()
     self.mIssuesInspectorView?.ebCleanUp ()
+    self.mKnobSizeSlider?.ebCleanUp ()
     self.mLineColorOfPackageGridColorWell?.ebCleanUp ()
     self.mLoadFromDesignButton?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
@@ -1629,6 +1634,7 @@ import Cocoa
     self.mIssueTableView = nil
     self.mIssueTextField = nil
     self.mIssuesInspectorView = nil
+    self.mKnobSizeSlider = nil
     self.mLineColorOfPackageGridColorWell = nil
     self.mLoadFromDesignButton = nil
     self.mMasterView = nil

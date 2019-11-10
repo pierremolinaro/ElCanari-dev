@@ -484,15 +484,16 @@ class PackageArc : PackageObject,
         kind &= unwSelf.startTangent_property_selection.kind ()
         kind &= unwSelf.endTangent_property_selection.kind ()
         kind &= unwSelf.pathIsClosed_property_selection.kind ()
+        kind &= unwSelf.knobSize_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.startTangent_property_selection, unwSelf.endTangent_property_selection, unwSelf.pathIsClosed_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_PackageArc_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.startTangent_property_selection, unwSelf.endTangent_property_selection, unwSelf.pathIsClosed_property_selection, unwSelf.knobSize_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_PackageArc_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
             return .empty
           }
@@ -509,6 +510,7 @@ class PackageArc : PackageObject,
     self.startTangent_property.addEBObserver (self.selectionDisplay_property)
     self.endTangent_property.addEBObserver (self.selectionDisplay_property)
     self.pathIsClosed_property.addEBObserver (self.selectionDisplay_property)
+    self.knobSize_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -582,6 +584,7 @@ class PackageArc : PackageObject,
     self.startTangent_property.removeEBObserver (self.selectionDisplay_property)
     self.endTangent_property.removeEBObserver (self.selectionDisplay_property)
     self.pathIsClosed_property.removeEBObserver (self.selectionDisplay_property)
+    self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
     self.xCenter_property.removeEBObserver (self.issues_property)
     self.yCenter_property.removeEBObserver (self.issues_property)
     self.radius_property.removeEBObserver (self.issues_property)

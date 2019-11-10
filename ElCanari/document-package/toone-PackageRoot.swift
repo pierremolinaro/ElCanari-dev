@@ -26,6 +26,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     inOldValue?.gridStepUnit_property.removeEBObserversFrom (&self.mObserversOf_gridStepUnit) // Stored property
     inOldValue?.gridDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_gridDisplayFactor) // Stored property
     inOldValue?.zoom_property.removeEBObserversFrom (&self.mObserversOf_zoom) // Stored property
+    inOldValue?.knobSizeMultpliedByTen_property.removeEBObserversFrom (&self.mObserversOf_knobSizeMultpliedByTen) // Stored property
     inOldValue?.padNumbering_property.removeEBObserversFrom (&self.mObserversOf_padNumbering) // Stored property
     inOldValue?.counterClockNumberingStartAngle_property.removeEBObserversFrom (&self.mObserversOf_counterClockNumberingStartAngle) // Stored property
     inOldValue?.xPlacardUnit_property.removeEBObserversFrom (&self.mObserversOf_xPlacardUnit) // Stored property
@@ -48,6 +49,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     self.mInternalValue?.gridStepUnit_property.addEBObserversFrom (&self.mObserversOf_gridStepUnit) // Stored property
     self.mInternalValue?.gridDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_gridDisplayFactor) // Stored property
     self.mInternalValue?.zoom_property.addEBObserversFrom (&self.mObserversOf_zoom) // Stored property
+    self.mInternalValue?.knobSizeMultpliedByTen_property.addEBObserversFrom (&self.mObserversOf_knobSizeMultpliedByTen) // Stored property
     self.mInternalValue?.padNumbering_property.addEBObserversFrom (&self.mObserversOf_padNumbering) // Stored property
     self.mInternalValue?.counterClockNumberingStartAngle_property.addEBObserversFrom (&self.mObserversOf_counterClockNumberingStartAngle) // Stored property
     self.mInternalValue?.xPlacardUnit_property.addEBObserversFrom (&self.mObserversOf_xPlacardUnit) // Stored property
@@ -826,6 +828,76 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.zoom_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'knobSizeMultpliedByTen' stored property
+  //····················································································································
+
+  private var mObserversOf_knobSizeMultpliedByTen = EBWeakEventSet ()
+
+  //····················································································································
+
+  var knobSizeMultpliedByTen_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.knobSizeMultpliedByTen_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_knobSizeMultpliedByTen (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_knobSizeMultpliedByTen.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.knobSizeMultpliedByTen_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_knobSizeMultpliedByTen (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_knobSizeMultpliedByTen.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.knobSizeMultpliedByTen_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_knobSizeMultpliedByTen_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_knobSizeMultpliedByTen.apply { (_ observer : EBEvent) in
+        managedObject.knobSizeMultpliedByTen_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_knobSizeMultpliedByTen_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    self.mObserversOf_knobSizeMultpliedByTen.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.knobSizeMultpliedByTen_property.removeEBObserver (observer)
       }
     }
   }

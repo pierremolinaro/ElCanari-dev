@@ -17,7 +17,8 @@ func transient_PackageSegment_selectionDisplay (
        _ self_x1 : Int,                         
        _ self_y1 : Int,                         
        _ self_x2 : Int,                         
-       _ self_y2 : Int
+       _ self_y2 : Int,                         
+       _ self_PackageObject_knobSize : Double
 ) -> EBShape {
 //--- START OF USER ZONE 2
   let p1 = NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
@@ -29,8 +30,8 @@ func transient_PackageSegment_selectionDisplay (
   bp.lineCapStyle = .round
   var shape = EBShape ()
   shape.add (stroke: [bp], NSColor.cyan)
-  shape.add (knobAt:  p1, knobIndex: PACKAGE_SEGMENT_ENDPOINT_1, .circ, 2.0)
-  shape.add (knobAt:  p2, knobIndex: PACKAGE_SEGMENT_ENDPOINT_2, .circ, 2.0)
+  shape.add (knobAt:  p1, knobIndex: PACKAGE_SEGMENT_ENDPOINT_1, .circ, CGFloat (self_PackageObject_knobSize))
+  shape.add (knobAt:  p2, knobIndex: PACKAGE_SEGMENT_ENDPOINT_2, .circ, CGFloat (self_PackageObject_knobSize))
   return shape
 //--- END OF USER ZONE 2
 }

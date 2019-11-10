@@ -286,15 +286,16 @@ class PackageGuide : PackageObject,
         kind &= unwSelf.y1_property_selection.kind ()
         kind &= unwSelf.x2_property_selection.kind ()
         kind &= unwSelf.y2_property_selection.kind ()
+        kind &= unwSelf.knobSize_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_PackageGuide_selectionDisplay (v0, v1, v2, v3))
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.knobSize_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_PackageGuide_selectionDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -307,6 +308,7 @@ class PackageGuide : PackageObject,
     self.y1_property.addEBObserver (self.selectionDisplay_property)
     self.x2_property.addEBObserver (self.selectionDisplay_property)
     self.y2_property.addEBObserver (self.selectionDisplay_property)
+    self.knobSize_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -360,6 +362,7 @@ class PackageGuide : PackageObject,
     self.y1_property.removeEBObserver (self.selectionDisplay_property)
     self.x2_property.removeEBObserver (self.selectionDisplay_property)
     self.y2_property.removeEBObserver (self.selectionDisplay_property)
+    self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
     self.x1_property.removeEBObserver (self.issues_property)
     self.y1_property.removeEBObserver (self.issues_property)
     self.x2_property.removeEBObserver (self.issues_property)

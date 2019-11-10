@@ -342,15 +342,16 @@ class PackageOval : PackageObject,
         kind &= unwSelf.y_property_selection.kind ()
         kind &= unwSelf.width_property_selection.kind ()
         kind &= unwSelf.height_property_selection.kind ()
+        kind &= unwSelf.knobSize_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_PackageOval_selectionDisplay (v0, v1, v2, v3))
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.knobSize_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_PackageOval_selectionDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -363,6 +364,7 @@ class PackageOval : PackageObject,
     self.y_property.addEBObserver (self.selectionDisplay_property)
     self.width_property.addEBObserver (self.selectionDisplay_property)
     self.height_property.addEBObserver (self.selectionDisplay_property)
+    self.knobSize_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -419,6 +421,7 @@ class PackageOval : PackageObject,
     self.y_property.removeEBObserver (self.selectionDisplay_property)
     self.width_property.removeEBObserver (self.selectionDisplay_property)
     self.height_property.removeEBObserver (self.selectionDisplay_property)
+    self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
     self.x_property.removeEBObserver (self.issues_property)
     self.y_property.removeEBObserver (self.issues_property)
     self.width_property.removeEBObserver (self.issues_property)

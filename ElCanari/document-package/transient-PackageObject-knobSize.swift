@@ -13,26 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackagePad_selectionDisplay (
-       _ self_xCenter : Int,                
-       _ self_yCenter : Int,                
-       _ self_width : Int,                  
-       _ self_height : Int,                 
-       _ self_padShape : PadShape
-) -> EBShape {
+func transient_PackageObject_knobSize (
+       _ self_mRoot_knobSizeMultpliedByTen : Int?
+) -> Double {
 //--- START OF USER ZONE 2
-    var bp = EBBezierPath.pad (
-      centerX: self_xCenter,
-      centerY: self_yCenter,
-      width: self_width,
-      height: self_height,
-      shape: self_padShape
-    )
-    bp.lineWidth = 0.25
-    bp.lineCapStyle = .round
-    var shape = EBShape ()
-    shape.add (stroke: [bp], .cyan)
-    return shape
+         return Double (self_mRoot_knobSizeMultpliedByTen ?? 10) / 10.0
 //--- END OF USER ZONE 2
 }
 

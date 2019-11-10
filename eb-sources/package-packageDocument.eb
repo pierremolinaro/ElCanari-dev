@@ -450,6 +450,7 @@ document PackageDocument root PackageRoot {
   outlet EBPopUpButton mGridDisplayPopUpButton $selectedTag root.gridDisplayFactor ;
   outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
   outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
+  outlet EBSlider mKnobSizeSlider $intValue root.knobSizeMultpliedByTen {sendContinously:yes} ;
 
 //--- Display inspector
   outlet EBColorWell mCrossColorOfPackageGridColorWell $color prefs.crossColorOfPackageGrid {sendContinously:no} ;

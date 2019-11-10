@@ -15,13 +15,84 @@ class ReadOnlyObject_PackageObject : ReadOnlyAbstractObjectProperty <PackageObje
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageObject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    inOldValue?.knobSize_property.removeEBObserversFrom (&self.mObserversOf_knobSize) // Transient property
   //--- Add observers to added objects
+    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    self.mInternalValue?.knobSize_property.addEBObserversFrom (&self.mObserversOf_knobSize) // Transient property
+  }
+
+  //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.issues_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.issues_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
   }
 
   //····················································································································
@@ -163,16 +234,16 @@ class ReadOnlyObject_PackageObject : ReadOnlyAbstractObjectProperty <PackageObje
   }
 
   //····················································································································
-  //   Observers of 'issues' transient property
+  //   Observers of 'knobSize' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private var mObserversOf_knobSize = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  var knobSize_property_selection : EBSelection <Double?> {
     if let model = self.propval {
-      switch (model.issues_property_selection) {
+      switch (model.knobSize_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -187,46 +258,46 @@ class ReadOnlyObject_PackageObject : ReadOnlyAbstractObjectProperty <PackageObje
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_knobSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_issues.insert (inObserver)
+    self.mObserversOf_knobSize.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver)
+      v?.knobSize_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_knobSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_issues.remove (inObserver)
+    self.mObserversOf_knobSize.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.issues_property.removeEBObserver (inObserver)
+      v?.knobSize_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageObject>) {
+  final func addEBObserversOf_knobSize_toElementsOfSet (_ inSet : Set<PackageObject>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
+      self.mObserversOf_knobSize.apply { (_ observer : EBEvent) in
+        managedObject.knobSize_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageObject>) {
+  final func removeEBObserversOf_knobSize_fromElementsOfSet (_ inSet : Set<PackageObject>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
+      self.mObserversOf_knobSize.apply { (_ observer : EBEvent) in
+        managedObject.knobSize_property.removeEBObserver (observer)
       }
     }
   }

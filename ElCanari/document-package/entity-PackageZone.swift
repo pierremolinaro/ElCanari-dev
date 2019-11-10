@@ -96,12 +96,6 @@ protocol PackageZone_objectDisplay : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageZone_selectionDisplay : class {
-  var selectionDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol PackageZone_issues : class {
   var issues : CanariIssueArray? { get }
 }
@@ -110,6 +104,12 @@ protocol PackageZone_issues : class {
 
 protocol PackageZone_rect : class {
   var rect : CanariRect? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageZone_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -132,9 +132,9 @@ class PackageZone : PackageObject,
          PackageZone_yNameUnit,
          PackageZone_zoneNumbering,
          PackageZone_objectDisplay,
-         PackageZone_selectionDisplay,
          PackageZone_issues,
-         PackageZone_rect {
+         PackageZone_rect,
+         PackageZone_selectionDisplay {
 
   //····················································································································
   //   Atomic property: x
@@ -475,46 +475,6 @@ class PackageZone : PackageObject,
     self.zoneName_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.padZoneFont_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.padZoneColor_property.addEBObserver (self.objectDisplay_property)
-  //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
-        kind &= unwSelf.xName_property_selection.kind ()
-        kind &= unwSelf.yName_property_selection.kind ()
-        kind &= unwSelf.zoneName_property_selection.kind ()
-        kind &= g_Preferences!.padZoneFont_property_selection.kind ()
-        kind &= g_Preferences!.packageBackgroundColor_property_selection.kind ()
-        kind &= g_Preferences!.padZoneColor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection, g_Preferences!.padZoneFont_property_selection, g_Preferences!.packageBackgroundColor_property_selection, g_Preferences!.padZoneColor_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
-            return .single (transient_PackageZone_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.x_property.addEBObserver (self.selectionDisplay_property)
-    self.y_property.addEBObserver (self.selectionDisplay_property)
-    self.width_property.addEBObserver (self.selectionDisplay_property)
-    self.height_property.addEBObserver (self.selectionDisplay_property)
-    self.xName_property.addEBObserver (self.selectionDisplay_property)
-    self.yName_property.addEBObserver (self.selectionDisplay_property)
-    self.zoneName_property.addEBObserver (self.selectionDisplay_property)
-    g_Preferences?.padZoneFont_property.addEBObserver (self.selectionDisplay_property)
-    g_Preferences?.packageBackgroundColor_property.addEBObserver (self.selectionDisplay_property)
-    g_Preferences?.padZoneColor_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -577,6 +537,48 @@ class PackageZone : PackageObject,
     self.y_property.addEBObserver (self.rect_property)
     self.width_property.addEBObserver (self.rect_property)
     self.height_property.addEBObserver (self.rect_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= unwSelf.width_property_selection.kind ()
+        kind &= unwSelf.height_property_selection.kind ()
+        kind &= unwSelf.xName_property_selection.kind ()
+        kind &= unwSelf.yName_property_selection.kind ()
+        kind &= unwSelf.zoneName_property_selection.kind ()
+        kind &= g_Preferences!.padZoneFont_property_selection.kind ()
+        kind &= g_Preferences!.packageBackgroundColor_property_selection.kind ()
+        kind &= g_Preferences!.padZoneColor_property_selection.kind ()
+        kind &= unwSelf.knobSize_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection, g_Preferences!.padZoneFont_property_selection, g_Preferences!.packageBackgroundColor_property_selection, g_Preferences!.padZoneColor_property_selection, unwSelf.knobSize_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
+            return .single (transient_PackageZone_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.x_property.addEBObserver (self.selectionDisplay_property)
+    self.y_property.addEBObserver (self.selectionDisplay_property)
+    self.width_property.addEBObserver (self.selectionDisplay_property)
+    self.height_property.addEBObserver (self.selectionDisplay_property)
+    self.xName_property.addEBObserver (self.selectionDisplay_property)
+    self.yName_property.addEBObserver (self.selectionDisplay_property)
+    self.zoneName_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.padZoneFont_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.packageBackgroundColor_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.padZoneColor_property.addEBObserver (self.selectionDisplay_property)
+    self.knobSize_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.height_property.setSignatureObserver (observer: self)
@@ -609,16 +611,6 @@ class PackageZone : PackageObject,
     self.zoneName_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.padZoneFont_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.padZoneColor_property.removeEBObserver (self.objectDisplay_property)
-    self.x_property.removeEBObserver (self.selectionDisplay_property)
-    self.y_property.removeEBObserver (self.selectionDisplay_property)
-    self.width_property.removeEBObserver (self.selectionDisplay_property)
-    self.height_property.removeEBObserver (self.selectionDisplay_property)
-    self.xName_property.removeEBObserver (self.selectionDisplay_property)
-    self.yName_property.removeEBObserver (self.selectionDisplay_property)
-    self.zoneName_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.padZoneFont_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.packageBackgroundColor_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.padZoneColor_property.removeEBObserver (self.selectionDisplay_property)
     self.x_property.removeEBObserver (self.issues_property)
     self.y_property.removeEBObserver (self.issues_property)
     self.width_property.removeEBObserver (self.issues_property)
@@ -630,6 +622,17 @@ class PackageZone : PackageObject,
     self.y_property.removeEBObserver (self.rect_property)
     self.width_property.removeEBObserver (self.rect_property)
     self.height_property.removeEBObserver (self.rect_property)
+    self.x_property.removeEBObserver (self.selectionDisplay_property)
+    self.y_property.removeEBObserver (self.selectionDisplay_property)
+    self.width_property.removeEBObserver (self.selectionDisplay_property)
+    self.height_property.removeEBObserver (self.selectionDisplay_property)
+    self.xName_property.removeEBObserver (self.selectionDisplay_property)
+    self.yName_property.removeEBObserver (self.selectionDisplay_property)
+    self.zoneName_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.padZoneFont_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.packageBackgroundColor_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.padZoneColor_property.removeEBObserver (self.selectionDisplay_property)
+    self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
     self.height_property.setSignatureObserver (observer: nil)
     self.heightUnit_property.setSignatureObserver (observer: nil)
@@ -780,14 +783,6 @@ class PackageZone : PackageObject,
       valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx: self.selectionDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer: &self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "issues",
       idx: self.issues_property.ebObjectIndex,
       y: &y,
@@ -802,6 +797,14 @@ class PackageZone : PackageObject,
       view: view,
       observerExplorer: &self.rect_property.mObserverExplorer,
       valueExplorer: &self.rect_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)

@@ -21,7 +21,8 @@ func transient_PackageArc_selectionDisplay (
        _ self_arcAngle : Int,               
        _ self_startTangent : Int,           
        _ self_endTangent : Int,             
-       _ self_pathIsClosed : Bool
+       _ self_pathIsClosed : Bool,          
+       _ self_PackageObject_knobSize : Double
 ) -> EBShape {
 //--- START OF USER ZONE 2
     let center = CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint
@@ -44,25 +45,25 @@ func transient_PackageArc_selectionDisplay (
     var shape = EBShape ()
     shape.add (stroke: [bp], NSColor.cyan)
   //--- Add center knob
-    shape.add (knobAt:  center, knobIndex: PACKAGE_ARC_CENTER, .rect, 2.0)
+    shape.add (knobAt:  center, knobIndex: PACKAGE_ARC_CENTER, .rect, CGFloat (self_PackageObject_knobSize))
   //--- Add radius knob
     var t = NSAffineTransform ()
     t.translateX (by: center.x, yBy: center.y)
     t.rotate (byDegrees: startAngle + arcAngle / 2.0)
     let radiusKnob = t.transform (NSPoint (x: radius, y: 0.0))
-    shape.add (knobAt:  radiusKnob, knobIndex: PACKAGE_ARC_RADIUS, .circ, 2.0)
+    shape.add (knobAt:  radiusKnob, knobIndex: PACKAGE_ARC_RADIUS, .circ, CGFloat (self_PackageObject_knobSize))
   //--- Add start point knob
     t = NSAffineTransform ()
     t.translateX (by: center.x, yBy: center.y)
     t.rotate (byDegrees: startAngle)
     let startPointKnob = t.transform (NSPoint (x: radius, y: 0.0))
-    shape.add (knobAt:  startPointKnob, knobIndex: PACKAGE_ARC_START_ANGLE, .circ, 2.0)
+    shape.add (knobAt:  startPointKnob, knobIndex: PACKAGE_ARC_START_ANGLE, .circ, CGFloat (self_PackageObject_knobSize))
   //--- Add end point knob
     t = NSAffineTransform ()
     t.translateX (by: center.x, yBy: center.y)
     t.rotate (byDegrees: startAngle + arcAngle)
     let endPointKnob = t.transform (NSPoint (x: radius, y: 0.0))
-    shape.add (knobAt:  endPointKnob, knobIndex: PACKAGE_ARC_END_ANGLE, .circ, 2.0)
+    shape.add (knobAt:  endPointKnob, knobIndex: PACKAGE_ARC_END_ANGLE, .circ, CGFloat (self_PackageObject_knobSize))
   //---
     return shape
 //--- END OF USER ZONE 2
