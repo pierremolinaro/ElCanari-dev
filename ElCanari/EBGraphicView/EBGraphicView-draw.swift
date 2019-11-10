@@ -22,13 +22,13 @@ extension EBGraphicView {
     self.mBackColor.setFill ()
     NSBezierPath.fill (inDirtyRect)
     self.drawGrid (inDirtyRect)
-    self.mUnderObjectsDisplay.draw (self, inDirtyRect)
+    self.mUnderObjectsDisplay.draw (inDirtyRect)
     for object in self.objectDisplayArray {
-      object.draw (self, inDirtyRect)
+      object.draw (inDirtyRect)
     }
-    self.mOverObjectsDisplay.draw (self, inDirtyRect)
+    self.mOverObjectsDisplay.draw (inDirtyRect)
     for shape in self.selectionShapes {
-      shape.draw (self, inDirtyRect)
+      shape.draw (inDirtyRect)
     }
     self.drawIssue (inDirtyRect)
     self.drawGuideBezierPath (inDirtyRect)

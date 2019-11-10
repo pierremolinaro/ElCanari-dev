@@ -90,7 +90,7 @@ fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
       backColor.setFill ()
       NSBezierPath.fill (inDirtyRect)
     }
-    self.mShape.draw (self, inDirtyRect)
+    self.mShape.draw (inDirtyRect)
   }
 
   //····················································································································
