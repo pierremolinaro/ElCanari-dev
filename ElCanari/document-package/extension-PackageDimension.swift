@@ -2,9 +2,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let PACKAGE_DIMENSION_ENDPOINT_1 = 1
-let PACKAGE_DIMENSION_ENDPOINT_2 = 2
-let PACKAGE_DIMENSION_TEXT       = 3
+let PACKAGE_DIMENSION_CENTER = 1
+let PACKAGE_DIMENSION_ENDPOINT_1 = 2
+let PACKAGE_DIMENSION_ENDPOINT_2 = 3
+let PACKAGE_DIMENSION_TEXT       = 4
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION PackageDimension
@@ -32,9 +33,14 @@ extension PackageDimension {
   //····················································································································
 
   override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
-    if inKnobIndex == PACKAGE_DIMENSION_ENDPOINT_1 {
+    if inKnobIndex == PACKAGE_DIMENSION_CENTER {
       self.x1 += inDx
       self.y1 += inDy
+      self.x2 += inDx
+      self.y2 += inDy
+    }else if inKnobIndex == PACKAGE_DIMENSION_ENDPOINT_1 {
+        self.x1 += inDx
+        self.y1 += inDy
     }else if inKnobIndex == PACKAGE_DIMENSION_ENDPOINT_2 {
       self.x2 += inDx
       self.y2 += inDy

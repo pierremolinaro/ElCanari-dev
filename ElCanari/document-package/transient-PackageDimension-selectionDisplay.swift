@@ -42,6 +42,8 @@ func transient_PackageDimension_selectionDisplay (
   let dimensionText = stringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
   var shape = EBShape ()
   shape.add (stroke: [bp], NSColor.cyan)
+  let center = NSPoint.center (p1, p2)
+  shape.add (knobAt: center, knobIndex: PACKAGE_DIMENSION_CENTER, .rect, CGFloat (self_PackageObject_knobSize))
   shape.add (knobAt: p1, knobIndex: PACKAGE_DIMENSION_ENDPOINT_1, .circ, CGFloat (self_PackageObject_knobSize))
   shape.add (knobAt: p2, knobIndex: PACKAGE_DIMENSION_ENDPOINT_2, .circ, CGFloat (self_PackageObject_knobSize))
   shape.add (

@@ -36,7 +36,10 @@ let CHANGES : [String] = [
    "Package: zoom up to 500%",
    "New Packages and new Symbols are scrolled to (0, 0)"
 ]
-let NEWS : [String] = ["Package: adjustable selection knob size"]
+let NEWS : [String] = [
+  "Package: adjustable selection knob size",
+  "Package: square knob at guide and dimension center"
+]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   FOR PRINTING IN COLOR

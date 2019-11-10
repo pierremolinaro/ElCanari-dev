@@ -99,7 +99,7 @@ struct EBShape : Hashable {
     if nonEmptyBezierPathes.count > 0 {
       let e = EBShapeElement (nonEmptyBezierPathes, .fill, inColor, inKnobIndex, inClipRule)
       self.mElements.append (e)
-      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox.insetBy (dx: -1.0, dy: -1.0))
     }
   }
 
@@ -123,12 +123,12 @@ struct EBShape : Hashable {
     if filledBezierPathes.count > 0 {
       let e = EBShapeElement (filledBezierPathes, .fill, inColor, inKnobIndex, inClipRule)
       self.mElements.append (e)
-      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox.insetBy (dx: -1.0, dy: -1.0))
     }
     if strokeBezierPathes.count > 0 {
       let e = EBShapeElement (strokeBezierPathes, .strokeThinnestLine, inColor, inKnobIndex, inClipRule)
       self.mElements.append (e)
-      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox.insetBy (dx: -1.0, dy: -1.0))
     }
   }
 
@@ -146,9 +146,9 @@ struct EBShape : Hashable {
   //--- Background
     let e = EBShapeElement ([bp], .fill, .white, inKobIndex, .none)
     self.mElements.append (e)
-    self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+    self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox.insetBy (dx: -1.0, dy: -1.0))
   //--- Line
-    bp.lineWidth = 0.1
+    bp.lineWidth = 0.0 // Thinnest line
     bp.lineCapStyle = .round
     bp.lineJoinStyle = .round
     self.add (stroke: [bp], .black)
@@ -182,17 +182,17 @@ struct EBShape : Hashable {
         let bp = EBBezierPath (rect: filledBezierPath.bounds)
         let e = EBShapeElement ([bp], .fill, backColor, nil, .none)
         self.mElements.append (e)
-        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox.insetBy (dx: -1.0, dy: -1.0))
       }else{
         let bp = EBBezierPath (rect: filledBezierPath.bounds)
         let e = EBShapeElement ([bp], .fill, nil, nil, .none)
         self.mElements.append (e)
-        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox.insetBy (dx: -1.0, dy: -1.0))
      }
     //--- Append text
       let e = EBShapeElement ([filledBezierPath], .fill, textColor, nil, .none)
       self.mElements.append (e)
-      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox.insetBy (dx: -1.0, dy: -1.0))
     }
   }
 
@@ -235,7 +235,7 @@ struct EBShape : Hashable {
   //--- Append text
     let e = EBShapeElement ([filledBezierPath], .fill, inForeColor, nil, .none)
     self.mElements.append (e)
-    self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+    self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox.insetBy (dx: -1.0, dy: -1.0))
   }
 
   //····················································································································
