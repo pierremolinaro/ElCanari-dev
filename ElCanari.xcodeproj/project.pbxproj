@@ -1642,8 +1642,6 @@
 		CFB1DB492282D8DC005F9811 /* view-CanariNetInfoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1DB472282D8DC005F9811 /* view-CanariNetInfoTableView.swift */; };
 		CFB1DB5A22830B16005F9811 /* selectionController-ProjectDocument-schematicLabelSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1DB5922830B16005F9811 /* selectionController-ProjectDocument-schematicLabelSelectionController.swift */; };
 		CFB1DB5B22830B16005F9811 /* selectionController-ProjectDocument-schematicLabelSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1DB5922830B16005F9811 /* selectionController-ProjectDocument-schematicLabelSelectionController.swift */; };
-		CFB1FDAB2359A5AF00135A00 /* extension-NSView-layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1FDAA2359A5AF00135A00 /* extension-NSView-layout.swift */; };
-		CFB1FDAC2359A5AF00135A00 /* extension-NSView-layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1FDAA2359A5AF00135A00 /* extension-NSView-layout.swift */; };
 		CFB29B1122999EB300E35790 /* extension-SheetInProject-disconnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB29B1022999EB300E35790 /* extension-SheetInProject-disconnect.swift */; };
 		CFB29B1222999EB300E35790 /* extension-SheetInProject-disconnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB29B1022999EB300E35790 /* extension-SheetInProject-disconnect.swift */; };
 		CFB4731B2274E36900694FCC /* CanariEnumSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB4731A2274E36900694FCC /* CanariEnumSegmentedControl.swift */; };
@@ -3283,7 +3281,6 @@
 		CFB1DB142282D31F005F9811 /* entity-ProjectRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-ProjectRoot.swift"; sourceTree = "<group>"; };
 		CFB1DB472282D8DC005F9811 /* view-CanariNetInfoTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "view-CanariNetInfoTableView.swift"; sourceTree = "<group>"; };
 		CFB1DB5922830B16005F9811 /* selectionController-ProjectDocument-schematicLabelSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ProjectDocument-schematicLabelSelectionController.swift"; sourceTree = "<group>"; };
-		CFB1FDAA2359A5AF00135A00 /* extension-NSView-layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-NSView-layout.swift"; sourceTree = "<group>"; };
 		CFB29B1022999EB300E35790 /* extension-SheetInProject-disconnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-SheetInProject-disconnect.swift"; sourceTree = "<group>"; };
 		CFB4731A2274E36900694FCC /* CanariEnumSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariEnumSegmentedControl.swift; sourceTree = "<group>"; };
 		CFB4801720DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-addBoardModelAction.swift"; sourceTree = "<group>"; };
@@ -4851,7 +4848,6 @@
 		CFB1FDA92359A57300135A00 /* layout-constraints */ = {
 			isa = PBXGroup;
 			children = (
-				CFB1FDAA2359A5AF00135A00 /* extension-NSView-layout.swift */,
 			);
 			name = "layout-constraints";
 			path = "ElCanari/layout-constraints";
@@ -6366,7 +6362,6 @@
 				CF1D9C8A21BBFD7900FFF459 /* EBGraphicView-mouse.swift in Sources */,
 				CF3E658A21BECB7A0041FA2A /* EBGraphicView-issue.swift in Sources */,
 				CFD3B2BC21B04977007D3361 /* transient-SymbolPin-nameRect.swift in Sources */,
-				CFB1FDAB2359A5AF00135A00 /* extension-NSView-layout.swift in Sources */,
 				CFEB7C99233A28860060A97A /* transient-ProjectRoot-boardLimitBorderLeft.swift in Sources */,
 				CFF5C19522DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift in Sources */,
 				CF518E132282CFAE002BCEE5 /* controller-table-view-ProjectDocument-componentController.swift in Sources */,
@@ -7545,7 +7540,6 @@
 				CF5632BB21A2C2550026B7B7 /* transient-SymbolSegment-objectDisplay.swift in Sources */,
 				CF5C4D25219F04D600EAC52A /* transient-BoardModel-backLegendTextsSegments.swift in Sources */,
 				CFA430C2229AEC41000AA8C8 /* tomany-SymbolSolidRect.swift in Sources */,
-				CFB1FDAC2359A5AF00135A00 /* extension-NSView-layout.swift in Sources */,
 				CFEB7C9A233A28860060A97A /* transient-ProjectRoot-boardLimitBorderLeft.swift in Sources */,
 				CFF5C19622DCA67700CEC1BA /* selectionController-ProjectDocument-boardConnectorSelectionController.swift in Sources */,
 				CFA430A6229AEC41000AA8C8 /* toone-SymbolRoot.swift in Sources */,
