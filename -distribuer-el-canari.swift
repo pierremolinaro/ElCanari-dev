@@ -33,7 +33,8 @@ let NOTES : [String] = []
 let BUGFIXES : [String] = ["Incorrect handling of hot keys on ElCapitan (and older systems?)"]
 let CHANGES : [String] = [
    "Package: guides and dimensions are drawn by the thinnest line",
-   "Package: zoom up to 500%"
+   "Package: zoom up to 500%",
+   "New Packages and new Symbols are scrolled to (0, 0)"
 ]
 let NEWS : [String] = []
 

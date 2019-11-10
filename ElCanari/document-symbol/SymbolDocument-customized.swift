@@ -123,7 +123,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 2)
   //--- Update display
     if let view = self.mComposedSymbolView {
-      DispatchQueue.main.async { _ = view.scrollToVisible (view.objectsAndIssueBoundingBox) }
+      DispatchQueue.main.async { view.scrollToVisibleObjectsOrToZero () }
     }
   }
 

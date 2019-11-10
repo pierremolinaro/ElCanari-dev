@@ -142,7 +142,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 3)
   //--- Update display
     if let view = self.mComposedPackageView {
-      DispatchQueue.main.async { _ = view.scrollToVisible (view.objectsAndIssueBoundingBox) }
+      DispatchQueue.main.async { view.scrollToVisibleObjectsOrToZero () }
     }
   }
 
