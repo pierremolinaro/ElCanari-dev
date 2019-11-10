@@ -105,6 +105,19 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
   }
 
   //····················································································································
+  //  Method called when dragging ends
+  //····················································································································
+
+  func draggingSession (_ session: NSDraggingSession,
+                        endedAt screenPoint: NSPoint,
+                        operation: NSDragOperation) {
+    if let myWindow = self.window {
+      let mouseLocation = self.convert (myWindow.mouseLocationOutsideOfEventStream, from: nil)
+      self.mMouseWithin = self.bounds.contains (mouseLocation)
+    }
+  }
+
+  //····················································································································
   //  Hilite when mouse is within button
   //····················································································································
 

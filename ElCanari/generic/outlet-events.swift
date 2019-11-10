@@ -39,6 +39,9 @@ class EBOutletEvent : EBEvent {
     }
     if !self.mEventIsPosted {
       self.mEventIsPosted = true
+      if gPendingOutletEvents.count == 0 {
+        DispatchQueue.main.async (flags: .barrier) { flushOutletEvents () }
+      }
       gPendingOutletEvents.append (self)
     }
   }
