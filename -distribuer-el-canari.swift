@@ -28,20 +28,14 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.1.2"
+let VERSION_CANARI = "1.1.3"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
-  "Incorrect handling of hot keys on ElCapitan (and older systems?)",
-  "ERC in project: some track vs pad collisions were not detected"
 ]
 let CHANGES : [String] = [
-   "Package: guides and dimensions are drawn by the thinnest line",
-   "Package: zoom up to 500%",
-   "New Packages and new Symbols are scrolled to (0, 0)"
 ]
 let NEWS : [String] = [
-  "Package: adjustable selection knob size",
-  "Package: square knob at guide and dimension center"
+  "Merger: importation roundrect pads of kicad files as oval pads"
 ]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

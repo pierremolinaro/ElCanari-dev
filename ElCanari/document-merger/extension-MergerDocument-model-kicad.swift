@@ -581,13 +581,15 @@ extension MergerDocument {
             pad.shape = .rect
           }else if padShapeString == "oval" {
             pad.shape = .round
+          }else if padShapeString == "roundrect" {
+            pad.shape = .round
           }else if padShapeString == "circle" {
             pad.shape = .round
             if widthMM != heightMM {
               ioErrorArray.append (("Invalid circle pad: width \"\(widthMM)\".", #line))
             }
           }else{
-            ioErrorArray.append (("Invalid pad shape height \(padShapeString) ≠ height \(heightMM)", #line))
+            ioErrorArray.append (("Invalid pad shape \(padShapeString)", #line))
           }
           if (padSideString == "thru_hole") || (padSideString == "np_thru_hole") {
             ioTemporaryBoardModel.mFrontPadEntities.append (pad)
