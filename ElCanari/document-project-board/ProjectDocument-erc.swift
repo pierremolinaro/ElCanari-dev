@@ -42,7 +42,6 @@ extension ProjectDocument {
   //····················································································································
 
   internal func performERCChecking () -> Bool {
-//    let start = Date ()
     self.mERCLogTextView?.clear ()
     var issues = [CanariIssue] ()
   //--- Checkings
@@ -61,8 +60,6 @@ extension ProjectDocument {
     self.rootObject.mLastERCCheckingSignature = self.rootObject.signatureForERCChecking ?? 0
   //--- Set issues
     self.mERCIssueTableView?.setIssues (issues)
-//    let durationMS = Date ().timeIntervalSince (start) * 1000.0
-//    self.mERCLogTextView?.appendMessageString ("Duration \(durationMS.rounded ()) ms")
   //---
     return issues.isEmpty
   }
@@ -736,21 +733,23 @@ extension ProjectDocument {
   //····················································································································
 
   private func checkTrackPadInsulation (_ ioIssues : inout [CanariIssue],
-                                          _ inSide : String,
-                                          _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
+                                        _ inSide : String,
+                                        _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
     self.mERCLogTextView?.appendMessageString (inSide + " track vs pad… ")
     var insulationErrorCount = 0
     if inLayout.count > 1 {
-      for idx in 1 ..< inLayout.count {
+      for idx in 0 ..< inLayout.count {
         let trackArrayX = inLayout [idx].0
-        for idy in 0 ..< idx {
-          let padArrayY = inLayout [idy].1
-          for tx in trackArrayX {
-            for py in padArrayY {
-              if py.intersects (oblong: tx) {
-                insulationErrorCount += 1
-                let issue = CanariIssue (kind: .error, message: inSide + " track vs pad collision", pathes: [tx.bezierPath, py.bezierPath])
-                ioIssues.append (issue)
+        for idy in 0 ..< inLayout.count {
+          if idx != idy {
+            let padArrayY = inLayout [idy].1
+            for tx in trackArrayX {
+              for py in padArrayY {
+                if py.intersects (oblong: tx) {
+                  insulationErrorCount += 1
+                  let issue = CanariIssue (kind: .error, message: inSide + " track vs pad collision", pathes: [tx.bezierPath, py.bezierPath])
+                  ioIssues.append (issue)
+                }
               }
             }
           }

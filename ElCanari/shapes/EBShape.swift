@@ -222,7 +222,7 @@ struct EBShape : Hashable {
     )
   //--- Append background
     do{
-      var bp = EBBezierPath (rect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
+      var bp = EBBezierPath (roundedRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0), xRadius: 2.0, yRadius: 2.0)
       bp.lineWidth = 0.5
       bp.lineJoinStyle = .round
       bp.lineCapStyle = .round
