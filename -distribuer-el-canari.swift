@@ -35,7 +35,8 @@ let BUGFIXES : [String] = [
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Project: removed close button in 'Open ... in Library'"
+  "Project: removed close button in 'Open ... in Library'",
+  "Package Program: fixed selection change on text editing"
 ]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

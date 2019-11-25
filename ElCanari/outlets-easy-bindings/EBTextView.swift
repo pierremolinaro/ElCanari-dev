@@ -33,7 +33,9 @@ import Cocoa
       self.string = ""
       self.isEditable = false
     case .single (let propertyValue) :
+      let currentSelectedRangeValues = self.selectedRanges
       self.string = propertyValue
+      self.selectedRanges = currentSelectedRangeValues
       self.isEditable = true
     }
   }
