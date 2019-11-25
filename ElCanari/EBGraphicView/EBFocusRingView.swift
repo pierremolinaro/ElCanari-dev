@@ -72,12 +72,11 @@ class EBFocusRingView : NSView, EBUserClassNameProtocol {
   override func draw (_ inDirtyRect : NSRect) {
     super.draw (inDirtyRect)
     if self.mHasFocusRing {
-     let w = (MARGIN - 1.0) / 2.0
-     let r = self.bounds.insetBy (dx: w, dy: w)
-     let bp = NSBezierPath (roundedRect: r, xRadius: w / 2.0, yRadius: w / 2.0)
-     bp.lineWidth = w * 2.0
-     RING_COLOR.setStroke ()
-//     NSColor.keyboardFocusIndicatorColor.setStroke ()
+      let w = (MARGIN - 1.0) / 2.0
+      let r = self.bounds.insetBy (dx: w, dy: w)
+      let bp = NSBezierPath (roundedRect: r, xRadius: w / 2.0, yRadius: w / 2.0)
+      bp.lineWidth = w * 2.0
+      RING_COLOR.setStroke ()
       bp.stroke ()
     }
   }
@@ -89,9 +88,9 @@ class EBFocusRingView : NSView, EBUserClassNameProtocol {
   override func mouseUp (with inEvent : NSEvent) {
     let locationInView = self.convert (inEvent.locationInWindow, from: nil)
     if self.bounds.contains (locationInView),
-    self.subviews.count == 1,
-    let scrollView = self.subviews [0] as? NSScrollView,
-    let graphicView = scrollView.documentView as? EBGraphicView {
+        self.subviews.count == 1,
+        let scrollView = self.subviews [0] as? NSScrollView,
+        let graphicView = scrollView.documentView as? EBGraphicView {
       self.window?.makeFirstResponder (graphicView)
     }
   }
