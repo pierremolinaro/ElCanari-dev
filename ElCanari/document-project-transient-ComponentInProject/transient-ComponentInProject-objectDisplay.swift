@@ -27,6 +27,8 @@ func transient_ComponentInProject_objectDisplay (
        _ prefs_displayFrontPadsForBoard : Bool,  
        _ prefs_backSidePadColorForBoard : NSColor,
        _ prefs_displayBackPadsForBoard : Bool,   
+       _ prefs_displayFrontLegendForBoard : Bool,
+       _ prefs_displayBackLegendForBoard : Bool, 
        _ prefs_padNumberFontForBoard : NSFont,   
        _ prefs_padNumberColorForBoard : NSColor, 
        _ prefs_displayPadNumbersForBoard : Bool, 
@@ -57,18 +59,25 @@ func transient_ComponentInProject_objectDisplay (
         }else{
           padDisplayAttributes = nil
         }
-      //--- Legend
-        var strokeBezierPath = self_strokeBezierPath
-        strokeBezierPath.lineWidth = CGFloat (prefs_packageDrawingWidthMultpliedByTenForBoard) / 10.0
-        strokeBezierPath.lineCapStyle = .round
-        strokeBezierPath.lineJoinStyle = .round
-        let color : NSColor
-        switch self_mSide {
-        case .front : color = prefs_frontSideLegendColorForBoard
-        case .back  : color = prefs_backSideLegendColorForBoard
-        }
         var rotatedShape = EBShape ()
-        rotatedShape.add (stroke: [strokeBezierPath], color)
+      //--- Legend
+        let color : NSColor
+        let display : Bool
+        switch self_mSide {
+        case .front :
+          color = prefs_frontSideLegendColorForBoard
+          display = prefs_displayFrontLegendForBoard
+        case .back  :
+          color = prefs_backSideLegendColorForBoard
+          display = prefs_displayBackLegendForBoard
+        }
+        if display {
+          var strokeBezierPath = self_strokeBezierPath
+          strokeBezierPath.lineWidth = CGFloat (prefs_packageDrawingWidthMultpliedByTenForBoard) / 10.0
+          strokeBezierPath.lineCapStyle = .round
+          strokeBezierPath.lineJoinStyle = .round
+          rotatedShape.add (stroke: [strokeBezierPath], color)
+        }
       //---
         let padRect = self_packagePadDictionary.padsRect
         let center = padRect.center.cocoaPoint

@@ -113,7 +113,7 @@ extension BoardTrack {
 
   func bezierPath (extraWidth inExtraWidth : Int) -> EBBezierPath {
     var bp = EBBezierPath ()
-    bp.lineWidth = canariUnitToCocoa(self.actualTrackWidth! + inExtraWidth)
+    bp.lineWidth = canariUnitToCocoa (self.actualTrackWidth! + inExtraWidth)
     bp.lineCapStyle = .round
     bp.lineJoinStyle = .round
     bp.move (to: self.mConnectorP1!.location!.cocoaPoint)

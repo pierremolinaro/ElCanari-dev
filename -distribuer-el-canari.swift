@@ -31,6 +31,7 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.1.4"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
+  "Board in Project: Display Front Side Legend, Display Back Side Legend checkboxes are now handled"
 ]
 let CHANGES : [String] = [
 ]
