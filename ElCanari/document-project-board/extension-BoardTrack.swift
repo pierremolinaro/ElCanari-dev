@@ -98,9 +98,13 @@ extension BoardTrack {
   //····················································································································
 
   override func operationBeforeRemoving () {
+    let optionalNet = self.mNet
     self.mConnectorP1 = nil
     self.mConnectorP2 = nil
     self.mNet = nil
+    if let net = optionalNet, net.mPoints.count == 0, net.mTracks.count == 0 {
+      net.mNetClass = nil // Remove net
+    }
   }
   
   //····················································································································

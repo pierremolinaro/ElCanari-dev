@@ -27,9 +27,13 @@ extension CustomizedProjectDocument {
     var conservedObjects = [BoardObject] ()
     for object in self.rootObject.mBoardObjects {
       if let track = object as? BoardTrack {
+        let optionalNet = track.mNet
         track.mConnectorP1 = nil
         track.mConnectorP2 = nil
         track.mNet = nil
+        if let net = optionalNet, net.mPoints.count == 0, net.mTracks.count == 0 {
+          net.mNetClass = nil // Remove net
+        }
       }else{
         conservedObjects.append (object)
       }
