@@ -47,6 +47,12 @@ protocol NetInProject_netSchematicPointsInfo : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetInProject_trackCount : class {
+  var trackCount : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -57,7 +63,8 @@ class NetInProject : EBManagedObject,
          NetInProject_netClassViaHoleDiameter,
          NetInProject_netClassViaPadDiameter,
          NetInProject_wireColor,
-         NetInProject_netSchematicPointsInfo {
+         NetInProject_netSchematicPointsInfo,
+         NetInProject_trackCount {
 
   //····················································································································
   //   To many property: mPoints
@@ -291,6 +298,29 @@ class NetInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: trackCount
+  //····················································································································
+
+  let trackCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var trackCount_property_selection : EBSelection <Int> {
+    return self.trackCount_property.prop
+  }
+
+  //····················································································································
+
+  var trackCount : Int? {
+    switch self.trackCount_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -454,6 +484,28 @@ class NetInProject : EBManagedObject,
       }
     }
     self.mPoints_property.addEBObserverOf_netInfoForPoint (self.netSchematicPointsInfo_property)
+  //--- Atomic property: trackCount
+    self.trackCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mTracks_property.count_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mTracks_property.count_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_NetInProject_trackCount (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mTracks_property.addEBObserver (self.trackCount_property)
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
@@ -477,6 +529,7 @@ class NetInProject : EBManagedObject,
     self.mNetClass_property.removeEBObserverOf_mViaPadDiameter (self.netClassViaPadDiameter_property)
     self.mNetClass_property.removeEBObserverOf_mNetClassColor (self.wireColor_property)
     self.mPoints_property.removeEBObserverOf_netInfoForPoint (self.netSchematicPointsInfo_property)
+    self.mTracks_property.removeEBObserver (self.trackCount_property)
   //--- Unregister properties for handling signature
   }
 
@@ -547,6 +600,14 @@ class NetInProject : EBManagedObject,
       view: view,
       observerExplorer: &self.netSchematicPointsInfo_property.mObserverExplorer,
       valueExplorer: &self.netSchematicPointsInfo_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "trackCount",
+      idx: self.trackCount_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.trackCount_property.mObserverExplorer,
+      valueExplorer: &self.trackCount_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

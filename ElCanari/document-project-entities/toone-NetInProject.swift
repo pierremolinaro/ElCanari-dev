@@ -22,6 +22,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     inOldValue?.netClassViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
     inOldValue?.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
     inOldValue?.netSchematicPointsInfo_property.removeEBObserversFrom (&self.mObserversOf_netSchematicPointsInfo) // Transient property
+    inOldValue?.trackCount_property.removeEBObserversFrom (&self.mObserversOf_trackCount) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mNetName_property.addEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
     self.mInternalValue?.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
@@ -30,6 +31,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     self.mInternalValue?.netClassViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
     self.mInternalValue?.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
     self.mInternalValue?.netSchematicPointsInfo_property.addEBObserversFrom (&self.mObserversOf_netSchematicPointsInfo) // Transient property
+    self.mInternalValue?.trackCount_property.addEBObserversFrom (&self.mObserversOf_trackCount) // Transient property
   }
 
   //····················································································································
@@ -512,6 +514,75 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     for managedObject in inSet {
       self.mObserversOf_netSchematicPointsInfo.apply { (_ observer : EBEvent) in
         managedObject.netSchematicPointsInfo_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'trackCount' transient property
+  //····················································································································
+
+  private var mObserversOf_trackCount = EBWeakEventSet ()
+
+  //····················································································································
+
+  var trackCount_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.trackCount_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_trackCount (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_trackCount.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.trackCount_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_trackCount (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_trackCount.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.trackCount_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_trackCount_toElementsOfSet (_ inSet : Set<NetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_trackCount.apply { (_ observer : EBEvent) in
+        managedObject.trackCount_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_trackCount_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_trackCount.apply { (_ observer : EBEvent) in
+        managedObject.trackCount_property.removeEBObserver (observer)
       }
     }
   }

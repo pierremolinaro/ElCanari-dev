@@ -30,6 +30,7 @@ entity NetClassInProject {
   
   transient NetInfoArray netsDescription dependsFrom
     self.mNets,
+    self.mNets.all.trackCount,
     self.mNets.all.mNetName,
     self.mNets.all.netSchematicPointsInfo,
     self.mNetClassName ;

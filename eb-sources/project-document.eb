@@ -915,7 +915,6 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBTextObserverField mBoardComponentNameTextField
     $valueObserver #componentInBoardSelectionController.componentName
-    $hidden !#componentInBoardSelectionController.mNameIsVisibleInBoard
   ;
 
   outlet CanariBoardComponentNameFontPopUpButton mBoardComponentNameFontPopUpButton
@@ -928,7 +927,6 @@ document ProjectDocument root ProjectRoot {
     $value #componentInBoardSelectionController.mValueFontSize {sendContinously : no, autoFormatter : no}
     $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
   ;
- // outlet NSView mComponentValueDisplayParameterView $hidden !#componentInBoardSelectionController.mValueIsVisibleInBoard ;
 
   outlet CanariAngleTextField mComponentValueRotationTextField
     $angle #componentInBoardSelectionController.mValueRotation

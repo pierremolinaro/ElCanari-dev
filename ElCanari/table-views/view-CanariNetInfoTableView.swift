@@ -57,6 +57,16 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
         result?.textField?.stringValue = self.mDataSource [inRowIndex].netName
       }else if columnIdentifier.rawValue == "netclass" {
         result?.textField?.stringValue = self.mDataSource [inRowIndex].netClassName
+      }else if columnIdentifier.rawValue == "tracks" {
+        let n = self.mDataSource [inRowIndex].trackCount
+        if n == 0 {
+          result?.textField?.stringValue = "—"
+        }else if n == 1 {
+          result?.textField?.stringValue = "1 segment"
+        }else{
+          result?.textField?.stringValue = "\(n) segments"
+        }
+        result?.imageView?.image = NSImage (named: (n == 0) ? warningStatusImageName : okStatusImageName)
       }else if columnIdentifier.rawValue == "pins" {
         result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].pinCount)"
         result?.imageView?.image = NSImage (named: (self.mDataSource [inRowIndex].pinCount < 2) ? warningStatusImageName : okStatusImageName)

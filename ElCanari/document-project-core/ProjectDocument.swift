@@ -1103,7 +1103,6 @@ import Cocoa
   var mController_mComponentNameRotationTextField_enabled : MultipleBindingController_enabled? = nil
   var mController_mComponentNameRotationSlider_enabled : MultipleBindingController_enabled? = nil
   var mController_mComponentNameRotationSegmentedControl_enabled : MultipleBindingController_enabled? = nil
-  var mController_mBoardComponentNameTextField_hidden : MultipleBindingController_hidden? = nil
   var mController_mBoardComponentNameFontPopUpButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mComponentValueFontSizeField_enabled : MultipleBindingController_enabled? = nil
   var mController_mComponentValueRotationTextField_enabled : MultipleBindingController_enabled? = nil
@@ -3070,16 +3069,6 @@ import Cocoa
       self.mController_mComponentNameRotationSegmentedControl_enabled = controller
     }
     do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.componentInBoardSelectionController.mNameIsVisibleInBoard_property_selection
-        },
-        outlet: self.mBoardComponentNameTextField
-      )
-      self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.addEBObserver (controller)
-      self.mController_mBoardComponentNameTextField_hidden = controller
-    }
-    do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
           return self.componentInBoardSelectionController.mNameIsVisibleInBoard_property_selection
@@ -3686,8 +3675,6 @@ import Cocoa
     self.mController_mComponentNameRotationSlider_enabled = nil
     self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentNameRotationSegmentedControl_enabled!)
     self.mController_mComponentNameRotationSegmentedControl_enabled = nil
-    self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.removeEBObserver (self.mController_mBoardComponentNameTextField_hidden!)
-    self.mController_mBoardComponentNameTextField_hidden = nil
     self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.removeEBObserver (self.mController_mBoardComponentNameFontPopUpButton_enabled!)
     self.mController_mBoardComponentNameFontPopUpButton_enabled = nil
     self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentValueFontSizeField_enabled!)

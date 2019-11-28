@@ -601,6 +601,8 @@
 		CF570B66227DC673003A4E00 /* selectionController-FontDocument-mCharacterSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBFC5A2143BA06006780C7 /* selectionController-FontDocument-mCharacterSelection.swift */; };
 		CF577BBF2229363B00C60C0B /* action-DeviceDocument-addPackageFromLibraryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF577BBE2229363B00C60C0B /* action-DeviceDocument-addPackageFromLibraryAction.swift */; };
 		CF577BC02229363B00C60C0B /* action-DeviceDocument-addPackageFromLibraryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF577BBE2229363B00C60C0B /* action-DeviceDocument-addPackageFromLibraryAction.swift */; };
+		CF586A4A238FF26300F66C7C /* transient-NetInProject-trackCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF586A49238FF26300F66C7C /* transient-NetInProject-trackCount.swift */; };
+		CF586A4B238FF26300F66C7C /* transient-NetInProject-trackCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF586A49238FF26300F66C7C /* transient-NetInProject-trackCount.swift */; };
 		CF58A2D01DD77E7E00146883 /* action-FontDocument-resetVersionAndSignatureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF58A2CF1DD77E7E00146883 /* action-FontDocument-resetVersionAndSignatureAction.swift */; };
 		CF58A3B71DD7887000146883 /* action-ArtworkDocument-resetVersionAndSignatureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF58A3B61DD7887000146883 /* action-ArtworkDocument-resetVersionAndSignatureAction.swift */; };
 		CF58DF9A21AD7CA30088517F /* selectionController-SymbolDocument-mSymbolPinSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF58DF9921AD7CA30088517F /* selectionController-SymbolDocument-mSymbolPinSelectionController.swift */; };
@@ -2830,6 +2832,7 @@
 		CF5632BF21A2C7B00026B7B7 /* controller-array-SymbolDocument-mSymbolObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-array-SymbolDocument-mSymbolObjectsController.swift"; sourceTree = "<group>"; };
 		CF56F3231C0372AD008D8A3C /* view-CanariCharacterGerberCodeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "view-CanariCharacterGerberCodeTableView.swift"; sourceTree = "<group>"; };
 		CF577BBE2229363B00C60C0B /* action-DeviceDocument-addPackageFromLibraryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-DeviceDocument-addPackageFromLibraryAction.swift"; sourceTree = "<group>"; };
+		CF586A49238FF26300F66C7C /* transient-NetInProject-trackCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-NetInProject-trackCount.swift"; sourceTree = "<group>"; };
 		CF58A2CF1DD77E7E00146883 /* action-FontDocument-resetVersionAndSignatureAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-FontDocument-resetVersionAndSignatureAction.swift"; sourceTree = "<group>"; };
 		CF58A3B61DD7887000146883 /* action-ArtworkDocument-resetVersionAndSignatureAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ArtworkDocument-resetVersionAndSignatureAction.swift"; sourceTree = "<group>"; };
 		CF58DF9921AD7CA30088517F /* selectionController-SymbolDocument-mSymbolPinSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-SymbolDocument-mSymbolPinSelectionController.swift"; sourceTree = "<group>"; };
@@ -5364,6 +5367,7 @@
 				CFEB7BFA233A282D0060A97A /* transient-NetInProject-netClassViaHoleDiameter.swift */,
 				CFEB7BFD233A282D0060A97A /* transient-NetInProject-netClassViaPadDiameter.swift */,
 				CFEB7BFB233A282D0060A97A /* transient-NetInProject-netSchematicPointsInfo.swift */,
+				CF586A49238FF26300F66C7C /* transient-NetInProject-trackCount.swift */,
 				CFEB7BFC233A282D0060A97A /* transient-NetInProject-wireColor.swift */,
 			);
 			name = "document — project — transient — NetProject";
@@ -5988,6 +5992,7 @@
 				CF06E7C320E802AD00EA47B9 /* extension-MergerDocument-model-update.swift in Sources */,
 				CF2A491D1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathAscent.swift in Sources */,
 				CFA1AA2022327B680023928C /* entity-SymbolPinInstanceInDevice.swift in Sources */,
+				CF586A4A238FF26300F66C7C /* transient-NetInProject-trackCount.swift in Sources */,
 				CF0777B22352100F00F56EAB /* EBStoredClassProperty.swift in Sources */,
 				CFAA756522E78199002F7F36 /* action-ProjectDocument-launchFreeRouterAction.swift in Sources */,
 				CF9D4B30227F796C006E2035 /* action-ProjectDocument-addFontAction.swift in Sources */,
@@ -7167,6 +7172,7 @@
 				CF29563822324C4C004100D6 /* transient-SymbolInstanceInDevice-symbolQualifiedName.swift in Sources */,
 				CF5C4CE1219F04D600EAC52A /* transient-MergerDocument-mStatusImage.swift in Sources */,
 				CF8D061621A2AD92007D12D9 /* SymbolDocument-customized.swift in Sources */,
+				CF586A4B238FF26300F66C7C /* transient-NetInProject-trackCount.swift in Sources */,
 				CFDD88462233F50A008D3781 /* action-DeviceDocument-performNCAction.swift in Sources */,
 				CF0777B32352100F00F56EAB /* EBStoredClassProperty.swift in Sources */,
 				CFA43042229AEB96000AA8C8 /* toone-SchematicObject.swift in Sources */,

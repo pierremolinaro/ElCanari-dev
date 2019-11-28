@@ -127,6 +127,7 @@ struct NetInfo : Hashable {
   let subnetsHaveWarning : Bool
   let pinCount : Int
   let labelCount : Int
+  let trackCount : Int
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

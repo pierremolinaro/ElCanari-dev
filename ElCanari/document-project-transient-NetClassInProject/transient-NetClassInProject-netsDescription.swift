@@ -108,6 +108,7 @@ fileprivate func computeSubnets (_ inPointArray : NetInfoPointArray) -> (StatusS
 
 func transient_NetClassInProject_netsDescription (
        _ self_mNets : [EBManagedObject_alloc_index_protocol],
+       _ self_mNets_trackCount : [NetInProject_trackCount],
        _ self_mNets_mNetName : [NetInProject_mNetName],
        _ self_mNets_netSchematicPointsInfo : [NetInProject_netSchematicPointsInfo],
        _ self_mNetClassName : String
@@ -117,6 +118,7 @@ func transient_NetClassInProject_netsDescription (
         var idx = 0
         while idx < self_mNets_mNetName.count {
           let netName = self_mNets_mNetName [idx].mNetName
+          let trackCount = self_mNets_trackCount [idx].trackCount!
           let netPointInfo = self_mNets_netSchematicPointsInfo [idx].netSchematicPointsInfo!
           var pinCount = 0
           var labelCount = 0
@@ -135,7 +137,8 @@ func transient_NetClassInProject_netsDescription (
             subnets: subnets,
             subnetsHaveWarning : subnetsHaveWarning,
             pinCount: pinCount,
-            labelCount: labelCount
+            labelCount: labelCount,
+            trackCount: trackCount
           )
           array.append (netInfo)
           idx += 1
