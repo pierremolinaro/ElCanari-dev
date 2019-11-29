@@ -168,6 +168,12 @@ protocol ComponentInProject_strokeBezierPath : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentInProject_pinPadAssignments : class {
+  var pinPadAssignments : ThreeStringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentInProject_placementInSchematic : class {
   var placementInSchematic : String? { get }
 }
@@ -258,6 +264,7 @@ class ComponentInProject : BoardObject,
          ComponentInProject_componentIsPlacedInBoard,
          ComponentInProject_componentIsPlacedInBoardString,
          ComponentInProject_strokeBezierPath,
+         ComponentInProject_pinPadAssignments,
          ComponentInProject_placementInSchematic,
          ComponentInProject_deviceSymbolDictionary,
          ComponentInProject_componentNameFontName,
@@ -980,6 +987,29 @@ class ComponentInProject : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: pinPadAssignments
+  //····················································································································
+
+  let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+
+  //····················································································································
+
+  var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
+    return self.pinPadAssignments_property.prop
+  }
+
+  //····················································································································
+
+  var pinPadAssignments : ThreeStringArray? {
+    switch self.pinPadAssignments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: placementInSchematic
   //····················································································································
 
@@ -1413,6 +1443,28 @@ class ComponentInProject : BoardObject,
       setter: { [weak self] inObject in if let me = self { inObject.mComponentValues_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mComponentValues_property.remove (me) } }
     )
+  //--- Atomic property: pinPadAssignments
+    self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mDevice_property.pinPadAssignments_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mDevice_property.pinPadAssignments_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_pinPadAssignments (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDevice_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
   //--- Atomic property: placementInSchematic
     self.placementInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1788,6 +1840,7 @@ class ComponentInProject : BoardObject,
     self.isPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoard_property)
     self.componentIsPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoardString_property)
     self.mSelectedPackage_property.removeEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
+    self.mDevice_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
     self.mDevice_property.removeEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
     self.mNameFont_property.removeEBObserverOf_mFontName (self.componentNameFontName_property)
@@ -2090,6 +2143,14 @@ class ComponentInProject : BoardObject,
       view: view,
       observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
       valueExplorer: &self.strokeBezierPath_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "pinPadAssignments",
+      idx: self.pinPadAssignments_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pinPadAssignments_property.mObserverExplorer,
+      valueExplorer: &self.pinPadAssignments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "placementInSchematic",

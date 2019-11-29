@@ -161,6 +161,16 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   }
 
   //····················································································································
+  //   Selection observable property: pinPadAssignments
+  //····················································································································
+
+  let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+
+  var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
+    return self.pinPadAssignments_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
@@ -221,6 +231,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
     self.bind_property_componentName ()
     self.bind_property_deviceName ()
     self.bind_property_symbolInfo ()
+    self.bind_property_pinPadAssignments ()
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
     self.bind_property_symbolInSchematic ()
@@ -296,6 +307,9 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
   //--- symbolInfo
     self.symbolInfo_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_symbolInfo (self.symbolInfo_property)
+  //--- pinPadAssignments
+    self.pinPadAssignments_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
@@ -1406,6 +1420,45 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var isMultipleSelection = false
           for object in v {
             switch object.symbolInfo_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_pinPadAssignments () {
+    self.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <ThreeStringArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.pinPadAssignments_property_selection {
             case .empty :
               return .empty
             case .multiple :

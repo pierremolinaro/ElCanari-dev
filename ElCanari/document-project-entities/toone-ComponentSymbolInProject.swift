@@ -29,6 +29,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     inOldValue?.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName) // Transient property
     inOldValue?.deviceName_property.removeEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
     inOldValue?.symbolInfo_property.removeEBObserversFrom (&self.mObserversOf_symbolInfo) // Transient property
+    inOldValue?.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     inOldValue?.symbolInSchematic_property.removeEBObserversFrom (&self.mObserversOf_symbolInSchematic) // Transient property
@@ -47,6 +48,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     self.mInternalValue?.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName) // Transient property
     self.mInternalValue?.deviceName_property.addEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
     self.mInternalValue?.symbolInfo_property.addEBObserversFrom (&self.mObserversOf_symbolInfo) // Transient property
+    self.mInternalValue?.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     self.mInternalValue?.symbolInSchematic_property.addEBObserversFrom (&self.mObserversOf_symbolInSchematic) // Transient property
@@ -1095,6 +1097,75 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     for managedObject in inSet {
       self.mObserversOf_symbolInfo.apply { (_ observer : EBEvent) in
         managedObject.symbolInfo_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'pinPadAssignments' transient property
+  //····················································································································
+
+  private var mObserversOf_pinPadAssignments = EBWeakEventSet ()
+
+  //····················································································································
+
+  var pinPadAssignments_property_selection : EBSelection <ThreeStringArray?> {
+    if let model = self.propval {
+      switch (model.pinPadAssignments_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_pinPadAssignments.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.pinPadAssignments_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_pinPadAssignments.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.pinPadAssignments_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_pinPadAssignments_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinPadAssignments.apply { (_ observer : EBEvent) in
+        managedObject.pinPadAssignments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_pinPadAssignments_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinPadAssignments.apply { (_ observer : EBEvent) in
+        managedObject.pinPadAssignments_property.removeEBObserver (observer)
       }
     }
   }

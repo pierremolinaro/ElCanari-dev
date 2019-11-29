@@ -96,6 +96,12 @@ protocol ComponentSymbolInProject_symbolInfo : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentSymbolInProject_pinPadAssignments : class {
+  var pinPadAssignments : ThreeStringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentSymbolInProject_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -132,6 +138,7 @@ class ComponentSymbolInProject : SchematicObject,
          ComponentSymbolInProject_componentName,
          ComponentSymbolInProject_deviceName,
          ComponentSymbolInProject_symbolInfo,
+         ComponentSymbolInProject_pinPadAssignments,
          ComponentSymbolInProject_objectDisplay,
          ComponentSymbolInProject_selectionDisplay,
          ComponentSymbolInProject_symbolInSchematic {
@@ -478,6 +485,29 @@ class ComponentSymbolInProject : SchematicObject,
   }
 
   //····················································································································
+  //   Transient property: pinPadAssignments
+  //····················································································································
+
+  let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+
+  //····················································································································
+
+  var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
+    return self.pinPadAssignments_property.prop
+  }
+
+  //····················································································································
+
+  var pinPadAssignments : ThreeStringArray? {
+    switch self.pinPadAssignments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: symbolInSchematic
   //····················································································································
 
@@ -647,6 +677,28 @@ class ComponentSymbolInProject : SchematicObject,
     self.mCenterY_property.addEBObserver (self.symbolInfo_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.symbolInfo_property)
     self.mPoints_property.addEBObserverOf_symbolNameNetName (self.symbolInfo_property)
+  //--- Atomic property: pinPadAssignments
+    self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mComponent_property.pinPadAssignments_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mComponent_property.pinPadAssignments_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentSymbolInProject_pinPadAssignments (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponent_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -776,6 +828,7 @@ class ComponentSymbolInProject : SchematicObject,
     self.mCenterY_property.removeEBObserver (self.symbolInfo_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.symbolInfo_property)
     self.mPoints_property.removeEBObserverOf_symbolNameNetName (self.symbolInfo_property)
+    self.mComponent_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
     self.mDisplayComponentNameOffsetX_property.removeEBObserver (self.objectDisplay_property)
     self.mDisplayComponentNameOffsetY_property.removeEBObserver (self.objectDisplay_property)
@@ -921,6 +974,14 @@ class ComponentSymbolInProject : SchematicObject,
       view: view,
       observerExplorer: &self.symbolInfo_property.mObserverExplorer,
       valueExplorer: &self.symbolInfo_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "pinPadAssignments",
+      idx: self.pinPadAssignments_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pinPadAssignments_property.mObserverExplorer,
+      valueExplorer: &self.pinPadAssignments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",

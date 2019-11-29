@@ -39,7 +39,9 @@ graphic entity ComponentSymbolInProject : SchematicObject {
     prefs.pinNameFont,
     self.mPoints.all.symbolNameNetName
   ;
-  
+
+  transient ThreeStringArray pinPadAssignments dependsFrom self.mComponent.one.pinPadAssignments ;
+
   transient Bool symbolInSchematic dependsFrom super.SchematicObject.isPlacedInSchematic ;
 
   override transient EBShape objectDisplay dependsFrom

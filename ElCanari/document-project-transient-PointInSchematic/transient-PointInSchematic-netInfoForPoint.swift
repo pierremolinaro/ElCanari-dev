@@ -18,6 +18,7 @@ func transient_PointInSchematic_netInfoForPoint (
        _ self_mSymbol_componentName : String?,   
        _ self_mSymbol_mSymbolInstanceName : String?,
        _ self_mSymbolPinName : String,           
+       _ self_mSymbol_pinPadAssignments : ThreeStringArray?,
        _ self_mWiresP1s : [EBManagedObject_alloc_index_protocol],
        _ self_mWiresP2s : [EBManagedObject_alloc_index_protocol],
        _ self_location : CanariPoint,            
@@ -49,10 +50,13 @@ func transient_PointInSchematic_netInfoForPoint (
            let symbolInstanceName = self_mSymbol_mSymbolInstanceName,
            let componentName = self_mSymbol_componentName {
           var s = componentName + ":"
-          if symbolInstanceName != "" {
-            s += symbolInstanceName + ":"
+          for threeStrings in self_mSymbol_pinPadAssignments ?? [] {
+            // Swift.print ("left '\(threeStrings.mLeft)', center '\(threeStrings.mCenter)' right '\(threeStrings.mRight)'")
+            if (threeStrings.mRight == self_mSymbolPinName) && (threeStrings.mCenter == symbolInstanceName) {
+              s += threeStrings.mLeft
+            }
           }
-          s += self_mSymbolPinName + " at " + locationInSheetString
+          s += " at " + locationInSheetString
           pin = s
         }
         return NetInfoPoint (

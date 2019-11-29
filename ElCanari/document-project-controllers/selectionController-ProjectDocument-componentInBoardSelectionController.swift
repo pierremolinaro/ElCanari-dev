@@ -291,6 +291,16 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: pinPadAssignments
+  //····················································································································
+
+  let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+
+  var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
+    return self.pinPadAssignments_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: placementInSchematic
   //····················································································································
 
@@ -433,6 +443,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
     self.bind_property_componentIsPlacedInBoard ()
     self.bind_property_componentIsPlacedInBoardString ()
     self.bind_property_strokeBezierPath ()
+    self.bind_property_pinPadAssignments ()
     self.bind_property_placementInSchematic ()
     self.bind_property_deviceSymbolDictionary ()
     self.bind_property_componentNameFontName ()
@@ -570,6 +581,9 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
   //--- strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
+  //--- pinPadAssignments
+    self.pinPadAssignments_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
   //--- placementInSchematic
     self.placementInSchematic_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_placementInSchematic (self.placementInSchematic_property)
@@ -2443,6 +2457,45 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var isMultipleSelection = false
           for object in v {
             switch object.strokeBezierPath_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_pinPadAssignments () {
+    self.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <ThreeStringArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.pinPadAssignments_property_selection {
             case .empty :
               return .empty
             case .multiple :

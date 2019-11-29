@@ -42,6 +42,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     inOldValue?.componentIsPlacedInBoard_property.removeEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoard) // Transient property
     inOldValue?.componentIsPlacedInBoardString_property.removeEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoardString) // Transient property
     inOldValue?.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+    inOldValue?.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
     inOldValue?.placementInSchematic_property.removeEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
     inOldValue?.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
     inOldValue?.componentNameFontName_property.removeEBObserversFrom (&self.mObserversOf_componentNameFontName) // Transient property
@@ -80,6 +81,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     self.mInternalValue?.componentIsPlacedInBoard_property.addEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoard) // Transient property
     self.mInternalValue?.componentIsPlacedInBoardString_property.addEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoardString) // Transient property
     self.mInternalValue?.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+    self.mInternalValue?.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
     self.mInternalValue?.placementInSchematic_property.addEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
     self.mInternalValue?.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
     self.mInternalValue?.componentNameFontName_property.addEBObserversFrom (&self.mObserversOf_componentNameFontName) // Transient property
@@ -1970,6 +1972,75 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     for managedObject in inSet {
       self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
         managedObject.strokeBezierPath_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'pinPadAssignments' transient property
+  //····················································································································
+
+  private var mObserversOf_pinPadAssignments = EBWeakEventSet ()
+
+  //····················································································································
+
+  var pinPadAssignments_property_selection : EBSelection <ThreeStringArray?> {
+    if let model = self.propval {
+      switch (model.pinPadAssignments_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_pinPadAssignments.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.pinPadAssignments_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_pinPadAssignments.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.pinPadAssignments_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_pinPadAssignments_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinPadAssignments.apply { (_ observer : EBEvent) in
+        managedObject.pinPadAssignments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_pinPadAssignments_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinPadAssignments.apply { (_ observer : EBEvent) in
+        managedObject.pinPadAssignments_property.removeEBObserver (observer)
       }
     }
   }

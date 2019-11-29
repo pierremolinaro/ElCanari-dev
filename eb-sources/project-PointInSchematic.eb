@@ -53,6 +53,7 @@ entity PointInSchematic {
     self.mSymbol.one.componentName,
     self.mSymbol.one.mSymbolInstanceName,
     self.mSymbolPinName,
+    self.mSymbol.one.pinPadAssignments,
     self.mWiresP1s,
     self.mWiresP2s,
     self.location,

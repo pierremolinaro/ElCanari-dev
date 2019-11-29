@@ -31,7 +31,8 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.1.4"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
-  "Board in Project: Display Front Side Legend, Display Back Side Legend checkboxes are now handled"
+  "Board in project: Display Front Side Legend, Display Back Side Legend checkboxes are now handled",
+  "Net list in project: pin location in sheet fixed"
 ]
 let CHANGES : [String] = [
 ]

@@ -984,6 +984,7 @@ class PointInSchematic : EBManagedObject,
         kind &= unwSelf.mSymbol_property.componentName_property_selection.kind ()
         kind &= unwSelf.mSymbol_property.mSymbolInstanceName_property_selection.kind ()
         kind &= unwSelf.mSymbolPinName_property_selection.kind ()
+        kind &= unwSelf.mSymbol_property.pinPadAssignments_property_selection.kind ()
         kind &= unwSelf.mWiresP1s_property_selection.kind ()
         kind &= unwSelf.mWiresP2s_property_selection.kind ()
         kind &= unwSelf.location_property_selection.kind ()
@@ -994,9 +995,9 @@ class PointInSchematic : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mLabels_property.count_property_selection, unwSelf.mSymbol_property.componentName_property_selection, unwSelf.mSymbol_property.mSymbolInstanceName_property_selection, unwSelf.mSymbolPinName_property_selection, unwSelf.mWiresP1s_property_selection, unwSelf.mWiresP2s_property_selection, unwSelf.location_property_selection, unwSelf.mSheet_property.sheetDescriptor_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_PointInSchematic_netInfoForPoint (v0, v1, v2, v3, v4, v5, v6, v7))
+          switch (unwSelf.mLabels_property.count_property_selection, unwSelf.mSymbol_property.componentName_property_selection, unwSelf.mSymbol_property.mSymbolInstanceName_property_selection, unwSelf.mSymbolPinName_property_selection, unwSelf.mSymbol_property.pinPadAssignments_property_selection, unwSelf.mWiresP1s_property_selection, unwSelf.mWiresP2s_property_selection, unwSelf.location_property_selection, unwSelf.mSheet_property.sheetDescriptor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_PointInSchematic_netInfoForPoint (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
             return .empty
           }
@@ -1009,6 +1010,7 @@ class PointInSchematic : EBManagedObject,
     self.mSymbol_property.addEBObserverOf_componentName (self.netInfoForPoint_property)
     self.mSymbol_property.addEBObserverOf_mSymbolInstanceName (self.netInfoForPoint_property)
     self.mSymbolPinName_property.addEBObserver (self.netInfoForPoint_property)
+    self.mSymbol_property.addEBObserverOf_pinPadAssignments (self.netInfoForPoint_property)
     self.mWiresP1s_property.addEBObserver (self.netInfoForPoint_property)
     self.mWiresP2s_property.addEBObserver (self.netInfoForPoint_property)
     self.location_property.addEBObserver (self.netInfoForPoint_property)
@@ -1061,6 +1063,7 @@ class PointInSchematic : EBManagedObject,
     self.mSymbol_property.removeEBObserverOf_componentName (self.netInfoForPoint_property)
     self.mSymbol_property.removeEBObserverOf_mSymbolInstanceName (self.netInfoForPoint_property)
     self.mSymbolPinName_property.removeEBObserver (self.netInfoForPoint_property)
+    self.mSymbol_property.removeEBObserverOf_pinPadAssignments (self.netInfoForPoint_property)
     self.mWiresP1s_property.removeEBObserver (self.netInfoForPoint_property)
     self.mWiresP2s_property.removeEBObserver (self.netInfoForPoint_property)
     self.location_property.removeEBObserver (self.netInfoForPoint_property)

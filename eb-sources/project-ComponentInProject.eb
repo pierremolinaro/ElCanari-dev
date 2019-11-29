@@ -67,6 +67,8 @@ graphic entity ComponentInProject : BoardObject {
     self.padNetDictionary
   ;
 
+  transient ThreeStringArray pinPadAssignments dependsFrom self.mDevice.one.pinPadAssignments ;
+ 
   override transient EBShape selectionDisplay dependsFrom
     self.mX, self.mY, self.mRotation, self.mSide, self.strokeBezierPath,
     self.mNameIsVisibleInBoard, self.mXName, self.mYName, self.mNameFont.one.descriptor, self.mNameFontSize,

@@ -29,6 +29,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
     self.removeEBObserversOf_componentName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_symbolInfo_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_symbolInSchematic_fromElementsOfSet (inRemovedSet) // Transient property
@@ -47,6 +48,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
     self.addEBObserversOf_componentName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_symbolInfo_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_pinPadAssignments_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_symbolInSchematic_toElementsOfSet (inAddedSet) // Transient property
@@ -900,6 +902,62 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
     for managedObject in inSet {
       self.mObserversOf_symbolInfo.apply { (_ observer : EBEvent) in
         managedObject.symbolInfo_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'pinPadAssignments' transient property
+  //····················································································································
+
+  private var mObserversOf_pinPadAssignments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_pinPadAssignments.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pinPadAssignments_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_pinPadAssignments.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pinPadAssignments_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_pinPadAssignments_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinPadAssignments.apply { (_ observer : EBEvent) in
+        managedObject.pinPadAssignments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_pinPadAssignments_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinPadAssignments.apply { (_ observer : EBEvent) in
+        managedObject.pinPadAssignments_property.removeEBObserver (observer)
       }
     }
   }
