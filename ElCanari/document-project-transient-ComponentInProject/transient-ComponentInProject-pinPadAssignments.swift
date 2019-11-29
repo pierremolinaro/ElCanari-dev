@@ -17,7 +17,7 @@ func transient_ComponentInProject_pinPadAssignments (
        _ self_mDevice_pinPadAssignments : ThreeStringArray?
 ) -> ThreeStringArray {
 //--- START OF USER ZONE 2
-
+        return self_mDevice_pinPadAssignments ?? []
 //--- END OF USER ZONE 2
 }
 
