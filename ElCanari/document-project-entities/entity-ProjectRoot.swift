@@ -636,6 +636,12 @@ protocol ProjectRoot_allClassNames : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_sheetGeometry : class {
+  var sheetGeometry : SchematicSheetGeometry? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_schematicBackgroundDisplay : class {
   var schematicBackgroundDisplay : EBShape? { get }
 }
@@ -798,6 +804,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_boarderViewBackground,
          ProjectRoot_deviceNames,
          ProjectRoot_allClassNames,
+         ProjectRoot_sheetGeometry,
          ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_netWarningCount,
          ProjectRoot_netNamesArray,
@@ -3182,6 +3189,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: sheetGeometry
+  //····················································································································
+
+  let sheetGeometry_property = EBTransientProperty_SchematicSheetGeometry ()
+
+  //····················································································································
+
+  var sheetGeometry_property_selection : EBSelection <SchematicSheetGeometry> {
+    return self.sheetGeometry_property.prop
+  }
+
+  //····················································································································
+
+  var sheetGeometry : SchematicSheetGeometry? {
+    switch self.sheetGeometry_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: schematicBackgroundDisplay
   //····················································································································
 
@@ -4535,16 +4565,10 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mNetClasses_property.addEBObserverOf_mNetClassName (self.allClassNames_property)
-  //--- Atomic property: schematicBackgroundDisplay
-    self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: sheetGeometry
+    self.sheetGeometry_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mSchematicTitle_property_selection.kind ()
-        kind &= unwSelf.mSchematicVersion_property_selection.kind ()
-        kind &= unwSelf.mSchematicSheetOrientation_property_selection.kind ()
-        kind &= unwSelf.mSelectedSheet_property.mSheetTitle_property_selection.kind ()
-        kind &= unwSelf.mSheets_property_selection.kind ()
-        kind &= unwSelf.mSelectedSheet_property_selection.kind ()
-        kind &= unwSelf.mSchematicDate_property_selection.kind ()
+        var kind = unwSelf.mSchematicSheetOrientation_property_selection.kind ()
         kind &= unwSelf.mSchematicCustomWidth_property_selection.kind ()
         kind &= unwSelf.mSchematicCustomHeight_property_selection.kind ()
         switch kind {
@@ -4553,9 +4577,39 @@ class ProjectRoot : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mSchematicTitle_property_selection, unwSelf.mSchematicVersion_property_selection, unwSelf.mSchematicSheetOrientation_property_selection, unwSelf.mSelectedSheet_property.mSheetTitle_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSelectedSheet_property_selection, unwSelf.mSchematicDate_property_selection, unwSelf.mSchematicCustomWidth_property_selection, unwSelf.mSchematicCustomHeight_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
-            return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+          switch (unwSelf.mSchematicSheetOrientation_property_selection, unwSelf.mSchematicCustomWidth_property_selection, unwSelf.mSchematicCustomHeight_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ProjectRoot_sheetGeometry (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicSheetOrientation_property.addEBObserver (self.sheetGeometry_property)
+    self.mSchematicCustomWidth_property.addEBObserver (self.sheetGeometry_property)
+    self.mSchematicCustomHeight_property.addEBObserver (self.sheetGeometry_property)
+  //--- Atomic property: schematicBackgroundDisplay
+    self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mSchematicTitle_property_selection.kind ()
+        kind &= unwSelf.mSchematicVersion_property_selection.kind ()
+        kind &= unwSelf.sheetGeometry_property_selection.kind ()
+        kind &= unwSelf.mSelectedSheet_property.mSheetTitle_property_selection.kind ()
+        kind &= unwSelf.mSheets_property_selection.kind ()
+        kind &= unwSelf.mSelectedSheet_property_selection.kind ()
+        kind &= unwSelf.mSchematicDate_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mSchematicTitle_property_selection, unwSelf.mSchematicVersion_property_selection, unwSelf.sheetGeometry_property_selection, unwSelf.mSelectedSheet_property.mSheetTitle_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSelectedSheet_property_selection, unwSelf.mSchematicDate_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+            return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6))
           default :
             return .empty
           }
@@ -4566,13 +4620,11 @@ class ProjectRoot : EBManagedObject,
     }
     self.mSchematicTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicVersion_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicSheetOrientation_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.sheetGeometry_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.schematicBackgroundDisplay_property)
     self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicCustomWidth_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicCustomHeight_property.addEBObserver (self.schematicBackgroundDisplay_property)
   //--- Atomic property: netWarningCount
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4923,15 +4975,16 @@ class ProjectRoot : EBManagedObject,
     self.mBoardObjects_property.removeEBObserverOf_objectDisplay (self.boarderViewBackground_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
     self.mNetClasses_property.removeEBObserverOf_mNetClassName (self.allClassNames_property)
+    self.mSchematicSheetOrientation_property.removeEBObserver (self.sheetGeometry_property)
+    self.mSchematicCustomWidth_property.removeEBObserver (self.sheetGeometry_property)
+    self.mSchematicCustomHeight_property.removeEBObserver (self.sheetGeometry_property)
     self.mSchematicTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicVersion_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicSheetOrientation_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    self.sheetGeometry_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.removeEBObserverOf_mSheetTitle (self.schematicBackgroundDisplay_property)
     self.mSheets_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicDate_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicCustomWidth_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSchematicCustomHeight_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mNetClasses_property.removeEBObserverOf_netWarningCount (self.netWarningCount_property)
     self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netNamesArray_property)
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
@@ -5718,6 +5771,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.allClassNames_property.mObserverExplorer,
       valueExplorer: &self.allClassNames_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "sheetGeometry",
+      idx: self.sheetGeometry_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.sheetGeometry_property.mObserverExplorer,
+      valueExplorer: &self.sheetGeometry_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "schematicBackgroundDisplay",

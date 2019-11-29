@@ -208,16 +208,21 @@ entity ProjectRoot {
     self.mComponents.all.componentIsPlacedInBoard
   ;
 
+  
+  transient SchematicSheetGeometry sheetGeometry dependsFrom
+     self.mSchematicSheetOrientation,
+     self.mSchematicCustomWidth,
+     self.mSchematicCustomHeight
+   ;
+
   transient EBShape schematicBackgroundDisplay dependsFrom
     self.mSchematicTitle,
     self.mSchematicVersion,
-    self.mSchematicSheetOrientation,
+    self.sheetGeometry,
     self.mSelectedSheet.one.mSheetTitle,
     self.mSheets,
     self.mSelectedSheet,
-    self.mSchematicDate,
-    self.mSchematicCustomWidth,
-    self.mSchematicCustomHeight
+    self.mSchematicDate
   ;
   
   transient String connexionWarningString dependsFrom self.mSheets.all.connexionWarnings ;

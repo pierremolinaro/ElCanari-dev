@@ -472,6 +472,13 @@ typealias EBReadOnlyProperty_SchematicSheetDescriptor    = EBReadOnlyValueProper
 typealias EBTransientProperty_SchematicSheetDescriptor   = EBTransientValueProperty <SchematicSheetDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property SchematicSheetGeometry
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_SchematicSheetGeometry    = EBReadOnlyValueProperty <SchematicSheetGeometry>
+typealias EBTransientProperty_SchematicSheetGeometry   = EBTransientValueProperty <SchematicSheetGeometry>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property SchematicPointStatus
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

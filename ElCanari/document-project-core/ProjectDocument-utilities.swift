@@ -152,15 +152,52 @@ struct SchematicPointStatus : Hashable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct SchematicSheetDescriptor : Hashable {
+struct SchematicSheetGeometry : Hashable {
   let size : CanariSize // Canari Unit
   let horizontalDivisions : Int
   let verticalDivisions : Int
+
+  //····················································································································
+
+  func locationString (_ inPoint : CanariPoint) -> String {
+    let gutterWidth = cocoaToCanariUnit (SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT)
+    let gutterHeight = cocoaToCanariUnit (SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT)
+    var column = 0
+    if inPoint.x >= gutterWidth {
+      column = (inPoint.x - gutterWidth) * self.horizontalDivisions / (self.size.width - 2 * gutterWidth)
+      if column >= self.horizontalDivisions {
+        column = self.horizontalDivisions - 1
+      }
+    }
+    var line = 0
+    if inPoint.y >= gutterHeight {
+      line = (inPoint.y - gutterHeight) * self.verticalDivisions / (self.size.height - 2 * gutterHeight)
+      if line >= self.verticalDivisions {
+        line = self.verticalDivisions - 1
+      }
+    }
+    // Swift.print ("horizontalDivisions \(self.horizontalDivisions), verticalDivisions \(self.verticalDivisions)")
+    let unicodeA = 0x41
+    return "\(UnicodeScalar (unicodeA + column)!)\(line)"
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct SchematicSheetDescriptor : Hashable {
+  let geometry : SchematicSheetGeometry
   let sheetIndex : Int
 
-  func coordinates (ofPoint inPoint : CanariPoint) -> String {
-    return ""
+  //····················································································································
+
+  func locationString (_ inPoint : CanariPoint) -> String {
+    return "\(self.sheetIndex)\(self.geometry.locationString (inPoint))"
   }
+
+  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -243,6 +280,8 @@ struct BoardFontCharacter : Hashable {
   let advancement : Int
   let segments : [BoardCharSegment]
 
+  //····················································································································
+
   func ebHashValue () -> UInt32 {
     var crc : UInt32 = 0
     crc.accumulateUInt32 (advancement.ebHashValue ())
@@ -254,6 +293,9 @@ struct BoardFontCharacter : Hashable {
     }
     return crc
   }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -266,6 +308,8 @@ struct BoardFontDescriptor : Hashable {
   let nominalSize : Int
   let dictionary :  BoardFontDictionary
 
+  //····················································································································
+
   func ebHashValue () -> UInt32 {
     var crc : UInt32 = 0
     crc.accumulateUInt32 (nominalSize.ebHashValue ())
@@ -275,6 +319,8 @@ struct BoardFontDescriptor : Hashable {
     }
     return crc
   }
+
+  //····················································································································
 
 }
 
@@ -502,8 +548,8 @@ struct PadLocationAndSide : Hashable {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct ComponentPadDescriptor : Hashable {
-   let padName : String
-   let pads : [PadLocationAndSide] // Master pad (index 0), then slave pads (if any)
+  let padName : String
+  let pads : [PadLocationAndSide] // Master pad (index 0), then slave pads (if any)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -521,6 +567,8 @@ struct RastnetInfo : Equatable, Hashable {
   let location : CanariPoint
   let componentName : String
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias RastnetInfoArray = [RastnetInfo]
 

@@ -50,6 +50,8 @@ entity PointInSchematic {
   
   transient NetInfoPoint netInfoForPoint dependsFrom
     self.mLabels.count,
+    self.mSymbol.one.componentName,
+    self.mSymbol.one.mSymbolInstanceName,
     self.mSymbolPinName,
     self.mWiresP1s,
     self.mWiresP2s,

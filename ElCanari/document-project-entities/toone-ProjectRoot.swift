@@ -109,6 +109,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.boarderViewBackground_property.removeEBObserversFrom (&self.mObserversOf_boarderViewBackground) // Transient property
     inOldValue?.deviceNames_property.removeEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
     inOldValue?.allClassNames_property.removeEBObserversFrom (&self.mObserversOf_allClassNames) // Transient property
+    inOldValue?.sheetGeometry_property.removeEBObserversFrom (&self.mObserversOf_sheetGeometry) // Transient property
     inOldValue?.schematicBackgroundDisplay_property.removeEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
     inOldValue?.netWarningCount_property.removeEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
     inOldValue?.netNamesArray_property.removeEBObserversFrom (&self.mObserversOf_netNamesArray) // Transient property
@@ -213,6 +214,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.boarderViewBackground_property.addEBObserversFrom (&self.mObserversOf_boarderViewBackground) // Transient property
     self.mInternalValue?.deviceNames_property.addEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
     self.mInternalValue?.allClassNames_property.addEBObserversFrom (&self.mObserversOf_allClassNames) // Transient property
+    self.mInternalValue?.sheetGeometry_property.addEBObserversFrom (&self.mObserversOf_sheetGeometry) // Transient property
     self.mInternalValue?.schematicBackgroundDisplay_property.addEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
     self.mInternalValue?.netWarningCount_property.addEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
     self.mInternalValue?.netNamesArray_property.addEBObserversFrom (&self.mObserversOf_netNamesArray) // Transient property
@@ -7537,6 +7539,75 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_allClassNames.apply { (_ observer : EBEvent) in
         managedObject.allClassNames_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'sheetGeometry' transient property
+  //····················································································································
+
+  private var mObserversOf_sheetGeometry = EBWeakEventSet ()
+
+  //····················································································································
+
+  var sheetGeometry_property_selection : EBSelection <SchematicSheetGeometry?> {
+    if let model = self.propval {
+      switch (model.sheetGeometry_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_sheetGeometry (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_sheetGeometry.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.sheetGeometry_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_sheetGeometry (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_sheetGeometry.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.sheetGeometry_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_sheetGeometry_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_sheetGeometry.apply { (_ observer : EBEvent) in
+        managedObject.sheetGeometry_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_sheetGeometry_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_sheetGeometry.apply { (_ observer : EBEvent) in
+        managedObject.sheetGeometry_property.removeEBObserver (observer)
       }
     }
   }

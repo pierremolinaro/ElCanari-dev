@@ -18,10 +18,8 @@ entity SheetInProject {
   transient Int connexionErrors dependsFrom self.issues ;
   
   transient SchematicSheetDescriptor sheetDescriptor dependsFrom
-     self.mRoot.one.mSchematicSheetOrientation,
+     self.mRoot.one.sheetGeometry,
      self.mRoot.one.sheetIndexes,
-     self.mRoot.one.mSchematicCustomWidth,
-     self.mRoot.one.mSchematicCustomHeight,
      self
   ;
 }

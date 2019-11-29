@@ -15,6 +15,8 @@ import Cocoa
 
 func transient_PointInSchematic_netInfoForPoint (
        _ self_mLabels_count : Int,               
+       _ self_mSymbol_componentName : String?,   
+       _ self_mSymbol_mSymbolInstanceName : String?,
        _ self_mSymbolPinName : String,           
        _ self_mWiresP1s : [EBManagedObject_alloc_index_protocol],
        _ self_mWiresP2s : [EBManagedObject_alloc_index_protocol],
@@ -33,17 +35,7 @@ func transient_PointInSchematic_netInfoForPoint (
       //--- Location in sheet
         var locationInSheetString : String
         if let sheetDescriptor = self_mSheet_sheetDescriptor {
-          let gutterWidth = cocoaToCanariUnit (SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT)
-          let gutterHeight = cocoaToCanariUnit (SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT)
-          var column = 0
-          if self_location.x >= gutterWidth {
-            column = (self_location.x - gutterWidth) * sheetDescriptor.horizontalDivisions / sheetDescriptor.size.width
-          }
-          var line = 0
-          if self_location.y >= gutterHeight {
-            line = (self_location.y - gutterHeight) * sheetDescriptor.verticalDivisions / sheetDescriptor.size.height
-          }
-          locationInSheetString = "\(sheetDescriptor.sheetIndex)\(UnicodeScalar (0x41 + column)!)\(line)"
+          locationInSheetString = sheetDescriptor.locationString (self_location)
         }else{
           locationInSheetString = "(no sheet)"
         }
@@ -53,10 +45,22 @@ func transient_PointInSchematic_netInfoForPoint (
           labelArray.append (locationInSheetString)
         }
         var pin : String? = nil
-        if self_mSymbolPinName != "" {
-          pin = locationInSheetString + ":" + self_mSymbolPinName
+        if self_mSymbolPinName != "",
+           let symbolInstanceName = self_mSymbol_mSymbolInstanceName,
+           let componentName = self_mSymbol_componentName {
+          var s = componentName + ":"
+          if symbolInstanceName != "" {
+            s += symbolInstanceName + ":"
+          }
+          s += self_mSymbolPinName + " at " + locationInSheetString
+          pin = s
         }
-        return NetInfoPoint (pin: pin, locationString: locationInSheetString, labels: labelArray, wires: wireIndexSet)
+        return NetInfoPoint (
+          pin: pin,
+          locationString: locationInSheetString,
+          labels: labelArray,
+          wires: wireIndexSet
+        )
 //--- END OF USER ZONE 2
 }
 

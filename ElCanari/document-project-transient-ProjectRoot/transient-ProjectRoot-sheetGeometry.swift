@@ -13,18 +13,45 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SheetInProject_sheetDescriptor (
-       _ self_mRoot_sheetGeometry : SchematicSheetGeometry?,
-       _ self_mRoot_sheetIndexes : IntArray?,  
-       _ self_ebObjectIndex : Int
-) -> SchematicSheetDescriptor {
+func transient_ProjectRoot_sheetGeometry (
+       _ self_mSchematicSheetOrientation : SchematicSheetOrientation,
+       _ self_mSchematicCustomWidth : Int,
+       _ self_mSchematicCustomHeight : Int
+) -> SchematicSheetGeometry {
 //--- START OF USER ZONE 2
-        let geometry = self_mRoot_sheetGeometry!
-        let sheetIndex = 1 + (self_mRoot_sheetIndexes?.firstIndex (of: self_ebObjectIndex) ?? -1)
-        return SchematicSheetDescriptor (
-          geometry: geometry,
-          sheetIndex: sheetIndex
-        )
+  let A4MinSize = cocoaToCanariUnit (SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT)
+  let A4MaxSize = cocoaToCanariUnit (SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT)
+  let leftMargin = cocoaToCanariUnit (SCHEMATIC_LEFT_MARGIN_COCOA_UNIT)
+  let rightMargin = cocoaToCanariUnit (SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT)
+  let topMargin = cocoaToCanariUnit (SCHEMATIC_TOP_MARGIN_COCOA_UNIT)
+  let bottomMargin = cocoaToCanariUnit (SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT)
+  switch self_mSchematicSheetOrientation {
+  case .a4Horizontal :
+    let width = A4MaxSize - leftMargin - rightMargin
+    let height = A4MinSize - topMargin - bottomMargin
+    return SchematicSheetGeometry (
+      size: CanariSize (width: width, height: height),
+      horizontalDivisions: 10,
+      verticalDivisions: (10 * A4MinSize) / A4MaxSize
+    )
+  case .a4Vertical :
+    let width = A4MinSize - leftMargin - rightMargin
+    let height = A4MaxSize - topMargin - bottomMargin
+    return SchematicSheetGeometry (
+      size: CanariSize (width: width, height: height),
+      horizontalDivisions: (10 * A4MinSize) / A4MaxSize,
+      verticalDivisions: 10
+    )
+  case .custom :
+    let width = self_mSchematicCustomWidth
+    let height = self_mSchematicCustomHeight
+    let m = max (width, height)
+    return SchematicSheetGeometry (
+      size: CanariSize (width: width, height: height),
+      horizontalDivisions: (10 * width) / m,
+      verticalDivisions: (10 * height) / m
+    )
+  }
 //--- END OF USER ZONE 2
 }
 

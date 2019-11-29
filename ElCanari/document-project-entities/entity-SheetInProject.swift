@@ -383,10 +383,8 @@ class SheetInProject : EBManagedObject,
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mRoot_property.mSchematicSheetOrientation_property_selection.kind ()
+        var kind = unwSelf.mRoot_property.sheetGeometry_property_selection.kind ()
         kind &= unwSelf.mRoot_property.sheetIndexes_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.mSchematicCustomWidth_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.mSchematicCustomHeight_property_selection.kind ()
         kind &= unwSelf.ebObjectIndex_selection.kind ()
         switch kind {
         case .empty :
@@ -394,9 +392,9 @@ class SheetInProject : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mRoot_property.mSchematicSheetOrientation_property_selection, unwSelf.mRoot_property.sheetIndexes_property_selection, unwSelf.mRoot_property.mSchematicCustomWidth_property_selection, unwSelf.mRoot_property.mSchematicCustomHeight_property_selection, unwSelf.ebObjectIndex_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_SheetInProject_sheetDescriptor (v0, v1, v2, v3, v4))
+          switch (unwSelf.mRoot_property.sheetGeometry_property_selection, unwSelf.mRoot_property.sheetIndexes_property_selection, unwSelf.ebObjectIndex_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_SheetInProject_sheetDescriptor (v0, v1, v2))
           default :
             return .empty
           }
@@ -405,10 +403,8 @@ class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.addEBObserverOf_mSchematicSheetOrientation (self.sheetDescriptor_property)
+    self.mRoot_property.addEBObserverOf_sheetGeometry (self.sheetDescriptor_property)
     self.mRoot_property.addEBObserverOf_sheetIndexes (self.sheetDescriptor_property)
-    self.mRoot_property.addEBObserverOf_mSchematicCustomWidth (self.sheetDescriptor_property)
-    self.mRoot_property.addEBObserverOf_mSchematicCustomHeight (self.sheetDescriptor_property)
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
@@ -430,10 +426,8 @@ class SheetInProject : EBManagedObject,
     self.mPoints_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
     self.issues_property.removeEBObserver (self.connexionWarnings_property)
     self.issues_property.removeEBObserver (self.connexionErrors_property)
-    self.mRoot_property.removeEBObserverOf_mSchematicSheetOrientation (self.sheetDescriptor_property)
+    self.mRoot_property.removeEBObserverOf_sheetGeometry (self.sheetDescriptor_property)
     self.mRoot_property.removeEBObserverOf_sheetIndexes (self.sheetDescriptor_property)
-    self.mRoot_property.removeEBObserverOf_mSchematicCustomWidth (self.sheetDescriptor_property)
-    self.mRoot_property.removeEBObserverOf_mSchematicCustomHeight (self.sheetDescriptor_property)
   //--- Unregister properties for handling signature
   }
 

@@ -13,6 +13,7 @@ transient property struct NetInfoPointArray ;
 transient property struct StatusStringArray ;
 transient property struct NetInfo ;
 transient property struct SchematicSheetDescriptor ;
+transient property struct SchematicSheetGeometry ;
 transient property struct SchematicPointStatus ;
 transient property struct NetInfoArray ;
 transient property struct CanariPoint ;
