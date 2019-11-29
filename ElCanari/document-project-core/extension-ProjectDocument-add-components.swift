@@ -29,7 +29,7 @@ extension ProjectDocument {
   internal func addComponent (_ inData : Data, _ inName : String) {
   //--- Append device
     let possibleNewDeviceInProject = self.appendDevice (inData, inName)
-    _ = self.addComponent (fromPossibleDevice: possibleNewDeviceInProject)
+    _ = self.addComponent (fromPossibleDevice: possibleNewDeviceInProject, prefix: nil)
   }
 
   //····················································································································
@@ -43,13 +43,13 @@ extension ProjectDocument {
       }
     }
   //--- Add Component
-    _ = self.addComponent (fromPossibleDevice: possibleDevice)
+    _ = self.addComponent (fromPossibleDevice: possibleDevice, prefix: nil)
   }
 
   //····················································································································
 
   internal func duplicate (component inComponent : ComponentInProject) -> ComponentInProject? {
-    let optionalNewComponent = self.addComponent (fromPossibleDevice: inComponent.mDevice)
+    let optionalNewComponent = self.addComponent (fromPossibleDevice: inComponent.mDevice, prefix: inComponent.mNamePrefix)
     optionalNewComponent?.mComponentValue = inComponent.mComponentValue
     optionalNewComponent?.mNameIsVisibleInBoard = inComponent.mNameIsVisibleInBoard
     optionalNewComponent?.mValueIsVisibleInBoard = inComponent.mValueIsVisibleInBoard
@@ -59,7 +59,8 @@ extension ProjectDocument {
 
   //····················································································································
 
-  internal func addComponent (fromPossibleDevice inPossibleDevice : DeviceInProject?) -> ComponentInProject? {
+  internal func addComponent (fromPossibleDevice inPossibleDevice : DeviceInProject?,
+                              prefix inPossiblePrefix : String?) -> ComponentInProject? {
     var optionalNewComponent : ComponentInProject? = nil
   //--- Append component
     if let deviceInProject = inPossibleDevice {
@@ -81,7 +82,11 @@ extension ProjectDocument {
       }
       newComponent.mSymbols = componentSymbols
     //--- Fix index for component name
-      newComponent.mNamePrefix = deviceInProject.mPrefix
+      if let prefix = inPossiblePrefix {
+        newComponent.mNamePrefix = prefix
+      }else{
+        newComponent.mNamePrefix = deviceInProject.mPrefix
+      }
       var idx = 1
       for component in self.rootObject.mComponents {
         if newComponent.mNamePrefix == component.mNamePrefix {
