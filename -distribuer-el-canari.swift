@@ -39,7 +39,8 @@ let CHANGES : [String] = [
 let NEWS : [String] = [
   "Project: removed close button in 'Open ... in Library'",
   "Package Program: fixed selection change on text editing",
-  "Net list in  Project: display track segment count"
+  "Net list in  Project: display track segment count",
+  "Product generation in project: now generates also a CSV BOM file"
 ]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

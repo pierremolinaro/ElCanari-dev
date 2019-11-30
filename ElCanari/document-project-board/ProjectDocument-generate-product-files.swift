@@ -124,6 +124,9 @@ extension ProjectDocument {
   //--- Write board archive
     let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
     try self.writeBoardArchiveFile (atPath: boardArchiveFilePath, productData)
+  //--- Write CSV file
+    let csvArchiveFilePath = inDocumentFilePathWithoutExtension + ".csv"
+    try self.writeCSVFile (atPath: csvArchiveFilePath)
   }
 
   //····················································································································
