@@ -15,8 +15,10 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   internal func performAddBoardTrackDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
+  //--- Side : maj -> back track, no maj -> front track
+    let side = NSEvent.modifierFlags.contains (.shift) ? TrackSide.back : TrackSide.front
+  //---
     let p1 = inDraggingLocationInDestinationView.canariPoint
-    let side : TrackSide = ((self.mInsertedTrackSidePopUpButton?.indexOfSelectedItem ?? 0) == 0) ? .front : .back
     let p2 = CanariPoint (x: p1.x + TRACK_INITIAL_SIZE_CANARI_UNIT, y: p1.y + TRACK_INITIAL_SIZE_CANARI_UNIT)
     let connectorsAt1 = self.rootObject.connectors (at: p1, trackSide: side)
     let connectorsAt2 = self.rootObject.connectors (at: p2, trackSide: side)
@@ -62,8 +64,8 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   internal func startTrackCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) {
+    let side = NSEvent.modifierFlags.contains (.shift) ? TrackSide.back : TrackSide.front
     let p1 = inUnalignedMousePoint.canariPoint
-    let side : TrackSide = ((self.mInsertedTrackSidePopUpButton?.indexOfSelectedItem ?? 0) == 0) ? .front : .back
     let connectorsAt1 = self.rootObject.connectors (at: p1, trackSide: side)
   //--- Build connector at mouse click
     let connector1 : BoardConnector

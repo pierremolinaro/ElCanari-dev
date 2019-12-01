@@ -884,7 +884,6 @@ import Cocoa
   @IBOutlet var mInconsistentSchematicErrorPanel : NSPanel? = nil
   @IBOutlet var mInconsistentSchematicErrorTextView : NSTextView? = nil
   @IBOutlet var mIncorrectFileNameMessageView : NSView? = nil
-  @IBOutlet var mInsertedTrackSidePopUpButton : EBPopUpButton? = nil
   @IBOutlet var mLaunchFreeRouterButton : EBButton? = nil
   @IBOutlet var mLayoutClearancePopUp : EBPopUpButton? = nil
   @IBOutlet var mLayoutClearanceTextField : CanariDimensionTextField? = nil
@@ -1461,7 +1460,6 @@ import Cocoa
     checkOutletConnection (self.mInconsistentSchematicErrorPanel, "mInconsistentSchematicErrorPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorTextView, "mInconsistentSchematicErrorTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mIncorrectFileNameMessageView, "mIncorrectFileNameMessageView", NSView.self, #file, #line)
-    checkOutletConnection (self.mInsertedTrackSidePopUpButton, "mInsertedTrackSidePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mLaunchFreeRouterButton, "mLaunchFreeRouterButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mLayoutClearancePopUp, "mLayoutClearancePopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mLayoutClearanceTextField, "mLayoutClearanceTextField", CanariDimensionTextField.self, #file, #line)
@@ -4051,7 +4049,6 @@ import Cocoa
     self.mInconsistentSchematicErrorPanel?.ebCleanUp ()
     self.mInconsistentSchematicErrorTextView?.ebCleanUp ()
     self.mIncorrectFileNameMessageView?.ebCleanUp ()
-    self.mInsertedTrackSidePopUpButton?.ebCleanUp ()
     self.mLaunchFreeRouterButton?.ebCleanUp ()
     self.mLayoutClearancePopUp?.ebCleanUp ()
     self.mLayoutClearanceTextField?.ebCleanUp ()
@@ -4461,7 +4458,6 @@ import Cocoa
     self.mInconsistentSchematicErrorPanel = nil
     self.mInconsistentSchematicErrorTextView = nil
     self.mIncorrectFileNameMessageView = nil
-    self.mInsertedTrackSidePopUpButton = nil
     self.mLaunchFreeRouterButton = nil
     self.mLayoutClearancePopUp = nil
     self.mLayoutClearanceTextField = nil
