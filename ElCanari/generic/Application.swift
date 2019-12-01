@@ -69,6 +69,7 @@ class EBEvent : EBObject {
         document.updateReachableEntitiesPopUpButton ()
       }
     }
+    flushOutletEvents ()
   }
 
   //····················································································································

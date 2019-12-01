@@ -39,9 +39,9 @@ class EBOutletEvent : EBEvent {
     }
     if !self.mEventIsPosted {
       self.mEventIsPosted = true
-      if gPendingOutletEvents.count == 0 {
-        DispatchQueue.main.async (flags: .barrier) { flushOutletEvents () }
-      }
+//      if gPendingOutletEvents.count == 0 {
+//        DispatchQueue.main.async (flags: .barrier) { flushOutletEvents () }
+//      }
       gPendingOutletEvents.append (self)
     }
   }
@@ -89,7 +89,7 @@ func flushOutletEvents () {
     operationQueue.waitUntilAllOperationsAreFinished ()
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (startOperationQueue) * 1000.0)
-      Swift.print ("Compute transient properties \(durationMS) ms")
+      Swift.print ("Compute \(gPendingOutletEvents.count) transient properties: \(durationMS) ms")
     }
     let startFlushOutletEvent = Date ()
     while gPendingOutletEvents.count > 0 {

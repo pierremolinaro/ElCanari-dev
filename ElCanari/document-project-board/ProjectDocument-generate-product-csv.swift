@@ -59,7 +59,7 @@ extension ProjectDocument {
     let sortedKeys = Array (dictionary.keys).sorted ()
     for key in sortedKeys {
       let componentNames = dictionary [key]!
-      csvContent += "\"\(key.deviceName)\";\"\(key.package)\";\"\(key.componentValue)\";\(componentNames.count);\""
+      csvContent += "\"\(key.deviceName)\";\"\(key.package)\";\"\(key.componentValue)\";\"\(componentNames.count)\";\""
       var first = true
       for name in componentNames.numericallySorted () {
         if first {
