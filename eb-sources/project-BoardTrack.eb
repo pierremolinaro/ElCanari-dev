@@ -33,7 +33,11 @@ graphic entity BoardTrack : BoardObject {
   override transient EBShape selectionDisplay dependsFrom
     self.mConnectorP1.one.location, self.mConnectorP1.one.connectedToComponent,
     self.mConnectorP2.one.location, self.mConnectorP2.one.connectedToComponent,
-    prefs.hiliteWidthMultipliedByTen
+    prefs.frontSideLayoutColorForBoard,
+    prefs.backSideLayoutColorForBoard,
+    self.mSide,
+//    prefs.hiliteWidthMultipliedByTen,
+    self.actualTrackWidth
   ;
   
   transient Int actualTrackWidth dependsFrom

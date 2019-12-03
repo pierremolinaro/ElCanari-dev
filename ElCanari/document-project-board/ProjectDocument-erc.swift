@@ -17,12 +17,12 @@ extension CustomizedProjectDocument {
   @IBAction internal func performERCCheckingAction (_ inUnusedSender : Any?) {
   //--- ERC Checking
     let ok = self.performERCChecking ()
-    if !ok {
+    if !ok && (self.rootObject.mBoardSelectedInspector != 5) {
       let alert = NSAlert ()
       alert.messageText =  "ERC Checking error."
       alert.addButton (withTitle: "Close")
       alert.addButton (withTitle: "Select ERC Inspector")
-      alert.informativeText = "The ses file has been successfully imported, but ERC checking has detected error(s)."
+      alert.informativeText = "ERC checking has detected error(s)."
       alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
         if response == .alertSecondButtonReturn {
           self.rootObject.mBoardSelectedInspector = 5

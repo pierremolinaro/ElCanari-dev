@@ -35,6 +35,7 @@ let BUGFIXES : [String] = [
   "Net list in project: pin location in sheet fixed"
 ]
 let CHANGES : [String] = [
+  "Board in project: create a track with option click (front track) or option + command click (back track)"
 ]
 let NEWS : [String] = [
   "Project: removed close button in 'Open ... in Library'",
