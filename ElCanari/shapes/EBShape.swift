@@ -11,27 +11,25 @@ import Cocoa
 struct EBShape : Hashable {
 
   //····················································································································
-  //  Properties
+  //  Equatable Protocol
   //····················································································································
 
-  private var mElements = [EBShapeElement] ()
-  private var mToolTips = [EBToolTip] ()
-  private var mCachedBoundingBox = NSRect.null
+  static func == (lhs: EBShape, rhs: EBShape) -> Bool {
+    return lhs.mSharedObject === rhs.mSharedObject
+  }
+
+  //····················································································································
+  //  Property
+  //····················································································································
+
+  private var mSharedObject : EBShapeObject?
 
   //····················································································································
   //  init
   //····················································································································
 
   init () {
-  }
-
-  //····················································································································
-
-  init (filled inFilledPaths : [EBBezierPath],
-        _ inColor : NSColor?,
-        knobIndex inKnobIndex : Int? = nil,
-        clip inClipRule : EBClipRule = .none) {
-    self.add (filled: inFilledPaths, inColor, knobIndex: inKnobIndex, clip: inClipRule)
+    mSharedObject = nil
   }
 
   //····················································································································
@@ -40,7 +38,18 @@ struct EBShape : Hashable {
         _ inColor : NSColor?,
         knobIndex inKnobIndex : Int? = nil,
         clip inClipRule : EBClipRule = .none) {
-    self.add (stroke: inStrokePaths, inColor, knobIndex: inKnobIndex, clip: inClipRule)
+    self.mSharedObject = EBShapeObject ()
+    self.mSharedObject?.add (stroke: inStrokePaths, inColor, knobIndex: inKnobIndex, clip: inClipRule)
+  }
+
+  //····················································································································
+
+  init (filled inFilledPaths : [EBBezierPath],
+        _ inColor : NSColor?,
+        knobIndex inKnobIndex : Int? = nil,
+        clip inClipRule : EBClipRule = .none) {
+    self.mSharedObject = EBShapeObject ()
+    self.mSharedObject?.add (filled: inFilledPaths, inColor, knobIndex: inKnobIndex, clip: inClipRule)
   }
 
   //····················································································································
@@ -50,7 +59,8 @@ struct EBShape : Hashable {
         _ inTextAttributes : [NSAttributedString.Key : Any],
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment) {
-    self.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment)
+    self.mSharedObject = EBShapeObject ()
+    self.mSharedObject?.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment)
   }
 
   //····················································································································
@@ -63,7 +73,8 @@ struct EBShape : Hashable {
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment,
         knobIndex inKnobIndex : Int) {
-    self.add (
+    self.mSharedObject = EBShapeObject ()
+    self.mSharedObject?.add (
       textKnob: inString,
       inOrigin,
       inFont,
@@ -79,17 +90,271 @@ struct EBShape : Hashable {
   //  add
   //····················································································································
 
+  mutating func add (stroke inStrokePathes : [EBBezierPath],
+                     _ inColor : NSColor?,
+                     knobIndex inKnobIndex : Int? = nil,
+                     clip inClipRule : EBClipRule = .none) {
+    if self.mSharedObject == nil {
+      self.mSharedObject = EBShapeObject ()
+    }else if !isKnownUniquelyReferenced (&self.mSharedObject) {
+      self.mSharedObject = EBShapeObject (self.mSharedObject!)
+    }
+    self.mSharedObject?.add (stroke: inStrokePathes, inColor, knobIndex: inKnobIndex, clip: inClipRule)
+  }
+
+  //····················································································································
+
+  mutating func add (filled inFilledPathes : [EBBezierPath],
+                     _ inColor : NSColor?,
+                     knobIndex inKnobIndex : Int? = nil,
+                     clip inClipRule : EBClipRule = .none) {
+    if self.mSharedObject == nil {
+      self.mSharedObject = EBShapeObject ()
+    }else if !isKnownUniquelyReferenced (&self.mSharedObject) {
+      self.mSharedObject = EBShapeObject (self.mSharedObject!)
+    }
+    self.mSharedObject?.add (filled: inFilledPathes, inColor, knobIndex: inKnobIndex, clip: inClipRule)
+  }
+
+  //····················································································································
+
+  mutating func add (knobAt inPoint: NSPoint, knobIndex inKnobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CGFloat) {
+    if self.mSharedObject == nil {
+      self.mSharedObject = EBShapeObject ()
+    }else if !isKnownUniquelyReferenced (&self.mSharedObject) {
+      self.mSharedObject = EBShapeObject (self.mSharedObject!)
+    }
+    self.mSharedObject?.add (knobAt: inPoint, knobIndex: inKnobIndex, inKind, inKnobSize)
+  }
+
+  //····················································································································
+
+  mutating func add (text inString : String,
+                     _ inOrigin : NSPoint,
+                     _ inTextAttributes : [NSAttributedString.Key : Any],
+                     _ inHorizontalAlignment : EBTextHorizontalAlignment,
+                     _ inVerticalAlignment : EBTextVerticalAlignment) {
+    if self.mSharedObject == nil {
+      self.mSharedObject = EBShapeObject ()
+    }else if !isKnownUniquelyReferenced (&self.mSharedObject) {
+      self.mSharedObject = EBShapeObject (self.mSharedObject!)
+    }
+    self.mSharedObject?.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment)
+  }
+
+  //····················································································································
+
+  mutating func add (textKnob inString : String,
+                     _ inOrigin : NSPoint,
+                     _ inFont : NSFont,
+                     foreColor inForeColor : NSColor,
+                     backColor inBackColor : NSColor,
+                     _ inHorizontalAlignment : EBTextHorizontalAlignment,
+                     _ inVerticalAlignment : EBTextVerticalAlignment,
+                    knobIndex inKnobIndex : Int) {
+    if self.mSharedObject == nil {
+      self.mSharedObject = EBShapeObject ()
+    }else if !isKnownUniquelyReferenced (&self.mSharedObject) {
+      self.mSharedObject = EBShapeObject (self.mSharedObject!)
+    }
+    self.mSharedObject?.add (
+      textKnob: inString,
+      inOrigin,
+      inFont,
+      foreColor: inForeColor,
+      backColor: inBackColor,
+      inHorizontalAlignment,
+      inVerticalAlignment,
+      knobIndex: inKnobIndex
+    )
+  }
+
+  //····················································································································
+
   mutating func add (_ inShape : EBShape) {
+    if let addedSharedObject = inShape.mSharedObject {
+      if self.mSharedObject == nil {
+        self.mSharedObject = addedSharedObject
+      }else if isKnownUniquelyReferenced (&self.mSharedObject) {
+        self.mSharedObject?.add (addedSharedObject)
+      }else{
+        self.mSharedObject = EBShapeObject (self.mSharedObject!)
+        self.mSharedObject?.add (addedSharedObject)
+      }
+    }
+  }
+
+  //····················································································································
+  //  Tool tips
+  //····················································································································
+
+  mutating func addToolTip (_ inRect : NSRect, _ inText : String) {
+    if self.mSharedObject == nil {
+      self.mSharedObject = EBShapeObject ()
+    }else if !isKnownUniquelyReferenced (&self.mSharedObject) {
+      self.mSharedObject = EBShapeObject (self.mSharedObject!)
+    }
+    self.mSharedObject?.addToolTip (inRect, inText)
+  }
+
+  //····················································································································
+  //  Draw
+  //····················································································································
+
+  func draw (_ inDirtyRect : NSRect) {
+    self.mSharedObject?.draw (inDirtyRect)
+  }
+
+  //····················································································································
+  //  Transformed shape using NSAffineTransform object
+  //····················································································································
+
+  func transformed (by inAffineTransform : AffineTransform) -> EBShape {
+    var result = EBShape ()
+    if let sharedObject = self.mSharedObject {
+      result.mSharedObject = sharedObject.transformed (by: inAffineTransform)
+    }
+    return result
+  }
+
+  //····················································································································
+  //  Blended color
+  //····················································································································
+
+  func blended (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShape {
+    var result = EBShape ()
+    if let sharedObject = self.mSharedObject {
+      result.mSharedObject = sharedObject.blended (withFraction: inFraction, of: inColor)
+    }
+    return result
+  }
+
+  //····················································································································
+  //  Accessors
+  //····················································································································
+
+  var boundingBox : NSRect {
+    if let sharedObject = self.mSharedObject {
+      return sharedObject.boundingBox
+    }else{
+      return .null
+    }
+  }
+
+  //····················································································································
+  //   Contains point
+  //····················································································································
+
+  func contains (point inPoint : NSPoint) -> Bool {
+    if let sharedObject = self.mSharedObject {
+      return sharedObject.contains (point: inPoint)
+    }else{
+      return false
+    }
+  }
+
+  //····················································································································
+  //   Knob Index
+  //····················································································································
+
+  func knobIndex (at inPoint : NSPoint) -> Int? {
+    if let sharedObject = self.mSharedObject {
+      return sharedObject.knobIndex (at: inPoint)
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+  //   intersects
+  //····················································································································
+
+  func intersects (rect inRect : NSRect) -> Bool {
+    if let sharedObject = self.mSharedObject {
+      return sharedObject.intersects (rect: inRect)
+    }else{
+      return false
+    }
+  }
+
+  //····················································································································
+
+  func installToolTips (toView inView : EBGraphicView) {
+    self.mSharedObject?.installToolTips (toView: inView)
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    EBShape
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate class EBShapeObject : Hashable {
+
+  //····················································································································
+  //  Properties
+  //····················································································································
+
+  private var mElements : [EBShapeElement]
+  private var mToolTips : [EBToolTip]
+  private var mCachedBoundingBox : NSRect
+
+  //····················································································································
+  //  Equatable Protocol
+  //····················································································································
+
+  static func == (lhs: EBShapeObject, rhs: EBShapeObject) -> Bool {
+    return (lhs.mCachedBoundingBox == rhs.mCachedBoundingBox)
+        && (lhs.mToolTips == rhs.mToolTips)
+        && (lhs.mElements == rhs.mElements)
+  }
+
+  //····················································································································
+  // Hashable Protocol
+  //····················································································································
+
+   func hash (into hasher: inout Hasher) {
+    self.mElements.hash (into: &hasher)
+    self.mToolTips.hash (into: &hasher)
+    self.mCachedBoundingBox.hash (into: &hasher)
+  }
+
+  //····················································································································
+  //  init
+  //····················································································································
+
+  init () {
+    mElements = [EBShapeElement] ()
+    mToolTips = [EBToolTip] ()
+    mCachedBoundingBox = NSRect.null
+  }
+
+  //····················································································································
+
+  init (_ inSource : EBShapeObject) {
+    mElements = inSource.mElements
+    mToolTips = inSource.mToolTips
+    mCachedBoundingBox = inSource.mCachedBoundingBox
+  }
+
+  //····················································································································
+  //  add
+  //····················································································································
+
+  func add (_ inShape : EBShapeObject) {
     self.mElements += inShape.mElements
+    self.mToolTips += inShape.mToolTips
     self.mCachedBoundingBox = self.mCachedBoundingBox.union (inShape.mCachedBoundingBox)
   }
 
   //····················································································································
 
-  mutating func add (filled inFilledPaths : [EBBezierPath],
-                     _ inColor : NSColor?,
-                     knobIndex inKnobIndex : Int? = nil,
-                     clip inClipRule : EBClipRule = .none) {
+  func add (filled inFilledPaths : [EBBezierPath],
+            _ inColor : NSColor?,
+            knobIndex inKnobIndex : Int?,
+            clip inClipRule : EBClipRule) {
     var nonEmptyBezierPathes = [EBBezierPath] ()
     for path in inFilledPaths {
       if !path.isEmpty {
@@ -105,10 +370,10 @@ struct EBShape : Hashable {
 
   //····················································································································
 
-  mutating func add (stroke inStrokePathes : [EBBezierPath],
-                     _ inColor : NSColor?,
-                     knobIndex inKnobIndex : Int? = nil,
-                     clip inClipRule : EBClipRule = .none) {
+  func add (stroke inStrokePathes : [EBBezierPath],
+            _ inColor : NSColor?,
+            knobIndex inKnobIndex : Int?,
+            clip inClipRule : EBClipRule) {
     var filledBezierPathes = [EBBezierPath] ()
     var strokeBezierPathes = [EBBezierPath] ()
     for path in inStrokePathes {
@@ -134,7 +399,7 @@ struct EBShape : Hashable {
 
   //····················································································································
 
-  mutating func add (knobAt inPoint: NSPoint, knobIndex inKobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CGFloat) {
+  func add (knobAt inPoint: NSPoint, knobIndex inKnobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CGFloat) {
     let r = NSRect (x: inPoint.x - inKnobSize / 2.0, y: inPoint.y - inKnobSize / 2.0, width: inKnobSize, height: inKnobSize)
     var bp : EBBezierPath
     switch inKind {
@@ -144,23 +409,23 @@ struct EBShape : Hashable {
       bp = EBBezierPath (ovalIn: r)
     }
   //--- Background
-    let e = EBShapeElement ([bp], .fill, .white, inKobIndex, .none)
+    let e = EBShapeElement ([bp], .fill, .white, inKnobIndex, .none)
     self.mElements.append (e)
     self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
   //--- Line
     bp.lineWidth = 0.0 // Thinnest line
     bp.lineCapStyle = .round
     bp.lineJoinStyle = .round
-    self.add (stroke: [bp], .black)
+    self.add (stroke: [bp], .black, knobIndex: nil, clip: .none)
   }
 
   //····················································································································
 
-  mutating func add (text inString: String,
-                     _ inOrigin : NSPoint,
-                     _ inTextAttributes : [NSAttributedString.Key : Any],
-                     _ inHorizontalAlignment : EBTextHorizontalAlignment,
-                     _ inVerticalAlignment : EBTextVerticalAlignment) {
+  func add (text inString: String,
+            _ inOrigin : NSPoint,
+            _ inTextAttributes : [NSAttributedString.Key : Any],
+            _ inHorizontalAlignment : EBTextHorizontalAlignment,
+            _ inVerticalAlignment : EBTextVerticalAlignment) {
     if inString != "" {
     //--- Forecolor
       let textColor : NSColor
@@ -200,14 +465,14 @@ struct EBShape : Hashable {
   //  Text knob
   //····················································································································
 
-  mutating func add (textKnob inString : String,
-                     _ inOrigin : NSPoint,
-                     _ inFont : NSFont,
-                     foreColor inForeColor : NSColor,
-                     backColor inBackColor : NSColor,
-                     _ inHorizontalAlignment : EBTextHorizontalAlignment,
-                     _ inVerticalAlignment : EBTextVerticalAlignment,
-                     knobIndex inKnobIndex : Int) {
+  func add (textKnob inString : String,
+            _ inOrigin : NSPoint,
+            _ inFont : NSFont,
+            foreColor inForeColor : NSColor,
+            backColor inBackColor : NSColor,
+            _ inHorizontalAlignment : EBTextHorizontalAlignment,
+            _ inVerticalAlignment : EBTextVerticalAlignment,
+            knobIndex inKnobIndex : Int) {
     let string = (inString == "") ? " " : inString
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : inFont
@@ -242,7 +507,7 @@ struct EBShape : Hashable {
   //  Tool tips
   //····················································································································
 
-  mutating func addToolTip (_ inRect : NSRect, _ inText : String) {
+  func addToolTip (_ inRect : NSRect, _ inText : String) {
     self.mToolTips.append (EBToolTip (path: EBBezierPath (rect: inRect), string: inText))
   }
 
@@ -325,8 +590,8 @@ struct EBShape : Hashable {
   //  Transformed shape using NSAffineTransform object
   //····················································································································
 
-  func transformed (by inAffineTransform : AffineTransform) -> EBShape {
-    var result = EBShape ()
+  func transformed (by inAffineTransform : AffineTransform) -> EBShapeObject {
+    let result = EBShapeObject ()
     for element in self.mElements {
       let newElement = element.transformed (by: inAffineTransform)
       result.mElements.append (newElement)
@@ -342,8 +607,8 @@ struct EBShape : Hashable {
   //  Blended color
   //····················································································································
 
-   func blended (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShape {
-    var result = EBShape ()
+   func blended (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShapeObject {
+    let result = EBShapeObject ()
     for element in self.mElements {
       let newElement = element.blended (withFraction: inFraction, of: inColor)
       result.mElements.append (newElement)

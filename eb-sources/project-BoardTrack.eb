@@ -36,7 +36,6 @@ graphic entity BoardTrack : BoardObject {
     prefs.frontSideLayoutColorForBoard,
     prefs.backSideLayoutColorForBoard,
     self.mSide,
-//    prefs.hiliteWidthMultipliedByTen,
     self.actualTrackWidth
   ;
   
