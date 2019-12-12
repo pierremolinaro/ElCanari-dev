@@ -28,21 +28,13 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.1.4"
+let VERSION_CANARI = "1.1.5"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
-  "Board in project: Display Front Side Legend, Display Back Side Legend checkboxes are now handled",
-  "Net list in project: pin location in sheet fixed"
+  "Device: importing a symbol now imports symbol texts"
 ]
-let CHANGES : [String] = [
-  "Board in project: create a track with option click (front track) or option + command click (back track)"
-]
-let NEWS : [String] = [
-  "Project: removed close button in 'Open ... in Library'",
-  "Package Program: fixed selection change on text editing",
-  "Net list in  Project: display track segment count",
-  "Product generation in project: now generates also a CSV BOM file"
-]
+let CHANGES : [String] = []
+let NEWS : [String] = []
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   FOR PRINTING IN COLOR

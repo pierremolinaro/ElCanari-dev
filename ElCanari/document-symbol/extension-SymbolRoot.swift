@@ -43,6 +43,20 @@ extension SymbolRoot {
         strokeBezierPathes.append (bp)
       }else if let object = symbolObject as? SymbolSegment, let bp = object.strokeBezierPath {
         strokeBezierPathes.append (bp)
+      }else if let object = symbolObject as? SymbolText {
+        let textAttributes : [NSAttributedString.Key : Any] = [
+          NSAttributedString.Key.font : g_Preferences!.pinNameFont,
+          NSAttributedString.Key.foregroundColor : g_Preferences!.symbolColor
+        ]
+        let origin = NSPoint (x: canariUnitToCocoa (object.x), y: canariUnitToCocoa (object.y))
+        let bp = EBBezierPath (
+          with: object.text,
+          at: origin,
+          object.horizontalAlignment.ebTextShapeHorizontalAlignment,
+          .center,
+          withAttributes: textAttributes
+        )
+        filledBezierPathes.append (bp.nsBezierPath)
       }
     }
   }
