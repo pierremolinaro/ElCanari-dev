@@ -15,6 +15,10 @@ let SOLDER_SIDE    = "SolderSide"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let DSN_SES_DIRECTORY_USER_DEFAULT_KEY = "dsn.ses.directory"
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 extension CustomizedProjectDocument {
 
   //····················································································································
@@ -27,7 +31,14 @@ extension CustomizedProjectDocument {
         break
       }
     }
-    let savePanel = NSSavePanel ()
+  let savePanel = NSSavePanel ()
+  let savedDirectoryURL = savePanel.directoryURL
+  //--- Default directory
+    let ud = UserDefaults.standard
+    if let url = ud.url (forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY) {
+      savePanel.directoryURL = url
+    }
+  //--- Save Panel
     savePanel.accessoryView = self.mSaveDSNFileAuxiliaryView
     self.mExportTrackAndViasToDSNSwitch?.isEnabled = hasTrack
     if !hasTrack {
@@ -39,6 +50,7 @@ extension CustomizedProjectDocument {
     savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in
       savePanel.orderOut (nil)
       if inResponse == .OK, let url = savePanel.url {
+        ud.set (savePanel.directoryURL, forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY)
         do{
           let exportTracks = hasTrack && (self.mExportTrackAndViasToDSNSwitch!.state == .on)
           let s = self.dsnContents (exportTracks)
@@ -47,6 +59,7 @@ extension CustomizedProjectDocument {
           self.windowForSheet!.presentError (error)
         }
       }
+      savePanel.directoryURL = savedDirectoryURL
     }
   }
 

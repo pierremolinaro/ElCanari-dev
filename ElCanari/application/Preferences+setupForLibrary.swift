@@ -7,7 +7,6 @@ private var gPreferences : Preferences? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // https://stackoverflow.com/questions/31173903/swift-2-cannot-invoke-fseventstreamcreate-with-an-argument-list-of-type
-
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func callbackForFSEvent (streamRef : ConstFSEventStreamRef,
@@ -67,9 +66,6 @@ extension Preferences {
     do{
       let path = systemLibraryPath ()
       let pathExists = fm.fileExists (atPath: path)
-//      mRevealInFinderLibraryInSystemApplicationSupportButton?.toolTip = path
- //     mRevealInFinderLibraryInSystemApplicationSupportButton?.title = path
-//      mRevealInFinderLibraryInSystemApplicationSupportButton?.isEnabled = pathExists
       self.mRevealInFinderLibraryInUserApplicationSupportButton?.isEnabled = pathExists
     }
   //--- User Library
@@ -80,7 +76,6 @@ extension Preferences {
       self.mRevealInFinderLibraryInUserApplicationSupportButton?.title = path
       self.mRevealInFinderLibraryInUserApplicationSupportButton?.isEnabled = pathExists
       self.mUseLibraryInUserApplicationSupportPathCheckBox?.isEnabled = pathExists
-//      mCreateLibraryInSystemApplicationSupportButton?.isEnabled = !pathExists
     }
   }
 
