@@ -469,6 +469,18 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Help" id="CiS-1u-W9E">
+                    <menu key="submenu" title="Help" systemMenu="window" id="YB5-Sy-35i">
+                        <items>
+                            <menuItem title="ElCanari Documentation" id="hQB-mb-exS">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openElCanariDocumentationAction:" target="212" id="OEF-Nw-2sm"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
             </items>
             <point key="canvasLocation" x="-532" y="-1820"/>
         </menu>
@@ -2495,7 +2507,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="lP5-Hy-afn">
                             <rect key="frame" x="1" y="0.0" width="382" height="479"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="yqL-UJ-hra" viewBased="YES" indentationPerLevel="16" outlineTableColumn="SWi-Ls-FnJ" id="ziq-cw-Pvk">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="456"/>
@@ -2681,7 +2693,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="hey-tH-UWa">
                             <rect key="frame" x="1" y="0.0" width="382" height="479"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="20" rowSizeStyle="automatic" headerView="ZeF-tu-w6t" viewBased="YES" indentationPerLevel="16" outlineTableColumn="fTc-Qq-vjb" id="vto-E6-Seb">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="456"/>
@@ -3231,7 +3243,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="t5Y-ap-e6D">
                             <rect key="frame" x="1" y="0.0" width="382" height="479"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="20" rowSizeStyle="automatic" headerView="SXo-sF-Io3" viewBased="YES" indentationPerLevel="16" outlineTableColumn="weA-db-I2L" id="k3K-7R-QeN">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="456"/>
