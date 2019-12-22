@@ -469,13 +469,13 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Help" id="CiS-1u-W9E">
-                    <menu key="submenu" title="Help" systemMenu="window" id="YB5-Sy-35i">
+                <menuItem title="Help" id="WAF-iA-gNu">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Help" systemMenu="help" id="hSg-Yg-n58">
                         <items>
-                            <menuItem title="ElCanari Documentation" id="hQB-mb-exS">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="ElCanari Documentation" keyEquivalent="?" id="I3c-cN-3mP">
                                 <connections>
-                                    <action selector="openElCanariDocumentationAction:" target="212" id="OEF-Nw-2sm"/>
+                                    <action selector="openElCanariDocumentationAction:" target="212" id="lHf-fx-MxT"/>
                                 </connections>
                             </menuItem>
                         </items>

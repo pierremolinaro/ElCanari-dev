@@ -54,8 +54,11 @@ extension Preferences {
       latency,
       FSEventStreamCreateFlags (kFSEventStreamCreateFlagNoDefer | kFSEventStreamCreateFlagWatchRoot)
     )
-    FSEventStreamScheduleWithRunLoop (gStream!, CFRunLoopGetCurrent(), "" as CFString)
-    FSEventStreamStart (gStream!)
+    if let stream = gStream {
+   // FSEventStreamScheduleWithRunLoop (gStream!, CFRunLoopGetCurrent(), "" as CFString)
+      FSEventStreamScheduleWithRunLoop (stream, CFRunLoopGetMain (), "" as CFString)
+      FSEventStreamStart (stream)
+    }
   }
 
   //····················································································································

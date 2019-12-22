@@ -64,7 +64,8 @@ final class CanariLibraryEntryDelegate : EBEvent {
         FSEventStreamCreateFlags (kFSEventStreamCreateFlagNoDefer | kFSEventStreamCreateFlagWatchRoot)
       )
       if let stream = possibleStream {
-        FSEventStreamScheduleWithRunLoop (stream, CFRunLoopGetCurrent(), "" as CFString) // CFRunLoopMode.defaultMode)
+   //     FSEventStreamScheduleWithRunLoop (stream, CFRunLoopGetCurrent(), "" as CFString) // CFRunLoopMode.defaultMode)
+        FSEventStreamScheduleWithRunLoop (stream, CFRunLoopGetMain (), "" as CFString) // CFRunLoopMode.defaultMode)
         FSEventStreamStart (stream)
       }
       self.mStream = possibleStream
@@ -98,18 +99,5 @@ final class CanariLibraryEntryDelegate : EBEvent {
   //····················································································································
 
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// FSEventStreamCallback
-
-//fileprivate func callbackForLibraryEntryFSEvent (streamRef : ConstFSEventStreamRef,
-//                                                 clientCallBackInfo : UnsafeMutableRawPointer?,
-//                                                 numEvents : Int,
-//                                                 eventPaths : UnsafeMutableRawPointer,
-//                                                 eventFlags : UnsafePointer<FSEventStreamEventFlags>?,
-//                                                 eventIds : UnsafePointer<FSEventStreamEventId>?) {
-//  let delegate : CanariLibraryEntryDelegate = unsafeBitCast (clientCallBackInfo, to: CanariLibraryEntryDelegate.self)
-//  delegate.monitoredFileDidChange ()
-//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -268,7 +268,6 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
       let alert = NSAlert (error: error)
       _ = alert.runModal ()
     }
-  //---
   }
 
   //····················································································································
