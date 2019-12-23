@@ -38,7 +38,7 @@ class OpenDeviceInLibrary : OpenInLibrary {
   //····················································································································
 
   override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
-    super.buildOutlineViewDataSource (extension: "ElCanariDevice", alreadyLoadedDocuments: inNames) { (_ inRootObject : EBManagedObject?) -> NSImage? in
+    super.buildTableViewDataSource (extension: "ElCanariDevice", alreadyLoadedDocuments: inNames) { (_ inRootObject : EBManagedObject?) -> NSImage? in
       var image : NSImage? = nil
       if let deviceRoot = inRootObject as? DeviceRoot {
         let imageData = deviceRoot.mImageData

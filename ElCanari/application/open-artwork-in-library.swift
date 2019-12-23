@@ -39,7 +39,7 @@ class OpenArtworkInLibrary : OpenInLibrary {
   //····················································································································
 
   override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
-    self.buildOutlineViewDataSource (extension: "ElCanariArtwork", alreadyLoadedDocuments: inNames, {
+    self.buildTableViewDataSource (extension: "ElCanariArtwork", alreadyLoadedDocuments: inNames, {
       (_ inRootObject : EBManagedObject?) -> NSImage? in
       return nil // NSImage (named: okStatusImageName)
     })

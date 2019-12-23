@@ -11,7 +11,6 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class OpenInLibrary : NSObject,
-                      NSOutlineViewDataSource, NSOutlineViewDelegate,
                       NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
@@ -19,13 +18,38 @@ class OpenInLibrary : NSObject,
   @IBOutlet private var mDialog : NSWindow? = nil
   @IBOutlet private var mOpenButton : NSButton? = nil
   @IBOutlet private var mCancelButton : NSButton? = nil
-  @IBOutlet private var mOutlineView : NSOutlineView? = nil
   @IBOutlet private var mTableView : NSTableView? = nil
   @IBOutlet private var mFullPathTextField : NSTextField? = nil
   @IBOutlet private var mStatusTextField : NSTextField? = nil
   @IBOutlet private var mPartImage : NSImageView? = nil
   @IBOutlet private var mNoSelectedPartTextField : NSTextField? = nil
   @IBOutlet private var mSearchField : NSSearchField? = nil
+
+  //····················································································································
+
+  private func configureWith (alreadyLoadedDocuments inNames : Set <String>) {
+    self.mFullPathTextField?.stringValue = ""
+    self.mStatusTextField?.stringValue = ""
+    self.mCancelButton?.target = self
+    self.mCancelButton?.action = #selector (self.abortModalAction (_:))
+    self.mOpenButton?.target = self
+    self.mOpenButton?.action = #selector (self.stopModalAndOpenDocumentAction (_:))
+    self.mOpenButton?.isEnabled = false
+    self.mSearchField?.target = self
+    self.mSearchField?.action = #selector (self.searchFieldAction (_:))
+    self.mPartImage?.image = nil
+    self.mNoSelectedPartTextField?.isHidden = false
+    self.mTableView?.dataSource = self
+    self.mTableView?.delegate = self
+    self.buildDataSource (alreadyLoadedDocuments: inNames)
+    self.mTableView?.reloadData ()
+  //--- Set sort descriptors
+    if let column = self.mTableView?.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
+      let sd = NSSortDescriptor (key: "name", ascending: true)
+      column.sortDescriptorPrototype = sd
+      self.mTableView?.sortDescriptors = [sd]
+    }
+  }
 
   //····················································································································
   //   Load document, displayed as sheet
@@ -36,37 +60,21 @@ class OpenInLibrary : NSObject,
                                          callBack : @escaping (_ inData : Data, _ inName : String) -> Void,
                                          postAction : Optional <() -> Void>) {
   //--- Configure
-    self.mFullPathTextField?.stringValue = ""
-    self.mStatusTextField?.stringValue = ""
-    self.mCancelButton?.target = self
-    self.mCancelButton?.action = #selector (OpenInLibrary.abortSheetAction (_:))
-    self.mOpenButton?.target = self
-    self.mOpenButton?.action = #selector (OpenInLibrary.stopSheetAction (_:))
-    self.mOpenButton?.isEnabled = false
-    self.mPartImage?.image = nil
-    self.mNoSelectedPartTextField?.isHidden = false
-    self.mOutlineView?.dataSource = self
-    self.mOutlineView?.delegate = self
-    self.mTableView?.dataSource = self
-    self.mTableView?.delegate = self
-    self.buildDataSource (alreadyLoadedDocuments: inNames)
-    self.mOutlineView?.reloadData ()
-    self.mTableView?.reloadData ()
+    self.configureWith (alreadyLoadedDocuments: inNames)
   //--- Dialog
     if let dialog = self.mDialog {
       inWindow.beginSheet (dialog) { (_ inModalResponse : NSApplication.ModalResponse) in
         if inModalResponse == .stop,
-             let selectedRow = self.mOutlineView?.selectedRow,
-             let selectedItem = self.mOutlineView?.item (atRow: selectedRow) as? OpenInLibraryDialogItem,
-             selectedItem.mFullPath != "" {
-          let fm = FileManager ()
-          if let data = fm.contents (atPath: selectedItem.mFullPath) {
-            callBack (data, selectedItem.mFullPath.lastPathComponent.deletingPathExtension)
-            postAction? ()
+             let selectedRow = self.mTableView?.selectedRow, selectedRow >= 0 {
+          let selectedItem = self.mTableViewFilteredDataSource [selectedRow]
+          if selectedItem.mFullPath != "" {
+            let fm = FileManager ()
+            if let data = fm.contents (atPath: selectedItem.mFullPath) {
+              callBack (data, selectedItem.mFullPath.lastPathComponent.deletingPathExtension)
+              postAction? ()
+            }
           }
         }
-//        self.mOutlineViewDataSource = []
-//        self.mOutlineView?.reloadData ()
       }
     }
   }
@@ -94,22 +102,7 @@ class OpenInLibrary : NSObject,
   internal func openDocumentInLibrary (windowTitle inTitle : String) {
   //--- Configure
     self.mDialog?.title = inTitle
-    self.mFullPathTextField?.stringValue = ""
-    self.mStatusTextField?.stringValue = ""
-    self.mCancelButton?.target = self
-    self.mCancelButton?.action = #selector (self.abortModalAction (_:))
-    self.mOpenButton?.target = self
-    self.mOpenButton?.action = #selector (self.stopModalAndOpenDocumentAction (_:))
-    self.mOpenButton?.isEnabled = false
-    self.mSearchField?.target = self
-    self.mSearchField?.action = #selector (self.searchFieldAction (_:))
-    self.mPartImage?.image = nil
-    self.mNoSelectedPartTextField?.isHidden = false
-    self.mOutlineView?.dataSource = self
-    self.mOutlineView?.delegate = self
-    self.mTableView?.dataSource = self
-    self.mTableView?.delegate = self
-    self.buildDataSource (alreadyLoadedDocuments: [])
+    self.configureWith (alreadyLoadedDocuments: [])
   //--- Dialog
     if let dialog = self.mDialog {
       _ = NSApp.runModal (for: dialog)
@@ -119,12 +112,9 @@ class OpenInLibrary : NSObject,
   //····················································································································
 
   @objc private func removeAllEntries () {
-    self.mOutlineViewDataSource = []
-    self.mOutlineViewFilteredDataSource = []
-    self.mOutlineView?.reloadData ()
+    self.mTableViewDataSource = []
     self.mTableViewFilteredDataSource = []
     self.mTableView?.reloadData ()
-    self.mOutlineViewSelectedItem = nil
   }
 
   //····················································································································
@@ -140,111 +130,15 @@ class OpenInLibrary : NSObject,
   @objc private func stopModalAndOpenDocumentAction (_ inSender : Any?) {
     NSApp.stopModal ()
     self.mDialog?.orderOut (nil)
-    if let selectedRow = self.mOutlineView?.selectedRow,
-       let selectedItem = self.mOutlineView?.item (atRow: selectedRow) as? OpenInLibraryDialogItem,
-       selectedItem.mFullPath != "" {
-      let dc = NSDocumentController.shared
-      let url = URL (fileURLWithPath: selectedItem.mFullPath)
-      dc.openDocument (withContentsOf: url, display: true) { (document : NSDocument?, alreadyOpen : Bool, error : Error?) in }
+    if let selectedRow = self.mTableView?.selectedRow, selectedRow >= 0 {
+      let selectedItem = self.mTableViewFilteredDataSource [selectedRow]
+      if selectedItem.mFullPath != "" {
+        let dc = NSDocumentController.shared
+        let url = URL (fileURLWithPath: selectedItem.mFullPath)
+        dc.openDocument (withContentsOf: url, display: true) { (document : NSDocument?, alreadyOpen : Bool, error : Error?) in }
+      }
     }
     self.removeAllEntries ()
-  }
-
-  //····················································································································
-  //   NSOutlineViewDataSource methods
-  //····················································································································
-
-  private var mOutlineViewDataSource = [OpenInLibraryDialogItem] ()
-  private var mOutlineViewFilteredDataSource = [OpenInLibraryDialogItem] ()
-
-  //····················································································································
-
-  func outlineView (_ outlineView : NSOutlineView, numberOfChildrenOfItem item : Any?) -> Int {
-    if let dialogItem = item as? OpenInLibraryDialogItem {
-      return dialogItem.mChildren.count
-    }else{
-      return self.mOutlineViewFilteredDataSource.count
-    }
-  }
-
-  //····················································································································
-
-  func outlineView (_ outlineView : NSOutlineView, child index : Int, ofItem item : Any?) -> Any {
-    if let dialogItem = item as? OpenInLibraryDialogItem {
-      return dialogItem.mChildren [index]
-    }else{
-      return self.mOutlineViewFilteredDataSource [index]
-    }
-  }
-
-  //····················································································································
-
-  func outlineView (_ outlineView : NSOutlineView, isItemExpandable item : Any) -> Bool {
-    if let dialogItem = item as? OpenInLibraryDialogItem {
-      return dialogItem.mChildren.count > 0
-    }else{
-      return false
-    }
-  }
-
-  //····················································································································
-  //   NSOutlineViewDelegate
-  //····················································································································
-
-  func outlineView (_ outlineView : NSOutlineView, viewFor inTableColumn : NSTableColumn?, item: Any) -> NSView? {
-    var view: NSTableCellView? = nil
-    if let dialogItem = item as? OpenInLibraryDialogItem, let tableColumn = inTableColumn {
-      if tableColumn.identifier.rawValue == "name" {
-        view = outlineView.makeView (withIdentifier: tableColumn.identifier, owner: self) as? NSTableCellView
-        if let textField = view?.textField {
-          textField.stringValue = dialogItem.mPartName
-        }
-      }else if tableColumn.identifier.rawValue == "status" {
-        view = outlineView.makeView (withIdentifier: tableColumn.identifier, owner: self) as? NSTableCellView
-        if let imageView = view?.imageView {
-          imageView.image = dialogItem.statusImage ()
-        }
-      }
-    }
-    return view
-  }
-
-  //····················································································································
-
-  private var mOutlineViewSelectedItem : OpenInLibraryDialogItem? = nil
-
-  //····················································································································
-
-  func outlineViewSelectionDidChange (_ inNotification : Notification) {
-    if let selectedRow = self.mOutlineView?.selectedRow,
-       let selectedItem = self.mOutlineView?.item (atRow: selectedRow) as? OpenInLibraryDialogItem {
-      self.mFullPathTextField?.stringValue = selectedItem.mFullPath
-      self.mStatusTextField?.stringValue = selectedItem.statusString ()
-      self.mOpenButton?.isEnabled = (selectedItem.mFullPath != "") && !selectedItem.mIsAlreadyLoaded
-      self.mNoSelectedPartTextField?.isHidden = selectedItem.mFullPath != ""
-      self.mPartImage?.image = selectedItem.image
-      self.mOutlineViewSelectedItem = selectedItem
-    }else{
-      self.mFullPathTextField?.stringValue = ""
-      self.mStatusTextField?.stringValue = ""
-      self.mOpenButton?.isEnabled = false
-      self.mPartImage?.image = nil
-      self.mOutlineViewSelectedItem = nil
-    }
-  //--- Update table view selection
-    if let selectedItem = self.mOutlineViewSelectedItem {
-      var idx = 0
-      while idx < self.mTableViewFilteredDataSource.count {
-        let item = self.mTableViewFilteredDataSource [idx]
-        if item == selectedItem {
-          self.mTableView?.selectRowIndexes (IndexSet (integer: idx), byExtendingSelection: false)
-          self.mTableView?.scrollRowToVisible (idx)
-        }
-        idx += 1
-      }
-    }else{
-      self.mTableView?.deselectAll (nil)
-    }
   }
 
   //····················································································································
@@ -260,9 +154,9 @@ class OpenInLibrary : NSObject,
 
   //····················································································································
 
-  internal func buildOutlineViewDataSource (extension inFileExtension : String,
-                                            alreadyLoadedDocuments inNames : Set <String>,
-                                            _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
+  internal func buildTableViewDataSource (extension inFileExtension : String,
+                                          alreadyLoadedDocuments inNames : Set <String>,
+                                          _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
     do{
       let fm = FileManager ()
     //--- Build part dictionary
@@ -285,7 +179,6 @@ class OpenInLibrary : NSObject,
         }
       }
     //--- Build data source arraies
-      var outlineViewDataSource = [OpenInLibraryDialogItem] ()
       var tableViewDataSource = [OpenInLibraryDialogItem] ()
       for path in existingLibraryPathArray () {
         let baseDirectory = self.partLibraryPathForPath (path)
@@ -298,14 +191,12 @@ class OpenInLibrary : NSObject,
               let baseName = f.lastPathComponent.deletingPathExtension
               let isDuplicated : Bool = (partCountDictionary [baseName] ?? 0) > 1
               let pathAsArray = f.deletingPathExtension.components (separatedBy: "/")
-              enterPart (&outlineViewDataSource, &tableViewDataSource, pathAsArray, fullpath, isDuplicated, inNames.contains (baseName), inBuildPreviewShapeFunction)
+              enterPart (&tableViewDataSource, pathAsArray, fullpath, isDuplicated, inNames.contains (baseName), inBuildPreviewShapeFunction)
             }
           }
         }
       }
-      outlineViewDataSource.recursiveSortUsingPartName ()
-      tableViewDataSource.recursiveSortUsingPartName ()
-      self.mOutlineViewDataSource = outlineViewDataSource
+      self.mTableViewDataSource = tableViewDataSource
       self.searchFieldAction (nil)
     }catch (let error) {
       let alert = NSAlert (error: error)
@@ -317,6 +208,7 @@ class OpenInLibrary : NSObject,
   //   NSTableViewDataSource methods
   //····················································································································
 
+  private var mTableViewDataSource = [OpenInLibraryDialogItem] ()
   private var mTableViewFilteredDataSource = [OpenInLibraryDialogItem] ()
 
   //····················································································································
@@ -343,8 +235,6 @@ class OpenInLibrary : NSObject,
   }
 
   //····················································································································
-  //   NSTableViewDataSource protocol
-  //····················································································································
 
   func numberOfRows (in tableView: NSTableView) -> Int {
     return self.mTableViewFilteredDataSource.count
@@ -353,14 +243,27 @@ class OpenInLibrary : NSObject,
   //····················································································································
 
   func tableViewSelectionDidChange (_ notification : Notification) {
-    var newSelectedItem : OpenInLibraryDialogItem? = nil
     if let selectedRow = self.mTableView?.selectedRow, selectedRow >= 0 {
-      newSelectedItem = self.mTableViewFilteredDataSource [selectedRow]
+      let selectedItem = self.mTableViewFilteredDataSource [selectedRow]
+      self.mFullPathTextField?.stringValue = selectedItem.mFullPath
+      self.mStatusTextField?.stringValue = selectedItem.statusString ()
+      self.mOpenButton?.isEnabled = (selectedItem.mFullPath != "") && !selectedItem.mIsAlreadyLoaded
+      self.mNoSelectedPartTextField?.isHidden = selectedItem.mFullPath != ""
+      self.mPartImage?.image = selectedItem.image
+    }else{
+      self.mFullPathTextField?.stringValue = ""
+      self.mStatusTextField?.stringValue = ""
+      self.mOpenButton?.isEnabled = false
+      self.mPartImage?.image = nil
     }
-    if self.mOutlineViewSelectedItem !== newSelectedItem {
-      self.mOutlineViewSelectedItem = newSelectedItem
-      self.searchFieldAction (nil)
-    }
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    S O U R C E : tableView:sortDescriptorsDidChange:
+  //····················································································································
+
+  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
+    self.searchFieldAction (nil)
   }
 
   //····················································································································
@@ -369,42 +272,53 @@ class OpenInLibrary : NSObject,
 
   @objc private func searchFieldAction (_ inUnusedSender : Any?) {
     let filter = self.mSearchField!.stringValue
-  //--- Save expanded items information
-    var expandedItems = Set <String> ()
-    for entry in self.mOutlineViewFilteredDataSource {
-      entry.enterExpandedItemsInto (&expandedItems, "", self.mOutlineView!)
-    }
- //   Swift.print ("expanded \(expandedItems.count)")
-  //--- Outline view
-    self.mOutlineViewFilteredDataSource = []
-    for entry in self.mOutlineViewDataSource {
-      if let newEntry = entry.filteredBy (filter) {
-        self.mOutlineViewFilteredDataSource.append (newEntry)
-      }
+  //--- Save selected item information
+    let optionalSelectedItem : OpenInLibraryDialogItem?
+    if let selectedRow = self.mTableView?.selectedRow, selectedRow >= 0 {
+      optionalSelectedItem = self.mTableViewFilteredDataSource [selectedRow]
+    }else{
+      optionalSelectedItem = nil
     }
   //--- Table view
-    self.mTableViewFilteredDataSource = []
-    for entry in self.mOutlineViewDataSource {
-      entry.enterItemFilteredBy (filter, &self.mTableViewFilteredDataSource)
-    }
-    self.mOutlineView?.reloadData ()
-    self.mTableView?.reloadData ()
-  //--- Restore table view selection
-    if let outlineViewSelectedItem = self.mOutlineViewSelectedItem {
-      var newSelectedItem : OpenInLibraryDialogItem? = nil
-      for entry in self.mTableViewFilteredDataSource {
-        newSelectedItem = entry.findItemEquivalentTo (outlineViewSelectedItem)
-        if newSelectedItem != nil {
-          break
+    if filter == "" {
+      self.mTableViewFilteredDataSource = self.mTableViewDataSource
+    }else{
+      self.mTableViewFilteredDataSource = []
+      for entry in self.mTableViewDataSource {
+        if entry.mPartName.contains (filter) {
+          self.mTableViewFilteredDataSource.append (entry)
         }
       }
-      self.mOutlineViewSelectedItem = newSelectedItem
     }
-  //--- Restore outline view expanded information
-    var rowIndex = 0
-    for entry in self.mOutlineViewFilteredDataSource {
-      entry.restoreExpandedItems (expandedItems, "", &rowIndex, self.mOutlineView!, self.mOutlineViewSelectedItem)
-      rowIndex += 1
+    self.mTableViewFilteredDataSource.sort { $0.mPartName < $1.mPartName }
+    if let sortDescriptors = self.mTableView?.sortDescriptors {
+      for sortDescriptor in sortDescriptors {
+        if (sortDescriptor.key == "name") && !sortDescriptor.ascending {
+          self.mTableViewFilteredDataSource.reverse ()
+        }
+      }
+    }
+    self.mTableView?.reloadData ()
+  //--- Restore table view selection
+    var hasSelection = false
+    if let selectedItem = optionalSelectedItem {
+      var rowIndex = 0
+      for entry in self.mTableViewFilteredDataSource {
+        if entry === selectedItem {
+          self.mTableView?.selectRowIndexes (IndexSet (integer: rowIndex), byExtendingSelection: false)
+          self.mTableView?.scrollRowToVisible (rowIndex)
+          hasSelection = true
+          break
+        }
+        rowIndex += 1
+      }
+    }
+    if !hasSelection {
+      self.mTableView?.deselectAll (nil)
+      self.mFullPathTextField?.stringValue = ""
+      self.mStatusTextField?.stringValue = ""
+      self.mOpenButton?.isEnabled = false
+      self.mPartImage?.image = nil
     }
   }
 
@@ -414,56 +328,25 @@ class OpenInLibrary : NSObject,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterPart (_ outlineViewDataSource : inout [OpenInLibraryDialogItem],
-                            _ tableViewDataSource : inout [OpenInLibraryDialogItem],
+fileprivate func enterPart (_ tableViewDataSource : inout [OpenInLibraryDialogItem],
                             _ inPathAsArray : [String],
                             _ inFullpath : String,
                             _ inIsDuplicated : Bool,
                             _ inIsAlreadyLoaded : Bool,
         _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
   if inPathAsArray.count == 1 {
-    outlineViewDataSource.append (OpenInLibraryDialogItem (inPathAsArray [0], inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction))
     tableViewDataSource.append (OpenInLibraryDialogItem (inPathAsArray [0], inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction))
   }else{
-    var idx = 0
-    var found = false
-    while (idx < outlineViewDataSource.count) && !found {
-      found = outlineViewDataSource [idx].mPartName == inPathAsArray [0]
-      if !found {
-        idx += 1
-      }
-    }
-    if !found {
-      outlineViewDataSource.append (OpenInLibraryDialogItem (inPathAsArray [0], "", false, inIsAlreadyLoaded, inBuildPreviewShapeFunction))
-    }
     var pathAsArray = inPathAsArray
     pathAsArray.remove (at: 0)
-    enterPart (&outlineViewDataSource [idx].mChildren, &tableViewDataSource, pathAsArray, inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction)
+    enterPart (&tableViewDataSource, pathAsArray, inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction)
   }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension Array where Element == OpenInLibraryDialogItem {
-
-  //····················································································································
-
-  mutating func recursiveSortUsingPartName () {
-    self.sort { $0.mPartName < $1.mPartName }
-    for entry in self {
-      entry.mChildren.recursiveSortUsingPartName ()
-    }
-  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate class OpenInLibraryDialogItem : EBObject {
 
-  var mChildren = [OpenInLibraryDialogItem] ()
   let mPartName : String
   let mIsDuplicated : Bool
   let mIsAlreadyLoaded : Bool
@@ -571,95 +454,6 @@ fileprivate class OpenInLibraryDialogItem : EBObject {
       }
     }
     return image ?? NSImage ()
-  }
-
-  //····················································································································
-
-  func filteredBy (_ inFilter : String) -> OpenInLibraryDialogItem? {
-    if self.mFullPath == "" {
-      var children = [OpenInLibraryDialogItem] ()
-      for entry in self.mChildren {
-        if let newEntry = entry.filteredBy (inFilter) {
-          children.append (newEntry)
-        }
-      }
-      if children.count > 0 {
-        let result = OpenInLibraryDialogItem (
-          self.mPartName,
-          self.mFullPath,
-          self.mIsDuplicated,
-          self.mIsAlreadyLoaded,
-          self.mBuildPreviewShapeFunction
-        )
-        result.mChildren = children
-        return result
-      }else{
-        return nil
-      }
-    }else if (inFilter == "") || self.mPartName.contains (inFilter) {
-      return self
-    }else{
-      return nil
-    }
-  }
-
-  //····················································································································
-
-  func findItemEquivalentTo (_ inItem : OpenInLibraryDialogItem) -> OpenInLibraryDialogItem? {
-    if (self.mPartName == inItem.mPartName) && (self.mFullPath == inItem.mFullPath) {
-      return self
-    }else{
-      for entry in self.mChildren {
-        if let equivalentEntry = entry.findItemEquivalentTo (inItem) {
-          return equivalentEntry
-        }
-      }
-      return nil
-    }
-  }
-
-  //····················································································································
-
-  func enterItemFilteredBy (_ inFilter : String, _ ioArray : inout [OpenInLibraryDialogItem]) {
-    if self.mFullPath == "" {
-       for entry in self.mChildren {
-         entry.enterItemFilteredBy (inFilter, &ioArray)
-       }
-     }else if (inFilter == "") || self.mPartName.contains (inFilter) {
-       ioArray.append (self)
-     }
-  }
-
-  //····················································································································
-
-  func enterExpandedItemsInto (_ ioExpandedPathSet : inout Set <String>, _ inPath : String, _ inOutlineView : NSOutlineView) {
-    let path = inPath + "/" + self.mPartName
-    if inOutlineView.isItemExpanded (self) {
-      ioExpandedPathSet.insert (path)
-    }
-    for entry in self.mChildren {
-      entry.enterExpandedItemsInto (&ioExpandedPathSet, path, inOutlineView)
-    }
-  }
-
-  //····················································································································
-
-  func restoreExpandedItems (_ inExpandedPathSet : Set <String>,
-                             _ inPath : String,
-                             _ ioRowIndex : inout Int,
-                             _ inOutlineView : NSOutlineView,
-                             _ inOptionalSelectedItem : OpenInLibraryDialogItem?) {
-    let path = inPath + "/" + self.mPartName
-    if (self.mPartName == inOptionalSelectedItem?.mPartName) && (self.mFullPath == inOptionalSelectedItem?.mFullPath) {
-      inOutlineView.selectRowIndexes (IndexSet (integer: ioRowIndex), byExtendingSelection: false)
-    }
-    if inExpandedPathSet.contains (path) {
-      inOutlineView.expandItem (self)
-      ioRowIndex += 1
-    }
-    for entry in self.mChildren {
-      entry.restoreExpandedItems (inExpandedPathSet, path, &ioRowIndex, inOutlineView, inOptionalSelectedItem)
-    }
   }
 
   //····················································································································
