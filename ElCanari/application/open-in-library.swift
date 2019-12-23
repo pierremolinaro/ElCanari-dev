@@ -10,8 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class OpenInLibrary : NSObject,
-                      NSTableViewDataSource, NSTableViewDelegate {
+class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
@@ -31,9 +30,7 @@ class OpenInLibrary : NSObject,
     self.mFullPathTextField?.stringValue = ""
     self.mStatusTextField?.stringValue = ""
     self.mCancelButton?.target = self
-    self.mCancelButton?.action = #selector (self.abortModalAction (_:))
     self.mOpenButton?.target = self
-    self.mOpenButton?.action = #selector (self.stopModalAndOpenDocumentAction (_:))
     self.mOpenButton?.isEnabled = false
     self.mSearchField?.target = self
     self.mSearchField?.action = #selector (self.searchFieldAction (_:))
@@ -61,11 +58,12 @@ class OpenInLibrary : NSObject,
                                          postAction : Optional <() -> Void>) {
   //--- Configure
     self.configureWith (alreadyLoadedDocuments: inNames)
+    self.mOpenButton?.action = #selector (self.stopSheetAction)
+    self.mCancelButton?.action = #selector (self.abortSheetAction)
   //--- Dialog
     if let dialog = self.mDialog {
       inWindow.beginSheet (dialog) { (_ inModalResponse : NSApplication.ModalResponse) in
-        if inModalResponse == .stop,
-             let selectedRow = self.mTableView?.selectedRow, selectedRow >= 0 {
+        if inModalResponse == .stop, let selectedRow = self.mTableView?.selectedRow, selectedRow >= 0 {
           let selectedItem = self.mTableViewFilteredDataSource [selectedRow]
           if selectedItem.mFullPath != "" {
             let fm = FileManager ()
@@ -75,6 +73,7 @@ class OpenInLibrary : NSObject,
             }
           }
         }
+        self.removeAllEntries ()
       }
     }
   }
@@ -82,16 +81,16 @@ class OpenInLibrary : NSObject,
   //····················································································································
 
   @objc private func abortSheetAction (_ inSender : Any?) {
-    if let myWindow = self.mDialog, let parent = myWindow.sheetParent {
-      parent.endSheet (myWindow, returnCode: .abort)
+    if let dialog = self.mDialog, let parent = dialog.sheetParent {
+      parent.endSheet (dialog, returnCode: .abort)
     }
   }
 
   //····················································································································
 
   @objc private func stopSheetAction (_ inSender : Any?) {
-    if let myWindow = self.mDialog, let parent = myWindow.sheetParent {
-      parent.endSheet (myWindow, returnCode: .stop)
+    if let dialog = self.mDialog, let parent = dialog.sheetParent {
+      parent.endSheet (dialog, returnCode: .stop)
     }
   }
 
@@ -103,6 +102,8 @@ class OpenInLibrary : NSObject,
   //--- Configure
     self.mDialog?.title = inTitle
     self.configureWith (alreadyLoadedDocuments: [])
+    self.mOpenButton?.action = #selector (self.stopModalAndOpenDocumentAction (_:))
+    self.mCancelButton?.action = #selector (self.abortModalAction (_:))
   //--- Dialog
     if let dialog = self.mDialog {
       _ = NSApp.runModal (for: dialog)
