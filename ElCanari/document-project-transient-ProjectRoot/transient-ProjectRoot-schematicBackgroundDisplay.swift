@@ -34,67 +34,50 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
         let LINE_HEIGHT  : CGFloat =  18.0
         let OFFSET       : CGFloat =  0.5
         var shape = EBShape ()
-        let A4Width = canariUnitToCocoa (self_sheetGeometry.size.width)
-        let A4Height = canariUnitToCocoa (self_sheetGeometry.size.height)
+        let sheetWidth = canariUnitToCocoa (self_sheetGeometry.size.width) - 2.0
+        let sheetHeight = canariUnitToCocoa (self_sheetGeometry.size.height) - 2.0
         let vMarks = self_sheetGeometry.verticalDivisions
         let hMarks = self_sheetGeometry.horizontalDivisions
-//        let A4Height : CGFloat
-//        let A4Width  : CGFloat
-//        switch self_mSchematicSheetOrientation {
-//        case .a4Horizontal :
-//           A4Height = SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT - SCHEMATIC_TOP_MARGIN_COCOA_UNIT - SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT - 2.0
-//           A4Width  = SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT - SCHEMATIC_LEFT_MARGIN_COCOA_UNIT - SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT - 2.0
-//        case .a4Vertical :
-//           A4Height = SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT - SCHEMATIC_TOP_MARGIN_COCOA_UNIT - SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT - 2.0
-//           A4Width  = SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT - SCHEMATIC_LEFT_MARGIN_COCOA_UNIT - SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT - 2.0
-//        case .custom :
-//           A4Height = canariUnitToCocoa (self_mSchematicCustomHeight)
-//           A4Width  = canariUnitToCocoa (self_mSchematicCustomWidth)
-//        }
-//        let m = max (A4Height, A4Width)
-//        let vMarks = Int ((10.0 * A4Height) / m)
-//        let hMarks = Int ((10.0 * A4Width) / m)
-
       //---
-        var filledBP = EBBezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT, height: A4Height))
-        filledBP.appendRect (NSRect (x: OFFSET, y: A4Height - SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: A4Width, height: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT))
-        filledBP.appendRect (NSRect (x: A4Width - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: OFFSET, width: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT, height: A4Height))
-        filledBP.appendRect (NSRect (x: OFFSET, y: OFFSET, width: A4Width, height: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT))
-        filledBP.appendRect (NSRect (x: A4Width - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT - LEFT_COLUMN - RIGHT_COLUMN + OFFSET, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: LEFT_COLUMN + RIGHT_COLUMN, height: LINE_HEIGHT * 3.0))
+        var filledBP = EBBezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT, height: sheetHeight))
+        filledBP.appendRect (NSRect (x: OFFSET, y: sheetHeight - SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: sheetWidth, height: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT))
+        filledBP.appendRect (NSRect (x: sheetWidth - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: OFFSET, width: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT, height: sheetHeight))
+        filledBP.appendRect (NSRect (x: OFFSET, y: OFFSET, width: sheetWidth, height: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT))
+        filledBP.appendRect (NSRect (x: sheetWidth - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT - LEFT_COLUMN - RIGHT_COLUMN + OFFSET, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: LEFT_COLUMN + RIGHT_COLUMN, height: LINE_HEIGHT * 3.0))
         shape.add (filled: [filledBP], .white)
       //---
-        var bp = EBBezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: A4Width, height: A4Height))
-        bp.appendRect (NSRect (x: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: A4Width - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT * 2.0, height: A4Height - SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT * 2.0))
-        bp.move (to: NSPoint (x: A4Width - LEFT_COLUMN - RIGHT_COLUMN - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
+        var bp = EBBezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: sheetWidth, height: sheetHeight))
+        bp.appendRect (NSRect (x: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: sheetWidth - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT * 2.0, height: sheetHeight - SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT * 2.0))
+        bp.move (to: NSPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
         bp.relativeLine (to: NSPoint (x: 0.0, y: LINE_HEIGHT * 3.0))
         bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: 0.0))
-        bp.move (to: NSPoint (x: A4Width - LEFT_COLUMN - RIGHT_COLUMN - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
+        bp.move (to: NSPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
         bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: 0.0))
-        bp.move (to: NSPoint (x: A4Width - LEFT_COLUMN - RIGHT_COLUMN - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 2.0 + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
+        bp.move (to: NSPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 2.0 + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
         bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: 0.0))
-        bp.move (to: NSPoint (x: A4Width - RIGHT_COLUMN - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
+        bp.move (to: NSPoint (x: sheetWidth - RIGHT_COLUMN - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
         bp.relativeLine (to: NSPoint (x: 0.0, y: LINE_HEIGHT * 2.0))
      //--- Draw vertical marks
-       let vIncrement = (A4Height - SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT * 2.0) / CGFloat (vMarks)
+       let vIncrement = (sheetHeight - SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT * 2.0) / CGFloat (vMarks)
        var p = NSPoint (x: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT * 0.5 + OFFSET, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + vIncrement * 0.5 + OFFSET)
        for mark in 0 ..< vMarks {
          shape.add (text: "\(mark)", p, lineAttributes, .center, .center)
          p.y += vIncrement
        }
-       p = NSPoint (x: A4Width - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT * 0.5 + OFFSET, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + vIncrement * 0.5 + OFFSET)
+       p = NSPoint (x: sheetWidth - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT * 0.5 + OFFSET, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + vIncrement * 0.5 + OFFSET)
        for mark in 0 ..< vMarks {
          shape.add (text: "\(mark)", p, lineAttributes, .center, .center)
          p.y += vIncrement
        }
      //--- Draw horizontal marks
-       let hIncrement = (A4Width - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT * 2.0) / CGFloat (hMarks)
+       let hIncrement = (sheetWidth - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT * 2.0) / CGFloat (hMarks)
        p = NSPoint (x: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + hIncrement / 2.0 + OFFSET, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT * 0.5 + OFFSET)
        for mark in 0 ..< hMarks {
          let pointCode = UnicodeScalar (mark + 0x41)! // "A", "B", …
          shape.add (text: "\(pointCode)", p, lineAttributes, .center, .center)
          p.x += hIncrement
        }
-       p = NSPoint (x: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + hIncrement / 2.0 + OFFSET, y: A4Height - SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT * 0.5 + OFFSET)
+       p = NSPoint (x: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + hIncrement / 2.0 + OFFSET, y: sheetHeight - SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT * 0.5 + OFFSET)
        for mark in 0 ..< hMarks {
          let pointCode = UnicodeScalar (mark + 0x41)! // "A", "B", …
          shape.add (text: "\(pointCode)", p, lineAttributes, .center, .center)
@@ -105,7 +88,7 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
       for _ in 0 ... vMarks {
         bp.move (to: p)
         bp.relativeLine (to: NSPoint (x: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT, y: 0.0))
-        bp.relativeMove (to: NSPoint (x: A4Width - 2.0 * SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT, y: 0.0))
+        bp.relativeMove (to: NSPoint (x: sheetWidth - 2.0 * SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT, y: 0.0))
         bp.relativeLine (to: NSPoint (x: SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT, y: 0.0))
         p.y += vIncrement
       }
@@ -114,7 +97,7 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
       for _ in 0 ... hMarks {
         bp.move (to: p)
         bp.relativeLine (to: NSPoint (x: 0.0, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT))
-        bp.relativeMove (to: NSPoint (x: 0.0, y: A4Height - 2.0 * SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT))
+        bp.relativeMove (to: NSPoint (x: 0.0, y: sheetHeight - 2.0 * SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT))
         bp.relativeLine (to: NSPoint (x: 0.0, y: SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT))
         p.x += hIncrement
       }
@@ -124,19 +107,19 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
       bp.lineJoinStyle = .round
       shape.add (stroke: [bp], .black)
      //--- Schematics Title
-        p = NSPoint (x: A4Width - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 2.5 + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
+        p = NSPoint (x: sheetWidth - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 2.5 + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
         shape.add (text: self_mSchematicTitle, p, textAttributes, .center, .center)
      //--- Version
-        p = NSPoint (x: A4Width - RIGHT_COLUMN / 2.0 - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 2.5 + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
+        p = NSPoint (x: sheetWidth - RIGHT_COLUMN / 2.0 - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 2.5 + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
         shape.add (text: self_mSchematicVersion, p, textAttributes, .center, .center)
      //--- Sheet Title
-        p = NSPoint (x: A4Width - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 1.5 + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
+        p = NSPoint (x: sheetWidth - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 1.5 + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
         shape.add (text: self_mSelectedSheet_mSheetTitle ?? "—", p, textAttributes, .center, .center)
      //--- Date
         let dateFormatter = DateFormatter ()
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .short
-        p = NSPoint (x: A4Width - (LEFT_COLUMN + RIGHT_COLUMN) / 2.0 - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 0.5 + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
+        p = NSPoint (x: sheetWidth - (LEFT_COLUMN + RIGHT_COLUMN) / 2.0 - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 0.5 + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
         shape.add (text: dateFormatter.string (from: self_mSchematicDate), p, textAttributes, .center, .center)
      //--- Sheet index
         var s = "?"
@@ -149,7 +132,7 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
             idx += 1
           }
         }
-        p = NSPoint (x: A4Width - RIGHT_COLUMN / 2.0 - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 1.5 + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
+        p = NSPoint (x: sheetWidth - RIGHT_COLUMN / 2.0 - SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 1.5 + SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
         shape.add (text: s + "/\(self_mSheets.count)", p, textAttributes, .center, .center)
     //----
         return shape

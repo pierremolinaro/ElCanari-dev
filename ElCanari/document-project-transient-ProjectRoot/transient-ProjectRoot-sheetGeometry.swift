@@ -27,16 +27,16 @@ func transient_ProjectRoot_sheetGeometry (
   let bottomMargin = cocoaToCanariUnit (SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT)
   switch self_mSchematicSheetOrientation {
   case .a4Horizontal :
-    let width = A4MaxSize - leftMargin - rightMargin
-    let height = A4MinSize - topMargin - bottomMargin
+    let width = A4MaxSize - leftMargin - rightMargin - cocoaToCanariUnit (2.0)
+    let height = A4MinSize - topMargin - bottomMargin - cocoaToCanariUnit (2.0)
     return SchematicSheetGeometry (
       size: CanariSize (width: width, height: height),
       horizontalDivisions: 10,
       verticalDivisions: (10 * A4MinSize) / A4MaxSize
     )
   case .a4Vertical :
-    let width = A4MinSize - leftMargin - rightMargin
-    let height = A4MaxSize - topMargin - bottomMargin
+    let width = A4MinSize - leftMargin - rightMargin - cocoaToCanariUnit (2.0)
+    let height = A4MaxSize - topMargin - bottomMargin - cocoaToCanariUnit (2.0)
     return SchematicSheetGeometry (
       size: CanariSize (width: width, height: height),
       horizontalDivisions: (10 * A4MinSize) / A4MaxSize,

@@ -10,14 +10,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT : CGFloat = 842.0
-let SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT : CGFloat = 595.0
-let SCHEMATIC_LEFT_MARGIN_COCOA_UNIT : CGFloat = 72.0
-let SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT : CGFloat = 72.0
-let SCHEMATIC_TOP_MARGIN_COCOA_UNIT : CGFloat = 72.0
-let SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT : CGFloat = 72.0
-let SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT : CGFloat = 13.0
-let SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT : CGFloat = 13.0
+let SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT   : CGFloat = 842.0
+let SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT   : CGFloat = 595.0
+let SCHEMATIC_LEFT_MARGIN_COCOA_UNIT   : CGFloat =  72.0
+let SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT  : CGFloat =  72.0
+let SCHEMATIC_TOP_MARGIN_COCOA_UNIT    : CGFloat =  72.0
+let SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT : CGFloat =  72.0
+let SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT  : CGFloat =  13.0
+let SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT : CGFloat =  13.0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -67,8 +67,8 @@ extension CustomizedProjectDocument {
       }
     //--- Build print view
       let sheets = self.rootObject.mSheets
-      let printWidth = pageWidth - SCHEMATIC_LEFT_MARGIN_COCOA_UNIT - SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT - 1.0
-      let printHeight = pageHeight - SCHEMATIC_TOP_MARGIN_COCOA_UNIT - SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT - 1.0
+      let printWidth = pageWidth - SCHEMATIC_LEFT_MARGIN_COCOA_UNIT - SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT - 2.0
+      let printHeight = pageHeight - SCHEMATIC_TOP_MARGIN_COCOA_UNIT - SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT - 2.0
       let printViewFrame = NSRect (
         x: 0.0,
         y: 0.0,
@@ -113,13 +113,14 @@ extension CustomizedProjectDocument {
       printInfo.topMargin = SCHEMATIC_TOP_MARGIN_COCOA_UNIT
       printInfo.rightMargin = SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT
       printInfo.bottomMargin = SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT
-      let printOperation = NSPrintOperation (view: printView) //, printInfo: printInfo)
+      let printOperation = NSPrintOperation (view: printView)
+      let title = self.windowForSheet!.title.deletingPathExtension + ".schematics"
+      printOperation.jobTitle = title
       self.mPrintOperation = printOperation // It seems that printOperation should be retained
       printOperation.showsPrintPanel = true
       let printPanel = printOperation.printPanel
       printPanel.options = [printPanel.options, .showsPaperSize, .showsOrientation, .showsScaling, .showsCopies]
     //---
-//      self.runModalPrintOperation (printOperation, delegate: nil, didRun: nil, contextInfo: nil)
       self.runModalPrintOperation (
         printOperation,
         delegate: self,
@@ -135,7 +136,7 @@ extension CustomizedProjectDocument {
                                                 success inSuccess : Bool,
                                                 contextInfo inUnusedContextInfo : Any?) {
      //    self.mPrintOperation = nil // Crash !
-    // DispatchQueue.main.async { self.mPrintOperation = nil }
+    DispatchQueue.main.async { self.mPrintOperation = nil }
   }
 
   //····················································································································

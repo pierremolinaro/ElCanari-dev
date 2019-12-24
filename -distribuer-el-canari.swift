@@ -32,8 +32,12 @@ let VERSION_CANARI = "1.1.5"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
   "Device: importing a symbol now imports symbol texts"
+  "Project: printing schematics draws right and top borders"
 ]
-let CHANGES : [String] = []
+let CHANGES : [String] = [
+  "Open in Library now displays a flat list of parts",
+  "Open in Library now has a search field"
+]
 let NEWS : [String] = []
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
