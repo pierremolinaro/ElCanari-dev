@@ -31,7 +31,7 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.1.5"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
-  "Device: importing a symbol now imports symbol texts"
+  "Device: importing a symbol now imports symbol texts",
   "Project: printing schematics draws right and top borders"
 ]
 let CHANGES : [String] = [
