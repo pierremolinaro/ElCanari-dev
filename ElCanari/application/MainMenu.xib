@@ -455,9 +455,14 @@
                                     <action selector="performMiniaturize:" target="-1" id="6272"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Merge All Windows" id="229">
+                            <menuItem title="Move Tab to New Window" id="229">
                                 <connections>
-                                    <action selector="mergeAllWindows:" target="-1" id="xGD-8I-rUh"/>
+                                    <action selector="moveTabToNewWindow:" target="-1" id="syB-ef-8G8"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Merge All Windows" id="jgJ-vh-cXo">
+                                <connections>
+                                    <action selector="mergeAllWindows:" target="-1" id="EdP-Sv-GmV"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Zoom" id="s7g-0k-SC5">
