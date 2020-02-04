@@ -174,6 +174,7 @@ import Cocoa
   @IBOutlet var mAddSegmentButton : CanariDragSourceButton? = nil
   @IBOutlet var mAddSlavePadButton : CanariDragSourceButton? = nil
   @IBOutlet var mAddZoneButton : CanariDragSourceButton? = nil
+  @IBOutlet var mAddZoneForbiddenPadNumberButton : EBButton? = nil
   @IBOutlet var mArcAngle : CanariAngleTextField? = nil
   @IBOutlet var mArcEndTangentTextField : CanariDimensionTextField? = nil
   @IBOutlet var mArcEndTangentUnitPopUp : EBPopUpButton? = nil
@@ -307,6 +308,7 @@ import Cocoa
   @IBOutlet var mProgramHelpSheet : NSPanel? = nil
   @IBOutlet var mProgramPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mProgramTextView : EBTextView? = nil
+  @IBOutlet var mRemoveZoneForbiddenPadNumberButton : EBButton? = nil
   @IBOutlet var mResetVersionButton : EBButton? = nil
   @IBOutlet var mRunProgramButton : EBButton? = nil
   @IBOutlet var mSegmentInspectorView : CanariViewWithKeyView? = nil
@@ -348,6 +350,7 @@ import Cocoa
   @IBOutlet var mVerticalFlip : EBSwitch? = nil
   @IBOutlet var mXPlacardUnitPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mYPlacardUnitPopUpButton : EBPopUpButton? = nil
+  @IBOutlet var mZoneForbiddenPadNumberTableView : StringArrayTableView? = nil
   @IBOutlet var mZoneHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet var mZoneHeightUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mZoneInspectorView : CanariViewWithKeyView? = nil
@@ -467,6 +470,7 @@ import Cocoa
     checkOutletConnection (self.mAddSegmentButton, "mAddSegmentButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddSlavePadButton, "mAddSlavePadButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddZoneButton, "mAddZoneButton", CanariDragSourceButton.self, #file, #line)
+    checkOutletConnection (self.mAddZoneForbiddenPadNumberButton, "mAddZoneForbiddenPadNumberButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mArcAngle, "mArcAngle", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mArcEndTangentTextField, "mArcEndTangentTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mArcEndTangentUnitPopUp, "mArcEndTangentUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -600,6 +604,7 @@ import Cocoa
     checkOutletConnection (self.mProgramHelpSheet, "mProgramHelpSheet", NSPanel.self, #file, #line)
     checkOutletConnection (self.mProgramPageView, "mProgramPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mProgramTextView, "mProgramTextView", EBTextView.self, #file, #line)
+    checkOutletConnection (self.mRemoveZoneForbiddenPadNumberButton, "mRemoveZoneForbiddenPadNumberButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetVersionButton, "mResetVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRunProgramButton, "mRunProgramButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSegmentInspectorView, "mSegmentInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -641,6 +646,7 @@ import Cocoa
     checkOutletConnection (self.mVerticalFlip, "mVerticalFlip", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mXPlacardUnitPopUpButton, "mXPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mYPlacardUnitPopUpButton, "mYPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mZoneForbiddenPadNumberTableView, "mZoneForbiddenPadNumberTableView", StringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mZoneHeightTextField, "mZoneHeightTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mZoneHeightUnitPopUp, "mZoneHeightUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mZoneInspectorView, "mZoneInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -951,6 +957,7 @@ import Cocoa
     self.mZoneXLabelTextField?.bind_dimensionAndUnit (self.mPackageZoneSelectionController.xName_property, self.mPackageZoneSelectionController.xNameUnit_property, file: #file, line: #line)
     self.mZoneYLabelUnitPopUp?.bind_selectedTag (self.mPackageZoneSelectionController.yNameUnit_property, file: #file, line: #line)
     self.mZoneYLabelTextField?.bind_dimensionAndUnit (self.mPackageZoneSelectionController.yName_property, self.mPackageZoneSelectionController.yNameUnit_property, file: #file, line: #line)
+    self.mZoneForbiddenPadNumberTableView?.bind_array (self.mPackageZoneSelectionController.forbiddenPadArray_property, file: #file, line: #line)
     self.mPadNumberingPopUpButton?.bind_selectedIndex (self.rootObject.padNumbering_property, file: #file, line: #line)
     self.mCounterClockNumberingStartAngleIntField?.bind_value (self.rootObject.counterClockNumberingStartAngle_property, file: #file, line: #line, sendContinously:true, autoFormatter:false)
     self.mStatusImageViewInToolbar?.bind_image (self.statusImage_property, file: #file, line: #line)
@@ -1083,6 +1090,10 @@ import Cocoa
     self.mSetDimensionTextOriginAtMidX?.action = #selector (PackageDocument.setDimensionTextOriginAtMidXAction (_:))
     self.mSetDimensionTextOriginAtMidY?.target = self
     self.mSetDimensionTextOriginAtMidY?.action = #selector (PackageDocument.setDimensionTextOriginAtMidYAction (_:))
+    self.mAddZoneForbiddenPadNumberButton?.target = self
+    self.mAddZoneForbiddenPadNumberButton?.action = #selector (PackageDocument.addZoneForbiddenPadNumberAction (_:))
+    self.mRemoveZoneForbiddenPadNumberButton?.target = self
+    self.mRemoveZoneForbiddenPadNumberButton?.action = #selector (PackageDocument.removeZoneForbiddenPadNumberAction (_:))
     self.mProgramHelpButton?.target = self
     self.mProgramHelpButton?.action = #selector (PackageDocument.programHelpAction (_:))
     self.mLoadFromDesignButton?.target = self
@@ -1254,6 +1265,7 @@ import Cocoa
     self.mZoneXLabelTextField?.unbind_dimensionAndUnit ()
     self.mZoneYLabelUnitPopUp?.unbind_selectedTag ()
     self.mZoneYLabelTextField?.unbind_dimensionAndUnit ()
+    self.mZoneForbiddenPadNumberTableView?.unbind_array ()
     self.mPadNumberingPopUpButton?.unbind_selectedIndex ()
     self.mCounterClockNumberingStartAngleIntField?.unbind_value ()
     self.mStatusImageViewInToolbar?.unbind_image ()
@@ -1343,6 +1355,8 @@ import Cocoa
   //--------------------------- Remove targets / actions
     self.mSetDimensionTextOriginAtMidX?.target = nil
     self.mSetDimensionTextOriginAtMidY?.target = nil
+    self.mAddZoneForbiddenPadNumberButton?.target = nil
+    self.mRemoveZoneForbiddenPadNumberButton?.target = nil
     self.mProgramHelpButton?.target = nil
     self.mLoadFromDesignButton?.target = nil
     self.mRunProgramButton?.target = nil
@@ -1358,6 +1372,7 @@ import Cocoa
     self.mAddSegmentButton?.ebCleanUp ()
     self.mAddSlavePadButton?.ebCleanUp ()
     self.mAddZoneButton?.ebCleanUp ()
+    self.mAddZoneForbiddenPadNumberButton?.ebCleanUp ()
     self.mArcAngle?.ebCleanUp ()
     self.mArcEndTangentTextField?.ebCleanUp ()
     self.mArcEndTangentUnitPopUp?.ebCleanUp ()
@@ -1491,6 +1506,7 @@ import Cocoa
     self.mProgramHelpSheet?.ebCleanUp ()
     self.mProgramPageView?.ebCleanUp ()
     self.mProgramTextView?.ebCleanUp ()
+    self.mRemoveZoneForbiddenPadNumberButton?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mRunProgramButton?.ebCleanUp ()
     self.mSegmentInspectorView?.ebCleanUp ()
@@ -1532,6 +1548,7 @@ import Cocoa
     self.mVerticalFlip?.ebCleanUp ()
     self.mXPlacardUnitPopUpButton?.ebCleanUp ()
     self.mYPlacardUnitPopUpButton?.ebCleanUp ()
+    self.mZoneForbiddenPadNumberTableView?.ebCleanUp ()
     self.mZoneHeightTextField?.ebCleanUp ()
     self.mZoneHeightUnitPopUp?.ebCleanUp ()
     self.mZoneInspectorView?.ebCleanUp ()
@@ -1557,6 +1574,7 @@ import Cocoa
     self.mAddSegmentButton = nil
     self.mAddSlavePadButton = nil
     self.mAddZoneButton = nil
+    self.mAddZoneForbiddenPadNumberButton = nil
     self.mArcAngle = nil
     self.mArcEndTangentTextField = nil
     self.mArcEndTangentUnitPopUp = nil
@@ -1690,6 +1708,7 @@ import Cocoa
     self.mProgramHelpSheet = nil
     self.mProgramPageView = nil
     self.mProgramTextView = nil
+    self.mRemoveZoneForbiddenPadNumberButton = nil
     self.mResetVersionButton = nil
     self.mRunProgramButton = nil
     self.mSegmentInspectorView = nil
@@ -1731,6 +1750,7 @@ import Cocoa
     self.mVerticalFlip = nil
     self.mXPlacardUnitPopUpButton = nil
     self.mYPlacardUnitPopUpButton = nil
+    self.mZoneForbiddenPadNumberTableView = nil
     self.mZoneHeightTextField = nil
     self.mZoneHeightUnitPopUp = nil
     self.mZoneInspectorView = nil

@@ -119,6 +119,12 @@ protocol PackageZone_selectionDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageZone_forbiddenPadArray : class {
+  var forbiddenPadArray : StringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -141,7 +147,8 @@ class PackageZone : PackageObject,
          PackageZone_objectDisplay,
          PackageZone_issues,
          PackageZone_rect,
-         PackageZone_selectionDisplay {
+         PackageZone_selectionDisplay,
+         PackageZone_forbiddenPadArray {
 
   //····················································································································
   //   Atomic property: x
@@ -399,6 +406,25 @@ class PackageZone : PackageObject,
   var zoneNumbering_property_selection : EBSelection <PadNumbering> { return self.zoneNumbering_property.prop }
 
   //····················································································································
+  //   To many property: forbiddenPadNumbers
+  //····················································································································
+
+  let forbiddenPadNumbers_property = StoredArrayOf_ForbiddenPadNumber (usedForSignature: true)
+
+  //····················································································································
+
+  var forbiddenPadNumbers_property_selection : EBSelection < [ForbiddenPadNumber] > {
+    return self.forbiddenPadNumbers_property.prop
+  }
+
+  //····················································································································
+
+  var forbiddenPadNumbers : [ForbiddenPadNumber] {
+    get { return self.forbiddenPadNumbers_property.propval }
+    set { self.forbiddenPadNumbers_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Transient property: rect
   //····················································································································
 
@@ -414,6 +440,29 @@ class PackageZone : PackageObject,
 
   var rect : CanariRect? {
     switch self.rect_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: forbiddenPadArray
+  //····················································································································
+
+  let forbiddenPadArray_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  var forbiddenPadArray_property_selection : EBSelection <StringArray> {
+    return self.forbiddenPadArray_property.prop
+  }
+
+  //····················································································································
+
+  var forbiddenPadArray : StringArray? {
+    switch self.forbiddenPadArray_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -463,6 +512,8 @@ class PackageZone : PackageObject,
     self.yNameUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: zoneNumbering
     self.zoneNumbering_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: forbiddenPadNumbers (no option)
+    self.forbiddenPadNumbers_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -605,8 +656,31 @@ class PackageZone : PackageObject,
     g_Preferences?.packageBackgroundColor_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.padZoneColor_property.addEBObserver (self.selectionDisplay_property)
     self.knobSize_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: forbiddenPadArray
+    self.forbiddenPadArray_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.forbiddenPadNumbers_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.forbiddenPadNumbers_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageZone_forbiddenPadArray (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.forbiddenPadNumbers_property.addEBObserverOf_padNumber (self.forbiddenPadArray_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
+    self.forbiddenPadNumbers_property.setSignatureObserver (observer: self)
     self.height_property.setSignatureObserver (observer: self)
     self.heightUnit_property.setSignatureObserver (observer: self)
     self.width_property.setSignatureObserver (observer: self)
@@ -659,7 +733,9 @@ class PackageZone : PackageObject,
     g_Preferences?.packageBackgroundColor_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.padZoneColor_property.removeEBObserver (self.selectionDisplay_property)
     self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
+    self.forbiddenPadNumbers_property.removeEBObserverOf_padNumber (self.forbiddenPadArray_property)
   //--- Unregister properties for handling signature
+    self.forbiddenPadNumbers_property.setSignatureObserver (observer: nil)
     self.height_property.setSignatureObserver (observer: nil)
     self.heightUnit_property.setSignatureObserver (observer: nil)
     self.width_property.setSignatureObserver (observer: nil)
@@ -840,7 +916,22 @@ class PackageZone : PackageObject,
       observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
       valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "forbiddenPadArray",
+      idx: self.forbiddenPadArray_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.forbiddenPadArray_property.mObserverExplorer,
+      valueExplorer: &self.forbiddenPadArray_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForToManyRelationshipNamed (
+      "forbiddenPadNumbers",
+      idx:forbiddenPadNumbers_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&forbiddenPadNumbers_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
@@ -895,6 +986,8 @@ class PackageZone : PackageObject,
   //--- Atomic property: zoneNumbering
     self.zoneNumbering_property.mObserverExplorer = nil
     self.zoneNumbering_property.mValueExplorer = nil
+  //--- To many property: forbiddenPadNumbers
+    self.forbiddenPadNumbers_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -904,6 +997,7 @@ class PackageZone : PackageObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
+    self.forbiddenPadNumbers = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -953,6 +1047,12 @@ class PackageZone : PackageObject,
     self.yNameUnit_property.storeIn (dictionary: ioDictionary, forKey:"yNameUnit")
   //--- Atomic property: zoneNumbering
     self.zoneNumbering_property.storeIn (dictionary: ioDictionary, forKey:"zoneNumbering")
+  //--- To many property: forbiddenPadNumbers
+    self.store (
+      managedObjectArray: self.forbiddenPadNumbers_property.propval,
+      relationshipName: "forbiddenPadNumbers",
+      intoDictionary: ioDictionary
+    )
   }
 
   //····················································································································
@@ -962,6 +1062,12 @@ class PackageZone : PackageObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: forbiddenPadNumbers
+    self.forbiddenPadNumbers_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "forbiddenPadNumbers",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ForbiddenPadNumber])
   }
 
   //····················································································································
@@ -1027,6 +1133,7 @@ class PackageZone : PackageObject,
     ioString += "zoneNumbering\n"
   //--- To one relationships
   //--- To many relationships
+    ioString += "forbiddenPadNumbers\n"
   }
 
   //····················································································································
@@ -1068,6 +1175,37 @@ class PackageZone : PackageObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
+    do{
+      var optionalFirstIndex : Int? = nil
+      var rangeCount = 0
+      for object in self.forbiddenPadNumbers {
+        if let firstIndex = optionalFirstIndex {
+          if object.savingIndex == (firstIndex + 1) {
+            rangeCount += 1
+            optionalFirstIndex = object.savingIndex
+          }else if rangeCount > 0 {
+            ioData.append (ascii: .colon)
+            ioData.append (base62Encoded: rangeCount)
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
+            rangeCount = 0
+            optionalFirstIndex = object.savingIndex
+          }else{
+            ioData.append (ascii: .space)
+            ioData.append (base62Encoded: object.savingIndex)
+            optionalFirstIndex = object.savingIndex
+          }
+        }else{
+          ioData.append (base62Encoded: object.savingIndex)
+          optionalFirstIndex = object.savingIndex
+        }
+      }
+      if optionalFirstIndex != nil, rangeCount > 0 {
+        ioData.append (ascii: .colon)
+        ioData.append (base62Encoded: rangeCount)
+      }
+      ioData.append (ascii: .lineFeed)
+    }
   }
 
   //····················································································································
@@ -1076,6 +1214,10 @@ class PackageZone : PackageObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: forbiddenPadNumbers
+    for managedObject in self.forbiddenPadNumbers {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -1084,6 +1226,10 @@ class PackageZone : PackageObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: forbiddenPadNumbers
+    for managedObject in self.forbiddenPadNumbers {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -1092,6 +1238,7 @@ class PackageZone : PackageObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
+    crc.accumulateUInt32 (self.forbiddenPadNumbers_property.signature ())
     crc.accumulateUInt32 (self.height_property.signature ())
     crc.accumulateUInt32 (self.heightUnit_property.signature ())
     crc.accumulateUInt32 (self.width_property.signature ())

@@ -17,6 +17,7 @@
                 <outlet property="mAddSegmentButton" destination="2983" id="M1N-vk-c72"/>
                 <outlet property="mAddSlavePadButton" destination="2988" id="NCJ-tM-vR9"/>
                 <outlet property="mAddZoneButton" destination="3001" id="QYf-L3-jMJ"/>
+                <outlet property="mAddZoneForbiddenPadNumberButton" destination="xhk-Ly-eQ0" id="HaN-OZ-fOh"/>
                 <outlet property="mArcAngle" destination="1581" id="WKA-FT-aFG"/>
                 <outlet property="mArcEndTangentTextField" destination="1739" id="G5N-4V-Jim"/>
                 <outlet property="mArcEndTangentUnitPopUp" destination="1730" id="Q83-Eq-Oqh"/>
@@ -150,6 +151,7 @@
                 <outlet property="mProgramHelpSheet" destination="h48-eq-iuE" id="eJi-uE-0gc"/>
                 <outlet property="mProgramPageView" destination="2512" id="Mb6-tH-IZE"/>
                 <outlet property="mProgramTextView" destination="2514" id="d7U-jr-k0N"/>
+                <outlet property="mRemoveZoneForbiddenPadNumberButton" destination="bfy-Ba-ToS" id="Yas-z2-idW"/>
                 <outlet property="mResetVersionButton" destination="2529" id="c7p-LE-qqa"/>
                 <outlet property="mRunProgramButton" destination="2515" id="RyF-Iw-kFF"/>
                 <outlet property="mSegmentInspectorView" destination="3015" id="Uuj-Fr-Dyh"/>
@@ -191,6 +193,7 @@
                 <outlet property="mVerticalFlip" destination="Ljc-JI-iq8" id="9OL-Kb-pPB"/>
                 <outlet property="mXPlacardUnitPopUpButton" destination="mxN-vd-WAz" id="G8R-z6-87Z"/>
                 <outlet property="mYPlacardUnitPopUpButton" destination="hXF-SK-mZ4" id="lu5-y2-cHJ"/>
+                <outlet property="mZoneForbiddenPadNumberTableView" destination="06M-T0-GN0" id="jFk-WY-ekn"/>
                 <outlet property="mZoneHeightTextField" destination="mpR-i0-OBO" id="i17-NO-VGh"/>
                 <outlet property="mZoneHeightUnitPopUp" destination="ZaV-OI-c5v" id="YDG-4u-6oK"/>
                 <outlet property="mZoneInspectorView" destination="2031" id="FD4-mH-bbH"/>
@@ -1306,6 +1309,87 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Display Zone Name" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="0ge-tB-KJC">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
+                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eq0-tc-8z9">
+                    <rect key="frame" x="72" y="89" width="157" height="138"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <clipView key="contentView" ambiguous="YES" id="bht-xy-IlR">
+                        <rect key="frame" x="1" y="0.0" width="155" height="137"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" rowSizeStyle="automatic" headerView="vxD-Oh-YfB" viewBased="YES" floatsGroupRows="NO" id="06M-T0-GN0" customClass="StringArrayTableView" customModule="ElCanari" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="155" height="112"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <size key="intercellSpacing" width="3" height="2"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn identifier="value" editable="NO" width="152" minWidth="40" maxWidth="1000" id="fU3-p8-6V6">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="Forbidden Pad Numbers">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="mEf-ID-Ap9">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <prototypeCellViews>
+                                            <tableCellView id="syP-gF-e40">
+                                                <rect key="frame" x="1" y="1" width="152" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField identifier="value" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xIO-fj-IDS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="152" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="Table View Cell" id="MaI-1v-zi6">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <connections>
+                                                    <outlet property="textField" destination="xIO-fj-IDS" id="XKi-ON-7bq"/>
+                                                </connections>
+                                            </tableCellView>
+                                        </prototypeCellViews>
+                                    </tableColumn>
+                                </tableColumns>
+                            </tableView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="rmY-54-J5U">
+                        <rect key="frame" x="-100" y="-100" width="223" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="1J6-Hl-fxs">
+                        <rect key="frame" x="141" y="25" width="15" height="112"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <tableHeaderView key="headerView" id="vxD-Oh-YfB">
+                        <rect key="frame" x="0.0" y="0.0" width="155" height="25"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </tableHeaderView>
+                </scrollView>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhk-Ly-eQ0" customClass="EBButton">
+                    <rect key="frame" x="20" y="210" width="44" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="+" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k0H-JW-AHB">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfy-Ba-ToS" customClass="EBButton">
+                    <rect key="frame" x="20" y="186" width="44" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="-" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dxq-Xl-PKr">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>

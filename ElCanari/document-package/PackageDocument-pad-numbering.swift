@@ -16,6 +16,7 @@ extension CustomizedPackageDocument {
     self.rootObject.packageZones_property.addEBObserverOf_rect (self.mPadNumberingObserver)
     self.rootObject.packageZones_property.addEBObserverOf_zoneNumbering (self.mPadNumberingObserver)
     self.rootObject.packageZones_property.addEBObserver (self.mPadNumberingObserver)
+    self.rootObject.packageZones_property.addEBObserverOf_forbiddenPadArray (self.mPadNumberingObserver)
     self.rootObject.counterClockNumberingStartAngle_property.addEBObserver (self.mPadNumberingObserver)
   }
 
@@ -42,13 +43,17 @@ extension CustomizedPackageDocument {
     }
   //---
     for (zone, padArray) in zoneDictionary {
-      self.performPadNumbering (padArray, zone.zoneNumbering)
+      var forbiddenPadNumberSet = Set <Int> ()
+      for f in zone.forbiddenPadNumbers {
+        forbiddenPadNumberSet.insert (f.padNumber)
+      }
+      self.performPadNumbering (padArray, zone.zoneNumbering, forbiddenPadNumberSet)
     }
   //--- Handle pads outside zones
     for pad in allPads {
       pad.zone_property.setProp (nil)
     }
-    self.performPadNumbering (allPads, self.rootObject.padNumbering)
+    self.performPadNumbering (allPads, self.rootObject.padNumbering, [])
   //--- Link slave pads to any pad
     let allSlavePads = self.rootObject.packageSlavePads_property.propval
     for slavePad in allSlavePads {
@@ -60,7 +65,9 @@ extension CustomizedPackageDocument {
 
   //····················································································································
 
-  private func performPadNumbering (_ inPadArray : [PackagePad], _ inNumberingPolicy : PadNumbering) {
+  private func performPadNumbering (_ inPadArray : [PackagePad],
+                                    _ inNumberingPolicy : PadNumbering,
+                                    _ inForbiddenPadNumberSet : Set <Int>) {
     // Swift.print ("handlePadNumbering")
   //--- Get all pads
     var allPads = inPadArray
@@ -127,6 +134,9 @@ extension CustomizedPackageDocument {
   //--- Set pad numbers from 1
     var idx = 1
     for pad in allPads {
+      while inForbiddenPadNumberSet.contains (idx) {
+        idx += 1
+      }
       pad.padNumber = idx
       idx += 1
     }

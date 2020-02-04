@@ -34,6 +34,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
     self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_rect_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_forbiddenPadArray_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_x_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_y_toElementsOfSet (inAddedSet) // Stored property
@@ -54,6 +55,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
     self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_rect_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_forbiddenPadArray_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -1131,6 +1133,62 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'forbiddenPadArray' transient property
+  //····················································································································
+
+  private var mObserversOf_forbiddenPadArray = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_forbiddenPadArray (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_forbiddenPadArray.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.forbiddenPadArray_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_forbiddenPadArray (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_forbiddenPadArray.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.forbiddenPadArray_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_forbiddenPadArray_toElementsOfSet (_ inSet : Set<PackageZone>) {
+    for managedObject in inSet {
+      self.mObserversOf_forbiddenPadArray.apply { (_ observer : EBEvent) in
+        managedObject.forbiddenPadArray_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_forbiddenPadArray_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for managedObject in inSet {
+      self.mObserversOf_forbiddenPadArray.apply { (_ observer : EBEvent) in
+        managedObject.forbiddenPadArray_property.removeEBObserver (observer)
       }
     }
   }

@@ -388,7 +388,18 @@ document PackageDocument root PackageRoot {
      $dimensionAndUnit #mPackageZoneSelectionController.yName, #mPackageZoneSelectionController.yNameUnit
   ;
 
+//--- Forbidden pad number table view
+  outlet StringArrayTableView mZoneForbiddenPadNumberTableView
+    $array #mPackageZoneSelectionController.forbiddenPadArray
+  ;
 
+  action addZoneForbiddenPadNumberAction ;
+  outlet EBButton mAddZoneForbiddenPadNumberButton $run addZoneForbiddenPadNumberAction ;
+
+  action removeZoneForbiddenPadNumberAction ;
+  outlet EBButton mRemoveZoneForbiddenPadNumberButton
+    $run removeZoneForbiddenPadNumberAction
+  ;
 
 //----------------- Pad numbering inspector
   outlet EBPopUpButton mPadNumberingPopUpButton $selectedIndex root.padNumbering ;

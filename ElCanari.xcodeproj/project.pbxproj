@@ -922,6 +922,18 @@
 		CF64AFA9225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */; };
 		CF64AFAA225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */; };
 		CF65805820EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65805720EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift */; };
+		CF67AB8823E9B08B0099DE60 /* tomany-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8523E9B08A0099DE60 /* tomany-ForbiddenPadNumber.swift */; };
+		CF67AB8923E9B08B0099DE60 /* tomany-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8523E9B08A0099DE60 /* tomany-ForbiddenPadNumber.swift */; };
+		CF67AB8A23E9B08B0099DE60 /* toone-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8623E9B08A0099DE60 /* toone-ForbiddenPadNumber.swift */; };
+		CF67AB8B23E9B08B0099DE60 /* toone-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8623E9B08A0099DE60 /* toone-ForbiddenPadNumber.swift */; };
+		CF67AB8C23E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8723E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift */; };
+		CF67AB8D23E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8723E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift */; };
+		CF67AC7423E9BD6F0099DE60 /* transient-PackageZone-forbiddenPadArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AC7323E9BD6E0099DE60 /* transient-PackageZone-forbiddenPadArray.swift */; };
+		CF67AC7523E9BD6F0099DE60 /* transient-PackageZone-forbiddenPadArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AC7323E9BD6E0099DE60 /* transient-PackageZone-forbiddenPadArray.swift */; };
+		CF67AC7723E9C58B0099DE60 /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AC7623E9C58B0099DE60 /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift */; };
+		CF67AC7823E9C58B0099DE60 /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AC7623E9C58B0099DE60 /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift */; };
+		CF67AC7A23E9C9AF0099DE60 /* action-PackageDocument-removeZoneForbiddenPadNumberAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AC7923E9C9AF0099DE60 /* action-PackageDocument-removeZoneForbiddenPadNumberAction.swift */; };
+		CF67AC7B23E9C9AF0099DE60 /* action-PackageDocument-removeZoneForbiddenPadNumberAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AC7923E9C9AF0099DE60 /* action-PackageDocument-removeZoneForbiddenPadNumberAction.swift */; };
 		CF69ABC721A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */; };
 		CF69ABC821A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */; };
 		CF69ABCF21A6C08100F5E49A /* transient-SymbolPin-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69ABCA21A6C08000F5E49A /* transient-SymbolPin-selectionDisplay.swift */; };
@@ -2909,6 +2921,12 @@
 		CF64AFA3225B78C100E40C83 /* extension-ProjectDocument-fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-fonts.swift"; sourceTree = "<group>"; };
 		CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-add-components.swift"; sourceTree = "<group>"; };
 		CF65805720EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-generateProductFilesAction.swift"; sourceTree = "<group>"; };
+		CF67AB8523E9B08A0099DE60 /* tomany-ForbiddenPadNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "tomany-ForbiddenPadNumber.swift"; sourceTree = "<group>"; };
+		CF67AB8623E9B08A0099DE60 /* toone-ForbiddenPadNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-ForbiddenPadNumber.swift"; sourceTree = "<group>"; };
+		CF67AB8723E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-ForbiddenPadNumber.swift"; sourceTree = "<group>"; };
+		CF67AC7323E9BD6E0099DE60 /* transient-PackageZone-forbiddenPadArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageZone-forbiddenPadArray.swift"; sourceTree = "<group>"; };
+		CF67AC7623E9C58B0099DE60 /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-PackageDocument-addZoneForbiddenPadNumberAction.swift"; sourceTree = "<group>"; };
+		CF67AC7923E9C9AF0099DE60 /* action-PackageDocument-removeZoneForbiddenPadNumberAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-PackageDocument-removeZoneForbiddenPadNumberAction.swift"; sourceTree = "<group>"; };
 		CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-SymbolDocument-resetVersionAction.swift"; sourceTree = "<group>"; };
 		CF69ABCA21A6C08000F5E49A /* transient-SymbolPin-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolPin-selectionDisplay.swift"; sourceTree = "<group>"; };
 		CF69ABCB21A6C08100F5E49A /* transient-SymbolPin-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolPin-objectDisplay.swift"; sourceTree = "<group>"; };
@@ -3864,15 +3882,17 @@
 		CF2B9CDE21C2A89200EE5683 /* document — package */ = {
 			isa = PBXGroup;
 			children = (
-				CFAB36A423786D68000C9954 /* transient-PackageObject-knobSize.swift */,
+				CF67AC7623E9C58B0099DE60 /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift */,
 				CFDEC6D921D5467900857F9C /* action-PackageDocument-clearProgramErrorAction.swift */,
 				CF4B3AC221D50F0A001217C6 /* action-PackageDocument-loadFromDesignAction.swift */,
 				CF61BA3721CCEA66000CC5EF /* action-PackageDocument-programHelpAction.swift */,
+				CF67AC7923E9C9AF0099DE60 /* action-PackageDocument-removeZoneForbiddenPadNumberAction.swift */,
 				CF4D083021C2DE4200380ACA /* action-PackageDocument-resetVersionAction.swift */,
 				CFDEC6DA21D5467900857F9C /* action-PackageDocument-runProgramAction.swift */,
 				CFD5664021CA6E9200EC62C6 /* action-PackageDocument-setDimensionTextOriginAtMidXAction.swift */,
 				CF2A01F921DE827D00F3A379 /* action-PackageDocument-setDimensionTextOriginAtMidYAction.swift */,
 				CF4A463621C2FF8D005F722D /* controller-array-PackageDocument-mPackageObjectsController.swift */,
+				CF67AB8723E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift */,
 				CF85858D21C5124300082CE3 /* entity-PackageArc.swift */,
 				CF00843921C41B8D003627E9 /* entity-PackageBezier.swift */,
 				CF6B32F321C91FA100E3B985 /* entity-PackageDimension.swift */,
@@ -3912,6 +3932,7 @@
 				CF01070C21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift */,
 				CF4B39C621D3F7A4001217C6 /* selectionController-PackageDocument-mPackageSlavePadSelectionController.swift */,
 				CF6E148021CD151C008E2180 /* selectionController-PackageDocument-mPackageZoneSelectionController.swift */,
+				CF67AB8523E9B08A0099DE60 /* tomany-ForbiddenPadNumber.swift */,
 				CFA42FE5229AEB68000AA8C8 /* tomany-PackageArc.swift */,
 				CFA42FD7229AEB67000AA8C8 /* tomany-PackageBezier.swift */,
 				CFA42FDC229AEB67000AA8C8 /* tomany-PackageDimension.swift */,
@@ -3923,6 +3944,7 @@
 				CFA42FE8229AEB68000AA8C8 /* tomany-PackageSegment.swift */,
 				CFA42FE0229AEB68000AA8C8 /* tomany-PackageSlavePad.swift */,
 				CFA42FE2229AEB68000AA8C8 /* tomany-PackageZone.swift */,
+				CF67AB8623E9B08A0099DE60 /* toone-ForbiddenPadNumber.swift */,
 				CFA42FD5229AEB67000AA8C8 /* toone-PackageArc.swift */,
 				CFA42FDF229AEB68000AA8C8 /* toone-PackageBezier.swift */,
 				CFA42FE3229AEB68000AA8C8 /* toone-PackageDimension.swift */,
@@ -3952,6 +3974,7 @@
 				CF6B32E021C8F75000E3B985 /* transient-PackageGuide-issues.swift */,
 				CF6B32DF21C8F75000E3B985 /* transient-PackageGuide-objectDisplay.swift */,
 				CF6B32E121C8F75000E3B985 /* transient-PackageGuide-selectionDisplay.swift */,
+				CFAB36A423786D68000C9954 /* transient-PackageObject-knobSize.swift */,
 				CF00844B21C42A90003627E9 /* transient-PackageOval-issues.swift */,
 				CF00844A21C42A90003627E9 /* transient-PackageOval-objectDisplay.swift */,
 				CF00844C21C42A90003627E9 /* transient-PackageOval-selectionDisplay.swift */,
@@ -3985,6 +4008,7 @@
 				CF4B39CA21D40F8F001217C6 /* transient-PackageSlavePad-padName.swift */,
 				CF2A01F621DE7C4200F3A379 /* transient-PackageSlavePad-padNumberDisplay.swift */,
 				CF4B39B421D3F1C4001217C6 /* transient-PackageSlavePad-selectionDisplay.swift */,
+				CF67AC7323E9BD6E0099DE60 /* transient-PackageZone-forbiddenPadArray.swift */,
 				CF6E147421CD1144008E2180 /* transient-PackageZone-issues.swift */,
 				CF6E147221CD1144008E2180 /* transient-PackageZone-objectDisplay.swift */,
 				CF6E148321CD1F90008E2180 /* transient-PackageZone-rect.swift */,
@@ -5907,6 +5931,7 @@
 				CFEB7C60233A28680060A97A /* transient-ProjectDocument-componentCount.swift in Sources */,
 				CFEB7CFE233A2A030060A97A /* transient-SheetInProject-sheetDescriptor.swift in Sources */,
 				CFB1DB3F2282D31F005F9811 /* entity-ProjectRoot.swift in Sources */,
+				CF67AB8A23E9B08B0099DE60 /* toone-ForbiddenPadNumber.swift in Sources */,
 				CF7F41F321CAF45400C4C529 /* transient-PackageSegment-lengthInCanariUnit.swift in Sources */,
 				CFE652D71DD4B22600BAC27A /* transient-FontCharacter-gerberCodeInstructionCountMessage.swift in Sources */,
 				CFDC5EFF20FB1F70003AB275 /* EBGraphicManagedObject.swift in Sources */,
@@ -5983,6 +6008,7 @@
 				CF0777E12352153000F56EAB /* extension-String-ValuePropertyProtocol.swift in Sources */,
 				CF0777C9235210E500F56EAB /* EBReadOnlyClassProperty.swift in Sources */,
 				CFF0417720DD568700FB1C5B /* EBIntObserverField.swift in Sources */,
+				CF67AC7423E9BD6F0099DE60 /* transient-PackageZone-forbiddenPadArray.swift in Sources */,
 				CFCFDBEB233F87E7004119A3 /* CanariNetsMenuItem.swift in Sources */,
 				CFEB7BE8233A28130060A97A /* transient-NetClassInProject-viaHoleDiameter.swift in Sources */,
 				CFA1AA1422325FA60023928C /* selectionController-DeviceDocument-symbolInstanceSelection.swift in Sources */,
@@ -6015,6 +6041,7 @@
 				CF968AF721BBD5180010175E /* EBGraphicView-binding-xPlacardUnit.swift in Sources */,
 				CF8A099D223191E700A17B92 /* transient-SymbolTypeInDevice-instanceCount.swift in Sources */,
 				CF06E7C320E802AD00EA47B9 /* extension-MergerDocument-model-update.swift in Sources */,
+				CF67AC7A23E9C9AF0099DE60 /* action-PackageDocument-removeZoneForbiddenPadNumberAction.swift in Sources */,
 				CF2A491D1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathAscent.swift in Sources */,
 				CFA1AA2022327B680023928C /* entity-SymbolPinInstanceInDevice.swift in Sources */,
 				CF586A4A238FF26300F66C7C /* transient-NetInProject-trackCount.swift in Sources */,
@@ -6242,6 +6269,7 @@
 				CFEB7AE4233A24570060A97A /* transient-BoardObject-isPlacedInBoard.swift in Sources */,
 				CFEB7CD1233A28860060A97A /* transient-ProjectRoot-signatureForERCChecking.swift in Sources */,
 				CF2A01F721DE7C4200F3A379 /* transient-PackageSlavePad-padNumberDisplay.swift in Sources */,
+				CF67AB8823E9B08B0099DE60 /* tomany-ForbiddenPadNumber.swift in Sources */,
 				CFAB36A523786D69000C9954 /* transient-PackageObject-knobSize.swift in Sources */,
 				CF740E9022F2FFA200C11B1C /* controller-table-view-ProjectDocument-mDataController.swift in Sources */,
 				CF4B39CD21D40F8F001217C6 /* transient-PackageSlavePad-padName.swift in Sources */,
@@ -6293,6 +6321,7 @@
 				CFA42FC2229AEB0A000AA8C8 /* toone-BoardModel.swift in Sources */,
 				CFEDE5AF1B4677BA00036ACF /* entity-ArtworkRoot.swift in Sources */,
 				CFA43089229AEB96000AA8C8 /* toone-NCInSchematic.swift in Sources */,
+				CF67AB8C23E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift in Sources */,
 				CFEB7B82233A26330060A97A /* transient-DeviceInProject-pinPadAssignments.swift in Sources */,
 				CF4EC72F2284937000902FBB /* ProjectDocument-schematic-contextual-click.swift in Sources */,
 				CF52031122771846002B12B7 /* ProjectDocument-utilities.swift in Sources */,
@@ -6422,6 +6451,7 @@
 				CF07781823521CB800F56EAB /* property-explorer.swift in Sources */,
 				CF3414DA22DFBDE800D0CEB6 /* ProjectDocument-erc.swift in Sources */,
 				CFA42F87229AEACF000AA8C8 /* tomany-SymbolInstanceInDevice.swift in Sources */,
+				CF67AC7723E9C58B0099DE60 /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift in Sources */,
 				CFEB7AEC233A247F0060A97A /* transient-BoardRestrictRectangle-signatureForERCChecking.swift in Sources */,
 				CF52DF5121501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift in Sources */,
 				CF58A3B71DD7887000146883 /* action-ArtworkDocument-resetVersionAndSignatureAction.swift in Sources */,
@@ -7092,6 +7122,7 @@
 				CF01070E21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift in Sources */,
 				CFEB7C61233A28680060A97A /* transient-ProjectDocument-componentCount.swift in Sources */,
 				CFEB7CFF233A2A030060A97A /* transient-SheetInProject-sheetDescriptor.swift in Sources */,
+				CF67AB8B23E9B08B0099DE60 /* toone-ForbiddenPadNumber.swift in Sources */,
 				CF5C4CCD219F04D600EAC52A /* EBTextObserverField.swift in Sources */,
 				CF29563622324C4C004100D6 /* transient-DeviceRoot-inconsistentSymbolNameSetMessage.swift in Sources */,
 				CF5C4CCE219F04D600EAC52A /* EBImageObserverView.swift in Sources */,
@@ -7168,6 +7199,7 @@
 				CF0777E22352153000F56EAB /* extension-String-ValuePropertyProtocol.swift in Sources */,
 				CF0777CA235210E500F56EAB /* EBReadOnlyClassProperty.swift in Sources */,
 				CFB1DB3E2282D31F005F9811 /* entity-DeviceSymbolInstanceInProject.swift in Sources */,
+				CF67AC7523E9BD6F0099DE60 /* transient-PackageZone-forbiddenPadArray.swift in Sources */,
 				CF7C30E721CCCA9E00EFFDCA /* PackageDocument-pad-numbering.swift in Sources */,
 				CFCFDBEC233F87E7004119A3 /* CanariNetsMenuItem.swift in Sources */,
 				CFEB7BE9233A28130060A97A /* transient-NetClassInProject-viaHoleDiameter.swift in Sources */,
@@ -7200,6 +7232,7 @@
 				CF39C4EE22A0526700EE75CD /* ProjectDocument-customized-net-class.swift in Sources */,
 				CF78DE94222D65CA00E89DCA /* entity-SlavePadInDevice.swift in Sources */,
 				CF29563822324C4C004100D6 /* transient-SymbolInstanceInDevice-symbolQualifiedName.swift in Sources */,
+				CF67AC7B23E9C9AF0099DE60 /* action-PackageDocument-removeZoneForbiddenPadNumberAction.swift in Sources */,
 				CF5C4CE1219F04D600EAC52A /* transient-MergerDocument-mStatusImage.swift in Sources */,
 				CF8D061621A2AD92007D12D9 /* SymbolDocument-customized.swift in Sources */,
 				CF586A4B238FF26300F66C7C /* transient-NetInProject-trackCount.swift in Sources */,
@@ -7427,6 +7460,7 @@
 				CF6E148221CD151C008E2180 /* selectionController-PackageDocument-mPackageZoneSelectionController.swift in Sources */,
 				CFEB7AE5233A24570060A97A /* transient-BoardObject-isPlacedInBoard.swift in Sources */,
 				CFEB7CD2233A28860060A97A /* transient-ProjectRoot-signatureForERCChecking.swift in Sources */,
+				CF67AB8923E9B08B0099DE60 /* tomany-ForbiddenPadNumber.swift in Sources */,
 				CFAB36A623786D69000C9954 /* transient-PackageObject-knobSize.swift in Sources */,
 				CF001F7721F8B1940091518E /* func-getSystemProxy.swift in Sources */,
 				CF644E1522E75744004B7ED3 /* enum-AutorouterSnapAngle.swift in Sources */,
@@ -7478,6 +7512,7 @@
 				CFDBA0EA22491BC900C658B2 /* transient-FontDocument-mStatusImage.swift in Sources */,
 				CFA42F88229AEACF000AA8C8 /* tomany-SymbolInstanceInDevice.swift in Sources */,
 				CF518E1C2282CFAE002BCEE5 /* controller-ProjectSheetController.swift in Sources */,
+				CF67AB8D23E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift in Sources */,
 				CFEB7B83233A26330060A97A /* transient-DeviceInProject-pinPadAssignments.swift in Sources */,
 				CF5C4D15219F04D600EAC52A /* view-CanariFontSampleStringView.swift in Sources */,
 				CF0432C622B649A70016EDE0 /* enum-BoardTextLayer.swift in Sources */,
@@ -7607,6 +7642,7 @@
 				CF07781923521CB800F56EAB /* property-explorer.swift in Sources */,
 				CFA43012229AEB69000AA8C8 /* toone-PackageZone.swift in Sources */,
 				CF4B39D421D4E5DD001217C6 /* transient-PackagePad-noZone.swift in Sources */,
+				CF67AC7823E9C58B0099DE60 /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift in Sources */,
 				CFEB7AED233A247F0060A97A /* transient-BoardRestrictRectangle-signatureForERCChecking.swift in Sources */,
 				CFA4D55B22D36B6A007992CD /* enum-BoardLineLayer.swift in Sources */,
 				CFB1DB382282D31F005F9811 /* entity-WireInSchematic.swift in Sources */,

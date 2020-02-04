@@ -448,7 +448,7 @@ class SymbolRoot : EBManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
   //--- To many property: symbolPins
-    self.symbolObjects_property.removeEBObserver (self.symbolPins_property)
+    self.symbolObjects_property.removeEBObserver (self.symbolPins_property) // §
     self.symbolObjects_property.removeEBObserverOf_issues (self.issues_property)
     self.symbolPins_property.removeEBObserverOf_name (self.issues_property)
     self.symbolPins_property.removeEBObserverOf_nameRect (self.issues_property)

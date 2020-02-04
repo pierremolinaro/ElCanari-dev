@@ -201,6 +201,16 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   }
 
   //····················································································································
+  //   Selection observable property: forbiddenPadArray
+  //····················································································································
+
+  let forbiddenPadArray_property = EBTransientProperty_StringArray ()
+
+  var forbiddenPadArray_property_selection : EBSelection <StringArray> {
+    return self.forbiddenPadArray_property.prop
+  }
+
+  //····················································································································
   //   Selected array (not observable)
   //····················································································································
 
@@ -235,6 +245,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
     self.bind_property_issues ()
     self.bind_property_rect ()
     self.bind_property_selectionDisplay ()
+    self.bind_property_forbiddenPadArray ()
   }
 
   //····················································································································
@@ -330,6 +341,9 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  //--- forbiddenPadArray
+    self.forbiddenPadArray_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_forbiddenPadArray (self.forbiddenPadArray_property)
   //---
   }
 
@@ -1709,6 +1723,45 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
           var isMultipleSelection = false
           for object in v {
             switch object.selectionDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_forbiddenPadArray () {
+    self.selectedArray_property.addEBObserverOf_forbiddenPadArray (self.forbiddenPadArray_property)
+    self.forbiddenPadArray_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <StringArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.forbiddenPadArray_property_selection {
             case .empty :
               return .empty
             case .multiple :

@@ -405,6 +405,7 @@ graphic entity PackageZone : PackageObject {
 
   property @signature String zoneName default "" ;
   property Bool displayZoneName default yes ;
+  toMany @signature ForbiddenPadNumber forbiddenPadNumbers ;
   property @signature Int xName default 2_286_00 ;
   property @signature Int yName default 2_286_00 ;
   property @signature Int xNameUnit default 2_286 ;
@@ -432,6 +433,14 @@ graphic entity PackageZone : PackageObject {
   ;
 
   transient CanariRect rect dependsFrom self.x, self.y, self.width, self.height ;
+  
+  transient StringArray forbiddenPadArray dependsFrom self.forbiddenPadNumbers.all.padNumber ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity ForbiddenPadNumber {
+  property @signature Int padNumber default 0 ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
