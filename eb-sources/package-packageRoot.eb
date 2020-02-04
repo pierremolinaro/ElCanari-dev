@@ -267,7 +267,9 @@ graphic entity PackagePad : PackageObject {
 
   transient Int annularRing dependsFrom self.width, self.height, self.holeWidth, self.holeHeight ;
 
-  transient String padName dependsFrom self.padNumber, self.zone.one.zoneName ;
+  transient String padName dependsFrom
+     self.padNumber,
+     self.zone.one.zoneName, self.zone.one.displayZoneName ;
 
   transient String zoneName dependsFrom self.zone.one.zoneName ;
 
@@ -402,6 +404,7 @@ graphic entity PackageZone : PackageObject {
   property @signature Int heightUnit default 2_286 ;
 
   property @signature String zoneName default "" ;
+  property Bool displayZoneName default yes ;
   property @signature Int xName default 2_286_00 ;
   property @signature Int yName default 2_286_00 ;
   property @signature Int xNameUnit default 2_286 ;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -77,6 +77,7 @@
                 <outlet property="mDisplayBottomSidePadSwitch" destination="MJs-2h-EMj" id="1V2-Dm-0P1"/>
                 <outlet property="mDisplayInspectorView" destination="sHH-7k-fUn" id="yy0-9n-4ni"/>
                 <outlet property="mDisplayTopSidePadSwitch" destination="Gom-0a-3Ut" id="ZFw-12-idQ"/>
+                <outlet property="mDisplayZoneNameSwitch" destination="obU-Tt-UAm" id="0wB-by-pns"/>
                 <outlet property="mGridDisplayPopUpButton" destination="vjx-yN-SDQ" id="zJt-ul-QIg"/>
                 <outlet property="mGridStyle" destination="1tS-aK-Csg" id="l9a-Nm-2d2"/>
                 <outlet property="mGridTextField" destination="Tf2-wd-zhH" id="MIU-zf-3vl"/>
@@ -1300,6 +1301,14 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obU-Tt-UAm" customClass="EBSwitch">
+                    <rect key="frame" x="16" y="239" width="215" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Display Zone Name" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="0ge-tB-KJC">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
             </subviews>
             <point key="canvasLocation" x="-60" y="-37"/>
         </customView>

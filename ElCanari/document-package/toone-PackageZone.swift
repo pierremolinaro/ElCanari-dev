@@ -24,6 +24,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
     inOldValue?.widthUnit_property.removeEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
     inOldValue?.heightUnit_property.removeEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
     inOldValue?.zoneName_property.removeEBObserversFrom (&self.mObserversOf_zoneName) // Stored property
+    inOldValue?.displayZoneName_property.removeEBObserversFrom (&self.mObserversOf_displayZoneName) // Stored property
     inOldValue?.xName_property.removeEBObserversFrom (&self.mObserversOf_xName) // Stored property
     inOldValue?.yName_property.removeEBObserversFrom (&self.mObserversOf_yName) // Stored property
     inOldValue?.xNameUnit_property.removeEBObserversFrom (&self.mObserversOf_xNameUnit) // Stored property
@@ -43,6 +44,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
     self.mInternalValue?.widthUnit_property.addEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
     self.mInternalValue?.heightUnit_property.addEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
     self.mInternalValue?.zoneName_property.addEBObserversFrom (&self.mObserversOf_zoneName) // Stored property
+    self.mInternalValue?.displayZoneName_property.addEBObserversFrom (&self.mObserversOf_displayZoneName) // Stored property
     self.mInternalValue?.xName_property.addEBObserversFrom (&self.mObserversOf_xName) // Stored property
     self.mInternalValue?.yName_property.addEBObserversFrom (&self.mObserversOf_yName) // Stored property
     self.mInternalValue?.xNameUnit_property.addEBObserversFrom (&self.mObserversOf_xNameUnit) // Stored property
@@ -680,6 +682,76 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.zoneName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayZoneName' stored property
+  //····················································································································
+
+  private var mObserversOf_displayZoneName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var displayZoneName_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.displayZoneName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_displayZoneName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayZoneName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.displayZoneName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayZoneName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayZoneName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.displayZoneName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayZoneName_toElementsOfSet (_ inSet : Set<PackageZone>) {
+    for managedObject in inSet {
+      self.mObserversOf_displayZoneName.apply { (_ observer : EBEvent) in
+        managedObject.displayZoneName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayZoneName_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    self.mObserversOf_displayZoneName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.displayZoneName_property.removeEBObserver (observer)
       }
     }
   }

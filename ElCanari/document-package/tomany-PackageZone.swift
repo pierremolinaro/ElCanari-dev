@@ -24,6 +24,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
     self.removeEBObserversOf_widthUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_heightUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_zoneName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_displayZoneName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_xName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_yName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_xNameUnit_fromElementsOfSet (inRemovedSet) // Stored property
@@ -43,6 +44,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
     self.addEBObserversOf_widthUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_heightUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_zoneName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_displayZoneName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_xName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_yName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_xNameUnit_toElementsOfSet (inAddedSet) // Stored property
@@ -563,6 +565,63 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.zoneName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayZoneName' stored property
+  //····················································································································
+
+  private var mObserversOf_displayZoneName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayZoneName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_displayZoneName.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayZoneName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayZoneName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_displayZoneName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.displayZoneName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayZoneName_toElementsOfSet (_ inSet : Set<PackageZone>) {
+    for managedObject in inSet {
+      self.mObserversOf_displayZoneName.apply { (_ observer : EBEvent) in
+        managedObject.displayZoneName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayZoneName_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    self.mObserversOf_displayZoneName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.displayZoneName_property.removeEBObserver (observer)
       }
     }
   }
@@ -1660,6 +1719,7 @@ final class PreferencesArrayOf_PackageZone : StoredArrayOf_PackageZone {
     self.addEBObserverOf_widthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_heightUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_zoneName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_displayZoneName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_xName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_yName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_xNameUnit (self.mObserverForWritingPreferences)

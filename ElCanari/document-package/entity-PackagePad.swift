@@ -799,15 +799,16 @@ class PackagePad : PackageObject,
       if let unwSelf = self {
         var kind = unwSelf.padNumber_property_selection.kind ()
         kind &= unwSelf.zone_property.zoneName_property_selection.kind ()
+        kind &= unwSelf.zone_property.displayZoneName_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.padNumber_property_selection, unwSelf.zone_property.zoneName_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_PackagePad_padName (v0, v1))
+          switch (unwSelf.padNumber_property_selection, unwSelf.zone_property.zoneName_property_selection, unwSelf.zone_property.displayZoneName_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_PackagePad_padName (v0, v1, v2))
           default :
             return .empty
           }
@@ -818,6 +819,7 @@ class PackagePad : PackageObject,
     }
     self.padNumber_property.addEBObserver (self.padName_property)
     self.zone_property.addEBObserverOf_zoneName (self.padName_property)
+    self.zone_property.addEBObserverOf_displayZoneName (self.padName_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1099,6 +1101,7 @@ class PackagePad : PackageObject,
     self.padShape_property.removeEBObserver (self.selectionDisplay_property)
     self.padNumber_property.removeEBObserver (self.padName_property)
     self.zone_property.removeEBObserverOf_zoneName (self.padName_property)
+    self.zone_property.removeEBObserverOf_displayZoneName (self.padName_property)
     self.xCenter_property.removeEBObserver (self.issues_property)
     self.yCenter_property.removeEBObserver (self.issues_property)
     self.width_property.removeEBObserver (self.issues_property)

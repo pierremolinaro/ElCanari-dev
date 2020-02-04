@@ -101,6 +101,16 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   }
 
   //····················································································································
+  //   Selection observable property: displayZoneName
+  //····················································································································
+
+  let displayZoneName_property = EBPropertyProxy_Bool ()
+
+  var displayZoneName_property_selection : EBSelection <Bool> {
+    return self.displayZoneName_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: xName
   //····················································································································
 
@@ -215,6 +225,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
     self.bind_property_widthUnit ()
     self.bind_property_heightUnit ()
     self.bind_property_zoneName ()
+    self.bind_property_displayZoneName ()
     self.bind_property_xName ()
     self.bind_property_yName ()
     self.bind_property_xNameUnit ()
@@ -277,6 +288,11 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
     self.zoneName_property.mWriteModelFunction = nil 
     self.zoneName_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_zoneName (self.zoneName_property)
+  //--- displayZoneName
+    self.displayZoneName_property.mReadModelFunction = nil 
+    self.displayZoneName_property.mWriteModelFunction = nil 
+    self.displayZoneName_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_displayZoneName (self.displayZoneName_property)
   //--- xName
     self.xName_property.mReadModelFunction = nil 
     self.xName_property.mWriteModelFunction = nil 
@@ -424,6 +440,14 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
       view: view,
       observerExplorer: &self.zoneName_property.mObserverExplorer,
       valueExplorer: &self.zoneName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "displayZoneName",
+      idx: self.displayZoneName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.displayZoneName_property.mObserverExplorer,
+      valueExplorer: &self.displayZoneName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xName",
@@ -1127,6 +1151,75 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         case .single (let v) :
           for object in v {
             let result = object.zoneName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_displayZoneName () {
+    self.selectedArray_property.addEBObserverOf_displayZoneName (self.displayZoneName_property)
+    self.displayZoneName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.displayZoneName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.displayZoneName_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.displayZoneName_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.displayZoneName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.displayZoneName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

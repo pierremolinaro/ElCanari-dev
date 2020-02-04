@@ -234,6 +234,7 @@ import Cocoa
   @IBOutlet var mDisplayBottomSidePadSwitch : EBSwitch? = nil
   @IBOutlet var mDisplayInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mDisplayTopSidePadSwitch : EBSwitch? = nil
+  @IBOutlet var mDisplayZoneNameSwitch : EBSwitch? = nil
   @IBOutlet var mGridDisplayPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mGridStyle : EBPopUpButton? = nil
   @IBOutlet var mGridTextField : CanariDimensionTextField? = nil
@@ -526,6 +527,7 @@ import Cocoa
     checkOutletConnection (self.mDisplayBottomSidePadSwitch, "mDisplayBottomSidePadSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayInspectorView, "mDisplayInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mDisplayTopSidePadSwitch, "mDisplayTopSidePadSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayZoneNameSwitch, "mDisplayZoneNameSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mGridDisplayPopUpButton, "mGridDisplayPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mGridStyle, "mGridStyle", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mGridTextField, "mGridTextField", CanariDimensionTextField.self, #file, #line)
@@ -943,6 +945,7 @@ import Cocoa
     self.mZoneHeightUnitPopUp?.bind_selectedTag (self.mPackageZoneSelectionController.heightUnit_property, file: #file, line: #line)
     self.mZoneHeightTextField?.bind_dimensionAndUnit (self.mPackageZoneSelectionController.height_property, self.mPackageZoneSelectionController.heightUnit_property, file: #file, line: #line)
     self.mZoneNameTextField?.bind_value (self.mPackageZoneSelectionController.zoneName_property, file: #file, line: #line, sendContinously:true)
+    self.mDisplayZoneNameSwitch?.bind_value (self.mPackageZoneSelectionController.displayZoneName_property, file: #file, line: #line)
     self.mZoneNumberingPopUpButton?.bind_selectedIndex (self.mPackageZoneSelectionController.zoneNumbering_property, file: #file, line: #line)
     self.mZoneXLabelUnitPopUp?.bind_selectedTag (self.mPackageZoneSelectionController.xNameUnit_property, file: #file, line: #line)
     self.mZoneXLabelTextField?.bind_dimensionAndUnit (self.mPackageZoneSelectionController.xName_property, self.mPackageZoneSelectionController.xNameUnit_property, file: #file, line: #line)
@@ -1245,6 +1248,7 @@ import Cocoa
     self.mZoneHeightUnitPopUp?.unbind_selectedTag ()
     self.mZoneHeightTextField?.unbind_dimensionAndUnit ()
     self.mZoneNameTextField?.unbind_value ()
+    self.mDisplayZoneNameSwitch?.unbind_value ()
     self.mZoneNumberingPopUpButton?.unbind_selectedIndex ()
     self.mZoneXLabelUnitPopUp?.unbind_selectedTag ()
     self.mZoneXLabelTextField?.unbind_dimensionAndUnit ()
@@ -1414,6 +1418,7 @@ import Cocoa
     self.mDisplayBottomSidePadSwitch?.ebCleanUp ()
     self.mDisplayInspectorView?.ebCleanUp ()
     self.mDisplayTopSidePadSwitch?.ebCleanUp ()
+    self.mDisplayZoneNameSwitch?.ebCleanUp ()
     self.mGridDisplayPopUpButton?.ebCleanUp ()
     self.mGridStyle?.ebCleanUp ()
     self.mGridTextField?.ebCleanUp ()
@@ -1612,6 +1617,7 @@ import Cocoa
     self.mDisplayBottomSidePadSwitch = nil
     self.mDisplayInspectorView = nil
     self.mDisplayTopSidePadSwitch = nil
+    self.mDisplayZoneNameSwitch = nil
     self.mGridDisplayPopUpButton = nil
     self.mGridStyle = nil
     self.mGridTextField = nil

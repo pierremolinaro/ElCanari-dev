@@ -370,6 +370,10 @@ document PackageDocument root PackageRoot {
   ;
 //--- Name
   outlet EBTextField mZoneNameTextField $value #mPackageZoneSelectionController.zoneName {sendContinously : yes} ;
+
+//--- Display Zone Name
+  outlet EBSwitch mDisplayZoneNameSwitch $value #mPackageZoneSelectionController.displayZoneName ;
+
 //--- Zone numbering
   outlet EBPopUpButton mZoneNumberingPopUpButton $selectedIndex #mPackageZoneSelectionController.zoneNumbering ;
   

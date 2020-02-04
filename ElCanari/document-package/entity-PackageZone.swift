@@ -60,6 +60,12 @@ protocol PackageZone_zoneName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageZone_displayZoneName : class {
+  var displayZoneName : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageZone_xName : class {
   var xName : Int { get }
 }
@@ -126,6 +132,7 @@ class PackageZone : PackageObject,
          PackageZone_widthUnit,
          PackageZone_heightUnit,
          PackageZone_zoneName,
+         PackageZone_displayZoneName,
          PackageZone_xName,
          PackageZone_yName,
          PackageZone_xNameUnit,
@@ -290,6 +297,23 @@ class PackageZone : PackageObject,
   var zoneName_property_selection : EBSelection <String> { return self.zoneName_property.prop }
 
   //····················································································································
+  //   Atomic property: displayZoneName
+  //····················································································································
+
+  let displayZoneName_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var displayZoneName : Bool {
+    get { return self.displayZoneName_property.propval }
+    set { self.displayZoneName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var displayZoneName_property_selection : EBSelection <Bool> { return self.displayZoneName_property.prop }
+
+  //····················································································································
   //   Atomic property: xName
   //····················································································································
 
@@ -427,6 +451,8 @@ class PackageZone : PackageObject,
     self.heightUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: zoneName
     self.zoneName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: displayZoneName
+    self.displayZoneName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: xName
     self.xName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yName
@@ -734,6 +760,14 @@ class PackageZone : PackageObject,
       valueExplorer: &self.zoneName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "displayZoneName",
+      idx: self.displayZoneName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.displayZoneName_property.mObserverExplorer,
+      valueExplorer: &self.displayZoneName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "xName",
       idx: self.xName_property.ebObjectIndex,
       y: &y,
@@ -843,6 +877,9 @@ class PackageZone : PackageObject,
   //--- Atomic property: zoneName
     self.zoneName_property.mObserverExplorer = nil
     self.zoneName_property.mValueExplorer = nil
+  //--- Atomic property: displayZoneName
+    self.displayZoneName_property.mObserverExplorer = nil
+    self.displayZoneName_property.mValueExplorer = nil
   //--- Atomic property: xName
     self.xName_property.mObserverExplorer = nil
     self.xName_property.mValueExplorer = nil
@@ -904,6 +941,8 @@ class PackageZone : PackageObject,
     self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey:"heightUnit")
   //--- Atomic property: zoneName
     self.zoneName_property.storeIn (dictionary: ioDictionary, forKey:"zoneName")
+  //--- Atomic property: displayZoneName
+    self.displayZoneName_property.storeIn (dictionary: ioDictionary, forKey:"displayZoneName")
   //--- Atomic property: xName
     self.xName_property.storeIn (dictionary: ioDictionary, forKey:"xName")
   //--- Atomic property: yName
@@ -949,6 +988,8 @@ class PackageZone : PackageObject,
     self.heightUnit_property.readFrom (dictionary: inDictionary, forKey:"heightUnit")
   //--- Atomic property: zoneName
     self.zoneName_property.readFrom (dictionary: inDictionary, forKey:"zoneName")
+  //--- Atomic property: displayZoneName
+    self.displayZoneName_property.readFrom (dictionary: inDictionary, forKey:"displayZoneName")
   //--- Atomic property: xName
     self.xName_property.readFrom (dictionary: inDictionary, forKey:"xName")
   //--- Atomic property: yName
@@ -978,6 +1019,7 @@ class PackageZone : PackageObject,
     ioString += "widthUnit\n"
     ioString += "heightUnit\n"
     ioString += "zoneName\n"
+    ioString += "displayZoneName\n"
     ioString += "xName\n"
     ioString += "yName\n"
     ioString += "xNameUnit\n"
@@ -1011,6 +1053,8 @@ class PackageZone : PackageObject,
     self.heightUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.zoneName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.displayZoneName.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.xName.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
