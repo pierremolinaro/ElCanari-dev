@@ -251,7 +251,7 @@ extension CustomizedProjectDocument {
           ioString += "      (path \(side) \(widthMM) \(p1.x) \(p1.y) \(p2.x) \(p2.y))\n"
         }
         if track.mIsPreservedByAutoRouter {
-          ioString += "      (type protect)\n"
+          ioString += "      (type route)\n"
         }
         if let netName = optionalNetName {
           ioString += "      (net \"\(netName)\")\n"

@@ -37,18 +37,35 @@ func transient_BoardTrack_selectionDisplay (
         }
         var bp = EBBezierPath ()
         bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth) + 1.0
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
         switch self_mTrackShape {
         case .round :
-          bp.lineCapStyle = .round
+          bp.move (to: p1)
+          bp.line (to: p2)
+          shape.add (stroke: [bp], .cyan)
+          bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth)
+          shape.add (stroke: [bp], color)
         case .rect :
-          bp.lineCapStyle = .square
+          let hw = canariUnitToCocoa (self_actualTrackWidth) * 0.5
+          let α = NSPoint.angleInRadian (p1, p2)
+          let dx = hw * sin (α)
+          let dy = hw * cos (α)
+          bp = EBBezierPath ()
+          bp.lineCapStyle = .round
+          bp.lineJoinStyle = .round
+          bp.move (to: NSPoint (x: p1.x + dx, y: p1.y - dy))
+          bp.line (to: NSPoint (x: p1.x - dx, y: p1.y + dy))
+          bp.line (to: NSPoint (x: p2.x - dx, y: p2.y + dy))
+          bp.line (to: NSPoint (x: p2.x + dx, y: p2.y - dy))
+          bp.close ()
+          var hilitePath = bp.pathByStroking
+          hilitePath.lineCapStyle = .round
+          hilitePath.lineJoinStyle = .round
+          hilitePath.lineWidth = 1.0
+          shape.add (filled: [hilitePath], .cyan)
+          shape.add (filled: [bp], color)
         }
-        bp.lineJoinStyle = .round
-        bp.move (to: p1)
-        bp.line (to: p2)
-        shape.add (stroke: [bp], .cyan)
-        bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth)
-        shape.add (stroke: [bp], color)
       //--- Knobs
         if let connected = self_mConnectorP1_connectedToComponent, !connected {
           shape.add (knobAt: p1, knobIndex: BOARD_TRACK_P1, .circ, 2.0)
