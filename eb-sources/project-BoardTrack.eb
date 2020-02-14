@@ -1,12 +1,18 @@
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   BoardTrack
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum TrackSide {
   front, back
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum TrackShape {
+  round, rect
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardTrack : BoardObject {
   toOne BoardConnector mConnectorP1 inverse toMany mTracksP1 ;
@@ -20,6 +26,7 @@ graphic entity BoardTrack : BoardObject {
   property Int mCustomTrackWidthUnit default 2_286 ; // mil
   property Bool mUsesCustomTrackWidth default no ;
   property Bool mIsPreservedByAutoRouter default no ;
+  property TrackShape mTrackShape default round ;
 
   override transient EBShape objectDisplay dependsFrom
     self.mConnectorP1.one.location,
@@ -28,7 +35,7 @@ graphic entity BoardTrack : BoardObject {
     prefs.displayBackLayoutForBoard,
     prefs.frontSideLayoutColorForBoard,
     prefs.backSideLayoutColorForBoard,
-    self.actualTrackWidth, self.mSide
+    self.actualTrackWidth, self.mSide, self.mTrackShape
   ;
 
   override transient EBShape selectionDisplay dependsFrom
@@ -36,7 +43,7 @@ graphic entity BoardTrack : BoardObject {
     self.mConnectorP2.one.location, self.mConnectorP2.one.connectedToComponent,
     prefs.frontSideLayoutColorForBoard,
     prefs.backSideLayoutColorForBoard,
-    self.mSide,
+    self.mSide, self.mTrackShape,
     self.actualTrackWidth
   ;
   
@@ -61,4 +68,4 @@ graphic entity BoardTrack : BoardObject {
   override transient UInt32 signatureForERCChecking dependsFrom self.mSide, self.actualTrackWidth ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————

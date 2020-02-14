@@ -35,7 +35,8 @@ let CHANGES : [String] = [
   "Uses Sparkle 1.23.0"
 ]
 let NEWS : [String] = [
-  "Project: new \"Is preserved by Auto Router\" check box for board track",
+  "Project, board track: new \"Is preserved by Auto Router\" check box",
+  "Project, board track: new round / rectangular popup button",
   "Package: pad zone can define non continuous pad numbering"
 ]
 

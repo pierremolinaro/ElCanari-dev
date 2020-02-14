@@ -21,30 +21,13 @@ func transient_BoardTrack_selectionDisplay (
        _ prefs_frontSideLayoutColorForBoard : NSColor,
        _ prefs_backSideLayoutColorForBoard : NSColor,
        _ self_mSide : TrackSide,            
+       _ self_mTrackShape : TrackShape,     
        _ self_actualTrackWidth : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
       var shape = EBShape ()
       if let p1 = self_mConnectorP1_location?.cocoaPoint, let p2 = self_mConnectorP2_location?.cocoaPoint {
       //--- Hilite
-        var bp = EBBezierPath ()
-//        bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth) + 0.75 // CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
-//        bp.lineCapStyle = .round
-//        bp.lineJoinStyle = .round
-//        bp.move (to: p1)
-//        bp.line (to: p2)
-//        bp = bp.pathByStroking
-//        bp.lineWidth = 0.25
-//        bp.lineCapStyle = .round
-//        bp.lineJoinStyle = .round
-//        shape.add (stroke: [bp], .cyan)
-
-        bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth) + 1.0
-        bp.lineCapStyle = .round
-        bp.lineJoinStyle = .round
-        bp.move (to: p1)
-        bp.line (to: p2)
-        shape.add (stroke: [bp], .cyan)
         let color : NSColor
         switch self_mSide {
         case .front :
@@ -52,6 +35,18 @@ func transient_BoardTrack_selectionDisplay (
         case .back :
           color = prefs_backSideLayoutColorForBoard
         }
+        var bp = EBBezierPath ()
+        bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth) + 1.0
+        switch self_mTrackShape {
+        case .round :
+          bp.lineCapStyle = .round
+        case .rect :
+          bp.lineCapStyle = .square
+        }
+        bp.lineJoinStyle = .round
+        bp.move (to: p1)
+        bp.line (to: p2)
+        shape.add (stroke: [bp], .cyan)
         bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth)
         shape.add (stroke: [bp], color)
       //--- Knobs

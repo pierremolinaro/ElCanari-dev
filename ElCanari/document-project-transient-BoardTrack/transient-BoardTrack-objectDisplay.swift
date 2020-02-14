@@ -21,18 +21,12 @@ func transient_BoardTrack_objectDisplay (
        _ prefs_frontSideLayoutColorForBoard : NSColor,
        _ prefs_backSideLayoutColorForBoard : NSColor,
        _ self_actualTrackWidth : Int,    
-       _ self_mSide : TrackSide
+       _ self_mSide : TrackSide,         
+       _ self_mTrackShape : TrackShape
 ) -> EBShape {
 //--- START OF USER ZONE 2
        var shape = EBShape ()
        if let p1 = self_mConnectorP1_location?.cocoaPoint, let p2 = self_mConnectorP2_location?.cocoaPoint {
-         var bp = EBBezierPath ()
-         let w = (self_actualTrackWidth == 0) ? milsToCanariUnit (10) : self_actualTrackWidth
-         bp.lineWidth = canariUnitToCocoa (w)
-         bp.lineCapStyle = .round
-         bp.lineJoinStyle = .round
-         bp.move (to: p1)
-         bp.line (to: p2)
          let color : NSColor
          let display : Bool
          switch self_mSide {
@@ -44,7 +38,31 @@ func transient_BoardTrack_objectDisplay (
            color = prefs_backSideLayoutColorForBoard
          }
          if display {
-           shape.add (stroke: [bp], color)
+           let w = canariUnitToCocoa ((self_actualTrackWidth == 0) ? milsToCanariUnit (10) : self_actualTrackWidth)
+           switch self_mTrackShape {
+           case .rect :
+            let hw = w * 0.5
+            let α = NSPoint.angleInRadian (p1, p2)
+            let dx = hw * sin (α)
+            let dy = hw * cos (α)
+            var bp = EBBezierPath ()
+            bp.lineCapStyle = .round
+            bp.lineJoinStyle = .round
+            bp.move (to: NSPoint (x: p1.x + dx, y: p1.y - dy))
+            bp.line (to: NSPoint (x: p1.x - dx, y: p1.y + dy))
+            bp.line (to: NSPoint (x: p2.x - dx, y: p2.y + dy))
+            bp.line (to: NSPoint (x: p2.x + dx, y: p2.y - dy))
+            bp.close ()
+            shape.add (filled: [bp], color)
+           case .round :
+             var bp = EBBezierPath ()
+             bp.lineWidth = w
+             bp.lineCapStyle = .round
+             bp.lineJoinStyle = .round
+             bp.move (to: p1)
+             bp.line (to: p2)
+             shape.add (stroke: [bp], color)
+           }
          }
        }
        return shape

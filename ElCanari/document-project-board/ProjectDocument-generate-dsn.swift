@@ -240,7 +240,16 @@ extension CustomizedProjectDocument {
         let p1 = track.mConnectorP1!.location!.millimeterPoint
         let p2 = track.mConnectorP2!.location!.millimeterPoint
         ioString += "    (wire\n"
-        ioString += "      (path \(side) \(widthMM) \(p1.x) \(p1.y) \(p2.x) \(p2.y))\n"
+        switch track.mTrackShape {
+        case .rect :
+          let hw = widthMM * 0.5
+          let α = NSPoint.angleInRadian (p1, p2)
+          let dx = hw * sin (α)
+          let dy = hw * cos (α)
+          ioString += "      (polygon \(side) 0 \(p1.x + dx) \(p1.y - dy) \(p1.x - dx) \(p1.y + dy) \(p2.x - dx) \(p2.y + dy) \(p2.x + dx) \(p2.y - dy))\n"
+        case .round :
+          ioString += "      (path \(side) \(widthMM) \(p1.x) \(p1.y) \(p2.x) \(p2.y))\n"
+        }
         if track.mIsPreservedByAutoRouter {
           ioString += "      (type protect)\n"
         }

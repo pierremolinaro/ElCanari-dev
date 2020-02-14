@@ -42,6 +42,12 @@ protocol BoardTrack_mIsPreservedByAutoRouter : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardTrack_mTrackShape : class {
+  var mTrackShape : TrackShape { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardTrack_actualTrackWidth : class {
   var actualTrackWidth : Int? { get }
 }
@@ -117,6 +123,7 @@ class BoardTrack : BoardObject,
          BoardTrack_mCustomTrackWidthUnit,
          BoardTrack_mUsesCustomTrackWidth,
          BoardTrack_mIsPreservedByAutoRouter,
+         BoardTrack_mTrackShape,
          BoardTrack_actualTrackWidth,
          BoardTrack_selectionDisplay,
          BoardTrack_netName,
@@ -230,6 +237,23 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool> { return self.mIsPreservedByAutoRouter_property.prop }
+
+  //····················································································································
+  //   Atomic property: mTrackShape
+  //····················································································································
+
+  let mTrackShape_property = EBStoredProperty_TrackShape (defaultValue: TrackShape.round)
+
+  //····················································································································
+
+  var mTrackShape : TrackShape {
+    get { return self.mTrackShape_property.propval }
+    set { self.mTrackShape_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mTrackShape_property_selection : EBSelection <TrackShape> { return self.mTrackShape_property.prop }
 
   //····················································································································
   //   To one property: mConnectorP1
@@ -530,6 +554,8 @@ class BoardTrack : BoardObject,
     self.mUsesCustomTrackWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mIsPreservedByAutoRouter
     self.mIsPreservedByAutoRouter_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mTrackShape
+    self.mTrackShape_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.ebUndoManager = self.ebUndoManager
     self.mConnectorP1_property.setOppositeRelationShipFunctions (
@@ -584,6 +610,7 @@ class BoardTrack : BoardObject,
         kind &= g_Preferences!.frontSideLayoutColorForBoard_property_selection.kind ()
         kind &= g_Preferences!.backSideLayoutColorForBoard_property_selection.kind ()
         kind &= unwSelf.mSide_property_selection.kind ()
+        kind &= unwSelf.mTrackShape_property_selection.kind ()
         kind &= unwSelf.actualTrackWidth_property_selection.kind ()
         switch kind {
         case .empty :
@@ -591,9 +618,9 @@ class BoardTrack : BoardObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP1_property.connectedToComponent_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.mConnectorP2_property.connectedToComponent_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, unwSelf.mSide_property_selection, unwSelf.actualTrackWidth_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP1_property.connectedToComponent_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.mConnectorP2_property.connectedToComponent_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, unwSelf.mSide_property_selection, unwSelf.mTrackShape_property_selection, unwSelf.actualTrackWidth_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
             return .empty
           }
@@ -609,6 +636,7 @@ class BoardTrack : BoardObject,
     g_Preferences?.frontSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     self.mSide_property.addEBObserver (self.selectionDisplay_property)
+    self.mTrackShape_property.addEBObserver (self.selectionDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
@@ -803,15 +831,16 @@ class BoardTrack : BoardObject,
         kind &= g_Preferences!.backSideLayoutColorForBoard_property_selection.kind ()
         kind &= unwSelf.actualTrackWidth_property_selection.kind ()
         kind &= unwSelf.mSide_property_selection.kind ()
+        kind &= unwSelf.mTrackShape_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection, g_Preferences!.displayFrontLayoutForBoard_property_selection, g_Preferences!.displayBackLayoutForBoard_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, unwSelf.actualTrackWidth_property_selection, unwSelf.mSide_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_BoardTrack_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection, g_Preferences!.displayFrontLayoutForBoard_property_selection, g_Preferences!.displayBackLayoutForBoard_property_selection, g_Preferences!.frontSideLayoutColorForBoard_property_selection, g_Preferences!.backSideLayoutColorForBoard_property_selection, unwSelf.actualTrackWidth_property_selection, unwSelf.mSide_property_selection, unwSelf.mTrackShape_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_BoardTrack_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
             return .empty
           }
@@ -828,6 +857,7 @@ class BoardTrack : BoardObject,
     g_Preferences?.backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.objectDisplay_property)
     self.mSide_property.addEBObserver (self.objectDisplay_property)
+    self.mTrackShape_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -847,6 +877,7 @@ class BoardTrack : BoardObject,
     g_Preferences?.frontSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     self.mSide_property.removeEBObserver (self.selectionDisplay_property)
+    self.mTrackShape_property.removeEBObserver (self.selectionDisplay_property)
     self.actualTrackWidth_property.removeEBObserver (self.selectionDisplay_property)
     self.mNet_property.removeEBObserverOf_mNetName (self.netName_property)
     self.mNet_property.removeEBObserverOf_netClassName (self.netClassName_property)
@@ -867,6 +898,7 @@ class BoardTrack : BoardObject,
     g_Preferences?.backSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     self.actualTrackWidth_property.removeEBObserver (self.objectDisplay_property)
     self.mSide_property.removeEBObserver (self.objectDisplay_property)
+    self.mTrackShape_property.removeEBObserver (self.objectDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -928,6 +960,14 @@ class BoardTrack : BoardObject,
       view: view,
       observerExplorer: &self.mIsPreservedByAutoRouter_property.mObserverExplorer,
       valueExplorer: &self.mIsPreservedByAutoRouter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mTrackShape",
+      idx: self.mTrackShape_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mTrackShape_property.mObserverExplorer,
+      valueExplorer: &self.mTrackShape_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
@@ -1067,6 +1107,9 @@ class BoardTrack : BoardObject,
   //--- Atomic property: mIsPreservedByAutoRouter
     self.mIsPreservedByAutoRouter_property.mObserverExplorer = nil
     self.mIsPreservedByAutoRouter_property.mValueExplorer = nil
+  //--- Atomic property: mTrackShape
+    self.mTrackShape_property.mObserverExplorer = nil
+    self.mTrackShape_property.mValueExplorer = nil
   //--- To one property: mConnectorP1
     self.mConnectorP1_property.mObserverExplorer = nil
     self.mConnectorP1_property.mValueExplorer = nil
@@ -1119,6 +1162,8 @@ class BoardTrack : BoardObject,
     self.mUsesCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey:"mUsesCustomTrackWidth")
   //--- Atomic property: mIsPreservedByAutoRouter
     self.mIsPreservedByAutoRouter_property.storeIn (dictionary: ioDictionary, forKey:"mIsPreservedByAutoRouter")
+  //--- Atomic property: mTrackShape
+    self.mTrackShape_property.storeIn (dictionary: ioDictionary, forKey:"mTrackShape")
   }
 
   //····················································································································
@@ -1181,6 +1226,8 @@ class BoardTrack : BoardObject,
     self.mUsesCustomTrackWidth_property.readFrom (dictionary: inDictionary, forKey:"mUsesCustomTrackWidth")
   //--- Atomic property: mIsPreservedByAutoRouter
     self.mIsPreservedByAutoRouter_property.readFrom (dictionary: inDictionary, forKey:"mIsPreservedByAutoRouter")
+  //--- Atomic property: mTrackShape
+    self.mTrackShape_property.readFrom (dictionary: inDictionary, forKey:"mTrackShape")
   }
 
 
@@ -1197,6 +1244,7 @@ class BoardTrack : BoardObject,
     ioString += "mCustomTrackWidthUnit\n"
     ioString += "mUsesCustomTrackWidth\n"
     ioString += "mIsPreservedByAutoRouter\n"
+    ioString += "mTrackShape\n"
   //--- To one relationships
     ioString += "mConnectorP1\n"
     ioString += "mConnectorP2\n"
@@ -1222,6 +1270,8 @@ class BoardTrack : BoardObject,
     self.mUsesCustomTrackWidth.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mIsPreservedByAutoRouter.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mTrackShape.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.mConnectorP1 {

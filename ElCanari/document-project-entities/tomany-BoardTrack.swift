@@ -21,6 +21,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
     self.removeEBObserversOf_mCustomTrackWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mUsesCustomTrackWidth_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mIsPreservedByAutoRouter_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mTrackShape_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_actualTrackWidth_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netName_fromElementsOfSet (inRemovedSet) // Transient property
@@ -39,6 +40,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
     self.addEBObserversOf_mCustomTrackWidthUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mUsesCustomTrackWidth_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mIsPreservedByAutoRouter_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mTrackShape_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_actualTrackWidth_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netName_toElementsOfSet (inAddedSet) // Transient property
@@ -390,6 +392,63 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mIsPreservedByAutoRouter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mTrackShape' stored property
+  //····················································································································
+
+  private var mObserversOf_mTrackShape = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mTrackShape (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mTrackShape.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mTrackShape_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mTrackShape (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mTrackShape.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mTrackShape_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mTrackShape_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_mTrackShape.apply { (_ observer : EBEvent) in
+        managedObject.mTrackShape_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mTrackShape_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    self.mObserversOf_mTrackShape.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mTrackShape_property.removeEBObserver (observer)
       }
     }
   }
@@ -1591,6 +1650,7 @@ final class PreferencesArrayOf_BoardTrack : StoredArrayOf_BoardTrack {
     self.addEBObserverOf_mCustomTrackWidthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mUsesCustomTrackWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mIsPreservedByAutoRouter (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mTrackShape (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
