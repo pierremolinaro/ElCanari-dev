@@ -31,7 +31,9 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.1.6"
 let NOTES : [String] = []
 let BUGFIXES : [String] = []
-let CHANGES : [String] = []
+let CHANGES : [String] = [
+  "Uses Sparkle 1.23.0"
+]
 let NEWS : [String] = [
   "Project: new \"Is preserved by Auto Router\" check box for board track",
   "Package: pad zone can define non continuous pad numbering"
