@@ -37,7 +37,7 @@ extension PackageRoot {
         masterPad.mHoleHeight = packageMasterPad.holeHeight
         masterPad.mShape = packageMasterPad.padShape
         masterPad.mStyle = packageMasterPad.padStyle
-        masterPad.mName = packageMasterPad.padName!
+        masterPad.mName = packageMasterPad.padNameWithZoneName!
         masterPads.append (masterPad)
         masterPadDictionary [packageMasterPad] = masterPad
       }

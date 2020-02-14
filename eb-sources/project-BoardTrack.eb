@@ -19,6 +19,7 @@ graphic entity BoardTrack : BoardObject {
   property Int mCustomTrackWidth default 45_720 ; // 20 mil
   property Int mCustomTrackWidthUnit default 2_286 ; // mil
   property Bool mUsesCustomTrackWidth default no ;
+  property Bool mIsPreservedByAutoRouter default no ;
 
   override transient EBShape objectDisplay dependsFrom
     self.mConnectorP1.one.location,

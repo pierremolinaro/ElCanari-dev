@@ -257,7 +257,7 @@ graphic entity PackagePad : PackageObject {
 
    transient EBShape padNumberDisplay dependsFrom
      self.xCenter, self.yCenter,
-     prefs.padNumberFont, prefs.padNumberColor, self.padName
+     prefs.padNumberFont, prefs.padNumberColor, self.padNameForDisplay
   ;
 
   override transient CanariIssueArray issues dependsFrom
@@ -267,7 +267,11 @@ graphic entity PackagePad : PackageObject {
 
   transient Int annularRing dependsFrom self.width, self.height, self.holeWidth, self.holeHeight ;
 
-  transient String padName dependsFrom
+  transient String padNameWithZoneName dependsFrom
+     self.padNumber,
+     self.zone.one.zoneName ;
+
+  transient String padNameForDisplay dependsFrom
      self.padNumber,
      self.zone.one.zoneName, self.zone.one.displayZoneName ;
 
@@ -320,11 +324,13 @@ graphic entity PackageSlavePad : PackageObject {
 
   transient Int annularRing dependsFrom self.width, self.height, self.holeWidth, self.holeHeight ;
 
-  transient String padName dependsFrom self.master.one.padName ;
+  transient String padNameWithZoneName dependsFrom self.master.one.padNameWithZoneName ;
+
+  transient String padNameForDisplay dependsFrom self.master.one.padNameForDisplay ;
 
    transient EBShape padNumberDisplay dependsFrom
      self.xCenter, self.yCenter,
-     prefs.padNumberFont, prefs.padNumberColor, self.padName
+     prefs.padNumberFont, prefs.padNumberColor, self.padNameForDisplay
   ;
 
 }
@@ -435,6 +441,8 @@ graphic entity PackageZone : PackageObject {
   transient CanariRect rect dependsFrom self.x, self.y, self.width, self.height ;
   
   transient StringArray forbiddenPadArray dependsFrom self.forbiddenPadNumbers.all.padNumber ;
+  
+  transient Bool emptyForbiddenPadArray dependsFrom self.forbiddenPadNumbers.count ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

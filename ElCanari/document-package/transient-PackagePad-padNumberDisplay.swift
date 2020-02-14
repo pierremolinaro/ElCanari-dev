@@ -18,17 +18,16 @@ func transient_PackagePad_padNumberDisplay (
        _ self_yCenter : Int,                
        _ prefs_padNumberFont : NSFont,      
        _ prefs_padNumberColor : NSColor,    
-       _ self_padName : String
+       _ self_padNameForDisplay : String
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  //--- Pad number
-    if self_padName != "" {
+    if self_padNameForDisplay != "" {
       let textAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : prefs_padNumberFont,
         NSAttributedString.Key.foregroundColor : prefs_padNumberColor
       ]
       return EBShape (
-        text: self_padName, // padString,
+        text: self_padNameForDisplay,
         CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint,
         textAttributes,
         .center,

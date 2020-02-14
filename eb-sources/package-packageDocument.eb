@@ -265,7 +265,7 @@ document PackageDocument root PackageRoot {
   ;
 //--- Master Pad
   outlet CanariSlavePadAssignmentPopUpButton mSlavePadAssignmentPopUpButton
-    $masterPadName #mPackageSlavePadSelectionController.padName
+    $masterPadName #mPackageSlavePadSelectionController.padNameWithZoneName
   ;
 
 
@@ -399,7 +399,15 @@ document PackageDocument root PackageRoot {
   action removeZoneForbiddenPadNumberAction ;
   outlet EBButton mRemoveZoneForbiddenPadNumberButton
     $run removeZoneForbiddenPadNumberAction
+    $enabled !#mPackageZoneSelectionController.emptyForbiddenPadArray
   ;
+
+//--- Dialog for adding pad number table view
+  outlet NSPanel mAddZoneForbiddenPadNumberDialog ;
+  outlet NSTextField mAddZoneForbiddenPadNumberTitle ;
+  outlet NSTextField mAddZoneForbiddenPadNumberErrorTextField ;
+  outlet NSTextField mAddZoneForbiddenPadNumberValueTextField ;
+  outlet EBButton mAddZoneForbiddenPadNumberOkButton ;
 
 //----------------- Pad numbering inspector
   outlet EBPopUpButton mPadNumberingPopUpButton $selectedIndex root.padNumbering ;

@@ -28,17 +28,14 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.1.5"
+let VERSION_CANARI = "1.1.6"
 let NOTES : [String] = []
-let BUGFIXES : [String] = [
-  "Device: importing a symbol now imports symbol texts",
-  "Project: printing schematics draws right and top borders"
+let BUGFIXES : [String] = []
+let CHANGES : [String] = []
+let NEWS : [String] = [
+  "Project: new \"Is preserved by Auto Router\" check box for board track",
+  "Package: pad zone can define non continuous pad numbering"
 ]
-let CHANGES : [String] = [
-  "Open in Library now displays a flat list of parts",
-  "Open in Library now has a search field"
-]
-let NEWS : [String] = []
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   FOR PRINTING IN COLOR

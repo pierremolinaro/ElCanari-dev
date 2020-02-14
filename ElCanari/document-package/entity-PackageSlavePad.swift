@@ -120,8 +120,14 @@ protocol PackageSlavePad_annularRing : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_padName : class {
-  var padName : String? { get }
+protocol PackageSlavePad_padNameWithZoneName : class {
+  var padNameWithZoneName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageSlavePad_padNameForDisplay : class {
+  var padNameForDisplay : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -160,7 +166,8 @@ class PackageSlavePad : PackageObject,
          PackageSlavePad_issues,
          PackageSlavePad_padIsTraversing,
          PackageSlavePad_annularRing,
-         PackageSlavePad_padName,
+         PackageSlavePad_padNameWithZoneName,
+         PackageSlavePad_padNameForDisplay,
          PackageSlavePad_padNumberDisplay,
          PackageSlavePad_objectDisplay {
 
@@ -504,21 +511,44 @@ class PackageSlavePad : PackageObject,
   }
 
   //····················································································································
-  //   Transient property: padName
+  //   Transient property: padNameWithZoneName
   //····················································································································
 
-  let padName_property = EBTransientProperty_String ()
+  let padNameWithZoneName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var padName_property_selection : EBSelection <String> {
-    return self.padName_property.prop
+  var padNameWithZoneName_property_selection : EBSelection <String> {
+    return self.padNameWithZoneName_property.prop
   }
 
   //····················································································································
 
-  var padName : String? {
-    switch self.padName_property_selection {
+  var padNameWithZoneName : String? {
+    switch self.padNameWithZoneName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: padNameForDisplay
+  //····················································································································
+
+  let padNameForDisplay_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var padNameForDisplay_property_selection : EBSelection <String> {
+    return self.padNameForDisplay_property.prop
+  }
+
+  //····················································································································
+
+  var padNameForDisplay : String? {
+    switch self.padNameForDisplay_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -709,19 +739,19 @@ class PackageSlavePad : PackageObject,
     self.height_property.addEBObserver (self.annularRing_property)
     self.holeWidth_property.addEBObserver (self.annularRing_property)
     self.holeHeight_property.addEBObserver (self.annularRing_property)
-  //--- Atomic property: padName
-    self.padName_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: padNameWithZoneName
+    self.padNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.master_property.padName_property_selection.kind ()
+        let kind = unwSelf.master_property.padNameWithZoneName_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.master_property.padName_property_selection) {
+          switch (unwSelf.master_property.padNameWithZoneName_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_PackageSlavePad_padName (v0))
+            return .single (transient_PackageSlavePad_padNameWithZoneName (v0))
           default :
             return .empty
           }
@@ -730,7 +760,29 @@ class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.master_property.addEBObserverOf_padName (self.padName_property)
+    self.master_property.addEBObserverOf_padNameWithZoneName (self.padNameWithZoneName_property)
+  //--- Atomic property: padNameForDisplay
+    self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.master_property.padNameForDisplay_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.master_property.padNameForDisplay_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageSlavePad_padNameForDisplay (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.master_property.addEBObserverOf_padNameForDisplay (self.padNameForDisplay_property)
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -738,14 +790,14 @@ class PackageSlavePad : PackageObject,
         kind &= unwSelf.yCenter_property_selection.kind ()
         kind &= g_Preferences!.padNumberFont_property_selection.kind ()
         kind &= g_Preferences!.padNumberColor_property_selection.kind ()
-        kind &= unwSelf.padName_property_selection.kind ()
+        kind &= unwSelf.padNameForDisplay_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, g_Preferences!.padNumberFont_property_selection, g_Preferences!.padNumberColor_property_selection, unwSelf.padName_property_selection) {
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, g_Preferences!.padNumberFont_property_selection, g_Preferences!.padNumberColor_property_selection, unwSelf.padNameForDisplay_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_PackageSlavePad_padNumberDisplay (v0, v1, v2, v3, v4))
           default :
@@ -760,7 +812,7 @@ class PackageSlavePad : PackageObject,
     self.yCenter_property.addEBObserver (self.padNumberDisplay_property)
     g_Preferences?.padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     g_Preferences?.padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
-    self.padName_property.addEBObserver (self.padNumberDisplay_property)
+    self.padNameForDisplay_property.addEBObserver (self.padNumberDisplay_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -845,12 +897,13 @@ class PackageSlavePad : PackageObject,
     self.height_property.removeEBObserver (self.annularRing_property)
     self.holeWidth_property.removeEBObserver (self.annularRing_property)
     self.holeHeight_property.removeEBObserver (self.annularRing_property)
-    self.master_property.removeEBObserverOf_padName (self.padName_property)
+    self.master_property.removeEBObserverOf_padNameWithZoneName (self.padNameWithZoneName_property)
+    self.master_property.removeEBObserverOf_padNameForDisplay (self.padNameForDisplay_property)
     self.xCenter_property.removeEBObserver (self.padNumberDisplay_property)
     self.yCenter_property.removeEBObserver (self.padNumberDisplay_property)
     g_Preferences?.padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
     g_Preferences?.padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
-    self.padName_property.removeEBObserver (self.padNumberDisplay_property)
+    self.padNameForDisplay_property.removeEBObserver (self.padNumberDisplay_property)
     self.xCenter_property.removeEBObserver (self.objectDisplay_property)
     self.yCenter_property.removeEBObserver (self.objectDisplay_property)
     self.width_property.removeEBObserver (self.objectDisplay_property)
@@ -1046,12 +1099,20 @@ class PackageSlavePad : PackageObject,
       valueExplorer: &self.annularRing_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "padName",
-      idx: self.padName_property.ebObjectIndex,
+      "padNameWithZoneName",
+      idx: self.padNameWithZoneName_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.padName_property.mObserverExplorer,
-      valueExplorer: &self.padName_property.mValueExplorer
+      observerExplorer: &self.padNameWithZoneName_property.mObserverExplorer,
+      valueExplorer: &self.padNameWithZoneName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "padNameForDisplay",
+      idx: self.padNameForDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padNameForDisplay_property.mObserverExplorer,
+      valueExplorer: &self.padNameForDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padNumberDisplay",

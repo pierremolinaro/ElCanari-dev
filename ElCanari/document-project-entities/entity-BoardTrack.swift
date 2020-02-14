@@ -36,6 +36,12 @@ protocol BoardTrack_mUsesCustomTrackWidth : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardTrack_mIsPreservedByAutoRouter : class {
+  var mIsPreservedByAutoRouter : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardTrack_actualTrackWidth : class {
   var actualTrackWidth : Int? { get }
 }
@@ -110,6 +116,7 @@ class BoardTrack : BoardObject,
          BoardTrack_mCustomTrackWidth,
          BoardTrack_mCustomTrackWidthUnit,
          BoardTrack_mUsesCustomTrackWidth,
+         BoardTrack_mIsPreservedByAutoRouter,
          BoardTrack_actualTrackWidth,
          BoardTrack_selectionDisplay,
          BoardTrack_netName,
@@ -206,6 +213,23 @@ class BoardTrack : BoardObject,
   //····················································································································
 
   var mUsesCustomTrackWidth_property_selection : EBSelection <Bool> { return self.mUsesCustomTrackWidth_property.prop }
+
+  //····················································································································
+  //   Atomic property: mIsPreservedByAutoRouter
+  //····················································································································
+
+  let mIsPreservedByAutoRouter_property = EBStoredProperty_Bool (defaultValue: false)
+
+  //····················································································································
+
+  var mIsPreservedByAutoRouter : Bool {
+    get { return self.mIsPreservedByAutoRouter_property.propval }
+    set { self.mIsPreservedByAutoRouter_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool> { return self.mIsPreservedByAutoRouter_property.prop }
 
   //····················································································································
   //   To one property: mConnectorP1
@@ -504,6 +528,8 @@ class BoardTrack : BoardObject,
     self.mCustomTrackWidthUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mUsesCustomTrackWidth
     self.mUsesCustomTrackWidth_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mIsPreservedByAutoRouter
+    self.mIsPreservedByAutoRouter_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.ebUndoManager = self.ebUndoManager
     self.mConnectorP1_property.setOppositeRelationShipFunctions (
@@ -895,6 +921,14 @@ class BoardTrack : BoardObject,
       observerExplorer: &self.mUsesCustomTrackWidth_property.mObserverExplorer,
       valueExplorer: &self.mUsesCustomTrackWidth_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mIsPreservedByAutoRouter",
+      idx: self.mIsPreservedByAutoRouter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mIsPreservedByAutoRouter_property.mObserverExplorer,
+      valueExplorer: &self.mIsPreservedByAutoRouter_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "actualTrackWidth",
@@ -1030,6 +1064,9 @@ class BoardTrack : BoardObject,
   //--- Atomic property: mUsesCustomTrackWidth
     self.mUsesCustomTrackWidth_property.mObserverExplorer = nil
     self.mUsesCustomTrackWidth_property.mValueExplorer = nil
+  //--- Atomic property: mIsPreservedByAutoRouter
+    self.mIsPreservedByAutoRouter_property.mObserverExplorer = nil
+    self.mIsPreservedByAutoRouter_property.mValueExplorer = nil
   //--- To one property: mConnectorP1
     self.mConnectorP1_property.mObserverExplorer = nil
     self.mConnectorP1_property.mValueExplorer = nil
@@ -1080,6 +1117,8 @@ class BoardTrack : BoardObject,
     self.mCustomTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mCustomTrackWidthUnit")
   //--- Atomic property: mUsesCustomTrackWidth
     self.mUsesCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey:"mUsesCustomTrackWidth")
+  //--- Atomic property: mIsPreservedByAutoRouter
+    self.mIsPreservedByAutoRouter_property.storeIn (dictionary: ioDictionary, forKey:"mIsPreservedByAutoRouter")
   }
 
   //····················································································································
@@ -1140,6 +1179,8 @@ class BoardTrack : BoardObject,
     self.mCustomTrackWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mCustomTrackWidthUnit")
   //--- Atomic property: mUsesCustomTrackWidth
     self.mUsesCustomTrackWidth_property.readFrom (dictionary: inDictionary, forKey:"mUsesCustomTrackWidth")
+  //--- Atomic property: mIsPreservedByAutoRouter
+    self.mIsPreservedByAutoRouter_property.readFrom (dictionary: inDictionary, forKey:"mIsPreservedByAutoRouter")
   }
 
 
@@ -1155,6 +1196,7 @@ class BoardTrack : BoardObject,
     ioString += "mCustomTrackWidth\n"
     ioString += "mCustomTrackWidthUnit\n"
     ioString += "mUsesCustomTrackWidth\n"
+    ioString += "mIsPreservedByAutoRouter\n"
   //--- To one relationships
     ioString += "mConnectorP1\n"
     ioString += "mConnectorP2\n"
@@ -1178,6 +1220,8 @@ class BoardTrack : BoardObject,
     self.mCustomTrackWidthUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mUsesCustomTrackWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mIsPreservedByAutoRouter.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.mConnectorP1 {

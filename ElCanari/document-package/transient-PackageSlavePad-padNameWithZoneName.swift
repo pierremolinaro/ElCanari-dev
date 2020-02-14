@@ -13,11 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageSlavePad_padName (
-       _ self_master_padName : String?
+func transient_PackageSlavePad_padNameWithZoneName (
+       _ self_master_padNameWithZoneName : String?
 ) -> String {
 //--- START OF USER ZONE 2
-   return "(" + (self_master_padName ?? "") + ")"
+  return "(" + (self_master_padNameWithZoneName ?? "") + ")"
 //--- END OF USER ZONE 2
 }
 

@@ -20,6 +20,7 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
     inOldValue?.mCustomTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_mCustomTrackWidth) // Stored property
     inOldValue?.mCustomTrackWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mCustomTrackWidthUnit) // Stored property
     inOldValue?.mUsesCustomTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_mUsesCustomTrackWidth) // Stored property
+    inOldValue?.mIsPreservedByAutoRouter_property.removeEBObserversFrom (&self.mObserversOf_mIsPreservedByAutoRouter) // Stored property
     inOldValue?.actualTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_actualTrackWidth) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     inOldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
@@ -37,6 +38,7 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
     self.mInternalValue?.mCustomTrackWidth_property.addEBObserversFrom (&self.mObserversOf_mCustomTrackWidth) // Stored property
     self.mInternalValue?.mCustomTrackWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mCustomTrackWidthUnit) // Stored property
     self.mInternalValue?.mUsesCustomTrackWidth_property.addEBObserversFrom (&self.mObserversOf_mUsesCustomTrackWidth) // Stored property
+    self.mInternalValue?.mIsPreservedByAutoRouter_property.addEBObserversFrom (&self.mObserversOf_mIsPreservedByAutoRouter) // Stored property
     self.mInternalValue?.actualTrackWidth_property.addEBObserversFrom (&self.mObserversOf_actualTrackWidth) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     self.mInternalValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
@@ -396,6 +398,76 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mUsesCustomTrackWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mIsPreservedByAutoRouter' stored property
+  //····················································································································
+
+  private var mObserversOf_mIsPreservedByAutoRouter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mIsPreservedByAutoRouter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mIsPreservedByAutoRouter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mIsPreservedByAutoRouter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mIsPreservedByAutoRouter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mIsPreservedByAutoRouter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mIsPreservedByAutoRouter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mIsPreservedByAutoRouter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mIsPreservedByAutoRouter_toElementsOfSet (_ inSet : Set<BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_mIsPreservedByAutoRouter.apply { (_ observer : EBEvent) in
+        managedObject.mIsPreservedByAutoRouter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mIsPreservedByAutoRouter_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
+    self.mObserversOf_mIsPreservedByAutoRouter.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mIsPreservedByAutoRouter_property.removeEBObserver (observer)
       }
     }
   }

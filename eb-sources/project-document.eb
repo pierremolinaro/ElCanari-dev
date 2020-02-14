@@ -719,6 +719,8 @@ document ProjectDocument root ProjectRoot {
     #boardObjectsController.selectedArray
   ;
 
+  outlet EBSwitch mIsPreservedByAutoRouterSwitch $value #boardTrackSelectionController.mIsPreservedByAutoRouter ;
+
   outlet EBPopUpButton mBoardTrackSidePopUpButton $selectedIndex #boardTrackSelectionController.mSide ;
 
   outlet EBTextObserverField mTrackNetNameTextField $valueObserver #boardTrackSelectionController.netName ;

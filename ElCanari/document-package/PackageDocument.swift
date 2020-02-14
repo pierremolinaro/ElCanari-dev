@@ -175,6 +175,11 @@ import Cocoa
   @IBOutlet var mAddSlavePadButton : CanariDragSourceButton? = nil
   @IBOutlet var mAddZoneButton : CanariDragSourceButton? = nil
   @IBOutlet var mAddZoneForbiddenPadNumberButton : EBButton? = nil
+  @IBOutlet var mAddZoneForbiddenPadNumberDialog : NSPanel? = nil
+  @IBOutlet var mAddZoneForbiddenPadNumberErrorTextField : NSTextField? = nil
+  @IBOutlet var mAddZoneForbiddenPadNumberOkButton : EBButton? = nil
+  @IBOutlet var mAddZoneForbiddenPadNumberTitle : NSTextField? = nil
+  @IBOutlet var mAddZoneForbiddenPadNumberValueTextField : NSTextField? = nil
   @IBOutlet var mArcAngle : CanariAngleTextField? = nil
   @IBOutlet var mArcEndTangentTextField : CanariDimensionTextField? = nil
   @IBOutlet var mArcEndTangentUnitPopUp : EBPopUpButton? = nil
@@ -374,6 +379,7 @@ import Cocoa
   var mController_mPadStyleView_hidden : MultipleBindingController_hidden? = nil
   var mController_mPadRenumberingPullDownButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSlavePadStyleView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mRemoveZoneForbiddenPadNumberButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mCounterClockNumberingStartAngleView_hidden : MultipleBindingController_hidden? = nil
   var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
   var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
@@ -471,6 +477,11 @@ import Cocoa
     checkOutletConnection (self.mAddSlavePadButton, "mAddSlavePadButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddZoneButton, "mAddZoneButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddZoneForbiddenPadNumberButton, "mAddZoneForbiddenPadNumberButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mAddZoneForbiddenPadNumberDialog, "mAddZoneForbiddenPadNumberDialog", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mAddZoneForbiddenPadNumberErrorTextField, "mAddZoneForbiddenPadNumberErrorTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mAddZoneForbiddenPadNumberOkButton, "mAddZoneForbiddenPadNumberOkButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mAddZoneForbiddenPadNumberTitle, "mAddZoneForbiddenPadNumberTitle", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mAddZoneForbiddenPadNumberValueTextField, "mAddZoneForbiddenPadNumberValueTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mArcAngle, "mArcAngle", CanariAngleTextField.self, #file, #line)
     checkOutletConnection (self.mArcEndTangentTextField, "mArcEndTangentTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mArcEndTangentUnitPopUp, "mArcEndTangentUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -919,7 +930,7 @@ import Cocoa
     self.mSlavePadHoleHeightTextField?.bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeHeight_property, self.mPackageSlavePadSelectionController.holeHeightUnit_property, file: #file, line: #line)
     self.mSlavePadAnnularRingUnitPopUp?.bind_selectedTag (self.mPackageSlavePadSelectionController.annularRingUnit_property, file: #file, line: #line)
     self.mSlavePadAnnularRingTextField?.bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.annularRing_property, self.mPackageSlavePadSelectionController.annularRingUnit_property, file: #file, line: #line)
-    self.mSlavePadAssignmentPopUpButton?.bind_masterPadName (self.mPackageSlavePadSelectionController.padName_property, file: #file, line: #line)
+    self.mSlavePadAssignmentPopUpButton?.bind_masterPadName (self.mPackageSlavePadSelectionController.padNameWithZoneName_property, file: #file, line: #line)
     self.mGuideX1UnitPopUp?.bind_selectedTag (self.mPackageGuideSelectionController.x1Unit_property, file: #file, line: #line)
     self.mGuideX1TextField?.bind_dimensionAndUnit (self.mPackageGuideSelectionController.x1_property, self.mPackageGuideSelectionController.x1Unit_property, file: #file, line: #line)
     self.mGuideY1UnitPopUp?.bind_selectedTag (self.mPackageGuideSelectionController.y1Unit_property, file: #file, line: #line)
@@ -1034,6 +1045,16 @@ import Cocoa
       )
       self.mPackageSlavePadSelectionController.padIsTraversing_property.addEBObserver (controller)
       self.mController_mSlavePadStyleView_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return !self.mPackageZoneSelectionController.emptyForbiddenPadArray_property_selection
+        },
+        outlet: self.mRemoveZoneForbiddenPadNumberButton
+      )
+      self.mPackageZoneSelectionController.emptyForbiddenPadArray_property.addEBObserver (controller)
+      self.mController_mRemoveZoneForbiddenPadNumberButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
@@ -1319,6 +1340,8 @@ import Cocoa
     self.mController_mPadRenumberingPullDownButton_enabled = nil
     self.mPackageSlavePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mSlavePadStyleView_hidden!)
     self.mController_mSlavePadStyleView_hidden = nil
+    self.mPackageZoneSelectionController.emptyForbiddenPadArray_property.removeEBObserver (self.mController_mRemoveZoneForbiddenPadNumberButton_enabled!)
+    self.mController_mRemoveZoneForbiddenPadNumberButton_enabled = nil
     self.rootObject.counterClockNumbering_property.removeEBObserver (self.mController_mCounterClockNumberingStartAngleView_hidden!)
     self.mController_mCounterClockNumberingStartAngleView_hidden = nil
     self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
@@ -1373,6 +1396,11 @@ import Cocoa
     self.mAddSlavePadButton?.ebCleanUp ()
     self.mAddZoneButton?.ebCleanUp ()
     self.mAddZoneForbiddenPadNumberButton?.ebCleanUp ()
+    self.mAddZoneForbiddenPadNumberDialog?.ebCleanUp ()
+    self.mAddZoneForbiddenPadNumberErrorTextField?.ebCleanUp ()
+    self.mAddZoneForbiddenPadNumberOkButton?.ebCleanUp ()
+    self.mAddZoneForbiddenPadNumberTitle?.ebCleanUp ()
+    self.mAddZoneForbiddenPadNumberValueTextField?.ebCleanUp ()
     self.mArcAngle?.ebCleanUp ()
     self.mArcEndTangentTextField?.ebCleanUp ()
     self.mArcEndTangentUnitPopUp?.ebCleanUp ()
@@ -1575,6 +1603,11 @@ import Cocoa
     self.mAddSlavePadButton = nil
     self.mAddZoneButton = nil
     self.mAddZoneForbiddenPadNumberButton = nil
+    self.mAddZoneForbiddenPadNumberDialog = nil
+    self.mAddZoneForbiddenPadNumberErrorTextField = nil
+    self.mAddZoneForbiddenPadNumberOkButton = nil
+    self.mAddZoneForbiddenPadNumberTitle = nil
+    self.mAddZoneForbiddenPadNumberValueTextField = nil
     self.mArcAngle = nil
     self.mArcEndTangentTextField = nil
     self.mArcEndTangentUnitPopUp = nil

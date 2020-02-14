@@ -201,13 +201,23 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
 
   //····················································································································
-  //   Selection observable property: padName
+  //   Selection observable property: padNameWithZoneName
   //····················································································································
 
-  let padName_property = EBTransientProperty_String ()
+  let padNameWithZoneName_property = EBTransientProperty_String ()
 
-  var padName_property_selection : EBSelection <String> {
-    return self.padName_property.prop
+  var padNameWithZoneName_property_selection : EBSelection <String> {
+    return self.padNameWithZoneName_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: padNameForDisplay
+  //····················································································································
+
+  let padNameForDisplay_property = EBTransientProperty_String ()
+
+  var padNameForDisplay_property_selection : EBSelection <String> {
+    return self.padNameForDisplay_property.prop
   }
 
   //····················································································································
@@ -265,7 +275,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     self.bind_property_issues ()
     self.bind_property_padIsTraversing ()
     self.bind_property_annularRing ()
-    self.bind_property_padName ()
+    self.bind_property_padNameWithZoneName ()
+    self.bind_property_padNameForDisplay ()
     self.bind_property_padNumberDisplay ()
     self.bind_property_objectDisplay ()
   }
@@ -363,9 +374,12 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //--- annularRing
     self.annularRing_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_annularRing (self.annularRing_property)
-  //--- padName
-    self.padName_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_padName (self.padName_property)
+  //--- padNameWithZoneName
+    self.padNameWithZoneName_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_padNameWithZoneName (self.padNameWithZoneName_property)
+  //--- padNameForDisplay
+    self.padNameForDisplay_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_padNameForDisplay (self.padNameForDisplay_property)
   //--- padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
@@ -1776,9 +1790,9 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_padName () {
-    self.selectedArray_property.addEBObserverOf_padName (self.padName_property)
-    self.padName_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_padNameWithZoneName () {
+    self.selectedArray_property.addEBObserverOf_padNameWithZoneName (self.padNameWithZoneName_property)
+    self.padNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
@@ -1789,7 +1803,46 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.padName_property_selection {
+            switch object.padNameWithZoneName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_padNameForDisplay () {
+    self.selectedArray_property.addEBObserverOf_padNameForDisplay (self.padNameForDisplay_property)
+    self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.padNameForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :

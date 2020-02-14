@@ -13,25 +13,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageSlavePad_padNumberDisplay (
-       _ self_xCenter : Int,                     
-       _ self_yCenter : Int,                     
-       _ prefs_padNumberFont : NSFont,           
-       _ prefs_padNumberColor : NSColor,         
-       _ self_padNameForDisplay : String
-) -> EBShape {
+func transient_PackageZone_emptyForbiddenPadArray (
+       _ self_forbiddenPadNumbers_count : Int
+) -> Bool {
 //--- START OF USER ZONE 2
-      let textAttributes : [NSAttributedString.Key : Any] = [
-        NSAttributedString.Key.font : prefs_padNumberFont,
-        NSAttributedString.Key.foregroundColor : prefs_padNumberColor
-      ]
-      return EBShape (
-        text: self_padNameForDisplay,
-        CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint,
-        textAttributes,
-        .center,
-        .center
-      )
+          return self_forbiddenPadNumbers_count == 0
 //--- END OF USER ZONE 2
 }
 

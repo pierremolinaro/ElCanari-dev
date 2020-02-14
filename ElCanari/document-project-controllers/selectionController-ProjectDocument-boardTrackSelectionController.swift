@@ -61,6 +61,16 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   }
 
   //····················································································································
+  //   Selection observable property: mIsPreservedByAutoRouter
+  //····················································································································
+
+  let mIsPreservedByAutoRouter_property = EBPropertyProxy_Bool ()
+
+  var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool> {
+    return self.mIsPreservedByAutoRouter_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: actualTrackWidth
   //····················································································································
 
@@ -191,6 +201,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.bind_property_mCustomTrackWidth ()
     self.bind_property_mCustomTrackWidthUnit ()
     self.bind_property_mUsesCustomTrackWidth ()
+    self.bind_property_mIsPreservedByAutoRouter ()
     self.bind_property_actualTrackWidth ()
     self.bind_property_selectionDisplay ()
     self.bind_property_netName ()
@@ -235,6 +246,11 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.mUsesCustomTrackWidth_property.mWriteModelFunction = nil 
     self.mUsesCustomTrackWidth_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mUsesCustomTrackWidth (self.mUsesCustomTrackWidth_property)
+  //--- mIsPreservedByAutoRouter
+    self.mIsPreservedByAutoRouter_property.mReadModelFunction = nil 
+    self.mIsPreservedByAutoRouter_property.mWriteModelFunction = nil 
+    self.mIsPreservedByAutoRouter_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mIsPreservedByAutoRouter (self.mIsPreservedByAutoRouter_property)
   //--- actualTrackWidth
     self.actualTrackWidth_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_actualTrackWidth (self.actualTrackWidth_property)
@@ -346,6 +362,14 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
       view: view,
       observerExplorer: &self.mUsesCustomTrackWidth_property.mObserverExplorer,
       valueExplorer: &self.mUsesCustomTrackWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mIsPreservedByAutoRouter",
+      idx: self.mIsPreservedByAutoRouter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mIsPreservedByAutoRouter_property.mObserverExplorer,
+      valueExplorer: &self.mIsPreservedByAutoRouter_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -733,6 +757,75 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
         case .single (let v) :
           for object in v {
             let result = object.mUsesCustomTrackWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mIsPreservedByAutoRouter () {
+    self.selectedArray_property.addEBObserverOf_mIsPreservedByAutoRouter (self.mIsPreservedByAutoRouter_property)
+    self.mIsPreservedByAutoRouter_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mIsPreservedByAutoRouter_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mIsPreservedByAutoRouter_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mIsPreservedByAutoRouter_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mIsPreservedByAutoRouter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mIsPreservedByAutoRouter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

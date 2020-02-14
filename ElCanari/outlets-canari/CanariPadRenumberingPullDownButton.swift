@@ -100,7 +100,7 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
       self.addItem (withTitle: "Exchange with")
       for pad in allPads {
         if pad.zone === myZone {
-          self.addItem (withTitle: pad.padName ?? "?")
+          self.addItem (withTitle: pad.padNameWithZoneName ?? "?")
           let menuItem = self.lastItem!
           menuItem.isEnabled = pad.padNumber != self.mCurrentPadNumber
           menuItem.target = self

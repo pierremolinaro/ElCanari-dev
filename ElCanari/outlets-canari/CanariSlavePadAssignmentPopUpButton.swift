@@ -80,7 +80,7 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
       case .single (let v) :
         let allSlavePads = document.rootObject.packageSlavePads_property.propval
         for slavePad in allSlavePads {
-          if slavePad.padName == v {
+          if slavePad.padNameWithZoneName == v {
             self.mCurrentSlavePad = slavePad
           }
         }
@@ -94,12 +94,12 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
   private func buildMenu () {
     self.enableFromValueBinding (self.mDocument != nil)
     if let document = self.mDocument {
-      let allPads = document.rootObject.packagePads_property.propval.sorted (by: { $0.padName! < $1.padName! } )
+      let allPads = document.rootObject.packagePads_property.propval.sorted (by: { $0.padNameWithZoneName! < $1.padNameWithZoneName! } )
       self.removeAllItems ()
       self.autoenablesItems = false
       var idx = 0
       for pad in allPads {
-        self.addItem (withTitle: "\(pad.padName!)")
+        self.addItem (withTitle: "\(pad.padNameWithZoneName!)")
         if self.mCurrentSlavePad?.master_property.propval === pad {
           self.selectItem (at: idx)
         }
@@ -118,7 +118,7 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
   @objc func performAssignment (_ inSender : NSMenuItem) {
    // Swift.print ("Exchange \(self.mCurrentPadNumber) <-> \(inSender.tag)")
     if let document = self.mDocument {
-      let allPads = document.rootObject.packagePads_property.propval.sorted (by: { $0.padName! < $1.padName! } )
+      let allPads = document.rootObject.packagePads_property.propval.sorted (by: { $0.padNameWithZoneName! < $1.padNameWithZoneName! } )
       let idx = inSender.tag
       self.mCurrentSlavePad?.master_property.setProp (allPads [idx])
     }

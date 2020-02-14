@@ -125,6 +125,12 @@ protocol PackageZone_forbiddenPadArray : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageZone_emptyForbiddenPadArray : class {
+  var emptyForbiddenPadArray : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -148,7 +154,8 @@ class PackageZone : PackageObject,
          PackageZone_issues,
          PackageZone_rect,
          PackageZone_selectionDisplay,
-         PackageZone_forbiddenPadArray {
+         PackageZone_forbiddenPadArray,
+         PackageZone_emptyForbiddenPadArray {
 
   //····················································································································
   //   Atomic property: x
@@ -471,6 +478,29 @@ class PackageZone : PackageObject,
   }
 
   //····················································································································
+  //   Transient property: emptyForbiddenPadArray
+  //····················································································································
+
+  let emptyForbiddenPadArray_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var emptyForbiddenPadArray_property_selection : EBSelection <Bool> {
+    return self.emptyForbiddenPadArray_property.prop
+  }
+
+  //····················································································································
+
+  var emptyForbiddenPadArray : Bool? {
+    switch self.emptyForbiddenPadArray_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -678,6 +708,28 @@ class PackageZone : PackageObject,
       }
     }
     self.forbiddenPadNumbers_property.addEBObserverOf_padNumber (self.forbiddenPadArray_property)
+  //--- Atomic property: emptyForbiddenPadArray
+    self.emptyForbiddenPadArray_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.forbiddenPadNumbers_property.count_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.forbiddenPadNumbers_property.count_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageZone_emptyForbiddenPadArray (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.forbiddenPadNumbers_property.addEBObserver (self.emptyForbiddenPadArray_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.forbiddenPadNumbers_property.setSignatureObserver (observer: self)
@@ -734,6 +786,7 @@ class PackageZone : PackageObject,
     g_Preferences?.padZoneColor_property.removeEBObserver (self.selectionDisplay_property)
     self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
     self.forbiddenPadNumbers_property.removeEBObserverOf_padNumber (self.forbiddenPadArray_property)
+    self.forbiddenPadNumbers_property.removeEBObserver (self.emptyForbiddenPadArray_property)
   //--- Unregister properties for handling signature
     self.forbiddenPadNumbers_property.setSignatureObserver (observer: nil)
     self.height_property.setSignatureObserver (observer: nil)
@@ -923,6 +976,14 @@ class PackageZone : PackageObject,
       view: view,
       observerExplorer: &self.forbiddenPadArray_property.mObserverExplorer,
       valueExplorer: &self.forbiddenPadArray_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "emptyForbiddenPadArray",
+      idx: self.emptyForbiddenPadArray_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.emptyForbiddenPadArray_property.mObserverExplorer,
+      valueExplorer: &self.emptyForbiddenPadArray_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

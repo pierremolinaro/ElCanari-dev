@@ -235,13 +235,18 @@ extension CustomizedProjectDocument {
         case .front : side = COMPONENT_SIDE
         case .back : side = SOLDER_SIDE
         }
-        let netName = track.mNet!.mNetName
+        let optionalNetName = track.mNet?.mNetName
         let widthMM = canariUnitToMillimeter (track.actualTrackWidth!)
         let p1 = track.mConnectorP1!.location!.millimeterPoint
         let p2 = track.mConnectorP2!.location!.millimeterPoint
         ioString += "    (wire\n"
         ioString += "      (path \(side) \(widthMM) \(p1.x) \(p1.y) \(p2.x) \(p2.y))\n"
-        ioString += "      (net \"\(netName)\")\n"
+        if track.mIsPreservedByAutoRouter {
+          ioString += "      (type protect)\n"
+        }
+        if let netName = optionalNetName {
+          ioString += "      (net \"\(netName)\")\n"
+        }
         ioString += "      (clearance_class default)\n"
         ioString += "    )\n"
       }

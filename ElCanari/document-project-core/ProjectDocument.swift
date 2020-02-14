@@ -884,6 +884,7 @@ import Cocoa
   @IBOutlet var mInconsistentSchematicErrorPanel : NSPanel? = nil
   @IBOutlet var mInconsistentSchematicErrorTextView : NSTextView? = nil
   @IBOutlet var mIncorrectFileNameMessageView : NSView? = nil
+  @IBOutlet var mIsPreservedByAutoRouterSwitch : EBSwitch? = nil
   @IBOutlet var mLaunchFreeRouterButton : EBButton? = nil
   @IBOutlet var mLayoutClearancePopUp : EBPopUpButton? = nil
   @IBOutlet var mLayoutClearanceTextField : CanariDimensionTextField? = nil
@@ -1460,6 +1461,7 @@ import Cocoa
     checkOutletConnection (self.mInconsistentSchematicErrorPanel, "mInconsistentSchematicErrorPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorTextView, "mInconsistentSchematicErrorTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mIncorrectFileNameMessageView, "mIncorrectFileNameMessageView", NSView.self, #file, #line)
+    checkOutletConnection (self.mIsPreservedByAutoRouterSwitch, "mIsPreservedByAutoRouterSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mLaunchFreeRouterButton, "mLaunchFreeRouterButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mLayoutClearancePopUp, "mLayoutClearancePopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mLayoutClearanceTextField, "mLayoutClearanceTextField", CanariDimensionTextField.self, #file, #line)
@@ -2500,6 +2502,7 @@ import Cocoa
     self.mTrackCountTextField?.bind_valueObserver (self.rootObject.trackCountString_property, file: #file, line: #line)
     self.mTrackLengthTextField?.bind_valueObserver (self.rootObject.trackLengthString_property, file: #file, line: #line)
     self.mTrackLengthUnitPopUp?.bind_selectedTag (self.rootObject.mTrackLengthUnit_property, file: #file, line: #line)
+    self.mIsPreservedByAutoRouterSwitch?.bind_value (self.boardTrackSelectionController.mIsPreservedByAutoRouter_property, file: #file, line: #line)
     self.mBoardTrackSidePopUpButton?.bind_selectedIndex (self.boardTrackSelectionController.mSide_property, file: #file, line: #line)
     self.mTrackNetNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netName_property, file: #file, line: #line)
     self.mTrackNetClassNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netClassName_property, file: #file, line: #line)
@@ -3459,6 +3462,7 @@ import Cocoa
     self.mTrackCountTextField?.unbind_valueObserver ()
     self.mTrackLengthTextField?.unbind_valueObserver ()
     self.mTrackLengthUnitPopUp?.unbind_selectedTag ()
+    self.mIsPreservedByAutoRouterSwitch?.unbind_value ()
     self.mBoardTrackSidePopUpButton?.unbind_selectedIndex ()
     self.mTrackNetNameTextField?.unbind_valueObserver ()
     self.mTrackNetClassNameTextField?.unbind_valueObserver ()
@@ -4049,6 +4053,7 @@ import Cocoa
     self.mInconsistentSchematicErrorPanel?.ebCleanUp ()
     self.mInconsistentSchematicErrorTextView?.ebCleanUp ()
     self.mIncorrectFileNameMessageView?.ebCleanUp ()
+    self.mIsPreservedByAutoRouterSwitch?.ebCleanUp ()
     self.mLaunchFreeRouterButton?.ebCleanUp ()
     self.mLayoutClearancePopUp?.ebCleanUp ()
     self.mLayoutClearanceTextField?.ebCleanUp ()
@@ -4458,6 +4463,7 @@ import Cocoa
     self.mInconsistentSchematicErrorPanel = nil
     self.mInconsistentSchematicErrorTextView = nil
     self.mIncorrectFileNameMessageView = nil
+    self.mIsPreservedByAutoRouterSwitch = nil
     self.mLaunchFreeRouterButton = nil
     self.mLayoutClearancePopUp = nil
     self.mLayoutClearanceTextField = nil
