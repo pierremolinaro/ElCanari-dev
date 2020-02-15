@@ -104,7 +104,7 @@ extension BoardText {
 
   //····················································································································
 
-  func displayInfos (extraWidth inExtraWidth : CGFloat) -> (EBBezierPath, EBBezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
+  func displayInfos (extraWidth inExtraWidth : CGFloat) -> (EBBezierPath, EBBezierPath, NSPoint, NSPoint, [GeometricTrack]) { // (textDisplay, frame, origin, rotation knob)
     return boardText_displayInfos (
       x: self.mX,
       y: self.mY,
@@ -137,7 +137,7 @@ func boardText_displayInfos (
        weight self_mWeight : Double,
        oblique self_mOblique : Bool,
        extraWidth inExtraWidth : CGFloat // Used for ERC checking
-) -> (EBBezierPath, EBBezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
+) -> (EBBezierPath, EBBezierPath, NSPoint, NSPoint, [GeometricTrack]) { // (textDisplay, frame, origin, rotation knob)
   let s = (self_mText == "") ? "Empty" : self_mText
   var stringWidth : CGFloat = 0.0
   let oblique = self_mOblique ? CGFloat (0.25) : CGFloat (0.0)
@@ -147,7 +147,7 @@ func boardText_displayInfos (
   bp.lineWidth = lineWidth
   bp.lineCapStyle = .round
   bp.lineJoinStyle = .round
-  var oblongs = [GeometricOblong] ()
+  var oblongs = [GeometricTrack] ()
   for character in s.unicodeScalars {
     if let characterDescriptor = self_mFont_descriptor.dictionary [character.value] {
       for segment in characterDescriptor.segments {
@@ -159,7 +159,7 @@ func boardText_displayInfos (
         let p2 = NSPoint (x: stringWidth + x2, y: y2)
         bp.move (to: p1)
         bp.line (to: p2)
-        oblongs.append (GeometricOblong (from: p1, to: p2, width: lineWidth))
+        oblongs.append (GeometricTrack (from: p1, to: p2, width: lineWidth, shape: .round))
       }
       stringWidth += CGFloat (characterDescriptor.advancement) * fontFactor
     }
@@ -195,7 +195,7 @@ func boardText_displayInfos (
     tr.translate (x: 0.0, y: -bp.bounds.maxY)
   }
   bp.transform (using: tr)
-  var transformedOblongs = [GeometricOblong] ()
+  var transformedOblongs = [GeometricTrack] ()
   for ob in oblongs {
     transformedOblongs.append (ob.transformed (by: tr))
   }

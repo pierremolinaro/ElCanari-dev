@@ -60,22 +60,6 @@ struct GeometricOblong {
 
   //····················································································································
 
-//  private var mCachedBounds : NSRect? = nil
-//  var bounds : NSRect {
-//    if let b = self.mCachedBounds {
-//      return b
-//    }else{
-//      let w = self.width / 2.0
-//      let left  = min (self.p1.x, self.p2.x) - w
-//      let right = max (self.p1.x, self.p2.x) + w
-//      let bottom = min (self.p1.y, self.p2.y) - w
-//      let top = max (self.p1.y, self.p2.y) + w
-//      let b = NSRect (x: left, y: bottom, width: right - left, height: top - bottom)
-//      self.mCachedBounds = b
-//      return b
-//    }
-//  }
-
   var bounds : NSRect {
     let w = self.width / 2.0
     let left   = min (self.p1.x, self.p2.x) - w
@@ -102,24 +86,6 @@ struct GeometricOblong {
   private var geometricRect : GeometricRect {
     return GeometricRect (self.p1, self.p2, self.width)
   }
-
-  //····················································································································
-
-//  func intersects (circle inCircle : GeometricCircle) -> Bool {
-//    let r = self.intersectsRX (circle: inCircle)
-//    if r {
-//      if !self.bounds.intersects (inCircle.bounds) {
-//        Swift.print (" !bounds")
-//      }else if self.circle1.intersects (circle: inCircle) {
-//        Swift.print (" c1")
-//      }else if self.circle2.intersects (circle: inCircle) {
-//        Swift.print (" c2")
-//      }else if self.geometricRect.intersects (circle: inCircle) {
-//        Swift.print (" rect")
-//      }
-//    }
-//    return r
-//  }
 
   //····················································································································
 
