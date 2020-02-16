@@ -98,7 +98,7 @@ func customRead_FontCharacter_characters (from inDictionary : NSDictionary, with
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func extractProjectFontDictionary (from inDictionary : NSDictionary) -> FontDictionaryForProject {
-  let start = Date ()
+//  let start = Date ()
   var result = FontDictionaryForProject ()
   if let s = inDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
     // Swift.print (s)
@@ -134,10 +134,10 @@ func extractProjectFontDictionary (from inDictionary : NSDictionary) -> FontDict
       let character = FontCharacterForProject (advance: advance, segments: segments)
       result [codePoint] = character
     }
-    NSLog ("ok \(ok)")
+ //   NSLog ("ok \(ok)")
   }
-  let duration = Date ().timeIntervalSince (start)
-  NSLog ("duration \(duration)")
+//  let duration = Date ().timeIntervalSince (start)
+//  NSLog ("duration \(duration)")
   return result
 }
 

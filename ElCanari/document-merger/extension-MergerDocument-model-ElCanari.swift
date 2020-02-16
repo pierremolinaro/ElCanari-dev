@@ -78,6 +78,7 @@ extension MergerDocument {
   //--- Internal boards limits
     var internalBoardsLimitsEntities = [SegmentEntity] ()
     let internalBoardsLimits = optionalStringArray (fromDict: inBoardArchiveDict, key: "INTERNAL-BOARDS-LIMITS", &errorArray)
+  //  NSLog ("internalBoardsLimits.count \(internalBoardsLimits.count)")
     for str in internalBoardsLimits {
       let segment = SegmentEntity (self.ebUndoManager)
       let ints = array5int (fromString: str, &errorArray)

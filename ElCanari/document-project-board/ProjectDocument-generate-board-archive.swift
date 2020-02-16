@@ -127,11 +127,13 @@ fileprivate func addBoardLimitPathToArchive (_ ioBoardArchive : inout [String : 
                                              _ inAffineTransform : AffineTransform) {
    var stringArray = [String] ()
    var p0 = inAffineTransform.transform (inPath.origin).canariPoint
+   let firstPoint = p0
    for p in inPath.lines {
      let pp = inAffineTransform.transform (p).canariPoint
      stringArray.append ("\(p0.x) \(p0.y) \(pp.x) \(pp.y) \(inWidth)")
      p0 = pp
    }
+   stringArray.append ("\(p0.x) \(p0.y) \(firstPoint.x) \(firstPoint.y) \(inWidth)")
    ioBoardArchive ["INTERNAL-BOARDS-LIMITS"] = stringArray
 }
 

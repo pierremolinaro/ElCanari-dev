@@ -21,9 +21,9 @@ func transient_BoardModel_boardLimits (
 ) -> MergerBoardLimits {
 //--- START OF USER ZONE 2
   return MergerBoardLimits (
-    boardWidth:self_modelWidth,
-    boardHeight:self_modelHeight,
-    lineWidth:prefs_mergerModelViewDisplayBoardLimits ? self_modelLimitWidth : 0
+    boardWidth: self_modelWidth,
+    boardHeight: self_modelHeight,
+    lineWidth: prefs_mergerModelViewDisplayBoardLimits ? self_modelLimitWidth : 0
   )
 //--- END OF USER ZONE 2
 }

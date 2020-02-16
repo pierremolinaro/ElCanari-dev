@@ -465,7 +465,7 @@ extension MergerDocument {
         shape.add (stroke: strokeBezierPaths, .black)
         shape.add (filled: filledBezierPaths, .black)
         shape.add (stroke: drillBezierPaths, .white)
-        let pdfData = buildPDFimageData (frame:cocoaBoardRect, shape: shape, backgroundColor:NSColor.white)
+        let pdfData = buildPDFimageData (frame:cocoaBoardRect, shape: shape, backgroundColor: .lightGray)
         try pdfData.write (to: URL (fileURLWithPath: filePath), options: .atomic)
         self.mLogTextView?.appendSuccessString (" Ok\n")
       }
@@ -513,7 +513,6 @@ extension MergerDocument {
         let right = canariUnitToMilTenth (boardWidth - boardLineWidth / 2)
         let bottom = canariUnitToMilTenth (boardLineWidth / 2)
         let top = canariUnitToMilTenth (self.rootObject.boardHeight! - boardLineWidth / 2)
-        // NSLog ("board \(boardWidth) \(self.rootObject.boardHeight!) \(self.rootObject.boardLimitWidth)")
         var drawings = [String] ()
         drawings.append ("X\( left)Y\(bottom)D02") // Move to
         drawings.append ("X\( left)Y\(   top)D01") // Line to

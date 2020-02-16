@@ -22,15 +22,15 @@ func transient_BoardModel_boardLimitsBezierPaths (
   let modelWidth = canariUnitToCocoa (self_modelWidth)
   let modelHeight = canariUnitToCocoa (self_modelHeight)
   let limitWidth = canariUnitToCocoa (self_modelLimitWidth)
-  let left  = limitWidth / 2.0
-  let right = modelWidth - limitWidth / 2.0
+  let left    = limitWidth / 2.0
+  let right   = modelWidth - limitWidth / 2.0
   let bottom  = limitWidth / 2.0
   let top     = modelHeight - limitWidth / 2.0
   var bp = EBBezierPath ()
-  bp.move (to : NSPoint (x:left, y:bottom))
-  bp.line (to : NSPoint (x:left, y:top))
-  bp.line (to : NSPoint (x:right, y:top))
-  bp.line (to : NSPoint (x:right, y:bottom))
+  bp.move (to : NSPoint (x: left,  y: bottom))
+  bp.line (to : NSPoint (x: left,  y: top))
+  bp.line (to : NSPoint (x: right, y: top))
+  bp.line (to : NSPoint (x: right, y: bottom))
   bp.close ()
   bp.lineWidth = limitWidth
   bp.lineCapStyle = .round

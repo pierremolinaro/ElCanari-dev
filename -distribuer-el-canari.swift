@@ -30,7 +30,9 @@ let BUILD_KIND = ProductKind.release
 
 let VERSION_CANARI = "1.1.6"
 let NOTES : [String] = []
-let BUGFIXES : [String] = []
+let BUGFIXES : [String] = [
+  "Project, ElCanari archive: one side of the board boundaries was missing",
+]
 let CHANGES : [String] = [
   "Uses Sparkle 1.23.0"
 ]
