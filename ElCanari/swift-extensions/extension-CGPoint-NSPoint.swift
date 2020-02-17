@@ -51,6 +51,12 @@ extension NSPoint : Hashable {
 
   //····················································································································
 
+  var milTenthPoint : NSPoint {
+    return NSPoint (x: cocoaToMilTenth (self.x), y: cocoaToMilTenth (self.y))
+  }
+
+  //····················································································································
+
   static func product (_ p1 : NSPoint, _ p2 : NSPoint, _ p3 : NSPoint) -> CGFloat {
     let dx2 = p2.x - p1.x
     let dy2 = p2.y - p1.y

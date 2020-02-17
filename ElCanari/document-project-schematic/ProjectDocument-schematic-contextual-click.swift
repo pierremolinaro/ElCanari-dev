@@ -365,9 +365,9 @@ extension CustomizedProjectDocument {
         window: window,
         panelForMergingSeveralSubnet: mergeSeveralSubnetsPanel,
         popUpButtonForMergingSeveralSubnet: mergeSeveralSubnetsPopUpButton,
+        newNetCreator: self.rootObject.createNetWithAutomaticName,
         updateSchematicPointsAndNets: { self.updateSchematicPointsAndNets () }
       )
- //     self.updateSchematicPointsAndNets ()
     }
   }
 

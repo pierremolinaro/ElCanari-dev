@@ -49,15 +49,15 @@ func transient_BoardTrack_selectionDisplay (
         case .rect :
           let hw = canariUnitToCocoa (self_actualTrackWidth) * 0.5
           let α = NSPoint.angleInRadian (p1, p2)
-          let dx = hw * sin (α)
-          let dy = hw * cos (α)
           bp = EBBezierPath ()
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          bp.move (to: NSPoint (x: p1.x + dx, y: p1.y - dy))
-          bp.line (to: NSPoint (x: p1.x - dx, y: p1.y + dy))
-          bp.line (to: NSPoint (x: p2.x - dx, y: p2.y + dy))
-          bp.line (to: NSPoint (x: p2.x + dx, y: p2.y - dy))
+          let sinhw = hw * sin (α)
+          let coshw = hw * cos (α)
+          bp.move (to: NSPoint (x: p1.x - coshw - sinhw, y: p1.y + coshw - sinhw))
+          bp.line (to: NSPoint (x: p1.x - coshw + sinhw, y: p1.y - coshw - sinhw))
+          bp.line (to: NSPoint (x: p2.x + coshw + sinhw, y: p2.y - coshw + sinhw))
+          bp.line (to: NSPoint (x: p2.x + coshw - sinhw, y: p2.y + coshw + sinhw))
           bp.close ()
           var hilitePath = bp.pathByStroking
           hilitePath.lineCapStyle = .round

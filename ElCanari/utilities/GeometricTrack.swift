@@ -55,7 +55,12 @@ struct GeometricTrack {
     bp.lineWidth = self.width
     bp.move (to: self.p1)
     bp.line (to: self.p2)
-    bp.lineCapStyle = .round
+    switch self.shape {
+    case .round :
+      bp.lineCapStyle = .round
+    case .rect :
+      bp.lineCapStyle = .square
+    }
     return bp.pathByStroking
   }
 
@@ -85,7 +90,17 @@ struct GeometricTrack {
   //····················································································································
 
   private var geometricRect : GeometricRect {
-    return GeometricRect (self.p1, self.p2, self.width)
+    switch self.shape {
+    case .rect :
+      let α = NSPoint.angleInRadian (self.p1, self.p2)
+      let sinhw = self.width * sin (α) / 2.0
+      let coshw = self.width * cos (α) / 2.0
+      let pp1 = NSPoint (x: self.p1.x - coshw, y: self.p1.y - sinhw)
+      let pp2 = NSPoint (x: self.p2.x + coshw, y: self.p2.y + sinhw)
+      return GeometricRect (pp1, pp2, self.width)
+    case .round :
+      return GeometricRect (self.p1, self.p2, self.width)
+    }
   }
 
   //····················································································································

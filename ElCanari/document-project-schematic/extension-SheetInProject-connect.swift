@@ -106,12 +106,16 @@ extension SheetInProject {
                 window inWindow : NSWindow,
                 panelForMergingSeveralSubnet inPanel : NSPanel,
                 popUpButtonForMergingSeveralSubnet inPopUp : EBPopUpButton,
+                newNetCreator inNewNetCreator : () -> NetInProject,
                 updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping () -> Void) {
     let (points, netArray) = self.tryToConnectWithoutDialog (
        points: inPoints,
-       updateSchematicPointsAndNets:inUpdateSchematicPointsAndNetsCallBack
+       updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack
     )
-    if netArray.count == 2 {
+    if netArray.count == 0 {
+      let newNet = inNewNetCreator ()
+      self.propagateAndMerge (net: newNet, to: inPoints, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
+    }else if netArray.count == 2 {
       let alert = NSAlert ()
       alert.messageText = "Performing connection will merge two nets."
       for net in netArray {
@@ -222,8 +226,9 @@ extension SheetInProject {
         }
         for point in inPoints {
           point.mSymbol = nil
-          let idx = self.mPoints.firstIndex (of: point)!
-          self.mPoints.remove (at: idx)
+          if let idx = self.mPoints.firstIndex (of: point) {
+            self.mPoints.remove (at: idx)
+          }
         }
         newPoint.propagateNetToAccessiblePointsThroughtWires ()
       }

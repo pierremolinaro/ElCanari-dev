@@ -36,8 +36,10 @@ extension ProjectDocument {
     addLinePathes (&boardArchive, inProductData.layoutFrontTexts, "TEXTS-LAYOUT-FRONT", af)
     addLinePathes (&boardArchive, inProductData.legendBackTexts, "TEXTS-LEGEND-BACK", af)
     addLinePathes (&boardArchive, inProductData.legendFrontTexts, "TEXTS-LEGEND-FRONT", af)
-    addOblongs (&boardArchive, inProductData.backTracks, "TRACKS-BACK", af)
-    addOblongs (&boardArchive, inProductData.frontTracks, "TRACKS-FRONT", af)
+    addRoundTracks (&boardArchive, inProductData.backTracks, "TRACKS-BACK", af)
+    addRoundTracks (&boardArchive, inProductData.frontTracks, "TRACKS-FRONT", af)
+    addRectTracks (&boardArchive, inProductData.backTracks, "TRACKS-BACK-RECT", af)
+    addRectTracks (&boardArchive, inProductData.frontTracks, "TRACKS-FRONT-RECT", af)
     addCircles (&boardArchive, inProductData.viaPads, "VIAS", af)
   //--- Write file
     let data = try PropertyListSerialization.data (fromPropertyList: boardArchive, format: .binary, options: 0)
@@ -174,6 +176,48 @@ fileprivate func addOblongs (_ ioBoardArchive : inout [String : Any],
      let p1 = inAffineTransform.transform (oblong.p1).canariPoint
      let p2 = inAffineTransform.transform (oblong.p2).canariPoint
      stringArray.append ("\(p1.x) \(p1.y) \(p2.x) \(p2.y) \(width)")
+   }
+   ioBoardArchive [inKey] = stringArray
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func addRoundTracks (_ ioBoardArchive : inout [String : Any],
+                                 _ inTrackArray : [ProductTrack],
+                                 _ inKey : String,
+                                 _ inAffineTransform : AffineTransform) {
+   var stringArray = [String] ()
+   for track in inTrackArray {
+     switch track.shape {
+     case .round :
+       let width = cocoaToCanariUnit (track.width)
+       let p1 = inAffineTransform.transform (track.p1).canariPoint
+       let p2 = inAffineTransform.transform (track.p2).canariPoint
+       stringArray.append ("\(p1.x) \(p1.y) \(p2.x) \(p2.y) \(width)")
+     case .rect :
+       ()
+     }
+   }
+   ioBoardArchive [inKey] = stringArray
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func addRectTracks (_ ioBoardArchive : inout [String : Any],
+                                _ inTrackArray : [ProductTrack],
+                                _ inKey : String,
+                                _ inAffineTransform : AffineTransform) {
+   var stringArray = [String] ()
+   for track in inTrackArray {
+     switch track.shape {
+     case .rect :
+       let width = cocoaToCanariUnit (track.width)
+       let p1 = inAffineTransform.transform (track.p1).canariPoint
+       let p2 = inAffineTransform.transform (track.p2).canariPoint
+       stringArray.append ("\(p1.x) \(p1.y) \(p2.x) \(p2.y) \(width)")
+     case .round :
+       ()
+     }
    }
    ioBoardArchive [inKey] = stringArray
 }

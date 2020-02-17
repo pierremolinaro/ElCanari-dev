@@ -43,15 +43,15 @@ func transient_BoardTrack_objectDisplay (
            case .rect :
             let hw = w * 0.5
             let α = NSPoint.angleInRadian (p1, p2)
-            let dx = hw * sin (α)
-            let dy = hw * cos (α)
             var bp = EBBezierPath ()
             bp.lineCapStyle = .round
             bp.lineJoinStyle = .round
-            bp.move (to: NSPoint (x: p1.x + dx, y: p1.y - dy))
-            bp.line (to: NSPoint (x: p1.x - dx, y: p1.y + dy))
-            bp.line (to: NSPoint (x: p2.x - dx, y: p2.y + dy))
-            bp.line (to: NSPoint (x: p2.x + dx, y: p2.y - dy))
+            let sinhw = hw * sin (α)
+            let coshw = hw * cos (α)
+            bp.move (to: NSPoint (x: p1.x - coshw - sinhw, y: p1.y + coshw - sinhw))
+            bp.line (to: NSPoint (x: p1.x - coshw + sinhw, y: p1.y - coshw - sinhw))
+            bp.line (to: NSPoint (x: p2.x + coshw + sinhw, y: p2.y - coshw + sinhw))
+            bp.line (to: NSPoint (x: p2.x + coshw - sinhw, y: p2.y + coshw + sinhw))
             bp.close ()
             shape.add (filled: [bp], color)
            case .round :

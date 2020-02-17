@@ -868,11 +868,11 @@ class PackageRoot : EBGraphicManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
   //--- To many property: packagePads
-    self.packageObjects_property.removeEBObserver (self.packagePads_property) // §
+    self.packageObjects_property.removeEBObserver (self.packagePads_property)
   //--- To many property: packageSlavePads
-    self.packageObjects_property.removeEBObserver (self.packageSlavePads_property) // §
+    self.packageObjects_property.removeEBObserver (self.packageSlavePads_property)
   //--- To many property: packageZones
-    self.packageObjects_property.removeEBObserver (self.packageZones_property) // §
+    self.packageObjects_property.removeEBObserver (self.packageZones_property)
     self.padNumbering_property.removeEBObserver (self.freePadNumbering_property)
     self.padNumbering_property.removeEBObserver (self.counterClockNumbering_property)
     self.gridStep_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
