@@ -8,12 +8,6 @@ enum TrackSide {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum TrackShape {
-  round, rect
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 graphic entity BoardTrack : BoardObject {
   toOne BoardConnector mConnectorP1 inverse toMany mTracksP1 ;
   toOne BoardConnector mConnectorP2 inverse toMany mTracksP2 ;
@@ -26,7 +20,6 @@ graphic entity BoardTrack : BoardObject {
   property Int mCustomTrackWidthUnit default 2_286 ; // mil
   property Bool mUsesCustomTrackWidth default no ;
   property Bool mIsPreservedByAutoRouter default no ;
-  property TrackShape mTrackShape default round ;
 
   override transient EBShape objectDisplay dependsFrom
     self.mConnectorP1.one.location,
@@ -35,7 +28,7 @@ graphic entity BoardTrack : BoardObject {
     prefs.displayBackLayoutForBoard,
     prefs.frontSideLayoutColorForBoard,
     prefs.backSideLayoutColorForBoard,
-    self.actualTrackWidth, self.mSide, self.mTrackShape
+    self.actualTrackWidth, self.mSide
   ;
 
   override transient EBShape selectionDisplay dependsFrom
@@ -43,7 +36,7 @@ graphic entity BoardTrack : BoardObject {
     self.mConnectorP2.one.location, self.mConnectorP2.one.connectedToComponent,
     prefs.frontSideLayoutColorForBoard,
     prefs.backSideLayoutColorForBoard,
-    self.mSide, self.mTrackShape,
+    self.mSide,
     self.actualTrackWidth
   ;
   

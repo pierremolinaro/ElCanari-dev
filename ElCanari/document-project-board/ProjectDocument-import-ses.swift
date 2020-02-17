@@ -108,19 +108,6 @@ extension CustomizedProjectDocument {
               _ = enterSegments (scanner, .back, &routedTracks, resolution, &errorMessage)
             }
           }
-        }else{
-          ok = scanner.scanString ("(polygon", into: nil)
-          let scanLocation = scanner.scanLocation
-          ok = scanner.scanString (COMPONENT_SIDE, into: nil)
-          if ok {
-            _ = enterRectTrack (scanner, .front, &routedTracks, resolution, &errorMessage)
-          }else{
-            scanner.scanLocation = scanLocation
-            ok = scanner.scanString (SOLDER_SIDE, into: nil)
-            if ok {
-              _ = enterRectTrack (scanner, .back, &routedTracks, resolution, &errorMessage)
-            }
-          }
         }
         if !ok {
           errorMessage += "\n  - invalid track descriptor"
@@ -244,7 +231,7 @@ extension CustomizedProjectDocument {
   //--- Divide tracks for handling tees and crosses
     let routedTracksArray = handleTeesAndCrossesFromRoutedTracks (inRoutedTracksArray, inRoutedViaArray)
   //--- Build connectors attached to pad
-    var connectorArray = [BoardConnector] () // inRoutedViaArray
+    var connectorArray = [BoardConnector] ()
     for object in self.rootObject.mBoardObjects {
       if let connector = object as? BoardConnector {
         connectorArray.append (connector)
@@ -261,6 +248,7 @@ extension CustomizedProjectDocument {
       track.mSide = t.side
       track.mUsesCustomTrackWidth = true
       track.mCustomTrackWidth = t.width
+      track.mIsPreservedByAutoRouter = t.preservedByRouter
       addedObjectArray.append (track)
     }
   //--- Add objects
@@ -320,7 +308,7 @@ fileprivate struct RoutedTrackForSESImporting {
   let p2 : CanariPoint
   let side : TrackSide
   let width : Int
-  let shape : TrackShape
+  let preservedByRouter : Bool
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -341,6 +329,7 @@ fileprivate func enterSegments (_ inScanner : Scanner,
                                 _ ioErrorMessage : inout String) -> Bool {
   var wireWidth = 0
   var ok = inScanner.scanInt (&wireWidth)
+  var routedSegments = [RoutedTrackForSESImporting] ()
   if ok {
     var currentX = 0
     var currentY = 0
@@ -361,11 +350,11 @@ fileprivate func enterSegments (_ inScanner : Scanner,
               p2: CanariPoint (x: x * inResolution, y: y * inResolution),
               side: inSide,
               width: wireWidth * inResolution,
-              shape: .round
+              preservedByRouter: false
             )
             currentX = x
             currentY = y
-            ioRoutedSegments.append (rt)
+            routedSegments.append (rt)
           }else{
            ioErrorMessage += "\n  - track segment with zero length"
           }
@@ -375,94 +364,24 @@ fileprivate func enterSegments (_ inScanner : Scanner,
         }
       }
     }
+    if ok && inScanner.scanString ("(type protect)", into: nil) {
+      var newRoutedSegments = [RoutedTrackForSESImporting] ()
+      for segment in routedSegments {
+        let rt = RoutedTrackForSESImporting (
+          p1: segment.p1,
+          p2: segment.p2,
+          side: segment.side,
+          width: segment.width,
+          preservedByRouter: true
+        )
+        newRoutedSegments.append (rt)
+      }
+      routedSegments = newRoutedSegments
+    }
+    ioRoutedSegments += routedSegments
   }else{
     ioErrorMessage += "\n  - invalid track width"
   }
-  return ok
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func enterRectTrack (_ inScanner : Scanner,
-                                 _ inSide : TrackSide,
-                                 _ ioRoutedSegments : inout [RoutedTrackForSESImporting],
-                                 _ inResolution : Int,
-                                 _ ioErrorMessage : inout String) -> Bool {
-  var dummy = 0
-  var ok = inScanner.scanInt (&dummy) && (dummy == 0)
-  var points = [NSPoint] ()
-  if ok {
-    var loop = true
-    while loop {
-      let location = inScanner.scanLocation
-      loop = !inScanner.scanString (")", into: nil)
-      if loop {
-        inScanner.scanLocation = location
-        var x = 0
-        var y = 0
-        ok = inScanner.scanInt (&x) && inScanner.scanInt (&y)
-        if ok {
-          points.append (NSPoint (x: Double (x * inResolution), y: Double (y * inResolution)))
-        }else{
-          loop = false
-          ioErrorMessage += "\n  - invalid rect track"
-        }
-      }
-    }
-  }else{
-    ioErrorMessage += "\n  - invalid rect track zero field"
-  }
-//--- Analyze point array from building rect track
-  if ok && (points.count != 4) {
-    ok = false
-    ioErrorMessage += "\n  - invalid rect track point count \(points.count)"
-  }
-  if ok { // Check diagonals are equal
-    let d_P0_P2 = NSPoint.distance (points [0], points [2])
-    let d_P1_P3 = NSPoint.distance (points [1], points [3])
-    ok = abs (d_P0_P2 - d_P1_P3) <= sqrt (2286.0 * 2286.0 * 2.0)
-    if !ok {
-      ioErrorMessage += "\n  - invalid rect track geometry"
-    }
-  }
-  if ok {
-    let d_P0_P1 = NSPoint.distance (points [0], points [1])
-    let d_P0_P3 = NSPoint.distance (points [0], points [3])
-    if d_P0_P1 < d_P0_P3 {
-//      let p1x = (points [0].x + points [1].x) / 2
-//      let p1y = (points [0].y + points [1].y) / 2
-//      let p2x = (points [2].x + points [3].x) / 2
-//      let p2y = (points [2].y + points [3].y) / 2
-//      let width = sqrt (CanariPoint.squareOfCanariDistance (points [0], points [1]))
-//      let rt = RoutedTrackForSESImporting (
-//        p1: CanariPoint (x: p1x, y: p1y),
-//        p2: CanariPoint (x: p2x, y: p2y),
-//        side: inSide,
-//        width: Int (width),
-//        shape: .rect
-//      )
-//      ioRoutedSegments.append (rt)
-    }else{
-      let length = NSPoint.distance (points [0], points [1])
-      let width = NSPoint.distance (points [1], points [2])
-      let lambda = width / length
-      let mu = (length - width) / length
-      let p1x = Int ((points [3].x + lambda * points [0].x + mu * points [1].x) / 2.0)
-      let p1y = Int ((points [3].y + lambda * points [0].y + mu * points [1].y) / 2.0)
-      let p2x = Int ((points [2].x + lambda * points [1].x + mu * points [0].x) / 2.0)
-      let p2y = Int ((points [2].y + lambda * points [1].y + mu * points [0].y) / 2.0)
-      let rt = RoutedTrackForSESImporting (
-        p1: CanariPoint (x: p1x, y: p1y),
-        p2: CanariPoint (x: p2x, y: p2y),
-        side: inSide,
-        width: Int (width),
-        shape: .rect
-      )
-      ioRoutedSegments.append (rt)
-      __NSBeep ()
-    }
-  }
-//---
   return ok
 }
 
@@ -503,9 +422,9 @@ fileprivate func handleTeesAndCrossesFromRoutedTracksOnSide (_ inRoutedTracksArr
         if !contains {
           trackArray.append (t)
         }else{
-          let t1 = RoutedTrackForSESImporting (p1: t.p1, p2: p, side: inSide, width: t.width, shape: .round)
+          let t1 = RoutedTrackForSESImporting (p1: t.p1, p2: p, side: inSide, width: t.width, preservedByRouter: t.preservedByRouter)
           trackArray.append (t1)
-          let t2 = RoutedTrackForSESImporting (p1: t.p2, p2: p, side: inSide, width: t.width, shape: .round)
+          let t2 = RoutedTrackForSESImporting (p1: t.p2, p2: p, side: inSide, width: t.width, preservedByRouter: t.preservedByRouter)
           trackArray.append (t2)
         }
       }

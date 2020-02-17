@@ -71,16 +71,6 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   }
 
   //····················································································································
-  //   Selection observable property: mTrackShape
-  //····················································································································
-
-  let mTrackShape_property = EBPropertyProxy_TrackShape ()
-
-  var mTrackShape_property_selection : EBSelection <TrackShape> {
-    return self.mTrackShape_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: actualTrackWidth
   //····················································································································
 
@@ -212,7 +202,6 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.bind_property_mCustomTrackWidthUnit ()
     self.bind_property_mUsesCustomTrackWidth ()
     self.bind_property_mIsPreservedByAutoRouter ()
-    self.bind_property_mTrackShape ()
     self.bind_property_actualTrackWidth ()
     self.bind_property_selectionDisplay ()
     self.bind_property_netName ()
@@ -262,11 +251,6 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.mIsPreservedByAutoRouter_property.mWriteModelFunction = nil 
     self.mIsPreservedByAutoRouter_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mIsPreservedByAutoRouter (self.mIsPreservedByAutoRouter_property)
-  //--- mTrackShape
-    self.mTrackShape_property.mReadModelFunction = nil 
-    self.mTrackShape_property.mWriteModelFunction = nil 
-    self.mTrackShape_property.mValidateAndWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mTrackShape (self.mTrackShape_property)
   //--- actualTrackWidth
     self.actualTrackWidth_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_actualTrackWidth (self.actualTrackWidth_property)
@@ -386,14 +370,6 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
       view: view,
       observerExplorer: &self.mIsPreservedByAutoRouter_property.mObserverExplorer,
       valueExplorer: &self.mIsPreservedByAutoRouter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mTrackShape",
-      idx: self.mTrackShape_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mTrackShape_property.mObserverExplorer,
-      valueExplorer: &self.mTrackShape_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -850,75 +826,6 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
         case .single (let v) :
           for object in v {
             let result = object.mIsPreservedByAutoRouter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-  //····················································································································
-
-  private final func bind_property_mTrackShape () {
-    self.selectedArray_property.addEBObserverOf_mTrackShape (self.mTrackShape_property)
-    self.mTrackShape_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <TrackShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.mTrackShape_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mTrackShape_property.mWriteModelFunction = { [weak self] (inValue : TrackShape) in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.mTrackShape_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.mTrackShape_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : TrackShape, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mTrackShape_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

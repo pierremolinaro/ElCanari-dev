@@ -38,7 +38,6 @@ let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
   "Project, board track: new \"Is preserved by Auto Router\" check box",
-  "Project, board track: new round / rectangular popup button",
   "Package: pad zone can define non continuous pad numbering"
 ]
 

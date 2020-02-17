@@ -354,15 +354,15 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func buildTracks () -> ([ProductTrack], [ProductTrack]) {
-    var frontTracks = [ProductTrack] ()
-    var backTracks = [ProductTrack] ()
+  private func buildTracks () -> ([ProductOblong], [ProductOblong]) {
+    var frontTracks = [ProductOblong] ()
+    var backTracks = [ProductOblong] ()
     for object in self.rootObject.mBoardObjects {
       if let track = object as? BoardTrack {
         let p1 = track.mConnectorP1!.location!.cocoaPoint
         let p2 = track.mConnectorP2!.location!.cocoaPoint
         let width = canariUnitToCocoa (track.actualTrackWidth!)
-        let t = ProductTrack (p1: p1, p2: p2, width: width, shape: track.mTrackShape)
+        let t = ProductOblong (p1: p1, p2: p2, width: width)
         switch track.mSide {
         case .back :
           backTracks.append (t)
@@ -651,15 +651,6 @@ struct ProductOblong { // All in Cocoa Unit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct ProductTrack { // All in Cocoa Unit
-  let p1 : NSPoint
-  let p2 : NSPoint
-  let width : CGFloat
-  let shape : TrackShape
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 struct ProductCircle { // All in Cocoa Unit
   let center : NSPoint
   let diameter : CGFloat
@@ -704,8 +695,8 @@ struct ProductData { // All in Cocoa Unit
   let layoutBackTexts : [CGFloat : [EBLinePath]]
   let legendBackTexts : [CGFloat : [EBLinePath]]
   let viaPads : [ProductCircle]
-  let frontTracks : [ProductTrack]
-  let backTracks : [ProductTrack]
+  let frontTracks : [ProductOblong]
+  let backTracks : [ProductOblong]
   let frontLines : [ProductOblong]
   let backLines : [ProductOblong]
   let frontCircularPads : [ProductCircle]

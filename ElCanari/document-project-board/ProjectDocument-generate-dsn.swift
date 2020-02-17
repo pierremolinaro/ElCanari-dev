@@ -243,21 +243,9 @@ extension CustomizedProjectDocument {
         if let netName = optionalNetName {
           ioString += "      (net \"\(netName)\")\n"
         }
-        switch track.mTrackShape {
-        case .rect :
-          let hw = widthMM * 0.5
-          let α = NSPoint.angleInRadian (p1, p2)
-          let sinhw = hw * sin (α)
-          let coshw = hw * cos (α)
-          ioString += "      (polygon \(side) 0 \(p1.x - coshw - sinhw) \(p1.y + coshw - sinhw)"
-          ioString += " \(p1.x - coshw + sinhw) \(p1.y - coshw - sinhw)"
-          ioString += " \(p2.x + coshw + sinhw) \(p2.y - coshw + sinhw)"
-          ioString += " \(p2.x + coshw - sinhw) \(p2.y + coshw + sinhw))\n"
-        case .round :
-          ioString += "      (path \(side) \(widthMM) \(p1.x) \(p1.y) \(p2.x) \(p2.y))\n"
-        }
+        ioString += "      (path \(side) \(widthMM) \(p1.x) \(p1.y) \(p2.x) \(p2.y))\n"
         if track.mIsPreservedByAutoRouter {
-          ioString += "      (type route)\n"
+          ioString += "      (type protect)\n"
         }
         ioString += "      (clearance_class default)\n"
         ioString += "    )\n"

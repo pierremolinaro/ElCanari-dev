@@ -107,11 +107,9 @@ extension ProjectDocument {
     }
     if inDescriptor.drawTracksTopSide {
       apertureDictionary.append (roundTracks: inProductData.frontTracks, af)
-      append (rectTracks: inProductData.frontTracks, af, to: &polygons)
     }
     if inDescriptor.drawTracksBottomSide {
       apertureDictionary.append (roundTracks: inProductData.backTracks, af)
-      append (rectTracks: inProductData.backTracks, af, to: &polygons)
     }
     if inDescriptor.drawPadsTopSide {
       apertureDictionary.append (circles: inProductData.frontCircularPads, af)
@@ -164,31 +162,6 @@ extension ProjectDocument {
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func append (rectTracks inTracks : [ProductTrack],
-                         _ inAffineTransform : AffineTransform,
-                         to ioPolygonArray : inout [ProductPolygon]) {
-  for track in inTracks {
-    switch track.shape {
-    case .round :
-      ()
-    case .rect :
-      let p1 = inAffineTransform.transform (track.p1)
-      let p2 = inAffineTransform.transform (track.p2)
-      let α = NSPoint.angleInRadian (p1, p2)
-      let sinhw = track.width * sin (α) / 2.0
-      let coshw = track.width * cos (α) / 2.0
-      let p10 = NSPoint (x: p1.x - coshw - sinhw, y: p1.y + coshw - sinhw)
-      let p11 = NSPoint (x: p1.x - coshw + sinhw, y: p1.y - coshw - sinhw)
-      let p20 = NSPoint (x: p2.x + coshw + sinhw, y: p2.y - coshw + sinhw)
-      let p21 = NSPoint (x: p2.x + coshw - sinhw, y: p2.y + coshw + sinhw)
-      let polygon = ProductPolygon (origin: p10, points: [p11, p20, p21])
-      ioPolygonArray.append (polygon)
-    }
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -269,36 +242,16 @@ extension Dictionary where Key == CGFloat, Value == [String] {
 
   //····················································································································
 
-  mutating func append (roundTracks inTracks : [ProductTrack], _ inAffineTransform : AffineTransform) {
+  mutating func append (roundTracks inTracks : [ProductOblong], _ inAffineTransform : AffineTransform) {
     for track in inTracks {
-      switch track.shape {
-      case .round :
-        let p1 = inAffineTransform.transform (track.p1)
-        let x1 = cocoaToMilTenth (p1.x)
-        let y1 = cocoaToMilTenth (p1.y)
-        let p2 = inAffineTransform.transform (track.p2)
-        let x2 = cocoaToMilTenth (p2.x)
-        let y2 = cocoaToMilTenth (p2.y)
-        let lines = ["X\(x1)Y\(y1)D02", "X\(x2)Y\(y2)D01"]
-        self.append (lines, for: track.width)
-      case .rect : // §
-        ()
-//        let α = NSPoint.angleInRadian (p1, p2)
-//        let sinhw = track.width * sin (α) / 2.0
-//        let coshw = track.width * cos (α) / 2.0
-//        let p10 = NSPoint (x: p1.x - coshw - sinhw, y: p1.y + coshw - sinhw)
-//        let p11 = NSPoint (x: p1.x - coshw + sinhw, y: p1.y - coshw - sinhw)
-//        let p20 = NSPoint (x: p2.x + coshw + sinhw, y: p2.y - coshw + sinhw)
-//        let p21 = NSPoint (x: p2.x + coshw - sinhw, y: p2.y + coshw + sinhw)
-//        var lines = [String] ()
-//        lines.append ("G36*") // Polygon
-//        lines.append ("X\(p10.x)Y\(p10.y)D02*")
-//        lines.append ("X\(p11.x)Y\(p11.y)D01*")
-//        lines.append ("X\(p20.x)Y\(p20.y)D01*")
-//        lines.append ("X\(p21.x)Y\(p21.y)D01*")
-//        lines.append ("G37*")
-//        self.append (lines, for: track.width)
-      }
+      let p1 = inAffineTransform.transform (track.p1)
+      let x1 = cocoaToMilTenth (p1.x)
+      let y1 = cocoaToMilTenth (p1.y)
+      let p2 = inAffineTransform.transform (track.p2)
+      let x2 = cocoaToMilTenth (p2.x)
+      let y2 = cocoaToMilTenth (p2.y)
+      let lines = ["X\(x1)Y\(y1)D02", "X\(x2)Y\(y2)D01"]
+      self.append (lines, for: track.width)
     }
   }
 

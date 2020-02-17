@@ -1026,7 +1026,6 @@ import Cocoa
   @IBOutlet var mTrackLengthUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mTrackNetClassNameTextField : EBTextObserverField? = nil
   @IBOutlet var mTrackNetNameTextField : EBTextObserverField? = nil
-  @IBOutlet var mTrackShapePopUpButton : EBPopUpButton? = nil
   @IBOutlet var mUnplacedPackageTableView : CanariDragSourceTableView? = nil
   @IBOutlet var mUnplacedPackagesBoardInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mUnplacedPackagesCountTextField : EBTextObserverField? = nil
@@ -1604,7 +1603,6 @@ import Cocoa
     checkOutletConnection (self.mTrackLengthUnitPopUp, "mTrackLengthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mTrackNetClassNameTextField, "mTrackNetClassNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mTrackNetNameTextField, "mTrackNetNameTextField", EBTextObserverField.self, #file, #line)
-    checkOutletConnection (self.mTrackShapePopUpButton, "mTrackShapePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mUnplacedPackageTableView, "mUnplacedPackageTableView", CanariDragSourceTableView.self, #file, #line)
     checkOutletConnection (self.mUnplacedPackagesBoardInspectorView, "mUnplacedPackagesBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mUnplacedPackagesCountTextField, "mUnplacedPackagesCountTextField", EBTextObserverField.self, #file, #line)
@@ -2505,7 +2503,6 @@ import Cocoa
     self.mTrackLengthTextField?.bind_valueObserver (self.rootObject.trackLengthString_property, file: #file, line: #line)
     self.mTrackLengthUnitPopUp?.bind_selectedTag (self.rootObject.mTrackLengthUnit_property, file: #file, line: #line)
     self.mIsPreservedByAutoRouterSwitch?.bind_value (self.boardTrackSelectionController.mIsPreservedByAutoRouter_property, file: #file, line: #line)
-    self.mTrackShapePopUpButton?.bind_selectedIndex (self.boardTrackSelectionController.mTrackShape_property, file: #file, line: #line)
     self.mBoardTrackSidePopUpButton?.bind_selectedIndex (self.boardTrackSelectionController.mSide_property, file: #file, line: #line)
     self.mTrackNetNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netName_property, file: #file, line: #line)
     self.mTrackNetClassNameTextField?.bind_valueObserver (self.boardTrackSelectionController.netClassName_property, file: #file, line: #line)
@@ -3466,7 +3463,6 @@ import Cocoa
     self.mTrackLengthTextField?.unbind_valueObserver ()
     self.mTrackLengthUnitPopUp?.unbind_selectedTag ()
     self.mIsPreservedByAutoRouterSwitch?.unbind_value ()
-    self.mTrackShapePopUpButton?.unbind_selectedIndex ()
     self.mBoardTrackSidePopUpButton?.unbind_selectedIndex ()
     self.mTrackNetNameTextField?.unbind_valueObserver ()
     self.mTrackNetClassNameTextField?.unbind_valueObserver ()
@@ -4199,7 +4195,6 @@ import Cocoa
     self.mTrackLengthUnitPopUp?.ebCleanUp ()
     self.mTrackNetClassNameTextField?.ebCleanUp ()
     self.mTrackNetNameTextField?.ebCleanUp ()
-    self.mTrackShapePopUpButton?.ebCleanUp ()
     self.mUnplacedPackageTableView?.ebCleanUp ()
     self.mUnplacedPackagesBoardInspectorView?.ebCleanUp ()
     self.mUnplacedPackagesCountTextField?.ebCleanUp ()
@@ -4610,7 +4605,6 @@ import Cocoa
     self.mTrackLengthUnitPopUp = nil
     self.mTrackNetClassNameTextField = nil
     self.mTrackNetNameTextField = nil
-    self.mTrackShapePopUpButton = nil
     self.mUnplacedPackageTableView = nil
     self.mUnplacedPackagesBoardInspectorView = nil
     self.mUnplacedPackagesCountTextField = nil

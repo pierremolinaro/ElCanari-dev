@@ -576,8 +576,8 @@ extension ProjectDocument {
                                      artworkClearance inArtworkClearance : Int) {
     let clearance = canariUnitToCocoa (inArtworkClearance)
   //--- Track inventory
-    var frontTrackNetDictionary = [String : [GeometricTrack]] ()
-    var backTrackNetDictionary = [String : [GeometricTrack]] ()
+    var frontTrackNetDictionary = [String : [GeometricOblong]] ()
+    var backTrackNetDictionary = [String : [GeometricOblong]] ()
     var frontSideRestrictRectangles = [GeometricRect] ()
     var backSideRestrictRectangles = [GeometricRect] ()
     var viaDictionary = [String : [GeometricCircle]] ()
@@ -587,7 +587,7 @@ extension ProjectDocument {
         let p1 = track.mConnectorP1!.location!.cocoaPoint
         let p2 = track.mConnectorP2!.location!.cocoaPoint
         let w = canariUnitToCocoa (track.actualTrackWidth!) + clearance
-        let s = GeometricTrack (from: p1, to: p2, width: w, shape: track.mTrackShape)
+        let s = GeometricOblong (from: p1, to: p2, width: w)
         switch track.mSide {
         case .front :
           frontTrackNetDictionary [netName] = (frontTrackNetDictionary [netName] ?? []) + [s]
@@ -641,8 +641,8 @@ extension ProjectDocument {
     allKeys.formUnion (backTrackNetDictionary.keys)
     allKeys.formUnion (inFrontPadNetDictionary.keys)
     allKeys.formUnion (inBackPadNetDictionary.keys)
-    var frontLayout = [([GeometricTrack], [PadGeometryForERC], [GeometricCircle])] () // Tracks, pads, vias
-    var backLayout  = [([GeometricTrack], [PadGeometryForERC], [GeometricCircle])] () // Tracks, pads, vias
+    var frontLayout = [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])] () // Tracks, pads, vias
+    var backLayout  = [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])] () // Tracks, pads, vias
     for key in Array (allKeys).sorted () {
       frontLayout.append ((frontTrackNetDictionary [key] ?? [], inFrontPadNetDictionary [key] ?? [], viaDictionary [key] ?? []))
       backLayout.append ((backTrackNetDictionary [key] ?? [], inBackPadNetDictionary [key] ?? [], viaDictionary [key] ?? []))
@@ -701,7 +701,7 @@ extension ProjectDocument {
 
   private func checkTrackTrackInsulation (_ ioIssues : inout [CanariIssue],
                                           _ inSide : String,
-                                          _ inLayout : [([GeometricTrack], [PadGeometryForERC], [GeometricCircle])]) {
+                                          _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
     self.mERCLogTextView?.appendMessageString (inSide + " track vs track… ")
     var insulationErrorCount = 0
     if inLayout.count > 1 {
@@ -711,7 +711,7 @@ extension ProjectDocument {
           let trackArrayY = inLayout [idy].0
           for tx in trackArrayX {
             for ty in trackArrayY {
-              if tx.intersects (track: ty) {
+              if tx.intersects (oblong: ty) {
                 insulationErrorCount += 1
                 let issue = CanariIssue (kind: .error, message: inSide + " track collision", pathes: [tx.bezierPath, ty.bezierPath])
                 ioIssues.append (issue)
@@ -734,7 +734,7 @@ extension ProjectDocument {
 
   private func checkTrackPadInsulation (_ ioIssues : inout [CanariIssue],
                                         _ inSide : String,
-                                        _ inLayout : [([GeometricTrack], [PadGeometryForERC], [GeometricCircle])]) {
+                                        _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
     self.mERCLogTextView?.appendMessageString (inSide + " track vs pad… ")
     var insulationErrorCount = 0
     if inLayout.count > 1 {
@@ -745,7 +745,7 @@ extension ProjectDocument {
             let padArrayY = inLayout [idy].1
             for tx in trackArrayX {
               for py in padArrayY {
-                if py.intersects (track: tx) {
+                if py.intersects (oblong: tx) {
                   insulationErrorCount += 1
                   let issue = CanariIssue (kind: .error, message: inSide + " track vs pad collision", pathes: [tx.bezierPath, py.bezierPath])
                   ioIssues.append (issue)
@@ -769,7 +769,7 @@ extension ProjectDocument {
 
   private func checkPadViaInsulation (_ ioIssues : inout [CanariIssue],
                                       _ inSide : String,
-                                      _ inLayout : [([GeometricTrack], [PadGeometryForERC], [GeometricCircle])]) {
+                                      _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
     self.mERCLogTextView?.appendMessageString (inSide + " pad vs via… ")
     var insulationErrorCount = 0
     if inLayout.count > 1 {
@@ -802,7 +802,7 @@ extension ProjectDocument {
 
   private func checkTrackViaInsulation (_ ioIssues : inout [CanariIssue],
                                           _ inSide : String,
-                                          _ inLayout : [([GeometricTrack], [PadGeometryForERC], [GeometricCircle])]) {
+                                          _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
     self.mERCLogTextView?.appendMessageString (inSide + " track vs via… ")
     var insulationErrorCount = 0
     if inLayout.count > 1 {
@@ -835,7 +835,7 @@ extension ProjectDocument {
 
   private func checkTrackRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
                                                  _ inSide : String,
-                                                 _ inLayout : [([GeometricTrack], [PadGeometryForERC], [GeometricCircle])],
+                                                 _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])],
                                                  _ inRestrictRectangles : [GeometricRect]) {
     self.mERCLogTextView?.appendMessageString (inSide + " track vs restrict rect… ")
     var insulationErrorCount = 0
@@ -863,7 +863,7 @@ extension ProjectDocument {
 
   private func checkPadRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
                                                _ inSide : String,
-                                               _ inLayout : [([GeometricTrack], [PadGeometryForERC], [GeometricCircle])],
+                                               _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])],
                                                _ inRestrictRectangles : [GeometricRect]) {
     self.mERCLogTextView?.appendMessageString (inSide + " pad vs restrict rect… ")
     var insulationErrorCount = 0
@@ -891,7 +891,7 @@ extension ProjectDocument {
 
   private func checkViaRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
                                                _ inSide : String,
-                                               _ inLayout : [([GeometricTrack], [PadGeometryForERC], [GeometricCircle])],
+                                               _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])],
                                                _ inRestrictRectangles : [GeometricRect]) {
     self.mERCLogTextView?.appendMessageString (inSide + " restrict rect vs via… ")
     var insulationErrorCount = 0

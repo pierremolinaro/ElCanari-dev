@@ -721,8 +721,6 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBSwitch mIsPreservedByAutoRouterSwitch $value #boardTrackSelectionController.mIsPreservedByAutoRouter ;
 
-  outlet EBPopUpButton mTrackShapePopUpButton $selectedIndex #boardTrackSelectionController.mTrackShape ;
-
   outlet EBPopUpButton mBoardTrackSidePopUpButton $selectedIndex #boardTrackSelectionController.mSide ;
 
   outlet EBTextObserverField mTrackNetNameTextField $valueObserver #boardTrackSelectionController.netName ;

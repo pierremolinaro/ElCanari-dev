@@ -21,8 +21,7 @@ func transient_BoardTrack_objectDisplay (
        _ prefs_frontSideLayoutColorForBoard : NSColor,
        _ prefs_backSideLayoutColorForBoard : NSColor,
        _ self_actualTrackWidth : Int,    
-       _ self_mSide : TrackSide,         
-       _ self_mTrackShape : TrackShape
+       _ self_mSide : TrackSide
 ) -> EBShape {
 //--- START OF USER ZONE 2
        var shape = EBShape ()
@@ -39,30 +38,13 @@ func transient_BoardTrack_objectDisplay (
          }
          if display {
            let w = canariUnitToCocoa ((self_actualTrackWidth == 0) ? milsToCanariUnit (10) : self_actualTrackWidth)
-           switch self_mTrackShape {
-           case .rect :
-            let hw = w * 0.5
-            let α = NSPoint.angleInRadian (p1, p2)
-            var bp = EBBezierPath ()
-            bp.lineCapStyle = .round
-            bp.lineJoinStyle = .round
-            let sinhw = hw * sin (α)
-            let coshw = hw * cos (α)
-            bp.move (to: NSPoint (x: p1.x - coshw - sinhw, y: p1.y + coshw - sinhw))
-            bp.line (to: NSPoint (x: p1.x - coshw + sinhw, y: p1.y - coshw - sinhw))
-            bp.line (to: NSPoint (x: p2.x + coshw + sinhw, y: p2.y - coshw + sinhw))
-            bp.line (to: NSPoint (x: p2.x + coshw - sinhw, y: p2.y + coshw + sinhw))
-            bp.close ()
-            shape.add (filled: [bp], color)
-           case .round :
-             var bp = EBBezierPath ()
-             bp.lineWidth = w
-             bp.lineCapStyle = .round
-             bp.lineJoinStyle = .round
-             bp.move (to: p1)
-             bp.line (to: p2)
-             shape.add (stroke: [bp], color)
-           }
+           var bp = EBBezierPath ()
+           bp.lineWidth = w
+           bp.lineCapStyle = .round
+           bp.lineJoinStyle = .round
+           bp.move (to: p1)
+           bp.line (to: p2)
+           shape.add (stroke: [bp], color)
          }
        }
        return shape

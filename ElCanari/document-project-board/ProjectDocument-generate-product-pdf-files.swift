@@ -88,10 +88,10 @@ extension ProjectDocument {
       strokePathes.append (circles: inProductData.viaPads, af)
     }
     if inDescriptor.drawTracksTopSide {
-      strokePathes.append (tracks: inProductData.frontTracks, af)
+      strokePathes.append (oblongs: inProductData.frontTracks, af)
      }
     if inDescriptor.drawTracksBottomSide {
-      strokePathes.append (tracks: inProductData.backTracks, af)
+      strokePathes.append (oblongs: inProductData.backTracks, af)
     }
     if inDescriptor.drawPadsTopSide {
       strokePathes.append (circles: inProductData.frontCircularPads, af)
@@ -143,25 +143,6 @@ extension Array where Element == EBBezierPath {
       bp.lineJoinStyle = .round
       bp.move (to: inAffineTransform.transform (segment.p1))
       bp.line (to: inAffineTransform.transform (segment.p2))
-      self.append (bp)
-    }
-  }
-
-  //····················································································································
-
-  mutating func append (tracks inTracks : [ProductTrack], _ inAffineTransform : AffineTransform) { // §
-    for track in inTracks {
-      var bp = EBBezierPath ()
-      bp.lineWidth = track.width
-      switch track.shape {
-      case .round :
-        bp.lineCapStyle = .round
-      case .rect :
-        bp.lineCapStyle = .square
-      }
-      bp.lineJoinStyle = .round
-      bp.move (to: inAffineTransform.transform (track.p1))
-      bp.line (to: inAffineTransform.transform (track.p2))
       self.append (bp)
     }
   }

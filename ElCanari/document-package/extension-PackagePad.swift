@@ -387,43 +387,43 @@ class PadGeometryForERC {
 
   //····················································································································
 
-//  func intersects (oblong inOblong : GeometricOblong) -> Bool {
-//    if !self.bounds.intersects (inOblong.bounds) {
-//      return false
-//    }else{
-//      for circle in self.circles {
-//        if inOblong.intersects (circle: circle) {
-//          return true
-//        }
-//      }
-//      for rectangle in self.rectangles {
-//        if inOblong.intersects (rect: rectangle) {
-//          return true
-//        }
-//      }
-//      return false
-//    }
-//  }
-
-  //····················································································································
-
-  func intersects (track inTrack : GeometricTrack) -> Bool {
-    if !self.bounds.intersects (inTrack.bounds) {
+  func intersects (oblong inOblong : GeometricOblong) -> Bool {
+    if !self.bounds.intersects (inOblong.bounds) {
       return false
     }else{
       for circle in self.circles {
-        if inTrack.intersects (circle: circle) {
+        if inOblong.intersects (circle: circle) {
           return true
         }
       }
       for rectangle in self.rectangles {
-        if inTrack.intersects (rect: rectangle) {
+        if inOblong.intersects (rect: rectangle) {
           return true
         }
       }
       return false
     }
   }
+
+  //····················································································································
+
+//  func intersects (track inTrack : GeometricTrack) -> Bool {
+//    if !self.bounds.intersects (inTrack.bounds) {
+//      return false
+//    }else{
+//      for circle in self.circles {
+//        if inTrack.intersects (circle: circle) {
+//          return true
+//        }
+//      }
+//      for rectangle in self.rectangles {
+//        if inTrack.intersects (rect: rectangle) {
+//          return true
+//        }
+//      }
+//      return false
+//    }
+//  }
 
   //····················································································································
 

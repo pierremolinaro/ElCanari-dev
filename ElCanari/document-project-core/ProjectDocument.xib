@@ -389,7 +389,6 @@
                 <outlet property="mTrackLengthUnitPopUp" destination="1Xm-Km-fBX" id="fCH-kq-J5j"/>
                 <outlet property="mTrackNetClassNameTextField" destination="2563" id="DGB-W3-eCO"/>
                 <outlet property="mTrackNetNameTextField" destination="2232" id="mm1-4U-hkS"/>
-                <outlet property="mTrackShapePopUpButton" destination="U50-7E-yQ8" id="e5U-HV-7wn"/>
                 <outlet property="mUnplacedPackageTableView" destination="15584" id="syX-9E-abg"/>
                 <outlet property="mUnplacedPackagesBoardInspectorView" destination="15559" id="aDG-Hp-UdS"/>
                 <outlet property="mUnplacedPackagesCountTextField" destination="15560" id="S8i-yW-Gv1"/>
@@ -2433,11 +2432,11 @@ Gw
             <point key="canvasLocation" x="-1397" y="-715"/>
         </customView>
         <customView id="2208" userLabel="Board Inspector : Track" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="266"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="243"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="116" translatesAutoresizingMaskIntoConstraints="NO" id="2563" customClass="EBTextObserverField">
-                    <rect key="frame" x="112" y="199" width="120" height="14"/>
+                    <rect key="frame" x="112" y="176" width="120" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Net Name…" id="14657">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -2446,7 +2445,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="87" translatesAutoresizingMaskIntoConstraints="NO" id="2562">
-                    <rect key="frame" x="17" y="199" width="91" height="14"/>
+                    <rect key="frame" x="17" y="176" width="91" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Net Class Name" id="14656">
                         <font key="font" metaFont="smallSystem"/>
@@ -2530,7 +2529,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="116" translatesAutoresizingMaskIntoConstraints="NO" id="2232" customClass="EBTextObserverField">
-                    <rect key="frame" x="112" y="222" width="120" height="14"/>
+                    <rect key="frame" x="112" y="199" width="120" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Net Name…" id="14649">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -2539,7 +2538,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="86" translatesAutoresizingMaskIntoConstraints="NO" id="2231">
-                    <rect key="frame" x="17" y="222" width="90" height="14"/>
+                    <rect key="frame" x="17" y="199" width="90" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Net Name" id="14648">
                         <font key="font" metaFont="smallSystem"/>
@@ -2548,7 +2547,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="63" translatesAutoresizingMaskIntoConstraints="NO" id="2222">
-                    <rect key="frame" x="17" y="169" width="67" height="14"/>
+                    <rect key="frame" x="17" y="146" width="67" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Side" id="14646">
                         <font key="font" metaFont="smallSystem"/>
@@ -2557,7 +2556,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15395">
-                    <rect key="frame" x="60" y="252" width="130" height="14"/>
+                    <rect key="frame" x="60" y="229" width="130" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Track Inspector" id="15396">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -2566,7 +2565,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2223" customClass="EBPopUpButton">
-                    <rect key="frame" x="88" y="167" width="142" height="17"/>
+                    <rect key="frame" x="88" y="144" width="142" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Back" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="2225" id="14647">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2580,38 +2579,15 @@ Gw
                     </popUpButtonCell>
                 </popUpButton>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pyl-IR-zNX" customClass="EBSwitch">
-                    <rect key="frame" x="16" y="144" width="216" height="20"/>
+                    <rect key="frame" x="16" y="121" width="216" height="20"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Is Preserved by Auto Router" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="7pM-9S-ptC">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="87" translatesAutoresizingMaskIntoConstraints="NO" id="idE-YT-kIT">
-                    <rect key="frame" x="18" y="121" width="45" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Shape" id="PwY-vc-pkg">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U50-7E-yQ8" customClass="EBPopUpButton">
-                    <rect key="frame" x="72" y="119" width="158" height="17"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Round" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="LQt-wV-wQZ" id="K2f-HW-WoJ">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" id="6pQ-vf-snh">
-                            <items>
-                                <menuItem title="Round" state="on" id="LQt-wV-wQZ"/>
-                                <menuItem title="Rectangular" id="CwE-bw-spz"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="-577" y="502"/>
+            <point key="canvasLocation" x="-577" y="490.5"/>
         </customView>
         <customView id="2917" userLabel="Page : Components" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="1021" height="474"/>
@@ -2776,7 +2752,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inBoard" editable="NO" width="174.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn identifier="inBoard" editable="NO" width="175" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2790,11 +2766,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="468.5" y="1" width="174.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="175" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-s7-Ehd" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="174.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="175" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -2810,7 +2786,7 @@ Gw
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="153" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="152.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -2824,11 +2800,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="646" y="1" width="153" height="17"/>
+                                                <rect key="frame" x="646.5" y="1" width="152.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="153" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="152.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>

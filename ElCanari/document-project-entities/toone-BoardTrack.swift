@@ -21,7 +21,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
     inOldValue?.mCustomTrackWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mCustomTrackWidthUnit) // Stored property
     inOldValue?.mUsesCustomTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_mUsesCustomTrackWidth) // Stored property
     inOldValue?.mIsPreservedByAutoRouter_property.removeEBObserversFrom (&self.mObserversOf_mIsPreservedByAutoRouter) // Stored property
-    inOldValue?.mTrackShape_property.removeEBObserversFrom (&self.mObserversOf_mTrackShape) // Stored property
     inOldValue?.actualTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_actualTrackWidth) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     inOldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
@@ -40,7 +39,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
     self.mInternalValue?.mCustomTrackWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mCustomTrackWidthUnit) // Stored property
     self.mInternalValue?.mUsesCustomTrackWidth_property.addEBObserversFrom (&self.mObserversOf_mUsesCustomTrackWidth) // Stored property
     self.mInternalValue?.mIsPreservedByAutoRouter_property.addEBObserversFrom (&self.mObserversOf_mIsPreservedByAutoRouter) // Stored property
-    self.mInternalValue?.mTrackShape_property.addEBObserversFrom (&self.mObserversOf_mTrackShape) // Stored property
     self.mInternalValue?.actualTrackWidth_property.addEBObserversFrom (&self.mObserversOf_actualTrackWidth) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     self.mInternalValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
@@ -470,76 +468,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mIsPreservedByAutoRouter_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mTrackShape' stored property
-  //····················································································································
-
-  private var mObserversOf_mTrackShape = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mTrackShape_property_selection : EBSelection <TrackShape?> {
-    if let model = self.propval {
-      switch (model.mTrackShape_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mTrackShape (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mTrackShape.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mTrackShape_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mTrackShape (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mTrackShape.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mTrackShape_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mTrackShape_toElementsOfSet (_ inSet : Set<BoardTrack>) {
-    for managedObject in inSet {
-      self.mObserversOf_mTrackShape.apply { (_ observer : EBEvent) in
-        managedObject.mTrackShape_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mTrackShape_fromElementsOfSet (_ inSet : Set<BoardTrack>) {
-    self.mObserversOf_mTrackShape.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mTrackShape_property.removeEBObserver (observer)
       }
     }
   }
