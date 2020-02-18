@@ -28,13 +28,14 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "1.1.6"
+let VERSION_CANARI = "1.1.7"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
   "Project, ElCanari archive: one side of the board boundaries was missing",
 ]
 let CHANGES : [String] = [
-  "Uses Sparkle 1.23.0"
+  "Uses Sparkle 1.23.0",
+  "Project: importing SES file automatically sort objets following their layer"
 ]
 let NEWS : [String] = [
   "Project, board track: new \"Is preserved by Auto Router\" check box",

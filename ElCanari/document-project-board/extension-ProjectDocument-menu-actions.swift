@@ -82,7 +82,7 @@ extension CustomizedProjectDocument {
         others.append (object)
       }
     }
-    self.rootObject.mBoardObjects = backTracks + backComponents + others + frontComponents + frontTracks + restrictRectangles + connectors
+    self.rootObject.mBoardObjects = backTracks + backComponents + others + frontTracks + frontComponents + restrictRectangles + connectors
   }
 
   //····················································································································

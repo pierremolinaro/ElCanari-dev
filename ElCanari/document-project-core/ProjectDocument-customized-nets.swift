@@ -261,39 +261,104 @@ extension CustomizedProjectDocument {
     if let window = self.windowForSheet, let panel = self.mMergeNetDialog, let popup = self.mMergeNetPopUpButton {
       let initialNetName = inPoint.mNet!.mNetName
       popup.removeAllItems ()
-      var selectedIndex : Int? = nil
-      var idx = 0
       var nets = [NetInProject] ()
       for netClass in self.rootObject.mNetClasses {
         for net in netClass.mNets {
           nets.append (net)
         }
       }
-      nets.sort { $0.mNetName.uppercased () < $1.mNetName.uppercased () }
+      nets.sort { String.numericCompare ($0.mNetName, true, $1.mNetName) }
       for net in nets {
         popup.addItem (withTitle: net.mNetName)
         popup.lastItem?.representedObject = net
         if initialNetName == net.mNetName {
-          selectedIndex = idx
+          popup.select (popup.lastItem)
         }
-        idx += 1
-      }
-      if let idx = selectedIndex {
-        popup.selectItem (at: idx)
       }
     //--- Dialog
       window.beginSheet (panel) { inResponse in
-        if inResponse == .stop {
-          if let net = popup.selectedItem?.representedObject as? NetInProject {
-            inPoint.mNet = net
-            inPoint.propagateNetToAccessiblePointsThroughtWires ()
-            self.updateSchematicPointsAndNets ()
-          }
+        if inResponse == .stop, let net = popup.selectedItem?.representedObject as? NetInProject {
+          inPoint.mNet = net
+          inPoint.propagateNetToAccessiblePointsThroughtWires ()
+          self.updateSchematicPointsAndNets ()
         }
       }
     }
 
   }
+
+  //····················································································································
+  //   DIALOG FOR MERGING SUBNET
+  //····················································································································
+
+//  internal func dialogForMergingSubnetFrom (point inPoint : PointInSchematic) {
+//    if let window = self.windowForSheet, let panel = self.mMergeNetDialog, let popup = self.mMergeNetPopUpButton {
+//      let initialNetName = inPoint.mNet!.mNetName
+//      popup.removeAllItems ()
+//      popup.autoenablesItems = true
+//      var nets = [NetInProject] ()
+//    //--- Build net dictionary
+//      var netDictionary = [String : [NetInProject]] ()
+//      for netClass in self.rootObject.mNetClasses {
+//        for net in netClass.mNets {
+//          nets.append (net)
+//          let netName = net.mNetName
+//          if netName.starts (with: "$") {
+//            netDictionary ["$"] = (netDictionary ["$"] ?? []) + [net]
+//          }else if netName.firstIndex (of: "-") != nil {
+//            let components = netName.components (separatedBy: "-")
+//            let prefix = components [0]
+//            netDictionary [prefix] = (netDictionary [prefix] ?? []) + [net]
+//          }else{
+//            netDictionary [netName] = (netDictionary [netName] ?? []) + [net]
+//          }
+//        }
+//      }
+//    //--- Build pop up
+//      let keys = netDictionary.keys.sorted { String.numericCompare ($0, true, $1) }
+//      for prefix in keys {
+//        let nets = netDictionary [prefix]!.sorted { String.numericCompare ($0.mNetName, true, $1.mNetName) }
+//        popup.addItem (withTitle: prefix)
+//        if nets.count == 1 {
+//          popup.lastItem?.representedObject = nets [0]
+//          if initialNetName == nets [0].mNetName {
+//            popup.select (popup.lastItem)
+//          }
+//        }else{
+//          let menu = NSMenu ()
+//          menu.autoenablesItems = true
+//          popup.lastItem!.submenu = menu
+//          for net in nets {
+//            menu.addItem (withTitle: net.mNetName, action: #selector (submenuAction (_:)), keyEquivalent: "")
+//            let lastItem = menu.items [menu.numberOfItems - 1]
+//            lastItem.target = self
+//            lastItem.isEnabled = true
+//            lastItem.representedObject = net
+//            if initialNetName == net.mNetName {
+//              popup.select (lastItem)
+//            }
+//          }
+//        }
+//      }
+//    //--- Dialog
+//      window.beginSheet (panel) { inResponse in
+//        if inResponse == .stop, let net = popup.selectedItem?.representedObject as? NetInProject {
+//          inPoint.mNet = net
+//          inPoint.propagateNetToAccessiblePointsThroughtWires ()
+//          self.updateSchematicPointsAndNets ()
+//        }
+//      }
+//    }
+//
+//  }
+
+  //····················································································································
+
+//  @objc func submenuAction (_ inSender : NSMenuItem) {
+//    if let popup = self.mMergeNetPopUpButton {
+//      popup.select (inSender)
+//    }
+//  }
 
   //····················································································································
 

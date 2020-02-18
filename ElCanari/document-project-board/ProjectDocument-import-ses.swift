@@ -295,6 +295,7 @@ extension CustomizedProjectDocument {
         }
       }
     }
+    self.sortBoardObjectsFollowingBoardLayersAction (nil)
   }
 
   //····················································································································
