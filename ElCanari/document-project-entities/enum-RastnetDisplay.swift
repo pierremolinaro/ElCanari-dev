@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum RastnetDisplay : Int, EnumPropertyProtocol {
+enum RastnetDisplay : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case hidden = 0
   case allNets = 1
   case oneNet = 2

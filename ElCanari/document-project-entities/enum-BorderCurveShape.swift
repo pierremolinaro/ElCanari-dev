@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BorderCurveShape : Int, EnumPropertyProtocol {
+enum BorderCurveShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case line = 0
   case bezier = 1
 

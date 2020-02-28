@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum AutorouterPreferredDirections : Int, EnumPropertyProtocol {
+enum AutorouterPreferredDirections : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case vFrontHback = 0
   case hFrontVback = 1
 

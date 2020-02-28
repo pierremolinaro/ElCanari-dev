@@ -573,3 +573,4 @@ struct RastnetInfo : Equatable, Hashable {
 typealias RastnetInfoArray = [RastnetInfo]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

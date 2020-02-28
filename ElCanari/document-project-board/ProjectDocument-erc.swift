@@ -10,6 +10,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+struct SideAndNetName : Hashable {
+  let side : TrackSide
+  let netName : String
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 extension CustomizedProjectDocument {
 
   //····················································································································
@@ -47,13 +54,16 @@ extension ProjectDocument {
   //--- Checkings
     self.checkVersusArtwork (&issues)
     if let artwork = self.rootObject.mArtwork {
-      var frontPadNetDictionary = [String : [PadGeometryForERC]] ()
-      var backPadNetDictionary = [String : [PadGeometryForERC]] ()
-      self.checkPadInsulation (&issues, &frontPadNetDictionary, &backPadNetDictionary, artworkClearance: artwork.minPPTPTTTW)
+      var padNetDictionary = [SideAndNetName : [PadGeometryForERC]] ()
+//      var frontPadNetDictionary = [String : [PadGeometryForERC]] ()
+//      var backPadNetDictionary = [String : [PadGeometryForERC]] ()
+//      self.checkPadInsulation (&issues, &frontPadNetDictionary, &backPadNetDictionary, &padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
+      self.checkPadInsulation (&issues, &padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
       var netConnectorsDictionary = [String : [(BoardConnector, EBBezierPath)]] ()
       self.checkPadConnectivity (&issues, &netConnectorsDictionary, artworkClearance: artwork.minPPTPTTTW)
       self.checkNetConnectivity (&issues, netConnectorsDictionary)
-      self.checkTrackInsulation (&issues, frontPadNetDictionary, backPadNetDictionary, artworkClearance: artwork.minPPTPTTTW)
+//      self.checkTrackInsulation (&issues, frontPadNetDictionary, backPadNetDictionary, padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
+      self.checkTrackInsulation (&issues, padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
     }
   //--- Update status
     self.rootObject.mLastERCCheckingIsSuccess = issues.isEmpty
@@ -229,8 +239,9 @@ extension ProjectDocument {
   //····················································································································
 
   fileprivate func checkPadInsulation (_ ioIssues : inout [CanariIssue],
-                                       _ ioFrontPadNetDictionary : inout [String : [PadGeometryForERC]],
-                                       _ ioBackPadNetDictionary : inout [String : [PadGeometryForERC]],
+//                                       _ ioFrontPadNetDictionary : inout [String : [PadGeometryForERC]],
+//                                       _ ioBackPadNetDictionary : inout [String : [PadGeometryForERC]],
+                                       _ ioPadNetDictionary : inout [SideAndNetName : [PadGeometryForERC]],
                                        artworkClearance inArtworkClearance : Int) {
     for component in self.rootObject.mComponents {
       if component.mRoot != nil { // Is on board
@@ -246,14 +257,17 @@ extension ProjectDocument {
             shape: padDescriptor.shape
           )
           var componentSidePadGeometry : PadGeometryForERC
-          var oppositeSidePadGeometry  : PadGeometryForERC
+          var oppositeSidePadGeometry : PadGeometryForERC
+          var innerLayersPadGeometry  : PadGeometryForERC
           switch padDescriptor.style {
           case .surface :
             componentSidePadGeometry = padGeometry
-            oppositeSidePadGeometry  = PadGeometryForERC ()
+            oppositeSidePadGeometry = PadGeometryForERC ()
+            innerLayersPadGeometry = PadGeometryForERC ()
           case .traversing :
             componentSidePadGeometry = padGeometry
-            oppositeSidePadGeometry  = padGeometry
+            oppositeSidePadGeometry = padGeometry
+            innerLayersPadGeometry = padGeometry
           }
           for slavePad in padDescriptor.slavePads {
             let slavePadGeometry = PadGeometryForERC (
@@ -270,8 +284,9 @@ extension ProjectDocument {
             case .componentSide :
               componentSidePadGeometry = componentSidePadGeometry + slavePadGeometry
             case .traversing :
-              componentSidePadGeometry = componentSidePadGeometry + slavePadGeometry
               oppositeSidePadGeometry = oppositeSidePadGeometry + slavePadGeometry
+              componentSidePadGeometry = componentSidePadGeometry + slavePadGeometry
+              innerLayersPadGeometry = innerLayersPadGeometry + slavePadGeometry
             }
           }
           let netName = padNetDictionary [padDescriptor.name] ?? ""
@@ -279,59 +294,59 @@ extension ProjectDocument {
             let componentSideTransformedGeometry = componentSidePadGeometry.transformed (by: af)
             switch component.mSide {
             case .front :
-              ioFrontPadNetDictionary [netName] = (ioFrontPadNetDictionary [netName] ?? []) + [componentSideTransformedGeometry]
+              let key = SideAndNetName (side: .front, netName: netName)
+              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [componentSideTransformedGeometry]
+//              ioFrontPadNetDictionary [netName] = (ioFrontPadNetDictionary [netName] ?? []) + [componentSideTransformedGeometry]
             case .back :
-              ioBackPadNetDictionary [netName] = (ioBackPadNetDictionary [netName] ?? []) + [componentSideTransformedGeometry]
+              let key = SideAndNetName (side: .back, netName: netName)
+              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [componentSideTransformedGeometry]
+//              ioBackPadNetDictionary [netName] = (ioBackPadNetDictionary [netName] ?? []) + [componentSideTransformedGeometry]
             }
           }
           if !oppositeSidePadGeometry.isEmpty {
             let oppositeSideTransformedGeometry = oppositeSidePadGeometry.transformed (by: af)
             switch component.mSide {
             case .front :
-              ioBackPadNetDictionary [netName] = (ioBackPadNetDictionary [netName] ?? []) + [oppositeSideTransformedGeometry]
+              let key = SideAndNetName (side: .back, netName: netName)
+              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [oppositeSideTransformedGeometry]
+//              ioBackPadNetDictionary [netName] = (ioBackPadNetDictionary [netName] ?? []) + [oppositeSideTransformedGeometry]
             case .back :
-              ioFrontPadNetDictionary [netName] = (ioFrontPadNetDictionary [netName] ?? []) + [oppositeSideTransformedGeometry]
+              let key = SideAndNetName (side: .front, netName: netName)
+              ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [oppositeSideTransformedGeometry]
+//              ioFrontPadNetDictionary [netName] = (ioFrontPadNetDictionary [netName] ?? []) + [oppositeSideTransformedGeometry]
+            }
+          }
+          if !innerLayersPadGeometry.isEmpty {
+            let innerLayersTransformedGeometry = innerLayersPadGeometry.transformed (by: af)
+            for side in TrackSide.allCases {
+              if (side != .front) && (side != .back) {
+                let key = SideAndNetName (side: side, netName: netName)
+                ioPadNetDictionary [key] = (ioPadNetDictionary [key] ?? []) + [innerLayersTransformedGeometry]
+              }
             }
           }
         }
       }
     }
-  //---
-    var frontPadsArray = [(String, [PadGeometryForERC])] ()
-    for (netName, pads) in ioFrontPadNetDictionary {
-      frontPadsArray.append ((netName, pads))
-    }
-    var backPadsArray = [(String, [PadGeometryForERC])] ()
-    for (netName, pads) in ioBackPadNetDictionary {
-      backPadsArray.append ((netName, pads))
-    }
   //--- Check insulation
     self.mERCLogTextView?.appendMessageString ("Pad insulation… ")
-    var collisionCount = 0
-    if frontPadsArray.count > 0 {
-      for idx in 0 ..< frontPadsArray.count {
-        let netNameX = frontPadsArray [idx].0
-        let frontPadX = frontPadsArray [idx].1
-        if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || (netNameX == "") {
-          self.checkPadInsulation (inArray: frontPadX, &ioIssues, &collisionCount)
-        }
-        for idy in idx+1 ..< frontPadsArray.count {
-          let frontPadY = frontPadsArray [idy].1
-          self.checkPadInsulation (betweenArraies: (frontPadX, frontPadY), &ioIssues, &collisionCount)
-        }
-      }
+    var padsArrayDictionary = [TrackSide : [(String, [PadGeometryForERC])]] ()
+    for (key, pads) in ioPadNetDictionary {
+      padsArrayDictionary [key.side] = (padsArrayDictionary [key.side] ?? []) + [(key.netName, pads)]
     }
-    if backPadsArray.count > 0 {
-      for idx in 0 ..< backPadsArray.count {
-        let netNameX = backPadsArray [idx].0
-        let frontPadX = backPadsArray [idx].1
-        if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || (netNameX == "") {
-          self.checkPadInsulation (inArray: frontPadX, &ioIssues, &collisionCount)
-        }
-        for idy in 0 ..< backPadsArray.count {
-          if idy != idx {
-            let frontPadY = backPadsArray [idy].1
-            self.checkPadInsulation (betweenArraies: (frontPadX, frontPadY), &ioIssues, &collisionCount)
+    var collisionCount = 0
+    for side in padsArrayDictionary.keys {
+      let padArray = padsArrayDictionary [side] ?? []
+      if padArray.count > 0 {
+        for idx in 0 ..< padArray.count {
+          let netNameX = padArray [idx].0
+          let frontPadX = padArray [idx].1
+          if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || (netNameX == "") {
+            self.checkPadInsulation (inArray: frontPadX, side.descriptionForExplorer(), &ioIssues, &collisionCount)
+          }
+          for idy in idx+1 ..< padArray.count {
+            let frontPadY = padArray [idy].1
+            self.checkPadInsulation (betweenArraies: (frontPadX, frontPadY), side.descriptionForExplorer(), &ioIssues, &collisionCount)
           }
         }
       }
@@ -343,11 +358,58 @@ extension ProjectDocument {
     }else{
       self.mERCLogTextView?.appendErrorString ("\(collisionCount) errors\n")
     }
+  //--- Check insulation (old)
+//    var frontPadsArray = [(String, [PadGeometryForERC])] ()
+//    for (netName, pads) in ioFrontPadNetDictionary {
+//      frontPadsArray.append ((netName, pads))
+//    }
+//    var backPadsArray = [(String, [PadGeometryForERC])] ()
+//    for (netName, pads) in ioBackPadNetDictionary {
+//      backPadsArray.append ((netName, pads))
+//    }
+//    self.mERCLogTextView?.appendMessageString ("Pad insulation (old)… ")
+//    collisionCount = 0
+//    if frontPadsArray.count > 0 {
+//      for idx in 0 ..< frontPadsArray.count {
+//        let netNameX = frontPadsArray [idx].0
+//        let frontPadX = frontPadsArray [idx].1
+//        if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || (netNameX == "") {
+//          self.checkPadInsulation (inArray: frontPadX, "front", &ioIssues, &collisionCount)
+//        }
+//        for idy in idx+1 ..< frontPadsArray.count {
+//          let frontPadY = frontPadsArray [idy].1
+//          self.checkPadInsulation (betweenArraies: (frontPadX, frontPadY), "front", &ioIssues, &collisionCount)
+//        }
+//      }
+//    }
+//    if backPadsArray.count > 0 {
+//      for idx in 0 ..< backPadsArray.count {
+//        let netNameX = backPadsArray [idx].0
+//        let frontPadX = backPadsArray [idx].1
+//        if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || (netNameX == "") {
+//          self.checkPadInsulation (inArray: frontPadX, "back", &ioIssues, &collisionCount)
+//        }
+//        for idy in 0 ..< backPadsArray.count {
+//          if idy != idx {
+//            let frontPadY = backPadsArray [idy].1
+//            self.checkPadInsulation (betweenArraies: (frontPadX, frontPadY), "back", &ioIssues, &collisionCount)
+//          }
+//        }
+//      }
+//    }
+//    if collisionCount == 0 {
+//      self.mERCLogTextView?.appendSuccessString ("ok\n")
+//    }else if collisionCount == 1 {
+//      self.mERCLogTextView?.appendErrorString ("1 error\n")
+//    }else{
+//      self.mERCLogTextView?.appendErrorString ("\(collisionCount) errors\n")
+//    }
   }
 
   //····················································································································
 
   private func checkPadInsulation (betweenArraies inPadArray : ([PadGeometryForERC], [PadGeometryForERC]),
+                                   _ inLayerName : String,
                                    _ ioIssues : inout [CanariIssue],
                                    _ ioCollisionCount : inout Int) {
     for padX in inPadArray.0 {
@@ -355,7 +417,7 @@ extension ProjectDocument {
         if padX.intersects (pad: padY) {
           ioCollisionCount += 1
           let bp = [padX.bezierPath, padY.bezierPath]
-          let issue = CanariIssue (kind: .error, message: "Front side pad collision", pathes: bp)
+          let issue = CanariIssue (kind: .error, message: "pad collision in \(inLayerName) layer", pathes: bp)
           ioIssues.append (issue)
         }
       }
@@ -365,6 +427,7 @@ extension ProjectDocument {
   //····················································································································
 
   private func checkPadInsulation (inArray inPadArray : [PadGeometryForERC],
+                                   _ inLayerName : String,
                                    _ ioIssues : inout [CanariIssue],
                                    _ ioCollisionCount : inout Int) {
     if inPadArray.count > 1 {
@@ -375,7 +438,7 @@ extension ProjectDocument {
           if padX.intersects (pad: padY) {
             ioCollisionCount += 1
             let bp = [padX.bezierPath, padY.bezierPath]
-            let issue = CanariIssue (kind: .error, message: "Front side pad collision", pathes: bp)
+            let issue = CanariIssue (kind: .error, message: "pad collision in \(inLayerName) layer", pathes: bp)
             ioIssues.append (issue)
           }
         }
@@ -571,15 +634,18 @@ extension ProjectDocument {
   //····················································································································
 
   private func checkTrackInsulation (_ ioIssues : inout [CanariIssue],
-                                     _ inFrontPadNetDictionary : [String : [PadGeometryForERC]],
-                                     _ inBackPadNetDictionary  : [String : [PadGeometryForERC]],
+//                                     _ inFrontPadNetDictionary : [String : [PadGeometryForERC]],
+//                                     _ inBackPadNetDictionary  : [String : [PadGeometryForERC]],
+                                     _ inPadNetDictionary : [SideAndNetName : [PadGeometryForERC]],
                                      artworkClearance inArtworkClearance : Int) {
     let clearance = canariUnitToCocoa (inArtworkClearance)
   //--- Track inventory
-    var frontTrackNetDictionary = [String : [GeometricOblong]] ()
-    var backTrackNetDictionary = [String : [GeometricOblong]] ()
-    var frontSideRestrictRectangles = [GeometricRect] ()
-    var backSideRestrictRectangles = [GeometricRect] ()
+    var trackSideNetDictionary = [SideAndNetName : [GeometricOblong]] ()
+    var restrictRectangles = [TrackSide : [GeometricRect]] ()
+//    var frontTrackNetDictionary = [String : [GeometricOblong]] ()
+//    var backTrackNetDictionary = [String : [GeometricOblong]] ()
+//    var frontSideRestrictRectangles = [GeometricRect] ()
+//    var backSideRestrictRectangles = [GeometricRect] ()
     var viaDictionary = [String : [GeometricCircle]] ()
     for object in self.rootObject.mBoardObjects {
       if let track = object as? BoardTrack {
@@ -588,24 +654,29 @@ extension ProjectDocument {
         let p2 = track.mConnectorP2!.location!.cocoaPoint
         let w = canariUnitToCocoa (track.actualTrackWidth!) + clearance
         let s = GeometricOblong (from: p1, to: p2, width: w)
-        switch track.mSide {
-        case .front :
-          frontTrackNetDictionary [netName] = (frontTrackNetDictionary [netName] ?? []) + [s]
-        case .back :
-          backTrackNetDictionary [netName] = (backTrackNetDictionary [netName] ?? []) + [s]
-        }
+        let key = SideAndNetName (side: track.mSide, netName: netName)
+        trackSideNetDictionary [key] = (trackSideNetDictionary [key] ?? []) + [s]
+//        switch track.mSide {
+//        case .front :
+//          frontTrackNetDictionary [netName] = (frontTrackNetDictionary [netName] ?? []) + [s]
+//        case .back :
+//          backTrackNetDictionary [netName] = (backTrackNetDictionary [netName] ?? []) + [s]
+//        }
       }else if let via = object as? BoardConnector {
         var isVia = via.mComponent == nil
         if isVia {
-          var hasFrontSideTrack = false
-          var hasBackSideTrack = false
+//          var hasFrontSideTrack = false
+//          var hasBackSideTrack = false
+          var layerSet = Set <TrackSide> ()
           for track in via.mTracksP1 + via.mTracksP2 {
-            switch track.mSide {
-            case .back  : hasBackSideTrack  = true
-            case .front : hasFrontSideTrack = true
-            }
+            layerSet.insert (track.mSide)
+//            switch track.mSide {
+//            case .back  : hasBackSideTrack  = true
+//            case .front : hasFrontSideTrack = true
+//            }
           }
-          isVia = hasFrontSideTrack && hasBackSideTrack
+//          isVia = hasFrontSideTrack && hasBackSideTrack
+          isVia = layerSet.count > 1
         }
         if isVia {
           let p = via.location!.cocoaPoint
@@ -618,10 +689,12 @@ extension ProjectDocument {
         let canariRect = CanariRect (left: restrictRect.mX, bottom: restrictRect.mY, width: restrictRect.mWidth, height: restrictRect.mHeight)
         let r = GeometricRect (rect: canariRect.cocoaRect)
         if restrictRect.mIsInFrontLayer {
-          frontSideRestrictRectangles.append (r)
+          restrictRectangles [.front] = (restrictRectangles [.front] ?? []) + [r]
+//          frontSideRestrictRectangles.append (r)
         }
         if restrictRect.mIsInBackLayer {
-          backSideRestrictRectangles.append (r)
+          restrictRectangles [.back] = (restrictRectangles [.back] ?? []) + [r]
+//          backSideRestrictRectangles.append (r)
         }
       }else if let text = object as? BoardText {
         switch text.mLayer {
@@ -629,39 +702,81 @@ extension ProjectDocument {
           ()
         case .layoutFront :
           let (_, _, _, _, oblongs) = text.displayInfos (extraWidth: clearance)
-          frontTrackNetDictionary [""] = (frontTrackNetDictionary [""] ?? []) + oblongs
+//          frontTrackNetDictionary [""] = (frontTrackNetDictionary [""] ?? []) + oblongs
+          let key = SideAndNetName (side: .front, netName: "")
+          trackSideNetDictionary [key] = (trackSideNetDictionary [key] ?? []) + oblongs
         case .layoutBack :
           let (_, _, _, _, oblongs) = text.displayInfos (extraWidth: clearance)
-          backTrackNetDictionary [""] = (backTrackNetDictionary [""] ?? []) + oblongs
+//          backTrackNetDictionary [""] = (backTrackNetDictionary [""] ?? []) + oblongs
+          let key = SideAndNetName (side: .back, netName: "")
+          trackSideNetDictionary [key] = (trackSideNetDictionary [key] ?? []) + oblongs
         }
       }
     }
   //---
-    var allKeys = Set (frontTrackNetDictionary.keys)
-    allKeys.formUnion (backTrackNetDictionary.keys)
-    allKeys.formUnion (inFrontPadNetDictionary.keys)
-    allKeys.formUnion (inBackPadNetDictionary.keys)
-    var frontLayout = [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])] () // Tracks, pads, vias
-    var backLayout  = [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])] () // Tracks, pads, vias
-    for key in Array (allKeys).sorted () {
-      frontLayout.append ((frontTrackNetDictionary [key] ?? [], inFrontPadNetDictionary [key] ?? [], viaDictionary [key] ?? []))
-      backLayout.append ((backTrackNetDictionary [key] ?? [], inBackPadNetDictionary [key] ?? [], viaDictionary [key] ?? []))
+    var allNetNames = Set <String> ()
+    for (key, _) in trackSideNetDictionary {
+      allNetNames.insert (key.netName)
     }
+    for (key, _) in inPadNetDictionary {
+      allNetNames.insert (key.netName)
+    }
+    var layout = [TrackSide : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]] () // Tracks, pads, vias
+    for netName in Array (allNetNames).sorted () {
+      for side in TrackSide.allCases {
+        let key = SideAndNetName (side: side, netName: netName)
+        let tracks = trackSideNetDictionary [key] ?? []
+        let pads = inPadNetDictionary [key] ?? []
+        let vias = viaDictionary [netName] ?? []
+        layout [side] = (layout [side] ?? []) + [(tracks, pads, vias)]
+      }
+    }
+//    var allNetNames = Set (frontTrackNetDictionary.keys)
+//    allNetNames.formUnion (backTrackNetDictionary.keys)
+//    allNetNames.formUnion (inFrontPadNetDictionary.keys)
+//    allNetNames.formUnion (inBackPadNetDictionary.keys)
+//    var frontLayout = [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])] () // Tracks, pads, vias
+//    var backLayout  = [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])] () // Tracks, pads, vias
+//    for netName in Array (allNetNames).sorted () {
+//      frontLayout.append ((frontTrackNetDictionary [netName] ?? [], inFrontPadNetDictionary [netName] ?? [], viaDictionary [netName] ?? []))
+//      backLayout.append ((backTrackNetDictionary [netName] ?? [], inBackPadNetDictionary [netName] ?? [], viaDictionary [netName] ?? []))
+//    }
   //--- Insulation tests
-    self.checkTrackTrackInsulation (&ioIssues, "Front", frontLayout)
-    self.checkTrackTrackInsulation (&ioIssues, "Back", backLayout)
-    self.checkTrackPadInsulation (&ioIssues, "Front", frontLayout)
-    self.checkTrackPadInsulation (&ioIssues, "Back", backLayout)
-    self.checkPadRestrictRectInsulation (&ioIssues, "Front", frontLayout, frontSideRestrictRectangles)
-    self.checkPadRestrictRectInsulation (&ioIssues, "Back", backLayout, backSideRestrictRectangles)
-    self.checkTrackRestrictRectInsulation (&ioIssues, "Front", frontLayout, frontSideRestrictRectangles)
-    self.checkTrackRestrictRectInsulation (&ioIssues, "Back", backLayout, backSideRestrictRectangles)
-    self.checkPadViaInsulation (&ioIssues, "Front", frontLayout)
-    self.checkPadViaInsulation (&ioIssues, "Back", backLayout)
-    self.checkTrackViaInsulation (&ioIssues, "Front", frontLayout)
-    self.checkTrackViaInsulation (&ioIssues, "Back", backLayout)
-    self.checkViaRestrictRectInsulation (&ioIssues, "Front", frontLayout, frontSideRestrictRectangles)
-    self.checkViaRestrictRectInsulation (&ioIssues, "Back", backLayout, backSideRestrictRectangles)
+    for side in TrackSide.allCases {
+      self.checkTrackTrackInsulation (&ioIssues, side.descriptionForExplorer(), layout [side])
+    }
+//    self.checkTrackTrackInsulation (&ioIssues, "Front", frontLayout)
+//    self.checkTrackTrackInsulation (&ioIssues, "Back", backLayout)
+    for side in TrackSide.allCases {
+      self.checkTrackPadInsulation (&ioIssues, side.descriptionForExplorer(), layout [side])
+    }
+//    self.checkTrackPadInsulation (&ioIssues, "Front", frontLayout)
+//    self.checkTrackPadInsulation (&ioIssues, "Back", backLayout)
+    for side in TrackSide.allCases {
+      self.checkPadRestrictRectInsulation (&ioIssues, side.descriptionForExplorer(), layout [side], restrictRectangles [side])
+    }
+//    self.checkPadRestrictRectInsulation (&ioIssues, "Front", frontLayout, frontSideRestrictRectangles)
+//    self.checkPadRestrictRectInsulation (&ioIssues, "Back", backLayout, backSideRestrictRectangles)
+    for side in TrackSide.allCases {
+      self.checkTrackRestrictRectInsulation (&ioIssues, side.descriptionForExplorer(), layout [side], restrictRectangles [side])
+    }
+//    self.checkTrackRestrictRectInsulation (&ioIssues, "Front", frontLayout, frontSideRestrictRectangles)
+//    self.checkTrackRestrictRectInsulation (&ioIssues, "Back", backLayout, backSideRestrictRectangles)
+    for side in TrackSide.allCases {
+      self.checkPadViaInsulation (&ioIssues, side.descriptionForExplorer(), layout [side])
+    }
+//    self.checkPadViaInsulation (&ioIssues, "Front", frontLayout)
+//    self.checkPadViaInsulation (&ioIssues, "Back", backLayout)
+    for side in TrackSide.allCases {
+      self.checkTrackViaInsulation (&ioIssues, side.descriptionForExplorer(), layout [side])
+    }
+//    self.checkTrackViaInsulation (&ioIssues, "Front", frontLayout)
+//    self.checkTrackViaInsulation (&ioIssues, "Back", backLayout)
+    for side in TrackSide.allCases {
+      self.checkViaRestrictRectInsulation (&ioIssues, side.descriptionForExplorer(), layout [side], restrictRectangles [side])
+    }
+//    self.checkViaRestrictRectInsulation (&ioIssues, "Front", frontLayout, frontSideRestrictRectangles)
+//    self.checkViaRestrictRectInsulation (&ioIssues, "Back", backLayout, backSideRestrictRectangles)
     self.checkViaViaInsulation (&ioIssues, viaDictionary)
   }
 
@@ -701,32 +816,32 @@ extension ProjectDocument {
 
   private func checkTrackTrackInsulation (_ ioIssues : inout [CanariIssue],
                                           _ inSide : String,
-                                          _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
-    self.mERCLogTextView?.appendMessageString (inSide + " track vs track… ")
-    var insulationErrorCount = 0
-    if inLayout.count > 1 {
-      for idx in 1 ..< inLayout.count {
-        let trackArrayX = inLayout [idx].0
+                                          _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?) {
+    if let layout = inLayout, layout.count > 1 {
+      self.mERCLogTextView?.appendMessageString (inSide.capitalizingFirstLetter () + " track vs track… ")
+      var insulationErrorCount = 0
+      for idx in 1 ..< layout.count {
+        let trackArrayX = layout [idx].0
         for idy in 0 ..< idx {
-          let trackArrayY = inLayout [idy].0
+          let trackArrayY = layout [idy].0
           for tx in trackArrayX {
             for ty in trackArrayY {
               if tx.intersects (oblong: ty) {
                 insulationErrorCount += 1
-                let issue = CanariIssue (kind: .error, message: inSide + " track collision", pathes: [tx.bezierPath, ty.bezierPath])
+                let issue = CanariIssue (kind: .error, message: inSide.capitalizingFirstLetter () + " track collision", pathes: [tx.bezierPath, ty.bezierPath])
                 ioIssues.append (issue)
               }
             }
           }
         }
       }
-    }
-    if insulationErrorCount == 0 {
-      self.mERCLogTextView?.appendSuccessString ("ok\n")
-    }else if insulationErrorCount == 1 {
-      self.mERCLogTextView?.appendErrorString ("1 error\n")
-    }else{
-      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      if insulationErrorCount == 0 {
+        self.mERCLogTextView?.appendSuccessString ("ok\n")
+      }else if insulationErrorCount == 1 {
+        self.mERCLogTextView?.appendErrorString ("1 error\n")
+      }else{
+        self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      }
     }
   }
 
@@ -734,20 +849,20 @@ extension ProjectDocument {
 
   private func checkTrackPadInsulation (_ ioIssues : inout [CanariIssue],
                                         _ inSide : String,
-                                        _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
-    self.mERCLogTextView?.appendMessageString (inSide + " track vs pad… ")
-    var insulationErrorCount = 0
-    if inLayout.count > 1 {
-      for idx in 0 ..< inLayout.count {
-        let trackArrayX = inLayout [idx].0
-        for idy in 0 ..< inLayout.count {
+                                        _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?) {
+    if let layout = inLayout, layout.count > 1 {
+      self.mERCLogTextView?.appendMessageString (inSide.capitalizingFirstLetter () + " track vs pad… ")
+      var insulationErrorCount = 0
+      for idx in 0 ..< layout.count {
+        let trackArrayX = layout [idx].0
+        for idy in 0 ..< layout.count {
           if idx != idy {
-            let padArrayY = inLayout [idy].1
+            let padArrayY = layout [idy].1
             for tx in trackArrayX {
               for py in padArrayY {
                 if py.intersects (oblong: tx) {
                   insulationErrorCount += 1
-                  let issue = CanariIssue (kind: .error, message: inSide + " track vs pad collision", pathes: [tx.bezierPath, py.bezierPath])
+                  let issue = CanariIssue (kind: .error, message: inSide.capitalizingFirstLetter () + " track vs pad collision", pathes: [tx.bezierPath, py.bezierPath])
                   ioIssues.append (issue)
                 }
               }
@@ -755,13 +870,13 @@ extension ProjectDocument {
           }
         }
       }
-    }
-    if insulationErrorCount == 0 {
-      self.mERCLogTextView?.appendSuccessString ("ok\n")
-    }else if insulationErrorCount == 1 {
-      self.mERCLogTextView?.appendErrorString ("1 error\n")
-    }else{
-      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      if insulationErrorCount == 0 {
+        self.mERCLogTextView?.appendSuccessString ("ok\n")
+      }else if insulationErrorCount == 1 {
+        self.mERCLogTextView?.appendErrorString ("1 error\n")
+      }else{
+        self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      }
     }
   }
 
@@ -769,65 +884,65 @@ extension ProjectDocument {
 
   private func checkPadViaInsulation (_ ioIssues : inout [CanariIssue],
                                       _ inSide : String,
-                                      _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
-    self.mERCLogTextView?.appendMessageString (inSide + " pad vs via… ")
-    var insulationErrorCount = 0
-    if inLayout.count > 1 {
-      for idx in 1 ..< inLayout.count {
-        let padArrayX = inLayout [idx].1
+                                      _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?) {
+    if let layout = inLayout, layout.count > 1 {
+      self.mERCLogTextView?.appendMessageString (inSide.capitalizingFirstLetter () + " pad vs via… ")
+      var insulationErrorCount = 0
+      for idx in 1 ..< layout.count {
+        let padArrayX = layout [idx].1
         for idy in 0 ..< idx {
-          let viaArrayY = inLayout [idy].2
+          let viaArrayY = layout [idy].2
           for pad in padArrayX {
             for via in viaArrayY {
               if pad.intersects (circle: via) {
                 insulationErrorCount += 1
-                let issue = CanariIssue (kind: .error, message: inSide + " track vs via collision", pathes: [pad.bezierPath, via.bezierPath])
+                let issue = CanariIssue (kind: .error, message: inSide.capitalizingFirstLetter () + " track vs via collision", pathes: [pad.bezierPath, via.bezierPath])
                 ioIssues.append (issue)
               }
             }
           }
         }
       }
-    }
-    if insulationErrorCount == 0 {
-      self.mERCLogTextView?.appendSuccessString ("ok\n")
-    }else if insulationErrorCount == 1 {
-      self.mERCLogTextView?.appendErrorString ("1 error\n")
-    }else{
-      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      if insulationErrorCount == 0 {
+        self.mERCLogTextView?.appendSuccessString ("ok\n")
+      }else if insulationErrorCount == 1 {
+        self.mERCLogTextView?.appendErrorString ("1 error\n")
+      }else{
+        self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      }
     }
   }
 
  //····················································································································
 
   private func checkTrackViaInsulation (_ ioIssues : inout [CanariIssue],
-                                          _ inSide : String,
-                                          _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]) {
-    self.mERCLogTextView?.appendMessageString (inSide + " track vs via… ")
-    var insulationErrorCount = 0
-    if inLayout.count > 1 {
-      for idx in 1 ..< inLayout.count {
-        let trackArrayX = inLayout [idx].0
+                                        _ inSide : String,
+                                        _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?) {
+    if let layout = inLayout, layout.count > 1 {
+      self.mERCLogTextView?.appendMessageString (inSide.capitalizingFirstLetter () + " track vs via… ")
+      var insulationErrorCount = 0
+      for idx in 1 ..< layout.count {
+        let trackArrayX = layout [idx].0
         for idy in 0 ..< idx {
-          let viaArrayY = inLayout [idy].2
+          let viaArrayY = layout [idy].2
           for tx in trackArrayX {
             for via in viaArrayY {
               if tx.intersects (circle: via) {
                 insulationErrorCount += 1
-                let issue = CanariIssue (kind: .error, message: inSide + " track vs via collision", pathes: [tx.bezierPath, via.bezierPath])
+                let issue = CanariIssue (kind: .error, message: inSide.capitalizingFirstLetter () + " track vs via collision", pathes: [tx.bezierPath, via.bezierPath])
                 ioIssues.append (issue)
               }
             }
           }
         }
       }
-    }
-    if insulationErrorCount == 0 {
-      self.mERCLogTextView?.appendSuccessString ("ok\n")
-    }else if insulationErrorCount == 1 {
-      self.mERCLogTextView?.appendErrorString ("1 error\n")
-    }else{
-      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      if insulationErrorCount == 0 {
+        self.mERCLogTextView?.appendSuccessString ("ok\n")
+      }else if insulationErrorCount == 1 {
+        self.mERCLogTextView?.appendErrorString ("1 error\n")
+      }else{
+        self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      }
     }
   }
 
@@ -835,27 +950,29 @@ extension ProjectDocument {
 
   private func checkTrackRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
                                                  _ inSide : String,
-                                                 _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])],
-                                                 _ inRestrictRectangles : [GeometricRect]) {
-    self.mERCLogTextView?.appendMessageString (inSide + " track vs restrict rect… ")
-    var insulationErrorCount = 0
-    for (tracks, _, _) in inLayout {
-      for track in tracks {
-        for rr in inRestrictRectangles {
-          if track.intersects (rect: rr) {
-            insulationErrorCount += 1
-            let issue = CanariIssue (kind: .error, message: inSide + " track vs restrict rect collision", pathes: [track.bezierPath, rr.bezierPath])
-            ioIssues.append (issue)
+                                                 _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?,
+                                                 _ inRestrictRectangles : [GeometricRect]?) {
+    if let layout = inLayout, let restrictRectangles = inRestrictRectangles {
+      self.mERCLogTextView?.appendMessageString (inSide.capitalizingFirstLetter () + " track vs restrict rect… ")
+      var insulationErrorCount = 0
+      for (tracks, _, _) in layout {
+        for track in tracks {
+          for rr in restrictRectangles {
+            if track.intersects (rect: rr) {
+              insulationErrorCount += 1
+              let issue = CanariIssue (kind: .error, message: inSide.capitalizingFirstLetter () + " track vs restrict rect collision", pathes: [track.bezierPath, rr.bezierPath])
+              ioIssues.append (issue)
+            }
           }
         }
       }
-    }
-    if insulationErrorCount == 0 {
-      self.mERCLogTextView?.appendSuccessString ("ok\n")
-    }else if insulationErrorCount == 1 {
-      self.mERCLogTextView?.appendErrorString ("1 error\n")
-    }else{
-      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      if insulationErrorCount == 0 {
+        self.mERCLogTextView?.appendSuccessString ("ok\n")
+      }else if insulationErrorCount == 1 {
+        self.mERCLogTextView?.appendErrorString ("1 error\n")
+      }else{
+        self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      }
     }
   }
 
@@ -863,27 +980,29 @@ extension ProjectDocument {
 
   private func checkPadRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
                                                _ inSide : String,
-                                               _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])],
-                                               _ inRestrictRectangles : [GeometricRect]) {
-    self.mERCLogTextView?.appendMessageString (inSide + " pad vs restrict rect… ")
-    var insulationErrorCount = 0
-    for (_, pads, _) in inLayout {
-      for pad in pads {
-        for rr in inRestrictRectangles {
-          if pad.intersects (rect: rr) {
-            insulationErrorCount += 1
-            let issue = CanariIssue (kind: .error, message: inSide + " track vs restrict rect collision", pathes: [pad.bezierPath, rr.bezierPath])
-            ioIssues.append (issue)
+                                               _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?,
+                                               _ inRestrictRectangles : [GeometricRect]?) {
+    if let layout = inLayout, let restrictRectangles = inRestrictRectangles {
+      self.mERCLogTextView?.appendMessageString (inSide.capitalizingFirstLetter () + " pad vs restrict rect… ")
+      var insulationErrorCount = 0
+      for (_, pads, _) in layout {
+        for pad in pads {
+          for rr in restrictRectangles {
+            if pad.intersects (rect: rr) {
+              insulationErrorCount += 1
+              let issue = CanariIssue (kind: .error, message: inSide.capitalizingFirstLetter () + " track vs restrict rect collision", pathes: [pad.bezierPath, rr.bezierPath])
+              ioIssues.append (issue)
+            }
           }
         }
       }
-    }
-    if insulationErrorCount == 0 {
-      self.mERCLogTextView?.appendSuccessString ("ok\n")
-    }else if insulationErrorCount == 1 {
-      self.mERCLogTextView?.appendErrorString ("1 error\n")
-    }else{
-      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      if insulationErrorCount == 0 {
+        self.mERCLogTextView?.appendSuccessString ("ok\n")
+      }else if insulationErrorCount == 1 {
+        self.mERCLogTextView?.appendErrorString ("1 error\n")
+      }else{
+        self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      }
     }
   }
 
@@ -891,27 +1010,29 @@ extension ProjectDocument {
 
   private func checkViaRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
                                                _ inSide : String,
-                                               _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])],
-                                               _ inRestrictRectangles : [GeometricRect]) {
-    self.mERCLogTextView?.appendMessageString (inSide + " restrict rect vs via… ")
-    var insulationErrorCount = 0
-    for (_, _, vias) in inLayout {
-      for via in vias {
-        for rr in inRestrictRectangles {
-          if via.intersects (rect: rr) {
-            insulationErrorCount += 1
-            let issue = CanariIssue (kind: .error, message: inSide + " via vs restrict rect collision", pathes: [via.bezierPath, rr.bezierPath])
-            ioIssues.append (issue)
+                                               _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?,
+                                               _ inRestrictRectangles : [GeometricRect]?) {
+    if let layout = inLayout, let restrictRectangles = inRestrictRectangles {
+      self.mERCLogTextView?.appendMessageString (inSide.capitalizingFirstLetter () + " restrict rect vs via… ")
+      var insulationErrorCount = 0
+      for (_, _, vias) in layout {
+        for via in vias {
+          for rr in restrictRectangles {
+            if via.intersects (rect: rr) {
+              insulationErrorCount += 1
+              let issue = CanariIssue (kind: .error, message: inSide.capitalizingFirstLetter () + " via vs restrict rect collision", pathes: [via.bezierPath, rr.bezierPath])
+              ioIssues.append (issue)
+            }
           }
         }
       }
-    }
-    if insulationErrorCount == 0 {
-      self.mERCLogTextView?.appendSuccessString ("ok\n")
-    }else if insulationErrorCount == 1 {
-      self.mERCLogTextView?.appendErrorString ("1 error\n")
-    }else{
-      self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      if insulationErrorCount == 0 {
+        self.mERCLogTextView?.appendSuccessString ("ok\n")
+      }else if insulationErrorCount == 1 {
+        self.mERCLogTextView?.appendErrorString ("1 error\n")
+      }else{
+        self.mERCLogTextView?.appendErrorString ("\(insulationErrorCount) errors\n")
+      }
     }
   }
 

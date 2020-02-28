@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardTextLayer : Int, EnumPropertyProtocol {
+enum BoardTextLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case legendFront = 0
   case layoutFront = 1
   case layoutBack = 2

@@ -266,7 +266,7 @@ extension CustomizedProjectDocument {
     inProgressIndicator.doubleValue += 1.0
     _ = RunLoop.main.run (mode: .default, before: Date ())
     for object in self.rootObject.mBoardObjects {
-      inProgressIndicator.doubleValue += 1.0
+  //    inProgressIndicator.doubleValue += 1.0
       if let pad = object as? BoardConnector, let component = pad.mComponent {
         let padNetDictionary = component.padNetDictionary!
         if let netName = padNetDictionary [pad.mComponentPadName] {
@@ -295,6 +295,7 @@ extension CustomizedProjectDocument {
         }
       }
     }
+  //--- Arrange object display
     self.sortBoardObjectsFollowingBoardLayersAction (nil)
   }
 

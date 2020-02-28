@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadShape : Int, EnumPropertyProtocol {
+enum PadShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case rect = 0
   case round = 1
   case octo = 2

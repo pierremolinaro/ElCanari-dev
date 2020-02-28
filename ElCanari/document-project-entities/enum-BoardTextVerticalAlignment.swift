@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardTextVerticalAlignment : Int, EnumPropertyProtocol {
+enum BoardTextVerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case above = 0
   case base = 1
   case center = 2

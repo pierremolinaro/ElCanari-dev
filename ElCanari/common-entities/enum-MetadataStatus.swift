@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum MetadataStatus : Int, EnumPropertyProtocol {
+enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case unknown = 0
   case ok = 1
   case warning = 2

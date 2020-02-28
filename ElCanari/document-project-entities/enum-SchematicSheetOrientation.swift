@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum SchematicSheetOrientation : Int, EnumPropertyProtocol {
+enum SchematicSheetOrientation : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case a4Vertical = 0
   case a4Horizontal = 1
   case custom = 2

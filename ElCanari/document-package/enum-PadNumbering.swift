@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadNumbering : Int, EnumPropertyProtocol {
+enum PadNumbering : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case noNumbering = 0
   case counterClock = 1
   case upRight = 2

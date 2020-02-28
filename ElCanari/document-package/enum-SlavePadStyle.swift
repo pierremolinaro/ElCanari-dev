@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum SlavePadStyle : Int, EnumPropertyProtocol {
+enum SlavePadStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case traversing = 0
   case componentSide = 1
   case oppositeSide = 2

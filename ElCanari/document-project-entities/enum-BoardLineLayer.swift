@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardLineLayer : Int, EnumPropertyProtocol {
+enum BoardLineLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case legendFront = 0
   case legendBack = 1
 

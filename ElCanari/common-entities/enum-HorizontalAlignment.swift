@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum HorizontalAlignment : Int, EnumPropertyProtocol {
+enum HorizontalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case onTheRight = 0
   case center = 1
   case onTheLeft = 2

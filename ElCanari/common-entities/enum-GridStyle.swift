@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum GridStyle : Int, EnumPropertyProtocol {
+enum GridStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case noGrid = 0
   case cross = 1
   case line = 2

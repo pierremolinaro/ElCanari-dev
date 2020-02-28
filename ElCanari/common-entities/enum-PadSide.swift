@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadSide : Int, EnumPropertyProtocol {
+enum PadSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case traversing = 0
   case front = 1
   case back = 2

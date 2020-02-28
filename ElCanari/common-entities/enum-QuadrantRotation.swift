@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum QuadrantRotation : Int, EnumPropertyProtocol {
+enum QuadrantRotation : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case rotation0 = 0
   case rotation90 = 1
   case rotation180 = 2

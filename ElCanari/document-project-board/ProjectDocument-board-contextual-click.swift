@@ -189,8 +189,8 @@ extension CustomizedProjectDocument {
     if connectedConnectors.count > 0 {
       let title : String
       switch inSide {
-      case .front : title = "Disconnect in Front Side"
-      case .back  : title = "Disconnect in Back Side"
+      case .front : title = "Disconnect in Front Layer"
+      case .back  : title = "Disconnect in Back Layer"
       }
       let menuItem = NSMenuItem (title: title, action: #selector (CustomizedProjectDocument.disconnectInBoardAction (_:)), keyEquivalent: "")
       menuItem.target = self

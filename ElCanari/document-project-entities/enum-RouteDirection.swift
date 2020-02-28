@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum RouteDirection : Int, EnumPropertyProtocol {
+enum RouteDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case from = 0
   case to = 1
 

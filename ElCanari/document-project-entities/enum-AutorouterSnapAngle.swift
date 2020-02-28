@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum AutorouterSnapAngle : Int, EnumPropertyProtocol {
+enum AutorouterSnapAngle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case rectilinear = 0
   case octolinear = 1
   case anyAngle = 2

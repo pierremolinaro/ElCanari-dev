@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardArchiveFormat : Int, EnumPropertyProtocol {
+enum BoardArchiveFormat : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case noGeneration = 0
   case binary = 1
   case xml = 2

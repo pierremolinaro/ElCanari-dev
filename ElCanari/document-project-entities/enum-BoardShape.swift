@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardShape : Int, EnumPropertyProtocol {
+enum BoardShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case rectangular = 0
   case bezierPathes = 1
 
