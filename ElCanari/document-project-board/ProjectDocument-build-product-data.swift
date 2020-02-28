@@ -10,6 +10,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias PathApertureDictionary = [CGFloat : [EBLinePath]]
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 extension ProjectDocument {
 
   //····················································································································
@@ -20,11 +24,11 @@ extension ProjectDocument {
     let (frontComponentValues, backComponentValues) = self.buildComponentValuePathes ()
     let (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts) = self.buildTextPathes ()
     let viaPads = self.buildViaPads ()
-    let (frontTracks, backTracks) = self.buildTracks ()
+    let tracks = self.buildTracks ()
     let (frontLines, backLines) = self.buildLines ()
-    let (frontCircularPads, backCircularPads) = self.buildCircularPads ()
-    let (frontOblongPads, backOblongPads) = self.buildOblongPads ()
-    let (frontPolygonPads, backPolygonPads) = self.buildPolygonPads ()
+    let circularPads = self.buildCircularPads ()
+    let oblongPads = self.buildOblongPads ()
+    let polygonPads = self.buildPolygonPads ()
   //---
     return ProductData (
       boardBoundBox: self.rootObject.boardBoundBox!.cocoaRect,
@@ -42,16 +46,12 @@ extension ProjectDocument {
       layoutBackTexts: layoutBackTexts,
       legendBackTexts: legendBackTexts,
       viaPads: viaPads,
-      frontTracks: frontTracks,
-      backTracks: backTracks,
+      tracks: tracks,
       frontLines: frontLines,
       backLines: backLines,
-      frontCircularPads: frontCircularPads,
-      backCircularPads: backCircularPads,
-      frontOblongPads: frontOblongPads,
-      backOblongPads: backOblongPads,
-      frontPolygonPads: frontPolygonPads,
-      backPolygonPads: backPolygonPads
+      circularPads: circularPads,
+      oblongPads: oblongPads,
+      polygonPads: polygonPads
     )
   }
   
@@ -200,9 +200,9 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func buildPackageLegend () -> ([CGFloat : [EBLinePath]], [CGFloat : [EBLinePath]]) {
-    var frontPackageLegends = [CGFloat : [EBLinePath]] () // Aperture, path
-    var backPackageLegends = [CGFloat : [EBLinePath]] () // Aperture, path
+  private func buildPackageLegend () -> (PathApertureDictionary, PathApertureDictionary) {
+    var frontPackageLegends = PathApertureDictionary () // Aperture, path
+    var backPackageLegends = PathApertureDictionary () // Aperture, path
     let aperture = CGFloat (g_Preferences!.packageDrawingWidthMultpliedByTenForBoard) / 10.0
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject {
@@ -228,9 +228,9 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func buildComponentNamePathes () -> ([CGFloat : [EBLinePath]], [CGFloat : [EBLinePath]]) {
-    var frontComponentNames = [CGFloat : [EBLinePath]] () // Aperture, path
-    var backComponentNames = [CGFloat : [EBLinePath]] () // Aperture, path
+  private func buildComponentNamePathes () -> (PathApertureDictionary, PathApertureDictionary) {
+    var frontComponentNames = PathApertureDictionary () // Aperture, path
+    var backComponentNames = PathApertureDictionary () // Aperture, path
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject {
         if component.mNameIsVisibleInBoard, let fontDescriptor = component.mNameFont?.descriptor {
@@ -264,9 +264,9 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func buildComponentValuePathes () -> ([CGFloat : [EBLinePath]], [CGFloat : [EBLinePath]]) {
-    var frontComponentValues = [CGFloat : [EBLinePath]] () // Aperture, path
-    var backComponentValues = [CGFloat : [EBLinePath]] () // Aperture, path
+  private func buildComponentValuePathes () -> (PathApertureDictionary, PathApertureDictionary) {
+    var frontComponentValues = PathApertureDictionary () // Aperture, path
+    var backComponentValues = PathApertureDictionary () // Aperture, path
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject {
         if component.mValueIsVisibleInBoard, let fontDescriptor = component.mValueFont?.descriptor {
@@ -300,11 +300,11 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func buildTextPathes () -> ([CGFloat : [EBLinePath]], [CGFloat : [EBLinePath]], [CGFloat : [EBLinePath]], [CGFloat : [EBLinePath]]) {
-    var legendFrontTexts = [CGFloat : [EBLinePath]] () // Aperture, path
-    var layoutFrontTexts = [CGFloat : [EBLinePath]] () // Aperture, path
-    var layoutBackTexts = [CGFloat : [EBLinePath]] () // Aperture, path
-    var legendBackTexts = [CGFloat : [EBLinePath]] () // Aperture, path
+  private func buildTextPathes () -> (PathApertureDictionary, PathApertureDictionary, PathApertureDictionary, PathApertureDictionary) {
+    var legendFrontTexts = PathApertureDictionary () // Aperture, path
+    var layoutFrontTexts = PathApertureDictionary () // Aperture, path
+    var layoutBackTexts = PathApertureDictionary () // Aperture, path
+    var legendBackTexts = PathApertureDictionary () // Aperture, path
     for object in self.rootObject.mBoardObjects {
       if let text = object as? BoardText {
         let (textBP, _, _, _, _) = boardText_displayInfos (
@@ -354,24 +354,18 @@ extension ProjectDocument {
 
   //····················································································································
 
-  private func buildTracks () -> ([ProductOblong], [ProductOblong]) {
-    var frontTracks = [ProductOblong] ()
-    var backTracks = [ProductOblong] ()
+  private func buildTracks () -> [TrackSide : [ProductOblong]] {
+    var tracks = [TrackSide : [ProductOblong]] ()
     for object in self.rootObject.mBoardObjects {
       if let track = object as? BoardTrack {
         let p1 = track.mConnectorP1!.location!.cocoaPoint
         let p2 = track.mConnectorP2!.location!.cocoaPoint
         let width = canariUnitToCocoa (track.actualTrackWidth!)
         let t = ProductOblong (p1: p1, p2: p2, width: width)
-        switch track.mSide {
-        case .back :
-          backTracks.append (t)
-        case .front :
-          frontTracks.append (t)
-        }
+        tracks [track.mSide] = (tracks [track.mSide] ?? []) + [t]
       }
     }
-    return (frontTracks, backTracks)
+    return tracks
   }
 
   //····················································································································
@@ -398,46 +392,45 @@ extension ProjectDocument {
 
   //····················································································································
 
-  fileprivate func buildCircularPads () -> ([ProductCircle], [ProductCircle]) {
-    var frontCircularPads = [ProductCircle] ()
-    var backCircularPads = [ProductCircle] ()
+  fileprivate func buildCircularPads () -> [TrackSide : [ProductCircle]] {
+    var circularPads = [TrackSide : [ProductCircle]] ()
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject {
         let af = component.packageToComponentAffineTransform ()
         for (_, masterPad) in component.packagePadDictionary! {
-          if let circle = circle (masterPad.center, masterPad.padSize, masterPad.shape, af) {
+          if let circle = productCircle (masterPad.center, masterPad.padSize, masterPad.shape, af) {
             switch masterPad.style {
             case .traversing :
-              frontCircularPads.append (circle)
-              backCircularPads.append (circle)
+              circularPads [.front] = (circularPads [.front] ?? []) + [circle]
+              circularPads [.back] = (circularPads [.back] ?? []) + [circle]
             case .surface :
               switch component.mSide {
               case .back :
-                backCircularPads.append (circle)
+                circularPads [.back] = (circularPads [.back] ?? []) + [circle]
               case .front :
-                frontCircularPads.append (circle)
+                circularPads [.front] = (circularPads [.front] ?? []) + [circle]
               }
             }
           }
           for slavePad in masterPad.slavePads {
-            if let circle = circle (slavePad.center, slavePad.padSize, slavePad.shape, af) {
+            if let circle = productCircle (slavePad.center, slavePad.padSize, slavePad.shape, af) {
               switch slavePad.style {
               case .traversing :
-                frontCircularPads.append (circle)
-                backCircularPads.append (circle)
+                circularPads [.front] = (circularPads [.front] ?? []) + [circle]
+                circularPads [.back] = (circularPads [.back] ?? []) + [circle]
               case .oppositeSide :
                 switch component.mSide {
                 case .front :
-                  backCircularPads.append (circle)
+                  circularPads [.back] = (circularPads [.back] ?? []) + [circle]
                 case .back :
-                  frontCircularPads.append (circle)
+                  circularPads [.front] = (circularPads [.front] ?? []) + [circle]
                 }
               case .componentSide :
                 switch component.mSide {
                 case .back :
-                  backCircularPads.append (circle)
+                  circularPads [.back] = (circularPads [.back] ?? []) + [circle]
                 case .front :
-                  frontCircularPads.append (circle)
+                  circularPads [.front] = (circularPads [.front] ?? []) + [circle]
                 }
               }
             }
@@ -445,14 +438,13 @@ extension ProjectDocument {
         }
       }
     }
-    return (frontCircularPads, backCircularPads)
+    return circularPads
   }
 
   //····················································································································
 
-  fileprivate func buildOblongPads () -> ([ProductOblong], [ProductOblong]) {
-    var frontOblongPads = [ProductOblong] ()
-    var backOblongPads = [ProductOblong] ()
+  fileprivate func buildOblongPads () -> [TrackSide : [ProductOblong]] {
+    var oblongPads = [TrackSide : [ProductOblong]] ()
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject {
         let af = component.packageToComponentAffineTransform ()
@@ -460,14 +452,14 @@ extension ProjectDocument {
           if let oblong = oblong (masterPad.center, masterPad.padSize, masterPad.shape, af) {
             switch masterPad.style {
             case .traversing :
-              frontOblongPads.append (oblong)
-              backOblongPads.append (oblong)
+              oblongPads [.front] = (oblongPads [.front] ?? []) + [oblong]
+              oblongPads [.back] = (oblongPads [.back] ?? []) + [oblong]
             case .surface :
               switch component.mSide {
               case .back :
-                backOblongPads.append (oblong)
+                oblongPads [.back] = (oblongPads [.back] ?? []) + [oblong]
               case .front :
-                frontOblongPads.append (oblong)
+                oblongPads [.front] = (oblongPads [.front] ?? []) + [oblong]
               }
             }
           }
@@ -475,21 +467,21 @@ extension ProjectDocument {
             if let oblong = oblong (slavePad.center, slavePad.padSize, slavePad.shape, af) {
               switch slavePad.style {
               case .traversing :
-                frontOblongPads.append (oblong)
-                backOblongPads.append (oblong)
+                oblongPads [.front] = (oblongPads [.front] ?? []) + [oblong]
+                oblongPads [.back] = (oblongPads [.back] ?? []) + [oblong]
               case .oppositeSide :
                 switch component.mSide {
                 case .front :
-                  backOblongPads.append (oblong)
+                  oblongPads [.back] = (oblongPads [.back] ?? []) + [oblong]
                 case .back :
-                  frontOblongPads.append (oblong)
+                  oblongPads [.front] = (oblongPads [.front] ?? []) + [oblong]
                 }
               case .componentSide :
                 switch component.mSide {
                 case .back :
-                  backOblongPads.append (oblong)
+                  oblongPads [.back] = (oblongPads [.back] ?? []) + [oblong]
                 case .front :
-                  frontOblongPads.append (oblong)
+                  oblongPads [.front] = (oblongPads [.front] ?? []) + [oblong]
                 }
               }
             }
@@ -497,14 +489,13 @@ extension ProjectDocument {
         }
       }
     }
-    return (frontOblongPads, backOblongPads)
+    return oblongPads
   }
 
   //····················································································································
 
-  fileprivate func buildPolygonPads () -> ([ProductPolygon], [ProductPolygon]) {
-    var frontPolygonPads = [ProductPolygon] ()
-    var backPolygonPads = [ProductPolygon] ()
+  fileprivate func buildPolygonPads () -> [TrackSide : [ProductPolygon]] {
+    var polygonPads = [TrackSide : [ProductPolygon]] ()
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject {
         let af = component.packageToComponentAffineTransform ()
@@ -512,14 +503,14 @@ extension ProjectDocument {
           if let polygon = polygon (masterPad.center, masterPad.padSize, masterPad.shape, af) {
             switch masterPad.style {
             case .traversing :
-              frontPolygonPads.append (polygon)
-              backPolygonPads.append (polygon)
+              polygonPads [.front] = (polygonPads [.front] ?? []) + [polygon]
+              polygonPads [.back] = (polygonPads [.back] ?? []) + [polygon]
             case .surface :
               switch component.mSide {
               case .back :
-                backPolygonPads.append (polygon)
+                polygonPads [.back] = (polygonPads [.back] ?? []) + [polygon]
               case .front :
-                frontPolygonPads.append (polygon)
+                polygonPads [.front] = (polygonPads [.front] ?? []) + [polygon]
               }
             }
           }
@@ -527,21 +518,21 @@ extension ProjectDocument {
            if let polygon = polygon (slavePad.center, slavePad.padSize, slavePad.shape, af) {
              switch slavePad.style {
               case .traversing :
-                frontPolygonPads.append (polygon)
-                backPolygonPads.append (polygon)
+                polygonPads [.front] = (polygonPads [.front] ?? []) + [polygon]
+                polygonPads [.back] = (polygonPads [.back] ?? []) + [polygon]
               case .oppositeSide :
                 switch component.mSide {
                 case .front :
-                  backPolygonPads.append (polygon)
+                  polygonPads [.back] = (polygonPads [.back] ?? []) + [polygon]
                 case .back :
-                  frontPolygonPads.append (polygon)
+                  polygonPads [.front] = (polygonPads [.front] ?? []) + [polygon]
                 }
               case .componentSide :
                 switch component.mSide {
                 case .back :
-                  backPolygonPads.append (polygon)
+                  polygonPads [.back] = (polygonPads [.back] ?? []) + [polygon]
                 case .front :
-                  frontPolygonPads.append (polygon)
+                  polygonPads [.front] = (polygonPads [.front] ?? []) + [polygon]
                 }
               }
             }
@@ -549,7 +540,7 @@ extension ProjectDocument {
         }
       }
     }
-    return (frontPolygonPads, backPolygonPads)
+    return polygonPads
   }
 
   //····················································································································
@@ -558,10 +549,10 @@ extension ProjectDocument {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func circle (_ inCenter : CanariPoint,
-                         _ inPadSize : CanariSize,
-                         _ inShape : PadShape,
-                         _ inAffineTransform : AffineTransform) -> ProductCircle? {
+fileprivate func productCircle (_ inCenter : CanariPoint,
+                                _ inPadSize : CanariSize,
+                                _ inShape : PadShape,
+                                _ inAffineTransform : AffineTransform) -> ProductCircle? {
   switch inShape {
   case .rect, .octo :
     return nil
@@ -684,27 +675,23 @@ struct ProductData { // All in Cocoa Unit
   let boardLimitPath : EBLinePath
   let boardLimitWidth : CGFloat
   let holeDictionary : [CGFloat : [(NSPoint, NSPoint)]]
-  let frontPackageLegend : [CGFloat : [EBLinePath]]
-  let backPackageLegend :  [CGFloat : [EBLinePath]]
-  let frontComponentNames : [CGFloat : [EBLinePath]]
-  let backComponentNames:  [CGFloat : [EBLinePath]]
-  let frontComponentValues : [CGFloat : [EBLinePath]]
-  let backComponentValues : [CGFloat : [EBLinePath]]
-  let legendFrontTexts : [CGFloat : [EBLinePath]]
-  let layoutFrontTexts : [CGFloat : [EBLinePath]]
-  let layoutBackTexts : [CGFloat : [EBLinePath]]
-  let legendBackTexts : [CGFloat : [EBLinePath]]
+  let frontPackageLegend : PathApertureDictionary
+  let backPackageLegend :  PathApertureDictionary
+  let frontComponentNames : PathApertureDictionary
+  let backComponentNames:  PathApertureDictionary
+  let frontComponentValues : PathApertureDictionary
+  let backComponentValues : PathApertureDictionary
+  let legendFrontTexts : PathApertureDictionary
+  let layoutFrontTexts : PathApertureDictionary
+  let layoutBackTexts : PathApertureDictionary
+  let legendBackTexts : PathApertureDictionary
   let viaPads : [ProductCircle]
-  let frontTracks : [ProductOblong]
-  let backTracks : [ProductOblong]
+  let tracks : [TrackSide : [ProductOblong]]
   let frontLines : [ProductOblong]
   let backLines : [ProductOblong]
-  let frontCircularPads : [ProductCircle]
-  let backCircularPads : [ProductCircle]
-  let frontOblongPads : [ProductOblong]
-  let backOblongPads : [ProductOblong]
-  let frontPolygonPads : [ProductPolygon]
-  let backPolygonPads : [ProductPolygon]
+  let circularPads : [TrackSide : [ProductCircle]]
+  let oblongPads : [TrackSide : [ProductOblong]]
+  let polygonPads : [TrackSide : [ProductPolygon]]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -36,8 +36,8 @@ extension ProjectDocument {
     addLinePathes (&boardArchive, inProductData.layoutFrontTexts, "TEXTS-LAYOUT-FRONT", af)
     addLinePathes (&boardArchive, inProductData.legendBackTexts, "TEXTS-LEGEND-BACK", af)
     addLinePathes (&boardArchive, inProductData.legendFrontTexts, "TEXTS-LEGEND-FRONT", af)
-    addTracks (&boardArchive, inProductData.backTracks, "TRACKS-BACK", af)
-    addTracks (&boardArchive, inProductData.frontTracks, "TRACKS-FRONT", af)
+    addTracks (&boardArchive, inProductData.tracks [.back] ?? [], "TRACKS-BACK", af)
+    addTracks (&boardArchive, inProductData.tracks [.front] ?? [], "TRACKS-FRONT", af)
     addCircles (&boardArchive, inProductData.viaPads, "VIAS", af)
   //--- Write file
     let data = try PropertyListSerialization.data (fromPropertyList: boardArchive, format: .binary, options: 0)

@@ -88,20 +88,20 @@ extension ProjectDocument {
       strokePathes.append (circles: inProductData.viaPads, af)
     }
     if inDescriptor.drawTracksTopSide {
-      strokePathes.append (oblongs: inProductData.frontTracks, af)
+      strokePathes.append (oblongs: inProductData.tracks [.front] ?? [], af)
      }
     if inDescriptor.drawTracksBottomSide {
-      strokePathes.append (oblongs: inProductData.backTracks, af)
+      strokePathes.append (oblongs: inProductData.tracks [.back] ?? [], af)
     }
     if inDescriptor.drawPadsTopSide {
-      strokePathes.append (circles: inProductData.frontCircularPads, af)
-      strokePathes.append (oblongs: inProductData.frontOblongPads, af)
-      filledPathes.append (polygons: inProductData.frontPolygonPads, af)
+      strokePathes.append (circles: inProductData.circularPads [.front], af)
+      strokePathes.append (oblongs: inProductData.oblongPads [.front], af)
+      filledPathes.append (polygons: inProductData.polygonPads [.front], af)
     }
     if inDescriptor.drawPadsBottomSide {
-      strokePathes.append (circles: inProductData.backCircularPads, af)
-      strokePathes.append (oblongs: inProductData.backOblongPads, af)
-      filledPathes.append (polygons: inProductData.backPolygonPads, af)
+      strokePathes.append (circles: inProductData.circularPads [.back], af)
+      strokePathes.append (oblongs: inProductData.oblongPads [.back], af)
+      filledPathes.append (polygons: inProductData.polygonPads [.back], af)
     }
     var shape = EBShape (stroke: strokePathes, .black)
     shape.add (filled: filledPathes, .black)
@@ -135,43 +135,49 @@ extension Array where Element == EBBezierPath {
 
   //····················································································································
 
-  mutating func append (oblongs inLines : [ProductOblong], _ inAffineTransform : AffineTransform) {
-    for segment in inLines {
-      var bp = EBBezierPath ()
-      bp.lineWidth = segment.width
-      bp.lineCapStyle = .round
-      bp.lineJoinStyle = .round
-      bp.move (to: inAffineTransform.transform (segment.p1))
-      bp.line (to: inAffineTransform.transform (segment.p2))
-      self.append (bp)
-    }
-  }
-
-  //····················································································································
-
-  mutating func append (circles inCircles : [ProductCircle], _ inAffineTransform : AffineTransform) {
-    for circle in inCircles {
-      var bp = EBBezierPath ()
-      bp.lineWidth = circle.diameter
-      bp.lineCapStyle = .round
-      bp.lineJoinStyle = .round
-      bp.move (to: inAffineTransform.transform (circle.center))
-      bp.line (to: inAffineTransform.transform (circle.center))
-      self.append (bp)
-    }
-  }
-
-  //····················································································································
-
-  mutating func append (polygons inPolygons : [ProductPolygon], _ inAffineTransform : AffineTransform) {
-    for polygon in inPolygons {
-      var bp = EBBezierPath ()
-      bp.move (to: inAffineTransform.transform (polygon.origin))
-      for p in polygon.points {
-        bp.line (to: inAffineTransform.transform (p))
+  mutating func append (oblongs inLines : [ProductOblong]?, _ inAffineTransform : AffineTransform) {
+    if let lines = inLines {
+      for segment in lines {
+        var bp = EBBezierPath ()
+        bp.lineWidth = segment.width
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
+        bp.move (to: inAffineTransform.transform (segment.p1))
+        bp.line (to: inAffineTransform.transform (segment.p2))
+        self.append (bp)
       }
-      bp.close ()
-      self.append (bp)
+    }
+  }
+
+  //····················································································································
+
+  mutating func append (circles inCircles : [ProductCircle]?, _ inAffineTransform : AffineTransform) {
+    if let circles = inCircles {
+      for circle in circles {
+        var bp = EBBezierPath ()
+        bp.lineWidth = circle.diameter
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
+        bp.move (to: inAffineTransform.transform (circle.center))
+        bp.line (to: inAffineTransform.transform (circle.center))
+        self.append (bp)
+      }
+    }
+  }
+
+  //····················································································································
+
+  mutating func append (polygons inPolygons : [ProductPolygon]?, _ inAffineTransform : AffineTransform) {
+    if let polygons = inPolygons {
+      for polygon in polygons {
+        var bp = EBBezierPath ()
+        bp.move (to: inAffineTransform.transform (polygon.origin))
+        for p in polygon.points {
+          bp.line (to: inAffineTransform.transform (p))
+        }
+        bp.close ()
+        self.append (bp)
+      }
     }
   }
 
