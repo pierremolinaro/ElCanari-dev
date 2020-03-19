@@ -31,14 +31,16 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
     self.removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_artworkName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mPDFBoardBackgroundColor_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mArtworkName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mArtworkVersion_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_modelNames_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardRect_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardDisplayRect_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardWidth_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardHeight_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_fileGenerationParameterArray_fromElementsOfSet (inAddedSet) // ToMany proxy
   //--- Add observers to added objects
     self.addEBObserversOf_selectedPageIndex_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_zoom_toElementsOfSet (inAddedSet) // Stored property
@@ -56,14 +58,16 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
     self.addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_artworkName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mPDFBoardBackgroundColor_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mArtworkName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mArtworkVersion_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_modelNames_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardRect_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardDisplayRect_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardWidth_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardHeight_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_fileGenerationParameterArray_toElementsOfSet (inAddedSet) // ToMany proxy
   }
 
   //····················································································································
@@ -979,63 +983,6 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   }
 
   //····················································································································
-  //   Observers of 'artworkName' stored property
-  //····················································································································
-
-  private var mObserversOf_artworkName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_artworkName.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.artworkName_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_artworkName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_artworkName.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.artworkName_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_artworkName_toElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_artworkName.apply { (_ observer : EBEvent) in
-        managedObject.artworkName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_artworkName_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    self.mObserversOf_artworkName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.artworkName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mPDFBoardBackgroundColor' stored property
   //····················································································································
 
@@ -1088,6 +1035,747 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPDFBoardBackgroundColor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mArtworkName' stored property
+  //····················································································································
+
+  private var mObserversOf_mArtworkName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mArtworkName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mArtworkName.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mArtworkName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mArtworkName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mArtworkName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mArtworkName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mArtworkName_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mArtworkName.apply { (_ observer : EBEvent) in
+        managedObject.mArtworkName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mArtworkName_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_mArtworkName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mArtworkName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mArtworkVersion' stored property
+  //····················································································································
+
+  private var mObserversOf_mArtworkVersion = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mArtworkVersion (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mArtworkVersion.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mArtworkVersion_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mArtworkVersion (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mArtworkVersion.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mArtworkVersion_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mArtworkVersion_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mArtworkVersion.apply { (_ observer : EBEvent) in
+        managedObject.mArtworkVersion_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mArtworkVersion_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_mArtworkVersion.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mArtworkVersion_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'fileGenerationParameterArray' toMany proxy
+  //····················································································································
+
+  private var mObserversOf_fileGenerationParameterArray = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_fileGenerationParameterArray (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_fileGenerationParameterArray.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.fileGenerationParameterArray_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_fileGenerationParameterArray (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_fileGenerationParameterArray.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.fileGenerationParameterArray_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_fileGenerationParameterArray_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_fileGenerationParameterArray.apply { (_ observer : EBEvent) in
+        managedObject.fileGenerationParameterArray_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_fileGenerationParameterArray_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_fileGenerationParameterArray.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.fileGenerationParameterArray_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'minPPTPTTTWdisplayUnit' proxy property
+  //····················································································································
+
+  private var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minPPTPTTTWdisplayUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_minPPTPTTTWdisplayUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minPPTPTTTWdisplayUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_minPPTPTTTWdisplayUnit.apply { (_ observer : EBEvent) in
+        managedObject.minPPTPTTTWdisplayUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_minPPTPTTTWdisplayUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.minPPTPTTTWdisplayUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'minPPTPTTTW' proxy property
+  //····················································································································
+
+  private var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_minPPTPTTTW.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minPPTPTTTW_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_minPPTPTTTW.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minPPTPTTTW_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_minPPTPTTTW_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_minPPTPTTTW.apply { (_ observer : EBEvent) in
+        managedObject.minPPTPTTTW_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_minPPTPTTTW.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.minPPTPTTTW_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'minValueForOARdisplayUnit' proxy property
+  //····················································································································
+
+  private var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForOARdisplayUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_minValueForOARdisplayUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForOARdisplayUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_minValueForOARdisplayUnit.apply { (_ observer : EBEvent) in
+        managedObject.minValueForOARdisplayUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_minValueForOARdisplayUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.minValueForOARdisplayUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'minValueForOARinEBUnit' proxy property
+  //····················································································································
+
+  private var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_minValueForOARinEBUnit.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForOARinEBUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_minValueForOARinEBUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForOARinEBUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_minValueForOARinEBUnit.apply { (_ observer : EBEvent) in
+        managedObject.minValueForOARinEBUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_minValueForOARinEBUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.minValueForOARinEBUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'minValueForPHDdisplayUnit' proxy property
+  //····················································································································
+
+  private var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForPHDdisplayUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_minValueForPHDdisplayUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForPHDdisplayUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_minValueForPHDdisplayUnit.apply { (_ observer : EBEvent) in
+        managedObject.minValueForPHDdisplayUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_minValueForPHDdisplayUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.minValueForPHDdisplayUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'minValueForPHDinEBUnit' proxy property
+  //····················································································································
+
+  private var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForPHDinEBUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_minValueForPHDinEBUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForPHDinEBUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_minValueForPHDinEBUnit.apply { (_ observer : EBEvent) in
+        managedObject.minValueForPHDinEBUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_minValueForPHDinEBUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.minValueForPHDinEBUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'minValueForBoardLimitWidth' proxy property
+  //····················································································································
+
+  private var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForBoardLimitWidth_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_minValueForBoardLimitWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForBoardLimitWidth_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_minValueForBoardLimitWidth.apply { (_ observer : EBEvent) in
+        managedObject.minValueForBoardLimitWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_minValueForBoardLimitWidth.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.minValueForBoardLimitWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'minValueForBoardLimitWidthDisplayUnit' proxy property
+  //····················································································································
+
+  private var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.apply { (_ observer : EBEvent) in
+        managedObject.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drillDataFileExtension' proxy property
+  //····················································································································
+
+  private var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drillDataFileExtension.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drillDataFileExtension_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drillDataFileExtension.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drillDataFileExtension_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drillDataFileExtension_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBEvent) in
+        managedObject.drillDataFileExtension_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drillDataFileExtension_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'comments' proxy property
+  //····················································································································
+
+  private var mObserversOf_comments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_comments.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.comments_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_comments.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.comments_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_comments.apply { (_ observer : EBEvent) in
+        managedObject.comments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_comments.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.comments_property.removeEBObserver (observer)
       }
     }
   }
@@ -2019,8 +2707,9 @@ final class PreferencesArrayOf_MergerRoot : StoredArrayOf_MergerRoot {
     self.addEBObserverOf_arrowMagnitudeUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_shiftArrowMagnitude (self.mObserverForWritingPreferences)
     self.addEBObserverOf_shiftArrowMagnitudeUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_artworkName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mPDFBoardBackgroundColor (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mArtworkName (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mArtworkVersion (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

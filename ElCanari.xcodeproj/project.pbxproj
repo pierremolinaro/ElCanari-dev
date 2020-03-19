@@ -920,6 +920,10 @@
 		CF64AFA7225B78C100E40C83 /* extension-ProjectDocument-fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA3225B78C100E40C83 /* extension-ProjectDocument-fonts.swift */; };
 		CF64AFA9225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */; };
 		CF64AFAA225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */; };
+		CF65020624239A1100F9231A /* selectionController-MergerDocument-mDataSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65020524239A1100F9231A /* selectionController-MergerDocument-mDataSelection.swift */; };
+		CF65020724239A1100F9231A /* selectionController-MergerDocument-mDataSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65020524239A1100F9231A /* selectionController-MergerDocument-mDataSelection.swift */; };
+		CF65020924239A6100F9231A /* controller-table-view-MergerDocument-mDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65020824239A6000F9231A /* controller-table-view-MergerDocument-mDataController.swift */; };
+		CF65020A24239A6100F9231A /* controller-table-view-MergerDocument-mDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65020824239A6000F9231A /* controller-table-view-MergerDocument-mDataController.swift */; };
 		CF65805820EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65805720EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift */; };
 		CF67AB8823E9B08B0099DE60 /* tomany-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8523E9B08A0099DE60 /* tomany-ForbiddenPadNumber.swift */; };
 		CF67AB8923E9B08B0099DE60 /* tomany-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8523E9B08A0099DE60 /* tomany-ForbiddenPadNumber.swift */; };
@@ -2924,6 +2928,8 @@
 		CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-devices.swift"; sourceTree = "<group>"; };
 		CF64AFA3225B78C100E40C83 /* extension-ProjectDocument-fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-fonts.swift"; sourceTree = "<group>"; };
 		CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-add-components.swift"; sourceTree = "<group>"; };
+		CF65020524239A1100F9231A /* selectionController-MergerDocument-mDataSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-MergerDocument-mDataSelection.swift"; sourceTree = "<group>"; };
+		CF65020824239A6000F9231A /* controller-table-view-MergerDocument-mDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-MergerDocument-mDataController.swift"; sourceTree = "<group>"; };
 		CF65805720EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-generateProductFilesAction.swift"; sourceTree = "<group>"; };
 		CF67AB8523E9B08A0099DE60 /* tomany-ForbiddenPadNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "tomany-ForbiddenPadNumber.swift"; sourceTree = "<group>"; };
 		CF67AB8623E9B08A0099DE60 /* toone-ForbiddenPadNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-ForbiddenPadNumber.swift"; sourceTree = "<group>"; };
@@ -4164,6 +4170,7 @@
 				CFDEC77820E0CD4F0065FBCE /* class-MergerViaShapeArray.swift */,
 				CFB671D720FB719700C94777 /* controller-array-MergerDocument-mBoardInstanceController.swift */,
 				CFBEE4DC20DD26E2000743A2 /* controller-table-view-MergerDocument-mBoardModelController.swift */,
+				CF65020824239A6000F9231A /* controller-table-view-MergerDocument-mDataController.swift */,
 				CFB4801820DC1B8B00CF9639 /* entity-BoardModel.swift */,
 				CF324D7B20DE54B000ADD025 /* entity-BoardModelPad.swift */,
 				CFCE71FA20DD611100AB1DE7 /* entity-BoardModelVia.swift */,
@@ -4188,6 +4195,7 @@
 				CF5599501FDF364400ED5EE6 /* MergerDocument.xib */,
 				CFB671D920FB71E600C94777 /* selectionController-MergerDocument-mBoardInstanceSelection.swift */,
 				CFF0416C20DD46BE00FB1C5B /* selectionController-MergerDocument-mBoardModelSelection.swift */,
+				CF65020524239A1100F9231A /* selectionController-MergerDocument-mDataSelection.swift */,
 				CFA42FB4229AEB08000AA8C8 /* tomany-BoardModel.swift */,
 				CFA42FBC229AEB0A000AA8C8 /* tomany-BoardModelPad.swift */,
 				CFA42FBA229AEB09000AA8C8 /* tomany-BoardModelVia.swift */,
@@ -6594,6 +6602,7 @@
 				CFA42FCA229AEB0A000AA8C8 /* tomany-BoardModelVia.swift in Sources */,
 				CF0777E9235216F800F56EAB /* EBReadOnlyEnumProperty.swift in Sources */,
 				CF9D4B20227F796C006E2035 /* action-ProjectDocument-exportDeviceAction.swift in Sources */,
+				CF65020624239A1100F9231A /* selectionController-MergerDocument-mDataSelection.swift in Sources */,
 				CF2176A920EA79A100BBC1C4 /* entity-MergerBoardInstance.swift in Sources */,
 				CFA430B3229AEC41000AA8C8 /* toone-SymbolText.swift in Sources */,
 				CFEB7B1B233A24BF0060A97A /* transient-BoardTrack-netClassViaHoleDiameter.swift in Sources */,
@@ -6912,6 +6921,7 @@
 				CF8BE73A23510FEC00F95B3A /* EBAbstractProperty.swift in Sources */,
 				CFA43011229AEB69000AA8C8 /* toone-PackageZone.swift in Sources */,
 				CFDEC6DD21D5467900857F9C /* action-PackageDocument-runProgramAction.swift in Sources */,
+				CF65020924239A6100F9231A /* controller-table-view-MergerDocument-mDataController.swift in Sources */,
 				CFEB7C58233A28670060A97A /* transient-ProjectDocument-canRemoveNetClasses.swift in Sources */,
 				CF4A6C0A21C6B80200997A19 /* EBGraphicView-binding-gridStep.swift in Sources */,
 				CF0DC230222587A000DD2076 /* action-DeviceDocument-removeImageAction.swift in Sources */,
@@ -7787,6 +7797,7 @@
 				CF00844821C42106003627E9 /* selectionController-PackageDocument-mPackageBezierCurveSelectionController.swift in Sources */,
 				CF4EC7422284A36E00902FBB /* extension-SheetInProject-drag-add-wire.swift in Sources */,
 				CF0777EA235216F800F56EAB /* EBReadOnlyEnumProperty.swift in Sources */,
+				CF65020724239A1100F9231A /* selectionController-MergerDocument-mDataSelection.swift in Sources */,
 				CF5C4D48219F04D600EAC52A /* Preferences.swift in Sources */,
 				CFDEC6DC21D5467900857F9C /* action-PackageDocument-clearProgramErrorAction.swift in Sources */,
 				CF29563E22325844004100D6 /* transient-DeviceDocument-assignmentInhibitionMessage.swift in Sources */,
@@ -8105,6 +8116,7 @@
 				CFE85AA021A5C91300991A66 /* transient-SymbolSolidRect-selectionDisplay.swift in Sources */,
 				CF8BE73B23510FEC00F95B3A /* EBAbstractProperty.swift in Sources */,
 				CF04AF2122761B7E00C70E99 /* extension-ProjectDocument-print.swift in Sources */,
+				CF65020A24239A6100F9231A /* controller-table-view-MergerDocument-mDataController.swift in Sources */,
 				CF85868821C55D7B00082CE3 /* CanariAngleSlider.swift in Sources */,
 				CFEB7C59233A28670060A97A /* transient-ProjectDocument-canRemoveNetClasses.swift in Sources */,
 				CF78DE89222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPathArray.swift in Sources */,

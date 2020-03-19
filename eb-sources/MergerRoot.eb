@@ -51,12 +51,31 @@ entity MergerRoot {
   transient Int boardWidth dependsFrom self.boardRect ;
   transient Int boardHeight dependsFrom self.boardRect ;
 
-//--- Artwork
-  toOne ArtworkRoot artwork ;
-  property String artworkName default "" ;
-
 //--- PDF Generation
   property NSColor mPDFBoardBackgroundColor default lightGray ;
+
+//--- Artwork
+  toOne ArtworkRoot mArtwork ;
+  property String mArtworkName default "" ;
+  property Int mArtworkVersion default 0 ;
+
+  property proxy Int minPPTPTTTWdisplayUnit : mArtwork.minPPTPTTTWdisplayUnit ;
+  property proxy Int minPPTPTTTW : mArtwork.minPPTPTTTW ;
+  
+  property proxy Int minValueForOARdisplayUnit : mArtwork.minValueForOARdisplayUnit ;
+  property proxy Int minValueForOARinEBUnit : mArtwork.minValueForOARinEBUnit ;
+  
+  property proxy Int minValueForPHDdisplayUnit : mArtwork.minValueForPHDdisplayUnit ;
+  property proxy Int minValueForPHDinEBUnit : mArtwork.minValueForPHDinEBUnit ;
+ 
+  property proxy Int minValueForBoardLimitWidth : mArtwork.minValueForBoardLimitWidth ;
+  property proxy Int minValueForBoardLimitWidthDisplayUnit : mArtwork.minValueForBoardLimitWidthDisplayUnit ;
+ 
+  property proxy String drillDataFileExtension : mArtwork.drillDataFileExtension ;
+
+  toMany proxy ArtworkFileGenerationParameters fileGenerationParameterArray : mArtwork.fileGenerationParameterArray ;
+
+  property proxy String comments : mArtwork.comments ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -102,14 +102,80 @@ protocol MergerRoot_shiftArrowMagnitudeUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_artworkName : class {
-  var artworkName : String { get }
+protocol MergerRoot_mPDFBoardBackgroundColor : class {
+  var mPDFBoardBackgroundColor : NSColor { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_mPDFBoardBackgroundColor : class {
-  var mPDFBoardBackgroundColor : NSColor { get }
+protocol MergerRoot_mArtworkName : class {
+  var mArtworkName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_mArtworkVersion : class {
+  var mArtworkVersion : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_minPPTPTTTWdisplayUnit : class {
+  var minPPTPTTTWdisplayUnit : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_minPPTPTTTW : class {
+  var minPPTPTTTW : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_minValueForOARdisplayUnit : class {
+  var minValueForOARdisplayUnit : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_minValueForOARinEBUnit : class {
+  var minValueForOARinEBUnit : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_minValueForPHDdisplayUnit : class {
+  var minValueForPHDdisplayUnit : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_minValueForPHDinEBUnit : class {
+  var minValueForPHDinEBUnit : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_minValueForBoardLimitWidth : class {
+  var minValueForBoardLimitWidth : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_minValueForBoardLimitWidthDisplayUnit : class {
+  var minValueForBoardLimitWidthDisplayUnit : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_drillDataFileExtension : class {
+  var drillDataFileExtension : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_comments : class {
+  var comments : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -169,8 +235,19 @@ class MergerRoot : EBManagedObject,
          MergerRoot_arrowMagnitudeUnit,
          MergerRoot_shiftArrowMagnitude,
          MergerRoot_shiftArrowMagnitudeUnit,
-         MergerRoot_artworkName,
          MergerRoot_mPDFBoardBackgroundColor,
+         MergerRoot_mArtworkName,
+         MergerRoot_mArtworkVersion,
+         MergerRoot_minPPTPTTTWdisplayUnit,
+         MergerRoot_minPPTPTTTW,
+         MergerRoot_minValueForOARdisplayUnit,
+         MergerRoot_minValueForOARinEBUnit,
+         MergerRoot_minValueForPHDdisplayUnit,
+         MergerRoot_minValueForPHDinEBUnit,
+         MergerRoot_minValueForBoardLimitWidth,
+         MergerRoot_minValueForBoardLimitWidthDisplayUnit,
+         MergerRoot_drillDataFileExtension,
+         MergerRoot_comments,
          MergerRoot_modelNames,
          MergerRoot_boardRect,
          MergerRoot_boardDisplayRect,
@@ -489,23 +566,6 @@ class MergerRoot : EBManagedObject,
   var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int> { return self.shiftArrowMagnitudeUnit_property.prop }
 
   //····················································································································
-  //   Atomic property: artworkName
-  //····················································································································
-
-  let artworkName_property = EBStoredProperty_String (defaultValue: "")
-
-  //····················································································································
-
-  var artworkName : String {
-    get { return self.artworkName_property.propval }
-    set { self.artworkName_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var artworkName_property_selection : EBSelection <String> { return self.artworkName_property.prop }
-
-  //····················································································································
   //   Atomic property: mPDFBoardBackgroundColor
   //····················································································································
 
@@ -521,6 +581,350 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor> { return self.mPDFBoardBackgroundColor_property.prop }
+
+  //····················································································································
+  //   Atomic property: mArtworkName
+  //····················································································································
+
+  let mArtworkName_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mArtworkName : String {
+    get { return self.mArtworkName_property.propval }
+    set { self.mArtworkName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mArtworkName_property_selection : EBSelection <String> { return self.mArtworkName_property.prop }
+
+  //····················································································································
+  //   Atomic property: mArtworkVersion
+  //····················································································································
+
+  let mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mArtworkVersion : Int {
+    get { return self.mArtworkVersion_property.propval }
+    set { self.mArtworkVersion_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mArtworkVersion_property_selection : EBSelection <Int> { return self.mArtworkVersion_property.prop }
+
+  //····················································································································
+  //   Atomic proxy property: minPPTPTTTWdisplayUnit
+  //····················································································································
+
+  let minPPTPTTTWdisplayUnit_property = EBPropertyProxy_Int ()
+
+  //····················································································································
+
+  var minPPTPTTTWdisplayUnit : Int? {
+    get {
+      switch self.minPPTPTTTWdisplayUnit_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.minPPTPTTTWdisplayUnit_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int> { return self.minPPTPTTTWdisplayUnit_property.prop }
+
+  //····················································································································
+  //   Atomic proxy property: minPPTPTTTW
+  //····················································································································
+
+  let minPPTPTTTW_property = EBPropertyProxy_Int ()
+
+  //····················································································································
+
+  var minPPTPTTTW : Int? {
+    get {
+      switch self.minPPTPTTTW_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.minPPTPTTTW_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var minPPTPTTTW_property_selection : EBSelection <Int> { return self.minPPTPTTTW_property.prop }
+
+  //····················································································································
+  //   Atomic proxy property: minValueForOARdisplayUnit
+  //····················································································································
+
+  let minValueForOARdisplayUnit_property = EBPropertyProxy_Int ()
+
+  //····················································································································
+
+  var minValueForOARdisplayUnit : Int? {
+    get {
+      switch self.minValueForOARdisplayUnit_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.minValueForOARdisplayUnit_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var minValueForOARdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForOARdisplayUnit_property.prop }
+
+  //····················································································································
+  //   Atomic proxy property: minValueForOARinEBUnit
+  //····················································································································
+
+  let minValueForOARinEBUnit_property = EBPropertyProxy_Int ()
+
+  //····················································································································
+
+  var minValueForOARinEBUnit : Int? {
+    get {
+      switch self.minValueForOARinEBUnit_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.minValueForOARinEBUnit_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var minValueForOARinEBUnit_property_selection : EBSelection <Int> { return self.minValueForOARinEBUnit_property.prop }
+
+  //····················································································································
+  //   Atomic proxy property: minValueForPHDdisplayUnit
+  //····················································································································
+
+  let minValueForPHDdisplayUnit_property = EBPropertyProxy_Int ()
+
+  //····················································································································
+
+  var minValueForPHDdisplayUnit : Int? {
+    get {
+      switch self.minValueForPHDdisplayUnit_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.minValueForPHDdisplayUnit_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var minValueForPHDdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForPHDdisplayUnit_property.prop }
+
+  //····················································································································
+  //   Atomic proxy property: minValueForPHDinEBUnit
+  //····················································································································
+
+  let minValueForPHDinEBUnit_property = EBPropertyProxy_Int ()
+
+  //····················································································································
+
+  var minValueForPHDinEBUnit : Int? {
+    get {
+      switch self.minValueForPHDinEBUnit_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.minValueForPHDinEBUnit_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var minValueForPHDinEBUnit_property_selection : EBSelection <Int> { return self.minValueForPHDinEBUnit_property.prop }
+
+  //····················································································································
+  //   Atomic proxy property: minValueForBoardLimitWidth
+  //····················································································································
+
+  let minValueForBoardLimitWidth_property = EBPropertyProxy_Int ()
+
+  //····················································································································
+
+  var minValueForBoardLimitWidth : Int? {
+    get {
+      switch self.minValueForBoardLimitWidth_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.minValueForBoardLimitWidth_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var minValueForBoardLimitWidth_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidth_property.prop }
+
+  //····················································································································
+  //   Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
+  //····················································································································
+
+  let minValueForBoardLimitWidthDisplayUnit_property = EBPropertyProxy_Int ()
+
+  //····················································································································
+
+  var minValueForBoardLimitWidthDisplayUnit : Int? {
+    get {
+      switch self.minValueForBoardLimitWidthDisplayUnit_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.minValueForBoardLimitWidthDisplayUnit_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidthDisplayUnit_property.prop }
+
+  //····················································································································
+  //   Atomic proxy property: drillDataFileExtension
+  //····················································································································
+
+  let drillDataFileExtension_property = EBPropertyProxy_String ()
+
+  //····················································································································
+
+  var drillDataFileExtension : String? {
+    get {
+      switch self.drillDataFileExtension_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.drillDataFileExtension_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var drillDataFileExtension_property_selection : EBSelection <String> { return self.drillDataFileExtension_property.prop }
+
+  //····················································································································
+  //   ToMany proxy: fileGenerationParameterArray
+  //····················································································································
+
+  var fileGenerationParameterArray_modelDidChangeController : EBSimpleController? = nil
+  // var fileGenerationParameterArray_boundObjectDidChangeController : EBSimpleController? = nil
+  let fileGenerationParameterArray_property = ProxyArrayOf_ArtworkFileGenerationParameters ()
+
+  //····················································································································
+
+  var fileGenerationParameterArray : [ArtworkFileGenerationParameters] {
+    get {
+      switch self.fileGenerationParameterArray_property.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      self.fileGenerationParameterArray_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var fileGenerationParameterArray_property_selection : EBSelection <[ArtworkFileGenerationParameters]> {
+    return self.fileGenerationParameterArray_property.prop
+  }
+
+  //····················································································································
+  //   Atomic proxy property: comments
+  //····················································································································
+
+  let comments_property = EBPropertyProxy_String ()
+
+  //····················································································································
+
+  var comments : String? {
+    get {
+      switch self.comments_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.comments_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
 
   //····················································································································
   //   Transient property: modelNames
@@ -638,41 +1042,41 @@ class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   To one property: artwork
+  //   To one property: mArtwork
   //····················································································································
 
-   let artwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
+   let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
 
   //····················································································································
 
-  var artwork_property_selection : EBSelection <ArtworkRoot?> {
-    return .single (self.artwork_property.propval)
+  var mArtwork_property_selection : EBSelection <ArtworkRoot?> {
+    return .single (self.mArtwork_property.propval)
   }
 
   //····················································································································
 
-  var artwork : ArtworkRoot? {
+  var mArtwork : ArtworkRoot? {
     get {
-      return self.artwork_property.propval
+      return self.mArtwork_property.propval
     }
     set {
-      if self.artwork_property.propval != nil {
-        self.artwork_property.setProp (nil)
+      if self.mArtwork_property.propval != nil {
+        self.mArtwork_property.setProp (nil)
       }
       if newValue != nil {
-        self.artwork_property.setProp (newValue)
+        self.mArtwork_property.setProp (newValue)
       }
     }
   }
 
   //····················································································································
 
-  var artwork_none : StoredObject_ArtworkRoot { return self.artwork_property }
+  var mArtwork_none : StoredObject_ArtworkRoot { return self.mArtwork_property }
 
   //····················································································································
 
-  var artwork_none_selection : EBSelection <Bool> {
-    return .single (self.artwork_property.propval == nil)
+  var mArtwork_none_selection : EBSelection <Bool> {
+    return .single (self.mArtwork_property.propval == nil)
   }
 
   //····················································································································
@@ -750,10 +1154,175 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitude_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: shiftArrowMagnitudeUnit
     self.shiftArrowMagnitudeUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: artworkName
-    self.artworkName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPDFBoardBackgroundColor
     self.mPDFBoardBackgroundColor_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mArtworkName
+    self.mArtworkName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mArtworkVersion
+    self.mArtworkVersion_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic proxy property: minPPTPTTTWdisplayUnit
+    self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork {
+        return .single (object.minPPTPTTTWdisplayUnit)
+      }else{
+        return .empty
+      }
+    }
+    self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mArtwork?.minPPTPTTTWdisplayUnit = inValue
+    }
+    self.minPPTPTTTWdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.minPPTPTTTWdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.addEBObserverOf_minPPTPTTTWdisplayUnit (self.minPPTPTTTWdisplayUnit_property)
+  //--- Atomic proxy property: minPPTPTTTW
+    self.minPPTPTTTW_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork {
+        return .single (object.minPPTPTTTW)
+      }else{
+        return .empty
+      }
+    }
+    self.minPPTPTTTW_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mArtwork?.minPPTPTTTW = inValue
+    }
+    self.minPPTPTTTW_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.minPPTPTTTW_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.addEBObserverOf_minPPTPTTTW (self.minPPTPTTTW_property)
+  //--- Atomic proxy property: minValueForOARdisplayUnit
+    self.minValueForOARdisplayUnit_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork {
+        return .single (object.minValueForOARdisplayUnit)
+      }else{
+        return .empty
+      }
+    }
+    self.minValueForOARdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mArtwork?.minValueForOARdisplayUnit = inValue
+    }
+    self.minValueForOARdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.minValueForOARdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.addEBObserverOf_minValueForOARdisplayUnit (self.minValueForOARdisplayUnit_property)
+  //--- Atomic proxy property: minValueForOARinEBUnit
+    self.minValueForOARinEBUnit_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork {
+        return .single (object.minValueForOARinEBUnit)
+      }else{
+        return .empty
+      }
+    }
+    self.minValueForOARinEBUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mArtwork?.minValueForOARinEBUnit = inValue
+    }
+    self.minValueForOARinEBUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.minValueForOARinEBUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.addEBObserverOf_minValueForOARinEBUnit (self.minValueForOARinEBUnit_property)
+  //--- Atomic proxy property: minValueForPHDdisplayUnit
+    self.minValueForPHDdisplayUnit_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork {
+        return .single (object.minValueForPHDdisplayUnit)
+      }else{
+        return .empty
+      }
+    }
+    self.minValueForPHDdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mArtwork?.minValueForPHDdisplayUnit = inValue
+    }
+    self.minValueForPHDdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.minValueForPHDdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.addEBObserverOf_minValueForPHDdisplayUnit (self.minValueForPHDdisplayUnit_property)
+  //--- Atomic proxy property: minValueForPHDinEBUnit
+    self.minValueForPHDinEBUnit_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork {
+        return .single (object.minValueForPHDinEBUnit)
+      }else{
+        return .empty
+      }
+    }
+    self.minValueForPHDinEBUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mArtwork?.minValueForPHDinEBUnit = inValue
+    }
+    self.minValueForPHDinEBUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.minValueForPHDinEBUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.addEBObserverOf_minValueForPHDinEBUnit (self.minValueForPHDinEBUnit_property)
+  //--- Atomic proxy property: minValueForBoardLimitWidth
+    self.minValueForBoardLimitWidth_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork {
+        return .single (object.minValueForBoardLimitWidth)
+      }else{
+        return .empty
+      }
+    }
+    self.minValueForBoardLimitWidth_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mArtwork?.minValueForBoardLimitWidth = inValue
+    }
+    self.minValueForBoardLimitWidth_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.minValueForBoardLimitWidth_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.addEBObserverOf_minValueForBoardLimitWidth (self.minValueForBoardLimitWidth_property)
+  //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
+    self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork {
+        return .single (object.minValueForBoardLimitWidthDisplayUnit)
+      }else{
+        return .empty
+      }
+    }
+    self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit = inValue
+    }
+    self.minValueForBoardLimitWidthDisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (self.minValueForBoardLimitWidthDisplayUnit_property)
+  //--- Atomic proxy property: drillDataFileExtension
+    self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork {
+        return .single (object.drillDataFileExtension)
+      }else{
+        return .empty
+      }
+    }
+    self.drillDataFileExtension_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
+      self?.mArtwork?.drillDataFileExtension = inValue
+    }
+    self.drillDataFileExtension_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.drillDataFileExtension_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.addEBObserverOf_drillDataFileExtension (self.drillDataFileExtension_property)
+  //--- ToMany proxy: fileGenerationParameterArray
+    do{
+      let controller = EBSimpleController (
+        observedObjects: [self.mArtwork_property],
+        callBack: { [weak self] in
+          if let me = self, let model = me.mArtwork {
+            me.fileGenerationParameterArray_property.setModel (model.fileGenerationParameterArray_property)
+          }
+        }
+      )
+      self.mArtwork_property.addEBObserverOf_fileGenerationParameterArray (controller)
+      self.fileGenerationParameterArray_modelDidChangeController = controller
+    }
+  //--- Atomic proxy property: comments
+    self.comments_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork {
+        return .single (object.comments)
+      }else{
+        return .empty
+      }
+    }
+    self.comments_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
+      self?.mArtwork?.comments = inValue
+    }
+    self.comments_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.comments_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.addEBObserverOf_comments (self.comments_property)
   //--- Atomic property: modelNames
     self.modelNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -876,8 +1445,8 @@ class MergerRoot : EBManagedObject,
       }
     }
     self.boardRect_property.addEBObserver (self.boardHeight_property)
-  //--- To one property: artwork
-    self.artwork_property.ebUndoManager = self.ebUndoManager
+  //--- To one property: mArtwork
+    self.mArtwork_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardOutlineRectDisplay
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -919,6 +1488,60 @@ class MergerRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+  //--- Atomic proxy property: minPPTPTTTWdisplayUnit
+    self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = nil
+    self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = nil
+    self.minPPTPTTTWdisplayUnit_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.removeEBObserverOf_minPPTPTTTWdisplayUnit (self.minPPTPTTTWdisplayUnit_property)
+  //--- Atomic proxy property: minPPTPTTTW
+    self.minPPTPTTTW_property.mReadModelFunction = nil
+    self.minPPTPTTTW_property.mWriteModelFunction = nil
+    self.minPPTPTTTW_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.removeEBObserverOf_minPPTPTTTW (self.minPPTPTTTW_property)
+  //--- Atomic proxy property: minValueForOARdisplayUnit
+    self.minValueForOARdisplayUnit_property.mReadModelFunction = nil
+    self.minValueForOARdisplayUnit_property.mWriteModelFunction = nil
+    self.minValueForOARdisplayUnit_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.removeEBObserverOf_minValueForOARdisplayUnit (self.minValueForOARdisplayUnit_property)
+  //--- Atomic proxy property: minValueForOARinEBUnit
+    self.minValueForOARinEBUnit_property.mReadModelFunction = nil
+    self.minValueForOARinEBUnit_property.mWriteModelFunction = nil
+    self.minValueForOARinEBUnit_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.removeEBObserverOf_minValueForOARinEBUnit (self.minValueForOARinEBUnit_property)
+  //--- Atomic proxy property: minValueForPHDdisplayUnit
+    self.minValueForPHDdisplayUnit_property.mReadModelFunction = nil
+    self.minValueForPHDdisplayUnit_property.mWriteModelFunction = nil
+    self.minValueForPHDdisplayUnit_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.removeEBObserverOf_minValueForPHDdisplayUnit (self.minValueForPHDdisplayUnit_property)
+  //--- Atomic proxy property: minValueForPHDinEBUnit
+    self.minValueForPHDinEBUnit_property.mReadModelFunction = nil
+    self.minValueForPHDinEBUnit_property.mWriteModelFunction = nil
+    self.minValueForPHDinEBUnit_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.removeEBObserverOf_minValueForPHDinEBUnit (self.minValueForPHDinEBUnit_property)
+  //--- Atomic proxy property: minValueForBoardLimitWidth
+    self.minValueForBoardLimitWidth_property.mReadModelFunction = nil
+    self.minValueForBoardLimitWidth_property.mWriteModelFunction = nil
+    self.minValueForBoardLimitWidth_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.removeEBObserverOf_minValueForBoardLimitWidth (self.minValueForBoardLimitWidth_property)
+  //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
+    self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = nil
+    self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = nil
+    self.minValueForBoardLimitWidthDisplayUnit_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.removeEBObserverOf_minValueForBoardLimitWidthDisplayUnit (self.minValueForBoardLimitWidthDisplayUnit_property)
+  //--- Atomic proxy property: drillDataFileExtension
+    self.drillDataFileExtension_property.mReadModelFunction = nil
+    self.drillDataFileExtension_property.mWriteModelFunction = nil
+    self.drillDataFileExtension_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.removeEBObserverOf_drillDataFileExtension (self.drillDataFileExtension_property)
+  //--- ToMany proxy: fileGenerationParameterArray
+    self.fileGenerationParameterArray_property.setModel (nil)
+    self.fileGenerationParameterArray_modelDidChangeController?.unregister ()
+    self.fileGenerationParameterArray_modelDidChangeController = nil
+  //--- Atomic proxy property: comments
+    self.comments_property.mReadModelFunction = nil
+    self.comments_property.mWriteModelFunction = nil
+    self.comments_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.removeEBObserverOf_comments (self.comments_property)
     self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
     self.boardModels_property.removeEBObserver (self.modelNames_property)
     self.automaticBoardSize_property.removeEBObserver (self.boardRect_property)
@@ -1077,20 +1700,28 @@ class MergerRoot : EBManagedObject,
       valueExplorer: &self.shiftArrowMagnitudeUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "artworkName",
-      idx: self.artworkName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.artworkName_property.mObserverExplorer,
-      valueExplorer: &self.artworkName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "mPDFBoardBackgroundColor",
       idx: self.mPDFBoardBackgroundColor_property.ebObjectIndex,
       y: &y,
       view: view,
       observerExplorer: &self.mPDFBoardBackgroundColor_property.mObserverExplorer,
       valueExplorer: &self.mPDFBoardBackgroundColor_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mArtworkName",
+      idx: self.mArtworkName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mArtworkName_property.mObserverExplorer,
+      valueExplorer: &self.mArtworkName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mArtworkVersion",
+      idx: self.mArtworkVersion_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mArtworkVersion_property.mObserverExplorer,
+      valueExplorer: &self.mArtworkVersion_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
@@ -1158,11 +1789,11 @@ class MergerRoot : EBManagedObject,
     )
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
-      "artwork",
-      idx:self.artwork_property.ebObjectIndex,
+      "mArtwork",
+      idx:self.mArtwork_property.ebObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&self.artwork_property.mValueExplorer
+      valueExplorer:&self.mArtwork_property.mValueExplorer
     )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
@@ -1224,15 +1855,50 @@ class MergerRoot : EBManagedObject,
   //--- Atomic property: shiftArrowMagnitudeUnit
     self.shiftArrowMagnitudeUnit_property.mObserverExplorer = nil
     self.shiftArrowMagnitudeUnit_property.mValueExplorer = nil
-  //--- Atomic property: artworkName
-    self.artworkName_property.mObserverExplorer = nil
-    self.artworkName_property.mValueExplorer = nil
   //--- Atomic property: mPDFBoardBackgroundColor
     self.mPDFBoardBackgroundColor_property.mObserverExplorer = nil
     self.mPDFBoardBackgroundColor_property.mValueExplorer = nil
-  //--- To one property: artwork
-    self.artwork_property.mObserverExplorer = nil
-    self.artwork_property.mValueExplorer = nil
+  //--- Atomic property: mArtworkName
+    self.mArtworkName_property.mObserverExplorer = nil
+    self.mArtworkName_property.mValueExplorer = nil
+  //--- Atomic property: mArtworkVersion
+    self.mArtworkVersion_property.mObserverExplorer = nil
+    self.mArtworkVersion_property.mValueExplorer = nil
+  //--- Atomic proxy property: minPPTPTTTWdisplayUnit
+    self.minPPTPTTTWdisplayUnit_property.mObserverExplorer = nil
+    self.minPPTPTTTWdisplayUnit_property.mValueExplorer = nil
+  //--- Atomic proxy property: minPPTPTTTW
+    self.minPPTPTTTW_property.mObserverExplorer = nil
+    self.minPPTPTTTW_property.mValueExplorer = nil
+  //--- Atomic proxy property: minValueForOARdisplayUnit
+    self.minValueForOARdisplayUnit_property.mObserverExplorer = nil
+    self.minValueForOARdisplayUnit_property.mValueExplorer = nil
+  //--- Atomic proxy property: minValueForOARinEBUnit
+    self.minValueForOARinEBUnit_property.mObserverExplorer = nil
+    self.minValueForOARinEBUnit_property.mValueExplorer = nil
+  //--- Atomic proxy property: minValueForPHDdisplayUnit
+    self.minValueForPHDdisplayUnit_property.mObserverExplorer = nil
+    self.minValueForPHDdisplayUnit_property.mValueExplorer = nil
+  //--- Atomic proxy property: minValueForPHDinEBUnit
+    self.minValueForPHDinEBUnit_property.mObserverExplorer = nil
+    self.minValueForPHDinEBUnit_property.mValueExplorer = nil
+  //--- Atomic proxy property: minValueForBoardLimitWidth
+    self.minValueForBoardLimitWidth_property.mObserverExplorer = nil
+    self.minValueForBoardLimitWidth_property.mValueExplorer = nil
+  //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
+    self.minValueForBoardLimitWidthDisplayUnit_property.mObserverExplorer = nil
+    self.minValueForBoardLimitWidthDisplayUnit_property.mValueExplorer = nil
+  //--- Atomic proxy property: drillDataFileExtension
+    self.drillDataFileExtension_property.mObserverExplorer = nil
+    self.drillDataFileExtension_property.mValueExplorer = nil
+  //--- ToMany proxy: fileGenerationParameterArray
+    self.fileGenerationParameterArray_property.mObserverExplorer = nil
+  //--- Atomic proxy property: comments
+    self.comments_property.mObserverExplorer = nil
+    self.comments_property.mValueExplorer = nil
+  //--- To one property: mArtwork
+    self.mArtwork_property.mObserverExplorer = nil
+    self.mArtwork_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -1253,7 +1919,7 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.artwork = nil
+    self.mArtwork = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -1308,13 +1974,15 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey:"shiftArrowMagnitude")
   //--- Atomic property: shiftArrowMagnitudeUnit
     self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey:"shiftArrowMagnitudeUnit")
-  //--- Atomic property: artworkName
-    self.artworkName_property.storeIn (dictionary: ioDictionary, forKey:"artworkName")
   //--- Atomic property: mPDFBoardBackgroundColor
     self.mPDFBoardBackgroundColor_property.storeIn (dictionary: ioDictionary, forKey:"mPDFBoardBackgroundColor")
-  //--- To one property: artwork
-    self.store (managedObject:self.artwork_property.propval,
-      relationshipName: "artwork",
+  //--- Atomic property: mArtworkName
+    self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey:"mArtworkName")
+  //--- Atomic property: mArtworkVersion
+    self.mArtworkVersion_property.storeIn (dictionary: ioDictionary, forKey:"mArtworkVersion")
+  //--- To one property: mArtwork
+    self.store (managedObject:self.mArtwork_property.propval,
+      relationshipName: "mArtwork",
       intoDictionary: ioDictionary)
   }
 
@@ -1337,15 +2005,15 @@ class MergerRoot : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [MergerBoardInstance])
-  //--- To one property: artwork
+  //--- To one property: mArtwork
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "artwork",
+        inRelationshipName: "mArtwork",
         inDictionary: inDictionary,
         managedObjectArray: &managedObjectArray
       )
       if let entity = possibleEntity as? ArtworkRoot {
-        self.artwork_property.setProp (entity)
+        self.mArtwork_property.setProp (entity)
       }
     }
   }
@@ -1388,10 +2056,12 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitude")
   //--- Atomic property: shiftArrowMagnitudeUnit
     self.shiftArrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitudeUnit")
-  //--- Atomic property: artworkName
-    self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
   //--- Atomic property: mPDFBoardBackgroundColor
     self.mPDFBoardBackgroundColor_property.readFrom (dictionary: inDictionary, forKey:"mPDFBoardBackgroundColor")
+  //--- Atomic property: mArtworkName
+    self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey:"mArtworkName")
+  //--- Atomic property: mArtworkVersion
+    self.mArtworkVersion_property.readFrom (dictionary: inDictionary, forKey:"mArtworkVersion")
   }
 
 
@@ -1418,10 +2088,11 @@ class MergerRoot : EBManagedObject,
     ioString += "arrowMagnitudeUnit\n"
     ioString += "shiftArrowMagnitude\n"
     ioString += "shiftArrowMagnitudeUnit\n"
-    ioString += "artworkName\n"
     ioString += "mPDFBoardBackgroundColor\n"
+    ioString += "mArtworkName\n"
+    ioString += "mArtworkVersion\n"
   //--- To one relationships
-    ioString += "artwork\n"
+    ioString += "mArtwork\n"
   //--- To many relationships
     ioString += "boardModels\n"
     ioString += "boardInstances\n"
@@ -1466,12 +2137,14 @@ class MergerRoot : EBManagedObject,
     ioData.append (ascii: .lineFeed)
     self.shiftArrowMagnitudeUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
-    self.artworkName.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
     self.mPDFBoardBackgroundColor.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
+    self.mArtworkName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mArtworkVersion.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
   //--- To one relationships
-    if let object = self.artwork {
+    if let object = self.mArtwork {
       ioData.append (base62Encoded: object.savingIndex)
     }
     ioData.append (ascii: .lineFeed)
@@ -1554,8 +2227,8 @@ class MergerRoot : EBManagedObject,
     for managedObject in self.boardInstances {
       objects.append (managedObject)
     }
-  //--- To one property: artwork
-    if let object = self.artwork {
+  //--- To one property: mArtwork
+    if let object = self.mArtwork {
       objects.append (object)
     }
   }
@@ -1574,8 +2247,8 @@ class MergerRoot : EBManagedObject,
     for managedObject in self.boardInstances {
       objects.append (managedObject)
     }
-  //--- To one property: artwork
-    if let object = self.artwork {
+  //--- To one property: mArtwork
+    if let object = self.mArtwork {
       objects.append (object)
     }
   }

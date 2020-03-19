@@ -67,7 +67,7 @@ extension MergerDocument {
   fileprivate func generateBoardArchive (atPath inFilePath : String) throws {
     let archiveDict = NSMutableDictionary ()
   //---
-    archiveDict ["ARTWORK"] = self.rootObject.artworkName
+    archiveDict ["ARTWORK"] = self.rootObject.mArtworkName
     archiveDict ["BOARD-HEIGHT"] = self.rootObject.boardHeight ?? 0
     archiveDict ["BOARD-HEIGHT-UNIT"] = self.rootObject.boardHeightUnit
     archiveDict ["BOARD-LINE-WIDTH"] = self.rootObject.boardLimitWidth
@@ -245,7 +245,7 @@ extension MergerDocument {
   fileprivate func generatePDFfiles (atPath inFilePath : String) throws {
     if let cocoaBoardRect : NSRect = self.rootObject.boardRect?.cocoaRect {
       let boardWidth = self.rootObject.boardWidth ?? 0
-      for product in self.rootObject.artwork_property.propval?.fileGenerationParameterArray_property.propval ?? [] {
+      for product in self.rootObject.mArtwork_property.propval?.fileGenerationParameterArray_property.propval ?? [] {
         let horizontalMirror = product.horizontalMirror
         let filePath = inFilePath + "." + product.fileExtension + ".pdf"
         self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
@@ -475,7 +475,7 @@ extension MergerDocument {
   fileprivate func writePDFDrillFile (atPath inFilePath : String) throws {
     if let cocoaBoardRect : NSRect = self.rootObject.boardRect?.cocoaRect {
       let boardWidth = self.rootObject.boardWidth ?? 0
-      let filePath = inFilePath + "." + (self.rootObject.artwork_property.propval?.drillDataFileExtension ?? "??") + ".pdf"
+      let filePath = inFilePath + "." + (self.rootObject.mArtwork_property.propval?.drillDataFileExtension ?? "??") + ".pdf"
       self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
       var drillBezierPaths = [EBBezierPath] ()
       for board in self.rootObject.boardInstances_property.propval {
@@ -504,7 +504,7 @@ extension MergerDocument {
 
   fileprivate func generateGerberFiles (atPath inFilePath : String) throws {
     let boardWidth = self.rootObject.boardWidth!
-    for product in self.rootObject.artwork_property.propval?.fileGenerationParameterArray_property.propval ?? [] {
+    for product in self.rootObject.mArtwork_property.propval?.fileGenerationParameterArray_property.propval ?? [] {
       let horizontalMirror = product.horizontalMirror
       let filePath = inFilePath + "." + product.fileExtension
       self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
@@ -512,7 +512,7 @@ extension MergerDocument {
       s += "%MOIN*%\n" // length unit is inch
       var apertureDictionary = [String : [String]] ()
       var polygons = [[String]] ()
-      let minimumApertureMilTenth = canariUnitToMilTenth (self.rootObject.artwork_property.propval!.minPPTPTTTW)
+      let minimumApertureMilTenth = canariUnitToMilTenth (self.rootObject.mArtwork_property.propval!.minPPTPTTTW)
       if product.drawInternalBoardLimits {
         for board in self.rootObject.boardInstances_property.propval {
           let lineWidth : Int = board.myModel_property.propval!.modelLimitWidth
@@ -771,7 +771,7 @@ extension MergerDocument {
       self.mLogTextView?.appendSuccessString (" Ok\n")
     }
 //------------------------------------- Generate hole file
-    let filePath = inFilePath + "." + (self.rootObject.artwork_property.propval?.drillDataFileExtension ?? "??")
+    let filePath = inFilePath + "." + (self.rootObject.mArtwork_property.propval?.drillDataFileExtension ?? "??")
     self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
     var s = "M48\n"
     s += "INCH\n"

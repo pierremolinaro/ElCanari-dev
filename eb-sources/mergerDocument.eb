@@ -314,52 +314,87 @@ document MergerDocument root MergerRoot {
 //------------------------------------- Product Page
   outlet CanariViewWithKeyView mProductPageView ;
 
-  transient Bool documentFileNameOk dependsFrom self.documentFilePath ;
-
-  outlet EBTextField mNoArtworkMessage $hidden !root.artwork.none ;
+  outlet EBTextField mNoArtworkMessage $hidden !root.mArtwork.none ;
 
   transient String incorrectDocumentFileErrorMessage dependsFrom self.documentFilePath ;
   outlet EBTextObserverField mIncorrectDocumentNameTextField $valueObserver self.incorrectDocumentFileErrorMessage ;
 
-  outlet EBTextObserverField mArtworNameTextField $valueObserver root.artworkName ;
+  outlet EBTextObserverField mArtwortNameTextField $valueObserver root.mArtworkName ;
 
-
-  outlet NSView mDangerView $hidden self.documentFileNameOk ;
-
+  transient Bool documentFileNameOk dependsFrom self.documentFilePath ;
   transient Bool documentIsUnnamed dependsFrom self.documentFilePath ;
+  outlet NSView mDangerView $hidden self.documentFileNameOk ;
 
   action generateProductFilesAction ;
   outlet EBButton mGenerateProductFilesActionButton
-    $enabled !root.artwork.none & (root.boardInstances.count > 0) & !self.documentIsUnnamed
+    $enabled !root.mArtwork.none & (root.boardInstances.count > 0) & !self.documentIsUnnamed
     $run generateProductFilesAction
   ;
 
   action importArtworkAction ;
-  transient String importArtworkButtonTitle dependsFrom root.artworkName ;
+  transient String importArtworkButtonTitle dependsFrom root.mArtworkName ;
   outlet EBButton mImportArtworkButton $run importArtworkAction $title self.importArtworkButtonTitle ;
 
   outlet NSTabView mProductGenerationTabView ;
-  outlet NSTabView mArtworkSettingsTabView $hidden root.artwork.none ;
+  outlet NSTabView mArtworkSettingsTabView $hidden root.mArtwork.none ;
   outlet NSTextView mLogTextView ;
   outlet EBColorWell mPDFBoardBackgroundColorWell $color root.mPDFBoardBackgroundColor {sendContinously : no} ;
 
-//---
-//------------------------------------------- Artwork settings
-//--- Minimum tab
-//  outlet EBPopUpButton mMinPP_TP_TT_TW_inEBUnitPopUp $selectedTag root.artwork.one.minPP_TP_TT_TW_displayUnit ;
-//  outlet CanariDimensionTextField mMinPP_TP_TT_TW_displayUnit_TextField
-//     $dimensionAndUnit root.minPP_TP_TT_TW_inEBUnit, root.minPP_TP_TT_TW_displayUnit
-//  ;
-//
-//  outlet EBPopUpButton mOARUnitPopUp $selectedTag root.minValueForOARdisplayUnit ;
-//  outlet CanariDimensionTextField mOARValueTextField
-//     $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit
-//  ;
-//
-//  outlet EBPopUpButton mPHDUnitPopUp $selectedTag root.minValueForPHDdisplayUnit ;
-//  outlet CanariDimensionTextField mPHDValueTextField
-//     $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit
-//  ;
+//---------------- Minima Page
+  outlet EBPopUpButton mMinPPTPTTTWinEBUnitPopUp $selectedTag root.minPPTPTTTWdisplayUnit ;
+  outlet CanariDimensionObserverTextField mMinPPTPTTTWdisplayUnitTextField
+     $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit
+  ;
+
+  outlet EBPopUpButton mOARUnitPopUp $selectedTag root.minValueForOARdisplayUnit ;
+  outlet CanariDimensionObserverTextField mOARValueTextField
+     $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit
+  ;
+
+  outlet EBPopUpButton mPHDUnitPopUp $selectedTag root.minValueForPHDdisplayUnit ;
+  outlet CanariDimensionObserverTextField mPHDValueTextField
+     $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit
+  ;
+
+  outlet EBPopUpButton minValueForBoardLimitUnitPopUp $selectedTag root.minValueForBoardLimitWidthDisplayUnit ;
+  outlet CanariDimensionObserverTextField minValueForBoardLimitTextField
+     $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
+  ;
+
+
+//--- Drill Page
+  outlet EBTextObserverField mDrillDataFileExtensionTextField $valueObserver root.drillDataFileExtension ;
+
+//--- Data Tab
+  outlet EBTableView mDataTableView $tableValue #mDataController ;
+  selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;
+  tableViewController #mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
+     column "name" sort name EBTextObserverField $valueObserver self.name
+  }
+
+  outlet EBTextObserverField mExtensionTextField $valueObserver #mDataSelection.fileExtension ;
+//  outlet CanariObserverSwitch mDrawBoardInternalLimitsSwitch $valueObserver #mDataSelection.drawInternalBoardLimits ;
+  outlet CanariObserverSwitch mDrawBoardLimitsSwitch $valueObserver #mDataSelection.drawBoardLimits ;
+  outlet CanariObserverSwitch mDrawComponentValuesTopSideSwitch $valueObserver #mDataSelection.drawComponentValuesTopSide ;
+  outlet CanariObserverSwitch mDrawComponentValuesBottomSideSwitch $valueObserver #mDataSelection.drawComponentValuesBottomSide ;
+  outlet CanariObserverSwitch mDrawComponentNamesTopSideSwitch $valueObserver #mDataSelection.drawComponentNamesTopSide ;
+  outlet CanariObserverSwitch mDrawComponentNamesBottomSideSwitch $valueObserver #mDataSelection.drawComponentNamesBottomSide ;
+  outlet CanariObserverSwitch mDrawPackageLegendTopSideSwitch $valueObserver #mDataSelection.drawPackageLegendTopSide ;
+  outlet CanariObserverSwitch mDrawPackageLegendBottomSideSwitch $valueObserver #mDataSelection.drawPackageLegendBottomSide ;
+//  outlet CanariObserverSwitch mDrawPadHolesInPDFSwitch $valueObserver #mDataSelection.drawPadHolesInPDF ;
+  outlet CanariObserverSwitch mDrawPadsTopSideSwitch $valueObserver #mDataSelection.drawPadsTopSide ;
+  outlet CanariObserverSwitch mDrawPadsBottomSideSwitch $valueObserver #mDataSelection.drawPadsBottomSide ;
+  outlet CanariObserverSwitch mDrawTextsLayoutTopSideSwitch $valueObserver #mDataSelection.drawTextsLayoutTopSide ;
+  outlet CanariObserverSwitch mDrawTextsLayoutBottomSideSwitch $valueObserver #mDataSelection.drawTextsLayoutBottomSide ;
+  outlet CanariObserverSwitch mDrawTextsLegendTopSideSwitch $valueObserver #mDataSelection.drawTextsLegendTopSide ;
+  outlet CanariObserverSwitch mDrawTextsLegendBottomSideSwitch $valueObserver #mDataSelection.drawTextsLegendBottomSide ;
+  outlet CanariObserverSwitch mDrawTracksTopSideSwitch $valueObserver #mDataSelection.drawTracksTopSide ;
+  outlet CanariObserverSwitch mDrawTracksBottomSideSwitch $valueObserver #mDataSelection.drawTracksBottomSide ;
+  outlet CanariObserverSwitch mDrawViasSwitch $valueObserver #mDataSelection.drawVias ;
+  outlet CanariObserverSwitch mHorizontalMirrorSwitch $valueObserver #mDataSelection.horizontalMirror ;
+//--- Artwork info tab
+  outlet EBTextObserverView mCommentTextView $valueObserver root.comments ;
+  outlet EBIntObserverField mArtworkVersionTextField $valueObserver root.mArtworkVersion {autoFormatter: no} ;
 
 }
 

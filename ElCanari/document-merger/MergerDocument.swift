@@ -33,6 +33,18 @@ import Cocoa
   var mBoardInstanceSelection = SelectionController_MergerDocument_mBoardInstanceSelection ()
 
   //····················································································································
+  //   Array controller: mDataController
+  //····················································································································
+
+  var mDataController = Controller_MergerDocument_mDataController ()
+
+  //····················································································································
+  //   Selection controller: mDataSelection
+  //····················································································································
+
+  var mDataSelection = SelectionController_MergerDocument_mDataSelection ()
+
+  //····················································································································
   //   Transient property: documentFilePath
   //····················································································································
 
@@ -56,21 +68,21 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: incorrectDocumentFileErrorMessage
+  //   Transient property: documentFileNameOk
   //····················································································································
 
-  let incorrectDocumentFileErrorMessage_property = EBTransientProperty_String ()
+  let documentFileNameOk_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var incorrectDocumentFileErrorMessage_property_selection : EBSelection <String> {
-    return self.incorrectDocumentFileErrorMessage_property.prop
+  var documentFileNameOk_property_selection : EBSelection <Bool> {
+    return self.documentFileNameOk_property.prop
   }
 
   //····················································································································
 
-  var incorrectDocumentFileErrorMessage : String? {
-    switch self.incorrectDocumentFileErrorMessage_property_selection {
+  var documentFileNameOk : Bool? {
+    switch self.documentFileNameOk_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -194,21 +206,21 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: documentFileNameOk
+  //   Transient property: incorrectDocumentFileErrorMessage
   //····················································································································
 
-  let documentFileNameOk_property = EBTransientProperty_Bool ()
+  let incorrectDocumentFileErrorMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var documentFileNameOk_property_selection : EBSelection <Bool> {
-    return self.documentFileNameOk_property.prop
+  var incorrectDocumentFileErrorMessage_property_selection : EBSelection <String> {
+    return self.incorrectDocumentFileErrorMessage_property.prop
   }
 
   //····················································································································
 
-  var documentFileNameOk : Bool? {
-    switch self.documentFileNameOk_property_selection {
+  var incorrectDocumentFileErrorMessage : String? {
+    switch self.incorrectDocumentFileErrorMessage_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -226,9 +238,10 @@ import Cocoa
   @IBOutlet var dismissPrefsForSettingMergerDisplayButton : EBButton? = nil
   @IBOutlet var mArrowMagnitudeTextField : CanariDimensionTextField? = nil
   @IBOutlet var mArrowMagnitudeUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mArtworNameTextField : EBTextObserverField? = nil
   @IBOutlet var mArtworkNameTextField : EBTextObserverField? = nil
   @IBOutlet var mArtworkSettingsTabView : NSTabView? = nil
+  @IBOutlet var mArtworkVersionTextField : EBIntObserverField? = nil
+  @IBOutlet var mArtwortNameTextField : EBTextObserverField? = nil
   @IBOutlet var mAutomaticBoardSizeSwitch : EBSwitch? = nil
   @IBOutlet var mAutomaticBoardSizeView : NSView? = nil
   @IBOutlet var mBoardBoardLimitTextField : CanariDimensionTextField? = nil
@@ -268,13 +281,34 @@ import Cocoa
   @IBOutlet var mBoardViewVerticalFlipCheckbox : EBSwitch? = nil
   @IBOutlet var mBoardWidthTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet var mCommentTextView : EBTextObserverView? = nil
   @IBOutlet var mComposedBoardScrollView : EBScrollView? = nil
   @IBOutlet var mComposedBoardView : EBGraphicView? = nil
   @IBOutlet var mDangerView : NSView? = nil
+  @IBOutlet var mDataTableView : EBTableView? = nil
   @IBOutlet var mDeselectIssueButton : EBButton? = nil
   @IBOutlet var mDisplaySettingView : NSView? = nil
+  @IBOutlet var mDrawBoardLimitsSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawComponentNamesBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawComponentNamesTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawComponentValuesBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawComponentValuesTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawPackageLegendBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawPackageLegendTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawPadsBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawPadsTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawTextsLayoutBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawTextsLayoutTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawTextsLegendBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawTextsLegendTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawTracksBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawTracksTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrawViasSwitch : CanariObserverSwitch? = nil
+  @IBOutlet var mDrillDataFileExtensionTextField : EBTextObserverField? = nil
   @IBOutlet var mEmptyBoardMessage : EBTextField? = nil
+  @IBOutlet var mExtensionTextField : EBTextObserverField? = nil
   @IBOutlet var mGenerateProductFilesActionButton : EBButton? = nil
+  @IBOutlet var mHorizontalMirrorSwitch : CanariObserverSwitch? = nil
   @IBOutlet var mImportArtworkButton : EBButton? = nil
   @IBOutlet var mIncorrectDocumentNameTextField : EBTextObserverField? = nil
   @IBOutlet var mInsertArrayOfBoardsOrientation : NSSegmentedControl? = nil
@@ -295,6 +329,8 @@ import Cocoa
   @IBOutlet var mManualBoardWidthTextField : CanariDimensionTextField? = nil
   @IBOutlet var mManualBoardWidthUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mMasterView : NSView? = nil
+  @IBOutlet var mMinPPTPTTTWdisplayUnitTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelBoardLimitTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mModelDragSourceTableView : CanariDragSourceTableView? = nil
   @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField? = nil
@@ -331,8 +367,12 @@ import Cocoa
   @IBOutlet var mMoveUpButton : EBButton? = nil
   @IBOutlet var mNoArtworkMessage : EBTextField? = nil
   @IBOutlet var mNoModelMessage : EBTextField? = nil
+  @IBOutlet var mOARUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet var mOARValueTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mOverlapSwitch : EBSwitch? = nil
   @IBOutlet var mPDFBoardBackgroundColorWell : EBColorWell? = nil
+  @IBOutlet var mPHDUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet var mPHDValueTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl? = nil
   @IBOutlet var mProductGenerationTabView : NSTabView? = nil
   @IBOutlet var mProductPageView : CanariViewWithKeyView? = nil
@@ -364,6 +404,8 @@ import Cocoa
   @IBOutlet var mergerViewDisplayInternalBoardsLimitsColorWell : EBColorWell? = nil
   @IBOutlet var mergerViewDisplayViasColorWell : EBColorWell? = nil
   @IBOutlet var mergerViewFrontLegendLinesColorWell : EBColorWell? = nil
+  @IBOutlet var minValueForBoardLimitTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet var minValueForBoardLimitUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var removeBoardModelButton : EBButton? = nil
   @IBOutlet var showBoardHelpButton : EBButton? = nil
   @IBOutlet var showPrefsForSettingMergerDisplayButton : EBButton? = nil
@@ -429,6 +471,10 @@ import Cocoa
     self.mBoardInstanceController.addExplorer (name: "mBoardInstanceController", y:&y, view:view)
   //--- Selection controller property: mBoardInstanceSelection
     self.mBoardInstanceSelection.addExplorer (name: "mBoardInstanceSelection", y:&y, view:view)
+  //--- Array controller property: mDataController
+    self.mDataController.addExplorer (name: "mDataController", y:&y, view:view)
+  //--- Selection controller property: mDataSelection
+    self.mDataSelection.addExplorer (name: "mDataSelection", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -466,9 +512,10 @@ import Cocoa
     checkOutletConnection (self.dismissPrefsForSettingMergerDisplayButton, "dismissPrefsForSettingMergerDisplayButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mArrowMagnitudeTextField, "mArrowMagnitudeTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mArrowMagnitudeUnitPopUp, "mArrowMagnitudeUnitPopUp", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mArtworNameTextField, "mArtworNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mArtworkNameTextField, "mArtworkNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mArtworkSettingsTabView, "mArtworkSettingsTabView", NSTabView.self, #file, #line)
+    checkOutletConnection (self.mArtworkVersionTextField, "mArtworkVersionTextField", EBIntObserverField.self, #file, #line)
+    checkOutletConnection (self.mArtwortNameTextField, "mArtwortNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mAutomaticBoardSizeSwitch, "mAutomaticBoardSizeSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mAutomaticBoardSizeView, "mAutomaticBoardSizeView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardBoardLimitTextField, "mBoardBoardLimitTextField", CanariDimensionTextField.self, #file, #line)
@@ -508,13 +555,34 @@ import Cocoa
     checkOutletConnection (self.mBoardViewVerticalFlipCheckbox, "mBoardViewVerticalFlipCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardWidthTextField, "mBoardWidthTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mBoardWidthUnitPopUp, "mBoardWidthUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextObserverView.self, #file, #line)
     checkOutletConnection (self.mComposedBoardScrollView, "mComposedBoardScrollView", EBScrollView.self, #file, #line)
     checkOutletConnection (self.mComposedBoardView, "mComposedBoardView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mDangerView, "mDangerView", NSView.self, #file, #line)
+    checkOutletConnection (self.mDataTableView, "mDataTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDeselectIssueButton, "mDeselectIssueButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mDisplaySettingView, "mDisplaySettingView", NSView.self, #file, #line)
+    checkOutletConnection (self.mDrawBoardLimitsSwitch, "mDrawBoardLimitsSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawComponentNamesBottomSideSwitch, "mDrawComponentNamesBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawComponentNamesTopSideSwitch, "mDrawComponentNamesTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawComponentValuesBottomSideSwitch, "mDrawComponentValuesBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawComponentValuesTopSideSwitch, "mDrawComponentValuesTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawPackageLegendBottomSideSwitch, "mDrawPackageLegendBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawPackageLegendTopSideSwitch, "mDrawPackageLegendTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawPadsBottomSideSwitch, "mDrawPadsBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawPadsTopSideSwitch, "mDrawPadsTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTextsLayoutBottomSideSwitch, "mDrawTextsLayoutBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTextsLayoutTopSideSwitch, "mDrawTextsLayoutTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTextsLegendBottomSideSwitch, "mDrawTextsLegendBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTextsLegendTopSideSwitch, "mDrawTextsLegendTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTracksBottomSideSwitch, "mDrawTracksBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTracksTopSideSwitch, "mDrawTracksTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawViasSwitch, "mDrawViasSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrillDataFileExtensionTextField, "mDrillDataFileExtensionTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mEmptyBoardMessage, "mEmptyBoardMessage", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mExtensionTextField, "mExtensionTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mGenerateProductFilesActionButton, "mGenerateProductFilesActionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mHorizontalMirrorSwitch, "mHorizontalMirrorSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mImportArtworkButton, "mImportArtworkButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mIncorrectDocumentNameTextField, "mIncorrectDocumentNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mInsertArrayOfBoardsOrientation, "mInsertArrayOfBoardsOrientation", NSSegmentedControl.self, #file, #line)
@@ -535,6 +603,8 @@ import Cocoa
     checkOutletConnection (self.mManualBoardWidthTextField, "mManualBoardWidthTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mManualBoardWidthUnitPopUp, "mManualBoardWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
+    checkOutletConnection (self.mMinPPTPTTTWdisplayUnitTextField, "mMinPPTPTTTWdisplayUnitTextField", CanariDimensionObserverTextField.self, #file, #line)
+    checkOutletConnection (self.mMinPPTPTTTWinEBUnitPopUp, "mMinPPTPTTTWinEBUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelBoardLimitTextField, "mModelBoardLimitTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mModelDragSourceTableView, "mModelDragSourceTableView", CanariDragSourceTableView.self, #file, #line)
     checkOutletConnection (self.mModelHeightTextField, "mModelHeightTextField", CanariDimensionObserverTextField.self, #file, #line)
@@ -571,8 +641,12 @@ import Cocoa
     checkOutletConnection (self.mMoveUpButton, "mMoveUpButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mNoArtworkMessage, "mNoArtworkMessage", EBTextField.self, #file, #line)
     checkOutletConnection (self.mNoModelMessage, "mNoModelMessage", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mOARUnitPopUp, "mOARUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mOARValueTextField, "mOARValueTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mOverlapSwitch, "mOverlapSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mPDFBoardBackgroundColorWell, "mPDFBoardBackgroundColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPHDUnitPopUp, "mPHDUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPHDValueTextField, "mPHDValueTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mProductGenerationTabView, "mProductGenerationTabView", NSTabView.self, #file, #line)
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
@@ -604,6 +678,8 @@ import Cocoa
     checkOutletConnection (self.mergerViewDisplayInternalBoardsLimitsColorWell, "mergerViewDisplayInternalBoardsLimitsColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mergerViewDisplayViasColorWell, "mergerViewDisplayViasColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mergerViewFrontLegendLinesColorWell, "mergerViewFrontLegendLinesColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.minValueForBoardLimitTextField, "minValueForBoardLimitTextField", CanariDimensionObserverTextField.self, #file, #line)
+    checkOutletConnection (self.minValueForBoardLimitUnitPopUp, "minValueForBoardLimitUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.removeBoardModelButton, "removeBoardModelButton", EBButton.self, #file, #line)
     checkOutletConnection (self.showBoardHelpButton, "showBoardHelpButton", EBButton.self, #file, #line)
     checkOutletConnection (self.showPrefsForSettingMergerDisplayButton, "showPrefsForSettingMergerDisplayButton", EBButton.self, #file, #line)
@@ -643,12 +719,24 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Array controller property: mDataController
+    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: incorrectDocumentFileErrorMessage
-    self.incorrectDocumentFileErrorMessage_property.mReadModelFunction = { [weak self] in
+  //--- Selection controller property: mDataSelection
+    self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property, file: #file, line: #line)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: documentFileNameOk
+    self.documentFileNameOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
         switch kind {
@@ -659,7 +747,7 @@ import Cocoa
         case .single :
           switch (unwSelf.documentFilePath_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_MergerDocument_incorrectDocumentFileErrorMessage (v0))
+            return .single (transient_MergerDocument_documentFileNameOk (v0))
           default :
             return .empty
           }
@@ -668,7 +756,7 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property)
+    self.documentFilePath_property.addEBObserver (self.documentFileNameOk_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -702,14 +790,14 @@ import Cocoa
   //--- Atomic property: importArtworkButtonTitle
     self.importArtworkButtonTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.artworkName_property_selection.kind ()
+        let kind = unwSelf.rootObject.mArtworkName_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.rootObject.artworkName_property_selection) {
+          switch (unwSelf.rootObject.mArtworkName_property_selection) {
           case (.single (let v0)) :
             return .single (transient_MergerDocument_importArtworkButtonTitle (v0))
           default :
@@ -720,7 +808,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.artworkName_property.addEBObserver (self.importArtworkButtonTitle_property)
+    self.rootObject.mArtworkName_property.addEBObserver (self.importArtworkButtonTitle_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -811,8 +899,8 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: documentFileNameOk
-    self.documentFileNameOk_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: incorrectDocumentFileErrorMessage
+    self.incorrectDocumentFileErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
         switch kind {
@@ -823,7 +911,7 @@ import Cocoa
         case .single :
           switch (unwSelf.documentFilePath_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_MergerDocument_documentFileNameOk (v0))
+            return .single (transient_MergerDocument_incorrectDocumentFileErrorMessage (v0))
           default :
             return .empty
           }
@@ -832,7 +920,7 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.documentFileNameOk_property)
+    self.documentFilePath_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -849,6 +937,7 @@ import Cocoa
     let start = Date ()
   //--------------------------- Install table view bindings
     self.mBoardModelController.bind_tableView (self.mBoardModelTableView, file: #file, line: #line)
+    self.mDataController.bind_tableView (self.mDataTableView, file: #file, line: #line)
   //--------------------------- Install ebView bindings
     self.mBoardInstanceController.bind_ebView (self.mComposedBoardView)
   //--------------------------- Install regular bindings
@@ -965,9 +1054,38 @@ import Cocoa
     self.mInstanceRotation?.bind_quadrant (self.mBoardInstanceSelection.instanceRotation_property, file: #file, line: #line)
     self.mOverlapSwitch?.bind_value (self.rootObject.overlapingArrangment_property, file: #file, line: #line)
     self.mIncorrectDocumentNameTextField?.bind_valueObserver (self.incorrectDocumentFileErrorMessage_property, file: #file, line: #line)
-    self.mArtworNameTextField?.bind_valueObserver (self.rootObject.artworkName_property, file: #file, line: #line)
+    self.mArtwortNameTextField?.bind_valueObserver (self.rootObject.mArtworkName_property, file: #file, line: #line)
     self.mImportArtworkButton?.bind_title (self.importArtworkButtonTitle_property, file: #file, line: #line)
     self.mPDFBoardBackgroundColorWell?.bind_color (self.rootObject.mPDFBoardBackgroundColor_property, file: #file, line: #line, sendContinously:false)
+    self.mMinPPTPTTTWinEBUnitPopUp?.bind_selectedTag (self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
+    self.mMinPPTPTTTWdisplayUnitTextField?.bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
+    self.mOARUnitPopUp?.bind_selectedTag (self.rootObject.minValueForOARdisplayUnit_property, file: #file, line: #line)
+    self.mOARValueTextField?.bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property, file: #file, line: #line)
+    self.mPHDUnitPopUp?.bind_selectedTag (self.rootObject.minValueForPHDdisplayUnit_property, file: #file, line: #line)
+    self.mPHDValueTextField?.bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property, file: #file, line: #line)
+    self.minValueForBoardLimitUnitPopUp?.bind_selectedTag (self.rootObject.minValueForBoardLimitWidthDisplayUnit_property, file: #file, line: #line)
+    self.minValueForBoardLimitTextField?.bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property, file: #file, line: #line)
+    self.mDrillDataFileExtensionTextField?.bind_valueObserver (self.rootObject.drillDataFileExtension_property, file: #file, line: #line)
+    self.mExtensionTextField?.bind_valueObserver (self.mDataSelection.fileExtension_property, file: #file, line: #line)
+    self.mDrawBoardLimitsSwitch?.bind_valueObserver (self.mDataSelection.drawBoardLimits_property, file: #file, line: #line)
+    self.mDrawComponentValuesTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawComponentValuesTopSide_property, file: #file, line: #line)
+    self.mDrawComponentValuesBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawComponentValuesBottomSide_property, file: #file, line: #line)
+    self.mDrawComponentNamesTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawComponentNamesTopSide_property, file: #file, line: #line)
+    self.mDrawComponentNamesBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawComponentNamesBottomSide_property, file: #file, line: #line)
+    self.mDrawPackageLegendTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawPackageLegendTopSide_property, file: #file, line: #line)
+    self.mDrawPackageLegendBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawPackageLegendBottomSide_property, file: #file, line: #line)
+    self.mDrawPadsTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawPadsTopSide_property, file: #file, line: #line)
+    self.mDrawPadsBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawPadsBottomSide_property, file: #file, line: #line)
+    self.mDrawTextsLayoutTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawTextsLayoutTopSide_property, file: #file, line: #line)
+    self.mDrawTextsLayoutBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawTextsLayoutBottomSide_property, file: #file, line: #line)
+    self.mDrawTextsLegendTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawTextsLegendTopSide_property, file: #file, line: #line)
+    self.mDrawTextsLegendBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawTextsLegendBottomSide_property, file: #file, line: #line)
+    self.mDrawTracksTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawTracksTopSide_property, file: #file, line: #line)
+    self.mDrawTracksBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawTracksBottomSide_property, file: #file, line: #line)
+    self.mDrawViasSwitch?.bind_valueObserver (self.mDataSelection.drawVias_property, file: #file, line: #line)
+    self.mHorizontalMirrorSwitch?.bind_valueObserver (self.mDataSelection.horizontalMirror_property, file: #file, line: #line)
+    self.mCommentTextView?.bind_valueObserver (self.rootObject.comments_property, file: #file, line: #line)
+    self.mArtworkVersionTextField?.bind_valueObserver (self.rootObject.mArtworkVersion_property, file: #file, line: #line, autoFormatter:false)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1103,11 +1221,11 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
-          return !self.rootObject.artwork_none_selection
+          return !self.rootObject.mArtwork_none_selection
         },
         outlet: self.mNoArtworkMessage
       )
-      self.rootObject.artwork_none.addEBObserver (controller)
+      self.rootObject.mArtwork_none.addEBObserver (controller)
       self.mController_mNoArtworkMessage_hidden = controller
     }
     do{
@@ -1123,23 +1241,23 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return ((!self.rootObject.artwork_none_selection && (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))) && !self.documentIsUnnamed_property_selection)
+          return ((!self.rootObject.mArtwork_none_selection && (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))) && !self.documentIsUnnamed_property_selection)
         },
         outlet: self.mGenerateProductFilesActionButton
       )
       self.documentIsUnnamed_property.addEBObserver (controller)
-      self.rootObject.artwork_none.addEBObserver (controller)
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
+      self.rootObject.mArtwork_none.addEBObserver (controller)
       self.mController_mGenerateProductFilesActionButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
-          return self.rootObject.artwork_none_selection
+          return self.rootObject.mArtwork_none_selection
         },
         outlet: self.mArtworkSettingsTabView
       )
-      self.rootObject.artwork_none.addEBObserver (controller)
+      self.rootObject.mArtwork_none.addEBObserver (controller)
       self.mController_mArtworkSettingsTabView_hidden = controller
     }
     if LOG_OPERATION_DURATION {
@@ -1323,9 +1441,38 @@ import Cocoa
     self.mInstanceRotation?.unbind_quadrant ()
     self.mOverlapSwitch?.unbind_value ()
     self.mIncorrectDocumentNameTextField?.unbind_valueObserver ()
-    self.mArtworNameTextField?.unbind_valueObserver ()
+    self.mArtwortNameTextField?.unbind_valueObserver ()
     self.mImportArtworkButton?.unbind_title ()
     self.mPDFBoardBackgroundColorWell?.unbind_color ()
+    self.mMinPPTPTTTWinEBUnitPopUp?.unbind_selectedTag ()
+    self.mMinPPTPTTTWdisplayUnitTextField?.unbind_dimensionAndUnit ()
+    self.mOARUnitPopUp?.unbind_selectedTag ()
+    self.mOARValueTextField?.unbind_dimensionAndUnit ()
+    self.mPHDUnitPopUp?.unbind_selectedTag ()
+    self.mPHDValueTextField?.unbind_dimensionAndUnit ()
+    self.minValueForBoardLimitUnitPopUp?.unbind_selectedTag ()
+    self.minValueForBoardLimitTextField?.unbind_dimensionAndUnit ()
+    self.mDrillDataFileExtensionTextField?.unbind_valueObserver ()
+    self.mExtensionTextField?.unbind_valueObserver ()
+    self.mDrawBoardLimitsSwitch?.unbind_valueObserver ()
+    self.mDrawComponentValuesTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawComponentValuesBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawComponentNamesTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawComponentNamesBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawPackageLegendTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawPackageLegendBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawPadsTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawPadsBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawTextsLayoutTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawTextsLayoutBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawTextsLegendTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawTextsLegendBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawTracksTopSideSwitch?.unbind_valueObserver ()
+    self.mDrawTracksBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawViasSwitch?.unbind_valueObserver ()
+    self.mHorizontalMirrorSwitch?.unbind_valueObserver ()
+    self.mCommentTextView?.unbind_valueObserver ()
+    self.mArtworkVersionTextField?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
     self.rootObject.selectedPageIndex_property.removeEBObserver (self.mController_showPrefsForSettingMergerDisplayButton_enabled!)
     self.mController_showPrefsForSettingMergerDisplayButton_enabled = nil
@@ -1354,18 +1501,19 @@ import Cocoa
     self.mController_mMoveUpButton_enabled = nil
     self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveDownButton_enabled!)
     self.mController_mMoveDownButton_enabled = nil
-    self.rootObject.artwork_none.removeEBObserver (self.mController_mNoArtworkMessage_hidden!)
+    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mNoArtworkMessage_hidden!)
     self.mController_mNoArtworkMessage_hidden = nil
     self.documentFileNameOk_property.removeEBObserver (self.mController_mDangerView_hidden!)
     self.mController_mDangerView_hidden = nil
     self.documentIsUnnamed_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
-    self.rootObject.artwork_none.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
     self.rootObject.boardInstances_property.count_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
+    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
     self.mController_mGenerateProductFilesActionButton_enabled = nil
-    self.rootObject.artwork_none.removeEBObserver (self.mController_mArtworkSettingsTabView_hidden!)
+    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mArtworkSettingsTabView_hidden!)
     self.mController_mArtworkSettingsTabView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mBoardModelController.unbind_tableView (self.mBoardModelTableView)
+    self.mDataController.unbind_tableView (self.mDataTableView)
     self.mBoardInstanceController.unbind_ebView (self.mComposedBoardView)
   //--- Array controller property: mBoardModelController
     self.mBoardModelController.unbind_model ()
@@ -1375,9 +1523,13 @@ import Cocoa
     self.mBoardInstanceController.unbind_model ()
   //--- Selection controller property: mBoardInstanceSelection
     self.mBoardInstanceSelection.unbind_selection ()
-    self.documentFilePath_property.removeEBObserver (self.incorrectDocumentFileErrorMessage_property)
+  //--- Array controller property: mDataController
+    self.mDataController.unbind_model ()
+  //--- Selection controller property: mDataSelection
+    self.mDataSelection.unbind_selection ()
+    self.documentFilePath_property.removeEBObserver (self.documentFileNameOk_property)
     self.documentFilePath_property.removeEBObserver (self.documentIsUnnamed_property)
-    self.rootObject.artworkName_property.removeEBObserver (self.importArtworkButtonTitle_property)
+    self.rootObject.mArtworkName_property.removeEBObserver (self.importArtworkButtonTitle_property)
     self.rootObject.overlapingArrangment_property.removeEBObserver (self.issues_property)
     self.rootObject.boardRect_property.removeEBObserver (self.issues_property)
     self.rootObject.boardDisplayRect_property.removeEBObserver (self.issues_property)
@@ -1385,7 +1537,7 @@ import Cocoa
     self.rootObject.boardInstances_property.removeEBObserverOf_boardLimitWidth (self.issues_property)
     self.issues_property.removeEBObserver (self.mStatusImage_property)
     self.issues_property.removeEBObserver (self.mStatusMessage_property)
-    self.documentFilePath_property.removeEBObserver (self.documentFileNameOk_property)
+    self.documentFilePath_property.removeEBObserver (self.incorrectDocumentFileErrorMessage_property)
   //--------------------------- Remove targets / actions
     self.showPrefsForSettingMergerDisplayButton?.target = nil
     self.dismissPrefsForSettingMergerDisplayButton?.target = nil
@@ -1405,9 +1557,10 @@ import Cocoa
     self.dismissPrefsForSettingMergerDisplayButton?.ebCleanUp ()
     self.mArrowMagnitudeTextField?.ebCleanUp ()
     self.mArrowMagnitudeUnitPopUp?.ebCleanUp ()
-    self.mArtworNameTextField?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
     self.mArtworkSettingsTabView?.ebCleanUp ()
+    self.mArtworkVersionTextField?.ebCleanUp ()
+    self.mArtwortNameTextField?.ebCleanUp ()
     self.mAutomaticBoardSizeSwitch?.ebCleanUp ()
     self.mAutomaticBoardSizeView?.ebCleanUp ()
     self.mBoardBoardLimitTextField?.ebCleanUp ()
@@ -1447,13 +1600,34 @@ import Cocoa
     self.mBoardViewVerticalFlipCheckbox?.ebCleanUp ()
     self.mBoardWidthTextField?.ebCleanUp ()
     self.mBoardWidthUnitPopUp?.ebCleanUp ()
+    self.mCommentTextView?.ebCleanUp ()
     self.mComposedBoardScrollView?.ebCleanUp ()
     self.mComposedBoardView?.ebCleanUp ()
     self.mDangerView?.ebCleanUp ()
+    self.mDataTableView?.ebCleanUp ()
     self.mDeselectIssueButton?.ebCleanUp ()
     self.mDisplaySettingView?.ebCleanUp ()
+    self.mDrawBoardLimitsSwitch?.ebCleanUp ()
+    self.mDrawComponentNamesBottomSideSwitch?.ebCleanUp ()
+    self.mDrawComponentNamesTopSideSwitch?.ebCleanUp ()
+    self.mDrawComponentValuesBottomSideSwitch?.ebCleanUp ()
+    self.mDrawComponentValuesTopSideSwitch?.ebCleanUp ()
+    self.mDrawPackageLegendBottomSideSwitch?.ebCleanUp ()
+    self.mDrawPackageLegendTopSideSwitch?.ebCleanUp ()
+    self.mDrawPadsBottomSideSwitch?.ebCleanUp ()
+    self.mDrawPadsTopSideSwitch?.ebCleanUp ()
+    self.mDrawTextsLayoutBottomSideSwitch?.ebCleanUp ()
+    self.mDrawTextsLayoutTopSideSwitch?.ebCleanUp ()
+    self.mDrawTextsLegendBottomSideSwitch?.ebCleanUp ()
+    self.mDrawTextsLegendTopSideSwitch?.ebCleanUp ()
+    self.mDrawTracksBottomSideSwitch?.ebCleanUp ()
+    self.mDrawTracksTopSideSwitch?.ebCleanUp ()
+    self.mDrawViasSwitch?.ebCleanUp ()
+    self.mDrillDataFileExtensionTextField?.ebCleanUp ()
     self.mEmptyBoardMessage?.ebCleanUp ()
+    self.mExtensionTextField?.ebCleanUp ()
     self.mGenerateProductFilesActionButton?.ebCleanUp ()
+    self.mHorizontalMirrorSwitch?.ebCleanUp ()
     self.mImportArtworkButton?.ebCleanUp ()
     self.mIncorrectDocumentNameTextField?.ebCleanUp ()
     self.mInsertArrayOfBoardsOrientation?.ebCleanUp ()
@@ -1474,6 +1648,8 @@ import Cocoa
     self.mManualBoardWidthTextField?.ebCleanUp ()
     self.mManualBoardWidthUnitPopUp?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
+    self.mMinPPTPTTTWdisplayUnitTextField?.ebCleanUp ()
+    self.mMinPPTPTTTWinEBUnitPopUp?.ebCleanUp ()
     self.mModelBoardLimitTextField?.ebCleanUp ()
     self.mModelDragSourceTableView?.ebCleanUp ()
     self.mModelHeightTextField?.ebCleanUp ()
@@ -1510,8 +1686,12 @@ import Cocoa
     self.mMoveUpButton?.ebCleanUp ()
     self.mNoArtworkMessage?.ebCleanUp ()
     self.mNoModelMessage?.ebCleanUp ()
+    self.mOARUnitPopUp?.ebCleanUp ()
+    self.mOARValueTextField?.ebCleanUp ()
     self.mOverlapSwitch?.ebCleanUp ()
     self.mPDFBoardBackgroundColorWell?.ebCleanUp ()
+    self.mPHDUnitPopUp?.ebCleanUp ()
+    self.mPHDValueTextField?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mProductGenerationTabView?.ebCleanUp ()
     self.mProductPageView?.ebCleanUp ()
@@ -1543,6 +1723,8 @@ import Cocoa
     self.mergerViewDisplayInternalBoardsLimitsColorWell?.ebCleanUp ()
     self.mergerViewDisplayViasColorWell?.ebCleanUp ()
     self.mergerViewFrontLegendLinesColorWell?.ebCleanUp ()
+    self.minValueForBoardLimitTextField?.ebCleanUp ()
+    self.minValueForBoardLimitUnitPopUp?.ebCleanUp ()
     self.removeBoardModelButton?.ebCleanUp ()
     self.showBoardHelpButton?.ebCleanUp ()
     self.showPrefsForSettingMergerDisplayButton?.ebCleanUp ()
@@ -1553,9 +1735,10 @@ import Cocoa
     self.dismissPrefsForSettingMergerDisplayButton = nil
     self.mArrowMagnitudeTextField = nil
     self.mArrowMagnitudeUnitPopUp = nil
-    self.mArtworNameTextField = nil
     self.mArtworkNameTextField = nil
     self.mArtworkSettingsTabView = nil
+    self.mArtworkVersionTextField = nil
+    self.mArtwortNameTextField = nil
     self.mAutomaticBoardSizeSwitch = nil
     self.mAutomaticBoardSizeView = nil
     self.mBoardBoardLimitTextField = nil
@@ -1595,13 +1778,34 @@ import Cocoa
     self.mBoardViewVerticalFlipCheckbox = nil
     self.mBoardWidthTextField = nil
     self.mBoardWidthUnitPopUp = nil
+    self.mCommentTextView = nil
     self.mComposedBoardScrollView = nil
     self.mComposedBoardView = nil
     self.mDangerView = nil
+    self.mDataTableView = nil
     self.mDeselectIssueButton = nil
     self.mDisplaySettingView = nil
+    self.mDrawBoardLimitsSwitch = nil
+    self.mDrawComponentNamesBottomSideSwitch = nil
+    self.mDrawComponentNamesTopSideSwitch = nil
+    self.mDrawComponentValuesBottomSideSwitch = nil
+    self.mDrawComponentValuesTopSideSwitch = nil
+    self.mDrawPackageLegendBottomSideSwitch = nil
+    self.mDrawPackageLegendTopSideSwitch = nil
+    self.mDrawPadsBottomSideSwitch = nil
+    self.mDrawPadsTopSideSwitch = nil
+    self.mDrawTextsLayoutBottomSideSwitch = nil
+    self.mDrawTextsLayoutTopSideSwitch = nil
+    self.mDrawTextsLegendBottomSideSwitch = nil
+    self.mDrawTextsLegendTopSideSwitch = nil
+    self.mDrawTracksBottomSideSwitch = nil
+    self.mDrawTracksTopSideSwitch = nil
+    self.mDrawViasSwitch = nil
+    self.mDrillDataFileExtensionTextField = nil
     self.mEmptyBoardMessage = nil
+    self.mExtensionTextField = nil
     self.mGenerateProductFilesActionButton = nil
+    self.mHorizontalMirrorSwitch = nil
     self.mImportArtworkButton = nil
     self.mIncorrectDocumentNameTextField = nil
     self.mInsertArrayOfBoardsOrientation = nil
@@ -1622,6 +1826,8 @@ import Cocoa
     self.mManualBoardWidthTextField = nil
     self.mManualBoardWidthUnitPopUp = nil
     self.mMasterView = nil
+    self.mMinPPTPTTTWdisplayUnitTextField = nil
+    self.mMinPPTPTTTWinEBUnitPopUp = nil
     self.mModelBoardLimitTextField = nil
     self.mModelDragSourceTableView = nil
     self.mModelHeightTextField = nil
@@ -1658,8 +1864,12 @@ import Cocoa
     self.mMoveUpButton = nil
     self.mNoArtworkMessage = nil
     self.mNoModelMessage = nil
+    self.mOARUnitPopUp = nil
+    self.mOARValueTextField = nil
     self.mOverlapSwitch = nil
     self.mPDFBoardBackgroundColorWell = nil
+    self.mPHDUnitPopUp = nil
+    self.mPHDValueTextField = nil
     self.mPageSegmentedControl = nil
     self.mProductGenerationTabView = nil
     self.mProductPageView = nil
@@ -1691,6 +1901,8 @@ import Cocoa
     self.mergerViewDisplayInternalBoardsLimitsColorWell = nil
     self.mergerViewDisplayViasColorWell = nil
     self.mergerViewFrontLegendLinesColorWell = nil
+    self.minValueForBoardLimitTextField = nil
+    self.minValueForBoardLimitUnitPopUp = nil
     self.removeBoardModelButton = nil
     self.showBoardHelpButton = nil
     self.showPrefsForSettingMergerDisplayButton = nil

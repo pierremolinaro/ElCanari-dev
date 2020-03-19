@@ -37,7 +37,8 @@ let CHANGES : [String] = [
 let NEWS : [String] = [
   "Project, PDF Generation: selectable background color",
   "Merger, PDF Generation: selectable background color",
-  "Merger, PDF Generation: added generation of drill file"
+  "Merger, PDF Generation: added generation of drill file",
+  "Merger: display artwork settings"
 ]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

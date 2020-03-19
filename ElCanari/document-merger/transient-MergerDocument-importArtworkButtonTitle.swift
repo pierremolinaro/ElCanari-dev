@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_MergerDocument_importArtworkButtonTitle (
-       _ root_artworkName : String
+       _ root_mArtworkName : String
 ) -> String {
 //--- START OF USER ZONE 2
-  return (root_artworkName == "") ? "Import Artwork…" : "Detach Artwork"
+  return (root_mArtworkName == "") ? "Import Artwork…" : "Detach Artwork"
 //--- END OF USER ZONE 2
 }
 

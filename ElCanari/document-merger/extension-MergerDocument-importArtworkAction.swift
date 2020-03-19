@@ -62,10 +62,15 @@ extension MergerDocument {
             let optionalFileData : Data? = FileManager ().contents (atPath: filePath)
             if let fileData = optionalFileData {
               do {
-                let (_, _, possibleLoadedObject) = try loadEasyBindingFile (self.ebUndoManager, from: fileData)
+                let (_, metadataDictionary, possibleLoadedObject) = try loadEasyBindingFile (self.ebUndoManager, from: fileData)
                 if let loadedObject = possibleLoadedObject, let loadedArtwork = loadedObject as? ArtworkRoot {
-                  self.rootObject.artwork_property.setProp (loadedArtwork)
-                  self.rootObject.artworkName = filePath.lastPathComponent.deletingPathExtension
+                  self.rootObject.mArtwork_property.setProp (loadedArtwork)
+                  self.rootObject.mArtworkName = filePath.lastPathComponent.deletingPathExtension
+                  if let version = metadataDictionary [PMArtworkVersion] as? Int {
+                    self.rootObject.mArtworkVersion = version
+                  }else{
+                    self.rootObject.mArtworkVersion = 0
+                  }
                 }
               }catch let error {
                 window.presentError (error)

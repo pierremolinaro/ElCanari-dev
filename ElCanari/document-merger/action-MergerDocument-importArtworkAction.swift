@@ -13,9 +13,9 @@ import Cocoa
 extension MergerDocument {
   @objc func importArtworkAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if self.rootObject.artwork_property.propval != nil { // Arwork already loaded, remove it
-      self.rootObject.artwork_property.setProp (nil)
-      self.rootObject.artworkName = ""
+    if self.rootObject.mArtwork_property.propval != nil { // Arwork already loaded, remove it
+      self.rootObject.mArtwork_property.setProp (nil)
+      self.rootObject.mArtworkName = ""
     }else{
       self.importArtwork ()
     }
