@@ -28,7 +28,7 @@ extension ProjectDocument {
       pathes.append (bp)
     }
     let shape = EBShape (stroke: pathes, .black)
-    let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: .lightGray)
+    let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: self.rootObject.mPDFBoardBackroundColor)
     try data.write (to: URL (fileURLWithPath: inPath))
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }
@@ -105,7 +105,7 @@ extension ProjectDocument {
     }
     var shape = EBShape (stroke: strokePathes, .black)
     shape.add (filled: filledPathes, .black)
-    let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: .lightGray)
+    let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: self.rootObject.mPDFBoardBackroundColor)
     try data.write (to: URL (fileURLWithPath: path))
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }

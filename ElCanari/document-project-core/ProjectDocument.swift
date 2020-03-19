@@ -668,7 +668,7 @@ import Cocoa
   @IBOutlet var mAllowTracksOnBackSideSwitch : EBSwitch? = nil
   @IBOutlet var mAllowTracksOnFrontSideSwitch : EBSwitch? = nil
   @IBOutlet var mArtworkNameTextField : EBTextObserverField? = nil
-  @IBOutlet var mArtworkTabView : NSTabView? = nil
+  @IBOutlet var mArtworkSettingsTabView : NSTabView? = nil
   @IBOutlet var mArtworkVersionTextField : EBIntObserverField? = nil
   @IBOutlet var mArtworlImportButton : EBButton? = nil
   @IBOutlet var mAutoRouterPreferredDirectionPopUp : EBPopUpButton? = nil
@@ -923,11 +923,13 @@ import Cocoa
   @IBOutlet var mOARValueTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mOpenSetDateDialogButton : EBButton? = nil
   @IBOutlet var mOperationBoardLimitsInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet var mPDFBoardBackroundColorWell : EBColorWell? = nil
   @IBOutlet var mPHDUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mPHDValueTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl? = nil
   @IBOutlet var mPinPadAssignmentTableView : ThreeStringArrayTableView? = nil
   @IBOutlet var mProductFileGenerationLogTextView : NSTextView? = nil
+  @IBOutlet var mProductGenerationTabView : NSTabView? = nil
   @IBOutlet var mProductPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mRasnetComponentNameSelectionPopUpButton : CanariSelectionPopUpButton? = nil
   @IBOutlet var mRasnetNetNameSelectionPopUpButton : CanariSelectionPopUpButton? = nil
@@ -1113,7 +1115,7 @@ import Cocoa
   var mController_mRasnetNetNameSelectionPopUpButton_hidden : MultipleBindingController_hidden? = nil
   var mController_mRasnetComponentNameSelectionPopUpButton_hidden : MultipleBindingController_hidden? = nil
   var mController_mNoArtworkMessageTextField_hidden : MultipleBindingController_hidden? = nil
-  var mController_mArtworkTabView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mArtworkSettingsTabView_hidden : MultipleBindingController_hidden? = nil
   var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mIncorrectFileNameMessageView_hidden : MultipleBindingController_hidden? = nil
   var mController_boardCurveObjectsController_hidden : MultipleBindingController_hidden? = nil
@@ -1245,7 +1247,7 @@ import Cocoa
     checkOutletConnection (self.mAllowTracksOnBackSideSwitch, "mAllowTracksOnBackSideSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mAllowTracksOnFrontSideSwitch, "mAllowTracksOnFrontSideSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mArtworkNameTextField, "mArtworkNameTextField", EBTextObserverField.self, #file, #line)
-    checkOutletConnection (self.mArtworkTabView, "mArtworkTabView", NSTabView.self, #file, #line)
+    checkOutletConnection (self.mArtworkSettingsTabView, "mArtworkSettingsTabView", NSTabView.self, #file, #line)
     checkOutletConnection (self.mArtworkVersionTextField, "mArtworkVersionTextField", EBIntObserverField.self, #file, #line)
     checkOutletConnection (self.mArtworlImportButton, "mArtworlImportButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAutoRouterPreferredDirectionPopUp, "mAutoRouterPreferredDirectionPopUp", EBPopUpButton.self, #file, #line)
@@ -1500,11 +1502,13 @@ import Cocoa
     checkOutletConnection (self.mOARValueTextField, "mOARValueTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mOpenSetDateDialogButton, "mOpenSetDateDialogButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mOperationBoardLimitsInspectorView, "mOperationBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mPDFBoardBackroundColorWell, "mPDFBoardBackroundColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mPHDUnitPopUp, "mPHDUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mPHDValueTextField, "mPHDValueTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mPinPadAssignmentTableView, "mPinPadAssignmentTableView", ThreeStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mProductFileGenerationLogTextView, "mProductFileGenerationLogTextView", NSTextView.self, #file, #line)
+    checkOutletConnection (self.mProductGenerationTabView, "mProductGenerationTabView", NSTabView.self, #file, #line)
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mRasnetComponentNameSelectionPopUpButton, "mRasnetComponentNameSelectionPopUpButton", CanariSelectionPopUpButton.self, #file, #line)
     checkOutletConnection (self.mRasnetNetNameSelectionPopUpButton, "mRasnetNetNameSelectionPopUpButton", CanariSelectionPopUpButton.self, #file, #line)
@@ -2593,6 +2597,7 @@ import Cocoa
     self.mRasnetComponentNameSelectionPopUpButton?.bind_selectedNameInArray (self.rootObject.mRastnetDisplayedComponentName_property, self.rootObject.placedComponentNameArray_property, file: #file, line: #line)
     self.mArtworkNameTextField?.bind_valueObserver (self.rootObject.mArtworkName_property, file: #file, line: #line)
     self.mArtworlImportButton?.bind_title (self.artworlImportButtonTitle_property, file: #file, line: #line)
+    self.mPDFBoardBackroundColorWell?.bind_color (self.rootObject.mPDFBoardBackroundColor_property, file: #file, line: #line, sendContinously:false)
     self.mMinPPTPTTTWinEBUnitPopUp?.bind_selectedTag (self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
     self.mMinPPTPTTTWdisplayUnitTextField?.bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
     self.mOARUnitPopUp?.bind_selectedTag (self.rootObject.minValueForOARdisplayUnit_property, file: #file, line: #line)
@@ -3174,10 +3179,10 @@ import Cocoa
         computeFunction: {
           return self.rootObject.mArtwork_none_selection
         },
-        outlet: self.mArtworkTabView
+        outlet: self.mArtworkSettingsTabView
       )
       self.rootObject.mArtwork_none.addEBObserver (controller)
-      self.mController_mArtworkTabView_hidden = controller
+      self.mController_mArtworkSettingsTabView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
@@ -3553,6 +3558,7 @@ import Cocoa
     self.mRasnetComponentNameSelectionPopUpButton?.unbind_selectedNameInArray ()
     self.mArtworkNameTextField?.unbind_valueObserver ()
     self.mArtworlImportButton?.unbind_title ()
+    self.mPDFBoardBackroundColorWell?.unbind_color ()
     self.mMinPPTPTTTWinEBUnitPopUp?.unbind_selectedTag ()
     self.mMinPPTPTTTWdisplayUnitTextField?.unbind_dimensionAndUnit ()
     self.mOARUnitPopUp?.unbind_selectedTag ()
@@ -3697,8 +3703,8 @@ import Cocoa
     self.mController_mRasnetComponentNameSelectionPopUpButton_hidden = nil
     self.rootObject.mArtwork_none.removeEBObserver (self.mController_mNoArtworkMessageTextField_hidden!)
     self.mController_mNoArtworkMessageTextField_hidden = nil
-    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mArtworkTabView_hidden!)
-    self.mController_mArtworkTabView_hidden = nil
+    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mArtworkSettingsTabView_hidden!)
+    self.mController_mArtworkSettingsTabView_hidden = nil
     self.rootObject.mArtwork_none.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
     self.mController_mGenerateProductFilesActionButton_enabled = nil
     self.documentFilePathOk_property.removeEBObserver (self.mController_mIncorrectFileNameMessageView_hidden!)
@@ -3837,7 +3843,7 @@ import Cocoa
     self.mAllowTracksOnBackSideSwitch?.ebCleanUp ()
     self.mAllowTracksOnFrontSideSwitch?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
-    self.mArtworkTabView?.ebCleanUp ()
+    self.mArtworkSettingsTabView?.ebCleanUp ()
     self.mArtworkVersionTextField?.ebCleanUp ()
     self.mArtworlImportButton?.ebCleanUp ()
     self.mAutoRouterPreferredDirectionPopUp?.ebCleanUp ()
@@ -4092,11 +4098,13 @@ import Cocoa
     self.mOARValueTextField?.ebCleanUp ()
     self.mOpenSetDateDialogButton?.ebCleanUp ()
     self.mOperationBoardLimitsInspectorView?.ebCleanUp ()
+    self.mPDFBoardBackroundColorWell?.ebCleanUp ()
     self.mPHDUnitPopUp?.ebCleanUp ()
     self.mPHDValueTextField?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mPinPadAssignmentTableView?.ebCleanUp ()
     self.mProductFileGenerationLogTextView?.ebCleanUp ()
+    self.mProductGenerationTabView?.ebCleanUp ()
     self.mProductPageView?.ebCleanUp ()
     self.mRasnetComponentNameSelectionPopUpButton?.ebCleanUp ()
     self.mRasnetNetNameSelectionPopUpButton?.ebCleanUp ()
@@ -4247,7 +4255,7 @@ import Cocoa
     self.mAllowTracksOnBackSideSwitch = nil
     self.mAllowTracksOnFrontSideSwitch = nil
     self.mArtworkNameTextField = nil
-    self.mArtworkTabView = nil
+    self.mArtworkSettingsTabView = nil
     self.mArtworkVersionTextField = nil
     self.mArtworlImportButton = nil
     self.mAutoRouterPreferredDirectionPopUp = nil
@@ -4502,11 +4510,13 @@ import Cocoa
     self.mOARValueTextField = nil
     self.mOpenSetDateDialogButton = nil
     self.mOperationBoardLimitsInspectorView = nil
+    self.mPDFBoardBackroundColorWell = nil
     self.mPHDUnitPopUp = nil
     self.mPHDValueTextField = nil
     self.mPageSegmentedControl = nil
     self.mPinPadAssignmentTableView = nil
     self.mProductFileGenerationLogTextView = nil
+    self.mProductGenerationTabView = nil
     self.mProductPageView = nil
     self.mRasnetComponentNameSelectionPopUpButton = nil
     self.mRasnetNetNameSelectionPopUpButton = nil

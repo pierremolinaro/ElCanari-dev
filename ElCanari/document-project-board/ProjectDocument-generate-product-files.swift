@@ -89,7 +89,7 @@ extension ProjectDocument {
 
   private func performProductFilesGeneration () {
     self.mProductFileGenerationLogTextView?.clear ()
-    self.mArtworkTabView?.selectTabViewItem (at: 4)
+    self.mProductGenerationTabView?.selectTabViewItem (at: 2)
     do{
       try self.performProductFilesGeneration (atPath: self.fileURL!.path.deletingPathExtension, self.rootObject.mArtwork!)
     }catch let error {

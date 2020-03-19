@@ -1012,7 +1012,8 @@ document ProjectDocument root ProjectRoot {
 //--- Artwork
   outlet EBTextObserverField mArtworkNameTextField $valueObserver root.mArtworkName ;
   outlet NSTextField mNoArtworkMessageTextField $hidden !root.mArtwork.none ;
-  outlet NSTabView mArtworkTabView $hidden root.mArtwork.none ;
+  outlet NSTabView mProductGenerationTabView ;
+  outlet NSTabView mArtworkSettingsTabView $hidden root.mArtwork.none ;
   outlet NSTextView mProductFileGenerationLogTextView ;
 
   action importArtworkAction ;
@@ -1024,6 +1025,8 @@ document ProjectDocument root ProjectRoot {
   
   transient Bool documentFilePathOk dependsFrom self.documentFilePath ;
   outlet NSView mIncorrectFileNameMessageView $hidden self.documentFilePathOk ;
+
+  outlet EBColorWell mPDFBoardBackroundColorWell $color root.mPDFBoardBackroundColor {sendContinously : no} ;
 
 //---------------- Minima Page
   outlet EBPopUpButton mMinPPTPTTTWinEBUnitPopUp $selectedTag root.minPPTPTTTWdisplayUnit ;
