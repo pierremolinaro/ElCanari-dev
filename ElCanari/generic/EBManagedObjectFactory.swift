@@ -37,6 +37,7 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
   "PackagePad" : PackagePad.self,
   "PackageSlavePad" : PackageSlavePad.self,
   "PackageZone" : PackageZone.self,
+  "PackageModelImagePoint" : PackageModelImagePoint.self,
   "PackageSegment" : PackageSegment.self,
   "PackageBezier" : PackageBezier.self,
   "PackageOval" : PackageOval.self,

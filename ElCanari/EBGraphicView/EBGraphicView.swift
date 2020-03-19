@@ -447,6 +447,9 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     var newBounds = NSRect () // For including point (0, 0)
     newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
     newBounds = newBounds.union (self.mMinimumRectangle)
+    if let ciImage = self.mBackgroundImage {
+      newBounds = newBounds.union (ciImage.extent)
+    }
     let currentBounds = self.bounds
     if currentBounds != newBounds {
       self.frame.size = newBounds.size
@@ -669,7 +672,14 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   var mPopulateContextualMenuClosure : Optional < (_ inPoint : CanariPoint) -> NSMenu > = nil
 
   //····················································································································
-  // FIRST RESPONDER
+  // MARK: -
+  //····················································································································
+
+  var mBackgroundImage : CIImage? = nil
+  var mBackgroundImageDataController : EBSimpleController? = nil
+
+  //····················································································································
+  // MARK: -
   //····················································································································
 
   override var acceptsFirstResponder : Bool { return true }

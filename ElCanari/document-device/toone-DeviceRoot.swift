@@ -17,6 +17,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //--- Remove observers from removed objects
     inOldValue?.mSelectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
     inOldValue?.mTitle_property.removeEBObserversFrom (&self.mObserversOf_mTitle) // Stored property
+    inOldValue?.mImageData_property.removeEBObserversFrom (&self.mObserversOf_mImageData) // Stored property
     inOldValue?.mPrefix_property.removeEBObserversFrom (&self.mObserversOf_mPrefix) // Stored property
     inOldValue?.mComments_property.removeEBObserversFrom (&self.mObserversOf_mComments) // Stored property
     inOldValue?.mPackageDisplayZoom_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayZoom) // Stored property
@@ -29,11 +30,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     inOldValue?.mSymbolDisplayZoom_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom) // Stored property
     inOldValue?.mSymbolDisplayHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayHorizontalFlip) // Stored property
     inOldValue?.mSymbolDisplayVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayVerticalFlip) // Stored property
-    inOldValue?.mImageData_property.removeEBObserversFrom (&self.mObserversOf_mImageData) // Stored property
+    inOldValue?.imageIsValid_property.removeEBObserversFrom (&self.mObserversOf_imageIsValid) // Transient property
     inOldValue?.inconsistentPackagePadNameSetsMessage_property.removeEBObserversFrom (&self.mObserversOf_inconsistentPackagePadNameSetsMessage) // Transient property
     inOldValue?.inconsistentSymbolNameSetMessage_property.removeEBObserversFrom (&self.mObserversOf_inconsistentSymbolNameSetMessage) // Transient property
     inOldValue?.unconnectedPins_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPins) // Transient property
-    inOldValue?.imageIsValid_property.removeEBObserversFrom (&self.mObserversOf_imageIsValid) // Transient property
     inOldValue?.packagePadNameSetsAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent) // Transient property
     inOldValue?.symbolNameAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent) // Transient property
     inOldValue?.symbolTypeNames_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeNames) // Transient property
@@ -43,6 +43,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //--- Add observers to added objects
     self.mInternalValue?.mSelectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
     self.mInternalValue?.mTitle_property.addEBObserversFrom (&self.mObserversOf_mTitle) // Stored property
+    self.mInternalValue?.mImageData_property.addEBObserversFrom (&self.mObserversOf_mImageData) // Stored property
     self.mInternalValue?.mPrefix_property.addEBObserversFrom (&self.mObserversOf_mPrefix) // Stored property
     self.mInternalValue?.mComments_property.addEBObserversFrom (&self.mObserversOf_mComments) // Stored property
     self.mInternalValue?.mPackageDisplayZoom_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayZoom) // Stored property
@@ -55,11 +56,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     self.mInternalValue?.mSymbolDisplayZoom_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom) // Stored property
     self.mInternalValue?.mSymbolDisplayHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayHorizontalFlip) // Stored property
     self.mInternalValue?.mSymbolDisplayVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayVerticalFlip) // Stored property
-    self.mInternalValue?.mImageData_property.addEBObserversFrom (&self.mObserversOf_mImageData) // Stored property
+    self.mInternalValue?.imageIsValid_property.addEBObserversFrom (&self.mObserversOf_imageIsValid) // Transient property
     self.mInternalValue?.inconsistentPackagePadNameSetsMessage_property.addEBObserversFrom (&self.mObserversOf_inconsistentPackagePadNameSetsMessage) // Transient property
     self.mInternalValue?.inconsistentSymbolNameSetMessage_property.addEBObserversFrom (&self.mObserversOf_inconsistentSymbolNameSetMessage) // Transient property
     self.mInternalValue?.unconnectedPins_property.addEBObserversFrom (&self.mObserversOf_unconnectedPins) // Transient property
-    self.mInternalValue?.imageIsValid_property.addEBObserversFrom (&self.mObserversOf_imageIsValid) // Transient property
     self.mInternalValue?.packagePadNameSetsAreConsistent_property.addEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent) // Transient property
     self.mInternalValue?.symbolNameAreConsistent_property.addEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent) // Transient property
     self.mInternalValue?.symbolTypeNames_property.addEBObserversFrom (&self.mObserversOf_symbolTypeNames) // Transient property
@@ -204,6 +204,76 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mTitle_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mImageData' stored property
+  //····················································································································
+
+  private var mObserversOf_mImageData = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mImageData_property_selection : EBSelection <Data?> {
+    if let model = self.propval {
+      switch (model.mImageData_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mImageData (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mImageData.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mImageData_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mImageData (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mImageData.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mImageData_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mImageData_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mImageData.apply { (_ observer : EBEvent) in
+        managedObject.mImageData_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mImageData_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    self.mObserversOf_mImageData.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mImageData_property.removeEBObserver (observer)
       }
     }
   }
@@ -1049,16 +1119,16 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   }
 
   //····················································································································
-  //   Observers of 'mImageData' stored property
+  //   Observers of 'imageIsValid' transient property
   //····················································································································
 
-  private var mObserversOf_mImageData = EBWeakEventSet ()
+  private var mObserversOf_imageIsValid = EBWeakEventSet ()
 
   //····················································································································
 
-  var mImageData_property_selection : EBSelection <Data?> {
+  var imageIsValid_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
-      switch (model.mImageData_property_selection) {
+      switch (model.imageIsValid_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1073,47 +1143,46 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mImageData (_ inObserver : EBEvent) {
+  final func addEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mImageData.insert (inObserver)
+    self.mObserversOf_imageIsValid.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mImageData_property.addEBObserver (inObserver)
+      v?.imageIsValid_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mImageData (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mImageData.remove (inObserver)
+    self.mObserversOf_imageIsValid.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mImageData_property.removeEBObserver (inObserver)
+      v?.imageIsValid_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mImageData_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+  final func addEBObserversOf_imageIsValid_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mImageData.apply { (_ observer : EBEvent) in
-        managedObject.mImageData_property.addEBObserver (observer)
+      self.mObserversOf_imageIsValid.apply { (_ observer : EBEvent) in
+        managedObject.imageIsValid_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mImageData_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mImageData.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mImageData_property.removeEBObserver (observer)
+  final func removeEBObserversOf_imageIsValid_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_imageIsValid.apply { (_ observer : EBEvent) in
+        managedObject.imageIsValid_property.removeEBObserver (observer)
       }
     }
   }
@@ -1321,75 +1390,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     for managedObject in inSet {
       self.mObserversOf_unconnectedPins.apply { (_ observer : EBEvent) in
         managedObject.unconnectedPins_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'imageIsValid' transient property
-  //····················································································································
-
-  private var mObserversOf_imageIsValid = EBWeakEventSet ()
-
-  //····················································································································
-
-  var imageIsValid_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
-      switch (model.imageIsValid_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_imageIsValid.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.imageIsValid_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_imageIsValid.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.imageIsValid_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_imageIsValid_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_imageIsValid.apply { (_ observer : EBEvent) in
-        managedObject.imageIsValid_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_imageIsValid_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_imageIsValid.apply { (_ observer : EBEvent) in
-        managedObject.imageIsValid_property.removeEBObserver (observer)
       }
     }
   }

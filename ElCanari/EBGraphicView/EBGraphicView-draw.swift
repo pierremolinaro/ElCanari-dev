@@ -21,6 +21,10 @@ extension EBGraphicView {
   override func draw (_ inDirtyRect : NSRect) {
     self.mBackColor.setFill ()
     NSBezierPath.fill (inDirtyRect)
+    if let ciImage = self.mBackgroundImage {
+      let r =  ciImage.extent
+      ciImage.draw (in: r, from: r, operation: .copy, fraction: 1.0)
+    }
     self.drawGrid (inDirtyRect)
     self.mUnderObjectsDisplay.draw (inDirtyRect)
     for object in self.objectDisplayArray {

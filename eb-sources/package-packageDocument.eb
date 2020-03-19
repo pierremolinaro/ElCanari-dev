@@ -8,6 +8,7 @@ document PackageDocument root PackageRoot {
   outlet NSView mMasterView ;
   outlet CanariViewWithKeyView mPackagePageView ;
   outlet CanariViewWithKeyView mProgramPageView ;
+  outlet CanariViewWithKeyView mModelImagePageView ;
   outlet CanariViewWithKeyView mInfosPageView ;
 
 //--- Signature
@@ -511,6 +512,75 @@ document PackageDocument root PackageRoot {
   outlet EBButton mClearProgramErrorButton $run clearProgramErrorAction ;
 
   outlet EBTextField mProgramErrorTextField ;
+
+//--------------- Background Image Tab
+  outlet EBScrollView mModelImageScrollView ;
+
+  arrayController #mModelImageObjectsController : root.mModelImageObjects ;
+
+  outlet EBGraphicView mModelImageView
+    $backgroundImageData root.mModelImageData
+    $underObjectsDisplay root.backgroundImagePageBackgroundDisplay
+    $horizontalFlip root.mModelImagePageHorizontalFlip
+    $verticalFlip root.mModelImagePageVerticalFlip
+    $graphicController #mModelImageObjectsController
+//    $overObjectsDisplay root.padNumberDisplay
+    $mouseGrid root.mModelImagePageGridStep
+    $gridStep root.mModelImagePageGridStep
+    $arrowKeyMagnitude root.mModelImagePageGridStep
+//    $shiftArrowKeyMagnitude root.mModelImagePageGridStepMultipliedByDisplayFactor
+    $gridStyle root.mModelImagePageGridStyle
+    $gridDisplayFactor root.mModelImagePageGridDisplayFactor
+    $gridLineColor prefs.lineColorOfPackageGrid
+    $gridCrossColor prefs.crossColorOfPackageGrid
+    $zoom root.mModelImagePageZoom
+    $backColor prefs.packageBackgroundColor
+    $xPlacardUnit root.mModelImagePageXPlacardUnit
+    $yPlacardUnit root.mModelImagePageYPlacardUnit
+  ;
+
+  outlet EBSwitch mModelImagePageHorizontalFlip $value root.mModelImagePageHorizontalFlip ;
+  outlet EBSwitch mModelImagePageVerticalFlip $value root.mModelImagePageVerticalFlip ;
+  outlet EBPopUpButton mModelImagePageGridStyle $selectedIndex root.mModelImagePageGridStyle ;
+  outlet EBPopUpButton mModelImagePageGridDisplayPopUpButton $selectedTag
+    root.mModelImagePageGridDisplayFactor
+  ;
+  outlet EBPopUpButton mModelImagePageGridUnitPopUp $selectedTag root.mModelImagePageGridStepUnit ;
+  outlet CanariDimensionTextField mModelImagePageGridTextField
+     $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit
+  ;
+  outlet EBPopUpButton mModelImagePageXPlacardUnitPopUpButton
+    $selectedTag root.mModelImagePageXPlacardUnit
+  ;
+  outlet EBPopUpButton mModelImagePageYPlacardUnitPopUpButton
+    $selectedTag root.mModelImagePageYPlacardUnit
+  ;
+
+  action pasteModelImageAction ;
+  outlet EBButton mPasteModelImage $run pasteModelImageAction ;
+
+  action removeModelImageAction ;
+  outlet EBButton mRemoveModelImage $run removeModelImageAction ;
+ 
+  outlet EBPopUpButton mModelImageFirstPointXDimensionUnitPopUp $selectedTag root.mModelImageFirstPointDimensionUnitX ;
+  outlet CanariDimensionTextField mModelImageFirstPointXTextField
+     $dimensionAndUnit root.mModelImageFirstPointX, root.mModelImageFirstPointDimensionUnitX
+  ;
+  outlet EBPopUpButton mModelImageFirstPointYDimensionUnitPopUp $selectedTag root.mModelImageFirstPointDimensionUnitY ;
+  outlet CanariDimensionTextField mModelImageFirstPointYTextField
+     $dimensionAndUnit root.mModelImageFirstPointY, root.mModelImageFirstPointDimensionUnitY
+  ;
+  outlet EBSwitch mModelImageFirstPointLockedSwitch $value root.mModelImageFirstPointLocked ;
+ 
+  outlet EBPopUpButton mModelImageSecondPointXDimensionUnitPopUp $selectedTag root.mModelImageSecondPointDimensionUnitX ;
+  outlet CanariDimensionTextField mModelImageSecondPointXTextField
+     $dimensionAndUnit root.mModelImageSecondPointX, root.mModelImageSecondPointDimensionUnitX
+  ;
+  outlet EBPopUpButton mModelImageSecondPointYDimensionUnitPopUp $selectedTag root.mModelImageSecondPointDimensionUnitY ;
+  outlet CanariDimensionTextField mModelImageSecondPointYTextField
+     $dimensionAndUnit root.mModelImageSecondPointY, root.mModelImageSecondPointDimensionUnitY
+  ;
+  outlet EBSwitch mModelImageSecondPointLockedSwitch $value root.mModelImageSecondPointLocked ;
 
 //--------------- Infos Tab
 //--- Comments

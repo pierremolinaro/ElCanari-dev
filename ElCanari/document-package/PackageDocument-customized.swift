@@ -50,6 +50,21 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
+  //--- Add Model image points
+    if self.rootObject.mModelImageFirstPoint == nil {
+      let p = PackageModelImagePoint (self.ebUndoManager)
+      p.mColor = .green
+      self.rootObject.mModelImageFirstPoint = p
+    }
+    if self.rootObject.mModelImageSecondPoint == nil {
+      let p = PackageModelImagePoint (self.ebUndoManager)
+      p.mColor = .blue
+      self.rootObject.mModelImageSecondPoint = p
+    }
+    if self.rootObject.mModelImageObjects.count != 2 {
+      self.rootObject.mModelImageObjects = []
+      self.rootObject.mModelImageObjects = [self.rootObject.mModelImageFirstPoint!, self.rootObject.mModelImageSecondPoint!]
+    }
   //--- Handle pad number event
     self.addPadNumberingObservers ()
   //--- Register document for renumbering pads
@@ -63,7 +78,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mPadColorObserver.mEventCallBack = { [weak self] in self?.updateDragPadSourceButtons () }
     g_Preferences?.frontSidePadColor_property.addEBObserver (self.mPadColorObserver)
   //--- Set pages segmented control
-    let pages = [self.mPackagePageView, self.mProgramPageView, self.mInfosPageView]
+    let pages = [self.mPackagePageView, self.mProgramPageView, self.mModelImagePageView, self.mInfosPageView]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //--- Set inspector segmented control
     let inspectors = [

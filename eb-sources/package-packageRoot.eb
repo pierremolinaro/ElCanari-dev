@@ -51,6 +51,34 @@ graphic entity PackageRoot {
   property Int gridDisplayFactor default 4 ;
   property Int zoom default 600 ;
 
+//--- Model Image Page
+  property Bool mModelImagePageHorizontalFlip default no ;
+  property Bool mModelImagePageVerticalFlip default no ;
+  property GridStyle mModelImagePageGridStyle default line ;
+  property Int mModelImagePageGridStep default 57_150 ; // 25 mils
+  property Int mModelImagePageGridStepUnit default 2_286 ; // mil
+  property Int mModelImagePageGridDisplayFactor default 4 ;
+  property Int mModelImagePageZoom default 600 ;
+  property Int mModelImagePageXPlacardUnit default 2_286 ; // mils
+  property Int mModelImagePageYPlacardUnit default 2_286 ; // mils
+  property Data mModelImageData default empty ;
+ 
+  toOne PackageModelImagePoint mModelImageFirstPoint ;
+  property proxy Int mModelImageFirstPointX : mModelImageFirstPoint.mX ;
+  property proxy Int mModelImageFirstPointDimensionUnitX : mModelImageFirstPoint.mDimensionUnitX ;
+  property proxy Int mModelImageFirstPointY : mModelImageFirstPoint.mY ;
+  property proxy Int mModelImageFirstPointDimensionUnitY : mModelImageFirstPoint.mDimensionUnitY ;
+  property proxy Bool mModelImageFirstPointLocked : mModelImageFirstPoint.mIsLocked ;
+
+  toOne PackageModelImagePoint mModelImageSecondPoint ;
+  property proxy Int mModelImageSecondPointX : mModelImageSecondPoint.mX ;
+  property proxy Int mModelImageSecondPointDimensionUnitX : mModelImageSecondPoint.mDimensionUnitX ;
+  property proxy Int mModelImageSecondPointY : mModelImageSecondPoint.mY ;
+  property proxy Int mModelImageSecondPointDimensionUnitY : mModelImageSecondPoint.mDimensionUnitY ;
+  property proxy Bool mModelImageSecondPointLocked : mModelImageSecondPoint.mIsLocked ;
+
+  toMany PackageModelImagePoint mModelImageObjects ;
+
 //--- Knob size
   property Int knobSizeMultpliedByTen default 20 ;
 
@@ -80,6 +108,11 @@ graphic entity PackageRoot {
      self.packagePads.all.padNumberDisplay,
      self.packageSlavePads.all.padNumberDisplay
    ;
+ 
+  transient EBShape backgroundImagePageBackgroundDisplay dependsFrom
+    self.packageObjects.all.objectDisplay,
+    self.mModelImageData
+  ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -449,6 +482,25 @@ graphic entity PackageZone : PackageObject {
 
 entity ForbiddenPadNumber {
   property @signature Int padNumber default 0 ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity PackageModelImagePoint {
+  property Int mX default 0 ;
+  property Int mDimensionUnitX default 2_286 ;
+  property Int mY default 0 ;
+  property Int mDimensionUnitY default 2_286 ;
+  property Bool mIsLocked default no ;
+  property NSColor mColor default black ;
+
+  transient EBShape objectDisplay dependsFrom
+     self.mX, self.mY, self.mColor, self.mIsLocked
+  ;
+
+  transient EBShape selectionDisplay dependsFrom
+     self.mX, self.mY, self.mColor, self.mIsLocked
+  ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

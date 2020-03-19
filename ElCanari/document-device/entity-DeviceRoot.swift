@@ -18,6 +18,12 @@ protocol DeviceRoot_mTitle : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol DeviceRoot_mImageData : class {
+  var mImageData : Data { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol DeviceRoot_mPrefix : class {
   var mPrefix : String { get }
 }
@@ -90,8 +96,8 @@ protocol DeviceRoot_mSymbolDisplayVerticalFlip : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mImageData : class {
-  var mImageData : Data { get }
+protocol DeviceRoot_imageIsValid : class {
+  var imageIsValid : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -110,12 +116,6 @@ protocol DeviceRoot_inconsistentSymbolNameSetMessage : class {
 
 protocol DeviceRoot_unconnectedPins : class {
   var unconnectedPins : UnconnectedSymbolPinsInDevice? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol DeviceRoot_imageIsValid : class {
-  var imageIsValid : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -161,6 +161,7 @@ protocol DeviceRoot_issues : class {
 class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_mSelectedPageIndex,
          DeviceRoot_mTitle,
+         DeviceRoot_mImageData,
          DeviceRoot_mPrefix,
          DeviceRoot_mComments,
          DeviceRoot_mPackageDisplayZoom,
@@ -173,11 +174,10 @@ class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_mSymbolDisplayZoom,
          DeviceRoot_mSymbolDisplayHorizontalFlip,
          DeviceRoot_mSymbolDisplayVerticalFlip,
-         DeviceRoot_mImageData,
+         DeviceRoot_imageIsValid,
          DeviceRoot_inconsistentPackagePadNameSetsMessage,
          DeviceRoot_inconsistentSymbolNameSetMessage,
          DeviceRoot_unconnectedPins,
-         DeviceRoot_imageIsValid,
          DeviceRoot_packagePadNameSetsAreConsistent,
          DeviceRoot_symbolNameAreConsistent,
          DeviceRoot_symbolTypeNames,
@@ -218,6 +218,23 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mTitle_property_selection : EBSelection <String> { return self.mTitle_property.prop }
+
+  //····················································································································
+  //   Atomic property: mImageData
+  //····················································································································
+
+  let mImageData_property = EBStoredProperty_Data (defaultValue: Data ())
+
+  //····················································································································
+
+  var mImageData : Data {
+    get { return self.mImageData_property.propval }
+    set { self.mImageData_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mImageData_property_selection : EBSelection <Data> { return self.mImageData_property.prop }
 
   //····················································································································
   //   Atomic property: mPrefix
@@ -500,23 +517,6 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Atomic property: mImageData
-  //····················································································································
-
-  let mImageData_property = EBStoredProperty_Data (defaultValue: Data ())
-
-  //····················································································································
-
-  var mImageData : Data {
-    get { return self.mImageData_property.propval }
-    set { self.mImageData_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mImageData_property_selection : EBSelection <Data> { return self.mImageData_property.prop }
-
-  //····················································································································
   //   To many property: mPadProxies
   //····················································································································
 
@@ -533,6 +533,29 @@ class DeviceRoot : EBGraphicManagedObject,
   var mPadProxies : [PadProxyInDevice] {
     get { return self.mPadProxies_property.propval }
     set { self.mPadProxies_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Transient property: imageIsValid
+  //····················································································································
+
+  let imageIsValid_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var imageIsValid_property_selection : EBSelection <Bool> {
+    return self.imageIsValid_property.prop
+  }
+
+  //····················································································································
+
+  var imageIsValid : Bool? {
+    switch self.imageIsValid_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
   }
 
   //····················································································································
@@ -597,29 +620,6 @@ class DeviceRoot : EBGraphicManagedObject,
 
   var unconnectedPins : UnconnectedSymbolPinsInDevice? {
     switch self.unconnectedPins_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: imageIsValid
-  //····················································································································
-
-  let imageIsValid_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  var imageIsValid_property_selection : EBSelection <Bool> {
-    return self.imageIsValid_property.prop
-  }
-
-  //····················································································································
-
-  var imageIsValid : Bool? {
-    switch self.imageIsValid_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -781,6 +781,8 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSelectedPageIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mTitle
     self.mTitle_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mImageData
+    self.mImageData_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPrefix
     self.mPrefix_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mComments
@@ -817,10 +819,30 @@ class DeviceRoot : EBGraphicManagedObject,
     )
   //--- To many property: mSymbolTypes (no option)
     self.mSymbolTypes_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mImageData
-    self.mImageData_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPadProxies (no option)
     self.mPadProxies_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: imageIsValid
+    self.imageIsValid_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mImageData_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mImageData_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceRoot_imageIsValid (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mImageData_property.addEBObserver (self.imageIsValid_property)
   //--- Atomic property: inconsistentPackagePadNameSetsMessage
     self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -889,28 +911,6 @@ class DeviceRoot : EBGraphicManagedObject,
       }
     }
     self.mSymbolInstances_property.addEBObserverOf_unconnectedPins (self.unconnectedPins_property)
-  //--- Atomic property: imageIsValid
-    self.imageIsValid_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mImageData_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mImageData_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceRoot_imageIsValid (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mImageData_property.addEBObserver (self.imageIsValid_property)
   //--- Atomic property: packagePadNameSetsAreConsistent
     self.packagePadNameSetsAreConsistent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1093,11 +1093,11 @@ class DeviceRoot : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mImageData_property.removeEBObserver (self.imageIsValid_property)
     self.mPackages_property.removeEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
     self.mPackages_property.removeEBObserverOf_mName (self.inconsistentPackagePadNameSetsMessage_property)
     self.mSymbolInstances_property.removeEBObserverOf_symbolQualifiedName (self.inconsistentSymbolNameSetMessage_property)
     self.mSymbolInstances_property.removeEBObserverOf_unconnectedPins (self.unconnectedPins_property)
-    self.mImageData_property.removeEBObserver (self.imageIsValid_property)
     self.mPackages_property.removeEBObserverOf_padNameSet (self.packagePadNameSetsAreConsistent_property)
     self.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.symbolNameAreConsistent_property)
     self.mSymbolTypes_property.removeEBObserverOf_mTypeName (self.symbolTypeNames_property)
@@ -1156,6 +1156,14 @@ class DeviceRoot : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.mTitle_property.mObserverExplorer,
       valueExplorer: &self.mTitle_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mImageData",
+      idx: self.mImageData_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mImageData_property.mObserverExplorer,
+      valueExplorer: &self.mImageData_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mPrefix",
@@ -1253,15 +1261,15 @@ class DeviceRoot : EBGraphicManagedObject,
       observerExplorer: &self.mSymbolDisplayVerticalFlip_property.mObserverExplorer,
       valueExplorer: &self.mSymbolDisplayVerticalFlip_property.mValueExplorer
     )
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
-      "mImageData",
-      idx: self.mImageData_property.ebObjectIndex,
+      "imageIsValid",
+      idx: self.imageIsValid_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mImageData_property.mObserverExplorer,
-      valueExplorer: &self.mImageData_property.mValueExplorer
+      observerExplorer: &self.imageIsValid_property.mObserverExplorer,
+      valueExplorer: &self.imageIsValid_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "inconsistentPackagePadNameSetsMessage",
       idx: self.inconsistentPackagePadNameSetsMessage_property.ebObjectIndex,
@@ -1285,14 +1293,6 @@ class DeviceRoot : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.unconnectedPins_property.mObserverExplorer,
       valueExplorer: &self.unconnectedPins_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "imageIsValid",
-      idx: self.imageIsValid_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.imageIsValid_property.mObserverExplorer,
-      valueExplorer: &self.imageIsValid_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "packagePadNameSetsAreConsistent",
@@ -1393,6 +1393,9 @@ class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: mTitle
     self.mTitle_property.mObserverExplorer = nil
     self.mTitle_property.mValueExplorer = nil
+  //--- Atomic property: mImageData
+    self.mImageData_property.mObserverExplorer = nil
+    self.mImageData_property.mValueExplorer = nil
   //--- Atomic property: mPrefix
     self.mPrefix_property.mObserverExplorer = nil
     self.mPrefix_property.mValueExplorer = nil
@@ -1437,9 +1440,6 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPackages_property.mValueExplorer = nil
   //--- To many property: mSymbolTypes
     self.mSymbolTypes_property.mValueExplorer = nil
-  //--- Atomic property: mImageData
-    self.mImageData_property.mObserverExplorer = nil
-    self.mImageData_property.mValueExplorer = nil
   //--- To many property: mPadProxies
     self.mPadProxies_property.mValueExplorer = nil
   //---
@@ -1479,6 +1479,8 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedPageIndex")
   //--- Atomic property: mTitle
     self.mTitle_property.storeIn (dictionary: ioDictionary, forKey:"mTitle")
+  //--- Atomic property: mImageData
+    self.mImageData_property.storeIn (dictionary: ioDictionary, forKey:"mImageData")
   //--- Atomic property: mPrefix
     self.mPrefix_property.storeIn (dictionary: ioDictionary, forKey:"mPrefix")
   //--- Atomic property: mComments
@@ -1527,8 +1529,6 @@ class DeviceRoot : EBGraphicManagedObject,
       relationshipName: "mSymbolTypes",
       intoDictionary: ioDictionary
     )
-  //--- Atomic property: mImageData
-    self.mImageData_property.storeIn (dictionary: ioDictionary, forKey:"mImageData")
   //--- To many property: mPadProxies
     self.store (
       managedObjectArray: self.mPadProxies_property.propval,
@@ -1586,6 +1586,8 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"mSelectedPageIndex")
   //--- Atomic property: mTitle
     self.mTitle_property.readFrom (dictionary: inDictionary, forKey:"mTitle")
+  //--- Atomic property: mImageData
+    self.mImageData_property.readFrom (dictionary: inDictionary, forKey:"mImageData")
   //--- Atomic property: mPrefix
     self.mPrefix_property.readFrom (dictionary: inDictionary, forKey:"mPrefix")
   //--- Atomic property: mComments
@@ -1610,8 +1612,6 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSymbolDisplayHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"mSymbolDisplayHorizontalFlip")
   //--- Atomic property: mSymbolDisplayVerticalFlip
     self.mSymbolDisplayVerticalFlip_property.readFrom (dictionary: inDictionary, forKey:"mSymbolDisplayVerticalFlip")
-  //--- Atomic property: mImageData
-    self.mImageData_property.readFrom (dictionary: inDictionary, forKey:"mImageData")
   }
 
 
@@ -1624,6 +1624,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic properties
     ioString += "mSelectedPageIndex\n"
     ioString += "mTitle\n"
+    ioString += "mImageData\n"
     ioString += "mPrefix\n"
     ioString += "mComments\n"
     ioString += "mPackageDisplayZoom\n"
@@ -1636,7 +1637,6 @@ class DeviceRoot : EBGraphicManagedObject,
     ioString += "mSymbolDisplayZoom\n"
     ioString += "mSymbolDisplayHorizontalFlip\n"
     ioString += "mSymbolDisplayVerticalFlip\n"
-    ioString += "mImageData\n"
   //--- To one relationships
   //--- To many relationships
     ioString += "mDocs\n"
@@ -1656,6 +1656,8 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSelectedPageIndex.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mTitle.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mImageData.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mPrefix.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -1680,8 +1682,6 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSymbolDisplayHorizontalFlip.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mSymbolDisplayVerticalFlip.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mImageData.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
