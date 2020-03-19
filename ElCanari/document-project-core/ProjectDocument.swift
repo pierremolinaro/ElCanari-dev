@@ -923,7 +923,7 @@ import Cocoa
   @IBOutlet var mOARValueTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mOpenSetDateDialogButton : EBButton? = nil
   @IBOutlet var mOperationBoardLimitsInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mPDFBoardBackroundColorWell : EBColorWell? = nil
+  @IBOutlet var mPDFBoardBackgroundColorWell : EBColorWell? = nil
   @IBOutlet var mPHDUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mPHDValueTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl? = nil
@@ -1502,7 +1502,7 @@ import Cocoa
     checkOutletConnection (self.mOARValueTextField, "mOARValueTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mOpenSetDateDialogButton, "mOpenSetDateDialogButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mOperationBoardLimitsInspectorView, "mOperationBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mPDFBoardBackroundColorWell, "mPDFBoardBackroundColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPDFBoardBackgroundColorWell, "mPDFBoardBackgroundColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mPHDUnitPopUp, "mPHDUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mPHDValueTextField, "mPHDValueTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
@@ -2597,7 +2597,7 @@ import Cocoa
     self.mRasnetComponentNameSelectionPopUpButton?.bind_selectedNameInArray (self.rootObject.mRastnetDisplayedComponentName_property, self.rootObject.placedComponentNameArray_property, file: #file, line: #line)
     self.mArtworkNameTextField?.bind_valueObserver (self.rootObject.mArtworkName_property, file: #file, line: #line)
     self.mArtworlImportButton?.bind_title (self.artworlImportButtonTitle_property, file: #file, line: #line)
-    self.mPDFBoardBackroundColorWell?.bind_color (self.rootObject.mPDFBoardBackroundColor_property, file: #file, line: #line, sendContinously:false)
+    self.mPDFBoardBackgroundColorWell?.bind_color (self.rootObject.mPDFBoardBackgroundColor_property, file: #file, line: #line, sendContinously:false)
     self.mMinPPTPTTTWinEBUnitPopUp?.bind_selectedTag (self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
     self.mMinPPTPTTTWdisplayUnitTextField?.bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
     self.mOARUnitPopUp?.bind_selectedTag (self.rootObject.minValueForOARdisplayUnit_property, file: #file, line: #line)
@@ -3558,7 +3558,7 @@ import Cocoa
     self.mRasnetComponentNameSelectionPopUpButton?.unbind_selectedNameInArray ()
     self.mArtworkNameTextField?.unbind_valueObserver ()
     self.mArtworlImportButton?.unbind_title ()
-    self.mPDFBoardBackroundColorWell?.unbind_color ()
+    self.mPDFBoardBackgroundColorWell?.unbind_color ()
     self.mMinPPTPTTTWinEBUnitPopUp?.unbind_selectedTag ()
     self.mMinPPTPTTTWdisplayUnitTextField?.unbind_dimensionAndUnit ()
     self.mOARUnitPopUp?.unbind_selectedTag ()
@@ -4098,7 +4098,7 @@ import Cocoa
     self.mOARValueTextField?.ebCleanUp ()
     self.mOpenSetDateDialogButton?.ebCleanUp ()
     self.mOperationBoardLimitsInspectorView?.ebCleanUp ()
-    self.mPDFBoardBackroundColorWell?.ebCleanUp ()
+    self.mPDFBoardBackgroundColorWell?.ebCleanUp ()
     self.mPHDUnitPopUp?.ebCleanUp ()
     self.mPHDValueTextField?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
@@ -4510,7 +4510,7 @@ import Cocoa
     self.mOARValueTextField = nil
     self.mOpenSetDateDialogButton = nil
     self.mOperationBoardLimitsInspectorView = nil
-    self.mPDFBoardBackroundColorWell = nil
+    self.mPDFBoardBackgroundColorWell = nil
     self.mPHDUnitPopUp = nil
     self.mPHDValueTextField = nil
     self.mPageSegmentedControl = nil

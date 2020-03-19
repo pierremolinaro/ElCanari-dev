@@ -35,7 +35,9 @@ let BUGFIXES : [String] = [
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Project, PDF Generation: selectable background color"
+  "Project, PDF Generation: selectable background color",
+  "Merger, PDF Generation: selectable background color",
+  "Merger, PDF Generation: added generation of drill file"
 ]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

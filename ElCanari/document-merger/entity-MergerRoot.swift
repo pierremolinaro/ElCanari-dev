@@ -108,6 +108,12 @@ protocol MergerRoot_artworkName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol MergerRoot_mPDFBoardBackgroundColor : class {
+  var mPDFBoardBackgroundColor : NSColor { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol MergerRoot_modelNames : class {
   var modelNames : StringTagArray? { get }
 }
@@ -164,6 +170,7 @@ class MergerRoot : EBManagedObject,
          MergerRoot_shiftArrowMagnitude,
          MergerRoot_shiftArrowMagnitudeUnit,
          MergerRoot_artworkName,
+         MergerRoot_mPDFBoardBackgroundColor,
          MergerRoot_modelNames,
          MergerRoot_boardRect,
          MergerRoot_boardDisplayRect,
@@ -499,6 +506,23 @@ class MergerRoot : EBManagedObject,
   var artworkName_property_selection : EBSelection <String> { return self.artworkName_property.prop }
 
   //····················································································································
+  //   Atomic property: mPDFBoardBackgroundColor
+  //····················································································································
+
+  let mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray)
+
+  //····················································································································
+
+  var mPDFBoardBackgroundColor : NSColor {
+    get { return self.mPDFBoardBackgroundColor_property.propval }
+    set { self.mPDFBoardBackgroundColor_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor> { return self.mPDFBoardBackgroundColor_property.prop }
+
+  //····················································································································
   //   Transient property: modelNames
   //····················································································································
 
@@ -728,6 +752,8 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitudeUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: artworkName
     self.artworkName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mPDFBoardBackgroundColor
+    self.mPDFBoardBackgroundColor_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: modelNames
     self.modelNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1058,6 +1084,14 @@ class MergerRoot : EBManagedObject,
       observerExplorer: &self.artworkName_property.mObserverExplorer,
       valueExplorer: &self.artworkName_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mPDFBoardBackgroundColor",
+      idx: self.mPDFBoardBackgroundColor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mPDFBoardBackgroundColor_property.mObserverExplorer,
+      valueExplorer: &self.mPDFBoardBackgroundColor_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "modelNames",
@@ -1193,6 +1227,9 @@ class MergerRoot : EBManagedObject,
   //--- Atomic property: artworkName
     self.artworkName_property.mObserverExplorer = nil
     self.artworkName_property.mValueExplorer = nil
+  //--- Atomic property: mPDFBoardBackgroundColor
+    self.mPDFBoardBackgroundColor_property.mObserverExplorer = nil
+    self.mPDFBoardBackgroundColor_property.mValueExplorer = nil
   //--- To one property: artwork
     self.artwork_property.mObserverExplorer = nil
     self.artwork_property.mValueExplorer = nil
@@ -1273,6 +1310,8 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey:"shiftArrowMagnitudeUnit")
   //--- Atomic property: artworkName
     self.artworkName_property.storeIn (dictionary: ioDictionary, forKey:"artworkName")
+  //--- Atomic property: mPDFBoardBackgroundColor
+    self.mPDFBoardBackgroundColor_property.storeIn (dictionary: ioDictionary, forKey:"mPDFBoardBackgroundColor")
   //--- To one property: artwork
     self.store (managedObject:self.artwork_property.propval,
       relationshipName: "artwork",
@@ -1351,6 +1390,8 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitudeUnit")
   //--- Atomic property: artworkName
     self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
+  //--- Atomic property: mPDFBoardBackgroundColor
+    self.mPDFBoardBackgroundColor_property.readFrom (dictionary: inDictionary, forKey:"mPDFBoardBackgroundColor")
   }
 
 
@@ -1378,6 +1419,7 @@ class MergerRoot : EBManagedObject,
     ioString += "shiftArrowMagnitude\n"
     ioString += "shiftArrowMagnitudeUnit\n"
     ioString += "artworkName\n"
+    ioString += "mPDFBoardBackgroundColor\n"
   //--- To one relationships
     ioString += "artwork\n"
   //--- To many relationships
@@ -1425,6 +1467,8 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitudeUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.artworkName.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mPDFBoardBackgroundColor.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.artwork {

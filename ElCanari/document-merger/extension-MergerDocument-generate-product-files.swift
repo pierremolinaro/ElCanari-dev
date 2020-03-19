@@ -20,6 +20,7 @@ extension MergerDocument {
     //--- Create product directory
       if let f = self.fileURL?.path.deletingPathExtension {
         self.mLogTextView?.clear ()
+        self.mProductGenerationTabView?.selectTabViewItem (at: 2)
         let baseName = f.lastPathComponent
         let productDirectory = f.deletingLastPathComponent
         let fm = FileManager ()
@@ -27,7 +28,7 @@ extension MergerDocument {
         do{
           let boardArchivePath = productDirectory + "/" + baseName + "." + EL_CANARI_MERGER_ARCHIVE
           self.mLogTextView?.appendMessageString("Generating \(boardArchivePath.lastPathComponent)…")
-          try generateBoardArchive (atPath: boardArchivePath)
+          try self.generateBoardArchive (atPath: boardArchivePath)
           self.mLogTextView?.appendSuccessString (" Ok\n")
         }
       //--- Gerber
@@ -39,7 +40,7 @@ extension MergerDocument {
             self.mLogTextView?.appendSuccessString (" Ok\n")
           }
           let filePath = gerberDirectory + "/" + baseName
-          try generateGerberFiles (atPath: filePath)
+          try self.generateGerberFiles (atPath: filePath)
         }
       //--- PDF
         do{
@@ -50,7 +51,8 @@ extension MergerDocument {
             self.mLogTextView?.appendSuccessString (" Ok\n")
           }
           let filePath = pdfDirectory + "/" + baseName
-          try generatePDFfiles (atPath: filePath)
+          try self.generatePDFfiles (atPath: filePath)
+          try self.writePDFDrillFile (atPath: filePath)
         }
       //--- Done !
         self.mLogTextView?.appendMessageString ("Done.")
@@ -461,10 +463,40 @@ extension MergerDocument {
         shape.add (stroke: strokeBezierPaths, .black)
         shape.add (filled: filledBezierPaths, .black)
         shape.add (stroke: drillBezierPaths, .white)
-        let pdfData = buildPDFimageData (frame:cocoaBoardRect, shape: shape, backgroundColor: .lightGray)
+        let pdfData = buildPDFimageData (frame: cocoaBoardRect, shape: shape, backgroundColor: self.rootObject.mPDFBoardBackgroundColor)
         try pdfData.write (to: URL (fileURLWithPath: filePath), options: .atomic)
         self.mLogTextView?.appendSuccessString (" Ok\n")
       }
+    }
+  }
+
+  //····················································································································
+
+  fileprivate func writePDFDrillFile (atPath inFilePath : String) throws {
+    if let cocoaBoardRect : NSRect = self.rootObject.boardRect?.cocoaRect {
+      let boardWidth = self.rootObject.boardWidth ?? 0
+      let filePath = inFilePath + "." + (self.rootObject.artwork_property.propval?.drillDataFileExtension ?? "??") + ".pdf"
+      self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
+      var drillBezierPaths = [EBBezierPath] ()
+      for board in self.rootObject.boardInstances_property.propval {
+        let myModel : BoardModel? = board.myModel_property.propval
+        let modelWidth  : Int = myModel?.modelWidth  ?? 0
+        let modelHeight : Int = myModel?.modelHeight ?? 0
+        let instanceRotation = board.instanceRotation
+        myModel?.drillSegments?.addDrillForPDF (
+          toStrokeBezierPaths: &drillBezierPaths,
+          dx: board.x,
+          dy: board.y,
+          boardWidth: boardWidth,
+          modelWidth: modelWidth,
+          modelHeight: modelHeight,
+          instanceRotation: instanceRotation
+        )
+      }
+      let shape = EBShape (stroke: drillBezierPaths, .black)
+      let data = buildPDFimageData (frame: cocoaBoardRect, shape: shape, backgroundColor: self.rootObject.mPDFBoardBackgroundColor)
+      try data.write (to: URL (fileURLWithPath: filePath))
+      self.mLogTextView?.appendSuccessString (" Ok\n")
     }
   }
 

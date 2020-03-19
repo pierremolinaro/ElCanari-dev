@@ -228,6 +228,7 @@ import Cocoa
   @IBOutlet var mArrowMagnitudeUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mArtworNameTextField : EBTextObserverField? = nil
   @IBOutlet var mArtworkNameTextField : EBTextObserverField? = nil
+  @IBOutlet var mArtworkSettingsTabView : NSTabView? = nil
   @IBOutlet var mAutomaticBoardSizeSwitch : EBSwitch? = nil
   @IBOutlet var mAutomaticBoardSizeView : NSView? = nil
   @IBOutlet var mBoardBoardLimitTextField : CanariDimensionTextField? = nil
@@ -331,7 +332,9 @@ import Cocoa
   @IBOutlet var mNoArtworkMessage : EBTextField? = nil
   @IBOutlet var mNoModelMessage : EBTextField? = nil
   @IBOutlet var mOverlapSwitch : EBSwitch? = nil
+  @IBOutlet var mPDFBoardBackgroundColorWell : EBColorWell? = nil
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl? = nil
+  @IBOutlet var mProductGenerationTabView : NSTabView? = nil
   @IBOutlet var mProductPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mSelectedBoardXTextField : CanariDimensionTextField? = nil
   @IBOutlet var mSelectedBoardXUnitPopUp : EBPopUpButton? = nil
@@ -386,7 +389,7 @@ import Cocoa
   var mController_mNoArtworkMessage_hidden : MultipleBindingController_hidden? = nil
   var mController_mDangerView_hidden : MultipleBindingController_hidden? = nil
   var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mLogTextView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mArtworkSettingsTabView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
@@ -465,6 +468,7 @@ import Cocoa
     checkOutletConnection (self.mArrowMagnitudeUnitPopUp, "mArrowMagnitudeUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mArtworNameTextField, "mArtworNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mArtworkNameTextField, "mArtworkNameTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mArtworkSettingsTabView, "mArtworkSettingsTabView", NSTabView.self, #file, #line)
     checkOutletConnection (self.mAutomaticBoardSizeSwitch, "mAutomaticBoardSizeSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mAutomaticBoardSizeView, "mAutomaticBoardSizeView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardBoardLimitTextField, "mBoardBoardLimitTextField", CanariDimensionTextField.self, #file, #line)
@@ -568,7 +572,9 @@ import Cocoa
     checkOutletConnection (self.mNoArtworkMessage, "mNoArtworkMessage", EBTextField.self, #file, #line)
     checkOutletConnection (self.mNoModelMessage, "mNoModelMessage", EBTextField.self, #file, #line)
     checkOutletConnection (self.mOverlapSwitch, "mOverlapSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mPDFBoardBackgroundColorWell, "mPDFBoardBackgroundColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mProductGenerationTabView, "mProductGenerationTabView", NSTabView.self, #file, #line)
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedBoardXTextField, "mSelectedBoardXTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mSelectedBoardXUnitPopUp, "mSelectedBoardXUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -961,6 +967,7 @@ import Cocoa
     self.mIncorrectDocumentNameTextField?.bind_valueObserver (self.incorrectDocumentFileErrorMessage_property, file: #file, line: #line)
     self.mArtworNameTextField?.bind_valueObserver (self.rootObject.artworkName_property, file: #file, line: #line)
     self.mImportArtworkButton?.bind_title (self.importArtworkButtonTitle_property, file: #file, line: #line)
+    self.mPDFBoardBackgroundColorWell?.bind_color (self.rootObject.mPDFBoardBackgroundColor_property, file: #file, line: #line, sendContinously:false)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1130,10 +1137,10 @@ import Cocoa
         computeFunction: {
           return self.rootObject.artwork_none_selection
         },
-        outlet: self.mLogTextView
+        outlet: self.mArtworkSettingsTabView
       )
       self.rootObject.artwork_none.addEBObserver (controller)
-      self.mController_mLogTextView_hidden = controller
+      self.mController_mArtworkSettingsTabView_hidden = controller
     }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
@@ -1318,6 +1325,7 @@ import Cocoa
     self.mIncorrectDocumentNameTextField?.unbind_valueObserver ()
     self.mArtworNameTextField?.unbind_valueObserver ()
     self.mImportArtworkButton?.unbind_title ()
+    self.mPDFBoardBackgroundColorWell?.unbind_color ()
   //--------------------------- Unbind multiple bindings
     self.rootObject.selectedPageIndex_property.removeEBObserver (self.mController_showPrefsForSettingMergerDisplayButton_enabled!)
     self.mController_showPrefsForSettingMergerDisplayButton_enabled = nil
@@ -1354,8 +1362,8 @@ import Cocoa
     self.rootObject.artwork_none.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
     self.rootObject.boardInstances_property.count_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
     self.mController_mGenerateProductFilesActionButton_enabled = nil
-    self.rootObject.artwork_none.removeEBObserver (self.mController_mLogTextView_hidden!)
-    self.mController_mLogTextView_hidden = nil
+    self.rootObject.artwork_none.removeEBObserver (self.mController_mArtworkSettingsTabView_hidden!)
+    self.mController_mArtworkSettingsTabView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mBoardModelController.unbind_tableView (self.mBoardModelTableView)
     self.mBoardInstanceController.unbind_ebView (self.mComposedBoardView)
@@ -1399,6 +1407,7 @@ import Cocoa
     self.mArrowMagnitudeUnitPopUp?.ebCleanUp ()
     self.mArtworNameTextField?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
+    self.mArtworkSettingsTabView?.ebCleanUp ()
     self.mAutomaticBoardSizeSwitch?.ebCleanUp ()
     self.mAutomaticBoardSizeView?.ebCleanUp ()
     self.mBoardBoardLimitTextField?.ebCleanUp ()
@@ -1502,7 +1511,9 @@ import Cocoa
     self.mNoArtworkMessage?.ebCleanUp ()
     self.mNoModelMessage?.ebCleanUp ()
     self.mOverlapSwitch?.ebCleanUp ()
+    self.mPDFBoardBackgroundColorWell?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mProductGenerationTabView?.ebCleanUp ()
     self.mProductPageView?.ebCleanUp ()
     self.mSelectedBoardXTextField?.ebCleanUp ()
     self.mSelectedBoardXUnitPopUp?.ebCleanUp ()
@@ -1544,6 +1555,7 @@ import Cocoa
     self.mArrowMagnitudeUnitPopUp = nil
     self.mArtworNameTextField = nil
     self.mArtworkNameTextField = nil
+    self.mArtworkSettingsTabView = nil
     self.mAutomaticBoardSizeSwitch = nil
     self.mAutomaticBoardSizeView = nil
     self.mBoardBoardLimitTextField = nil
@@ -1647,7 +1659,9 @@ import Cocoa
     self.mNoArtworkMessage = nil
     self.mNoModelMessage = nil
     self.mOverlapSwitch = nil
+    self.mPDFBoardBackgroundColorWell = nil
     self.mPageSegmentedControl = nil
+    self.mProductGenerationTabView = nil
     self.mProductPageView = nil
     self.mSelectedBoardXTextField = nil
     self.mSelectedBoardXUnitPopUp = nil

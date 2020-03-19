@@ -144,6 +144,56 @@ final class MergerSegmentArray : EBObject {
       ioBezierPaths.append (bp)
     }
   }
+
+  //····················································································································
+
+  func addDrillForPDF (toStrokeBezierPaths ioBezierPaths : inout [EBBezierPath],
+                       dx inDx : Int,
+                       dy inDy: Int,
+                       boardWidth inBoardWidth : Int,
+                       modelWidth inModelWidth : Int,
+                       modelHeight inModelHeight : Int,
+                       instanceRotation inInstanceRotation : QuadrantRotation) {
+    for segment in self.segmentArray {
+      var x1 = inDx
+      var y1 = inDy
+      var x2 = inDx
+      var y2 = inDy
+      switch inInstanceRotation {
+      case .rotation0 :
+        x1 += segment.x1
+        y1 += segment.y1
+        x2 += segment.x2
+        y2 += segment.y2
+      case .rotation90 :
+        x1 += inModelHeight - segment.y1
+        y1 += segment.x1
+        x2 += inModelHeight - segment.y2
+        y2 += segment.x2
+      case .rotation180 :
+        x1 += inModelWidth  - segment.x1
+        y1 += inModelHeight - segment.y1
+        x2 += inModelWidth  - segment.x2
+        y2 += inModelHeight - segment.y2
+      case .rotation270 :
+        x1 += segment.y1
+        y1 += inModelWidth - segment.x1
+        x2 += segment.y2
+        y2 += inModelWidth - segment.x2
+      }
+      let x1f = canariUnitToCocoa (x1)
+      let y1f = canariUnitToCocoa (y1)
+      let x2f = canariUnitToCocoa (x2)
+      let y2f = canariUnitToCocoa (y2)
+      var bp = EBBezierPath ()
+      bp.move (to: NSPoint (x: x1f, y: y1f))
+      bp.line (to: NSPoint (x: x2f, y: y2f))
+      bp.lineWidth = canariUnitToCocoa (segment.width)
+      bp.lineCapStyle = .round
+      ioBezierPaths.append (bp)
+    }
+  }
+
   //····················································································································
 
   func addDrillForPDF (toStrokeBezierPaths ioBezierPaths : inout [EBBezierPath],

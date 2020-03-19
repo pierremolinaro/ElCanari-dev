@@ -27,7 +27,7 @@ entity ProjectRoot {
   property proxy String comments : mArtwork.comments ;
 
 //--- PDF Generation
-  property NSColor mPDFBoardBackroundColor default lightGray ;
+  property NSColor mPDFBoardBackgroundColor default lightGray ;
   
 //--- ERC Status
   property Bool mCheckClearanceBetweenPadsOfSameNet default yes ;

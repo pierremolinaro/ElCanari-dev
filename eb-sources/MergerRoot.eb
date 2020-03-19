@@ -54,6 +54,9 @@ entity MergerRoot {
 //--- Artwork
   toOne ArtworkRoot artwork ;
   property String artworkName default "" ;
+
+//--- PDF Generation
+  property NSColor mPDFBoardBackgroundColor default lightGray ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

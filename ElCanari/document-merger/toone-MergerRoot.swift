@@ -32,6 +32,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     inOldValue?.shiftArrowMagnitude_property.removeEBObserversFrom (&self.mObserversOf_shiftArrowMagnitude) // Stored property
     inOldValue?.shiftArrowMagnitudeUnit_property.removeEBObserversFrom (&self.mObserversOf_shiftArrowMagnitudeUnit) // Stored property
     inOldValue?.artworkName_property.removeEBObserversFrom (&self.mObserversOf_artworkName) // Stored property
+    inOldValue?.mPDFBoardBackgroundColor_property.removeEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
     inOldValue?.modelNames_property.removeEBObserversFrom (&self.mObserversOf_modelNames) // Transient property
     inOldValue?.boardRect_property.removeEBObserversFrom (&self.mObserversOf_boardRect) // Transient property
     inOldValue?.boardDisplayRect_property.removeEBObserversFrom (&self.mObserversOf_boardDisplayRect) // Transient property
@@ -56,6 +57,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     self.mInternalValue?.shiftArrowMagnitude_property.addEBObserversFrom (&self.mObserversOf_shiftArrowMagnitude) // Stored property
     self.mInternalValue?.shiftArrowMagnitudeUnit_property.addEBObserversFrom (&self.mObserversOf_shiftArrowMagnitudeUnit) // Stored property
     self.mInternalValue?.artworkName_property.addEBObserversFrom (&self.mObserversOf_artworkName) // Stored property
+    self.mInternalValue?.mPDFBoardBackgroundColor_property.addEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
     self.mInternalValue?.modelNames_property.addEBObserversFrom (&self.mObserversOf_modelNames) // Transient property
     self.mInternalValue?.boardRect_property.addEBObserversFrom (&self.mObserversOf_boardRect) // Transient property
     self.mInternalValue?.boardDisplayRect_property.addEBObserversFrom (&self.mObserversOf_boardDisplayRect) // Transient property
@@ -1250,6 +1252,76 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.artworkName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mPDFBoardBackgroundColor' stored property
+  //····················································································································
+
+  private var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor?> {
+    if let model = self.propval {
+      switch (model.mPDFBoardBackgroundColor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPDFBoardBackgroundColor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mPDFBoardBackgroundColor.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mPDFBoardBackgroundColor_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPDFBoardBackgroundColor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mPDFBoardBackgroundColor.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mPDFBoardBackgroundColor_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mPDFBoardBackgroundColor_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mPDFBoardBackgroundColor.apply { (_ observer : EBEvent) in
+        managedObject.mPDFBoardBackgroundColor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mPDFBoardBackgroundColor_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    self.mObserversOf_mPDFBoardBackgroundColor.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mPDFBoardBackgroundColor_property.removeEBObserver (observer)
       }
     }
   }

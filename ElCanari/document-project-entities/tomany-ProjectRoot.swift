@@ -17,7 +17,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mArtworkName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mArtworkVersion_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mPDFBoardBackroundColor_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mPDFBoardBackgroundColor_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mCheckClearanceBetweenPadsOfSameNet_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mLastERCCheckingIsSuccess_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mLastERCCheckingSignature_fromElementsOfSet (inRemovedSet) // Stored property
@@ -125,7 +125,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   //--- Add observers to added objects
     self.addEBObserversOf_mArtworkName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mArtworkVersion_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mPDFBoardBackroundColor_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mPDFBoardBackgroundColor_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mCheckClearanceBetweenPadsOfSameNet_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mLastERCCheckingIsSuccess_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mLastERCCheckingSignature_toElementsOfSet (inAddedSet) // Stored property
@@ -347,58 +347,58 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'mPDFBoardBackroundColor' stored property
+  //   Observers of 'mPDFBoardBackgroundColor' stored property
   //····················································································································
 
-  private var mObserversOf_mPDFBoardBackroundColor = EBWeakEventSet ()
+  private var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mPDFBoardBackroundColor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPDFBoardBackgroundColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mPDFBoardBackroundColor.insert (inObserver)
+    self.mObserversOf_mPDFBoardBackgroundColor.insert (inObserver)
     switch self.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPDFBoardBackroundColor_property.addEBObserver (inObserver)
+        managedObject.mPDFBoardBackgroundColor_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mPDFBoardBackroundColor (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPDFBoardBackgroundColor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mPDFBoardBackroundColor.remove (inObserver)
+    self.mObserversOf_mPDFBoardBackgroundColor.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPDFBoardBackroundColor_property.removeEBObserver (inObserver)
+        managedObject.mPDFBoardBackgroundColor_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mPDFBoardBackroundColor_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_mPDFBoardBackgroundColor_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mPDFBoardBackroundColor.apply { (_ observer : EBEvent) in
-        managedObject.mPDFBoardBackroundColor_property.addEBObserver (observer)
+      self.mObserversOf_mPDFBoardBackgroundColor.apply { (_ observer : EBEvent) in
+        managedObject.mPDFBoardBackgroundColor_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mPDFBoardBackroundColor_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mPDFBoardBackroundColor.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mPDFBoardBackgroundColor_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mPDFBoardBackgroundColor.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mPDFBoardBackroundColor_property.removeEBObserver (observer)
+        managedObject.mPDFBoardBackgroundColor_property.removeEBObserver (observer)
       }
     }
   }
@@ -7492,7 +7492,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     }
     self.addEBObserverOf_mArtworkName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mArtworkVersion (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mPDFBoardBackroundColor (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mPDFBoardBackgroundColor (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mCheckClearanceBetweenPadsOfSameNet (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLastERCCheckingIsSuccess (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLastERCCheckingSignature (self.mObserverForWritingPreferences)

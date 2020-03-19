@@ -1026,7 +1026,7 @@ document ProjectDocument root ProjectRoot {
   transient Bool documentFilePathOk dependsFrom self.documentFilePath ;
   outlet NSView mIncorrectFileNameMessageView $hidden self.documentFilePathOk ;
 
-  outlet EBColorWell mPDFBoardBackroundColorWell $color root.mPDFBoardBackroundColor {sendContinously : no} ;
+  outlet EBColorWell mPDFBoardBackgroundColorWell $color root.mPDFBoardBackgroundColor {sendContinously : no} ;
 
 //---------------- Minima Page
   outlet EBPopUpButton mMinPPTPTTTWinEBUnitPopUp $selectedTag root.minPPTPTTTWdisplayUnit ;

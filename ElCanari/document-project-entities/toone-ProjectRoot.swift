@@ -17,7 +17,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //--- Remove observers from removed objects
     inOldValue?.mArtworkName_property.removeEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
     inOldValue?.mArtworkVersion_property.removeEBObserversFrom (&self.mObserversOf_mArtworkVersion) // Stored property
-    inOldValue?.mPDFBoardBackroundColor_property.removeEBObserversFrom (&self.mObserversOf_mPDFBoardBackroundColor) // Stored property
+    inOldValue?.mPDFBoardBackgroundColor_property.removeEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
     inOldValue?.mCheckClearanceBetweenPadsOfSameNet_property.removeEBObserversFrom (&self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet) // Stored property
     inOldValue?.mLastERCCheckingIsSuccess_property.removeEBObserversFrom (&self.mObserversOf_mLastERCCheckingIsSuccess) // Stored property
     inOldValue?.mLastERCCheckingSignature_property.removeEBObserversFrom (&self.mObserversOf_mLastERCCheckingSignature) // Stored property
@@ -123,7 +123,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //--- Add observers to added objects
     self.mInternalValue?.mArtworkName_property.addEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
     self.mInternalValue?.mArtworkVersion_property.addEBObserversFrom (&self.mObserversOf_mArtworkVersion) // Stored property
-    self.mInternalValue?.mPDFBoardBackroundColor_property.addEBObserversFrom (&self.mObserversOf_mPDFBoardBackroundColor) // Stored property
+    self.mInternalValue?.mPDFBoardBackgroundColor_property.addEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
     self.mInternalValue?.mCheckClearanceBetweenPadsOfSameNet_property.addEBObserversFrom (&self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet) // Stored property
     self.mInternalValue?.mLastERCCheckingIsSuccess_property.addEBObserversFrom (&self.mObserversOf_mLastERCCheckingIsSuccess) // Stored property
     self.mInternalValue?.mLastERCCheckingSignature_property.addEBObserversFrom (&self.mObserversOf_mLastERCCheckingSignature) // Stored property
@@ -369,16 +369,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'mPDFBoardBackroundColor' stored property
+  //   Observers of 'mPDFBoardBackgroundColor' stored property
   //····················································································································
 
-  private var mObserversOf_mPDFBoardBackroundColor = EBWeakEventSet ()
+  private var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPDFBoardBackroundColor_property_selection : EBSelection <NSColor?> {
+  var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor?> {
     if let model = self.propval {
-      switch (model.mPDFBoardBackroundColor_property_selection) {
+      switch (model.mPDFBoardBackgroundColor_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -393,47 +393,47 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mPDFBoardBackroundColor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPDFBoardBackgroundColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mPDFBoardBackroundColor.insert (inObserver)
+    self.mObserversOf_mPDFBoardBackgroundColor.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mPDFBoardBackroundColor_property.addEBObserver (inObserver)
+       v?.mPDFBoardBackgroundColor_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mPDFBoardBackroundColor (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPDFBoardBackgroundColor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mPDFBoardBackroundColor.remove (inObserver)
+    self.mObserversOf_mPDFBoardBackgroundColor.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mPDFBoardBackroundColor_property.removeEBObserver (inObserver)
+      v?.mPDFBoardBackgroundColor_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mPDFBoardBackroundColor_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_mPDFBoardBackgroundColor_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mPDFBoardBackroundColor.apply { (_ observer : EBEvent) in
-        managedObject.mPDFBoardBackroundColor_property.addEBObserver (observer)
+      self.mObserversOf_mPDFBoardBackgroundColor.apply { (_ observer : EBEvent) in
+        managedObject.mPDFBoardBackgroundColor_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mPDFBoardBackroundColor_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mPDFBoardBackroundColor.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mPDFBoardBackgroundColor_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mPDFBoardBackgroundColor.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mPDFBoardBackroundColor_property.removeEBObserver (observer)
+        managedObject.mPDFBoardBackgroundColor_property.removeEBObserver (observer)
       }
     }
   }

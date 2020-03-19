@@ -18,8 +18,8 @@ protocol ProjectRoot_mArtworkVersion : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mPDFBoardBackroundColor : class {
-  var mPDFBoardBackroundColor : NSColor { get }
+protocol ProjectRoot_mPDFBoardBackgroundColor : class {
+  var mPDFBoardBackgroundColor : NSColor { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -707,7 +707,7 @@ protocol ProjectRoot_schematicStatusImage : class {
 class ProjectRoot : EBManagedObject,
          ProjectRoot_mArtworkName,
          ProjectRoot_mArtworkVersion,
-         ProjectRoot_mPDFBoardBackroundColor,
+         ProjectRoot_mPDFBoardBackgroundColor,
          ProjectRoot_mCheckClearanceBetweenPadsOfSameNet,
          ProjectRoot_mLastERCCheckingIsSuccess,
          ProjectRoot_mLastERCCheckingSignature,
@@ -857,21 +857,21 @@ class ProjectRoot : EBManagedObject,
   var mArtworkVersion_property_selection : EBSelection <Int> { return self.mArtworkVersion_property.prop }
 
   //····················································································································
-  //   Atomic property: mPDFBoardBackroundColor
+  //   Atomic property: mPDFBoardBackgroundColor
   //····················································································································
 
-  let mPDFBoardBackroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray)
+  let mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray)
 
   //····················································································································
 
-  var mPDFBoardBackroundColor : NSColor {
-    get { return self.mPDFBoardBackroundColor_property.propval }
-    set { self.mPDFBoardBackroundColor_property.setProp (newValue) }
+  var mPDFBoardBackgroundColor : NSColor {
+    get { return self.mPDFBoardBackgroundColor_property.propval }
+    set { self.mPDFBoardBackgroundColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPDFBoardBackroundColor_property_selection : EBSelection <NSColor> { return self.mPDFBoardBackroundColor_property.prop }
+  var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor> { return self.mPDFBoardBackgroundColor_property.prop }
 
   //····················································································································
   //   Atomic property: mCheckClearanceBetweenPadsOfSameNet
@@ -3458,8 +3458,8 @@ class ProjectRoot : EBManagedObject,
     self.mArtworkName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mArtworkVersion
     self.mArtworkVersion_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mPDFBoardBackroundColor
-    self.mPDFBoardBackroundColor_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mPDFBoardBackgroundColor
+    self.mPDFBoardBackgroundColor_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
     self.mCheckClearanceBetweenPadsOfSameNet_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mLastERCCheckingIsSuccess
@@ -5062,12 +5062,12 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mArtworkVersion_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mPDFBoardBackroundColor",
-      idx: self.mPDFBoardBackroundColor_property.ebObjectIndex,
+      "mPDFBoardBackgroundColor",
+      idx: self.mPDFBoardBackgroundColor_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mPDFBoardBackroundColor_property.mObserverExplorer,
-      valueExplorer: &self.mPDFBoardBackroundColor_property.mValueExplorer
+      observerExplorer: &self.mPDFBoardBackgroundColor_property.mObserverExplorer,
+      valueExplorer: &self.mPDFBoardBackgroundColor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mCheckClearanceBetweenPadsOfSameNet",
@@ -5965,9 +5965,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mArtworkVersion
     self.mArtworkVersion_property.mObserverExplorer = nil
     self.mArtworkVersion_property.mValueExplorer = nil
-  //--- Atomic property: mPDFBoardBackroundColor
-    self.mPDFBoardBackroundColor_property.mObserverExplorer = nil
-    self.mPDFBoardBackroundColor_property.mValueExplorer = nil
+  //--- Atomic property: mPDFBoardBackgroundColor
+    self.mPDFBoardBackgroundColor_property.mObserverExplorer = nil
+    self.mPDFBoardBackgroundColor_property.mValueExplorer = nil
   //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
     self.mCheckClearanceBetweenPadsOfSameNet_property.mObserverExplorer = nil
     self.mCheckClearanceBetweenPadsOfSameNet_property.mValueExplorer = nil
@@ -6243,8 +6243,8 @@ class ProjectRoot : EBManagedObject,
     self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey:"mArtworkName")
   //--- Atomic property: mArtworkVersion
     self.mArtworkVersion_property.storeIn (dictionary: ioDictionary, forKey:"mArtworkVersion")
-  //--- Atomic property: mPDFBoardBackroundColor
-    self.mPDFBoardBackroundColor_property.storeIn (dictionary: ioDictionary, forKey:"mPDFBoardBackroundColor")
+  //--- Atomic property: mPDFBoardBackgroundColor
+    self.mPDFBoardBackgroundColor_property.storeIn (dictionary: ioDictionary, forKey:"mPDFBoardBackgroundColor")
   //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
     self.mCheckClearanceBetweenPadsOfSameNet_property.storeIn (dictionary: ioDictionary, forKey:"mCheckClearanceBetweenPadsOfSameNet")
   //--- Atomic property: mLastERCCheckingIsSuccess
@@ -6498,8 +6498,8 @@ class ProjectRoot : EBManagedObject,
     self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey:"mArtworkName")
   //--- Atomic property: mArtworkVersion
     self.mArtworkVersion_property.readFrom (dictionary: inDictionary, forKey:"mArtworkVersion")
-  //--- Atomic property: mPDFBoardBackroundColor
-    self.mPDFBoardBackroundColor_property.readFrom (dictionary: inDictionary, forKey:"mPDFBoardBackroundColor")
+  //--- Atomic property: mPDFBoardBackgroundColor
+    self.mPDFBoardBackgroundColor_property.readFrom (dictionary: inDictionary, forKey:"mPDFBoardBackgroundColor")
   //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
     self.mCheckClearanceBetweenPadsOfSameNet_property.readFrom (dictionary: inDictionary, forKey:"mCheckClearanceBetweenPadsOfSameNet")
   //--- Atomic property: mLastERCCheckingIsSuccess
@@ -6630,7 +6630,7 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic properties
     ioString += "mArtworkName\n"
     ioString += "mArtworkVersion\n"
-    ioString += "mPDFBoardBackroundColor\n"
+    ioString += "mPDFBoardBackgroundColor\n"
     ioString += "mCheckClearanceBetweenPadsOfSameNet\n"
     ioString += "mLastERCCheckingIsSuccess\n"
     ioString += "mLastERCCheckingSignature\n"
@@ -6714,7 +6714,7 @@ class ProjectRoot : EBManagedObject,
     ioData.append (ascii: .lineFeed)
     self.mArtworkVersion.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
-    self.mPDFBoardBackroundColor.appendPropertyValueTo (&ioData)
+    self.mPDFBoardBackgroundColor.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mCheckClearanceBetweenPadsOfSameNet.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)

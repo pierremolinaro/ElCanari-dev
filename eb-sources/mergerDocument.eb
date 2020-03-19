@@ -338,7 +338,11 @@ document MergerDocument root MergerRoot {
   transient String importArtworkButtonTitle dependsFrom root.artworkName ;
   outlet EBButton mImportArtworkButton $run importArtworkAction $title self.importArtworkButtonTitle ;
 
-  outlet NSTextView mLogTextView $hidden root.artwork.none ;
+  outlet NSTabView mProductGenerationTabView ;
+  outlet NSTabView mArtworkSettingsTabView $hidden root.artwork.none ;
+  outlet NSTextView mLogTextView ;
+  outlet EBColorWell mPDFBoardBackgroundColorWell $color root.mPDFBoardBackgroundColor {sendContinously : no} ;
+
 //---
 //------------------------------------------- Artwork settings
 //--- Minimum tab
