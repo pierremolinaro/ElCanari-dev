@@ -154,11 +154,6 @@ binding CanariNetInfoTableView $netInfo : transient NetInfoArray ;
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//extern outlet class CanariBoardBoardArchivePopUpButton ;
-//binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;
-
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 extern outlet class CanariDragSourceTableView ;
 binding CanariDragSourceTableView $models : transient StringTagArray ;
 

@@ -10,7 +10,6 @@ include "eb-sources/font-FontDocument.eb" ;
 //--- Artwork
 include "eb-sources/artworkDocument.eb" ;
 //--- Merger
-include "eb-sources/BoardArchiveFormat.eb" ;
 include "eb-sources/BoardModelPad.eb" ;
 include "eb-sources/CanariSegment.eb" ;
 include "eb-sources/BoardModelVia.eb" ;

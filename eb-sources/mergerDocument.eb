@@ -338,11 +338,6 @@ document MergerDocument root MergerRoot {
   transient String importArtworkButtonTitle dependsFrom root.artworkName ;
   outlet EBButton mImportArtworkButton $run importArtworkAction $title self.importArtworkButtonTitle ;
 
-//  outlet EBSwitch mGenerateGerber $value root.generateGerberProductFile ;
-//  outlet EBSwitch mGeneratePDF $value root.generatePDFProductFile ;
-
-//  outlet CanariBoardBoardArchivePopUpButton mBoardArchiveFormatPopUpButton $format root.generatedBoardArchiveFormat ;
-
   outlet NSTextView mLogTextView $hidden root.artwork.none ;
 //---
 //------------------------------------------- Artwork settings

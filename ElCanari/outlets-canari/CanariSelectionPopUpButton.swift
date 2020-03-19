@@ -71,6 +71,8 @@ class CanariSelectionPopUpButton : EBPopUpButton {
     self.mController = nil
   }
 
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -78,6 +80,8 @@ class CanariSelectionPopUpButton : EBPopUpButton {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class Controller_CanariSelectionPopUpButton_selectedNameInArray : EBSimpleController {
+
+  //····················································································································
 
   private let mSelectedName : EBReadWriteProperty_String
   private let mNameArray : EBReadOnlyProperty_StringArray
@@ -91,7 +95,7 @@ final class Controller_CanariSelectionPopUpButton_selectedNameInArray : EBSimple
     mOutlet = outlet
     super.init (observedObjects: [inSelectedName, inNameArray], callBack: { outlet.updateOutlet (inSelectedName, inNameArray) })
     self.mOutlet.target = self
-    self.mOutlet.action = #selector (Controller_CanariBoardBoardArchivePopUpButton_format.updateModel (_:))
+    self.mOutlet.action = #selector (updateModelAction (_:))
   }
 
   //····················································································································
