@@ -32,9 +32,6 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
     self.removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_artworkName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_modelNames_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardRect_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardDisplayRect_fromElementsOfSet (inRemovedSet) // Transient property
@@ -59,9 +56,6 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
     self.addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_artworkName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_generateGerberProductFile_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_generatePDFProductFile_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_modelNames_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardRect_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardDisplayRect_toElementsOfSet (inAddedSet) // Transient property
@@ -1040,177 +1034,6 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   }
 
   //····················································································································
-  //   Observers of 'generateGerberProductFile' stored property
-  //····················································································································
-
-  private var mObserversOf_generateGerberProductFile = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_generateGerberProductFile (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_generateGerberProductFile.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.generateGerberProductFile_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_generateGerberProductFile (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_generateGerberProductFile.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.generateGerberProductFile_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_generateGerberProductFile_toElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_generateGerberProductFile.apply { (_ observer : EBEvent) in
-        managedObject.generateGerberProductFile_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    self.mObserversOf_generateGerberProductFile.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.generateGerberProductFile_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'generatePDFProductFile' stored property
-  //····················································································································
-
-  private var mObserversOf_generatePDFProductFile = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_generatePDFProductFile (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_generatePDFProductFile.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.generatePDFProductFile_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_generatePDFProductFile (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_generatePDFProductFile.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.generatePDFProductFile_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_generatePDFProductFile_toElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_generatePDFProductFile.apply { (_ observer : EBEvent) in
-        managedObject.generatePDFProductFile_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    self.mObserversOf_generatePDFProductFile.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.generatePDFProductFile_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'generatedBoardArchiveFormat' stored property
-  //····················································································································
-
-  private var mObserversOf_generatedBoardArchiveFormat = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_generatedBoardArchiveFormat (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_generatedBoardArchiveFormat.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.generatedBoardArchiveFormat_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_generatedBoardArchiveFormat (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_generatedBoardArchiveFormat.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.generatedBoardArchiveFormat_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_generatedBoardArchiveFormat.apply { (_ observer : EBEvent) in
-        managedObject.generatedBoardArchiveFormat_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    self.mObserversOf_generatedBoardArchiveFormat.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.generatedBoardArchiveFormat_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'modelNames' transient property
   //····················································································································
 
@@ -2138,9 +1961,6 @@ final class PreferencesArrayOf_MergerRoot : StoredArrayOf_MergerRoot {
     self.addEBObserverOf_shiftArrowMagnitude (self.mObserverForWritingPreferences)
     self.addEBObserverOf_shiftArrowMagnitudeUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_artworkName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_generateGerberProductFile (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_generatePDFProductFile (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_generatedBoardArchiveFormat (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 

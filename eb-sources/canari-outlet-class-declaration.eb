@@ -154,8 +154,8 @@ binding CanariNetInfoTableView $netInfo : transient NetInfoArray ;
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extern outlet class CanariBoardBoardArchivePopUpButton ;
-binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;
+//extern outlet class CanariBoardBoardArchivePopUpButton ;
+//binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,7 +17,6 @@
                 <outlet property="mArtworkNameTextField" destination="sNV-XY-ihk" id="r4K-hG-ctp"/>
                 <outlet property="mAutomaticBoardSizeSwitch" destination="FGl-Od-SnG" id="Kni-UN-4x9"/>
                 <outlet property="mAutomaticBoardSizeView" destination="ICD-CO-qWn" id="rxL-wa-aa6"/>
-                <outlet property="mBoardArchiveFormatPopUpButton" destination="a1Z-gP-Hcs" id="uVU-jR-UKt"/>
                 <outlet property="mBoardBoardLimitTextField" destination="sRW-Ca-N8E" id="jKe-CV-F6o"/>
                 <outlet property="mBoardClipView" destination="nFP-mw-Omh" id="VEQ-jL-583"/>
                 <outlet property="mBoardHeightTextField" destination="7dt-7v-ArC" id="779-cB-9W3"/>
@@ -61,8 +60,6 @@
                 <outlet property="mDeselectIssueButton" destination="XUR-ya-7kL" id="jgu-DJ-XSj"/>
                 <outlet property="mDisplaySettingView" destination="gM7-40-CET" id="k3P-rb-BbN"/>
                 <outlet property="mEmptyBoardMessage" destination="TY5-Zu-VN8" id="3zh-MC-Ugv"/>
-                <outlet property="mGenerateGerber" destination="sfd-Ok-J1H" id="gA1-LA-iM7"/>
-                <outlet property="mGeneratePDF" destination="81g-3K-hsT" id="6Nk-Qn-X93"/>
                 <outlet property="mGenerateProductFilesActionButton" destination="5Wu-A4-TL6" id="7df-pB-Lpb"/>
                 <outlet property="mImportArtworkButton" destination="mUF-7a-S2r" id="jc0-v6-ohS"/>
                 <outlet property="mIncorrectDocumentNameTextField" destination="doX-6B-wh1" id="3wt-30-3G9"/>
@@ -163,7 +160,7 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="21" userLabel="Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="73" y="851" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="-289" y="900" width="1920" height="1057"/>
             <value key="minSize" type="size" width="400" height="300"/>
             <view key="contentView" wantsLayer="YES" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
@@ -603,18 +600,18 @@ AAAAAAEGA
                     </textFieldCell>
                 </textField>
                 <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnb-pY-QcN">
-                    <rect key="frame" x="22" y="14" width="891" height="543"/>
+                    <rect key="frame" x="22" y="14" width="891" height="580"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="Ia8-1D-Xh1">
-                        <rect key="frame" x="1" y="1" width="874" height="541"/>
+                        <rect key="frame" x="1" y="1" width="874" height="578"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView ambiguous="YES" editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Rki-OK-VtG">
-                                <rect key="frame" x="0.0" y="0.0" width="874" height="541"/>
+                                <rect key="frame" x="0.0" y="0.0" width="874" height="578"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="874" height="541"/>
+                                <size key="minSize" width="874" height="578"/>
                                 <size key="maxSize" width="1043" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             </textView>
@@ -625,7 +622,7 @@ AAAAAAEGA
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="fFa-UX-WT4">
-                        <rect key="frame" x="875" y="1" width="15" height="541"/>
+                        <rect key="frame" x="875" y="1" width="15" height="578"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -656,7 +653,7 @@ AAAAAAEGA
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusPartiallyAvailable" id="qa2-mi-TEn"/>
                         </imageView>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gwG-XI-zVs">
-                            <rect key="frame" x="18" y="3" width="332" height="20"/>
+                            <rect key="frame" x="28" y="3" width="332" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="It is recommended that you rename the document" id="zlR-2v-gJa">
                                 <font key="font" metaFont="systemBold"/>
@@ -666,32 +663,8 @@ AAAAAAEGA
                         </textField>
                     </subviews>
                 </customView>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="81g-3K-hsT" customClass="EBSwitch">
-                    <rect key="frame" x="279" y="576" width="90" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="PDF Files" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="JRC-5W-W05">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfd-Ok-J1H" customClass="EBSwitch">
-                    <rect key="frame" x="186" y="576" width="90" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Gerber Files" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="q8a-7i-avf">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Wu-A4-TL6" customClass="EBButton">
-                    <rect key="frame" x="22" y="576" width="159" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Generate Files" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="iAB-kd-UEz">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="doX-6B-wh1" customClass="EBTextObserverField">
-                    <rect key="frame" x="199" y="600" width="706" height="39"/>
+                    <rect key="frame" x="230" y="602" width="675" height="37"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="justified" id="81G-Tz-Yj7">
                         <font key="font" metaFont="smallSystem"/>
@@ -700,32 +673,16 @@ AAAAAAEGA
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a1Z-gP-Hcs" customClass="CanariBoardBoardArchivePopUpButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="465" y="576" width="128" height="17"/>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Wu-A4-TL6" customClass="EBButton">
+                    <rect key="frame" x="20" y="601" width="159" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Do Not Generate" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="3TW-pU-g6M" id="5mj-Ac-WS7">
+                    <buttonCell key="cell" type="roundRect" title="Generate Files" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="iAB-kd-UEz">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="12i-5v-Ynz">
-                            <items>
-                                <menuItem title="Do Not Generate" state="on" id="3TW-pU-g6M"/>
-                                <menuItem title="Generate, Binary" tag="1" id="lYk-CS-k7y"/>
-                                <menuItem title="Generate, XML" tag="2" id="5yk-RS-YUt"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2oe-bN-13f">
-                    <rect key="frame" x="373" y="572" width="86" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Board Archive" id="d1t-on-VCS">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                    </buttonCell>
+                </button>
             </subviews>
-            <point key="canvasLocation" x="916" y="-343"/>
+            <point key="canvasLocation" x="915.5" y="-343"/>
         </customView>
         <menu id="3Qt-fi-qrc" userLabel="Menu : Insert Board Model" customClass="CanariBoardInsertMenu" customModule="ElCanari" customModuleProvider="target">
             <items>

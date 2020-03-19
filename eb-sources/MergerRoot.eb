@@ -54,9 +54,9 @@ entity MergerRoot {
 //--- Artwork
   toOne ArtworkRoot artwork ;
   property String artworkName default "" ;
-  property Bool generateGerberProductFile default yes ;
-  property Bool generatePDFProductFile default yes ;
-  property BoardArchiveFormat generatedBoardArchiveFormat default noGeneration ;
+ // property Bool generateGerberProductFile default yes ;
+//  property Bool generatePDFProductFile default yes ;
+//  property BoardArchiveFormat generatedBoardArchiveFormat default noGeneration ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

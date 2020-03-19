@@ -24,37 +24,33 @@ extension MergerDocument {
         let productDirectory = f.deletingLastPathComponent
         let fm = FileManager ()
       //--- Generate board archive
-        if self.rootObject.generatedBoardArchiveFormat != .noGeneration {
+        do{
           let boardArchivePath = productDirectory + "/" + baseName + "." + EL_CANARI_MERGER_ARCHIVE
           self.mLogTextView?.appendMessageString("Generating \(boardArchivePath.lastPathComponent)…")
           try generateBoardArchive (atPath: boardArchivePath)
           self.mLogTextView?.appendSuccessString (" Ok\n")
         }
       //--- Gerber
-        if self.rootObject.generateGerberProductFile {
+        do{
           let gerberDirectory = productDirectory + "/" + baseName + "-gerber"
           if !fm.fileExists (atPath: gerberDirectory) {
             self.mLogTextView?.appendMessageString("Creating \(gerberDirectory) directory…")
             try fm.createDirectory (atPath: gerberDirectory, withIntermediateDirectories: true, attributes: nil)
             self.mLogTextView?.appendSuccessString (" Ok\n")
           }
-          if self.rootObject.generateGerberProductFile {
-            let filePath = gerberDirectory + "/" + baseName
-            try generateGerberFiles (atPath: filePath)
-          }
+          let filePath = gerberDirectory + "/" + baseName
+          try generateGerberFiles (atPath: filePath)
         }
       //--- PDF
-        if self.rootObject.generatePDFProductFile {
+        do{
           let pdfDirectory = productDirectory + "/" + baseName + "-pdf"
           if !fm.fileExists (atPath: pdfDirectory) {
             self.mLogTextView?.appendMessageString("Creating \(pdfDirectory) directory…")
             try fm.createDirectory (atPath: pdfDirectory, withIntermediateDirectories: true, attributes: nil)
             self.mLogTextView?.appendSuccessString (" Ok\n")
           }
-          if self.rootObject.generatePDFProductFile {
-            let filePath = pdfDirectory + "/" + baseName
-            try generatePDFfiles (atPath: filePath)
-          }
+          let filePath = pdfDirectory + "/" + baseName
+          try generatePDFfiles (atPath: filePath)
         }
       //--- Done !
         self.mLogTextView?.appendMessageString ("Done.")
@@ -236,7 +232,7 @@ extension MergerDocument {
   //--- Write file
     let data : Data = try PropertyListSerialization.data (
       fromPropertyList: archiveDict,
-      format: (self.rootObject.generatedBoardArchiveFormat == .xml) ? .xml : .binary,
+      format: .xml,
       options: 0
     )
     try data.write(to: URL (fileURLWithPath: inFilePath), options: .atomic)

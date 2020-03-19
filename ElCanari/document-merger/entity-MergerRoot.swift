@@ -108,24 +108,6 @@ protocol MergerRoot_artworkName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_generateGerberProductFile : class {
-  var generateGerberProductFile : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_generatePDFProductFile : class {
-  var generatePDFProductFile : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_generatedBoardArchiveFormat : class {
-  var generatedBoardArchiveFormat : BoardArchiveFormat { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol MergerRoot_modelNames : class {
   var modelNames : StringTagArray? { get }
 }
@@ -182,9 +164,6 @@ class MergerRoot : EBManagedObject,
          MergerRoot_shiftArrowMagnitude,
          MergerRoot_shiftArrowMagnitudeUnit,
          MergerRoot_artworkName,
-         MergerRoot_generateGerberProductFile,
-         MergerRoot_generatePDFProductFile,
-         MergerRoot_generatedBoardArchiveFormat,
          MergerRoot_modelNames,
          MergerRoot_boardRect,
          MergerRoot_boardDisplayRect,
@@ -520,57 +499,6 @@ class MergerRoot : EBManagedObject,
   var artworkName_property_selection : EBSelection <String> { return self.artworkName_property.prop }
 
   //····················································································································
-  //   Atomic property: generateGerberProductFile
-  //····················································································································
-
-  let generateGerberProductFile_property = EBStoredProperty_Bool (defaultValue: true)
-
-  //····················································································································
-
-  var generateGerberProductFile : Bool {
-    get { return self.generateGerberProductFile_property.propval }
-    set { self.generateGerberProductFile_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var generateGerberProductFile_property_selection : EBSelection <Bool> { return self.generateGerberProductFile_property.prop }
-
-  //····················································································································
-  //   Atomic property: generatePDFProductFile
-  //····················································································································
-
-  let generatePDFProductFile_property = EBStoredProperty_Bool (defaultValue: true)
-
-  //····················································································································
-
-  var generatePDFProductFile : Bool {
-    get { return self.generatePDFProductFile_property.propval }
-    set { self.generatePDFProductFile_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var generatePDFProductFile_property_selection : EBSelection <Bool> { return self.generatePDFProductFile_property.prop }
-
-  //····················································································································
-  //   Atomic property: generatedBoardArchiveFormat
-  //····················································································································
-
-  let generatedBoardArchiveFormat_property = EBStoredProperty_BoardArchiveFormat (defaultValue: BoardArchiveFormat.noGeneration)
-
-  //····················································································································
-
-  var generatedBoardArchiveFormat : BoardArchiveFormat {
-    get { return self.generatedBoardArchiveFormat_property.propval }
-    set { self.generatedBoardArchiveFormat_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var generatedBoardArchiveFormat_property_selection : EBSelection <BoardArchiveFormat> { return self.generatedBoardArchiveFormat_property.prop }
-
-  //····················································································································
   //   Transient property: modelNames
   //····················································································································
 
@@ -800,12 +728,6 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitudeUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: artworkName
     self.artworkName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: generateGerberProductFile
-    self.generateGerberProductFile_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: generatePDFProductFile
-    self.generatePDFProductFile_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: generatedBoardArchiveFormat
-    self.generatedBoardArchiveFormat_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: modelNames
     self.modelNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1136,30 +1058,6 @@ class MergerRoot : EBManagedObject,
       observerExplorer: &self.artworkName_property.mObserverExplorer,
       valueExplorer: &self.artworkName_property.mValueExplorer
     )
-    createEntryForPropertyNamed (
-      "generateGerberProductFile",
-      idx: self.generateGerberProductFile_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.generateGerberProductFile_property.mObserverExplorer,
-      valueExplorer: &self.generateGerberProductFile_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "generatePDFProductFile",
-      idx: self.generatePDFProductFile_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.generatePDFProductFile_property.mObserverExplorer,
-      valueExplorer: &self.generatePDFProductFile_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "generatedBoardArchiveFormat",
-      idx: self.generatedBoardArchiveFormat_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.generatedBoardArchiveFormat_property.mObserverExplorer,
-      valueExplorer: &self.generatedBoardArchiveFormat_property.mValueExplorer
-    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "modelNames",
@@ -1295,15 +1193,6 @@ class MergerRoot : EBManagedObject,
   //--- Atomic property: artworkName
     self.artworkName_property.mObserverExplorer = nil
     self.artworkName_property.mValueExplorer = nil
-  //--- Atomic property: generateGerberProductFile
-    self.generateGerberProductFile_property.mObserverExplorer = nil
-    self.generateGerberProductFile_property.mValueExplorer = nil
-  //--- Atomic property: generatePDFProductFile
-    self.generatePDFProductFile_property.mObserverExplorer = nil
-    self.generatePDFProductFile_property.mValueExplorer = nil
-  //--- Atomic property: generatedBoardArchiveFormat
-    self.generatedBoardArchiveFormat_property.mObserverExplorer = nil
-    self.generatedBoardArchiveFormat_property.mValueExplorer = nil
   //--- To one property: artwork
     self.artwork_property.mObserverExplorer = nil
     self.artwork_property.mValueExplorer = nil
@@ -1384,12 +1273,6 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey:"shiftArrowMagnitudeUnit")
   //--- Atomic property: artworkName
     self.artworkName_property.storeIn (dictionary: ioDictionary, forKey:"artworkName")
-  //--- Atomic property: generateGerberProductFile
-    self.generateGerberProductFile_property.storeIn (dictionary: ioDictionary, forKey:"generateGerberProductFile")
-  //--- Atomic property: generatePDFProductFile
-    self.generatePDFProductFile_property.storeIn (dictionary: ioDictionary, forKey:"generatePDFProductFile")
-  //--- Atomic property: generatedBoardArchiveFormat
-    self.generatedBoardArchiveFormat_property.storeIn (dictionary: ioDictionary, forKey:"generatedBoardArchiveFormat")
   //--- To one property: artwork
     self.store (managedObject:self.artwork_property.propval,
       relationshipName: "artwork",
@@ -1468,12 +1351,6 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitudeUnit")
   //--- Atomic property: artworkName
     self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
-  //--- Atomic property: generateGerberProductFile
-    self.generateGerberProductFile_property.readFrom (dictionary: inDictionary, forKey:"generateGerberProductFile")
-  //--- Atomic property: generatePDFProductFile
-    self.generatePDFProductFile_property.readFrom (dictionary: inDictionary, forKey:"generatePDFProductFile")
-  //--- Atomic property: generatedBoardArchiveFormat
-    self.generatedBoardArchiveFormat_property.readFrom (dictionary: inDictionary, forKey:"generatedBoardArchiveFormat")
   }
 
 
@@ -1501,9 +1378,6 @@ class MergerRoot : EBManagedObject,
     ioString += "shiftArrowMagnitude\n"
     ioString += "shiftArrowMagnitudeUnit\n"
     ioString += "artworkName\n"
-    ioString += "generateGerberProductFile\n"
-    ioString += "generatePDFProductFile\n"
-    ioString += "generatedBoardArchiveFormat\n"
   //--- To one relationships
     ioString += "artwork\n"
   //--- To many relationships
@@ -1551,12 +1425,6 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitudeUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.artworkName.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.generateGerberProductFile.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.generatePDFProductFile.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.generatedBoardArchiveFormat.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
     if let object = self.artwork {

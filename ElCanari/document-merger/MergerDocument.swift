@@ -230,7 +230,6 @@ import Cocoa
   @IBOutlet var mArtworkNameTextField : EBTextObserverField? = nil
   @IBOutlet var mAutomaticBoardSizeSwitch : EBSwitch? = nil
   @IBOutlet var mAutomaticBoardSizeView : NSView? = nil
-  @IBOutlet var mBoardArchiveFormatPopUpButton : CanariBoardBoardArchivePopUpButton? = nil
   @IBOutlet var mBoardBoardLimitTextField : CanariDimensionTextField? = nil
   @IBOutlet var mBoardClipView : NSClipView? = nil
   @IBOutlet var mBoardHeightTextField : CanariDimensionObserverTextField? = nil
@@ -274,8 +273,6 @@ import Cocoa
   @IBOutlet var mDeselectIssueButton : EBButton? = nil
   @IBOutlet var mDisplaySettingView : NSView? = nil
   @IBOutlet var mEmptyBoardMessage : EBTextField? = nil
-  @IBOutlet var mGenerateGerber : EBSwitch? = nil
-  @IBOutlet var mGeneratePDF : EBSwitch? = nil
   @IBOutlet var mGenerateProductFilesActionButton : EBButton? = nil
   @IBOutlet var mImportArtworkButton : EBButton? = nil
   @IBOutlet var mIncorrectDocumentNameTextField : EBTextObserverField? = nil
@@ -470,7 +467,6 @@ import Cocoa
     checkOutletConnection (self.mArtworkNameTextField, "mArtworkNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mAutomaticBoardSizeSwitch, "mAutomaticBoardSizeSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mAutomaticBoardSizeView, "mAutomaticBoardSizeView", NSView.self, #file, #line)
-    checkOutletConnection (self.mBoardArchiveFormatPopUpButton, "mBoardArchiveFormatPopUpButton", CanariBoardBoardArchivePopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardBoardLimitTextField, "mBoardBoardLimitTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mBoardClipView, "mBoardClipView", NSClipView.self, #file, #line)
     checkOutletConnection (self.mBoardHeightTextField, "mBoardHeightTextField", CanariDimensionObserverTextField.self, #file, #line)
@@ -514,8 +510,6 @@ import Cocoa
     checkOutletConnection (self.mDeselectIssueButton, "mDeselectIssueButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mDisplaySettingView, "mDisplaySettingView", NSView.self, #file, #line)
     checkOutletConnection (self.mEmptyBoardMessage, "mEmptyBoardMessage", EBTextField.self, #file, #line)
-    checkOutletConnection (self.mGenerateGerber, "mGenerateGerber", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mGeneratePDF, "mGeneratePDF", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mGenerateProductFilesActionButton, "mGenerateProductFilesActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mImportArtworkButton, "mImportArtworkButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mIncorrectDocumentNameTextField, "mIncorrectDocumentNameTextField", EBTextObserverField.self, #file, #line)
@@ -967,9 +961,6 @@ import Cocoa
     self.mIncorrectDocumentNameTextField?.bind_valueObserver (self.incorrectDocumentFileErrorMessage_property, file: #file, line: #line)
     self.mArtworNameTextField?.bind_valueObserver (self.rootObject.artworkName_property, file: #file, line: #line)
     self.mImportArtworkButton?.bind_title (self.importArtworkButtonTitle_property, file: #file, line: #line)
-    self.mGenerateGerber?.bind_value (self.rootObject.generateGerberProductFile_property, file: #file, line: #line)
-    self.mGeneratePDF?.bind_value (self.rootObject.generatePDFProductFile_property, file: #file, line: #line)
-    self.mBoardArchiveFormatPopUpButton?.bind_format (self.rootObject.generatedBoardArchiveFormat_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1327,9 +1318,6 @@ import Cocoa
     self.mIncorrectDocumentNameTextField?.unbind_valueObserver ()
     self.mArtworNameTextField?.unbind_valueObserver ()
     self.mImportArtworkButton?.unbind_title ()
-    self.mGenerateGerber?.unbind_value ()
-    self.mGeneratePDF?.unbind_value ()
-    self.mBoardArchiveFormatPopUpButton?.unbind_format ()
   //--------------------------- Unbind multiple bindings
     self.rootObject.selectedPageIndex_property.removeEBObserver (self.mController_showPrefsForSettingMergerDisplayButton_enabled!)
     self.mController_showPrefsForSettingMergerDisplayButton_enabled = nil
@@ -1413,7 +1401,6 @@ import Cocoa
     self.mArtworkNameTextField?.ebCleanUp ()
     self.mAutomaticBoardSizeSwitch?.ebCleanUp ()
     self.mAutomaticBoardSizeView?.ebCleanUp ()
-    self.mBoardArchiveFormatPopUpButton?.ebCleanUp ()
     self.mBoardBoardLimitTextField?.ebCleanUp ()
     self.mBoardClipView?.ebCleanUp ()
     self.mBoardHeightTextField?.ebCleanUp ()
@@ -1457,8 +1444,6 @@ import Cocoa
     self.mDeselectIssueButton?.ebCleanUp ()
     self.mDisplaySettingView?.ebCleanUp ()
     self.mEmptyBoardMessage?.ebCleanUp ()
-    self.mGenerateGerber?.ebCleanUp ()
-    self.mGeneratePDF?.ebCleanUp ()
     self.mGenerateProductFilesActionButton?.ebCleanUp ()
     self.mImportArtworkButton?.ebCleanUp ()
     self.mIncorrectDocumentNameTextField?.ebCleanUp ()
@@ -1561,7 +1546,6 @@ import Cocoa
     self.mArtworkNameTextField = nil
     self.mAutomaticBoardSizeSwitch = nil
     self.mAutomaticBoardSizeView = nil
-    self.mBoardArchiveFormatPopUpButton = nil
     self.mBoardBoardLimitTextField = nil
     self.mBoardClipView = nil
     self.mBoardHeightTextField = nil
@@ -1605,8 +1589,6 @@ import Cocoa
     self.mDeselectIssueButton = nil
     self.mDisplaySettingView = nil
     self.mEmptyBoardMessage = nil
-    self.mGenerateGerber = nil
-    self.mGeneratePDF = nil
     self.mGenerateProductFilesActionButton = nil
     self.mImportArtworkButton = nil
     self.mIncorrectDocumentNameTextField = nil
