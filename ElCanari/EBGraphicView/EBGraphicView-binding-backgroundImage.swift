@@ -39,68 +39,8 @@ extension EBGraphicView {
     case .single (let v) :
       if let ciImage = CIImage (data: v) {
         self.mBackgroundImage = ciImage
-        self.needsDisplay = true
+        self.updateViewFrameAndBounds ()
       }
-    case .multiple :
-      break
-    }
-  }
-
-  //····················································································································
-
-  func bind_backgroundImageDeltaX (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mBackgroundImageDeltaXController = EBSimpleController (
-      observedObjects: [model],
-      callBack: { [weak self] in self?.updateBackgroundImageDeltaX (from: model) }
-    )
-  }
-
-  //····················································································································
-
-  func unbind_backgroundImageDeltaX () {
-    self.mBackgroundImageDeltaXController?.unregister ()
-    self.mBackgroundImageDeltaXController = nil
-  }
-
-  //····················································································································
-
-  private func updateBackgroundImageDeltaX (from model : EBReadOnlyProperty_Int) {
-    switch model.prop {
-    case .empty :
-      break
-    case .single (let v) :
-      self.mBackgroundImageDeltaX = canariUnitToCocoa (v)
-      self.needsDisplay = true
-    case .multiple :
-      break
-    }
-  }
-
-  //····················································································································
-
-  func bind_backgroundImageDeltaY (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mBackgroundImageDeltaYController = EBSimpleController (
-      observedObjects: [model],
-      callBack: { [weak self] in self?.updateBackgroundImageDeltaY (from: model) }
-    )
-  }
-
-  //····················································································································
-
-  func unbind_backgroundImageDeltaY () {
-    self.mBackgroundImageDeltaYController?.unregister ()
-    self.mBackgroundImageDeltaYController = nil
-  }
-
-  //····················································································································
-
-  private func updateBackgroundImageDeltaY (from model : EBReadOnlyProperty_Int) {
-    switch model.prop {
-    case .empty :
-      break
-    case .single (let v) :
-      self.mBackgroundImageDeltaY = canariUnitToCocoa (v)
-      self.needsDisplay = true
     case .multiple :
       break
     }

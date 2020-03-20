@@ -126,14 +126,38 @@ protocol PackageRoot_mModelImagePageYPlacardUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageDataDeltaX : class {
-  var mModelImageDataDeltaX : Int { get }
+protocol PackageRoot_mModelImageDeltaX : class {
+  var mModelImageDeltaX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageDataDeltaY : class {
-  var mModelImageDataDeltaY : Int { get }
+protocol PackageRoot_mModelImageDeltaY : class {
+  var mModelImageDeltaY : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_mModelImageFirstPointXOnLock : class {
+  var mModelImageFirstPointXOnLock : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_mModelImageFirstPointYOnLock : class {
+  var mModelImageFirstPointYOnLock : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_mModelImageScale : class {
+  var mModelImageScale : Double { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_mModelImageRotationInRadians : class {
+  var mModelImageRotationInRadians : Double { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -293,8 +317,12 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_mModelImagePageZoom,
          PackageRoot_mModelImagePageXPlacardUnit,
          PackageRoot_mModelImagePageYPlacardUnit,
-         PackageRoot_mModelImageDataDeltaX,
-         PackageRoot_mModelImageDataDeltaY,
+         PackageRoot_mModelImageDeltaX,
+         PackageRoot_mModelImageDeltaY,
+         PackageRoot_mModelImageFirstPointXOnLock,
+         PackageRoot_mModelImageFirstPointYOnLock,
+         PackageRoot_mModelImageScale,
+         PackageRoot_mModelImageRotationInRadians,
          PackageRoot_mPointsAreLocked,
          PackageRoot_knobSizeMultpliedByTen,
          PackageRoot_padNumbering,
@@ -659,38 +687,106 @@ class PackageRoot : EBGraphicManagedObject,
   var mModelImagePageYPlacardUnit_property_selection : EBSelection <Int> { return self.mModelImagePageYPlacardUnit_property.prop }
 
   //····················································································································
-  //   Atomic property: mModelImageDataDeltaX
+  //   Atomic property: mModelImageDeltaX
   //····················································································································
 
-  let mModelImageDataDeltaX_property = EBStoredProperty_Int (defaultValue: 0)
+  let mModelImageDeltaX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var mModelImageDataDeltaX : Int {
-    get { return self.mModelImageDataDeltaX_property.propval }
-    set { self.mModelImageDataDeltaX_property.setProp (newValue) }
+  var mModelImageDeltaX : Int {
+    get { return self.mModelImageDeltaX_property.propval }
+    set { self.mModelImageDeltaX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImageDataDeltaX_property_selection : EBSelection <Int> { return self.mModelImageDataDeltaX_property.prop }
+  var mModelImageDeltaX_property_selection : EBSelection <Int> { return self.mModelImageDeltaX_property.prop }
 
   //····················································································································
-  //   Atomic property: mModelImageDataDeltaY
+  //   Atomic property: mModelImageDeltaY
   //····················································································································
 
-  let mModelImageDataDeltaY_property = EBStoredProperty_Int (defaultValue: 0)
+  let mModelImageDeltaY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var mModelImageDataDeltaY : Int {
-    get { return self.mModelImageDataDeltaY_property.propval }
-    set { self.mModelImageDataDeltaY_property.setProp (newValue) }
+  var mModelImageDeltaY : Int {
+    get { return self.mModelImageDeltaY_property.propval }
+    set { self.mModelImageDeltaY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImageDataDeltaY_property_selection : EBSelection <Int> { return self.mModelImageDataDeltaY_property.prop }
+  var mModelImageDeltaY_property_selection : EBSelection <Int> { return self.mModelImageDeltaY_property.prop }
+
+  //····················································································································
+  //   Atomic property: mModelImageFirstPointXOnLock
+  //····················································································································
+
+  let mModelImageFirstPointXOnLock_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mModelImageFirstPointXOnLock : Int {
+    get { return self.mModelImageFirstPointXOnLock_property.propval }
+    set { self.mModelImageFirstPointXOnLock_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mModelImageFirstPointXOnLock_property_selection : EBSelection <Int> { return self.mModelImageFirstPointXOnLock_property.prop }
+
+  //····················································································································
+  //   Atomic property: mModelImageFirstPointYOnLock
+  //····················································································································
+
+  let mModelImageFirstPointYOnLock_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mModelImageFirstPointYOnLock : Int {
+    get { return self.mModelImageFirstPointYOnLock_property.propval }
+    set { self.mModelImageFirstPointYOnLock_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mModelImageFirstPointYOnLock_property_selection : EBSelection <Int> { return self.mModelImageFirstPointYOnLock_property.prop }
+
+  //····················································································································
+  //   Atomic property: mModelImageScale
+  //····················································································································
+
+  let mModelImageScale_property = EBStoredProperty_Double (defaultValue: 1)
+
+  //····················································································································
+
+  var mModelImageScale : Double {
+    get { return self.mModelImageScale_property.propval }
+    set { self.mModelImageScale_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mModelImageScale_property_selection : EBSelection <Double> { return self.mModelImageScale_property.prop }
+
+  //····················································································································
+  //   Atomic property: mModelImageRotationInRadians
+  //····················································································································
+
+  let mModelImageRotationInRadians_property = EBStoredProperty_Double (defaultValue: 0)
+
+  //····················································································································
+
+  var mModelImageRotationInRadians : Double {
+    get { return self.mModelImageRotationInRadians_property.propval }
+    set { self.mModelImageRotationInRadians_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mModelImageRotationInRadians_property_selection : EBSelection <Double> { return self.mModelImageRotationInRadians_property.prop }
 
   //····················································································································
   //   Atomic property: mPointsAreLocked
@@ -1416,10 +1512,18 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImagePageXPlacardUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mModelImagePageYPlacardUnit
     self.mModelImagePageYPlacardUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mModelImageDataDeltaX
-    self.mModelImageDataDeltaX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mModelImageDataDeltaY
-    self.mModelImageDataDeltaY_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelImageDeltaX
+    self.mModelImageDeltaX_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelImageDeltaY
+    self.mModelImageDeltaY_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelImageFirstPointXOnLock
+    self.mModelImageFirstPointXOnLock_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelImageFirstPointYOnLock
+    self.mModelImageFirstPointYOnLock_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelImageScale
+    self.mModelImageScale_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelImageRotationInRadians
+    self.mModelImageRotationInRadians_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPointsAreLocked
     self.mPointsAreLocked_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: knobSizeMultpliedByTen
@@ -2014,20 +2118,52 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer: &self.mModelImagePageYPlacardUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mModelImageDataDeltaX",
-      idx: self.mModelImageDataDeltaX_property.ebObjectIndex,
+      "mModelImageDeltaX",
+      idx: self.mModelImageDeltaX_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mModelImageDataDeltaX_property.mObserverExplorer,
-      valueExplorer: &self.mModelImageDataDeltaX_property.mValueExplorer
+      observerExplorer: &self.mModelImageDeltaX_property.mObserverExplorer,
+      valueExplorer: &self.mModelImageDeltaX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mModelImageDataDeltaY",
-      idx: self.mModelImageDataDeltaY_property.ebObjectIndex,
+      "mModelImageDeltaY",
+      idx: self.mModelImageDeltaY_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mModelImageDataDeltaY_property.mObserverExplorer,
-      valueExplorer: &self.mModelImageDataDeltaY_property.mValueExplorer
+      observerExplorer: &self.mModelImageDeltaY_property.mObserverExplorer,
+      valueExplorer: &self.mModelImageDeltaY_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mModelImageFirstPointXOnLock",
+      idx: self.mModelImageFirstPointXOnLock_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mModelImageFirstPointXOnLock_property.mObserverExplorer,
+      valueExplorer: &self.mModelImageFirstPointXOnLock_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mModelImageFirstPointYOnLock",
+      idx: self.mModelImageFirstPointYOnLock_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mModelImageFirstPointYOnLock_property.mObserverExplorer,
+      valueExplorer: &self.mModelImageFirstPointYOnLock_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mModelImageScale",
+      idx: self.mModelImageScale_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mModelImageScale_property.mObserverExplorer,
+      valueExplorer: &self.mModelImageScale_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mModelImageRotationInRadians",
+      idx: self.mModelImageRotationInRadians_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mModelImageRotationInRadians_property.mObserverExplorer,
+      valueExplorer: &self.mModelImageRotationInRadians_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mPointsAreLocked",
@@ -2240,12 +2376,24 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: mModelImagePageYPlacardUnit
     self.mModelImagePageYPlacardUnit_property.mObserverExplorer = nil
     self.mModelImagePageYPlacardUnit_property.mValueExplorer = nil
-  //--- Atomic property: mModelImageDataDeltaX
-    self.mModelImageDataDeltaX_property.mObserverExplorer = nil
-    self.mModelImageDataDeltaX_property.mValueExplorer = nil
-  //--- Atomic property: mModelImageDataDeltaY
-    self.mModelImageDataDeltaY_property.mObserverExplorer = nil
-    self.mModelImageDataDeltaY_property.mValueExplorer = nil
+  //--- Atomic property: mModelImageDeltaX
+    self.mModelImageDeltaX_property.mObserverExplorer = nil
+    self.mModelImageDeltaX_property.mValueExplorer = nil
+  //--- Atomic property: mModelImageDeltaY
+    self.mModelImageDeltaY_property.mObserverExplorer = nil
+    self.mModelImageDeltaY_property.mValueExplorer = nil
+  //--- Atomic property: mModelImageFirstPointXOnLock
+    self.mModelImageFirstPointXOnLock_property.mObserverExplorer = nil
+    self.mModelImageFirstPointXOnLock_property.mValueExplorer = nil
+  //--- Atomic property: mModelImageFirstPointYOnLock
+    self.mModelImageFirstPointYOnLock_property.mObserverExplorer = nil
+    self.mModelImageFirstPointYOnLock_property.mValueExplorer = nil
+  //--- Atomic property: mModelImageScale
+    self.mModelImageScale_property.mObserverExplorer = nil
+    self.mModelImageScale_property.mValueExplorer = nil
+  //--- Atomic property: mModelImageRotationInRadians
+    self.mModelImageRotationInRadians_property.mObserverExplorer = nil
+    self.mModelImageRotationInRadians_property.mValueExplorer = nil
   //--- Atomic property: mPointsAreLocked
     self.mPointsAreLocked_property.mObserverExplorer = nil
     self.mPointsAreLocked_property.mValueExplorer = nil
@@ -2373,10 +2521,18 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImagePageXPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageXPlacardUnit")
   //--- Atomic property: mModelImagePageYPlacardUnit
     self.mModelImagePageYPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageYPlacardUnit")
-  //--- Atomic property: mModelImageDataDeltaX
-    self.mModelImageDataDeltaX_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageDataDeltaX")
-  //--- Atomic property: mModelImageDataDeltaY
-    self.mModelImageDataDeltaY_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageDataDeltaY")
+  //--- Atomic property: mModelImageDeltaX
+    self.mModelImageDeltaX_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageDeltaX")
+  //--- Atomic property: mModelImageDeltaY
+    self.mModelImageDeltaY_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageDeltaY")
+  //--- Atomic property: mModelImageFirstPointXOnLock
+    self.mModelImageFirstPointXOnLock_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageFirstPointXOnLock")
+  //--- Atomic property: mModelImageFirstPointYOnLock
+    self.mModelImageFirstPointYOnLock_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageFirstPointYOnLock")
+  //--- Atomic property: mModelImageScale
+    self.mModelImageScale_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageScale")
+  //--- Atomic property: mModelImageRotationInRadians
+    self.mModelImageRotationInRadians_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageRotationInRadians")
   //--- Atomic property: mPointsAreLocked
     self.mPointsAreLocked_property.storeIn (dictionary: ioDictionary, forKey:"mPointsAreLocked")
   //--- Atomic property: knobSizeMultpliedByTen
@@ -2502,10 +2658,18 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImagePageXPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageXPlacardUnit")
   //--- Atomic property: mModelImagePageYPlacardUnit
     self.mModelImagePageYPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageYPlacardUnit")
-  //--- Atomic property: mModelImageDataDeltaX
-    self.mModelImageDataDeltaX_property.readFrom (dictionary: inDictionary, forKey:"mModelImageDataDeltaX")
-  //--- Atomic property: mModelImageDataDeltaY
-    self.mModelImageDataDeltaY_property.readFrom (dictionary: inDictionary, forKey:"mModelImageDataDeltaY")
+  //--- Atomic property: mModelImageDeltaX
+    self.mModelImageDeltaX_property.readFrom (dictionary: inDictionary, forKey:"mModelImageDeltaX")
+  //--- Atomic property: mModelImageDeltaY
+    self.mModelImageDeltaY_property.readFrom (dictionary: inDictionary, forKey:"mModelImageDeltaY")
+  //--- Atomic property: mModelImageFirstPointXOnLock
+    self.mModelImageFirstPointXOnLock_property.readFrom (dictionary: inDictionary, forKey:"mModelImageFirstPointXOnLock")
+  //--- Atomic property: mModelImageFirstPointYOnLock
+    self.mModelImageFirstPointYOnLock_property.readFrom (dictionary: inDictionary, forKey:"mModelImageFirstPointYOnLock")
+  //--- Atomic property: mModelImageScale
+    self.mModelImageScale_property.readFrom (dictionary: inDictionary, forKey:"mModelImageScale")
+  //--- Atomic property: mModelImageRotationInRadians
+    self.mModelImageRotationInRadians_property.readFrom (dictionary: inDictionary, forKey:"mModelImageRotationInRadians")
   //--- Atomic property: mPointsAreLocked
     self.mPointsAreLocked_property.readFrom (dictionary: inDictionary, forKey:"mPointsAreLocked")
   //--- Atomic property: knobSizeMultpliedByTen
@@ -2550,8 +2714,12 @@ class PackageRoot : EBGraphicManagedObject,
     ioString += "mModelImagePageZoom\n"
     ioString += "mModelImagePageXPlacardUnit\n"
     ioString += "mModelImagePageYPlacardUnit\n"
-    ioString += "mModelImageDataDeltaX\n"
-    ioString += "mModelImageDataDeltaY\n"
+    ioString += "mModelImageDeltaX\n"
+    ioString += "mModelImageDeltaY\n"
+    ioString += "mModelImageFirstPointXOnLock\n"
+    ioString += "mModelImageFirstPointYOnLock\n"
+    ioString += "mModelImageScale\n"
+    ioString += "mModelImageRotationInRadians\n"
     ioString += "mPointsAreLocked\n"
     ioString += "knobSizeMultpliedByTen\n"
     ioString += "padNumbering\n"
@@ -2617,9 +2785,17 @@ class PackageRoot : EBGraphicManagedObject,
     ioData.append (ascii: .lineFeed)
     self.mModelImagePageYPlacardUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
-    self.mModelImageDataDeltaX.appendPropertyValueTo (&ioData)
+    self.mModelImageDeltaX.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
-    self.mModelImageDataDeltaY.appendPropertyValueTo (&ioData)
+    self.mModelImageDeltaY.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mModelImageFirstPointXOnLock.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mModelImageFirstPointYOnLock.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mModelImageScale.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mModelImageRotationInRadians.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mPointsAreLocked.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)

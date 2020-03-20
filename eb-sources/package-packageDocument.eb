@@ -520,13 +520,10 @@ document PackageDocument root PackageRoot {
 
   outlet EBGraphicView mModelImageView
     $backgroundImageData root.mModelImageData
-    $backgroundImageDeltaX root.mModelImageDataDeltaX
-    $backgroundImageDeltaY root.mModelImageDataDeltaY
     $underObjectsDisplay root.backgroundImagePageBackgroundDisplay
     $horizontalFlip root.mModelImagePageHorizontalFlip
     $verticalFlip root.mModelImagePageVerticalFlip
     $graphicController #mModelImageObjectsController
-//    $overObjectsDisplay root.padNumberDisplay
     $mouseGrid root.mModelImagePageGridStep
     $gridStep root.mModelImagePageGridStep
     $arrowKeyMagnitude root.mModelImagePageGridStep

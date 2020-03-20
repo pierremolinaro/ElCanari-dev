@@ -17,8 +17,10 @@ extension PackageDocument {
   @objc @IBAction func pasteModelImageAction (_ sender : NSObject?) {
     if let tiffData = NSImage (pasteboard: NSPasteboard.general)?.tiffRepresentation {
       self.rootObject.mModelImageData = tiffData
-      self.rootObject.mModelImageDataDeltaX = 0
-      self.rootObject.mModelImageDataDeltaY = 0
+      self.rootObject.mModelImageDeltaX = 0
+      self.rootObject.mModelImageDeltaY = 0
+      self.rootObject.mModelImageFirstPointXOnLock = 0
+      self.rootObject.mModelImageFirstPointYOnLock = 0
       self.rootObject.mPointsAreLocked = false
     }else{
       __NSBeep ()
@@ -28,9 +30,11 @@ extension PackageDocument {
   //····················································································································
 
   @objc @IBAction func removeModelImageAction (_ sender : NSObject?) {
-   self.rootObject.mModelImageData = Data ()
-   self.rootObject.mModelImageDataDeltaX = 0
-   self.rootObject.mModelImageDataDeltaY = 0
+    self.rootObject.mModelImageData = Data ()
+    self.rootObject.mModelImageDeltaX = 0
+    self.rootObject.mModelImageDeltaY = 0
+    self.rootObject.mModelImageFirstPointXOnLock = 0
+    self.rootObject.mModelImageFirstPointYOnLock = 0
     self.rootObject.mPointsAreLocked = false
   }
 
@@ -39,11 +43,14 @@ extension PackageDocument {
   @objc @IBAction func resetGreenAndBluePointsAction (_ sender : NSObject?) {
   //--- Reset point image
     self.rootObject.mPointsAreLocked = false
-    self.rootObject.mModelImageDataDeltaX = 0
-    self.rootObject.mModelImageDataDeltaY = 0
+    self.rootObject.mModelImageDeltaX = 0
+    self.rootObject.mModelImageDeltaY = 0
+    self.rootObject.mModelImageFirstPointXOnLock = 0
+    self.rootObject.mModelImageFirstPointYOnLock = 0
     self.rootObject.mModelImageFirstPoint = nil
     self.rootObject.mModelImageSecondPoint = nil
     self.rootObject.mModelImageObjects = []
+    self.mModelImageView?.set(backgroundImageAffineTransform: .identity)
   //---
     self.buildGreenAndBluePointsIfRequired ()
   }

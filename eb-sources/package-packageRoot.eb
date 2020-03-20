@@ -64,8 +64,12 @@ graphic entity PackageRoot {
   property Int mModelImagePageYPlacardUnit default 2_286 ; // mils
 
   property Data mModelImageData default empty ;
-  property Int mModelImageDataDeltaX default 0 ;
-  property Int mModelImageDataDeltaY default 0 ;
+  property Int mModelImageDeltaX default 0 ;
+  property Int mModelImageDeltaY default 0 ;
+  property Int mModelImageFirstPointXOnLock default 0 ;
+  property Int mModelImageFirstPointYOnLock default 0 ;
+  property Double mModelImageScale default 1.0 ;
+  property Double mModelImageRotationInRadians default 0.0 ;
  
   toOne PackageModelImagePoint mModelImageFirstPoint ;
   property proxy Int mModelImageFirstPointX : mModelImageFirstPoint.mX ;
