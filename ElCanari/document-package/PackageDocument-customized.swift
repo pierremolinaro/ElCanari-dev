@@ -50,21 +50,8 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
-  //--- Add Model image points
-    if self.rootObject.mModelImageFirstPoint == nil {
-      let p = PackageModelImagePoint (self.ebUndoManager)
-      p.mColor = .green
-      self.rootObject.mModelImageFirstPoint = p
-    }
-    if self.rootObject.mModelImageSecondPoint == nil {
-      let p = PackageModelImagePoint (self.ebUndoManager)
-      p.mColor = .blue
-      self.rootObject.mModelImageSecondPoint = p
-    }
-    if self.rootObject.mModelImageObjects.count != 2 {
-      self.rootObject.mModelImageObjects = []
-      self.rootObject.mModelImageObjects = [self.rootObject.mModelImageFirstPoint!, self.rootObject.mModelImageSecondPoint!]
-    }
+  //--- Model image points
+    self.setupImagePointsAndTheirObservers ()
   //--- Handle pad number event
     self.addPadNumberingObservers ()
   //--- Register document for renumbering pads
@@ -166,9 +153,10 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //····················································································································
 
   override func removeUserInterface () {
-    super.removeUserInterface ()
     g_Preferences?.packageColor_property.removeEBObserver (self.mPackageColorObserver)
     g_Preferences?.frontSidePadColor_property.removeEBObserver (self.mPadColorObserver)
+    self.removeImagePointsObservers ()
+    super.removeUserInterface ()
   }
 
   //····················································································································
@@ -286,12 +274,134 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: 28.0),
       NSAttributedString.Key.foregroundColor : g_Preferences!.frontSidePadColor
     ]
-    shape.add (text: "(", NSPoint (x : 2.0, y: 17.0), textAttributes, .onTheRight, .center)
-    shape.add (text: ")", NSPoint (x :38.0, y: 17.0), textAttributes, .onTheLeft, .center)
+    shape.add (text: "(", NSPoint (x:  2.0, y: 17.0), textAttributes, .onTheRight, .center)
+    shape.add (text: ")", NSPoint (x: 38.0, y: 17.0), textAttributes, .onTheLeft, .center)
  //---
     let imagePDFData = buildPDFimageData (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }
+
+  //····················································································································
+  //   MODEL IMAGE POINTS OBSERVERS
+  //····················································································································
+
+  private var mModelImageFirstPointXObserver : EBModelEvent? = nil
+  private var mModelImageFirstPointYObserver : EBModelEvent? = nil
+  private var mModelImageFirstPointLastX = 0
+  private var mModelImageFirstPointLastY = 0
+
+  private var mModelImageSecondPointXObserver : EBModelEvent? = nil
+  private var mModelImageSecondPointYObserver : EBModelEvent? = nil
+  private var mModelImageSecondPointLastX = 0
+  private var mModelImageSecondPointLastY = 0
+
+  //····················································································································
+
+  fileprivate func setupImagePointsAndTheirObservers () {
+  //--- Model image points
+    self.buildGreenAndBluePointsIfRequired ()
+  //--- Add model image point location observers
+    self.mModelImageFirstPointLastX = self.rootObject.mModelImageFirstPointX!
+    let modelImageFirstPointXObserver = EBModelEvent ()
+    modelImageFirstPointXObserver.mEventCallBack = { [weak self] in self?.modelImageFirstPointXDidChange () }
+    self.rootObject.mModelImageFirstPointX_property.addEBObserver (modelImageFirstPointXObserver)
+    self.mModelImageFirstPointXObserver = modelImageFirstPointXObserver
+
+    self.mModelImageFirstPointLastY = self.rootObject.mModelImageFirstPointY!
+    let modelImageFirstPointYObserver = EBModelEvent ()
+    modelImageFirstPointYObserver.mEventCallBack = { [weak self] in self?.modelImageFirstPointYDidChange () }
+    self.rootObject.mModelImageFirstPointY_property.addEBObserver (modelImageFirstPointYObserver)
+    self.mModelImageFirstPointYObserver = modelImageFirstPointYObserver
+
+    self.mModelImageSecondPointLastX = self.rootObject.mModelImageSecondPointX!
+    let modelImageSecondPointXObserver = EBModelEvent ()
+    modelImageSecondPointXObserver.mEventCallBack = { [weak self] in self?.modelImageSecondPointXDidChange () }
+    self.rootObject.mModelImageSecondPointX_property.addEBObserver (modelImageSecondPointXObserver)
+    self.mModelImageSecondPointXObserver = modelImageSecondPointXObserver
+
+    self.mModelImageSecondPointLastY = self.rootObject.mModelImageSecondPointY!
+    let modelImageSecondPointYObserver = EBModelEvent ()
+    modelImageSecondPointYObserver.mEventCallBack = { [weak self] in self?.modelImageSecondPointYDidChange () }
+    self.rootObject.mModelImageSecondPointY_property.addEBObserver (modelImageSecondPointYObserver)
+    self.mModelImageSecondPointYObserver = modelImageSecondPointYObserver
+  }
+
+  //····················································································································
+
+  fileprivate func removeImagePointsObservers () {
+    if let observer = self.mModelImageFirstPointXObserver {
+      self.rootObject.mModelImageFirstPointX_property.removeEBObserver (observer)
+      self.mModelImageFirstPointXObserver = nil
+    }
+    if let observer = self.mModelImageFirstPointYObserver {
+      self.rootObject.mModelImageFirstPointY_property.removeEBObserver (observer)
+      self.mModelImageFirstPointYObserver = nil
+    }
+    if let observer = self.mModelImageSecondPointXObserver {
+      self.rootObject.mModelImageSecondPointX_property.removeEBObserver (observer)
+      self.mModelImageSecondPointXObserver = nil
+    }
+    if let observer = self.mModelImageSecondPointYObserver {
+      self.rootObject.mModelImageSecondPointY_property.removeEBObserver (observer)
+      self.mModelImageSecondPointYObserver = nil
+    }
+  }
+
+  //····················································································································
+
+  fileprivate func modelImageFirstPointXDidChange () {
+    let newX = self.rootObject.mModelImageFirstPointX!
+    let dx = newX - self.mModelImageFirstPointLastX
+    if dx != 0 {
+      self.mModelImageFirstPointLastX = newX
+      if self.rootObject.mPointsAreLocked {
+        self.rootObject.mModelImageSecondPoint!.mX += dx
+        self.rootObject.mModelImageDataDeltaX += dx
+      }
+    }
+  }
+
+  //····················································································································
+
+  fileprivate func modelImageFirstPointYDidChange () {
+    let newY = self.rootObject.mModelImageFirstPointY!
+    let dy = newY - self.mModelImageFirstPointLastY
+    if dy != 0 {
+      self.mModelImageFirstPointLastY = newY
+      if self.rootObject.mPointsAreLocked {
+        self.rootObject.mModelImageSecondPoint!.mY += dy
+        self.rootObject.mModelImageDataDeltaY += dy
+      }
+    }
+  }
+
+    //····················································································································
+
+    fileprivate func modelImageSecondPointXDidChange () {
+      let newX = self.rootObject.mModelImageSecondPointX!
+      let dx = newX - self.mModelImageSecondPointLastX
+      if dx != 0 {
+        self.mModelImageSecondPointLastX = newX
+        if self.rootObject.mPointsAreLocked {
+  //        self.rootObject.mModelImageSecondPoint!.mX += dx
+  //        self.rootObject.mModelImageDataDeltaX += dx
+        }
+      }
+    }
+
+    //····················································································································
+
+    fileprivate func modelImageSecondPointYDidChange () {
+      let newY = self.rootObject.mModelImageSecondPointY!
+      let dy = newY - self.mModelImageSecondPointLastY
+      if dy != 0 {
+        self.mModelImageSecondPointLastY = newY
+        if self.rootObject.mPointsAreLocked {
+//          self.rootObject.mModelImageSecondPoint!.mY += dy
+//          self.rootObject.mModelImageDataDeltaY += dy
+        }
+      }
+    }
 
   //····················································································································
 

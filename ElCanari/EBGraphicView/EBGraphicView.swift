@@ -678,6 +678,12 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   var mBackgroundImage : CIImage? = nil
   var mBackgroundImageDataController : EBSimpleController? = nil
 
+  var mBackgroundImageDeltaX : CGFloat = 0.0
+  var mBackgroundImageDeltaXController : EBSimpleController? = nil
+
+  var mBackgroundImageDeltaY : CGFloat = 0.0
+  var mBackgroundImageDeltaYController : EBSimpleController? = nil
+
   //····················································································································
   // MARK: -
   //····················································································································

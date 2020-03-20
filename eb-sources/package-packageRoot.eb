@@ -21,6 +21,7 @@ enum PadNumbering {
   leftUp,
   leftDown
 }
+
 //----------------------------------------------------------------------------*
 
 graphic entity PackageRoot {
@@ -61,23 +62,25 @@ graphic entity PackageRoot {
   property Int mModelImagePageZoom default 600 ;
   property Int mModelImagePageXPlacardUnit default 2_286 ; // mils
   property Int mModelImagePageYPlacardUnit default 2_286 ; // mils
+
   property Data mModelImageData default empty ;
+  property Int mModelImageDataDeltaX default 0 ;
+  property Int mModelImageDataDeltaY default 0 ;
  
   toOne PackageModelImagePoint mModelImageFirstPoint ;
   property proxy Int mModelImageFirstPointX : mModelImageFirstPoint.mX ;
   property proxy Int mModelImageFirstPointDimensionUnitX : mModelImageFirstPoint.mDimensionUnitX ;
   property proxy Int mModelImageFirstPointY : mModelImageFirstPoint.mY ;
   property proxy Int mModelImageFirstPointDimensionUnitY : mModelImageFirstPoint.mDimensionUnitY ;
-  property proxy Bool mModelImageFirstPointLocked : mModelImageFirstPoint.mIsLocked ;
 
   toOne PackageModelImagePoint mModelImageSecondPoint ;
   property proxy Int mModelImageSecondPointX : mModelImageSecondPoint.mX ;
   property proxy Int mModelImageSecondPointDimensionUnitX : mModelImageSecondPoint.mDimensionUnitX ;
   property proxy Int mModelImageSecondPointY : mModelImageSecondPoint.mY ;
   property proxy Int mModelImageSecondPointDimensionUnitY : mModelImageSecondPoint.mDimensionUnitY ;
-  property proxy Bool mModelImageSecondPointLocked : mModelImageSecondPoint.mIsLocked ;
 
-  toMany PackageModelImagePoint mModelImageObjects ;
+  toMany PackageModelImagePoint mModelImageObjects inverse toOne mRoot ;
+  property Bool mPointsAreLocked default no ;
 
 //--- Knob size
   property Int knobSizeMultpliedByTen default 20 ;
@@ -487,19 +490,20 @@ entity ForbiddenPadNumber {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageModelImagePoint {
+  toOne PackageRoot mRoot inverse toMany mModelImageObjects ;
+
   property Int mX default 0 ;
   property Int mDimensionUnitX default 2_286 ;
   property Int mY default 0 ;
   property Int mDimensionUnitY default 2_286 ;
-  property Bool mIsLocked default no ;
   property NSColor mColor default black ;
 
   transient EBShape objectDisplay dependsFrom
-     self.mX, self.mY, self.mColor, self.mIsLocked
+     self.mX, self.mY, self.mColor, self.mRoot.one.mPointsAreLocked
   ;
 
   transient EBShape selectionDisplay dependsFrom
-     self.mX, self.mY, self.mColor, self.mIsLocked
+     self.mX, self.mY
   ;
 }
 

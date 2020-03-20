@@ -110,7 +110,6 @@
                 <outlet property="mLineColorOfPackageGridColorWell" destination="RGr-DM-XnY" id="5JY-mz-1ib"/>
                 <outlet property="mLoadFromDesignButton" destination="Veo-5P-f4O" id="6tE-N2-2ls"/>
                 <outlet property="mMasterView" destination="2532" id="Zih-F1-ZkL"/>
-                <outlet property="mModelImageFirstPointLockedSwitch" destination="gry-AN-VOD" id="VG1-rl-yFO"/>
                 <outlet property="mModelImageFirstPointXDimensionUnitPopUp" destination="LrY-FO-O1i" id="GTs-qp-LZh"/>
                 <outlet property="mModelImageFirstPointXTextField" destination="7Eg-dK-GsX" id="ULQ-0C-8zH"/>
                 <outlet property="mModelImageFirstPointYDimensionUnitPopUp" destination="cdY-aj-6WN" id="hL9-A4-oM2"/>
@@ -124,8 +123,8 @@
                 <outlet property="mModelImagePageView" destination="ezG-Ne-F9h" id="lxt-na-CLy"/>
                 <outlet property="mModelImagePageXPlacardUnitPopUpButton" destination="X8n-LY-VwZ" id="DGa-Gq-jzP"/>
                 <outlet property="mModelImagePageYPlacardUnitPopUpButton" destination="ZrP-mw-Blc" id="i9F-d5-mZB"/>
+                <outlet property="mModelImagePointsAreLockedSwitch" destination="cbX-Hf-xIm" id="319-ZV-w6j"/>
                 <outlet property="mModelImageScrollView" destination="N7h-H4-Lu6" id="zBn-X2-QP2"/>
-                <outlet property="mModelImageSecondPointLockedSwitch" destination="cbX-Hf-xIm" id="8Ev-GF-1th"/>
                 <outlet property="mModelImageSecondPointXDimensionUnitPopUp" destination="Rnj-5Z-ANb" id="R7y-YP-JVH"/>
                 <outlet property="mModelImageSecondPointXTextField" destination="CNZ-Qb-QyI" id="4fu-7J-PqO"/>
                 <outlet property="mModelImageSecondPointYDimensionUnitPopUp" destination="Gvv-bF-Dwq" id="kTU-7P-cHW"/>
@@ -172,13 +171,11 @@
                 <outlet property="mPadYCenterUnitPopUp" destination="2172" id="prz-xu-cp3"/>
                 <outlet property="mPadZoneNameTextField" destination="2187" id="N4m-uk-LbU"/>
                 <outlet property="mPageSegmentedControl" destination="2896" id="IH0-Px-2WQ"/>
-                <outlet property="mPasteModelImage" destination="fge-sS-wWn" id="Uon-bG-Xfp"/>
                 <outlet property="mProgramErrorTextField" destination="J66-Da-WpD" id="D1Y-72-Q4o"/>
                 <outlet property="mProgramHelpButton" destination="S67-ds-8Uk" id="guS-YO-FvG"/>
                 <outlet property="mProgramHelpSheet" destination="h48-eq-iuE" id="eJi-uE-0gc"/>
                 <outlet property="mProgramPageView" destination="2512" id="Mb6-tH-IZE"/>
                 <outlet property="mProgramTextView" destination="2514" id="d7U-jr-k0N"/>
-                <outlet property="mRemoveModelImage" destination="mKm-bb-3kz" id="ESE-9F-1oY"/>
                 <outlet property="mRemoveZoneForbiddenPadNumberButton" destination="bfy-Ba-ToS" id="Yas-z2-idW"/>
                 <outlet property="mResetVersionButton" destination="2529" id="c7p-LE-qqa"/>
                 <outlet property="mRunProgramButton" destination="2515" id="RyF-Iw-kFF"/>
@@ -2315,7 +2312,7 @@ Gw
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" ambiguous="YES" id="PuU-Cb-ahz">
                                 <rect key="frame" x="1" y="1" width="412" height="484"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2477" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
@@ -5975,24 +5972,36 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fge-sS-wWn" customClass="EBButton">
-                    <rect key="frame" x="14" y="281" width="223" height="32"/>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P4A-9m-gi4">
+                    <rect key="frame" x="16" y="286" width="124" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Paste Background Image" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nja-5H-akd">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Actions" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="Jdk-hq-bi5">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mKm-bb-3kz" customClass="EBButton">
-                    <rect key="frame" x="14" y="248" width="223" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Remove Background Image" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yLC-si-krQ">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
+                        <menu key="menu" id="KI6-mI-0EZ">
+                            <items>
+                                <menuItem title="Actions" hidden="YES" id="8tg-5W-NfI"/>
+                                <menuItem title="Paste Background Image" id="B4s-jd-ih5">
+                                    <connections>
+                                        <action selector="pasteModelImageAction:" target="-2" id="YfN-rb-uSS"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem title="Remove Background Image" id="dPa-RK-c0j">
+                                    <connections>
+                                        <action selector="removeModelImageAction:" target="-2" id="McN-Qt-LFa"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem title="Reset Green and Blue Points" id="CNi-Mh-r7s">
+                                    <connections>
+                                        <action selector="resetGreenAndBluePointsAction:" target="-2" id="YiU-lo-VpA"/>
+                                    </connections>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Eg-dK-GsX" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="101" y="216" width="61" height="19"/>
+                    <rect key="frame" x="100" y="253" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="OgG-i0-ZHi">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="T8D-06-UhE"/>
@@ -6005,7 +6014,7 @@ DQ
                     </connections>
                 </textField>
                 <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LrY-FO-O1i" customClass="EBPopUpButton">
-                    <rect key="frame" x="165" y="217" width="67" height="17"/>
+                    <rect key="frame" x="164" y="254" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="5xC-wv-4rO" id="2Ee-SG-7VU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -6024,7 +6033,7 @@ DQ
                     </popUpButtonCell>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RAx-Nq-dMY" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="100" y="189" width="62" height="19"/>
+                    <rect key="frame" x="99" y="226" width="62" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="OIz-2B-p59">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="eU1-B1-UMV"/>
@@ -6037,7 +6046,7 @@ DQ
                     </connections>
                 </textField>
                 <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cdY-aj-6WN" customClass="EBPopUpButton">
-                    <rect key="frame" x="165" y="190" width="67" height="17"/>
+                    <rect key="frame" x="164" y="227" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="fTg-3f-xGX" id="rIy-hy-RK7">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -6055,16 +6064,8 @@ DQ
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gry-AN-VOD" customClass="EBSwitch">
-                    <rect key="frame" x="83" y="164" width="150" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Locked to Model Image" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="yTv-Gh-mDq">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y1g-TE-YQS">
-                    <rect key="frame" x="18" y="167" width="62" height="67"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="58" translatesAutoresizingMaskIntoConstraints="NO" id="y1g-TE-YQS">
+                    <rect key="frame" x="17" y="226" width="62" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" selectable="YES" title="Green Point" id="3CH-ko-oIz">
                         <font key="font" usesAppearanceFont="YES"/>
@@ -6073,7 +6074,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CNZ-Qb-QyI" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="100" y="136" width="62" height="19"/>
+                    <rect key="frame" x="99" y="201" width="62" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="kA2-SK-i0p">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="gn5-If-Nft"/>
@@ -6086,7 +6087,7 @@ DQ
                     </connections>
                 </textField>
                 <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-5Z-ANb" customClass="EBPopUpButton">
-                    <rect key="frame" x="165" y="137" width="67" height="17"/>
+                    <rect key="frame" x="164" y="202" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="A5L-1v-4cO" id="QBh-c9-Any">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -6105,7 +6106,7 @@ DQ
                     </popUpButtonCell>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YsA-s8-m7w" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="100" y="109" width="62" height="19"/>
+                    <rect key="frame" x="99" y="174" width="62" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="tNF-GR-Tc4">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="kEl-Tt-LwK"/>
@@ -6118,7 +6119,7 @@ DQ
                     </connections>
                 </textField>
                 <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gvv-bF-Dwq" customClass="EBPopUpButton">
-                    <rect key="frame" x="165" y="110" width="67" height="17"/>
+                    <rect key="frame" x="164" y="175" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="WDi-de-b2h" id="yoh-wX-GZy">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -6137,15 +6138,15 @@ DQ
                     </popUpButtonCell>
                 </popUpButton>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbX-Hf-xIm" customClass="EBSwitch">
-                    <rect key="frame" x="83" y="84" width="150" height="20"/>
+                    <rect key="frame" x="16" y="149" width="216" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Locked to Model Image" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="xuc-2M-Opj">
+                    <buttonCell key="cell" type="check" title="Points are Locked to Model Image" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="xuc-2M-Opj">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oUj-kG-IHn">
-                    <rect key="frame" x="18" y="87" width="62" height="67"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="58" translatesAutoresizingMaskIntoConstraints="NO" id="oUj-kG-IHn">
+                    <rect key="frame" x="17" y="174" width="62" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" selectable="YES" title="Blue Point" id="zn9-xj-bfv">
                         <font key="font" usesAppearanceFont="YES"/>
@@ -6154,7 +6155,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="13" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcw-D8-tYs">
-                    <rect key="frame" x="84" y="217" width="17" height="17"/>
+                    <rect key="frame" x="83" y="254" width="17" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="left" title="X" id="9HX-pG-wUa">
                         <font key="font" metaFont="smallSystem"/>
@@ -6163,7 +6164,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="13" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vi0-wJ-630">
-                    <rect key="frame" x="84" y="189" width="17" height="17"/>
+                    <rect key="frame" x="83" y="226" width="17" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="left" title="Y" id="sUS-34-7kc">
                         <font key="font" metaFont="smallSystem"/>
@@ -6172,7 +6173,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="13" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9MU-Sd-e14">
-                    <rect key="frame" x="84" y="111" width="17" height="17"/>
+                    <rect key="frame" x="83" y="176" width="17" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="left" title="Y" id="apF-nl-aHr">
                         <font key="font" metaFont="smallSystem"/>
@@ -6181,7 +6182,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="13" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlZ-0M-hZH">
-                    <rect key="frame" x="84" y="138" width="17" height="17"/>
+                    <rect key="frame" x="83" y="203" width="17" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="left" title="X" id="df1-ak-TRH">
                         <font key="font" metaFont="smallSystem"/>

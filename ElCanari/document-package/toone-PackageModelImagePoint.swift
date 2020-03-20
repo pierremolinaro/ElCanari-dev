@@ -19,7 +19,6 @@ class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <Pa
     inOldValue?.mDimensionUnitX_property.removeEBObserversFrom (&self.mObserversOf_mDimensionUnitX) // Stored property
     inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
     inOldValue?.mDimensionUnitY_property.removeEBObserversFrom (&self.mObserversOf_mDimensionUnitY) // Stored property
-    inOldValue?.mIsLocked_property.removeEBObserversFrom (&self.mObserversOf_mIsLocked) // Stored property
     inOldValue?.mColor_property.removeEBObserversFrom (&self.mObserversOf_mColor) // Stored property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
@@ -28,7 +27,6 @@ class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <Pa
     self.mInternalValue?.mDimensionUnitX_property.addEBObserversFrom (&self.mObserversOf_mDimensionUnitX) // Stored property
     self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
     self.mInternalValue?.mDimensionUnitY_property.addEBObserversFrom (&self.mObserversOf_mDimensionUnitY) // Stored property
-    self.mInternalValue?.mIsLocked_property.addEBObserversFrom (&self.mObserversOf_mIsLocked) // Stored property
     self.mInternalValue?.mColor_property.addEBObserversFrom (&self.mObserversOf_mColor) // Stored property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
@@ -310,76 +308,6 @@ class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <Pa
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mDimensionUnitY_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mIsLocked' stored property
-  //····················································································································
-
-  private var mObserversOf_mIsLocked = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mIsLocked_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
-      switch (model.mIsLocked_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mIsLocked (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mIsLocked.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mIsLocked_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mIsLocked (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mIsLocked.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mIsLocked_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mIsLocked_toElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
-    for managedObject in inSet {
-      self.mObserversOf_mIsLocked.apply { (_ observer : EBEvent) in
-        managedObject.mIsLocked_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mIsLocked_fromElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
-    self.mObserversOf_mIsLocked.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mIsLocked_property.removeEBObserver (observer)
       }
     }
   }

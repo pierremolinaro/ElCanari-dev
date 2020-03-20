@@ -35,6 +35,9 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.removeEBObserversOf_mModelImagePageZoom_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImagePageXPlacardUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImagePageYPlacardUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mModelImageDataDeltaX_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mModelImageDataDeltaY_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mPointsAreLocked_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_knobSizeMultpliedByTen_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_padNumbering_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_counterClockNumberingStartAngle_fromElementsOfSet (inRemovedSet) // Stored property
@@ -69,6 +72,9 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.addEBObserversOf_mModelImagePageZoom_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImagePageXPlacardUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImagePageYPlacardUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mModelImageDataDeltaX_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mModelImageDataDeltaY_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mPointsAreLocked_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_knobSizeMultpliedByTen_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_padNumbering_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_counterClockNumberingStartAngle_toElementsOfSet (inAddedSet) // Stored property
@@ -1225,6 +1231,177 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   }
 
   //····················································································································
+  //   Observers of 'mModelImageDataDeltaX' stored property
+  //····················································································································
+
+  private var mObserversOf_mModelImageDataDeltaX = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mModelImageDataDeltaX (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mModelImageDataDeltaX.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mModelImageDataDeltaX_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mModelImageDataDeltaX (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mModelImageDataDeltaX.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mModelImageDataDeltaX_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mModelImageDataDeltaX_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mModelImageDataDeltaX.apply { (_ observer : EBEvent) in
+        managedObject.mModelImageDataDeltaX_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mModelImageDataDeltaX_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    self.mObserversOf_mModelImageDataDeltaX.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mModelImageDataDeltaX_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mModelImageDataDeltaY' stored property
+  //····················································································································
+
+  private var mObserversOf_mModelImageDataDeltaY = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mModelImageDataDeltaY (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mModelImageDataDeltaY.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mModelImageDataDeltaY_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mModelImageDataDeltaY (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mModelImageDataDeltaY.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mModelImageDataDeltaY_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mModelImageDataDeltaY_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mModelImageDataDeltaY.apply { (_ observer : EBEvent) in
+        managedObject.mModelImageDataDeltaY_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mModelImageDataDeltaY_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    self.mObserversOf_mModelImageDataDeltaY.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mModelImageDataDeltaY_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mPointsAreLocked' stored property
+  //····················································································································
+
+  private var mObserversOf_mPointsAreLocked = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mPointsAreLocked (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mPointsAreLocked.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mPointsAreLocked_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPointsAreLocked (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mPointsAreLocked.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mPointsAreLocked_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mPointsAreLocked_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mPointsAreLocked.apply { (_ observer : EBEvent) in
+        managedObject.mPointsAreLocked_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mPointsAreLocked_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    self.mObserversOf_mPointsAreLocked.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mPointsAreLocked_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'knobSizeMultpliedByTen' stored property
   //····················································································································
 
@@ -1795,63 +1972,6 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   }
 
   //····················································································································
-  //   Observers of 'mModelImageFirstPointLocked' proxy property
-  //····················································································································
-
-  private var mObserversOf_mModelImageFirstPointLocked = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mModelImageFirstPointLocked (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mModelImageFirstPointLocked.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mModelImageFirstPointLocked_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mModelImageFirstPointLocked (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mModelImageFirstPointLocked.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mModelImageFirstPointLocked_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mModelImageFirstPointLocked_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mModelImageFirstPointLocked.apply { (_ observer : EBEvent) in
-        managedObject.mModelImageFirstPointLocked_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mModelImageFirstPointLocked_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    self.mObserversOf_mModelImageFirstPointLocked.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mModelImageFirstPointLocked_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mModelImageSecondPointX' proxy property
   //····················································································································
 
@@ -2075,63 +2195,6 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mModelImageSecondPointDimensionUnitY_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mModelImageSecondPointLocked' proxy property
-  //····················································································································
-
-  private var mObserversOf_mModelImageSecondPointLocked = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mModelImageSecondPointLocked (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mModelImageSecondPointLocked.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mModelImageSecondPointLocked_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mModelImageSecondPointLocked (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mModelImageSecondPointLocked.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mModelImageSecondPointLocked_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mModelImageSecondPointLocked_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mModelImageSecondPointLocked.apply { (_ observer : EBEvent) in
-        managedObject.mModelImageSecondPointLocked_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mModelImageSecondPointLocked_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    self.mObserversOf_mModelImageSecondPointLocked.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mModelImageSecondPointLocked_property.removeEBObserver (observer)
       }
     }
   }
@@ -3123,6 +3186,9 @@ final class PreferencesArrayOf_PackageRoot : StoredArrayOf_PackageRoot {
     self.addEBObserverOf_mModelImagePageZoom (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImagePageXPlacardUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImagePageYPlacardUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mModelImageDataDeltaX (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mModelImageDataDeltaY (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mPointsAreLocked (self.mObserverForWritingPreferences)
     self.addEBObserverOf_knobSizeMultpliedByTen (self.mObserverForWritingPreferences)
     self.addEBObserverOf_padNumbering (self.mObserverForWritingPreferences)
     self.addEBObserverOf_counterClockNumberingStartAngle (self.mObserverForWritingPreferences)

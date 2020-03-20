@@ -30,12 +30,6 @@ protocol PackageModelImagePoint_mDimensionUnitY : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageModelImagePoint_mIsLocked : class {
-  var mIsLocked : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol PackageModelImagePoint_mColor : class {
   var mColor : NSColor { get }
 }
@@ -61,7 +55,6 @@ class PackageModelImagePoint : EBGraphicManagedObject,
          PackageModelImagePoint_mDimensionUnitX,
          PackageModelImagePoint_mY,
          PackageModelImagePoint_mDimensionUnitY,
-         PackageModelImagePoint_mIsLocked,
          PackageModelImagePoint_mColor,
          PackageModelImagePoint_objectDisplay,
          PackageModelImagePoint_selectionDisplay {
@@ -135,23 +128,6 @@ class PackageModelImagePoint : EBGraphicManagedObject,
   var mDimensionUnitY_property_selection : EBSelection <Int> { return self.mDimensionUnitY_property.prop }
 
   //····················································································································
-  //   Atomic property: mIsLocked
-  //····················································································································
-
-  let mIsLocked_property = EBStoredProperty_Bool (defaultValue: false)
-
-  //····················································································································
-
-  var mIsLocked : Bool {
-    get { return self.mIsLocked_property.propval }
-    set { self.mIsLocked_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mIsLocked_property_selection : EBSelection <Bool> { return self.mIsLocked_property.prop }
-
-  //····················································································································
   //   Atomic property: mColor
   //····················································································································
 
@@ -167,6 +143,44 @@ class PackageModelImagePoint : EBGraphicManagedObject,
   //····················································································································
 
   var mColor_property_selection : EBSelection <NSColor> { return self.mColor_property.prop }
+
+  //····················································································································
+  //   To one property: mRoot
+  //····················································································································
+
+   let mRoot_property = StoredObject_PackageRoot (usedForSignature: false)
+
+  //····················································································································
+
+  var mRoot_property_selection : EBSelection <PackageRoot?> {
+    return .single (self.mRoot_property.propval)
+  }
+
+  //····················································································································
+
+  var mRoot : PackageRoot? {
+    get {
+      return self.mRoot_property.propval
+    }
+    set {
+      if self.mRoot_property.propval != nil {
+        self.mRoot_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mRoot_property.setProp (newValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mRoot_none : StoredObject_PackageRoot { return self.mRoot_property }
+
+  //····················································································································
+
+  var mRoot_none_selection : EBSelection <Bool> {
+    return .single (self.mRoot_property.propval == nil)
+  }
 
   //····················································································································
   //    init
@@ -188,24 +202,28 @@ class PackageModelImagePoint : EBGraphicManagedObject,
     self.mY_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDimensionUnitY
     self.mDimensionUnitY_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mIsLocked
-    self.mIsLocked_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mColor
     self.mColor_property.ebUndoManager = self.ebUndoManager
+  //--- To one property: mRoot (has opposite to many relationship: mModelImageObjects)
+    self.mRoot_property.ebUndoManager = self.ebUndoManager
+    self.mRoot_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mModelImageObjects_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mModelImageObjects_property.remove (me) } }
+    )
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
         kind &= unwSelf.mColor_property_selection.kind ()
-        kind &= unwSelf.mIsLocked_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mPointsAreLocked_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mColor_property_selection, unwSelf.mIsLocked_property_selection) {
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mColor_property_selection, unwSelf.mRoot_property.mPointsAreLocked_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (transient_PackageModelImagePoint_objectDisplay (v0, v1, v2, v3))
           default :
@@ -219,23 +237,21 @@ class PackageModelImagePoint : EBGraphicManagedObject,
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
     self.mColor_property.addEBObserver (self.objectDisplay_property)
-    self.mIsLocked_property.addEBObserver (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mPointsAreLocked (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
-        kind &= unwSelf.mColor_property_selection.kind ()
-        kind &= unwSelf.mIsLocked_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mColor_property_selection, unwSelf.mIsLocked_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_PackageModelImagePoint_selectionDisplay (v0, v1, v2, v3))
+          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_PackageModelImagePoint_selectionDisplay (v0, v1))
           default :
             return .empty
           }
@@ -246,8 +262,6 @@ class PackageModelImagePoint : EBGraphicManagedObject,
     }
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
-    self.mColor_property.addEBObserver (self.selectionDisplay_property)
-    self.mIsLocked_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -260,11 +274,9 @@ class PackageModelImagePoint : EBGraphicManagedObject,
     self.mX_property.removeEBObserver (self.objectDisplay_property)
     self.mY_property.removeEBObserver (self.objectDisplay_property)
     self.mColor_property.removeEBObserver (self.objectDisplay_property)
-    self.mIsLocked_property.removeEBObserver (self.objectDisplay_property)
+    self.mRoot_property.removeEBObserverOf_mPointsAreLocked (self.objectDisplay_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
-    self.mColor_property.removeEBObserver (self.selectionDisplay_property)
-    self.mIsLocked_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -312,14 +324,6 @@ class PackageModelImagePoint : EBGraphicManagedObject,
       valueExplorer: &self.mDimensionUnitY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mIsLocked",
-      idx: self.mIsLocked_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mIsLocked_property.mObserverExplorer,
-      valueExplorer: &self.mIsLocked_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "mColor",
       idx: self.mColor_property.ebObjectIndex,
       y: &y,
@@ -346,6 +350,13 @@ class PackageModelImagePoint : EBGraphicManagedObject,
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForToOneRelationshipNamed (
+      "mRoot",
+      idx:self.mRoot_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mRoot_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
@@ -366,12 +377,12 @@ class PackageModelImagePoint : EBGraphicManagedObject,
   //--- Atomic property: mDimensionUnitY
     self.mDimensionUnitY_property.mObserverExplorer = nil
     self.mDimensionUnitY_property.mValueExplorer = nil
-  //--- Atomic property: mIsLocked
-    self.mIsLocked_property.mObserverExplorer = nil
-    self.mIsLocked_property.mValueExplorer = nil
   //--- Atomic property: mColor
     self.mColor_property.mObserverExplorer = nil
     self.mColor_property.mValueExplorer = nil
+  //--- To one property: mRoot
+    self.mRoot_property.mObserverExplorer = nil
+    self.mRoot_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -390,6 +401,7 @@ class PackageModelImagePoint : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mRoot = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -408,8 +420,6 @@ class PackageModelImagePoint : EBGraphicManagedObject,
     self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
   //--- Atomic property: mDimensionUnitY
     self.mDimensionUnitY_property.storeIn (dictionary: ioDictionary, forKey:"mDimensionUnitY")
-  //--- Atomic property: mIsLocked
-    self.mIsLocked_property.storeIn (dictionary: ioDictionary, forKey:"mIsLocked")
   //--- Atomic property: mColor
     self.mColor_property.storeIn (dictionary: ioDictionary, forKey:"mColor")
   }
@@ -421,6 +431,17 @@ class PackageModelImagePoint : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To one property: mRoot
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mRoot",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? PackageRoot {
+        self.mRoot_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -437,8 +458,6 @@ class PackageModelImagePoint : EBGraphicManagedObject,
     self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
   //--- Atomic property: mDimensionUnitY
     self.mDimensionUnitY_property.readFrom (dictionary: inDictionary, forKey:"mDimensionUnitY")
-  //--- Atomic property: mIsLocked
-    self.mIsLocked_property.readFrom (dictionary: inDictionary, forKey:"mIsLocked")
   //--- Atomic property: mColor
     self.mColor_property.readFrom (dictionary: inDictionary, forKey:"mColor")
   }
@@ -455,9 +474,9 @@ class PackageModelImagePoint : EBGraphicManagedObject,
     ioString += "mDimensionUnitX\n"
     ioString += "mY\n"
     ioString += "mDimensionUnitY\n"
-    ioString += "mIsLocked\n"
     ioString += "mColor\n"
   //--- To one relationships
+    ioString += "mRoot\n"
   //--- To many relationships
   }
 
@@ -476,11 +495,13 @@ class PackageModelImagePoint : EBGraphicManagedObject,
     ioData.append (ascii: .lineFeed)
     self.mDimensionUnitY.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
-    self.mIsLocked.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
     self.mColor.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
+    if let object = self.mRoot {
+      ioData.append (base62Encoded: object.savingIndex)
+    }
+    ioData.append (ascii: .lineFeed)
   //--- To many relationships
   }
 
@@ -490,6 +511,10 @@ class PackageModelImagePoint : EBGraphicManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To one property: mRoot
+    if let object = self.mRoot {
+      objects.append (object)
+    }
   }
 
   //····················································································································
@@ -498,6 +523,10 @@ class PackageModelImagePoint : EBGraphicManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To one property: mRoot
+    if let object = self.mRoot {
+      objects.append (object)
+    }
   }
 
   //····················································································································

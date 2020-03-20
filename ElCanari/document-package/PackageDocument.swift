@@ -273,7 +273,6 @@ import Cocoa
   @IBOutlet var mLineColorOfPackageGridColorWell : EBColorWell? = nil
   @IBOutlet var mLoadFromDesignButton : EBButton? = nil
   @IBOutlet var mMasterView : NSView? = nil
-  @IBOutlet var mModelImageFirstPointLockedSwitch : EBSwitch? = nil
   @IBOutlet var mModelImageFirstPointXDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImageFirstPointXTextField : CanariDimensionTextField? = nil
   @IBOutlet var mModelImageFirstPointYDimensionUnitPopUp : EBPopUpButton? = nil
@@ -287,8 +286,8 @@ import Cocoa
   @IBOutlet var mModelImagePageView : CanariViewWithKeyView? = nil
   @IBOutlet var mModelImagePageXPlacardUnitPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mModelImagePageYPlacardUnitPopUpButton : EBPopUpButton? = nil
+  @IBOutlet var mModelImagePointsAreLockedSwitch : EBSwitch? = nil
   @IBOutlet var mModelImageScrollView : EBScrollView? = nil
-  @IBOutlet var mModelImageSecondPointLockedSwitch : EBSwitch? = nil
   @IBOutlet var mModelImageSecondPointXDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImageSecondPointXTextField : CanariDimensionTextField? = nil
   @IBOutlet var mModelImageSecondPointYDimensionUnitPopUp : EBPopUpButton? = nil
@@ -335,13 +334,11 @@ import Cocoa
   @IBOutlet var mPadYCenterUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mPadZoneNameTextField : EBTextObserverField? = nil
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl? = nil
-  @IBOutlet var mPasteModelImage : EBButton? = nil
   @IBOutlet var mProgramErrorTextField : EBTextField? = nil
   @IBOutlet var mProgramHelpButton : EBButton? = nil
   @IBOutlet var mProgramHelpSheet : NSPanel? = nil
   @IBOutlet var mProgramPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mProgramTextView : EBTextView? = nil
-  @IBOutlet var mRemoveModelImage : EBButton? = nil
   @IBOutlet var mRemoveZoneForbiddenPadNumberButton : EBButton? = nil
   @IBOutlet var mResetVersionButton : EBButton? = nil
   @IBOutlet var mRunProgramButton : EBButton? = nil
@@ -600,7 +597,6 @@ import Cocoa
     checkOutletConnection (self.mLineColorOfPackageGridColorWell, "mLineColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mLoadFromDesignButton, "mLoadFromDesignButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
-    checkOutletConnection (self.mModelImageFirstPointLockedSwitch, "mModelImageFirstPointLockedSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mModelImageFirstPointXDimensionUnitPopUp, "mModelImageFirstPointXDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImageFirstPointXTextField, "mModelImageFirstPointXTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mModelImageFirstPointYDimensionUnitPopUp, "mModelImageFirstPointYDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -614,8 +610,8 @@ import Cocoa
     checkOutletConnection (self.mModelImagePageView, "mModelImagePageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mModelImagePageXPlacardUnitPopUpButton, "mModelImagePageXPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImagePageYPlacardUnitPopUpButton, "mModelImagePageYPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mModelImagePointsAreLockedSwitch, "mModelImagePointsAreLockedSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mModelImageScrollView, "mModelImageScrollView", EBScrollView.self, #file, #line)
-    checkOutletConnection (self.mModelImageSecondPointLockedSwitch, "mModelImageSecondPointLockedSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mModelImageSecondPointXDimensionUnitPopUp, "mModelImageSecondPointXDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImageSecondPointXTextField, "mModelImageSecondPointXTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mModelImageSecondPointYDimensionUnitPopUp, "mModelImageSecondPointYDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -662,13 +658,11 @@ import Cocoa
     checkOutletConnection (self.mPadYCenterUnitPopUp, "mPadYCenterUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mPadZoneNameTextField, "mPadZoneNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
-    checkOutletConnection (self.mPasteModelImage, "mPasteModelImage", EBButton.self, #file, #line)
     checkOutletConnection (self.mProgramErrorTextField, "mProgramErrorTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mProgramHelpButton, "mProgramHelpButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mProgramHelpSheet, "mProgramHelpSheet", NSPanel.self, #file, #line)
     checkOutletConnection (self.mProgramPageView, "mProgramPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mProgramTextView, "mProgramTextView", EBTextView.self, #file, #line)
-    checkOutletConnection (self.mRemoveModelImage, "mRemoveModelImage", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveZoneForbiddenPadNumberButton, "mRemoveZoneForbiddenPadNumberButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetVersionButton, "mResetVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRunProgramButton, "mRunProgramButton", EBButton.self, #file, #line)
@@ -1074,6 +1068,8 @@ import Cocoa
     self.mGridTextField?.bind_dimensionAndUnit (self.rootObject.gridStep_property, self.rootObject.gridStepUnit_property, file: #file, line: #line)
     self.mProgramTextView?.bind_value (self.rootObject.program_property, file: #file, line: #line)
     self.mModelImageView?.bind_backgroundImageData (self.rootObject.mModelImageData_property, file: #file, line: #line)
+    self.mModelImageView?.bind_backgroundImageDeltaX (self.rootObject.mModelImageDataDeltaX_property, file: #file, line: #line)
+    self.mModelImageView?.bind_backgroundImageDeltaY (self.rootObject.mModelImageDataDeltaY_property, file: #file, line: #line)
     self.mModelImageView?.bind_underObjectsDisplay (self.rootObject.backgroundImagePageBackgroundDisplay_property, file: #file, line: #line)
     self.mModelImageView?.bind_horizontalFlip (self.rootObject.mModelImagePageHorizontalFlip_property, file: #file, line: #line)
     self.mModelImageView?.bind_verticalFlip (self.rootObject.mModelImagePageVerticalFlip_property, file: #file, line: #line)
@@ -1100,12 +1096,11 @@ import Cocoa
     self.mModelImageFirstPointXTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mModelImageFirstPointDimensionUnitX_property, file: #file, line: #line)
     self.mModelImageFirstPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageFirstPointDimensionUnitY_property, file: #file, line: #line)
     self.mModelImageFirstPointYTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mModelImageFirstPointDimensionUnitY_property, file: #file, line: #line)
-    self.mModelImageFirstPointLockedSwitch?.bind_value (self.rootObject.mModelImageFirstPointLocked_property, file: #file, line: #line)
     self.mModelImageSecondPointXDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointDimensionUnitX_property, file: #file, line: #line)
     self.mModelImageSecondPointXTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointX_property, self.rootObject.mModelImageSecondPointDimensionUnitX_property, file: #file, line: #line)
     self.mModelImageSecondPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointDimensionUnitY_property, file: #file, line: #line)
     self.mModelImageSecondPointYTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointY_property, self.rootObject.mModelImageSecondPointDimensionUnitY_property, file: #file, line: #line)
-    self.mModelImageSecondPointLockedSwitch?.bind_value (self.rootObject.mModelImageSecondPointLocked_property, file: #file, line: #line)
+    self.mModelImagePointsAreLockedSwitch?.bind_value (self.rootObject.mPointsAreLocked_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
@@ -1217,10 +1212,6 @@ import Cocoa
     self.mRunProgramButton?.action = #selector (PackageDocument.runProgramAction (_:))
     self.mClearProgramErrorButton?.target = self
     self.mClearProgramErrorButton?.action = #selector (PackageDocument.clearProgramErrorAction (_:))
-    self.mPasteModelImage?.target = self
-    self.mPasteModelImage?.action = #selector (PackageDocument.pasteModelImageAction (_:))
-    self.mRemoveModelImage?.target = self
-    self.mRemoveModelImage?.action = #selector (PackageDocument.removeModelImageAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (PackageDocument.resetVersionAction (_:))
     if LOG_OPERATION_DURATION {
@@ -1429,6 +1420,8 @@ import Cocoa
     self.mGridTextField?.unbind_dimensionAndUnit ()
     self.mProgramTextView?.unbind_value ()
     self.mModelImageView?.unbind_backgroundImageData ()
+    self.mModelImageView?.unbind_backgroundImageDeltaX ()
+    self.mModelImageView?.unbind_backgroundImageDeltaY ()
     self.mModelImageView?.unbind_underObjectsDisplay ()
     self.mModelImageView?.unbind_horizontalFlip ()
     self.mModelImageView?.unbind_verticalFlip ()
@@ -1455,12 +1448,11 @@ import Cocoa
     self.mModelImageFirstPointXTextField?.unbind_dimensionAndUnit ()
     self.mModelImageFirstPointYDimensionUnitPopUp?.unbind_selectedTag ()
     self.mModelImageFirstPointYTextField?.unbind_dimensionAndUnit ()
-    self.mModelImageFirstPointLockedSwitch?.unbind_value ()
     self.mModelImageSecondPointXDimensionUnitPopUp?.unbind_selectedTag ()
     self.mModelImageSecondPointXTextField?.unbind_dimensionAndUnit ()
     self.mModelImageSecondPointYDimensionUnitPopUp?.unbind_selectedTag ()
     self.mModelImageSecondPointYTextField?.unbind_dimensionAndUnit ()
-    self.mModelImageSecondPointLockedSwitch?.unbind_value ()
+    self.mModelImagePointsAreLockedSwitch?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
     self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
@@ -1518,8 +1510,6 @@ import Cocoa
     self.mLoadFromDesignButton?.target = nil
     self.mRunProgramButton?.target = nil
     self.mClearProgramErrorButton?.target = nil
-    self.mPasteModelImage?.target = nil
-    self.mRemoveModelImage?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddArcButton?.ebCleanUp ()
@@ -1624,7 +1614,6 @@ import Cocoa
     self.mLineColorOfPackageGridColorWell?.ebCleanUp ()
     self.mLoadFromDesignButton?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
-    self.mModelImageFirstPointLockedSwitch?.ebCleanUp ()
     self.mModelImageFirstPointXDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImageFirstPointXTextField?.ebCleanUp ()
     self.mModelImageFirstPointYDimensionUnitPopUp?.ebCleanUp ()
@@ -1638,8 +1627,8 @@ import Cocoa
     self.mModelImagePageView?.ebCleanUp ()
     self.mModelImagePageXPlacardUnitPopUpButton?.ebCleanUp ()
     self.mModelImagePageYPlacardUnitPopUpButton?.ebCleanUp ()
+    self.mModelImagePointsAreLockedSwitch?.ebCleanUp ()
     self.mModelImageScrollView?.ebCleanUp ()
-    self.mModelImageSecondPointLockedSwitch?.ebCleanUp ()
     self.mModelImageSecondPointXDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImageSecondPointXTextField?.ebCleanUp ()
     self.mModelImageSecondPointYDimensionUnitPopUp?.ebCleanUp ()
@@ -1686,13 +1675,11 @@ import Cocoa
     self.mPadYCenterUnitPopUp?.ebCleanUp ()
     self.mPadZoneNameTextField?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
-    self.mPasteModelImage?.ebCleanUp ()
     self.mProgramErrorTextField?.ebCleanUp ()
     self.mProgramHelpButton?.ebCleanUp ()
     self.mProgramHelpSheet?.ebCleanUp ()
     self.mProgramPageView?.ebCleanUp ()
     self.mProgramTextView?.ebCleanUp ()
-    self.mRemoveModelImage?.ebCleanUp ()
     self.mRemoveZoneForbiddenPadNumberButton?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mRunProgramButton?.ebCleanUp ()
@@ -1854,7 +1841,6 @@ import Cocoa
     self.mLineColorOfPackageGridColorWell = nil
     self.mLoadFromDesignButton = nil
     self.mMasterView = nil
-    self.mModelImageFirstPointLockedSwitch = nil
     self.mModelImageFirstPointXDimensionUnitPopUp = nil
     self.mModelImageFirstPointXTextField = nil
     self.mModelImageFirstPointYDimensionUnitPopUp = nil
@@ -1868,8 +1854,8 @@ import Cocoa
     self.mModelImagePageView = nil
     self.mModelImagePageXPlacardUnitPopUpButton = nil
     self.mModelImagePageYPlacardUnitPopUpButton = nil
+    self.mModelImagePointsAreLockedSwitch = nil
     self.mModelImageScrollView = nil
-    self.mModelImageSecondPointLockedSwitch = nil
     self.mModelImageSecondPointXDimensionUnitPopUp = nil
     self.mModelImageSecondPointXTextField = nil
     self.mModelImageSecondPointYDimensionUnitPopUp = nil
@@ -1916,13 +1902,11 @@ import Cocoa
     self.mPadYCenterUnitPopUp = nil
     self.mPadZoneNameTextField = nil
     self.mPageSegmentedControl = nil
-    self.mPasteModelImage = nil
     self.mProgramErrorTextField = nil
     self.mProgramHelpButton = nil
     self.mProgramHelpSheet = nil
     self.mProgramPageView = nil
     self.mProgramTextView = nil
-    self.mRemoveModelImage = nil
     self.mRemoveZoneForbiddenPadNumberButton = nil
     self.mResetVersionButton = nil
     self.mRunProgramButton = nil

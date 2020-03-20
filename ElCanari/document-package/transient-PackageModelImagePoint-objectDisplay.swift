@@ -17,7 +17,7 @@ func transient_PackageModelImagePoint_objectDisplay (
        _ self_mX : Int,                              
        _ self_mY : Int,                              
        _ self_mColor : NSColor,                      
-       _ self_mIsLocked : Bool
+       _ self_mRoot_mPointsAreLocked : Bool?
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var shape = EBShape ()
@@ -25,7 +25,7 @@ func transient_PackageModelImagePoint_objectDisplay (
         let y = canariUnitToCocoa (self_mY)
         let RADIUS_IN_COCOA_UNIT : CGFloat = 10.0
         let r = NSRect (center: NSPoint (x: x, y: y), size: NSSize (width: RADIUS_IN_COCOA_UNIT * 2.0, height: RADIUS_IN_COCOA_UNIT * 2.0))
-        if self_mIsLocked {
+        if let locked = self_mRoot_mPointsAreLocked, locked {
           let bp = EBBezierPath (ovalIn: r)
           shape.add (filled: [bp], self_mColor)
         }else{

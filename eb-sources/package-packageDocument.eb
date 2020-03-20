@@ -513,13 +513,15 @@ document PackageDocument root PackageRoot {
 
   outlet EBTextField mProgramErrorTextField ;
 
-//--------------- Background Image Tab
+//--------------- Model Image Tab
   outlet EBScrollView mModelImageScrollView ;
 
   arrayController #mModelImageObjectsController : root.mModelImageObjects ;
 
   outlet EBGraphicView mModelImageView
     $backgroundImageData root.mModelImageData
+    $backgroundImageDeltaX root.mModelImageDataDeltaX
+    $backgroundImageDeltaY root.mModelImageDataDeltaY
     $underObjectsDisplay root.backgroundImagePageBackgroundDisplay
     $horizontalFlip root.mModelImagePageHorizontalFlip
     $verticalFlip root.mModelImagePageVerticalFlip
@@ -556,12 +558,6 @@ document PackageDocument root PackageRoot {
     $selectedTag root.mModelImagePageYPlacardUnit
   ;
 
-  action pasteModelImageAction ;
-  outlet EBButton mPasteModelImage $run pasteModelImageAction ;
-
-  action removeModelImageAction ;
-  outlet EBButton mRemoveModelImage $run removeModelImageAction ;
- 
   outlet EBPopUpButton mModelImageFirstPointXDimensionUnitPopUp $selectedTag root.mModelImageFirstPointDimensionUnitX ;
   outlet CanariDimensionTextField mModelImageFirstPointXTextField
      $dimensionAndUnit root.mModelImageFirstPointX, root.mModelImageFirstPointDimensionUnitX
@@ -570,7 +566,6 @@ document PackageDocument root PackageRoot {
   outlet CanariDimensionTextField mModelImageFirstPointYTextField
      $dimensionAndUnit root.mModelImageFirstPointY, root.mModelImageFirstPointDimensionUnitY
   ;
-  outlet EBSwitch mModelImageFirstPointLockedSwitch $value root.mModelImageFirstPointLocked ;
  
   outlet EBPopUpButton mModelImageSecondPointXDimensionUnitPopUp $selectedTag root.mModelImageSecondPointDimensionUnitX ;
   outlet CanariDimensionTextField mModelImageSecondPointXTextField
@@ -580,7 +575,8 @@ document PackageDocument root PackageRoot {
   outlet CanariDimensionTextField mModelImageSecondPointYTextField
      $dimensionAndUnit root.mModelImageSecondPointY, root.mModelImageSecondPointDimensionUnitY
   ;
-  outlet EBSwitch mModelImageSecondPointLockedSwitch $value root.mModelImageSecondPointLocked ;
+
+  outlet EBSwitch mModelImagePointsAreLockedSwitch $value root.mPointsAreLocked ;
 
 //--------------- Infos Tab
 //--- Comments

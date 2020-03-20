@@ -19,7 +19,6 @@ class ReadOnlyArrayOf_PackageModelImagePoint : ReadOnlyAbstractArrayProperty <Pa
     self.removeEBObserversOf_mDimensionUnitX_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mDimensionUnitY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mIsLocked_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mColor_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
@@ -28,7 +27,6 @@ class ReadOnlyArrayOf_PackageModelImagePoint : ReadOnlyAbstractArrayProperty <Pa
     self.addEBObserversOf_mDimensionUnitX_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mDimensionUnitY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mIsLocked_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mColor_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
@@ -258,63 +256,6 @@ class ReadOnlyArrayOf_PackageModelImagePoint : ReadOnlyAbstractArrayProperty <Pa
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mDimensionUnitY_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mIsLocked' stored property
-  //····················································································································
-
-  private var mObserversOf_mIsLocked = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mIsLocked (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mIsLocked.insert (inObserver)
-    switch self.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsLocked_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mIsLocked (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mIsLocked.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsLocked_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mIsLocked_toElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
-    for managedObject in inSet {
-      self.mObserversOf_mIsLocked.apply { (_ observer : EBEvent) in
-        managedObject.mIsLocked_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mIsLocked_fromElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
-    self.mObserversOf_mIsLocked.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mIsLocked_property.removeEBObserver (observer)
       }
     }
   }
@@ -1067,7 +1008,6 @@ final class PreferencesArrayOf_PackageModelImagePoint : StoredArrayOf_PackageMod
     self.addEBObserverOf_mDimensionUnitX (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mDimensionUnitY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mIsLocked (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mColor (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
