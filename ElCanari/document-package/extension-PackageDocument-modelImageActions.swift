@@ -15,6 +15,8 @@ extension PackageDocument {
   //····················································································································
 
   @objc @IBAction func pasteModelImageAction (_ sender : NSObject?) {
+    // Swift.print ("\(NSPasteboard.general.types)")
+    // Swift.print ("AVAILABLE: \(NSPasteboard.general.availableType (from :[.png, .tiff]))")
     if let tiffData = NSImage (pasteboard: NSPasteboard.general)?.tiffRepresentation {
       self.rootObject.mModelImageData = tiffData
       self.rootObject.mModelImageDeltaX = 0
@@ -24,8 +26,12 @@ extension PackageDocument {
       self.rootObject.mModelImageScale = 1.0
       self.rootObject.mModelImageRotationInRadians = 0.0
       self.rootObject.mPointsAreLocked = false
-    }else{
+    }else if let window = self.windowForSheet {
       __NSBeep ()
+      let alert = NSAlert ()
+      alert.messageText = "Cannot paste an image."
+      alert.informativeText = "The pasteboard does not contain a valid image."
+      alert.beginSheetModal (for: window)
     }
   }
 

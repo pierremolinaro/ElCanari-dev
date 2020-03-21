@@ -35,6 +35,8 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.removeEBObserversOf_mModelImagePageZoom_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImagePageXPlacardUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImagePageYPlacardUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mModelImagePointsDxUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mModelImagePointsDyUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImageDeltaX_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImageDeltaY_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImageFirstPointXOnLock_fromElementsOfSet (inRemovedSet) // Stored property
@@ -51,8 +53,11 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.removeEBObserversOf_freePadNumbering_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_counterClockNumbering_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_pointsDx_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_pointsDy_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_backgroundImagePageBackgroundDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_modelImageSizeString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_noIssue_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
@@ -76,6 +81,8 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.addEBObserversOf_mModelImagePageZoom_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImagePageXPlacardUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImagePageYPlacardUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mModelImagePointsDxUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mModelImagePointsDyUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImageDeltaX_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImageDeltaY_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImageFirstPointXOnLock_toElementsOfSet (inAddedSet) // Stored property
@@ -92,8 +99,11 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.addEBObserversOf_freePadNumbering_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_counterClockNumbering_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_pointsDx_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_pointsDy_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_padNumberDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_backgroundImagePageBackgroundDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_modelImageSizeString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_noIssue_toElementsOfSet (inAddedSet) // Transient property
   }
@@ -1234,6 +1244,120 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mModelImagePageYPlacardUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mModelImagePointsDxUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mModelImagePointsDxUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mModelImagePointsDxUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mModelImagePointsDxUnit.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mModelImagePointsDxUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mModelImagePointsDxUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mModelImagePointsDxUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mModelImagePointsDxUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mModelImagePointsDxUnit_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mModelImagePointsDxUnit.apply { (_ observer : EBEvent) in
+        managedObject.mModelImagePointsDxUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mModelImagePointsDxUnit_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    self.mObserversOf_mModelImagePointsDxUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mModelImagePointsDxUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mModelImagePointsDyUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mModelImagePointsDyUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mModelImagePointsDyUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mModelImagePointsDyUnit.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mModelImagePointsDyUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mModelImagePointsDyUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mModelImagePointsDyUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mModelImagePointsDyUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mModelImagePointsDyUnit_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mModelImagePointsDyUnit.apply { (_ observer : EBEvent) in
+        managedObject.mModelImagePointsDyUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mModelImagePointsDyUnit_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    self.mObserversOf_mModelImagePointsDyUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mModelImagePointsDyUnit_property.removeEBObserver (observer)
       }
     }
   }
@@ -2604,6 +2728,118 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   }
 
   //····················································································································
+  //   Observers of 'pointsDx' transient property
+  //····················································································································
+
+  private var mObserversOf_pointsDx = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_pointsDx (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_pointsDx.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pointsDx_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pointsDx (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_pointsDx.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pointsDx_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_pointsDx_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_pointsDx.apply { (_ observer : EBEvent) in
+        managedObject.pointsDx_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_pointsDx_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_pointsDx.apply { (_ observer : EBEvent) in
+        managedObject.pointsDx_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'pointsDy' transient property
+  //····················································································································
+
+  private var mObserversOf_pointsDy = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_pointsDy (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_pointsDy.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pointsDy_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pointsDy (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_pointsDy.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pointsDy_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_pointsDy_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_pointsDy.apply { (_ observer : EBEvent) in
+        managedObject.pointsDy_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_pointsDy_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_pointsDy.apply { (_ observer : EBEvent) in
+        managedObject.pointsDy_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
@@ -2711,6 +2947,62 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     for managedObject in inSet {
       self.mObserversOf_backgroundImagePageBackgroundDisplay.apply { (_ observer : EBEvent) in
         managedObject.backgroundImagePageBackgroundDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'modelImageSizeString' transient property
+  //····················································································································
+
+  private var mObserversOf_modelImageSizeString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_modelImageSizeString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_modelImageSizeString.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.modelImageSizeString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_modelImageSizeString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_modelImageSizeString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.modelImageSizeString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_modelImageSizeString_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_modelImageSizeString.apply { (_ observer : EBEvent) in
+        managedObject.modelImageSizeString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_modelImageSizeString_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_modelImageSizeString.apply { (_ observer : EBEvent) in
+        managedObject.modelImageSizeString_property.removeEBObserver (observer)
       }
     }
   }
@@ -3422,6 +3714,8 @@ final class PreferencesArrayOf_PackageRoot : StoredArrayOf_PackageRoot {
     self.addEBObserverOf_mModelImagePageZoom (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImagePageXPlacardUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImagePageYPlacardUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mModelImagePointsDxUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mModelImagePointsDyUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImageDeltaX (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImageDeltaY (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImageFirstPointXOnLock (self.mObserverForWritingPreferences)

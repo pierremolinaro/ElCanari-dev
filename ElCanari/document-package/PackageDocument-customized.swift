@@ -65,7 +65,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mPadColorObserver.mEventCallBack = { [weak self] in self?.updateDragPadSourceButtons () }
     g_Preferences?.frontSidePadColor_property.addEBObserver (self.mPadColorObserver)
   //--- Set pages segmented control
-    let pages = [self.mPackagePageView, self.mProgramPageView, self.mModelImagePageView, self.mInfosPageView]
+    let pages = [self.mModelImagePageView, self.mPackagePageView, self.mProgramPageView, self.mInfosPageView]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //--- Set inspector segmented control
     let inspectors = [
@@ -294,8 +294,6 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   private var mModelImageSecondPointYObserver : EBModelEvent? = nil
   private var mModelImageSecondPointLastX = 0
   private var mModelImageSecondPointLastY = 0
-//  private var mModelImageSecondPointXOnLock = 0
-//  private var mModelImageSecondPointYOnLock = 0
 
   private var mModelImagePointsLockedObserver : EBModelEvent? = nil
   private var mModelImagePointDistanceReference : CGFloat = 0.0

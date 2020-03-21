@@ -126,6 +126,18 @@ protocol PackageRoot_mModelImagePageYPlacardUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageRoot_mModelImagePointsDxUnit : class {
+  var mModelImagePointsDxUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_mModelImagePointsDyUnit : class {
+  var mModelImagePointsDyUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageRoot_mModelImageDeltaX : class {
   var mModelImageDeltaX : Int { get }
 }
@@ -270,6 +282,18 @@ protocol PackageRoot_gridStepMultipliedByDisplayFactor : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageRoot_pointsDx : class {
+  var pointsDx : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_pointsDy : class {
+  var pointsDy : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageRoot_padNumberDisplay : class {
   var padNumberDisplay : EBShape? { get }
 }
@@ -278,6 +302,12 @@ protocol PackageRoot_padNumberDisplay : class {
 
 protocol PackageRoot_backgroundImagePageBackgroundDisplay : class {
   var backgroundImagePageBackgroundDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_modelImageSizeString : class {
+  var modelImageSizeString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -317,6 +347,8 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_mModelImagePageZoom,
          PackageRoot_mModelImagePageXPlacardUnit,
          PackageRoot_mModelImagePageYPlacardUnit,
+         PackageRoot_mModelImagePointsDxUnit,
+         PackageRoot_mModelImagePointsDyUnit,
          PackageRoot_mModelImageDeltaX,
          PackageRoot_mModelImageDeltaY,
          PackageRoot_mModelImageFirstPointXOnLock,
@@ -341,8 +373,11 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_freePadNumbering,
          PackageRoot_counterClockNumbering,
          PackageRoot_gridStepMultipliedByDisplayFactor,
+         PackageRoot_pointsDx,
+         PackageRoot_pointsDy,
          PackageRoot_padNumberDisplay,
          PackageRoot_backgroundImagePageBackgroundDisplay,
+         PackageRoot_modelImageSizeString,
          PackageRoot_issues,
          PackageRoot_noIssue {
 
@@ -350,7 +385,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: selectedPageIndex
   //····················································································································
 
-  let selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  let selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 1)
 
   //····················································································································
 
@@ -685,6 +720,40 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mModelImagePageYPlacardUnit_property_selection : EBSelection <Int> { return self.mModelImagePageYPlacardUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mModelImagePointsDxUnit
+  //····················································································································
+
+  let mModelImagePointsDxUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mModelImagePointsDxUnit : Int {
+    get { return self.mModelImagePointsDxUnit_property.propval }
+    set { self.mModelImagePointsDxUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mModelImagePointsDxUnit_property_selection : EBSelection <Int> { return self.mModelImagePointsDxUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mModelImagePointsDyUnit
+  //····················································································································
+
+  let mModelImagePointsDyUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mModelImagePointsDyUnit : Int {
+    get { return self.mModelImagePointsDyUnit_property.propval }
+    set { self.mModelImagePointsDyUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mModelImagePointsDyUnit_property_selection : EBSelection <Int> { return self.mModelImagePointsDyUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImageDeltaX
@@ -1331,6 +1400,52 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: pointsDx
+  //····················································································································
+
+  let pointsDx_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var pointsDx_property_selection : EBSelection <Int> {
+    return self.pointsDx_property.prop
+  }
+
+  //····················································································································
+
+  var pointsDx : Int? {
+    switch self.pointsDx_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: pointsDy
+  //····················································································································
+
+  let pointsDy_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var pointsDy_property_selection : EBSelection <Int> {
+    return self.pointsDy_property.prop
+  }
+
+  //····················································································································
+
+  var pointsDy : Int? {
+    switch self.pointsDy_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   To one property: mModelImageFirstPoint
   //····················································································································
 
@@ -1407,6 +1522,29 @@ class PackageRoot : EBGraphicManagedObject,
 
   var backgroundImagePageBackgroundDisplay : EBShape? {
     switch self.backgroundImagePageBackgroundDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: modelImageSizeString
+  //····················································································································
+
+  let modelImageSizeString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var modelImageSizeString_property_selection : EBSelection <String> {
+    return self.modelImageSizeString_property.prop
+  }
+
+  //····················································································································
+
+  var modelImageSizeString : String? {
+    switch self.modelImageSizeString_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1512,6 +1650,10 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImagePageXPlacardUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mModelImagePageYPlacardUnit
     self.mModelImagePageYPlacardUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelImagePointsDxUnit
+    self.mModelImagePointsDxUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelImagePointsDyUnit
+    self.mModelImagePointsDyUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mModelImageDeltaX
     self.mModelImageDeltaX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mModelImageDeltaY
@@ -1740,6 +1882,54 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.gridStep_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
     self.gridDisplayFactor_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
+  //--- Atomic property: pointsDx
+    self.pointsDx_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mModelImageFirstPointX_property_selection.kind ()
+        kind &= unwSelf.mModelImageSecondPointX_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mModelImageFirstPointX_property_selection, unwSelf.mModelImageSecondPointX_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_PackageRoot_pointsDx (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mModelImageFirstPointX_property.addEBObserver (self.pointsDx_property)
+    self.mModelImageSecondPointX_property.addEBObserver (self.pointsDx_property)
+  //--- Atomic property: pointsDy
+    self.pointsDy_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mModelImageFirstPointY_property_selection.kind ()
+        kind &= unwSelf.mModelImageSecondPointY_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mModelImageFirstPointY_property_selection, unwSelf.mModelImageSecondPointY_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_PackageRoot_pointsDy (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mModelImageFirstPointY_property.addEBObserver (self.pointsDy_property)
+    self.mModelImageSecondPointY_property.addEBObserver (self.pointsDy_property)
   //--- To one property: mModelImageFirstPoint
     self.mModelImageFirstPoint_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumberDisplay
@@ -1792,6 +1982,28 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.packageObjects_property.addEBObserverOf_objectDisplay (self.backgroundImagePageBackgroundDisplay_property)
     self.mModelImageData_property.addEBObserver (self.backgroundImagePageBackgroundDisplay_property)
+  //--- Atomic property: modelImageSizeString
+    self.modelImageSizeString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mModelImageData_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mModelImageData_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageRoot_modelImageSizeString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mModelImageData_property.addEBObserver (self.modelImageSizeString_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1922,11 +2134,16 @@ class PackageRoot : EBGraphicManagedObject,
     self.padNumbering_property.removeEBObserver (self.counterClockNumbering_property)
     self.gridStep_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
     self.gridDisplayFactor_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
+    self.mModelImageFirstPointX_property.removeEBObserver (self.pointsDx_property)
+    self.mModelImageSecondPointX_property.removeEBObserver (self.pointsDx_property)
+    self.mModelImageFirstPointY_property.removeEBObserver (self.pointsDy_property)
+    self.mModelImageSecondPointY_property.removeEBObserver (self.pointsDy_property)
     g_Preferences?.showPadNumber_property.removeEBObserver (self.padNumberDisplay_property)
     self.packagePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     self.packageSlavePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     self.packageObjects_property.removeEBObserverOf_objectDisplay (self.backgroundImagePageBackgroundDisplay_property)
     self.mModelImageData_property.removeEBObserver (self.backgroundImagePageBackgroundDisplay_property)
+    self.mModelImageData_property.removeEBObserver (self.modelImageSizeString_property)
     self.packageObjects_property.removeEBObserverOf_issues (self.issues_property)
     self.packageZones_property.removeEBObserverOf_rect (self.issues_property)
     self.packageZones_property.removeEBObserverOf_zoneName (self.issues_property)
@@ -2118,6 +2335,22 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer: &self.mModelImagePageYPlacardUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mModelImagePointsDxUnit",
+      idx: self.mModelImagePointsDxUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mModelImagePointsDxUnit_property.mObserverExplorer,
+      valueExplorer: &self.mModelImagePointsDxUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mModelImagePointsDyUnit",
+      idx: self.mModelImagePointsDyUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mModelImagePointsDyUnit_property.mObserverExplorer,
+      valueExplorer: &self.mModelImagePointsDyUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mModelImageDeltaX",
       idx: self.mModelImageDeltaX_property.ebObjectIndex,
       y: &y,
@@ -2247,6 +2480,22 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer: &self.gridStepMultipliedByDisplayFactor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "pointsDx",
+      idx: self.pointsDx_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pointsDx_property.mObserverExplorer,
+      valueExplorer: &self.pointsDx_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "pointsDy",
+      idx: self.pointsDy_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pointsDy_property.mObserverExplorer,
+      valueExplorer: &self.pointsDy_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "padNumberDisplay",
       idx: self.padNumberDisplay_property.ebObjectIndex,
       y: &y,
@@ -2261,6 +2510,14 @@ class PackageRoot : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.backgroundImagePageBackgroundDisplay_property.mObserverExplorer,
       valueExplorer: &self.backgroundImagePageBackgroundDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "modelImageSizeString",
+      idx: self.modelImageSizeString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.modelImageSizeString_property.mObserverExplorer,
+      valueExplorer: &self.modelImageSizeString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",
@@ -2376,6 +2633,12 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: mModelImagePageYPlacardUnit
     self.mModelImagePageYPlacardUnit_property.mObserverExplorer = nil
     self.mModelImagePageYPlacardUnit_property.mValueExplorer = nil
+  //--- Atomic property: mModelImagePointsDxUnit
+    self.mModelImagePointsDxUnit_property.mObserverExplorer = nil
+    self.mModelImagePointsDxUnit_property.mValueExplorer = nil
+  //--- Atomic property: mModelImagePointsDyUnit
+    self.mModelImagePointsDyUnit_property.mObserverExplorer = nil
+    self.mModelImagePointsDyUnit_property.mValueExplorer = nil
   //--- Atomic property: mModelImageDeltaX
     self.mModelImageDeltaX_property.mObserverExplorer = nil
     self.mModelImageDeltaX_property.mValueExplorer = nil
@@ -2521,6 +2784,10 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImagePageXPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageXPlacardUnit")
   //--- Atomic property: mModelImagePageYPlacardUnit
     self.mModelImagePageYPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageYPlacardUnit")
+  //--- Atomic property: mModelImagePointsDxUnit
+    self.mModelImagePointsDxUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePointsDxUnit")
+  //--- Atomic property: mModelImagePointsDyUnit
+    self.mModelImagePointsDyUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePointsDyUnit")
   //--- Atomic property: mModelImageDeltaX
     self.mModelImageDeltaX_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageDeltaX")
   //--- Atomic property: mModelImageDeltaY
@@ -2658,6 +2925,10 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImagePageXPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageXPlacardUnit")
   //--- Atomic property: mModelImagePageYPlacardUnit
     self.mModelImagePageYPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageYPlacardUnit")
+  //--- Atomic property: mModelImagePointsDxUnit
+    self.mModelImagePointsDxUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePointsDxUnit")
+  //--- Atomic property: mModelImagePointsDyUnit
+    self.mModelImagePointsDyUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePointsDyUnit")
   //--- Atomic property: mModelImageDeltaX
     self.mModelImageDeltaX_property.readFrom (dictionary: inDictionary, forKey:"mModelImageDeltaX")
   //--- Atomic property: mModelImageDeltaY
@@ -2714,6 +2985,8 @@ class PackageRoot : EBGraphicManagedObject,
     ioString += "mModelImagePageZoom\n"
     ioString += "mModelImagePageXPlacardUnit\n"
     ioString += "mModelImagePageYPlacardUnit\n"
+    ioString += "mModelImagePointsDxUnit\n"
+    ioString += "mModelImagePointsDyUnit\n"
     ioString += "mModelImageDeltaX\n"
     ioString += "mModelImageDeltaY\n"
     ioString += "mModelImageFirstPointXOnLock\n"
@@ -2784,6 +3057,10 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImagePageXPlacardUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mModelImagePageYPlacardUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mModelImagePointsDxUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mModelImagePointsDyUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mModelImageDeltaX.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)

@@ -286,12 +286,17 @@ import Cocoa
   @IBOutlet var mModelImagePageView : CanariViewWithKeyView? = nil
   @IBOutlet var mModelImagePageXPlacardUnitPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mModelImagePageYPlacardUnitPopUpButton : EBPopUpButton? = nil
+  @IBOutlet var mModelImagePointDxTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet var mModelImagePointDyTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mModelImagePointsAreLockedSwitch : EBSwitch? = nil
+  @IBOutlet var mModelImagePointsDxDimensionUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet var mModelImagePointsDyDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImageScrollView : EBScrollView? = nil
   @IBOutlet var mModelImageSecondPointXDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImageSecondPointXTextField : CanariDimensionTextField? = nil
   @IBOutlet var mModelImageSecondPointYDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImageSecondPointYTextField : CanariDimensionTextField? = nil
+  @IBOutlet var mModelImageSizeTextField : EBTextObserverField? = nil
   @IBOutlet var mModelImageView : EBGraphicView? = nil
   @IBOutlet var mOvalHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet var mOvalHeightUnitPopUp : EBPopUpButton? = nil
@@ -610,12 +615,17 @@ import Cocoa
     checkOutletConnection (self.mModelImagePageView, "mModelImagePageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mModelImagePageXPlacardUnitPopUpButton, "mModelImagePageXPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImagePageYPlacardUnitPopUpButton, "mModelImagePageYPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mModelImagePointDxTextField, "mModelImagePointDxTextField", CanariDimensionObserverTextField.self, #file, #line)
+    checkOutletConnection (self.mModelImagePointDyTextField, "mModelImagePointDyTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mModelImagePointsAreLockedSwitch, "mModelImagePointsAreLockedSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mModelImagePointsDxDimensionUnitPopUp, "mModelImagePointsDxDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mModelImagePointsDyDimensionUnitPopUp, "mModelImagePointsDyDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImageScrollView, "mModelImageScrollView", EBScrollView.self, #file, #line)
     checkOutletConnection (self.mModelImageSecondPointXDimensionUnitPopUp, "mModelImageSecondPointXDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImageSecondPointXTextField, "mModelImageSecondPointXTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mModelImageSecondPointYDimensionUnitPopUp, "mModelImageSecondPointYDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImageSecondPointYTextField, "mModelImageSecondPointYTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mModelImageSizeTextField, "mModelImageSizeTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mModelImageView, "mModelImageView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mOvalHeightTextField, "mOvalHeightTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mOvalHeightUnitPopUp, "mOvalHeightUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -1090,6 +1100,7 @@ import Cocoa
     self.mModelImagePageGridTextField?.bind_dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property, file: #file, line: #line)
     self.mModelImagePageXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageXPlacardUnit_property, file: #file, line: #line)
     self.mModelImagePageYPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageYPlacardUnit_property, file: #file, line: #line)
+    self.mModelImageSizeTextField?.bind_valueObserver (self.rootObject.modelImageSizeString_property, file: #file, line: #line)
     self.mModelImageFirstPointXDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageFirstPointDimensionUnitX_property, file: #file, line: #line)
     self.mModelImageFirstPointXTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mModelImageFirstPointDimensionUnitX_property, file: #file, line: #line)
     self.mModelImageFirstPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageFirstPointDimensionUnitY_property, file: #file, line: #line)
@@ -1098,6 +1109,10 @@ import Cocoa
     self.mModelImageSecondPointXTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointX_property, self.rootObject.mModelImageSecondPointDimensionUnitX_property, file: #file, line: #line)
     self.mModelImageSecondPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointDimensionUnitY_property, file: #file, line: #line)
     self.mModelImageSecondPointYTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointY_property, self.rootObject.mModelImageSecondPointDimensionUnitY_property, file: #file, line: #line)
+    self.mModelImagePointsDxDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImagePointsDxUnit_property, file: #file, line: #line)
+    self.mModelImagePointDxTextField?.bind_dimensionAndUnit (self.rootObject.pointsDx_property, self.rootObject.mModelImagePointsDxUnit_property, file: #file, line: #line)
+    self.mModelImagePointsDyDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImagePointsDyUnit_property, file: #file, line: #line)
+    self.mModelImagePointDyTextField?.bind_dimensionAndUnit (self.rootObject.pointsDy_property, self.rootObject.mModelImagePointsDyUnit_property, file: #file, line: #line)
     self.mModelImagePointsAreLockedSwitch?.bind_value (self.rootObject.mPointsAreLocked_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
@@ -1440,6 +1455,7 @@ import Cocoa
     self.mModelImagePageGridTextField?.unbind_dimensionAndUnit ()
     self.mModelImagePageXPlacardUnitPopUpButton?.unbind_selectedTag ()
     self.mModelImagePageYPlacardUnitPopUpButton?.unbind_selectedTag ()
+    self.mModelImageSizeTextField?.unbind_valueObserver ()
     self.mModelImageFirstPointXDimensionUnitPopUp?.unbind_selectedTag ()
     self.mModelImageFirstPointXTextField?.unbind_dimensionAndUnit ()
     self.mModelImageFirstPointYDimensionUnitPopUp?.unbind_selectedTag ()
@@ -1448,6 +1464,10 @@ import Cocoa
     self.mModelImageSecondPointXTextField?.unbind_dimensionAndUnit ()
     self.mModelImageSecondPointYDimensionUnitPopUp?.unbind_selectedTag ()
     self.mModelImageSecondPointYTextField?.unbind_dimensionAndUnit ()
+    self.mModelImagePointsDxDimensionUnitPopUp?.unbind_selectedTag ()
+    self.mModelImagePointDxTextField?.unbind_dimensionAndUnit ()
+    self.mModelImagePointsDyDimensionUnitPopUp?.unbind_selectedTag ()
+    self.mModelImagePointDyTextField?.unbind_dimensionAndUnit ()
     self.mModelImagePointsAreLockedSwitch?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
@@ -1623,12 +1643,17 @@ import Cocoa
     self.mModelImagePageView?.ebCleanUp ()
     self.mModelImagePageXPlacardUnitPopUpButton?.ebCleanUp ()
     self.mModelImagePageYPlacardUnitPopUpButton?.ebCleanUp ()
+    self.mModelImagePointDxTextField?.ebCleanUp ()
+    self.mModelImagePointDyTextField?.ebCleanUp ()
     self.mModelImagePointsAreLockedSwitch?.ebCleanUp ()
+    self.mModelImagePointsDxDimensionUnitPopUp?.ebCleanUp ()
+    self.mModelImagePointsDyDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImageScrollView?.ebCleanUp ()
     self.mModelImageSecondPointXDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImageSecondPointXTextField?.ebCleanUp ()
     self.mModelImageSecondPointYDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImageSecondPointYTextField?.ebCleanUp ()
+    self.mModelImageSizeTextField?.ebCleanUp ()
     self.mModelImageView?.ebCleanUp ()
     self.mOvalHeightTextField?.ebCleanUp ()
     self.mOvalHeightUnitPopUp?.ebCleanUp ()
@@ -1850,12 +1875,17 @@ import Cocoa
     self.mModelImagePageView = nil
     self.mModelImagePageXPlacardUnitPopUpButton = nil
     self.mModelImagePageYPlacardUnitPopUpButton = nil
+    self.mModelImagePointDxTextField = nil
+    self.mModelImagePointDyTextField = nil
     self.mModelImagePointsAreLockedSwitch = nil
+    self.mModelImagePointsDxDimensionUnitPopUp = nil
+    self.mModelImagePointsDyDimensionUnitPopUp = nil
     self.mModelImageScrollView = nil
     self.mModelImageSecondPointXDimensionUnitPopUp = nil
     self.mModelImageSecondPointXTextField = nil
     self.mModelImageSecondPointYDimensionUnitPopUp = nil
     self.mModelImageSecondPointYTextField = nil
+    self.mModelImageSizeTextField = nil
     self.mModelImageView = nil
     self.mOvalHeightTextField = nil
     self.mOvalHeightUnitPopUp = nil

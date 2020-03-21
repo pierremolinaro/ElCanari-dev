@@ -35,6 +35,8 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     inOldValue?.mModelImagePageZoom_property.removeEBObserversFrom (&self.mObserversOf_mModelImagePageZoom) // Stored property
     inOldValue?.mModelImagePageXPlacardUnit_property.removeEBObserversFrom (&self.mObserversOf_mModelImagePageXPlacardUnit) // Stored property
     inOldValue?.mModelImagePageYPlacardUnit_property.removeEBObserversFrom (&self.mObserversOf_mModelImagePageYPlacardUnit) // Stored property
+    inOldValue?.mModelImagePointsDxUnit_property.removeEBObserversFrom (&self.mObserversOf_mModelImagePointsDxUnit) // Stored property
+    inOldValue?.mModelImagePointsDyUnit_property.removeEBObserversFrom (&self.mObserversOf_mModelImagePointsDyUnit) // Stored property
     inOldValue?.mModelImageDeltaX_property.removeEBObserversFrom (&self.mObserversOf_mModelImageDeltaX) // Stored property
     inOldValue?.mModelImageDeltaY_property.removeEBObserversFrom (&self.mObserversOf_mModelImageDeltaY) // Stored property
     inOldValue?.mModelImageFirstPointXOnLock_property.removeEBObserversFrom (&self.mObserversOf_mModelImageFirstPointXOnLock) // Stored property
@@ -51,8 +53,11 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     inOldValue?.freePadNumbering_property.removeEBObserversFrom (&self.mObserversOf_freePadNumbering) // Transient property
     inOldValue?.counterClockNumbering_property.removeEBObserversFrom (&self.mObserversOf_counterClockNumbering) // Transient property
     inOldValue?.gridStepMultipliedByDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_gridStepMultipliedByDisplayFactor) // Transient property
+    inOldValue?.pointsDx_property.removeEBObserversFrom (&self.mObserversOf_pointsDx) // Transient property
+    inOldValue?.pointsDy_property.removeEBObserversFrom (&self.mObserversOf_pointsDy) // Transient property
     inOldValue?.padNumberDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
     inOldValue?.backgroundImagePageBackgroundDisplay_property.removeEBObserversFrom (&self.mObserversOf_backgroundImagePageBackgroundDisplay) // Transient property
+    inOldValue?.modelImageSizeString_property.removeEBObserversFrom (&self.mObserversOf_modelImageSizeString) // Transient property
     inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
     inOldValue?.noIssue_property.removeEBObserversFrom (&self.mObserversOf_noIssue) // Transient property
   //--- Add observers to added objects
@@ -76,6 +81,8 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     self.mInternalValue?.mModelImagePageZoom_property.addEBObserversFrom (&self.mObserversOf_mModelImagePageZoom) // Stored property
     self.mInternalValue?.mModelImagePageXPlacardUnit_property.addEBObserversFrom (&self.mObserversOf_mModelImagePageXPlacardUnit) // Stored property
     self.mInternalValue?.mModelImagePageYPlacardUnit_property.addEBObserversFrom (&self.mObserversOf_mModelImagePageYPlacardUnit) // Stored property
+    self.mInternalValue?.mModelImagePointsDxUnit_property.addEBObserversFrom (&self.mObserversOf_mModelImagePointsDxUnit) // Stored property
+    self.mInternalValue?.mModelImagePointsDyUnit_property.addEBObserversFrom (&self.mObserversOf_mModelImagePointsDyUnit) // Stored property
     self.mInternalValue?.mModelImageDeltaX_property.addEBObserversFrom (&self.mObserversOf_mModelImageDeltaX) // Stored property
     self.mInternalValue?.mModelImageDeltaY_property.addEBObserversFrom (&self.mObserversOf_mModelImageDeltaY) // Stored property
     self.mInternalValue?.mModelImageFirstPointXOnLock_property.addEBObserversFrom (&self.mObserversOf_mModelImageFirstPointXOnLock) // Stored property
@@ -92,8 +99,11 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     self.mInternalValue?.freePadNumbering_property.addEBObserversFrom (&self.mObserversOf_freePadNumbering) // Transient property
     self.mInternalValue?.counterClockNumbering_property.addEBObserversFrom (&self.mObserversOf_counterClockNumbering) // Transient property
     self.mInternalValue?.gridStepMultipliedByDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_gridStepMultipliedByDisplayFactor) // Transient property
+    self.mInternalValue?.pointsDx_property.addEBObserversFrom (&self.mObserversOf_pointsDx) // Transient property
+    self.mInternalValue?.pointsDy_property.addEBObserversFrom (&self.mObserversOf_pointsDy) // Transient property
     self.mInternalValue?.padNumberDisplay_property.addEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
     self.mInternalValue?.backgroundImagePageBackgroundDisplay_property.addEBObserversFrom (&self.mObserversOf_backgroundImagePageBackgroundDisplay) // Transient property
+    self.mInternalValue?.modelImageSizeString_property.addEBObserversFrom (&self.mObserversOf_modelImageSizeString) // Transient property
     self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
     self.mInternalValue?.noIssue_property.addEBObserversFrom (&self.mObserversOf_noIssue) // Transient property
   }
@@ -1494,6 +1504,146 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mModelImagePageYPlacardUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mModelImagePointsDxUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mModelImagePointsDxUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mModelImagePointsDxUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mModelImagePointsDxUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mModelImagePointsDxUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mModelImagePointsDxUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mModelImagePointsDxUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mModelImagePointsDxUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mModelImagePointsDxUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mModelImagePointsDxUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mModelImagePointsDxUnit_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mModelImagePointsDxUnit.apply { (_ observer : EBEvent) in
+        managedObject.mModelImagePointsDxUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mModelImagePointsDxUnit_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    self.mObserversOf_mModelImagePointsDxUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mModelImagePointsDxUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mModelImagePointsDyUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mModelImagePointsDyUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mModelImagePointsDyUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mModelImagePointsDyUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mModelImagePointsDyUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mModelImagePointsDyUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mModelImagePointsDyUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mModelImagePointsDyUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mModelImagePointsDyUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mModelImagePointsDyUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mModelImagePointsDyUnit_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mModelImagePointsDyUnit.apply { (_ observer : EBEvent) in
+        managedObject.mModelImagePointsDyUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mModelImagePointsDyUnit_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    self.mObserversOf_mModelImagePointsDyUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mModelImagePointsDyUnit_property.removeEBObserver (observer)
       }
     }
   }
@@ -3176,6 +3326,144 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   }
 
   //····················································································································
+  //   Observers of 'pointsDx' transient property
+  //····················································································································
+
+  private var mObserversOf_pointsDx = EBWeakEventSet ()
+
+  //····················································································································
+
+  var pointsDx_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.pointsDx_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_pointsDx (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_pointsDx.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.pointsDx_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pointsDx (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_pointsDx.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.pointsDx_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_pointsDx_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_pointsDx.apply { (_ observer : EBEvent) in
+        managedObject.pointsDx_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_pointsDx_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_pointsDx.apply { (_ observer : EBEvent) in
+        managedObject.pointsDx_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'pointsDy' transient property
+  //····················································································································
+
+  private var mObserversOf_pointsDy = EBWeakEventSet ()
+
+  //····················································································································
+
+  var pointsDy_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.pointsDy_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_pointsDy (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_pointsDy.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.pointsDy_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pointsDy (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_pointsDy.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.pointsDy_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_pointsDy_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_pointsDy.apply { (_ observer : EBEvent) in
+        managedObject.pointsDy_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_pointsDy_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_pointsDy.apply { (_ observer : EBEvent) in
+        managedObject.pointsDy_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
@@ -3309,6 +3597,75 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     for managedObject in inSet {
       self.mObserversOf_backgroundImagePageBackgroundDisplay.apply { (_ observer : EBEvent) in
         managedObject.backgroundImagePageBackgroundDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'modelImageSizeString' transient property
+  //····················································································································
+
+  private var mObserversOf_modelImageSizeString = EBWeakEventSet ()
+
+  //····················································································································
+
+  var modelImageSizeString_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.modelImageSizeString_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_modelImageSizeString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_modelImageSizeString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.modelImageSizeString_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_modelImageSizeString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_modelImageSizeString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.modelImageSizeString_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_modelImageSizeString_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_modelImageSizeString.apply { (_ observer : EBEvent) in
+        managedObject.modelImageSizeString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_modelImageSizeString_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_modelImageSizeString.apply { (_ observer : EBEvent) in
+        managedObject.modelImageSizeString_property.removeEBObserver (observer)
       }
     }
   }

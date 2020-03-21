@@ -554,7 +554,9 @@ document PackageDocument root PackageRoot {
   outlet EBPopUpButton mModelImagePageYPlacardUnitPopUpButton
     $selectedTag root.mModelImagePageYPlacardUnit
   ;
-
+  
+  outlet EBTextObserverField mModelImageSizeTextField $valueObserver root.modelImageSizeString ;
+  
   outlet EBPopUpButton mModelImageFirstPointXDimensionUnitPopUp $selectedTag root.mModelImageFirstPointDimensionUnitX ;
   outlet CanariDimensionTextField mModelImageFirstPointXTextField
      $dimensionAndUnit root.mModelImageFirstPointX, root.mModelImageFirstPointDimensionUnitX
@@ -571,6 +573,15 @@ document PackageDocument root PackageRoot {
   outlet EBPopUpButton mModelImageSecondPointYDimensionUnitPopUp $selectedTag root.mModelImageSecondPointDimensionUnitY ;
   outlet CanariDimensionTextField mModelImageSecondPointYTextField
      $dimensionAndUnit root.mModelImageSecondPointY, root.mModelImageSecondPointDimensionUnitY
+  ;
+
+  outlet EBPopUpButton mModelImagePointsDxDimensionUnitPopUp $selectedTag root.mModelImagePointsDxUnit ;
+  outlet CanariDimensionObserverTextField mModelImagePointDxTextField
+     $dimensionAndUnit root.pointsDx, root.mModelImagePointsDxUnit
+  ;
+  outlet EBPopUpButton mModelImagePointsDyDimensionUnitPopUp $selectedTag root.mModelImagePointsDyUnit ;
+  outlet CanariDimensionObserverTextField mModelImagePointDyTextField
+     $dimensionAndUnit root.pointsDy, root.mModelImagePointsDyUnit
   ;
 
   outlet EBSwitch mModelImagePointsAreLockedSwitch $value root.mPointsAreLocked ;

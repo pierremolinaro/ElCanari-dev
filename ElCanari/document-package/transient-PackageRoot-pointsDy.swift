@@ -13,35 +13,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageModelImagePoint_objectDisplay (
-       _ self_mX : Int,                              
-       _ self_mY : Int,                              
-       _ self_mColor : NSColor,                      
-       _ self_mRoot_mPointsAreLocked : Bool?
-) -> EBShape {
+func transient_PackageRoot_pointsDy (
+       _ self_mModelImageFirstPointY : Int,
+       _ self_mModelImageSecondPointY : Int
+) -> Int {
 //--- START OF USER ZONE 2
-        var shape = EBShape ()
-        let x = canariUnitToCocoa (self_mX)
-        let y = canariUnitToCocoa (self_mY)
-        let RADIUS_IN_COCOA_UNIT : CGFloat = 10.0
-        let r = NSRect (center: NSPoint (x: x, y: y), size: NSSize (width: RADIUS_IN_COCOA_UNIT * 2.0, height: RADIUS_IN_COCOA_UNIT * 2.0))
-        if let locked = self_mRoot_mPointsAreLocked, locked {
-          let bp = EBBezierPath (ovalIn: r)
-          shape.add (filled: [bp], self_mColor)
-        }else{
-          var lines = EBBezierPath ()
-          lines.lineCapStyle = .round
-          lines.move (to: NSPoint (x: x - RADIUS_IN_COCOA_UNIT, y: y))
-          lines.relativeLine (to: NSPoint (x: RADIUS_IN_COCOA_UNIT * 2.0, y: 0.0))
-          lines.move (to: NSPoint (x: x, y: y - RADIUS_IN_COCOA_UNIT))
-          lines.relativeLine (to: NSPoint (x: 0.0, y: RADIUS_IN_COCOA_UNIT * 2.0))
-          lines.lineWidth = 0.0
-          var circle = EBBezierPath (ovalIn: r)
-          circle.lineWidth = 2.0
-          shape.add (filled: [circle], .clear)
-          shape.add (stroke: [lines, circle], self_mColor)
-        }
-        return shape
+        return self_mModelImageSecondPointY - self_mModelImageFirstPointY
 //--- END OF USER ZONE 2
 }
 

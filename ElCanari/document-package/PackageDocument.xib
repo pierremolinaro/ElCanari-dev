@@ -123,12 +123,17 @@
                 <outlet property="mModelImagePageView" destination="ezG-Ne-F9h" id="lxt-na-CLy"/>
                 <outlet property="mModelImagePageXPlacardUnitPopUpButton" destination="X8n-LY-VwZ" id="DGa-Gq-jzP"/>
                 <outlet property="mModelImagePageYPlacardUnitPopUpButton" destination="ZrP-mw-Blc" id="i9F-d5-mZB"/>
+                <outlet property="mModelImagePointDxTextField" destination="oUJ-5J-LU1" id="QzU-uw-Waz"/>
+                <outlet property="mModelImagePointDyTextField" destination="KE8-09-wPC" id="JVs-xf-jNN"/>
                 <outlet property="mModelImagePointsAreLockedSwitch" destination="cbX-Hf-xIm" id="319-ZV-w6j"/>
+                <outlet property="mModelImagePointsDxDimensionUnitPopUp" destination="iWi-f5-zQH" id="nq7-Kv-q3P"/>
+                <outlet property="mModelImagePointsDyDimensionUnitPopUp" destination="nQs-uR-u0S" id="aUh-Ku-WVg"/>
                 <outlet property="mModelImageScrollView" destination="N7h-H4-Lu6" id="zBn-X2-QP2"/>
                 <outlet property="mModelImageSecondPointXDimensionUnitPopUp" destination="Rnj-5Z-ANb" id="R7y-YP-JVH"/>
                 <outlet property="mModelImageSecondPointXTextField" destination="CNZ-Qb-QyI" id="4fu-7J-PqO"/>
                 <outlet property="mModelImageSecondPointYDimensionUnitPopUp" destination="Gvv-bF-Dwq" id="kTU-7P-cHW"/>
                 <outlet property="mModelImageSecondPointYTextField" destination="YsA-s8-m7w" id="GEx-6e-aqe"/>
+                <outlet property="mModelImageSizeTextField" destination="Om9-bO-FIz" id="hP8-dG-j0X"/>
                 <outlet property="mModelImageView" destination="LMg-aa-bds" id="lQu-2e-62X"/>
                 <outlet property="mOvalHeightTextField" destination="1708" id="dYV-7F-px1"/>
                 <outlet property="mOvalHeightUnitPopUp" destination="1699" id="mda-b5-C6B"/>
@@ -357,9 +362,9 @@ Gw
                             <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="2897">
                                 <font key="font" metaFont="cellTitle"/>
                                 <segments>
-                                    <segment label="Package"/>
-                                    <segment label="Program" selected="YES" tag="1"/>
                                     <segment label="Model Image"/>
+                                    <segment label="Package" selected="YES" tag="1"/>
+                                    <segment label="Program"/>
                                     <segment label="Infos"/>
                                 </segments>
                             </segmentedCell>
@@ -5770,7 +5775,7 @@ DQ
                     <rect key="frame" x="259" y="-1" width="429" height="501"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="40" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7h-H4-Lu6" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                        <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="40" minMagnification="0.10000000000000001" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7h-H4-Lu6" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="429" height="501"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" ambiguous="YES" id="a7R-xu-Y3w">
@@ -5831,17 +5836,17 @@ DQ
                 <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UJB-LV-Z9O" customClass="EBPopUpButton">
                     <rect key="frame" x="101" y="440" width="130" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="1 Step" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" tag="1" inset="2" preferredEdge="maxY" selectedItem="Q5D-zI-nZB" id="cj5-SS-Lv2">
+                    <popUpButtonCell key="cell" type="roundRect" title="1 Step" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="1" inset="2" preferredEdge="maxY" selectedItem="Q5D-zI-nZB" id="cj5-SS-Lv2">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="4A6-Oo-lOt">
                             <items>
-                                <menuItem title="1 Step" tag="1" id="Q5D-zI-nZB"/>
+                                <menuItem title="1 Step" state="on" tag="1" id="Q5D-zI-nZB"/>
                                 <menuItem title="2 Steps" tag="2" id="EWL-zH-rWD"/>
                                 <menuItem title="4 Steps" tag="4" id="zgJ-2L-NUY"/>
                                 <menuItem title="5 Steps" tag="5" id="8Ya-aY-WDU"/>
                                 <menuItem title="8 Steps" tag="8" id="lmK-af-OVw"/>
-                                <menuItem title="10 Steps" state="on" tag="10" id="5Qf-lL-Kkn"/>
+                                <menuItem title="10 Steps" tag="10" id="5Qf-lL-Kkn"/>
                                 <menuItem title="12 Steps" tag="12" id="2gU-YX-aY2"/>
                                 <menuItem title="15 Steps" tag="15" id="wX8-9X-uZo"/>
                                 <menuItem title="20 Steps" tag="20" id="41D-5p-TbH"/>
@@ -5980,14 +5985,14 @@ DQ
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P4A-9m-gi4">
-                    <rect key="frame" x="16" y="286" width="124" height="25"/>
+                    <rect key="frame" x="16" y="286" width="75" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="Actions" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="Jdk-hq-bi5">
+                    <popUpButtonCell key="cell" type="push" title="Action" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="Jdk-hq-bi5">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="KI6-mI-0EZ">
                             <items>
-                                <menuItem title="Actions" hidden="YES" id="8tg-5W-NfI"/>
+                                <menuItem title="Action" hidden="YES" id="8tg-5W-NfI"/>
                                 <menuItem title="Paste Background Image" id="B4s-jd-ih5">
                                     <connections>
                                         <action selector="pasteModelImageAction:" target="-2" id="YfN-rb-uSS"/>
@@ -6144,61 +6149,152 @@ DQ
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbX-Hf-xIm" customClass="EBSwitch">
-                    <rect key="frame" x="16" y="149" width="216" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Points are Locked to Model Image" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="xuc-2M-Opj">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="58" translatesAutoresizingMaskIntoConstraints="NO" id="oUj-kG-IHn">
                     <rect key="frame" x="17" y="174" width="62" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" selectable="YES" title="Blue Point" id="zn9-xj-bfv">
+                    <textFieldCell key="cell" selectable="YES" title="Brown Point" id="zn9-xj-bfv">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="13" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcw-D8-tYs">
-                    <rect key="frame" x="83" y="254" width="17" height="17"/>
+                    <rect key="frame" x="80" y="254" width="17" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="left" title="X" id="9HX-pG-wUa">
+                    <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="right" title="X" id="9HX-pG-wUa">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="13" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vi0-wJ-630">
-                    <rect key="frame" x="83" y="226" width="17" height="17"/>
+                    <rect key="frame" x="80" y="226" width="17" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="left" title="Y" id="sUS-34-7kc">
+                    <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="right" title="Y" id="sUS-34-7kc">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="13" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9MU-Sd-e14">
-                    <rect key="frame" x="83" y="176" width="17" height="17"/>
+                    <rect key="frame" x="80" y="175" width="17" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="left" title="Y" id="apF-nl-aHr">
+                    <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="right" title="Y" id="apF-nl-aHr">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="13" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlZ-0M-hZH">
-                    <rect key="frame" x="83" y="203" width="17" height="17"/>
+                    <rect key="frame" x="80" y="203" width="17" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="left" title="X" id="df1-ak-TRH">
+                    <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="right" title="X" id="df1-ak-TRH">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oUJ-5J-LU1" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="97" y="146" width="66" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" id="h6i-rn-UoN">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="XcP-ec-H4X"/>
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="2161" id="E0p-r1-LqV"/>
+                    </connections>
+                </textField>
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iWi-f5-zQH" customClass="EBPopUpButton">
+                    <rect key="frame" x="164" y="147" width="67" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="m3l-Ay-HJH" id="Bz1-tr-sry">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="bwz-Y7-Swb">
+                            <items>
+                                <menuItem title="in" tag="2286000" id="yhg-kb-GRs"/>
+                                <menuItem title="mil" tag="2286" id="GKT-Ol-0Gf"/>
+                                <menuItem title="pt" tag="31750" id="fRq-Ga-Twi"/>
+                                <menuItem title="cm" tag="900000" id="z9r-AU-z3h"/>
+                                <menuItem title="mm" tag="90000" id="7P0-jN-68K"/>
+                                <menuItem title="µm" tag="90" id="ufB-2t-aUj"/>
+                                <menuItem title="pc" state="on" tag="381000" id="m3l-Ay-HJH"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KE8-09-wPC" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="97" y="119" width="66" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" id="cbi-e0-Hq7">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="we5-r6-AU7"/>
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="2161" id="gzK-QM-EVb"/>
+                    </connections>
+                </textField>
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nQs-uR-u0S" customClass="EBPopUpButton">
+                    <rect key="frame" x="164" y="120" width="67" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="Fjc-jR-3jH" id="EBv-oX-5pq">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="IFd-C9-dmj">
+                            <items>
+                                <menuItem title="in" tag="2286000" id="ClN-7V-QHj"/>
+                                <menuItem title="mil" tag="2286" id="THv-Yr-2x2"/>
+                                <menuItem title="pt" tag="31750" id="IaB-k1-j0k"/>
+                                <menuItem title="cm" tag="900000" id="S3d-Tm-yzh"/>
+                                <menuItem title="mm" tag="90000" id="80a-ym-3hE"/>
+                                <menuItem title="µm" tag="90" id="mzn-jK-Irg"/>
+                                <menuItem title="pc" state="on" tag="381000" id="Fjc-jR-3jH"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="13" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anH-6R-OoQ">
+                    <rect key="frame" x="74" y="121" width="23" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="right" title="ΔY" id="jHy-s2-snk">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="13" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESa-Tm-z8g">
+                    <rect key="frame" x="74" y="148" width="23" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="right" title="ΔX" id="N77-mp-fDx">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbX-Hf-xIm" customClass="EBSwitch">
+                    <rect key="frame" x="17" y="94" width="216" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Points are Locked to Model Image" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="xuc-2M-Opj">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="135" translatesAutoresizingMaskIntoConstraints="NO" id="Om9-bO-FIz" customClass="EBTextObserverField">
+                    <rect key="frame" x="94" y="292" width="139" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="pZh-PA-YRP">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="177" y="123.5"/>
+            <point key="canvasLocation" x="202" y="106.5"/>
         </customView>
     </objects>
     <resources>
