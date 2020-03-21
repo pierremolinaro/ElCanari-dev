@@ -55,11 +55,11 @@ graphic entity PackageRoot {
 //--- Model Image Page
   property Bool mModelImagePageHorizontalFlip default no ;
   property Bool mModelImagePageVerticalFlip default no ;
-  property GridStyle mModelImagePageGridStyle default line ;
-  property Int mModelImagePageGridStep default 57_150 ; // 25 mils
+  property GridStyle mModelImagePageGridStyle default noGrid ;
+  property Int mModelImagePageGridStep default 2_286 ; // 1 mil
   property Int mModelImagePageGridStepUnit default 2_286 ; // mil
-  property Int mModelImagePageGridDisplayFactor default 4 ;
-  property Int mModelImagePageZoom default 600 ;
+  property Int mModelImagePageGridDisplayFactor default 100 ;
+  property Int mModelImagePageZoom default 200 ;
   property Int mModelImagePageXPlacardUnit default 2_286 ; // mils
   property Int mModelImagePageYPlacardUnit default 2_286 ; // mils
 

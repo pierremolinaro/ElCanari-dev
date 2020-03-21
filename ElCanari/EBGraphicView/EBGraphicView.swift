@@ -675,22 +675,6 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   // MARK: -
   //····················································································································
 
-  var mBackgroundImage : CIImage? = nil
-  var mBackgroundImageDataController : EBSimpleController? = nil
-
-  var mBackgroundImageAffineTransform : CGAffineTransform = .identity
-
-  //····················································································································
-
-  func set (backgroundImageAffineTransform inAffineTransform : CGAffineTransform) {
-    self.mBackgroundImageAffineTransform = inAffineTransform
-    self.needsDisplay = true
-  }
-
-  //····················································································································
-  // MARK: -
-  //····················································································································
-
   override var acceptsFirstResponder : Bool { return true }
 
   //····················································································································
@@ -715,6 +699,23 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   override func resignFirstResponder () -> Bool {
     self.mIsFirstResponder = false
     return true
+  }
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
+  var mBackgroundImage : CIImage? = nil
+  var mBackgroundImageDataController : EBSimpleController? = nil
+
+  var mBackgroundImageAffineTransform : CGAffineTransform = .identity
+
+  //····················································································································
+
+  func set (backgroundImageAffineTransform inAffineTransform : CGAffineTransform) {
+    self.mBackgroundImageAffineTransform = inAffineTransform
+    self.updateViewFrameAndBounds ()
+    self.needsDisplay = true
   }
 
   //····················································································································

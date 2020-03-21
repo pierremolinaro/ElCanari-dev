@@ -571,7 +571,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mModelImagePageGridStyle
   //····················································································································
 
-  let mModelImagePageGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+  let mModelImagePageGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.noGrid)
 
   //····················································································································
 
@@ -588,7 +588,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mModelImagePageGridStep
   //····················································································································
 
-  let mModelImagePageGridStep_property = EBStoredProperty_Int (defaultValue: 57150)
+  let mModelImagePageGridStep_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -622,7 +622,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mModelImagePageGridDisplayFactor
   //····················································································································
 
-  let mModelImagePageGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
+  let mModelImagePageGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 100)
 
   //····················································································································
 
@@ -639,7 +639,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: mModelImagePageZoom
   //····················································································································
 
-  let mModelImagePageZoom_property = EBStoredProperty_Int (defaultValue: 600)
+  let mModelImagePageZoom_property = EBStoredProperty_Int (defaultValue: 200)
 
   //····················································································································
 

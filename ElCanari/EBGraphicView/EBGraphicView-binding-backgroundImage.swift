@@ -31,6 +31,7 @@ extension EBGraphicView {
   private func updateBackgroundImageData (from model : EBReadOnlyProperty_Data) {
     if self.mBackgroundImage != nil {
       self.mBackgroundImage = nil
+      self.updateViewFrameAndBounds ()
       self.needsDisplay = true
     }
     switch model.prop {
@@ -40,6 +41,7 @@ extension EBGraphicView {
       if let ciImage = CIImage (data: v) {
         self.mBackgroundImage = ciImage
         self.updateViewFrameAndBounds ()
+        self.needsDisplay = true
       }
     case .multiple :
       break

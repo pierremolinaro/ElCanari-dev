@@ -299,6 +299,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   private var mModelImagePointsLockedObserver : EBModelEvent? = nil
   private var mModelImagePointDistanceReference : CGFloat = 0.0
+  private var mModelImagePointAngleInRadiansReference : CGFloat = 0.0
 
   //····················································································································
 
@@ -397,9 +398,11 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     if self.rootObject.mPointsAreLocked {
       self.rootObject.mModelImageFirstPointXOnLock = self.rootObject.mModelImageFirstPoint!.mX
       self.rootObject.mModelImageFirstPointYOnLock = self.rootObject.mModelImageFirstPoint!.mY
-      let dx = CGFloat (self.rootObject.mModelImageFirstPoint!.mX - self.rootObject.mModelImageSecondPoint!.mX)
-      let dy = CGFloat (self.rootObject.mModelImageFirstPoint!.mY - self.rootObject.mModelImageSecondPoint!.mY)
+      let dx = CGFloat (self.rootObject.mModelImageSecondPoint!.mX - self.rootObject.mModelImageFirstPoint!.mX)
+      let dy = CGFloat (self.rootObject.mModelImageSecondPoint!.mY - self.rootObject.mModelImageFirstPoint!.mY)
       self.mModelImagePointDistanceReference = sqrt (dx * dx + dy * dy)
+      let angle = atan2 (dy, dx) // Result in radian
+      self.mModelImagePointAngleInRadiansReference = angle
       self.applyAffineTransformToModelImage ()
     }
   }
@@ -432,10 +435,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       let dy = CGFloat (self.rootObject.mModelImageSecondPoint!.mY - self.rootObject.mModelImageFirstPoint!.mY)
       let newDistance = sqrt (dx * dx + dy * dy)
       self.rootObject.mModelImageScale = Double (newDistance / self.mModelImagePointDistanceReference)
-      var angle = atan2 (dy, dx) // Result in radian
-      if angle < 0.0 {
-        angle += 2.0 * CGFloat.pi
-      }
+      let angle = atan2 (dy, dx) - self.mModelImagePointAngleInRadiansReference // Result in radian
       self.rootObject.mModelImageRotationInRadians = Double (angle)
       self.applyAffineTransformToModelImage ()
     }
@@ -458,40 +458,6 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     )
     self.mModelImageView?.set (backgroundImageAffineTransform: af)
   }
-
-  //····················································································································
-
-//ROTATION QUI FONCTIONNE
-
-//  fileprivate func applyAffineTransformToModelImage () {
-//    var af = CGAffineTransform.identity
-//    af = af.translatedBy (
-//      x: canariUnitToCocoa (self.rootObject.mModelImageFirstPointXOnLock + self.rootObject.mModelImageDeltaX),
-//      y: canariUnitToCocoa (self.rootObject.mModelImageFirstPointYOnLock + self.rootObject.mModelImageDeltaY)
-//    )
-//    af = af.rotated (by: CGFloat (self.rootObject.mModelImageRotationInRadians))
-//    af = af.translatedBy (
-//      x: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointXOnLock),
-//      y: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointYOnLock)
-//    )
-//    self.mModelImageView?.set (backgroundImageAffineTransform: af)
-//  }
-
-//  fileprivate func applyAffineTransformToModelImage () {
-//    var af = CGAffineTransform.identity
-//    let scale = CGFloat (self.rootObject.mModelImageScale)
-//    af = af.translatedBy (
-//      x: canariUnitToCocoa (self.rootObject.mModelImageFirstPointXOnLock),
-//      y: canariUnitToCocoa (self.rootObject.mModelImageFirstPointYOnLock)
-//    )
-////    af = af.rotated (by: CGFloat (self.rootObject.mModelImageRotationInRadians))
-//    af = af.scaledBy (x: scale, y: scale)
-//    af = af.translatedBy (
-//      x: canariUnitToCocoa (self.rootObject.mModelImageDeltaX) - scale * canariUnitToCocoa (self.rootObject.mModelImageFirstPointXOnLock),
-//      y: canariUnitToCocoa (self.rootObject.mModelImageDeltaY) - scale * canariUnitToCocoa (self.rootObject.mModelImageFirstPointYOnLock)
-//    )
-//    self.mModelImageView?.set (backgroundImageAffineTransform: af)
-//  }
 
   //····················································································································
 

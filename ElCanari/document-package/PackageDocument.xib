@@ -5831,7 +5831,7 @@ DQ
                 <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UJB-LV-Z9O" customClass="EBPopUpButton">
                     <rect key="frame" x="101" y="440" width="130" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="10 Steps" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="10" inset="2" preferredEdge="maxY" selectedItem="5Qf-lL-Kkn" id="cj5-SS-Lv2">
+                    <popUpButtonCell key="cell" type="roundRect" title="1 Step" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" tag="1" inset="2" preferredEdge="maxY" selectedItem="Q5D-zI-nZB" id="cj5-SS-Lv2">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="4A6-Oo-lOt">
@@ -5842,6 +5842,13 @@ DQ
                                 <menuItem title="5 Steps" tag="5" id="8Ya-aY-WDU"/>
                                 <menuItem title="8 Steps" tag="8" id="lmK-af-OVw"/>
                                 <menuItem title="10 Steps" state="on" tag="10" id="5Qf-lL-Kkn"/>
+                                <menuItem title="12 Steps" tag="12" id="2gU-YX-aY2"/>
+                                <menuItem title="15 Steps" tag="15" id="wX8-9X-uZo"/>
+                                <menuItem title="20 Steps" tag="20" id="41D-5p-TbH"/>
+                                <menuItem title="25 Steps" tag="25" id="5pw-FL-HYr"/>
+                                <menuItem title="50 Steps" tag="50" id="AqQ-cx-kbD"/>
+                                <menuItem title="100 Steps" tag="100" id="noT-qj-0sn"/>
+                                <menuItem title="200 Steps" tag="200" id="zOK-n3-2WI"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -5977,7 +5984,7 @@ DQ
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="Actions" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="Jdk-hq-bi5">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="menu"/>
                         <menu key="menu" id="KI6-mI-0EZ">
                             <items>
                                 <menuItem title="Actions" hidden="YES" id="8tg-5W-NfI"/>

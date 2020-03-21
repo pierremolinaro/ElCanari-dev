@@ -21,6 +21,8 @@ extension PackageDocument {
       self.rootObject.mModelImageDeltaY = 0
       self.rootObject.mModelImageFirstPointXOnLock = 0
       self.rootObject.mModelImageFirstPointYOnLock = 0
+      self.rootObject.mModelImageScale = 1.0
+      self.rootObject.mModelImageRotationInRadians = 0.0
       self.rootObject.mPointsAreLocked = false
     }else{
       __NSBeep ()
@@ -35,6 +37,8 @@ extension PackageDocument {
     self.rootObject.mModelImageDeltaY = 0
     self.rootObject.mModelImageFirstPointXOnLock = 0
     self.rootObject.mModelImageFirstPointYOnLock = 0
+    self.rootObject.mModelImageScale = 1.0
+    self.rootObject.mModelImageRotationInRadians = 0.0
     self.rootObject.mPointsAreLocked = false
   }
 
@@ -49,6 +53,8 @@ extension PackageDocument {
     self.rootObject.mModelImageFirstPointYOnLock = 0
     self.rootObject.mModelImageFirstPoint = nil
     self.rootObject.mModelImageSecondPoint = nil
+    self.rootObject.mModelImageScale = 1.0
+    self.rootObject.mModelImageRotationInRadians = 0.0
     self.rootObject.mModelImageObjects = []
     self.mModelImageView?.set(backgroundImageAffineTransform: .identity)
   //---
@@ -63,14 +69,14 @@ extension PackageDocument {
        let p = PackageModelImagePoint (self.ebUndoManager)
        p.mX = 2_286 * 200 // 200 mils
        p.mY = 2_286 * 200 // 200 mils
-       p.mColor = .green
+       p.mColor = .systemGreen
        self.rootObject.mModelImageFirstPoint = p
      }
      if self.rootObject.mModelImageSecondPoint == nil {
        let p = PackageModelImagePoint (self.ebUndoManager)
        p.mX = 2_286 * 400 // 400 mils
        p.mY = 2_286 * 400 // 400 mils
-       p.mColor = .blue
+       p.mColor = .systemBrown
        self.rootObject.mModelImageSecondPoint = p
      }
      if self.rootObject.mModelImageObjects.count != 2 {
