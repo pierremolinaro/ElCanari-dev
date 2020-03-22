@@ -22,8 +22,8 @@ extension EBGraphicView {
   //····················································································································
 
   func unbind_backgroundImageData () {
-    self.mArrowKeyMagnitudeController?.unregister ()
-    self.mArrowKeyMagnitudeController = nil
+    self.mBackgroundImageDataController?.unregister ()
+    self.mBackgroundImageDataController = nil
   }
 
   //····················································································································
@@ -43,6 +43,36 @@ extension EBGraphicView {
         self.updateViewFrameAndBounds ()
         self.needsDisplay = true
       }
+    case .multiple :
+      break
+    }
+  }
+
+  //····················································································································
+
+  func bind_backgroundImageOpacity (_ model : EBReadOnlyProperty_Double, file : String, line : Int) {
+    self.mBackgroundImageOpacityController = EBSimpleController (
+      observedObjects: [model],
+      callBack: { [weak self] in self?.updateBackgroundImageOpacity (from: model) }
+    )
+  }
+
+  //····················································································································
+
+  func unbind_backgroundImageOpacity () {
+    self.mBackgroundImageOpacityController?.unregister ()
+    self.mBackgroundImageOpacityController = nil
+  }
+
+  //····················································································································
+
+  private func updateBackgroundImageOpacity (from model : EBReadOnlyProperty_Double) {
+    switch model.prop {
+    case .empty :
+      break
+    case .single (let v) :
+      self.mBackgroundImageOpacity = CGFloat (v)
+      self.needsDisplay = true
     case .multiple :
       break
     }

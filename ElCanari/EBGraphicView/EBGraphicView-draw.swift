@@ -24,7 +24,7 @@ extension EBGraphicView {
     if let ciImage = self.mBackgroundImage {
       let transformedImage = ciImage.transformed (by: self.mBackgroundImageAffineTransform)
       let rImage = transformedImage.extent
-      transformedImage.draw (in: rImage, from: rImage, operation: .copy, fraction: 1.0)
+      transformedImage.draw (in: rImage, from: rImage, operation: .copy, fraction: self.mBackgroundImageOpacity)
     }
     self.drawGrid (inDirtyRect)
     self.mUnderObjectsDisplay.draw (inDirtyRect)

@@ -277,6 +277,7 @@ import Cocoa
   @IBOutlet var mModelImageFirstPointXTextField : CanariDimensionTextField? = nil
   @IBOutlet var mModelImageFirstPointYDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImageFirstPointYTextField : CanariDimensionTextField? = nil
+  @IBOutlet var mModelImageOpacitySlider : EBSlider? = nil
   @IBOutlet var mModelImagePageGridDisplayPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mModelImagePageGridStyle : EBPopUpButton? = nil
   @IBOutlet var mModelImagePageGridTextField : CanariDimensionTextField? = nil
@@ -407,6 +408,7 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
+  var mController_mModelImageOpacitySlider_enabled : MultipleBindingController_enabled? = nil
   var mController_mPadStyleView_hidden : MultipleBindingController_hidden? = nil
   var mController_mPadRenumberingPullDownButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSlavePadStyleView_hidden : MultipleBindingController_hidden? = nil
@@ -606,6 +608,7 @@ import Cocoa
     checkOutletConnection (self.mModelImageFirstPointXTextField, "mModelImageFirstPointXTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mModelImageFirstPointYDimensionUnitPopUp, "mModelImageFirstPointYDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImageFirstPointYTextField, "mModelImageFirstPointYTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mModelImageOpacitySlider, "mModelImageOpacitySlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mModelImagePageGridDisplayPopUpButton, "mModelImagePageGridDisplayPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImagePageGridStyle, "mModelImagePageGridStyle", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImagePageGridTextField, "mModelImagePageGridTextField", CanariDimensionTextField.self, #file, #line)
@@ -910,6 +913,7 @@ import Cocoa
     self.mVersionField?.bind_version (self.versionObserver_property, file: #file, line: #line)
     self.mVersionField?.bind_versionShouldChange (self.versionShouldChangeObserver_property, file: #file, line: #line)
     self.mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
+    self.mModelImageOpacitySlider?.bind_doubleValue (self.rootObject.mModelImageOpacity_property, file: #file, line: #line, sendContinously:true)
     self.mSegmentX1UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.x1Unit_property, file: #file, line: #line)
     self.mSegmentX1TextField?.bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x1_property, self.mPackageSegmentSelectionController.x1Unit_property, file: #file, line: #line)
     self.mSegmentY1UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.y1Unit_property, file: #file, line: #line)
@@ -1040,6 +1044,8 @@ import Cocoa
     self.mStatusImageViewInToolbar?.bind_tooltip (self.statusMessage_property, file: #file, line: #line)
     self.mIssueTextField?.bind_valueObserver (self.statusMessage_property, file: #file, line: #line)
     self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
+    self.mComposedPackageView?.bind_backgroundImageData (self.rootObject.mModelImageData_property, file: #file, line: #line)
+    self.mComposedPackageView?.bind_backgroundImageOpacity (self.rootObject.mModelImageOpacity_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_verticalFlip (self.rootObject.verticalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_overObjectsDisplay (self.rootObject.padNumberDisplay_property, file: #file, line: #line)
@@ -1116,6 +1122,16 @@ import Cocoa
     self.mModelImagePointsAreLockedSwitch?.bind_value (self.rootObject.mPointsAreLocked_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.rootObject.hasModelImage_property_selection
+        },
+        outlet: self.mModelImageOpacitySlider
+      )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
+      self.mController_mModelImageOpacitySlider_enabled = controller
+    }
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
@@ -1265,6 +1281,7 @@ import Cocoa
     self.mVersionField?.unbind_version ()
     self.mVersionField?.unbind_versionShouldChange ()
     self.mInspectorSegmentedControl?.unbind_selectedPage ()
+    self.mModelImageOpacitySlider?.unbind_doubleValue ()
     self.mSegmentX1UnitPopUp?.unbind_selectedTag ()
     self.mSegmentX1TextField?.unbind_dimensionAndUnit ()
     self.mSegmentY1UnitPopUp?.unbind_selectedTag ()
@@ -1395,6 +1412,8 @@ import Cocoa
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
     self.mIssueTextField?.unbind_valueObserver ()
     self.mIssueTableView?.unbind_issues ()
+    self.mComposedPackageView?.unbind_backgroundImageData ()
+    self.mComposedPackageView?.unbind_backgroundImageOpacity ()
     self.mComposedPackageView?.unbind_horizontalFlip ()
     self.mComposedPackageView?.unbind_verticalFlip ()
     self.mComposedPackageView?.unbind_overObjectsDisplay ()
@@ -1471,6 +1490,8 @@ import Cocoa
     self.mModelImagePointsAreLockedSwitch?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelImageOpacitySlider_enabled!)
+    self.mController_mModelImageOpacitySlider_enabled = nil
     self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
     self.mController_mPadStyleView_hidden = nil
     self.mPackagePadSelectionController.noZone_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
@@ -1634,6 +1655,7 @@ import Cocoa
     self.mModelImageFirstPointXTextField?.ebCleanUp ()
     self.mModelImageFirstPointYDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImageFirstPointYTextField?.ebCleanUp ()
+    self.mModelImageOpacitySlider?.ebCleanUp ()
     self.mModelImagePageGridDisplayPopUpButton?.ebCleanUp ()
     self.mModelImagePageGridStyle?.ebCleanUp ()
     self.mModelImagePageGridTextField?.ebCleanUp ()
@@ -1866,6 +1888,7 @@ import Cocoa
     self.mModelImageFirstPointXTextField = nil
     self.mModelImageFirstPointYDimensionUnitPopUp = nil
     self.mModelImageFirstPointYTextField = nil
+    self.mModelImageOpacitySlider = nil
     self.mModelImagePageGridDisplayPopUpButton = nil
     self.mModelImagePageGridStyle = nil
     self.mModelImagePageGridTextField = nil

@@ -72,6 +72,12 @@ protocol PackageRoot_zoom : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageRoot_mModelImageOpacity : class {
+  var mModelImageOpacity : Double { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageRoot_mModelImagePageHorizontalFlip : class {
   var mModelImagePageHorizontalFlip : Bool { get }
 }
@@ -312,6 +318,12 @@ protocol PackageRoot_modelImageSizeString : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageRoot_hasModelImage : class {
+  var hasModelImage : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageRoot_issues : class {
   var issues : CanariIssueArray? { get }
 }
@@ -338,6 +350,7 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_gridStepUnit,
          PackageRoot_gridDisplayFactor,
          PackageRoot_zoom,
+         PackageRoot_mModelImageOpacity,
          PackageRoot_mModelImagePageHorizontalFlip,
          PackageRoot_mModelImagePageVerticalFlip,
          PackageRoot_mModelImagePageGridStyle,
@@ -378,6 +391,7 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_padNumberDisplay,
          PackageRoot_backgroundImagePageBackgroundDisplay,
          PackageRoot_modelImageSizeString,
+         PackageRoot_hasModelImage,
          PackageRoot_issues,
          PackageRoot_noIssue {
 
@@ -567,6 +581,23 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
+
+  //····················································································································
+  //   Atomic property: mModelImageOpacity
+  //····················································································································
+
+  let mModelImageOpacity_property = EBStoredProperty_Double (defaultValue: 1)
+
+  //····················································································································
+
+  var mModelImageOpacity : Double {
+    get { return self.mModelImageOpacity_property.propval }
+    set { self.mModelImageOpacity_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mModelImageOpacity_property_selection : EBSelection <Double> { return self.mModelImageOpacity_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImagePageHorizontalFlip
@@ -1553,6 +1584,29 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: hasModelImage
+  //····················································································································
+
+  let hasModelImage_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var hasModelImage_property_selection : EBSelection <Bool> {
+    return self.hasModelImage_property.prop
+  }
+
+  //····················································································································
+
+  var hasModelImage : Bool? {
+    switch self.hasModelImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: issues
   //····················································································································
 
@@ -1632,6 +1686,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridDisplayFactor_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: zoom
     self.zoom_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelImageOpacity
+    self.mModelImageOpacity_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mModelImagePageHorizontalFlip
     self.mModelImagePageHorizontalFlip_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mModelImagePageVerticalFlip
@@ -2004,6 +2060,28 @@ class PackageRoot : EBGraphicManagedObject,
       }
     }
     self.mModelImageData_property.addEBObserver (self.modelImageSizeString_property)
+  //--- Atomic property: hasModelImage
+    self.hasModelImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mModelImageData_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mModelImageData_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageRoot_hasModelImage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mModelImageData_property.addEBObserver (self.hasModelImage_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2144,6 +2222,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.packageObjects_property.removeEBObserverOf_objectDisplay (self.backgroundImagePageBackgroundDisplay_property)
     self.mModelImageData_property.removeEBObserver (self.backgroundImagePageBackgroundDisplay_property)
     self.mModelImageData_property.removeEBObserver (self.modelImageSizeString_property)
+    self.mModelImageData_property.removeEBObserver (self.hasModelImage_property)
     self.packageObjects_property.removeEBObserverOf_issues (self.issues_property)
     self.packageZones_property.removeEBObserverOf_rect (self.issues_property)
     self.packageZones_property.removeEBObserverOf_zoneName (self.issues_property)
@@ -2261,6 +2340,14 @@ class PackageRoot : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.zoom_property.mObserverExplorer,
       valueExplorer: &self.zoom_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mModelImageOpacity",
+      idx: self.mModelImageOpacity_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mModelImageOpacity_property.mObserverExplorer,
+      valueExplorer: &self.mModelImageOpacity_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mModelImagePageHorizontalFlip",
@@ -2520,6 +2607,14 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer: &self.modelImageSizeString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "hasModelImage",
+      idx: self.hasModelImage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.hasModelImage_property.mObserverExplorer,
+      valueExplorer: &self.hasModelImage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "issues",
       idx: self.issues_property.ebObjectIndex,
       y: &y,
@@ -2606,6 +2701,9 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: zoom
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
+  //--- Atomic property: mModelImageOpacity
+    self.mModelImageOpacity_property.mObserverExplorer = nil
+    self.mModelImageOpacity_property.mValueExplorer = nil
   //--- Atomic property: mModelImagePageHorizontalFlip
     self.mModelImagePageHorizontalFlip_property.mObserverExplorer = nil
     self.mModelImagePageHorizontalFlip_property.mValueExplorer = nil
@@ -2766,6 +2864,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"gridDisplayFactor")
   //--- Atomic property: zoom
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
+  //--- Atomic property: mModelImageOpacity
+    self.mModelImageOpacity_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageOpacity")
   //--- Atomic property: mModelImagePageHorizontalFlip
     self.mModelImagePageHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageHorizontalFlip")
   //--- Atomic property: mModelImagePageVerticalFlip
@@ -2907,6 +3007,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey:"gridDisplayFactor")
   //--- Atomic property: zoom
     self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+  //--- Atomic property: mModelImageOpacity
+    self.mModelImageOpacity_property.readFrom (dictionary: inDictionary, forKey:"mModelImageOpacity")
   //--- Atomic property: mModelImagePageHorizontalFlip
     self.mModelImagePageHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageHorizontalFlip")
   //--- Atomic property: mModelImagePageVerticalFlip
@@ -2976,6 +3078,7 @@ class PackageRoot : EBGraphicManagedObject,
     ioString += "gridStepUnit\n"
     ioString += "gridDisplayFactor\n"
     ioString += "zoom\n"
+    ioString += "mModelImageOpacity\n"
     ioString += "mModelImagePageHorizontalFlip\n"
     ioString += "mModelImagePageVerticalFlip\n"
     ioString += "mModelImagePageGridStyle\n"
@@ -3039,6 +3142,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridDisplayFactor.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.zoom.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mModelImageOpacity.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mModelImagePageHorizontalFlip.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)

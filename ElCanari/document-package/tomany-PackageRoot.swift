@@ -26,6 +26,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.removeEBObserversOf_gridStepUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_zoom_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mModelImageOpacity_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImagePageHorizontalFlip_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImagePageVerticalFlip_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImagePageGridStyle_fromElementsOfSet (inRemovedSet) // Stored property
@@ -58,6 +59,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_backgroundImagePageBackgroundDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_modelImageSizeString_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_hasModelImage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_noIssue_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
@@ -72,6 +74,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.addEBObserversOf_gridStepUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_gridDisplayFactor_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_zoom_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mModelImageOpacity_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImagePageHorizontalFlip_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImagePageVerticalFlip_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImagePageGridStyle_toElementsOfSet (inAddedSet) // Stored property
@@ -104,6 +107,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.addEBObserversOf_padNumberDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_backgroundImagePageBackgroundDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_modelImageSizeString_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_hasModelImage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_noIssue_toElementsOfSet (inAddedSet) // Transient property
   }
@@ -731,6 +735,63 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.zoom_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mModelImageOpacity' stored property
+  //····················································································································
+
+  private var mObserversOf_mModelImageOpacity = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mModelImageOpacity (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mModelImageOpacity.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mModelImageOpacity_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mModelImageOpacity (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mModelImageOpacity.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mModelImageOpacity_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mModelImageOpacity_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mModelImageOpacity.apply { (_ observer : EBEvent) in
+        managedObject.mModelImageOpacity_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mModelImageOpacity_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    self.mObserversOf_mModelImageOpacity.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mModelImageOpacity_property.removeEBObserver (observer)
       }
     }
   }
@@ -3008,6 +3069,62 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   }
 
   //····················································································································
+  //   Observers of 'hasModelImage' transient property
+  //····················································································································
+
+  private var mObserversOf_hasModelImage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_hasModelImage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_hasModelImage.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasModelImage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_hasModelImage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_hasModelImage.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasModelImage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_hasModelImage_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_hasModelImage.apply { (_ observer : EBEvent) in
+        managedObject.hasModelImage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_hasModelImage_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_hasModelImage.apply { (_ observer : EBEvent) in
+        managedObject.hasModelImage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -3705,6 +3822,7 @@ final class PreferencesArrayOf_PackageRoot : StoredArrayOf_PackageRoot {
     self.addEBObserverOf_gridStepUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_gridDisplayFactor (self.mObserverForWritingPreferences)
     self.addEBObserverOf_zoom (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mModelImageOpacity (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImagePageHorizontalFlip (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImagePageVerticalFlip (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImagePageGridStyle (self.mObserverForWritingPreferences)

@@ -24,6 +24,10 @@ document PackageDocument root PackageRoot {
   outlet CanariViewWithKeyView mGridZoomInspectorView ;
   outlet CanariViewWithKeyView mDisplayInspectorView ;
   outlet CanariViewWithKeyView mIssuesInspectorView ;
+  outlet EBSlider mModelImageOpacitySlider
+    $doubleValue root.mModelImageOpacity {sendContinously:yes}
+    $enabled root.hasModelImage
+  ;
 
 //--- Segment inspector
   selectionController PackageSegment #mPackageSegmentSelectionController : #mPackageObjectsController.selectedArray ;
@@ -446,6 +450,8 @@ document PackageDocument root PackageRoot {
   arrayController #mPackageObjectsController : root.packageObjects ;
 
   outlet EBGraphicView mComposedPackageView
+    $backgroundImageData root.mModelImageData
+    $backgroundImageOpacity root.mModelImageOpacity
     $horizontalFlip root.horizontalFlip
     $verticalFlip root.verticalFlip
     $graphicController #mPackageObjectsController

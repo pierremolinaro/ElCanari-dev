@@ -61,6 +61,8 @@ extension EBGraphicView {
         action:nil,
         keyEquivalent:""
       )
+      self.addPopupButtonItemForZoom (10, inScrollView)
+      self.addPopupButtonItemForZoom (25, inScrollView)
       self.addPopupButtonItemForZoom (50, inScrollView)
       self.addPopupButtonItemForZoom (75, inScrollView)
       self.addPopupButtonItemForZoom (100, inScrollView)

@@ -63,6 +63,7 @@ extension PackageDocument {
     self.rootObject.mModelImageRotationInRadians = 0.0
     self.rootObject.mModelImageObjects = []
     self.mModelImageView?.set(backgroundImageAffineTransform: .identity)
+    self.mComposedPackageView?.set (backgroundImageAffineTransform: .identity)
   //---
     self.buildGreenAndBluePointsIfRequired ()
   }

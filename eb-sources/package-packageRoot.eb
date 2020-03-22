@@ -52,6 +52,8 @@ graphic entity PackageRoot {
   property Int gridDisplayFactor default 4 ;
   property Int zoom default 600 ;
 
+  property Double mModelImageOpacity default 1.0 ;
+
 //--- Model Image Page
   property Bool mModelImagePageHorizontalFlip default no ;
   property Bool mModelImagePageVerticalFlip default no ;
@@ -132,6 +134,8 @@ graphic entity PackageRoot {
   ;
  
   transient String modelImageSizeString dependsFrom self.mModelImageData ;
+ 
+  transient Bool hasModelImage dependsFrom self.mModelImageData ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

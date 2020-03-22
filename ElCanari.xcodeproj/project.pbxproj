@@ -2503,6 +2503,8 @@
 		CFF63D1622B40E4100032398 /* selectionController-ProjectDocument-restrictRectangleSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF63D1422B40E4100032398 /* selectionController-ProjectDocument-restrictRectangleSelectionController.swift */; };
 		CFF63D1822B4117100032398 /* extension-BoardRestrictRectanglet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF63D1722B4117100032398 /* extension-BoardRestrictRectanglet.swift */; };
 		CFF63D1922B4117100032398 /* extension-BoardRestrictRectanglet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF63D1722B4117100032398 /* extension-BoardRestrictRectanglet.swift */; };
+		CFF6D6892427780C00BE9CC9 /* transient-PackageRoot-hasModelImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF6D6882427780B00BE9CC9 /* transient-PackageRoot-hasModelImage.swift */; };
+		CFF6D68A2427780C00BE9CC9 /* transient-PackageRoot-hasModelImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF6D6882427780B00BE9CC9 /* transient-PackageRoot-hasModelImage.swift */; };
 		CFF7B4271FDF28C800A5CF44 /* canari_artwork.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */; };
 		CFF7B4291FDF2E3400A5CF44 /* canari_merger.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */; };
 		CFF83D4321ADAA310084BDA9 /* transient-SymbolDocument-statusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4021ADAA300084BDA9 /* transient-SymbolDocument-statusImage.swift */; };
@@ -3815,6 +3817,7 @@
 		CFF63C2522B3EF3100032398 /* toone-BoardRestrictRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-BoardRestrictRectangle.swift"; sourceTree = "<group>"; };
 		CFF63D1422B40E4100032398 /* selectionController-ProjectDocument-restrictRectangleSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ProjectDocument-restrictRectangleSelectionController.swift"; sourceTree = "<group>"; };
 		CFF63D1722B4117100032398 /* extension-BoardRestrictRectanglet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-BoardRestrictRectanglet.swift"; sourceTree = "<group>"; };
+		CFF6D6882427780B00BE9CC9 /* transient-PackageRoot-hasModelImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageRoot-hasModelImage.swift"; sourceTree = "<group>"; };
 		CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_artwork.icns; sourceTree = "<group>"; };
 		CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_merger.icns; sourceTree = "<group>"; };
 		CFF83D4021ADAA300084BDA9 /* transient-SymbolDocument-statusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolDocument-statusImage.swift"; sourceTree = "<group>"; };
@@ -3933,6 +3936,7 @@
 		CF2B9CDE21C2A89200EE5683 /* document — package */ = {
 			isa = PBXGroup;
 			children = (
+				CFF6D6882427780B00BE9CC9 /* transient-PackageRoot-hasModelImage.swift */,
 				CFB3655B2426BF1800C4B761 /* transient-PackageRoot-modelImageSizeString.swift */,
 				CF67AC7623E9C58B0099DE60 /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift */,
 				CFDEC6D921D5467900857F9C /* action-PackageDocument-clearProgramErrorAction.swift */,
@@ -6709,6 +6713,7 @@
 				CFB63F97211B7B25000A09F1 /* CanariDateObserverField.swift in Sources */,
 				CFFA7B512274821A00E2D69A /* view-TwoStringArrayTableView.swift in Sources */,
 				CF1893A82202EEC600EF2308 /* library-repository-status.swift in Sources */,
+				CFF6D6892427780C00BE9CC9 /* transient-PackageRoot-hasModelImage.swift in Sources */,
 				CF8386902423CEBC007F1D21 /* EBGraphicView-binding-backgroundImage.swift in Sources */,
 				CF39C4F022A0605A00EE75CD /* controller-popup-net-class-from-selected-wires.swift in Sources */,
 				CFEAAD732231827C00F69A12 /* action-DeviceDocument-updateSelectedSymbols.swift in Sources */,
@@ -7917,6 +7922,7 @@
 				CF99E37821AE920F002AB233 /* CanariIssueArray.swift in Sources */,
 				CFA42F7C229AEACF000AA8C8 /* tomany-MasterPadInDevice.swift in Sources */,
 				CF5C4D57219F04D600EAC52A /* EBDoubleField.swift in Sources */,
+				CFF6D68A2427780C00BE9CC9 /* transient-PackageRoot-hasModelImage.swift in Sources */,
 				CF8386912423CEBC007F1D21 /* EBGraphicView-binding-backgroundImage.swift in Sources */,
 				CFEAAD742231827C00F69A12 /* action-DeviceDocument-updateSelectedSymbols.swift in Sources */,
 				CF1893A92202EEC600EF2308 /* library-repository-status.swift in Sources */,

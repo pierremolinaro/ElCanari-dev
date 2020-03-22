@@ -114,6 +114,7 @@
                 <outlet property="mModelImageFirstPointXTextField" destination="7Eg-dK-GsX" id="ULQ-0C-8zH"/>
                 <outlet property="mModelImageFirstPointYDimensionUnitPopUp" destination="cdY-aj-6WN" id="hL9-A4-oM2"/>
                 <outlet property="mModelImageFirstPointYTextField" destination="RAx-Nq-dMY" id="Lhk-7c-cmf"/>
+                <outlet property="mModelImageOpacitySlider" destination="9g7-fY-oe8" id="tnf-Zd-EpZ"/>
                 <outlet property="mModelImagePageGridDisplayPopUpButton" destination="UJB-LV-Z9O" id="dwH-1R-ReF"/>
                 <outlet property="mModelImagePageGridStyle" destination="AmZ-Ya-T5Y" id="kYu-wD-EY7"/>
                 <outlet property="mModelImagePageGridTextField" destination="P6e-bT-9Q4" id="DfF-mO-jso"/>
@@ -2317,7 +2318,7 @@ Gw
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" ambiguous="YES" id="PuU-Cb-ahz">
                                 <rect key="frame" x="1" y="1" width="412" height="484"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2477" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
@@ -2337,7 +2338,7 @@ Gw
                     </subviews>
                 </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2923">
-                    <rect key="frame" x="4" y="0.0" width="250" height="413"/>
+                    <rect key="frame" x="4" y="0.0" width="250" height="390"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                 </customView>
                 <button toolTip="Add Segment" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2983" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
@@ -2413,7 +2414,7 @@ Gw
                     </buttonCell>
                 </button>
                 <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3010" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="3" y="414" width="252" height="20"/>
+                    <rect key="frame" x="3" y="397" width="252" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="3011">
                         <font key="font" metaFont="cellTitle"/>
@@ -2426,7 +2427,7 @@ Gw
                     </segmentedCell>
                 </segmentedControl>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="77" translatesAutoresizingMaskIntoConstraints="NO" id="0cL-eG-3JK">
-                    <rect key="frame" x="2" y="441" width="81" height="17"/>
+                    <rect key="frame" x="2" y="421" width="81" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Auto Numbers" id="Vy6-Hu-XK9">
                         <font key="font" metaFont="smallSystem"/>
@@ -2435,7 +2436,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9MV-P4-K1A" customClass="EBPopUpButton">
-                    <rect key="frame" x="85" y="441" width="94" height="17"/>
+                    <rect key="frame" x="85" y="421" width="94" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Counterclock" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="VjK-Ea-BAt" id="eDH-ia-4sF">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2457,7 +2458,7 @@ Gw
                     </popUpButtonCell>
                 </popUpButton>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5b-R8-9KE">
-                    <rect key="frame" x="185" y="440" width="69" height="19"/>
+                    <rect key="frame" x="185" y="420" width="69" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="33" translatesAutoresizingMaskIntoConstraints="NO" id="Skn-oY-KzJ">
@@ -2484,8 +2485,22 @@ Gw
                         </textField>
                     </subviews>
                 </customView>
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9g7-fY-oe8" customClass="EBSlider">
+                    <rect key="frame" x="87" y="445" width="164" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <sliderCell key="cell" controlSize="small" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="below" numberOfTickMarks="11" allowsTickMarkValuesOnly="YES" sliderType="linear" id="GU4-sT-WAw"/>
+                </slider>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="77" translatesAutoresizingMaskIntoConstraints="NO" id="wGQ-so-qBd">
+                    <rect key="frame" x="2" y="440" width="81" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Background Image Opacity" id="WVx-9p-Phg">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="-3" y="23"/>
+            <point key="canvasLocation" x="-3" y="22.5"/>
         </customView>
         <customView id="2512" userLabel="Page : Program" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="686" height="501"/>

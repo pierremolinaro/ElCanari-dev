@@ -708,6 +708,9 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   var mBackgroundImage : CIImage? = nil
   var mBackgroundImageDataController : EBSimpleController? = nil
 
+  var mBackgroundImageOpacity : CGFloat = 1.0
+  var mBackgroundImageOpacityController : EBSimpleController? = nil
+
   var mBackgroundImageAffineTransform : CGAffineTransform = .identity
 
   //····················································································································
