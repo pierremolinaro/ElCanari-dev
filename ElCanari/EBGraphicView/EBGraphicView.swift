@@ -375,6 +375,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   //····················································································································
 
   internal var mLastMouseDraggedLocation : CanariPoint? = nil
+  internal var mUnalignedMouseDownLocation : NSPoint? = nil
   internal var mSelectionRectangleOrigin : NSPoint? = nil
   internal var mPossibleKnob : (Int, Int)? = nil // Object index, knob index
   internal var mPerformEndUndoGroupingOnMouseUp = false
@@ -435,6 +436,7 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
           self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
         }
       }
+      self.updateKnobSelection ()
       self.updateViewFrameAndBounds ()
     }
   }

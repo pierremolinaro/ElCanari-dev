@@ -1220,10 +1220,11 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return !self.rootObject.mPointsAreLocked_property_selection
+          return (!self.rootObject.mPointsAreLocked_property_selection && self.rootObject.hasModelImage_property_selection)
         },
         outlet: self.mLockImagePointsButton
       )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
       self.rootObject.mPointsAreLocked_property.addEBObserver (controller)
       self.mController_mLockImagePointsButton_enabled = controller
     }
@@ -1525,6 +1526,7 @@ import Cocoa
     self.mController_mIssueScrollView_hidden = nil
     self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
     self.mController_mAddSlavePadButton_enabled = nil
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
     self.rootObject.mPointsAreLocked_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
     self.mController_mLockImagePointsButton_enabled = nil
   //--------------------------- Unbind array controllers

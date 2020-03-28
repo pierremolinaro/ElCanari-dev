@@ -592,7 +592,7 @@ document PackageDocument root PackageRoot {
   ;
 
   action lockImagePointsAction ;
-  outlet EBButton mLockImagePointsButton $run lockImagePointsAction $enabled !root.mPointsAreLocked ;
+  outlet EBButton mLockImagePointsButton $run lockImagePointsAction $enabled !root.mPointsAreLocked & root.hasModelImage ;
   outlet EBImageObserverView mLockImageView $image root.lockImageView ;
 
 //--------------- Infos Tab

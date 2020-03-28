@@ -69,6 +69,7 @@ extension EBGraphicView {
   override func mouseDown (with inEvent : NSEvent) {
     if let viewController = self.viewController {
       let unalignedMouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+      self.mUnalignedMouseDownLocation = unalignedMouseDownLocation
       let canariUnalignedMouseDownLocation = unalignedMouseDownLocation.canariPoint
       let alignedLastMouseDraggedLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: self.mouseGridInCanariUnit)
       self.mMouseMovedCallback? (unalignedMouseDownLocation)
@@ -120,6 +121,17 @@ extension EBGraphicView {
       }
     }else{
       super.mouseDown (with: inEvent)
+    }
+  }
+
+  //····················································································································
+
+  func updateKnobSelection () {
+    if let unalignedMouseDownLocation = self.mUnalignedMouseDownLocation {
+      let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontmostObject (at: unalignedMouseDownLocation)
+      if let objectIndex = possibleObjectIndex, let knobIndex = possibleKnobIndex {
+        self.mPossibleKnob = (objectIndex, knobIndex)
+      }
     }
   }
 
