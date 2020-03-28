@@ -132,26 +132,14 @@ protocol PackageRoot_mModelImagePageYPlacardUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImagePointsDxUnit : class {
-  var mModelImagePointsDxUnit : Int { get }
+protocol PackageRoot_mModelImageSecondPointXUnit : class {
+  var mModelImageSecondPointXUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImagePointsDyUnit : class {
-  var mModelImagePointsDyUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol PackageRoot_mModelImageDeltaX : class {
-  var mModelImageDeltaX : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol PackageRoot_mModelImageDeltaY : class {
-  var mModelImageDeltaY : Int { get }
+protocol PackageRoot_mModelImagePSecondointYUnit : class {
+  var mModelImagePSecondointYUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -164,6 +152,18 @@ protocol PackageRoot_mModelImageFirstPointXOnLock : class {
 
 protocol PackageRoot_mModelImageFirstPointYOnLock : class {
   var mModelImageFirstPointYOnLock : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_mModelImagePointsDxOnLock : class {
+  var mModelImagePointsDxOnLock : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_mModelImagePointsDyOnLock : class {
+  var mModelImagePointsDyOnLock : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -246,26 +246,26 @@ protocol PackageRoot_mModelImageFirstPointDimensionUnitY : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageSecondPointX : class {
-  var mModelImageSecondPointX : Int? { get }
+protocol PackageRoot_mModelImageSecondPointDx : class {
+  var mModelImageSecondPointDx : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageSecondPointDimensionUnitX : class {
-  var mModelImageSecondPointDimensionUnitX : Int? { get }
+protocol PackageRoot_mModelImageSecondPointDimensionUnitDx : class {
+  var mModelImageSecondPointDimensionUnitDx : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageSecondPointY : class {
-  var mModelImageSecondPointY : Int? { get }
+protocol PackageRoot_mModelImageSecondPointDy : class {
+  var mModelImageSecondPointDy : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageSecondPointDimensionUnitY : class {
-  var mModelImageSecondPointDimensionUnitY : Int? { get }
+protocol PackageRoot_mModelImageSecondPointDimensionUnitDy : class {
+  var mModelImageSecondPointDimensionUnitDy : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -288,14 +288,14 @@ protocol PackageRoot_gridStepMultipliedByDisplayFactor : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_pointsDx : class {
-  var pointsDx : Int? { get }
+protocol PackageRoot_secondPointX : class {
+  var secondPointX : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_pointsDy : class {
-  var pointsDy : Int? { get }
+protocol PackageRoot_secondPointY : class {
+  var secondPointY : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -360,12 +360,12 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_mModelImagePageZoom,
          PackageRoot_mModelImagePageXPlacardUnit,
          PackageRoot_mModelImagePageYPlacardUnit,
-         PackageRoot_mModelImagePointsDxUnit,
-         PackageRoot_mModelImagePointsDyUnit,
-         PackageRoot_mModelImageDeltaX,
-         PackageRoot_mModelImageDeltaY,
+         PackageRoot_mModelImageSecondPointXUnit,
+         PackageRoot_mModelImagePSecondointYUnit,
          PackageRoot_mModelImageFirstPointXOnLock,
          PackageRoot_mModelImageFirstPointYOnLock,
+         PackageRoot_mModelImagePointsDxOnLock,
+         PackageRoot_mModelImagePointsDyOnLock,
          PackageRoot_mModelImageScale,
          PackageRoot_mModelImageRotationInRadians,
          PackageRoot_mPointsAreLocked,
@@ -379,15 +379,15 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_mModelImageFirstPointDimensionUnitX,
          PackageRoot_mModelImageFirstPointY,
          PackageRoot_mModelImageFirstPointDimensionUnitY,
-         PackageRoot_mModelImageSecondPointX,
-         PackageRoot_mModelImageSecondPointDimensionUnitX,
-         PackageRoot_mModelImageSecondPointY,
-         PackageRoot_mModelImageSecondPointDimensionUnitY,
+         PackageRoot_mModelImageSecondPointDx,
+         PackageRoot_mModelImageSecondPointDimensionUnitDx,
+         PackageRoot_mModelImageSecondPointDy,
+         PackageRoot_mModelImageSecondPointDimensionUnitDy,
          PackageRoot_freePadNumbering,
          PackageRoot_counterClockNumbering,
          PackageRoot_gridStepMultipliedByDisplayFactor,
-         PackageRoot_pointsDx,
-         PackageRoot_pointsDy,
+         PackageRoot_secondPointX,
+         PackageRoot_secondPointY,
          PackageRoot_padNumberDisplay,
          PackageRoot_backgroundImagePageBackgroundDisplay,
          PackageRoot_modelImageSizeString,
@@ -753,72 +753,38 @@ class PackageRoot : EBGraphicManagedObject,
   var mModelImagePageYPlacardUnit_property_selection : EBSelection <Int> { return self.mModelImagePageYPlacardUnit_property.prop }
 
   //····················································································································
-  //   Atomic property: mModelImagePointsDxUnit
+  //   Atomic property: mModelImageSecondPointXUnit
   //····················································································································
 
-  let mModelImagePointsDxUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let mModelImageSecondPointXUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
-  var mModelImagePointsDxUnit : Int {
-    get { return self.mModelImagePointsDxUnit_property.propval }
-    set { self.mModelImagePointsDxUnit_property.setProp (newValue) }
+  var mModelImageSecondPointXUnit : Int {
+    get { return self.mModelImageSecondPointXUnit_property.propval }
+    set { self.mModelImageSecondPointXUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePointsDxUnit_property_selection : EBSelection <Int> { return self.mModelImagePointsDxUnit_property.prop }
+  var mModelImageSecondPointXUnit_property_selection : EBSelection <Int> { return self.mModelImageSecondPointXUnit_property.prop }
 
   //····················································································································
-  //   Atomic property: mModelImagePointsDyUnit
+  //   Atomic property: mModelImagePSecondointYUnit
   //····················································································································
 
-  let mModelImagePointsDyUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let mModelImagePSecondointYUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
-  var mModelImagePointsDyUnit : Int {
-    get { return self.mModelImagePointsDyUnit_property.propval }
-    set { self.mModelImagePointsDyUnit_property.setProp (newValue) }
+  var mModelImagePSecondointYUnit : Int {
+    get { return self.mModelImagePSecondointYUnit_property.propval }
+    set { self.mModelImagePSecondointYUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mModelImagePointsDyUnit_property_selection : EBSelection <Int> { return self.mModelImagePointsDyUnit_property.prop }
-
-  //····················································································································
-  //   Atomic property: mModelImageDeltaX
-  //····················································································································
-
-  let mModelImageDeltaX_property = EBStoredProperty_Int (defaultValue: 0)
-
-  //····················································································································
-
-  var mModelImageDeltaX : Int {
-    get { return self.mModelImageDeltaX_property.propval }
-    set { self.mModelImageDeltaX_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mModelImageDeltaX_property_selection : EBSelection <Int> { return self.mModelImageDeltaX_property.prop }
-
-  //····················································································································
-  //   Atomic property: mModelImageDeltaY
-  //····················································································································
-
-  let mModelImageDeltaY_property = EBStoredProperty_Int (defaultValue: 0)
-
-  //····················································································································
-
-  var mModelImageDeltaY : Int {
-    get { return self.mModelImageDeltaY_property.propval }
-    set { self.mModelImageDeltaY_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mModelImageDeltaY_property_selection : EBSelection <Int> { return self.mModelImageDeltaY_property.prop }
+  var mModelImagePSecondointYUnit_property_selection : EBSelection <Int> { return self.mModelImagePSecondointYUnit_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImageFirstPointXOnLock
@@ -853,6 +819,40 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mModelImageFirstPointYOnLock_property_selection : EBSelection <Int> { return self.mModelImageFirstPointYOnLock_property.prop }
+
+  //····················································································································
+  //   Atomic property: mModelImagePointsDxOnLock
+  //····················································································································
+
+  let mModelImagePointsDxOnLock_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mModelImagePointsDxOnLock : Int {
+    get { return self.mModelImagePointsDxOnLock_property.propval }
+    set { self.mModelImagePointsDxOnLock_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mModelImagePointsDxOnLock_property_selection : EBSelection <Int> { return self.mModelImagePointsDxOnLock_property.prop }
+
+  //····················································································································
+  //   Atomic property: mModelImagePointsDyOnLock
+  //····················································································································
+
+  let mModelImagePointsDyOnLock_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mModelImagePointsDyOnLock : Int {
+    get { return self.mModelImagePointsDyOnLock_property.propval }
+    set { self.mModelImagePointsDyOnLock_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mModelImagePointsDyOnLock_property_selection : EBSelection <Int> { return self.mModelImagePointsDyOnLock_property.prop }
 
   //····················································································································
   //   Atomic property: mModelImageScale
@@ -1013,17 +1013,17 @@ class PackageRoot : EBGraphicManagedObject,
   //   To many property: mModelImageObjects
   //····················································································································
 
-  let mModelImageObjects_property = StoredArrayOf_PackageModelImagePoint (usedForSignature: false)
+  let mModelImageObjects_property = StoredArrayOf_PackageModelImageDoublePoint (usedForSignature: false)
 
   //····················································································································
 
-  var mModelImageObjects_property_selection : EBSelection < [PackageModelImagePoint] > {
+  var mModelImageObjects_property_selection : EBSelection < [PackageModelImageDoublePoint] > {
     return self.mModelImageObjects_property.prop
   }
 
   //····················································································································
 
-  var mModelImageObjects : [PackageModelImagePoint] {
+  var mModelImageObjects : [PackageModelImageDoublePoint] {
     get { return self.mModelImageObjects_property.propval }
     set { self.mModelImageObjects_property.setProp (newValue) }
   }
@@ -1212,16 +1212,16 @@ class PackageRoot : EBGraphicManagedObject,
   var mModelImageFirstPointDimensionUnitY_property_selection : EBSelection <Int> { return self.mModelImageFirstPointDimensionUnitY_property.prop }
 
   //····················································································································
-  //   Atomic proxy property: mModelImageSecondPointX
+  //   Atomic proxy property: mModelImageSecondPointDx
   //····················································································································
 
-  let mModelImageSecondPointX_property = EBPropertyProxy_Int ()
+  let mModelImageSecondPointDx_property = EBPropertyProxy_Int ()
 
   //····················································································································
 
-  var mModelImageSecondPointX : Int? {
+  var mModelImageSecondPointDx : Int? {
     get {
-      switch self.mModelImageSecondPointX_property.prop {
+      switch self.mModelImageSecondPointDx_property.prop {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -1230,26 +1230,26 @@ class PackageRoot : EBGraphicManagedObject,
     }
     set {
       if let unwrappedNewValue = newValue {
-        self.mModelImageSecondPointX_property.setProp (unwrappedNewValue)
+        self.mModelImageSecondPointDx_property.setProp (unwrappedNewValue)
       }
     }
   }
 
   //····················································································································
 
-  var mModelImageSecondPointX_property_selection : EBSelection <Int> { return self.mModelImageSecondPointX_property.prop }
+  var mModelImageSecondPointDx_property_selection : EBSelection <Int> { return self.mModelImageSecondPointDx_property.prop }
 
   //····················································································································
-  //   Atomic proxy property: mModelImageSecondPointDimensionUnitX
+  //   Atomic proxy property: mModelImageSecondPointDimensionUnitDx
   //····················································································································
 
-  let mModelImageSecondPointDimensionUnitX_property = EBPropertyProxy_Int ()
+  let mModelImageSecondPointDimensionUnitDx_property = EBPropertyProxy_Int ()
 
   //····················································································································
 
-  var mModelImageSecondPointDimensionUnitX : Int? {
+  var mModelImageSecondPointDimensionUnitDx : Int? {
     get {
-      switch self.mModelImageSecondPointDimensionUnitX_property.prop {
+      switch self.mModelImageSecondPointDimensionUnitDx_property.prop {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -1258,26 +1258,26 @@ class PackageRoot : EBGraphicManagedObject,
     }
     set {
       if let unwrappedNewValue = newValue {
-        self.mModelImageSecondPointDimensionUnitX_property.setProp (unwrappedNewValue)
+        self.mModelImageSecondPointDimensionUnitDx_property.setProp (unwrappedNewValue)
       }
     }
   }
 
   //····················································································································
 
-  var mModelImageSecondPointDimensionUnitX_property_selection : EBSelection <Int> { return self.mModelImageSecondPointDimensionUnitX_property.prop }
+  var mModelImageSecondPointDimensionUnitDx_property_selection : EBSelection <Int> { return self.mModelImageSecondPointDimensionUnitDx_property.prop }
 
   //····················································································································
-  //   Atomic proxy property: mModelImageSecondPointY
+  //   Atomic proxy property: mModelImageSecondPointDy
   //····················································································································
 
-  let mModelImageSecondPointY_property = EBPropertyProxy_Int ()
+  let mModelImageSecondPointDy_property = EBPropertyProxy_Int ()
 
   //····················································································································
 
-  var mModelImageSecondPointY : Int? {
+  var mModelImageSecondPointDy : Int? {
     get {
-      switch self.mModelImageSecondPointY_property.prop {
+      switch self.mModelImageSecondPointDy_property.prop {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -1286,26 +1286,26 @@ class PackageRoot : EBGraphicManagedObject,
     }
     set {
       if let unwrappedNewValue = newValue {
-        self.mModelImageSecondPointY_property.setProp (unwrappedNewValue)
+        self.mModelImageSecondPointDy_property.setProp (unwrappedNewValue)
       }
     }
   }
 
   //····················································································································
 
-  var mModelImageSecondPointY_property_selection : EBSelection <Int> { return self.mModelImageSecondPointY_property.prop }
+  var mModelImageSecondPointDy_property_selection : EBSelection <Int> { return self.mModelImageSecondPointDy_property.prop }
 
   //····················································································································
-  //   Atomic proxy property: mModelImageSecondPointDimensionUnitY
+  //   Atomic proxy property: mModelImageSecondPointDimensionUnitDy
   //····················································································································
 
-  let mModelImageSecondPointDimensionUnitY_property = EBPropertyProxy_Int ()
+  let mModelImageSecondPointDimensionUnitDy_property = EBPropertyProxy_Int ()
 
   //····················································································································
 
-  var mModelImageSecondPointDimensionUnitY : Int? {
+  var mModelImageSecondPointDimensionUnitDy : Int? {
     get {
-      switch self.mModelImageSecondPointDimensionUnitY_property.prop {
+      switch self.mModelImageSecondPointDimensionUnitDy_property.prop {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -1314,52 +1314,14 @@ class PackageRoot : EBGraphicManagedObject,
     }
     set {
       if let unwrappedNewValue = newValue {
-        self.mModelImageSecondPointDimensionUnitY_property.setProp (unwrappedNewValue)
+        self.mModelImageSecondPointDimensionUnitDy_property.setProp (unwrappedNewValue)
       }
     }
   }
 
   //····················································································································
 
-  var mModelImageSecondPointDimensionUnitY_property_selection : EBSelection <Int> { return self.mModelImageSecondPointDimensionUnitY_property.prop }
-
-  //····················································································································
-  //   To one property: mModelImageSecondPoint
-  //····················································································································
-
-   let mModelImageSecondPoint_property = StoredObject_PackageModelImagePoint (usedForSignature: false)
-
-  //····················································································································
-
-  var mModelImageSecondPoint_property_selection : EBSelection <PackageModelImagePoint?> {
-    return .single (self.mModelImageSecondPoint_property.propval)
-  }
-
-  //····················································································································
-
-  var mModelImageSecondPoint : PackageModelImagePoint? {
-    get {
-      return self.mModelImageSecondPoint_property.propval
-    }
-    set {
-      if self.mModelImageSecondPoint_property.propval != nil {
-        self.mModelImageSecondPoint_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mModelImageSecondPoint_property.setProp (newValue)
-      }
-    }
-  }
-
-  //····················································································································
-
-  var mModelImageSecondPoint_none : StoredObject_PackageModelImagePoint { return self.mModelImageSecondPoint_property }
-
-  //····················································································································
-
-  var mModelImageSecondPoint_none_selection : EBSelection <Bool> {
-    return .single (self.mModelImageSecondPoint_property.propval == nil)
-  }
+  var mModelImageSecondPointDimensionUnitDy_property_selection : EBSelection <Int> { return self.mModelImageSecondPointDimensionUnitDy_property.prop }
 
   //····················································································································
   //   Transient property: freePadNumbering
@@ -1431,21 +1393,21 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Transient property: pointsDx
+  //   Transient property: secondPointX
   //····················································································································
 
-  let pointsDx_property = EBTransientProperty_Int ()
+  let secondPointX_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var pointsDx_property_selection : EBSelection <Int> {
-    return self.pointsDx_property.prop
+  var secondPointX_property_selection : EBSelection <Int> {
+    return self.secondPointX_property.prop
   }
 
   //····················································································································
 
-  var pointsDx : Int? {
-    switch self.pointsDx_property_selection {
+  var secondPointX : Int? {
+    switch self.secondPointX_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1454,21 +1416,21 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Transient property: pointsDy
+  //   Transient property: secondPointY
   //····················································································································
 
-  let pointsDy_property = EBTransientProperty_Int ()
+  let secondPointY_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var pointsDy_property_selection : EBSelection <Int> {
-    return self.pointsDy_property.prop
+  var secondPointY_property_selection : EBSelection <Int> {
+    return self.secondPointY_property.prop
   }
 
   //····················································································································
 
-  var pointsDy : Int? {
-    switch self.pointsDy_property_selection {
+  var secondPointY : Int? {
+    switch self.secondPointY_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1477,41 +1439,41 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   To one property: mModelImageFirstPoint
+  //   To one property: mModelImageDoublePoint
   //····················································································································
 
-   let mModelImageFirstPoint_property = StoredObject_PackageModelImagePoint (usedForSignature: false)
+   let mModelImageDoublePoint_property = StoredObject_PackageModelImageDoublePoint (usedForSignature: false)
 
   //····················································································································
 
-  var mModelImageFirstPoint_property_selection : EBSelection <PackageModelImagePoint?> {
-    return .single (self.mModelImageFirstPoint_property.propval)
+  var mModelImageDoublePoint_property_selection : EBSelection <PackageModelImageDoublePoint?> {
+    return .single (self.mModelImageDoublePoint_property.propval)
   }
 
   //····················································································································
 
-  var mModelImageFirstPoint : PackageModelImagePoint? {
+  var mModelImageDoublePoint : PackageModelImageDoublePoint? {
     get {
-      return self.mModelImageFirstPoint_property.propval
+      return self.mModelImageDoublePoint_property.propval
     }
     set {
-      if self.mModelImageFirstPoint_property.propval != nil {
-        self.mModelImageFirstPoint_property.setProp (nil)
+      if self.mModelImageDoublePoint_property.propval != nil {
+        self.mModelImageDoublePoint_property.setProp (nil)
       }
       if newValue != nil {
-        self.mModelImageFirstPoint_property.setProp (newValue)
+        self.mModelImageDoublePoint_property.setProp (newValue)
       }
     }
   }
 
   //····················································································································
 
-  var mModelImageFirstPoint_none : StoredObject_PackageModelImagePoint { return self.mModelImageFirstPoint_property }
+  var mModelImageDoublePoint_none : StoredObject_PackageModelImageDoublePoint { return self.mModelImageDoublePoint_property }
 
   //····················································································································
 
-  var mModelImageFirstPoint_none_selection : EBSelection <Bool> {
-    return .single (self.mModelImageFirstPoint_property.propval == nil)
+  var mModelImageDoublePoint_none_selection : EBSelection <Bool> {
+    return .single (self.mModelImageDoublePoint_property.propval == nil)
   }
 
   //····················································································································
@@ -1706,18 +1668,18 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImagePageXPlacardUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mModelImagePageYPlacardUnit
     self.mModelImagePageYPlacardUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mModelImagePointsDxUnit
-    self.mModelImagePointsDxUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mModelImagePointsDyUnit
-    self.mModelImagePointsDyUnit_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mModelImageDeltaX
-    self.mModelImageDeltaX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mModelImageDeltaY
-    self.mModelImageDeltaY_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelImageSecondPointXUnit
+    self.mModelImageSecondPointXUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelImagePSecondointYUnit
+    self.mModelImagePSecondointYUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mModelImageFirstPointXOnLock
     self.mModelImageFirstPointXOnLock_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mModelImageFirstPointYOnLock
     self.mModelImageFirstPointYOnLock_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelImagePointsDxOnLock
+    self.mModelImagePointsDxOnLock_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mModelImagePointsDyOnLock
+    self.mModelImagePointsDyOnLock_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mModelImageScale
     self.mModelImageScale_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mModelImageRotationInRadians
@@ -1750,126 +1712,124 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageData_property.ebUndoManager = self.ebUndoManager
   //--- Atomic proxy property: mModelImageFirstPointX
     self.mModelImageFirstPointX_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mModelImageFirstPoint {
-        return .single (object.mX)
+      if let object = self?.mModelImageDoublePoint {
+        return .single (object.mFirstX)
       }else{
         return .empty
       }
     }
     self.mModelImageFirstPointX_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mModelImageFirstPoint?.mX = inValue
+      self?.mModelImageDoublePoint?.mFirstX = inValue
     }
     self.mModelImageFirstPointX_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mModelImageFirstPoint?.mX_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+      return self?.mModelImageDoublePoint?.mFirstX_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageFirstPoint_property.addEBObserverOf_mX (self.mModelImageFirstPointX_property)
+    self.mModelImageDoublePoint_property.addEBObserverOf_mFirstX (self.mModelImageFirstPointX_property)
   //--- Atomic proxy property: mModelImageFirstPointDimensionUnitX
     self.mModelImageFirstPointDimensionUnitX_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mModelImageFirstPoint {
-        return .single (object.mDimensionUnitX)
+      if let object = self?.mModelImageDoublePoint {
+        return .single (object.mDimensionUnitFirstX)
       }else{
         return .empty
       }
     }
     self.mModelImageFirstPointDimensionUnitX_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mModelImageFirstPoint?.mDimensionUnitX = inValue
+      self?.mModelImageDoublePoint?.mDimensionUnitFirstX = inValue
     }
     self.mModelImageFirstPointDimensionUnitX_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mModelImageFirstPoint?.mDimensionUnitX_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+      return self?.mModelImageDoublePoint?.mDimensionUnitFirstX_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageFirstPoint_property.addEBObserverOf_mDimensionUnitX (self.mModelImageFirstPointDimensionUnitX_property)
+    self.mModelImageDoublePoint_property.addEBObserverOf_mDimensionUnitFirstX (self.mModelImageFirstPointDimensionUnitX_property)
   //--- Atomic proxy property: mModelImageFirstPointY
     self.mModelImageFirstPointY_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mModelImageFirstPoint {
-        return .single (object.mY)
+      if let object = self?.mModelImageDoublePoint {
+        return .single (object.mFirstY)
       }else{
         return .empty
       }
     }
     self.mModelImageFirstPointY_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mModelImageFirstPoint?.mY = inValue
+      self?.mModelImageDoublePoint?.mFirstY = inValue
     }
     self.mModelImageFirstPointY_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mModelImageFirstPoint?.mY_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+      return self?.mModelImageDoublePoint?.mFirstY_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageFirstPoint_property.addEBObserverOf_mY (self.mModelImageFirstPointY_property)
+    self.mModelImageDoublePoint_property.addEBObserverOf_mFirstY (self.mModelImageFirstPointY_property)
   //--- Atomic proxy property: mModelImageFirstPointDimensionUnitY
     self.mModelImageFirstPointDimensionUnitY_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mModelImageFirstPoint {
-        return .single (object.mDimensionUnitY)
+      if let object = self?.mModelImageDoublePoint {
+        return .single (object.mDimensionUnitFirstY)
       }else{
         return .empty
       }
     }
     self.mModelImageFirstPointDimensionUnitY_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mModelImageFirstPoint?.mDimensionUnitY = inValue
+      self?.mModelImageDoublePoint?.mDimensionUnitFirstY = inValue
     }
     self.mModelImageFirstPointDimensionUnitY_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mModelImageFirstPoint?.mDimensionUnitY_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+      return self?.mModelImageDoublePoint?.mDimensionUnitFirstY_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageFirstPoint_property.addEBObserverOf_mDimensionUnitY (self.mModelImageFirstPointDimensionUnitY_property)
-  //--- Atomic proxy property: mModelImageSecondPointX
-    self.mModelImageSecondPointX_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mModelImageSecondPoint {
-        return .single (object.mX)
+    self.mModelImageDoublePoint_property.addEBObserverOf_mDimensionUnitFirstY (self.mModelImageFirstPointDimensionUnitY_property)
+  //--- Atomic proxy property: mModelImageSecondPointDx
+    self.mModelImageSecondPointDx_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mModelImageDoublePoint {
+        return .single (object.mSecondDx)
       }else{
         return .empty
       }
     }
-    self.mModelImageSecondPointX_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mModelImageSecondPoint?.mX = inValue
+    self.mModelImageSecondPointDx_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mModelImageDoublePoint?.mSecondDx = inValue
     }
-    self.mModelImageSecondPointX_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mModelImageSecondPoint?.mX_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    self.mModelImageSecondPointDx_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mModelImageDoublePoint?.mSecondDx_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageSecondPoint_property.addEBObserverOf_mX (self.mModelImageSecondPointX_property)
-  //--- Atomic proxy property: mModelImageSecondPointDimensionUnitX
-    self.mModelImageSecondPointDimensionUnitX_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mModelImageSecondPoint {
-        return .single (object.mDimensionUnitX)
+    self.mModelImageDoublePoint_property.addEBObserverOf_mSecondDx (self.mModelImageSecondPointDx_property)
+  //--- Atomic proxy property: mModelImageSecondPointDimensionUnitDx
+    self.mModelImageSecondPointDimensionUnitDx_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mModelImageDoublePoint {
+        return .single (object.mDimensionUnitSecondDx)
       }else{
         return .empty
       }
     }
-    self.mModelImageSecondPointDimensionUnitX_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mModelImageSecondPoint?.mDimensionUnitX = inValue
+    self.mModelImageSecondPointDimensionUnitDx_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mModelImageDoublePoint?.mDimensionUnitSecondDx = inValue
     }
-    self.mModelImageSecondPointDimensionUnitX_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mModelImageSecondPoint?.mDimensionUnitX_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    self.mModelImageSecondPointDimensionUnitDx_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mModelImageDoublePoint?.mDimensionUnitSecondDx_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageSecondPoint_property.addEBObserverOf_mDimensionUnitX (self.mModelImageSecondPointDimensionUnitX_property)
-  //--- Atomic proxy property: mModelImageSecondPointY
-    self.mModelImageSecondPointY_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mModelImageSecondPoint {
-        return .single (object.mY)
+    self.mModelImageDoublePoint_property.addEBObserverOf_mDimensionUnitSecondDx (self.mModelImageSecondPointDimensionUnitDx_property)
+  //--- Atomic proxy property: mModelImageSecondPointDy
+    self.mModelImageSecondPointDy_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mModelImageDoublePoint {
+        return .single (object.mSecondDy)
       }else{
         return .empty
       }
     }
-    self.mModelImageSecondPointY_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mModelImageSecondPoint?.mY = inValue
+    self.mModelImageSecondPointDy_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mModelImageDoublePoint?.mSecondDy = inValue
     }
-    self.mModelImageSecondPointY_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mModelImageSecondPoint?.mY_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    self.mModelImageSecondPointDy_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mModelImageDoublePoint?.mSecondDy_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageSecondPoint_property.addEBObserverOf_mY (self.mModelImageSecondPointY_property)
-  //--- Atomic proxy property: mModelImageSecondPointDimensionUnitY
-    self.mModelImageSecondPointDimensionUnitY_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mModelImageSecondPoint {
-        return .single (object.mDimensionUnitY)
+    self.mModelImageDoublePoint_property.addEBObserverOf_mSecondDy (self.mModelImageSecondPointDy_property)
+  //--- Atomic proxy property: mModelImageSecondPointDimensionUnitDy
+    self.mModelImageSecondPointDimensionUnitDy_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mModelImageDoublePoint {
+        return .single (object.mDimensionUnitSecondDy)
       }else{
         return .empty
       }
     }
-    self.mModelImageSecondPointDimensionUnitY_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mModelImageSecondPoint?.mDimensionUnitY = inValue
+    self.mModelImageSecondPointDimensionUnitDy_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+      self?.mModelImageDoublePoint?.mDimensionUnitSecondDy = inValue
     }
-    self.mModelImageSecondPointDimensionUnitY_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
-      return self?.mModelImageSecondPoint?.mDimensionUnitY_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    self.mModelImageSecondPointDimensionUnitDy_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
+      return self?.mModelImageDoublePoint?.mDimensionUnitSecondDy_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mModelImageSecondPoint_property.addEBObserverOf_mDimensionUnitY (self.mModelImageSecondPointDimensionUnitY_property)
-  //--- To one property: mModelImageSecondPoint
-    self.mModelImageSecondPoint_property.ebUndoManager = self.ebUndoManager
+    self.mModelImageDoublePoint_property.addEBObserverOf_mDimensionUnitSecondDy (self.mModelImageSecondPointDimensionUnitDy_property)
   //--- Atomic property: freePadNumbering
     self.freePadNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1938,20 +1898,20 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.gridStep_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
     self.gridDisplayFactor_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
-  //--- Atomic property: pointsDx
-    self.pointsDx_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: secondPointX
+    self.secondPointX_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mModelImageFirstPointX_property_selection.kind ()
-        kind &= unwSelf.mModelImageSecondPointX_property_selection.kind ()
+        kind &= unwSelf.mModelImageSecondPointDx_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mModelImageFirstPointX_property_selection, unwSelf.mModelImageSecondPointX_property_selection) {
+          switch (unwSelf.mModelImageFirstPointX_property_selection, unwSelf.mModelImageSecondPointDx_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_PackageRoot_pointsDx (v0, v1))
+            return .single (transient_PackageRoot_secondPointX (v0, v1))
           default :
             return .empty
           }
@@ -1960,22 +1920,22 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mModelImageFirstPointX_property.addEBObserver (self.pointsDx_property)
-    self.mModelImageSecondPointX_property.addEBObserver (self.pointsDx_property)
-  //--- Atomic property: pointsDy
-    self.pointsDy_property.mReadModelFunction = { [weak self] in
+    self.mModelImageFirstPointX_property.addEBObserver (self.secondPointX_property)
+    self.mModelImageSecondPointDx_property.addEBObserver (self.secondPointX_property)
+  //--- Atomic property: secondPointY
+    self.secondPointY_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mModelImageFirstPointY_property_selection.kind ()
-        kind &= unwSelf.mModelImageSecondPointY_property_selection.kind ()
+        kind &= unwSelf.mModelImageSecondPointDy_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mModelImageFirstPointY_property_selection, unwSelf.mModelImageSecondPointY_property_selection) {
+          switch (unwSelf.mModelImageFirstPointY_property_selection, unwSelf.mModelImageSecondPointDy_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_PackageRoot_pointsDy (v0, v1))
+            return .single (transient_PackageRoot_secondPointY (v0, v1))
           default :
             return .empty
           }
@@ -1984,10 +1944,10 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mModelImageFirstPointY_property.addEBObserver (self.pointsDy_property)
-    self.mModelImageSecondPointY_property.addEBObserver (self.pointsDy_property)
-  //--- To one property: mModelImageFirstPoint
-    self.mModelImageFirstPoint_property.ebUndoManager = self.ebUndoManager
+    self.mModelImageFirstPointY_property.addEBObserver (self.secondPointY_property)
+    self.mModelImageSecondPointDy_property.addEBObserver (self.secondPointY_property)
+  //--- To one property: mModelImageDoublePoint
+    self.mModelImageDoublePoint_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2172,50 +2132,50 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageFirstPointX_property.mReadModelFunction = nil
     self.mModelImageFirstPointX_property.mWriteModelFunction = nil
     self.mModelImageFirstPointX_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageFirstPoint_property.removeEBObserverOf_mX (self.mModelImageFirstPointX_property)
+    self.mModelImageDoublePoint_property.removeEBObserverOf_mFirstX (self.mModelImageFirstPointX_property)
   //--- Atomic proxy property: mModelImageFirstPointDimensionUnitX
     self.mModelImageFirstPointDimensionUnitX_property.mReadModelFunction = nil
     self.mModelImageFirstPointDimensionUnitX_property.mWriteModelFunction = nil
     self.mModelImageFirstPointDimensionUnitX_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageFirstPoint_property.removeEBObserverOf_mDimensionUnitX (self.mModelImageFirstPointDimensionUnitX_property)
+    self.mModelImageDoublePoint_property.removeEBObserverOf_mDimensionUnitFirstX (self.mModelImageFirstPointDimensionUnitX_property)
   //--- Atomic proxy property: mModelImageFirstPointY
     self.mModelImageFirstPointY_property.mReadModelFunction = nil
     self.mModelImageFirstPointY_property.mWriteModelFunction = nil
     self.mModelImageFirstPointY_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageFirstPoint_property.removeEBObserverOf_mY (self.mModelImageFirstPointY_property)
+    self.mModelImageDoublePoint_property.removeEBObserverOf_mFirstY (self.mModelImageFirstPointY_property)
   //--- Atomic proxy property: mModelImageFirstPointDimensionUnitY
     self.mModelImageFirstPointDimensionUnitY_property.mReadModelFunction = nil
     self.mModelImageFirstPointDimensionUnitY_property.mWriteModelFunction = nil
     self.mModelImageFirstPointDimensionUnitY_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageFirstPoint_property.removeEBObserverOf_mDimensionUnitY (self.mModelImageFirstPointDimensionUnitY_property)
-  //--- Atomic proxy property: mModelImageSecondPointX
-    self.mModelImageSecondPointX_property.mReadModelFunction = nil
-    self.mModelImageSecondPointX_property.mWriteModelFunction = nil
-    self.mModelImageSecondPointX_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageSecondPoint_property.removeEBObserverOf_mX (self.mModelImageSecondPointX_property)
-  //--- Atomic proxy property: mModelImageSecondPointDimensionUnitX
-    self.mModelImageSecondPointDimensionUnitX_property.mReadModelFunction = nil
-    self.mModelImageSecondPointDimensionUnitX_property.mWriteModelFunction = nil
-    self.mModelImageSecondPointDimensionUnitX_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageSecondPoint_property.removeEBObserverOf_mDimensionUnitX (self.mModelImageSecondPointDimensionUnitX_property)
-  //--- Atomic proxy property: mModelImageSecondPointY
-    self.mModelImageSecondPointY_property.mReadModelFunction = nil
-    self.mModelImageSecondPointY_property.mWriteModelFunction = nil
-    self.mModelImageSecondPointY_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageSecondPoint_property.removeEBObserverOf_mY (self.mModelImageSecondPointY_property)
-  //--- Atomic proxy property: mModelImageSecondPointDimensionUnitY
-    self.mModelImageSecondPointDimensionUnitY_property.mReadModelFunction = nil
-    self.mModelImageSecondPointDimensionUnitY_property.mWriteModelFunction = nil
-    self.mModelImageSecondPointDimensionUnitY_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageSecondPoint_property.removeEBObserverOf_mDimensionUnitY (self.mModelImageSecondPointDimensionUnitY_property)
+    self.mModelImageDoublePoint_property.removeEBObserverOf_mDimensionUnitFirstY (self.mModelImageFirstPointDimensionUnitY_property)
+  //--- Atomic proxy property: mModelImageSecondPointDx
+    self.mModelImageSecondPointDx_property.mReadModelFunction = nil
+    self.mModelImageSecondPointDx_property.mWriteModelFunction = nil
+    self.mModelImageSecondPointDx_property.mValidateAndWriteModelFunction = nil
+    self.mModelImageDoublePoint_property.removeEBObserverOf_mSecondDx (self.mModelImageSecondPointDx_property)
+  //--- Atomic proxy property: mModelImageSecondPointDimensionUnitDx
+    self.mModelImageSecondPointDimensionUnitDx_property.mReadModelFunction = nil
+    self.mModelImageSecondPointDimensionUnitDx_property.mWriteModelFunction = nil
+    self.mModelImageSecondPointDimensionUnitDx_property.mValidateAndWriteModelFunction = nil
+    self.mModelImageDoublePoint_property.removeEBObserverOf_mDimensionUnitSecondDx (self.mModelImageSecondPointDimensionUnitDx_property)
+  //--- Atomic proxy property: mModelImageSecondPointDy
+    self.mModelImageSecondPointDy_property.mReadModelFunction = nil
+    self.mModelImageSecondPointDy_property.mWriteModelFunction = nil
+    self.mModelImageSecondPointDy_property.mValidateAndWriteModelFunction = nil
+    self.mModelImageDoublePoint_property.removeEBObserverOf_mSecondDy (self.mModelImageSecondPointDy_property)
+  //--- Atomic proxy property: mModelImageSecondPointDimensionUnitDy
+    self.mModelImageSecondPointDimensionUnitDy_property.mReadModelFunction = nil
+    self.mModelImageSecondPointDimensionUnitDy_property.mWriteModelFunction = nil
+    self.mModelImageSecondPointDimensionUnitDy_property.mValidateAndWriteModelFunction = nil
+    self.mModelImageDoublePoint_property.removeEBObserverOf_mDimensionUnitSecondDy (self.mModelImageSecondPointDimensionUnitDy_property)
     self.padNumbering_property.removeEBObserver (self.freePadNumbering_property)
     self.padNumbering_property.removeEBObserver (self.counterClockNumbering_property)
     self.gridStep_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
     self.gridDisplayFactor_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
-    self.mModelImageFirstPointX_property.removeEBObserver (self.pointsDx_property)
-    self.mModelImageSecondPointX_property.removeEBObserver (self.pointsDx_property)
-    self.mModelImageFirstPointY_property.removeEBObserver (self.pointsDy_property)
-    self.mModelImageSecondPointY_property.removeEBObserver (self.pointsDy_property)
+    self.mModelImageFirstPointX_property.removeEBObserver (self.secondPointX_property)
+    self.mModelImageSecondPointDx_property.removeEBObserver (self.secondPointX_property)
+    self.mModelImageFirstPointY_property.removeEBObserver (self.secondPointY_property)
+    self.mModelImageSecondPointDy_property.removeEBObserver (self.secondPointY_property)
     g_Preferences?.showPadNumber_property.removeEBObserver (self.padNumberDisplay_property)
     self.packagePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     self.packageSlavePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
@@ -2422,36 +2382,20 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer: &self.mModelImagePageYPlacardUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mModelImagePointsDxUnit",
-      idx: self.mModelImagePointsDxUnit_property.ebObjectIndex,
+      "mModelImageSecondPointXUnit",
+      idx: self.mModelImageSecondPointXUnit_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mModelImagePointsDxUnit_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePointsDxUnit_property.mValueExplorer
+      observerExplorer: &self.mModelImageSecondPointXUnit_property.mObserverExplorer,
+      valueExplorer: &self.mModelImageSecondPointXUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mModelImagePointsDyUnit",
-      idx: self.mModelImagePointsDyUnit_property.ebObjectIndex,
+      "mModelImagePSecondointYUnit",
+      idx: self.mModelImagePSecondointYUnit_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mModelImagePointsDyUnit_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePointsDyUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImageDeltaX",
-      idx: self.mModelImageDeltaX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImageDeltaX_property.mObserverExplorer,
-      valueExplorer: &self.mModelImageDeltaX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mModelImageDeltaY",
-      idx: self.mModelImageDeltaY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mModelImageDeltaY_property.mObserverExplorer,
-      valueExplorer: &self.mModelImageDeltaY_property.mValueExplorer
+      observerExplorer: &self.mModelImagePSecondointYUnit_property.mObserverExplorer,
+      valueExplorer: &self.mModelImagePSecondointYUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mModelImageFirstPointXOnLock",
@@ -2468,6 +2412,22 @@ class PackageRoot : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.mModelImageFirstPointYOnLock_property.mObserverExplorer,
       valueExplorer: &self.mModelImageFirstPointYOnLock_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mModelImagePointsDxOnLock",
+      idx: self.mModelImagePointsDxOnLock_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mModelImagePointsDxOnLock_property.mObserverExplorer,
+      valueExplorer: &self.mModelImagePointsDxOnLock_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mModelImagePointsDyOnLock",
+      idx: self.mModelImagePointsDyOnLock_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mModelImagePointsDyOnLock_property.mObserverExplorer,
+      valueExplorer: &self.mModelImagePointsDyOnLock_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mModelImageScale",
@@ -2567,20 +2527,20 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer: &self.gridStepMultipliedByDisplayFactor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "pointsDx",
-      idx: self.pointsDx_property.ebObjectIndex,
+      "secondPointX",
+      idx: self.secondPointX_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.pointsDx_property.mObserverExplorer,
-      valueExplorer: &self.pointsDx_property.mValueExplorer
+      observerExplorer: &self.secondPointX_property.mObserverExplorer,
+      valueExplorer: &self.secondPointX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "pointsDy",
-      idx: self.pointsDy_property.ebObjectIndex,
+      "secondPointY",
+      idx: self.secondPointY_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.pointsDy_property.mObserverExplorer,
-      valueExplorer: &self.pointsDy_property.mValueExplorer
+      observerExplorer: &self.secondPointY_property.mObserverExplorer,
+      valueExplorer: &self.secondPointY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padNumberDisplay",
@@ -2647,18 +2607,11 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
-      "mModelImageSecondPoint",
-      idx:self.mModelImageSecondPoint_property.ebObjectIndex,
+      "mModelImageDoublePoint",
+      idx:self.mModelImageDoublePoint_property.ebObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&self.mModelImageSecondPoint_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
-      "mModelImageFirstPoint",
-      idx:self.mModelImageFirstPoint_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.mModelImageFirstPoint_property.mValueExplorer
+      valueExplorer:&self.mModelImageDoublePoint_property.mValueExplorer
     )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
@@ -2731,24 +2684,24 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: mModelImagePageYPlacardUnit
     self.mModelImagePageYPlacardUnit_property.mObserverExplorer = nil
     self.mModelImagePageYPlacardUnit_property.mValueExplorer = nil
-  //--- Atomic property: mModelImagePointsDxUnit
-    self.mModelImagePointsDxUnit_property.mObserverExplorer = nil
-    self.mModelImagePointsDxUnit_property.mValueExplorer = nil
-  //--- Atomic property: mModelImagePointsDyUnit
-    self.mModelImagePointsDyUnit_property.mObserverExplorer = nil
-    self.mModelImagePointsDyUnit_property.mValueExplorer = nil
-  //--- Atomic property: mModelImageDeltaX
-    self.mModelImageDeltaX_property.mObserverExplorer = nil
-    self.mModelImageDeltaX_property.mValueExplorer = nil
-  //--- Atomic property: mModelImageDeltaY
-    self.mModelImageDeltaY_property.mObserverExplorer = nil
-    self.mModelImageDeltaY_property.mValueExplorer = nil
+  //--- Atomic property: mModelImageSecondPointXUnit
+    self.mModelImageSecondPointXUnit_property.mObserverExplorer = nil
+    self.mModelImageSecondPointXUnit_property.mValueExplorer = nil
+  //--- Atomic property: mModelImagePSecondointYUnit
+    self.mModelImagePSecondointYUnit_property.mObserverExplorer = nil
+    self.mModelImagePSecondointYUnit_property.mValueExplorer = nil
   //--- Atomic property: mModelImageFirstPointXOnLock
     self.mModelImageFirstPointXOnLock_property.mObserverExplorer = nil
     self.mModelImageFirstPointXOnLock_property.mValueExplorer = nil
   //--- Atomic property: mModelImageFirstPointYOnLock
     self.mModelImageFirstPointYOnLock_property.mObserverExplorer = nil
     self.mModelImageFirstPointYOnLock_property.mValueExplorer = nil
+  //--- Atomic property: mModelImagePointsDxOnLock
+    self.mModelImagePointsDxOnLock_property.mObserverExplorer = nil
+    self.mModelImagePointsDxOnLock_property.mValueExplorer = nil
+  //--- Atomic property: mModelImagePointsDyOnLock
+    self.mModelImagePointsDyOnLock_property.mObserverExplorer = nil
+    self.mModelImagePointsDyOnLock_property.mValueExplorer = nil
   //--- Atomic property: mModelImageScale
     self.mModelImageScale_property.mObserverExplorer = nil
     self.mModelImageScale_property.mValueExplorer = nil
@@ -2792,24 +2745,21 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Atomic proxy property: mModelImageFirstPointDimensionUnitY
     self.mModelImageFirstPointDimensionUnitY_property.mObserverExplorer = nil
     self.mModelImageFirstPointDimensionUnitY_property.mValueExplorer = nil
-  //--- Atomic proxy property: mModelImageSecondPointX
-    self.mModelImageSecondPointX_property.mObserverExplorer = nil
-    self.mModelImageSecondPointX_property.mValueExplorer = nil
-  //--- Atomic proxy property: mModelImageSecondPointDimensionUnitX
-    self.mModelImageSecondPointDimensionUnitX_property.mObserverExplorer = nil
-    self.mModelImageSecondPointDimensionUnitX_property.mValueExplorer = nil
-  //--- Atomic proxy property: mModelImageSecondPointY
-    self.mModelImageSecondPointY_property.mObserverExplorer = nil
-    self.mModelImageSecondPointY_property.mValueExplorer = nil
-  //--- Atomic proxy property: mModelImageSecondPointDimensionUnitY
-    self.mModelImageSecondPointDimensionUnitY_property.mObserverExplorer = nil
-    self.mModelImageSecondPointDimensionUnitY_property.mValueExplorer = nil
-  //--- To one property: mModelImageSecondPoint
-    self.mModelImageSecondPoint_property.mObserverExplorer = nil
-    self.mModelImageSecondPoint_property.mValueExplorer = nil
-  //--- To one property: mModelImageFirstPoint
-    self.mModelImageFirstPoint_property.mObserverExplorer = nil
-    self.mModelImageFirstPoint_property.mValueExplorer = nil
+  //--- Atomic proxy property: mModelImageSecondPointDx
+    self.mModelImageSecondPointDx_property.mObserverExplorer = nil
+    self.mModelImageSecondPointDx_property.mValueExplorer = nil
+  //--- Atomic proxy property: mModelImageSecondPointDimensionUnitDx
+    self.mModelImageSecondPointDimensionUnitDx_property.mObserverExplorer = nil
+    self.mModelImageSecondPointDimensionUnitDx_property.mValueExplorer = nil
+  //--- Atomic proxy property: mModelImageSecondPointDy
+    self.mModelImageSecondPointDy_property.mObserverExplorer = nil
+    self.mModelImageSecondPointDy_property.mValueExplorer = nil
+  //--- Atomic proxy property: mModelImageSecondPointDimensionUnitDy
+    self.mModelImageSecondPointDimensionUnitDy_property.mObserverExplorer = nil
+    self.mModelImageSecondPointDimensionUnitDy_property.mValueExplorer = nil
+  //--- To one property: mModelImageDoublePoint
+    self.mModelImageDoublePoint_property.mObserverExplorer = nil
+    self.mModelImageDoublePoint_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -2830,8 +2780,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mModelImageSecondPoint = nil
-    self.mModelImageFirstPoint = nil
+    self.mModelImageDoublePoint = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -2884,18 +2833,18 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImagePageXPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageXPlacardUnit")
   //--- Atomic property: mModelImagePageYPlacardUnit
     self.mModelImagePageYPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePageYPlacardUnit")
-  //--- Atomic property: mModelImagePointsDxUnit
-    self.mModelImagePointsDxUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePointsDxUnit")
-  //--- Atomic property: mModelImagePointsDyUnit
-    self.mModelImagePointsDyUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePointsDyUnit")
-  //--- Atomic property: mModelImageDeltaX
-    self.mModelImageDeltaX_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageDeltaX")
-  //--- Atomic property: mModelImageDeltaY
-    self.mModelImageDeltaY_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageDeltaY")
+  //--- Atomic property: mModelImageSecondPointXUnit
+    self.mModelImageSecondPointXUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageSecondPointXUnit")
+  //--- Atomic property: mModelImagePSecondointYUnit
+    self.mModelImagePSecondointYUnit_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePSecondointYUnit")
   //--- Atomic property: mModelImageFirstPointXOnLock
     self.mModelImageFirstPointXOnLock_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageFirstPointXOnLock")
   //--- Atomic property: mModelImageFirstPointYOnLock
     self.mModelImageFirstPointYOnLock_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageFirstPointYOnLock")
+  //--- Atomic property: mModelImagePointsDxOnLock
+    self.mModelImagePointsDxOnLock_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePointsDxOnLock")
+  //--- Atomic property: mModelImagePointsDyOnLock
+    self.mModelImagePointsDyOnLock_property.storeIn (dictionary: ioDictionary, forKey:"mModelImagePointsDyOnLock")
   //--- Atomic property: mModelImageScale
     self.mModelImageScale_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageScale")
   //--- Atomic property: mModelImageRotationInRadians
@@ -2926,13 +2875,9 @@ class PackageRoot : EBGraphicManagedObject,
     )
   //--- Atomic property: mModelImageData
     self.mModelImageData_property.storeIn (dictionary: ioDictionary, forKey:"mModelImageData")
-  //--- To one property: mModelImageSecondPoint
-    self.store (managedObject:self.mModelImageSecondPoint_property.propval,
-      relationshipName: "mModelImageSecondPoint",
-      intoDictionary: ioDictionary)
-  //--- To one property: mModelImageFirstPoint
-    self.store (managedObject:self.mModelImageFirstPoint_property.propval,
-      relationshipName: "mModelImageFirstPoint",
+  //--- To one property: mModelImageDoublePoint
+    self.store (managedObject:self.mModelImageDoublePoint_property.propval,
+      relationshipName: "mModelImageDoublePoint",
       intoDictionary: ioDictionary)
   }
 
@@ -2954,27 +2899,16 @@ class PackageRoot : EBGraphicManagedObject,
       inRelationshipName: "mModelImageObjects",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [PackageModelImagePoint])
-  //--- To one property: mModelImageSecondPoint
+    ) as! [PackageModelImageDoublePoint])
+  //--- To one property: mModelImageDoublePoint
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mModelImageSecondPoint",
+        inRelationshipName: "mModelImageDoublePoint",
         inDictionary: inDictionary,
         managedObjectArray: &managedObjectArray
       )
-      if let entity = possibleEntity as? PackageModelImagePoint {
-        self.mModelImageSecondPoint_property.setProp (entity)
-      }
-    }
-  //--- To one property: mModelImageFirstPoint
-    do{
-      let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mModelImageFirstPoint",
-        inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
-      )
-      if let entity = possibleEntity as? PackageModelImagePoint {
-        self.mModelImageFirstPoint_property.setProp (entity)
+      if let entity = possibleEntity as? PackageModelImageDoublePoint {
+        self.mModelImageDoublePoint_property.setProp (entity)
       }
     }
   }
@@ -3027,18 +2961,18 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImagePageXPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageXPlacardUnit")
   //--- Atomic property: mModelImagePageYPlacardUnit
     self.mModelImagePageYPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePageYPlacardUnit")
-  //--- Atomic property: mModelImagePointsDxUnit
-    self.mModelImagePointsDxUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePointsDxUnit")
-  //--- Atomic property: mModelImagePointsDyUnit
-    self.mModelImagePointsDyUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePointsDyUnit")
-  //--- Atomic property: mModelImageDeltaX
-    self.mModelImageDeltaX_property.readFrom (dictionary: inDictionary, forKey:"mModelImageDeltaX")
-  //--- Atomic property: mModelImageDeltaY
-    self.mModelImageDeltaY_property.readFrom (dictionary: inDictionary, forKey:"mModelImageDeltaY")
+  //--- Atomic property: mModelImageSecondPointXUnit
+    self.mModelImageSecondPointXUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImageSecondPointXUnit")
+  //--- Atomic property: mModelImagePSecondointYUnit
+    self.mModelImagePSecondointYUnit_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePSecondointYUnit")
   //--- Atomic property: mModelImageFirstPointXOnLock
     self.mModelImageFirstPointXOnLock_property.readFrom (dictionary: inDictionary, forKey:"mModelImageFirstPointXOnLock")
   //--- Atomic property: mModelImageFirstPointYOnLock
     self.mModelImageFirstPointYOnLock_property.readFrom (dictionary: inDictionary, forKey:"mModelImageFirstPointYOnLock")
+  //--- Atomic property: mModelImagePointsDxOnLock
+    self.mModelImagePointsDxOnLock_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePointsDxOnLock")
+  //--- Atomic property: mModelImagePointsDyOnLock
+    self.mModelImagePointsDyOnLock_property.readFrom (dictionary: inDictionary, forKey:"mModelImagePointsDyOnLock")
   //--- Atomic property: mModelImageScale
     self.mModelImageScale_property.readFrom (dictionary: inDictionary, forKey:"mModelImageScale")
   //--- Atomic property: mModelImageRotationInRadians
@@ -3088,12 +3022,12 @@ class PackageRoot : EBGraphicManagedObject,
     ioString += "mModelImagePageZoom\n"
     ioString += "mModelImagePageXPlacardUnit\n"
     ioString += "mModelImagePageYPlacardUnit\n"
-    ioString += "mModelImagePointsDxUnit\n"
-    ioString += "mModelImagePointsDyUnit\n"
-    ioString += "mModelImageDeltaX\n"
-    ioString += "mModelImageDeltaY\n"
+    ioString += "mModelImageSecondPointXUnit\n"
+    ioString += "mModelImagePSecondointYUnit\n"
     ioString += "mModelImageFirstPointXOnLock\n"
     ioString += "mModelImageFirstPointYOnLock\n"
+    ioString += "mModelImagePointsDxOnLock\n"
+    ioString += "mModelImagePointsDyOnLock\n"
     ioString += "mModelImageScale\n"
     ioString += "mModelImageRotationInRadians\n"
     ioString += "mPointsAreLocked\n"
@@ -3104,8 +3038,7 @@ class PackageRoot : EBGraphicManagedObject,
     ioString += "yPlacardUnit\n"
     ioString += "mModelImageData\n"
   //--- To one relationships
-    ioString += "mModelImageSecondPoint\n"
-    ioString += "mModelImageFirstPoint\n"
+    ioString += "mModelImageDoublePoint\n"
   //--- To many relationships
     ioString += "packageObjects\n"
     ioString += "mModelImageObjects\n"
@@ -3163,17 +3096,17 @@ class PackageRoot : EBGraphicManagedObject,
     ioData.append (ascii: .lineFeed)
     self.mModelImagePageYPlacardUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
-    self.mModelImagePointsDxUnit.appendPropertyValueTo (&ioData)
+    self.mModelImageSecondPointXUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
-    self.mModelImagePointsDyUnit.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mModelImageDeltaX.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mModelImageDeltaY.appendPropertyValueTo (&ioData)
+    self.mModelImagePSecondointYUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mModelImageFirstPointXOnLock.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mModelImageFirstPointYOnLock.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mModelImagePointsDxOnLock.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mModelImagePointsDyOnLock.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mModelImageScale.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -3194,11 +3127,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageData.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
-    if let object = self.mModelImageSecondPoint {
-      ioData.append (base62Encoded: object.savingIndex)
-    }
-    ioData.append (ascii: .lineFeed)
-    if let object = self.mModelImageFirstPoint {
+    if let object = self.mModelImageDoublePoint {
       ioData.append (base62Encoded: object.savingIndex)
     }
     ioData.append (ascii: .lineFeed)
@@ -3386,12 +3315,8 @@ class PackageRoot : EBGraphicManagedObject,
     for managedObject in self.packageZones {
       objects.append (managedObject)
     }
-  //--- To one property: mModelImageSecondPoint
-    if let object = self.mModelImageSecondPoint {
-      objects.append (object)
-    }
-  //--- To one property: mModelImageFirstPoint
-    if let object = self.mModelImageFirstPoint {
+  //--- To one property: mModelImageDoublePoint
+    if let object = self.mModelImageDoublePoint {
       objects.append (object)
     }
   }
@@ -3422,12 +3347,8 @@ class PackageRoot : EBGraphicManagedObject,
     for managedObject in self.packageZones {
       objects.append (managedObject)
     }
-  //--- To one property: mModelImageSecondPoint
-    if let object = self.mModelImageSecondPoint {
-      objects.append (object)
-    }
-  //--- To one property: mModelImageFirstPoint
-    if let object = self.mModelImageFirstPoint {
+  //--- To one property: mModelImageDoublePoint
+    if let object = self.mModelImageDoublePoint {
       objects.append (object)
     }
   }

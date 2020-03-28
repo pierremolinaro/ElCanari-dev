@@ -19,13 +19,14 @@ extension PackageDocument {
     // Swift.print ("AVAILABLE: \(NSPasteboard.general.availableType (from :[.png, .tiff]))")
     if let tiffData = NSImage (pasteboard: NSPasteboard.general)?.tiffRepresentation {
       self.rootObject.mModelImageData = tiffData
-      self.rootObject.mModelImageDeltaX = 0
-      self.rootObject.mModelImageDeltaY = 0
+//      self.rootObject.mModelImagePointsDx = 200 * 2_286
+//      self.rootObject.mModelImagePointsDy = 200 * 2_286
       self.rootObject.mModelImageFirstPointXOnLock = 0
       self.rootObject.mModelImageFirstPointYOnLock = 0
       self.rootObject.mModelImageScale = 1.0
       self.rootObject.mModelImageRotationInRadians = 0.0
       self.rootObject.mPointsAreLocked = false
+      self.buildGreenAndBluePointsIfRequired ()
     }else if let window = self.windowForSheet {
       __NSBeep ()
       let alert = NSAlert ()
@@ -39,13 +40,15 @@ extension PackageDocument {
 
   @objc @IBAction func removeModelImageAction (_ sender : NSObject?) {
     self.rootObject.mModelImageData = Data ()
-    self.rootObject.mModelImageDeltaX = 0
-    self.rootObject.mModelImageDeltaY = 0
+//    self.rootObject.mModelImagePointsDx = 200 * 2_286
+//    self.rootObject.mModelImagePointsDy = 200 * 2_286
     self.rootObject.mModelImageFirstPointXOnLock = 0
     self.rootObject.mModelImageFirstPointYOnLock = 0
     self.rootObject.mModelImageScale = 1.0
     self.rootObject.mModelImageRotationInRadians = 0.0
     self.rootObject.mPointsAreLocked = false
+    self.rootObject.mModelImageDoublePoint = nil
+    self.rootObject.mModelImageObjects = []
   }
 
   //····················································································································
@@ -53,14 +56,15 @@ extension PackageDocument {
   @objc @IBAction func resetGreenAndBluePointsAction (_ sender : NSObject?) {
   //--- Reset point image
     self.rootObject.mPointsAreLocked = false
-    self.rootObject.mModelImageDeltaX = 0
-    self.rootObject.mModelImageDeltaY = 0
+//    self.rootObject.mModelImagePointsDx = 200 * 2_286
+//    self.rootObject.mModelImagePointsDy = 200 * 2_286
     self.rootObject.mModelImageFirstPointXOnLock = 0
     self.rootObject.mModelImageFirstPointYOnLock = 0
-    self.rootObject.mModelImageFirstPoint = nil
-    self.rootObject.mModelImageSecondPoint = nil
+//    self.rootObject.mModelImageFirstPoint = nil
+//    self.rootObject.mModelImageSecondPoint = nil
     self.rootObject.mModelImageScale = 1.0
     self.rootObject.mModelImageRotationInRadians = 0.0
+    self.rootObject.mModelImageDoublePoint = nil
     self.rootObject.mModelImageObjects = []
     self.mModelImageView?.set(backgroundImageAffineTransform: .identity)
     self.mComposedPackageView?.set (backgroundImageAffineTransform: .identity)
@@ -71,25 +75,35 @@ extension PackageDocument {
   //····················································································································
 
   func buildGreenAndBluePointsIfRequired () {
-   //--- Add Model image points
-     if self.rootObject.mModelImageFirstPoint == nil {
-       let p = PackageModelImagePoint (self.ebUndoManager)
-       p.mX = 2_286 * 200 // 200 mils
-       p.mY = 2_286 * 200 // 200 mils
-       p.mColor = .systemGreen
-       self.rootObject.mModelImageFirstPoint = p
-     }
-     if self.rootObject.mModelImageSecondPoint == nil {
-       let p = PackageModelImagePoint (self.ebUndoManager)
-       p.mX = 2_286 * 400 // 400 mils
-       p.mY = 2_286 * 400 // 400 mils
-       p.mColor = .systemBrown
-       self.rootObject.mModelImageSecondPoint = p
-     }
-     if self.rootObject.mModelImageObjects.count != 2 {
-       self.rootObject.mModelImageObjects = []
-       self.rootObject.mModelImageObjects = [self.rootObject.mModelImageFirstPoint!, self.rootObject.mModelImageSecondPoint!]
-     }
+    if self.rootObject.mModelImageDoublePoint == nil {
+      let pp = PackageModelImageDoublePoint (self.ebUndoManager)
+      self.rootObject.mModelImageDoublePoint = pp
+      self.rootObject.mModelImageObjects = []
+      self.rootObject.mModelImageObjects = [pp]
+    }
+//   //--- Add Model image points
+//     let firstPoint : PackageModelImagePoint
+//     if let p = self.rootObject.mModelImageFirstPoint {
+//       firstPoint = p
+//     }else{
+//       let p = PackageModelImagePoint (self.ebUndoManager)
+//       p.mX = 2_286 * 200 // 200 mils
+//       p.mY = 2_286 * 200 // 200 mils
+//       p.mColor = .systemGreen
+//       self.rootObject.mModelImageFirstPoint = p
+//       firstPoint = p
+//     }
+//     if self.rootObject.mModelImageSecondPoint == nil {
+//       let p = PackageModelImagePoint (self.ebUndoManager)
+//       p.mX = firstPoint.mX + self.rootObject.mModelImagePointsDx
+//       p.mY = firstPoint.mY + self.rootObject.mModelImagePointsDy
+//       p.mColor = .systemBrown
+//       self.rootObject.mModelImageSecondPoint = p
+//     }
+//     if self.rootObject.mModelImageObjects.count != 2 {
+//       self.rootObject.mModelImageObjects = []
+//       self.rootObject.mModelImageObjects = [self.rootObject.mModelImageFirstPoint!, self.rootObject.mModelImageSecondPoint!]
+//     }
   }
 
   //····················································································································

@@ -14,11 +14,11 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
   // Model
   //····················································································································
  
-  private var mModel : ReadWriteArrayOf_PackageModelImagePoint? = nil
+  private var mModel : ReadWriteArrayOf_PackageModelImageDoublePoint? = nil
 
   //····················································································································
 
-  var selectedSet : Set <PackageModelImagePoint> {
+  var selectedSet : Set <PackageModelImageDoublePoint> {
     set (newValue) {
     //--- Add observers to newly selected set
       for object in newValue.subtracting (self.mPrivateSelectedSet) {
@@ -42,7 +42,7 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
 
   //····················································································································
 
-  private var mPrivateSelectedSet = Set <PackageModelImagePoint> () {
+  private var mPrivateSelectedSet = Set <PackageModelImageDoublePoint> () {
     didSet {
       self.selectedArray_property.postEvent ()
       self.mInternalSelectedArrayProperty.setProp (Array (self.mPrivateSelectedSet))
@@ -53,19 +53,19 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_PackageModelImagePoint ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_PackageModelImageDoublePoint ()
 
   //····················································································································
 
-  var selectedArray_property : ReadOnlyArrayOf_PackageModelImagePoint { return self.mInternalSelectedArrayProperty }
+  var selectedArray_property : ReadOnlyArrayOf_PackageModelImageDoublePoint { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
 
-  var selectedArray : [PackageModelImagePoint] { return self.selectedArray_property.propval }
+  var selectedArray : [PackageModelImageDoublePoint] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[PackageModelImagePoint]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[PackageModelImageDoublePoint]> { return self.selectedArray_property.prop }
  
   //····················································································································
   //   Init
@@ -150,7 +150,7 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_PackageModelImagePoint, _ inUndoManager : EBUndoManager?) {
+  func bind_model (_ inModel : ReadWriteArrayOf_PackageModelImageDoublePoint, _ inUndoManager : EBUndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     inModel.attachClient (self)
@@ -183,7 +183,7 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
 
    //····················································································································
 
-   var objectArray : [PackageModelImagePoint] {
+   var objectArray : [PackageModelImageDoublePoint] {
      if let values = self.mModel?.propval {
        return values
      }else{
@@ -217,7 +217,7 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
 
   //····················································································································
 
-  func setSelection (_ inObjects : [PackageModelImagePoint]) {
+  func setSelection (_ inObjects : [PackageModelImageDoublePoint]) {
     self.selectedSet = Set (inObjects)
   }
 
@@ -379,7 +379,7 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
   //    select
   //····················································································································
 
-  func select (object inObject : PackageModelImagePoint) {
+  func select (object inObject : PackageModelImageDoublePoint) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -402,7 +402,7 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = PackageModelImagePoint (self.ebUndoManager)
+        let newObject = PackageModelImageDoublePoint (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
@@ -424,7 +424,7 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
       case .single (let model_prop) :
       //------------- Find the object to be selected after selected object removing
       //--- Dictionary of object sorted indexes
-        var sortedObjectDictionary = [PackageModelImagePoint : Int] ()
+        var sortedObjectDictionary = [PackageModelImageDoublePoint : Int] ()
         for (index, object) in model_prop.enumerated () {
           sortedObjectDictionary [object] = index
         }
@@ -446,13 +446,13 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
             newSelectionIndex = index + 1
           }
         }
-        var newSelectedObject : PackageModelImagePoint? = nil
+        var newSelectedObject : PackageModelImageDoublePoint? = nil
         if (newSelectionIndex >= 0) && (newSelectionIndex < model_prop.count) {
           newSelectedObject = model_prop [newSelectionIndex]
         }
       //----------------------------------------- Remove selected object
       //--- Dictionary of object absolute indexes
-        var objectDictionary = [PackageModelImagePoint : Int] ()
+        var objectDictionary = [PackageModelImageDoublePoint : Int] ()
         for (index, object) in model_prop.enumerated () {
           objectDictionary [object] = index
         }
@@ -472,7 +472,7 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
           newObjectArray.remove (at: index)
         }
       //----------------------------------------- Set new selection
-        var newSelectionSet = Set <PackageModelImagePoint> ()
+        var newSelectionSet = Set <PackageModelImageDoublePoint> ()
         if let object = newSelectedObject {
           newSelectionSet.insert (object)
         }
@@ -592,10 +592,10 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
        let array = dataDictionary ["OBJECTS"] as? [NSDictionary],
        let X = dataDictionary ["X"] as? Int,
        let Y = dataDictionary ["Y"] as? Int {
-      var newObjects = [PackageModelImagePoint] ()
+      var newObjects = [PackageModelImageDoublePoint] ()
       let userSet = OCObjectSet ()
       for dictionary in array {
-        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageModelImagePoint {
+        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageModelImageDoublePoint {
           object.operationAfterPasting ()
           object.translate (xBy: X, yBy: Y, userSet: userSet)
           newObjects.append (object)
@@ -918,7 +918,7 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
   // MARK: -
   //····················································································································
 
-  func addToSelection (objects inObjects : [PackageModelImagePoint]) {
+  func addToSelection (objects inObjects : [PackageModelImageDoublePoint]) {
     if let objectSet = self.mModel?.propset {
       var newSelectedSet = self.selectedArray_property.propset
       for object in inObjects {
@@ -962,7 +962,7 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
 
   func setSelection (objectsWithIndexes inIndexes : [Int]) {
     let objects = self.objectArray
-    var selectedObjects = [PackageModelImagePoint] ()
+    var selectedObjects = [PackageModelImageDoublePoint] ()
     for index in inIndexes {
       let newSelectedObject = objects [index]
       selectedObjects.append (newSelectedObject)

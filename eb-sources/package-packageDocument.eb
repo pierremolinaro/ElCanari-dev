@@ -571,23 +571,24 @@ document PackageDocument root PackageRoot {
   outlet CanariDimensionTextField mModelImageFirstPointYTextField
      $dimensionAndUnit root.mModelImageFirstPointY, root.mModelImageFirstPointDimensionUnitY
   ;
- 
-  outlet EBPopUpButton mModelImageSecondPointXDimensionUnitPopUp $selectedTag root.mModelImageSecondPointDimensionUnitX ;
-  outlet CanariDimensionTextField mModelImageSecondPointXTextField
-     $dimensionAndUnit root.mModelImageSecondPointX, root.mModelImageSecondPointDimensionUnitX
-  ;
-  outlet EBPopUpButton mModelImageSecondPointYDimensionUnitPopUp $selectedTag root.mModelImageSecondPointDimensionUnitY ;
-  outlet CanariDimensionTextField mModelImageSecondPointYTextField
-     $dimensionAndUnit root.mModelImageSecondPointY, root.mModelImageSecondPointDimensionUnitY
-  ;
 
-  outlet EBPopUpButton mModelImagePointsDxDimensionUnitPopUp $selectedTag root.mModelImagePointsDxUnit ;
-  outlet CanariDimensionObserverTextField mModelImagePointDxTextField
-     $dimensionAndUnit root.pointsDx, root.mModelImagePointsDxUnit
+
+  outlet EBPopUpButton mModelImagePointsDxDimensionUnitPopUp $selectedTag root.mModelImageSecondPointDimensionUnitDx ;
+  outlet CanariDimensionTextField mModelImagePointDxTextField
+     $dimensionAndUnit root.mModelImageSecondPointDx, root.mModelImageSecondPointDimensionUnitDx
   ;
-  outlet EBPopUpButton mModelImagePointsDyDimensionUnitPopUp $selectedTag root.mModelImagePointsDyUnit ;
-  outlet CanariDimensionObserverTextField mModelImagePointDyTextField
-     $dimensionAndUnit root.pointsDy, root.mModelImagePointsDyUnit
+  outlet EBPopUpButton mModelImagePointsDyDimensionUnitPopUp $selectedTag root.mModelImageSecondPointDimensionUnitDy ;
+  outlet CanariDimensionTextField mModelImagePointDyTextField
+     $dimensionAndUnit root.mModelImageSecondPointDy, root.mModelImageSecondPointDimensionUnitDy
+  ;
+ 
+  outlet EBPopUpButton mModelImageSecondPointXDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
+  outlet CanariDimensionObserverTextField mModelImageSecondPointXTextField
+     $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit
+  ;
+  outlet EBPopUpButton mModelImageSecondPointYDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
+  outlet CanariDimensionObserverTextField mModelImageSecondPointYTextField
+     $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit
   ;
 
   outlet EBSwitch mModelImagePointsAreLockedSwitch $value root.mPointsAreLocked ;

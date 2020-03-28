@@ -402,21 +402,31 @@ fileprivate class EBShapeObject : Hashable {
   func add (knobAt inPoint: NSPoint, knobIndex inKnobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CGFloat) {
     let r = NSRect (x: inPoint.x - inKnobSize / 2.0, y: inPoint.y - inKnobSize / 2.0, width: inKnobSize, height: inKnobSize)
     var bp : EBBezierPath
+    let backColor : NSColor
+    let frameColor : NSColor
     switch inKind {
     case .rect :
       bp = EBBezierPath (rect: r)
+      backColor = .white
+      frameColor = .black
     case .circ :
       bp = EBBezierPath (ovalIn: r)
+      backColor = .white
+      frameColor = .black
+    case .transparentCircle :
+      bp = EBBezierPath (ovalIn: r)
+      backColor = .clear
+      frameColor = .clear
     }
   //--- Background
-    let e = EBShapeElement ([bp], .fill, .white, inKnobIndex, .none)
+    let e = EBShapeElement ([bp], .fill, backColor, inKnobIndex, .none)
     self.mElements.append (e)
     self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
   //--- Line
     bp.lineWidth = 0.0 // Thinnest line
     bp.lineCapStyle = .round
     bp.lineJoinStyle = .round
-    self.add (stroke: [bp], .black, knobIndex: nil, clip: .none)
+    self.add (stroke: [bp], frameColor, knobIndex: nil, clip: .none)
   }
 
   //····················································································································
@@ -629,6 +639,7 @@ fileprivate class EBShapeObject : Hashable {
 enum EBKnobKind {
   case rect
   case circ
+  case transparentCircle
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

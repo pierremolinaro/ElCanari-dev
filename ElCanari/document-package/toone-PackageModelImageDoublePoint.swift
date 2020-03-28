@@ -5,44 +5,54 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyObject_PackageModelImagePoint 
+//    ReadOnlyObject_PackageModelImageDoublePoint 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <PackageModelImagePoint> {
+class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProperty <PackageModelImageDoublePoint> {
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageModelImagePoint?) {
+  internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageModelImageDoublePoint?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    inOldValue?.mDimensionUnitX_property.removeEBObserversFrom (&self.mObserversOf_mDimensionUnitX) // Stored property
-    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    inOldValue?.mDimensionUnitY_property.removeEBObserversFrom (&self.mObserversOf_mDimensionUnitY) // Stored property
-    inOldValue?.mColor_property.removeEBObserversFrom (&self.mObserversOf_mColor) // Stored property
+    inOldValue?.mFirstX_property.removeEBObserversFrom (&self.mObserversOf_mFirstX) // Stored property
+    inOldValue?.mDimensionUnitFirstX_property.removeEBObserversFrom (&self.mObserversOf_mDimensionUnitFirstX) // Stored property
+    inOldValue?.mFirstY_property.removeEBObserversFrom (&self.mObserversOf_mFirstY) // Stored property
+    inOldValue?.mDimensionUnitFirstY_property.removeEBObserversFrom (&self.mObserversOf_mDimensionUnitFirstY) // Stored property
+    inOldValue?.mFirstColor_property.removeEBObserversFrom (&self.mObserversOf_mFirstColor) // Stored property
+    inOldValue?.mSecondDx_property.removeEBObserversFrom (&self.mObserversOf_mSecondDx) // Stored property
+    inOldValue?.mDimensionUnitSecondDx_property.removeEBObserversFrom (&self.mObserversOf_mDimensionUnitSecondDx) // Stored property
+    inOldValue?.mSecondDy_property.removeEBObserversFrom (&self.mObserversOf_mSecondDy) // Stored property
+    inOldValue?.mDimensionUnitSecondDy_property.removeEBObserversFrom (&self.mObserversOf_mDimensionUnitSecondDy) // Stored property
+    inOldValue?.mSecondColor_property.removeEBObserversFrom (&self.mObserversOf_mSecondColor) // Stored property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    self.mInternalValue?.mDimensionUnitX_property.addEBObserversFrom (&self.mObserversOf_mDimensionUnitX) // Stored property
-    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    self.mInternalValue?.mDimensionUnitY_property.addEBObserversFrom (&self.mObserversOf_mDimensionUnitY) // Stored property
-    self.mInternalValue?.mColor_property.addEBObserversFrom (&self.mObserversOf_mColor) // Stored property
+    self.mInternalValue?.mFirstX_property.addEBObserversFrom (&self.mObserversOf_mFirstX) // Stored property
+    self.mInternalValue?.mDimensionUnitFirstX_property.addEBObserversFrom (&self.mObserversOf_mDimensionUnitFirstX) // Stored property
+    self.mInternalValue?.mFirstY_property.addEBObserversFrom (&self.mObserversOf_mFirstY) // Stored property
+    self.mInternalValue?.mDimensionUnitFirstY_property.addEBObserversFrom (&self.mObserversOf_mDimensionUnitFirstY) // Stored property
+    self.mInternalValue?.mFirstColor_property.addEBObserversFrom (&self.mObserversOf_mFirstColor) // Stored property
+    self.mInternalValue?.mSecondDx_property.addEBObserversFrom (&self.mObserversOf_mSecondDx) // Stored property
+    self.mInternalValue?.mDimensionUnitSecondDx_property.addEBObserversFrom (&self.mObserversOf_mDimensionUnitSecondDx) // Stored property
+    self.mInternalValue?.mSecondDy_property.addEBObserversFrom (&self.mObserversOf_mSecondDy) // Stored property
+    self.mInternalValue?.mDimensionUnitSecondDy_property.addEBObserversFrom (&self.mObserversOf_mDimensionUnitSecondDy) // Stored property
+    self.mInternalValue?.mSecondColor_property.addEBObserversFrom (&self.mObserversOf_mSecondColor) // Stored property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   }
 
   //····················································································································
-  //   Observers of 'mX' stored property
+  //   Observers of 'mFirstX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private var mObserversOf_mFirstX = EBWeakEventSet ()
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int?> {
+  var mFirstX_property_selection : EBSelection <Int?> {
     if let model = self.propval {
-      switch (model.mX_property_selection) {
+      switch (model.mFirstX_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -57,62 +67,62 @@ class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <Pa
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFirstX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mX.insert (inObserver)
+    self.mObserversOf_mFirstX.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mX_property.addEBObserver (inObserver)
+       v?.mFirstX_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFirstX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mX.remove (inObserver)
+    self.mObserversOf_mFirstX.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mX_property.removeEBObserver (inObserver)
+      v?.mFirstX_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
+  final func addEBObserversOf_mFirstX_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
     for managedObject in inSet {
-      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-        managedObject.mX_property.addEBObserver (observer)
+      self.mObserversOf_mFirstX.apply { (_ observer : EBEvent) in
+        managedObject.mFirstX_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
-    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mFirstX_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    self.mObserversOf_mFirstX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mX_property.removeEBObserver (observer)
+        managedObject.mFirstX_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mDimensionUnitX' stored property
+  //   Observers of 'mDimensionUnitFirstX' stored property
   //····················································································································
 
-  private var mObserversOf_mDimensionUnitX = EBWeakEventSet ()
+  private var mObserversOf_mDimensionUnitFirstX = EBWeakEventSet ()
 
   //····················································································································
 
-  var mDimensionUnitX_property_selection : EBSelection <Int?> {
+  var mDimensionUnitFirstX_property_selection : EBSelection <Int?> {
     if let model = self.propval {
-      switch (model.mDimensionUnitX_property_selection) {
+      switch (model.mDimensionUnitFirstX_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -127,62 +137,62 @@ class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <Pa
 
   //····················································································································
 
-  final func addEBObserverOf_mDimensionUnitX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDimensionUnitFirstX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mDimensionUnitX.insert (inObserver)
+    self.mObserversOf_mDimensionUnitFirstX.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mDimensionUnitX_property.addEBObserver (inObserver)
+       v?.mDimensionUnitFirstX_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mDimensionUnitX (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mDimensionUnitFirstX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mDimensionUnitX.remove (inObserver)
+    self.mObserversOf_mDimensionUnitFirstX.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mDimensionUnitX_property.removeEBObserver (inObserver)
+      v?.mDimensionUnitFirstX_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mDimensionUnitX_toElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
+  final func addEBObserversOf_mDimensionUnitFirstX_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
     for managedObject in inSet {
-      self.mObserversOf_mDimensionUnitX.apply { (_ observer : EBEvent) in
-        managedObject.mDimensionUnitX_property.addEBObserver (observer)
+      self.mObserversOf_mDimensionUnitFirstX.apply { (_ observer : EBEvent) in
+        managedObject.mDimensionUnitFirstX_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mDimensionUnitX_fromElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
-    self.mObserversOf_mDimensionUnitX.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mDimensionUnitFirstX_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    self.mObserversOf_mDimensionUnitFirstX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mDimensionUnitX_property.removeEBObserver (observer)
+        managedObject.mDimensionUnitFirstX_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mY' stored property
+  //   Observers of 'mFirstY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private var mObserversOf_mFirstY = EBWeakEventSet ()
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int?> {
+  var mFirstY_property_selection : EBSelection <Int?> {
     if let model = self.propval {
-      switch (model.mY_property_selection) {
+      switch (model.mFirstY_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -197,62 +207,62 @@ class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <Pa
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFirstY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mY.insert (inObserver)
+    self.mObserversOf_mFirstY.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mY_property.addEBObserver (inObserver)
+       v?.mFirstY_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFirstY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mY.remove (inObserver)
+    self.mObserversOf_mFirstY.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mY_property.removeEBObserver (inObserver)
+      v?.mFirstY_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
+  final func addEBObserversOf_mFirstY_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
     for managedObject in inSet {
-      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-        managedObject.mY_property.addEBObserver (observer)
+      self.mObserversOf_mFirstY.apply { (_ observer : EBEvent) in
+        managedObject.mFirstY_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
-    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mFirstY_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    self.mObserversOf_mFirstY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mY_property.removeEBObserver (observer)
+        managedObject.mFirstY_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mDimensionUnitY' stored property
+  //   Observers of 'mDimensionUnitFirstY' stored property
   //····················································································································
 
-  private var mObserversOf_mDimensionUnitY = EBWeakEventSet ()
+  private var mObserversOf_mDimensionUnitFirstY = EBWeakEventSet ()
 
   //····················································································································
 
-  var mDimensionUnitY_property_selection : EBSelection <Int?> {
+  var mDimensionUnitFirstY_property_selection : EBSelection <Int?> {
     if let model = self.propval {
-      switch (model.mDimensionUnitY_property_selection) {
+      switch (model.mDimensionUnitFirstY_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -267,62 +277,62 @@ class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <Pa
 
   //····················································································································
 
-  final func addEBObserverOf_mDimensionUnitY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDimensionUnitFirstY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mDimensionUnitY.insert (inObserver)
+    self.mObserversOf_mDimensionUnitFirstY.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mDimensionUnitY_property.addEBObserver (inObserver)
+       v?.mDimensionUnitFirstY_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mDimensionUnitY (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mDimensionUnitFirstY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mDimensionUnitY.remove (inObserver)
+    self.mObserversOf_mDimensionUnitFirstY.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mDimensionUnitY_property.removeEBObserver (inObserver)
+      v?.mDimensionUnitFirstY_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mDimensionUnitY_toElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
+  final func addEBObserversOf_mDimensionUnitFirstY_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
     for managedObject in inSet {
-      self.mObserversOf_mDimensionUnitY.apply { (_ observer : EBEvent) in
-        managedObject.mDimensionUnitY_property.addEBObserver (observer)
+      self.mObserversOf_mDimensionUnitFirstY.apply { (_ observer : EBEvent) in
+        managedObject.mDimensionUnitFirstY_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mDimensionUnitY_fromElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
-    self.mObserversOf_mDimensionUnitY.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mDimensionUnitFirstY_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    self.mObserversOf_mDimensionUnitFirstY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mDimensionUnitY_property.removeEBObserver (observer)
+        managedObject.mDimensionUnitFirstY_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mColor' stored property
+  //   Observers of 'mFirstColor' stored property
   //····················································································································
 
-  private var mObserversOf_mColor = EBWeakEventSet ()
+  private var mObserversOf_mFirstColor = EBWeakEventSet ()
 
   //····················································································································
 
-  var mColor_property_selection : EBSelection <NSColor?> {
+  var mFirstColor_property_selection : EBSelection <NSColor?> {
     if let model = self.propval {
-      switch (model.mColor_property_selection) {
+      switch (model.mFirstColor_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -337,47 +347,397 @@ class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <Pa
 
   //····················································································································
 
-  final func addEBObserverOf_mColor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFirstColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mColor.insert (inObserver)
+    self.mObserversOf_mFirstColor.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mColor_property.addEBObserver (inObserver)
+       v?.mFirstColor_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mColor (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFirstColor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mColor.remove (inObserver)
+    self.mObserversOf_mFirstColor.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mColor_property.removeEBObserver (inObserver)
+      v?.mFirstColor_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mColor_toElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
+  final func addEBObserversOf_mFirstColor_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
     for managedObject in inSet {
-      self.mObserversOf_mColor.apply { (_ observer : EBEvent) in
-        managedObject.mColor_property.addEBObserver (observer)
+      self.mObserversOf_mFirstColor.apply { (_ observer : EBEvent) in
+        managedObject.mFirstColor_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mColor_fromElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
-    self.mObserversOf_mColor.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mFirstColor_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    self.mObserversOf_mFirstColor.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mColor_property.removeEBObserver (observer)
+        managedObject.mFirstColor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSecondDx' stored property
+  //····················································································································
+
+  private var mObserversOf_mSecondDx = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSecondDx_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mSecondDx_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSecondDx (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSecondDx.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mSecondDx_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSecondDx (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSecondDx.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mSecondDx_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSecondDx_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSecondDx.apply { (_ observer : EBEvent) in
+        managedObject.mSecondDx_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSecondDx_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    self.mObserversOf_mSecondDx.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSecondDx_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDimensionUnitSecondDx' stored property
+  //····················································································································
+
+  private var mObserversOf_mDimensionUnitSecondDx = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDimensionUnitSecondDx_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mDimensionUnitSecondDx_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDimensionUnitSecondDx (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDimensionUnitSecondDx.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDimensionUnitSecondDx_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDimensionUnitSecondDx (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDimensionUnitSecondDx.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDimensionUnitSecondDx_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDimensionUnitSecondDx_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDimensionUnitSecondDx.apply { (_ observer : EBEvent) in
+        managedObject.mDimensionUnitSecondDx_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDimensionUnitSecondDx_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    self.mObserversOf_mDimensionUnitSecondDx.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDimensionUnitSecondDx_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSecondDy' stored property
+  //····················································································································
+
+  private var mObserversOf_mSecondDy = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSecondDy_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mSecondDy_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSecondDy (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSecondDy.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mSecondDy_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSecondDy (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSecondDy.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mSecondDy_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSecondDy_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSecondDy.apply { (_ observer : EBEvent) in
+        managedObject.mSecondDy_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSecondDy_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    self.mObserversOf_mSecondDy.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSecondDy_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDimensionUnitSecondDy' stored property
+  //····················································································································
+
+  private var mObserversOf_mDimensionUnitSecondDy = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDimensionUnitSecondDy_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mDimensionUnitSecondDy_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDimensionUnitSecondDy (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDimensionUnitSecondDy.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mDimensionUnitSecondDy_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDimensionUnitSecondDy (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDimensionUnitSecondDy.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mDimensionUnitSecondDy_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDimensionUnitSecondDy_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDimensionUnitSecondDy.apply { (_ observer : EBEvent) in
+        managedObject.mDimensionUnitSecondDy_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDimensionUnitSecondDy_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    self.mObserversOf_mDimensionUnitSecondDy.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDimensionUnitSecondDy_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSecondColor' stored property
+  //····················································································································
+
+  private var mObserversOf_mSecondColor = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSecondColor_property_selection : EBSelection <NSColor?> {
+    if let model = self.propval {
+      switch (model.mSecondColor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSecondColor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSecondColor.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mSecondColor_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSecondColor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSecondColor.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mSecondColor_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSecondColor_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSecondColor.apply { (_ observer : EBEvent) in
+        managedObject.mSecondColor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSecondColor_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
+    self.mObserversOf_mSecondColor.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSecondColor_property.removeEBObserver (observer)
       }
     }
   }
@@ -433,7 +793,7 @@ class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <Pa
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
@@ -443,7 +803,7 @@ class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <Pa
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
@@ -502,7 +862,7 @@ class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <Pa
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
@@ -512,7 +872,7 @@ class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <Pa
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageModelImagePoint>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
@@ -525,21 +885,21 @@ class ReadOnlyObject_PackageModelImagePoint : ReadOnlyAbstractObjectProperty <Pa
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientObject PackageModelImagePoint
+//    TransientObject PackageModelImageDoublePoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientObject_PackageModelImagePoint : ReadOnlyObject_PackageModelImagePoint {
+class TransientObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageModelImageDoublePoint {
 
   //····················································································································
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_PackageModelImagePoint? = nil
+  private var mDataProvider : ReadOnlyObject_PackageModelImageDoublePoint? = nil
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  func setDataProvider (_ inProvider : ReadOnlyObject_PackageModelImagePoint?) {
+  func setDataProvider (_ inProvider : ReadOnlyObject_PackageModelImageDoublePoint?) {
     if self.mDataProvider !== inProvider {
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider
@@ -550,7 +910,7 @@ class TransientObject_PackageModelImagePoint : ReadOnlyObject_PackageModelImageP
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newObject : PackageModelImagePoint? 
+    let newObject : PackageModelImageDoublePoint? 
     if let dataProvider = self.mDataProvider {
       switch dataProvider.prop {
       case .empty :
@@ -573,7 +933,7 @@ class TransientObject_PackageModelImagePoint : ReadOnlyObject_PackageModelImageP
 
   //····················································································································
 
-  override var prop : EBSelection < PackageModelImagePoint? > {
+  override var prop : EBSelection < PackageModelImageDoublePoint? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -590,39 +950,39 @@ class TransientObject_PackageModelImagePoint : ReadOnlyObject_PackageModelImageP
 
   //····················································································································
 
-  override var propval : PackageModelImagePoint? { return self.mInternalValue }
+  override var propval : PackageModelImageDoublePoint? { return self.mInternalValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_PackageModelImagePoint
+//    ReadWriteObject_PackageModelImageDoublePoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteObject_PackageModelImagePoint : ReadOnlyObject_PackageModelImagePoint {
+class ReadWriteObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageModelImageDoublePoint {
 
   //····················································································································
  
-  func setProp (_ inValue : PackageModelImagePoint?) { } // Abstract method
+  func setProp (_ inValue : PackageModelImageDoublePoint?) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyObject_PackageModelImagePoint
+//    Proxy: ProxyObject_PackageModelImageDoublePoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_PackageModelImagePoint : ReadWriteObject_PackageModelImagePoint {
+final class ProxyObject_PackageModelImageDoublePoint : ReadWriteObject_PackageModelImageDoublePoint {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_PackageModelImagePoint? = nil
+  private var mModel : ReadWriteObject_PackageModelImageDoublePoint? = nil
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteObject_PackageModelImagePoint?) {
+  func setModel (_ inModel : ReadWriteObject_PackageModelImageDoublePoint?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -633,7 +993,7 @@ final class ProxyObject_PackageModelImagePoint : ReadWriteObject_PackageModelIma
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModel : PackageModelImagePoint?
+    let newModel : PackageModelImageDoublePoint?
     if let model = self.mModel {
       switch model.prop {
       case .empty :
@@ -652,13 +1012,13 @@ final class ProxyObject_PackageModelImagePoint : ReadWriteObject_PackageModelIma
 
   //····················································································································
 
-  override func setProp (_ inValue : PackageModelImagePoint?) {
+  override func setProp (_ inValue : PackageModelImageDoublePoint?) {
     self.mModel?.setProp (inValue)
   }
 
   //····················································································································
 
-  override var prop : EBSelection < PackageModelImagePoint? > {
+  override var prop : EBSelection < PackageModelImageDoublePoint? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -668,7 +1028,7 @@ final class ProxyObject_PackageModelImagePoint : ReadWriteObject_PackageModelIma
 
   //····················································································································
 
-  override var propval : PackageModelImagePoint? {
+  override var propval : PackageModelImageDoublePoint? {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -686,10 +1046,10 @@ final class ProxyObject_PackageModelImagePoint : ReadWriteObject_PackageModelIma
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    StoredObject_PackageModelImagePoint 
+//    StoredObject_PackageModelImageDoublePoint 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PackageModelImagePoint : ReadWriteObject_PackageModelImagePoint, EBSignatureObserverProtocol {
+final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageModelImageDoublePoint, EBSignatureObserverProtocol {
 
  //····················································································································
 
@@ -714,13 +1074,13 @@ final class StoredObject_PackageModelImagePoint : ReadWriteObject_PackageModelIm
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageModelImagePoint) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageModelImagePoint) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageModelImageDoublePoint) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageModelImageDoublePoint) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageModelImagePoint) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : PackageModelImagePoint) -> Void) {
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageModelImageDoublePoint) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PackageModelImageDoublePoint) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
@@ -744,7 +1104,7 @@ final class StoredObject_PackageModelImagePoint : ReadWriteObject_PackageModelIm
   // Model will change 
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : PackageModelImagePoint?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : PackageModelImageDoublePoint?) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
   //---
@@ -767,7 +1127,7 @@ final class StoredObject_PackageModelImagePoint : ReadWriteObject_PackageModelIm
  
   //····················································································································
 
-  @objc func performUndo (_ oldValue : PackageModelImagePoint?) {
+  @objc func performUndo (_ oldValue : PackageModelImageDoublePoint?) {
     self.mInternalValue = oldValue
   }
  
@@ -789,7 +1149,7 @@ final class StoredObject_PackageModelImagePoint : ReadWriteObject_PackageModelIm
 
   //····················································································································
 
-  override var prop : EBSelection < PackageModelImagePoint? > {
+  override var prop : EBSelection < PackageModelImageDoublePoint? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -799,11 +1159,11 @@ final class StoredObject_PackageModelImagePoint : ReadWriteObject_PackageModelIm
 
   //····················································································································
 
-  override func setProp (_ inValue : PackageModelImagePoint?) { self.mInternalValue = inValue }
+  override func setProp (_ inValue : PackageModelImageDoublePoint?) { self.mInternalValue = inValue }
 
   //····················································································································
 
-  override var propval : PackageModelImagePoint? { return self.mInternalValue }
+  override var propval : PackageModelImageDoublePoint? { return self.mInternalValue }
 
   //····················································································································
   //   signature

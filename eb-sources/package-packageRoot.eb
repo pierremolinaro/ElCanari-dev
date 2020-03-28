@@ -64,30 +64,29 @@ graphic entity PackageRoot {
   property Int mModelImagePageZoom default 200 ;
   property Int mModelImagePageXPlacardUnit default 2_286 ; // mils
   property Int mModelImagePageYPlacardUnit default 2_286 ; // mils
-  property Int mModelImagePointsDxUnit default 2_286 ; // mils
-  property Int mModelImagePointsDyUnit default 2_286 ; // mils
+  property Int mModelImageSecondPointXUnit default 2_286 ; // mils
+  property Int mModelImagePSecondointYUnit default 2_286 ; // mils
 
   property Data mModelImageData default empty ;
-  property Int mModelImageDeltaX default 0 ;
-  property Int mModelImageDeltaY default 0 ;
   property Int mModelImageFirstPointXOnLock default 0 ;
   property Int mModelImageFirstPointYOnLock default 0 ;
+  property Int mModelImagePointsDxOnLock default 0 ;
+  property Int mModelImagePointsDyOnLock default 0 ;
   property Double mModelImageScale default 1.0 ;
   property Double mModelImageRotationInRadians default 0.0 ;
  
-  toOne PackageModelImagePoint mModelImageFirstPoint ;
-  property proxy Int mModelImageFirstPointX : mModelImageFirstPoint.mX ;
-  property proxy Int mModelImageFirstPointDimensionUnitX : mModelImageFirstPoint.mDimensionUnitX ;
-  property proxy Int mModelImageFirstPointY : mModelImageFirstPoint.mY ;
-  property proxy Int mModelImageFirstPointDimensionUnitY : mModelImageFirstPoint.mDimensionUnitY ;
+  toOne PackageModelImageDoublePoint mModelImageDoublePoint ;
+  property proxy Int mModelImageFirstPointX : mModelImageDoublePoint.mFirstX ;
+  property proxy Int mModelImageFirstPointDimensionUnitX : mModelImageDoublePoint.mDimensionUnitFirstX ;
+  property proxy Int mModelImageFirstPointY : mModelImageDoublePoint.mFirstY ;
+  property proxy Int mModelImageFirstPointDimensionUnitY : mModelImageDoublePoint.mDimensionUnitFirstY ;
 
-  toOne PackageModelImagePoint mModelImageSecondPoint ;
-  property proxy Int mModelImageSecondPointX : mModelImageSecondPoint.mX ;
-  property proxy Int mModelImageSecondPointDimensionUnitX : mModelImageSecondPoint.mDimensionUnitX ;
-  property proxy Int mModelImageSecondPointY : mModelImageSecondPoint.mY ;
-  property proxy Int mModelImageSecondPointDimensionUnitY : mModelImageSecondPoint.mDimensionUnitY ;
+  property proxy Int mModelImageSecondPointDx : mModelImageDoublePoint.mSecondDx ;
+  property proxy Int mModelImageSecondPointDimensionUnitDx : mModelImageDoublePoint.mDimensionUnitSecondDx ;
+  property proxy Int mModelImageSecondPointDy : mModelImageDoublePoint.mSecondDy ;
+  property proxy Int mModelImageSecondPointDimensionUnitDy : mModelImageDoublePoint.mDimensionUnitSecondDy ;
 
-  toMany PackageModelImagePoint mModelImageObjects inverse toOne mRoot ;
+  toMany PackageModelImageDoublePoint mModelImageObjects inverse toOne mRoot ;
   property Bool mPointsAreLocked default no ;
 
 //--- Knob size
@@ -125,12 +124,12 @@ graphic entity PackageRoot {
     self.mModelImageData
   ;
  
-  transient Int pointsDx dependsFrom
-    self.mModelImageFirstPointX, self.mModelImageSecondPointX
+  transient Int secondPointX dependsFrom
+    self.mModelImageFirstPointX, self.mModelImageSecondPointDx
   ;
  
-  transient Int pointsDy dependsFrom
-    self.mModelImageFirstPointY, self.mModelImageSecondPointY
+  transient Int secondPointY dependsFrom
+    self.mModelImageFirstPointY, self.mModelImageSecondPointDy
   ;
  
   transient String modelImageSizeString dependsFrom self.mModelImageData ;
@@ -509,21 +508,29 @@ entity ForbiddenPadNumber {
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-graphic entity PackageModelImagePoint {
+graphic entity PackageModelImageDoublePoint {
   toOne PackageRoot mRoot inverse toMany mModelImageObjects ;
 
-  property Int mX default 0 ;
-  property Int mDimensionUnitX default 2_286 ;
-  property Int mY default 0 ;
-  property Int mDimensionUnitY default 2_286 ;
-  property NSColor mColor default black ;
+  property Int mFirstX default 457_200 ;
+  property Int mDimensionUnitFirstX default 2_286 ;
+  property Int mFirstY default 457_200 ;
+  property Int mDimensionUnitFirstY default 2_286 ;
+  property NSColor mFirstColor default green ;
+
+  property Int mSecondDx default 457_200 ;
+  property Int mDimensionUnitSecondDx default 2_286 ;
+  property Int mSecondDy default 457_200 ;
+  property Int mDimensionUnitSecondDy default 2_286 ;
+  property NSColor mSecondColor default brown ;
 
   transient EBShape objectDisplay dependsFrom
-     self.mX, self.mY, self.mColor, self.mRoot.one.mPointsAreLocked
+     self.mFirstX, self.mFirstY, self.mFirstColor,
+     self.mSecondDx, self.mSecondDy, self.mSecondColor,
+     self.mRoot.one.mPointsAreLocked
   ;
 
   transient EBShape selectionDisplay dependsFrom
-     self.mX, self.mY
+     self.mFirstX, self.mFirstY, self.mSecondDx, self.mSecondDy
   ;
 }
 
