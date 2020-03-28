@@ -56,6 +56,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_secondPointX_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_secondPointY_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_lockImageView_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_backgroundImagePageBackgroundDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_modelImageSizeString_fromElementsOfSet (inRemovedSet) // Transient property
@@ -104,6 +105,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_secondPointX_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_secondPointY_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_lockImageView_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_padNumberDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_backgroundImagePageBackgroundDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_modelImageSizeString_toElementsOfSet (inAddedSet) // Transient property
@@ -2896,6 +2898,62 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     for managedObject in inSet {
       self.mObserversOf_secondPointY.apply { (_ observer : EBEvent) in
         managedObject.secondPointY_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'lockImageView' transient property
+  //····················································································································
+
+  private var mObserversOf_lockImageView = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_lockImageView (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_lockImageView.insert (inObserver)
+    switch self.prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.lockImageView_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_lockImageView (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_lockImageView.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.lockImageView_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_lockImageView_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_lockImageView.apply { (_ observer : EBEvent) in
+        managedObject.lockImageView_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_lockImageView_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_lockImageView.apply { (_ observer : EBEvent) in
+        managedObject.lockImageView_property.removeEBObserver (observer)
       }
     }
   }

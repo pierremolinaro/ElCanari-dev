@@ -297,9 +297,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   private var mModelImagePointsLastDy = 0
   private var mModelImagePointsDyObserver : EBModelEvent? = nil
 
-  private var mModelImagePointsLockedObserver : EBModelEvent? = nil
-  private var mModelImagePointDistanceReference : CGFloat = 0.0
-  private var mModelImagePointAngleInRadiansReference : CGFloat = 0.0
+//  private var mModelImagePointsLockedObserver : EBModelEvent? = nil
 
   //····················································································································
 
@@ -323,12 +321,12 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       self.mModelImageFirstPointYObserver = observer
     }
 
-    do{
-      let observer = EBModelEvent ()
-      observer.mEventCallBack = { [weak self] in self?.modelImagePointsLockedStateDidChange () }
-      self.rootObject.mPointsAreLocked_property.addEBObserver (observer)
-      self.mModelImagePointsLockedObserver = observer
-    }
+//    do{
+//      let observer = EBModelEvent ()
+//      observer.mEventCallBack = { [weak self] in self?.modelImagePointsLockedStateDidChange () }
+//      self.rootObject.mPointsAreLocked_property.addEBObserver (observer)
+//      self.mModelImagePointsLockedObserver = observer
+//    }
 
     do{
       self.mModelImagePointsLastDx = self.rootObject.mModelImageSecondPointDx!
@@ -358,10 +356,10 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       self.rootObject.mModelImageFirstPointY_property.removeEBObserver (observer)
       self.mModelImageFirstPointYObserver = nil
     }
-    if let observer = self.mModelImagePointsLockedObserver {
-      self.rootObject.mPointsAreLocked_property.removeEBObserver (observer)
-      self.mModelImagePointsLockedObserver = nil
-    }
+//    if let observer = self.mModelImagePointsLockedObserver {
+//      self.rootObject.mPointsAreLocked_property.removeEBObserver (observer)
+//      self.mModelImagePointsLockedObserver = nil
+//    }
     if let observer = self.mModelImagePointsDxObserver {
       self.rootObject.mModelImageSecondPointDx_property.removeEBObserver (observer)
       self.mModelImagePointsDxObserver = nil
@@ -376,9 +374,11 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   fileprivate func modelImageFirstPointXDidChange () {
     let newX = self.rootObject.mModelImageFirstPointX!
-    let dx = newX - self.mModelImageFirstPointLastX
-    if dx != 0 {
+    if newX != self.mModelImageFirstPointLastX {
       self.mModelImageFirstPointLastX = newX
+      if !self.rootObject.mPointsAreLocked {
+        self.rootObject.mModelImageFirstPointXOnLock = newX
+      }
       self.applyAffineTransformToModelImage ()
     }
   }
@@ -387,9 +387,11 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   fileprivate func modelImageFirstPointYDidChange () {
     let newY = self.rootObject.mModelImageFirstPointY!
-    let dy = newY - self.mModelImageFirstPointLastY
-    if dy != 0 {
+    if newY != self.mModelImageFirstPointLastY {
       self.mModelImageFirstPointLastY = newY
+      if !self.rootObject.mPointsAreLocked {
+        self.rootObject.mModelImageFirstPointYOnLock = newY
+      }
       self.applyAffineTransformToModelImage ()
     }
   }
@@ -398,9 +400,11 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   fileprivate func modelImagePointsDxDidChange () {
     let newX = self.rootObject.mModelImageSecondPointDx!
-    let dx = newX - self.mModelImagePointsLastDx
-    if dx != 0 {
+    if newX != self.mModelImagePointsLastDx {
       self.mModelImagePointsLastDx = newX
+      if !self.rootObject.mPointsAreLocked {
+        self.rootObject.mModelImagePointsDxOnLock = newX
+      }
       self.modelImageSecondPointDidChange ()
     }
   }
@@ -409,39 +413,46 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   fileprivate func modelImagePointsDyDidChange () {
     let newY = self.rootObject.mModelImageSecondPointDy!
-    let dy = newY - self.mModelImagePointsLastDy
-    if dy != 0 {
+    if newY != self.mModelImagePointsLastDy {
       self.mModelImagePointsLastDy = newY
+      if !self.rootObject.mPointsAreLocked {
+        self.rootObject.mModelImagePointsDyOnLock = newY
+      }
       self.modelImageSecondPointDidChange ()
     }
   }
 
   //····················································································································
 
-  fileprivate func modelImagePointsLockedStateDidChange () {
-    if self.rootObject.mPointsAreLocked {
-      self.rootObject.mModelImageFirstPointXOnLock = self.rootObject.mModelImageFirstPointX!
-      self.rootObject.mModelImageFirstPointYOnLock = self.rootObject.mModelImageFirstPointY!
-      self.rootObject.mModelImagePointsDxOnLock = self.rootObject.mModelImageSecondPointDx!
-      self.rootObject.mModelImagePointsDyOnLock = self.rootObject.mModelImageSecondPointDy!
-      let dx = CGFloat (self.rootObject.mModelImagePointsDxOnLock)
-      let dy = CGFloat (self.rootObject.mModelImagePointsDyOnLock)
-      self.mModelImagePointDistanceReference = sqrt (dx * dx + dy * dy)
-      let angle = atan2 (dy, dx) // Result in radian
-      self.mModelImagePointAngleInRadiansReference = angle
-      self.applyAffineTransformToModelImage ()
-    }
-  }
+//  fileprivate func modelImagePointsLockedStateDidChange () {
+//    if self.rootObject.mPointsAreLocked {
+////      let lockDx = CGFloat (self.rootObject.mModelImagePointsDxOnLock)
+////      let lockDy = CGFloat (self.rootObject.mModelImagePointsDyOnLock)
+////      let distanceReference = sqrt (lockDx * lockDx + lockDy * lockDy)
+////      let angleReference = atan2 (lockDy, lockDx) // Result in radian
+//
+// //      let lockDx = CGFloat (self.rootObject.mModelImagePointsDxOnLock)
+////      let lockDy = CGFloat (self.rootObject.mModelImagePointsDyOnLock)
+////      self.mModelImagePointDistanceReference = sqrt (lockDx * lockDx + lockDy * lockDy)
+////      let lockAngle = atan2 (lockDy, lockDx) // Result in radian
+////      self.mModelImagePointAngleInRadiansReference = lockAngle
+////      self.applyAffineTransformToModelImage ()
+//    }
+//  }
 
   //····················································································································
 
   fileprivate func modelImageSecondPointDidChange () {
     if self.rootObject.mPointsAreLocked {
+      let lockDx = CGFloat (self.rootObject.mModelImagePointsDxOnLock)
+      let lockDy = CGFloat (self.rootObject.mModelImagePointsDyOnLock)
+      let distanceReference = sqrt (lockDx * lockDx + lockDy * lockDy)
+      let angleReference = atan2 (lockDy, lockDx) // Result in radian
       let dx = CGFloat (self.rootObject.mModelImageSecondPointDx!)
       let dy = CGFloat (self.rootObject.mModelImageSecondPointDy!)
       let newDistance = sqrt (dx * dx + dy * dy)
-      self.rootObject.mModelImageScale = Double (newDistance / self.mModelImagePointDistanceReference)
-      let angle = atan2 (dy, dx) - self.mModelImagePointAngleInRadiansReference // Result in radian
+      self.rootObject.mModelImageScale = Double (newDistance / distanceReference)
+      let angle = atan2 (dy, dx) - angleReference // Result in radian
       self.rootObject.mModelImageRotationInRadians = Double (angle)
       self.applyAffineTransformToModelImage ()
     }

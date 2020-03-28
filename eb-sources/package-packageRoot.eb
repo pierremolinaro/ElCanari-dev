@@ -135,6 +135,8 @@ graphic entity PackageRoot {
   transient String modelImageSizeString dependsFrom self.mModelImageData ;
  
   transient Bool hasModelImage dependsFrom self.mModelImageData ;
+  
+  transient NSImage lockImageView dependsFrom self.mPointsAreLocked ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

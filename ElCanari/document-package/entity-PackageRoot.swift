@@ -300,6 +300,12 @@ protocol PackageRoot_secondPointY : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageRoot_lockImageView : class {
+  var lockImageView : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageRoot_padNumberDisplay : class {
   var padNumberDisplay : EBShape? { get }
 }
@@ -388,6 +394,7 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_gridStepMultipliedByDisplayFactor,
          PackageRoot_secondPointX,
          PackageRoot_secondPointY,
+         PackageRoot_lockImageView,
          PackageRoot_padNumberDisplay,
          PackageRoot_backgroundImagePageBackgroundDisplay,
          PackageRoot_modelImageSizeString,
@@ -1439,6 +1446,29 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: lockImageView
+  //····················································································································
+
+  let lockImageView_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  var lockImageView_property_selection : EBSelection <NSImage> {
+    return self.lockImageView_property.prop
+  }
+
+  //····················································································································
+
+  var lockImageView : NSImage? {
+    switch self.lockImageView_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   To one property: mModelImageDoublePoint
   //····················································································································
 
@@ -1946,6 +1976,28 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.mModelImageFirstPointY_property.addEBObserver (self.secondPointY_property)
     self.mModelImageSecondPointDy_property.addEBObserver (self.secondPointY_property)
+  //--- Atomic property: lockImageView
+    self.lockImageView_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPointsAreLocked_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mPointsAreLocked_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageRoot_lockImageView (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPointsAreLocked_property.addEBObserver (self.lockImageView_property)
   //--- To one property: mModelImageDoublePoint
     self.mModelImageDoublePoint_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumberDisplay
@@ -2176,6 +2228,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.mModelImageSecondPointDx_property.removeEBObserver (self.secondPointX_property)
     self.mModelImageFirstPointY_property.removeEBObserver (self.secondPointY_property)
     self.mModelImageSecondPointDy_property.removeEBObserver (self.secondPointY_property)
+    self.mPointsAreLocked_property.removeEBObserver (self.lockImageView_property)
     g_Preferences?.showPadNumber_property.removeEBObserver (self.padNumberDisplay_property)
     self.packagePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     self.packageSlavePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
@@ -2541,6 +2594,14 @@ class PackageRoot : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.secondPointY_property.mObserverExplorer,
       valueExplorer: &self.secondPointY_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "lockImageView",
+      idx: self.lockImageView_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.lockImageView_property.mObserverExplorer,
+      valueExplorer: &self.lockImageView_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padNumberDisplay",

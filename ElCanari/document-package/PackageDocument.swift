@@ -272,6 +272,8 @@ import Cocoa
   @IBOutlet var mKnobSizeSlider : EBSlider? = nil
   @IBOutlet var mLineColorOfPackageGridColorWell : EBColorWell? = nil
   @IBOutlet var mLoadFromDesignButton : EBButton? = nil
+  @IBOutlet var mLockImagePointsButton : EBButton? = nil
+  @IBOutlet var mLockImageView : EBImageObserverView? = nil
   @IBOutlet var mMasterView : NSView? = nil
   @IBOutlet var mModelImageFirstPointXDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImageFirstPointXTextField : CanariDimensionTextField? = nil
@@ -289,7 +291,6 @@ import Cocoa
   @IBOutlet var mModelImagePageYPlacardUnitPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mModelImagePointDxTextField : CanariDimensionTextField? = nil
   @IBOutlet var mModelImagePointDyTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mModelImagePointsAreLockedSwitch : EBSwitch? = nil
   @IBOutlet var mModelImagePointsDxDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImagePointsDyDimensionUnitPopUp : EBPopUpButton? = nil
   @IBOutlet var mModelImageScrollView : EBScrollView? = nil
@@ -417,6 +418,7 @@ import Cocoa
   var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
   var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
   var mController_mAddSlavePadButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mLockImagePointsButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -603,6 +605,8 @@ import Cocoa
     checkOutletConnection (self.mKnobSizeSlider, "mKnobSizeSlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mLineColorOfPackageGridColorWell, "mLineColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mLoadFromDesignButton, "mLoadFromDesignButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mLockImagePointsButton, "mLockImagePointsButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mLockImageView, "mLockImageView", EBImageObserverView.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
     checkOutletConnection (self.mModelImageFirstPointXDimensionUnitPopUp, "mModelImageFirstPointXDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImageFirstPointXTextField, "mModelImageFirstPointXTextField", CanariDimensionTextField.self, #file, #line)
@@ -620,7 +624,6 @@ import Cocoa
     checkOutletConnection (self.mModelImagePageYPlacardUnitPopUpButton, "mModelImagePageYPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImagePointDxTextField, "mModelImagePointDxTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mModelImagePointDyTextField, "mModelImagePointDyTextField", CanariDimensionTextField.self, #file, #line)
-    checkOutletConnection (self.mModelImagePointsAreLockedSwitch, "mModelImagePointsAreLockedSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mModelImagePointsDxDimensionUnitPopUp, "mModelImagePointsDxDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImagePointsDyDimensionUnitPopUp, "mModelImagePointsDyDimensionUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mModelImageScrollView, "mModelImageScrollView", EBScrollView.self, #file, #line)
@@ -1119,7 +1122,7 @@ import Cocoa
     self.mModelImageSecondPointXTextField?.bind_dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
     self.mModelImageSecondPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
     self.mModelImageSecondPointYTextField?.bind_dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
-    self.mModelImagePointsAreLockedSwitch?.bind_value (self.rootObject.mPointsAreLocked_property, file: #file, line: #line)
+    self.mLockImageView?.bind_image (self.rootObject.lockImageView_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
@@ -1214,6 +1217,16 @@ import Cocoa
       self.rootObject.packagePads_property.count_property.addEBObserver (controller)
       self.mController_mAddSlavePadButton_enabled = controller
     }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return !self.rootObject.mPointsAreLocked_property_selection
+        },
+        outlet: self.mLockImagePointsButton
+      )
+      self.rootObject.mPointsAreLocked_property.addEBObserver (controller)
+      self.mController_mLockImagePointsButton_enabled = controller
+    }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Install bindings \(durationMS) ms")
@@ -1241,6 +1254,8 @@ import Cocoa
     self.mRunProgramButton?.action = #selector (PackageDocument.runProgramAction (_:))
     self.mClearProgramErrorButton?.target = self
     self.mClearProgramErrorButton?.action = #selector (PackageDocument.clearProgramErrorAction (_:))
+    self.mLockImagePointsButton?.target = self
+    self.mLockImagePointsButton?.action = #selector (PackageDocument.lockImagePointsAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (PackageDocument.resetVersionAction (_:))
     if LOG_OPERATION_DURATION {
@@ -1487,7 +1502,7 @@ import Cocoa
     self.mModelImageSecondPointXTextField?.unbind_dimensionAndUnit ()
     self.mModelImageSecondPointYDimensionUnitPopUp?.unbind_selectedTag ()
     self.mModelImageSecondPointYTextField?.unbind_dimensionAndUnit ()
-    self.mModelImagePointsAreLockedSwitch?.unbind_value ()
+    self.mLockImageView?.unbind_image ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
     self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mModelImageOpacitySlider_enabled!)
@@ -1510,6 +1525,8 @@ import Cocoa
     self.mController_mIssueScrollView_hidden = nil
     self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
     self.mController_mAddSlavePadButton_enabled = nil
+    self.rootObject.mPointsAreLocked_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
+    self.mController_mLockImagePointsButton_enabled = nil
   //--------------------------- Unbind array controllers
     self.mPackageObjectsController.unbind_ebView (self.mComposedPackageView)
     self.mModelImageObjectsController.unbind_ebView (self.mModelImageView)
@@ -1547,6 +1564,7 @@ import Cocoa
     self.mLoadFromDesignButton?.target = nil
     self.mRunProgramButton?.target = nil
     self.mClearProgramErrorButton?.target = nil
+    self.mLockImagePointsButton?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddArcButton?.ebCleanUp ()
@@ -1650,6 +1668,8 @@ import Cocoa
     self.mKnobSizeSlider?.ebCleanUp ()
     self.mLineColorOfPackageGridColorWell?.ebCleanUp ()
     self.mLoadFromDesignButton?.ebCleanUp ()
+    self.mLockImagePointsButton?.ebCleanUp ()
+    self.mLockImageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
     self.mModelImageFirstPointXDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImageFirstPointXTextField?.ebCleanUp ()
@@ -1667,7 +1687,6 @@ import Cocoa
     self.mModelImagePageYPlacardUnitPopUpButton?.ebCleanUp ()
     self.mModelImagePointDxTextField?.ebCleanUp ()
     self.mModelImagePointDyTextField?.ebCleanUp ()
-    self.mModelImagePointsAreLockedSwitch?.ebCleanUp ()
     self.mModelImagePointsDxDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImagePointsDyDimensionUnitPopUp?.ebCleanUp ()
     self.mModelImageScrollView?.ebCleanUp ()
@@ -1883,6 +1902,8 @@ import Cocoa
     self.mKnobSizeSlider = nil
     self.mLineColorOfPackageGridColorWell = nil
     self.mLoadFromDesignButton = nil
+    self.mLockImagePointsButton = nil
+    self.mLockImageView = nil
     self.mMasterView = nil
     self.mModelImageFirstPointXDimensionUnitPopUp = nil
     self.mModelImageFirstPointXTextField = nil
@@ -1900,7 +1921,6 @@ import Cocoa
     self.mModelImagePageYPlacardUnitPopUpButton = nil
     self.mModelImagePointDxTextField = nil
     self.mModelImagePointDyTextField = nil
-    self.mModelImagePointsAreLockedSwitch = nil
     self.mModelImagePointsDxDimensionUnitPopUp = nil
     self.mModelImagePointsDyDimensionUnitPopUp = nil
     self.mModelImageScrollView = nil

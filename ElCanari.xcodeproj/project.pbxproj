@@ -1727,6 +1727,10 @@
 		CFBAFCE71DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAFCE31DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_symbols.swift */; };
 		CFBBC5DE22C8B4C0007634A1 /* selectionController-ProjectDocument-componentInBoardSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBBC5DD22C8B4C0007634A1 /* selectionController-ProjectDocument-componentInBoardSelectionController.swift */; };
 		CFBBC5DF22C8B4C0007634A1 /* selectionController-ProjectDocument-componentInBoardSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBBC5DD22C8B4C0007634A1 /* selectionController-ProjectDocument-componentInBoardSelectionController.swift */; };
+		CFBCB7A6242FA87A000B42CE /* action-PackageDocument-lockImagePointsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCB7A5242FA87A000B42CE /* action-PackageDocument-lockImagePointsAction.swift */; };
+		CFBCB7A7242FA87A000B42CE /* action-PackageDocument-lockImagePointsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCB7A5242FA87A000B42CE /* action-PackageDocument-lockImagePointsAction.swift */; };
+		CFBCB7A9242FAB70000B42CE /* transient-PackageRoot-lockImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCB7A8242FAB70000B42CE /* transient-PackageRoot-lockImageView.swift */; };
+		CFBCB7AA242FAB70000B42CE /* transient-PackageRoot-lockImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCB7A8242FAB70000B42CE /* transient-PackageRoot-lockImageView.swift */; };
 		CFBCE77622D3A4DD00DC3505 /* selectionController-ProjectDocument-boardTrackSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE77522D3A4DD00DC3505 /* selectionController-ProjectDocument-boardTrackSelectionController.swift */; };
 		CFBCE77722D3A4DD00DC3505 /* selectionController-ProjectDocument-boardTrackSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE77522D3A4DD00DC3505 /* selectionController-ProjectDocument-boardTrackSelectionController.swift */; };
 		CFBCE78022D3ACA300DC3505 /* extension-BorderCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE77B22D3ACA300DC3505 /* extension-BorderCurve.swift */; };
@@ -3394,6 +3398,8 @@
 		CFBAFCE21DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_packages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-Preferences-mValueRevealInFinder_packages.swift"; sourceTree = "<group>"; };
 		CFBAFCE31DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_symbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-Preferences-mValueRevealInFinder_symbols.swift"; sourceTree = "<group>"; };
 		CFBBC5DD22C8B4C0007634A1 /* selectionController-ProjectDocument-componentInBoardSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ProjectDocument-componentInBoardSelectionController.swift"; sourceTree = "<group>"; };
+		CFBCB7A5242FA87A000B42CE /* action-PackageDocument-lockImagePointsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-PackageDocument-lockImagePointsAction.swift"; sourceTree = "<group>"; };
+		CFBCB7A8242FAB70000B42CE /* transient-PackageRoot-lockImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageRoot-lockImageView.swift"; sourceTree = "<group>"; };
 		CFBCE77522D3A4DD00DC3505 /* selectionController-ProjectDocument-boardTrackSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ProjectDocument-boardTrackSelectionController.swift"; sourceTree = "<group>"; };
 		CFBCE77B22D3ACA300DC3505 /* extension-BorderCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-BorderCurve.swift"; sourceTree = "<group>"; };
 		CFBCE77C22D3ACA300DC3505 /* extension-BoardTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-BoardTrack.swift"; sourceTree = "<group>"; };
@@ -3939,6 +3945,7 @@
 				CF67AC7623E9C58B0099DE60 /* action-PackageDocument-addZoneForbiddenPadNumberAction.swift */,
 				CFDEC6D921D5467900857F9C /* action-PackageDocument-clearProgramErrorAction.swift */,
 				CF4B3AC221D50F0A001217C6 /* action-PackageDocument-loadFromDesignAction.swift */,
+				CFBCB7A5242FA87A000B42CE /* action-PackageDocument-lockImagePointsAction.swift */,
 				CF61BA3721CCEA66000CC5EF /* action-PackageDocument-programHelpAction.swift */,
 				CF67AC7923E9C9AF0099DE60 /* action-PackageDocument-removeZoneForbiddenPadNumberAction.swift */,
 				CF4D083021C2DE4200380ACA /* action-PackageDocument-resetVersionAction.swift */,
@@ -4060,6 +4067,7 @@
 				CF4A6C0C21C6BF0F00997A19 /* transient-PackageRoot-gridStepMultipliedByDisplayFactor.swift */,
 				CFF6D6882427780B00BE9CC9 /* transient-PackageRoot-hasModelImage.swift */,
 				CF00845F21C4363E003627E9 /* transient-PackageRoot-issues.swift */,
+				CFBCB7A8242FAB70000B42CE /* transient-PackageRoot-lockImageView.swift */,
 				CFB3655B2426BF1800C4B761 /* transient-PackageRoot-modelImageSizeString.swift */,
 				CF00846121C4363E003627E9 /* transient-PackageRoot-noIssue.swift */,
 				CF2A01F321DE7AA400F3A379 /* transient-PackageRoot-padNumberDisplay.swift */,
@@ -6590,6 +6598,7 @@
 				CF1D9C8721BBFBB100FFF459 /* EBGraphicView-key-down.swift in Sources */,
 				CF30CDE721C5709800CFE9CC /* transient-PackagePad-selectionDisplay.swift in Sources */,
 				CFEB7CEC233A28A10060A97A /* transient-WireInSchematic-netClassName.swift in Sources */,
+				CFBCB7A9242FAB70000B42CE /* transient-PackageRoot-lockImageView.swift in Sources */,
 				CFEB7BF4233A28130060A97A /* transient-NetClassInProject-netWarningCount.swift in Sources */,
 				CFEB7B8A233A26330060A97A /* transient-DeviceInProject-versionString.swift in Sources */,
 				CF07780923521A4E00F56EAB /* EBReadOnlyValueProperty.swift in Sources */,
@@ -7119,6 +7128,7 @@
 				CFEB7AB3233A23270060A97A /* transient-BoardConnector-netNameFromTracks.swift in Sources */,
 				CF4D083121C2DE4300380ACA /* action-PackageDocument-resetVersionAction.swift in Sources */,
 				CFDB681120E2A2C6006D4E90 /* transient-BoardModel-frontComponentNameSegments.swift in Sources */,
+				CFBCB7A6242FA87A000B42CE /* action-PackageDocument-lockImagePointsAction.swift in Sources */,
 				CF6B32FA21C91FA100E3B985 /* entity-PackageDimension.swift in Sources */,
 				CF3C62F21DD897E000978A09 /* transient-FontRoot-sampleStringBezierPath.swift in Sources */,
 				CF8A118221B1C72300A8030C /* ApplicationDelegate-batch.swift in Sources */,
@@ -7799,6 +7809,7 @@
 				CFEB7B4B233A25EC0060A97A /* transient-ComponentInProject-deviceSymbolDictionary.swift in Sources */,
 				CF5C4D35219F04D600EAC52A /* action-Preferences-createUserLibraryAction.swift in Sources */,
 				CFDDD4DE21BB1529007D2F14 /* EBGraphicView-binding-gridLineColor.swift in Sources */,
+				CFBCB7AA242FAB70000B42CE /* transient-PackageRoot-lockImageView.swift in Sources */,
 				CFEB7CED233A28A10060A97A /* transient-WireInSchematic-netClassName.swift in Sources */,
 				CFEB7BF5233A28130060A97A /* transient-NetClassInProject-netWarningCount.swift in Sources */,
 				CFEB7B8B233A26330060A97A /* transient-DeviceInProject-versionString.swift in Sources */,
@@ -8328,6 +8339,7 @@
 				CFEB7AB4233A23270060A97A /* transient-BoardConnector-netNameFromTracks.swift in Sources */,
 				CF6B32FB21C91FA100E3B985 /* entity-PackageDimension.swift in Sources */,
 				CFA42F9A229AEACF000AA8C8 /* toone-SymbolPinTypeInDevice.swift in Sources */,
+				CFBCB7A7242FA87A000B42CE /* action-PackageDocument-lockImagePointsAction.swift in Sources */,
 				CFA4300C229AEB68000AA8C8 /* toone-PackageDimension.swift in Sources */,
 				CF5C4DA9219F04D600EAC52A /* transient-FontRoot-sampleStringBezierPath.swift in Sources */,
 				CFBCE78722D3ACA300DC3505 /* ProjectRoot-customized-connectors.swift in Sources */,

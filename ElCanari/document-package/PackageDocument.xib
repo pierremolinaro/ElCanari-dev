@@ -109,6 +109,8 @@
                 <outlet property="mKnobSizeSlider" destination="mJz-TI-C8L" id="x3d-Re-MQi"/>
                 <outlet property="mLineColorOfPackageGridColorWell" destination="RGr-DM-XnY" id="5JY-mz-1ib"/>
                 <outlet property="mLoadFromDesignButton" destination="Veo-5P-f4O" id="6tE-N2-2ls"/>
+                <outlet property="mLockImagePointsButton" destination="9nQ-y5-F6v" id="Yq5-hO-fft"/>
+                <outlet property="mLockImageView" destination="tQ8-Gy-NoX" id="Ihf-Cd-94u"/>
                 <outlet property="mMasterView" destination="2532" id="Zih-F1-ZkL"/>
                 <outlet property="mModelImageFirstPointXDimensionUnitPopUp" destination="LrY-FO-O1i" id="GTs-qp-LZh"/>
                 <outlet property="mModelImageFirstPointXTextField" destination="7Eg-dK-GsX" id="ULQ-0C-8zH"/>
@@ -126,7 +128,6 @@
                 <outlet property="mModelImagePageYPlacardUnitPopUpButton" destination="ZrP-mw-Blc" id="i9F-d5-mZB"/>
                 <outlet property="mModelImagePointDxTextField" destination="CNZ-Qb-QyI" id="zNr-mM-Rql"/>
                 <outlet property="mModelImagePointDyTextField" destination="YsA-s8-m7w" id="h6h-iy-PsW"/>
-                <outlet property="mModelImagePointsAreLockedSwitch" destination="cbX-Hf-xIm" id="319-ZV-w6j"/>
                 <outlet property="mModelImagePointsDxDimensionUnitPopUp" destination="iWi-f5-zQH" id="nq7-Kv-q3P"/>
                 <outlet property="mModelImagePointsDyDimensionUnitPopUp" destination="nQs-uR-u0S" id="aUh-Ku-WVg"/>
                 <outlet property="mModelImageScrollView" destination="N7h-H4-Lu6" id="zBn-X2-QP2"/>
@@ -2318,7 +2319,7 @@ Gw
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" ambiguous="YES" id="PuU-Cb-ahz">
                                 <rect key="frame" x="1" y="1" width="412" height="484"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2477" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
@@ -6209,14 +6210,6 @@ DQ
                         <outlet property="nextKeyView" destination="2161" id="gzK-QM-EVb"/>
                     </connections>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbX-Hf-xIm" customClass="EBSwitch">
-                    <rect key="frame" x="17" y="94" width="216" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Points are Locked to Model Image" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="xuc-2M-Opj">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="135" translatesAutoresizingMaskIntoConstraints="NO" id="Om9-bO-FIz" customClass="EBTextObserverField">
                     <rect key="frame" x="94" y="292" width="139" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -6308,8 +6301,21 @@ DQ
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9nQ-y5-F6v" customClass="EBButton">
+                    <rect key="frame" x="12" y="87" width="189" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Lock Points to Model Image" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lLp-Ej-Bve">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQ8-Gy-NoX" customClass="EBImageObserverView">
+                    <rect key="frame" x="204" y="88" width="27" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Oxw-5C-NP2"/>
+                </imageView>
             </subviews>
-            <point key="canvasLocation" x="-54" y="27"/>
+            <point key="canvasLocation" x="-54" y="26.5"/>
         </customView>
     </objects>
     <resources>

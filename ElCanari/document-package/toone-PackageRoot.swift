@@ -56,6 +56,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     inOldValue?.gridStepMultipliedByDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_gridStepMultipliedByDisplayFactor) // Transient property
     inOldValue?.secondPointX_property.removeEBObserversFrom (&self.mObserversOf_secondPointX) // Transient property
     inOldValue?.secondPointY_property.removeEBObserversFrom (&self.mObserversOf_secondPointY) // Transient property
+    inOldValue?.lockImageView_property.removeEBObserversFrom (&self.mObserversOf_lockImageView) // Transient property
     inOldValue?.padNumberDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
     inOldValue?.backgroundImagePageBackgroundDisplay_property.removeEBObserversFrom (&self.mObserversOf_backgroundImagePageBackgroundDisplay) // Transient property
     inOldValue?.modelImageSizeString_property.removeEBObserversFrom (&self.mObserversOf_modelImageSizeString) // Transient property
@@ -104,6 +105,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     self.mInternalValue?.gridStepMultipliedByDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_gridStepMultipliedByDisplayFactor) // Transient property
     self.mInternalValue?.secondPointX_property.addEBObserversFrom (&self.mObserversOf_secondPointX) // Transient property
     self.mInternalValue?.secondPointY_property.addEBObserversFrom (&self.mObserversOf_secondPointY) // Transient property
+    self.mInternalValue?.lockImageView_property.addEBObserversFrom (&self.mObserversOf_lockImageView) // Transient property
     self.mInternalValue?.padNumberDisplay_property.addEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
     self.mInternalValue?.backgroundImagePageBackgroundDisplay_property.addEBObserversFrom (&self.mObserversOf_backgroundImagePageBackgroundDisplay) // Transient property
     self.mInternalValue?.modelImageSizeString_property.addEBObserversFrom (&self.mObserversOf_modelImageSizeString) // Transient property
@@ -3533,6 +3535,75 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     for managedObject in inSet {
       self.mObserversOf_secondPointY.apply { (_ observer : EBEvent) in
         managedObject.secondPointY_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'lockImageView' transient property
+  //····················································································································
+
+  private var mObserversOf_lockImageView = EBWeakEventSet ()
+
+  //····················································································································
+
+  var lockImageView_property_selection : EBSelection <NSImage?> {
+    if let model = self.propval {
+      switch (model.lockImageView_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_lockImageView (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_lockImageView.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.lockImageView_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_lockImageView (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_lockImageView.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.lockImageView_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_lockImageView_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_lockImageView.apply { (_ observer : EBEvent) in
+        managedObject.lockImageView_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_lockImageView_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_lockImageView.apply { (_ observer : EBEvent) in
+        managedObject.lockImageView_property.removeEBObserver (observer)
       }
     }
   }

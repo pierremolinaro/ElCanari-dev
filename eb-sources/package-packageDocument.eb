@@ -591,7 +591,9 @@ document PackageDocument root PackageRoot {
      $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit
   ;
 
-  outlet EBSwitch mModelImagePointsAreLockedSwitch $value root.mPointsAreLocked ;
+  action lockImagePointsAction ;
+  outlet EBButton mLockImagePointsButton $run lockImagePointsAction $enabled !root.mPointsAreLocked ;
+  outlet EBImageObserverView mLockImageView $image root.lockImageView ;
 
 //--------------- Infos Tab
 //--- Comments
