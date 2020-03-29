@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -108,7 +108,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="24" height="24"/>
-                        <imageView key="view" id="1903" customClass="EBImageObserverView">
+                        <imageView key="view" id="1903" customClass="EBImageObserverView" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="9" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="NSStatusUnavailable" id="1904"/>
@@ -192,7 +192,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" id="1523"/>
                                 </imageView>
-                                <button toolTip="Delete Image" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1041" customClass="EBButton">
+                                <button toolTip="Delete Image" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1041" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                     <rect key="frame" x="20" y="-1" width="28" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="-" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="1521">
@@ -200,7 +200,7 @@
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button toolTip="Paste Image from Pasteboard" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2106" customClass="EBButton">
+                                <button toolTip="Paste Image from Pasteboard" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2106" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                     <rect key="frame" x="56" y="-1" width="89" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="Paste Image" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="2107">
@@ -208,7 +208,7 @@
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button toolTip="Copy Image to Pasteboard" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2176" customClass="EBButton">
+                                <button toolTip="Copy Image to Pasteboard" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2176" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                     <rect key="frame" x="153" y="-1" width="89" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="Copy Image" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="2177">
@@ -222,7 +222,7 @@
                             <rect key="frame" x="278" y="0.0" width="419" height="356"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1047" customClass="EBButton">
+                                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1047" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                     <rect key="frame" x="52" y="-1" width="82" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="Show Doc" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1526">
@@ -262,7 +262,7 @@
                                                                 <rect key="frame" x="1" y="1" width="85" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
-                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQy-wb-rPt" customClass="EBIntObserverField">
+                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQy-wb-rPt" customClass="EBIntObserverField" customModule="ElCanari" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="17"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="size..." id="fPc-Zt-AXc">
@@ -296,7 +296,7 @@
                                                                 <rect key="frame" x="89" y="1" width="291" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
-                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9bu-Dk-vug" customClass="EBTextObserverField">
+                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9bu-Dk-vug" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="291" height="17"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="4Sd-Je-giF">
@@ -339,7 +339,7 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1046" customClass="EBButton">
+                                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1046" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                     <rect key="frame" x="20" y="0.0" width="24" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="-" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1525">
@@ -347,7 +347,7 @@
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1051" customClass="EBButton">
+                                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1051" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                     <rect key="frame" x="142" y="0.0" width="82" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="roundRect" title="Save As…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1527">
@@ -363,7 +363,7 @@
                         <real value="250"/>
                     </holdingPriorities>
                 </splitView>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1038" customClass="EBTextField">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1038" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="384" width="657" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="the description…" drawsBackground="YES" id="1520">
@@ -379,7 +379,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button toolTip="Add a Symbol to Device" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1070" customClass="EBButton">
+                <button toolTip="Add a Symbol to Device" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1070" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="14" y="341" width="100" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="File Library…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1530">
@@ -392,7 +392,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="Ixa-Rs-kYV">
                         <rect key="frame" x="1" y="1" width="332" height="384"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1069" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
@@ -419,7 +419,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gtc-qu-hK2" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gtc-qu-hK2" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="11" y="292" width="110" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Horizontal Flip" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="pfg-Ij-hvB">
@@ -432,9 +432,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="5OJ-Hr-ua2">
                         <rect key="frame" x="0.0" y="0.0" width="215" height="134"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" spellingCorrection="YES" id="PmD-YT-0cS" customClass="EBTextObserverView">
+                            <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" spellingCorrection="YES" id="PmD-YT-0cS" customClass="EBTextObserverView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="215" height="134"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -462,7 +462,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gxS-GS-l7o" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gxS-GS-l7o" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="131" y="292" width="110" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Vertical Flip" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="A2w-KV-74W">
@@ -479,7 +479,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRe-Ta-RQL" customClass="EBTextField">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRe-Ta-RQL" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="14" y="190" width="225" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="ZB6-o0-wmY">
@@ -506,7 +506,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wzz-dY-cEX" customClass="EBTextObserverField">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wzz-dY-cEX" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="12" y="246" width="229" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" selectable="YES" alignment="center" title="··· symbol type ···" id="NLL-P8-gY5">
@@ -545,7 +545,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="IMs-PA-jTt">
                         <rect key="frame" x="1" y="1" width="326" height="385"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1082" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
@@ -563,7 +563,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <button toolTip="Add a Package to Device" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1084" customClass="EBButton">
+                <button toolTip="Add a Package to Device" verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1084" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="363" width="230" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Add Package from File Library…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1531">
@@ -571,7 +571,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ev9-QZ-LcM" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ev9-QZ-LcM" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="17" y="310" width="235" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Vertical Flip" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="4OD-VJ-CKy">
@@ -579,7 +579,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zYp-cL-5jj" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zYp-cL-5jj" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="17" y="335" width="235" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Horizontal Flip" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="dIM-BY-koj">
@@ -587,12 +587,12 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sD-hv-ODc" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sD-hv-ODc" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="225" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h7x-2V-t5V" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h7x-2V-t5V" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="65" y="226" width="187" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show Front Side Pads" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="x0t-cV-vjG">
@@ -600,17 +600,17 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c4g-Jr-krY" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c4g-Jr-krY" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="198" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YyN-tZ-4oZ" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YyN-tZ-4oZ" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="279" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jk-KC-1pv" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jk-KC-1pv" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="65" y="280" width="187" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show Packages" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="0Z1-ps-Zxz">
@@ -618,12 +618,12 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M70-7R-iem" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M70-7R-iem" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="252" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOd-Kf-0lm" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOd-Kf-0lm" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="65" y="253" width="187" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show Pad Numbers" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="SaU-fk-PRa">
@@ -631,7 +631,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="895-zd-2Rh" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="895-zd-2Rh" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="65" y="199" width="187" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show Back Side Pads" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="zhU-Cd-7jb">
@@ -644,9 +644,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="qYJ-4j-LDi">
                         <rect key="frame" x="0.0" y="0.0" width="215" height="162"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="d26-at-nSF" customClass="EBTextObserverView">
+                            <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="d26-at-nSF" customClass="EBTextObserverView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="216" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -834,7 +834,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="132" height="428"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1100" customClass="EBButton">
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1100" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                             <rect key="frame" x="6" y="375" width="120" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="bind" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1532">
@@ -842,7 +842,7 @@
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1102" customClass="EBButton">
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1102" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                             <rect key="frame" x="6" y="99" width="120" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="unbind_all" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1534">
@@ -850,7 +850,7 @@
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1101" customClass="EBButton">
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1101" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                             <rect key="frame" x="7" y="332" width="118" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="nc" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1533">
@@ -858,7 +858,7 @@
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1104" customClass="EBButton">
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1104" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                             <rect key="frame" x="4" y="197" width="122" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="unbind" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1535">
@@ -987,7 +987,7 @@
                         <real value="250"/>
                     </holdingPriorities>
                 </splitView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKV-he-pIq" customClass="EBTextObserverField">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKV-he-pIq" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="24" y="205" width="632" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" alignment="center" title="Cannot perform assignments: there are several packages, and their pad names are not the same." id="rG6-Uk-KFz">
@@ -1002,7 +1002,7 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="1124" userLabel="Page : Library" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="704" height="516"/>
             <subviews>
-                <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2116" customClass="EBButton">
+                <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2116" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="479" width="250" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Reset Symbols and Packages Version" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2119">
@@ -1025,7 +1025,7 @@
                                         <rect key="frame" x="3" y="3" width="659" height="204"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1129" customClass="EBButton">
+                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1129" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="539" y="139" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Update" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="1538">
@@ -1065,7 +1065,7 @@
                                                                             <rect key="frame" x="1" y="1" width="71" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zo3-aw-NB5" customClass="EBTextObserverField">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zo3-aw-NB5" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="71" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="version" id="fmc-uH-l4M">
@@ -1099,7 +1099,7 @@
                                                                             <rect key="frame" x="75" y="1" width="68" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2pk-yk-9Tu" customClass="EBIntObserverField">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2pk-yk-9Tu" customClass="EBIntObserverField" customModule="ElCanari" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="68" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="instances" id="HPb-I9-U3p">
@@ -1133,7 +1133,7 @@
                                                                             <rect key="frame" x="146" y="1" width="225" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aDb-7M-9Yo" customClass="EBTextObserverField">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aDb-7M-9Yo" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="225" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="B9a-bI-pNE">
@@ -1167,7 +1167,7 @@
                                                                             <rect key="frame" x="374" y="1" width="118" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55b-s0-K1Q" customClass="EBTextObserverField">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55b-s0-K1Q" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="118" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="UXU-6z-Glt">
@@ -1201,7 +1201,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableHeaderView>
                                             </scrollView>
-                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1128" customClass="EBButton">
+                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1128" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="539" y="165" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Reset Version" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="1537">
@@ -1209,7 +1209,7 @@
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
-                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2200" customClass="EBButton">
+                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2200" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="539" y="100" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Export…" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="2201">
@@ -1217,7 +1217,7 @@
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
-                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1136" customClass="EBButton">
+                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1136" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="539" y="74" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Edit" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" inset="2" id="1540">
@@ -1225,7 +1225,7 @@
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
-                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7A-DY-W4R" customClass="EBButton">
+                                            <button toolTip="Update Selected Symbol From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w7A-DY-W4R" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="539" y="40" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Remove" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" inset="2" id="XjR-h6-WHr">
@@ -1281,7 +1281,7 @@
                                                                             <rect key="frame" x="1" y="1" width="73" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZF-ot-qsm" customClass="EBTextObserverField">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZF-ot-qsm" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="73" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="version" id="zSg-jK-VDE">
@@ -1315,7 +1315,7 @@
                                                                             <rect key="frame" x="77" y="1" width="300" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBL-VG-mXI" customClass="EBTextObserverField">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBL-VG-mXI" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="iks-n7-Z89">
@@ -1349,7 +1349,7 @@
                                                                             <rect key="frame" x="380" y="1" width="112" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wx7-5b-HdK" customClass="EBTextObserverField">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wx7-5b-HdK" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="112" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="cG6-jd-oiy">
@@ -1383,7 +1383,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableHeaderView>
                                             </scrollView>
-                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1606" customClass="EBButton">
+                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1606" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="539" y="166" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Reset Version" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="1611">
@@ -1391,7 +1391,7 @@
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
-                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1607" customClass="EBButton">
+                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1607" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="539" y="140" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Update" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="1610">
@@ -1399,7 +1399,7 @@
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
-                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1608" customClass="EBButton">
+                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1608" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="539" y="95" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Edit" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="1609">
@@ -1407,7 +1407,7 @@
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                             </button>
-                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2195" customClass="EBButton">
+                                            <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2195" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="539" y="69" width="100" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="roundRect" title="Export…" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="2196">
@@ -1426,7 +1426,7 @@
                         <real value="250"/>
                     </holdingPriorities>
                 </splitView>
-                <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2117" customClass="EBButton">
+                <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2117" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="278" y="479" width="250" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Update Symbols and Packages…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2118">
@@ -1441,7 +1441,7 @@
             <rect key="frame" x="0.0" y="0.0" width="688" height="408"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button toolTip="Resets version to 0." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1189" customClass="EBButton">
+                <button toolTip="Resets version to 0." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1189" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="499" y="371" width="169" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Reset Version and Signature" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1553">
@@ -1449,7 +1449,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1171" customClass="EBTextField">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1171" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="103" y="369" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="…" drawsBackground="YES" id="1547">
@@ -1474,7 +1474,7 @@
                         <rect key="frame" x="1" y="1" width="548" height="233"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView ambiguous="YES" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1180" customClass="EBTextView">
+                            <textView ambiguous="YES" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1180" customClass="EBTextView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="548" height="233"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1502,7 +1502,7 @@
                         <rect key="frame" x="1" y="1" width="548" height="93"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView ambiguous="YES" editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1168" customClass="EBTextObserverView">
+                            <textView ambiguous="YES" editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1168" customClass="EBTextObserverView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="548" height="93"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>

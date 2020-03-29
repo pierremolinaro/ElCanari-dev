@@ -8,7 +8,7 @@ import Cocoa
 //   EBTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBTextField) class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+class EBTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 

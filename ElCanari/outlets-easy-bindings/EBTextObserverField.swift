@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBTextObserverField) class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+class EBTextObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 

@@ -8,7 +8,7 @@ import Cocoa
 //   EBStepper
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBStepper) class EBStepper : NSStepper, EBUserClassNameProtocol {
+class EBStepper : NSStepper, EBUserClassNameProtocol {
 
   //····················································································································
 

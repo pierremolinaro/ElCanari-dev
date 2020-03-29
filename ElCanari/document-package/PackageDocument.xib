@@ -352,7 +352,7 @@ Gw
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="24" height="24"/>
-                        <imageView key="view" id="2889" customClass="EBImageObserverView">
+                        <imageView key="view" id="2889" customClass="EBImageObserverView" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="9" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSStatusAvailable" id="2890"/>
@@ -444,7 +444,7 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eZb-FG-UPl" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eZb-FG-UPl" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="340" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="D6J-Qr-hCR" id="WA2-2x-w5e">
@@ -473,7 +473,7 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z8L-iN-5jF" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z8L-iN-5jF" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="162" y="419" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="ngZ-Yo-aiJ" id="0pP-9b-TWh">
@@ -502,7 +502,7 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6NZ-jJ-iu6" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6NZ-jJ-iu6" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="446" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="VQX-Mw-Jkz" id="Rho-pP-yf4">
@@ -549,7 +549,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Odu-Ak-Gdz" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Odu-Ak-Gdz" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="162" y="367" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="5hM-H6-fnC" id="R20-MB-VlU">
@@ -578,7 +578,7 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ivr-i1-8SD" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ivr-i1-8SD" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="245" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="LwY-dq-heG" id="v6t-QC-Zcj">
@@ -616,7 +616,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BVq-Br-Qnp" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BVq-Br-Qnp" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="162" y="272" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="kVw-27-IYy" id="QEG-He-SbI">
@@ -645,7 +645,7 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M05-9A-E0a" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M05-9A-E0a" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="299" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="Il3-7r-NY6" id="Hih-yL-Do1">
@@ -673,7 +673,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PXv-uR-9gS" customClass="EBButton">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PXv-uR-9gS" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="19" y="217" width="210" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Set Label at Mid X" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ejj-ZW-XFt">
@@ -681,7 +681,7 @@ Gw
                         <font key="font" metaFont="cellTitle"/>
                     </buttonCell>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FOH-L4-vhs" customClass="EBButton">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FOH-L4-vhs" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="19" y="191" width="210" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Set Label at Mid Y" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qxs-QS-GRt">
@@ -738,7 +738,7 @@ Gw
                         <outlet property="nextKeyView" destination="1556" id="wtg-oE-2i3"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1503" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1503" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="159" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1506" id="2732">
@@ -779,7 +779,7 @@ Gw
                         <outlet property="nextKeyView" destination="3221" id="Li3-pp-357"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3220" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3220" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="216" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3238" id="3236">
@@ -811,7 +811,7 @@ Gw
                         <outlet property="nextKeyView" destination="1539" id="mnr-P6-438"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3222" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3222" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="192" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3227" id="3225">
@@ -883,7 +883,7 @@ Gw
                         <outlet property="nextKeyView" destination="3219" id="NOm-pF-U75"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1730" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1730" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="166" y="44" width="64" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="mm" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="90000" inset="2" preferredEdge="maxY" selectedItem="1738" id="2751">
@@ -924,7 +924,7 @@ Gw
                         <outlet property="nextKeyView" destination="1739" id="v94-cu-Ur1"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1717" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1717" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="166" y="71" width="64" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="mm" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="90000" inset="2" preferredEdge="maxY" selectedItem="1719" id="2748">
@@ -943,7 +943,7 @@ Gw
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <button fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1571" customClass="EBSwitch">
+                <button fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1571" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="16" y="17" width="216" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Path Is Closed" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2738">
@@ -1011,7 +1011,7 @@ Gw
                         <outlet property="nextKeyView" destination="1708" id="20R-FK-Wky"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1641" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1641" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="392" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1649" id="2756">
@@ -1043,7 +1043,7 @@ Gw
                         <outlet property="nextKeyView" destination="1657" id="E6U-Ie-lXe"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1682" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1682" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="448" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1684" id="2761">
@@ -1075,7 +1075,7 @@ Gw
                         <outlet property="nextKeyView" destination="1650" id="nmr-1c-uG9"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1671" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1671" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="420" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1673" id="2760">
@@ -1112,7 +1112,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1699" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1699" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="365" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1701" id="2762">
@@ -1138,7 +1138,7 @@ Gw
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2276" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2276" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="116" y="265" width="114" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="No" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="2278" id="2767">
@@ -1169,7 +1169,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2107" customClass="EBTextField">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2107" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="95" y="290" width="136" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="2766">
@@ -1231,7 +1231,7 @@ Gw
                         <outlet property="nextKeyView" destination="mpR-i0-OBO" id="IqG-Zr-RNK"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iwC-9k-XKO" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iwC-9k-XKO" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="164" y="400" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="vFv-Rj-Htf" id="02O-pg-aDe">
@@ -1263,7 +1263,7 @@ Gw
                         <outlet property="nextKeyView" destination="3If-eJ-r7w" id="FJK-RP-VZO"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PLb-Yv-UkW" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PLb-Yv-UkW" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="164" y="456" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="a13-Mf-q2Z" id="ERh-N3-vRT">
@@ -1295,7 +1295,7 @@ Gw
                         <outlet property="nextKeyView" destination="iFZ-uj-7f9" id="vE6-yp-v1c"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l4d-II-dDA" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l4d-II-dDA" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="164" y="428" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="61t-nC-7fH" id="eq5-or-CbI">
@@ -1323,7 +1323,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZaV-OI-c5v" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZaV-OI-c5v" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="164" y="373" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="0kj-dx-9Px" id="pB9-SP-qN7">
@@ -1361,7 +1361,7 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrh-e3-Qr9" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrh-e3-Qr9" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="320" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="uBK-46-6lL" id="AqZ-UQ-AeI">
@@ -1399,7 +1399,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A34-Hd-gs5" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A34-Hd-gs5" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="162" y="347" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="kK2-6s-tdw" id="okm-mQ-h4p">
@@ -1418,7 +1418,7 @@ Gw
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obU-Tt-UAm" customClass="EBSwitch">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obU-Tt-UAm" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="16" y="239" width="215" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Display Zone Name" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="0ge-tB-KJC">
@@ -1431,7 +1431,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="bht-xy-IlR">
                         <rect key="frame" x="1" y="0.0" width="155" height="137"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="vxD-Oh-YfB" viewBased="YES" floatsGroupRows="NO" id="06M-T0-GN0" customClass="StringArrayTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="155" height="112"/>
@@ -1491,7 +1491,7 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhk-Ly-eQ0" customClass="EBButton">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhk-Ly-eQ0" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="210" width="44" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="+" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k0H-JW-AHB">
@@ -1499,7 +1499,7 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfy-Ba-ToS" customClass="EBButton">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfy-Ba-ToS" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="186" width="44" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="-" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dxq-Xl-PKr">
@@ -1523,7 +1523,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2227" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2227" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="91" y="223" width="139" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Traversing" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="2230" id="2787">
@@ -1548,7 +1548,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2187" customClass="EBTextObserverField">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2187" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="107" width="126" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" alignment="center" title="zone…" id="2778">
@@ -1565,7 +1565,7 @@ Gw
                     <rect key="frame" x="22" y="43" width="210" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2201" customClass="EBIntObserverField">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2201" customClass="EBIntObserverField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="83" width="126" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="-100" id="2782">
@@ -1615,7 +1615,7 @@ Gw
                         <outlet property="nextKeyView" destination="2190" id="rFZ-Y3-ADd"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2192" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2192" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="270" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="2194" id="2781">
@@ -1647,7 +1647,7 @@ Gw
                         <outlet property="nextKeyView" destination="2223" id="lJz-Co-5sN"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2214" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2214" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="295" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="2216" id="2784">
@@ -1679,7 +1679,7 @@ Gw
                         <outlet property="nextKeyView" destination="2203" id="nwF-fq-bUx"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2147" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2147" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="349" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="2149" id="2769">
@@ -1711,7 +1711,7 @@ Gw
                         <outlet property="nextKeyView" destination="2161" id="RQC-V6-pZX"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2172" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2172" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="322" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="2174" id="2776">
@@ -1780,7 +1780,7 @@ Gw
                                 <outlet property="nextKeyView" destination="2225" id="VCl-Yz-AUR"/>
                             </connections>
                         </textField>
-                        <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2205" customClass="EBPopUpButton">
+                        <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2205" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="148" y="48" width="62" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="2210" id="2791">
@@ -1821,7 +1821,7 @@ Gw
                                 <outlet property="nextKeyView" destination="2225" id="Gbu-U0-Czf"/>
                             </connections>
                         </textField>
-                        <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NvH-AW-X5k" customClass="EBPopUpButton">
+                        <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NvH-AW-X5k" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="148" y="23" width="62" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="pex-co-04H" id="bVx-g8-VhG">
@@ -1859,7 +1859,7 @@ Gw
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2840" customClass="EBPopUpButton">
+                        <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2840" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="148" y="0.0" width="62" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="2851" id="2846">
@@ -1898,7 +1898,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2181" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2181" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="91" y="245" width="139" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Square" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="2184" id="2777">
@@ -1922,7 +1922,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1N6-cc-BMY" customClass="EBIntObserverField">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1N6-cc-BMY" customClass="EBIntObserverField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="20" width="128" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="zzz" id="xir-Zn-dYv">
@@ -1957,7 +1957,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Alp-cP-5em" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Alp-cP-5em" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="77" y="131" width="153" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Surface, Bottom Side" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="TKB-Yw-zfY" id="b6O-Wc-1qA">
@@ -2005,7 +2005,7 @@ Gw
                         <outlet property="nextKeyView" destination="JaH-TP-fHh" id="8Bl-Ul-PkN"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hag-fc-YVA" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hag-fc-YVA" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="178" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="PKA-9K-AYc" id="aJn-mc-DKn">
@@ -2037,7 +2037,7 @@ Gw
                         <outlet property="nextKeyView" destination="Fh8-O9-36i" id="EZV-Xe-Ie7"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BuJ-nh-UMB" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BuJ-nh-UMB" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="203" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="yZn-UF-BLx" id="b4O-sx-R53">
@@ -2069,7 +2069,7 @@ Gw
                         <outlet property="nextKeyView" destination="y2s-dh-Clu" id="WCs-V6-Sd9"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9cN-fz-kcv" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9cN-fz-kcv" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="257" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="qVe-yQ-fdb" id="S7h-ss-48z">
@@ -2101,7 +2101,7 @@ Gw
                         <outlet property="nextKeyView" destination="5EG-n7-oHI" id="SEr-g5-KFd"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TdA-CA-JVF" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TdA-CA-JVF" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="230" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="xJa-rq-QoE" id="Q90-Jw-o8n">
@@ -2146,7 +2146,7 @@ Gw
                                 <outlet property="nextKeyView" destination="eg9-r4-1aG" id="kMn-aO-W0O"/>
                             </connections>
                         </textField>
-                        <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fup-GP-8gO" customClass="EBPopUpButton">
+                        <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fup-GP-8gO" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="148" y="51" width="62" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="UCL-Tc-0S9" id="QCO-7D-8ca">
@@ -2187,7 +2187,7 @@ Gw
                                 <outlet property="nextKeyView" destination="eg9-r4-1aG" id="An2-E1-Psp"/>
                             </connections>
                         </textField>
-                        <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPT-9w-Iex" customClass="EBPopUpButton">
+                        <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPT-9w-Iex" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="148" y="26" width="62" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="0Vz-Bb-EC0" id="drP-SD-Ptj">
@@ -2225,7 +2225,7 @@ Gw
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1tX-a5-2W5" customClass="EBPopUpButton">
+                        <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1tX-a5-2W5" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="148" y="0.0" width="62" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="uVO-OH-xG0" id="QMY-t7-j7u">
@@ -2264,7 +2264,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BBT-fz-Qxh" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BBT-fz-Qxh" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="77" y="153" width="153" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Square" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="JlO-94-OFQ" id="frw-Cv-Y5d">
@@ -2440,7 +2440,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9MV-P4-K1A" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9MV-P4-K1A" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="85" y="421" width="94" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Counterclock" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="VjK-Ea-BAt" id="eDH-ia-4sF">
@@ -2490,7 +2490,7 @@ Gw
                         </textField>
                     </subviews>
                 </customView>
-                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9g7-fY-oe8" customClass="EBSlider">
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9g7-fY-oe8" customClass="EBSlider" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="87" y="445" width="164" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" controlSize="small" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="below" numberOfTickMarks="11" allowsTickMarkValuesOnly="YES" sliderType="linear" id="GU4-sT-WAw"/>
@@ -2516,9 +2516,9 @@ Gw
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="8av-jO-Zwb">
                         <rect key="frame" x="1" y="1" width="629" height="418"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView ambiguous="YES" importsGraphics="NO" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" spellingCorrection="YES" smartInsertDelete="YES" id="2514" customClass="EBTextView">
+                            <textView ambiguous="YES" importsGraphics="NO" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" spellingCorrection="YES" smartInsertDelete="YES" id="2514" customClass="EBTextView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="629" height="418"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2548,7 +2548,7 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S67-ds-8Uk" customClass="EBButton">
+                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S67-ds-8Uk" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="643" y="449" width="25" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="help" bezelStyle="helpButton" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="BPI-qL-Wk2">
@@ -2556,7 +2556,7 @@ Gw
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Veo-5P-f4O" customClass="EBButton">
+                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Veo-5P-f4O" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="456" width="120" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Load from Design" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="GSb-3Y-BOr">
@@ -2564,7 +2564,7 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2516" customClass="EBButton">
+                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2516" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="237" y="456" width="100" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Clear Error" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2817">
@@ -2572,7 +2572,7 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J66-Da-WpD" customClass="EBTextField">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J66-Da-WpD" customClass="EBTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="343" y="457" width="296" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" id="KCh-d6-n41">
@@ -2581,7 +2581,7 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2515" customClass="EBButton">
+                <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2515" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="148" y="456" width="80" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Run" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2816">
@@ -2596,7 +2596,7 @@ Gw
             <rect key="frame" x="0.0" y="0.0" width="717" height="319"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button toolTip="Resets version to 0." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2529" customClass="EBButton">
+                <button toolTip="Resets version to 0." verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2529" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="19" y="282" width="164" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Reset Version and Signature" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2822">
@@ -2609,9 +2609,9 @@ Gw
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="G1e-Bg-H7O">
                         <rect key="frame" x="1" y="1" width="591" height="253"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView ambiguous="YES" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="2519" customClass="EBTextView">
+                            <textView ambiguous="YES" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="2519" customClass="EBTextView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="147" width="591" height="253"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -2664,7 +2664,7 @@ Gw
                         <outlet property="nextKeyView" destination="3023" id="aKU-bm-e45"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3019" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3019" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="339" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3065" id="3063">
@@ -2695,7 +2695,7 @@ Gw
                         <outlet property="nextKeyView" destination="3018" id="FQW-FR-gcI"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3025" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3025" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="366" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3038" id="3030">
@@ -2726,7 +2726,7 @@ Gw
                         <outlet property="nextKeyView" destination="3022" id="3DI-aG-5Ya"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3020" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3020" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="447" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3056" id="3054">
@@ -2757,7 +2757,7 @@ Gw
                         <outlet property="nextKeyView" destination="3024" id="JPS-QB-fR9"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3021" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3021" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="420" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3047" id="3045">
@@ -2803,7 +2803,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZG8-kT-g4P" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZG8-kT-g4P" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="298" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="QVb-P3-uy5" id="g7U-fz-Edo">
@@ -2860,7 +2860,7 @@ Gw
                         <outlet property="nextKeyView" destination="3150" id="HR6-Ei-shG"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3091" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3091" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="342" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3133" id="3125">
@@ -2891,7 +2891,7 @@ Gw
                         <outlet property="nextKeyView" destination="3092" id="DT5-kA-R27"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3089" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3089" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="367" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3138" id="3136">
@@ -2922,7 +2922,7 @@ Gw
                         <outlet property="nextKeyView" destination="3095" id="B7Z-Ze-kkF"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3097" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3097" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="448" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3108" id="3100">
@@ -2953,7 +2953,7 @@ Gw
                         <outlet property="nextKeyView" destination="3090" id="PFd-zk-Cef"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3096" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3096" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="423" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3117" id="3109">
@@ -3011,7 +3011,7 @@ Gw
                         <outlet property="nextKeyView" destination="3146" id="dGl-Ow-1ek"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3149" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3149" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="214" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3188" id="3180">
@@ -3042,7 +3042,7 @@ Gw
                         <outlet property="nextKeyView" destination="3152" id="3lV-b1-gpx"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3151" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3151" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="293" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3171" id="3169">
@@ -3073,7 +3073,7 @@ Gw
                         <outlet property="nextKeyView" destination="3148" id="QP5-NR-EFZ"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3153" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3153" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="268" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3160" id="3158">
@@ -3122,7 +3122,7 @@ Gw
                         <outlet property="nextKeyView" destination="3094" id="PyV-HQ-5Kz"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3147" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3147" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="189" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3193" id="3191">
@@ -3168,7 +3168,7 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3256" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3256" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="368" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3305" id="3303">
@@ -3197,7 +3197,7 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3264" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3264" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="447" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3275" id="3267">
@@ -3226,7 +3226,7 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3263" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3263" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="420" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3284" id="3276">
@@ -3272,7 +3272,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3258" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3258" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="341" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="3300" id="3292">
@@ -3298,7 +3298,7 @@ Gw
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yVN-Jd-CYp" customClass="EBTextObserverField">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yVN-Jd-CYp" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="9" y="483" width="233" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="-- issues --" id="dpW-fu-3lL">
@@ -3312,7 +3312,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="sbM-Qg-nHw">
                         <rect key="frame" x="1" y="1" width="205" height="432"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="Zuh-hX-zHT" customClass="CanariIssueTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="205" height="432"/>
@@ -3346,6 +3346,7 @@ Gw
                                 </tableColumns>
                             </tableView>
                         </subviews>
+                        <nil key="backgroundColor"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="6mm-Km-kDO">
                         <rect key="frame" x="-100" y="-100" width="223" height="15"/>
@@ -3356,7 +3357,7 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sho-9k-G8X" customClass="EBButton">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sho-9k-G8X" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="23" y="456" width="207" height="19"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Hide issue" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Duf-TK-amW">
@@ -3371,7 +3372,7 @@ Gw
             <rect key="frame" x="0.0" y="0.0" width="250" height="255"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ljc-JI-iq8" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ljc-JI-iq8" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="97" y="127" width="135" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Vertical" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Ruw-uJ-JLX">
@@ -3379,7 +3380,7 @@ Gw
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qr8-TS-wkl" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qr8-TS-wkl" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="97" y="145" width="135" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Horizontal" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="QQS-uO-hOv">
@@ -3405,7 +3406,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vjx-yN-SDQ" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vjx-yN-SDQ" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="100" y="194" width="130" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="10 Steps" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="10" inset="2" preferredEdge="maxY" selectedItem="msX-IM-sgE" id="DoS-Ve-dJj">
@@ -3423,7 +3424,7 @@ Gw
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1tS-aK-Csg" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1tS-aK-Csg" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="100" y="218" width="130" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Line Grid" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="2" inset="2" preferredEdge="maxY" selectedItem="CFY-Of-iDy" id="iV6-je-ZTA">
@@ -3438,7 +3439,7 @@ Gw
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hXF-SK-mZ4" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hXF-SK-mZ4" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="127" y="83" width="103" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="Fsv-lC-15f" id="Szb-mh-dVp">
@@ -3491,7 +3492,7 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxN-vd-WAz" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxN-vd-WAz" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="127" y="107" width="103" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="6ef-se-jKb" id="NY5-BC-3GI">
@@ -3521,7 +3522,7 @@ Gw
                         <outlet property="nextKeyView" destination="2161" id="7ye-oa-Tya"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rjO-fP-PCm" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rjO-fP-PCm" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="163" y="172" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="qu5-CM-oY0" id="4pi-NZ-TN1">
@@ -3549,7 +3550,7 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJz-TI-C8L" customClass="EBSlider">
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJz-TI-C8L" customClass="EBSlider" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="17" y="18" width="215" height="24"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" state="on" alignment="left" minValue="7" maxValue="41" doubleValue="21" tickMarkPosition="above" numberOfTickMarks="18" allowsTickMarkValuesOnly="YES" sliderType="linear" id="LYH-Wd-GBg"/>
@@ -5647,12 +5648,12 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RGr-DM-XnY" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RGr-DM-XnY" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="210" width="54" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sLd-L6-DKb" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sLd-L6-DKb" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="105" y="240" width="54" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -5666,7 +5667,7 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q12-hN-BG9" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q12-hN-BG9" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="105" y="270" width="54" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -5680,7 +5681,7 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sw0-fi-5DY" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sw0-fi-5DY" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="105" y="144" width="125" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="0.5 Point" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="5" inset="2" preferredEdge="maxY" selectedItem="HT2-Is-EGG" id="NGu-Bz-IJi">
@@ -5724,12 +5725,12 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fk5-P5-sdt" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fk5-P5-sdt" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="169" width="54" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lMU-XP-D32" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lMU-XP-D32" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="2" y="106" width="97" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Pad Numbers" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Ym3-bm-chQ">
@@ -5737,7 +5738,7 @@ DQ
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9nP-NT-1k8" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9nP-NT-1k8" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="106" y="50" width="54" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -5750,12 +5751,12 @@ DQ
                     <rect key="frame" x="5" y="197" width="233" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jvN-SU-KrT" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jvN-SU-KrT" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="105" y="104" width="54" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gom-0a-3Ut" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gom-0a-3Ut" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="3" y="52" width="97" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Top Side Pads" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="iLS-KS-HTH">
@@ -5763,7 +5764,7 @@ DQ
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJs-2h-EMj" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJs-2h-EMj" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="3" y="22" width="96" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Bottom Side" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="4TG-Sw-N6e">
@@ -5771,7 +5772,7 @@ DQ
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Z8-JF-9J9" customClass="EBFontButton">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Z8-JF-9J9" customClass="EBFontButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="105" y="79" width="141" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Font pad number…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="eE6-8Y-TKH">
@@ -5779,7 +5780,7 @@ DQ
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wU-kk-tL1" customClass="EBColorWell">
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wU-kk-tL1" customClass="EBColorWell" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="106" y="20" width="54" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -5800,7 +5801,7 @@ DQ
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" ambiguous="YES" id="a7R-xu-Y3w">
                                 <rect key="frame" x="1" y="1" width="412" height="484"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LMg-aa-bds" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
@@ -5819,7 +5820,7 @@ DQ
                         </scrollView>
                     </subviews>
                 </customView>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnb-1c-m3H" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnb-1c-m3H" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="98" y="373" width="135" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Vertical" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="HxE-x8-0Ix">
@@ -5827,7 +5828,7 @@ DQ
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-i8-P6d" customClass="EBSwitch">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-i8-P6d" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="98" y="391" width="135" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Horizontal" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="axa-Js-p4Z">
@@ -5853,7 +5854,7 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UJB-LV-Z9O" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UJB-LV-Z9O" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="101" y="440" width="130" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="1 Step" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="1" inset="2" preferredEdge="maxY" selectedItem="Q5D-zI-nZB" id="cj5-SS-Lv2">
@@ -5878,7 +5879,7 @@ DQ
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AmZ-Ya-T5Y" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AmZ-Ya-T5Y" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="101" y="464" width="130" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Line Grid" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="2" inset="2" preferredEdge="maxY" selectedItem="TqG-ug-yzJ" id="zaP-Xa-RDK">
@@ -5893,7 +5894,7 @@ DQ
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZrP-mw-Blc" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZrP-mw-Blc" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="128" y="329" width="103" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="7M4-YU-bDN" id="4mF-2v-MVF">
@@ -5946,7 +5947,7 @@ DQ
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X8n-LY-VwZ" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X8n-LY-VwZ" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="128" y="353" width="103" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="kB7-1Q-tEy" id="mHe-Fg-rx4">
@@ -5976,7 +5977,7 @@ DQ
                         <outlet property="nextKeyView" destination="2161" id="Sln-gs-vyj"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4hN-ri-dNg" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4hN-ri-dNg" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="164" y="418" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="BAB-gZ-OQq" id="sxG-X6-Loe">
@@ -6034,7 +6035,7 @@ DQ
                         <outlet property="nextKeyView" destination="2161" id="IvN-Bf-bHQ"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LrY-FO-O1i" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LrY-FO-O1i" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="164" y="254" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="5xC-wv-4rO" id="2Ee-SG-7VU">
@@ -6066,7 +6067,7 @@ DQ
                         <outlet property="nextKeyView" destination="2161" id="3JE-SO-vdw"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cdY-aj-6WN" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cdY-aj-6WN" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="164" y="227" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="fTg-3f-xGX" id="rIy-hy-RK7">
@@ -6094,7 +6095,7 @@ DQ
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-5Z-ANb" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-5Z-ANb" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="164" y="148" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="A5L-1v-4cO" id="QBh-c9-Any">
@@ -6113,7 +6114,7 @@ DQ
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gvv-bF-Dwq" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gvv-bF-Dwq" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="164" y="121" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="WDi-de-b2h" id="yoh-wX-GZy">
@@ -6203,7 +6204,7 @@ DQ
                         <outlet property="nextKeyView" destination="2161" id="gzK-QM-EVb"/>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="135" translatesAutoresizingMaskIntoConstraints="NO" id="Om9-bO-FIz" customClass="EBTextObserverField">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="135" translatesAutoresizingMaskIntoConstraints="NO" id="Om9-bO-FIz" customClass="EBTextObserverField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="94" y="292" width="139" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="pZh-PA-YRP">
@@ -6238,7 +6239,7 @@ DQ
                         <outlet property="nextKeyView" destination="2161" id="AHS-R0-4Wl"/>
                     </connections>
                 </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iWi-f5-zQH" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iWi-f5-zQH" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="164" y="199" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="m3l-Ay-HJH" id="Bz1-tr-sry">
@@ -6257,7 +6258,7 @@ DQ
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nQs-uR-u0S" customClass="EBPopUpButton">
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nQs-uR-u0S" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="164" y="172" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="Fjc-jR-3jH" id="EBv-oX-5pq">
@@ -6294,7 +6295,7 @@ DQ
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9nQ-y5-F6v" customClass="EBButton">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9nQ-y5-F6v" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="12" y="87" width="189" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Lock Points to Model Image" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lLp-Ej-Bve">
@@ -6302,7 +6303,7 @@ DQ
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQ8-Gy-NoX" customClass="EBImageObserverView">
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQ8-Gy-NoX" customClass="EBImageObserverView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="204" y="88" width="27" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Oxw-5C-NP2"/>

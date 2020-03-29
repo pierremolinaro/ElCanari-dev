@@ -8,7 +8,7 @@ import Cocoa
 //   EBImageObserverView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBImageObserverView) class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
+class EBImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 

@@ -8,7 +8,7 @@ import Cocoa
 //   EBIntObserverField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBIntObserverField) class EBIntObserverField : NSTextField, EBUserClassNameProtocol {
+class EBIntObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 

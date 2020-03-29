@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBColorWell) class EBColorWell : NSColorWell, EBUserClassNameProtocol {
+class EBColorWell : NSColorWell, EBUserClassNameProtocol {
 
   //····················································································································
 

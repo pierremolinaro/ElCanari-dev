@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBProgressIndicator) class EBProgressIndicator : NSProgressIndicator, EBUserClassNameProtocol {
+class EBProgressIndicator : NSProgressIndicator, EBUserClassNameProtocol {
 
   //····················································································································
 
