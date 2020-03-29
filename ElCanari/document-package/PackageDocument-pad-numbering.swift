@@ -16,7 +16,7 @@ extension CustomizedPackageDocument {
     self.rootObject.packageZones_property.addEBObserverOf_rect (self.mPadNumberingObserver)
     self.rootObject.packageZones_property.addEBObserverOf_zoneNumbering (self.mPadNumberingObserver)
     self.rootObject.packageZones_property.addEBObserver (self.mPadNumberingObserver)
-    self.rootObject.packageZones_property.addEBObserverOf_forbiddenPadArray (self.mPadNumberingObserver)
+//    self.rootObject.packageZones_property.addEBObserverOf_forbiddenPadArray (self.mPadNumberingObserver)
     self.rootObject.counterClockNumberingStartAngle_property.addEBObserver (self.mPadNumberingObserver)
   }
 

@@ -50,12 +50,12 @@
                                     <action selector="orderFrontStandardAboutPanel:" target="-2" id="142"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Check for Library Updates…" id="tfP-CB-tqy" customClass="EBMenuItem">
+                            <menuItem title="Check for Library Updates…" id="tfP-CB-tqy" customClass="EBMenuItem" customModule="ElCanari" customModuleProvider="target">
                                 <connections>
                                     <action selector="updateLibrary:" target="212" id="Q51-DX-2et"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Check for Application Updates…" id="1186" customClass="EBMenuItem">
+                            <menuItem title="Check for Application Updates…" id="1186" customClass="EBMenuItem" customModule="ElCanari" customModuleProvider="target">
                                 <connections>
                                     <action selector="checkForUpdates:" target="O6f-y5-yve" id="9H2-M7-WfY"/>
                                 </connections>

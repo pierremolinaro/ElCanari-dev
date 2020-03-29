@@ -271,7 +271,9 @@ import Cocoa
   @IBOutlet var mIssuesInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mKnobSizeSlider : EBSlider? = nil
   @IBOutlet var mLineColorOfPackageGridColorWell : EBColorWell? = nil
+  @IBOutlet var mLoadDIL16ModelImageFromResourcesdMenuItem : EBMenuItem? = nil
   @IBOutlet var mLoadFromDesignButton : EBButton? = nil
+  @IBOutlet var mLoadModelImageFromPasteboardMenuItem : EBMenuItem? = nil
   @IBOutlet var mLockImagePointsButton : EBButton? = nil
   @IBOutlet var mLockImageView : EBImageObserverView? = nil
   @IBOutlet var mMasterView : NSView? = nil
@@ -346,7 +348,9 @@ import Cocoa
   @IBOutlet var mProgramHelpSheet : NSPanel? = nil
   @IBOutlet var mProgramPageView : CanariViewWithKeyView? = nil
   @IBOutlet var mProgramTextView : EBTextView? = nil
+  @IBOutlet var mRemoveModelImageMenuItem : EBMenuItem? = nil
   @IBOutlet var mRemoveZoneForbiddenPadNumberButton : EBButton? = nil
+  @IBOutlet var mResetModelImagePointsMenuItem : EBMenuItem? = nil
   @IBOutlet var mResetVersionButton : EBButton? = nil
   @IBOutlet var mRunProgramButton : EBButton? = nil
   @IBOutlet var mSegmentInspectorView : CanariViewWithKeyView? = nil
@@ -418,6 +422,10 @@ import Cocoa
   var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
   var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
   var mController_mAddSlavePadButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mLoadModelImageFromPasteboardMenuItem_enabled : MultipleBindingController_enabled? = nil
+  var mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled : MultipleBindingController_enabled? = nil
+  var mController_mRemoveModelImageMenuItem_enabled : MultipleBindingController_enabled? = nil
+  var mController_mResetModelImagePointsMenuItem_enabled : MultipleBindingController_enabled? = nil
   var mController_mLockImagePointsButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
@@ -604,7 +612,9 @@ import Cocoa
     checkOutletConnection (self.mIssuesInspectorView, "mIssuesInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mKnobSizeSlider, "mKnobSizeSlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mLineColorOfPackageGridColorWell, "mLineColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mLoadDIL16ModelImageFromResourcesdMenuItem, "mLoadDIL16ModelImageFromResourcesdMenuItem", EBMenuItem.self, #file, #line)
     checkOutletConnection (self.mLoadFromDesignButton, "mLoadFromDesignButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mLoadModelImageFromPasteboardMenuItem, "mLoadModelImageFromPasteboardMenuItem", EBMenuItem.self, #file, #line)
     checkOutletConnection (self.mLockImagePointsButton, "mLockImagePointsButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mLockImageView, "mLockImageView", EBImageObserverView.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
@@ -679,7 +689,9 @@ import Cocoa
     checkOutletConnection (self.mProgramHelpSheet, "mProgramHelpSheet", NSPanel.self, #file, #line)
     checkOutletConnection (self.mProgramPageView, "mProgramPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mProgramTextView, "mProgramTextView", EBTextView.self, #file, #line)
+    checkOutletConnection (self.mRemoveModelImageMenuItem, "mRemoveModelImageMenuItem", EBMenuItem.self, #file, #line)
     checkOutletConnection (self.mRemoveZoneForbiddenPadNumberButton, "mRemoveZoneForbiddenPadNumberButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mResetModelImagePointsMenuItem, "mResetModelImagePointsMenuItem", EBMenuItem.self, #file, #line)
     checkOutletConnection (self.mResetVersionButton, "mResetVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRunProgramButton, "mRunProgramButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSegmentInspectorView, "mSegmentInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -1110,14 +1122,14 @@ import Cocoa
     self.mModelImagePageXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageXPlacardUnit_property, file: #file, line: #line)
     self.mModelImagePageYPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageYPlacardUnit_property, file: #file, line: #line)
     self.mModelImageSizeTextField?.bind_valueObserver (self.rootObject.modelImageSizeString_property, file: #file, line: #line)
-    self.mModelImageFirstPointXDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageFirstPointDimensionUnitX_property, file: #file, line: #line)
-    self.mModelImageFirstPointXTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mModelImageFirstPointDimensionUnitX_property, file: #file, line: #line)
-    self.mModelImageFirstPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageFirstPointDimensionUnitY_property, file: #file, line: #line)
-    self.mModelImageFirstPointYTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mModelImageFirstPointDimensionUnitY_property, file: #file, line: #line)
-    self.mModelImagePointsDxDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointDimensionUnitDx_property, file: #file, line: #line)
-    self.mModelImagePointDxTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDx_property, self.rootObject.mModelImageSecondPointDimensionUnitDx_property, file: #file, line: #line)
-    self.mModelImagePointsDyDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointDimensionUnitDy_property, file: #file, line: #line)
-    self.mModelImagePointDyTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mModelImageSecondPointDimensionUnitDy_property, file: #file, line: #line)
+    self.mModelImageFirstPointXDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mDimensionUnitFirstModelPointX_property, file: #file, line: #line)
+    self.mModelImageFirstPointXTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mDimensionUnitFirstModelPointX_property, file: #file, line: #line)
+    self.mModelImageFirstPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mDimensionUnitFirstModelPointY_property, file: #file, line: #line)
+    self.mModelImageFirstPointYTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mDimensionUnitFirstModelPointY_property, file: #file, line: #line)
+    self.mModelImagePointsDxDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mDimensionUnitSecondModelPointDx_property, file: #file, line: #line)
+    self.mModelImagePointDxTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDx_property, file: #file, line: #line)
+    self.mModelImagePointsDyDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mDimensionUnitSecondModelPointDy_property, file: #file, line: #line)
+    self.mModelImagePointDyTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mDimensionUnitSecondModelPointDy_property, file: #file, line: #line)
     self.mModelImageSecondPointXDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
     self.mModelImageSecondPointXTextField?.bind_dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
     self.mModelImageSecondPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointXUnit_property, file: #file, line: #line)
@@ -1220,6 +1232,46 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
+          return !self.rootObject.hasModelImage_property_selection
+        },
+        outlet: self.mLoadModelImageFromPasteboardMenuItem
+      )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
+      self.mController_mLoadModelImageFromPasteboardMenuItem_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return !self.rootObject.hasModelImage_property_selection
+        },
+        outlet: self.mLoadDIL16ModelImageFromResourcesdMenuItem
+      )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
+      self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.rootObject.hasModelImage_property_selection
+        },
+        outlet: self.mRemoveModelImageMenuItem
+      )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
+      self.mController_mRemoveModelImageMenuItem_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.rootObject.hasModelImage_property_selection
+        },
+        outlet: self.mResetModelImagePointsMenuItem
+      )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
+      self.mController_mResetModelImagePointsMenuItem_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
           return (!self.rootObject.mPointsAreLocked_property_selection && self.rootObject.hasModelImage_property_selection)
         },
         outlet: self.mLockImagePointsButton
@@ -1255,6 +1307,14 @@ import Cocoa
     self.mRunProgramButton?.action = #selector (PackageDocument.runProgramAction (_:))
     self.mClearProgramErrorButton?.target = self
     self.mClearProgramErrorButton?.action = #selector (PackageDocument.clearProgramErrorAction (_:))
+    self.mLoadModelImageFromPasteboardMenuItem?.target = self
+    self.mLoadModelImageFromPasteboardMenuItem?.action = #selector (PackageDocument.loadModelImageFromPasteboardAction (_:))
+    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.target = self
+    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.action = #selector (PackageDocument.loadDIL16ModelImageFromResourcesAction (_:))
+    self.mRemoveModelImageMenuItem?.target = self
+    self.mRemoveModelImageMenuItem?.action = #selector (PackageDocument.removeModelImageAction (_:))
+    self.mResetModelImagePointsMenuItem?.target = self
+    self.mResetModelImagePointsMenuItem?.action = #selector (PackageDocument.resetModelImagePointsAction (_:))
     self.mLockImagePointsButton?.target = self
     self.mLockImagePointsButton?.action = #selector (PackageDocument.lockImagePointsAction (_:))
     self.mResetVersionButton?.target = self
@@ -1526,6 +1586,14 @@ import Cocoa
     self.mController_mIssueScrollView_hidden = nil
     self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
     self.mController_mAddSlavePadButton_enabled = nil
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadModelImageFromPasteboardMenuItem_enabled!)
+    self.mController_mLoadModelImageFromPasteboardMenuItem_enabled = nil
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled!)
+    self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled = nil
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mRemoveModelImageMenuItem_enabled!)
+    self.mController_mRemoveModelImageMenuItem_enabled = nil
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mResetModelImagePointsMenuItem_enabled!)
+    self.mController_mResetModelImagePointsMenuItem_enabled = nil
     self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
     self.rootObject.mPointsAreLocked_property.removeEBObserver (self.mController_mLockImagePointsButton_enabled!)
     self.mController_mLockImagePointsButton_enabled = nil
@@ -1566,6 +1634,10 @@ import Cocoa
     self.mLoadFromDesignButton?.target = nil
     self.mRunProgramButton?.target = nil
     self.mClearProgramErrorButton?.target = nil
+    self.mLoadModelImageFromPasteboardMenuItem?.target = nil
+    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.target = nil
+    self.mRemoveModelImageMenuItem?.target = nil
+    self.mResetModelImagePointsMenuItem?.target = nil
     self.mLockImagePointsButton?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
@@ -1669,7 +1741,9 @@ import Cocoa
     self.mIssuesInspectorView?.ebCleanUp ()
     self.mKnobSizeSlider?.ebCleanUp ()
     self.mLineColorOfPackageGridColorWell?.ebCleanUp ()
+    self.mLoadDIL16ModelImageFromResourcesdMenuItem?.ebCleanUp ()
     self.mLoadFromDesignButton?.ebCleanUp ()
+    self.mLoadModelImageFromPasteboardMenuItem?.ebCleanUp ()
     self.mLockImagePointsButton?.ebCleanUp ()
     self.mLockImageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
@@ -1744,7 +1818,9 @@ import Cocoa
     self.mProgramHelpSheet?.ebCleanUp ()
     self.mProgramPageView?.ebCleanUp ()
     self.mProgramTextView?.ebCleanUp ()
+    self.mRemoveModelImageMenuItem?.ebCleanUp ()
     self.mRemoveZoneForbiddenPadNumberButton?.ebCleanUp ()
+    self.mResetModelImagePointsMenuItem?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mRunProgramButton?.ebCleanUp ()
     self.mSegmentInspectorView?.ebCleanUp ()
@@ -1903,7 +1979,9 @@ import Cocoa
     self.mIssuesInspectorView = nil
     self.mKnobSizeSlider = nil
     self.mLineColorOfPackageGridColorWell = nil
+    self.mLoadDIL16ModelImageFromResourcesdMenuItem = nil
     self.mLoadFromDesignButton = nil
+    self.mLoadModelImageFromPasteboardMenuItem = nil
     self.mLockImagePointsButton = nil
     self.mLockImageView = nil
     self.mMasterView = nil
@@ -1978,7 +2056,9 @@ import Cocoa
     self.mProgramHelpSheet = nil
     self.mProgramPageView = nil
     self.mProgramTextView = nil
+    self.mRemoveModelImageMenuItem = nil
     self.mRemoveZoneForbiddenPadNumberButton = nil
+    self.mResetModelImagePointsMenuItem = nil
     self.mResetVersionButton = nil
     self.mRunProgramButton = nil
     self.mSegmentInspectorView = nil

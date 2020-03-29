@@ -5,8 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// WARNING! In IB, Action should be set to "Send On Enter Only"
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBIntField) class EBIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+class EBIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
@@ -23,7 +25,7 @@ import Cocoa
     self.delegate = self
     noteObjectAllocation (self)
   }
-  
+
   //····················································································································
 
   deinit {
@@ -34,7 +36,7 @@ import Cocoa
   //    NSTextFieldDelegate delegate function
   //····················································································································
 
-  func controlTextDidChange (_ inNotification : Notification) {
+  func controlTextDidChange (_ inUnusedNotification : Notification) {
     if self.mSendContinously {
       if let inputString = currentEditor()?.string {
         // NSLog ("inputString %@", inputString)
@@ -43,7 +45,8 @@ import Cocoa
         if number == nil {
           _ = control (
             self,
-            didFailToFormatString:inputString, errorDescription:String (format:"The value “%@” is invalid.", inputString)
+            didFailToFormatString: inputString,
+            errorDescription: "The “\(inputString)” value is invalid."
           )
         }else{
           NSApp.sendAction (self.action!, to: self.target, from: self)
@@ -56,9 +59,9 @@ import Cocoa
   //    NSTextFieldDelegate delegate function
   //····················································································································
   
-  func control (_ control: NSControl,
-                didFailToFormatString string: String,
-                errorDescription error: String?) -> Bool {
+  func control (_ control : NSControl,
+                didFailToFormatString string : String,
+                errorDescription error : String?) -> Bool {
     let alert = NSAlert ()
     if let window = control.window {
       alert.messageText = error!
@@ -97,28 +100,36 @@ import Cocoa
 
   //····················································································································
 
-  private var mValueController : Controller_EBIntField_value?
+  private var mValueController : Controller_EBIntField_value? = nil
   private var mSendContinously : Bool = false
 
   //····················································································································
 
-  func bind_value (_ object:EBReadWriteProperty_Int, file:String, line:Int, sendContinously:Bool, autoFormatter:Bool) {
-    mSendContinously = sendContinously
-    mValueController = Controller_EBIntField_value (
-      object:object,
-      outlet:self,
-      file:file,
-      line:line,
-      sendContinously:sendContinously,
-      autoFormatter:autoFormatter
+  func bind_value (_ object : EBReadWriteProperty_Int,
+                   file : String,
+                   line : Int,
+                   sendContinously : Bool,
+                   autoFormatter : Bool) {
+    if self.cell?.sendsActionOnEndEditing ?? true {
+      presentErrorWindow (file, line, "In IB, \"Action\" should be set to \"Send On Enter Only\"")
+    }
+    self.cell?.sendsActionOnEndEditing = false
+    self.mSendContinously = sendContinously
+    self.mValueController = Controller_EBIntField_value (
+      object: object,
+      outlet: self,
+      file: file,
+      line: line,
+      sendContinously: sendContinously,
+      autoFormatter: autoFormatter
     )
   }
 
   //····················································································································
 
   func unbind_value () {
-    mValueController?.unregister ()
-    mValueController = nil
+    self.mValueController?.unregister ()
+    self.mValueController = nil
   }
 
   //····················································································································
@@ -141,17 +152,16 @@ final class Controller_EBIntField_value : EBSimpleController {
         file : String,
         line : Int,
         sendContinously : Bool,
-        autoFormatter : Bool)
-  {
-    mObject = object
-    mOutlet = outlet
+        autoFormatter : Bool) {
+    self.mObject = object
+    self.mOutlet = outlet
     super.init (observedObjects: [object], callBack: { outlet.updateValue (object) } )
-    mOutlet.target = self
-    mOutlet.action = #selector(Controller_EBIntField_value.action(_:))
+    self.mOutlet.target = self
+    self.mOutlet.action = #selector(Controller_EBIntField_value.action(_:))
     if autoFormatter {
       let formatter = NumberFormatter ()
-      mOutlet.formatter = formatter
-    }else if mOutlet.formatter == nil {
+      self.mOutlet.formatter = formatter
+    }else if self.mOutlet.formatter == nil {
       presentErrorWindow (file, line, "the outlet has no formatter")
     }else if !(mOutlet.formatter is NumberFormatter) {
       presentErrorWindow (file, line, "the formatter should be an NSNumberFormatter")
@@ -173,6 +183,7 @@ final class Controller_EBIntField_value : EBSimpleController {
   }
 
   //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -184,7 +195,7 @@ final class Controller_EBIntField_value : EBSimpleController {
 
   //····················································································································
 
-  func checkOutlet (_ columnName : String, file:String, line:Int) {
+  func checkOutlet (_ columnName : String, file : String, line : Int) {
     if let cellOutlet : NSObject = self.mCellOutlet {
       if !(cellOutlet is EBIntField) {
         presentErrorWindow (file, line, "\"\(columnName)\" column view is not an instance of EBIntField")
@@ -195,6 +206,7 @@ final class Controller_EBIntField_value : EBSimpleController {
   }
 
   //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

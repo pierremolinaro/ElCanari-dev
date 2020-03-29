@@ -12,20 +12,8 @@ protocol PackageModelImageDoublePoint_mFirstX : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageModelImageDoublePoint_mDimensionUnitFirstX : class {
-  var mDimensionUnitFirstX : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol PackageModelImageDoublePoint_mFirstY : class {
   var mFirstY : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol PackageModelImageDoublePoint_mDimensionUnitFirstY : class {
-  var mDimensionUnitFirstY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -42,20 +30,8 @@ protocol PackageModelImageDoublePoint_mSecondDx : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageModelImageDoublePoint_mDimensionUnitSecondDx : class {
-  var mDimensionUnitSecondDx : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol PackageModelImageDoublePoint_mSecondDy : class {
   var mSecondDy : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol PackageModelImageDoublePoint_mDimensionUnitSecondDy : class {
-  var mDimensionUnitSecondDy : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -82,14 +58,10 @@ protocol PackageModelImageDoublePoint_selectionDisplay : class {
 
 class PackageModelImageDoublePoint : EBGraphicManagedObject,
          PackageModelImageDoublePoint_mFirstX,
-         PackageModelImageDoublePoint_mDimensionUnitFirstX,
          PackageModelImageDoublePoint_mFirstY,
-         PackageModelImageDoublePoint_mDimensionUnitFirstY,
          PackageModelImageDoublePoint_mFirstColor,
          PackageModelImageDoublePoint_mSecondDx,
-         PackageModelImageDoublePoint_mDimensionUnitSecondDx,
          PackageModelImageDoublePoint_mSecondDy,
-         PackageModelImageDoublePoint_mDimensionUnitSecondDy,
          PackageModelImageDoublePoint_mSecondColor,
          PackageModelImageDoublePoint_objectDisplay,
          PackageModelImageDoublePoint_selectionDisplay {
@@ -112,23 +84,6 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   var mFirstX_property_selection : EBSelection <Int> { return self.mFirstX_property.prop }
 
   //····················································································································
-  //   Atomic property: mDimensionUnitFirstX
-  //····················································································································
-
-  let mDimensionUnitFirstX_property = EBStoredProperty_Int (defaultValue: 2286)
-
-  //····················································································································
-
-  var mDimensionUnitFirstX : Int {
-    get { return self.mDimensionUnitFirstX_property.propval }
-    set { self.mDimensionUnitFirstX_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mDimensionUnitFirstX_property_selection : EBSelection <Int> { return self.mDimensionUnitFirstX_property.prop }
-
-  //····················································································································
   //   Atomic property: mFirstY
   //····················································································································
 
@@ -144,23 +99,6 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   var mFirstY_property_selection : EBSelection <Int> { return self.mFirstY_property.prop }
-
-  //····················································································································
-  //   Atomic property: mDimensionUnitFirstY
-  //····················································································································
-
-  let mDimensionUnitFirstY_property = EBStoredProperty_Int (defaultValue: 2286)
-
-  //····················································································································
-
-  var mDimensionUnitFirstY : Int {
-    get { return self.mDimensionUnitFirstY_property.propval }
-    set { self.mDimensionUnitFirstY_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mDimensionUnitFirstY_property_selection : EBSelection <Int> { return self.mDimensionUnitFirstY_property.prop }
 
   //····················································································································
   //   Atomic property: mFirstColor
@@ -197,23 +135,6 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   var mSecondDx_property_selection : EBSelection <Int> { return self.mSecondDx_property.prop }
 
   //····················································································································
-  //   Atomic property: mDimensionUnitSecondDx
-  //····················································································································
-
-  let mDimensionUnitSecondDx_property = EBStoredProperty_Int (defaultValue: 2286)
-
-  //····················································································································
-
-  var mDimensionUnitSecondDx : Int {
-    get { return self.mDimensionUnitSecondDx_property.propval }
-    set { self.mDimensionUnitSecondDx_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mDimensionUnitSecondDx_property_selection : EBSelection <Int> { return self.mDimensionUnitSecondDx_property.prop }
-
-  //····················································································································
   //   Atomic property: mSecondDy
   //····················································································································
 
@@ -229,23 +150,6 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   var mSecondDy_property_selection : EBSelection <Int> { return self.mSecondDy_property.prop }
-
-  //····················································································································
-  //   Atomic property: mDimensionUnitSecondDy
-  //····················································································································
-
-  let mDimensionUnitSecondDy_property = EBStoredProperty_Int (defaultValue: 2286)
-
-  //····················································································································
-
-  var mDimensionUnitSecondDy : Int {
-    get { return self.mDimensionUnitSecondDy_property.propval }
-    set { self.mDimensionUnitSecondDy_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mDimensionUnitSecondDy_property_selection : EBSelection <Int> { return self.mDimensionUnitSecondDy_property.prop }
 
   //····················································································································
   //   Atomic property: mSecondColor
@@ -316,22 +220,14 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   private final func configureObject () {
   //--- Atomic property: mFirstX
     self.mFirstX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDimensionUnitFirstX
-    self.mDimensionUnitFirstX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mFirstY
     self.mFirstY_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDimensionUnitFirstY
-    self.mDimensionUnitFirstY_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mFirstColor
     self.mFirstColor_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSecondDx
     self.mSecondDx_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDimensionUnitSecondDx
-    self.mDimensionUnitSecondDx_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSecondDy
     self.mSecondDy_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDimensionUnitSecondDy
-    self.mDimensionUnitSecondDy_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSecondColor
     self.mSecondColor_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mRoot (has opposite to many relationship: mModelImageObjects)
@@ -445,28 +341,12 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
       valueExplorer: &self.mFirstX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mDimensionUnitFirstX",
-      idx: self.mDimensionUnitFirstX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDimensionUnitFirstX_property.mObserverExplorer,
-      valueExplorer: &self.mDimensionUnitFirstX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "mFirstY",
       idx: self.mFirstY_property.ebObjectIndex,
       y: &y,
       view: view,
       observerExplorer: &self.mFirstY_property.mObserverExplorer,
       valueExplorer: &self.mFirstY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDimensionUnitFirstY",
-      idx: self.mDimensionUnitFirstY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDimensionUnitFirstY_property.mObserverExplorer,
-      valueExplorer: &self.mDimensionUnitFirstY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mFirstColor",
@@ -485,28 +365,12 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
       valueExplorer: &self.mSecondDx_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mDimensionUnitSecondDx",
-      idx: self.mDimensionUnitSecondDx_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDimensionUnitSecondDx_property.mObserverExplorer,
-      valueExplorer: &self.mDimensionUnitSecondDx_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "mSecondDy",
       idx: self.mSecondDy_property.ebObjectIndex,
       y: &y,
       view: view,
       observerExplorer: &self.mSecondDy_property.mObserverExplorer,
       valueExplorer: &self.mSecondDy_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDimensionUnitSecondDy",
-      idx: self.mDimensionUnitSecondDy_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mDimensionUnitSecondDy_property.mObserverExplorer,
-      valueExplorer: &self.mDimensionUnitSecondDy_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSecondColor",
@@ -553,30 +417,18 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //--- Atomic property: mFirstX
     self.mFirstX_property.mObserverExplorer = nil
     self.mFirstX_property.mValueExplorer = nil
-  //--- Atomic property: mDimensionUnitFirstX
-    self.mDimensionUnitFirstX_property.mObserverExplorer = nil
-    self.mDimensionUnitFirstX_property.mValueExplorer = nil
   //--- Atomic property: mFirstY
     self.mFirstY_property.mObserverExplorer = nil
     self.mFirstY_property.mValueExplorer = nil
-  //--- Atomic property: mDimensionUnitFirstY
-    self.mDimensionUnitFirstY_property.mObserverExplorer = nil
-    self.mDimensionUnitFirstY_property.mValueExplorer = nil
   //--- Atomic property: mFirstColor
     self.mFirstColor_property.mObserverExplorer = nil
     self.mFirstColor_property.mValueExplorer = nil
   //--- Atomic property: mSecondDx
     self.mSecondDx_property.mObserverExplorer = nil
     self.mSecondDx_property.mValueExplorer = nil
-  //--- Atomic property: mDimensionUnitSecondDx
-    self.mDimensionUnitSecondDx_property.mObserverExplorer = nil
-    self.mDimensionUnitSecondDx_property.mValueExplorer = nil
   //--- Atomic property: mSecondDy
     self.mSecondDy_property.mObserverExplorer = nil
     self.mSecondDy_property.mValueExplorer = nil
-  //--- Atomic property: mDimensionUnitSecondDy
-    self.mDimensionUnitSecondDy_property.mObserverExplorer = nil
-    self.mDimensionUnitSecondDy_property.mValueExplorer = nil
   //--- Atomic property: mSecondColor
     self.mSecondColor_property.mObserverExplorer = nil
     self.mSecondColor_property.mValueExplorer = nil
@@ -614,22 +466,14 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mFirstX
     self.mFirstX_property.storeIn (dictionary: ioDictionary, forKey:"mFirstX")
-  //--- Atomic property: mDimensionUnitFirstX
-    self.mDimensionUnitFirstX_property.storeIn (dictionary: ioDictionary, forKey:"mDimensionUnitFirstX")
   //--- Atomic property: mFirstY
     self.mFirstY_property.storeIn (dictionary: ioDictionary, forKey:"mFirstY")
-  //--- Atomic property: mDimensionUnitFirstY
-    self.mDimensionUnitFirstY_property.storeIn (dictionary: ioDictionary, forKey:"mDimensionUnitFirstY")
   //--- Atomic property: mFirstColor
     self.mFirstColor_property.storeIn (dictionary: ioDictionary, forKey:"mFirstColor")
   //--- Atomic property: mSecondDx
     self.mSecondDx_property.storeIn (dictionary: ioDictionary, forKey:"mSecondDx")
-  //--- Atomic property: mDimensionUnitSecondDx
-    self.mDimensionUnitSecondDx_property.storeIn (dictionary: ioDictionary, forKey:"mDimensionUnitSecondDx")
   //--- Atomic property: mSecondDy
     self.mSecondDy_property.storeIn (dictionary: ioDictionary, forKey:"mSecondDy")
-  //--- Atomic property: mDimensionUnitSecondDy
-    self.mDimensionUnitSecondDy_property.storeIn (dictionary: ioDictionary, forKey:"mDimensionUnitSecondDy")
   //--- Atomic property: mSecondColor
     self.mSecondColor_property.storeIn (dictionary: ioDictionary, forKey:"mSecondColor")
   }
@@ -662,22 +506,14 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mFirstX
     self.mFirstX_property.readFrom (dictionary: inDictionary, forKey:"mFirstX")
-  //--- Atomic property: mDimensionUnitFirstX
-    self.mDimensionUnitFirstX_property.readFrom (dictionary: inDictionary, forKey:"mDimensionUnitFirstX")
   //--- Atomic property: mFirstY
     self.mFirstY_property.readFrom (dictionary: inDictionary, forKey:"mFirstY")
-  //--- Atomic property: mDimensionUnitFirstY
-    self.mDimensionUnitFirstY_property.readFrom (dictionary: inDictionary, forKey:"mDimensionUnitFirstY")
   //--- Atomic property: mFirstColor
     self.mFirstColor_property.readFrom (dictionary: inDictionary, forKey:"mFirstColor")
   //--- Atomic property: mSecondDx
     self.mSecondDx_property.readFrom (dictionary: inDictionary, forKey:"mSecondDx")
-  //--- Atomic property: mDimensionUnitSecondDx
-    self.mDimensionUnitSecondDx_property.readFrom (dictionary: inDictionary, forKey:"mDimensionUnitSecondDx")
   //--- Atomic property: mSecondDy
     self.mSecondDy_property.readFrom (dictionary: inDictionary, forKey:"mSecondDy")
-  //--- Atomic property: mDimensionUnitSecondDy
-    self.mDimensionUnitSecondDy_property.readFrom (dictionary: inDictionary, forKey:"mDimensionUnitSecondDy")
   //--- Atomic property: mSecondColor
     self.mSecondColor_property.readFrom (dictionary: inDictionary, forKey:"mSecondColor")
   }
@@ -691,14 +527,10 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mFirstX\n"
-    ioString += "mDimensionUnitFirstX\n"
     ioString += "mFirstY\n"
-    ioString += "mDimensionUnitFirstY\n"
     ioString += "mFirstColor\n"
     ioString += "mSecondDx\n"
-    ioString += "mDimensionUnitSecondDx\n"
     ioString += "mSecondDy\n"
-    ioString += "mDimensionUnitSecondDy\n"
     ioString += "mSecondColor\n"
   //--- To one relationships
     ioString += "mRoot\n"
@@ -714,21 +546,13 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //--- Atomic properties
     self.mFirstX.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
-    self.mDimensionUnitFirstX.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
     self.mFirstY.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mDimensionUnitFirstY.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mFirstColor.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mSecondDx.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
-    self.mDimensionUnitSecondDx.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
     self.mSecondDy.appendPropertyValueTo (&ioData)
-    ioData.append (ascii: .lineFeed)
-    self.mDimensionUnitSecondDy.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mSecondColor.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)

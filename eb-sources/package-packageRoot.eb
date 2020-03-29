@@ -74,17 +74,18 @@ graphic entity PackageRoot {
   property Int mModelImagePointsDyOnLock default 0 ;
   property Double mModelImageScale default 1.0 ;
   property Double mModelImageRotationInRadians default 0.0 ;
+
+  property Int mDimensionUnitFirstModelPointX default 2_286 ;
+  property Int mDimensionUnitFirstModelPointY default 2_286 ;
+  property Int mDimensionUnitSecondModelPointDx default 2_286 ;
+  property Int mDimensionUnitSecondModelPointDy default 2_286 ;
  
   toOne PackageModelImageDoublePoint mModelImageDoublePoint ;
   property proxy Int mModelImageFirstPointX : mModelImageDoublePoint.mFirstX ;
-  property proxy Int mModelImageFirstPointDimensionUnitX : mModelImageDoublePoint.mDimensionUnitFirstX ;
   property proxy Int mModelImageFirstPointY : mModelImageDoublePoint.mFirstY ;
-  property proxy Int mModelImageFirstPointDimensionUnitY : mModelImageDoublePoint.mDimensionUnitFirstY ;
 
   property proxy Int mModelImageSecondPointDx : mModelImageDoublePoint.mSecondDx ;
-  property proxy Int mModelImageSecondPointDimensionUnitDx : mModelImageDoublePoint.mDimensionUnitSecondDx ;
   property proxy Int mModelImageSecondPointDy : mModelImageDoublePoint.mSecondDy ;
-  property proxy Int mModelImageSecondPointDimensionUnitDy : mModelImageDoublePoint.mDimensionUnitSecondDy ;
 
   toMany PackageModelImageDoublePoint mModelImageObjects inverse toOne mRoot ;
   property Bool mPointsAreLocked default no ;
@@ -96,7 +97,7 @@ graphic entity PackageRoot {
   property PadNumbering padNumbering default noNumbering ;
   transient Bool freePadNumbering dependsFrom self.padNumbering ;
   transient Bool counterClockNumbering dependsFrom self.padNumbering ;
-  property @signature Int counterClockNumberingStartAngle default 180 ;
+  property @signature Int counterClockNumberingStartAngle default 90 ;
 
 //--- XY placard unit
   property @signature Int xPlacardUnit default 2_286 ; // mils
@@ -514,15 +515,11 @@ graphic entity PackageModelImageDoublePoint {
   toOne PackageRoot mRoot inverse toMany mModelImageObjects ;
 
   property Int mFirstX default 457_200 ;
-  property Int mDimensionUnitFirstX default 2_286 ;
   property Int mFirstY default 457_200 ;
-  property Int mDimensionUnitFirstY default 2_286 ;
   property NSColor mFirstColor default green ;
 
   property Int mSecondDx default 457_200 ;
-  property Int mDimensionUnitSecondDx default 2_286 ;
   property Int mSecondDy default 457_200 ;
-  property Int mDimensionUnitSecondDy default 2_286 ;
   property NSColor mSecondColor default brown ;
 
   transient EBShape objectDisplay dependsFrom

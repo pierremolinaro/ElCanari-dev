@@ -13,7 +13,7 @@ private var gEnabledBindingValueDictionary = [NSControl : Bool] ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension NSControl {
+extension NSControl : EnabledMultipleBindingProtocol {
 
   //····················································································································
 

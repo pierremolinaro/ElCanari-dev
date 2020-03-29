@@ -563,23 +563,23 @@ document PackageDocument root PackageRoot {
   
   outlet EBTextObserverField mModelImageSizeTextField $valueObserver root.modelImageSizeString ;
   
-  outlet EBPopUpButton mModelImageFirstPointXDimensionUnitPopUp $selectedTag root.mModelImageFirstPointDimensionUnitX ;
+  outlet EBPopUpButton mModelImageFirstPointXDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointX ;
   outlet CanariDimensionTextField mModelImageFirstPointXTextField
-     $dimensionAndUnit root.mModelImageFirstPointX, root.mModelImageFirstPointDimensionUnitX
+     $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX
   ;
-  outlet EBPopUpButton mModelImageFirstPointYDimensionUnitPopUp $selectedTag root.mModelImageFirstPointDimensionUnitY ;
+  outlet EBPopUpButton mModelImageFirstPointYDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointY ;
   outlet CanariDimensionTextField mModelImageFirstPointYTextField
-     $dimensionAndUnit root.mModelImageFirstPointY, root.mModelImageFirstPointDimensionUnitY
+     $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY
   ;
 
 
-  outlet EBPopUpButton mModelImagePointsDxDimensionUnitPopUp $selectedTag root.mModelImageSecondPointDimensionUnitDx ;
+  outlet EBPopUpButton mModelImagePointsDxDimensionUnitPopUp $selectedTag root.mDimensionUnitSecondModelPointDx ;
   outlet CanariDimensionTextField mModelImagePointDxTextField
-     $dimensionAndUnit root.mModelImageSecondPointDx, root.mModelImageSecondPointDimensionUnitDx
+     $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx
   ;
-  outlet EBPopUpButton mModelImagePointsDyDimensionUnitPopUp $selectedTag root.mModelImageSecondPointDimensionUnitDy ;
+  outlet EBPopUpButton mModelImagePointsDyDimensionUnitPopUp $selectedTag root.mDimensionUnitSecondModelPointDy ;
   outlet CanariDimensionTextField mModelImagePointDyTextField
-     $dimensionAndUnit root.mModelImageSecondPointDy, root.mModelImageSecondPointDimensionUnitDy
+     $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy
   ;
  
   outlet EBPopUpButton mModelImageSecondPointXDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
@@ -591,6 +591,26 @@ document PackageDocument root PackageRoot {
      $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit
   ;
 
+  action loadModelImageFromPasteboardAction ;
+  outlet EBMenuItem mLoadModelImageFromPasteboardMenuItem
+    $run loadModelImageFromPasteboardAction
+    $enabled !root.hasModelImage ;
+  
+  action loadDIL16ModelImageFromResourcesAction ;
+  outlet EBMenuItem mLoadDIL16ModelImageFromResourcesdMenuItem
+    $run loadDIL16ModelImageFromResourcesAction
+    $enabled !root.hasModelImage ;
+  
+  action removeModelImageAction ;
+  outlet EBMenuItem mRemoveModelImageMenuItem
+    $run removeModelImageAction
+    $enabled root.hasModelImage ;
+  
+  action resetModelImagePointsAction ;
+  outlet EBMenuItem mResetModelImagePointsMenuItem
+    $run resetModelImagePointsAction
+    $enabled root.hasModelImage ;
+  
   action lockImagePointsAction ;
   outlet EBButton mLockImagePointsButton $run lockImagePointsAction $enabled !root.mPointsAreLocked & root.hasModelImage ;
   outlet EBImageObserverView mLockImageView $image root.lockImageView ;

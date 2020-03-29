@@ -108,7 +108,9 @@
                 <outlet property="mIssuesInspectorView" destination="cRE-6w-ML1" id="YPq-Dy-0kz"/>
                 <outlet property="mKnobSizeSlider" destination="mJz-TI-C8L" id="x3d-Re-MQi"/>
                 <outlet property="mLineColorOfPackageGridColorWell" destination="RGr-DM-XnY" id="5JY-mz-1ib"/>
+                <outlet property="mLoadDIL16ModelImageFromResourcesdMenuItem" destination="sLS-Wm-fFH" id="rlk-bg-nBK"/>
                 <outlet property="mLoadFromDesignButton" destination="Veo-5P-f4O" id="6tE-N2-2ls"/>
+                <outlet property="mLoadModelImageFromPasteboardMenuItem" destination="B4s-jd-ih5" id="PAJ-He-KJ2"/>
                 <outlet property="mLockImagePointsButton" destination="9nQ-y5-F6v" id="Yq5-hO-fft"/>
                 <outlet property="mLockImageView" destination="tQ8-Gy-NoX" id="Ihf-Cd-94u"/>
                 <outlet property="mMasterView" destination="2532" id="Zih-F1-ZkL"/>
@@ -183,7 +185,9 @@
                 <outlet property="mProgramHelpSheet" destination="h48-eq-iuE" id="eJi-uE-0gc"/>
                 <outlet property="mProgramPageView" destination="2512" id="Mb6-tH-IZE"/>
                 <outlet property="mProgramTextView" destination="2514" id="d7U-jr-k0N"/>
+                <outlet property="mRemoveModelImageMenuItem" destination="dPa-RK-c0j" id="Rf3-wD-tDj"/>
                 <outlet property="mRemoveZoneForbiddenPadNumberButton" destination="bfy-Ba-ToS" id="Yas-z2-idW"/>
+                <outlet property="mResetModelImagePointsMenuItem" destination="CNi-Mh-r7s" id="QwZ-tb-f40"/>
                 <outlet property="mResetVersionButton" destination="2529" id="c7p-LE-qqa"/>
                 <outlet property="mRunProgramButton" destination="2515" id="RyF-Iw-kFF"/>
                 <outlet property="mSegmentInspectorView" destination="3015" id="Uuj-Fr-Dyh"/>
@@ -2319,7 +2323,7 @@ Gw
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" ambiguous="YES" id="PuU-Cb-ahz">
                                 <rect key="frame" x="1" y="1" width="412" height="484"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2477" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
@@ -2471,10 +2475,10 @@ Gw
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="34" translatesAutoresizingMaskIntoConstraints="NO" id="59F-tJ-cKZ" customClass="EBIntField">
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="34" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59F-tJ-cKZ" customClass="EBIntField" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="35" y="0.0" width="34" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="360°" drawsBackground="YES" id="EFb-S8-g32">
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" borderStyle="bezel" alignment="center" title="360°" drawsBackground="YES" id="EFb-S8-g32">
                                 <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="##0°" localizesFormat="NO" numberStyle="decimal" usesGroupingSeparator="NO" lenient="YES" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="3" id="WIL-hi-E28">
                                     <real key="minimum" value="0.0"/>
                                     <real key="maximum" value="360"/>
@@ -5796,7 +5800,7 @@ DQ
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" ambiguous="YES" id="a7R-xu-Y3w">
                                 <rect key="frame" x="1" y="1" width="412" height="484"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LMg-aa-bds" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
@@ -6003,27 +6007,16 @@ DQ
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P4A-9m-gi4">
                     <rect key="frame" x="16" y="288" width="75" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="Action" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="Jdk-hq-bi5">
+                    <popUpButtonCell key="cell" type="push" title="Action" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" autoenablesItems="NO" id="Jdk-hq-bi5">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" id="KI6-mI-0EZ">
+                        <menu key="menu" autoenablesItems="NO" id="KI6-mI-0EZ">
                             <items>
                                 <menuItem title="Action" hidden="YES" id="8tg-5W-NfI"/>
-                                <menuItem title="Paste Background Image" id="B4s-jd-ih5">
-                                    <connections>
-                                        <action selector="pasteModelImageAction:" target="-2" id="YfN-rb-uSS"/>
-                                    </connections>
-                                </menuItem>
-                                <menuItem title="Remove Background Image" id="dPa-RK-c0j">
-                                    <connections>
-                                        <action selector="removeModelImageAction:" target="-2" id="McN-Qt-LFa"/>
-                                    </connections>
-                                </menuItem>
-                                <menuItem title="Reset Green and Blue Points" id="CNi-Mh-r7s">
-                                    <connections>
-                                        <action selector="resetGreenAndBluePointsAction:" target="-2" id="YiU-lo-VpA"/>
-                                    </connections>
-                                </menuItem>
+                                <menuItem title="Paste Model Image" id="B4s-jd-ih5" customClass="EBMenuItem" customModule="ElCanari" customModuleProvider="target"/>
+                                <menuItem title="Load DIL16 Embedded Model Image" id="sLS-Wm-fFH" customClass="EBMenuItem" customModule="ElCanari" customModuleProvider="target"/>
+                                <menuItem title="Remove Model Image" id="dPa-RK-c0j" customClass="EBMenuItem" customModule="ElCanari" customModuleProvider="target"/>
+                                <menuItem title="Reset Green and Blue Points" id="CNi-Mh-r7s" customClass="EBMenuItem" customModule="ElCanari" customModuleProvider="target"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
