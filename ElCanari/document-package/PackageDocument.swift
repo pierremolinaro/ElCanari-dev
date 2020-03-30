@@ -247,6 +247,7 @@ import Cocoa
   @IBOutlet var mDisplayInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mDisplayTopSidePadSwitch : EBSwitch? = nil
   @IBOutlet var mDisplayZoneNameSwitch : EBSwitch? = nil
+  @IBOutlet var mFirstModelPointCircleRadiusSlider : EBSlider? = nil
   @IBOutlet var mGridDisplayPopUpButton : EBPopUpButton? = nil
   @IBOutlet var mGridStyle : EBPopUpButton? = nil
   @IBOutlet var mGridTextField : CanariDimensionTextField? = nil
@@ -353,6 +354,7 @@ import Cocoa
   @IBOutlet var mResetModelImagePointsMenuItem : EBMenuItem? = nil
   @IBOutlet var mResetVersionButton : EBButton? = nil
   @IBOutlet var mRunProgramButton : EBButton? = nil
+  @IBOutlet var mSecondModelPointCircleRadiusSlider : EBSlider? = nil
   @IBOutlet var mSegmentInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet var mSegmentLengthTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet var mSegmentLengthUnitPopUp : EBPopUpButton? = nil
@@ -422,6 +424,8 @@ import Cocoa
   var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
   var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
   var mController_mAddSlavePadButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mFirstModelPointCircleRadiusSlider_enabled : MultipleBindingController_enabled? = nil
+  var mController_mSecondModelPointCircleRadiusSlider_enabled : MultipleBindingController_enabled? = nil
   var mController_mLoadModelImageFromPasteboardMenuItem_enabled : MultipleBindingController_enabled? = nil
   var mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveModelImageMenuItem_enabled : MultipleBindingController_enabled? = nil
@@ -588,6 +592,7 @@ import Cocoa
     checkOutletConnection (self.mDisplayInspectorView, "mDisplayInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mDisplayTopSidePadSwitch, "mDisplayTopSidePadSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayZoneNameSwitch, "mDisplayZoneNameSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mFirstModelPointCircleRadiusSlider, "mFirstModelPointCircleRadiusSlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mGridDisplayPopUpButton, "mGridDisplayPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mGridStyle, "mGridStyle", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mGridTextField, "mGridTextField", CanariDimensionTextField.self, #file, #line)
@@ -694,6 +699,7 @@ import Cocoa
     checkOutletConnection (self.mResetModelImagePointsMenuItem, "mResetModelImagePointsMenuItem", EBMenuItem.self, #file, #line)
     checkOutletConnection (self.mResetVersionButton, "mResetVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRunProgramButton, "mRunProgramButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mSecondModelPointCircleRadiusSlider, "mSecondModelPointCircleRadiusSlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mSegmentInspectorView, "mSegmentInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSegmentLengthTextField, "mSegmentLengthTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mSegmentLengthUnitPopUp, "mSegmentLengthUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -1121,6 +1127,8 @@ import Cocoa
     self.mModelImagePageGridTextField?.bind_dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property, file: #file, line: #line)
     self.mModelImagePageXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageXPlacardUnit_property, file: #file, line: #line)
     self.mModelImagePageYPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.mModelImagePageYPlacardUnit_property, file: #file, line: #line)
+    self.mFirstModelPointCircleRadiusSlider?.bind_intValue (self.rootObject.mFirstModelPointCircleRadius_property, file: #file, line: #line, sendContinously:true)
+    self.mSecondModelPointCircleRadiusSlider?.bind_intValue (self.rootObject.mSecondModelPointCircleRadius_property, file: #file, line: #line, sendContinously:true)
     self.mModelImageSizeTextField?.bind_valueObserver (self.rootObject.modelImageSizeString_property, file: #file, line: #line)
     self.mModelImageFirstPointXDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mDimensionUnitFirstModelPointX_property, file: #file, line: #line)
     self.mModelImageFirstPointXTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mDimensionUnitFirstModelPointX_property, file: #file, line: #line)
@@ -1228,6 +1236,26 @@ import Cocoa
       )
       self.rootObject.packagePads_property.count_property.addEBObserver (controller)
       self.mController_mAddSlavePadButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.rootObject.hasModelImage_property_selection
+        },
+        outlet: self.mFirstModelPointCircleRadiusSlider
+      )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
+      self.mController_mFirstModelPointCircleRadiusSlider_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.rootObject.hasModelImage_property_selection
+        },
+        outlet: self.mSecondModelPointCircleRadiusSlider
+      )
+      self.rootObject.hasModelImage_property.addEBObserver (controller)
+      self.mController_mSecondModelPointCircleRadiusSlider_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
@@ -1550,6 +1578,8 @@ import Cocoa
     self.mModelImagePageGridTextField?.unbind_dimensionAndUnit ()
     self.mModelImagePageXPlacardUnitPopUpButton?.unbind_selectedTag ()
     self.mModelImagePageYPlacardUnitPopUpButton?.unbind_selectedTag ()
+    self.mFirstModelPointCircleRadiusSlider?.unbind_intValue ()
+    self.mSecondModelPointCircleRadiusSlider?.unbind_intValue ()
     self.mModelImageSizeTextField?.unbind_valueObserver ()
     self.mModelImageFirstPointXDimensionUnitPopUp?.unbind_selectedTag ()
     self.mModelImageFirstPointXTextField?.unbind_dimensionAndUnit ()
@@ -1586,6 +1616,10 @@ import Cocoa
     self.mController_mIssueScrollView_hidden = nil
     self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
     self.mController_mAddSlavePadButton_enabled = nil
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mFirstModelPointCircleRadiusSlider_enabled!)
+    self.mController_mFirstModelPointCircleRadiusSlider_enabled = nil
+    self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mSecondModelPointCircleRadiusSlider_enabled!)
+    self.mController_mSecondModelPointCircleRadiusSlider_enabled = nil
     self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadModelImageFromPasteboardMenuItem_enabled!)
     self.mController_mLoadModelImageFromPasteboardMenuItem_enabled = nil
     self.rootObject.hasModelImage_property.removeEBObserver (self.mController_mLoadDIL16ModelImageFromResourcesdMenuItem_enabled!)
@@ -1717,6 +1751,7 @@ import Cocoa
     self.mDisplayInspectorView?.ebCleanUp ()
     self.mDisplayTopSidePadSwitch?.ebCleanUp ()
     self.mDisplayZoneNameSwitch?.ebCleanUp ()
+    self.mFirstModelPointCircleRadiusSlider?.ebCleanUp ()
     self.mGridDisplayPopUpButton?.ebCleanUp ()
     self.mGridStyle?.ebCleanUp ()
     self.mGridTextField?.ebCleanUp ()
@@ -1823,6 +1858,7 @@ import Cocoa
     self.mResetModelImagePointsMenuItem?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mRunProgramButton?.ebCleanUp ()
+    self.mSecondModelPointCircleRadiusSlider?.ebCleanUp ()
     self.mSegmentInspectorView?.ebCleanUp ()
     self.mSegmentLengthTextField?.ebCleanUp ()
     self.mSegmentLengthUnitPopUp?.ebCleanUp ()
@@ -1955,6 +1991,7 @@ import Cocoa
     self.mDisplayInspectorView = nil
     self.mDisplayTopSidePadSwitch = nil
     self.mDisplayZoneNameSwitch = nil
+    self.mFirstModelPointCircleRadiusSlider = nil
     self.mGridDisplayPopUpButton = nil
     self.mGridStyle = nil
     self.mGridTextField = nil
@@ -2061,6 +2098,7 @@ import Cocoa
     self.mResetModelImagePointsMenuItem = nil
     self.mResetVersionButton = nil
     self.mRunProgramButton = nil
+    self.mSecondModelPointCircleRadiusSlider = nil
     self.mSegmentInspectorView = nil
     self.mSegmentLengthTextField = nil
     self.mSegmentLengthUnitPopUp = nil

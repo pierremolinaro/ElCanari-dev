@@ -96,9 +96,9 @@ class LibraryOperationElement : EBObject {
   @objc dynamic var actionName : String {
     switch self.mOperation {
     case .download :
-      return "Download (\(self.mSizeInRepository.stringWithSeparator) bytes)"
+      return "Download (\(self.mSizeInRepository.stringWithSeparators) bytes)"
     case .update :
-      return "Update (\(self.mSizeInRepository.stringWithSeparator) bytes)"
+      return "Update (\(self.mSizeInRepository.stringWithSeparators) bytes)"
     case .delete :
       return "Delete"
     case .deleteRegistered :

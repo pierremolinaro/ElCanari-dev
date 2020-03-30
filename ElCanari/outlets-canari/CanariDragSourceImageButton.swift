@@ -10,6 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class CanariDragSourceImageButton : NSButton, EBUserClassNameProtocol, NSDraggingSource {
 

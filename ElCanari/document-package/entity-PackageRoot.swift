@@ -204,6 +204,18 @@ protocol PackageRoot_mDimensionUnitSecondModelPointDy : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageRoot_mFirstModelPointCircleRadius : class {
+  var mFirstModelPointCircleRadius : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_mSecondModelPointCircleRadius : class {
+  var mSecondModelPointCircleRadius : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageRoot_mPointsAreLocked : class {
   var mPointsAreLocked : Bool { get }
 }
@@ -378,6 +390,8 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_mDimensionUnitFirstModelPointY,
          PackageRoot_mDimensionUnitSecondModelPointDx,
          PackageRoot_mDimensionUnitSecondModelPointDy,
+         PackageRoot_mFirstModelPointCircleRadius,
+         PackageRoot_mSecondModelPointCircleRadius,
          PackageRoot_mPointsAreLocked,
          PackageRoot_knobSizeMultpliedByTen,
          PackageRoot_padNumbering,
@@ -962,6 +976,40 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mDimensionUnitSecondModelPointDy_property_selection : EBSelection <Int> { return self.mDimensionUnitSecondModelPointDy_property.prop }
+
+  //····················································································································
+  //   Atomic property: mFirstModelPointCircleRadius
+  //····················································································································
+
+  let mFirstModelPointCircleRadius_property = EBStoredProperty_Int (defaultValue: 10)
+
+  //····················································································································
+
+  var mFirstModelPointCircleRadius : Int {
+    get { return self.mFirstModelPointCircleRadius_property.propval }
+    set { self.mFirstModelPointCircleRadius_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mFirstModelPointCircleRadius_property_selection : EBSelection <Int> { return self.mFirstModelPointCircleRadius_property.prop }
+
+  //····················································································································
+  //   Atomic property: mSecondModelPointCircleRadius
+  //····················································································································
+
+  let mSecondModelPointCircleRadius_property = EBStoredProperty_Int (defaultValue: 10)
+
+  //····················································································································
+
+  var mSecondModelPointCircleRadius : Int {
+    get { return self.mSecondModelPointCircleRadius_property.propval }
+    set { self.mSecondModelPointCircleRadius_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSecondModelPointCircleRadius_property_selection : EBSelection <Int> { return self.mSecondModelPointCircleRadius_property.prop }
 
   //····················································································································
   //   Atomic property: mPointsAreLocked
@@ -1678,6 +1726,10 @@ class PackageRoot : EBGraphicManagedObject,
     self.mDimensionUnitSecondModelPointDx_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDimensionUnitSecondModelPointDy
     self.mDimensionUnitSecondModelPointDy_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mFirstModelPointCircleRadius
+    self.mFirstModelPointCircleRadius_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSecondModelPointCircleRadius
+    self.mSecondModelPointCircleRadius_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPointsAreLocked
     self.mPointsAreLocked_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: knobSizeMultpliedByTen
@@ -2415,6 +2467,22 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer: &self.mDimensionUnitSecondModelPointDy_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mFirstModelPointCircleRadius",
+      idx: self.mFirstModelPointCircleRadius_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mFirstModelPointCircleRadius_property.mObserverExplorer,
+      valueExplorer: &self.mFirstModelPointCircleRadius_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSecondModelPointCircleRadius",
+      idx: self.mSecondModelPointCircleRadius_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSecondModelPointCircleRadius_property.mObserverExplorer,
+      valueExplorer: &self.mSecondModelPointCircleRadius_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mPointsAreLocked",
       idx: self.mPointsAreLocked_property.ebObjectIndex,
       y: &y,
@@ -2697,6 +2765,12 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: mDimensionUnitSecondModelPointDy
     self.mDimensionUnitSecondModelPointDy_property.mObserverExplorer = nil
     self.mDimensionUnitSecondModelPointDy_property.mValueExplorer = nil
+  //--- Atomic property: mFirstModelPointCircleRadius
+    self.mFirstModelPointCircleRadius_property.mObserverExplorer = nil
+    self.mFirstModelPointCircleRadius_property.mValueExplorer = nil
+  //--- Atomic property: mSecondModelPointCircleRadius
+    self.mSecondModelPointCircleRadius_property.mObserverExplorer = nil
+    self.mSecondModelPointCircleRadius_property.mValueExplorer = nil
   //--- Atomic property: mPointsAreLocked
     self.mPointsAreLocked_property.mObserverExplorer = nil
     self.mPointsAreLocked_property.mValueExplorer = nil
@@ -2834,6 +2908,10 @@ class PackageRoot : EBGraphicManagedObject,
     self.mDimensionUnitSecondModelPointDx_property.storeIn (dictionary: ioDictionary, forKey:"mDimensionUnitSecondModelPointDx")
   //--- Atomic property: mDimensionUnitSecondModelPointDy
     self.mDimensionUnitSecondModelPointDy_property.storeIn (dictionary: ioDictionary, forKey:"mDimensionUnitSecondModelPointDy")
+  //--- Atomic property: mFirstModelPointCircleRadius
+    self.mFirstModelPointCircleRadius_property.storeIn (dictionary: ioDictionary, forKey:"mFirstModelPointCircleRadius")
+  //--- Atomic property: mSecondModelPointCircleRadius
+    self.mSecondModelPointCircleRadius_property.storeIn (dictionary: ioDictionary, forKey:"mSecondModelPointCircleRadius")
   //--- Atomic property: mPointsAreLocked
     self.mPointsAreLocked_property.storeIn (dictionary: ioDictionary, forKey:"mPointsAreLocked")
   //--- Atomic property: knobSizeMultpliedByTen
@@ -2970,6 +3048,10 @@ class PackageRoot : EBGraphicManagedObject,
     self.mDimensionUnitSecondModelPointDx_property.readFrom (dictionary: inDictionary, forKey:"mDimensionUnitSecondModelPointDx")
   //--- Atomic property: mDimensionUnitSecondModelPointDy
     self.mDimensionUnitSecondModelPointDy_property.readFrom (dictionary: inDictionary, forKey:"mDimensionUnitSecondModelPointDy")
+  //--- Atomic property: mFirstModelPointCircleRadius
+    self.mFirstModelPointCircleRadius_property.readFrom (dictionary: inDictionary, forKey:"mFirstModelPointCircleRadius")
+  //--- Atomic property: mSecondModelPointCircleRadius
+    self.mSecondModelPointCircleRadius_property.readFrom (dictionary: inDictionary, forKey:"mSecondModelPointCircleRadius")
   //--- Atomic property: mPointsAreLocked
     self.mPointsAreLocked_property.readFrom (dictionary: inDictionary, forKey:"mPointsAreLocked")
   //--- Atomic property: knobSizeMultpliedByTen
@@ -3027,6 +3109,8 @@ class PackageRoot : EBGraphicManagedObject,
     ioString += "mDimensionUnitFirstModelPointY\n"
     ioString += "mDimensionUnitSecondModelPointDx\n"
     ioString += "mDimensionUnitSecondModelPointDy\n"
+    ioString += "mFirstModelPointCircleRadius\n"
+    ioString += "mSecondModelPointCircleRadius\n"
     ioString += "mPointsAreLocked\n"
     ioString += "knobSizeMultpliedByTen\n"
     ioString += "padNumbering\n"
@@ -3116,6 +3200,10 @@ class PackageRoot : EBGraphicManagedObject,
     self.mDimensionUnitSecondModelPointDx.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mDimensionUnitSecondModelPointDy.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mFirstModelPointCircleRadius.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mSecondModelPointCircleRadius.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mPointsAreLocked.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)

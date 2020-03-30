@@ -48,6 +48,8 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     inOldValue?.mDimensionUnitFirstModelPointY_property.removeEBObserversFrom (&self.mObserversOf_mDimensionUnitFirstModelPointY) // Stored property
     inOldValue?.mDimensionUnitSecondModelPointDx_property.removeEBObserversFrom (&self.mObserversOf_mDimensionUnitSecondModelPointDx) // Stored property
     inOldValue?.mDimensionUnitSecondModelPointDy_property.removeEBObserversFrom (&self.mObserversOf_mDimensionUnitSecondModelPointDy) // Stored property
+    inOldValue?.mFirstModelPointCircleRadius_property.removeEBObserversFrom (&self.mObserversOf_mFirstModelPointCircleRadius) // Stored property
+    inOldValue?.mSecondModelPointCircleRadius_property.removeEBObserversFrom (&self.mObserversOf_mSecondModelPointCircleRadius) // Stored property
     inOldValue?.mPointsAreLocked_property.removeEBObserversFrom (&self.mObserversOf_mPointsAreLocked) // Stored property
     inOldValue?.knobSizeMultpliedByTen_property.removeEBObserversFrom (&self.mObserversOf_knobSizeMultpliedByTen) // Stored property
     inOldValue?.padNumbering_property.removeEBObserversFrom (&self.mObserversOf_padNumbering) // Stored property
@@ -101,6 +103,8 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     self.mInternalValue?.mDimensionUnitFirstModelPointY_property.addEBObserversFrom (&self.mObserversOf_mDimensionUnitFirstModelPointY) // Stored property
     self.mInternalValue?.mDimensionUnitSecondModelPointDx_property.addEBObserversFrom (&self.mObserversOf_mDimensionUnitSecondModelPointDx) // Stored property
     self.mInternalValue?.mDimensionUnitSecondModelPointDy_property.addEBObserversFrom (&self.mObserversOf_mDimensionUnitSecondModelPointDy) // Stored property
+    self.mInternalValue?.mFirstModelPointCircleRadius_property.addEBObserversFrom (&self.mObserversOf_mFirstModelPointCircleRadius) // Stored property
+    self.mInternalValue?.mSecondModelPointCircleRadius_property.addEBObserversFrom (&self.mObserversOf_mSecondModelPointCircleRadius) // Stored property
     self.mInternalValue?.mPointsAreLocked_property.addEBObserversFrom (&self.mObserversOf_mPointsAreLocked) // Stored property
     self.mInternalValue?.knobSizeMultpliedByTen_property.addEBObserversFrom (&self.mObserversOf_knobSizeMultpliedByTen) // Stored property
     self.mInternalValue?.padNumbering_property.addEBObserversFrom (&self.mObserversOf_padNumbering) // Stored property
@@ -2428,6 +2432,146 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mDimensionUnitSecondModelPointDy_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mFirstModelPointCircleRadius' stored property
+  //····················································································································
+
+  private var mObserversOf_mFirstModelPointCircleRadius = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mFirstModelPointCircleRadius_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mFirstModelPointCircleRadius_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mFirstModelPointCircleRadius (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mFirstModelPointCircleRadius.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mFirstModelPointCircleRadius_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mFirstModelPointCircleRadius (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mFirstModelPointCircleRadius.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mFirstModelPointCircleRadius_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mFirstModelPointCircleRadius_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mFirstModelPointCircleRadius.apply { (_ observer : EBEvent) in
+        managedObject.mFirstModelPointCircleRadius_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mFirstModelPointCircleRadius_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    self.mObserversOf_mFirstModelPointCircleRadius.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mFirstModelPointCircleRadius_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSecondModelPointCircleRadius' stored property
+  //····················································································································
+
+  private var mObserversOf_mSecondModelPointCircleRadius = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSecondModelPointCircleRadius_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mSecondModelPointCircleRadius_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSecondModelPointCircleRadius (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSecondModelPointCircleRadius.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mSecondModelPointCircleRadius_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSecondModelPointCircleRadius (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSecondModelPointCircleRadius.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mSecondModelPointCircleRadius_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSecondModelPointCircleRadius_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSecondModelPointCircleRadius.apply { (_ observer : EBEvent) in
+        managedObject.mSecondModelPointCircleRadius_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSecondModelPointCircleRadius_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    self.mObserversOf_mSecondModelPointCircleRadius.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSecondModelPointCircleRadius_property.removeEBObserver (observer)
       }
     }
   }

@@ -17,7 +17,7 @@ func transient_PackageRoot_modelImageSizeString (
        _ self_mModelImageData : Data
 ) -> String {
 //--- START OF USER ZONE 2
-       return (self_mModelImageData.count == 0) ? "No Image" : "Image: \(self_mModelImageData.count) bytes"
+       return (self_mModelImageData.count == 0) ? "No Image" : "Image: \(self_mModelImageData.count.stringWithSeparators) bytes"
 //--- END OF USER ZONE 2
 }
 

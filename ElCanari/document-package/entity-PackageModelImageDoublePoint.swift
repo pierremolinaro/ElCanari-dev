@@ -242,9 +242,11 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
         var kind = unwSelf.mFirstX_property_selection.kind ()
         kind &= unwSelf.mFirstY_property_selection.kind ()
         kind &= unwSelf.mFirstColor_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mFirstModelPointCircleRadius_property_selection.kind ()
         kind &= unwSelf.mSecondDx_property_selection.kind ()
         kind &= unwSelf.mSecondDy_property_selection.kind ()
         kind &= unwSelf.mSecondColor_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mSecondModelPointCircleRadius_property_selection.kind ()
         kind &= unwSelf.mRoot_property.mPointsAreLocked_property_selection.kind ()
         switch kind {
         case .empty :
@@ -252,9 +254,9 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mFirstX_property_selection, unwSelf.mFirstY_property_selection, unwSelf.mFirstColor_property_selection, unwSelf.mSecondDx_property_selection, unwSelf.mSecondDy_property_selection, unwSelf.mSecondColor_property_selection, unwSelf.mRoot_property.mPointsAreLocked_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-            return .single (transient_PackageModelImageDoublePoint_objectDisplay (v0, v1, v2, v3, v4, v5, v6))
+          switch (unwSelf.mFirstX_property_selection, unwSelf.mFirstY_property_selection, unwSelf.mFirstColor_property_selection, unwSelf.mRoot_property.mFirstModelPointCircleRadius_property_selection, unwSelf.mSecondDx_property_selection, unwSelf.mSecondDy_property_selection, unwSelf.mSecondColor_property_selection, unwSelf.mRoot_property.mSecondModelPointCircleRadius_property_selection, unwSelf.mRoot_property.mPointsAreLocked_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_PackageModelImageDoublePoint_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
             return .empty
           }
@@ -266,26 +268,30 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
     self.mFirstX_property.addEBObserver (self.objectDisplay_property)
     self.mFirstY_property.addEBObserver (self.objectDisplay_property)
     self.mFirstColor_property.addEBObserver (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mFirstModelPointCircleRadius (self.objectDisplay_property)
     self.mSecondDx_property.addEBObserver (self.objectDisplay_property)
     self.mSecondDy_property.addEBObserver (self.objectDisplay_property)
     self.mSecondColor_property.addEBObserver (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mSecondModelPointCircleRadius (self.objectDisplay_property)
     self.mRoot_property.addEBObserverOf_mPointsAreLocked (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mFirstX_property_selection.kind ()
         kind &= unwSelf.mFirstY_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mFirstModelPointCircleRadius_property_selection.kind ()
         kind &= unwSelf.mSecondDx_property_selection.kind ()
         kind &= unwSelf.mSecondDy_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mSecondModelPointCircleRadius_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mFirstX_property_selection, unwSelf.mFirstY_property_selection, unwSelf.mSecondDx_property_selection, unwSelf.mSecondDy_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_PackageModelImageDoublePoint_selectionDisplay (v0, v1, v2, v3))
+          switch (unwSelf.mFirstX_property_selection, unwSelf.mFirstY_property_selection, unwSelf.mRoot_property.mFirstModelPointCircleRadius_property_selection, unwSelf.mSecondDx_property_selection, unwSelf.mSecondDy_property_selection, unwSelf.mRoot_property.mSecondModelPointCircleRadius_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_PackageModelImageDoublePoint_selectionDisplay (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -296,8 +302,10 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
     }
     self.mFirstX_property.addEBObserver (self.selectionDisplay_property)
     self.mFirstY_property.addEBObserver (self.selectionDisplay_property)
+    self.mRoot_property.addEBObserverOf_mFirstModelPointCircleRadius (self.selectionDisplay_property)
     self.mSecondDx_property.addEBObserver (self.selectionDisplay_property)
     self.mSecondDy_property.addEBObserver (self.selectionDisplay_property)
+    self.mRoot_property.addEBObserverOf_mSecondModelPointCircleRadius (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -310,14 +318,18 @@ class PackageModelImageDoublePoint : EBGraphicManagedObject,
     self.mFirstX_property.removeEBObserver (self.objectDisplay_property)
     self.mFirstY_property.removeEBObserver (self.objectDisplay_property)
     self.mFirstColor_property.removeEBObserver (self.objectDisplay_property)
+    self.mRoot_property.removeEBObserverOf_mFirstModelPointCircleRadius (self.objectDisplay_property)
     self.mSecondDx_property.removeEBObserver (self.objectDisplay_property)
     self.mSecondDy_property.removeEBObserver (self.objectDisplay_property)
     self.mSecondColor_property.removeEBObserver (self.objectDisplay_property)
+    self.mRoot_property.removeEBObserverOf_mSecondModelPointCircleRadius (self.objectDisplay_property)
     self.mRoot_property.removeEBObserverOf_mPointsAreLocked (self.objectDisplay_property)
     self.mFirstX_property.removeEBObserver (self.selectionDisplay_property)
     self.mFirstY_property.removeEBObserver (self.selectionDisplay_property)
+    self.mRoot_property.removeEBObserverOf_mFirstModelPointCircleRadius (self.selectionDisplay_property)
     self.mSecondDx_property.removeEBObserver (self.selectionDisplay_property)
     self.mSecondDy_property.removeEBObserver (self.selectionDisplay_property)
+    self.mRoot_property.removeEBObserverOf_mSecondModelPointCircleRadius (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 

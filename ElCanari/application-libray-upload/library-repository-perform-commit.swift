@@ -66,7 +66,7 @@ extension CanariLibraryEntry {
             ()
             // inLogTextView.appendMessageString ("No change for \(op.mRelativePath)\n")
           case .upload :
-            inLogTextView.appendMessageString ("Upload \(op.mRelativePath) (\(op.mLength.stringWithSeparator) bytes)... ")
+            inLogTextView.appendMessageString ("Upload \(op.mRelativePath) (\(op.mLength.stringWithSeparators) bytes)... ")
             let localFullPath = self.mPath + "/" + op.mRelativePath
             let remoteRelativePath = "files/\(op.mCommit)/" + op.mRelativePath
             let r = writeRemoteFile (remoteRelativePath, url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag, localFullPath)
@@ -78,7 +78,7 @@ extension CanariLibraryEntry {
               inLogTextView.appendSuccessString ("ok\n")
             }
           case .upgrade :
-            inLogTextView.appendMessageString ("Upgrade \(op.mRelativePath) (\(op.mLength.stringWithSeparator) bytes)... ")
+            inLogTextView.appendMessageString ("Upgrade \(op.mRelativePath) (\(op.mLength.stringWithSeparators) bytes)... ")
             let localFullPath = self.mPath + "/" + op.mRelativePath
             let remoteRelativePath = "files/\(op.mCommit)/" + op.mRelativePath
             let r = writeRemoteFile (remoteRelativePath, url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag, localFullPath)

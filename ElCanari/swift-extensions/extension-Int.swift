@@ -14,7 +14,7 @@ extension Int {
 
   //····················································································································
 
-  var stringWithSeparator : String {
+  var stringWithSeparators : String {
     let formatter = NumberFormatter ()
     formatter.numberStyle = .decimal
     formatter.groupingSeparator = Locale.current.groupingSeparator

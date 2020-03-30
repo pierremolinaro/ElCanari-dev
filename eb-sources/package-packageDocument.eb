@@ -561,6 +561,14 @@ document PackageDocument root PackageRoot {
     $selectedTag root.mModelImagePageYPlacardUnit
   ;
   
+  outlet EBSlider mFirstModelPointCircleRadiusSlider
+    $intValue root.mFirstModelPointCircleRadius {sendContinously : yes}
+    $enabled root.hasModelImage ;
+  
+  outlet EBSlider mSecondModelPointCircleRadiusSlider
+    $intValue root.mSecondModelPointCircleRadius {sendContinously : yes}
+    $enabled root.hasModelImage ;
+  
   outlet EBTextObserverField mModelImageSizeTextField $valueObserver root.modelImageSizeString ;
   
   outlet EBPopUpButton mModelImageFirstPointXDimensionUnitPopUp $selectedTag root.mDimensionUnitFirstModelPointX ;

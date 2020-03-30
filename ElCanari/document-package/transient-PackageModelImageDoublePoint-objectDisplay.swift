@@ -18,32 +18,36 @@ func transient_PackageModelImageDoublePoint_objectDisplay (
        _ self_mFirstX : Int,                               
        _ self_mFirstY : Int,                               
        _ self_mFirstColor : NSColor,                       
+       _ self_mRoot_mFirstModelPointCircleRadius : Int?,   
        _ self_mSecondDx : Int,                             
        _ self_mSecondDy : Int,                             
        _ self_mSecondColor : NSColor,                      
+       _ self_mRoot_mSecondModelPointCircleRadius : Int?,  
        _ self_mRoot_mPointsAreLocked : Bool?
 ) -> EBShape {
 //--- START OF USER ZONE 2
   var shape = EBShape ()
-  let RADIUS_IN_COCOA_UNIT : CGFloat = 10.0
+  let firstPointRadiusInCocoaUnit = CGFloat (self_mRoot_mFirstModelPointCircleRadius ?? 10)
+  let secondPointRadiusInCocoaUnit = CGFloat (self_mRoot_mSecondModelPointCircleRadius ?? 10)
   let firstX = canariUnitToCocoa (self_mFirstX)
   let firstY = canariUnitToCocoa (self_mFirstY)
-  let firstR = NSRect (center: NSPoint (x: firstX, y: firstY), size: NSSize (width: RADIUS_IN_COCOA_UNIT * 2.0, height: RADIUS_IN_COCOA_UNIT * 2.0))
+  let firstR = NSRect (center: NSPoint (x: firstX, y: firstY), size: NSSize (width: firstPointRadiusInCocoaUnit * 2.0, height: firstPointRadiusInCocoaUnit * 2.0))
   let secondX = canariUnitToCocoa (self_mFirstX + self_mSecondDx)
   let secondY = canariUnitToCocoa (self_mFirstY + self_mSecondDy)
-  let secondR = NSRect (center: NSPoint (x: secondX, y: secondY), size: NSSize (width: RADIUS_IN_COCOA_UNIT * 2.0, height: RADIUS_IN_COCOA_UNIT * 2.0))
+  let secondR = NSRect (center: NSPoint (x: secondX, y: secondY), size: NSSize (width: secondPointRadiusInCocoaUnit * 2.0, height: secondPointRadiusInCocoaUnit * 2.0))
   if let locked = self_mRoot_mPointsAreLocked, locked {
     shape.add (filled: [EBBezierPath (ovalIn: firstR)], self_mFirstColor)
     shape.add (filled: [EBBezierPath (ovalIn: secondR)], self_mSecondColor)
   }else{
-    let DELTA = RADIUS_IN_COCOA_UNIT / sqrt (2.0)
+    let firstPointDelta = firstPointRadiusInCocoaUnit / sqrt (2.0)
+    let secondPointDelta = secondPointRadiusInCocoaUnit / sqrt (2.0)
   //--- First Point
     var lines = EBBezierPath ()
     lines.lineCapStyle = .round
-    lines.move (to: NSPoint (x: firstX - DELTA, y: firstY - DELTA))
-    lines.relativeLine (to: NSPoint (x: DELTA * 2.0, y: DELTA * 2.0))
-    lines.move (to: NSPoint (x: firstX + DELTA, y: firstY - DELTA))
-    lines.relativeLine (to: NSPoint (x: -DELTA * 2.0, y: DELTA * 2.0))
+    lines.move (to: NSPoint (x: firstX - firstPointDelta, y: firstY - firstPointDelta))
+    lines.relativeLine (to: NSPoint (x: firstPointDelta * 2.0, y: firstPointDelta * 2.0))
+    lines.move (to: NSPoint (x: firstX + firstPointDelta, y: firstY - firstPointDelta))
+    lines.relativeLine (to: NSPoint (x: -firstPointDelta * 2.0, y: firstPointDelta * 2.0))
     lines.lineWidth = 0.0
     var circle = EBBezierPath (ovalIn: firstR)
     circle.lineWidth = IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH
@@ -52,10 +56,10 @@ func transient_PackageModelImageDoublePoint_objectDisplay (
   //--- Second Point
     lines = EBBezierPath ()
     lines.lineCapStyle = .round
-    lines.move (to: NSPoint (x: secondX - DELTA, y: secondY - DELTA))
-    lines.relativeLine (to: NSPoint (x: DELTA * 2.0, y: DELTA * 2.0))
-    lines.move (to: NSPoint (x: secondX + DELTA, y: secondY - DELTA))
-    lines.relativeLine (to: NSPoint (x: -DELTA * 2.0, y: DELTA * 2.0))
+    lines.move (to: NSPoint (x: secondX - secondPointDelta, y: secondY - secondPointDelta))
+    lines.relativeLine (to: NSPoint (x: secondPointDelta * 2.0, y: secondPointDelta * 2.0))
+    lines.move (to: NSPoint (x: secondX + secondPointDelta, y: secondY - secondPointDelta))
+    lines.relativeLine (to: NSPoint (x: -secondPointDelta * 2.0, y: secondPointDelta * 2.0))
     lines.lineWidth = 0.0
     circle = EBBezierPath (ovalIn: secondR)
     circle.lineWidth = IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH
