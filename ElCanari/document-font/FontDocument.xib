@@ -251,22 +251,22 @@
             </subviews>
             <point key="canvasLocation" x="-1376" y="-1232"/>
         </customView>
-        <customView id="1057" userLabel="Page : Font" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+        <customView wantsLayer="YES" id="1057" userLabel="Page : Font" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="700" height="491"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1303">
+                <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1303">
                     <rect key="frame" x="20" y="0.0" width="251" height="398"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <customView focusRingType="exterior" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1058" customClass="CanariCharacterView" customModule="ElCanari" customModuleProvider="target">
+                <customView wantsLayer="YES" focusRingType="exterior" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1058" customClass="CanariCharacterView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="279" y="0.0" width="401" height="418"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <connections>
                         <outlet property="mFontDocument" destination="-2" id="3Dn-b6-ihl"/>
                     </connections>
                 </customView>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1059" customClass="CanariFontSampleStringView" customModule="ElCanari" customModuleProvider="target">
+                <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1059" customClass="CanariFontSampleStringView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="426" width="660" height="57"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                 </customView>
@@ -429,7 +429,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="hL4-lW-hym">
                         <rect key="frame" x="1" y="0.0" width="244" height="244"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="p8i-Zv-zRb" viewBased="YES" id="gZS-PE-KcP" customClass="CanariCharacterGerberCodeTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="244" height="221"/>
@@ -729,7 +729,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="FcB-bo-IsW">
                         <rect key="frame" x="1" y="1" width="189" height="381"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="4ds-6U-hSp" customClass="CanariIssueTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="189" height="381"/>

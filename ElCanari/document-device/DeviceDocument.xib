@@ -235,7 +235,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" ambiguous="YES" id="1O2-0d-QnO">
                                         <rect key="frame" x="1" y="0.0" width="382" height="272"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="zWp-7R-su4" viewBased="YES" id="1049" customClass="DeviceDocumentationTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="249"/>
@@ -375,7 +375,7 @@
             </subviews>
             <point key="canvasLocation" x="122" y="154"/>
         </customView>
-        <customView id="1055" userLabel="Page : Symbols" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+        <customView wantsLayer="YES" id="1055" userLabel="Page : Symbols" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -387,14 +387,14 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1068" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                <scrollView wantsLayer="YES" fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1068" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="252" y="-1" width="349" height="401"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" ambiguous="YES" id="Ixa-Rs-kYV">
+                    <clipView key="contentView" wantsLayer="YES" ambiguous="YES" id="Ixa-Rs-kYV">
                         <rect key="frame" x="1" y="1" width="332" height="384"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1069" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
+                            <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1069" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </customView>
@@ -536,18 +536,18 @@
             </connections>
             <point key="canvasLocation" x="17" y="-400"/>
         </customView>
-        <customView id="1080" userLabel="Page : Packages" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+        <customView wantsLayer="YES" id="1080" userLabel="Page : Packages" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1081" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                <scrollView wantsLayer="YES" fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1081" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="258" y="-1" width="343" height="402"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" ambiguous="YES" id="IMs-PA-jTt">
+                    <clipView key="contentView" wantsLayer="YES" ambiguous="YES" id="IMs-PA-jTt">
                         <rect key="frame" x="1" y="1" width="326" height="385"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1082" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
+                            <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1082" customClass="EBGraphicView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </customView>
@@ -686,7 +686,7 @@
                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                     <clipView key="contentView" ambiguous="YES" id="qBT-QX-e8k">
                                         <rect key="frame" x="1" y="0.0" width="81" height="412"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="UnassignedPadsTableView" rowSizeStyle="automatic" headerView="1586" viewBased="YES" id="1111" customClass="UnconnectedPadsInDeviceTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="81" height="389"/>
@@ -743,7 +743,7 @@
                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                     <clipView key="contentView" ambiguous="YES" id="KcB-BC-NNU">
                                         <rect key="frame" x="1" y="0.0" width="133" height="412"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="unconnectedPinsTableView" rowSizeStyle="automatic" headerView="1583" viewBased="YES" id="1107" customClass="UnconnectedSymbolPinsInDeviceTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="133" height="389"/>
@@ -873,7 +873,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" ambiguous="YES" id="6o1-5h-Fzw">
                                         <rect key="frame" x="1" y="0.0" width="254" height="412"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="AssignedPadTableView" rowSizeStyle="automatic" headerView="1580" viewBased="YES" id="1095" customClass="AssignedPadProxysInDeviceTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="254.5" height="389"/>
@@ -898,7 +898,7 @@
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                         <prototypeCellViews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="3Gh-Fz-6Rr">
-                                                                <rect key="frame" x="1" y="1" width="118" height="17"/>
+                                                                <rect key="frame" x="1" y="1" width="117.5" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="Z6u-kX-PFD">
                                                                     <font key="font" metaFont="system"/>
@@ -923,7 +923,7 @@
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                         <prototypeCellViews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="jPA-mC-MCv">
-                                                                <rect key="frame" x="122" y="1" width="59" height="17"/>
+                                                                <rect key="frame" x="121.5" y="1" width="59.5" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="1Mk-q2-YMn">
                                                                     <font key="font" metaFont="system"/>
@@ -948,7 +948,7 @@
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                         <prototypeCellViews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="YKX-gq-3ZF">
-                                                                <rect key="frame" x="184" y="1" width="69" height="17"/>
+                                                                <rect key="frame" x="184" y="1" width="68.5" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="0OU-Mf-XgJ">
                                                                     <font key="font" metaFont="system"/>

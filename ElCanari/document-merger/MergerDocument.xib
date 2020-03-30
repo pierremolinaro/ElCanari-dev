@@ -344,7 +344,7 @@ AAAAAAEGA
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TXT-iN-81O" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
+                <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TXT-iN-81O" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="260" y="0.0" width="440" height="500"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
@@ -557,7 +557,7 @@ AAAAAAEGA
             <rect key="frame" x="0.0" y="0.0" width="700" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBi-fz-Fjn" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
+                <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBi-fz-Fjn" customClass="EBFocusRingView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="260" y="0.0" width="440" height="667"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
@@ -703,11 +703,11 @@ AAAAAAEGA
                                         <tabViewItems>
                                             <tabViewItem label="Minima" identifier="" id="IpE-Fv-iNL">
                                                 <view key="view" id="0Dy-HR-wb4">
-                                                    <rect key="frame" x="10" y="25" width="837" height="483"/>
+                                                    <rect key="frame" x="10" y="29" width="837" height="479"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vM0-l7-W2e" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
-                                                            <rect key="frame" x="324" y="272" width="57" height="16"/>
+                                                            <rect key="frame" x="324" y="268" width="57" height="16"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="-100,23" id="QN3-bo-o02">
                                                                 <font key="font" metaFont="smallSystemBold"/>
@@ -716,7 +716,7 @@ AAAAAAEGA
                                                             </textFieldCell>
                                                         </textField>
                                                         <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Wf-Q8-VM4" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                                                            <rect key="frame" x="389" y="159" width="84" height="17"/>
+                                                            <rect key="frame" x="389" y="155" width="84" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="oZy-Ye-3NR" id="qJA-S6-uvc">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -733,7 +733,7 @@ AAAAAAEGA
                                                             </popUpButtonCell>
                                                         </popUpButton>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="435" translatesAutoresizingMaskIntoConstraints="NO" id="baL-xR-8ew">
-                                                            <rect key="frame" x="37" y="185" width="439" height="18"/>
+                                                            <rect key="frame" x="37" y="181" width="439" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2" id="jc1-ye-uyO">
                                                                 <font key="font" metaFont="smallSystemBold"/>
@@ -742,7 +742,7 @@ AAAAAAEGA
                                                             </textFieldCell>
                                                         </textField>
                                                         <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eqk-6v-y1g" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                                                            <rect key="frame" x="389" y="217" width="84" height="17"/>
+                                                            <rect key="frame" x="389" y="213" width="84" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="p0E-Qs-REn" id="B89-S1-fFO">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -759,16 +759,16 @@ AAAAAAEGA
                                                             </popUpButtonCell>
                                                         </popUpButton>
                                                         <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Vy-cY-3kQ">
-                                                            <rect key="frame" x="203" y="300" width="324" height="148"/>
+                                                            <rect key="frame" x="203" y="296" width="324" height="148"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="artwork" id="ghA-6c-7SM"/>
                                                         </imageView>
                                                         <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="1VS-pK-Hxm">
-                                                            <rect key="frame" x="40" y="209" width="433" height="5"/>
+                                                            <rect key="frame" x="40" y="205" width="433" height="5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         </box>
                                                         <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l6W-27-PLo" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
-                                                            <rect key="frame" x="324" y="163" width="57" height="14"/>
+                                                            <rect key="frame" x="324" y="159" width="57" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="-100,23" id="aOx-lT-OCi">
                                                                 <font key="font" metaFont="smallSystemBold"/>
@@ -777,11 +777,11 @@ AAAAAAEGA
                                                             </textFieldCell>
                                                         </textField>
                                                         <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="puk-ws-tsv">
-                                                            <rect key="frame" x="40" y="263" width="433" height="5"/>
+                                                            <rect key="frame" x="40" y="259" width="433" height="5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         </box>
                                                         <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wCC-w8-U4u" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
-                                                            <rect key="frame" x="324" y="218" width="57" height="17"/>
+                                                            <rect key="frame" x="324" y="214" width="57" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="-100,23" id="i6e-aR-PQ7">
                                                                 <font key="font" metaFont="smallSystemBold"/>
@@ -790,7 +790,7 @@ AAAAAAEGA
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="243" translatesAutoresizingMaskIntoConstraints="NO" id="8Gf-jL-I7v">
-                                                            <rect key="frame" x="76" y="221" width="247" height="14"/>
+                                                            <rect key="frame" x="76" y="217" width="247" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for PHD:" id="thl-3F-YDr">
                                                                 <font key="font" metaFont="smallSystem"/>
@@ -799,7 +799,7 @@ AAAAAAEGA
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="243" translatesAutoresizingMaskIntoConstraints="NO" id="JM2-aC-gsJ">
-                                                            <rect key="frame" x="76" y="274" width="247" height="14"/>
+                                                            <rect key="frame" x="76" y="270" width="247" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for PP, TP, TT and TW:" id="P9Y-dF-zBd">
                                                                 <font key="font" metaFont="smallSystem"/>
@@ -808,7 +808,7 @@ AAAAAAEGA
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="138" translatesAutoresizingMaskIntoConstraints="NO" id="X1U-W6-5YV">
-                                                            <rect key="frame" x="37" y="344" width="142" height="59"/>
+                                                            <rect key="frame" x="37" y="340" width="142" height="59"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="left" id="rdw-YK-Of2">
                                                                 <font key="font" metaFont="miniSystemBold"/>
@@ -821,7 +821,7 @@ TW: Track Width</string>
                                                             </textFieldCell>
                                                         </textField>
                                                         <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74y-4K-qES" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                                                            <rect key="frame" x="389" y="269" width="84" height="17"/>
+                                                            <rect key="frame" x="389" y="265" width="84" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <popUpButtonCell key="cell" type="roundRect" title="mil" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286" inset="2" preferredEdge="maxY" selectedItem="AyP-vl-ygg" id="cYl-kx-DAT">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -838,7 +838,7 @@ TW: Track Width</string>
                                                             </popUpButtonCell>
                                                         </popUpButton>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="253" translatesAutoresizingMaskIntoConstraints="NO" id="061-EX-CM6">
-                                                            <rect key="frame" x="37" y="237" width="257" height="20"/>
+                                                            <rect key="frame" x="37" y="233" width="257" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="PHD: Production Hole Diameter (tool size)" id="VbV-wb-OrV">
                                                                 <font key="font" metaFont="smallSystemBold"/>
@@ -847,7 +847,7 @@ TW: Track Width</string>
                                                             </textFieldCell>
                                                         </textField>
                                                         <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7W9-Ph-pfR" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                                                            <rect key="frame" x="393" y="124" width="80" height="17"/>
+                                                            <rect key="frame" x="393" y="120" width="80" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="Afx-7N-lMk" id="HcG-by-qGL">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -864,7 +864,7 @@ TW: Track Width</string>
                                                             </popUpButtonCell>
                                                         </popUpButton>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="243" translatesAutoresizingMaskIntoConstraints="NO" id="kaX-9a-4DB">
-                                                            <rect key="frame" x="64" y="127" width="247" height="14"/>
+                                                            <rect key="frame" x="64" y="123" width="247" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for Board Limit Width" id="0tQ-bB-dIC">
                                                                 <font key="font" metaFont="smallSystem"/>
@@ -873,7 +873,7 @@ TW: Track Width</string>
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rej-bX-dtx" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
-                                                            <rect key="frame" x="324" y="126" width="57" height="14"/>
+                                                            <rect key="frame" x="324" y="122" width="57" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="-100,23" id="9Mf-sZ-LgZ">
                                                                 <font key="font" metaFont="smallSystemBold"/>
@@ -882,7 +882,7 @@ TW: Track Width</string>
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="243" translatesAutoresizingMaskIntoConstraints="NO" id="liM-Di-W6t">
-                                                            <rect key="frame" x="64" y="163" width="247" height="14"/>
+                                                            <rect key="frame" x="64" y="159" width="247" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for OAR:" id="hIg-mj-O77">
                                                                 <font key="font" metaFont="smallSystem"/>
@@ -1051,7 +1051,7 @@ TW: Track Width</string>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                                             <clipView key="contentView" ambiguous="YES" id="yoe-iD-WNC">
                                                                 <rect key="frame" x="1" y="0.0" width="210" height="442"/>
-                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="22" rowSizeStyle="small" headerView="R8q-Pw-Min" viewBased="YES" id="1lk-LW-8RJ" customClass="EBTableView" customModule="ElCanari" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="210" height="417"/>
@@ -1345,7 +1345,7 @@ TW: Track Width</string>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" ambiguous="YES" id="FKc-MP-5iw">
                                 <rect key="frame" x="1" y="1" width="243" height="679"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DvX-Ap-QJ4">
                                         <rect key="frame" x="0.0" y="74" width="240" height="680"/>
@@ -2296,7 +2296,7 @@ DQ
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="bte-fr-Xrs">
                         <rect key="frame" x="1" y="1" width="189" height="355"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="E87-Xh-jB6" customClass="CanariIssueTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="189" height="355"/>
@@ -2370,7 +2370,7 @@ DQ
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" autoresizesSubviews="NO" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="qqO-v5-L3x">
                         <rect key="frame" x="0.0" y="0.0" width="257" height="537"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView autoresizesSubviews="NO" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xI2-WN-a67">
                                 <rect key="frame" x="0.0" y="0.0" width="257" height="537"/>
@@ -2450,7 +2450,7 @@ DQ
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="lgH-tn-3jv">
                                             <rect key="frame" x="1" y="1" width="138" height="79"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" id="bu8-Fi-9kF" customClass="CanariDragSourceTableView" customModule="ElCanari" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="138" height="79"/>

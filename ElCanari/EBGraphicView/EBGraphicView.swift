@@ -42,6 +42,21 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
 
   //····················································································································
 
+  override func awakeFromNib () {
+    super.awakeFromNib ()
+    var view : NSView? = self
+    var allViewsRequireLayer = true
+    while (view != nil) && allViewsRequireLayer {
+      allViewsRequireLayer = self.wantsLayer
+      view = view?.superview
+    }
+    if !allViewsRequireLayer {
+      presentErrorWindow (#file, #line, "EBGraphicView requires layer")
+    }
+  }
+
+  //····················································································································
+
   override func ebCleanUp () {
     super.ebCleanUp ()
     self.mViewController = nil
@@ -450,7 +465,8 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
     newBounds = newBounds.union (self.mMinimumRectangle)
     if let ciImage = self.mBackgroundImage {
-      newBounds = newBounds.union (ciImage.extent)
+      let transformedImage = ciImage.transformed (by: self.mBackgroundImageAffineTransform)
+      newBounds = newBounds.union (transformedImage.extent)
     }
     let currentBounds = self.bounds
     if currentBounds != newBounds {
