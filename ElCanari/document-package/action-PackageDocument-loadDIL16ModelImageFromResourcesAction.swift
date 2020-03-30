@@ -28,7 +28,7 @@ extension PackageDocument {
     }else if let window = self.windowForSheet {
       __NSBeep ()
       let alert = NSAlert ()
-      alert.messageText = "Cannot lopad the image."
+      alert.messageText = "Cannot load the image."
       alert.informativeText = "There is no such image in Application resources."
       alert.beginSheetModal (for: window)
     }

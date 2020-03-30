@@ -438,17 +438,17 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   fileprivate func applyAffineTransformToModelImage () {
     if self.rootObject.mPointsAreLocked {
-      var af = CGAffineTransform.identity
+      let af = NSAffineTransform ()
       let scale = CGFloat (self.rootObject.mModelImageScale)
-      af = af.translatedBy (
-        x: canariUnitToCocoa (self.rootObject.mModelImageFirstPointX!),
-        y: canariUnitToCocoa (self.rootObject.mModelImageFirstPointY!)
+      af.translateX (
+        by: canariUnitToCocoa (self.rootObject.mModelImageFirstPointX!),
+        yBy: canariUnitToCocoa (self.rootObject.mModelImageFirstPointY!)
       )
-      af = af.rotated (by: CGFloat (self.rootObject.mModelImageRotationInRadians))
-      af = af.scaledBy (x: scale, y: scale)
-      af = af.translatedBy (
-        x: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointXOnLock),
-        y: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointYOnLock)
+      af.rotate (byRadians: CGFloat (self.rootObject.mModelImageRotationInRadians))
+      af.scaleX (by: scale, yBy: scale)
+      af.translateX (
+        by: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointXOnLock),
+        yBy: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointYOnLock)
       )
       self.mModelImageView?.set (backgroundImageAffineTransform: af)
       self.mComposedPackageView?.set (backgroundImageAffineTransform: af)

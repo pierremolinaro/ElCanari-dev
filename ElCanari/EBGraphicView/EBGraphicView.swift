@@ -465,8 +465,9 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
     newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
     newBounds = newBounds.union (self.mMinimumRectangle)
     if let ciImage = self.mBackgroundImage {
-      let transformedImage = ciImage.transformed (by: self.mBackgroundImageAffineTransform)
-      newBounds = newBounds.union (transformedImage.extent)
+      let bp = NSBezierPath (rect: ciImage.extent)
+      let transformedBP = self.mBackgroundImageAffineTransform.transform (bp)
+      newBounds = newBounds.union (transformedBP.bounds)
     }
     let currentBounds = self.bounds
     if currentBounds != newBounds {
@@ -729,11 +730,11 @@ class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvide
   var mBackgroundImageOpacity : CGFloat = 1.0
   var mBackgroundImageOpacityController : EBSimpleController? = nil
 
-  var mBackgroundImageAffineTransform : CGAffineTransform = .identity
+  var mBackgroundImageAffineTransform = NSAffineTransform ()
 
   //····················································································································
 
-  func set (backgroundImageAffineTransform inAffineTransform : CGAffineTransform) {
+  func set (backgroundImageAffineTransform inAffineTransform : NSAffineTransform) {
     self.mBackgroundImageAffineTransform = inAffineTransform
     self.updateViewFrameAndBounds ()
     self.needsDisplay = true

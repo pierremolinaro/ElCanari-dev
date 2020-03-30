@@ -19,8 +19,8 @@ extension PackageDocument {
       self.rootObject.mModelImageFirstPointYOnLock = 0
       self.rootObject.mModelImageScale = 1.0
       self.rootObject.mModelImageRotationInRadians = 0.0
-      self.mModelImageView?.set(backgroundImageAffineTransform: .identity)
-      self.mComposedPackageView?.set (backgroundImageAffineTransform: .identity)
+      self.mModelImageView?.set (backgroundImageAffineTransform: NSAffineTransform ())
+      self.mComposedPackageView?.set (backgroundImageAffineTransform: NSAffineTransform ())
     //---
       self.buildGreenAndBluePoints ()
 //--- END OF USER ZONE 2
