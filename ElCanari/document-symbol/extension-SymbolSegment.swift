@@ -13,44 +13,45 @@ extension SymbolSegment {
 
   //····················································································································
 
-  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-    var acceptedX = inDx
-    do{
-      let newX = self.x1 + acceptedX
-      if newX < 0 {
-        acceptedX = -self.x1
-      }
-    }
-    do{
-      let newX = self.x2 + acceptedX
-      if newX < 0 {
-        acceptedX = -self.x2
-      }
-    }
-    var acceptedY = inDy
-    do{
-      let newY = self.y1 + acceptedY
-      if newY < 0 {
-        acceptedY = -self.y1
-      }
-    }
-    do{
-      let newY = self.y2 + acceptedY
-      if newY < 0 {
-        acceptedY = -self.y2
-      }
-    }
-    return OCCanariPoint (x: acceptedX, y: acceptedY)
-  }
+//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+//    var acceptedX = inDx
+//    do{
+//      let newX = self.x1 + acceptedX
+//      if newX < 0 {
+//        acceptedX = -self.x1
+//      }
+//    }
+//    do{
+//      let newX = self.x2 + acceptedX
+//      if newX < 0 {
+//        acceptedX = -self.x2
+//      }
+//    }
+//    var acceptedY = inDy
+//    do{
+//      let newY = self.y1 + acceptedY
+//      if newY < 0 {
+//        acceptedY = -self.y1
+//      }
+//    }
+//    do{
+//      let newY = self.y2 + acceptedY
+//      if newY < 0 {
+//        acceptedY = -self.y2
+//      }
+//    }
+//    return OCCanariPoint (x: acceptedX, y: acceptedY)
+//  }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    let newX1 = self.x1 + inDx
-    let newY1 = self.y1 + inDy
-    let newX2 = self.x2 + inDx
-    let newY2 = self.y2 + inDy
-    return (newX1 >= 0) && (newY1 >= 0) && (newX2 >= 0) && (newY2 >= 0)
+    return true
+//    let newX1 = self.x1 + inDx
+//    let newY1 = self.y1 + inDy
+//    let newX2 = self.x2 + inDx
+//    let newY2 = self.y2 + inDy
+//    return (newX1 >= 0) && (newY1 >= 0) && (newX2 >= 0) && (newY2 >= 0)
   }
 
   //····················································································································

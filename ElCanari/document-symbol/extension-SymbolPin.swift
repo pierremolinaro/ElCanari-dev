@@ -14,58 +14,59 @@ extension SymbolPin {
 
   //····················································································································
 
-  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-    var acceptedX = inDx
-    do{
-      let newX = self.xPin + acceptedX
-      if newX < 0 {
-        acceptedX = -self.xPin
-      }
-    }
-    do{
-      let newX = self.xName + acceptedX
-      if newX < 0 {
-        acceptedX = -self.xName
-      }
-    }
-    do{
-      let newX = self.xNumber + acceptedX
-      if newX < 0 {
-        acceptedX = -self.xNumber
-      }
-    }
-    var acceptedY = inDy
-    do{
-      let newY = self.yPin + acceptedY
-      if newY < 0 {
-        acceptedY = -self.yPin
-      }
-    }
-    do{
-      let newY = self.yName + acceptedY
-      if newY < 0 {
-        acceptedY = -self.yName
-      }
-    }
-    do{
-      let newY = self.yNumber + acceptedY
-      if newY < 0 {
-        acceptedY = -self.yNumber
-      }
-    }
-    return OCCanariPoint (x: acceptedX, y: acceptedY)
-  }
+//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+//    var acceptedX = inDx
+//    do{
+//      let newX = self.xPin + acceptedX
+//      if newX < 0 {
+//        acceptedX = -self.xPin
+//      }
+//    }
+//    do{
+//      let newX = self.xName + acceptedX
+//      if newX < 0 {
+//        acceptedX = -self.xName
+//      }
+//    }
+//    do{
+//      let newX = self.xNumber + acceptedX
+//      if newX < 0 {
+//        acceptedX = -self.xNumber
+//      }
+//    }
+//    var acceptedY = inDy
+//    do{
+//      let newY = self.yPin + acceptedY
+//      if newY < 0 {
+//        acceptedY = -self.yPin
+//      }
+//    }
+//    do{
+//      let newY = self.yName + acceptedY
+//      if newY < 0 {
+//        acceptedY = -self.yName
+//      }
+//    }
+//    do{
+//      let newY = self.yNumber + acceptedY
+//      if newY < 0 {
+//        acceptedY = -self.yNumber
+//      }
+//    }
+//    return OCCanariPoint (x: acceptedX, y: acceptedY)
+//  }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    let newX = self.xPin + inDx
-    let newY = self.yPin + inDy
-    let newXLabel = self.xName + inDx
-    let newYLabel = self.yName + inDy
-    let newXNumber = self.xNumber + inDx
-    let newYNumber = self.yNumber + inDy
-    return (newX >= 0) && (newY >= 0) && (newXNumber >= 0) && (newYNumber >= 0) && (newXLabel >= 0) && (newYLabel >= 0)
+    return true
+//    let newX = self.xPin + inDx
+//    let newY = self.yPin + inDy
+//    let newXLabel = self.xName + inDx
+//    let newYLabel = self.yName + inDy
+//    let newXNumber = self.xNumber + inDx
+//    let newYNumber = self.yNumber + inDy
+//    return (newX >= 0) && (newY >= 0) && (newXNumber >= 0) && (newYNumber >= 0) && (newXLabel >= 0) && (newYLabel >= 0)
   }
 
   //····················································································································
